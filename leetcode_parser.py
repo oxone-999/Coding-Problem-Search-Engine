@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import time
-import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
@@ -28,10 +27,6 @@ def openBrowser(url):
     Options.add_argument("--incognito")
     Options.add_argument("--headless")
     
-    #normal - browser opens
-    #driver = webdriver.Chrome(ChromeDriverManager().install())
-    
-    #headless - browser runs in background
     driver = webdriver.Chrome(service = Service(ChromeDriverManager().install()), options=Options)
     
     driver.get(url)
@@ -51,10 +46,7 @@ def fetchPageData(pageUrl):
     soup = BeautifulSoup(pageSource, "html.parser")
     
     if (browser.title == pageTitle):
-        
-        print(
-            "    ----------->  parsing data "
-        )
+        print("    ----------->  parsing data ")
         
         newSoup = BeautifulSoup(pageSource, "html.parser")
         QuestionBlock = newSoup.find('div', role="rowgroup")
@@ -83,10 +75,8 @@ def getData():
         browser = openBrowser(siteUrl)
         time.sleep(2)
         pageSource = browser.page_source
-        # print(browser.title)
         wait = WebDriverWait(browser, 10)
         wait.until(EC.title_contains(pageTitle))
-        # print(pageSource)
         soup = BeautifulSoup(pageSource, "html.parser")
         
         if (browser.title == pageTitle):

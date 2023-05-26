@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import time
-import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
@@ -8,14 +7,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
 siteUrl = "https://codeforces.com/problemset/"
-pageTitle = "Problems - Codeforces"
+pageTitle = "Problemset - Codeforces"
 
 questionNameList = []
 questionLinkList = []
 questionDifficultyList = []
 
 def writeToFile():
-    file = open('questionsLink.txt','w')
+    file = open('questionsLinkCodeforces.txt','w')
     for x in range(questionLinkList.__len__()):
         file.write(questionLinkList[x]+"\n")
     file.close()
@@ -48,7 +47,6 @@ def fetchPageData(pageUrl):
     pageSource = browser.page_source
     wait = WebDriverWait(browser, 10)
     wait.until(EC.title_contains(pageTitle))
-    soup = BeautifulSoup(pageSource, "html.parser")
     
     if (browser.title == pageTitle):
         
@@ -57,18 +55,14 @@ def fetchPageData(pageUrl):
         )
         
         newSoup = BeautifulSoup(pageSource, "html.parser")
-        QuestionBlock = newSoup.find('div', role="rowgroup")
-        QuestionList = QuestionBlock.find_all('div', role="row")
+        QuestionBlock = newSoup.find('table',class_="problems")
+        QuestionList = QuestionBlock.find_all('tr')
         
-        for question in QuestionList:
-            row = question.find_all('div', role="cell")
-            questionName = row[1].find('a').text
-            questionUrl = row[1].find('a')['href']
-            questionUrl = "https://leetcode.com" + questionUrl
-            questionDifficulty = row[4].find('span').text   
-            questionLinkList.append(questionUrl)
-            questionDifficultyList.append(questionDifficulty)
-            questionNameList.append(questionName)   
+        for i in range(1, QuestionList.__len__()):
+            questionUrl = QuestionList[i].find('a')['href']
+            questionUrl = "https://codeforces.com" + questionUrl  
+            # print(questionUrl)
+            questionLinkList.append(questionUrl)  
             
         print("    ----------->  saving data ")
         time.sleep(1)
@@ -86,17 +80,17 @@ def getData():
         # print(browser.title)
         wait = WebDriverWait(browser, 10)
         wait.until(EC.title_contains(pageTitle))
-        # print(pageSource)
         soup = BeautifulSoup(pageSource, "html.parser")
         
         if (browser.title == pageTitle):
             
             #fetching total number of pages
-            totalQuestions = soup.find('nav', role="navigation" ,class_="mb-6 md:mb-0 flex flex-nowrap items-center space-x-2")
-            print(totalQuestions)
-            index = totalQuestions.__len__() - 2
-            totalPages = int(totalQuestions.contents[index].text)
+            totalQuestions = soup.find('div',class_="pagination").find_all('span')
+            index = totalQuestions.__len__() - 1
+            # print(index)
+            totalPages = int(totalQuestions[index].text)
             print("Total Pages : ", totalPages)
+            # return
             closeBrowser(browser)
             
             #Fetching data from each page
@@ -104,11 +98,11 @@ def getData():
                 print(
                     f"    ----------->  Fetching data from page : {page} of {totalPages} \n\n"
                 )
-                pageUrl = siteUrl + '?page=' + str(page)
+                pageUrl = siteUrl + 'page/' + str(page)
                 fetchPageData(pageUrl)  
             
             print("    ----------->  done all pages")
-            print(f" total {questionNameList.__len__()} question fetched")  
+            print(f" total {questionLinkList.__len__()} question fetched")  
             writeToFile()
         
         else :
