@@ -6,23 +6,17 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By as by
+import re
 
 siteUrl = "https://leetcode.com/problems/"
 pageTitle = "Problems - LeetCode"
 
-body_class = ".px-5.pt-4"
-heading_class = ".mr-2.text-label-1"
-
-questionNameList = []
-questionLinkList = []
-questionDifficultyList = []
-
 index_num = 1
 
-def writeToFile():
+def writeToFile(questionLinkList):
     file = open('questionsLink.txt','w')
-    for x in range(questionLinkList.__len__()):
-        file.write(questionLinkList[x]+"\n")
+    for x in questionLinkList:
+        file.write(x+"\n")
     file.close()
 
 def openBrowser(url):
@@ -44,67 +38,72 @@ def closeBrowser(browser):
     print("    ----------->  Closing Browser")
     browser.quit()
     
+def check(string, sub_str):
+    match = re.search(sub_str, string)
+    if match:
+        return True
+    else:
+        return False
+    
 def fetchPageData(pageUrl):
     browser = openBrowser(pageUrl)
     time.sleep(3)
-    pageSource = browser.page_source
     wait = WebDriverWait(browser, 10)
     wait.until(EC.title_contains(pageTitle))
     
     if (browser.title == pageTitle):
         print("    ----------->  parsing data ")
         
-        newSoup = BeautifulSoup(pageSource, "html.parser")
-        QuestionBlock = newSoup.find('div', role="rowgroup")
-        QuestionList = QuestionBlock.find_all('div', role="row")
+        links = browser.find_elements(by.TAG_NAME, "a")
+        # Iterate over each 'a' element
+        questionLinkList = []
         
-        for question in QuestionList:
-            row = question.find_all('div', role="cell")
-            questionName = row[1].find('a').text
-            questionUrl = row[1].find('a')['href']
-            questionUrl = "https://leetcode.com" + questionUrl
-            questionDifficulty = row[4].find('span').text   
-            questionLinkList.append(questionUrl)
-            questionDifficultyList.append(questionDifficulty)
-            questionNameList.append(questionName)   
+        for i in links:
+            try:
+                # Check if '/problems/' is in the href of the 'a' element
+                if "/problems/" in i.get_attribute("href"):
+                    # If it is, append it to the list of links
+                    pattern = "/solution"
+                    x = check(i.get_attribute("href"),pattern)
+                    if x == False:
+                        questionLinkList.append(i.get_attribute("href"))
+            except:
+                pass
+        # Remove duplicate links using set
+        questionLinkList = list(set(questionLinkList))   
             
         print("    ----------->  saving data ")
         time.sleep(1)
         print("    ----------->  done ")
         closeBrowser(browser)
+        return questionLinkList
     else :
         print("    ----------->  connection failed ")
-        return
+        return -1
    
 def getData():
     try:
         browser = openBrowser(siteUrl)
         time.sleep(2)
-        pageSource = browser.page_source
         wait = WebDriverWait(browser, 10)
         wait.until(EC.title_contains(pageTitle))
-        soup = BeautifulSoup(pageSource, "html.parser")
         
         if (browser.title == pageTitle):
-            
-            #fetching total number of pages
-            totalQuestions = soup.find('nav', role="navigation" ,class_="mb-6 md:mb-0 flex flex-nowrap items-center space-x-2")
-            index = totalQuestions.__len__() - 2
-            totalPages = int(totalQuestions.contents[index].text)
-            print("Total Pages : ", totalPages)
             closeBrowser(browser)
             
+            questionLinkList = []
+            
             #Fetching data from each page
-            for page in range(1, totalPages+1):
+            for page in range(1, 56):
                 print(
-                    f"    ----------->  Fetching data from page : {page} of {totalPages} \n\n"
+                    f"    ----------->  Fetching data from page : {page} of 55 \n\n"
                 )
                 pageUrl = siteUrl + '?page=' + str(page)
-                fetchPageData(pageUrl)  
+                questionLinkList += fetchPageData(pageUrl) 
             
             print("    ----------->  done all pages")
-            print(f" total {questionNameList.__len__()} question fetched")  
-            writeToFile()
+            print(f" total {questionLinkList.__len__()} question fetched")  
+            writeToFile(questionLinkList)
         
         else :
             print("    ----------->  connection failed ")

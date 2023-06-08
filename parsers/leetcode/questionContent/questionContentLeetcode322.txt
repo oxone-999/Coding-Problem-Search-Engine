@@ -1,21 +1,42 @@
-322	38. Count and Say
-The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
-countAndSay(1) = "1"
-countAndSay(n) is the way you would "say" the digit string from countAndSay(n-1), which is then converted into a different digit string.
-To determine how you "say" a digit string, split it into the minimal number of substrings such that each substring contains exactly one unique digit. Then for each substring, say the number of digits, then say the digit. Finally, concatenate every said digit.
-For example, the saying and conversion for digit string "3322251":
-Given a positive integer n, return the nth term of the count-and-say sequence.
+322	528. Random Pick with Weight
+You are given a 0-indexed array of positive integers w where w[i] describes the weight of the ith index.
+You need to implement the function pickIndex(), which randomly picks an index in the range [0, w.length - 1] (inclusive) and returns it. The probability of picking an index i is w[i] / sum(w).
+For example, if w = [1, 3], the probability of picking index 0 is 1 / (1 + 3) = 0.25 (i.e., 25%), and the probability of picking index 1 is 3 / (1 + 3) = 0.75 (i.e., 75%).
   Example 1:
-Input: n = 1
-Output: "1"
-Explanation: This is the base case.
+Input
+["Solution","pickIndex"]
+[[[1]],[]]
+Output
+[null,0]
+
+Explanation
+Solution solution = new Solution([1]);
+solution.pickIndex(); // return 0. The only option is to return 0 since there is only one element in w.
 Example 2:
-Input: n = 4
-Output: "1211"
-Explanation:
-countAndSay(1) = "1"
-countAndSay(2) = say "1" = one 1 = "11"
-countAndSay(3) = say "11" = two 1's = "21"
-countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
+Input
+["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
+[[[1,3]],[],[],[],[],[]]
+Output
+[null,1,1,1,1,0]
+
+Explanation
+Solution solution = new Solution([1, 3]);
+solution.pickIndex(); // return 1. It is returning the second element (index = 1) that has a probability of 3/4.
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 0. It is returning the first element (index = 0) that has a probability of 1/4.
+
+Since this is a randomization problem, multiple answers are allowed.
+All of the following outputs can be considered correct:
+[null,1,1,1,1,0]
+[null,1,1,1,1,1]
+[null,1,1,1,0,0]
+[null,1,1,1,0,1]
+[null,1,0,1,0,0]
+......
+and so on.
   Constraints:
-1 <= n <= 30
+1 <= w.length <= 104
+1 <= w[i] <= 105
+pickIndex will be called at most 104 times.

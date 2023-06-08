@@ -1,51 +1,31 @@
-293	8. String to Integer (atoi)
-Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
-The algorithm for myAtoi(string s) is as follows:
-Read in and ignore any leading whitespace.
-Check if the next character (if not already at the end of the string) is '-' or '+'. Read this character in if it is either. This determines if the final result is negative or positive respectively. Assume the result is positive if neither is present.
-Read in next the characters until the next non-digit character or the end of the input is reached. The rest of the string is ignored.
-Convert these digits into an integer (i.e. "123" -> 123, "0032" -> 32). If no digits were read, then the integer is 0. Change the sign as necessary (from step 2).
-If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then clamp the integer so that it remains in the range. Specifically, integers less than -231 should be clamped to -231, and integers greater than 231 - 1 should be clamped to 231 - 1.
-Return the integer as the final result.
-Note:
-Only the space character ' ' is considered a whitespace character.
-Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
+293	2101. Detonate the Maximum Bombs
+You are given a list of bombs. The range of a bomb is defined as the area where its effect can be felt. This area is in the shape of a circle with the center as the location of the bomb.
+The bombs are represented by a 0-indexed 2D integer array bombs where bombs[i] = [xi, yi, ri]. xi and yi denote the X-coordinate and Y-coordinate of the location of the ith bomb, whereas ri denotes the radius of its range.
+You may choose to detonate a single bomb. When a bomb is detonated, it will detonate all bombs that lie in its range. These bombs will further detonate the bombs that lie in their ranges.
+Given the list of bombs, return the maximum number of bombs that can be detonated if you are allowed to detonate only one bomb.
   Example 1:
-Input: s = "42"
-Output: 42
-Explanation: The underlined characters are what is read in, the caret is the current reader position.
-Step 1: "42" (no characters read because there is no leading whitespace)
-         ^
-Step 2: "42" (no characters read because there is neither a '-' nor '+')
-         ^
-Step 3: "42" ("42" is read in)
-           ^
-The parsed integer is 42.
-Since 42 is in the range [-231, 231 - 1], the final result is 42.
+Input: bombs = [[2,1,3],[6,1,4]]
+Output: 2
+Explanation:
+The above figure shows the positions and ranges of the 2 bombs.
+If we detonate the left bomb, the right bomb will not be affected.
+But if we detonate the right bomb, both bombs will be detonated.
+So the maximum bombs that can be detonated is max(1, 2) = 2.
 Example 2:
-Input: s = "   -42"
-Output: -42
+Input: bombs = [[1,1,5],[10,10,5]]
+Output: 1
 Explanation:
-Step 1: "   -42" (leading whitespace is read and ignored)
-            ^
-Step 2: "   -42" ('-' is read, so the result should be negative)
-             ^
-Step 3: "   -42" ("42" is read in)
-               ^
-The parsed integer is -42.
-Since -42 is in the range [-231, 231 - 1], the final result is -42.
+Detonating either bomb will not detonate the other bomb, so the maximum number of bombs that can be detonated is 1.
 Example 3:
-Input: s = "4193 with words"
-Output: 4193
+Input: bombs = [[1,2,3],[2,3,1],[3,4,2],[4,5,3],[5,6,4]]
+Output: 5
 Explanation:
-Step 1: "4193 with words" (no characters read because there is no leading whitespace)
-         ^
-Step 2: "4193 with words" (no characters read because there is neither a '-' nor '+')
-         ^
-Step 3: "4193 with words" ("4193" is read in; reading stops because the next character is a non-digit)
-             ^
-The parsed integer is 4193.
-Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
+The best bomb to detonate is bomb 0 because:
+- Bomb 0 detonates bombs 1 and 2. The red circle denotes the range of bomb 0.
+- Bomb 2 detonates bomb 3. The blue circle denotes the range of bomb 2.
+- Bomb 3 detonates bomb 4. The green circle denotes the range of bomb 3.
+Thus all 5 bombs are detonated.
   Constraints:
-0 <= s.length <= 200
-s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
+1 <= bombs.length <= 100
+bombs[i].length == 3
+1 <= xi, yi, ri <= 105

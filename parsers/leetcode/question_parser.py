@@ -10,9 +10,13 @@ from selenium.webdriver.common.by import By as by
 body_class = ".px-5.pt-4"
 heading_class = ".mr-2.text-label-1"
 
-def writeToFile2(heading,body,index):
-    file = open(f'questionContent/questionContentLeetcode{index}.txt','w')
+def writeToFile2(heading,body,index,pageUrl): 
+    file = open(f'questionContent/questionContentLeetcode{index}.txt','w',encoding="utf-8")
     file.write(str(index) + "\t" + heading + "\n" + body )
+    file.close()
+    
+    file = open(f'questionLinks/questionsLink_{index}.txt','w',encoding="utf-8")
+    file.write(pageUrl)
     file.close()
     
 def openBrowser(url):
@@ -23,7 +27,6 @@ def openBrowser(url):
     Options.add_argument("--incognito")
     Options.add_argument("--headless")
     
-    # driver = webdriver.Chrome(service = Service(ChromeDriverManager().install()))
     driver = webdriver.Chrome(service = Service(ChromeDriverManager().install()), options=Options)
     
     driver.get(url)
@@ -44,13 +47,13 @@ def singlePageData(pageUrl,index):
         headingContent = browser.find_element(by.CSS_SELECTOR, heading_class)
         bodyContent = browser.find_element(by.CSS_SELECTOR, body_class)
         if(bodyContent.text):
-            writeToFile2(headingContent.text,bodyContent.text,index)
+            writeToFile2(headingContent.text,bodyContent.text,index,pageUrl)
             print("    ----------->  saving data ")
         time.sleep(1)
         return True
         
     except Exception as e:
-        print(f"    ----------->  Error in singlePageData({e}) ")
+        print(f"    ----------->  Error in {e} \n {pageUrl} ")
         return False
     
 def getArrLinks():
