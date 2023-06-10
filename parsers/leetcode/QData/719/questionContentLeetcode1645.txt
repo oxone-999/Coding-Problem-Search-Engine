@@ -1,33 +1,29 @@
-1645	2294. Partition Array Such That Maximum Difference Is K
-You are given an integer array nums and an integer k. You may partition nums into one or more subsequences such that each element in nums appears in exactly one of the subsequences.
-Return the minimum number of subsequences needed such that the difference between the maximum and minimum values in each subsequence is at most k.
-A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+1645	2284. Sender With Largest Word Count
+You have a chat log of n messages. You are given two string arrays messages and senders where messages[i] is a message sent by senders[i].
+A message is list of words that are separated by a single space with no leading or trailing spaces. The word count of a sender is the total number of words sent by the sender. Note that a sender may send more than one message.
+Return the sender with the largest word count. If there is more than one sender with the largest word count, return the one with the lexicographically largest name.
+Note:
+Uppercase letters come before lowercase letters in lexicographical order.
+"Alice" and "alice" are distinct.
   Example 1:
-Input: nums = [3,6,1,2,5], k = 2
-Output: 2
-Explanation:
-We can partition nums into the two subsequences [3,1,2] and [6,5].
-The difference between the maximum and minimum value in the first subsequence is 3 - 1 = 2.
-The difference between the maximum and minimum value in the second subsequence is 6 - 5 = 1.
-Since two subsequences were created, we return 2. It can be shown that 2 is the minimum number of subsequences needed.
+Input: messages = ["Hello userTwooo","Hi userThree","Wonderful day Alice","Nice day userThree"], senders = ["Alice","userTwo","userThree","Alice"]
+Output: "Alice"
+Explanation: Alice sends a total of 2 + 3 = 5 words.
+userTwo sends a total of 2 words.
+userThree sends a total of 3 words.
+Since Alice has the largest word count, we return "Alice".
 Example 2:
-Input: nums = [1,2,3], k = 1
-Output: 2
-Explanation:
-We can partition nums into the two subsequences [1,2] and [3].
-The difference between the maximum and minimum value in the first subsequence is 2 - 1 = 1.
-The difference between the maximum and minimum value in the second subsequence is 3 - 3 = 0.
-Since two subsequences were created, we return 2. Note that another optimal solution is to partition nums into the two subsequences [1] and [2,3].
-Example 3:
-Input: nums = [2,2,4,5], k = 0
-Output: 3
-Explanation:
-We can partition nums into the three subsequences [2,2], [4], and [5].
-The difference between the maximum and minimum value in the first subsequences is 2 - 2 = 0.
-The difference between the maximum and minimum value in the second subsequences is 4 - 4 = 0.
-The difference between the maximum and minimum value in the third subsequences is 5 - 5 = 0.
-Since three subsequences were created, we return 3. It can be shown that 3 is the minimum number of subsequences needed.
+Input: messages = ["How is leetcode for everyone","Leetcode is useful for practice"], senders = ["Bob","Charlie"]
+Output: "Charlie"
+Explanation: Bob sends a total of 5 words.
+Charlie sends a total of 5 words.
+Since there is a tie for the largest word count, we return the sender with the lexicographically larger name, Charlie.
   Constraints:
-1 <= nums.length <= 105
-0 <= nums[i] <= 105
-0 <= k <= 105
+n == messages.length == senders.length
+1 <= n <= 104
+1 <= messages[i].length <= 100
+1 <= senders[i].length <= 10
+messages[i] consists of uppercase and lowercase English letters and ' '.
+All the words in messages[i] are separated by a single space.
+messages[i] does not have leading or trailing spaces.
+senders[i] consists of uppercase and lowercase English letters only.

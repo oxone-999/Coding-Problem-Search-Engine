@@ -1,21 +1,19 @@
-1853	2546. Apply Bitwise Operations to Make Strings Equal
-You are given two 0-indexed binary strings s and target of the same length n. You can do the following operation on s any number of times:
-Choose two different indices i and j where 0 <= i, j < n.
-Simultaneously, replace s[i] with (s[i] OR s[j]) and s[j] with (s[i] XOR s[j]).
-For example, if s = "0110", you can choose i = 0 and j = 2, then simultaneously replace s[0] with (s[0] OR s[2] = 0 OR 1 = 1), and s[2] with (s[0] XOR s[2] = 0 XOR 1 = 1), so we will have s = "1110".
-Return true if you can make the string s equal to target, or false otherwise.
+1853	2537. Count the Number of Good Subarrays
+Given an integer array nums and an integer k, return the number of good subarrays of nums.
+A subarray arr is good if it there are at least k pairs of indices (i, j) such that i < j and arr[i] == arr[j].
+A subarray is a contiguous non-empty sequence of elements within an array.
   Example 1:
-Input: s = "1010", target = "0110"
-Output: true
-Explanation: We can do the following operations:
-- Choose i = 2 and j = 0. We have now s = "0010".
-- Choose i = 2 and j = 1. We have now s = "0110".
-Since we can make s equal to target, we return true.
+Input: nums = [1,1,1,1,1], k = 10
+Output: 1
+Explanation: The only good subarray is the array nums itself.
 Example 2:
-Input: s = "11", target = "00"
-Output: false
-Explanation: It is not possible to make s equal to target with any number of operations.
+Input: nums = [3,1,4,3,2,2,4], k = 2
+Output: 4
+Explanation: There are 4 different good subarrays:
+- [3,1,4,3,2,2] that has 2 pairs.
+- [3,1,4,3,2,2,4] that has 3 pairs.
+- [1,4,3,2,2,4] that has 2 pairs.
+- [4,3,2,2,4] that has 2 pairs.
   Constraints:
-n == s.length == target.length
-2 <= n <= 105
-s and target consist of only the digits 0 and 1.
+1 <= nums.length <= 105
+1 <= nums[i], k <= 109

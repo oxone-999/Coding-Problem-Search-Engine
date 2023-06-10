@@ -1,23 +1,26 @@
-1629	2280. Minimum Lines to Represent a Line Chart
-You are given a 2D integer array stockPrices where stockPrices[i] = [dayi, pricei] indicates the price of the stock on day dayi is pricei. A line chart is created from the array by plotting the points on an XY plane with the X-axis representing the day and the Y-axis representing the price and connecting adjacent points. One such example is shown below:
-Return the minimum number of lines needed to represent the line chart.
+1629	2300. Successful Pairs of Spells and Potions
+You are given two positive integer arrays spells and potions, of length n and m respectively, where spells[i] represents the strength of the ith spell and potions[j] represents the strength of the jth potion.
+You are also given an integer success. A spell and potion pair is considered successful if the product of their strengths is at least success.
+Return an integer array pairs of length n where pairs[i] is the number of potions that will form a successful pair with the ith spell.
   Example 1:
-Input: stockPrices = [[1,7],[2,6],[3,5],[4,4],[5,4],[6,3],[7,2],[8,1]]
-Output: 3
+Input: spells = [5,1,3], potions = [1,2,3,4,5], success = 7
+Output: [4,0,3]
 Explanation:
-The diagram above represents the input, with the X-axis representing the day and Y-axis representing the price.
-The following 3 lines can be drawn to represent the line chart:
-- Line 1 (in red) from (1,7) to (4,4) passing through (1,7), (2,6), (3,5), and (4,4).
-- Line 2 (in blue) from (4,4) to (5,4).
-- Line 3 (in green) from (5,4) to (8,1) passing through (5,4), (6,3), (7,2), and (8,1).
-It can be shown that it is not possible to represent the line chart using less than 3 lines.
+- 0th spell: 5 * [1,2,3,4,5] = [5,10,15,20,25]. 4 pairs are successful.
+- 1st spell: 1 * [1,2,3,4,5] = [1,2,3,4,5]. 0 pairs are successful.
+- 2nd spell: 3 * [1,2,3,4,5] = [3,6,9,12,15]. 3 pairs are successful.
+Thus, [4,0,3] is returned.
 Example 2:
-Input: stockPrices = [[3,4],[1,2],[7,8],[2,3]]
-Output: 1
+Input: spells = [3,1,2], potions = [8,5,8], success = 16
+Output: [2,0,2]
 Explanation:
-As shown in the diagram above, the line chart can be represented with a single line.
+- 0th spell: 3 * [8,5,8] = [24,15,24]. 2 pairs are successful.
+- 1st spell: 1 * [8,5,8] = [8,5,8]. 0 pairs are successful. 
+- 2nd spell: 2 * [8,5,8] = [16,10,16]. 2 pairs are successful. 
+Thus, [2,0,2] is returned.
   Constraints:
-1 <= stockPrices.length <= 105
-stockPrices[i].length == 2
-1 <= dayi, pricei <= 109
-All dayi are distinct.
+n == spells.length
+m == potions.length
+1 <= n, m <= 105
+1 <= spells[i], potions[i] <= 105
+1 <= success <= 1010

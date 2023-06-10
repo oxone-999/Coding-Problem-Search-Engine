@@ -1,26 +1,22 @@
-1569	2222. Number of Ways to Select Buildings
-You are given a 0-indexed binary string s which represents the types of buildings along a street where:
-s[i] = '0' denotes that the ith building is an office and
-s[i] = '1' denotes that the ith building is a restaurant.
-As a city official, you would like to select 3 buildings for random inspection. However, to ensure variety, no two consecutive buildings out of the selected buildings can be of the same type.
-For example, given s = "001101", we cannot select the 1st, 3rd, and 5th buildings as that would form "011" which is not allowed due to having two consecutive buildings of the same type.
-Return the number of valid ways to select 3 buildings.
+1569	2207. Maximize Number of Subsequences in a String
+You are given a 0-indexed string text and another 0-indexed string pattern of length 2, both of which consist of only lowercase English letters.
+You can add either pattern[0] or pattern[1] anywhere in text exactly once. Note that the character can be added even at the beginning or at the end of text.
+Return the maximum number of times pattern can occur as a subsequence of the modified text.
+A subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.
   Example 1:
-Input: s = "001101"
-Output: 6
-Explanation: 
-The following sets of indices selected are valid:
-- [0,2,4] from "001101" forms "010"
-- [0,3,4] from "001101" forms "010"
-- [1,2,4] from "001101" forms "010"
-- [1,3,4] from "001101" forms "010"
-- [2,4,5] from "001101" forms "101"
-- [3,4,5] from "001101" forms "101"
-No other selection is valid. Thus, there are 6 total ways.
+Input: text = "abdcdbc", pattern = "ac"
+Output: 4
+Explanation:
+If we add pattern[0] = 'a' in between text[1] and text[2], we get "abadcdbc". Now, the number of times "ac" occurs as a subsequence is 4.
+Some other strings which have 4 subsequences "ac" after adding a character to text are "aabdcdbc" and "abdacdbc".
+However, strings such as "abdcadbc", "abdccdbc", and "abdcdbcc", although obtainable, have only 3 subsequences "ac" and are thus suboptimal.
+It can be shown that it is not possible to get more than 4 subsequences "ac" by adding only one character.
 Example 2:
-Input: s = "11100"
-Output: 0
-Explanation: It can be shown that there are no valid selections.
+Input: text = "aabb", pattern = "ab"
+Output: 6
+Explanation:
+Some of the strings which can be obtained from text and have 6 subsequences "ab" are "aaabb", "aaabb", and "aabbb".
   Constraints:
-3 <= s.length <= 105
-s[i] is either '0' or '1'.
+1 <= text.length <= 105
+pattern.length == 2
+text and pattern consist only of lowercase English letters.

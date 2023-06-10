@@ -1,18 +1,28 @@
-1085	1478. Allocate Mailboxes
-Given the array houses where houses[i] is the location of the ith house along a street and an integer k, allocate k mailboxes in the street.
-Return the minimum total distance between each house and its nearest mailbox.
-The test cases are generated so that the answer fits in a 32-bit integer.
+1085	1487. Making File Names Unique
+Given an array of strings names of size n. You will create n folders in your file system such that, at the ith minute, you will create a folder with the name names[i].
+Since two files cannot have the same name, if you enter a folder name that was previously used, the system will have a suffix addition to its name in the form of (k), where, k is the smallest positive integer such that the obtained name remains unique.
+Return an array of strings of length n where ans[i] is the actual name the system will assign to the ith folder when you create it.
   Example 1:
-Input: houses = [1,4,8,10,20], k = 3
-Output: 5
-Explanation: Allocate mailboxes in position 3, 9 and 20.
-Minimum total distance from each houses to nearest mailboxes is |3-1| + |4-3| + |9-8| + |10-9| + |20-20| = 5 
+Input: names = ["pes","fifa","gta","pes(2019)"]
+Output: ["pes","fifa","gta","pes(2019)"]
+Explanation: Let's see how the file system creates folder names:
+"pes" --> not assigned before, remains "pes"
+"fifa" --> not assigned before, remains "fifa"
+"gta" --> not assigned before, remains "gta"
+"pes(2019)" --> not assigned before, remains "pes(2019)"
 Example 2:
-Input: houses = [2,3,5,12,18], k = 2
-Output: 9
-Explanation: Allocate mailboxes in position 3 and 14.
-Minimum total distance from each houses to nearest mailboxes is |2-3| + |3-3| + |5-3| + |12-14| + |18-14| = 9.
+Input: names = ["gta","gta(1)","gta","avalon"]
+Output: ["gta","gta(1)","gta(2)","avalon"]
+Explanation: Let's see how the file system creates folder names:
+"gta" --> not assigned before, remains "gta"
+"gta(1)" --> not assigned before, remains "gta(1)"
+"gta" --> the name is reserved, system adds (k), since "gta(1)" is also reserved, systems put k = 2. it becomes "gta(2)"
+"avalon" --> not assigned before, remains "avalon"
+Example 3:
+Input: names = ["onepiece","onepiece(1)","onepiece(2)","onepiece(3)","onepiece"]
+Output: ["onepiece","onepiece(1)","onepiece(2)","onepiece(3)","onepiece(4)"]
+Explanation: When the last folder is created, the smallest positive valid k is 4, and it becomes "onepiece(4)".
   Constraints:
-1 <= k <= houses.length <= 100
-1 <= houses[i] <= 104
-All the integers of houses are unique.
+1 <= names.length <= 5 * 104
+1 <= names[i].length <= 20
+names[i] consists of lowercase English letters, digits, and/or round brackets.

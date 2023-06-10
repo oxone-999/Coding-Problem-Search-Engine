@@ -1,60 +1,26 @@
-1170	1587. Bank Account Summary II
-SQL Schema
-Table: Users
-+--------------+---------+
-| Column Name  | Type    |
-+--------------+---------+
-| account      | int     |
-| name         | varchar |
-+--------------+---------+
-account is the primary key for this table.
-Each row of this table contains the account number of each user in the bank.
-There will be no two users having the same name in the table.
-  Table: Transactions
-+---------------+---------+
-| Column Name   | Type    |
-+---------------+---------+
-| trans_id      | int     |
-| account       | int     |
-| amount        | int     |
-| transacted_on | date    |
-+---------------+---------+
-trans_id is the primary key for this table.
-Each row of this table contains all changes made to all accounts.
-amount is positive if the user received money and negative if they transferred money.
-All accounts start with a balance of 0.
-  Write an SQL query to report the name and balance of users with a balance higher than 10000. The balance of an account is equal to the sum of the amounts of all transactions involving that account.
-Return the result table in any order.
-The query result format is in the following example.
+1170	1579. Remove Max Number of Edges to Keep Graph Fully Traversable
+Alice and Bob have an undirected graph of n nodes and three types of edges:
+Type 1: Can be traversed by Alice only.
+Type 2: Can be traversed by Bob only.
+Type 3: Can be traversed by both Alice and Bob.
+Given an array edges where edges[i] = [typei, ui, vi] represents a bidirectional edge of type typei between nodes ui and vi, find the maximum number of edges you can remove so that after removing the edges, the graph can still be fully traversed by both Alice and Bob. The graph is fully traversed by Alice and Bob if starting from any node, they can reach all other nodes.
+Return the maximum number of edges you can remove, or return -1 if Alice and Bob cannot fully traverse the graph.
   Example 1:
-Input: 
-Users table:
-+------------+--------------+
-| account    | name         |
-+------------+--------------+
-| 900001     | Alice        |
-| 900002     | Bob          |
-| 900003     | Charlie      |
-+------------+--------------+
-Transactions table:
-+------------+------------+------------+---------------+
-| trans_id   | account    | amount     | transacted_on |
-+------------+------------+------------+---------------+
-| 1          | 900001     | 7000       |  2020-08-01   |
-| 2          | 900001     | 7000       |  2020-09-01   |
-| 3          | 900001     | -3000      |  2020-09-02   |
-| 4          | 900002     | 1000       |  2020-09-12   |
-| 5          | 900003     | 6000       |  2020-08-07   |
-| 6          | 900003     | 6000       |  2020-09-07   |
-| 7          | 900003     | -4000      |  2020-09-11   |
-+------------+------------+------------+---------------+
-Output: 
-+------------+------------+
-| name       | balance    |
-+------------+------------+
-| Alice      | 11000      |
-+------------+------------+
-Explanation: 
-Alice's balance is (7000 + 7000 - 3000) = 11000.
-Bob's balance is 1000.
-Charlie's balance is (6000 + 6000 - 4000) = 8000.
+Input: n = 4, edges = [[3,1,2],[3,2,3],[1,1,3],[1,2,4],[1,1,2],[2,3,4]]
+Output: 2
+Explanation: If we remove the 2 edges [1,1,2] and [1,1,3]. The graph will still be fully traversable by Alice and Bob. Removing any additional edge will not make it so. So the maximum number of edges we can remove is 2.
+Example 2:
+Input: n = 4, edges = [[3,1,2],[3,2,3],[1,1,4],[2,1,4]]
+Output: 0
+Explanation: Notice that removing any edge will not make the graph fully traversable by Alice and Bob.
+Example 3:
+Input: n = 4, edges = [[3,2,3],[1,1,2],[2,3,4]]
+Output: -1
+Explanation: In the current graph, Alice cannot reach node 4 from the other nodes. Likewise, Bob cannot reach 1. Therefore it's impossible to make the graph fully traversable.
+    Constraints:
+1 <= n <= 105
+1 <= edges.length <= min(105, 3 * n * (n - 1) / 2)
+edges[i].length == 3
+1 <= typei <= 3
+1 <= ui < vi <= n
+All tuples (typei, ui, vi) are distinct.

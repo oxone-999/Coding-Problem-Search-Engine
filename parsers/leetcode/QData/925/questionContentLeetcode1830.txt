@@ -1,24 +1,31 @@
-1830	2453. Destroy Sequential Targets
-You are given a 0-indexed array nums consisting of positive integers, representing targets on a number line. You are also given an integer space.
-You have a machine which can destroy targets. Seeding the machine with some nums[i] allows it to destroy all targets with values that can be represented as nums[i] + c * space, where c is any non-negative integer. You want to destroy the maximum number of targets in nums.
-Return the minimum value of nums[i] you can seed the machine with to destroy the maximum number of targets.
+1830	2101. Detonate the Maximum Bombs
+You are given a list of bombs. The range of a bomb is defined as the area where its effect can be felt. This area is in the shape of a circle with the center as the location of the bomb.
+The bombs are represented by a 0-indexed 2D integer array bombs where bombs[i] = [xi, yi, ri]. xi and yi denote the X-coordinate and Y-coordinate of the location of the ith bomb, whereas ri denotes the radius of its range.
+You may choose to detonate a single bomb. When a bomb is detonated, it will detonate all bombs that lie in its range. These bombs will further detonate the bombs that lie in their ranges.
+Given the list of bombs, return the maximum number of bombs that can be detonated if you are allowed to detonate only one bomb.
   Example 1:
-Input: nums = [3,7,8,1,1,5], space = 2
-Output: 1
-Explanation: If we seed the machine with nums[3], then we destroy all targets equal to 1,3,5,7,9,... 
-In this case, we would destroy 5 total targets (all except for nums[2]). 
-It is impossible to destroy more than 5 targets, so we return nums[3].
-Example 2:
-Input: nums = [1,3,5,2,4,6], space = 2
-Output: 1
-Explanation: Seeding the machine with nums[0], or nums[3] destroys 3 targets. 
-It is not possible to destroy more than 3 targets.
-Since nums[0] is the minimal integer that can destroy 3 targets, we return 1.
-Example 3:
-Input: nums = [6,2,5], space = 100
+Input: bombs = [[2,1,3],[6,1,4]]
 Output: 2
-Explanation: Whatever initial seed we select, we can only destroy 1 target. The minimal seed is nums[1].
+Explanation:
+The above figure shows the positions and ranges of the 2 bombs.
+If we detonate the left bomb, the right bomb will not be affected.
+But if we detonate the right bomb, both bombs will be detonated.
+So the maximum bombs that can be detonated is max(1, 2) = 2.
+Example 2:
+Input: bombs = [[1,1,5],[10,10,5]]
+Output: 1
+Explanation:
+Detonating either bomb will not detonate the other bomb, so the maximum number of bombs that can be detonated is 1.
+Example 3:
+Input: bombs = [[1,2,3],[2,3,1],[3,4,2],[4,5,3],[5,6,4]]
+Output: 5
+Explanation:
+The best bomb to detonate is bomb 0 because:
+- Bomb 0 detonates bombs 1 and 2. The red circle denotes the range of bomb 0.
+- Bomb 2 detonates bomb 3. The blue circle denotes the range of bomb 2.
+- Bomb 3 detonates bomb 4. The green circle denotes the range of bomb 3.
+Thus all 5 bombs are detonated.
   Constraints:
-1 <= nums.length <= 105
-1 <= nums[i] <= 109
-1 <= space <= 109
+1 <= bombs.length <= 100
+bombs[i].length == 3
+1 <= xi, yi, ri <= 105

@@ -1,64 +1,27 @@
-1199	1633. Percentage of Users Attended a Contest
-SQL Schema
-Table: Users
-+-------------+---------+
-| Column Name | Type    |
-+-------------+---------+
-| user_id     | int     |
-| user_name   | varchar |
-+-------------+---------+
-user_id is the primary key for this table.
-Each row of this table contains the name and the id of a user.
-  Table: Register
-+-------------+---------+
-| Column Name | Type    |
-+-------------+---------+
-| contest_id  | int     |
-| user_id     | int     |
-+-------------+---------+
-(contest_id, user_id) is the primary key for this table.
-Each row of this table contains the id of a user and the contest they registered into.
-  Write an SQL query to find the percentage of the users registered in each contest rounded to two decimals.
-Return the result table ordered by percentage in descending order. In case of a tie, order it by contest_id in ascending order.
-The query result format is in the following example.
+1199	1638. Count Substrings That Differ by One Character
+Given two strings s and t, find the number of ways you can choose a non-empty substring of s and replace a single character by a different character such that the resulting substring is a substring of t. In other words, find the number of substrings in s that differ from some substring in t by exactly one character.
+For example, the underlined substrings in "computer" and "computation" only differ by the 'e'/'a', so this is a valid way.
+Return the number of substrings that satisfy the condition above.
+A substring is a contiguous sequence of characters within a string.
   Example 1:
-Input: 
-Users table:
-+---------+-----------+
-| user_id | user_name |
-+---------+-----------+
-| 6       | Alice     |
-| 2       | Bob       |
-| 7       | Alex      |
-+---------+-----------+
-Register table:
-+------------+---------+
-| contest_id | user_id |
-+------------+---------+
-| 215        | 6       |
-| 209        | 2       |
-| 208        | 2       |
-| 210        | 6       |
-| 208        | 6       |
-| 209        | 7       |
-| 209        | 6       |
-| 215        | 7       |
-| 208        | 7       |
-| 210        | 2       |
-| 207        | 2       |
-| 210        | 7       |
-+------------+---------+
-Output: 
-+------------+------------+
-| contest_id | percentage |
-+------------+------------+
-| 208        | 100.0      |
-| 209        | 100.0      |
-| 210        | 100.0      |
-| 215        | 66.67      |
-| 207        | 33.33      |
-+------------+------------+
-Explanation: 
-All the users registered in contests 208, 209, and 210. The percentage is 100% and we sort them in the answer table by contest_id in ascending order.
-Alice and Alex registered in contest 215 and the percentage is ((2/3) * 100) = 66.67%
-Bob registered in contest 207 and the percentage is ((1/3) * 100) = 33.33%
+Input: s = "aba", t = "baba"
+Output: 6
+Explanation: The following are the pairs of substrings from s and t that differ by exactly 1 character:
+("aba", "baba")
+("aba", "baba")
+("aba", "baba")
+("aba", "baba")
+("aba", "baba")
+("aba", "baba")
+The underlined portions are the substrings that are chosen from s and t.
+Example 2:
+Input: s = "ab", t = "bb"
+Output: 3
+Explanation: The following are the pairs of substrings from s and t that differ by 1 character:
+("ab", "bb")
+("ab", "bb")
+("ab", "bb")
+The underlined portions are the substrings that are chosen from s and t.
+  Constraints:
+1 <= s.length, t.length <= 100
+s and t consist of lowercase English letters only.

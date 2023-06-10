@@ -1,48 +1,26 @@
-1637	2296. Design a Text Editor
-Design a text editor with a cursor that can do the following:
-Add text to where the cursor is.
-Delete text from where the cursor is (simulating the backspace key).
-Move the cursor either left or right.
-When deleting text, only characters to the left of the cursor will be deleted. The cursor will also remain within the actual text and cannot be moved beyond it. More formally, we have that 0 <= cursor.position <= currentText.length always holds.
-Implement the TextEditor class:
-TextEditor() Initializes the object with empty text.
-void addText(string text) Appends text to where the cursor is. The cursor ends to the right of text.
-int deleteText(int k) Deletes k characters to the left of the cursor. Returns the number of characters actually deleted.
-string cursorLeft(int k) Moves the cursor to the left k times. Returns the last min(10, len) characters to the left of the cursor, where len is the number of characters to the left of the cursor.
-string cursorRight(int k) Moves the cursor to the right k times. Returns the last min(10, len) characters to the left of the cursor, where len is the number of characters to the left of the cursor.
+1637	2273. Find Resultant Array After Removing Anagrams
+You are given a 0-indexed string array words, where words[i] consists of lowercase English letters.
+In one operation, select any index i such that 0 < i < words.length and words[i - 1] and words[i] are anagrams, and delete words[i] from words. Keep performing this operation as long as you can select an index that satisfies the conditions.
+Return words after performing all operations. It can be shown that selecting the indices for each operation in any arbitrary order will lead to the same result.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase using all the original letters exactly once. For example, "dacb" is an anagram of "abdc".
   Example 1:
-Input
-["TextEditor", "addText", "deleteText", "addText", "cursorRight", "cursorLeft", "deleteText", "cursorLeft", "cursorRight"]
-[[], ["leetcode"], [4], ["practice"], [3], [8], [10], [2], [6]]
-Output
-[null, null, 4, null, "etpractice", "leet", 4, "", "practi"]
-
-Explanation
-TextEditor textEditor = new TextEditor(); // The current text is "|". (The '|' character represents the cursor)
-textEditor.addText("leetcode"); // The current text is "leetcode|".
-textEditor.deleteText(4); // return 4
-                          // The current text is "leet|". 
-                          // 4 characters were deleted.
-textEditor.addText("practice"); // The current text is "leetpractice|". 
-textEditor.cursorRight(3); // return "etpractice"
-                           // The current text is "leetpractice|". 
-                           // The cursor cannot be moved beyond the actual text and thus did not move.
-                           // "etpractice" is the last 10 characters to the left of the cursor.
-textEditor.cursorLeft(8); // return "leet"
-                          // The current text is "leet|practice".
-                          // "leet" is the last min(10, 4) = 4 characters to the left of the cursor.
-textEditor.deleteText(10); // return 4
-                           // The current text is "|practice".
-                           // Only 4 characters were deleted.
-textEditor.cursorLeft(2); // return ""
-                          // The current text is "|practice".
-                          // The cursor cannot be moved beyond the actual text and thus did not move. 
-                          // "" is the last min(10, 0) = 0 characters to the left of the cursor.
-textEditor.cursorRight(6); // return "practi"
-                           // The current text is "practi|ce".
-                           // "practi" is the last min(10, 6) = 6 characters to the left of the cursor.
+Input: words = ["abba","baba","bbaa","cd","cd"]
+Output: ["abba","cd"]
+Explanation:
+One of the ways we can obtain the resultant array is by using the following operations:
+- Since words[2] = "bbaa" and words[1] = "baba" are anagrams, we choose index 2 and delete words[2].
+  Now words = ["abba","baba","cd","cd"].
+- Since words[1] = "baba" and words[0] = "abba" are anagrams, we choose index 1 and delete words[1].
+  Now words = ["abba","cd","cd"].
+- Since words[2] = "cd" and words[1] = "cd" are anagrams, we choose index 2 and delete words[2].
+  Now words = ["abba","cd"].
+We can no longer perform any operations, so ["abba","cd"] is the final answer.
+Example 2:
+Input: words = ["a","b","c","d","e"]
+Output: ["a","b","c","d","e"]
+Explanation:
+No two adjacent strings in words are anagrams of each other, so no operations are performed.
   Constraints:
-1 <= text.length, k <= 40
-text consists of lowercase English letters.
-At most 2 * 104 calls in total will be made to addText, deleteText, cursorLeft and cursorRight.
-  Follow-up: Could you find a solution with time complexity of O(k) per call?
+1 <= words.length <= 100
+1 <= words[i].length <= 10
+words[i] consists of lowercase English letters.

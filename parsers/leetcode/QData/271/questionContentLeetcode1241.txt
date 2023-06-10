@@ -1,24 +1,22 @@
-1241	1697. Checking Existence of Edge Length Limited Paths
-An undirected graph of n nodes is defined by edgeList, where edgeList[i] = [ui, vi, disi] denotes an edge between nodes ui and vi with distance disi. Note that there may be multiple edges between two nodes.
-Given an array queries, where queries[j] = [pj, qj, limitj], your task is to determine for each queries[j] whether there is a path between pj and qj such that each edge on the path has a distance strictly less than limitj .
-Return a boolean array answer, where answer.length == queries.length and the jth value of answer is true if there is a path for queries[j] is true, and false otherwise.
+1241	1690. Stone Game VII
+Alice and Bob take turns playing a game, with Alice starting first.
+There are n stones arranged in a row. On each player's turn, they can remove either the leftmost stone or the rightmost stone from the row and receive points equal to the sum of the remaining stones' values in the row. The winner is the one with the higher score when there are no stones left to remove.
+Bob found that he will always lose this game (poor Bob, he always loses), so he decided to minimize the score's difference. Alice's goal is to maximize the difference in the score.
+Given an array of integers stones where stones[i] represents the value of the ith stone from the left, return the difference in Alice and Bob's score if they both play optimally.
   Example 1:
-Input: n = 3, edgeList = [[0,1,2],[1,2,4],[2,0,8],[1,0,16]], queries = [[0,1,2],[0,2,5]]
-Output: [false,true]
-Explanation: The above figure shows the given graph. Note that there are two overlapping edges between 0 and 1 with distances 2 and 16.
-For the first query, between 0 and 1 there is no path where each distance is less than 2, thus we return false for this query.
-For the second query, there is a path (0 -> 1 -> 2) of two edges with distances less than 5, thus we return true for this query.
+Input: stones = [5,3,1,4,2]
+Output: 6
+Explanation: 
+- Alice removes 2 and gets 5 + 3 + 1 + 4 = 13 points. Alice = 13, Bob = 0, stones = [5,3,1,4].
+- Bob removes 5 and gets 3 + 1 + 4 = 8 points. Alice = 13, Bob = 8, stones = [3,1,4].
+- Alice removes 3 and gets 1 + 4 = 5 points. Alice = 18, Bob = 8, stones = [1,4].
+- Bob removes 1 and gets 4 points. Alice = 18, Bob = 12, stones = [4].
+- Alice removes 4 and gets 0 points. Alice = 18, Bob = 12, stones = [].
+The score difference is 18 - 12 = 6.
 Example 2:
-Input: n = 5, edgeList = [[0,1,10],[1,2,5],[2,3,9],[3,4,13]], queries = [[0,4,14],[1,4,13]]
-Output: [true,false]
-Explanation: The above figure shows the given graph.
+Input: stones = [7,90,5,1,100,10,10,2]
+Output: 122
   Constraints:
-2 <= n <= 105
-1 <= edgeList.length, queries.length <= 105
-edgeList[i].length == 3
-queries[j].length == 3
-0 <= ui, vi, pj, qj <= n - 1
-ui != vi
-pj != qj
-1 <= disi, limitj <= 109
-There may be multiple edges between two nodes.
+n == stones.length
+2 <= n <= 1000
+1 <= stones[i] <= 1000

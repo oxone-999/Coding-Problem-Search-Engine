@@ -1,29 +1,25 @@
-1347	1845. Seat Reservation Manager
-Design a system that manages the reservation state of n seats that are numbered from 1 to n.
-Implement the SeatManager class:
-SeatManager(int n) Initializes a SeatManager object that will manage n seats numbered from 1 to n. All seats are initially available.
-int reserve() Fetches the smallest-numbered unreserved seat, reserves it, and returns its number.
-void unreserve(int seatNumber) Unreserves the seat with the given seatNumber.
+1347	1830. Minimum Number of Operations to Make String Sorted
+You are given a string s (0-indexed). You are asked to perform the following operation on s until you get a sorted string:
+Find the largest index i such that 1 <= i < s.length and s[i] < s[i - 1].
+Find the largest index j such that i <= j < s.length and s[k] < s[i - 1] for all the possible values of k in the range [i, j] inclusive.
+Swap the two characters at indices i - 1 and j.
+Reverse the suffix starting at index i.
+Return the number of operations needed to make the string sorted. Since the answer can be too large, return it modulo 109 + 7.
   Example 1:
-Input
-["SeatManager", "reserve", "reserve", "unreserve", "reserve", "reserve", "reserve", "reserve", "unreserve"]
-[[5], [], [], [2], [], [], [], [], [5]]
-Output
-[null, 1, 2, null, 2, 3, 4, 5, null]
-
-Explanation
-SeatManager seatManager = new SeatManager(5); // Initializes a SeatManager with 5 seats.
-seatManager.reserve();    // All seats are available, so return the lowest numbered seat, which is 1.
-seatManager.reserve();    // The available seats are [2,3,4,5], so return the lowest of them, which is 2.
-seatManager.unreserve(2); // Unreserve seat 2, so now the available seats are [2,3,4,5].
-seatManager.reserve();    // The available seats are [2,3,4,5], so return the lowest of them, which is 2.
-seatManager.reserve();    // The available seats are [3,4,5], so return the lowest of them, which is 3.
-seatManager.reserve();    // The available seats are [4,5], so return the lowest of them, which is 4.
-seatManager.reserve();    // The only available seat is seat 5, so return 5.
-seatManager.unreserve(5); // Unreserve seat 5, so now the available seats are [5].
+Input: s = "cba"
+Output: 5
+Explanation: The simulation goes as follows:
+Operation 1: i=2, j=2. Swap s[1] and s[2] to get s="cab", then reverse the suffix starting at 2. Now, s="cab".
+Operation 2: i=1, j=2. Swap s[0] and s[2] to get s="bac", then reverse the suffix starting at 1. Now, s="bca".
+Operation 3: i=2, j=2. Swap s[1] and s[2] to get s="bac", then reverse the suffix starting at 2. Now, s="bac".
+Operation 4: i=1, j=1. Swap s[0] and s[1] to get s="abc", then reverse the suffix starting at 1. Now, s="acb".
+Operation 5: i=2, j=2. Swap s[1] and s[2] to get s="abc", then reverse the suffix starting at 2. Now, s="abc".
+Example 2:
+Input: s = "aabaa"
+Output: 2
+Explanation: The simulation goes as follows:
+Operation 1: i=3, j=4. Swap s[2] and s[4] to get s="aaaab", then reverse the substring starting at 3. Now, s="aaaba".
+Operation 2: i=4, j=4. Swap s[3] and s[4] to get s="aaaab", then reverse the substring starting at 4. Now, s="aaaab".
   Constraints:
-1 <= n <= 105
-1 <= seatNumber <= n
-For each call to reserve, it is guaranteed that there will be at least one unreserved seat.
-For each call to unreserve, it is guaranteed that seatNumber will be reserved.
-At most 105 calls in total will be made to reserve and unreserve.
+1 <= s.length <= 3000
+s consists only of lowercase English letters.

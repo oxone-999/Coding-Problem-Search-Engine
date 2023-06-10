@@ -1,23 +1,23 @@
-1936	2551. Put Marbles in Bags
-You have k bags. You are given a 0-indexed integer array weights where weights[i] is the weight of the ith marble. You are also given the integer k.
-Divide the marbles into the k bags according to the following rules:
-No bag is empty.
-If the ith marble and jth marble are in a bag, then all marbles with an index between the ith and jth indices should also be in that same bag.
-If a bag consists of all the marbles with an index from i to j inclusively, then the cost of the bag is weights[i] + weights[j].
-The score after distributing the marbles is the sum of the costs of all the k bags.
-Return the difference between the maximum and minimum scores among marble distributions.
+1936	2564. Substring XOR Queries
+You are given a binary string s, and a 2D integer array queries where queries[i] = [firsti, secondi].
+For the ith query, find the shortest substring of s whose decimal value, val, yields secondi when bitwise XORed with firsti. In other words, val ^ firsti == secondi.
+The answer to the ith query is the endpoints (0-indexed) of the substring [lefti, righti] or [-1, -1] if no such substring exists. If there are multiple answers, choose the one with the minimum lefti.
+Return an array ans where ans[i] = [lefti, righti] is the answer to the ith query.
+A substring is a contiguous non-empty sequence of characters within a string.
   Example 1:
-Input: weights = [1,3,5,1], k = 2
-Output: 4
-Explanation: 
-The distribution [1],[3,5,1] results in the minimal score of (1+1) + (3+1) = 6. 
-The distribution [1,3],[5,1], results in the maximal score of (1+3) + (5+1) = 10. 
-Thus, we return their difference 10 - 6 = 4.
+Input: s = "101101", queries = [[0,5],[1,2]]
+Output: [[0,2],[2,3]]
+Explanation: For the first query the substring in range [0,2] is "101" which has a decimal value of 5, and 5 ^ 0 = 5, hence the answer to the first query is [0,2]. In the second query, the substring in range [2,3] is "11", and has a decimal value of 3, and 3 ^ 1 = 2. So, [2,3] is returned for the second query. 
 Example 2:
-Input: weights = [1, 3], k = 2
-Output: 0
-Explanation: The only distribution possible is [1],[3]. 
-Since both the maximal and minimal score are the same, we return 0.
+Input: s = "0101", queries = [[12,8]]
+Output: [[-1,-1]]
+Explanation: In this example there is no substring that answers the query, hence [-1,-1] is returned.
+Example 3:
+Input: s = "1", queries = [[4,5]]
+Output: [[0,0]]
+Explanation: For this example, the substring in range [0,0] has a decimal value of 1, and 1 ^ 4 = 5. So, the answer is [0,0].
   Constraints:
-1 <= k <= weights.length <= 105
-1 <= weights[i] <= 109
+1 <= s.length <= 104
+s[i] is either '0' or '1'.
+1 <= queries.length <= 105
+0 <= firsti, secondi <= 109

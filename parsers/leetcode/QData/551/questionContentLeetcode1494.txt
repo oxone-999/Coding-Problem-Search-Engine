@@ -1,24 +1,33 @@
-1494	2022. Convert 1D Array Into 2D Array
-You are given a 0-indexed 1-dimensional (1D) integer array original, and two integers, m and n. You are tasked with creating a 2-dimensional (2D) array with  m rows and n columns using all the elements from original.
-The elements from indices 0 to n - 1 (inclusive) of original should form the first row of the constructed 2D array, the elements from indices n to 2 * n - 1 (inclusive) should form the second row of the constructed 2D array, and so on.
-Return an m x n 2D array constructed according to the above procedure, or an empty 2D array if it is impossible.
+1494	2040. Kth Smallest Product of Two Sorted Arrays
+Given two sorted 0-indexed integer arrays nums1 and nums2 as well as an integer k, return the kth (1-based) smallest product of nums1[i] * nums2[j] where 0 <= i < nums1.length and 0 <= j < nums2.length.
   Example 1:
-Input: original = [1,2,3,4], m = 2, n = 2
-Output: [[1,2],[3,4]]
-Explanation: The constructed 2D array should contain 2 rows and 2 columns.
-The first group of n=2 elements in original, [1,2], becomes the first row in the constructed 2D array.
-The second group of n=2 elements in original, [3,4], becomes the second row in the constructed 2D array.
+Input: nums1 = [2,5], nums2 = [3,4], k = 2
+Output: 8
+Explanation: The 2 smallest products are:
+- nums1[0] * nums2[0] = 2 * 3 = 6
+- nums1[0] * nums2[1] = 2 * 4 = 8
+The 2nd smallest product is 8.
 Example 2:
-Input: original = [1,2,3], m = 1, n = 3
-Output: [[1,2,3]]
-Explanation: The constructed 2D array should contain 1 row and 3 columns.
-Put all three elements in original into the first row of the constructed 2D array.
+Input: nums1 = [-4,-2,0,3], nums2 = [2,4], k = 6
+Output: 0
+Explanation: The 6 smallest products are:
+- nums1[0] * nums2[1] = (-4) * 4 = -16
+- nums1[0] * nums2[0] = (-4) * 2 = -8
+- nums1[1] * nums2[1] = (-2) * 4 = -8
+- nums1[1] * nums2[0] = (-2) * 2 = -4
+- nums1[2] * nums2[0] = 0 * 2 = 0
+- nums1[2] * nums2[1] = 0 * 4 = 0
+The 6th smallest product is 0.
 Example 3:
-Input: original = [1,2], m = 1, n = 1
-Output: []
-Explanation: There are 2 elements in original.
-It is impossible to fit 2 elements in a 1x1 2D array, so return an empty 2D array.
+Input: nums1 = [-2,-1,0,1,2], nums2 = [-3,-1,2,4,5], k = 3
+Output: -6
+Explanation: The 3 smallest products are:
+- nums1[0] * nums2[4] = (-2) * 5 = -10
+- nums1[0] * nums2[3] = (-2) * 4 = -8
+- nums1[4] * nums2[0] = 2 * (-3) = -6
+The 3rd smallest product is -6.
   Constraints:
-1 <= original.length <= 5 * 104
-1 <= original[i] <= 105
-1 <= m, n <= 4 * 104
+1 <= nums1.length, nums2.length <= 5 * 104
+-105 <= nums1[i], nums2[j] <= 105
+1 <= k <= nums1.length * nums2.length
+nums1 and nums2 are sorted.

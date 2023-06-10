@@ -1,30 +1,20 @@
-1567	2242. Maximum Score of a Node Sequence
-There is an undirected graph with n nodes, numbered from 0 to n - 1.
-You are given a 0-indexed integer array scores of length n where scores[i] denotes the score of node i. You are also given a 2D integer array edges where edges[i] = [ai, bi] denotes that there exists an undirected edge connecting nodes ai and bi.
-A node sequence is valid if it meets the following conditions:
-There is an edge connecting every pair of adjacent nodes in the sequence.
-No node appears more than once in the sequence.
-The score of a node sequence is defined as the sum of the scores of the nodes in the sequence.
-Return the maximum score of a valid node sequence with a length of 4. If no such sequence exists, return -1.
+1567	1091. Shortest Path in Binary Matrix
+Given an n x n binary matrix grid, return the length of the shortest clear path in the matrix. If there is no clear path, return -1.
+A clear path in a binary matrix is a path from the top-left cell (i.e., (0, 0)) to the bottom-right cell (i.e., (n - 1, n - 1)) such that:
+All the visited cells of the path are 0.
+All the adjacent cells of the path are 8-directionally connected (i.e., they are different and they share an edge or a corner).
+The length of a clear path is the number of visited cells of this path.
   Example 1:
-Input: scores = [5,2,9,8,4], edges = [[0,1],[1,2],[2,3],[0,2],[1,3],[2,4]]
-Output: 24
-Explanation: The figure above shows the graph and the chosen node sequence [0,1,2,3].
-The score of the node sequence is 5 + 2 + 9 + 8 = 24.
-It can be shown that no other node sequence has a score of more than 24.
-Note that the sequences [3,1,2,0] and [1,0,2,3] are also valid and have a score of 24.
-The sequence [0,3,2,4] is not valid since no edge connects nodes 0 and 3.
+Input: grid = [[0,1],[1,0]]
+Output: 2
 Example 2:
-Input: scores = [9,20,6,4,11,12], edges = [[0,3],[5,3],[2,4],[1,3]]
+Input: grid = [[0,0,0],[1,1,0],[1,1,0]]
+Output: 4
+Example 3:
+Input: grid = [[1,0,0],[1,1,0],[1,1,0]]
 Output: -1
-Explanation: The figure above shows the graph.
-There are no valid node sequences of length 4, so we return -1.
   Constraints:
-n == scores.length
-4 <= n <= 5 * 104
-1 <= scores[i] <= 108
-0 <= edges.length <= 5 * 104
-edges[i].length == 2
-0 <= ai, bi <= n - 1
-ai != bi
-There are no duplicate edges.
+n == grid.length
+n == grid[i].length
+1 <= n <= 100
+grid[i][j] is 0 or 1

@@ -1,31 +1,34 @@
-1269	2101. Detonate the Maximum Bombs
-You are given a list of bombs. The range of a bomb is defined as the area where its effect can be felt. This area is in the shape of a circle with the center as the location of the bomb.
-The bombs are represented by a 0-indexed 2D integer array bombs where bombs[i] = [xi, yi, ri]. xi and yi denote the X-coordinate and Y-coordinate of the location of the ith bomb, whereas ri denotes the radius of its range.
-You may choose to detonate a single bomb. When a bomb is detonated, it will detonate all bombs that lie in its range. These bombs will further detonate the bombs that lie in their ranges.
-Given the list of bombs, return the maximum number of bombs that can be detonated if you are allowed to detonate only one bomb.
+1269	1670. Design Front Middle Back Queue
+Design a queue that supports push and pop operations in the front, middle, and back.
+Implement the FrontMiddleBack class:
+FrontMiddleBack() Initializes the queue.
+void pushFront(int val) Adds val to the front of the queue.
+void pushMiddle(int val) Adds val to the middle of the queue.
+void pushBack(int val) Adds val to the back of the queue.
+int popFront() Removes the front element of the queue and returns it. If the queue is empty, return -1.
+int popMiddle() Removes the middle element of the queue and returns it. If the queue is empty, return -1.
+int popBack() Removes the back element of the queue and returns it. If the queue is empty, return -1.
+Notice that when there are two middle position choices, the operation is performed on the frontmost middle position choice. For example:
+Pushing 6 into the middle of [1, 2, 3, 4, 5] results in [1, 2, 6, 3, 4, 5].
+Popping the middle from [1, 2, 3, 4, 5, 6] returns 3 and results in [1, 2, 4, 5, 6].
   Example 1:
-Input: bombs = [[2,1,3],[6,1,4]]
-Output: 2
+Input:
+["FrontMiddleBackQueue", "pushFront", "pushBack", "pushMiddle", "pushMiddle", "popFront", "popMiddle", "popMiddle", "popBack", "popFront"]
+[[], [1], [2], [3], [4], [], [], [], [], []]
+Output:
+[null, null, null, null, null, 1, 3, 4, 2, -1]
+
 Explanation:
-The above figure shows the positions and ranges of the 2 bombs.
-If we detonate the left bomb, the right bomb will not be affected.
-But if we detonate the right bomb, both bombs will be detonated.
-So the maximum bombs that can be detonated is max(1, 2) = 2.
-Example 2:
-Input: bombs = [[1,1,5],[10,10,5]]
-Output: 1
-Explanation:
-Detonating either bomb will not detonate the other bomb, so the maximum number of bombs that can be detonated is 1.
-Example 3:
-Input: bombs = [[1,2,3],[2,3,1],[3,4,2],[4,5,3],[5,6,4]]
-Output: 5
-Explanation:
-The best bomb to detonate is bomb 0 because:
-- Bomb 0 detonates bombs 1 and 2. The red circle denotes the range of bomb 0.
-- Bomb 2 detonates bomb 3. The blue circle denotes the range of bomb 2.
-- Bomb 3 detonates bomb 4. The green circle denotes the range of bomb 3.
-Thus all 5 bombs are detonated.
+FrontMiddleBackQueue q = new FrontMiddleBackQueue();
+q.pushFront(1);   // [1]
+q.pushBack(2);    // [1, 2]
+q.pushMiddle(3);  // [1, 3, 2]
+q.pushMiddle(4);  // [1, 4, 3, 2]
+q.popFront();     // return 1 -> [4, 3, 2]
+q.popMiddle();    // return 3 -> [4, 2]
+q.popMiddle();    // return 4 -> [2]
+q.popBack();      // return 2 -> []
+q.popFront();     // return -1 -> [] (The queue is empty)
   Constraints:
-1 <= bombs.length <= 100
-bombs[i].length == 3
-1 <= xi, yi, ri <= 105
+1 <= val <= 109
+At most 1000 calls will be made to pushFront, pushMiddle, pushBack, popFront, popMiddle, and popBack.

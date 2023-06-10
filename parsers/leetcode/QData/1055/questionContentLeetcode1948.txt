@@ -1,30 +1,39 @@
-1948	2644. Find the Maximum Divisibility Score
-You are given two 0-indexed integer arrays nums and divisors.
-The divisibility score of divisors[i] is the number of indices j such that nums[j] is divisible by divisors[i].
-Return the integer divisors[i] with the maximum divisibility score. If there is more than one integer with the maximum score, return the minimum of them.
+1948	2622. Cache With Time Limit
+Write a class that allows getting and setting key-value pairs, however a time until expiration is associated with each key.
+The class has three public methods:
+set(key, value, duration): accepts an integer key, an integer value, and a duration in milliseconds. Once the duration has elapsed, the key should be inaccessible. The method should return true if the same un-expired key already exists and false otherwise. Both the value and duration should be overwritten if the key already exists.
+get(key): if an un-expired key exists, it should return the associated value. Otherwise it should return -1.
+count(): returns the count of un-expired keys.
   Example 1:
-Input: nums = [4,7,9,3,9], divisors = [5,2,3]
-Output: 3
-Explanation: The divisibility score for every element in divisors is:
-The divisibility score of divisors[0] is 0 since no number in nums is divisible by 5.
-The divisibility score of divisors[1] is 1 since nums[0] is divisible by 2.
-The divisibility score of divisors[2] is 3 since nums[2], nums[3], and nums[4] are divisible by 3.
-Since divisors[2] has the maximum divisibility score, we return it.
+Input: 
+["TimeLimitedCache", "set", "get", "count", "get"]
+[[], [1, 42, 100], [1], [], [1]]
+[0, 0, 50, 50, 150]
+Output: [null, false, 42, 1, -1]
+Explanation:
+At t=0, the cache is constructed.
+At t=0, a key-value pair (1: 42) is added with a time limit of 100ms. The value doesn't exist so false is returned.
+At t=50, key=1 is requested and the value of 42 is returned.
+At t=50, count() is called and there is one active key in the cache.
+At t=100, key=1 expires.
+At t=150, get(1) is called but -1 is returned because the cache is empty.
 Example 2:
-Input: nums = [20,14,21,10], divisors = [5,7,5]
-Output: 5
-Explanation: The divisibility score for every element in divisors is:
-The divisibility score of divisors[0] is 2 since nums[0] and nums[3] are divisible by 5.
-The divisibility score of divisors[1] is 2 since nums[1] and nums[2] are divisible by 7.
-The divisibility score of divisors[2] is 2 since nums[0] and nums[3] are divisible by 5.
-Since divisors[0], divisors[1], and divisors[2] all have the maximum divisibility score, we return the minimum of them (i.e., divisors[2]).
-Example 3:
-Input: nums = [12], divisors = [10,16]
-Output: 10
-Explanation: The divisibility score for every element in divisors is:
-The divisibility score of divisors[0] is 0 since no number in nums is divisible by 10.
-The divisibility score of divisors[1] is 0 since no number in nums is divisible by 16.
-Since divisors[0] and divisors[1] both have the maximum divisibility score, we return the minimum of them (i.e., divisors[0]).
+Input: 
+["TimeLimitedCache", "set", "set", "get", "get", "get", "count"]
+[[], [1, 42, 50], [1, 50, 100], [1], [1], [1], []]
+[0, 0, 40, 50, 120, 200, 250]
+Output: [null, false, true, 50, 50, -1]
+Explanation:
+At t=0, the cache is constructed.
+At t=0, a key-value pair (1: 42) is added with a time limit of 50ms. The value doesn't exist so false is returned.
+At t=40, a key-value pair (1: 50) is added with a time limit of 100ms. A non-expired value already existed so true is returned and the old value was overwritten.
+At t=50, get(1) is called which returned 50.
+At t=120, get(1) is called which returned 50.
+At t=140, key=1 expires.
+At t=200, get(1) is called but the cache is empty so -1 is returned.
+At t=250, count() returns 0 because the cache is empty.
   Constraints:
-1 <= nums.length, divisors.length <= 1000
-1 <= nums[i], divisors[i] <= 109
+0 <= key <= 109
+0 <= value <= 109
+0 <= duration <= 1000
+total method calls will not exceed 100

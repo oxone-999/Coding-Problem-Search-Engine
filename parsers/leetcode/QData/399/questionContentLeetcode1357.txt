@@ -1,20 +1,25 @@
-1357	1813. Sentence Similarity III
-A sentence is a list of words that are separated by a single space with no leading or trailing spaces. For example, "Hello World", "HELLO", "hello world hello world" are all sentences. Words consist of only uppercase and lowercase English letters.
-Two sentences sentence1 and sentence2 are similar if it is possible to insert an arbitrary sentence (possibly empty) inside one of these sentences such that the two sentences become equal. For example, sentence1 = "Hello my name is Jane" and sentence2 = "Hello Jane" can be made equal by inserting "my name is" between "Hello" and "Jane" in sentence2.
-Given two sentences sentence1 and sentence2, return true if sentence1 and sentence2 are similar. Otherwise, return false.
+1357	1376. Time Needed to Inform All Employees
+A company has n employees with a unique ID for each employee from 0 to n - 1. The head of the company is the one with headID.
+Each employee has one direct manager given in the manager array where manager[i] is the direct manager of the i-th employee, manager[headID] = -1. Also, it is guaranteed that the subordination relationships have a tree structure.
+The head of the company wants to inform all the company employees of an urgent piece of news. He will inform his direct subordinates, and they will inform their subordinates, and so on until all employees know about the urgent news.
+The i-th employee needs informTime[i] minutes to inform all of his direct subordinates (i.e., After informTime[i] minutes, all his direct subordinates can start spreading the news).
+Return the number of minutes needed to inform all the employees about the urgent news.
   Example 1:
-Input: sentence1 = "My name is Haley", sentence2 = "My Haley"
-Output: true
-Explanation: sentence2 can be turned to sentence1 by inserting "name is" between "My" and "Haley".
+Input: n = 1, headID = 0, manager = [-1], informTime = [0]
+Output: 0
+Explanation: The head of the company is the only employee in the company.
 Example 2:
-Input: sentence1 = "of", sentence2 = "A lot of words"
-Output: false
-Explanation: No single sentence can be inserted inside one of the sentences to make it equal to the other.
-Example 3:
-Input: sentence1 = "Eating right now", sentence2 = "Eating"
-Output: true
-Explanation: sentence2 can be turned to sentence1 by inserting "right now" at the end of the sentence.
+Input: n = 6, headID = 2, manager = [2,2,-1,2,2,2], informTime = [0,0,1,0,0,0]
+Output: 1
+Explanation: The head of the company with id = 2 is the direct manager of all the employees in the company and needs 1 minute to inform them all.
+The tree structure of the employees in the company is shown.
   Constraints:
-1 <= sentence1.length, sentence2.length <= 100
-sentence1 and sentence2 consist of lowercase and uppercase English letters and spaces.
-The words in sentence1 and sentence2 are separated by a single space.
+1 <= n <= 105
+0 <= headID < n
+manager.length == n
+0 <= manager[i] < n
+manager[headID] == -1
+informTime.length == n
+0 <= informTime[i] <= 1000
+informTime[i] == 0 if employee i has no subordinates.
+It is guaranteed that all the employees can be informed.

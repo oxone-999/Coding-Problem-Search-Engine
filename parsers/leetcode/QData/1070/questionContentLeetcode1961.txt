@@ -1,21 +1,24 @@
-1961	2643. Row With Maximum Ones
-Given a m x n binary matrix mat, find the 0-indexed position of the row that contains the maximum count of ones, and the number of ones in that row.
-In case there are multiple rows that have the maximum count of ones, the row with the smallest row number should be selected.
-Return an array containing the index of the row, and the number of ones in it.
+1961	2601. Prime Subtraction Operation
+You are given a 0-indexed integer array nums of length n.
+You can perform the following operation as many times as you want:
+Pick an index i that you haven’t picked before, and pick a prime p strictly less than nums[i], then subtract p from nums[i].
+Return true if you can make nums a strictly increasing array using the above operation and false otherwise.
+A strictly increasing array is an array whose each element is strictly greater than its preceding element.
   Example 1:
-Input: mat = [[0,1],[1,0]]
-Output: [0,1]
-Explanation: Both rows have the same number of 1's. So we return the index of the smaller row, 0, and the maximum count of ones (1). So, the answer is [0,1]. 
+Input: nums = [4,9,6,10]
+Output: true
+Explanation: In the first operation: Pick i = 0 and p = 3, and then subtract 3 from nums[0], so that nums becomes [1,9,6,10].
+In the second operation: i = 1, p = 7, subtract 7 from nums[1], so nums becomes equal to [1,2,6,10].
+After the second operation, nums is sorted in strictly increasing order, so the answer is true.
 Example 2:
-Input: mat = [[0,0,0],[0,1,1]]
-Output: [1,2]
-Explanation: The row indexed 1 has the maximum count of ones (2). So we return its index, 1, and the count. So, the answer is [1,2].
+Input: nums = [6,8,11,12]
+Output: true
+Explanation: Initially nums is sorted in strictly increasing order, so we don't need to make any operations.
 Example 3:
-Input: mat = [[0,0],[1,1],[0,0]]
-Output: [1,2]
-Explanation: The row indexed 1 has the maximum count of ones (2). So the answer is [1,2].
+Input: nums = [5,8,3]
+Output: false
+Explanation: It can be proven that there is no way to perform operations to make nums sorted in strictly increasing order, so the answer is false.
   Constraints:
-m == mat.length 
-n == mat[i].length 
-1 <= m, n <= 100 
-mat[i][j] is either 0 or 1.
+1 <= nums.length <= 1000
+1 <= nums[i] <= 1000
+nums.length == n

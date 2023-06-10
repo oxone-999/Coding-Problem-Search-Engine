@@ -1,25 +1,26 @@
-1502	1376. Time Needed to Inform All Employees
-A company has n employees with a unique ID for each employee from 0 to n - 1. The head of the company is the one with headID.
-Each employee has one direct manager given in the manager array where manager[i] is the direct manager of the i-th employee, manager[headID] = -1. Also, it is guaranteed that the subordination relationships have a tree structure.
-The head of the company wants to inform all the company employees of an urgent piece of news. He will inform his direct subordinates, and they will inform their subordinates, and so on until all employees know about the urgent news.
-The i-th employee needs informTime[i] minutes to inform all of his direct subordinates (i.e., After informTime[i] minutes, all his direct subordinates can start spreading the news).
-Return the number of minutes needed to inform all the employees about the urgent news.
+1502	2030. Smallest K-Length Subsequence With Occurrences of a Letter
+You are given a string s, an integer k, a letter letter, and an integer repetition.
+Return the lexicographically smallest subsequence of s of length k that has the letter letter appear at least repetition times. The test cases are generated so that the letter appears in s at least repetition times.
+A subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.
+A string a is lexicographically smaller than a string b if in the first position where a and b differ, string a has a letter that appears earlier in the alphabet than the corresponding letter in b.
   Example 1:
-Input: n = 1, headID = 0, manager = [-1], informTime = [0]
-Output: 0
-Explanation: The head of the company is the only employee in the company.
+Input: s = "leet", k = 3, letter = "e", repetition = 1
+Output: "eet"
+Explanation: There are four subsequences of length 3 that have the letter 'e' appear at least 1 time:
+- "lee" (from "leet")
+- "let" (from "leet")
+- "let" (from "leet")
+- "eet" (from "leet")
+The lexicographically smallest subsequence among them is "eet".
 Example 2:
-Input: n = 6, headID = 2, manager = [2,2,-1,2,2,2], informTime = [0,0,1,0,0,0]
-Output: 1
-Explanation: The head of the company with id = 2 is the direct manager of all the employees in the company and needs 1 minute to inform them all.
-The tree structure of the employees in the company is shown.
+Input: s = "leetcode", k = 4, letter = "e", repetition = 2
+Output: "ecde"
+Explanation: "ecde" is the lexicographically smallest subsequence of length 4 that has the letter "e" appear at least 2 times.
+Example 3:
+Input: s = "bb", k = 2, letter = "b", repetition = 2
+Output: "bb"
+Explanation: "bb" is the only subsequence of length 2 that has the letter "b" appear at least 2 times.
   Constraints:
-1 <= n <= 105
-0 <= headID < n
-manager.length == n
-0 <= manager[i] < n
-manager[headID] == -1
-informTime.length == n
-0 <= informTime[i] <= 1000
-informTime[i] == 0 if employee i has no subordinates.
-It is guaranteed that all the employees can be informed.
+1 <= repetition <= k <= s.length <= 5 * 104
+s consists of lowercase English letters.
+letter is a lowercase English letter, and appears in s at least repetition times.

@@ -1,50 +1,37 @@
-1491	2039. The Time When the Network Becomes Idle
-There is a network of n servers, labeled from 0 to n - 1. You are given a 2D integer array edges, where edges[i] = [ui, vi] indicates there is a message channel between servers ui and vi, and they can pass any number of messages to each other directly in one second. You are also given a 0-indexed integer array patience of length n.
-All servers are connected, i.e., a message can be passed from one server to any other server(s) directly or indirectly through the message channels.
-The server labeled 0 is the master server. The rest are data servers. Each data server needs to send its message to the master server for processing and wait for a reply. Messages move between servers optimally, so every message takes the least amount of time to arrive at the master server. The master server will process all newly arrived messages instantly and send a reply to the originating server via the reversed path the message had gone through.
-At the beginning of second 0, each data server sends its message to be processed. Starting from second 1, at the beginning of every second, each data server will check if it has received a reply to the message it sent (including any newly arrived replies) from the master server:
-If it has not, it will resend the message periodically. The data server i will resend the message every patience[i] second(s), i.e., the data server i will resend the message if patience[i] second(s) have elapsed since the last time the message was sent from this server.
-Otherwise, no more resending will occur from this server.
-The network becomes idle when there are no messages passing between servers or arriving at servers.
-Return the earliest second starting from which the network becomes idle.
+1491	2019. The Score of Students Solving Math Expression
+You are given a string s that contains digits 0-9, addition symbols '+', and multiplication symbols '*' only, representing a valid math expression of single digit numbers (e.g., 3+5*2). This expression was given to n elementary school students. The students were instructed to get the answer of the expression by following this order of operations:
+Compute multiplication, reading from left to right; Then,
+Compute addition, reading from left to right.
+You are given an integer array answers of length n, which are the submitted answers of the students in no particular order. You are asked to grade the answers, by following these rules:
+If an answer equals the correct answer of the expression, this student will be rewarded 5 points;
+Otherwise, if the answer could be interpreted as if the student applied the operators in the wrong order but had correct arithmetic, this student will be rewarded 2 points;
+Otherwise, this student will be rewarded 0 points.
+Return the sum of the points of the students.
   Example 1:
-Input: edges = [[0,1],[1,2]], patience = [0,2,1]
-Output: 8
-Explanation:
-At (the beginning of) second 0,
-- Data server 1 sends its message (denoted 1A) to the master server.
-- Data server 2 sends its message (denoted 2A) to the master server.
-
-At second 1,
-- Message 1A arrives at the master server. Master server processes message 1A instantly and sends a reply 1A back.
-- Server 1 has not received any reply. 1 second (1 < patience[1] = 2) elapsed since this server has sent the message, therefore it does not resend the message.
-- Server 2 has not received any reply. 1 second (1 == patience[2] = 1) elapsed since this server has sent the message, therefore it resends the message (denoted 2B).
-
-At second 2,
-- The reply 1A arrives at server 1. No more resending will occur from server 1.
-- Message 2A arrives at the master server. Master server processes message 2A instantly and sends a reply 2A back.
-- Server 2 resends the message (denoted 2C).
-...
-At second 4,
-- The reply 2A arrives at server 2. No more resending will occur from server 2.
-...
-At second 7, reply 2D arrives at server 2.
-
-Starting from the beginning of the second 8, there are no messages passing between servers or arriving at servers.
-This is the time when the network becomes idle.
+Input: s = "7+3*1*2", answers = [20,13,42]
+Output: 7
+Explanation: As illustrated above, the correct answer of the expression is 13, therefore one student is rewarded 5 points: [20,13,42]
+A student might have applied the operators in this wrong order: ((7+3)*1)*2 = 20. Therefore one student is rewarded 2 points: [20,13,42]
+The points for the students are: [2,5,0]. The sum of the points is 2+5+0=7.
 Example 2:
-Input: edges = [[0,1],[0,2],[1,2]], patience = [0,10,10]
-Output: 3
-Explanation: Data servers 1 and 2 receive a reply back at the beginning of second 2.
-From the beginning of the second 3, the network becomes idle.
+Input: s = "3+5*2", answers = [13,0,10,13,13,16,16]
+Output: 19
+Explanation: The correct answer of the expression is 13, therefore three students are rewarded 5 points each: [13,0,10,13,13,16,16]
+A student might have applied the operators in this wrong order: ((3+5)*2 = 16. Therefore two students are rewarded 2 points: [13,0,10,13,13,16,16]
+The points for the students are: [5,0,0,5,5,2,2]. The sum of the points is 5+0+0+5+5+2+2=19.
+Example 3:
+Input: s = "6+0*1", answers = [12,9,6,4,8,6]
+Output: 10
+Explanation: The correct answer of the expression is 6.
+If a student had incorrectly done (6+0)*1, the answer would also be 6.
+By the rules of grading, the students will still be rewarded 5 points (as they got the correct answer), not 2 points.
+The points for the students are: [0,0,5,0,0,5]. The sum of the points is 10.
   Constraints:
-n == patience.length
-2 <= n <= 105
-patience[0] == 0
-1 <= patience[i] <= 105 for 1 <= i < n
-1 <= edges.length <= min(105, n * (n - 1) / 2)
-edges[i].length == 2
-0 <= ui, vi < n
-ui != vi
-There are no duplicate edges.
-Each server can directly or indirectly reach another server.
+3 <= s.length <= 31
+s represents a valid expression that contains only digits 0-9, '+', and '*' only.
+All the integer operands in the expression are in the inclusive range [0, 9].
+1 <= The count of all operators ('+' and '*') in the math expression <= 15
+Test data are generated such that the correct answer of the expression is in the range of [0, 1000].
+n == answers.length
+1 <= n <= 104
+0 <= answers[i] <= 1000

@@ -1,21 +1,26 @@
-1392	1935. Maximum Number of Words You Can Type
-There is a malfunctioning keyboard where some letter keys do not work. All other keys on the keyboard work properly.
-Given a string text of words separated by a single space (no leading or trailing spaces) and a string brokenLetters of all distinct letter keys that are broken, return the number of words in text you can fully type using this keyboard.
+1392	1910. Remove All Occurrences of a Substring
+Given two strings s and part, perform the following operation on s until all occurrences of the substring part are removed:
+Find the leftmost occurrence of the substring part and remove it from s.
+Return s after removing all occurrences of part.
+A substring is a contiguous sequence of characters in a string.
   Example 1:
-Input: text = "hello world", brokenLetters = "ad"
-Output: 1
-Explanation: We cannot type "world" because the 'd' key is broken.
+Input: s = "daabcbaabcbc", part = "abc"
+Output: "dab"
+Explanation: The following operations are done:
+- s = "daabcbaabcbc", remove "abc" starting at index 2, so s = "dabaabcbc".
+- s = "dabaabcbc", remove "abc" starting at index 4, so s = "dababc".
+- s = "dababc", remove "abc" starting at index 3, so s = "dab".
+Now s has no occurrences of "abc".
 Example 2:
-Input: text = "leet code", brokenLetters = "lt"
-Output: 1
-Explanation: We cannot type "leet" because the 'l' and 't' keys are broken.
-Example 3:
-Input: text = "leet code", brokenLetters = "e"
-Output: 0
-Explanation: We cannot type either word because the 'e' key is broken.
+Input: s = "axxxxyyyyb", part = "xy"
+Output: "ab"
+Explanation: The following operations are done:
+- s = "axxxxyyyyb", remove "xy" starting at index 4 so s = "axxxyyyb".
+- s = "axxxyyyb", remove "xy" starting at index 3 so s = "axxyyb".
+- s = "axxyyb", remove "xy" starting at index 2 so s = "axyb".
+- s = "axyb", remove "xy" starting at index 1 so s = "ab".
+Now s has no occurrences of "xy".
   Constraints:
-1 <= text.length <= 104
-0 <= brokenLetters.length <= 26
-text consists of words separated by a single space without any leading or trailing spaces.
-Each word only consists of lowercase English letters.
-brokenLetters consists of distinct lowercase English letters.
+1 <= s.length <= 1000
+1 <= part.length <= 1000
+s and part consists of lowercase English letters.

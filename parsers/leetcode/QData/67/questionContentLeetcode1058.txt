@@ -1,18 +1,20 @@
-1058	1453. Maximum Number of Darts Inside of a Circular Dartboard
-Alice is throwing n darts on a very large wall. You are given an array darts where darts[i] = [xi, yi] is the position of the ith dart that Alice threw on the wall.
-Bob knows the positions of the n darts on the wall. He wants to place a dartboard of radius r on the wall so that the maximum number of darts that Alice throws lies on the dartboard.
-Given the integer r, return the maximum number of darts that can lie on the dartboard.
+1058	1499. Max Value of Equation
+You are given an array points containing the coordinates of points on a 2D plane, sorted by the x-values, where points[i] = [xi, yi] such that xi < xj for all 1 <= i < j <= points.length. You are also given an integer k.
+Return the maximum value of the equation yi + yj + |xi - xj| where |xi - xj| <= k and 1 <= i < j <= points.length.
+It is guaranteed that there exists at least one pair of points that satisfy the constraint |xi - xj| <= k.
   Example 1:
-Input: darts = [[-2,0],[2,0],[0,2],[0,-2]], r = 2
+Input: points = [[1,3],[2,0],[5,10],[6,-10]], k = 1
 Output: 4
-Explanation: Circle dartboard with center in (0,0) and radius = 2 contain all points.
+Explanation: The first two points satisfy the condition |xi - xj| <= 1 and if we calculate the equation we get 3 + 0 + |1 - 2| = 4. Third and fourth points also satisfy the condition and give a value of 10 + -10 + |5 - 6| = 1.
+No other pairs satisfy the condition, so we return the max of 4 and 1.
 Example 2:
-Input: darts = [[-3,0],[3,0],[2,6],[5,4],[0,9],[7,8]], r = 5
-Output: 5
-Explanation: Circle dartboard with center in (0,4) and radius = 5 contain all points except the point (7,8).
+Input: points = [[0,0],[3,0],[9,2]], k = 3
+Output: 3
+Explanation: Only the first two points have an absolute difference of 3 or less in the x-values, and give the value of 0 + 0 + |0 - 3| = 3.
   Constraints:
-1 <= darts.length <= 100
-darts[i].length == 2
--104 <= xi, yi <= 104
-All the darts are unique
-1 <= r <= 5000
+2 <= points.length <= 105
+points[i].length == 2
+-108 <= xi, yi <= 108
+0 <= k <= 2 * 108
+xi < xj for all 1 <= i < j <= points.length
+xi form a strictly increasing sequence.

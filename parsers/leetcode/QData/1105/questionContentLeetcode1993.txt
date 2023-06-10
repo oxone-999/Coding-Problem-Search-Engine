@@ -1,27 +1,20 @@
-1993	2640. Find the Score of All Prefixes of an Array
-We define the conversion array conver of an array arr as follows:
-conver[i] = arr[i] + max(arr[0..i]) where max(arr[0..i]) is the maximum value of arr[j] over 0 <= j <= i.
-We also define the score of an array arr as the sum of the values of the conversion array of arr.
-Given a 0-indexed integer array nums of length n, return an array ans of length n where ans[i] is the score of the prefix nums[0..i].
+1993	2685. Count the Number of Complete Components
+You are given an integer n. There is an undirected graph with n vertices, numbered from 0 to n - 1. You are given a 2D integer array edges where edges[i] = [ai, bi] denotes that there exists an undirected edge connecting vertices ai and bi.
+Return the number of complete connected components of the graph.
+A connected component is a subgraph of a graph in which there exists a path between any two vertices, and no vertex of the subgraph shares an edge with a vertex outside of the subgraph.
+A connected component is said to be complete if there exists an edge between every pair of its vertices.
   Example 1:
-Input: nums = [2,3,7,5,10]
-Output: [4,10,24,36,56]
-Explanation: 
-For the prefix [2], the conversion array is [4] hence the score is 4
-For the prefix [2, 3], the conversion array is [4, 6] hence the score is 10
-For the prefix [2, 3, 7], the conversion array is [4, 6, 14] hence the score is 24
-For the prefix [2, 3, 7, 5], the conversion array is [4, 6, 14, 12] hence the score is 36
-For the prefix [2, 3, 7, 5, 10], the conversion array is [4, 6, 14, 12, 20] hence the score is 56
+Input: n = 6, edges = [[0,1],[0,2],[1,2],[3,4]]
+Output: 3
+Explanation: From the picture above, one can see that all of the components of this graph are complete.
 Example 2:
-Input: nums = [1,1,2,4,8,16]
-Output: [2,4,8,16,32,64]
-Explanation: 
-For the prefix [1], the conversion array is [2] hence the score is 2
-For the prefix [1, 1], the conversion array is [2, 2] hence the score is 4
-For the prefix [1, 1, 2], the conversion array is [2, 2, 4] hence the score is 8
-For the prefix [1, 1, 2, 4], the conversion array is [2, 2, 4, 8] hence the score is 16
-For the prefix [1, 1, 2, 4, 8], the conversion array is [2, 2, 4, 8, 16] hence the score is 32
-For the prefix [1, 1, 2, 4, 8, 16], the conversion array is [2, 2, 4, 8, 16, 32] hence the score is 64
+Input: n = 6, edges = [[0,1],[0,2],[1,2],[3,4],[3,5]]
+Output: 1
+Explanation: The component containing vertices 0, 1, and 2 is complete since there is an edge between every pair of two vertices. On the other hand, the component containing vertices 3, 4, and 5 is not complete since there is no edge between vertices 4 and 5. Thus, the number of complete components in this graph is 1.
   Constraints:
-1 <= nums.length <= 105
-1 <= nums[i] <= 109
+1 <= n <= 50
+0 <= edges.length <= n * (n - 1) / 2
+edges[i].length == 2
+0 <= ai, bi <= n - 1
+ai != bi
+There are no repeated edges.

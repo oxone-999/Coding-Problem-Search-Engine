@@ -1,23 +1,26 @@
-1812	2476. Closest Nodes Queries in a Binary Search Tree
-You are given the root of a binary search tree and an array queries of size n consisting of positive integers.
-Find a 2D array answer of size n where answer[i] = [mini, maxi]:
-mini is the largest value in the tree that is smaller than or equal to queries[i]. If a such value does not exist, add -1 instead.
-maxi is the smallest value in the tree that is greater than or equal to queries[i]. If a such value does not exist, add -1 instead.
-Return the array answer.
+1812	2478. Number of Beautiful Partitions
+You are given a string s that consists of the digits '1' to '9' and two integers k and minLength.
+A partition of s is called beautiful if:
+s is partitioned into k non-intersecting substrings.
+Each substring has a length of at least minLength.
+Each substring starts with a prime digit and ends with a non-prime digit. Prime digits are '2', '3', '5', and '7', and the rest of the digits are non-prime.
+Return the number of beautiful partitions of s. Since the answer may be very large, return it modulo 109 + 7.
+A substring is a contiguous sequence of characters within a string.
   Example 1:
-Input: root = [6,2,13,1,4,9,15,null,null,null,null,null,null,14], queries = [2,5,16]
-Output: [[2,2],[4,6],[15,-1]]
-Explanation: We answer the queries in the following way:
-- The largest number that is smaller or equal than 2 in the tree is 2, and the smallest number that is greater or equal than 2 is still 2. So the answer for the first query is [2,2].
-- The largest number that is smaller or equal than 5 in the tree is 4, and the smallest number that is greater or equal than 5 is 6. So the answer for the second query is [4,6].
-- The largest number that is smaller or equal than 16 in the tree is 15, and the smallest number that is greater or equal than 16 does not exist. So the answer for the third query is [15,-1].
+Input: s = "23542185131", k = 3, minLength = 2
+Output: 3
+Explanation: There exists three ways to create a beautiful partition:
+"2354 | 218 | 5131"
+"2354 | 21851 | 31"
+"2354218 | 51 | 31"
 Example 2:
-Input: root = [4,null,9], queries = [3]
-Output: [[-1,4]]
-Explanation: The largest number that is smaller or equal to 3 in the tree does not exist, and the smallest number that is greater or equal to 3 is 4. So the answer for the query is [-1,4].
+Input: s = "23542185131", k = 3, minLength = 3
+Output: 1
+Explanation: There exists one way to create a beautiful partition: "2354 | 218 | 5131".
+Example 3:
+Input: s = "3312958", k = 3, minLength = 1
+Output: 1
+Explanation: There exists one way to create a beautiful partition: "331 | 29 | 58".
   Constraints:
-The number of nodes in the tree is in the range [2, 105].
-1 <= Node.val <= 106
-n == queries.length
-1 <= n <= 105
-1 <= queries[i] <= 106
+1 <= k, minLength <= s.length <= 1000
+s consists of the digits '1' to '9'.

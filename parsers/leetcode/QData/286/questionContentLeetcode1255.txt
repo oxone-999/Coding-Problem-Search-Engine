@@ -1,28 +1,46 @@
-1255	1700. Number of Students Unable to Eat Lunch
-The school cafeteria offers circular and square sandwiches at lunch break, referred to by numbers 0 and 1 respectively. All students stand in a queue. Each student either prefers square or circular sandwiches.
-The number of sandwiches in the cafeteria is equal to the number of students. The sandwiches are placed in a stack. At each step:
-If the student at the front of the queue prefers the sandwich on the top of the stack, they will take it and leave the queue.
-Otherwise, they will leave it and go to the queue's end.
-This continues until none of the queue students want to take the top sandwich and are thus unable to eat.
-You are given two integer arrays students and sandwiches where sandwiches[i] is the type of the ith sandwich in the stack (i = 0 is the top of the stack) and students[j] is the preference of the jth student in the initial queue (j = 0 is the front of the queue). Return the number of students that are unable to eat.
+1255	1693. Daily Leads and Partners
+SQL Schema
+Table: DailySales
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| date_id     | date    |
+| make_name   | varchar |
+| lead_id     | int     |
+| partner_id  | int     |
++-------------+---------+
+This table does not have a primary key.
+This table contains the date and the name of the product sold and the IDs of the lead and partner it was sold to.
+The name consists of only lowercase English letters.
+  Write an SQL query that will, for each date_id and make_name, return the number of distinct lead_id's and distinct partner_id's.
+Return the result table in any order.
+The query result format is in the following example.
   Example 1:
-Input: students = [1,1,0,0], sandwiches = [0,1,0,1]
-Output: 0 
-Explanation:
-- Front student leaves the top sandwich and returns to the end of the line making students = [1,0,0,1].
-- Front student leaves the top sandwich and returns to the end of the line making students = [0,0,1,1].
-- Front student takes the top sandwich and leaves the line making students = [0,1,1] and sandwiches = [1,0,1].
-- Front student leaves the top sandwich and returns to the end of the line making students = [1,1,0].
-- Front student takes the top sandwich and leaves the line making students = [1,0] and sandwiches = [0,1].
-- Front student leaves the top sandwich and returns to the end of the line making students = [0,1].
-- Front student takes the top sandwich and leaves the line making students = [1] and sandwiches = [1].
-- Front student takes the top sandwich and leaves the line making students = [] and sandwiches = [].
-Hence all students are able to eat.
-Example 2:
-Input: students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]
-Output: 3
-  Constraints:
-1 <= students.length, sandwiches.length <= 100
-students.length == sandwiches.length
-sandwiches[i] is 0 or 1.
-students[i] is 0 or 1.
+Input: 
+DailySales table:
++-----------+-----------+---------+------------+
+| date_id   | make_name | lead_id | partner_id |
++-----------+-----------+---------+------------+
+| 2020-12-8 | toyota    | 0       | 1          |
+| 2020-12-8 | toyota    | 1       | 0          |
+| 2020-12-8 | toyota    | 1       | 2          |
+| 2020-12-7 | toyota    | 0       | 2          |
+| 2020-12-7 | toyota    | 0       | 1          |
+| 2020-12-8 | honda     | 1       | 2          |
+| 2020-12-8 | honda     | 2       | 1          |
+| 2020-12-7 | honda     | 0       | 1          |
+| 2020-12-7 | honda     | 1       | 2          |
+| 2020-12-7 | honda     | 2       | 1          |
++-----------+-----------+---------+------------+
+Output: 
++-----------+-----------+--------------+-----------------+
+| date_id   | make_name | unique_leads | unique_partners |
++-----------+-----------+--------------+-----------------+
+| 2020-12-8 | toyota    | 2            | 3               |
+| 2020-12-7 | toyota    | 1            | 2               |
+| 2020-12-8 | honda     | 2            | 2               |
+| 2020-12-7 | honda     | 3            | 2               |
++-----------+-----------+--------------+-----------------+
+Explanation: 
+For 2020-12-8, toyota gets leads = [0, 1] and partners = [0, 1, 2] while honda gets leads = [1, 2] and partners = [1, 2].
+For 2020-12-7, toyota gets leads = [0] and partners = [1, 2] while honda gets leads = [0, 1, 2] and partners = [1, 2].

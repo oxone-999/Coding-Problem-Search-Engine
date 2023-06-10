@@ -1,27 +1,23 @@
-1905	2593. Find Score of an Array After Marking All Elements
-You are given an array nums consisting of positive integers.
-Starting with score = 0, apply the following algorithm:
-Choose the smallest integer of the array that is not marked. If there is a tie, choose the one with the smallest index.
-Add the value of the chosen integer to score.
-Mark the chosen element and its two adjacent elements if they exist.
-Repeat until all the array elements are marked.
-Return the score you get after applying the above algorithm.
+1905	2560. House Robber IV
+There are several consecutive houses along a street, each of which has some money inside. There is also a robber, who wants to steal money from the homes, but he refuses to steal from adjacent homes.
+The capability of the robber is the maximum amount of money he steals from one house of all the houses he robbed.
+You are given an integer array nums representing how much money is stashed in each house. More formally, the ith house from the left has nums[i] dollars.
+You are also given an integer k, representing the minimum number of houses the robber will steal from. It is always possible to steal at least k houses.
+Return the minimum capability of the robber out of all the possible ways to steal at least k houses.
   Example 1:
-Input: nums = [2,1,3,4,5,2]
-Output: 7
-Explanation: We mark the elements as follows:
-- 1 is the smallest unmarked element, so we mark it and its two adjacent elements: [2,1,3,4,5,2].
-- 2 is the smallest unmarked element, so we mark it and its left adjacent element: [2,1,3,4,5,2].
-- 4 is the only remaining unmarked element, so we mark it: [2,1,3,4,5,2].
-Our score is 1 + 2 + 4 = 7.
-Example 2:
-Input: nums = [2,3,5,1,3,2]
+Input: nums = [2,3,5,9], k = 2
 Output: 5
-Explanation: We mark the elements as follows:
-- 1 is the smallest unmarked element, so we mark it and its two adjacent elements: [2,3,5,1,3,2].
-- 2 is the smallest unmarked element, since there are two of them, we choose the left-most one, so we mark the one at index 0 and its right adjacent element: [2,3,5,1,3,2].
-- 2 is the only remaining unmarked element, so we mark it: [2,3,5,1,3,2].
-Our score is 1 + 2 + 2 = 5.
+Explanation: 
+There are three ways to rob at least 2 houses:
+- Rob the houses at indices 0 and 2. Capability is max(nums[0], nums[2]) = 5.
+- Rob the houses at indices 0 and 3. Capability is max(nums[0], nums[3]) = 9.
+- Rob the houses at indices 1 and 3. Capability is max(nums[1], nums[3]) = 9.
+Therefore, we return min(5, 9, 9) = 5.
+Example 2:
+Input: nums = [2,7,9,3,1], k = 2
+Output: 2
+Explanation: There are 7 ways to rob the houses. The way which leads to minimum capability is to rob the house at index 0 and 4. Return max(nums[0], nums[4]) = 2.
   Constraints:
 1 <= nums.length <= 105
-1 <= nums[i] <= 106
+1 <= nums[i] <= 109
+1 <= k <= (nums.length + 1)/2

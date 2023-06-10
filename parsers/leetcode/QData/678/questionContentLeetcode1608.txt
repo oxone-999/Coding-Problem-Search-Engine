@@ -1,16 +1,27 @@
-1608	2236. Root Equals Sum of Children
-You are given the root of a binary tree that consists of exactly 3 nodes: the root, its left child, and its right child.
-Return true if the value of the root is equal to the sum of the values of its two children, or false otherwise.
+1608	2213. Longest Substring of One Repeating Character
+You are given a 0-indexed string s. You are also given a 0-indexed string queryCharacters of length k and a 0-indexed array of integer indices queryIndices of length k, both of which are used to describe k queries.
+The ith query updates the character in s at index queryIndices[i] to the character queryCharacters[i].
+Return an array lengths of length k where lengths[i] is the length of the longest substring of s consisting of only one repeating character after the ith query is performed.
   Example 1:
-Input: root = [10,4,6]
-Output: true
-Explanation: The values of the root, its left child, and its right child are 10, 4, and 6, respectively.
-10 is equal to 4 + 6, so we return true.
+Input: s = "babacc", queryCharacters = "bcb", queryIndices = [1,3,3]
+Output: [3,3,4]
+Explanation: 
+- 1st query updates s = "bbbacc". The longest substring consisting of one repeating character is "bbb" with length 3.
+- 2nd query updates s = "bbbccc". 
+  The longest substring consisting of one repeating character can be "bbb" or "ccc" with length 3.
+- 3rd query updates s = "bbbbcc". The longest substring consisting of one repeating character is "bbbb" with length 4.
+Thus, we return [3,3,4].
 Example 2:
-Input: root = [5,3,1]
-Output: false
-Explanation: The values of the root, its left child, and its right child are 5, 3, and 1, respectively.
-5 is not equal to 3 + 1, so we return false.
+Input: s = "abyzz", queryCharacters = "aa", queryIndices = [2,1]
+Output: [2,3]
+Explanation:
+- 1st query updates s = "abazz". The longest substring consisting of one repeating character is "zz" with length 2.
+- 2nd query updates s = "aaazz". The longest substring consisting of one repeating character is "aaa" with length 3.
+Thus, we return [2,3].
   Constraints:
-The tree consists only of the root, its left child, and its right child.
--100 <= Node.val <= 100
+1 <= s.length <= 105
+s consists of lowercase English letters.
+k == queryCharacters.length == queryIndices.length
+1 <= k <= 105
+queryCharacters consists of lowercase English letters.
+0 <= queryIndices[i] < s.length

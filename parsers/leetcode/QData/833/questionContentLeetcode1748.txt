@@ -1,28 +1,21 @@
-1748	2449. Minimum Number of Operations to Make Arrays Similar
-You are given two positive integer arrays nums and target, of the same length.
-In one operation, you can choose any two distinct indices i and j where 0 <= i, j < nums.length and:
-set nums[i] = nums[i] + 2 and
-set nums[j] = nums[j] - 2.
-Two arrays are considered to be similar if the frequency of each element is the same.
-Return the minimum number of operations required to make nums similar to target. The test cases are generated such that nums can always be similar to target.
+1748	2401. Longest Nice Subarray
+You are given an array nums consisting of positive integers.
+We call a subarray of nums nice if the bitwise AND of every pair of elements that are in different positions in the subarray is equal to 0.
+Return the length of the longest nice subarray.
+A subarray is a contiguous part of an array.
+Note that subarrays of length 1 are always considered nice.
   Example 1:
-Input: nums = [8,12,6], target = [2,14,10]
-Output: 2
-Explanation: It is possible to make nums similar to target in two operations:
-- Choose i = 0 and j = 2, nums = [10,12,4].
-- Choose i = 1 and j = 2, nums = [10,14,2].
-It can be shown that 2 is the minimum number of operations needed.
+Input: nums = [1,3,8,48,10]
+Output: 3
+Explanation: The longest nice subarray is [3,8,48]. This subarray satisfies the conditions:
+- 3 AND 8 = 0.
+- 3 AND 48 = 0.
+- 8 AND 48 = 0.
+It can be proven that no longer nice subarray can be obtained, so we return 3.
 Example 2:
-Input: nums = [1,2,5], target = [4,1,3]
+Input: nums = [3,1,5,11,13]
 Output: 1
-Explanation: We can make nums similar to target in one operation:
-- Choose i = 1 and j = 2, nums = [1,4,3].
-Example 3:
-Input: nums = [1,1,1,1,1], target = [1,1,1,1,1]
-Output: 0
-Explanation: The array nums is already similiar to target.
+Explanation: The length of the longest nice subarray is 1. Any subarray of length 1 can be chosen.
   Constraints:
-n == nums.length == target.length
-1 <= n <= 105
-1 <= nums[i], target[i] <= 106
-It is possible to make nums similar to target.
+1 <= nums.length <= 105
+1 <= nums[i] <= 109

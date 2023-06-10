@@ -1,29 +1,40 @@
-1574	2210. Count Hills and Valleys in an Array
-You are given a 0-indexed integer array nums. An index i is part of a hill in nums if the closest non-equal neighbors of i are smaller than nums[i]. Similarly, an index i is part of a valley in nums if the closest non-equal neighbors of i are larger than nums[i]. Adjacent indices i and j are part of the same hill or valley if nums[i] == nums[j].
-Note that for an index to be part of a hill or valley, it must have a non-equal neighbor on both the left and right of the index.
-Return the number of hills and valleys in nums.
+1574	2227. Encrypt and Decrypt Strings
+You are given a character array keys containing unique characters and a string array values containing strings of length 2. You are also given another string array dictionary that contains all permitted original strings after decryption. You should implement a data structure that can encrypt or decrypt a 0-indexed string.
+A string is encrypted with the following process:
+For each character c in the string, we find the index i satisfying keys[i] == c in keys.
+Replace c with values[i] in the string.
+Note that in case a character of the string is not present in keys, the encryption process cannot be carried out, and an empty string "" is returned.
+A string is decrypted with the following process:
+For each substring s of length 2 occurring at an even index in the string, we find an i such that values[i] == s. If there are multiple valid i, we choose any one of them. This means a string could have multiple possible strings it can decrypt to.
+Replace s with keys[i] in the string.
+Implement the Encrypter class:
+Encrypter(char[] keys, String[] values, String[] dictionary) Initializes the Encrypter class with keys, values, and dictionary.
+String encrypt(String word1) Encrypts word1 with the encryption process described above and returns the encrypted string.
+int decrypt(String word2) Returns the number of possible strings word2 could decrypt to that also appear in dictionary.
   Example 1:
-Input: nums = [2,4,1,1,6,5]
-Output: 3
-Explanation:
-At index 0: There is no non-equal neighbor of 2 on the left, so index 0 is neither a hill nor a valley.
-At index 1: The closest non-equal neighbors of 4 are 2 and 1. Since 4 > 2 and 4 > 1, index 1 is a hill. 
-At index 2: The closest non-equal neighbors of 1 are 4 and 6. Since 1 < 4 and 1 < 6, index 2 is a valley.
-At index 3: The closest non-equal neighbors of 1 are 4 and 6. Since 1 < 4 and 1 < 6, index 3 is a valley, but note that it is part of the same valley as index 2.
-At index 4: The closest non-equal neighbors of 6 are 1 and 5. Since 6 > 1 and 6 > 5, index 4 is a hill.
-At index 5: There is no non-equal neighbor of 5 on the right, so index 5 is neither a hill nor a valley. 
-There are 3 hills and valleys so we return 3.
-Example 2:
-Input: nums = [6,6,5,5,4,1]
-Output: 0
-Explanation:
-At index 0: There is no non-equal neighbor of 6 on the left, so index 0 is neither a hill nor a valley.
-At index 1: There is no non-equal neighbor of 6 on the left, so index 1 is neither a hill nor a valley.
-At index 2: The closest non-equal neighbors of 5 are 6 and 4. Since 5 < 6 and 5 > 4, index 2 is neither a hill nor a valley.
-At index 3: The closest non-equal neighbors of 5 are 6 and 4. Since 5 < 6 and 5 > 4, index 3 is neither a hill nor a valley.
-At index 4: The closest non-equal neighbors of 4 are 5 and 1. Since 4 < 5 and 4 > 1, index 4 is neither a hill nor a valley.
-At index 5: There is no non-equal neighbor of 1 on the right, so index 5 is neither a hill nor a valley.
-There are 0 hills and valleys so we return 0.
+Input
+["Encrypter", "encrypt", "decrypt"]
+[[['a', 'b', 'c', 'd'], ["ei", "zf", "ei", "am"], ["abcd", "acbd", "adbc", "badc", "dacb", "cadb", "cbda", "abad"]], ["abcd"], ["eizfeiam"]]
+Output
+[null, "eizfeiam", 2]
+
+Explanation
+Encrypter encrypter = new Encrypter([['a', 'b', 'c', 'd'], ["ei", "zf", "ei", "am"], ["abcd", "acbd", "adbc", "badc", "dacb", "cadb", "cbda", "abad"]);
+encrypter.encrypt("abcd"); // return "eizfeiam". 
+                           // 'a' maps to "ei", 'b' maps to "zf", 'c' maps to "ei", and 'd' maps to "am".
+encrypter.decrypt("eizfeiam"); // return 2. 
+                              // "ei" can map to 'a' or 'c', "zf" maps to 'b', and "am" maps to 'd'. 
+                              // Thus, the possible strings after decryption are "abad", "cbad", "abcd", and "cbcd". 
+                              // 2 of those strings, "abad" and "abcd", appear in dictionary, so the answer is 2.
   Constraints:
-3 <= nums.length <= 100
-1 <= nums[i] <= 100
+1 <= keys.length == values.length <= 26
+values[i].length == 2
+1 <= dictionary.length <= 100
+1 <= dictionary[i].length <= 100
+All keys[i] and dictionary[i] are unique.
+1 <= word1.length <= 2000
+1 <= word2.length <= 200
+All word1[i] appear in keys.
+word2.length is even.
+keys, values[i], dictionary[i], word1, and word2 only contain lowercase English letters.
+At most 200 calls will be made to encrypt and decrypt in total.

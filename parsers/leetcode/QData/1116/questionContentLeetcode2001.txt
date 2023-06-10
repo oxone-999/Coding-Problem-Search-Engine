@@ -1,32 +1,23 @@
-2001	2693. Call Function with Custom Context
-Enhance all functions to have the callPolyfill method. The method accepts an object obj as it's first parameter and any number of additional arguments. The obj becomes the this context for the function. The additional arguments are passed to the function (that the callPolyfill method belongs on).
-For example if you had the function:
-function tax(price, taxRate) {
-  const totalCost = price * (1 + taxRate);
-  console.log(`The cost of ${this.item} is ${totalCost}`);
-}
-Calling this function like tax(10, 0.1) will log "The cost of undefined is 11". This is because the this context was not defined.
-However, calling the function like tax.callPolyfill({item: "salad"}, 10, 0.1) will log "The cost of salad is 11". The this context was appropriately set, and the function logged an appropriate output.
-Please solve this without using the built-in Function.call method.
+2001	2684. Maximum Number of Moves in a Grid
+You are given a 0-indexed m x n matrix grid consisting of positive integers.
+You can start at any cell in the first column of the matrix, and traverse the grid in the following way:
+From a cell (row, col), you can move to any of the cells: (row - 1, col + 1), (row, col + 1) and (row + 1, col + 1) such that the value of the cell you move to, should be strictly bigger than the value of the current cell.
+Return the maximum number of moves that you can perform.
   Example 1:
-Input:
-fn = function add(b) {
-  return this.a + b;
-}
-args = [{"a": 5}, 7]
-Output: 12
-Explanation:
-fn.callPolyfill({"a": 5}, 7); // 12
-callPolyfill sets the "this" context to {"a": 5}. 7 is passed as an argument.
+Input: grid = [[2,4,3,5],[5,4,9,3],[3,4,2,11],[10,9,13,15]]
+Output: 3
+Explanation: We can start at the cell (0, 0) and make the following moves:
+- (0, 0) -> (0, 1).
+- (0, 1) -> (1, 2).
+- (1, 2) -> (2, 3).
+It can be shown that it is the maximum number of moves that can be made.
 Example 2:
-Input: 
-fn = function tax(price, taxRate) { 
- return `The cost of the ${this.item} is ${price * taxRate}`; 
-}
-args = [{"item": "burger"}, 10, 1,1]
-Output: "The cost of the burger is 11"
-Explanation: callPolyfill sets the "this" context to {"item": "burger"}. 10 and 1.1 are passed as additional arguments.
+Input: grid = [[3,2,4],[2,1,9],[1,1,7]]
+Output: 0
+Explanation: Starting from any cell in the first column we cannot perform any moves.
   Constraints:
-typeof args[0] == 'object' and args[0] != null
-1 <= args.length <= 100
-2 <= JSON.stringify(args[0]).length <= 105
+m == grid.length
+n == grid[i].length
+2 <= m, n <= 1000
+4 <= m * n <= 105
+1 <= grid[i][j] <= 106

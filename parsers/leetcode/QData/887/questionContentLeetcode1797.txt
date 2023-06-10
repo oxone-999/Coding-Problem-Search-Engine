@@ -1,20 +1,27 @@
-1797	1091. Shortest Path in Binary Matrix
-Given an n x n binary matrix grid, return the length of the shortest clear path in the matrix. If there is no clear path, return -1.
-A clear path in a binary matrix is a path from the top-left cell (i.e., (0, 0)) to the bottom-right cell (i.e., (n - 1, n - 1)) such that:
-All the visited cells of the path are 0.
-All the adjacent cells of the path are 8-directionally connected (i.e., they are different and they share an edge or a corner).
-The length of a clear path is the number of visited cells of this path.
+1797	2465. Number of Distinct Averages
+You are given a 0-indexed integer array nums of even length.
+As long as nums is not empty, you must repetitively:
+Find the minimum number in nums and remove it.
+Find the maximum number in nums and remove it.
+Calculate the average of the two removed numbers.
+The average of two numbers a and b is (a + b) / 2.
+For example, the average of 2 and 3 is (2 + 3) / 2 = 2.5.
+Return the number of distinct averages calculated using the above process.
+Note that when there is a tie for a minimum or maximum number, any can be removed.
   Example 1:
-Input: grid = [[0,1],[1,0]]
+Input: nums = [4,1,4,0,3,5]
 Output: 2
+Explanation:
+1. Remove 0 and 5, and the average is (0 + 5) / 2 = 2.5. Now, nums = [4,1,4,3].
+2. Remove 1 and 4. The average is (1 + 4) / 2 = 2.5, and nums = [4,3].
+3. Remove 3 and 4, and the average is (3 + 4) / 2 = 3.5.
+Since there are 2 distinct numbers among 2.5, 2.5, and 3.5, we return 2.
 Example 2:
-Input: grid = [[0,0,0],[1,1,0],[1,1,0]]
-Output: 4
-Example 3:
-Input: grid = [[1,0,0],[1,1,0],[1,1,0]]
-Output: -1
+Input: nums = [1,100]
+Output: 1
+Explanation:
+There is only one average to be calculated after removing 1 and 100, so we return 1.
   Constraints:
-n == grid.length
-n == grid[i].length
-1 <= n <= 100
-grid[i][j] is 0 or 1
+2 <= nums.length <= 100
+nums.length is even.
+0 <= nums[i] <= 100

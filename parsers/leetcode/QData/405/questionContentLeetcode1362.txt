@@ -1,25 +1,30 @@
-1362	1376. Time Needed to Inform All Employees
-A company has n employees with a unique ID for each employee from 0 to n - 1. The head of the company is the one with headID.
-Each employee has one direct manager given in the manager array where manager[i] is the direct manager of the i-th employee, manager[headID] = -1. Also, it is guaranteed that the subordination relationships have a tree structure.
-The head of the company wants to inform all the company employees of an urgent piece of news. He will inform his direct subordinates, and they will inform their subordinates, and so on until all employees know about the urgent news.
-The i-th employee needs informTime[i] minutes to inform all of his direct subordinates (i.e., After informTime[i] minutes, all his direct subordinates can start spreading the news).
-Return the number of minutes needed to inform all the employees about the urgent news.
+1362	1840. Maximum Building Height
+You want to build n new buildings in a city. The new buildings will be built in a line and are labeled from 1 to n.
+However, there are city restrictions on the heights of the new buildings:
+The height of each building must be a non-negative integer.
+The height of the first building must be 0.
+The height difference between any two adjacent buildings cannot exceed 1.
+Additionally, there are city restrictions on the maximum height of specific buildings. These restrictions are given as a 2D integer array restrictions where restrictions[i] = [idi, maxHeighti] indicates that building idi must have a height less than or equal to maxHeighti.
+It is guaranteed that each building will appear at most once in restrictions, and building 1 will not be in restrictions.
+Return the maximum possible height of the tallest building.
   Example 1:
-Input: n = 1, headID = 0, manager = [-1], informTime = [0]
-Output: 0
-Explanation: The head of the company is the only employee in the company.
+Input: n = 5, restrictions = [[2,1],[4,1]]
+Output: 2
+Explanation: The green area in the image indicates the maximum allowed height for each building.
+We can build the buildings with heights [0,1,2,1,2], and the tallest building has a height of 2.
 Example 2:
-Input: n = 6, headID = 2, manager = [2,2,-1,2,2,2], informTime = [0,0,1,0,0,0]
-Output: 1
-Explanation: The head of the company with id = 2 is the direct manager of all the employees in the company and needs 1 minute to inform them all.
-The tree structure of the employees in the company is shown.
+Input: n = 6, restrictions = []
+Output: 5
+Explanation: The green area in the image indicates the maximum allowed height for each building.
+We can build the buildings with heights [0,1,2,3,4,5], and the tallest building has a height of 5.
+Example 3:
+Input: n = 10, restrictions = [[5,3],[2,5],[7,4],[10,3]]
+Output: 5
+Explanation: The green area in the image indicates the maximum allowed height for each building.
+We can build the buildings with heights [0,1,2,3,3,4,4,5,4,3], and the tallest building has a height of 5.
   Constraints:
-1 <= n <= 105
-0 <= headID < n
-manager.length == n
-0 <= manager[i] < n
-manager[headID] == -1
-informTime.length == n
-0 <= informTime[i] <= 1000
-informTime[i] == 0 if employee i has no subordinates.
-It is guaranteed that all the employees can be informed.
+2 <= n <= 109
+0 <= restrictions.length <= min(n - 1, 105)
+2 <= idi <= n
+idi is unique.
+0 <= maxHeighti <= 109

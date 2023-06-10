@@ -1,29 +1,19 @@
-1706	2397. Maximum Rows Covered by Columns
-You are given a 0-indexed m x n binary matrix matrix and an integer numSelect, which denotes the number of distinct columns you must select from matrix.
-Let us consider s = {c1, c2, ...., cnumSelect} as the set of columns selected by you. A row row is covered by s if:
-For each cell matrix[row][col] (0 <= col <= n - 1) where matrix[row][col] == 1, col is present in s or,
-No cell in row has a value of 1.
-You need to choose numSelect columns such that the number of rows that are covered is maximized.
-Return the maximum number of rows that can be covered by a set of numSelect columns.
+1706	2369. Check if There is a Valid Partition For The Array
+You are given a 0-indexed integer array nums. You have to partition the array into one or more contiguous subarrays.
+We call a partition of the array valid if each of the obtained subarrays satisfies one of the following conditions:
+The subarray consists of exactly 2 equal elements. For example, the subarray [2,2] is good.
+The subarray consists of exactly 3 equal elements. For example, the subarray [4,4,4] is good.
+The subarray consists of exactly 3 consecutive increasing elements, that is, the difference between adjacent elements is 1. For example, the subarray [3,4,5] is good, but the subarray [1,3,5] is not.
+Return true if the array has at least one valid partition. Otherwise, return false.
   Example 1:
-Input: matrix = [[0,0,0],[1,0,1],[0,1,1],[0,0,1]], numSelect = 2
-Output: 3
-Explanation: One possible way to cover 3 rows is shown in the diagram above.
-We choose s = {0, 2}.
-- Row 0 is covered because it has no occurrences of 1.
-- Row 1 is covered because the columns with value 1, i.e. 0 and 2 are present in s.
-- Row 2 is not covered because matrix[2][1] == 1 but 1 is not present in s.
-- Row 3 is covered because matrix[2][2] == 1 and 2 is present in s.
-Thus, we can cover three rows.
-Note that s = {1, 2} will also cover 3 rows, but it can be shown that no more than three rows can be covered.
+Input: nums = [4,4,4,5,6]
+Output: true
+Explanation: The array can be partitioned into the subarrays [4,4] and [4,5,6].
+This partition is valid, so we return true.
 Example 2:
-Input: matrix = [[1],[0]], numSelect = 1
-Output: 2
-Explanation: Selecting the only column will result in both rows being covered since the entire matrix is selected.
-Therefore, we return 2.
+Input: nums = [1,1,1,2]
+Output: false
+Explanation: There is no valid partition for this array.
   Constraints:
-m == matrix.length
-n == matrix[i].length
-1 <= m, n <= 12
-matrix[i][j] is either 0 or 1.
-1 <= numSelect <= n
+2 <= nums.length <= 105
+1 <= nums[i] <= 106

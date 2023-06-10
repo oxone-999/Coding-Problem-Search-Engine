@@ -1,19 +1,27 @@
-140	209. Minimum Size Subarray Sum
-Given an array of positive integers nums and a positive integer target, return the minimal length of a
-subarray
-whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+140	228. Summary Ranges
+You are given a sorted unique integer array nums.
+A range [a,b] is the set of all integers from a to b (inclusive).
+Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That is, each element of nums is covered by exactly one of the ranges, and there is no integer x such that x is in one of the ranges but not in nums.
+Each range [a,b] in the list should be output as:
+"a->b" if a != b
+"a" if a == b
   Example 1:
-Input: target = 7, nums = [2,3,1,2,4,3]
-Output: 2
-Explanation: The subarray [4,3] has the minimal length under the problem constraint.
+Input: nums = [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+Explanation: The ranges are:
+[0,2] --> "0->2"
+[4,5] --> "4->5"
+[7,7] --> "7"
 Example 2:
-Input: target = 4, nums = [1,4,4]
-Output: 1
-Example 3:
-Input: target = 11, nums = [1,1,1,1,1,1,1,1]
-Output: 0
+Input: nums = [0,2,3,4,6,8,9]
+Output: ["0","2->4","6","8->9"]
+Explanation: The ranges are:
+[0,0] --> "0"
+[2,4] --> "2->4"
+[6,6] --> "6"
+[8,9] --> "8->9"
   Constraints:
-1 <= target <= 109
-1 <= nums.length <= 105
-1 <= nums[i] <= 104
-  Follow up: If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log(n)).
+0 <= nums.length <= 20
+-231 <= nums[i] <= 231 - 1
+All the values of nums are unique.
+nums is sorted in ascending order.

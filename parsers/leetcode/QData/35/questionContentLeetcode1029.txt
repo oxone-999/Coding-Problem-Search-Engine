@@ -1,25 +1,21 @@
-1029	1376. Time Needed to Inform All Employees
-A company has n employees with a unique ID for each employee from 0 to n - 1. The head of the company is the one with headID.
-Each employee has one direct manager given in the manager array where manager[i] is the direct manager of the i-th employee, manager[headID] = -1. Also, it is guaranteed that the subordination relationships have a tree structure.
-The head of the company wants to inform all the company employees of an urgent piece of news. He will inform his direct subordinates, and they will inform their subordinates, and so on until all employees know about the urgent news.
-The i-th employee needs informTime[i] minutes to inform all of his direct subordinates (i.e., After informTime[i] minutes, all his direct subordinates can start spreading the news).
-Return the number of minutes needed to inform all the employees about the urgent news.
+1029	1423. Maximum Points You Can Obtain from Cards
+There are several cards arranged in a row, and each card has an associated number of points. The points are given in the integer array cardPoints.
+In one step, you can take one card from the beginning or from the end of the row. You have to take exactly k cards.
+Your score is the sum of the points of the cards you have taken.
+Given the integer array cardPoints and the integer k, return the maximum score you can obtain.
   Example 1:
-Input: n = 1, headID = 0, manager = [-1], informTime = [0]
-Output: 0
-Explanation: The head of the company is the only employee in the company.
+Input: cardPoints = [1,2,3,4,5,6,1], k = 3
+Output: 12
+Explanation: After the first step, your score will always be 1. However, choosing the rightmost card first will maximize your total score. The optimal strategy is to take the three cards on the right, giving a final score of 1 + 6 + 5 = 12.
 Example 2:
-Input: n = 6, headID = 2, manager = [2,2,-1,2,2,2], informTime = [0,0,1,0,0,0]
-Output: 1
-Explanation: The head of the company with id = 2 is the direct manager of all the employees in the company and needs 1 minute to inform them all.
-The tree structure of the employees in the company is shown.
+Input: cardPoints = [2,2,2], k = 2
+Output: 4
+Explanation: Regardless of which two cards you take, your score will always be 4.
+Example 3:
+Input: cardPoints = [9,7,7,9,7,7,9], k = 7
+Output: 55
+Explanation: You have to take all the cards. Your score is the sum of points of all cards.
   Constraints:
-1 <= n <= 105
-0 <= headID < n
-manager.length == n
-0 <= manager[i] < n
-manager[headID] == -1
-informTime.length == n
-0 <= informTime[i] <= 1000
-informTime[i] == 0 if employee i has no subordinates.
-It is guaranteed that all the employees can be informed.
+1 <= cardPoints.length <= 105
+1 <= cardPoints[i] <= 104
+1 <= k <= cardPoints.length

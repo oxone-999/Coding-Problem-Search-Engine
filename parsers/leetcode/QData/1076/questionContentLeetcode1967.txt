@@ -1,57 +1,27 @@
-1967	2623. Memoize
-Given a function fn, return a memoized version of that function.
-A memoized function is a function that will never be called twice with the same inputs. Instead it will return a cached value.
-You can assume there are 3 possible input functions: sum, fib, and factorial.
-sum accepts two integers a and b and returns a + b.
-fib accepts a single integer n and returns 1 if n <= 1 or fib(n - 1) + fib(n - 2) otherwise.
-factorial accepts a single integer n and returns 1 if n <= 1 or factorial(n - 1) * n otherwise.
+1967	2606. Find the Substring With Maximum Cost
+You are given a string s, a string chars of distinct characters and an integer array vals of the same length as chars.
+The cost of the substring is the sum of the values of each character in the substring. The cost of an empty string is considered 0.
+The value of the character is defined in the following way:
+If the character is not in the string chars, then its value is its corresponding position (1-indexed) in the alphabet.
+For example, the value of 'a' is 1, the value of 'b' is 2, and so on. The value of 'z' is 26.
+Otherwise, assuming i is the index where the character occurs in the string chars, then its value is vals[i].
+Return the maximum cost among all substrings of the string s.
   Example 1:
-Input
-"sum"
-["call","call","getCallCount","call","getCallCount"]
-[[2,2],[2,2],[],[1,2],[]]
-Output
-[4,4,1,3,2]
-
-Explanation
-const sum = (a, b) => a + b;
-const memoizedSum = memoize(sum);
-memoizedSum(2, 2); // Returns 4. sum() was called as (2, 2) was not seen before.
-memoizedSum(2, 2); // Returns 4. However sum() was not called because the same inputs were seen before.
-// Total call count: 1
-memoizedSum(1, 2); // Returns 3. sum() was called as (1, 2) was not seen before.
-// Total call count: 2
+Input: s = "adaa", chars = "d", vals = [-1000]
+Output: 2
+Explanation: The value of the characters "a" and "d" is 1 and -1000 respectively.
+The substring with the maximum cost is "aa" and its cost is 1 + 1 = 2.
+It can be proven that 2 is the maximum cost.
 Example 2:
-Input
-"factorial"
-["call","call","call","getCallCount","call","getCallCount"]
-[[2],[3],[2],[],[3],[]]
-Output
-[2,6,2,2,6,2]
-
-Explanation
-const factorial = (n) => (n <= 1) ? 1 : (n * factorial(n - 1));
-const memoFactorial = memoize(factorial);
-memoFactorial(2); // Returns 2.
-memoFactorial(3); // Returns 6.
-memoFactorial(2); // Returns 2. However factorial was not called because 2 was seen before.
-// Total call count: 2
-memoFactorial(3); // Returns 6. However factorial was not called because 3 was seen before.
-// Total call count: 2
-Example 3:
-Input
-"fib"
-["call","getCallCount"]
-[[5],[]]
-Output
-[8,1]
-
-Explanation
-fib(5) = 8
-// Total call count: 1
+Input: s = "abc", chars = "abc", vals = [-1,-1,-1]
+Output: 0
+Explanation: The value of the characters "a", "b" and "c" is -1, -1, and -1 respectively.
+The substring with the maximum cost is the empty substring "" and its cost is 0.
+It can be proven that 0 is the maximum cost.
   Constraints:
-0 <= a, b <= 105
-1 <= n <= 10
-at most 105 function calls
-at most 105 attempts to access callCount
-input function is sum, fib, or factorial
+1 <= s.length <= 105
+s consist of lowercase English letters.
+1 <= chars.length <= 26
+chars consist of distinct lowercase English letters.
+vals.length == chars.length
+-1000 <= vals[i] <= 1000

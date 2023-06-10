@@ -1,20 +1,30 @@
-1410	1914. Cyclically Rotating a Grid
-You are given an m x n integer matrix grid, where m and n are both even integers, and an integer k.
-The matrix is composed of several layers, which is shown in the below image, where each color is its own layer:
-A cyclic rotation of the matrix is done by cyclically rotating each layer in the matrix. To cyclically rotate a layer once, each element in the layer will take the place of the adjacent element in the counter-clockwise direction. An example rotation is shown below:
-Return the matrix after applying k cyclic rotations to it.
+1410	1945. Sum of Digits of String After Convert
+You are given a string s consisting of lowercase English letters, and an integer k.
+First, convert s into an integer by replacing each letter with its position in the alphabet (i.e., replace 'a' with 1, 'b' with 2, ..., 'z' with 26). Then, transform the integer by replacing it with the sum of its digits. Repeat the transform operation k times in total.
+For example, if s = "zbax" and k = 2, then the resulting integer would be 8 by the following operations:
+Convert: "zbax" ➝ "(26)(2)(1)(24)" ➝ "262124" ➝ 262124
+Transform #1: 262124 ➝ 2 + 6 + 2 + 1 + 2 + 4 ➝ 17
+Transform #2: 17 ➝ 1 + 7 ➝ 8
+Return the resulting integer after performing the operations described above.
   Example 1:
-Input: grid = [[40,10],[30,20]], k = 1
-Output: [[10,20],[40,30]]
-Explanation: The figures above represent the grid at every state.
+Input: s = "iiii", k = 1
+Output: 36
+Explanation: The operations are as follows:
+- Convert: "iiii" ➝ "(9)(9)(9)(9)" ➝ "9999" ➝ 9999
+- Transform #1: 9999 ➝ 9 + 9 + 9 + 9 ➝ 36
+Thus the resulting integer is 36.
 Example 2:
-Input: grid = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]], k = 2
-Output: [[3,4,8,12],[2,11,10,16],[1,7,6,15],[5,9,13,14]]
-Explanation: The figures above represent the grid at every state.
+Input: s = "leetcode", k = 2
+Output: 6
+Explanation: The operations are as follows:
+- Convert: "leetcode" ➝ "(12)(5)(5)(20)(3)(15)(4)(5)" ➝ "12552031545" ➝ 12552031545
+- Transform #1: 12552031545 ➝ 1 + 2 + 5 + 5 + 2 + 0 + 3 + 1 + 5 + 4 + 5 ➝ 33
+- Transform #2: 33 ➝ 3 + 3 ➝ 6
+Thus the resulting integer is 6.
+Example 3:
+Input: s = "zbax", k = 2
+Output: 8
   Constraints:
-m == grid.length
-n == grid[i].length
-2 <= m, n <= 50
-Both m and n are even integers.
-1 <= grid[i][j] <= 5000
-1 <= k <= 109
+1 <= s.length <= 100
+1 <= k <= 10
+s consists of lowercase English letters.

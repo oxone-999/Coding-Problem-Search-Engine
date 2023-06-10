@@ -1,30 +1,27 @@
-1415	1945. Sum of Digits of String After Convert
-You are given a string s consisting of lowercase English letters, and an integer k.
-First, convert s into an integer by replacing each letter with its position in the alphabet (i.e., replace 'a' with 1, 'b' with 2, ..., 'z' with 26). Then, transform the integer by replacing it with the sum of its digits. Repeat the transform operation k times in total.
-For example, if s = "zbax" and k = 2, then the resulting integer would be 8 by the following operations:
-Convert: "zbax" ➝ "(26)(2)(1)(24)" ➝ "262124" ➝ 262124
-Transform #1: 262124 ➝ 2 + 6 + 2 + 1 + 2 + 4 ➝ 17
-Transform #2: 17 ➝ 1 + 7 ➝ 8
-Return the resulting integer after performing the operations described above.
+1415	1923. Longest Common Subpath
+There is a country of n cities numbered from 0 to n - 1. In this country, there is a road connecting every pair of cities.
+There are m friends numbered from 0 to m - 1 who are traveling through the country. Each one of them will take a path consisting of some cities. Each path is represented by an integer array that contains the visited cities in order. The path may contain a city more than once, but the same city will not be listed consecutively.
+Given an integer n and a 2D integer array paths where paths[i] is an integer array representing the path of the ith friend, return the length of the longest common subpath that is shared by every friend's path, or 0 if there is no common subpath at all.
+A subpath of a path is a contiguous sequence of cities within that path.
   Example 1:
-Input: s = "iiii", k = 1
-Output: 36
-Explanation: The operations are as follows:
-- Convert: "iiii" ➝ "(9)(9)(9)(9)" ➝ "9999" ➝ 9999
-- Transform #1: 9999 ➝ 9 + 9 + 9 + 9 ➝ 36
-Thus the resulting integer is 36.
+Input: n = 5, paths = [[0,1,2,3,4],
+                       [2,3,4],
+                       [4,0,1,2,3]]
+Output: 2
+Explanation: The longest common subpath is [2,3].
 Example 2:
-Input: s = "leetcode", k = 2
-Output: 6
-Explanation: The operations are as follows:
-- Convert: "leetcode" ➝ "(12)(5)(5)(20)(3)(15)(4)(5)" ➝ "12552031545" ➝ 12552031545
-- Transform #1: 12552031545 ➝ 1 + 2 + 5 + 5 + 2 + 0 + 3 + 1 + 5 + 4 + 5 ➝ 33
-- Transform #2: 33 ➝ 3 + 3 ➝ 6
-Thus the resulting integer is 6.
+Input: n = 3, paths = [[0],[1],[2]]
+Output: 0
+Explanation: There is no common subpath shared by the three paths.
 Example 3:
-Input: s = "zbax", k = 2
-Output: 8
+Input: n = 5, paths = [[0,1,2,3,4],
+                       [4,3,2,1,0]]
+Output: 1
+Explanation: The possible longest common subpaths are [0], [1], [2], [3], and [4]. All have a length of 1.
   Constraints:
-1 <= s.length <= 100
-1 <= k <= 10
-s consists of lowercase English letters.
+1 <= n <= 105
+m == paths.length
+2 <= m <= 105
+sum(paths[i].length) <= 105
+0 <= paths[i][j] < n
+The same city is not listed multiple times consecutively in paths[i].

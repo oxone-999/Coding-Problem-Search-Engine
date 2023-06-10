@@ -1,23 +1,25 @@
-1823	2452. Words Within Two Edits of Dictionary
-You are given two string arrays, queries and dictionary. All words in each array comprise of lowercase English letters and have the same length.
-In one edit you can take a word from queries, and change any letter in it to any other letter. Find all words from queries that, after a maximum of two edits, equal some word from dictionary.
-Return a list of all words from queries, that match with some word from dictionary after a maximum of two edits. Return the words in the same order they appear in queries.
+1823	2461. Maximum Sum of Distinct Subarrays With Length K
+You are given an integer array nums and an integer k. Find the maximum subarray sum of all the subarrays of nums that meet the following conditions:
+The length of the subarray is k, and
+All the elements of the subarray are distinct.
+Return the maximum subarray sum of all the subarrays that meet the conditions. If no subarray meets the conditions, return 0.
+A subarray is a contiguous non-empty sequence of elements within an array.
   Example 1:
-Input: queries = ["word","note","ants","wood"], dictionary = ["wood","joke","moat"]
-Output: ["word","note","wood"]
-Explanation:
-- Changing the 'r' in "word" to 'o' allows it to equal the dictionary word "wood".
-- Changing the 'n' to 'j' and the 't' to 'k' in "note" changes it to "joke".
-- It would take more than 2 edits for "ants" to equal a dictionary word.
-- "wood" can remain unchanged (0 edits) and match the corresponding dictionary word.
-Thus, we return ["word","note","wood"].
+Input: nums = [1,5,4,2,9,9,9], k = 3
+Output: 15
+Explanation: The subarrays of nums with length 3 are:
+- [1,5,4] which meets the requirements and has a sum of 10.
+- [5,4,2] which meets the requirements and has a sum of 11.
+- [4,2,9] which meets the requirements and has a sum of 15.
+- [2,9,9] which does not meet the requirements because the element 9 is repeated.
+- [9,9,9] which does not meet the requirements because the element 9 is repeated.
+We return 15 because it is the maximum subarray sum of all the subarrays that meet the conditions
 Example 2:
-Input: queries = ["yes"], dictionary = ["not"]
-Output: []
-Explanation:
-Applying any two edits to "yes" cannot make it equal to "not". Thus, we return an empty array.
+Input: nums = [4,4,4], k = 3
+Output: 0
+Explanation: The subarrays of nums with length 3 are:
+- [4,4,4] which does not meet the requirements because the element 4 is repeated.
+We return 0 because no subarrays meet the conditions.
   Constraints:
-1 <= queries.length, dictionary.length <= 100
-n == queries[i].length == dictionary[j].length
-1 <= n <= 100
-All queries[i] and dictionary[j] are composed of lowercase English letters.
+1 <= k <= nums.length <= 105
+1 <= nums[i] <= 105

@@ -1,26 +1,27 @@
-1895	2586. Count the Number of Vowel Strings in Range
-You are given a 0-indexed array of string words and two integers left and right.
-A string is called a vowel string if it starts with a vowel character and ends with a vowel character where vowel characters are 'a', 'e', 'i', 'o', and 'u'.
-Return the number of vowel strings words[i] where i belongs to the inclusive range [left, right].
+1895	2570. Merge Two 2D Arrays by Summing Values
+You are given two 2D integer arrays nums1 and nums2.
+nums1[i] = [idi, vali] indicate that the number with the id idi has a value equal to vali.
+nums2[i] = [idi, vali] indicate that the number with the id idi has a value equal to vali.
+Each array contains unique ids and is sorted in ascending order by id.
+Merge the two arrays into one array that is sorted in ascending order by id, respecting the following conditions:
+Only ids that appear in at least one of the two arrays should be included in the resulting array.
+Each id should be included only once and its value should be the sum of the values of this id in the two arrays. If the id does not exist in one of the two arrays then its value in that array is considered to be 0.
+Return the resulting array. The returned array must be sorted in ascending order by id.
   Example 1:
-Input: words = ["are","amy","u"], left = 0, right = 2
-Output: 2
-Explanation: 
-- "are" is a vowel string because it starts with 'a' and ends with 'e'.
-- "amy" is not a vowel string because it does not end with a vowel.
-- "u" is a vowel string because it starts with 'u' and ends with 'u'.
-The number of vowel strings in the mentioned range is 2.
+Input: nums1 = [[1,2],[2,3],[4,5]], nums2 = [[1,4],[3,2],[4,1]]
+Output: [[1,6],[2,3],[3,2],[4,6]]
+Explanation: The resulting array contains the following:
+- id = 1, the value of this id is 2 + 4 = 6.
+- id = 2, the value of this id is 3.
+- id = 3, the value of this id is 2.
+- id = 4, the value of this id is 5 + 1 = 6.
 Example 2:
-Input: words = ["hey","aeo","mu","ooo","artro"], left = 1, right = 4
-Output: 3
-Explanation: 
-- "aeo" is a vowel string because it starts with 'a' and ends with 'o'.
-- "mu" is not a vowel string because it does not start with a vowel.
-- "ooo" is a vowel string because it starts with 'o' and ends with 'o'.
-- "artro" is a vowel string because it starts with 'a' and ends with 'o'.
-The number of vowel strings in the mentioned range is 3.
+Input: nums1 = [[2,4],[3,6],[5,5]], nums2 = [[1,3],[4,3]]
+Output: [[1,3],[2,4],[3,6],[4,3],[5,5]]
+Explanation: There are no common ids, so we just include each id with its value in the resulting list.
   Constraints:
-1 <= words.length <= 1000
-1 <= words[i].length <= 10
-words[i] consists of only lowercase English letters.
-0 <= left <= right < words.length
+1 <= nums1.length, nums2.length <= 200
+nums1[i].length == nums2[j].length == 2
+1 <= idi, vali <= 1000
+Both arrays contain unique ids.
+Both arrays are in strictly ascending order by id.

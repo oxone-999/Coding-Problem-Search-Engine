@@ -1,22 +1,24 @@
-1852	2550. Count Collisions of Monkeys on a Polygon
-There is a regular convex polygon with n vertices. The vertices are labeled from 0 to n - 1 in a clockwise direction, and each vertex has exactly one monkey. The following figure shows a convex polygon of 6 vertices.
-Each monkey moves simultaneously to a neighboring vertex. A neighboring vertex for a vertex i can be:
-the vertex (i + 1) % n in the clockwise direction, or
-the vertex (i - 1 + n) % n in the counter-clockwise direction.
-A collision happens if at least two monkeys reside on the same vertex after the movement or intersect on an edge.
-Return the number of ways the monkeys can move so that at least one collision happens. Since the answer may be very large, return it modulo 109 + 7.
-Note that each monkey can only move once.
+1852	2545. Sort the Students by Their Kth Score
+There is a class with m students and n exams. You are given a 0-indexed m x n integer matrix score, where each row represents one student and score[i][j] denotes the score the ith student got in the jth exam. The matrix score contains distinct integers only.
+You are also given an integer k. Sort the students (i.e., the rows of the matrix) by their scores in the kth (0-indexed) exam from the highest to the lowest.
+Return the matrix after sorting it.
   Example 1:
-Input: n = 3
-Output: 6
-Explanation: There are 8 total possible movements.
-Two ways such that they collide at some point are:
-- Monkey 1 moves in a clockwise direction; monkey 2 moves in an anticlockwise direction; monkey 3 moves in a clockwise direction. Monkeys 1 and 2 collide.
-- Monkey 1 moves in an anticlockwise direction; monkey 2 moves in an anticlockwise direction; monkey 3 moves in a clockwise direction. Monkeys 1 and 3 collide.
-It can be shown 6 total movements result in a collision.
+Input: score = [[10,6,9,1],[7,5,11,2],[4,8,3,15]], k = 2
+Output: [[7,5,11,2],[10,6,9,1],[4,8,3,15]]
+Explanation: In the above diagram, S denotes the student, while E denotes the exam.
+- The student with index 1 scored 11 in exam 2, which is the highest score, so they got first place.
+- The student with index 0 scored 9 in exam 2, which is the second highest score, so they got second place.
+- The student with index 2 scored 3 in exam 2, which is the lowest score, so they got third place.
 Example 2:
-Input: n = 4
-Output: 14
-Explanation: It can be shown that there are 14 ways for the monkeys to collide.
+Input: score = [[3,4],[5,6]], k = 0
+Output: [[5,6],[3,4]]
+Explanation: In the above diagram, S denotes the student, while E denotes the exam.
+- The student with index 1 scored 5 in exam 0, which is the highest score, so they got first place.
+- The student with index 0 scored 3 in exam 0, which is the lowest score, so they got second place.
   Constraints:
-3 <= n <= 109
+m == score.length
+n == score[i].length
+1 <= m, n <= 250
+1 <= score[i][j] <= 105
+score consists of distinct integers.
+0 <= k < n

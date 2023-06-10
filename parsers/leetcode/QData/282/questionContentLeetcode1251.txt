@@ -1,28 +1,28 @@
-1251	1664. Ways to Make a Fair Array
-You are given an integer array nums. You can choose exactly one index (0-indexed) and remove the element. Notice that the index of the elements may change after the removal.
-For example, if nums = [6,1,7,4,1]:
-Choosing to remove index 1 results in nums = [6,7,4,1].
-Choosing to remove index 2 results in nums = [6,1,4,1].
-Choosing to remove index 4 results in nums = [6,1,7,4].
-An array is fair if the sum of the odd-indexed values equals the sum of the even-indexed values.
-Return the number of indices that you could choose such that after the removal, nums is fair.
+1251	1700. Number of Students Unable to Eat Lunch
+The school cafeteria offers circular and square sandwiches at lunch break, referred to by numbers 0 and 1 respectively. All students stand in a queue. Each student either prefers square or circular sandwiches.
+The number of sandwiches in the cafeteria is equal to the number of students. The sandwiches are placed in a stack. At each step:
+If the student at the front of the queue prefers the sandwich on the top of the stack, they will take it and leave the queue.
+Otherwise, they will leave it and go to the queue's end.
+This continues until none of the queue students want to take the top sandwich and are thus unable to eat.
+You are given two integer arrays students and sandwiches where sandwiches[i] is the type of the ith sandwich in the stack (i = 0 is the top of the stack) and students[j] is the preference of the jth student in the initial queue (j = 0 is the front of the queue). Return the number of students that are unable to eat.
   Example 1:
-Input: nums = [2,1,6,4]
-Output: 1
+Input: students = [1,1,0,0], sandwiches = [0,1,0,1]
+Output: 0 
 Explanation:
-Remove index 0: [1,6,4] -> Even sum: 1 + 4 = 5. Odd sum: 6. Not fair.
-Remove index 1: [2,6,4] -> Even sum: 2 + 4 = 6. Odd sum: 6. Fair.
-Remove index 2: [2,1,4] -> Even sum: 2 + 4 = 6. Odd sum: 1. Not fair.
-Remove index 3: [2,1,6] -> Even sum: 2 + 6 = 8. Odd sum: 1. Not fair.
-There is 1 index that you can remove to make nums fair.
+- Front student leaves the top sandwich and returns to the end of the line making students = [1,0,0,1].
+- Front student leaves the top sandwich and returns to the end of the line making students = [0,0,1,1].
+- Front student takes the top sandwich and leaves the line making students = [0,1,1] and sandwiches = [1,0,1].
+- Front student leaves the top sandwich and returns to the end of the line making students = [1,1,0].
+- Front student takes the top sandwich and leaves the line making students = [1,0] and sandwiches = [0,1].
+- Front student leaves the top sandwich and returns to the end of the line making students = [0,1].
+- Front student takes the top sandwich and leaves the line making students = [1] and sandwiches = [1].
+- Front student takes the top sandwich and leaves the line making students = [] and sandwiches = [].
+Hence all students are able to eat.
 Example 2:
-Input: nums = [1,1,1]
+Input: students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]
 Output: 3
-Explanation: You can remove any index and the remaining array is fair.
-Example 3:
-Input: nums = [1,2,3]
-Output: 0
-Explanation: You cannot make a fair array after removing any index.
   Constraints:
-1 <= nums.length <= 105
-1 <= nums[i] <= 104
+1 <= students.length, sandwiches.length <= 100
+students.length == sandwiches.length
+sandwiches[i] is 0 or 1.
+students[i] is 0 or 1.

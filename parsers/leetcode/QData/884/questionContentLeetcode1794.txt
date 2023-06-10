@@ -1,21 +1,26 @@
-1794	2410. Maximum Matching of Players With Trainers
-You are given a 0-indexed integer array players, where players[i] represents the ability of the ith player. You are also given a 0-indexed integer array trainers, where trainers[j] represents the training capacity of the jth trainer.
-The ith player can match with the jth trainer if the player's ability is less than or equal to the trainer's training capacity. Additionally, the ith player can be matched with at most one trainer, and the jth trainer can be matched with at most one player.
-Return the maximum number of matchings between players and trainers that satisfy these conditions.
+1794	2500. Delete Greatest Value in Each Row
+You are given an m x n matrix grid consisting of positive integers.
+Perform the following operation until grid becomes empty:
+Delete the element with the greatest value from each row. If multiple such elements exist, delete any of them.
+Add the maximum of deleted elements to the answer.
+Note that the number of columns decreases by one after each operation.
+Return the answer after performing the operations described above.
   Example 1:
-Input: players = [4,7,9], trainers = [8,2,5,8]
-Output: 2
-Explanation:
-One of the ways we can form two matchings is as follows:
-- players[0] can be matched with trainers[0] since 4 <= 8.
-- players[1] can be matched with trainers[3] since 7 <= 8.
-It can be proven that 2 is the maximum number of matchings that can be formed.
+Input: grid = [[1,2,4],[3,3,1]]
+Output: 8
+Explanation: The diagram above shows the removed values in each step.
+- In the first operation, we remove 4 from the first row and 3 from the second row (notice that, there are two cells with value 3 and we can remove any of them). We add 4 to the answer.
+- In the second operation, we remove 2 from the first row and 3 from the second row. We add 3 to the answer.
+- In the third operation, we remove 1 from the first row and 1 from the second row. We add 1 to the answer.
+The final answer = 4 + 3 + 1 = 8.
 Example 2:
-Input: players = [1,1,1], trainers = [10]
-Output: 1
-Explanation:
-The trainer can be matched with any of the 3 players.
-Each player can only be matched with one trainer, so the maximum answer is 1.
+Input: grid = [[10]]
+Output: 10
+Explanation: The diagram above shows the removed values in each step.
+- In the first operation, we remove 10 from the first row. We add 10 to the answer.
+The final answer = 10.
   Constraints:
-1 <= players.length, trainers.length <= 105
-1 <= players[i], trainers[j] <= 109
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 50
+1 <= grid[i][j] <= 100

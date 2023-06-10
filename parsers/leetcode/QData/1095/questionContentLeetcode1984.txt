@@ -1,21 +1,27 @@
-1984	2639. Find the Width of Columns of a Grid
-You are given a 0-indexed m x n integer matrix grid. The width of a column is the maximum length of its integers.
-For example, if grid = [[-10], [3], [12]], the width of the only column is 3 since -10 is of length 3.
-Return an integer array ans of size n where ans[i] is the width of the ith column.
-The length of an integer x with len digits is equal to len if x is non-negative, and len + 1 otherwise.
+1984	2640. Find the Score of All Prefixes of an Array
+We define the conversion array conver of an array arr as follows:
+conver[i] = arr[i] + max(arr[0..i]) where max(arr[0..i]) is the maximum value of arr[j] over 0 <= j <= i.
+We also define the score of an array arr as the sum of the values of the conversion array of arr.
+Given a 0-indexed integer array nums of length n, return an array ans of length n where ans[i] is the score of the prefix nums[0..i].
   Example 1:
-Input: grid = [[1],[22],[333]]
-Output: [3]
-Explanation: In the 0th column, 333 is of length 3.
-Example 2:
-Input: grid = [[-15,1,3],[15,7,12],[5,6,-2]]
-Output: [3,1,2]
+Input: nums = [2,3,7,5,10]
+Output: [4,10,24,36,56]
 Explanation: 
-In the 0th column, only -15 is of length 3.
-In the 1st column, all integers are of length 1. 
-In the 2nd column, both 12 and -2 are of length 2.
+For the prefix [2], the conversion array is [4] hence the score is 4
+For the prefix [2, 3], the conversion array is [4, 6] hence the score is 10
+For the prefix [2, 3, 7], the conversion array is [4, 6, 14] hence the score is 24
+For the prefix [2, 3, 7, 5], the conversion array is [4, 6, 14, 12] hence the score is 36
+For the prefix [2, 3, 7, 5, 10], the conversion array is [4, 6, 14, 12, 20] hence the score is 56
+Example 2:
+Input: nums = [1,1,2,4,8,16]
+Output: [2,4,8,16,32,64]
+Explanation: 
+For the prefix [1], the conversion array is [2] hence the score is 2
+For the prefix [1, 1], the conversion array is [2, 2] hence the score is 4
+For the prefix [1, 1, 2], the conversion array is [2, 2, 4] hence the score is 8
+For the prefix [1, 1, 2, 4], the conversion array is [2, 2, 4, 8] hence the score is 16
+For the prefix [1, 1, 2, 4, 8], the conversion array is [2, 2, 4, 8, 16] hence the score is 32
+For the prefix [1, 1, 2, 4, 8, 16], the conversion array is [2, 2, 4, 8, 16, 32] hence the score is 64
   Constraints:
-m == grid.length
-n == grid[i].length
-1 <= m, n <= 100 
--109 <= grid[r][c] <= 109
+1 <= nums.length <= 105
+1 <= nums[i] <= 109

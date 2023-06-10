@@ -1,22 +1,35 @@
-1318	1737. Change Minimum Characters to Satisfy One of Three Conditions
-You are given two strings a and b that consist of lowercase letters. In one operation, you can change any character in a or b to any lowercase letter.
-Your goal is to satisfy one of the following three conditions:
-Every letter in a is strictly less than every letter in b in the alphabet.
-Every letter in b is strictly less than every letter in a in the alphabet.
-Both a and b consist of only one distinct letter.
-Return the minimum number of operations needed to achieve your goal.
+1318	1731. The Number of Employees Which Report to Each Employee
+SQL Schema
+Table: Employees
++-------------+----------+
+| Column Name | Type     |
++-------------+----------+
+| employee_id | int      |
+| name        | varchar  |
+| reports_to  | int      |
+| age         | int      |
++-------------+----------+
+employee_id is the primary key for this table.
+This table contains information about the employees and the id of the manager they report to. Some employees do not report to anyone (reports_to is null). 
+  For this problem, we will consider a manager an employee who has at least 1 other employee reporting to them.
+Write an SQL query to report the ids and the names of all managers, the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer.
+Return the result table ordered by employee_id.
+The query result format is in the following example.
   Example 1:
-Input: a = "aba", b = "caa"
-Output: 2
-Explanation: Consider the best way to make each condition true:
-1) Change b to "ccc" in 2 operations, then every letter in a is less than every letter in b.
-2) Change a to "bbb" and b to "aaa" in 3 operations, then every letter in b is less than every letter in a.
-3) Change a to "aaa" and b to "aaa" in 2 operations, then a and b consist of one distinct letter.
-The best way was done in 2 operations (either condition 1 or condition 3).
-Example 2:
-Input: a = "dabadd", b = "cda"
-Output: 3
-Explanation: The best way is to make condition 1 true by changing b to "eee".
-  Constraints:
-1 <= a.length, b.length <= 105
-a and b consist only of lowercase letters.
+Input: 
+Employees table:
++-------------+---------+------------+-----+
+| employee_id | name    | reports_to | age |
++-------------+---------+------------+-----+
+| 9           | Hercy   | null       | 43  |
+| 6           | Alice   | 9          | 41  |
+| 4           | Bob     | 9          | 36  |
+| 2           | Winston | null       | 37  |
++-------------+---------+------------+-----+
+Output: 
++-------------+-------+---------------+-------------+
+| employee_id | name  | reports_count | average_age |
++-------------+-------+---------------+-------------+
+| 9           | Hercy | 2             | 39          |
++-------------+-------+---------------+-------------+
+Explanation: Hercy has 2 people report directly to him, Alice and Bob. Their average age is (41+36)/2 = 38.5, which is 39 after rounding it to the nearest integer.

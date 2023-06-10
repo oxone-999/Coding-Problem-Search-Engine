@@ -1,18 +1,18 @@
-2044	547. Number of Provinces
-There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
-A province is a group of directly or indirectly connected cities and no other cities outside of the group.
-You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
-Return the total number of provinces.
+2044	2705. Compact Object
+Given an object or array obj, return a compact object. A compact object is the same as the original object, except with keys containing falsy values removed. This operation applies to the object and any nested objects. Arrays are considered objects where the indices are keys. A value is considered falsy when Boolean(value) returns false.
+You may assume the obj is the output of JSON.parse. In other words, it is valid JSON.
   Example 1:
-Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
-Output: 2
+Input: obj = [null, 0, false, 1]
+Output: [1]
+Explanation: All falsy values have been removed from the array.
 Example 2:
-Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
-Output: 3
+Input: obj = {"a": null, "b": [false, 1]}
+Output: {"b": [1]}
+Explanation: obj["a"] and obj["b"][0] had falsy values and were removed.
+Example 3:
+Input: obj = [null, 0, 5, [0], [false, 16]]
+Output: [5, [], [16]]
+Explanation: obj[0], obj[1], obj[3][0], and obj[4][0] were falsy and removed.
   Constraints:
-1 <= n <= 200
-n == isConnected.length
-n == isConnected[i].length
-isConnected[i][j] is 1 or 0.
-isConnected[i][i] == 1
-isConnected[i][j] == isConnected[j][i]
+obj is a valid JSON object
+2 <= JSON.stringify(obj).length <= 106

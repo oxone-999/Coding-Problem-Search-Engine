@@ -1,30 +1,32 @@
-1881	2515. Shortest Distance to Target String in a Circular Array
-You are given a 0-indexed circular string array words and a string target. A circular array means that the array's end connects to the array's beginning.
-Formally, the next element of words[i] is words[(i + 1) % n] and the previous element of words[i] is words[(i - 1 + n) % n], where n is the length of words.
-Starting from startIndex, you can move to either the next word or the previous word with 1 step at a time.
-Return the shortest distance needed to reach the string target. If the string target does not exist in words, return -1.
+1881	2528. Maximize the Minimum Powered City
+You are given a 0-indexed integer array stations of length n, where stations[i] represents the number of power stations in the ith city.
+Each power station can provide power to every city in a fixed range. In other words, if the range is denoted by r, then a power station at city i can provide power to all cities j such that |i - j| <= r and 0 <= i, j <= n - 1.
+Note that |x| denotes absolute value. For example, |7 - 5| = 2 and |3 - 10| = 7.
+The power of a city is the total number of power stations it is being provided power from.
+The government has sanctioned building k more power stations, each of which can be built in any city, and have the same range as the pre-existing ones.
+Given the two integers r and k, return the maximum possible minimum power of a city, if the additional power stations are built optimally.
+Note that you can build the k power stations in multiple cities.
   Example 1:
-Input: words = ["hello","i","am","leetcode","hello"], target = "hello", startIndex = 1
-Output: 1
-Explanation: We start from index 1 and can reach "hello" by
-- moving 3 units to the right to reach index 4.
-- moving 2 units to the left to reach index 4.
-- moving 4 units to the right to reach index 0.
-- moving 1 unit to the left to reach index 0.
-The shortest distance to reach "hello" is 1.
+Input: stations = [1,2,4,5,0], r = 1, k = 2
+Output: 5
+Explanation: 
+One of the optimal ways is to install both the power stations at city 1. 
+So stations will become [1,4,4,5,0].
+- City 0 is provided by 1 + 4 = 5 power stations.
+- City 1 is provided by 1 + 4 + 4 = 9 power stations.
+- City 2 is provided by 4 + 4 + 5 = 13 power stations.
+- City 3 is provided by 5 + 4 = 9 power stations.
+- City 4 is provided by 5 + 0 = 5 power stations.
+So the minimum power of a city is 5.
+Since it is not possible to obtain a larger power, we return 5.
 Example 2:
-Input: words = ["a","b","leetcode"], target = "leetcode", startIndex = 0
-Output: 1
-Explanation: We start from index 0 and can reach "leetcode" by
-- moving 2 units to the right to reach index 3.
-- moving 1 unit to the left to reach index 3.
-The shortest distance to reach "leetcode" is 1.
-Example 3:
-Input: words = ["i","eat","leetcode"], target = "ate", startIndex = 0
-Output: -1
-Explanation: Since "ate" does not exist in words, we return -1.
+Input: stations = [4,4,4,4], r = 0, k = 3
+Output: 4
+Explanation: 
+It can be proved that we cannot make the minimum power of a city greater than 4.
   Constraints:
-1 <= words.length <= 100
-1 <= words[i].length <= 100
-words[i] and target consist of only lowercase English letters.
-0 <= startIndex < words.length
+n == stations.length
+1 <= n <= 105
+0 <= stations[i] <= 105
+0 <= r <= n - 1
+0 <= k <= 109

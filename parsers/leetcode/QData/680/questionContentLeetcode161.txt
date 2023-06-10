@@ -1,15 +1,26 @@
-161	238. Product of Array Except Self
-Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
-The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
-You must write an algorithm that runs in O(n) time and without using the division operation.
+161	208. Implement Trie (Prefix Tree)
+A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+Implement the Trie class:
+Trie() Initializes the trie object.
+void insert(String word) Inserts the string word into the trie.
+boolean search(String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
+boolean startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
   Example 1:
-Input: nums = [1,2,3,4]
-Output: [24,12,8,6]
-Example 2:
-Input: nums = [-1,1,0,-3,3]
-Output: [0,0,9,0,0]
+Input
+["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+[[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+Output
+[null, null, true, false, true, null, true]
+
+Explanation
+Trie trie = new Trie();
+trie.insert("apple");
+trie.search("apple");   // return True
+trie.search("app");     // return False
+trie.startsWith("app"); // return True
+trie.insert("app");
+trie.search("app");     // return True
   Constraints:
-2 <= nums.length <= 105
--30 <= nums[i] <= 30
-The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
-  Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
+1 <= word.length, prefix.length <= 2000
+word and prefix consist only of lowercase English letters.
+At most 3 * 104 calls in total will be made to insert, search, and startsWith.

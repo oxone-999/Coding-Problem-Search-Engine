@@ -1,34 +1,27 @@
-1274	1670. Design Front Middle Back Queue
-Design a queue that supports push and pop operations in the front, middle, and back.
-Implement the FrontMiddleBack class:
-FrontMiddleBack() Initializes the queue.
-void pushFront(int val) Adds val to the front of the queue.
-void pushMiddle(int val) Adds val to the middle of the queue.
-void pushBack(int val) Adds val to the back of the queue.
-int popFront() Removes the front element of the queue and returns it. If the queue is empty, return -1.
-int popMiddle() Removes the middle element of the queue and returns it. If the queue is empty, return -1.
-int popBack() Removes the back element of the queue and returns it. If the queue is empty, return -1.
-Notice that when there are two middle position choices, the operation is performed on the frontmost middle position choice. For example:
-Pushing 6 into the middle of [1, 2, 3, 4, 5] results in [1, 2, 6, 3, 4, 5].
-Popping the middle from [1, 2, 3, 4, 5, 6] returns 3 and results in [1, 2, 4, 5, 6].
+1274	1742. Maximum Number of Balls in a Box
+You are working in a ball factory where you have n balls numbered from lowLimit up to highLimit inclusive (i.e., n == highLimit - lowLimit + 1), and an infinite number of boxes numbered from 1 to infinity.
+Your job at this factory is to put each ball in the box with a number equal to the sum of digits of the ball's number. For example, the ball number 321 will be put in the box number 3 + 2 + 1 = 6 and the ball number 10 will be put in the box number 1 + 0 = 1.
+Given two integers lowLimit and highLimit, return the number of balls in the box with the most balls.
   Example 1:
-Input:
-["FrontMiddleBackQueue", "pushFront", "pushBack", "pushMiddle", "pushMiddle", "popFront", "popMiddle", "popMiddle", "popBack", "popFront"]
-[[], [1], [2], [3], [4], [], [], [], [], []]
-Output:
-[null, null, null, null, null, 1, 3, 4, 2, -1]
-
+Input: lowLimit = 1, highLimit = 10
+Output: 2
 Explanation:
-FrontMiddleBackQueue q = new FrontMiddleBackQueue();
-q.pushFront(1);   // [1]
-q.pushBack(2);    // [1, 2]
-q.pushMiddle(3);  // [1, 3, 2]
-q.pushMiddle(4);  // [1, 4, 3, 2]
-q.popFront();     // return 1 -> [4, 3, 2]
-q.popMiddle();    // return 3 -> [4, 2]
-q.popMiddle();    // return 4 -> [2]
-q.popBack();      // return 2 -> []
-q.popFront();     // return -1 -> [] (The queue is empty)
+Box Number:  1 2 3 4 5 6 7 8 9 10 11 ...
+Ball Count:  2 1 1 1 1 1 1 1 1 0  0  ...
+Box 1 has the most number of balls with 2 balls.
+Example 2:
+Input: lowLimit = 5, highLimit = 15
+Output: 2
+Explanation:
+Box Number:  1 2 3 4 5 6 7 8 9 10 11 ...
+Ball Count:  1 1 1 1 2 2 1 1 1 0  0  ...
+Boxes 5 and 6 have the most number of balls with 2 balls in each.
+Example 3:
+Input: lowLimit = 19, highLimit = 28
+Output: 2
+Explanation:
+Box Number:  1 2 3 4 5 6 7 8 9 10 11 12 ...
+Ball Count:  0 1 1 1 1 1 1 1 1 2  0  0  ...
+Box 10 has the most number of balls with 2 balls.
   Constraints:
-1 <= val <= 109
-At most 1000 calls will be made to pushFront, pushMiddle, pushBack, popFront, popMiddle, and popBack.
+1 <= lowLimit <= highLimit <= 105

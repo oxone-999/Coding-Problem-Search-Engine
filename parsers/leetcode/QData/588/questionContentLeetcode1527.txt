@@ -1,25 +1,47 @@
-1527	2141. Maximum Running Time of N Computers
-You have n computers. You are given the integer n and a 0-indexed integer array batteries where the ith battery can run a computer for batteries[i] minutes. You are interested in running all n computers simultaneously using the given batteries.
-Initially, you can insert at most one battery into each computer. After that and at any integer time moment, you can remove a battery from a computer and insert another battery any number of times. The inserted battery can be a totally new battery or a battery from another computer. You may assume that the removing and inserting processes take no time.
-Note that the batteries cannot be recharged.
-Return the maximum number of minutes you can run all the n computers simultaneously.
+1527	2102. Sequentially Ordinal Rank Tracker
+A scenic location is represented by its name and attractiveness score, where name is a unique string among all locations and score is an integer. Locations can be ranked from the best to the worst. The higher the score, the better the location. If the scores of two locations are equal, then the location with the lexicographically smaller name is better.
+You are building a system that tracks the ranking of locations with the system initially starting with no locations. It supports:
+Adding scenic locations, one at a time.
+Querying the ith best location of all locations already added, where i is the number of times the system has been queried (including the current query).
+For example, when the system is queried for the 4th time, it returns the 4th best location of all locations already added.
+Note that the test data are generated so that at any time, the number of queries does not exceed the number of locations added to the system.
+Implement the SORTracker class:
+SORTracker() Initializes the tracker system.
+void add(string name, int score) Adds a scenic location with name and score to the system.
+string get() Queries and returns the ith best location, where i is the number of times this method has been invoked (including this invocation).
   Example 1:
-Input: n = 2, batteries = [3,3,3]
-Output: 4
-Explanation: 
-Initially, insert battery 0 into the first computer and battery 1 into the second computer.
-After two minutes, remove battery 1 from the second computer and insert battery 2 instead. Note that battery 1 can still run for one minute.
-At the end of the third minute, battery 0 is drained, and you need to remove it from the first computer and insert battery 1 instead.
-By the end of the fourth minute, battery 1 is also drained, and the first computer is no longer running.
-We can run the two computers simultaneously for at most 4 minutes, so we return 4.
-Example 2:
-Input: n = 2, batteries = [1,1,1,1]
-Output: 2
-Explanation: 
-Initially, insert battery 0 into the first computer and battery 2 into the second computer. 
-After one minute, battery 0 and battery 2 are drained so you need to remove them and insert battery 1 into the first computer and battery 3 into the second computer. 
-After another minute, battery 1 and battery 3 are also drained so the first and second computers are no longer running.
-We can run the two computers simultaneously for at most 2 minutes, so we return 2.
+Input
+["SORTracker", "add", "add", "get", "add", "get", "add", "get", "add", "get", "add", "get", "get"]
+[[], ["bradford", 2], ["branford", 3], [], ["alps", 2], [], ["orland", 2], [], ["orlando", 3], [], ["alpine", 2], [], []]
+Output
+[null, null, null, "branford", null, "alps", null, "bradford", null, "bradford", null, "bradford", "orland"]
+
+Explanation
+SORTracker tracker = new SORTracker(); // Initialize the tracker system.
+tracker.add("bradford", 2); // Add location with name="bradford" and score=2 to the system.
+tracker.add("branford", 3); // Add location with name="branford" and score=3 to the system.
+tracker.get();              // The sorted locations, from best to worst, are: branford, bradford.
+                            // Note that branford precedes bradford due to its higher score (3 > 2).
+                            // This is the 1st time get() is called, so return the best location: "branford".
+tracker.add("alps", 2);     // Add location with name="alps" and score=2 to the system.
+tracker.get();              // Sorted locations: branford, alps, bradford.
+                            // Note that alps precedes bradford even though they have the same score (2).
+                            // This is because "alps" is lexicographically smaller than "bradford".
+                            // Return the 2nd best location "alps", as it is the 2nd time get() is called.
+tracker.add("orland", 2);   // Add location with name="orland" and score=2 to the system.
+tracker.get();              // Sorted locations: branford, alps, bradford, orland.
+                            // Return "bradford", as it is the 3rd time get() is called.
+tracker.add("orlando", 3);  // Add location with name="orlando" and score=3 to the system.
+tracker.get();              // Sorted locations: branford, orlando, alps, bradford, orland.
+                            // Return "bradford".
+tracker.add("alpine", 2);   // Add location with name="alpine" and score=2 to the system.
+tracker.get();              // Sorted locations: branford, orlando, alpine, alps, bradford, orland.
+                            // Return "bradford".
+tracker.get();              // Sorted locations: branford, orlando, alpine, alps, bradford, orland.
+                            // Return "orland".
   Constraints:
-1 <= n <= batteries.length <= 105
-1 <= batteries[i] <= 109
+name consists of lowercase English letters, and is unique among all locations.
+1 <= name.length <= 10
+1 <= score <= 105
+At any time, the number of calls to get does not exceed the number of calls to add.
+At most 4 * 104 calls in total will be made to add and get.

@@ -1,22 +1,25 @@
-1813	2475. Number of Unequal Triplets in Array
-You are given a 0-indexed array of positive integers nums. Find the number of triplets (i, j, k) that meet the following conditions:
-0 <= i < j < k < nums.length
-nums[i], nums[j], and nums[k] are pairwise distinct.
-In other words, nums[i] != nums[j], nums[i] != nums[k], and nums[j] != nums[k].
-Return the number of triplets that meet the conditions.
+1813	2498. Frog Jump II
+You are given a 0-indexed integer array stones sorted in strictly increasing order representing the positions of stones in a river.
+A frog, initially on the first stone, wants to travel to the last stone and then return to the first stone. However, it can jump to any stone at most once.
+The length of a jump is the absolute difference between the position of the stone the frog is currently on and the position of the stone to which the frog jumps.
+More formally, if the frog is at stones[i] and is jumping to stones[j], the length of the jump is |stones[i] - stones[j]|.
+The cost of a path is the maximum length of a jump among all jumps in the path.
+Return the minimum cost of a path for the frog.
   Example 1:
-Input: nums = [4,4,2,4,3]
-Output: 3
-Explanation: The following triplets meet the conditions:
-- (0, 2, 4) because 4 != 2 != 3
-- (1, 2, 4) because 4 != 2 != 3
-- (2, 3, 4) because 2 != 4 != 3
-Since there are 3 triplets, we return 3.
-Note that (2, 0, 4) is not a valid triplet because 2 > 0.
+Input: stones = [0,2,5,6,7]
+Output: 5
+Explanation: The above figure represents one of the optimal paths the frog can take.
+The cost of this path is 5, which is the maximum length of a jump.
+Since it is not possible to achieve a cost of less than 5, we return it.
 Example 2:
-Input: nums = [1,1,1,1,1]
-Output: 0
-Explanation: No triplets meet the conditions so we return 0.
+Input: stones = [0,3,9]
+Output: 9
+Explanation: 
+The frog can jump directly to the last stone and come back to the first stone. 
+In this case, the length of each jump will be 9. The cost for the path will be max(9, 9) = 9.
+It can be shown that this is the minimum achievable cost.
   Constraints:
-3 <= nums.length <= 100
-1 <= nums[i] <= 1000
+2 <= stones.length <= 105
+0 <= stones[i] <= 109
+stones[0] == 0
+stones is sorted in a strictly increasing order.

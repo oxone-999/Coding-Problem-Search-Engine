@@ -1,25 +1,18 @@
-1081	1483. Kth Ancestor of a Tree Node
-You are given a tree with n nodes numbered from 0 to n - 1 in the form of a parent array parent where parent[i] is the parent of ith node. The root of the tree is node 0. Find the kth ancestor of a given node.
-The kth ancestor of a tree node is the kth node in the path from that node to the root node.
-Implement the TreeAncestor class:
-TreeAncestor(int n, int[] parent) Initializes the object with the number of nodes in the tree and the parent array.
-int getKthAncestor(int node, int k) return the kth ancestor of the given node node. If there is no such ancestor, return -1.
+1081	1478. Allocate Mailboxes
+Given the array houses where houses[i] is the location of the ith house along a street and an integer k, allocate k mailboxes in the street.
+Return the minimum total distance between each house and its nearest mailbox.
+The test cases are generated so that the answer fits in a 32-bit integer.
   Example 1:
-Input
-["TreeAncestor", "getKthAncestor", "getKthAncestor", "getKthAncestor"]
-[[7, [-1, 0, 0, 1, 1, 2, 2]], [3, 1], [5, 2], [6, 3]]
-Output
-[null, 1, 0, -1]
-
-Explanation
-TreeAncestor treeAncestor = new TreeAncestor(7, [-1, 0, 0, 1, 1, 2, 2]);
-treeAncestor.getKthAncestor(3, 1); // returns 1 which is the parent of 3
-treeAncestor.getKthAncestor(5, 2); // returns 0 which is the grandparent of 5
-treeAncestor.getKthAncestor(6, 3); // returns -1 because there is no such ancestor
+Input: houses = [1,4,8,10,20], k = 3
+Output: 5
+Explanation: Allocate mailboxes in position 3, 9 and 20.
+Minimum total distance from each houses to nearest mailboxes is |3-1| + |4-3| + |9-8| + |10-9| + |20-20| = 5 
+Example 2:
+Input: houses = [2,3,5,12,18], k = 2
+Output: 9
+Explanation: Allocate mailboxes in position 3 and 14.
+Minimum total distance from each houses to nearest mailboxes is |2-3| + |3-3| + |5-3| + |12-14| + |18-14| = 9.
   Constraints:
-1 <= k <= n <= 5 * 104
-parent.length == n
-parent[0] == -1
-0 <= parent[i] < n for all 0 < i < n
-0 <= node < n
-There will be at most 5 * 104 queries.
+1 <= k <= houses.length <= 100
+1 <= houses[i] <= 104
+All the integers of houses are unique.

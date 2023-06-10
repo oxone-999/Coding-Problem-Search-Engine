@@ -1,37 +1,24 @@
-1065	1488. Avoid Flood in The City
-Your country has an infinite number of lakes. Initially, all the lakes are empty, but when it rains over the nth lake, the nth lake becomes full of water. If it rains over a lake that is full of water, there will be a flood. Your goal is to avoid floods in any lake.
-Given an integer array rains where:
-rains[i] > 0 means there will be rains over the rains[i] lake.
-rains[i] == 0 means there are no rains this day and you can choose one lake this day and dry it.
-Return an array ans where:
-ans.length == rains.length
-ans[i] == -1 if rains[i] > 0.
-ans[i] is the lake you choose to dry in the ith day if rains[i] == 0.
-If there are multiple valid answers return any of them. If it is impossible to avoid flood return an empty array.
-Notice that if you chose to dry a full lake, it becomes empty, but if you chose to dry an empty lake, nothing changes.
+1065	1452. People Whose List of Favorite Companies Is Not a Subset of Another List
+Given the array favoriteCompanies where favoriteCompanies[i] is the list of favorites companies for the ith person (indexed from 0).
+Return the indices of people whose list of favorite companies is not a subset of any other list of favorites companies. You must return the indices in increasing order.
   Example 1:
-Input: rains = [1,2,3,4]
-Output: [-1,-1,-1,-1]
-Explanation: After the first day full lakes are [1]
-After the second day full lakes are [1,2]
-After the third day full lakes are [1,2,3]
-After the fourth day full lakes are [1,2,3,4]
-There's no day to dry any lake and there is no flood in any lake.
+Input: favoriteCompanies = [["leetcode","google","facebook"],["google","microsoft"],["google","facebook"],["google"],["amazon"]]
+Output: [0,1,4] 
+Explanation: 
+Person with index=2 has favoriteCompanies[2]=["google","facebook"] which is a subset of favoriteCompanies[0]=["leetcode","google","facebook"] corresponding to the person with index 0. 
+Person with index=3 has favoriteCompanies[3]=["google"] which is a subset of favoriteCompanies[0]=["leetcode","google","facebook"] and favoriteCompanies[1]=["google","microsoft"]. 
+Other lists of favorite companies are not a subset of another list, therefore, the answer is [0,1,4].
 Example 2:
-Input: rains = [1,2,0,0,2,1]
-Output: [-1,-1,2,1,-1,-1]
-Explanation: After the first day full lakes are [1]
-After the second day full lakes are [1,2]
-After the third day, we dry lake 2. Full lakes are [1]
-After the fourth day, we dry lake 1. There is no full lakes.
-After the fifth day, full lakes are [2].
-After the sixth day, full lakes are [1,2].
-It is easy that this scenario is flood-free. [-1,-1,1,2,-1,-1] is another acceptable scenario.
+Input: favoriteCompanies = [["leetcode","google","facebook"],["leetcode","amazon"],["facebook","google"]]
+Output: [0,1] 
+Explanation: In this case favoriteCompanies[2]=["facebook","google"] is a subset of favoriteCompanies[0]=["leetcode","google","facebook"], therefore, the answer is [0,1].
 Example 3:
-Input: rains = [1,2,0,1,2]
-Output: []
-Explanation: After the second day, full lakes are  [1,2]. We have to dry one lake in the third day.
-After that, it will rain over lakes [1,2]. It's easy to prove that no matter which lake you choose to dry in the 3rd day, the other one will flood.
+Input: favoriteCompanies = [["leetcode"],["google"],["facebook"],["amazon"]]
+Output: [0,1,2,3]
   Constraints:
-1 <= rains.length <= 105
-0 <= rains[i] <= 109
+1 <= favoriteCompanies.length <= 100
+1 <= favoriteCompanies[i].length <= 500
+1 <= favoriteCompanies[i][j].length <= 20
+All strings in favoriteCompanies[i] are distinct.
+All lists of favorite companies are distinct, that is, If we sort alphabetically each list then favoriteCompanies[i] != favoriteCompanies[j].
+All strings consist of lowercase English letters only.

@@ -1,32 +1,17 @@
-1088	1482. Minimum Number of Days to Make m Bouquets
-You are given an integer array bloomDay, an integer m and an integer k.
-You want to make m bouquets. To make a bouquet, you need to use k adjacent flowers from the garden.
-The garden consists of n flowers, the ith flower will bloom in the bloomDay[i] and then can be used in exactly one bouquet.
-Return the minimum number of days you need to wait to be able to make m bouquets from the garden. If it is impossible to make m bouquets return -1.
+1088	1486. XOR Operation in an Array
+You are given an integer n and an integer start.
+Define an array nums where nums[i] = start + 2 * i (0-indexed) and n == nums.length.
+Return the bitwise XOR of all elements of nums.
   Example 1:
-Input: bloomDay = [1,10,3,10,2], m = 3, k = 1
-Output: 3
-Explanation: Let us see what happened in the first three days. x means flower bloomed and _ means flower did not bloom in the garden.
-We need 3 bouquets each should contain 1 flower.
-After day 1: [x, _, _, _, _]   // we can only make one bouquet.
-After day 2: [x, _, _, _, x]   // we can only make two bouquets.
-After day 3: [x, _, x, _, x]   // we can make 3 bouquets. The answer is 3.
+Input: n = 5, start = 0
+Output: 8
+Explanation: Array nums is equal to [0, 2, 4, 6, 8] where (0 ^ 2 ^ 4 ^ 6 ^ 8) = 8.
+Where "^" corresponds to bitwise XOR operator.
 Example 2:
-Input: bloomDay = [1,10,3,10,2], m = 3, k = 2
-Output: -1
-Explanation: We need 3 bouquets each has 2 flowers, that means we need 6 flowers. We only have 5 flowers so it is impossible to get the needed bouquets and we return -1.
-Example 3:
-Input: bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3
-Output: 12
-Explanation: We need 2 bouquets each should have 3 flowers.
-Here is the garden after the 7 and 12 days:
-After day 7: [x, x, x, x, _, x, x]
-We can make one bouquet of the first three flowers that bloomed. We cannot make another bouquet from the last three flowers that bloomed because they are not adjacent.
-After day 12: [x, x, x, x, x, x, x]
-It is obvious that we can make two bouquets in different ways.
+Input: n = 4, start = 3
+Output: 8
+Explanation: Array nums is equal to [3, 5, 7, 9] where (3 ^ 5 ^ 7 ^ 9) = 8.
   Constraints:
-bloomDay.length == n
-1 <= n <= 105
-1 <= bloomDay[i] <= 109
-1 <= m <= 106
-1 <= k <= n
+1 <= n <= 1000
+0 <= start <= 1000
+n == nums.length

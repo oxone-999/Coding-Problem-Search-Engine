@@ -1,27 +1,27 @@
-1883	2538. Difference Between Maximum and Minimum Price Sum
-There exists an undirected and initially unrooted tree with n nodes indexed from 0 to n - 1. You are given the integer n and a 2D integer array edges of length n - 1, where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi in the tree.
-Each node has an associated price. You are given an integer array price, where price[i] is the price of the ith node.
-The price sum of a given path is the sum of the prices of all nodes lying on that path.
-The tree can be rooted at any node root of your choice. The incurred cost after choosing root is the difference between the maximum and minimum price sum amongst all paths starting at root.
-Return the maximum possible cost amongst all possible root choices.
+1883	2506. Count Pairs Of Similar Strings
+You are given a 0-indexed string array words.
+Two strings are similar if they consist of the same characters.
+For example, "abca" and "cba" are similar since both consist of characters 'a', 'b', and 'c'.
+However, "abacba" and "bcfd" are not similar since they do not consist of the same characters.
+Return the number of pairs (i, j) such that 0 <= i < j <= word.length - 1 and the two strings words[i] and words[j] are similar.
   Example 1:
-Input: n = 6, edges = [[0,1],[1,2],[1,3],[3,4],[3,5]], price = [9,8,7,6,10,5]
-Output: 24
-Explanation: The diagram above denotes the tree after rooting it at node 2. The first part (colored in red) shows the path with the maximum price sum. The second part (colored in blue) shows the path with the minimum price sum.
-- The first path contains nodes [2,1,3,4]: the prices are [7,8,6,10], and the sum of the prices is 31.
-- The second path contains the node [2] with the price [7].
-The difference between the maximum and minimum price sum is 24. It can be proved that 24 is the maximum cost.
-Example 2:
-Input: n = 3, edges = [[0,1],[1,2]], price = [1,1,1]
+Input: words = ["aba","aabb","abcd","bac","aabc"]
 Output: 2
-Explanation: The diagram above denotes the tree after rooting it at node 0. The first part (colored in red) shows the path with the maximum price sum. The second part (colored in blue) shows the path with the minimum price sum.
-- The first path contains nodes [0,1,2]: the prices are [1,1,1], and the sum of the prices is 3.
-- The second path contains node [0] with a price [1].
-The difference between the maximum and minimum price sum is 2. It can be proved that 2 is the maximum cost.
+Explanation: There are 2 pairs that satisfy the conditions:
+- i = 0 and j = 1 : both words[0] and words[1] only consist of characters 'a' and 'b'. 
+- i = 3 and j = 4 : both words[3] and words[4] only consist of characters 'a', 'b', and 'c'. 
+Example 2:
+Input: words = ["aabb","ab","ba"]
+Output: 3
+Explanation: There are 3 pairs that satisfy the conditions:
+- i = 0 and j = 1 : both words[0] and words[1] only consist of characters 'a' and 'b'. 
+- i = 0 and j = 2 : both words[0] and words[2] only consist of characters 'a' and 'b'.
+- i = 1 and j = 2 : both words[1] and words[2] only consist of characters 'a' and 'b'.
+Example 3:
+Input: words = ["nba","cba","dba"]
+Output: 0
+Explanation: Since there does not exist any pair that satisfies the conditions, we return 0.
   Constraints:
-1 <= n <= 105
-edges.length == n - 1
-0 <= ai, bi <= n - 1
-edges represents a valid tree.
-price.length == n
-1 <= price[i] <= 105
+1 <= words.length <= 100
+1 <= words[i].length <= 100
+words[i] consist of only lowercase English letters.

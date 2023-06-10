@@ -1,18 +1,29 @@
-1047	1401. Circle and Rectangle Overlapping
-You are given a circle represented as (radius, xCenter, yCenter) and an axis-aligned rectangle represented as (x1, y1, x2, y2), where (x1, y1) are the coordinates of the bottom-left corner, and (x2, y2) are the coordinates of the top-right corner of the rectangle.
-Return true if the circle and rectangle are overlapped otherwise return false. In other words, check if there is any point (xi, yi) that belongs to the circle and the rectangle at the same time.
+1047	1462. Course Schedule IV
+There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course ai first if you want to take course bi.
+For example, the pair [0, 1] indicates that you have to take course 0 before you can take course 1.
+Prerequisites can also be indirect. If course a is a prerequisite of course b, and course b is a prerequisite of course c, then course a is a prerequisite of course c.
+You are also given an array queries where queries[j] = [uj, vj]. For the jth query, you should answer whether course uj is a prerequisite of course vj or not.
+Return a boolean array answer, where answer[j] is the answer to the jth query.
   Example 1:
-Input: radius = 1, xCenter = 0, yCenter = 0, x1 = 1, y1 = -1, x2 = 3, y2 = 1
-Output: true
-Explanation: Circle and rectangle share the point (1,0).
+Input: numCourses = 2, prerequisites = [[1,0]], queries = [[0,1],[1,0]]
+Output: [false,true]
+Explanation: The pair [1, 0] indicates that you have to take course 1 before you can take course 0.
+Course 0 is not a prerequisite of course 1, but the opposite is true.
 Example 2:
-Input: radius = 1, xCenter = 1, yCenter = 1, x1 = 1, y1 = -3, x2 = 2, y2 = -1
-Output: false
+Input: numCourses = 2, prerequisites = [], queries = [[1,0],[0,1]]
+Output: [false,false]
+Explanation: There are no prerequisites, and each course is independent.
 Example 3:
-Input: radius = 1, xCenter = 0, yCenter = 0, x1 = -1, y1 = 0, x2 = 0, y2 = 1
-Output: true
+Input: numCourses = 3, prerequisites = [[1,2],[1,0],[2,0]], queries = [[1,0],[1,2]]
+Output: [true,true]
   Constraints:
-1 <= radius <= 2000
--104 <= xCenter, yCenter <= 104
--104 <= x1 < x2 <= 104
--104 <= y1 < y2 <= 104
+2 <= numCourses <= 100
+0 <= prerequisites.length <= (numCourses * (numCourses - 1) / 2)
+prerequisites[i].length == 2
+0 <= ai, bi <= n - 1
+ai != bi
+All the pairs [ai, bi] are unique.
+The prerequisites graph has no cycles.
+1 <= queries.length <= 104
+0 <= ui, vi <= n - 1
+ui != vi

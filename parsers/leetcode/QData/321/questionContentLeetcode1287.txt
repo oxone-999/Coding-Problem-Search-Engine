@@ -1,23 +1,28 @@
-1287	1712. Ways to Split Array Into Three Subarrays
-A split of an integer array is good if:
-The array is split into three non-empty contiguous subarrays - named left, mid, right respectively from left to right.
-The sum of the elements in left is less than or equal to the sum of the elements in mid, and the sum of the elements in mid is less than or equal to the sum of the elements in right.
-Given nums, an array of non-negative integers, return the number of good ways to split nums. As the number may be too large, return it modulo 109 + 7.
+1287	1706. Where Will the Ball Fall
+You have a 2-D grid of size m x n representing a box, and you have n balls. The box is open on the top and bottom sides.
+Each cell in the box has a diagonal board spanning two corners of the cell that can redirect a ball to the right or to the left.
+A board that redirects the ball to the right spans the top-left corner to the bottom-right corner and is represented in the grid as 1.
+A board that redirects the ball to the left spans the top-right corner to the bottom-left corner and is represented in the grid as -1.
+We drop one ball at the top of each column of the box. Each ball can get stuck in the box or fall out of the bottom. A ball gets stuck if it hits a "V" shaped pattern between two boards or if a board redirects the ball into either wall of the box.
+Return an array answer of size n where answer[i] is the column that the ball falls out of at the bottom after dropping the ball from the ith column at the top, or -1 if the ball gets stuck in the box.
   Example 1:
-Input: nums = [1,1,1]
-Output: 1
-Explanation: The only good way to split nums is [1] [1] [1].
+Input: grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]
+Output: [1,-1,-1,-1,-1]
+Explanation: This example is shown in the photo.
+Ball b0 is dropped at column 0 and falls out of the box at column 1.
+Ball b1 is dropped at column 1 and will get stuck in the box between column 2 and 3 and row 1.
+Ball b2 is dropped at column 2 and will get stuck on the box between column 2 and 3 and row 0.
+Ball b3 is dropped at column 3 and will get stuck on the box between column 2 and 3 and row 0.
+Ball b4 is dropped at column 4 and will get stuck on the box between column 2 and 3 and row 1.
 Example 2:
-Input: nums = [1,2,2,2,5,0]
-Output: 3
-Explanation: There are three good ways of splitting nums:
-[1] [2] [2,2,5,0]
-[1] [2,2] [2,5,0]
-[1,2] [2,2] [5,0]
+Input: grid = [[-1]]
+Output: [-1]
+Explanation: The ball gets stuck against the left wall.
 Example 3:
-Input: nums = [3,2,1]
-Output: 0
-Explanation: There is no good way to split nums.
+Input: grid = [[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1],[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1]]
+Output: [0,1,2,3,4,-1]
   Constraints:
-3 <= nums.length <= 105
-0 <= nums[i] <= 104
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 100
+grid[i][j] is 1 or -1.

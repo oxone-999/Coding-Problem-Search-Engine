@@ -1,21 +1,29 @@
-1837	2466. Count Ways To Build Good Strings
-Given the integers zero, one, low, and high, we can construct a string by starting with an empty string, and then at each step perform either of the following:
-Append the character '0' zero times.
-Append the character '1' one times.
-This can be performed any number of times.
-A good string is a string constructed by the above process having a length between low and high (inclusive).
-Return the number of different good strings that can be constructed satisfying these properties. Since the answer can be large, return it modulo 109 + 7.
+1837	2493. Divide Nodes Into the Maximum Number of Groups
+You are given a positive integer n representing the number of nodes in an undirected graph. The nodes are labeled from 1 to n.
+You are also given a 2D integer array edges, where edges[i] = [ai, bi] indicates that there is a bidirectional edge between nodes ai and bi. Notice that the given graph may be disconnected.
+Divide the nodes of the graph into m groups (1-indexed) such that:
+Each node in the graph belongs to exactly one group.
+For every pair of nodes in the graph that are connected by an edge [ai, bi], if ai belongs to the group with index x, and bi belongs to the group with index y, then |y - x| = 1.
+Return the maximum number of groups (i.e., maximum m) into which you can divide the nodes. Return -1 if it is impossible to group the nodes with the given conditions.
   Example 1:
-Input: low = 3, high = 3, zero = 1, one = 1
-Output: 8
-Explanation: 
-One possible valid good string is "011". 
-It can be constructed as follows: "" -> "0" -> "01" -> "011". 
-All binary strings from "000" to "111" are good strings in this example.
+Input: n = 6, edges = [[1,2],[1,4],[1,5],[2,6],[2,3],[4,6]]
+Output: 4
+Explanation: As shown in the image we:
+- Add node 5 to the first group.
+- Add node 1 to the second group.
+- Add nodes 2 and 4 to the third group.
+- Add nodes 3 and 6 to the fourth group.
+We can see that every edge is satisfied.
+It can be shown that that if we create a fifth group and move any node from the third or fourth group to it, at least on of the edges will not be satisfied.
 Example 2:
-Input: low = 2, high = 3, zero = 1, one = 2
-Output: 5
-Explanation: The good strings are "00", "11", "000", "110", and "011".
+Input: n = 3, edges = [[1,2],[2,3],[3,1]]
+Output: -1
+Explanation: If we add node 1 to the first group, node 2 to the second group, and node 3 to the third group to satisfy the first two edges, we can see that the third edge will not be satisfied.
+It can be shown that no grouping is possible.
   Constraints:
-1 <= low <= high <= 105
-1 <= zero, one <= low
+1 <= n <= 500
+1 <= edges.length <= 104
+edges[i].length == 2
+1 <= ai, bi <= n
+ai != bi
+There is at most one edge between any pair of vertices.

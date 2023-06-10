@@ -1,27 +1,43 @@
-1420	1923. Longest Common Subpath
-There is a country of n cities numbered from 0 to n - 1. In this country, there is a road connecting every pair of cities.
-There are m friends numbered from 0 to m - 1 who are traveling through the country. Each one of them will take a path consisting of some cities. Each path is represented by an integer array that contains the visited cities in order. The path may contain a city more than once, but the same city will not be listed consecutively.
-Given an integer n and a 2D integer array paths where paths[i] is an integer array representing the path of the ith friend, return the length of the longest common subpath that is shared by every friend's path, or 0 if there is no common subpath at all.
-A subpath of a path is a contiguous sequence of cities within that path.
+1420	1974. Minimum Time to Type Word Using Special Typewriter
+There is a special typewriter with lowercase English letters 'a' to 'z' arranged in a circle with a pointer. A character can only be typed if the pointer is pointing to that character. The pointer is initially pointing to the character 'a'.
+Each second, you may perform one of the following operations:
+Move the pointer one character counterclockwise or clockwise.
+Type the character the pointer is currently on.
+Given a string word, return the minimum number of seconds to type out the characters in word.
   Example 1:
-Input: n = 5, paths = [[0,1,2,3,4],
-                       [2,3,4],
-                       [4,0,1,2,3]]
-Output: 2
-Explanation: The longest common subpath is [2,3].
+Input: word = "abc"
+Output: 5
+Explanation: 
+The characters are printed as follows:
+- Type the character 'a' in 1 second since the pointer is initially on 'a'.
+- Move the pointer clockwise to 'b' in 1 second.
+- Type the character 'b' in 1 second.
+- Move the pointer clockwise to 'c' in 1 second.
+- Type the character 'c' in 1 second.
 Example 2:
-Input: n = 3, paths = [[0],[1],[2]]
-Output: 0
-Explanation: There is no common subpath shared by the three paths.
+Input: word = "bza"
+Output: 7
+Explanation:
+The characters are printed as follows:
+- Move the pointer clockwise to 'b' in 1 second.
+- Type the character 'b' in 1 second.
+- Move the pointer counterclockwise to 'z' in 2 seconds.
+- Type the character 'z' in 1 second.
+- Move the pointer clockwise to 'a' in 1 second.
+- Type the character 'a' in 1 second.
 Example 3:
-Input: n = 5, paths = [[0,1,2,3,4],
-                       [4,3,2,1,0]]
-Output: 1
-Explanation: The possible longest common subpaths are [0], [1], [2], [3], and [4]. All have a length of 1.
+Input: word = "zjpc"
+Output: 34
+Explanation:
+The characters are printed as follows:
+- Move the pointer counterclockwise to 'z' in 1 second.
+- Type the character 'z' in 1 second.
+- Move the pointer clockwise to 'j' in 10 seconds.
+- Type the character 'j' in 1 second.
+- Move the pointer clockwise to 'p' in 6 seconds.
+- Type the character 'p' in 1 second.
+- Move the pointer counterclockwise to 'c' in 13 seconds.
+- Type the character 'c' in 1 second.
   Constraints:
-1 <= n <= 105
-m == paths.length
-2 <= m <= 105
-sum(paths[i].length) <= 105
-0 <= paths[i][j] < n
-The same city is not listed multiple times consecutively in paths[i].
+1 <= word.length <= 100
+word consists of lowercase English letters.

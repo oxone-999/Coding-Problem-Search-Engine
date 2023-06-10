@@ -1,40 +1,21 @@
-1215	1625. Lexicographically Smallest String After Applying Operations
-You are given a string s of even length consisting of digits from 0 to 9, and two integers a and b.
-You can apply either of the following two operations any number of times and in any order on s:
-Add a to all odd indices of s (0-indexed). Digits post 9 are cycled back to 0. For example, if s = "3456" and a = 5, s becomes "3951".
-Rotate s to the right by b positions. For example, if s = "3456" and b = 1, s becomes "6345".
-Return the lexicographically smallest string you can obtain by applying the above operations any number of times on s.
-A string a is lexicographically smaller than a string b (of the same length) if in the first position where a and b differ, string a has a letter that appears earlier in the alphabet than the corresponding letter in b. For example, "0158" is lexicographically smaller than "0190" because the first position they differ is at the third letter, and '5' comes before '9'.
+1215	1647. Minimum Deletions to Make Character Frequencies Unique
+A string s is called good if there are no two different characters in s that have the same frequency.
+Given a string s, return the minimum number of characters you need to delete to make s good.
+The frequency of a character in a string is the number of times it appears in the string. For example, in the string "aab", the frequency of 'a' is 2, while the frequency of 'b' is 1.
   Example 1:
-Input: s = "5525", a = 9, b = 2
-Output: "2050"
-Explanation: We can apply the following operations:
-Start:  "5525"
-Rotate: "2555"
-Add:    "2454"
-Add:    "2353"
-Rotate: "5323"
-Add:    "5222"
-Add:    "5121"
-Rotate: "2151"
-Add:    "2050"
-There is no way to obtain a string that is lexicographically smaller then "2050".
+Input: s = "aab"
+Output: 0
+Explanation: s is already good.
 Example 2:
-Input: s = "74", a = 5, b = 1
-Output: "24"
-Explanation: We can apply the following operations:
-Start:  "74"
-Rotate: "47"
-Add:    "42"
-Rotate: "24"
-There is no way to obtain a string that is lexicographically smaller then "24".
+Input: s = "aaabbbcc"
+Output: 2
+Explanation: You can delete two 'b's resulting in the good string "aaabcc".
+Another way it to delete one 'b' and one 'c' resulting in the good string "aaabbc".
 Example 3:
-Input: s = "0011", a = 4, b = 2
-Output: "0011"
-Explanation: There are no sequence of operations that will give us a lexicographically smaller string than "0011".
+Input: s = "ceabaacb"
+Output: 2
+Explanation: You can delete both 'c's resulting in the good string "eabaab".
+Note that we only care about characters that are still in the string at the end (i.e. frequency of 0 is ignored).
   Constraints:
-2 <= s.length <= 100
-s.length is even.
-s consists of digits from 0 to 9 only.
-1 <= a <= 9
-1 <= b <= s.length - 1
+1 <= s.length <= 105
+s contains only lowercase English letters.

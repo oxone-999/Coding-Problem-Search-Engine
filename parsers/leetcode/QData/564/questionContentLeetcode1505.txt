@@ -1,31 +1,28 @@
-1505	2101. Detonate the Maximum Bombs
-You are given a list of bombs. The range of a bomb is defined as the area where its effect can be felt. This area is in the shape of a circle with the center as the location of the bomb.
-The bombs are represented by a 0-indexed 2D integer array bombs where bombs[i] = [xi, yi, ri]. xi and yi denote the X-coordinate and Y-coordinate of the location of the ith bomb, whereas ri denotes the radius of its range.
-You may choose to detonate a single bomb. When a bomb is detonated, it will detonate all bombs that lie in its range. These bombs will further detonate the bombs that lie in their ranges.
-Given the list of bombs, return the maximum number of bombs that can be detonated if you are allowed to detonate only one bomb.
+1505	2049. Count Nodes With the Highest Score
+There is a binary tree rooted at 0 consisting of n nodes. The nodes are labeled from 0 to n - 1. You are given a 0-indexed integer array parents representing the tree, where parents[i] is the parent of node i. Since node 0 is the root, parents[0] == -1.
+Each node has a score. To find the score of a node, consider if the node and the edges connected to it were removed. The tree would become one or more non-empty subtrees. The size of a subtree is the number of the nodes in it. The score of the node is the product of the sizes of all those subtrees.
+Return the number of nodes that have the highest score.
   Example 1:
-Input: bombs = [[2,1,3],[6,1,4]]
+Input: parents = [-1,2,0,2,0]
+Output: 3
+Explanation:
+- The score of node 0 is: 3 * 1 = 3
+- The score of node 1 is: 4 = 4
+- The score of node 2 is: 1 * 1 * 2 = 2
+- The score of node 3 is: 4 = 4
+- The score of node 4 is: 4 = 4
+The highest score is 4, and three nodes (node 1, node 3, and node 4) have the highest score.
+Example 2:
+Input: parents = [-1,2,0]
 Output: 2
 Explanation:
-The above figure shows the positions and ranges of the 2 bombs.
-If we detonate the left bomb, the right bomb will not be affected.
-But if we detonate the right bomb, both bombs will be detonated.
-So the maximum bombs that can be detonated is max(1, 2) = 2.
-Example 2:
-Input: bombs = [[1,1,5],[10,10,5]]
-Output: 1
-Explanation:
-Detonating either bomb will not detonate the other bomb, so the maximum number of bombs that can be detonated is 1.
-Example 3:
-Input: bombs = [[1,2,3],[2,3,1],[3,4,2],[4,5,3],[5,6,4]]
-Output: 5
-Explanation:
-The best bomb to detonate is bomb 0 because:
-- Bomb 0 detonates bombs 1 and 2. The red circle denotes the range of bomb 0.
-- Bomb 2 detonates bomb 3. The blue circle denotes the range of bomb 2.
-- Bomb 3 detonates bomb 4. The green circle denotes the range of bomb 3.
-Thus all 5 bombs are detonated.
+- The score of node 0 is: 2 = 2
+- The score of node 1 is: 2 = 2
+- The score of node 2 is: 1 * 1 = 1
+The highest score is 2, and two nodes (node 0 and node 1) have the highest score.
   Constraints:
-1 <= bombs.length <= 100
-bombs[i].length == 3
-1 <= xi, yi, ri <= 105
+n == parents.length
+2 <= n <= 105
+parents[0] == -1
+0 <= parents[i] <= n - 1 for i != 0
+parents represents a valid binary tree.

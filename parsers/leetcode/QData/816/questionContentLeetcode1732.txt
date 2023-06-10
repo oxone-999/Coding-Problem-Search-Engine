@@ -1,20 +1,38 @@
-1732	2370. Longest Ideal Subsequence
-You are given a string s consisting of lowercase letters and an integer k. We call a string t ideal if the following conditions are satisfied:
-t is a subsequence of the string s.
-The absolute difference in the alphabet order of every two adjacent letters in t is less than or equal to k.
-Return the length of the longest ideal string.
-A subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.
-Note that the alphabet order is not cyclic. For example, the absolute difference in the alphabet order of 'a' and 'z' is 25, not 1.
+1732	2365. Task Scheduler II
+You are given a 0-indexed array of positive integers tasks, representing tasks that need to be completed in order, where tasks[i] represents the type of the ith task.
+You are also given a positive integer space, which represents the minimum number of days that must pass after the completion of a task before another task of the same type can be performed.
+Each day, until all tasks have been completed, you must either:
+Complete the next task from tasks, or
+Take a break.
+Return the minimum number of days needed to complete all tasks.
   Example 1:
-Input: s = "acfgbd", k = 2
-Output: 4
-Explanation: The longest ideal string is "acbd". The length of this string is 4, so 4 is returned.
-Note that "acfgbd" is not ideal because 'c' and 'f' have a difference of 3 in alphabet order.
+Input: tasks = [1,2,1,2,3,1], space = 3
+Output: 9
+Explanation:
+One way to complete all tasks in 9 days is as follows:
+Day 1: Complete the 0th task.
+Day 2: Complete the 1st task.
+Day 3: Take a break.
+Day 4: Take a break.
+Day 5: Complete the 2nd task.
+Day 6: Complete the 3rd task.
+Day 7: Take a break.
+Day 8: Complete the 4th task.
+Day 9: Complete the 5th task.
+It can be shown that the tasks cannot be completed in less than 9 days.
 Example 2:
-Input: s = "abcd", k = 3
-Output: 4
-Explanation: The longest ideal string is "abcd". The length of this string is 4, so 4 is returned.
+Input: tasks = [5,8,8,5], space = 2
+Output: 6
+Explanation:
+One way to complete all tasks in 6 days is as follows:
+Day 1: Complete the 0th task.
+Day 2: Complete the 1st task.
+Day 3: Take a break.
+Day 4: Take a break.
+Day 5: Complete the 2nd task.
+Day 6: Complete the 3rd task.
+It can be shown that the tasks cannot be completed in less than 6 days.
   Constraints:
-1 <= s.length <= 105
-0 <= k <= 25
-s consists of lowercase English letters.
+1 <= tasks.length <= 105
+1 <= tasks[i] <= 109
+1 <= space <= tasks.length

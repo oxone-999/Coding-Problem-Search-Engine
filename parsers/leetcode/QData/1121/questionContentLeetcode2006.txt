@@ -1,24 +1,21 @@
-2006	2698. Find the Punishment Number of an Integer
-Given a positive integer n, return the punishment number of n.
-The punishment number of n is defined as the sum of the squares of all integers i such that:
-1 <= i <= n
-The decimal representation of i * i can be partitioned into contiguous substrings such that the sum of the integer values of these substrings equals i.
+2006	2661. First Completely Painted Row or Column
+You are given a 0-indexed integer array arr, and an m x n integer matrix mat. arr and mat both contain all the integers in the range [1, m * n].
+Go through each index i in arr starting from index 0 and paint the cell in mat containing the integer arr[i].
+Return the smallest index i at which either a row or a column will be completely painted in mat.
   Example 1:
-Input: n = 10
-Output: 182
-Explanation: There are exactly 3 integers i that satisfy the conditions in the statement:
-- 1 since 1 * 1 = 1
-- 9 since 9 * 9 = 81 and 81 can be partitioned into 8 + 1.
-- 10 since 10 * 10 = 100 and 100 can be partitioned into 10 + 0.
-Hence, the punishment number of 10 is 1 + 81 + 100 = 182
+Input: arr = [1,3,4,2], mat = [[1,4],[2,3]]
+Output: 2
+Explanation: The moves are shown in order, and both the first row and second column of the matrix become fully painted at arr[2].
 Example 2:
-Input: n = 37
-Output: 1478
-Explanation: There are exactly 4 integers i that satisfy the conditions in the statement:
-- 1 since 1 * 1 = 1. 
-- 9 since 9 * 9 = 81 and 81 can be partitioned into 8 + 1. 
-- 10 since 10 * 10 = 100 and 100 can be partitioned into 10 + 0. 
-- 36 since 36 * 36 = 1296 and 1296 can be partitioned into 1 + 29 + 6.
-Hence, the punishment number of 37 is 1 + 81 + 100 + 1296 = 1478
+Input: arr = [2,8,7,4,1,3,5,6,9], mat = [[3,2,5],[1,4,6],[8,7,9]]
+Output: 3
+Explanation: The second column becomes fully painted at arr[3].
   Constraints:
-1 <= n <= 1000
+m == mat.length
+n = mat[i].length
+arr.length == m * n
+1 <= m, n <= 105
+1 <= m * n <= 105
+1 <= arr[i], mat[r][c] <= m * n
+All the integers of arr are unique.
+All the integers of mat are unique.

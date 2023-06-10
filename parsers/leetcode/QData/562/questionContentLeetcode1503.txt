@@ -1,29 +1,43 @@
-1503	2048. Next Greater Numerically Balanced Number
-An integer x is numerically balanced if for every digit d in the number x, there are exactly d occurrences of that digit in x.
-Given an integer n, return the smallest numerically balanced number strictly greater than n.
+1503	2038. Remove Colored Pieces if Both Neighbors are the Same Color
+There are n pieces arranged in a line, and each piece is colored either by 'A' or by 'B'. You are given a string colors of length n where colors[i] is the color of the ith piece.
+Alice and Bob are playing a game where they take alternating turns removing pieces from the line. In this game, Alice moves first.
+Alice is only allowed to remove a piece colored 'A' if both its neighbors are also colored 'A'. She is not allowed to remove pieces that are colored 'B'.
+Bob is only allowed to remove a piece colored 'B' if both its neighbors are also colored 'B'. He is not allowed to remove pieces that are colored 'A'.
+Alice and Bob cannot remove pieces from the edge of the line.
+If a player cannot make a move on their turn, that player loses and the other player wins.
+Assuming Alice and Bob play optimally, return true if Alice wins, or return false if Bob wins.
   Example 1:
-Input: n = 1
-Output: 22
-Explanation: 
-22 is numerically balanced since:
-- The digit 2 occurs 2 times. 
-It is also the smallest numerically balanced number strictly greater than 1.
+Input: colors = "AAABABB"
+Output: true
+Explanation:
+AAABABB -> AABABB
+Alice moves first.
+She removes the second 'A' from the left since that is the only 'A' whose neighbors are both 'A'.
+
+Now it's Bob's turn.
+Bob cannot make a move on his turn since there are no 'B's whose neighbors are both 'B'.
+Thus, Alice wins, so return true.
 Example 2:
-Input: n = 1000
-Output: 1333
-Explanation: 
-1333 is numerically balanced since:
-- The digit 1 occurs 1 time.
-- The digit 3 occurs 3 times. 
-It is also the smallest numerically balanced number strictly greater than 1000.
-Note that 1022 cannot be the answer because 0 appeared more than 0 times.
+Input: colors = "AA"
+Output: false
+Explanation:
+Alice has her turn first.
+There are only two 'A's and both are on the edge of the line, so she cannot move on her turn.
+Thus, Bob wins, so return false.
 Example 3:
-Input: n = 3000
-Output: 3133
-Explanation: 
-3133 is numerically balanced since:
-- The digit 1 occurs 1 time.
-- The digit 3 occurs 3 times.
-It is also the smallest numerically balanced number strictly greater than 3000.
+Input: colors = "ABBBBBBBAAA"
+Output: false
+Explanation:
+ABBBBBBBAAA -> ABBBBBBBAA
+Alice moves first.
+Her only option is to remove the second to last 'A' from the right.
+
+ABBBBBBBAA -> ABBBBBBAA
+Next is Bob's turn.
+He has many options for which 'B' piece to remove. He can pick any.
+
+On Alice's second turn, she has no more pieces that she can remove.
+Thus, Bob wins, so return false.
   Constraints:
-0 <= n <= 106
+1 <= colors.length <= 105
+colors consists of only the letters 'A' and 'B'

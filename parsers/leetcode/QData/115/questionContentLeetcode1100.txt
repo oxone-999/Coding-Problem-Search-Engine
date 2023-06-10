@@ -1,24 +1,24 @@
-1100	1514. Path with Maximum Probability
-You are given an undirected weighted graph of n nodes (0-indexed), represented by an edge list where edges[i] = [a, b] is an undirected edge connecting the nodes a and b with a probability of success of traversing that edge succProb[i].
-Given two nodes start and end, find the path with the maximum probability of success to go from start to end and return its success probability.
-If there is no path from start to end, return 0. Your answer will be accepted if it differs from the correct answer by at most 1e-5.
+1100	1526. Minimum Number of Increments on Subarrays to Form a Target Array
+You are given an integer array target. You have an integer array initial of the same size as target with all elements initially zeros.
+In one operation you can choose any subarray from initial and increment each value by one.
+Return the minimum number of operations to form a target array from initial.
+The test cases are generated so that the answer fits in a 32-bit integer.
   Example 1:
-Input: n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.2], start = 0, end = 2
-Output: 0.25000
-Explanation: There are two paths from start to end, one having a probability of success = 0.2 and the other has 0.5 * 0.5 = 0.25.
+Input: target = [1,2,3,2,1]
+Output: 3
+Explanation: We need at least 3 operations to form the target array from the initial array.
+[0,0,0,0,0] increment 1 from index 0 to 4 (inclusive).
+[1,1,1,1,1] increment 1 from index 1 to 3 (inclusive).
+[1,2,2,2,1] increment 1 at index 2.
+[1,2,3,2,1] target array is formed.
 Example 2:
-Input: n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.3], start = 0, end = 2
-Output: 0.30000
+Input: target = [3,1,1,2]
+Output: 4
+Explanation: [0,0,0,0] -> [1,1,1,1] -> [1,1,1,2] -> [2,1,1,2] -> [3,1,1,2]
 Example 3:
-Input: n = 3, edges = [[0,1]], succProb = [0.5], start = 0, end = 2
-Output: 0.00000
-Explanation: There is no path between 0 and 2.
+Input: target = [3,1,5,4,2]
+Output: 7
+Explanation: [0,0,0,0,0] -> [1,1,1,1,1] -> [2,1,1,1,1] -> [3,1,1,1,1] -> [3,1,2,2,2] -> [3,1,3,3,2] -> [3,1,4,4,2] -> [3,1,5,4,2].
   Constraints:
-2 <= n <= 10^4
-0 <= start, end < n
-start != end
-0 <= a, b < n
-a != b
-0 <= succProb.length == edges.length <= 2*10^4
-0 <= succProb[i] <= 1
-There is at most one edge between every two nodes.
+1 <= target.length <= 105
+1 <= target[i] <= 105

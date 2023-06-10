@@ -19,6 +19,10 @@ def writeToFile2(heading,body,index,pageUrl):
     file.write(pageUrl)
     file.close()
     
+    file = open(f'questionHeadings/questionsName_{index}.txt','w',encoding="utf-8")
+    file.write(heading)
+    file.close()
+    
 def openBrowser(url):
     print("    ----------->  Opening Browser")
     Options = webdriver.ChromeOptions()

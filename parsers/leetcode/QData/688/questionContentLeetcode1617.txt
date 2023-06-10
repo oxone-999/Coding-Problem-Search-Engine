@@ -1,21 +1,33 @@
-1617	2265. Count Nodes Equal to Average of Subtree
-Given the root of a binary tree, return the number of nodes where the value of the node is equal to the average of the values in its subtree.
-Note:
-The average of n elements is the sum of the n elements divided by n and rounded down to the nearest integer.
-A subtree of root is a tree consisting of root and all of its descendants.
+1617	2276. Count Integers in Intervals
+Given an empty set of intervals, implement a data structure that can:
+Add an interval to the set of intervals.
+Count the number of integers that are present in at least one interval.
+Implement the CountIntervals class:
+CountIntervals() Initializes the object with an empty set of intervals.
+void add(int left, int right) Adds the interval [left, right] to the set of intervals.
+int count() Returns the number of integers that are present in at least one interval.
+Note that an interval [left, right] denotes all the integers x where left <= x <= right.
   Example 1:
-Input: root = [4,8,5,0,1,null,6]
-Output: 5
-Explanation: 
-For the node with value 4: The average of its subtree is (4 + 8 + 5 + 0 + 1 + 6) / 6 = 24 / 6 = 4.
-For the node with value 5: The average of its subtree is (5 + 6) / 2 = 11 / 2 = 5.
-For the node with value 0: The average of its subtree is 0 / 1 = 0.
-For the node with value 1: The average of its subtree is 1 / 1 = 1.
-For the node with value 6: The average of its subtree is 6 / 1 = 6.
-Example 2:
-Input: root = [1]
-Output: 1
-Explanation: For the node with value 1: The average of its subtree is 1 / 1 = 1.
+Input
+["CountIntervals", "add", "add", "count", "add", "count"]
+[[], [2, 3], [7, 10], [], [5, 8], []]
+Output
+[null, null, null, 6, null, 8]
+
+Explanation
+CountIntervals countIntervals = new CountIntervals(); // initialize the object with an empty set of intervals. 
+countIntervals.add(2, 3);  // add [2, 3] to the set of intervals.
+countIntervals.add(7, 10); // add [7, 10] to the set of intervals.
+countIntervals.count();    // return 6
+                           // the integers 2 and 3 are present in the interval [2, 3].
+                           // the integers 7, 8, 9, and 10 are present in the interval [7, 10].
+countIntervals.add(5, 8);  // add [5, 8] to the set of intervals.
+countIntervals.count();    // return 8
+                           // the integers 2 and 3 are present in the interval [2, 3].
+                           // the integers 5 and 6 are present in the interval [5, 8].
+                           // the integers 7 and 8 are present in the intervals [5, 8] and [7, 10].
+                           // the integers 9 and 10 are present in the interval [7, 10].
   Constraints:
-The number of nodes in the tree is in the range [1, 1000].
-0 <= Node.val <= 1000
+1 <= left <= right <= 109
+At most 105 calls in total will be made to add and count.
+At least one call will be made to count.

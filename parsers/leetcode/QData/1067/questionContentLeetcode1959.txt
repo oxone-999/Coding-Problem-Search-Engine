@@ -1,62 +1,19 @@
-1959	2631. Group By
-Write code that enhances all arrays such that you can call the array.groupBy(fn) method on any array and it will return a grouped version of the array.
-A grouped array is an object where each key is the output of fn(arr[i]) and each value is an array containing all items in the original array with that key.
-The provided callback fn will accept an item in the array and return a string key.
-The order of each value list should be the order the items appear in the array. Any order of keys is acceptable.
-Please solve it without lodash's _.groupBy function.
+1959	2614. Prime In Diagonal
+You are given a 0-indexed two-dimensional integer array nums.
+Return the largest prime number that lies on at least one of the diagonals of nums. In case, no prime is present on any of the diagonals, return 0.
+Note that:
+An integer is prime if it is greater than 1 and has no positive integer divisors other than 1 and itself.
+An integer val is on one of the diagonals of nums if there exists an integer i for which nums[i][i] = val or an i for which nums[i][nums.length - i - 1] = val.
+In the above diagram, one diagonal is [1,5,9] and another diagonal is [3,5,7].
   Example 1:
-Input: 
-array = [
-  {"id":"1"},
-  {"id":"1"},
-  {"id":"2"}
-], 
-fn = function (item) { 
-  return item.id; 
-}
-Output: 
-{ 
-  "1": [{"id": "1"}, {"id": "1"}],   
-  "2": [{"id": "2"}] 
-}
-Explanation:
-Output is from array.groupBy(fn).
-The selector function gets the "id" out of each item in the array.
-There are two objects with an "id" of 1. Both of those objects are put in the first array.
-There is one object with an "id" of 2. That object is put in the second array.
+Input: nums = [[1,2,3],[5,6,7],[9,10,11]]
+Output: 11
+Explanation: The numbers 1, 3, 6, 9, and 11 are the only numbers present on at least one of the diagonals. Since 11 is the largest prime, we return 11.
 Example 2:
-Input: 
-array = [
-  [1, 2, 3],
-  [1, 3, 5],
-  [1, 5, 9]
-]
-fn = function (list) { 
-  return String(list[0]); 
-}
-Output: 
-{ 
-  "1": [[1, 2, 3], [1, 3, 5], [1, 5, 9]] 
-}
-Explanation:
-The array can be of any type. In this case, the selector function defines the key as being the first element in the array. 
-All the arrays have 1 as their first element so they are grouped together.
-{
-  "1": [[1, 2, 3], [1, 3, 5], [1, 5, 9]]
-}
-Example 3:
-Input: 
-array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-fn = function (n) { 
-  return String(n > 5);
-}
-Output:
-{
-  "true": [6, 7, 8, 9, 10],
-  "false": [1, 2, 3, 4, 5]
-}
-Explanation:
-The selector function splits the array by whether each number is greater than 5.
+Input: nums = [[1,2,3],[5,17,7],[9,11,10]]
+Output: 17
+Explanation: The numbers 1, 3, 9, 10, and 17 are all present on at least one of the diagonals. 17 is the largest prime, so we return 17.
   Constraints:
-0 <= array.length <= 105
-fn returns a string
+1 <= nums.length <= 300
+nums.length == numsi.length
+1 <= nums[i][j] <= 4*106

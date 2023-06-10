@@ -1,26 +1,25 @@
-1687	2310. Sum of Numbers With Units Digit K
-Given two integers num and k, consider a set of positive integers with the following properties:
-The units digit of each integer is k.
-The sum of the integers is num.
-Return the minimum possible size of such a set, or -1 if no such set exists.
-Note:
-The set can contain multiple instances of the same integer, and the sum of an empty set is considered 0.
-The units digit of a number is the rightmost digit of the number.
+1687	2327. Number of People Aware of a Secret
+On day 1, one person discovers a secret.
+You are given an integer delay, which means that each person will share the secret with a new person every day, starting from delay days after discovering the secret. You are also given an integer forget, which means that each person will forget the secret forget days after discovering it. A person cannot share the secret on the same day they forgot it, or on any day afterwards.
+Given an integer n, return the number of people who know the secret at the end of day n. Since the answer may be very large, return it modulo 109 + 7.
   Example 1:
-Input: num = 58, k = 9
-Output: 2
+Input: n = 6, delay = 2, forget = 4
+Output: 5
 Explanation:
-One valid set is [9,49], as the sum is 58 and each integer has a units digit of 9.
-Another valid set is [19,39].
-It can be shown that 2 is the minimum possible size of a valid set.
+Day 1: Suppose the first person is named A. (1 person)
+Day 2: A is the only person who knows the secret. (1 person)
+Day 3: A shares the secret with a new person, B. (2 people)
+Day 4: A shares the secret with a new person, C. (3 people)
+Day 5: A forgets the secret, and B shares the secret with a new person, D. (3 people)
+Day 6: B shares the secret with E, and C shares the secret with F. (5 people)
 Example 2:
-Input: num = 37, k = 2
-Output: -1
-Explanation: It is not possible to obtain a sum of 37 using only integers that have a units digit of 2.
-Example 3:
-Input: num = 0, k = 7
-Output: 0
-Explanation: The sum of an empty set is considered 0.
+Input: n = 4, delay = 1, forget = 3
+Output: 6
+Explanation:
+Day 1: The first person is named A. (1 person)
+Day 2: A shares the secret with B. (2 people)
+Day 3: A and B share the secret with 2 new people, C and D. (4 people)
+Day 4: A forgets the secret. B, C, and D share the secret with 3 new people. (6 people)
   Constraints:
-0 <= num <= 3000
-0 <= k <= 9
+2 <= n <= 1000
+1 <= delay < forget <= n

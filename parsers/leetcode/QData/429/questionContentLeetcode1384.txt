@@ -1,17 +1,19 @@
-1384	1922. Count Good Numbers
-A digit string is good if the digits (0-indexed) at even indices are even and the digits at odd indices are prime (2, 3, 5, or 7).
-For example, "2582" is good because the digits (2 and 8) at even positions are even and the digits (5 and 2) at odd positions are prime. However, "3245" is not good because 3 is at an even index but is not even.
-Given an integer n, return the total number of good digit strings of length n. Since the answer may be large, return it modulo 109 + 7.
-A digit string is a string consisting of digits 0 through 9 that may contain leading zeros.
+1384	1905. Count Sub Islands
+You are given two m x n binary matrices grid1 and grid2 containing only 0's (representing water) and 1's (representing land). An island is a group of 1's connected 4-directionally (horizontal or vertical). Any cells outside of the grid are considered water cells.
+An island in grid2 is considered a sub-island if there is an island in grid1 that contains all the cells that make up this island in grid2.
+Return the number of islands in grid2 that are considered sub-islands.
   Example 1:
-Input: n = 1
-Output: 5
-Explanation: The good numbers of length 1 are "0", "2", "4", "6", "8".
+Input: grid1 = [[1,1,1,0,0],[0,1,1,1,1],[0,0,0,0,0],[1,0,0,0,0],[1,1,0,1,1]], grid2 = [[1,1,1,0,0],[0,0,1,1,1],[0,1,0,0,0],[1,0,1,1,0],[0,1,0,1,0]]
+Output: 3
+Explanation: In the picture above, the grid on the left is grid1 and the grid on the right is grid2.
+The 1s colored red in grid2 are those considered to be part of a sub-island. There are three sub-islands.
 Example 2:
-Input: n = 4
-Output: 400
-Example 3:
-Input: n = 50
-Output: 564908303
+Input: grid1 = [[1,0,1,0,1],[1,1,1,1,1],[0,0,0,0,0],[1,1,1,1,1],[1,0,1,0,1]], grid2 = [[0,0,0,0,0],[1,1,1,1,1],[0,1,0,1,0],[0,1,0,1,0],[1,0,0,0,1]]
+Output: 2 
+Explanation: In the picture above, the grid on the left is grid1 and the grid on the right is grid2.
+The 1s colored red in grid2 are those considered to be part of a sub-island. There are two sub-islands.
   Constraints:
-1 <= n <= 1015
+m == grid1.length == grid2.length
+n == grid1[i].length == grid2[i].length
+1 <= m, n <= 500
+grid1[i][j] and grid2[i][j] are either 0 or 1.

@@ -1,25 +1,24 @@
-1807	2460. Apply Operations to an Array
-You are given a 0-indexed array nums of size n consisting of non-negative integers.
-You need to apply n - 1 operations to this array where, in the ith operation (0-indexed), you will apply the following on the ith element of nums:
-If nums[i] == nums[i + 1], then multiply nums[i] by 2 and set nums[i + 1] to 0. Otherwise, you skip this operation.
-After performing all the operations, shift all the 0's to the end of the array.
-For example, the array [1,0,2,0,0,1] after shifting all its 0's to the end, is [1,2,1,0,0,0].
-Return the resulting array.
-Note that the operations are applied sequentially, not all at once.
+1807	2468. Split Message Based on Limit
+You are given a string, message, and a positive integer, limit.
+You must split message into one or more parts based on limit. Each resulting part should have the suffix "<a/b>", where "b" is to be replaced with the total number of parts and "a" is to be replaced with the index of the part, starting from 1 and going up to b. Additionally, the length of each resulting part (including its suffix) should be equal to limit, except for the last part whose length can be at most limit.
+The resulting parts should be formed such that when their suffixes are removed and they are all concatenated in order, they should be equal to message. Also, the result should contain as few parts as possible.
+Return the parts message would be split into as an array of strings. If it is impossible to split message as required, return an empty array.
   Example 1:
-Input: nums = [1,2,2,1,1,0]
-Output: [1,4,2,0,0,0]
-Explanation: We do the following operations:
-- i = 0: nums[0] and nums[1] are not equal, so we skip this operation.
-- i = 1: nums[1] and nums[2] are equal, we multiply nums[1] by 2 and change nums[2] to 0. The array becomes [1,4,0,1,1,0].
-- i = 2: nums[2] and nums[3] are not equal, so we skip this operation.
-- i = 3: nums[3] and nums[4] are equal, we multiply nums[3] by 2 and change nums[4] to 0. The array becomes [1,4,0,2,0,0].
-- i = 4: nums[4] and nums[5] are equal, we multiply nums[4] by 2 and change nums[5] to 0. The array becomes [1,4,0,2,0,0].
-After that, we shift the 0's to the end, which gives the array [1,4,2,0,0,0].
+Input: message = "this is really a very awesome message", limit = 9
+Output: ["thi<1/14>","s i<2/14>","s r<3/14>","eal<4/14>","ly <5/14>","a v<6/14>","ery<7/14>"," aw<8/14>","eso<9/14>","me<10/14>"," m<11/14>","es<12/14>","sa<13/14>","ge<14/14>"]
+Explanation:
+The first 9 parts take 3 characters each from the beginning of message.
+The next 5 parts take 2 characters each to finish splitting message. 
+In this example, each part, including the last, has length 9. 
+It can be shown it is not possible to split message into less than 14 parts.
 Example 2:
-Input: nums = [0,1]
-Output: [1,0]
-Explanation: No operation can be applied, we just shift the 0 to the end.
+Input: message = "short message", limit = 15
+Output: ["short mess<1/2>","age<2/2>"]
+Explanation:
+Under the given constraints, the string can be split into two parts: 
+- The first part comprises of the first 10 characters, and has a length 15.
+- The next part comprises of the last 3 characters, and has a length 8.
   Constraints:
-2 <= nums.length <= 2000
-0 <= nums[i] <= 1000
+1 <= message.length <= 104
+message consists only of lowercase English letters and ' '.
+1 <= limit <= 104

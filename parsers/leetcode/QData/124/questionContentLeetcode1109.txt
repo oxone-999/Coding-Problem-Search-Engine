@@ -1,13 +1,36 @@
-1109	1550. Three Consecutive Odds
-Given an integer array arr, return true if there are three consecutive odd numbers in the array. Otherwise, return false.
+1109	1527. Patients With a Condition
+SQL Schema
+Table: Patients
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| patient_id   | int     |
+| patient_name | varchar |
+| conditions   | varchar |
++--------------+---------+
+patient_id is the primary key for this table.
+'conditions' contains 0 or more code separated by spaces. 
+This table contains information of the patients in the hospital.
+  Write an SQL query to report the patient_id, patient_name and conditions of the patients who have Type I Diabetes. Type I Diabetes always starts with DIAB1 prefix.
+Return the result table in any order.
+The query result format is in the following example.
   Example 1:
-Input: arr = [2,6,4,1]
-Output: false
-Explanation: There are no three consecutive odds.
-Example 2:
-Input: arr = [1,2,34,3,4,5,7,23,12]
-Output: true
-Explanation: [5,7,23] are three consecutive odds.
-  Constraints:
-1 <= arr.length <= 1000
-1 <= arr[i] <= 1000
+Input: 
+Patients table:
++------------+--------------+--------------+
+| patient_id | patient_name | conditions   |
++------------+--------------+--------------+
+| 1          | Daniel       | YFEV COUGH   |
+| 2          | Alice        |              |
+| 3          | Bob          | DIAB100 MYOP |
+| 4          | George       | ACNE DIAB100 |
+| 5          | Alain        | DIAB201      |
++------------+--------------+--------------+
+Output: 
++------------+--------------+--------------+
+| patient_id | patient_name | conditions   |
++------------+--------------+--------------+
+| 3          | Bob          | DIAB100 MYOP |
+| 4          | George       | ACNE DIAB100 | 
++------------+--------------+--------------+
+Explanation: Bob and George both have a condition that starts with DIAB1.

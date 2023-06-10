@@ -1,16 +1,26 @@
-1185	1592. Rearrange Spaces Between Words
-You are given a string text of words that are placed among some number of spaces. Each word consists of one or more lowercase English letters and are separated by at least one space. It's guaranteed that text contains at least one word.
-Rearrange the spaces so that there is an equal number of spaces between every pair of adjacent words and that number is maximized. If you cannot redistribute all the spaces equally, place the extra spaces at the end, meaning the returned string should be the same length as text.
-Return the string after rearranging the spaces.
+1185	1616. Split Two Strings to Make Palindrome
+You are given two strings a and b of the same length. Choose an index and split both strings at the same index, splitting a into two strings: aprefix and asuffix where a = aprefix + asuffix, and splitting b into two strings: bprefix and bsuffix where b = bprefix + bsuffix. Check if aprefix + bsuffix or bprefix + asuffix forms a palindrome.
+When you split a string s into sprefix and ssuffix, either ssuffix or sprefix is allowed to be empty. For example, if s = "abc", then "" + "abc", "a" + "bc", "ab" + "c" , and "abc" + "" are valid splits.
+Return true if it is possible to form a palindrome string, otherwise return false.
+Notice that x + y denotes the concatenation of strings x and y.
   Example 1:
-Input: text = "  this   is  a sentence "
-Output: "this   is   a   sentence"
-Explanation: There are a total of 9 spaces and 4 words. We can evenly divide the 9 spaces between the words: 9 / (4-1) = 3 spaces.
+Input: a = "x", b = "y"
+Output: true
+Explaination: If either a or b are palindromes the answer is true since you can split in the following way:
+aprefix = "", asuffix = "x"
+bprefix = "", bsuffix = "y"
+Then, aprefix + bsuffix = "" + "y" = "y", which is a palindrome.
 Example 2:
-Input: text = " practice   makes   perfect"
-Output: "practice   makes   perfect "
-Explanation: There are a total of 7 spaces and 3 words. 7 / (3-1) = 3 spaces plus 1 extra space. We place this extra space at the end of the string.
+Input: a = "xbdef", b = "xecab"
+Output: false
+Example 3:
+Input: a = "ulacfd", b = "jizalu"
+Output: true
+Explaination: Split them at index 3:
+aprefix = "ula", asuffix = "cfd"
+bprefix = "jiz", bsuffix = "alu"
+Then, aprefix + bsuffix = "ula" + "alu" = "ulaalu", which is a palindrome.
   Constraints:
-1 <= text.length <= 100
-text consists of lowercase English letters and ' '.
-text contains at least one word.
+1 <= a.length, b.length <= 105
+a.length == b.length
+a and b consist of lowercase English letters

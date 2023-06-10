@@ -1,33 +1,25 @@
-1208	1639. Number of Ways to Form a Target String Given a Dictionary
-You are given a list of strings of the same length words and a string target.
-Your task is to form target using the given words under the following rules:
-target should be formed from left to right.
-To form the ith character (0-indexed) of target, you can choose the kth character of the jth string in words if target[i] = words[j][k].
-Once you use the kth character of the jth string of words, you can no longer use the xth character of any string in words where x <= k. In other words, all characters to the left of or at index k become unusuable for every string.
-Repeat the process until you form the string target.
-Notice that you can use multiple characters from the same string in words provided the conditions above are met.
-Return the number of ways to form target from words. Since the answer may be too large, return it modulo 109 + 7.
+1208	1376. Time Needed to Inform All Employees
+A company has n employees with a unique ID for each employee from 0 to n - 1. The head of the company is the one with headID.
+Each employee has one direct manager given in the manager array where manager[i] is the direct manager of the i-th employee, manager[headID] = -1. Also, it is guaranteed that the subordination relationships have a tree structure.
+The head of the company wants to inform all the company employees of an urgent piece of news. He will inform his direct subordinates, and they will inform their subordinates, and so on until all employees know about the urgent news.
+The i-th employee needs informTime[i] minutes to inform all of his direct subordinates (i.e., After informTime[i] minutes, all his direct subordinates can start spreading the news).
+Return the number of minutes needed to inform all the employees about the urgent news.
   Example 1:
-Input: words = ["acca","bbbb","caca"], target = "aba"
-Output: 6
-Explanation: There are 6 ways to form target.
-"aba" -> index 0 ("acca"), index 1 ("bbbb"), index 3 ("caca")
-"aba" -> index 0 ("acca"), index 2 ("bbbb"), index 3 ("caca")
-"aba" -> index 0 ("acca"), index 1 ("bbbb"), index 3 ("acca")
-"aba" -> index 0 ("acca"), index 2 ("bbbb"), index 3 ("acca")
-"aba" -> index 1 ("caca"), index 2 ("bbbb"), index 3 ("acca")
-"aba" -> index 1 ("caca"), index 2 ("bbbb"), index 3 ("caca")
+Input: n = 1, headID = 0, manager = [-1], informTime = [0]
+Output: 0
+Explanation: The head of the company is the only employee in the company.
 Example 2:
-Input: words = ["abba","baab"], target = "bab"
-Output: 4
-Explanation: There are 4 ways to form target.
-"bab" -> index 0 ("baab"), index 1 ("baab"), index 2 ("abba")
-"bab" -> index 0 ("baab"), index 1 ("baab"), index 3 ("baab")
-"bab" -> index 0 ("baab"), index 2 ("baab"), index 3 ("baab")
-"bab" -> index 1 ("abba"), index 2 ("baab"), index 3 ("baab")
+Input: n = 6, headID = 2, manager = [2,2,-1,2,2,2], informTime = [0,0,1,0,0,0]
+Output: 1
+Explanation: The head of the company with id = 2 is the direct manager of all the employees in the company and needs 1 minute to inform them all.
+The tree structure of the employees in the company is shown.
   Constraints:
-1 <= words.length <= 1000
-1 <= words[i].length <= 1000
-All strings in words have the same length.
-1 <= target.length <= 1000
-words[i] and target contain only lowercase English letters.
+1 <= n <= 105
+0 <= headID < n
+manager.length == n
+0 <= manager[i] < n
+manager[headID] == -1
+informTime.length == n
+0 <= informTime[i] <= 1000
+informTime[i] == 0 if employee i has no subordinates.
+It is guaranteed that all the employees can be informed.

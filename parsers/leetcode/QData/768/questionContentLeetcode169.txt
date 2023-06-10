@@ -1,28 +1,19 @@
-169	284. Peeking Iterator
-Design an iterator that supports the peek operation on an existing iterator in addition to the hasNext and the next operations.
-Implement the PeekingIterator class:
-PeekingIterator(Iterator<int> nums) Initializes the object with the given integer iterator iterator.
-int next() Returns the next element in the array and moves the pointer to the next element.
-boolean hasNext() Returns true if there are still elements in the array.
-int peek() Returns the next element in the array without moving the pointer.
-Note: Each language may have a different implementation of the constructor and Iterator, but they all support the int next() and boolean hasNext() functions.
+169	282. Expression Add Operators
+Given a string num that contains only digits and an integer target, return all possibilities to insert the binary operators '+', '-', and/or '*' between the digits of num so that the resultant expression evaluates to the target value.
+Note that operands in the returned expressions should not contain leading zeros.
   Example 1:
-Input
-["PeekingIterator", "next", "peek", "next", "next", "hasNext"]
-[[[1, 2, 3]], [], [], [], [], []]
-Output
-[null, 1, 2, 2, 3, false]
-
-Explanation
-PeekingIterator peekingIterator = new PeekingIterator([1, 2, 3]); // [1,2,3]
-peekingIterator.next();    // return 1, the pointer moves to the next element [1,2,3].
-peekingIterator.peek();    // return 2, the pointer does not move [1,2,3].
-peekingIterator.next();    // return 2, the pointer moves to the next element [1,2,3]
-peekingIterator.next();    // return 3, the pointer moves to the next element [1,2,3]
-peekingIterator.hasNext(); // return False
+Input: num = "123", target = 6
+Output: ["1*2*3","1+2+3"]
+Explanation: Both "1*2*3" and "1+2+3" evaluate to 6.
+Example 2:
+Input: num = "232", target = 8
+Output: ["2*3+2","2+3*2"]
+Explanation: Both "2*3+2" and "2+3*2" evaluate to 8.
+Example 3:
+Input: num = "3456237490", target = 9191
+Output: []
+Explanation: There are no expressions that can be created from "3456237490" to evaluate to 9191.
   Constraints:
-1 <= nums.length <= 1000
-1 <= nums[i] <= 1000
-All the calls to next and peek are valid.
-At most 1000 calls will be made to next, hasNext, and peek.
-  Follow up: How would you extend your design to be generic and work with all types, not just integer?
+1 <= num.length <= 10
+num consists of only digits.
+-231 <= target <= 231 - 1
