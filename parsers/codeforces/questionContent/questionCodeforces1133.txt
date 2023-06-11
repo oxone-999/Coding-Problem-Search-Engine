@@ -1,177 +1,95 @@
-E. Cars
-time limit per test2 seconds
-memory limit per test512 megabytes
+A. Sorting Parts
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
+You have an array
+a
+of length
 n
-cars on a coordinate axis
-OX
-. Each car is located at an integer point initially and no two cars are located at the same point. Also, each car is oriented either left or right, and they can move at any constant positive speed in that direction at any moment.
-More formally, we can describe the
-i
--th car with a letter and an integer: its orientation
-or
-i
-i
-and its location
-x
-i
-. If
-or
-i
-i
-=L
-, then
-x
-i
-is decreasing at a constant rate with respect to time. Similarly, if
-or
-i
-i
-=R
-, then
-x
-i
-is increasing at a constant rate with respect to time.
-We call two cars irrelevant if they never end up in the same point regardless of their speed. In other words, they won't share the same coordinate at any moment.
-We call two cars destined if they always end up in the same point regardless of their speed. In other words, they must share the same coordinate at some moment.
-Unfortunately, we lost all information about our cars, but we do remember
-m
-relationships. There are two types of relationships:
+. You can exactly once select an integer
+len
+between
 1
-i
-j
-—
-i
--th car and
-j
--th car are irrelevant.
-2
-i
-j
-—
-i
--th car and
-j
--th car are destined.
-Restore the orientations and the locations of the cars satisfying the relationships, or report that it is impossible. If there are multiple solutions, you can output any.
-Note that if two cars share the same coordinate, they will intersect, but at the same moment they will continue their movement in their directions.
+and
+n−1
+inclusively, and then sort in non-decreasing order the prefix of the array of length
+len
+and the suffix of the array of length
+n−len
+independently.
+For example, if the array is
+a=[3,1,4,5,2]
+, and you choose
+len=2
+, then after that the array will be equal to
+[1,3,2,4,5]
+.
+Could it be that after performing this operation, the array will not be sorted in non-decreasing order?
 Input
-The first line contains two integers,
+There are several test cases in the input data. The first line contains a single integer
+t
+(
+1≤t≤100
+) — the number of test cases. This is followed by the test cases description.
+The first line of each test case contains one integer
 n
-and
-m
-(2≤n≤2⋅
+(
+2≤n≤
 10
-5
-;1≤m≤min(2⋅
-10
-5
+4
+) — the length of the array.
+The second line of the test case contains a sequence of integers
+a
+1
 ,
-n(n−1)
+a
 2
-)
-— the number of cars and the number of restrictions respectively.
-Each of the next
-m
-lines contains three integers,
-type
-,
-i
-, and
-j
-(1≤type≤2;1≤i,j≤n;i≠j)
-.
-If
-type
-=
-1
-,
-i
--th car and
-j
--th car are irrelevant. Otherwise,
-i
--th car and
-j
--th car are destined.
-It is guaranteed that for each pair of cars, there are at most
-1
-relationship between.
-Output
-In the first line, print either "YES" or "NO" (in any case), whether it is possible to restore the orientations and the locations of the cars satisfying the relationships.
-If the answer is "YES", print
+,…,
+a
 n
-lines each containing a symbol and an integer:
-or
-i
-i
-and
-x
-i
-(or
-i
-i
-∈{L,R};−
-10
-9
-≤
-x
+(
+1≤
+a
 i
 ≤
 10
 9
-)
-— representing the information of the
-i
--th car.
-If the orientation is left, then
-or
-i
-i
-=
-L
-. Otherwise
-or
-i
-i
-=
-R
+) — the array elements.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+4
 .
-x
-i
-is the where the
-i
--th car is located. Note that all
-x
-i
-should be distinct.
-We can prove that if there exists a solution, then there must be a solution satisfying the constraints on
-x
-i
-.
-Examples
+Output
+For each test case of input data, output "YES" (without quotes), if the array may be not sorted in non-decreasing order, output "NO" (without quotes) otherwise. You can output each letter in any case (uppercase or lowercase).
+Example
 input
 Copy
-4 4
-1 1 2
-1 2 3
-2 3 4
-2 4 1
+3
+3
+2 2 1
+4
+3 1 2 1
+5
+1 2 2 4 4
 output
 Copy
 YES
-R 0
-L -3
-R 5
-L 6
-input
-Copy
-3 3
-1 1 2
-1 2 3
-1 1 3
-output
-Copy
+YES
 NO
+Note
+In the first test case, it's possible to select
+len=1
+, then after operation, the array will not be sorted in non-decreasing order and will be equal to
+[2,1,2]
+.
+In the second test case, it's possible to select
+len=3
+, then after operation, the array will not be sorted in non-decreasing order and will be equal to
+[1,2,3,1]
+.
+In the third test case, the array will be sorted in non-decreasing order for every possible
+len
+.

@@ -1,168 +1,359 @@
-A. Ian Visits Mary
-time limit per test1 second
-memory limit per test256 megabytes
+F. OH NO1 (-2-3-4)
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Ian and Mary are frogs living on lattice points of the Cartesian coordinate plane, with Ian living on
-(0,0)
-and Mary living on
+You are given an undirected graph with
+n
+vertices and
+3m
+edges. The graph may contain multi-edges, but does not contain self-loops.
+The graph satisfies the following property: the given edges can be divided into
+m
+groups of
+3
+, such that each group is a triangle.
+A triangle is defined as three edges
 (a,b)
-.
-Ian would like to visit Mary by jumping around the Cartesian coordinate plane. Every second, he jumps from his current position
-(
-x
-p
 ,
-y
-p
-)
-to another lattice point
-(
-x
-q
-,
-y
-q
-)
-, such that no lattice point other than
-(
-x
-p
-,
-y
-p
-)
+(b,c)
 and
+(c,a)
+for some three distinct vertices
+a,b,c
 (
+1≤a,b,c≤n
+).
+Initially, each vertex
+v
+has a non-negative integer weight
+a
+v
+. For every edge
+(u,v)
+in the graph, you should perform the following operation exactly once:
+Choose an integer
 x
-q
-,
-y
-q
-)
-lies on the segment between point
-(
+between
+1
+and
+4
+. Then increase both
+a
+u
+and
+a
+v
+by
 x
-p
-,
-y
-p
-)
-and point
-(
-x
-q
-,
-y
-q
-)
 .
-As Ian wants to meet Mary as soon as possible, he wants to jump towards point
-(a,b)
-using at most
-2
-jumps. Unfortunately, Ian is not good at maths. Can you help him?
-A lattice point is defined as a point with both the
+After performing all operations, the following requirement should be satisfied: if
+u
+and
+v
+are connected by an edge, then
+a
+u
+≠
+a
+v
+.
+It can be proven this is always possible under the constraints of the task. Output a way to do so, by outputting the choice of
 x
--coordinate and
-y
--coordinate being integers.
+for each edge. It is easy to see that the order of operations does not matter. If there are multiple valid answers, output any.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤500
-) — the number of test cases. The description of test cases follows.
-The first and only line of each test case contains two integers
-a
-and
-b
-(
-1≤a,b≤
+1≤t≤
 10
-9
-) — the coordinates of the lattice point where Mary lives.
-Output
-For each test case, print an integer
+5
+) — the number of test cases. The description of test cases follows.
+The first line of each test case contains two integers
+n
+and
+m
+(
+3≤n≤
+10
+6
+,
+1≤m≤4⋅
+10
+5
+) — denoting the graph have
+n
+vertices and
+3m
+edges.
+The second line of each test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
 (
-1≤n≤2
-) on the first line, denoting the number of jumps Ian uses in order to meet Mary. Note that you do not need to minimize the number of jumps.
-On the
-i
--th line of the next
-n
-lines, print two integers
 0≤
-x
-i
-,
-y
+a
 i
 ≤
 10
-9
-separated by a space, denoting Ian's location
-(
-x
+6
+) — the initial weights of each vertex.
+Then
+m
+lines follow. The
+i
+-th line contains three integers
+a
 i
 ,
-y
+b
+i
+,
+c
+i
+(
+1≤
+a
+i
+<
+b
+i
+<
+c
+i
+≤n
+) — denotes that three edges
+(
+a
+i
+,
+b
 i
 )
-after the
-i
--th jump.
-x
-n
-=a
 ,
-y
+(
+b
+i
+,
+c
+i
+)
+and
+(
+c
+i
+,
+a
+i
+)
+.
+Note that the graph may contain multi-edges: a pair
+(x,y)
+may appear in multiple triangles.
+It is guaranteed that the sum of
 n
-=b
-must hold.
-Ian's initial location and his locations after each of the
-n
-jumps need not be distinct.
-If there are multiple solutions, output any.
+over all test cases does not exceed
+10
+6
+and the sum of
+m
+over all test cases does not exceed
+4⋅
+10
+5
+.
+Output
+For each test case, output
+m
+lines of
+3
+integers each.
+The
+i
+-th line should contains three integers
+e
+ab
+,
+e
+bc
+,
+e
+ca
+(
+1≤
+e
+ab
+,
+e
+bc
+,
+e
+ca
+≤4
+), denoting the choice of value
+x
+for edges
+(
+a
+i
+,
+b
+i
+)
+,
+(
+b
+i
+,
+c
+i
+)
+and
+(
+c
+i
+,
+a
+i
+)
+respectively.
 Example
 input
 Copy
-8
-3 4
+4
+4 1
+0 0 0 0
+1 2 3
+5 2
+0 0 0 0 0
+1 2 3
+1 4 5
 4 4
-3 6
-2 2
-1 1
-7 3
-2022 2023
-1000000000 1000000000
+3 4 5 6
+1 2 3
+1 2 4
+1 3 4
+2 3 4
+5 4
+0 1000000 412 412 412
+1 2 3
+1 4 5
+2 4 5
+3 4 5
 output
 Copy
-1
-3 4
-2
-3 2
-4 4
-2
-5 3
-3 6
-2
-1 0
-2 2
-1
-1 1
-1
-7 3
-1
-2022 2023
-2
-69420420 469696969
-1000000000 1000000000
+2 1 3
+2 3 3
+4 3 3
+3 1 2
+2 2 3
+2 3 4
+3 1 1
+2 3 4
+1 2 4
+4 4 3
+4 1 1
 Note
-In the first test case:
-(0,0)→(3,4)
-In the second test case:
-(0,0)→(3,2)→(4,4)
-In the third test case:
-(0,0)→(5,3)→(3,6)
+In the first test case, the initial weights are
+[0,0,0,0]
+. We have added values as follows:
+Added
+2
+to vertices
+1
+and
+2
+Added
+1
+to vertices
+2
+and
+3
+Added
+3
+to vertices
+3
+and
+1
+The final weights are
+[5,3,4,0]
+. The output is valid because
+a
+1
+≠
+a
+2
+,
+a
+1
+≠
+a
+3
+,
+a
+2
+≠
+a
+3
+, and that all chosen values are between
+1
+and
+4
+.
+In the second test case, the initial weights are
+[0,0,0,0,0]
+. The weights after the operations are
+[12,5,6,7,6]
+. The output is valid because
+a
+1
+≠
+a
+2
+,
+a
+1
+≠
+a
+3
+,
+a
+2
+≠
+a
+3
+, and that
+a
+1
+≠
+a
+4
+,
+a
+1
+≠
+a
+5
+,
+a
+4
+≠
+a
+5
+, and that all chosen values are between
+1
+and
+4
+.
+In the third test case, the initial weights are
+[3,4,5,6]
+. The weights after the operations are
+[19,16,17,20]
+, and all final weights are distinct, which means no two adjacent vertices have the same weight.

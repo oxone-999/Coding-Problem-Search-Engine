@@ -1,163 +1,157 @@
-G. Antifibonacci Cut
-time limit per test12 seconds
-memory limit per test4 megabytes
+A. Number Replacement
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Note that the memory limit is unusual.
-Let's define the sequence of Fibonacci strings as follows:
-f
-0
-is 0,
-f
-1
-is 1,
-f
-i
-is
-f
-i−1
-+
-f
-i−2
-for
-i>1
-(
-+
-denotes the concatenation of two strings). So, for example,
-f
-2
-is 10,
-f
-3
-is 101,
-f
-4
-is 10110.
-For a given string
-s
-, let's define
-g(s)
-as the number of ways to cut it into several (any number, possibly even just one) strings such that none of these strings are Fibonacci strings. For example, if
-s
-is 10110101,
-g(s)=3
-since there are three ways to cut it:
-101101
-+
-01;
-1011
-+
-0101;
-1011
-+
-01
-+
-01.
-You are given a sequence of strings
-s
+An integer array
+a
 1
 ,
-s
+a
 2
 ,…,
-s
+a
 n
-. Calculate
-g(
-s
-1
-),g(
-s
-1
-+
-s
-2
-),…,g(
-s
-1
-+
-s
-2
-+…+
-s
-n
-)
-. Since these values can be huge, print them modulo
-998244353
+is being transformed into an array of lowercase English letters using the following prodecure:
+While there is at least one number in the array:
+Choose any number
+x
+from the array
+a
+, and any letter of the English alphabet
+y
 .
+Replace all occurrences of number
+x
+with the letter
+y
+.
+For example, if we initially had an array
+a=[2,3,2,4,1]
+, then we could transform it the following way:
+Choose the number
+2
+and the letter c. After that
+a=[c,3,c,4,1]
+.
+Choose the number
+3
+and the letter a. After that
+a=[c,a,c,4,1]
+.
+Choose the number
+4
+and the letter t. After that
+a=[c,a,c,t,1]
+.
+Choose the number
+1
+and the letter a. After that
+a=[c,a,c,t,a]
+.
+After the transformation all letters are united into a string, in our example we get the string "cacta".
+Having the array
+a
+and the string
+s
+determine if the string
+s
+could be got from the array
+a
+after the described transformation?
 Input
-The first line of the input contains one integer
-n
-(
-1≤n≤3⋅
+The first line contains a single integer
+t
+(1≤t≤
 10
 3
-).
-Then,
+) — the number of test cases.
+Then the description of the test cases follows.
+The first line of each test case contains a single integer
 n
-lines follow. The
-i
--th line contains the string
-s
-i
 (
-1≤|
+1≤n≤50
+) — the length of the array
+a
+and the string
 s
-i
-|≤
-10
-3
-), consisting of characters 0 and/or 1.
-Output
-Print
-n
-integers, where the
-i
--th integer is
-g(
-s
-1
-+
-s
-2
-+…+
-s
-i
-)mod998244353
 .
-Examples
-input
-Copy
+The second line of each test case contains exactly
+n
+integers:
+a
 1
-10110101
-output
-Copy
-3
-input
-Copy
-3
-1111
-1
-0
-output
-Copy
+,
+a
 2
-3
-3
+,…,
+a
+n
+(
+1≤
+a
+i
+≤50
+) — the elements of the array
+a
+.
+The third line of each test case contains a string
+s
+of length
+n
+, consisting of lowercase English letters.
+Output
+For each test case, output "YES", if we can get the string
+s
+from the array
+a
+, and "NO" otherwise. You can output each letter in any case.
+Example
 input
 Copy
+7
+5
+2 3 2 4 1
+cacta
+1
+50
+a
+2
+11 22
+ab
+4
+1 2 2 1
+aaab
+5
+1 2 3 2 1
+aaaaa
 6
-10110101
-100100001110
-0000001100010001
-1111
-1001010100101010101001
-000100000010101111
+1 10 2 9 3 8
+azzfdb
+7
+1 2 3 4 1 1 2
+abababb
 output
 Copy
-3
-561
-1466229
-9887505
-972227653
-52128355
+YES
+YES
+YES
+NO
+YES
+YES
+NO
+Note
+The first test case corresponds to the sample described in the statement.
+In the second test case we can choose the number
+50
+and the letter a.
+In the third test case we can choose the number
+11
+and the letter a, after that
+a=[a,22]
+. Then we choose the number
+22
+and the letter b and get
+a=[a,b]
+.
+In the fifth test case we can change all numbers one by one to the letter a.

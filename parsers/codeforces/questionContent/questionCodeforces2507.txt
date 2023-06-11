@@ -1,147 +1,85 @@
-E. Binary Subsequence Rotation
-time limit per test2 seconds
+B. Magical Calendar
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Naman has two binary strings
-s
-and
-t
-of length
+A competitive eater, Alice is scheduling some practices for an eating contest on a magical calendar. The calendar is unusual because a week contains not necessarily
+7
+days!
+In detail, she can choose any integer
+k
+which satisfies
+1≤k≤r
+, and set
+k
+days as the number of days in a week.
+Alice is going to paint some
 n
-(a binary string is a string which only consists of the characters "0" and "1"). He wants to convert
-s
-into
-t
-using the following operation as few times as possible.
-In one operation, he can choose any subsequence of
-s
-and rotate it clockwise once.
-For example, if
-s=1110100
-, he can choose a subsequence corresponding to indices (
-1
--based)
-{2,6,7}
-and rotate them clockwise. The resulting string would then be
-s=1010110
-.
-A string
-a
-is said to be a subsequence of string
-b
-if
-a
-can be obtained from
-b
-by deleting some characters without changing the ordering of the remaining characters.
-To perform a clockwise rotation on a sequence
-c
-of size
-k
-is to perform an operation which sets
-c
-1
-:=
-c
-k
-,
-c
-2
-:=
-c
-1
-,
-c
-3
-:=
-c
-2
-,…,
-c
-k
-:=
-c
-k−1
-simultaneously.
-Determine the minimum number of operations Naman has to perform to convert
-s
-into
-t
-or say that it is impossible.
+consecutive days on this calendar. On this calendar, dates are written from the left cell to the right cell in a week. If a date reaches the last day of a week, the next day's cell is the leftmost cell in the next (under) row.
+She wants to make all of the painted cells to be connected by side. It means, that for any two painted cells there should exist at least one sequence of painted cells, started in one of these cells, and ended in another, such that any two consecutive cells in this sequence are connected by side.
+Alice is considering the shape of the painted cells. Two shapes are the same if there exists a way to make them exactly overlapped using only parallel moves, parallel to the calendar's sides.
+For example, in the picture, a week has
+4
+days and Alice paints
+5
+consecutive days. [1] and [2] are different shapes, but [1] and [3] are equal shapes.
+Alice wants to know how many possible shapes exists if she set how many days a week has and choose consecutive
+n
+days and paints them in calendar started in one of the days of the week. As was said before, she considers only shapes, there all cells are connected by side.
 Input
-The first line contains a single integer
-n
-(1≤n≤
-10
-6
-)
- — the length of the strings.
-The second line contains the binary string
-s
-of length
-n
-.
-The third line contains the binary string
+The input consists of multiple test cases. The first line contains a single integer
 t
-of length
+(
+1≤t≤1000
+) — the number of test cases. Next
+t
+lines contain descriptions of test cases.
+For each test case, the only line contains two integers
 n
-.
+,
+r
+(
+1≤n≤
+10
+9
+,1≤r≤
+10
+9
+).
 Output
-If it is impossible to convert
-s
-to
-t
-after any number of operations, print
-−1
-.
-Otherwise, print the minimum number of operations required.
-Examples
+For each test case, print a single integer  — the answer to the problem.
+Please note, that the answer for some test cases won't fit into
+32
+-bit integer type, so you should use at least
+64
+-bit integer type in your programming language.
+Example
 input
-Copy
-6
-010000
-000001
-output
-Copy
-1
-input
-Copy
-10
-1111100000
-0000011111
-output
 Copy
 5
-input
-Copy
-8
-10101010
-01010101
+3 4
+3 2
+3 1
+13 7
+1010000 9999999
 output
 Copy
+4
+3
 1
-input
-Copy
-10
-1111100000
-1111100001
-output
-Copy
--1
+28
+510049495001
 Note
-In the first test, Naman can choose the subsequence corresponding to indices
-{2,6}
-and rotate it once to convert
-s
-into
-t
-.
-In the second test, he can rotate the subsequence corresponding to all indices
-5
-times. It can be proved, that it is the minimum required number of operations.
-In the last test, it is impossible to convert
-s
-into
-t
-.
+In the first test case, Alice can set
+1,2,3
+or
+4
+days as the number of days in a week.
+There are
+6
+possible paintings shown in the picture, but there are only
+4
+different shapes. So, the answer is
+4
+. Notice that the last example in the picture is an invalid painting because all cells are not connected by sides.
+In the last test case, be careful with the overflow issue, described in the output format.

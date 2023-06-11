@@ -1,69 +1,214 @@
-C. Word Game
-time limit per test1 second
+E. Counting Rectangles
+time limit per test6 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Three guys play a game: first, each person writes down
+You have
 n
-distinct words of length
-3
-. Then, they total up the number of points as follows:
-if a word was written by one person — that person gets 3 points,
-if a word was written by two people — each of the two gets 1 point,
-if a word was written by all — nobody gets any points.
-In the end, how many points does each player have?
+rectangles, the
+i
+-th rectangle has height
+h
+i
+and width
+w
+i
+.
+You are asked
+q
+queries of the form
+h
+s
+ w
+s
+ h
+b
+ w
+b
+.
+For each query output, the total area of rectangles you own that can fit a rectangle of height
+h
+s
+and width
+w
+s
+while also fitting in a rectangle of height
+h
+b
+and width
+w
+b
+. In other words, print
+∑
+h
+i
+⋅
+w
+i
+for
+i
+such that
+h
+s
+<
+h
+i
+<
+h
+b
+and
+w
+s
+<
+w
+i
+<
+w
+b
+.
+Please note, that if two rectangles have the same height or the same width, then they cannot fit inside each other. Also note that you cannot rotate rectangles.
+Please note that the answer for some test cases won't fit into 32-bit integer type, so you should use at least 64-bit integer type in your programming language (like long long for C++).
 Input
-The input consists of multiple test cases. The first line contains an integer
+The first line of the input contains an integer
 t
 (
 1≤t≤100
-) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains an integer
-n
+) — the number of test cases.
+The first line of each test case two integers
+n,q
 (
-1≤n≤1000
-) — the number of words written by each person.
-The following three lines each contain
+1≤n≤
+10
+5
+;
+1≤q≤
+10
+5
+) — the number of rectangles you own and the number of queries.
+Then
 n
-distinct strings — the words written by each person. Each string consists of
-3
-lowercase English characters.
+lines follow, each containing two integers
+h
+i
+,
+w
+i
+(
+1≤
+h
+i
+,
+w
+i
+≤1000
+) — the height and width of the
+i
+-th rectangle.
+Then
+q
+lines follow, each containing four integers
+h
+s
+,
+w
+s
+,
+h
+b
+,
+w
+b
+(
+1≤
+h
+s
+<
+h
+b
+, 
+w
+s
+<
+w
+b
+≤1000
+) — the description of each query.
+The sum of
+q
+over all test cases does not exceed
+10
+5
+, and the sum of
+n
+over all test cases does not exceed
+10
+5
+.
 Output
-For each test case, output three space-separated integers — the number of points each of the three guys earned. You should output the answers in the same order as the input; the
+For each test case, output
+q
+lines, the
 i
--th integer should be the number of points earned by the
+-th line containing the answer to the
 i
--th guy.
+-th query.
 Example
 input
 Copy
 3
-1
-abc
-def
-abc
-3
-orz for qaq
-qaq orz for
-cod for ces
-5
-iat roc hem ica lly
-bac ter iol ogi sts
-bac roc lly iol iat
+2 1
+2 3
+3 2
+1 1 3 4
+5 5
+1 1
+2 2
+3 3
+4 4
+5 5
+3 3 6 6
+2 1 4 5
+1 1 2 10
+1 1 100 100
+1 1 3 3
+3 1
+999 999
+999 999
+999 998
+1 1 1000 1000
 output
 Copy
-1 3 1 
-2 2 6 
-9 11 5 
+6
+41
+9
+0
+54
+4
+2993004
 Note
-In the first test case:
-The word
-abc
-was written by the first and third guys — they each get
-1
-point.
-The word
-def
-was written by the second guy only — he gets
-3
-points.
+In the first test case, there is only one query. We need to find the sum of areas of all rectangles that can fit a
+1×1
+rectangle inside of it and fit into a
+3×4
+rectangle.
+Only the
+2×3
+rectangle works, because
+1<2
+(comparing heights) and
+1<3
+(comparing widths), so the
+1×1
+rectangle fits inside, and
+2<3
+(comparing heights) and
+3<4
+(comparing widths), so it fits inside the
+3×4
+rectangle. The
+3×2
+rectangle is too tall to fit in a
+3×4
+rectangle. The total area is
+2⋅3=6
+.

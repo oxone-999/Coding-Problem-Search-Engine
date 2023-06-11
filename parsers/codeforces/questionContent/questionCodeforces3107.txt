@@ -1,149 +1,294 @@
-C. Sweets Eating
-time limit per test1 second
-memory limit per test256 megabytes
+F. Cheap Robot
+time limit per test3 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Tsumugi brought
+You're given a simple, undirected, connected, weighted graph with
 n
-delicious sweets to the Light Music Club. They are numbered from
+nodes and
+m
+edges.
+Nodes are numbered from
 1
 to
 n
-, where the
-i
--th sweet has a sugar concentration described by an integer
-a
-i
-.
-Yui loves sweets, but she can eat at most
-m
-sweets each day for health reasons.
-Days are
-1
--indexed (numbered
-1,2,3,…
-). Eating the sweet
-i
-at the
-d
--th day will cause a sugar penalty of
-(d⋅
-a
-i
-)
-, as sweets become more sugary with time. A sweet can be eaten at most once.
-The total sugar penalty will be the sum of the individual penalties of each sweet eaten.
-Suppose that Yui chooses exactly
+. There are exactly
 k
-sweets, and eats them in any order she wants. What is the minimum total sugar penalty she can get?
-Since Yui is an undecided girl, she wants you to answer this question for every value of
-k
-between
-1
-and
-n
+centrals (recharge points), which are nodes
+1,2,…,k
 .
-Input
-The first line contains two integers
-n
+We consider a robot moving into this graph, with a battery of capacity
+c
+, not fixed by the constructor yet. At any time, the battery contains an integer amount
+x
+of energy between
+0
 and
-m
-(
-1≤m≤n≤200 000
+c
+inclusive.
+Traversing an edge of weight
+w
+i
+is possible only if
+x≥
+w
+i
+, and costs
+w
+i
+energy points (
+x:=x−
+w
+i
 ).
-The second line contains
-n
-integers
+Moreover, when the robot reaches a central, its battery is entirely recharged (
+x:=c
+).
+You're given
+q
+independent missions, the
+i
+-th mission requires to move the robot from central
 a
-1
+i
+to central
+b
+i
+.
+For each mission, you should tell the minimum capacity required to acheive it.
+Input
+The first line contains four integers
+n
 ,
+m
+,
+k
+and
+q
+(
+2≤k≤n≤
+10
+5
+and
+1≤m,q≤3⋅
+10
+5
+).
+The
+i
+-th of the next
+m
+lines contains three integers
+u
+i
+,
+v
+i
+and
+w
+i
+(
+1≤
+u
+i
+,
+v
+i
+≤n
+,
+u
+i
+≠
+v
+i
+,
+1≤
+w
+i
+≤
+10
+9
+), that mean that there's an edge between nodes
+u
+and
+v
+, with a weight
+w
+i
+.
+It is guaranteed that the given graph is simple (there is no self-loop, and there is at most one edge between every pair of nodes) and connected.
+The
+i
+-th of the next
+q
+lines contains two integers
 a
-2
-,…,
-a
-n
+i
+and
+b
+i
 (
 1≤
 a
 i
-≤200 000
+,
+b
+i
+≤k
+,
+a
+i
+≠
+b
+i
 ).
 Output
 You have to output
-n
-integers
-x
-1
-,
-x
-2
-,…,
-x
-n
-on a single line, separed by spaces, where
-x
-k
-is the minimum total sugar penalty Yui can get if she eats exactly
-k
-sweets.
+q
+lines, where the
+i
+-th line contains a single integer : the minimum capacity required to acheive the
+i
+-th mission.
 Examples
 input
 Copy
-9 2
-6 19 3 4 4 2 6 7 8
+10 9 3 1
+10 9 11
+9 2 37
+2 4 4
+4 1 8
+1 5 2
+5 7 3
+7 3 2
+3 8 4
+8 6 13
+2 3
 output
 Copy
-2 5 11 18 30 43 62 83 121
+12
 input
 Copy
-1 1
-7
+9 11 3 2
+1 3 99
+1 4 5
+4 5 3
+5 6 3
+6 4 11
+6 7 21
+7 2 6
+7 8 4
+8 9 3
+9 2 57
+9 3 2
+3 1
+2 3
 output
 Copy
-7
+38
+15
 Note
-Let's analyze the answer for
-k=5
-in the first example. Here is one of the possible ways to eat
-5
-sweets that minimize total sugar penalty:
-Day
-1
-: sweets
-1
-and
-4
-Day
+In the first example, the graph is the chain
+10−9−
 2
-: sweets
-5
+C
+−4−
+1
+C
+−5−7−
+3
+C
+−8−6
+, where centrals are nodes
+1
+,
+2
 and
 3
-Day
-3
-: sweet
-6
-Total penalty is
-1⋅
-a
-1
-+1⋅
-a
-4
-+2⋅
-a
-5
-+2⋅
-a
-3
-+3⋅
-a
-6
-=6+4+8+6+6=30
-. We can prove that it's the minimum total sugar penalty Yui can achieve if she eats
-5
-sweets, hence
-x
-5
-=30
 .
+For the mission
+(2,3)
+, there is only one simple path possible. Here is a simulation of this mission when the capacity is
+12
+.
+The robot begins on the node
+2
+, with
+c=12
+energy points.
+The robot uses an edge of weight
+4
+.
+The robot reaches the node
+4
+, with
+12−4=8
+energy points.
+The robot uses an edge of weight
+8
+.
+The robot reaches the node
+1
+with
+8−8=0
+energy points.
+The robot is on a central, so its battery is recharged. He has now
+c=12
+energy points.
+The robot uses an edge of weight
+2
+.
+The robot is on the node
+5
+, with
+12−2=10
+energy points.
+The robot uses an edge of weight
+3
+.
+The robot is on the node
+7
+, with
+10−3=7
+energy points.
+The robot uses an edge of weight
+2
+.
+The robot is on the node
+3
+, with
+7−2=5
+energy points.
+The robot is on a central, so its battery is recharged. He has now
+c=12
+energy points.
+End of the simulation.
+Note that if value of
+c
+was lower than
+12
+, we would have less than
+8
+energy points on node
+4
+, and we would be unable to use the edge
+4↔1
+of weight
+8
+. Hence
+12
+is the minimum capacity required to acheive the mission.
+—
+The graph of the second example is described here (centrals are red nodes):
+The robot can acheive the mission
+(3,1)
+with a battery of capacity
+c=38
+, using the path
+3→9→8→7→2→7→6→5→4→1
+The robot can acheive the mission
+(2,3)
+with a battery of capacity
+c=15
+, using the path
+2→7→8→9→3

@@ -1,64 +1,95 @@
-Anticommutative implication
+Interactive Matrix
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Chef is impressed by mathematical logic and linear algebra. He wants to combine his favorite subjects, so he introduced the concept of logical operations on boolean matrices.
-He defines A → B to be a matrix C such that Cij = Aij → Bij and ¬ A to be a matrix B such that Bij = ¬ Aij
-Now Chef wants to study such system of equations: A → X = ¬ O and X → A = O
-Where O is matrix such that all its entries is 0.
-However, Chef realized that such system has solution if and only if A = O. Since such solution is too trivial, Chef has decided to search for an approximate solution for arbitrary A. Thus, Chef is searching for such X that A → X = ¬ O and X → A has as much as possible entries which are equal to 0.
-But the solution space turned to be very large, so he reduced it to a matrices of a special form. Now he is looking for X such that Xij = yi xor yj for some boolean vector y. Since now X is symmetric, Chef restricts A to also be symmetric.
-Help Chef to resolve this difficult problem, or say that there is no solution.
-Here → denotes the logical implication. p → q = !p || (p && q). Here ¬ denotes logical negation. ¬p = !p
+Read problems statements in Hindi, Mandarin chinese , Russian and Vietnamese as well.
+Chef and his wife Chefina started playing a new game.
+At the beginning of the game, Chefina secretly writes down a matrix
+A with
+N rows (numbered
+1 through
+N) and
+N columns (numbered
+1 through
+N). All elements of this matrix are distinct positive integers. Then, Chefina asks Chef to find the position (row and column) of the element with value
+V, or determine that such an element does not occur in
+A. Chef does not know the matrix
+A, but he can ask Chefina at most
+K questions about it. Each question must be in the format
+1rc; Chefina answers Chef with the number
+A
+r,c
+.
+Since this task is really hard for Chef, Chefina decided to give him additional help — she told Chef that the matrix she writes down has a special property: each row and each column is sorted in some order (descending or ascending). Different rows and columns may be sorted in different order.
+Chef may ask at most
+K questions in the format above. Afterwards, he must tell Chefina the position of the element
+V in the format
+2ij, with the meaning that
+A
+i,j
+=V if
+V occurs in
+A, or with
+i=j=−1 if
+V does not occur in
+A.
+This is an interactive problem. You should play the game for Chef; the grader plays for Chefina.
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains a single integer N denoting the size of A. The next N lines contain N space-separated integers A[i]1, A[i]2, ..., A[i]N denoting the i-th row of matrix A.
-It's guaranteed that A is symmetric.
-Output
-For each test case, output a single line containing N integers - vector y, described in the statement, if there is a solution, or -1, if there is not. In case there are several solutions, print any solution.
-Constraints and Subtasks
-0 ≤ Aij ≤ 1
-Subtask 1: (15 points)
-1 ≤ T ≤ 1000
-1 ≤ N ≤ 10
-Subtask 2: (25 points)
-1 ≤ T ≤ 500
-1 ≤ N ≤ 20
-Subtask 3: (60 points)
-1 ≤ T ≤ 100
-1 ≤ N ≤ 1000
-The sum of N2 over all test cases in one test file does not exceed 106
-Example
-Input:
-3
-4
-0 0 0 1
-0 0 0 1
-0 0 0 0
-1 1 0 0
-4
-1 0 0 1
-0 1 0 1
-0 0 0 0
-1 1 0 0
-2
-0 0
-0 0
-Output:
-0 0 1 1
--1
-0 1
+The first line of the input contains three space-separated integers
+N,
+K and
+V.
+Interaction
+To ask a question, print one line containing three space-separated integers
+1,
+r and
+c to the output. Then, read the answer to this question from the input. The answer for an invalid question is
+−1.
+You may ask at most
+K questions. Don't forget to flush the output after printing each line!
+Finally, print the answer as one line containing three space-separated integers
+2,
+i and
+j.
+Constraints
+1≤N≤1,000
+1≤A
+i,j
+≤10
+9
+for each valid
+i,j
+1≤V≤10
+9
+Subtasks
+Subtask #1 (10 points):
+1≤N≤100
+K=N⋅N
+Subtask #2 (20 points):
+1≤N≤1,000
+K=11,000
+Subtask #3 (30 points):
+1≤N≤1,000
+K=6,000
+Subtask #4 (40 points):
+1≤N≤1,000
+K=4,000
+Example Input
+3 10 4
+Interaction
+Chef             Chefina
+1 1 1
+                 2
+1 1 2
+                 6
+1 2 1
+                 4
+2 2 1
 Explanation
-Example case 1.
-Matrix which is determined by vector y is
-0 0 1 1
-0 0 1 1
-1 1 0 0
-1 1 0 0
-
-Then A → X = ¬ O and X → A is
-1 1 0 1
-1 1 0 1
-0 0 1 1
-1 1 1 1
-Example case 2.
-A11 = 1 and X11 = y1 xor y1 = 0. So A11 → X11 = 0 and condition A → X = ¬ O can not be satisfied.
+Chefina wrote down a matrix with
+3 columns and
+3 rows. Chef needs to find the number
+4 in at most
+10 questions. One possible matrix
+A could be:
+2  6  8
+4  9 12
+7 11 13

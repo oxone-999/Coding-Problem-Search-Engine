@@ -1,149 +1,143 @@
-B. Mystic Permutation
+D. Lena and Matrix
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Monocarp is a little boy who lives in Byteland and he loves programming.
-Recently, he found a permutation of length
+Lena is a beautiful girl who likes logical puzzles.
+As a gift for her birthday, Lena got a matrix puzzle!
+The matrix consists of
 n
-. He has to come up with a mystic permutation. It has to be a new permutation such that it differs from the old one in each position.
-More formally, if the old permutation is
-p
-1
+rows and
+m
+columns, and each cell is either black or white. The coordinates
+(i,j)
+denote the cell which belongs to the
+i
+-th row and
+j
+-th column for every
+1≤i≤n
+and
+1≤j≤m
+. To solve the puzzle, Lena has to choose a cell that minimizes the Manhattan distance to the farthest black cell from the chosen cell.
+More formally, let there be
+k≥1
+black cells in the matrix with coordinates
+(
+x
+i
 ,
-p
-2
-,…,
-p
-n
-and the new one is
-q
-1
-,
-q
-2
-,…,
-q
-n
-it must hold that
-p
-1
-≠
-q
-1
-,
-p
-2
-≠
-q
-2
-,…,
-p
-n
-≠
-q
-n
-.
-≠
-≠
-≠
-Monocarp is afraid of lexicographically large permutations. Can you please help him to find the lexicographically minimal mystic permutation?
+y
+i
+)
+for every
+1≤i≤k
+. Lena should choose a cell
+(a,b)
+that minimizes
+max
+i=1
+k
+(|a−
+x
+i
+|+|b−
+y
+i
+|).
+k
+As Lena has no skill, she asked you for help. Will you tell her the optimal cell to choose?
 Input
 There are several test cases in the input data. The first line contains a single integer
 t
 (
-1≤t≤200
+1≤t≤10000
 ) — the number of test cases. This is followed by the test cases description.
-The first line of each test case contains a positive integer
+The first line of each test case contains two integers
 n
+and
+m
 (
-1≤n≤1000
-) — the length of the permutation.
-The second line of each test case contains
+2≤n,m≤1000
+)  — the dimensions of the matrix.
+The following
 n
-distinct positive integers
-p
-1
-,
-p
-2
-,…,
-p
-n
-(
-1≤
-p
-i
-≤n
-). It's guaranteed that
-p
-is a permutation, i. e.
-p
-i
-≠
-p
+lines contain
+m
+characters each, each character is either 'W' or 'B'. The
 j
-for all
-i≠j
-.
+-th character in the
+i
+-th of these lines is 'W' if the cell
+(i,j)
+is white, and 'B' if the cell
+(i,j)
+is black.
+It is guaranteed that at least one black cell exists.
 It is guaranteed that the sum of
-n
+n⋅m
 does not exceed
-1000
-over all test cases.
+10
+6
+.
 Output
-For each test case, output
-n
-positive integers — the lexicographically minimal mystic permutations. If such a permutation does not exist, output
-−1
-instead.
+For each test case, output the optimal cell
+(a,b)
+to choose. If multiple answers exist, output any.
 Example
 input
 Copy
-4
-3
-1 2 3
 5
-2 3 4 5 1
-4
-2 3 1 4
-1
-1
+3 2
+BW
+WW
+WB
+3 3
+WWB
+WBW
+BWW
+2 3
+BBB
+BBB
+5 5
+BWBWB
+WBWBW
+BWBWB
+WBWBW
+BWBWB
+9 9
+WWWWWWWWW
+WWWWWWWWW
+BWWWWWWWW
+WWWWWWWWW
+WWWWBWWWW
+WWWWWWWWW
+WWWWWWWWW
+WWWWWWWWW
+WWWWWWWWB
 output
 Copy
-2 3 1
-1 2 3 4 5
-1 2 4 3
--1
+2 1
+2 2
+1 2
+3 3
+6 5
 Note
-In the first test case possible permutations that are mystic are
-[2,3,1]
+In the first test case the two black cells have coordinates
+(1,1)
 and
-[3,1,2]
-. Lexicographically smaller of the two is
-[2,3,1]
-.
-In the second test case,
-[1,2,3,4,5]
-is the lexicographically minimal permutation and it is also mystic.
-In third test case possible mystic permutations are
-[1,2,4,3]
+(3,2)
+. The four optimal cells are
+(1,2)
 ,
-[1,4,2,3]
+(2,1)
 ,
-[1,4,3,2]
-,
-[3,1,4,2]
-,
-[3,2,4,1]
-,
-[3,4,2,1]
-,
-[4,1,2,3]
-,
-[4,1,3,2]
+(2,2)
 and
-[4,3,2,1]
-. The smallest one is
-[1,2,4,3]
+(3,1)
+. It can be shown that no other cell minimizes the maximum Manhattan distance to every black cell.
+In the second test case it is optimal to choose the black cell
+(2,2)
+with maximum Manhattan distance being
+2
 .

@@ -1,248 +1,153 @@
-C2. Sheikh (Hard Version)
-time limit per test4 seconds
+D1. Balance (Easy version)
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the hard version of the problem. The only difference is that in this version
-q=n
-.
-You are given an array of integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-.
-The cost of a subsegment of the array
-[l,r]
-,
-1≤l≤r≤n
-, is the value
-f(l,r)=sum(l,r)−xor(l,r)
-, where
-sum(l,r)=
-a
-l
+This is the easy version of the problem. The only difference is that in this version there are no "remove" queries.
+Initially you have a set containing one element —
+0
+. You need to handle
+q
+queries of the following types:
 +
-a
-l+1
-+…+
-a
-r
-, and
-xor(l,r)=
-a
-l
-⊕
-a
-l+1
-⊕…⊕
-a
-r
-(
-⊕
-stands for bitwise XOR).
-You will have
-q
-queries. Each query is given by a pair of numbers
-L
-i
-,
-R
-i
-, where
-1≤
-L
-i
-≤
-R
-i
-≤n
-. You need to find the subsegment
-[l,r]
-,
-L
-i
-≤l≤r≤
-R
-i
-, with maximum value
-f(l,r)
-. If there are several answers, then among them you need to find a subsegment with the minimum length, that is, the minimum value of
-r−l+1
-.
+x
+— add the integer
+x
+to the set. It is guaranteed that this integer is not contained in the set;
+?
+k
+— find the
+k-mex
+of the set.
+In our problem, we define the
+k-mex
+of a set of integers as the smallest non-negative integer
+x
+that is divisible by
+k
+and which is not contained in the set.
 Input
-Each test consists of multiple test cases. The first line contains an integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases. The description of test cases follows.
-The first line of each test case contains two integers
-n
-and
+The first line contains an integer
 q
 (
-1≤n≤
+1≤q≤2⋅
 10
 5
-,
-q=n
-) — the length of the array and the number of queries.
-The second line of each test case contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤
-10
-9
-) — array elements.
-i
--th of the next
+) — the number of queries.
+The following
 q
-lines of each test case contains two integers
-L
-i
-and
-R
-i
+lines describe the queries.
+An addition query of integer
+x
+is given in the format +
+x
 (
-1≤
-L
-i
-≤
-R
-i
-≤n
-) — the boundaries in which we need to find the segment.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
+1≤x≤
 10
-5
-.
-It is guaranteed that
-L
-1
-=1
-and
-R
-1
-=n
-.
+18
+). It is guaranteed that
+x
+was not contained in the set.
+A search query of
+k-mex
+is given in the format ?
+k
+(
+1≤k≤
+10
+18
+).
+It is guaranteed that there will be at least one query of type ?.
 Output
-For each test case print
-q
-pairs of numbers
-L
-i
-≤l≤r≤
-R
-i
-such that the value
-f(l,r)
-is maximum and among such the length
-r−l+1
-is minimum. If there are several correct answers, print any of them.
-Example
+For each query of type ? output a single integer — the
+k-mex
+of the set.
+Examples
+input
+Copy
+15
++ 1
++ 2
+? 1
++ 4
+? 2
++ 6
+? 3
++ 7
++ 8
+? 1
+? 2
++ 5
+? 1
++ 1000000000000000000
+? 1000000000000000000
+output
+Copy
+3
+6
+3
+3
+10
+3
+2000000000000000000
 input
 Copy
 6
-1 1
-0
-1 1
-2 2
-5 10
-1 2
-2 2
-3 3
-0 2 4
-1 3
-1 2
-2 3
-4 4
-0 12 8 3
-1 4
-1 3
-2 4
-2 3
-5 5
-21 32 32 32 10
-1 5
-1 4
-1 3
-2 5
-3 5
-7 7
-0 1 0 1 0 1 0
-1 7
-3 6
-2 5
-1 4
-4 7
-2 6
-2 7
++ 100
+? 100
++ 200
+? 100
++ 50
+? 50
 output
 Copy
-1 1
-1 1
-2 2
-1 1
-1 1
-2 2
-2 3
-2 3
-2 3
-2 3
-2 3
-2 3
-2 3
-2 3
-3 4
-2 4
-4 6
-2 4
-2 4
-4 6
-2 4
-2 4
+200
+300
+150
 Note
-In all test cases, the first query is considered.
-In the first test case,
-f(1,1)=0−0=0
+In the first example:
+After the first and second queries, the set will contain elements
+{0,1,2}
+. The smallest non-negative number that is divisible by
+1
+and is not contained in the set is
+3
 .
-In the second test case,
-f(1,1)=5−5=0
-,
-f(2,2)=10−10=0
-. Note that
-f(1,2)=(10+5)−(10⊕5)=0
-, but we need to find a subsegment with the minimum length among the maximum values of
-f(l,r)
-. So, only segments
-[1,1]
-and
-[2,2]
-are the correct answers.
-In the fourth test case,
-f(2,3)=(12+8)−(12⊕8)=16
+After the fourth query, the set will contain the elements
+{0,1,2,4}
+. The smallest non-negative number that is divisible by
+2
+and is not contained in the set is
+6
 .
-There are two correct answers in the fifth test case, since
-f(2,3)=f(3,4)
-and their lengths are equal.
+In the second example:
+Initially, the set contains only the element
+{0}
+.
+After adding an integer
+100
+the set contains elements
+{0,100}
+.
+100-mex
+of the set is
+200
+.
+After adding an integer
+200
+the set contains elements
+{0,100,200}
+.
+100-mex
+of the set is
+300
+.
+After adding an integer
+50
+the set contains elements
+{0,50,100,200}
+.
+50-mex
+of the set is
+150
+.

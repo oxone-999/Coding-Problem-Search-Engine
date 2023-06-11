@@ -1,36 +1,38 @@
-Triangular Queries
+Andrew and the Birthday
 Problem
-You are given N lattice points (Xi, Yi), i = 1, 2, ..., N on a 2D Coordinate System. You have to process Q queries, each query will be given as the form "x y d". Let ABC be the triangle having vertices at A(x+d, y), B(x, y) and C(x, y+d). For each query, you have to find how many of the given lattice points lie inside or on the boundary of the triangle ABC.
+Today is Andrew's birthday.
+He has invited N friends for celebrating it, and now he needs to prepare the table for them. All his friends will be sitting in a row on the seats numbered from 1 to N, inclusive. There are M different types of meatballs (numbered from 1 to M, inclusive). Andrew is going to serve meatballs of exactly one type at each of the seats.
+You are an given array A of N integers in range [0, M]. Ai = 0 means that Andrew is not sure which type of meatballs he should serve at seat i. So, in this case, we consider seat i will be served meatballs of types from 1 to M with equal probability. Otherwise, Ai ≥ 1 means that seat i will be served meatballs of type Ai.
+It's very important for Andrew to know, what is the expected maximal number of consecutively sitting friends with the same type of meatballs served at their seats. Help Andrew to find this number.
 Input
-The first line of the input contains two space-sparated integers N and Q. Each of the following N lines have two space-sparated integers Xi, Yi giving the x and y coordinate of a lattice point. Then the following Q lines contain three space-sparated integers x, y, d giving a query.
+The first line of the input contains an integer T, denoting the number of test cases. The description of T test cases follows. The first line of each test case contains two space-separated integers N and M. The second line contains N space-separated integers A1, A2, ..., AN.
 Output
-For each query, output one integer on a line which denotes the number of the given lattice points which lie inside or on the boundary of the triangle.
+For each test case, output a real number, denoting the expected value of maximal number of consecutively sitting friends with the same type of meatballs served to their seats.
+The output values will be considered as correct if and only if they have the absolute errors at most 10−6.
 Constraints
-1 ≤ N ≤ 300000 (3 * 105)
-1 ≤ Q ≤ 200000 (2 * 105)
-1 ≤ Xi, Yi ≤ 300000 (3 * 105)
-1 ≤ x, y, d ≤ 300000 (3 * 105)
-Sample
-Input 1:
-5 3
-1 3
-1 5
-3 6
-4 4
-2 6
-1 5 3
-1 5 4
-1 1 1
-Output 1:
-3
-3
-0
-Input 2:
+1 ≤ T ≤ 10
+1 ≤ N, M ≤ 50
+0 ≤ Ai ≤ M
+Example
+Input:
+2
 2 2
-1 5
-3 7
-2 5 6
-2 3 4
-Output 2:
-1
-0
+0 0
+4 7
+0 1 1 0
+Output:
+1.500000000
+2.285714286
+Explanation
+Example case 1: There are 4 possibilities (with equal probability) of the serving as follows.
+1 1 : maximal number of consecutive seats with the same type = 2
+1 2 : maximal number of consecutive seats with the same type = 1
+2 1 : maximal number of consecutive seats with the same type = 1
+2 2 : maximal number of consecutive seats with the same type = 2
+Therefore the answer is 2 * (1/4) + 1 * (1/4) + 1 * (1/4) + 2 * (1/4) = 1.5.
+Example case 2: There are 49 possibilities of the serving. Among these, the patterns with maximal number of consecutive seats with the same type = 3 are the following 12 patterns
+1 1 1 x, where x = 2, 3, ..., 7
+x 1 1 1, where x = 2, 3, ..., 7
+and the pattern with maximal number of consecutive seats with the same type = 4 is the following 1 pattern
+1 1 1 1
+In other 36 patterns, maximal number of consecutive seats with the same type = 2. Therefore the answer is 2 * (36/49) + 3 * (12/49) + 4 * (1/49) ≈ 2.2857.

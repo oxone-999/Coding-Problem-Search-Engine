@@ -1,50 +1,51 @@
-E. Danil and a Part-time Job
+D. Olya and Energy Drinks
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Danil decided to earn some money, so he had found a part-time job. The interview have went well, so now he is a light switcher.
-Danil works in a rooted tree (undirected connected acyclic graph) with n vertices, vertex 1 is the root of the tree. There is a room in each vertex, light can be switched on or off in each room. Danil's duties include switching light in all rooms of the subtree of the vertex. It means that if light is switched on in some room of the subtree, he should switch it off. Otherwise, he should switch it on.
-Unfortunately (or fortunately), Danil is very lazy. He knows that his boss is not going to personally check the work. Instead, he will send Danil tasks using Workforces personal messages.
-There are two types of tasks:
-pow v describes a task to switch lights in the subtree of vertex v.
-get v describes a task to count the number of rooms in the subtree of v, in which the light is turned on. Danil should send the answer to his boss using Workforces messages.
-A subtree of vertex v is a set of vertices for which the shortest path from them to the root passes through v. In particular, the vertex v is in the subtree of v.
-Danil is not going to perform his duties. He asks you to write a program, which answers the boss instead of him.
+Olya loves energy drinks. She loves them so much that her room is full of empty cans from energy drinks.
+Formally, her room can be represented as a field of n × m cells, each cell of which is empty or littered with cans.
+Olya drank a lot of energy drink, so now she can run k meters per second. Each second she chooses one of the four directions (up, down, left or right) and runs from 1 to k meters in this direction. Of course, she can only run through empty cells.
+Now Olya needs to get from cell (x1, y1) to cell (x2, y2). How many seconds will it take her if she moves optimally?
+It's guaranteed that cells (x1, y1) and (x2, y2) are empty. These cells can coincide.
 Input
-The first line contains a single integer n (1 ≤ n ≤ 200 000) — the number of vertices in the tree.
-The second line contains n - 1 space-separated integers p2, p3, ..., pn (1 ≤ pi < i), where pi is the ancestor of vertex i.
-The third line contains n space-separated integers t1, t2, ..., tn (0 ≤ ti ≤ 1), where ti is 1, if the light is turned on in vertex i and 0 otherwise.
-The fourth line contains a single integer q (1 ≤ q ≤ 200 000) — the number of tasks.
-The next q lines are get v or pow v (1 ≤ v ≤ n) — the tasks described above.
+The first line contains three integers n, m and k (1 ≤ n, m, k ≤ 1000) — the sizes of the room and Olya's speed.
+Then n lines follow containing m characters each, the i-th of them contains on j-th position "#", if the cell (i, j) is littered with cans, and "." otherwise.
+The last line contains four integers x1, y1, x2, y2 (1 ≤ x1, x2 ≤ n, 1 ≤ y1, y2 ≤ m) — the coordinates of the first and the last cells.
 Output
-For each task get v print the number of rooms in the subtree of v, in which the light is turned on.
-Example
+Print a single integer — the minimum time it will take Olya to get from (x1, y1) to (x2, y2).
+If it's impossible to get from (x1, y1) to (x2, y2), print -1.
+Examples
 input
 Copy
-4
-1 1 1
-1 0 0 1
-9
-get 1
-get 2
-get 3
-get 4
-pow 1
-get 1
-get 2
-get 3
-get 4
+3 4 4
+....
+###.
+....
+1 1 3 1
 output
 Copy
-2
-0
-0
-1
-2
-1
-1
-0
+3
+input
+Copy
+3 4 1
+....
+###.
+....
+1 1 3 1
+output
+Copy
+8
+input
+Copy
+2 2 1
+.#
+#.
+1 1 2 2
+output
+Copy
+-1
 Note
-The tree before the task pow 1.
-The tree after the task pow 1.
+In the first sample Olya should run 3 meters to the right in the first second, 2 meters down in the second second and 3 meters to the left in the third second.
+In second sample Olya should run to the right for 3 seconds, then down for 2 seconds and then to the left for 3 seconds.
+Olya does not recommend drinking energy drinks and generally believes that this is bad.

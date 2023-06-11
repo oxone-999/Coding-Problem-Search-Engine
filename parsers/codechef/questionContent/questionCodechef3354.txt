@@ -1,20 +1,28 @@
-D-Power Permutations
+Chef and Uniqueness
 Problem
-Let N be a positive integer and S = {1, 2, 3, ..., N}. For a given positive integer d the function f : S --> S is called d-power permutation if there exists a bijection g : S --> S such that g ( g ( ... g ( x ) ... ) ) = f(x) for each x from S , where g is repeated exactly d times.
-You are given some bijection f : S --> S and a positive integer D. You need to find the number of those d <= D such that f is d-power permutation.
+Read problems statements in Mandarin Chinese and Russian as well.
+Today chef has decided to cook a string S of length N. But he will not just cook the whole string, but a unique substring of the given string S. A substring is unique if it occurs in the string S only once. Chef also does not like all the indices of a string. He wants a special index i to be in the unique substring. But the length of the unique substring should be minimized.
+Chef wants your help to find an unique substring of minimum possible length which contains the index i. If there are several such substrings, chef will take the lexicographically smallest one. But chef has not told you the value of i yet. So you have to find the answer for all i (1 to N).
 Input
-The first line contains a single positive integer T <= 10, the number of test cases. T test cases follow. The first line of each test case contains two positive integers N and D, where N <= 700 and D <= 1018. The second line contains N space-separated integers. ith number in the second line is the value f(i). It is guaranteed that f is bijection from S onto S.
+Input contains a single line containing the string S of length N and it consists of lower case letters only.
 Output
-For each test case, output a single line containing the answer for the corresponding test case.
+Print N lines, where i-th line will contain two space separated integers Pi and Li. Pi is the starting position (1-indexed) and Li is the length of the shortest unique substring which contains the index i.
+Constraints
+1 ≤ N ≤ 105
+S contains only lower case letters.
 Example
 Input:
-2
-3 6
-1 2 3
-5 10
-2 1 4 5 3
+abcab
 Output:
-6
-3
+1 3
+2 2
+3 1
+3 2
+3 3
 Explanation
-In the second case the appropriate values of d is 1, 5 and 7.
+Example case 1.
+i = 1, shortest unique substring is "abc"
+i = 2, shortest unique substring is "bc"
+i = 3, shortest unique substring is "c"
+i = 4, shortest unique substring is "ca"
+i = 5, shortest unique substring is "cab"

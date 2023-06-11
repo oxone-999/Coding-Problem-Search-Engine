@@ -1,30 +1,94 @@
-Dividing the Students
+Intersecting Paths
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-In the city of "M", there are N girls who attend a certain high school. Historically, all of the students of this school are divided into two groups, not necessarily equal in size, right before they start to study.
-Each girl in the city of "M" has an integer ID number Ai, that somehow corresponds to her interests, ideology and beliefs. Each girl is unique, so each ID is unique as well.
-Some of the girls have similar interests. For any pair of girls, say the i-th and the j-th one, we call the value of similarity the number min(AiAj mod (109+7), AjAi mod (109+7)).
-The teachers have decided that they want the students in each group to be as diverse as possible. This way they will be encouraged to become acquainted and make friends faster. For this reason they want to divide the students in such a way that the maximal similarity value of any two girls' IDs in the same group is as small as possible.
-Please help them and find the minimal possible maximal similarity value of two girls' IDs within a single group after the optimal division.
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case starts with a single integer N - the number of students.
-Then, there is a line containing N space-separated integers A1, A2, ..., AN - the IDs of the girls.
-Output
-For each test case output a single line with a single integer - the answer to the problem.
-Constraints
-1 ≤ T ≤ 1000
-1 ≤ Ai ≤ 109
-Subtasks
-Subtask 1: 3 ≤ N ≤ 10. The time limit is 1 second - 14 points.
-Subtask 2: 3 ≤ N ≤ 50. The time limit is 1 second - 23 points.
-Subtask 3: T = 2, 3 ≤ N ≤ 1000. The time limit is 5 seconds - 63 points.
-Example
-Input:
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given a tree (a connected undirected graph without cycles) with
+N vertices numbered
+1 through
+N. For each pair of vertices
+u and
+v, let's denote the simple path between them by
+(u,v); the paths are undirected, so
+(u,v) is the same path as
+(v,u).
+You should answer
+Q queries. In each query, you are given two vertices
+u and
+v. Then, for each simple path
+(a,b) in the tree, we define perfect intersection as follows:
+Let's denote the sets of vertices in the paths
+(u,v) and
+(a,b) by
+S
 1
-4
-1 2 1024 1025
-Output:
-1048576
-Explanation
-The first and the fourth girl will form the first group; the second and the third will form the second group.
+and
+S
+2
+respectively (a path contains its endpoints too).
+The path
+(a,b) intersects perfectly with
+(u,v) if
+∣S
+1
+∩S
+2
+∣=1, i.e. these paths have exactly one common vertex.
+The answer to the query is the number of paths which intersect perfectly with the path
+(u,v).
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+Q.
+Each of the next
+N−1 lines contains two space-separated integers
+u and
+v denoting that vertices
+u and
+v are connected by an edge.
+Each of the next
+Q lines contains two space-separated integers
+u and
+v describing one query.
+Output
+For each query, print a single line containing one integer — the answer to this query.
+Constraints
+1≤T≤10
+1≤N,Q≤3⋅10
+5
+1≤u,v≤N
+Subtasks
+Subtask #1 (10 points):
+1≤N,Q≤100
+Subtask #2 (20 points):
+1≤N,Q≤1,000
+Subtask #3 (70 points):
+T≤5
+1≤N≤250,000
+1≤Q≤3⋅10
+5
+Sample 1:
+Input
+Output
+1
+6 2
+1 2
+1 3
+1 4
+2 5
+2 6
+4 5
+1 3
+6
+9
+Explanation:
+Example case 1:
+In the first query, the paths that intersect perfectly with the given path
+(4,5) are
+(1,1),
+(1,3),
+(2,2),
+(2,6),
+(4,4) and
+(5,5).

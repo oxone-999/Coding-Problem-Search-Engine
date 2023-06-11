@@ -1,50 +1,42 @@
-C. Data Center Maintenance
-time limit per test1 second
+D. Curfew
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-BigData Inc. is a corporation that has n data centers indexed from 1 to n that are located all over the world. These data centers provide storage for client data (you can figure out that client data is really big!).
-Main feature of services offered by BigData Inc. is the access availability guarantee even under the circumstances of any data center having an outage. Such a guarantee is ensured by using the two-way replication. Two-way replication is such an approach for data storage that any piece of data is represented by two identical copies that are stored in two different data centers.
-For each of m company clients, let us denote indices of two different data centers storing this client data as ci, 1 and ci, 2.
-In order to keep data centers operational and safe, the software running on data center computers is being updated regularly. Release cycle of BigData Inc. is one day meaning that the new version of software is being deployed to the data center computers each day.
-Data center software update is a non-trivial long process, that is why there is a special hour-long time frame that is dedicated for data center maintenance. During the maintenance period, data center computers are installing software updates, and thus they may be unavailable. Consider the day to be exactly h hours long. For each data center there is an integer uj (0 ≤ uj ≤ h - 1) defining the index of an hour of day, such that during this hour data center j is unavailable due to maintenance.
-Summing up everything above, the condition uci, 1 ≠ uci, 2 should hold for each client, or otherwise his data may be unaccessible while data centers that store it are under maintenance.
-Due to occasional timezone change in different cities all over the world, the maintenance time in some of the data centers may change by one hour sometimes. Company should be prepared for such situation, that is why they decided to conduct an experiment, choosing some non-empty subset of data centers, and shifting the maintenance time for them by an hour later (i.e. if uj = h - 1, then the new maintenance hour would become 0, otherwise it would become uj + 1). Nonetheless, such an experiment should not break the accessibility guarantees, meaning that data of any client should be still available during any hour of a day after the data center maintenance times are changed.
-Such an experiment would provide useful insights, but changing update time is quite an expensive procedure, that is why the company asked you to find out the minimum number of data centers that have to be included in an experiment in order to keep the data accessibility guarantees.
+Instructors of Some Informatics School make students go to bed.
+The house contains n rooms, in each room exactly b students were supposed to sleep. However, at the time of curfew it happened that many students are not located in their assigned rooms. The rooms are arranged in a row and numbered from 1 to n. Initially, in i-th room there are ai students. All students are currently somewhere in the house, therefore a1 + a2 + ... + an = nb. Also 2 instructors live in this house.
+The process of curfew enforcement is the following. One instructor starts near room 1 and moves toward room n, while the second instructor starts near room n and moves toward room 1. After processing current room, each instructor moves on to the next one. Both instructors enter rooms and move simultaneously, if n is odd, then only the first instructor processes the middle room. When all rooms are processed, the process ends.
+When an instructor processes a room, she counts the number of students in the room, then turns off the light, and locks the room. Also, if the number of students inside the processed room is not equal to b, the instructor writes down the number of this room into her notebook (and turns off the light, and locks the room). Instructors are in a hurry (to prepare the study plan for the next day), so they don't care about who is in the room, but only about the number of students.
+While instructors are inside the rooms, students can run between rooms that are not locked and not being processed. A student can run by at most d rooms, that is she can move to a room with number that differs my at most d. Also, after (or instead of) running each student can hide under a bed in a room she is in. In this case the instructor will not count her during the processing. In each room any number of students can hide simultaneously.
+Formally, here is what's happening:
+A curfew is announced, at this point in room i there are ai students.
+Each student can run to another room but not further than d rooms away from her initial room, or stay in place. After that each student can optionally hide under a bed.
+Instructors enter room 1 and room n, they count students there and lock the room (after it no one can enter or leave this room).
+Each student from rooms with numbers from 2 to n - 1 can run to another room but not further than d rooms away from her current room, or stay in place. Each student can optionally hide under a bed.
+Instructors move from room 1 to room 2 and from room n to room n - 1.
+This process continues until all rooms are processed.
+Let x1 denote the number of rooms in which the first instructor counted the number of non-hidden students different from b, and x2 be the same number for the second instructor. Students know that the principal will only listen to one complaint, therefore they want to minimize the maximum of numbers xi. Help them find this value if they use the optimal strategy.
 Input
-The first line of input contains three integers n, m and h (2 ≤ n ≤ 100 000, 1 ≤ m ≤ 100 000, 2 ≤ h ≤ 100 000), the number of company data centers, number of clients and the day length of day measured in hours.
-The second line of input contains n integers u1, u2, ..., un (0 ≤ uj < h), j-th of these numbers is an index of a maintenance hour for data center j.
-Each of the next m lines contains two integers ci, 1 and ci, 2 (1 ≤ ci, 1, ci, 2 ≤ n, ci, 1 ≠ ci, 2), defining the data center indices containing the data of client i.
-It is guaranteed that the given maintenance schedule allows each client to access at least one copy of his data at any moment of day.
+The first line contains three integers n, d and b (2 ≤ n ≤ 100 000, 1 ≤ d ≤ n - 1, 1 ≤ b ≤ 10 000), number of rooms in the house, running distance of a student, official number of students in a room.
+The second line contains n integers a1, a2, ..., an (0 ≤ ai ≤ 109), i-th of which stands for the number of students in the i-th room before curfew announcement.
+It is guaranteed that a1 + a2 + ... + an = nb.
 Output
-In the first line print the minimum possible number of data centers k (1 ≤ k ≤ n) that have to be included in an experiment in order to keep the data available for any client.
-In the second line print k distinct integers x1, x2, ..., xk (1 ≤ xi ≤ n), the indices of data centers whose maintenance time will be shifted by one hour later. Data center indices may be printed in any order.
-If there are several possible answers, it is allowed to print any of them. It is guaranteed that at there is at least one valid choice of data centers.
+Output one integer, the minimal possible value of the maximum of xi.
 Examples
 input
 Copy
-3 3 5
-4 4 0
-1 3
-3 2
-3 1
+5 1 1
+1 0 0 0 4
 output
 Copy
 1
-3 
 input
 Copy
-4 5 4
-2 1 0 3
-4 3
-3 2
-1 2
-1 4
-1 3
+6 1 2
+3 8 0 1 0 0
 output
 Copy
-4
-1 2 3 4 
+2
 Note
-Consider the first sample test. The given answer is the only way to conduct an experiment involving the only data center. In such a scenario the third data center has a maintenance during the hour 1, and no two data centers storing the information of the same client have maintenance at the same hour.
-On the other hand, for example, if we shift the maintenance time on hour later for the first data center, then the data of clients 1 and 3 will be unavailable during the hour 0.
+In the first sample the first three rooms are processed by the first instructor, and the last two are processed by the second instructor. One of the optimal strategies is the following: firstly three students run from room 5 to room 4, on the next stage two of them run to room 3, and one of those two hides under a bed. This way, the first instructor writes down room 2, and the second writes down nothing.
+In the second sample one of the optimal strategies is the following: firstly all students in room 1 hide, all students from room 2 run to room 3. On the next stage one student runs from room 3 to room 4, and 5 students hide. This way, the first instructor writes down rooms 1 and 2, the second instructor writes down rooms 5 and 6.

@@ -1,86 +1,122 @@
-D2. Gregor and the Odd Cows (Hard)
-time limit per test6 seconds
+B. Gregor and the Pawn Game
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the hard version of the problem. The only difference from the easy version is that in this version the coordinates can be both odd and even.
-There are
+There is a chessboard of size
 n
-fence-posts at distinct coordinates on a plane. It is guaranteed that no three fence posts lie on the same line.
-There are an infinite number of cows on the plane, one at every point with integer coordinates.
-Gregor is a member of the Illuminati, and wants to build a triangular fence, connecting
-3
-distinct existing fence posts. A cow strictly inside the fence is said to be enclosed. If there are an odd number of enclosed cows and the area of the fence is an integer, the fence is said to be interesting.
-Find the number of interesting fences.
+by
+n
+. The square in the
+i
+-th row from top and
+j
+-th column from the left is labelled
+(i,j)
+.
+Currently, Gregor has some pawns in the
+n
+-th row. There are also enemy pawns in the
+1
+-st row. On one turn, Gregor moves one of his pawns. A pawn can move one square up (from
+(i,j)
+to
+(i−1,j)
+) if there is no pawn in the destination square. Additionally, a pawn can move one square diagonally up (from
+(i,j)
+to either
+(i−1,j−1)
+or
+(i−1,j+1)
+) if and only if there is an enemy pawn in that square. The enemy pawn is also removed.
+Gregor wants to know what is the maximum number of his pawns that can reach row
+1
+?
+Note that only Gregor takes turns in this game, and the enemy pawns never move. Also, when Gregor's pawn reaches row
+1
+, it is stuck and cannot make any further moves.
 Input
-The first line contains the integer
-n
+The first line of the input contains one integer
+t
 (
-3≤n≤6000
-), the number of fence posts which Gregor can choose to form the vertices of a fence.
-Each of the next
-n
-line contains two integers
-x
-and
-y
-(
-0≤x,y≤
+1≤t≤2⋅
 10
-7
-, where
-(x,y)
-is the coordinate of a fence post. All fence posts lie at distinct coordinates. No three fence posts are on the same line.
+4
+) — the number of test cases. Then
+t
+test cases follow.
+Each test case consists of three lines. The first line contains a single integer
+n
+(
+2≤n≤2⋅
+10
+5
+) — the size of the chessboard.
+The second line consists of a string of binary digits of length
+n
+, where a
+1
+in the
+i
+-th position corresponds to an enemy pawn in the
+i
+-th cell from the left, and
+0
+corresponds to an empty cell.
+The third line consists of a string of binary digits of length
+n
+, where a
+1
+in the
+i
+-th position corresponds to a Gregor's pawn in the
+i
+-th cell from the left, and
+0
+corresponds to an empty cell.
+It is guaranteed that the sum of
+n
+across all test cases is less than
+2⋅
+10
+5
+.
 Output
-Print a single integer, the number of interesting fences. Two fences are considered different if they are constructed with a different set of three fence posts.
-Examples
+For each test case, print one integer: the maximum number of Gregor's pawns which can reach the
+1
+-st row.
+Example
 input
+Copy
+4
+3
+000
+111
+4
+1111
+1111
+3
+010
+010
+5
+11001
+00000
+output
 Copy
 3
-0 0
-2 0
-0 4
-output
-Copy
-1
-input
-Copy
 4
-1 8
-0 6
-5 2
-5 6
-output
-Copy
-1
-input
-Copy
-10
-170 59
-129 54
-5 98
-129 37
-58 193
-154 58
-24 3
-13 138
-136 144
-174 150
-output
-Copy
-29
+0
+0
 Note
-In the first example, there is only
-1
-fence. That fence is interesting since its area is
+In the first example, Gregor can simply advance all
+3
+of his pawns forward. Thus, the answer is
+3
+.
+In the second example, Gregor can guarantee that all
 4
-and there is
-1
-enclosed cow, marked in red.
-In the second example, there are
-4
-possible fences. Only one of them is interesting however. That fence has an area of
-8
-and
-5
-enclosed cows.
+of his pawns reach the enemy row, by following the colored paths as demonstrated in the diagram below. Remember, only Gregor takes turns in this "game"!
+In the third example, Gregor's only pawn is stuck behind the enemy pawn, and cannot reach the end.
+In the fourth example, Gregor has no pawns, so the answer is clearly
+0
+.

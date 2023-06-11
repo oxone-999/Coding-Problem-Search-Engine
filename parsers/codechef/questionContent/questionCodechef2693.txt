@@ -1,47 +1,24 @@
-Cloning
+Lucy and the Flowers
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Given an array A consisting of N integers, you have to execute Q queries on it. These queries ask you to determine whether the two sub-arrays a to b and c to d, which are of equal length, are similar or not. The two sub-arrays a to b and c to d are said to be similar, if, after being sorted individually and then compared element by element, they have at most one mismatch. The output should be YES or NO for each query.
-Note - The two sub-arrays can intersect each other and during the query process they will not affect each other in any way.
+Read problems statements in Mandarin Chinese and Russian.
+The staff of one of the most famous ChefLand's restaurants have just received the news! A delegation from the neighbouring country is going to visit the restaurant. The staff want to make this visit exciting and pleasant. Lucy is also a member of the staff and among all the things that the staff want to do, her assignment is to arrange the flowers on the tables.
+Generally, there are 26 kinds of flowers, a small latin letter corresponds to a single kind. Equal letters correspond to equal kinds. Different letters correspond to different kinds. According to the old ChefLand tradition, one can make a bouquet from some flowers only if it is a substring of some magic string T. ChefLands make bouquets in such a manner that the order of flowers in them is important. The restaurant has a tradition to decorate a single table with N, not necessary different, bouquets. Their order matters.
+Some decorations look really similar. Generally, two arrangements (let's call them A and B) are similar if B is a cyclic shift of A, or B is a reversed cyclic shift of A. For example the sequence ("aba", "c", "b") is a cyclic shift of a sequence ("b", "aba", "c"), and the sequence ("c", "b", "a", "e", "d") is a reversed cyclic shift of a sequence ("a", "b", "c", "d", "e").
+Now Lucy thinks that the most beautiful bouquets are "symmetric" ones. The bouquet is "symmetric" if the string that corresponds to the arrangement of flowers in it is a palindrome (it reads from left to right the same as from right to left).
+So, she thinks that the decoration of the table will be especially beautiful if all the bouquets in it are "symmetric". But then, Lucy had realized that the number of such decorations of the tables can be less than the number of guests. She doesn't want to decorate two tables in a similar manner, so she would like to know the number of distinct decorations such that no two tables looks similar.
 Input
-The first line of the input contains T, denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains two space separated integers: N and Q, denoting the number of elements in the array and the number of queries respectively.
-The second line contains N space-separated integers - A1, A2, ..., AN denoting the input array A.
-The next Q lines contain the queries.
-The queries are given as "a b c d" (without the double quotes) where a and b are the left and right end point of the first sub-array and c and d are the left and right end point of the second sub-array. Both end points are included in a sub-array.
+The first line of input consists of a single string T.
+The second line of input consists of a single integer N.
 Output
-For each query output "YES" or "NO" (without the double quotes) depending on whether the two sub-arrays given in that query are similar or not.
+Output the number of distinct decorations.
 Constraints
-a, b, c and d for the queries will always be in the range from 1 to N where a ≤ b, c ≤ d
-and b - a = d - c
-Time limit = 2 seconds
-Subtasks
-Subtask #1 (10 points):
-1 ≤ T ≤ 3
-1 ≤ N, Q ≤ 103
-1 ≤ A[i] ≤ 103
-Subtask #2 (20 points):
-1 ≤ T ≤ 3
-1 ≤ N ≤ 105
-1 ≤ Q ≤ 104
-1 ≤ A[i] ≤ 105
-Subtask #3 (70 points):
-1 ≤ T ≤ 3
-1 ≤ N, Q ≤ 105
-1 ≤ A[i] ≤ 105
-Sample 1:
-Input
-Output
-1
-6 3
-1 3 4 2 3 4
-1 3 4 6
-1 2 5 6
-3 5 2 4
-YES
-NO
-YES
-Explanation:
-In the first query the first sub-array looks like [1, 3, 4] on sorting and the second sub-array looks like [2, 3, 4] on sorting. These two sub-arrays only differ at first position so they are similar.
-In the second query the first sub-array on sorting looks like [1, 3] on sorting and the second sub-array looks like [3, 4] on sorting. These two sub-arrays differ at both the positions so they are not similar.
-In the third query the first sub-array look like [2, 3, 4] on sorting and the second sub-array also looks like [2, 3, 4] on sorting. Since these two sub-arrays don't differ at any position so they are similar.
+1 ≤ |T| ≤ 100000;
+1 ≤ N ≤ 600;
+String T consists only of lowercase English letters.
+Example
+Input:
+aba
+4
+
+Output:
+21

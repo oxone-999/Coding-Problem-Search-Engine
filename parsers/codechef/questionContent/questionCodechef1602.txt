@@ -1,49 +1,46 @@
-Chef Goes Through Segments
+Chef and A Large Permutation
 Problem
-Read problems statements in Mandarin Chinese here
-Read problems statements in Russian here
-Problem Statement
-Chef has a sequence of N segments: [L1, R1], [L2, R2], ..., [LN, RN]. He wants to transform the first segment to the last one (with index N). His plan is to do this big deal with a number of transformations: firstly he will transform
-the first segment to the second one, then to the third one, then to the fourth one, and so on till N-th one.
-
-Chef can use operation of a single type: shift one segment border by one unit. So, if he has segment [L, R], he can transform it into one of the following segments: [L + 1, R] (we will denote such operation with string L+), [L, R + 1] (will be denoted as R+), [L - 1, R] (L-), [L, R - 1] (R-). Chef doesn't like empty segments, therefore he cannot use any operation that makes a segment empty (L = R).
-
-Chef really wants to transform his segment as fast as possible. Please, help him. Find the sequence with minimal number of operations that transforms his segment. If there are multiple such sequences pick the lexicographically minimal one.
+Read problems statements in Mandarin Chinese and Russian.
+Today is Chef's birthday. His mom gifted him a truly lovable gift, a permutation of first N positive integers.
+She placed the permutation on a very long table in front of Chef and left it for him to play with it. But as there was a lot of people coming and wishing him. It was interfering with his game which made him very angry and he banged the table very hard due to which K numbers from the permutation fell down and went missing.
+Seeing her son's gift being spoilt, his mom became very sad. Chef didn't want his mom to be sad as he loves her the most. So to make her happy, he decided to play a game with her with the remaining N - K numbers on the table. Chef wants his mom to win all the games.
+Chef and his mom play alternatively and optimally. In Xth move, a player can choose some numbers out of all the numbers available on the table such that chosen numbers sum up to X. After the move, Chosen numbers are placed back on the table.The player who is not able to make a move loses.
+Now, Chef has to decide who should move first so that his Mom wins the game.
+As Chef is a small child, he needs your help to decide who should move first. Please help him, he has promised to share his birthday cake with you :)
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-
-The first line of each test case contains a single integer N denoting the number of segments Chef has. 
-The following N lines contain pairs of integers. The i-th line contains integers Li, Ri, denoting i-th Chef's segment.
+First Line of input contains a single integer T denoting the number of test cases.
+First line of each test case contains two space separated integers N and K denoting the size of permutation and number of numbers fall down from the table.
+Next line of each test case contains K space separated integers denoting the values of missing numbers.
 Output
-For each test case print an answer - two lines. The first line should contain the minimal number of operations. The second line should contain the sequence of operations
-without any whitespaces.
+For each test case, print "Chef" if chef should move first otherwise print "Mom" (without quotes).
 Constraints
-1 ≤ T, N ≤ 1000.
--1000 ≤ Li < Ri ≤ 1000.
-The total sum of N values for all test cases doesn't exceed 1000.
+1 ≤ T ≤ 105, 1 ≤ N ≤ 109
+0 ≤ K ≤ min(105, N)
+All K numbers are distinct.
+Value of each of K number belongs to [1,N].
+Sum of K over all the test cases does not exceed 5*105.
+Scoring
+Subtask 1 (13 pts): 1 ≤ T ≤ 100, 1 ≤ N ≤ 102, 1 ≤ K < N.
+Subtask 2 (17 pts): 1 ≤ T ≤ 100, 1 ≤ N ≤ 105, K = 0.
+Subtask 3 (70 pts): Original Constraints.
 Sample 1:
 Input
 Output
-4
-3
--1 0
-0 1
+2
+5 2
 3 5
+5 1
 1
-0 1
-3
--2 -1
--2 -1
--2 0
-4
-4 6
-3 5
--1 1
-1 2
-9
-R+L+R+L+R+L+R+L+R+
-0
-1
-R+
-13
-L-R-L-L-L-L-R-R-R-R-L+R+L+
+Mom
+Chef
+Explanation:
+For test case 1.
+Mom can choose {1} to make 1.
+Chef can choose {2} to make 2.
+Mom can choose {1,2} to make 3.
+Chef can choose {4} to make 4.
+Mom can choose {1,4} to make 5.
+Chef can choose {2,4} to make 6.
+Mom can choose {1,2,4} to make 7.
+Chef cannot make 8 out of the numbers on the table.
+So,Chef loses and Mom wins.

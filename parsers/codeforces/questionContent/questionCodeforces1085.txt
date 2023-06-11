@@ -1,93 +1,99 @@
-B. Madoka and the Elegant Gift
-time limit per test1 second
+D. Madoka and the Best School in Russia
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Madoka's father just reached
-1
-million subscribers on Mathub! So the website decided to send him a personalized award — The Mathhub's Bit Button!
-The Bit Button is a rectangular table with
-n
-rows and
-m
-columns with
-0
-or
-1
-in each cell. After exploring the table Madoka found out that:
-A subrectangle
-A
-is contained in a subrectangle
-B
-if there's no cell contained in
-A
-but not contained in
-B
+Madoka is going to enroll in "TSUNS PTU". But she stumbled upon a difficult task during the entrance computer science exam:
+A number is called good if it is a multiple of
+d
 .
-Two subrectangles intersect if there is a cell contained in both of them.
-A subrectangle is called black if there's no cell with value
-0
-inside it.
-A subrectangle is called nice if it's black and it's not contained in another black subrectangle.
-The table is called elegant if there are no two nice intersecting subrectangles.
-For example, in the first illustration the red subrectangle is nice, but in the second one it's not, because it's contained in the purple subrectangle.
-Help Madoka to determine whether the table is elegant.
+A number is called beatiful if it is good and it cannot be represented as a product of two good numbers.
+Notice that a beautiful number must be good.
+Given a good number
+x
+, determine whether it can be represented in at least two different ways as a product of several (possibly, one) beautiful numbers. Two ways are different if the sets of numbers used are different.
+Solve this problem for Madoka and help her to enroll in the best school in Russia!
 Input
-Each test contains multiple test cases. The first line contains a single integer
+The first line contains a single integer
 t
 (
-1≤t≤200
-) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains two positive integers
-n,m
-(
-1≤n,m≤100
-).
-The next
-n
-lines contain strings of length
-m
-consisting of zeros and ones — the description of the table.
-It is guaranteed that the sum of the values of
-n
-and the sum of the values of
-m
-for all test cases do not exceed
-777
+1≤t≤100
+) — number of test cases. Below comes their description.
+Each test case consists of two integers
+x
+and
+d
+, separated by a space (
+2≤x,d≤
+10
+9
+). It is guaranteed that
+x
+is a multiple of
+d
 .
 Output
-For each test case print "YES" if its table is elegant or print "NO" otherwise.
-You may print each letter in any case (for example, "YES", "Yes", "yes", "yEs" will all be recognized as positive answer).
+For each set of input data, output "NO" if the number cannot be represented in at least two ways. Otherwise, output "YES".
+You can output each letter in any case (for example, "YES", "Yes", "yes", "yEs", "yEs" will be recognized as a positive answer).
 Example
 input
 Copy
-5
-3 3
-100
-011
-011
-3 3
-110
-111
-110
-1 5
-01111
-4 5
-11111
-01010
-01000
-01000
-3 2
-11
-00
-11
+8
+6 2
+12 2
+36 2
+8 2
+1000 10
+2376 6
+128 4
+16384 4
 output
 Copy
+NO
+NO
 YES
 NO
+YES
 YES
 NO
 YES
 Note
-In the second test case the table is not elegant, because the red and the purple subrectangles are nice and intersect.
-In the fourth test case the table is not elegant, because the red and the purple subrectangles are nice and intersect.
+In the first example,
+6
+can be represented as
+6
+,
+1⋅6
+,
+2⋅3
+. But
+3
+and
+1
+are not a good numbers because they are not divisible by
+2
+, so there is only one way.
+In the second example,
+12
+can be represented as
+6⋅2
+,
+12
+,
+3⋅4
+, or
+3⋅2⋅2
+. The first option is suitable. The second is— no, because
+12
+is not beautiful number (
+12=6⋅2
+). The third and fourth are also not suitable, because
+3
+is not good number.
+In the third example,
+36
+can be represented as
+18⋅2
+and
+6⋅6
+. Therefore it can be decomposed in at least two ways.

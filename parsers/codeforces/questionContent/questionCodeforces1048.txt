@@ -1,113 +1,125 @@
-D. K-good
-time limit per test3 seconds
+F. Parametric MST
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-We say that a positive integer
+You are given
 n
-is
-k
--good for some positive integer
-k
-if
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
-can be expressed as a sum of
-k
-positive integers which give
-k
-distinct remainders when divided by
-k
+. For any real number
+t
+, consider the complete weighted graph on
+n
+vertices
+K
+n
+(t)
+with weight of the edge between vertices
+i
+and
+j
+equal to
+w
+ij
+(t)=
+a
+i
+⋅
+a
+j
++t⋅(
+a
+i
++
+a
+j
+)
 .
-Given a positive integer
+Let
+f(t)
+be the cost of the minimum spanning tree of
+K
 n
-, find some
-k≥2
-so that
-n
-is
-k
--good or tell that such a
-k
-does not exist.
+(t)
+. Determine whether
+f(t)
+is bounded above and, if so, output the maximum value it attains.
 Input
 The input consists of multiple test cases. The first line contains a single integer
-t
+T
 (
-1≤t≤
+1≤T≤
+10
+4
+) — the number of test cases. Description of the test cases follows.
+The first line of each test case contains an integer
+n
+(
+2≤n≤2⋅
 10
 5
-) — the number of test cases.
-Each test case consists of one line with an integer
+) — the number of vertices of the graph.
+The second line of each test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
 (
-2≤n≤
+−
 10
-18
+6
+≤
+a
+i
+≤
+10
+6
 ).
+The sum of
+n
+for all test cases is at most
+2⋅
+10
+5
+.
 Output
-For each test case, print a line with a value of
-k
-such that
-n
-is
-k
--good (
-k≥2
-), or
-−1
-if
-n
-is not
-k
--good for any
-k
-. If there are multiple valid values of
-k
-, you can print any of them.
+For each test case, print a single line with the maximum value of
+f(t)
+(it can be shown that it is an integer), or INF if
+f(t)
+is not bounded above.
 Example
 input
 Copy
 5
 2
+1 0
+2
+-1 1
+3
+1 -1 -2
+3
+3 -1 -2
 4
-6
-15
-20
+1 2 3 -4
 output
 Copy
+INF
 -1
--1
-3
-3
-5
-Note
-6
-is a
-3
--good number since it can be expressed as a sum of
-3
-numbers which give different remainders when divided by
-3
-:
-6=1+2+3
-.
-15
-is also a
-3
--good number since
-15=1+5+9
-and
-1,5,9
-give different remainders when divided by
-3
-.
-20
-is a
-5
--good number since
-20=2+3+4+5+6
-and
-2,3,4,5,6
-give different remainders when divided by
-5
-.
+INF
+-6
+-18

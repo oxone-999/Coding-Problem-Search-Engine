@@ -1,157 +1,52 @@
-Two Averages
+A-B Game
 Problem
-Chef has an array
-A of size
-N such that
-1≤A
+###Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
+Two players (let's call them A and B) are playing a game on a row of cells. A cell may contain the character 'A', contain the character 'B' or be empty. Each character may only be moved from a cell
+c
 i
-≤K for all
-1≤i≤N.
-Chef also has another array
-B of size
-M such that
-1≤B
+to a cell
+c
+f
+if cell
+c
+f
+and all cells between
+c
 i
-≤K for all
-1≤i≤M
-Chef can perform the following operation:
-1) Select an integer
-X such that
-1≤X≤K
-2) Append
-X to the end of exactly one array among
-A and
-B
-Find the minimum number of operations required to make
-mean(A) strictly greater than
-mean(B) or determine it is not possible to do so.
-For an array
-X of length
-M,
-mean(X) is defined as
-M
-ΣX
-i
-. For example,
-mean([5,6])=
-2
-5+6
-=5.5
-mean([10,13,20])=
-3
-10+13+20
-=14.333...
-mean([3,3,3,3,3])=3
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains three space-separated integers
-N,
-M and
-K - the size of array
-A, the size of array
-B and the upper bound of values in arrays
-A and
-B.
-The next line contains
-N space-separated integers
-A
-1
-,
-A
-2
-, ...,
-A
-N
-denoting the array
-A.
-The third line contains
-M space-separated integers
-B
-1
-,
-B
-2
-, ...,
-B
-M
-denoting the array
-B.
-Output Format
-For each test case, output the minimum number of operations required to make
-mean(A)>mean(B).
+and
+c
+f
+are currently empty. The leftmost (first) character may only be moved to the right, the second character may only be moved to the left, the next character to the right, and so on. Each character may be moved any number of times, including zero.
+The players alternate turns; player A starts. On each turn, the current player must choose a cell containing their own character ('A' for player A, 'B' for player B) and move it to a different cell. This cell may be chosen arbitrarily as long as all rules described above are satisfied. The first player that cannot move a character loses.
+Note that each character is always moved in a fixed direction, so the game is finite. Determine the winner of the game if both players play optimally.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains a single string
+s describing the initial state of the row of cells. Each character of
+s is either 'A', 'B' or '.', denoting a cell containing 'A', a cell containing 'B' or an empty cell respectively.
 Output
-−1 if it is not possible to do so.
+For each test case, print a single line containing the string "A" if player A wins or "B" if player B wins.
 Constraints
 1≤T≤10
-4
-1≤N,M≤10
 5
-1≤K≤10
+1≤∣s∣≤10
+5
+the sum of
+∣s∣ over all test cases does not exceed
+10
 6
-1≤A
-i
-,B
-i
-≤K
-Sum of
-N over all test cases won't exceed
-10
-5
-.
-Sum of
-M over all test cases won't exceed
-10
-5
-.
 Sample 1:
 Input
 Output
-4
-6 3 9
-3 7 3 5 2 4
-8 3 5
-1 1 4
-4
-2
-2 2 1
-1 1
-1 1
-5 5 5
-3 4 3 4 3
-4 5 4 5 4
-2
-0
--1
 3
-Explanation:
-Test case 1:
-A=[3,7,3,5,2,4] and
-B=[8,3,5]. Chef can perform the following operations:
-Append
-X=8 to array
+A.B
+A..B
+A..B.A..B
 A
-Append
-X=2 to array
+A
 B
-After that,
-mean(A)=
-7
-3+7+3+5+2+4+8
-=4.5714... and
-mean(B)=
-4
-8+3+5+2
-=4.5
-Test case 2: There is no need to append new elements as
-mean(A)=4>2=mean(B).
-Test case 3: As
-K=1, it is impossible to make
-mean(A)>mean(B) as
-mean(A)=mean(B)=1 no matter how many operations Chef performs.
-Test case 4: Chef can append
-2,
-1 and
-2 to array
-B in three operations.
+Explanation:
+Example case 1: Player A can move the first character 'A' one cell to the right. Now, player B cannot move and loses.
+Example case 2: Player A can move the first character two cells to the right (to the cell adjacent to 'B'). Again, player B cannot move and loses.

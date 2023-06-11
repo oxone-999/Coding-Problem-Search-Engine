@@ -1,119 +1,183 @@
-E. Chain Chips
+D. Balancing Weapons
 time limit per test3 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an undirected graph consisting of
+You've got a job in a game studio that developed an online shooter, and your first big task is to help to balance weapons. The game has
 n
-vertices and
-n−1
-edges. The
+weapons: the
 i
--th edge has weight
-a
+-th gun has an integer fire rate
+f
 i
-; it connects the vertices
+and an integer damage per bullet
+d
 i
-and
-i+1
+. The
+i
+-th gun's total firepower is equal to
+p
+i
+=
+f
+i
+⋅
+d
+i
 .
-Initially, each vertex contains a chip. Each chip has an integer written on it; the integer written on the chip in the
+You have to modify the values
+d
 i
--th vertex is
+of some guns in such a way that the new values
+d
 i
+will still be integers, and the firepower of all guns will become balanced. Given an integer
+k
+, the guns are said to be balanced if
+max
+1≤i≤n
+p
+i
+−
+min
+1≤i≤n
+p
+i
+≤k
 .
-In one operation, you can choose a chip (if there are multiple chips in a single vertex, you may choose any one of them) and move it along one of the edges of the graph. The cost of this operation is equal to the weight of the edge.
-The cost of the graph is the minimum cost of a sequence of such operations that meets the following condition:
-after all operations are performed, each vertex contains exactly one chip, and the integer on each chip is not equal to the index of the vertex where that chip is located.
-You are given
-q
-queries of the form:
-k
-x
-— change the weight of the
-k
--th edge (the one which connects the vertices
-k
-and
-k+1
-) to
-x
+Since gamers that play your game don't like big changes, you need to change the values
+d
+i
+for the minimum possible number of guns. What is the minimum number of guns for which you have to change these values to make the guns balanced?
+Note that the new values
+d
+i
+must be integers greater than
+0
 .
-After each query, print the cost of the graph. Note that you don't actually move any chips; when you compute the cost, the chips are on their initial positions.
 Input
-The first line contains one integer
-n
+The first line contains a single integer
+t
 (
-2≤n≤2⋅
-10
-5
-).
+1≤t≤1000
+) — the number of test cases.
+The first line of each test case contains two integers
+n
+and
+k
+(
+2≤n≤3000
+;
+0≤k≤1500
+) — the number of guns to balance, and the maximum allowed gap between the most and the least powerful weapons.
 The second line contains
-n−1
+n
 integers
-a
+f
 1
 ,
-a
+f
 2
 ,…,
-a
-n−1
+f
+n
 (
 1≤
-a
+f
+i
+≤2000
+), where
+f
+i
+is the fire rate of the
+i
+-th gun.
+The third line contains
+n
+integers
+d
+1
+,
+d
+2
+,…,
+d
+n
+(
+1≤
+d
 i
 ≤
 10
 9
-).
-The third line contains one integer
-q
-(
-1≤q≤2⋅
-10
-5
-).
-Then
-q
-lines follow. The
+), where
+d
 i
--th of them contains two integers
-k
-and
-x
-(
-1≤k≤n−1
-;
-1≤x≤
-10
-9
-) for the
+is the damage per bullet of the
 i
--th query.
+-th gun.
+It's guaranteed that the sum of
+n
+over all test cases doesn't exceed
+3000
+.
 Output
-For each query, print one integer — the cost of the graph after the query is performed.
+For each test case, print the minimum number of guns which damage
+d
+i
+you have to change in order to make the guns balanced.
+Note that the new values
+d
+i
+must be integers greater than
+0
+.
 Example
 input
 Copy
-10
-12 6 12 15 20 8 17 12 15
-8
-4 10
-7 3
-6 14
-9 9
-2 10
+5
+4 2
+6 3 13 7
+1 2 1 2
+3 2
+100 101 102
+100 99 98
+5 0
+1 12 4 4 3
+12 1 3 3 4
+2 50
+1000 10
+1000000000 1
 3 5
-4 11
-7 11
+1 19 11
+49 4 72
 output
 Copy
-126
-108
-120
-108
-112
-98
-98
-114
+2
+3
+0
+1
+2
+Note
+In the first test case, you can set
+d
+1
+=2
+and
+d
+2
+=4
+. You'll get an array
+d=[2,4,1,2]
+, and the values of firepower will be
+p=[12,12,13,14]
+. The guns are balanced, since
+14−12≤2
+.
+In the second test case, you have to change the value
+d
+i
+for all three guns. For example, you can set
+d=[5151,5100,5050]
+.
+In the third test case, all guns are already balanced, so you don't have to change anything.

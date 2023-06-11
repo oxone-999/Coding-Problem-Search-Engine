@@ -1,90 +1,159 @@
-A. Creep
+A. Subrectangle Guess
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Define the score of some binary string
-T
-as the absolute difference between the number of zeroes and ones in it. (for example,
-T=
-010001 contains
-4
-zeroes and
-2
-ones, so the score of
-T
-is
-|4−2|=2
-).
-Define the creepiness of some binary string
-S
-as the maximum score among all of its prefixes (for example, the creepiness of
-S=
-01001 is equal to
-2
-because the score of the prefix
-S[1…4]
-is
-2
-and the rest of the prefixes have a score of
-2
-or less).
-Given two integers
+Michael and Joe are playing a game. The game is played on a grid with
+n
+rows and
+m
+columns, filled with distinct integers. We denote the square on the
+i
+-th (
+1≤i≤n
+) row and
+j
+-th (
+1≤j≤m
+) column by
+(i,j)
+and the number there by
 a
-and
-b
-, construct a binary string consisting of
-a
-zeroes and
-b
-ones with the minimum possible creepiness.
-Input
-The first line contains a single integer
-t
-(1≤t≤1000)
- — the number of test cases. The description of the test cases follows.
-The only line of each test case contains two integers
-a
-and
-b
+ij
+.
+Michael starts by saying two numbers
+h
 (
-1≤a,b≤100
-)  — the numbers of zeroes and ones correspondingly.
-Output
-For each test case, print a binary string consisting of
+1≤h≤n
+) and
+w
+(
+1≤w≤m
+). Then Joe picks any
+h×w
+subrectangle of the board (without Michael seeing).
+Formally, an
+h×w
+subrectangle starts at some square
+(a,b)
+where
+1≤a≤n−h+1
+and
+1≤b≤m−w+1
+. It contains all squares
+(i,j)
+for
+a≤i≤a+h−1
+and
+b≤j≤b+w−1
+.
+Possible move by Joe if Michael says
+3×2
+(with maximum of
+15
+).
+Finally, Michael has to guess the maximum number in the subrectangle. He wins if he gets it right.
+Because Michael doesn't like big numbers, he wants the area of the chosen subrectangle (that is,
+h⋅w
+), to be as small as possible, while still ensuring that he wins, not depending on Joe's choice. Help Michael out by finding this minimum possible area.
+It can be shown that Michael can always choose
+h,w
+for which he can ensure that he wins.
+Input
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤20
+). Description of the test cases follows.
+The first line of each test case contains two integers
+n
+and
+m
+(
+1≤n,m≤40
+)  — the size of the grid.
+Each of the following
+n
+lines contains
+m
+integers. The
+j
+-th integer on the
+i
+-th line is
 a
-zeroes and
-b
-ones with the minimum possible creepiness. If there are multiple answers, print any of them.
+ij
+(
+−
+10
+9
+≤
+a
+ij
+≤
+10
+9
+)  — the element in the cell
+(i,j)
+.
+It is guaranteed that all the numbers are distinct (that is, if
+a
+i
+1
+j
+1
+=
+a
+i
+2
+j
+2
+, then
+i
+1
+=
+i
+2
+,
+j
+1
+=
+j
+2
+).
+Output
+For each test case print a single positive integer  — the minimum possible area the subrectangle can have while still ensuring that Michael can guarantee the victory.
 Example
 input
 Copy
-5
+3
 1 1
-1 2
-5 2
-4 5
-3 7
+3
+4 4
+2 12 6 10
+3 15 16 4
+1 13 8 11
+14 7 9 5
+2 3
+-7 5 2
+0 8 -3
 output
 Copy
-10
-011
-0011000
-101010101
-0001111111
+1
+9
+4
 Note
-In the first test case, the score of
-S[1…1]
+In the first test case, the grid is
+1×1
+, so the only possible choice for
+h,w
 is
-1
-, and the score of
-S[1…2]
-is
-0
+h=1,w=1
+, giving an area of
+h⋅w=1
 .
-In the second test case, the minimum possible creepiness is
-1
-and one of the other answers is 101.
-In the third test case, the minimum possible creepiness is
-3
-and one of the other answers is 0001100.
+The grid from the second test case is drawn in the statement. It can be shown that with
+h=3,w=3
+Michael can guarantee the victory and that any choice with
+h⋅w≤8
+doesn't.

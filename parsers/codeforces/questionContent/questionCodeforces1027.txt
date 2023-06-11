@@ -1,180 +1,271 @@
-C. Line Empire
-time limit per test1 second
+E. AND-MEX Walk
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are an ambitious king who wants to be the Emperor of The Reals. But to do that, you must first become Emperor of The Integers.
-Consider a number axis. The capital of your empire is initially at
-0
-. There are
+There is an undirected, connected graph with
 n
-unconquered kingdoms at positions
-0<
-x
-1
-<
-x
-2
-<…<
-x
-n
-. You want to conquer all other kingdoms.
-There are two actions available to you:
-You can change the location of your capital (let its current position be
-c
-1
-) to any other conquered kingdom (let its position be
-c
-2
-) at a cost of
-a⋅|
-c
-1
-−
-c
-2
-|
-.
-From the current capital (let its current position be
-c
-1
-) you can conquer an unconquered kingdom (let its position be
-c
-2
-) at a cost of
-b⋅|
-c
-1
-−
-c
-2
-|
-. You cannot conquer a kingdom if there is an unconquered kingdom between the target and your capital.
-Note that you cannot place the capital at a point without a kingdom. In other words, at any point, your capital can only be at
-0
-or one of
-x
+vertices and
+m
+weighted edges. A walk from vertex
+u
+to vertex
+v
+is defined as a sequence of vertices
+p
 1
 ,
-x
+p
 2
 ,…,
-x
-n
-. Also note that conquering a kingdom does not change the position of your capital.
-Find the minimum total cost to conquer all kingdoms. Your capital can be anywhere at the end.
-Input
-The first line contains a single integer
-t
-(
-1≤t≤1000
-)  — the number of test cases. The description of each test case follows.
-The first line of each test case contains
-3
-integers
-n
+p
+k
+(which are not necessarily distinct) starting with
+u
+and ending with
+v
+, such that
+p
+i
+and
+p
+i+1
+are connected by an edge for
+1≤i<k
+.
+We define the length of a walk as follows: take the ordered sequence of edges and write down the weights on each of them in an array. Now, write down the bitwise AND of every nonempty prefix of this array. The length of the walk is the MEX of all these values.
+More formally, let us have
+[
+w
+1
 ,
-a
-, and
-b
+w
+2
+,…,
+w
+k−1
+]
+where
+w
+i
+is the weight of the edge between
+p
+i
+and
+p
+i+1
+. Then the length of the walk is given by
+MEX({
+w
+1
+,
+w
+1
+&
+w
+2
+,…,
+w
+1
+&
+w
+2
+&…&
+w
+k−1
+})
+, where
+&
+denotes the bitwise AND operation.
+Now you must process
+q
+queries of the form u v. For each query, find the minimum possible length of a walk from
+u
+to
+v
+.
+The MEX (minimum excluded) of a set is the smallest non-negative integer that does not belong to the set. For instance:
+The MEX of
+{2,1}
+is
+0
+, because
+0
+does not belong to the set.
+The MEX of
+{3,1,0}
+is
+2
+, because
+0
+and
+1
+belong to the set, but
+2
+does not.
+The MEX of
+{0,3,1,2}
+is
+4
+because
+0
+,
+1
+,
+2
+and
+3
+belong to the set, but
+4
+does not.
+Input
+The first line contains two integers
+n
+and
+m
 (
-1≤n≤2⋅
+2≤n≤
 10
 5
 ;
-1≤a,b≤
-10
-5
-).
-The second line of each test case contains
-n
-integers
-x
-1
+n−1≤m≤min(
+n(n−1)
+2
 ,
-x
-2
-,…,
-x
-n
-(
-1≤
-x
-1
-<
-x
-2
-<…<
-x
-n
-≤
-10
-8
-).
-The sum of
-n
-over all test cases does not exceed
-2⋅
 10
 5
-.
+)
+).
+Each of the next
+m
+lines contains three integers
+a
+,
+b
+, and
+w
+(
+1≤a,b≤n
+,
+a≠b
+;
+0≤w<
+2
+30
+) indicating an undirected edge between vertex
+a
+and vertex
+b
+with weight
+w
+. The input will not contain self-loops or duplicate edges, and the provided graph will be connected.
+The next line contains a single integer
+q
+(
+1≤q≤
+10
+5
+).
+Each of the next
+q
+lines contains two integers
+u
+and
+v
+(
+1≤u,v≤n
+,
+u≠v
+), the description of each query.
 Output
-For each test case, output a single integer  — the minimum cost to conquer all kingdoms.
-Example
+For each query, print one line containing a single integer — the answer to the query.
+Examples
 input
 Copy
-4
-5 2 7
-3 5 12 13 21
-5 6 3
-1 5 6 21 30
-2 9 3
-10 15
-11 27182 31415
-16 18 33 98 874 989 4848 20458 34365 38117 72030
+6 7
+1 2 1
+2 3 3
+3 1 5
+4 5 2
+5 6 4
+6 4 6
+3 4 1
+3
+1 5
+1 2
+5 3
 output
 Copy
-173
-171
-75
-3298918744
+2
+0
+1
+input
+Copy
+9 8
+1 2 5
+2 3 11
+3 4 10
+3 5 10
+5 6 2
+5 7 1
+7 8 5
+7 9 5
+10
+5 7
+2 5
+7 1
+6 4
+5 2
+7 6
+4 1
+6 2
+4 7
+2 8
+output
+Copy
+0
+0
+2
+0
+0
+2
+1
+0
+1
+1
 Note
-Here is an optimal sequence of moves for the second test case:
-Conquer the kingdom at position
+The following is an explanation of the first example.
+The graph in the first example.
+Here is one possible walk for the first query:
 1
-with cost
-3⋅(1−0)=3
-.
-Move the capital to the kingdom at position
+→
+5
+3
+→
+3
+2
+→
 1
-with cost
-6⋅(1−0)=6
-.
-Conquer the kingdom at position
+1
+→
 5
-with cost
-3⋅(5−1)=12
-.
-Move the capital to the kingdom at position
+3
+→
+1
+4
+→
+2
+5.
 5
-with cost
-6⋅(5−1)=24
-.
-Conquer the kingdom at position
-6
-with cost
-3⋅(6−5)=3
-.
-Conquer the kingdom at position
-21
-with cost
-3⋅(21−5)=48
-.
-Conquer the kingdom at position
-30
-with cost
-3⋅(30−5)=75
-.
-The total cost is
-3+6+12+24+3+48+75=171
-. You cannot get a lower cost than this.
+3
+1
+5
+1
+2
+The array of weights is
+w=[5,3,1,5,1,2]
+. Now if we take the bitwise AND of every prefix of this array, we get the set
+{5,1,0}
+. The MEX of this set is
+2
+. We cannot get a walk with a smaller length (as defined in the statement).

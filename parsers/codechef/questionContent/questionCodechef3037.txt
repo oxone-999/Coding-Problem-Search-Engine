@@ -1,172 +1,268 @@
-Palindromic number
+Elevators
 Problem
-Read problem statements in Russian, Mandarin Chinese, Bengali, and Vietnamese as well.
-You are given a string
-S consisting of
-N digits from
-0 to
-9. You want to obtain a palindrome from
-S using some operations.
-There are
-M different types of operations you can make on
-S. Each operation is described by three integers
-X,
-Y and
-W. In this operation, if there is a digit equal to
-X in
-S, you can replace
-X with
-Y using
-W coins. For example, if
-X=4,Y=5,W=10 and
-S=1448, you make
-S equal to either
-1458 or
-1548 using
-10 coins.
-You can do the operations in any order. One type of operation can be done multiple times. You can use at most
-K coins total in all operations. Among all the palindromes that can be obtained from
-S, output the lexicographically maximum palindrome.
-If two strings
-A and
-B have the same length, we say that
-A is lexicographically larger than
-B if there exists an index
-i so that
+There is a building with
+10
+9
+floors labelled
+1 to
+10
+9
+from the bottom to the top.
+N people would like to move up several floors in the building. Specifically, the
+i-th person wants to move from floor
 A
-1
-=B
-1
-,A
-2
-=B
-2
-,…,A
-i−1
-=B
-i−1
-,A
 i
->B
+to floor
+B
+i
+, where
+A
+i
+<B
 i
 .
-Print
-−1 if it is impossible to obtain a palindrome from
-S using at most
-K coins.
+There are
+M elevators in the building. An elevator can hold any number of people. Initially, at the
+0-th second, all elevators are at floor
+1.
+An elevator takes
+1 second to move up
+1 floor but cannot move down any floors. On any floor, an elevator may stop so that people may enter or exit the elevator. Each person takes
+H seconds to enter or exit an elevator. Two or more people cannot enter or exit the same elevator at the same time; they must wait for their turn.
+A person can exit an elevator on any floor, not only floor
+B
+i
+. In particular, a person can switch elevators by exiting on some floor and entering a different elevator on the same floor.
+We say that the
+i-th person has reached the destination after taking
+H seconds to exit an elevator at floor
+B
+i
+.
+Find the minimum time needed in seconds until all
+N people have reached their destinations if they enter and exit elevators optimally.
+Note: We would recommend Python users to use PYPY/PYPY3 instead of PYTHON/PYTHON3.
 Input Format
-The first line contains an integer
-T, the number of test cases. Then the test cases follow.
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
 The first line of each test case contains three integers
 N,
-M, and
-K - the length of the string, the number of operation types, and the maximum number of coins to spend, respectively.
-The second line contains a string
-S of length
-N.
-Each of the next
-M lines contains three integers
-X
-i
-,
-Y
+M and
+H — the number of people, the number of elevators and the time taken for a person to enter or exit an elevator.
+N lines follow. The
+i-th line contains two integers
+A
 i
 and
-W
+B
 i
-- the parameters of the
-i-th type of operation.
+, where the
+i-th person wants to move from floor
+A
+i
+to floor
+B
+i
+.
 Output Format
-For each test case, output the lexicographically maximum palindrome which can be obtained from the given string
-S using at most
-K coins. Print -1 if it is impossible to obtain a palindrome.
+For each test case, output a single integer on a new line, representing the minimum time needed until all
+N people have reached their destinations.
 Constraints
 1≤T≤10
-3
-1≤N≤10
 5
-0≤M≤90
-0≤K,W
+1≤N,M≤3⋅10
+5
+1≤H≤10
+9
+1≤A
+i
+<B
 i
 ≤10
 9
-0≤X
-i
-,Y
-i
-≤9,
-X
-i
-
-=Y
-i
 The sum of
-N over all test cases does not exceed
-10
-6
-.
+N over all test cases will not exceed
+3⋅10
+5
+The sum of
+M over all test cases will not exceed
+3⋅10
+5
 Sample 1:
 Input
 Output
-3 
-5 10 10
-75643
-0 1 1
-1 2 1
-2 3 1
-3 4 1
-4 5 1
-5 6 1
-6 7 1
-7 8 1
-8 9 1
-9 0 1
-4 5 1000000
-1895
-2 3 10
-3 1 9
-1 2 5
-5 6 99
-8 9 45
-6 4 12
-141746
-1 5 3
-5 7 2
-7 9 10
-6 1 5
-95759
--1
-147741
+3
+5 3 2
+12 24
+2 3
+5 6
+3 8
+5 11
+1 20 23
+20 23
+6 3 998244353
+3 9
+3 9
+3 9
+3 9
+3 9
+3 9
+27
+68
+3992977420
 Explanation:
-In the first test case, we convert
-7 and
-3 into
-9 using two and six operations, respectively,
-4 into
-5 using one operation, and
-6 to
-7 using one operation. There is no way to obtain a palindrome which is lexicographically larger than
-95759 using ten operations.
-In the second test case, there is no possible way to convert
-1 and
-5 into equal digits. So we can't obtain a palindrome.
-In the third test case, we convert the
-6 in the last index of the given string into
-1 using the
-4-th type of operation. So
-S becomes
-141741. Next, we convert
-1 in the third index into
-5 using the
-1-st type of operation. So
-S becomes
-145741. Then we convert the
-5 in the third index of
-S into
-7 using the
-2-nd type of operation. So
-S becomes
-147741. The total cost is
-5+3+2=10 coins and the string we obtain after all operations is a palindrome. We can't obtain a lexicographically larger string than
-147741 using at most
-12 coins.
+For the first test case, a possible sequence of events is given as follows for each elevator.
+Elevator
+1:
+At the
+0-th second, elevator
+1 starts moving up from floor
+1.
+At the
+2-nd second, elevator
+1 stops at floor
+3. Person
+4 starts entering elevator
+1.
+At the
+4-th second, person
+4 finishes entering elevator
+1. Elevator
+1 continues moving up from floor
+3.
+At the
+6-th second, elevator
+1 stops at floor
+5. Person
+4 starts exiting elevator
+1.
+At the
+8-th second, person
+4 finishes exiting elevator
+1. Elevator
+1 continues moving up from floor
+5.
+Elevator
+2:
+At the
+0-th second, elevator
+2 starts moving up from floor
+1.
+At the
+1-st second, elevator
+2 stops at floor
+2. Person
+2 starts entering elevator
+2.
+At the
+3-rd second, person
+2 finishes entering elevator
+2. Elevator
+2 continues moving up from floor
+2.
+At the
+4-th second, elevator
+2 stops at floor
+3. Person
+2 starts exiting elevator
+2.
+At the
+6-th second, person
+2 finishes exiting elevator
+2. Elevator
+2 continues moving up from floor
+3.
+At the
+8-th second, elevator
+2 stops at floor
+5. Person
+4 starts entering elevator
+2.
+At the
+10-th second, person
+4 finishes entering elevator
+2. Person
+3 starts entering elevator
+2.
+At the
+12-th second, person
+3 finishes entering elevator
+2. Person
+5 starts entering elevator
+2.
+At the
+14-th second, person
+5 finishes entering elevator
+2. Elevator
+2 continues moving up from floor
+5.
+At the
+15-th second, elevator
+2 stops at floor
+6. Person
+3 starts exiting elevator
+2.
+At the
+17-th second, person
+3 finishes exiting elevator
+2. Elevator
+2 continues moving up from floor
+6.
+At the
+19-th second, elevator
+2 stops at floor
+8. Person
+4 starts exiting elevator
+2.
+At the
+21-st second, person
+4 finishes exiting elevator
+2. Elevator
+2 continues moving up from floor
+8.
+At the
+24-th second, elevator
+2 stops at floor
+11. Person
+5 starts exiting elevator
+2.
+At the
+26-th second, person
+5 finishes exiting elevator
+2. Elevator
+2 continues moving up from floor
+11.
+Elevator
+3:
+At the
+0-th second, elevator
+3 starts moving up from floor
+1.
+At the
+11-th second, elevator
+3 stops at floor
+12. Person
+1 starts entering elevator
+3.
+At the
+13-th second, person
+1 finishes entering elevator
+3. Elevator
+3 continues moving up from floor
+12.
+At the
+25-th second, elevator
+3 stops at floor
+24. Person
+1 starts exiting elevator
+3.
+At the
+27-th second, person
+1 finishes exiting elevator
+3. Elevator
+3 continues moving up from floor
+24.
+All people reach their destinations by
+27 seconds. Notice that person
+4 switched elevators, which is allowed. It can be shown that there is no way for them to reach their destinations by
+26 seconds or fewer.

@@ -1,212 +1,235 @@
-C. LIS or Reverse LIS?
-time limit per test1 second
+E. Unordered Swaps
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of
+Alice had a permutation
+p
+of numbers from
+1
+to
 n
-positive integers.
-Let
-LIS(a)
-denote the length of longest strictly increasing subsequence of
-a
-. For example,
-LIS([2,
-1
-–
-,1,
-3
-–
-])
-=
+. Alice can swap a pair
+(x,y)
+which means swapping elements at positions
+x
+and
+y
+in
+p
+(i.e. swap
+p
+x
+and
+p
+y
+). Alice recently learned her first sorting algorithm, so she decided to sort her permutation in the minimum number of swaps possible. She wrote down all the swaps in the order in which she performed them to sort the permutation on a piece of paper.
+For example,
+[(2,3),(1,3)]
+is a valid swap sequence by Alice for permutation
+p=[3,1,2]
+whereas
+[(1,3),(2,3)]
+is not because it doesn't sort the permutation. Note that we cannot sort the permutation in less than
 2
-.
-LIS([
-3
-–
-,
-5
-–
-,
-10
-–
-–
-–
-,
-20
-–
-–
-–
-])
-=
-4
-.
-LIS([3,
-1
-–
-,
+swaps.
+[(1,2),(2,3),(2,4),(2,3)]
+cannot be a sequence of swaps by Alice for
+p=[2,1,4,3]
+even if it sorts the permutation because
+p
+can be sorted in
 2
-–
-,
-4
-–
-])
-=
-3
+swaps, for example using the sequence
+[(4,3),(1,2)]
 .
-We define array
-a
-′
-as the array obtained after reversing the array
-a
-i.e.
-a
-′
-=[
-a
-n
-,
-a
-n−1
-,…,
-a
-1
-]
-.
-The beauty of array
-a
-is defined as
-min(LIS(a),LIS(
-a
-′
-))
-.
-Your task is to determine the maximum possible beauty of the array
-a
-if you can rearrange the array
-a
-arbitrarily.
+Unfortunately, Bob shuffled the sequence of swaps written by Alice.
+You are given Alice's permutation
+p
+and the swaps performed by Alice in arbitrary order. Can you restore the correct sequence of swaps that sorts the permutation
+p
+? Since Alice wrote correct swaps before Bob shuffled them up, it is guaranteed that there exists some order of swaps that sorts the permutation.
 Input
-The input consists of multiple test cases. The first line contains a single integer
-t
-(1≤t≤
-10
-4
-)
- — the number of test cases. Description of the test cases follows.
-The first line of each test case contains a single integer
+The first line contains
+2
+integers
 n
-(1≤n≤2⋅
+and
+m
+(2≤n≤2⋅
 10
 5
-)
- — the length of array
-a
-.
-The second line of each test case contains
+,1≤m≤n−1)
+ — the size of permutation and the minimum number of swaps required to sort the permutation.
+The next line contains
 n
 integers
-a
+p
 1
 ,
-a
+p
 2
-,…,
-a
+,...,
+p
 n
-(1≤
-a
+(
+1≤
+p
 i
-≤
-10
-9
+≤n
+, all
+p
+i
+are distinct)  — the elements of
+p
+. It is guaranteed that
+p
+forms a permutation.
+Then
+m
+lines follow. The
+i
+-th of the next
+m
+lines contains two integers
+x
+i
+and
+y
+i
+ — the
+i
+-th swap
+(
+x
+i
+,
+y
+i
 )
- — the elements of the array
-a
 .
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-.
+It is guaranteed that it is possible to sort
+p
+with these
+m
+swaps and that there is no way to sort
+p
+with less than
+m
+swaps.
 Output
-For each test case, output a single integer  — the maximum possible beauty of
-a
-after rearranging its elements arbitrarily.
-Example
+Print a permutation of
+m
+integers  — a valid order of swaps written by Alice that sorts the permutation
+p
+. See sample explanation for better understanding.
+In case of multiple possible answers, output any.
+Examples
 input
 Copy
-3
-3
-6 6 6
-6
-2 5 4 5 2 4
-4
-1 3 2 2
+4 3
+2 3 4 1
+1 4
+2 1
+1 3
 output
 Copy
-1
-3
-2
+2 3 1 
+input
+Copy
+6 4
+6 5 1 3 2 4
+3 1
+2 5
+6 3
+6 4
+output
+Copy
+4 1 3 2 
 Note
-In the first test case,
-a
-=
-[6,6,6]
-and
-a
-′
-=
-[6,6,6]
-.
-LIS(a)=LIS(
-a
-′
-)
-=
-1
-. Hence the beauty is
-min(1,1)=1
-.
-In the second test case,
-a
-can be rearranged to
-[2,5,4,5,4,2]
-. Then
-a
-′
-=
-[2,4,5,4,5,2]
-.
-LIS(a)=LIS(
-a
-′
-)=3
-. Hence the beauty is
-3
-and it can be shown that this is the maximum possible beauty.
-In the third test case,
-a
-can be rearranged to
-[1,2,3,2]
-. Then
-a
-′
-=
-[2,3,2,1]
-.
-LIS(a)=3
+In the first example,
+p=[2,3,4,1]
 ,
-LIS(
-a
-′
-)=2
-. Hence the beauty is
-min(3,2)=2
-and it can be shown that
+m=3
+and given swaps are
+[(1,4),(2,1),(1,3)]
+.
+There is only one correct order of swaps i.e
+[2,3,1]
+.
+First we perform the swap
 2
-is the maximum possible beauty.
+from the input i.e
+(2,1)
+,
+p
+becomes
+[3,2,4,1]
+.
+Then we perform the swap
+3
+from the input i.e
+(1,3)
+,
+p
+becomes
+[4,2,3,1]
+.
+Finally we perform the swap
+1
+from the input i.e
+(1,4)
+and
+p
+becomes
+[1,2,3,4]
+which is sorted.
+In the second example,
+p=[6,5,1,3,2,4]
+,
+m=4
+and the given swaps are
+[(3,1),(2,5),(6,3),(6,4)]
+.
+One possible correct order of swaps is
+[4,2,1,3]
+.
+Perform the swap
+4
+from the input i.e
+(6,4)
+,
+p
+becomes
+[6,5,1,4,2,3]
+.
+Perform the swap
+2
+from the input i.e
+(2,5)
+,
+p
+becomes
+[6,2,1,4,5,3]
+.
+Perform the swap
+1
+from the input i.e
+(3,1)
+,
+p
+becomes
+[1,2,6,4,5,3]
+.
+Perform the swap
+3
+from the input i.e
+(6,3)
+and
+p
+becomes
+[1,2,3,4,5,6]
+which is sorted.
+There can be other possible answers such as
+[1,2,4,3]
+.

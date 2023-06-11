@@ -1,33 +1,38 @@
-Palindromic Game
+Bear and AB
 Problem
-Read problems statements in mandarin chinese, russian and vietnamese as well.
-There are two players A, B playing a game. Player A has a string s with him, and player B has string t with him. Both s and t consist only of lower case English letters and are of equal length. A makes the first move, then B, then A, and so on alternatively. Before the start of the game, the players know the content of both the strings s and t.
-These players are building one other string w during the game. Initially, the string w is empty. In each move, a player removes any one character from their respective string and adds this character anywhere (at any position) in the string w (Note that w is a string at all times, and you can insert between characters or at the ends. It is not an empty array where you can add a character at any index. Please see the Explanations for further clarification). If at any stage of the game, the string w is of length greater than 1 and is a palindrome, then the player who made the last move wins.
-If even after the game finishes (ie. when both s and t have become empty strings), no one is able to make the string w a palindrome, then player B wins.
-Given the strings s, and t, find out which of A, B will win the game, if both play optimally.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Limak has a string S, that consists of N lowercase English letters. Limak then created a new string by repeating S exactly K times. For example, for S = "abcb" and K = 2, he would get "abcbabcb".
+Your task is to count the number of subsequences "ab" (not necessarily consecutive) in the new string.
+In other words, find the number pairs of indices i < j, such that the i-th and j-th characters in the new string are 'a' and 'b' respectively.
 Input
-The first line of the input contains an integer T, corresponding to the number of test cases. The description of each testcase follows.
-The first line of each testcase will contain the string s.
-The second line of each testcase will contain the string t.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains two integers N and K, denoting the length of the initial string S and the number of repetitions respectively.
+The second line contains a string S. Its length is exactly N, and each of its characters is a lowercase English letter.
 Output
-For each test case, output "A" or "B" (without quotes) corresponding to the situation, in a new line.
+For each test case, output a single line containing one integer — the number of subsequences "ab" in the new string. For the given constraints, it can be proved that the answer fits in the 64-bit signed type.
 Constraints
-Subtask 1 (20 points) : 1 ≤ T ≤ 500, All characters of string s are equal, All characters of string t are equal. 1 ≤ |s| = |t| ≤ 500
-Subtask 2 (80 points) : 1 ≤ T ≤ 500, 1 ≤ |s| = |t| ≤ 500
+1 ≤ T ≤ 10
+1 ≤ N ≤ 105
+1 ≤ N * K ≤ 109 (in other words, the new string has length up to 109)
 Sample 1:
 Input
 Output
 3
-ab
-ab
-aba
-cde
-ab
-cd
-B
-A
-B
+4 2
+abcb
+7 1
+aayzbaa
+12 80123123
+abzbabzbazab
+6
+2
+64197148392731290
 Explanation:
-Testcase 1: If A adds 'a' to w in the first move, B can add 'a' and make the string w = "aa", which is a palindrome, and hence win. Similarly, you can show that no matter what A plays, B can win. Hence the answer is B.
-Testcase 2: Player A moves with 'a', player B can put any of the character 'c', 'd' or 'e', Now Player A can create a palindrome by adding 'a'.
-Testcase 3: None of the players will be able to make a palindrome of length > 1. So B will win.
+Test case 1. Limak repeated the string "abcb" 2 times, and so he got "abcbabcb". There are 6 occurrences of the subsequence "ab":
+ABcbabcb (the two letters marked uppercase)
+AbcBabcb
+AbcbaBcb
+AbcbabcB
+abcbABcb
+abcbAbcB
+Test case 2. Since K = 1, the new string is equal to the given S ("aayzbaa"). There are 2 occurrences of the subsequence "ab" in this string: AayzBaa and aAyzBaa.

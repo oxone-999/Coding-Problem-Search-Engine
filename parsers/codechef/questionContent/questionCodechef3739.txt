@@ -1,131 +1,132 @@
-Xor X,Get MAX
+Coloured Pairings
 Problem
-This is an interactive problem.
-There’s a hidden array
-A consisting of
-N distinct non-negative integers.
-You are allowed to interact with the judge using queries. Each query is of the form:
-X
-Y: Given two non-negative integers
-X and
-Y
-(1≤X≤N,0≤Y<2
-30
-) as the query, the hidden array
-A is updated by setting
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given two sequences
 A
-X
-:=A
-X
-⊕Y, where
-⊕ denotes the bitwise XOR operation.
-After each query, the judge will return the maximum value of the updated array.
-Your task is to make all the elements of the array equal to
-0 using at most
-10
-5
-operations.
-Interaction
-The first line of input will contain a single integer
-N, the size of the array
-A.
-To make a query, you should print a line containing two space-separated integers
-X and
-Y
-(1≤X≤N,0≤Y<2
-30
-). Then, you must read a line containing a single non-negative integer, denoting the maximum element of the updated array. In case the query is invalid or you asked more than
-10
-5
-queries, the judge will return
-−1.
-To end the interaction, once all the elements of the array are
-0, you should print a single line containing an integer
-0. Then, you must read a line containing a single integer:
-1, if your output is correct, or
-−1 otherwise.
-Note
-After printing a query do not forget to output end of line and flush the output. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python.
-After you print
-0, do not forget to read a line containing a single integer:
-1, if your output is correct, or
-−1 otherwise.
-If the test status is Wrong Answer, either your answer is incorrect or you asked more than
-10
-5
-queries.
-If the test status is Judge Error, either you have't flushed the output, or your I/O is invalid.
-Constraints
-1≤N≤3000
-0≤A
+1
+,A
+2
+,…,A
+N
+and
+C
+1
+,C
+2
+,…,C
+N
+. For each valid
+i,
+C
 i
-<2
-30
-Elements of array A are distinct initially.
-Example
-You                 Grader
-                    3
-1 0
-                    3
-3 7 
-                    4
-2 2
-                    4
-3 4
-                    1
-1 1 
-                    0
+is the colour of
+A
+i
+.
+You should answer
+Q queries. In each query:
+You are given two colours
+x and
+y.
+Consider the subsequence of
+A which contains only elements
+A
+i
+such that
+C
+i
+=x or
+C
+i
+=y (in the original order). Let's denote it by
+B.
+For each contiguous subsequence of
+B (including empty subsequence), consider the sum of all its elements. Find the maximum of these sums.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+Q.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+The third line contains
+N space-separated integers
+C
+1
+,C
+2
+,…,C
+N
+.
+Q lines follow. Each of these lines contains two space-separated integers
+x and
+y describing a query.
+Output
+For each query, print a single line containing one integer — the maximum sum of a contiguous subsequence of
+B.
+Constraints
+1≤T≤10
+2
+1≤N,Q≤3∗10
+5
+∣A
+i
+∣≤10
+9
+for each valid
+i
+1≤C
+i
+≤N for each valid
+i
+1≤x
+
+=y≤N
+the sum of
+N over all test cases does not exceed
+3∗10
+5
+the sum of
+Q over all test cases does not exceed
+3∗10
+5
+Subtasks
+Subtask #1 (50 points): Every color except the color
+1 occurs in at most
+1 query.
+Subtask #2 (50 points): Original constraints
+Sample 1:
+Input
+Output
+2
+6 4
+4 -2 5 3 -6 7
+1 2 2 3 1 3
+1 2
+2 3
+1 3
+5 6
+4 4
+-1 -1 5 -3
+1 1 1 2
+1 2
+1 3
+1 4
+2 4
+7
+15
+8
 0
-                    1
-Explanation
-Here,
-A=[1,2,3] initially.
-Operation
-1:
-A
-1
-:=A
-1
-⊕0,
-A=[1,2,3]. The maximum value of updated array is
-3.
-Operation
-2:
-A
-3
-:=A
-3
-⊕7,
-A=[1,2,4]. The maximum value of updated array is
-4.
-Operation
-3:
-A
-2
-:=A
-2
-⊕2,
-A=[1,0,4]. The maximum value of updated array is
-4.
-Operation
-4:
-A
-3
-:=A
-3
-⊕4,
-A=[1,0,0]. The maximum value of updated array is
-1.
-Operation
-5:
-A
-1
-:=A
-1
-⊕1,
-A=[0,0,0]. The maximum value of updated array is
-0.
+5
+5
+5
+0

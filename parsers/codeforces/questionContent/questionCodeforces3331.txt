@@ -1,146 +1,107 @@
-C. Paint the Digits
+D. Cow and Snacks
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a sequence of
+The legendary Farmer John is throwing a huge party, and animals from all over the world are hanging out at his house. His guests are hungry, so he instructs his cow Bessie to bring out the snacks! Moo!
+There are
 n
-digits
-d
-1
-d
-2
-…
-d
+snacks flavors, numbered with integers
+1,2,…,n
+. Bessie has
 n
-. You need to paint all the digits in two colors so that:
-each digit is painted either in the color
-1
-or in the color
-2
-;
-if you write in a row from left to right all the digits painted in the color
-1
-, and then after them all the digits painted in the color
-2
-, then the resulting sequence of
-n
-digits will be non-decreasing (that is, each next digit will be greater than or equal to the previous digit).
-For example, for the sequence
-d=914
-the only valid coloring is
-211
-(paint in the color
-1
-two last digits, paint in the color
-2
-the first digit). But
-122
-is not a valid coloring (
-9
-concatenated with
-14
-is not a non-decreasing sequence).
-It is allowed that either of the two colors is not used at all. Digits painted in the same color are not required to have consecutive positions.
-Find any of the valid ways to paint the given sequence of digits or determine that it is impossible to do.
+snacks, one snack of each flavor. Every guest has exactly two favorite flavors. The procedure for eating snacks will go as follows:
+First, Bessie will line up the guests in some way.
+Then in this order, guests will approach the snacks one by one.
+Each guest in their turn will eat all remaining snacks of their favorite flavor. In case no favorite flavors are present when a guest goes up, they become very sad.
+Help Bessie to minimize the number of sad guests by lining the guests in an optimal way.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤10000
-) — the number of test cases in the input.
-The first line of each test case contains an integer
+The first line contains integers
 n
+and
+k
 (
-1≤n≤2⋅
+2≤n≤
 10
 5
-) — the length of a given sequence of digits.
-The next line contains a sequence of
-n
-digits
-d
-1
-d
-2
-…
-d
-n
-(
-0≤
-d
+,
+1≤k≤
+10
+5
+), the number of snacks and the number of guests.
+The
 i
-≤9
-). The digits are written in a row without spaces or any other separators. The sequence can start with 0.
-It is guaranteed that the sum of the values of
-n
-for all test cases in the input does not exceed
-2⋅
-10
-5
-.
-Output
-Print
-t
-lines — the answers to each of the test cases in the input.
-If there is a solution for a test case, the corresponding output line should contain any of the valid colorings written as a string of
-n
-digits
-t
-1
-t
-2
-…
-t
-n
+-th of the following
+k
+lines contains two integers
+x
+i
+and
+y
+i
 (
 1≤
-t
+x
 i
-≤2
-), where
-t
+,
+y
 i
-is the color the
+≤n
+,
+x
 i
--th digit is painted in. If there are several feasible solutions, print any of them.
-If there is no solution, then the corresponding output line should contain a single character '-' (the minus sign).
-Example
+≠
+y
+i
+), favorite snack flavors of the
+i
+-th guest.
+Output
+Output one integer, the smallest possible number of sad guests.
+Examples
 input
 Copy
-5
-12
-040425524644
-1
-0
-9
-123456789
-2
-98
-3
-987
+5 4
+1 2
+4 3
+1 4
+3 4
 output
 Copy
-121212211211
 1
-222222222
-21
--
+input
+Copy
+6 5
+2 3
+2 1
+3 4
+6 5
+4 5
+output
+Copy
+0
 Note
-In the first test case,
-d=040425524644
-. The output
-t=121212211211
-is correct because
-0022444
-(painted in
+In the first example, Bessie can order the guests like this:
+3,1,2,4
+. Guest
+3
+goes first and eats snacks
 1
-) concatenated with
-44556
-(painted in
+and
+4
+. Then the guest
+1
+goes and eats the snack
 2
-) is
-002244444556
-which is a sorted sequence of
-n
-given digits.
+only, because the snack
+1
+has already been eaten. Similarly, the guest
+2
+goes up and eats the snack
+3
+only. All the snacks are gone, so the guest
+4
+will be sad.
+In the second example, one optimal ordering is
+2,1,3,5,4
+. All the guests will be satisfied.

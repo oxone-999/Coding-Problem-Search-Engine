@@ -1,55 +1,27 @@
-Total Components
+One Dimensional Game of Life
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given all
-N−1 integers in the range
-[2,N]. In each step, you choose
-2 distinct integers and if they share a common factor greater than
-1, you combine them into the same group. You keep doing it until no further merging is possible.
-Belonging to a group is an equivalence relation. So if integers
-a and
-b are in the same group and integers
-b and
-c are in the same group, then integers
-a and
-c are also said to be in the same group.
-Find the total number of groups formed in the end.
-###Input
-First line will contain
-T, number of test cases. Then the test cases follow.
-Each test case contains a single line of input, a single integer
-N.
-###Output For each test case, output in a single line the answer to the problem.
-###Constraints
-1≤T≤2⋅10
-5
-2≤N≤10
-7
-Subtasks
-Subtask #1 (30 points):
-1≤T≤200
-2≤N≤1000
-Subtask #2 (70 points): original constraints
+In Conway's Game of Life, cells in a grid are used to simulate biological cells. Each cell is considered to be either alive or dead. At each step of the simulation each cell's current status and number of living neighbors is used to determine the status of the cell during the following step of the simulation.
+In this one-dimensional version, there are N cells numbered 0 through N-1. The number of cells does not change at any point in the simulation. Each cell i is adjacent to cells i-1 and i+1. Here, the indices are taken modulo N meaning cells 0 and N-1 are also adjacent to eachother. At each step of the simulation, cells with exactly one living neighbor change their status (alive cells become dead, dead cells become alive). For example, if we represent dead cells with a '0' and living cells with a '1', consider the state with 8 cells:
+01100101
+Cells 0 and 6 have two living neighbors.
+Cells 1, 2, 3, and 4 have one living neighbor.
+Cells 5 and 7 have no living neighbors.
+Thus, at the next step of the simulation, the state would be:
+00011101
+Given some state of the game, your task is to determine the state immediately preceding it. In some cases there may be more than one answer or no possible answer.
+Input
+Input will begin with an integer T<100, the number of test cases. Each test case consists of a single line, with between 3 and 50 characters, inclusive. Each character will be either '0' or '1'. Each '0' represents a dead cell, and each '1' represents an alive cell.
+Output
+For each test case, output the state of the game that precedes the given state. If there is no possible solution, print "No solution" (quotes for clarity only). If there are multiple possible solutions, print "Multiple solutions" (quotes for clarity only).
 Sample 1:
 Input
 Output
-3
-2
 4
-8
-1
-2
-3
-Explanation:
-Test Case
-1: The final group is
-{2}.
-Test Case
-2: The final groups are
-{2,4}, and
-{3}.
-Test Case
-3: The final groups are
-{2,3,4,6,8},
-{5}, and
-{7}.
+00011101
+000
+000001
+11110
+01100101
+Multiple solutions
+No solution
+10010

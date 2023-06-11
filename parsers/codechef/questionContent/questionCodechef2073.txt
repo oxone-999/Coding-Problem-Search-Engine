@@ -1,68 +1,143 @@
-Bear and Species
+Increasing Addition
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Bearland can be represented as a square grid that consists of N rows and N columns. Two cells are called adjacent if they share a side. In the input, each cell is described by one character:
-'.' is an empty cell.
-'B', 'G' or 'P' is a cell inhabited by bears of one species — brown, grizzly or polar bears respectively.
-'?' is a cell inhabited by bears of one species but you don't know which one. Note that this cell can't be empty.
-Grizzly bears are the most aggressive species. If a cell is inhabited by grizzly bears, all adjacent cells should be empty, because otherwise there would be fights between bears.
-Brown and polar bears are a bit calmer. All brown bears are fine with other brown bears in adjacent cells, but they would fight with bears of any other species. Similarly, polar bears would fight with bears of any species other than polar bears.
-Let X denote the number of question marks. Since each question mark represents one of the three species, there are 3X ways to replace them with characters 'B', 'G' and 'P' (denoting the species that live in that cell). Find the number of such ways that there are no fights between bears. Print the answer modulo (109+7).
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains an integer N denoting the size of the grid.
-The following N lines describe the grid. Each of those lines contains a string of length N. Each character is one of five: '.', '?', 'B', 'G', 'P'.
-Output
-For each test case, output a single line containing one integer — the number of ways to replace question marks to avoid fights in Bearland, modulo (109+7).
+You have an array
+A of length
+N. In one operation, you can do the following:
+Select any subarray
+A
+L…R
+(1≤L≤R≤N) and then add
+i to the
+i-th element of this subarray. Formally, we set
+A
+j
+:=A
+j
++(j−L+1) for all
+L≤j≤R.
+For example: if
+A=[2,1,5,2] and we apply operation on
+A
+2…4
+then
+A becomes
+[2,1+1,5+2,2+3]=[2,2,7,5].
+The minimum number of such operations required to sort
+A in non-decreasing order is termed as the goodness of
+A.
+We want to process
+Q updates on
+A of the following form:
+i x : Set
+A
+i
+:=x where (
+1≤i≤N).
+Determine the goodness of
+A after each update.
+Input Format
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
+The first line of each test case contains two integers
+N and
+Q — the size of the array
+A and the number of updates.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+denoting the array
+A.
+The next
+Q lines each contain two integers
+i and
+x denoting the parameters of the update.
+Output Format
+For each test case, output
+Q integers, the goodness of the array after each update.
 Constraints
-1 ≤ T ≤ 50
-2 ≤ N ≤ 50
+1≤T≤10
+4
+2≤N≤10
+5
+1≤Q≤N
+1≤A
+i
+≤10
+9
+1≤x≤10
+9
+Sum of
+N over all test cases does not exceed
+2⋅10
+5
+.
 Subtasks
-Subtask #1 (30 points): 2 ≤ N ≤ 3
-Subtask #2 (30 points): Each character in the grid will be either '.' or '?'.
-Subtask #3 (40 points): Original constraints.
-Example
-Input:
-6
-3
-..?
-.?B
-G..
+Subtask 1 (50 points):
+1≤Q≤min(5,N)
+Subtask 2 (50 points): Original constraints.
+Sample 1:
+Input
+Output
 2
-GG
-..
-3
-?..
-.??
-??.
-3
-??P
-???
-??B
-7
-?.?.?.?
-.?.?.?.
-?.?.?.?
-.?.?.?.
-?.?.?.?
-.?.?.?.
-?.?.?.?
+3 2
+3 2 1
+3 10
+2 1
+4 2
+2 2 2 2
+4 2
+4 1
+1
 2
-PP
-PP
-Output:
-1
 0
-6
-0
-288603514
 1
-Explanation
-Test case 1. We are given the grid of size 3 × 3. One of the already fixed cells is inhabited by brown bears. They would fight with bears of any species other than brown bears, so adjacent cells with question marks must by inhabited by brown bears as well. Hence, there is only 1 way to replace question marks (both of them must be replaced by 'B').
-Test case 2. In the given grid, there are two adjacent cells both inhabited by grizzly bears. They will fight with each other, so the answer is 0 — it's impossible to replace question marks so that there would be no fights (it doesn't matter that there are no question marks at all).
-Test case 3. There are 6 ways:
-B.. B.. G.. G.. P.. P..
-.BB .PP .BB .PP .BB .PP
-BB. PP. BB. PP. BB. PP.
-
-Test case 4. No matter how we replace question marks, bears in some two adjacent cells will start a fight. The answer is 0.
+Explanation:
+Test Case 1: Initially
+A=[3,2,1].
+After first update:
+A=[3,2,10].
+Now we can apply the operation on
+A
+1…2
+. Then
+A becomes
+[4,4,10]. Therefore the goodness of
+A is
+1.
+After second update:
+A=[3,1,10].
+Now we can apply the operation on
+A
+2…2
+.
+A becomes
+[3,2,10]. Now again we can apply the operation
+A
+2…2
+.
+A becomes
+[3,3,10]. Therefore the goodness of
+A is
+2.
+Test Case 2: Initially
+A=[2,2,2,2].
+After first update:
+A=[2,2,2,2].
+A is already in sorted order. Therefore the goodness of
+A is
+0.
+After second update:
+A=[2,2,2,1].
+Now we can apply the operation on
+A
+3…4
+.
+A becomes
+[2,2,3,3]. Therefore the goodness of
+A is
+1.

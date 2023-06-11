@@ -1,242 +1,181 @@
-F. Battalion Strength
-time limit per test5 seconds
-memory limit per test256 megabytes
+C. World of Darkraft: Battle for Azathoth
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-There are
+Roma is playing a new expansion for his favorite game World of Darkraft. He made a new character and is going for his first grind.
+Roma has a choice to buy exactly one of
 n
-officers in the Army of Byteland. Each officer has some power associated with him. The power of the
+different weapons and exactly one of
+m
+different armor sets. Weapon
 i
--th officer is denoted by
+has attack modifier
+a
+i
+and is worth
+c
+a
+i
+coins, and armor set
+j
+has defense modifier
+b
+j
+and is worth
+c
+b
+j
+coins.
+After choosing his equipment Roma can proceed to defeat some monsters. There are
 p
-i
-. As the war is fast approaching, the General would like to know the strength of the army.
-The strength of an army is calculated in a strange way in Byteland. The General selects a random subset of officers from these
-n
-officers and calls this subset a battalion.(All
-2
-n
-subsets of the
-n
-officers can be chosen equally likely, including empty subset and the subset of all officers).
-The strength of a battalion is calculated in the following way:
-Let the powers of the chosen officers be
-a
-1
-,
-a
-2
-,…,
-a
+monsters he can try to defeat. Monster
 k
-, where
-a
-1
-≤
-a
-2
-≤⋯≤
-a
-k
-. The strength of this battalion is equal to
-a
-1
-a
-2
-+
-a
-2
-a
-3
-+⋯+
-a
-k−1
-a
-k
-. (If the size of Battalion is
-≤1
-, then the strength of this battalion is
-0
-).
-The strength of the army is equal to the expected value of the strength of the battalion.
-As the war is really long, the powers of officers may change. Precisely, there will be
-q
-changes. Each one of the form
-i
+has defense
 x
-indicating that
-p
+k
+, attack
+y
+k
+and possesses
+z
+k
+coins. Roma can defeat a monster if his weapon's attack modifier is larger than the monster's defense, and his armor set's defense modifier is larger than the monster's attack. That is, a monster
+k
+can be defeated with a weapon
 i
-is changed to
+and an armor set
+j
+if
+a
+i
+>
 x
-.
-You need to find the strength of the army initially and after each of these
-q
-updates.
-Note that the changes are permanent.
-The strength should be found by modulo
-10
-9
-+7
-. Formally, let
-M=
-10
-9
-+7
-. It can be shown that the answer can be expressed as an irreducible fraction
-p/q
-, where
-p
+k
 and
-q
-are integers and
-q≢0modM
-). Output the integer equal to
-p⋅
-q
-−1
-modM
-. In other words, output such an integer
-x
-that
-0≤x<M
-and
-x⋅q≡pmodM
-).
+b
+j
+>
+y
+k
+. After defeating the monster, Roma takes all the coins from them. During the grind, Roma can defeat as many monsters as he likes. Monsters do not respawn, thus each monster can be defeated at most one.
+Thanks to Roma's excessive donations, we can assume that he has an infinite amount of in-game currency and can afford any of the weapons and armor sets. Still, he wants to maximize the profit of the grind. The profit is defined as the total coins obtained from all defeated monsters minus the cost of his equipment. Note that Roma must purchase a weapon and an armor set even if he can not cover their cost with obtained coins.
+Help Roma find the maximum profit of the grind.
 Input
-The first line of the input contains a single integer
+The first line contains three integers
 n
+,
+m
+, and
+p
 (
-1≤n≤3⋅
+1≤n,m,p≤2⋅
 10
 5
-)  — the number of officers in Byteland's Army.
-The second line contains
+) — the number of available weapons, armor sets and monsters respectively.
+The following
 n
-integers
-p
-1
-,
-p
-2
-,…,
-p
-n
+lines describe available weapons. The
+i
+-th of these lines contains two integers
+a
+i
+and
+c
+a
+i
 (
 1≤
-p
+a
+i
+≤
+10
+6
+,
+1≤c
+a
 i
 ≤
 10
 9
-).
-The third line contains a single integer
-q
-(
-1≤q≤3⋅
-10
-5
-)  — the number of updates.
-Each of the next
-q
-lines contains two integers
+) — the attack modifier and the cost of the weapon
 i
+.
+The following
+m
+lines describe available armor sets. The
+j
+-th of these lines contains two integers
+b
+j
 and
-x
+c
+b
+j
 (
-1≤i≤n
+1≤
+b
+j
+≤
+10
+6
 ,
-1≤x≤
+1≤c
+b
+j
+≤
 10
 9
-), indicating that
+) — the defense modifier and the cost of the armor set
+j
+.
+The following
 p
-i
-is updated to
+lines describe monsters. The
+k
+-th of these lines contains three integers
 x
+k
+,
+y
+k
+,
+z
+k
+(
+1≤
+x
+k
+,
+y
+k
+≤
+10
+6
+,
+1≤
+z
+k
+≤
+10
+3
+) — defense, attack and the number of coins of the monster
+k
 .
 Output
-In the first line output the initial strength of the army.
-In
-i
--th of the next
-q
-lines, output the strength of the army after
-i
--th update.
-Examples
+Print a single integer — the maximum profit of the grind.
+Example
 input
 Copy
-2
-1 2
-2
-1 2
-2 1
+2 3 3
+2 3
+4 7
+2 4
+3 2
+5 11
+1 2 4
+2 1 6
+3 4 6
 output
 Copy
-500000004
 1
-500000004
-input
-Copy
-4
-1 2 3 4
-4
-1 5
-2 5
-3 5
-4 5
-output
-Copy
-625000011
-13
-62500020
-375000027
-62500027
-Note
-In first testcase, initially, there are four possible battalions
-{} Strength =
-0
-{
-1
-} Strength =
-0
-{
-2
-} Strength =
-0
-{
-1,2
-} Strength =
-2
-So strength of army is
-0+0+0+2
-4
-=
-1
-2
-After changing
-p
-1
-to
-2
-, strength of battallion {
-1,2
-} changes to
-4
-, so strength of army becomes
-1
-.
-After changing
-p
-2
-to
-1
-, strength of battalion {
-1,2
-} again becomes
-2
-, so strength of army becomes
-1
-2
-.

@@ -1,228 +1,132 @@
-D. Flipping Range
-time limit per test2 seconds
-memory limit per test256 megabytes
+F. Making It Bipartite
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of
+You are given an undirected graph of
 n
-integers and a set
-B
-of
-m
-positive integers such that
-1≤
-b
-i
-≤⌊
-n
-2
-⌋
-for
-1≤i≤m
-, where
-b
-i
-is the
-i
--th element of
-B
-.
-You can make the following operation on
-a
-:
-Select some
-x
-such that
-x
-appears in
-B
-.
-Select an interval from array
-a
-of size
-x
-and multiply by
-−1
-every element in the interval. Formally, select
-l
-and
-r
-such that
-1≤l≤r≤n
-and
-r−l+1=x
-, then assign
-a
-i
-:=−
-a
-i
-for every
-i
-such that
-l≤i≤r
-.
-Consider the following example, let
-a=[0,6,−2,1,−4,5]
-and
-B={1,2}
-:
-[0,6,−2,−1,4,5]
-is obtained after choosing size
-2
-and
-l=4
-,
-r=5
-.
-[0,6,2,−1,4,5]
-is obtained after choosing size
+vertices indexed from
 1
-and
-l=3
-,
-r=3
-.
-Find the maximum
-∑
-i=1
+to
 n
+, where vertex
+i
+has a value
 a
 i
-you can get after applying such operation any number of times (possibly zero).
+assigned to it and all values
+a
+i
+are different. There is an edge between two vertices
+u
+and
+v
+if either
+a
+u
+divides
+a
+v
+or
+a
+v
+divides
+a
+u
+.
+Find the minimum number of vertices to remove such that the remaining graph is bipartite, when you remove a vertex you remove all the edges incident to it.
 Input
 The input consists of multiple test cases. The first line contains a single integer
 t
 (
 1≤t≤
 10
-5
+4
 ) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains two integers
+The first line of each test case contains a single integer
 n
-and
-m
 (
-2≤n≤
+1≤n≤5⋅
 10
-6
-,
-1≤m≤⌊
-n
-2
-⌋
-) — the number of elements of
-a
-and
-B
-respectively.
+4
+) — the number of vertices in the graph.
 The second line of each test case contains
 n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−
-10
-9
-≤
+integers, the
+i
+-th of them is the value
 a
 i
-≤
-10
-9
-).
-The third line of each test case contains
-m
-distinct positive integers
-b
-1
-,
-b
-2
-,…,
-b
-m
 (
 1≤
-b
-i
-≤⌊
-n
-2
-⌋
-) — the elements in the set
-B
-.
-It's guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-6
-.
-Output
-For each test case print a single integer — the maximum possible sum of all
 a
 i
-after applying such operation any number of times.
+≤5⋅
+10
+4
+) assigned to the
+i
+-th vertex, all values
+a
+i
+are different.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+5⋅
+10
+4
+.
+Output
+For each test case print a single integer — the minimum number of vertices to remove such that the remaining graph is bipartite.
 Example
 input
 Copy
-3
-6 2
-0 6 -2 1 -4 5
-1 2
-7 1
-1 -1 1 -1 1 -1 1
-2
-5 1
--1000000000 -1000000000 -1000000000 -1000000000 -1000000000
-1
+4
+4
+8 4 2 1
+4
+30 2 3 5
+5
+12 4 6 2 3
+10
+85 195 5 39 3 13 266 154 14 2
 output
 Copy
-18
-5
-5000000000
+2
+0
+1
+2
 Note
-In the first test, you can apply the operation
-x=1
-,
-l=3
-,
-r=3
-, and the operation
-x=1
-,
-l=5
-,
-r=5
-, then the array becomes
-[0,6,2,1,4,5]
+In the first test case if we remove the vertices with values
+1
+and
+2
+we will obtain a bipartite graph, so the answer is
+2
+, it is impossible to remove less than
+2
+vertices and still obtain a bipartite graph.
+Before After
+test case #1
+In the second test case we do not have to remove any vertex because the graph is already bipartite, so the answer is
+0
 .
-In the second test, you can apply the operation
-x=2
-,
-l=2
-,
-r=3
-, and the array becomes
-[1,1,−1,−1,1,−1,1]
-, then apply the operation
-x=2
-,
-l=3
-,
-r=4
-, and the array becomes
-[1,1,1,1,1,−1,1]
-. There is no way to achieve a sum bigger than
-5
+Before After
+test case #2
+In the third test case we only have to remove the vertex with value
+12
+, so the answer is
+1
 .
+Before After
+test case #3
+In the fourth test case we remove the vertices with values
+2
+and
+195
+, so the answer is
+2
+.
+Before After
+test case #4

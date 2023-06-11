@@ -1,101 +1,41 @@
-Average Sorting
+Chef and Gcd Queries
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given a sequence
-A
-1
-,A
-2
-,…,A
-N
-. You may perform the following operation any number of times: select any two adjacent elements
-A
-i
-and
-A
-i+1
-and replace one of them with
-2
-A
-i
-+A
-i+1
-(a real number, i.e. without rounding). You may also select each pair of adjacent elements and each element to replace in multiple operations, i.e. any number of times.
-Is it possible to make the sequence strictly increasing in a finite number of operations?
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+Chef likes solving problems involving a lot of queries with numbers. One day, he found a new problem which he finds difficult to solve. Therefore, he's asking for your help!
+You are given a sequence A1, A2, ..., AN and Q queries. There are two types of queries:
+1 X Y — Set AX = Y.
+2 L R G — Compute the number of indices i such that L ≤ i ≤ R and gcd(G, Ai) = 1.
+Find the answer to each query of the second type.
+Note: gcd(X, Y) denotes the greatest common divisor — the highest positive integer which divides both X and Y.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+The first line of the input contains a single integer N denoting the number of elements in the sequence.
+The second line contains N space-separated integers A1, A2, ..., AN.
+The third line contains a single integer Q denoting the number of queries.
+Each of the following Q lines describes one query in the following format:
+1 X Y for a query of the first type
+2 L R G for a query of the second type
 Output
-For each test case, print a single line containing the string "Yes" if it is possible to make the sequence strictly increasing or "No" otherwise (without quotes).
-You may print each character of each string in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
+For each query of type 2, print a single line containing one integer - the answer to the query.
 Constraints
-1≤T≤50,000
-2≤N≤10
-5
-1≤A
-i
-≤10
-9
-for each valid
-i
-the sum of
-N over all test cases does not exceed
-10
-6
+1 ≤ N, Q ≤ 5 · 104
+1 ≤ L ≤ R ≤ N
+1 ≤ X ≤ N
+1 ≤ Y, G ≤ 105
+1 ≤ Ai ≤ 105 for each valid i
 Subtasks
-Subtask #1 (100 points): original constraints
+Subtask #1 (15 points): 1 ≤ N, Q ≤ 1000
+Subtask #2 (85 points): original constraints
 Sample 1:
 Input
 Output
 4
-2
-7 4
+2 3 4 5
 3
-1 2 2
-5
-5 5 5 5 5
-8
-7 2 4 1 6 8 3 9
-No
-Yes
-No
-Yes
+2 1 4 2
+1 2 6
+2 1 4 2
+2
+1
 Explanation:
-Example case 1: Clearly, after any sequence of operations,
-A
-1
->A
-2
-holds, so it is impossible to make the sequence strictly increasing.
-Example case 2: Choose
-A
-1
-and
-A
-2
-and change
-A
-2
-to
-2
-1+2
-. The sequence after this operation is
-[1,1.5,2], which is a strictly increasing sequence.
-There may also be other valid sequences of operations that give a strictly increasing sequence.
-Example case 3: No matter which pair of adjacent elements we choose, we can only change one of them to
-2
-5+5
-=5, so the sequence always remains
-[5,5,5,5,5].
+In the first query, gcd(A2, 2) = 1 and gcd(A4, 2) = 1, so the answer is 2.
+In the third query, only gcd(A4, 2) is equal to 1, so the answer is 1.

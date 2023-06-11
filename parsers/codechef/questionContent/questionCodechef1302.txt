@@ -1,124 +1,39 @@
-Help Martha
+DevuLand, Dinosaurs and Laddus
 Problem
-Jonas asked Martha to stand at point
-(x
-1
-,y
-1
-) on an infinite cartesian plane. He gave her a string
-S which consists of operations in the form of characters 'R', 'L', 'U', and 'D'.
-Each character of the string corresponds to the following movements:
-'R' means moving right by
-1 unit i.e,
-(x,y) to
-(x+1,y).
-'L' means moving left by
-1 unit i.e,
-(x,y) to
-(x−1,y).
-'U' means moving up by
-1 unit i.e,
-(x,y) to
-(x,y+1).
-'D' means moving down by
-1 unit i.e,
-(x,y) to
-(x,y−1).
-Now, Jonas asks Martha
-Q queries. In each query, coordinates are given of form
-(x
-2
-,y
-2
-). Martha needs to tell if it is possible to move from
-(x
-1
-,y
-1
-) to
-(x
-2
-,y
-2
-) by choosing a subsequence of given string
-S and performing the operations in sequential order.Starting point
-(x
-1
-,y
-1
-) remains same for all queries.
-If it is possible, print "YES" and the length of the smallest possible subsequence of string, else print "NO".
-Recall that string
-a is a subsequence of a string
-b if
-a can be obtained from
-b by deletion of several (possibly zero or all) characters. For example, for the string
-a="codechef", the following strings are subsequences: "code", "ee", "odchef", "df", "", and others, but the following are not subsequences: "ced", "eehc", "cofe".
-Note: Use of Fast IO is recommended.
-###Input:
-First line will contain
-T, number of test cases. Then test cases follow.
-For each test case, first line will contain string
-S, string of operations.
-Second line will contain coordinates
-x
-1
-and
-y
-1
-.
-Third line will contain
-Q, number of queries.
-Q lines follow. Each line will contain coordinates
-x
-2
-and
-y
-2
-.
-###Output: For each query if subsequence exists then print "YES" (without quotes) and length of smallest possible subsequence separated by a space in new line, else print "NO" (without quotes) in new line.
-###Constraints
-1≤T≤10
-1≤∣S∣≤10
-6
-−10
-8
-≤x
-1
-,x
-2
-,y
-1
-,y
-2
-≤10
-8
-1≤Q≤10
-5
+Read problems statements in Mandarin Chinese and Russian.
+DevuLand is a very strange place. There are n villages in it. Some of the villages are occupied by dinosaurs while the remaining ones by villagers. You are given the information of DevuLand by an array D of size n. If D[i] is non-negative, it means that there are D[i] villagers in that village. Otherwise, it means that are -D[i] dinosaurs in that village.
+It is also guaranteed that total number of villagers in DevuLand is equal to total number of dinosaurs.
+Once dinosaurs got very hungry and started eating villagers. Frightened villagers gathered immediately and met their Sarpanch Deviji. Deviji, being a very daring and negotiable person, met to the head of dinosaurs. Soon both parties called a truce. It was decided that the villagers will provide laddus to the dinosaurs. So everyday, each villager will take exactly one laddu to one of the dinosaurs in such a way that no dinosaur remains hungry (note that this is possible because number of villagers is the same as the number of dinosaurs).
+Actually, carrying laddus is a quite a tough job. Villagers have to use a bullock cart for that. It takes one unit of grass a bullock to carry a cart with 1 laddu for 1 kilometre. Laddus used to be very heavy in DevuLand, so a bullock cart can not carry more than one laddu.
+It is also given distance between village indexed i and j is |j - i| (the absolute value) kilometres.
+Now villagers sat down and found a strategy to feed laddus to dinosaurs so that they need to buy the least amount of grass from the nearby market. They are not very good in calculations, please find out what is the minimum number of units of grass they need to buy.
+Input
+First line of the input contains an integer T denoting number of test cases.
+For each test case, there are two lines.
+First line contains a single integer denoting n: number of villages.
+Second line contains n space separated integers denoting the array D.
+Output
+For each test case, print a single line containing the integer corresponding to answer of the problem.
+Constraints
+1 ≤ T ≤ 10^5
+1 ≤ n ≤ 10^5
+-10^4 ≤ D[i] ≤ 10^4
+Sum of n over all the test cases will be ≤ 10^6
+It is guaranteed that sum of D[i] is zero for a single test case which ensures that there are equal number of villagers and dinosaurs.
 Sample 1:
 Input
 Output
-1
-RLUDRLUD
-1 2
+3
 2
-2 3
-1 -2
-YES 2
-NO
+5 -5
+2
+-5 5
+3
+1 2 -3
+5
+5
+4
 Explanation:
-Given String is "RLUDRLUD",
-(x
-1
-,y
-1
-) is
-(1,2). We can move from
-(1,2) to
-(2,3) in just two operations if we choose subsequence as "RU" or "UR".
-Suppose we choose "RU" as a subsequence. 'R' means moving from
-(1,2) to
-(2,2). 'U' means moving from
-(2,2) to
-(2,3).
-In the second query, we can't move from (1,2) to (1,-2) using operations of the given string.
+Example case 1. Each villager in village 1, need to walk 1 km to reach to the dinosaur in 2nd village.
+Example case 2. Each villager in village 2, need to walk 1 km to reach to the dinosaur 1st village.
+Example case 3. Each villager in village 1, need to walk 2 km to reach to the dinosaur in 3rd village whereas Each villager in village 2, need to walk 1 km to reach to the dinosaur in 3rd village.

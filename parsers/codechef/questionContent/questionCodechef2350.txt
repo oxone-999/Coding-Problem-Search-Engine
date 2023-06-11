@@ -1,59 +1,36 @@
-Red Green Grids
+Chef and Queries
 Problem
-There is an empty grid (all cells are colored white) of
-N rows and
-M columns.
-Chef can fill each cell with either RED or GREEN color.
-Chef defines a valid path as a path of cells starting from
-(1,1) and ending at
-(N,M), where, Chef moves either right or down by
-1 cell each time.
-For a particular grid, Chef defines the score of the grid as the number of valid paths containing equal number of RED and GREEN cells.
-Find the sum of scores of all possible colored grids containing
-N rows and
-M columns.
-Since the answer can be large, output it modulo
-998244353.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of two integers
-N and
-M - denoting the dimensions of the grid.
-Output Format
-For each test case, output the sum of scores of all possible colored grids containing
-N rows and
-M columns, modulo
-998244353.
-Constraints
-1≤T≤1000
-1≤N,M≤1000
-Sample 1:
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+As part of his daily job, Chef has to solve problems involving sets. Till now, Chef has been using inefficient methods to solve his set related problem, wasting a lot of his precious time. He has agreed to pay you a lot of money for solving the following problem for him efficiently.
+First, Chef needs to perform Q operations on a set. Each operation is either:
+1. Add a number to the set (if this number is NOT already present in the set).
+2. Erase a number from the set (if this number exists in the set).
+Then, he needs to find the sum of all elements of the set after performing these Q queries. Your job is to find this sum for him quickly.
 Input
+The first line of input contains four integers — Q, S1, A, B. S1 is the first number in the operations. A and B are special constants explained later.
+Every operation Si is represented by a single integer. If Si is odd, then it represents the first operation, otherwise the second type, and in both of them the integer you have to add/delete equals [Si / 2], where [] is the greatest integer (or floor) function.
+Si = (A*Si-1 + B) mod 232 when i > 1.
+Note: In this problem, the time limit is very tight. Using built-in data structures, such as set/unordered_set in C++ or TreeSet/HashSet in Java, may lead to a Time Limit Exceed verdict.
 Output
+Output a single line containing a single integer — sum of elements in the set after Q queries.
+Constraints
+1 ≤ Q ≤ 107
+1 ≤ S1, A, B ≤ 109
+Example
+Input:
+5 1 1 1
+
+Output:
 3
-1 1
-1 2
-2 3
-0
-2
-72
+Input:
+10000000 777777777 777777777 777777777
+
+Output:
+5362358669068782
 Explanation:
-Test case
-1: There are
-2 possible coloured grids of size
-1×1. In the first grid, the one and only cell is colored RED. In the second grid, the one and only cell is colored GREEN. Neither of the grids have a valid path with equal number of red and green cells. Thus, score of each grid is
-0.
-Test case
-2: There are
-4 possible coloured grids of the given dimension:
-For grids
-1 and
-4, the scores are
-0 as there are no valid paths with equal red and green cells. Grids
-2 and
-3 have score
-1 each. The valid path with equal red and green cells is
-(1,1)→(1,2) in both the grids.
-Thus, the sum of scores of all possible coloured grids is
-2.
+The sequence {Si} is 1, 2, 3, 4, 5:
+Operation 1, 1 mod 2 = 1, add number [1 / 2] = 0 to set, sum is 0.
+Operation 2, 2 mod 2 = 0, erase number [2 / 2] = 1 from set, 1 is not in set, so nothing happens, sum is 0.
+Operation 3, 3 mod 2 = 1, add number [3 / 2] = 1 to set, sum is 1.
+Operation 4, 4 mod 2 = 0, erase number [4 / 2] = 2 from set, 2 is not in set, so nothing happens, sum is 1.
+Operation 5, 5 mod 2 = 1, add number [5 / 2] = 2 to set, sum is 3.

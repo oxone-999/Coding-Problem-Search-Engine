@@ -1,94 +1,50 @@
-Card Removal
+Even-tual Reduction
 Problem
-You have
-N cards placed in front of you on the table. The
-i
-th
-card has the number
-A
-i
-written on it.
-In one move, you can remove any one card from the remaining cards on the table.
-Find the minimum number of moves required so that all the cards remaining on the table have the same number written on them.
-Input Format
-The first line contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first line of each test case contains an integer
-N — the number of cards on the table.
-The second line of each test case contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-where
-A
-i
-is the number written on the
-i
-th
-card.
-Output Format
-For each test case, output the minimum number of moves required so that all the cards remaining on the table have the same number written on them.
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+You are given a string
+S with length
+N. You may perform the following operation any number of times: choose a non-empty substring of
+S (possibly the whole string
+S) such that each character occurs an even number of times in this substring and erase this substring from
+S. (The parts of
+S before and after the erased substring are concatenated and the next operation is performed on this shorter string.)
+For example, from the string "acabbad", we can erase the highlighted substring "abba", since each character occurs an even number of times in this substring. After this operation, the remaining string is "acd".
+Is it possible to erase the whole string using one or more operations?
+Note: A string
+B is a substring of a string
+A if
+B can be obtained from
+A by deleting several (possibly none or all) characters from the beginning and several (possibly none or all) characters from the end.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains a single string
+S with length
+N.
+Output
+For each test case, print a single line containing the string "YES" if it is possible to erase the whole string or "NO" otherwise (without quotes).
 Constraints
-1≤T≤100
-1≤N≤100
-1≤A
-i
-≤10
+1≤T≤200
+1≤N≤1,000
+S contains only lowercase English letters
 Sample 1:
 Input
 Output
-3
-5
-1 1 2 2 3
 4
-8 8 8 8
 6
-5 6 7 8 9 10
-3
-0
-5
+cabbac
+7
+acabbad
+18
+fbedfcbdaebaaceeba
+21
+yourcrushlovesyouback
+YES
+NO
+YES
+NO
 Explanation:
-Test case
-1: The minimum number of moves required such that all remaining cards have same values is
-3:
-Move
-1: Remove a card with number
-1. Remaining cards are
-[1,2,2,3].
-Move
-2: Remove a card with number
-1. Remaining cards are
-[2,2,3].
-Move
-3: Remove a card with number
-3. Remaining cards are
-[2,2].
-Test case
-2: All cards have the same number initially. Thus, no moves are required.
-Test case
-3: The minimum number of moves required such that all remaining cards have same values is
-5:
-Move
-1: Remove a card with number
-5. Remaining cards are
-[6,7,8,9,10].
-Move
-2: Remove a card with number
-6. Remaining cards are
-[7,8,9,10].
-Move
-3: Remove a card with number
-7. Remaining cards are
-[8,9,10].
-Move
-4: Remove a card with number
-8. Remaining cards are
-[9,10].
-Move
-5: Remove a card with number
-9. Remaining cards are
-[10].
+Example case 1: We can perform two operations: erase the substring "abba", which leaves us with the string "cc", and then erase "cc".

@@ -1,99 +1,39 @@
-Chef In Infinite Plane
+Sereja and Votes
 Problem
-Read problems statements in Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-Chef has an integer sequence
-A
-1
-,A
-2
-,…,A
-N
-. For each index
-i (
-1≤i≤N), Chef needs to divide
-A
-i
-into two positive integers
-x and
-y (ie.
-x,y>0) such that
-x+y=A
-i
-, then place this as a point
-(x,y) in the infinite
-2-dimensional coordinate plane. Help Chef to find the maximum number of distinct points that can be put in the plane, if he optimally splits the values
-A
-i
-. Note that Chef can only perform one split for each index.
-Note: Please use fast input/output methods for this problem.
-Input Format
-The first line contains a single integer
-T - the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N integers
-A
-1
-,A
-2
-,…,A
-N
-.
-Output Format
-For each test case, print a single line containing one integer — the maximum number of distinct points there can be in the infinite plane.
+Read problems statements in Mandarin Chinese and Russian.
+Sereja conducted a voting about N of his opinions. Ai percent of people voted for opinion number i. This statistics is called valid if sum of all Ai is equal to 100.
+Now let us define rounding up of a statistics A.
+If Ai is not an integer, it will be rounded up to next integer.
+Otherwise it will be left as it is.
+e.g. 4.1 became 5, 4.9 became 5 but 6 will still be 6.
+Now let us consider a statistics B of size N in which each of Bi is an integer. Now he wants to know whether there exists some valid statistic A of size N (may contain real numbers) such that after rounding it up, it becomes same as B?
+Input
+First line of input contain integer T - number of test cases.
+For each test, case first line contains integer N - number of opinions.
+Next line contains N integers B1, B2, ..., BN as defined in the problem.
+Output
+For each test case, output YES or NO denoting the answer of the problem, i.e. if there exists some statistics A which could be rounded to make it B, print YES otherwise NO.
 Constraints
-1≤T≤10
-1≤N≤2⋅10
-5
-2≤A
-i
-≤10
-5
+1 ≤ T ≤ 50
+1 ≤ N ≤ 10000
+0 ≤ Bi ≤ 1000
+Sub tasks
+Subtask #1: N ≤ 100 (50 points)
+Subtask #2: original (50 points)
 Sample 1:
 Input
 Output
-2
-6
-2 2 4 4 2 6 
-2
-16 8
-4
-2
-Explanation:
-Test Case 1: Chef can divide
-A
-1
-as
-(1,1),
-A
-2
-as
-(1,1),
-A
 3
-as
-(1,3),
-A
+3
+30 30 30
 4
-as
-(2,2),
-A
-5
-as
-(1,1),
-A
-6
-as
-(2,4). Ignoring duplicates, there are
-4 distinct points, which is the maximum possible.
-Test Case 2: Chef can divide
-A
-1
-as
-(8,8),
-A
+25 25 25 25
 2
-as
-(4,4).
+50 51
+NO
+YES
+YES
+Explanation:
+In test case 1, There can not be any A which could be rounded up to get B. Hence answer is NO.
+In test case 2, In this case A = {25, 25, 25, 25}. After rounding we get {25, 25, 25, 25} which is equal to B. Hence answer is YES.
+In test case 3, A = {49.5, 50.5}. After rounding up we get {50, 51} which is equal to B. Hence answer is YES.

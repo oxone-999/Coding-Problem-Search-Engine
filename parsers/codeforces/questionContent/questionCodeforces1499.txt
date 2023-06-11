@@ -1,131 +1,209 @@
-C. Carrying Conundrum
+E. Non-Decreasing Dilemma
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alice has just learned addition. However, she hasn't learned the concept of "carrying" fully — instead of carrying to the next column, she carries to the column two columns to the left.
-For example, the regular way to evaluate the sum
-2039+2976
-would be as shown:
-However, Alice evaluates it as shown:
-In particular, this is what she does:
-add
-9
-and
-6
-to make
-15
-, and carry the
-1
-to the column two columns to the left, i. e. to the column "
-0
-9
-";
-add
-3
-and
-7
-to make
-10
-and carry the
-1
-to the column two columns to the left, i. e. to the column "
-2
-2
-";
-add
+Alice has recently received an array
+a
 1
 ,
-0
-, and
-9
-to make
-10
-and carry the
+a
+2
+,…,
+a
+n
+for her birthday! She is very proud of her array, and when she showed her friend Bob the array, he was very happy with her present too!
+However, soon Bob became curious, and as any sane friend would do, asked Alice to perform
+q
+operations of two types on her array:
 1
-to the column two columns to the left, i. e. to the column above the plus sign;
-add
-1
+x
+y
+: update the element
+a
+x
+to
+y
+(set
+a
+x
+=y
+).
+2
+l
+r
+: calculate how many non-decreasing subarrays exist within the subarray
+[
+a
+l
 ,
-2
+a
+l+1
+,…,
+a
+r
+]
+. More formally, count the number of pairs of integers
+(p,q)
+such that
+l≤p≤q≤r
 and
-2
-to make
-5
-;
-add
-1
-to make
-1
+a
+p
+≤
+a
+p+1
+≤⋯≤
+a
+q−1
+≤
+a
+q
 .
-Thus, she ends up with the incorrect result of
-15005
-.
-Alice comes up to Bob and says that she has added two numbers to get a result of
-n
-. However, Bob knows that Alice adds in her own way. Help Bob find the number of ordered pairs of positive integers such that when Alice adds them, she will get a result of
-n
-. Note that pairs
-(a,b)
-and
-(b,a)
-are considered different if
-a≠b
-.
+Help Alice answer Bob's queries!
 Input
-The input consists of multiple test cases. The first line contains an integer
-t
+The first line contains two integers
+n
+and
+q
 (
-1≤t≤1000
-) — the number of test cases. The description of the test cases follows.
-The only line of each test case contains an integer
+1≤n,q≤2⋅
+10
+5
+) — the size of the array, and the number of queries, respectively.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
 (
-2≤n≤
+1≤
+a
+i
+≤
 10
 9
-) — the number Alice shows Bob.
+) — the elements of Alice's array.
+The next
+q
+lines consist of three integers each. The first integer of the
+i
+-th line is
+t
+i
+, the operation being performed on the
+i
+-th step (
+t
+i
+=1
+or
+t
+i
+=2
+).
+If
+t
+i
+=1
+, the next two integers are
+x
+i
+and
+y
+i
+(
+1≤
+x
+i
+≤n
+;
+1≤
+y
+i
+≤
+10
+9
+), updating the element at position
+x
+i
+to
+y
+i
+(setting
+a
+x
+i
+=
+y
+i
+).
+If
+t
+i
+=2
+, the next two integers are
+l
+i
+and
+r
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤n
+), the two indices Bob asks Alice about for the
+i
+-th query.
+It's guaranteed that there is at least one operation of the second type.
 Output
-For each test case, output one integer — the number of ordered pairs of positive integers such that when Alice adds them, she will get a result of
-n
-.
+For each query of type
+2
+, print a single integer, the answer to the query.
 Example
 input
 Copy
-5
-100
-12
-8
-2021
-10000
+5 6
+3 1 4 1 5
+2 2 5
+2 1 3
+1 4 4
+2 2 5
+1 2 6
+2 2 5
 output
 Copy
-9
+6
 4
+10
 7
-44
-99
 Note
-In the first test case, when Alice evaluates any of the sums
-1+9
+For the first query,
+l=2
+and
+r=5
+, and the non-decreasing subarrays
+[p,q]
+are
+[2,2]
 ,
-2+8
+[3,3]
 ,
-3+7
+[4,4]
 ,
-4+6
+[5,5]
 ,
-5+5
-,
-6+4
-,
-7+3
-,
-8+2
-, or
-9+1
-, she will get a result of
-100
-. The picture below shows how Alice evaluates
-6+4
-:
+[2,3]
+and
+[4,5]
+.

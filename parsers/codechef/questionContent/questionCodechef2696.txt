@@ -1,44 +1,46 @@
-Weasel does Xor on Tree
+Devu, his friends and birthday gifts
 Problem
-Read problems statements in mandarin chinese, russian and vietnamese as well.
-A tree is an undirected graph in which each pair of vertices is connected to each other by exactly one path. Weasel has a tree with N nodes. The indexing of the nodes is 0-based and the tree is rooted at node 0. Every node i has an initial value X0i.
-Every day d > 0, he performs the following operations, starting from the root:
-Weasel computes Xdu as the bitwise-xor sum of all the values Xd − 1v for a node v in u's subtree.
-He recursively proceeds to perform the operation for every child of u.
-For Q values of Δ, Weasel wants to compute XΔ0.
+Read problems statements in Mandarin Chinese and Russian as well.
+You might have realized up to now that some of the Devu's friend are really weird. It is Devu's 22nd birthday today. His friends are coming to his home for his birthday party. Some of his friends are so shameless that instead of giving him a gift, they even ask gifts from him.
+Devu has n friends. He wants to invite some of his friends in the party. Devu knows beforehand that ith friend will give a gift of ri rupees. If ri is positive, then it means that they will give a gift of |ri| rupees to Devu, otherwise it means that they want to receive a gift of|ri| rupees from Devu.
+Devu's friend are really weird and they keep conditions before Devu like this : "If you invite me, you should also invite my best friend too". For ith person, you are given an integer fi denoting his best friend. It means that if Devu invites ith person, then he has to invite person fi too. Please note that best friend relationship is not bi-directional i.e. it is not necessary that if A is best friend of B, then B should be best friend of A.
+You have to help Devu in choosing an optimal set of friends to invite so that the total amount of money he receives in gifts is maximum. Devu can also choose to not to invite anyone at all. Find out the maximum total amount of money Devu can have.
 Input
-The first line of the input contains two integers N and Q.
-Each of the following N − 1 lines contains two integers, u and v, an edge in the tree.
-On the following line there are N integers, representing the X0 array.
-Each of the next Q lines contains values for Δ as noted in the statement.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+First line of each test case will contain a single integer n denoting total number of friends of Devu.
+Second line contains n space separated integers denoting array f which describes best friend of ith person.
+Third line contains n space separated integers denoting array r as stated in the problem.
 Output
-You should print Q lines, each containing XΔ0.
+For each test case, print a single line containing maximum amount of rupees he can have in the end.
 Constraints
-1 ≤ N, Q ≤ 2 * 105
-0 ≤ X0i ≤ 1018 for every 0 ≤ i ≤ N − 1.
-0 ≤ Δ ≤ 1018
-0 ≤ u, v ≤ N − 1
-Subtasks
-Subtask 1 (20 points): 1 ≤ N ≤ 500 and Δ ≤ 500
-Subtask 2 (20 points): 1 ≤ N ≤ 1000 and 1 ≤ N × Q ≤ 106
-Subtask 3 (10 points): 1 ≤ N ≤ 5000
-Subtask 4 (50 points): original constraints
+1 ≤ T ≤ 105
+2 ≤ n ≤ 105
+-109 ≤ ri ≤ 109
+1 ≤ fi ≤ n
+fi != i
+Sum of n over all the test cases will be less than or equal to 106
 Sample 1:
 Input
 Output
-4 3
-0 1
-1 2
-0 3
-1 5 8 7
-1
+4
 2
+2 1
+3 5
+2 
+2 1 
+-3 5
 3
-11
-9
+2 3 2
+-2 2 4
 3
+2 3 2
+-1 -2 -3
+8
+2 
+6
+0
 Explanation:
-Initially X0 = [1, 5, 8, 7].
-Weasel performs his operation on node 0: X10 = X00 xor X01 xor X02 xor X03 = 1 xor 5 xor 8 xor 7 = 11.
-X11 = X01 xor X02 = 5 xor 8 = 13.
-X12 and X13 remain equal to X02, respectively X03.
+Example case 1. Both his friends are giving him gifts. So he will invite both of them to the party and will collect 8 rupees from the gifts received.
+Example case 2. He invites both of the friends and total rupees collected will be 2 rupees. He can not invite 2nd friend only, because 1st person is a best friend of 2nd person and he must be invited too if 2nd friend is invited.
+Example case 3. He will invite second and third of his friends. So total rupees collected will be 6 rupees.
+Example case 4. In this case, all of his friends want to receive gifts from Devu. It is better for him to invite none. So he will receive total 0 rupees.

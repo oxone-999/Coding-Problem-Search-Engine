@@ -1,183 +1,112 @@
-I. Organizing a Music Festival
-time limit per test1 second
+C. Penalty
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are the organizer of the famous "Zurich Music Festival". There will be
-n
-singers who will perform at the festival, identified by the integers
+Consider a simplified penalty phase at the end of a football match.
+A penalty phase consists of at most
+10
+kicks, the first team takes the first kick, the second team takes the second kick, then the first team takes the third kick, and so on. The team that scores more goals wins; if both teams score the same number of goals, the game results in a tie (note that it goes against the usual football rules). The penalty phase is stopped if one team has scored more goals than the other team could reach with all of its remaining kicks. For example, if after the
+7
+-th kick the first team has scored
 1
-,
-2
-,
-…
-,
-n
-. You must choose in which order they are going to perform on stage.
-You have
-m
-friends and each of them has a set of favourite singers. More precisely, for each
-1≤i≤m
-, the
+goal, and the second team has scored
+3
+goals, the penalty phase ends — the first team cannot reach
+3
+goals.
+You know which player will be taking each kick, so you have your predictions for each of the
+10
+kicks. These predictions are represented by a string
+s
+consisting of
+10
+characters. Each character can either be 1, 0, or ?. This string represents your predictions in the following way:
+if
+s
 i
--th friend likes singers
-s
-i,1
-,
-s
-i,2
-,…,
-s
-i,
-q
+is 1, then the
 i
-.
-A friend of yours is happy if the singers he likes perform consecutively (in an arbitrary order). An ordering of the singers is valid if it makes all your friends happy.
-Compute the number of valid orderings modulo
-998244353
-.
+-th kick will definitely score a goal;
+if
+s
+i
+is 0, then the
+i
+-th kick definitely won't score a goal;
+if
+s
+i
+is ?, then the
+i
+-th kick could go either way.
+Based on your predictions, you have to calculate the minimum possible number of kicks there can be in the penalty phase (that means, the earliest moment when the penalty phase is stopped, considering all possible ways it could go). Note that the referee doesn't take into account any predictions when deciding to stop the penalty phase — you may know that some kick will/won't be scored, but the referee doesn't.
 Input
-The first line contains two integers
-n
-and
-m
+The first line contains one integer
+t
 (
-1≤n,m≤100
-) — the number of singers and the number of friends correspondingly.
-The
-i
--th of the next
-m
-lines contains the integer
-q
-i
-(
-1≤
-q
-i
-≤n
-) — the number of favorite singers of the
-i
--th friend – followed by the
-q
-i
-integers
+1≤t≤1000
+) — the number of test cases.
+Each test case is represented by one line containing the string
 s
-i,1
-,
-s
-i,2
-,…,
-s
-i,
-q
-i
-(
-1≤
-s
-i,1
-<
-s
-i,2
-<⋯<
-s
-i,
-q
-i
-≤n
-) — the indexes of his favorite singers.
+, consisting of exactly
+10
+characters. Each character is either 1, 0, or ?.
 Output
-Print the number of valid orderings of the singers modulo
-998244353
-.
-Examples
+For each test case, print one integer — the minimum possible number of kicks in the penalty phase.
+Example
 input
-Copy
-3 1
-2 1 3
-output
 Copy
 4
-input
-Copy
-5 5
-2 1 2
-2 2 3
-2 3 4
-2 4 5
-2 1 5
+1?0???1001
+1111111111
+??????????
+0100000000
 output
 Copy
-0
-input
-Copy
-100 1
-1 50
-output
-Copy
-35305197
-input
-Copy
-5 1
-5 1 2 3 4 5
-output
-Copy
-120
-input
-Copy
-2 5
-1 2
-1 2
-1 2
-1 1
-1 1
-output
-Copy
-2
-input
-Copy
-11 4
-5 4 5 7 9 11
-2 2 10
-2 9 11
-7 1 2 3 5 8 10 11
-output
-Copy
-384
+7
+10
+6
+9
 Note
-Explanation of the first sample: There are
-3
-singers and only
+Consider the example test:
+In the first test case, consider the situation when the
 1
-friend. The friend likes the two singers
-1
-and
+-st,
+5
+-th and
+7
+-th kicks score goals, and kicks
+2
+,
 3
-. Thus, the
+,
 4
-valid orderings are:
-1 3 2
-2 1 3
-2 3 1
-3 1 2
-Explanation of the second sample: There are
-5
-singers and
-5
-friends. One can show that no ordering is valid.
-Explanation of the third sample: There are
-100
-singers and only
-1
-friend. The friend likes only singer
-50
-, hence all the
-100!
-possible orderings are valid.
-Explanation of the fourth sample: There are
-5
-singers and only
-1
-friend. The friend likes all the singers, hence all the
-5!=120
-possible orderings are valid.
+and
+6
+are unsuccessful. Then the current number of goals for the first team is
+3
+, for the second team is
+0
+, and the referee sees that the second team can score at most
+2
+goals in the remaining kicks. So the penalty phase can be stopped after the
+7
+-th kick.
+In the second test case, the penalty phase won't be stopped until all
+10
+kicks are finished.
+In the third test case, if the first team doesn't score any of its three first kicks and the second team scores all of its three first kicks, then after the
+6
+-th kick, the first team has scored
+0
+goals and the second team has scored
+3
+goals, and the referee sees that the first team can score at most
+2
+goals in the remaining kicks. So, the penalty phase can be stopped after the
+6
+-th kick.
+In the fourth test case, even though you can predict the whole penalty phase, the referee understands that the phase should be ended only after the
+9
+-th kick.

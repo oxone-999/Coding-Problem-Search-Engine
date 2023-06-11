@@ -1,33 +1,59 @@
-J. Journey
+L. Lemper Cooking Competition
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-One day, Pak Chanek who is already bored of being alone at home decided to go traveling. While looking for an appropriate place, he found that Londonesia has an interesting structure.
-According to the information gathered by Pak Chanek, there are
+Pak Chanek is participating in a lemper cooking competition. In the competition, Pak Chanek has to cook lempers with
 N
-cities numbered from
+stoves that are arranged sequentially from stove
 1
-to
+to stove
 N
-. The cities are connected to each other with
-N−1
-two-directional roads, with the
+. Initially, stove
 i
--th road connecting cities
-U
+has a temperature of
+A
 i
-and
-V
+degrees. A stove can have a negative temperature.
+Pak Chanek realises that, in order for his lempers to be cooked, he needs to keep the temperature of each stove at a non-negative value. To make it happen, Pak Chanek can do zero or more operations. In one operation, Pak Chanek chooses one stove
 i
-, and taking a time of
-W
+with
+2≤i≤N−1
+, then:
+changes the temperature of stove
+i−1
+into
+A
+i−1
+:=
+A
+i−1
++
+A
 i
-hours to be traversed. In other words, Londonesia's structure forms a tree.
-Pak Chanek wants to go on a journey in Londonesia starting and ending in any city (not necessarily the same city) such that each city is visited at least once with the least time possible. In order for the journey to end quicker, Pak Chanek also carries an instant teleportation device for moving from one city to any city that can only be used at most once. Help Pak Chanek for finding the minimum time needed.
-Notes:
-Pak Chanek only needs to visit each city at least once. Pak Chanek does not have to traverse each road.
-In the journey, a city or a road can be visited more than once.
+,
+changes the temperature of stove
+i+1
+into
+A
+i+1
+:=
+A
+i+1
++
+A
+i
+, and
+changes the temperature of stove
+i
+into
+A
+i
+:=−
+A
+i
+.
+Pak Chanek wants to know the minimum number of operations he needs to do such that the temperatures of all stoves are at non-negative values. Help Pak Chanek by telling him the minimum number of operations needed or by reporting if it is not possible to do.
 Input
 The first line contains a single integer
 N
@@ -35,85 +61,70 @@ N
 1≤N≤
 10
 5
-) — the number of cities in Londonesia.
-The
-i
--th of the next
-N−1
-lines contains three integers
-U
-i
+) — the number of stoves.
+The second line contains
+N
+integers
+A
+1
 ,
-V
-i
-, and
-W
-i
+A
+2
+,…,
+A
+N
 (
-1≤
-U
-i
-,
-V
-i
-≤N
-,
-1≤
-W
+−
+10
+9
+≤
+A
 i
 ≤
 10
 9
-) — a two-directional road that connects cities
-U
-i
-and
-V
-i
-that takes
-W
-i
-hours to be traversed. The roads in Londonesia form a tree.
+) — the initial temperatures of the stoves.
 Output
-Output one integer, which represents the minimum time in hours that is needed to visit each city at least once.
+Output an integer representing the minimum number of operations needed to make the temperatures of all stoves at non-negative values or output
+−1
+if it is not possible.
 Examples
 input
 Copy
-4
-1 2 4
-2 3 5
-3 4 4
+7
+2 -1 -1 5 2 -2 9
 output
 Copy
-8
+4
 input
 Copy
 5
-1 2 45
-1 3 50
-1 4 10
-1 5 65
+-1 -2 -3 -4 -5
 output
 Copy
-115
+-1
 Note
-In the first example, the journey that has the minimum time is
-2→1
-−
-→
-−
-−
-−
-teleport
-4→3
+For the first example, a sequence of operations that can be done is as follows:
+Pak Chanek does an operation to stove
+3
+,
+A=[2,−2,1,4,2,−2,9]
 .
-In the second example, the journey that has the minimum time is
-3→1→4→1→2
-−
-→
-−
-−
-−
-teleport
-5
+Pak Chanek does an operation to stove
+2
+,
+A=[0,2,−1,4,2,−2,9]
+.
+Pak Chanek does an operation to stove
+3
+,
+A=[0,1,1,3,2,−2,9]
+.
+Pak Chanek does an operation to stove
+6
+,
+A=[0,1,1,3,0,2,7]
+.
+There is no other sequence of operations such that the number of operations needed is fewer than
+4
 .

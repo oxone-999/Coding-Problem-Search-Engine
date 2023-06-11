@@ -1,48 +1,37 @@
-E. Cashback
-time limit per test2 seconds
-memory limit per test256 megabytes
+F. Machine Learning
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Since you are the best Wraith King, Nizhniy Magazin «Mir» at the centre of Vinnytsia is offering you a discount.
-You are given an array a of length n and an integer c.
-The value of some array b of length k is the sum of its elements except for the smallest. For example, the value of the array [3, 1, 6, 5, 2] with c = 2 is 3 + 6 + 5 = 14.
-Among all possible partitions of a into contiguous subarrays output the smallest possible sum of the values of these subarrays.
+You come home and fell some unpleasant smell. Where is it coming from?
+You are given an array a. You have to answer the following queries:
+You are given two integers l and r. Let ci be the number of occurrences of i in al: r, where al: r is the subarray of a from l-th element to r-th inclusive. Find the Mex of {c0, c1, ..., c109}
+You are given two integers p to x. Change ap to x.
+The Mex of a multiset of numbers is the smallest non-negative integer not in the set.
+Note that in this problem all elements of a are positive, which means that c0 = 0 and 0 is never the answer for the query of the second type.
 Input
-The first line contains integers n and c (1 ≤ n, c ≤ 100 000).
-The second line contains n integers ai (1 ≤ ai ≤ 109) — elements of a.
+The first line of input contains two integers n and q (1 ≤ n, q ≤ 100 000) — the length of the array and the number of queries respectively.
+The second line of input contains n integers — a1, a2, ..., an (1 ≤ ai ≤ 109).
+Each of the next q lines describes a single query.
+The first type of query is described by three integers ti = 1, li, ri, where 1 ≤ li ≤ ri ≤ n — the bounds of the subarray.
+The second type of query is described by three integers ti = 2, pi, xi, where 1 ≤ pi ≤ n is the index of the element, which must be changed and 1 ≤ xi ≤ 109 is the new value.
 Output
-Output a single integer  — the smallest possible sum of values of these subarrays of some partition of a.
-Examples
+For each query of the first type output a single integer  — the Mex of {c0, c1, ..., c109}.
+Example
 input
 Copy
-3 5
-1 2 3
+10 4
+1 2 3 1 1 2 2 2 9 9
+1 1 1
+1 2 8
+2 7 1
+1 2 8
 output
 Copy
-6
-input
-Copy
-12 10
-1 1 10 10 10 10 10 10 9 10 10 10
-output
-Copy
-92
-input
-Copy
-7 2
-2 3 6 4 5 7 1
-output
-Copy
-17
-input
-Copy
-8 4
-1 3 4 5 5 3 4 1
-output
-Copy
-23
+2
+3
+2
 Note
-In the first example any partition yields 6 as the sum.
-In the second example one of the optimal partitions is [1, 1], [10, 10, 10, 10, 10, 10, 9, 10, 10, 10] with the values 2 and 90 respectively.
-In the third example one of the optimal partitions is [2, 3], [6, 4, 5, 7], [1] with the values 3, 13 and 1 respectively.
-In the fourth example one of the optimal partitions is [1], [3, 4, 5, 5, 3, 4], [1] with the values 1, 21 and 1 respectively.
+The subarray of the first query consists of the single element — 1.
+The subarray of the second query consists of four 2s, one 3 and two 1s.
+The subarray of the fourth query consists of three 1s, three 2s and one 3.

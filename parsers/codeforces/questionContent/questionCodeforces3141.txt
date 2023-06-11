@@ -1,93 +1,123 @@
-B. The Feast and the Bus
+E. The Coronation
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Employees of JebTrains are on their way to celebrate the 256-th day of the year! There are
+The coronation of King Berl XXII is soon! The whole royal family, including
 n
-employees and
-k
-teams in JebTrains. Each employee is a member of some (exactly one) team. All teams are numbered from
-1
-to
-k
-. You are given an array of numbers
-t
-1
-,
-t
-2
-,…,
-t
+daughters of Berl XXII, will be present.
+The King has ordered his jeweler to assemble
 n
-where
-t
+beautiful necklaces, so each of the princesses could wear exactly one necklace during the ceremony — and now these necklaces are finished. Each necklace consists of
+m
+gems attached to a gold chain. There are two types of gems used in the necklaces — emeralds and sapphires. So, each necklace can be represented by a sequence of
+m
+gems (listed from left to right), and each gem is either an emerald or a sapphire. Formally, the
 i
-is the
+-th necklace can be represented by a binary string
+s
 i
--th employee's team number.
-JebTrains is going to rent a single bus to get employees to the feast. The bus will take one or more rides. A bus can pick up an entire team or two entire teams. If three or more teams take a ride together they may start a new project which is considered unacceptable. It's prohibited to split a team, so all members of a team should take the same ride.
-It is possible to rent a bus of any capacity
+of length
+m
+; if the
+j
+-th character of
 s
-. Such a bus can take up to
-s
-people on a single ride. The total cost of the rent is equal to
-s⋅r
-burles where
-r
-is the number of rides. Note that it's impossible to rent two or more buses.
-Help JebTrains to calculate the minimum cost of the rent, required to get all employees to the feast, fulfilling all the conditions above.
+i
+is 0, then the
+j
+-th gem in the
+i
+-th necklace is an emerald; otherwise, this gem is a sapphire.
+Now, looking at the necklaces, the King is afraid that some of his daughters may envy the other daughters' necklaces. He wants all necklaces to look similar. Two necklaces are considered similar if there are at least
+k
+positions where these necklaces contain the same type of gems.
+For example, if there is a necklace represented by a sequence 01010111 and a necklace represented by a sequence 01100000, then there are
+3
+positions where these necklaces contain the same type of gems (both first gems are emeralds, both second gems are sapphires, and both fifth gems are emeralds). So if
+k=3
+, these necklaces are similar, and if
+k=4
+, they are not similar.
+The King thinks that if two of his daughters notice that their necklaces are not similar, then they may have a conflict — and, obviously, he doesn't want any conflicts during the coronation! So Berl XXII wants to tell some of his daughters to wear their necklaces backward. If a necklace is worn backward, then the sequence of gems in this necklace is reversed. For example, if a necklace is represented by a sequence 01100, then, if worn backward, it would be represented by a sequence 00110. The King wants to find the minimum number of necklaces to be worn backward during the coronation so that there are no conflicts.
+Berl XXII is too busy with preparation for the coronation, so he ordered you to resolve this issue for him. Help him — and he will give you a truly royal reward!
 Input
-The first line contains two integers
+The first line contains one integer
+t
+(
+1≤t≤50
+) — the number of test cases. Then the test cases follow.
+Each test case begins with a line containing three integers
 n
+,
+m
 and
 k
 (
-1≤n≤5⋅
-10
-5
-,1≤k≤8000
-) — the number of employees and the number of teams in JebTrains. The second line contains a sequence of integers
-t
-1
+2≤n≤50
 ,
-t
-2
-,…,
-t
+1≤k≤m≤50
+) — the number of necklaces, the number of gems in each necklace, and the minimum number of positions where two necklaces have to have the same type of gems in order to look similar, respectively.
+Then
 n
-, where
-t
+lines follow, the
 i
-(
-1≤
-t
+-th of them contains a binary string
+s
 i
-≤k
-) is the
+of length
+m
+representing the
 i
--th employee's team number. Every team contains at least one employee.
+-th necklace.
 Output
-Print the minimum cost of the rent.
-Examples
+For each test case, print the answer as follows.
+If it is impossible to avoid the conflict, print -1 on a single line. In this case you should not output anything else for that test case.
+Otherwise, the first line of the test case answer should contain the single integer
+d
+— the minimum number of necklaces that are to be worn backward. The second line of the test case answer should contain the numbers of these necklaces (integers from
+1
+to
+n
+) in any order. If
+d=0
+then leave the second line of the test case answer empty. If there are multiple answers, you may print any of them.
+Example
 input
 Copy
-6 3
-3 1 2 3 2 3
+5
+5 7 2
+1010100
+0010101
+1111010
+1000010
+0000101
+6 9 3
+011111110
+100111000
+111100000
+000111111
+110100111
+111110111
+3 4 2
+0001
+1000
+0000
+3 4 4
+0001
+1000
+0000
+2 4 3
+0001
+1000
 output
 Copy
-6
-input
-Copy
-10 1
-1 1 1 1 1 1 1 1 1 1
-output
-Copy
-10
-input
-Copy
-12 4
-1 2 3 1 2 3 4 1 2 1 2 1
-output
-Copy
-12
+2
+1 3 
+1
+3 
+0
+
+-1
+1
+1 

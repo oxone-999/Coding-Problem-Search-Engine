@@ -1,252 +1,118 @@
-G. Discarding Game
-time limit per test3 seconds
+J. The Parade
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Eulampius has created a game with the following rules:
-there are two players in the game: a human and a computer;
-the game lasts for no more than
-n
-rounds. Initially both players have
-0
-points. In the
-j
--th round the human gains
-a
-j
-points, and the computer gains
-b
-j
-points. The points are gained simultaneously;
-the game ends when one of the players gets
+The Berland Army is preparing for a large military parade. It is already decided that the soldiers participating in it will be divided into
 k
-or more points. This player loses the game. If both players get
+rows, and all rows will contain the same number of soldiers.
+Of course, not every arrangement of soldiers into
 k
-or more points simultaneously, both lose;
-if both players have less than
-k
-points after
-n
-rounds, the game ends in a tie;
-after each round the human can push the "Reset" button. If the human had
-x
-points, and the computer had
-y
-points before the button is pushed (of course,
-x<k
+rows is suitable. Heights of all soldiers in the same row should not differ by more than
+1
+. The height of each soldier is an integer between
+1
 and
-y<k
-), then after the button is pushed the human will have
-x
-′
-=max(0,x−y)
-points, and the computer will have
-y
-′
-=max(0,y−x)
-points. E. g. the push of "Reset" button transforms the state
-(x=3,y=5)
-into the state
-(
-x
-′
-=0,
-y
-′
-=2)
-, and the state
-(x=8,y=2)
-into the state
-(
-x
-′
-=6,
-y
-′
-=0)
+n
 .
-Eulampius asked his friend Polycarpus to test the game. Polycarpus has quickly revealed that amounts of points gained by the human and the computer in each of
-n
-rounds are generated before the game and stored in a file. In other words, the pushes of the "Reset" button do not influence the values
-a
-j
-and
-b
-j
-, so sequences
-a
-and
-b
-are fixed and known in advance.
-Polycarpus wants to make a plan for the game. He would like to win the game pushing the "Reset" button as few times as possible. Your task is to determine this minimal number of pushes or determine that Polycarpus cannot win.
+For each possible height, you know the number of soldiers having this height. To conduct a parade, you have to choose the soldiers participating in it, and then arrange all of the chosen soldiers into
+k
+rows so that both of the following conditions are met:
+each row has the same number of soldiers,
+no row contains a pair of soldiers such that their heights differ by
+2
+or more.
+Calculate the maximum number of soldiers who can participate in the parade.
 Input
-The first line of the input contains one integer
+The first line contains one integer
 t
 (
 1≤t≤10000
 ) — the number of test cases. Then the test cases follow.
-The first line of each test case contains two integers
+Each test case begins with a line containing two integers
 n
 and
 k
 (
-1≤n≤2⋅
-10
-5
+1≤n≤30000
 ,
-2≤k≤
+1≤k≤
 10
-9
-) — the maximum possible number of rounds in the game and the number of points, after reaching which a player loses, respectively.
-The second line of each test case contains
+12
+) — the number of different heights of soldiers and the number of rows of soldiers in the parade, respectively.
+The second (and final) line of each test case contains
 n
 integers
-a
+c
 1
 ,
-a
+c
 2
-,…,
-a
+, ...,
+c
 n
 (
-1≤
-a
-j
-<k)
-, where
-a
-j
-is the amount of points the human gains in the
-j
--th round.
-The third line of each test case contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-1≤
-b
-j
-<k
+0≤
+c
+i
+≤
+10
+12
 ), where
-b
-j
-is the amount of points the computer gains in the
-j
--th round.
-The sum of
+c
+i
+is the number of soldiers having height
+i
+in the Berland Army.
+It is guaranteed that the sum of
 n
-over all test cases in the input does not exceed
-2⋅
-10
-5
+over all test cases does not exceed
+30000
 .
 Output
-Print the answers for all test cases in the order they appear in the input.
-If Polycarpus cannot win the game, then simply print one line "-1" (without quotes). In this case, you should not output anything else for that test case. Otherwise, the first line of the test case answer should contain one integer
-d
- — the minimum possible number of "Reset" button pushes, required to win the game. The next line should contain
-d
-distinct integers
-r
-1
-,
-r
-2
-,…,
-r
-d
-(
-1≤
-r
-i
-<n
-) — the numbers of rounds, at the end of which Polycarpus has to press the "Reset" button, in arbitrary order. If
-d=0
-then either leave the second line of the test case answer empty, or do not print the second line at all.
-If there are several possible solutions, print any of them.
+For each test case, print one integer — the maximum number of soldiers that can participate in the parade.
 Example
 input
 Copy
-3
-4 17
-1 3 5 7
-3 5 7 9
-11 17
-5 2 8 2 4 6 1 2 7 2 5
-4 6 3 3 5 1 7 4 2 5 3
-6 17
-6 1 2 7 2 5
-1 7 4 2 5 3
+5
+3 4
+7 1 13
+1 1
+100
+1 3
+100
+2 1
+1000000000000 1000000000000
+4 1
+10 2 11 1
 output
 Copy
-0
-
-2
-2 4
--1
-Note
-In the second test case, if the human pushes the "Reset" button after the second and the fourth rounds, the game goes as follows:
-after the first round the human has
-5
-points, the computer —
-4
-points;
-after the second round the human has
-7
-points, the computer —
-10
-points;
-the human pushes the "Reset" button and now he has
-0
-points and the computer —
-3
-points;
-after the third round the human has
-8
-points, the computer —
-6
-points;
-after the fourth round the human has
-10
-points, the computer —
-9
-points;
-the human pushes "Reset" button again, after it he has
-1
-point, the computer —
-0
-points;
-after the fifth round the human has
-5
-points, the computer —
-5
-points;
-after the sixth round the human has
-11
-points, the computer —
-6
-points;
-after the seventh round the human has
-12
-points, the computer —
+16
+100
+99
+2000000000000
 13
-points;
-after the eighth round the human has
-14
-points, the computer —
-17
-points;
-the human wins, as the computer has
-k
-or more points and the human — strictly less than
-k
-points.
+Note
+Explanations for the example test cases:
+the heights of soldiers in the rows can be:
+[3,3,3,3]
+,
+[1,2,1,1]
+,
+[1,1,1,1]
+,
+[3,3,3,3]
+(each list represents a row);
+all soldiers can march in the same row;
+33
+soldiers with height
+1
+in each of
+3
+rows;
+all soldiers can march in the same row;
+all soldiers with height
+2
+and
+3
+can march in the same row.

@@ -1,129 +1,193 @@
-E. Magic Tricks
-time limit per test2 seconds
-memory limit per test256 megabytes
+H. Game with Segments
+time limit per test3 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Masha is going to participate in a talent show conducted by the university she studies at. She wants to impress the audience with lots of different magic tricks!
-For one of her tricks, she uses
+Alice and Bob are playing a game (yet again).
+They have two sequences of segments of the coordinate axis: a sequence of
 n
-sponge balls, one of which is a special one. First, she arranges the balls in a row in such a way that the special ball is put on position
-k
-(positions are numbered from
+initial segments:
+[
+l
 1
-to
-n
-from left to right). After that, she performs
-m
-swaps: during the
-i
--th swap, she chooses the ball on position
-x
-i
-and the ball on position
-y
-i
-, and swaps them.
-Since Masha is a magician, she fakes some of her actions to trick the audience — when she starts performing a swap, she may fake it, so it is not performed (but it looks like it is performed for the audience). There are no constraints on which swaps Masha should fake or should actually perform — for example, she may fake all of the swaps, or even not fake anything at all.
-For the trick to work perfectly, the special ball should end up on a specific position — Masha has not decided yet, which position is perfect. Since faking swaps is difficult, for each position she wants to know the minimum number of swaps she has to fake so that the special ball ends up there.
-Unfortunately, Masha is a magician, neither a mathematician nor a programmer. So she needs your help in calculating what she wants!
-Input
-The first line contains three integers
+,
+r
+1
+]
+,
+[
+l
+2
+,
+r
+2
+]
+, ...,
+[
+l
 n
 ,
+r
+n
+]
+, and a sequence of
 m
+terminal segments:
+[
+L
+1
+,
+R
+1
+]
+,
+[
+L
+2
+,
+R
+2
+]
+, ...,
+[
+L
+m
+,
+R
+m
+]
+. At the beginning of the game, they choose one of the initial segments and set it as the current segment.
+Alice and Bob make alternating moves: Alice makes the first move, Bob makes the second move, Alice makes the third one, and so on. During each move, the current player must shrink the current segment either by increasing its left endpoint by
+1
+, or by decreasing its right endpoint by
+1
+. So, if the current segment is
+[
+c
+l
+,
+c
+r
+]
+, it becomes either
+[
+c
+l
++1,
+c
+r
+]
+, or
+[
+c
+l
+,
+c
+r
+−1]
+.
+If at the beginning of the game or after Bob's move the current segment coincides with one of the terminal segments, Bob wins. If the current segment becomes degenerate (
+c
+l
+=
+c
+r
+), and Bob hasn't won yet, Alice wins. If the current segment coincides with one of the terminal segments after Alice's move, nothing happens — the game continues.
+Both players play optimally — if they can win, they always use a strategy that leads them to victory in the minimum number of turns, and if they cannot win, they try to prolong the game, using the strategy allowing them to make the maximum possible number of moves until their defeat.
+For each of the initial segments you have to determine who will win the game if this segment is chosen as the current segment at the beginning of the game. If Bob wins, you also have to calculate the number of moves Alice will make before her defeat.
+Input
+The first line contains two integers
+n
 and
-k
+m
 (
-2≤n≤2⋅
+1≤n,m≤2⋅
 10
 5
-;
-1≤m≤2⋅
+) — the number of initial segments and terminal segments, respectively.
+Then
+n
+lines follow, the
+i
+-th line contains two integers
+l
+i
+and
+r
+i
+(
+1≤
+l
+i
+<
+r
+i
+≤
 10
-5
-;
-1≤k≤n
-) — the number of balls, the number of swaps and the initial position of the special ball, respectively.
+6
+) — the endpoints of the
+i
+-th initial segment.
 Then
 m
 lines follow, the
 i
 -th line contains two integers
-x
+L
 i
 and
-y
+R
 i
 (
 1≤
-x
+L
 i
-,
-y
+<
+R
 i
-≤n
-;
-x
+≤
+10
+6
+) — the endpoints of the
 i
-≠
-y
-i
-) denoting the
-i
--th swap.
+-th terminal segment.
+Note that some of the segments given in the input may coincide.
 Output
 Print
 n
-integers. The
+integers, the
 i
--th integer should be the minimum number of swaps Masha has to fake so the special ball ends up on position
+-th of them should describe the result of the game if the
 i
-(or
+-th initial segment is chosen at the beginning of the game:
+if Alice wins, print
 −1
-, if Masha cannot put the special ball there).
+;
+if Bob wins, print the number of moves Alice will make before she is defeated.
 Examples
 input
 Copy
-4 5 1
-3 4
-2 1
-4 1
-3 1
-3 1
+1 1
+4 7
+4 7
 output
 Copy
-2 0 3 1 
+0
 input
 Copy
-5 7 4
-3 2
-3 2
-4 2
-3 4
-4 1
-3 2
-5 2
-output
-Copy
-2 2 0 3 1 
-input
-Copy
-7 15 5
-5 3
-4 2
-6 1
+1 2
+2 5
 2 4
-1 6
-3 7
-5 6
-4 2
-6 4
-2 6
-6 3
-6 3
-7 6
-2 6
-7 2
+3 5
 output
 Copy
--1 1 1 1 2 1 0 
+-1
+input
+Copy
+2 1
+1 5
+1 4
+2 3
+output
+Copy
+-1 1

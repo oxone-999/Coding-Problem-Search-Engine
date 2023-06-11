@@ -1,156 +1,74 @@
-B. JoJo's Incredible Adventures
+A. Yura's New Name
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Did you think there was going to be a JoJo legend here? But no, that was me, Dio!
-Given a binary string
+After holding one team contest, boy Yura got very tired and wanted to change his life and move to Japan. In honor of such a change, Yura changed his name to something nice.
+Fascinated by this idea he already thought up a name
 s
-of length
-n
-, consisting of characters 0 and 1. Let's build a square table of size
-n×n
-, consisting of 0 and 1 characters as follows.
-In the first row of the table write the original string
+consisting only of characters "_" and "^". But there's a problem — Yura likes smiley faces "^_^" and "^^". Therefore any character of the name must be a part of at least one such smiley. Note that only the consecutive characters of the name can be a smiley face.
+More formally, consider all occurrences of the strings "^_^" and "^^" in the string
 s
-. In the second row of the table write cyclic shift of the string
+. Then all such occurrences must cover the whole string
 s
-by one to the right. In the third row of the table, write the cyclic shift of line
-s
-by two to the right. And so on. Thus, the row with number
-k
-will contain a cyclic shift of string
-s
-by
-k
-to the right. The rows are numbered from
-0
-to
-n−1
-top-to-bottom.
-In the resulting table we need to find the rectangle consisting only of ones that has the largest area.
-We call a rectangle the set of all cells
-(i,j)
-in the table, such that
-x
-1
-≤i≤
-x
-2
+, possibly with intersections. For example, in the string "^^__^_^^__^" the characters at positions
+3,4,9,10
 and
-y
-1
-≤j≤
-y
-2
-for some integers
-0≤
-x
-1
-≤
-x
-2
-<n
+11
+are not contained inside any smileys, and the other characters at positions
+1,2,5,6,7
 and
-0≤
-y
-1
-≤
-y
-2
-<n
-.
-Recall that the cyclic shift of string
+8
+are contained inside smileys.
+In one operation Jura can insert one of the characters "_" and "^" into his name
 s
-by
-k
-to the right is the string
-s
-n−k+1
-…
-s
-n
-s
-1
-s
-2
-…
-s
-n−k
-. For example, the cyclic shift of the string "01011" by
-0
-to the right is the string itself "01011", its cyclic shift by
-3
-to the right is the string "01101".
+(you can insert it at any position in the string). He asks you to tell him the minimum number of operations you need to do to make the name fit Yura's criteria.
 Input
 Each test consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤2⋅
-10
-4
-) — the number of test cases. The description of test cases follows.
-The first and the only line of each test case contains a single binary string
+1≤t≤100
+) —the number of test cases. The description of test cases follows.
+The first and only line of each test case contains a single string
 s
 (
-1≤|s|≤2⋅
-10
-5
-), consisting of characters 0 and 1.
-It is guaranteed that the sum of string lengths
-|s|
-over all test cases does not exceed
-2⋅
-10
-5
-.
+1≤|s|≤100
+), consisting of characters "_" and "^",  — the name to change.
 Output
-For each test case, output a single integer — the maximum area of a rectangle consisting only of ones. If there is no such rectangle, output
+For each test case, output a single integer — the minimum number of characters you need to add to the name to make it fit for Yura. If you don't need to change anything in the name, print
 0
 .
 Example
 input
 Copy
-5
-0
-1
-101
-011110
-101010
+7
+^______^
+___^_^^^_^___^
+^_
+^
+^_^^^^^_^_^^
+___^^
+_
 output
 Copy
-0
+5
+5
 1
+1
+0
+3
 2
-6
-1
 Note
-In the first test case, there is a table
-1×1
-consisting of a single character 0, so there are no rectangles consisting of ones, and the answer is
+In the first test case, you can get the following name by adding
+5
+characters:
+^_^_^_^_^_^_^
+In the third test case, we can add one character "^" to the end of the name, then we get the name:
+^_^
+In the fourth test case, we can add one character "^" to the end of the name, then we get the name:
+^^
+In the fifth test case, all of the characters are already contained in smiley faces, so the answer is
 0
 .
-In the second test case, there is a table
-1×1
-, consisting of a single character 1, so the answer is
-1
-.
-In the third test case, there is a table:
-1 0 1
-1 1 0
-0 1 1
-In the fourth test case, there is a table:
-0 1 1 1 1 0
-0 0 1 1 1 1
-1 0 0 1 1 1
-1 1 0 0 1 1
-1 1 1 0 0 1
-1 1 1 1 0 0
-In the fifth test case, there is a table:
-1 0 1 0 1 0
-0 1 0 1 0 1
-1 0 1 0 1 0
-0 1 0 1 0 1
-1 0 1 0 1 0
-0 1 0 1 0 1
-Rectangles with maximum area are shown in bold.
+In the seventh test case, you can add one character "^" at the beginning of the name and one character "^" at the end of the name, then you get the name:
+^_^

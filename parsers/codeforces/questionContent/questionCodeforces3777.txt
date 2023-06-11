@@ -1,216 +1,248 @@
-C. Ramesses and Corner Inversion
-time limit per test1 second
+D. Frets On Fire
+time limit per test1.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ramesses came to university to algorithms practice, and his professor, who is a fairly known programmer, gave him the following task.
-You are given two matrices
-A
-and
-B
-of size
-n×m
-, each of which consists of
+Miyako came to the flea kingdom with a ukulele. She became good friends with local flea residents and played beautiful music for them every day.
+In return, the fleas made a bigger ukulele for her: it has
+n
+strings, and each string has
+(
+10
+18
++1)
+frets numerated from
 0
-and
-1
-only. You can apply the following operation to the matrix
-A
-arbitrary number of times: take any submatrix of the matrix
-A
-that has at least two rows and two columns, and invert the values in its corners (i.e. all corners of the submatrix that contain
-0
-, will be replaced by
-1
-, and all corners of the submatrix that contain
-1
-, will be replaced by
-0
-). You have to answer whether you can obtain the matrix
-B
-from the matrix
-A
-.
-An example of the operation. The chosen submatrix is shown in blue and yellow, its corners are shown in yellow.
-Ramesses don't want to perform these operations by himself, so he asks you to answer this question.
-A submatrix of matrix
-M
-is a matrix which consist of all elements which come from one of the rows with indices
-x
+to
+10
+18
+. The fleas use the array
+s
 1
 ,
-x
-1
-+1,…,
-x
+s
 2
-of matrix
-M
-and one of the columns with indices
-y
-1
-,
-y
-1
-+1,…,
-y
-2
-of matrix
-M
-, where
-x
-1
-,
-x
-2
-,
-y
-1
-,
-y
-2
-are the edge rows and columns of the submatrix. In other words, a submatrix is a set of elements of source matrix which form a solid rectangle (i.e. without holes) with sides parallel to the sides of the original matrix. The corners of the submatrix are cells
-(
-x
-1
-,
-y
-1
-)
-,
-(
-x
-1
-,
-y
-2
-)
-,
-(
-x
-2
-,
-y
-1
-)
-,
-(
-x
-2
-,
-y
-2
-)
-, where the cell
-(i,j)
-denotes the cell on the intersection of the
-i
--th row and the
+,…,
+s
+n
+to describe the ukulele's tuning, that is, the pitch of the
 j
--th column.
+-th fret on the
+i
+-th string is the integer
+s
+i
++j
+.
+Miyako is about to leave the kingdom, but the fleas hope that Miyako will answer some last questions for them.
+Each question is in the form of: "How many different pitches are there, if we consider frets between
+l
+and
+r
+(inclusive) on all strings?"
+Miyako is about to visit the cricket kingdom and has no time to answer all the questions. Please help her with this task!
+Formally, you are given a matrix with
+n
+rows and
+(
+10
+18
++1)
+columns, where the cell in the
+i
+-th row and
+j
+-th column (
+0≤j≤
+10
+18
+) contains the integer
+s
+i
++j
+. You are to answer
+q
+queries, in the
+k
+-th query you have to answer the number of distinct integers in the matrix from the
+l
+k
+-th to the
+r
+k
+-th columns, inclusive.
 Input
-The first line contains two integers
+The first line contains an integer
 n
-and
-m
 (
-1≤n,m≤500
-) — the number of rows and the number of columns in matrices
-A
-and
-B
-.
-Each of the next
+1≤n≤100000
+) — the number of strings.
+The second line contains
 n
-lines contain
-m
-integers: the
-j
--th integer in the
-i
--th line is the
-j
--th element of the
-i
--th row of the matrix
-A
+integers
+s
+1
+,
+s
+2
+,…,
+s
+n
 (
 0≤
-A
-ij
-≤1
-).
-Each of the next
-n
-lines contain
-m
-integers: the
-j
--th integer in the
+s
 i
--th line is the
-j
--th element of the
-i
--th row of the matrix
-B
+≤
+10
+18
+) — the tuning of the ukulele.
+The third line contains an integer
+q
+(
+1≤q≤100000
+) — the number of questions.
+The
+k
+-th among the following
+q
+lines contains two integers
+l
+k
+，
+r
+k
 (
 0≤
-B
-ij
-≤1
-).
+l
+k
+≤
+r
+k
+≤
+10
+18
+) — a question from the fleas.
 Output
-Print "Yes" (without quotes) if it is possible to transform the matrix
-A
-to the matrix
-B
-using the operations described above, and "No" (without quotes), if it is not possible. You can print each letter in any case (upper or lower).
+Output one number for each question, separated by spaces — the number of different pitches.
 Examples
 input
 Copy
-3 3
-0 1 0
-0 1 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
+6
+3 1 4 1 5 9
+3
+7 7
+0 2
+8 17
 output
 Copy
-Yes
+5 10 18
 input
 Copy
-6 7
-0 0 1 1 0 0 1
-0 1 0 0 1 0 1
-0 0 0 1 0 0 1
-1 0 1 0 1 0 0
-0 1 0 0 1 0 1
-0 1 0 1 0 0 1
-1 1 0 1 0 1 1
-0 1 1 0 1 0 0
-1 1 0 1 0 0 1
-1 0 1 0 0 1 0
-0 1 1 0 1 0 0
-0 1 1 1 1 0 1
+2
+1 500000000000000000
+2
+1000000000000000000 1000000000000000000
+0 1000000000000000000
 output
 Copy
-Yes
-input
-Copy
-3 4
-0 1 0 1
-1 0 1 0
-0 1 0 1
-1 1 1 1
-1 1 1 1
-1 1 1 1
-output
-Copy
-No
+2 1500000000000000000
 Note
-The examples are explained below.
-Example 1.
-Example 2.
-Example 3.
+For the first example, the pitches on the
+6
+strings are as follows.
+Fret
+s
+1
+:
+s
+2
+:
+s
+3
+:
+s
+4
+:
+s
+5
+:
+s
+6
+:
+0
+3
+1
+4
+1
+5
+9
+1
+4
+2
+5
+2
+6
+10
+2
+5
+3
+6
+3
+7
+11
+3
+6
+4
+7
+4
+8
+12
+4
+7
+5
+8
+5
+9
+13
+5
+8
+6
+9
+6
+10
+14
+6
+9
+7
+10
+7
+11
+15
+7
+10
+8
+11
+8
+12
+16
+…
+…
+…
+…
+…
+…
+…
+There are
+5
+different pitches on fret
+7
+ —
+8,10,11,12,16
+.
+There are
+10
+different pitches on frets
+0,1,2
+ —
+1,2,3,4,5,6,7,9,10,11
+.

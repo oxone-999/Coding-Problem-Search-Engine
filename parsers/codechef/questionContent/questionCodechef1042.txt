@@ -1,40 +1,46 @@
-Magda and Silly Pairs
+Space Arrays
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef and his friend Magda have
-2N mutual friends:
-N of these friends are chefs and the other
-N are chefettes. The chefs are numbered
-1 through
-N and the chefettes are (independently) also numbered
-1 through
-N. Since Magda wants their friends to be as happy as possible and to preserve traditional family values, she wants to pair them up in such a way that each chef is paired with exactly one chefette and each chefette with exactly one chef.
-The chefs have heights
-A
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Finally, progress reached the Madoka family and she decided to play with her little sister in the sensational game Space Arrays.
+The rules of the game are as follows:
+Initially, a sequence
+a
 1
-,A
+,a
 2
-,…,A
+,…,a
 N
-and the chefettes have heights
-B
-1
-,B
-2
-,…,B
-N
-. For each valid
-i,j, if the
-i-th chef and the
-j-th chefette are paired, they will have exactly one child with height
-⌊
-2
-A
+is given.
+The players alternate turns.
+In each turn, the current player must choose an index
+i and increment
+a
 i
-+B
-j
-⌋. Magda wants to pair up the chefs and chefettes in such a way that the sum of heights of all their children (
-N children in total) is maximum possible. Please help her do that.
+, i.e. change
+a
+i
+to
+a
+i
++1.
+Afterwards, if there is no permutation
+p
+1
+,p
+2
+,…,p
+N
+of the integers
+1 through
+N such that
+a
+i
+≤p
+i
+holds for each valid
+i, the current player loses.
+Otherwise, the game continues with the next turn.
+Madoka is asking you to help her ― tell her if the first player (the player that plays in the first turn) or second player wins this game if both play optimally.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
@@ -43,58 +49,52 @@ The first line of each test case contains a single integer
 N.
 The second line contains
 N space-separated integers
-A
+a
 1
-,A
+,a
 2
-,…,A
-N
-.
-The third line contains
-N space-separated integers
-B
-1
-,B
-2
-,…,B
+,…,a
 N
 .
 Output
-Print a single line containing one integer ― the maximum sum of heights of the children.
+For each test case, print a single line containing the string "First" if the first player wins or "Second" if the second player wins (without quotes).
 Constraints
-1≤T≤10
-1≤N≤10
+1≤T≤2⋅10
+4
+1≤N≤2⋅10
 5
-1≤A
+The sum of
+N over all test cases doesn't exceed
+2⋅10
+5
+1≤a
 i
-≤10
-9
-for each valid
-i
-1≤B
-i
-≤10
-9
-for each valid
+≤N for each valid
 i
 Subtasks
-Subtask #1 (40 points):
-1≤N≤100
-Subtask #2 (60 points): original constraints
+Subtask #1 (100 points): Original constraints
 Sample 1:
 Input
 Output
-2
-3
-4 5 6
-1 2 3
+4
+4
+1 2 3 3
+4
+1 1 3 3
 5
-4 8 6 4 1
-2 5 7 4 7
-10
-23
+1 2 2 1 5
+3
+2 2 3
+First
+Second
+Second
+Second
 Explanation:
-Example case 1: One possible solution is to pair the first chef with the second chefette, the second chef with the first chefette and the third chef with the third chefette. Their children will have heights
-3,
-3 and
-4, respectively.
+Example case 1:
+If the first player increases the fourth element, the resulting sequence is
+(1,2,3,4). The second player loses after increasing any of the elements.
+If the first player increases the second element, the resulting sequence is
+(1,3,3,3), and he loses because there is no valid permutation. For example if
+p=(2,1,4,3), the second element of
+a is greater than the second element of
+p.

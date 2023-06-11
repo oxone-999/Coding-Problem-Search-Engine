@@ -1,193 +1,94 @@
-B. Fedya and Array
+A. Yet Another Promotion
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-For his birthday recently Fedya was given an array
-a
-of
+The famous store "Second Food" sells groceries only two days a month. And the prices in each of days differ. You wanted to buy
 n
-integers arranged in a circle, For each pair of neighboring numbers (
-a
+kilos of potatoes for a month. You know that on the first day of the month
 1
-and
+kilo of potatoes costs
 a
-2
-,
-a
-2
-and
-a
-3
-,
-…
-,
-a
-n−1
-and
-a
+coins, and on the second day
+b
+coins. In "Second Food" you can buy any integer kilograms of potatoes.
+Fortunately, "Second Food" has announced a promotion for potatoes, which is valid only on the first day of the month — for each
+m
+kilos of potatoes you buy, you get
+1
+kilo as a gift! In other words, you can get
+m+1
+kilograms by paying for
+m
+kilograms.
+Find the minimum number of coins that you have to spend to buy at least
 n
-,
-a
-n
-and
-a
-1
-) the absolute difference between them is equal to
-1
-.
-Let's call a local maximum an element, which is greater than both of its neighboring elements. Also call a local minimum an element, which is less than both of its neighboring elements. Note, that elements
-a
-1
-and
-a
-n
-are neighboring elements.
-Unfortunately, Fedya lost an array, but he remembered in it the sum of local maximums
-x
-and the sum of local minimums
-y
-.
-Given
-x
-and
-y
-, help Fedya find any matching array of minimum length.
+kilos of potatoes.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤1000
+1≤t≤10000
 ). Description of the test cases follows.
-Each line of each test case contain two integers
-x
+The first line of each test case contains two integers
+a
 and
-y
-(
-−
+b
+(1≤a,b≤
 10
 9
-≤y<x≤
+)
+— the prices of
+1
+kilo of potatoes on the first and second days, respectively.
+The second line contains two integers
+n
+and
+m
+(1≤n,m≤
 10
 9
-) — the sum of local maximums and the sum of local minimums, respectively.
+)
+— the required amount of potatoes to buy and the amount of potatoes to use the promotion.
 Output
-For each test case, in the first line print one integer
+For each test case print one integer — the minimum number of coins that you have to pay to buy at least
 n
-— the minimum length of matching arrays.
-In the second line print
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−
-10
-9
-⩽
-a
-i
-⩽
-10
-9
-) — the array elements such that the the absolute difference between each pair of neighboring is equal to
-1
-.
-If there are multiple solutions, print any of them.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-.
+kilos of potatoes.
 Example
 input
 Copy
-4
-3 -2
-4 -4
-2 -1
-5 -3
+5
+5 4
+3 1
+5 4
+3 2
+3 4
+3 5
+20 15
+10 2
+1000000000 900000000
+1000000000 8
 output
 Copy
+9
 10
-0 1 2 1 0 -1 0 -1 0 1
-16
--2 -1 -2 -1 0 1 2 3 4 5 4 3 2 1 0 -1 
-6
-1 0 -1 0 1 0
-16
-2 3 2 1 0 -1 0 -1 0 -1 0 1 2 1 0 1
+9
+135
+888888888900000000
 Note
-In the first test case, the local maximums are the numbers at
-3,7
-and
-10
-positions, and the local minimums are the numbers at
-1,6
-and
-8
-positions.
-x=
-a
-3
-+
-a
-7
-+
-a
-10
-=2+0+1=3
-,
-y=
-a
+In the first test case, on the first day you buy
 1
-+
-a
-6
-+
-a
-8
-=0+(−1)+(−1)=−2
-.
-In the second test case, the local maximums are the numbers at
+kilo and get
+1
+more for a promotion. On the second day, you can buy
+1
+kilo of potatoes. Thus, you will spend
+5+4=9
+coins in total.
+In the second test case, on the first day you buy
 2
-and
-10
-positions, and the local minimums are the numbers at
+kilo and get another
 1
-and
-3
-positions.
-x=
-a
-2
-+
-a
-10
-=−1+5=4
-,
-y=
-a
-1
-+
-a
-3
-=−2+(−2)=−4
-.
-In the third test case, the local maximums are the numbers at
-1
-and
-5
-positions, and the local minimums are the numbers at
-3
-and
-6
-positions.
+more for a promotion. This way you will spend
+2⋅5=10
+coins.

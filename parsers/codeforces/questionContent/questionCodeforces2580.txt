@@ -1,167 +1,225 @@
-B. New Theatre Square
-time limit per test2 seconds
+F. RC Kaboom Show
+time limit per test6 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You might have remembered Theatre square from the problem 1A. Now it's finally getting repaved.
-The square still has a rectangular shape of
-n×m
-meters. However, the picture is about to get more complicated now. Let
-a
-i,j
-be the
-j
--th square in the
+You know, it's hard to conduct a show with lots of participants and spectators at the same place nowadays. Still, you are not giving up on your dream to make a car crash showcase! You decided to replace the real cars with remote controlled ones, call the event "Remote Control Kaboom Show" and stream everything online.
+For the preparation you arranged an arena — an infinite 2D-field. You also bought
+n
+remote controlled cars and set them up on the arena. Unfortunately, the cars you bought can only go forward without turning left, right or around. So you additionally put the cars in the direction you want them to go.
+To be formal, for each car
 i
--th row of the pavement.
-You are given the picture of the squares:
-if
-a
-i,j
-=
-"*", then the
-j
--th square in the
-i
--th row should be black;
-if
-a
-i,j
-=
-".", then the
-j
--th square in the
-i
--th row should be white.
-The black squares are paved already. You have to pave the white squares. There are two options for pavement tiles:
-1×1
-tiles — each tile costs
+(
+1≤i≤n
+) you chose its initial position (
 x
-burles and covers exactly
-1
-square;
-1×2
-tiles — each tile costs
+i
+,
 y
-burles and covers exactly
-2
-adjacent squares of the same row. Note that you are not allowed to rotate these tiles or cut them into
-1×1
-tiles.
-You should cover all the white squares, no two tiles should overlap and no black squares should be covered by tiles.
-What is the smallest total price of the tiles needed to cover all the white squares?
+i
+) and a direction vector (
+d
+x
+i
+,d
+y
+i
+). Moreover, each car has a constant speed
+s
+i
+units per second. So after car
+i
+is launched, it stars moving from (
+x
+i
+,
+y
+i
+) in the direction (
+d
+x
+i
+,d
+y
+i
+) with constant speed
+s
+i
+.
+The goal of the show is to create a car collision as fast as possible! You noted that launching every car at the beginning of the show often fails to produce any collisions at all. Thus, you plan to launch the
+i
+-th car at some moment
+t
+i
+. You haven't chosen
+t
+i
+, that's yet to be decided. Note that it's not necessary for
+t
+i
+to be integer and
+t
+i
+is allowed to be equal to
+t
+j
+for any
+i,j
+.
+The show starts at time
+0
+. The show ends when two cars
+i
+and
+j
+(
+i≠j
+) collide (i. e. come to the same coordinate at the same time). The duration of the show is the time between the start and the end.
+What's the fastest crash you can arrange by choosing all
+t
+i
+? If it's possible to arrange a crash then print the shortest possible duration of the show. Otherwise, report that it's impossible.
 Input
 The first line contains a single integer
-t
-(
-1≤t≤500
-) — the number of testcases. Then the description of
-t
-testcases follow.
-The first line of each testcase contains four integers
 n
-,
-m
-,
-x
-and
-y
 (
-1≤n≤100
-;
-1≤m≤1000
-;
-1≤x,y≤1000
-) — the size of the Theatre square, the price of the
-1×1
-tile and the price of the
-1×2
-tile.
+1≤n≤25000
+) — the number of cars.
 Each of the next
 n
-lines contains
-m
-characters. The
-j
--th character in the
+lines contains five integers
+x
 i
--th line is
-a
-i,j
-. If
-a
-i,j
-=
-"*", then the
-j
--th square in the
+,
+y
 i
--th row should be black, and if
-a
-i,j
-=
-".", then the
-j
--th square in the
+,
+d
+x
 i
--th row should be white.
-It's guaranteed that the sum of
-n×m
-over all testcases doesn't exceed
+,
+d
+y
+i
+,
+s
+i
+(
+−
 10
-5
-.
+3
+≤
+x
+i
+,
+y
+i
+≤
+10
+3
+;
+1≤|d
+x
+i
+|≤
+10
+3
+;
+1≤|d
+y
+i
+|≤
+10
+3
+;
+1≤
+s
+i
+≤
+10
+3
+) — the initial position of the
+i
+-th car, its direction vector and its speed, respectively.
+It's guaranteed that all cars start at distinct positions (i. e.
+(
+x
+i
+,
+y
+i
+)≠(
+x
+j
+,
+y
+j
+)
+for
+i≠j
+).
 Output
-For each testcase print a single integer — the smallest total price of the tiles needed to cover all the white squares in burles.
-Example
+Print the shortest possible duration of the show if it's possible to arrange a crash by choosing all
+t
+i
+. Otherwise, print "No show :(".
+Your answer is considered correct if its absolute or relative error does not exceed
+10
+−6
+.
+Formally, let your answer be
+a
+, and the jury's answer be
+b
+. Your answer is accepted if and only if
+|a−b|
+max(1,|b|)
+≤
+10
+−6
+.
+Examples
 input
 Copy
 4
-1 1 10 1
-.
-1 2 10 1
-..
-2 1 10 1
-.
-.
-3 3 3 7
-..*
-*..
-.*.
+3 -1 -1 1 2
+2 3 -3 -2 10
+-4 2 1 -2 1
+-2 -2 -1 2 4
 output
 Copy
-10
-1
-20
-18
+0.585902082262898
+input
+Copy
+2
+-1 1 -1 1 200
+1 1 1 5 200
+output
+Copy
+No show :(
 Note
-In the first testcase you are required to use a single
-1×1
-tile, even though
-1×2
-tile is cheaper. So the total price is
-10
-burles.
-In the second testcase you can either use two
-1×1
-tiles and spend
-20
-burles or use a single
-1×2
-tile and spend
+Here is the picture for the first example:
+The fastest cars to crash are cars
+2
+and
+4
+. Let's launch car
+2
+at
+0
+, car
+4
+at about
+0.096762
+and cars
 1
-burle. The second option is cheaper, thus the answer is
-1
-.
-The third testcase shows that you can't rotate
-1×2
-tiles. You still have to use two
-1×1
-tiles for the total price of
-20
-.
-In the fourth testcase the cheapest way is to use
-1×1
-tiles everywhere. The total cost is
-6⋅3=18
-.
+and
+3
+at arbitrary time. That way cars
+2
+and
+4
+will crash into each other at about
+0.585902
+. So here's what it looks like at the moment of the collision:
+Here's the picture for the second example:

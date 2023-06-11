@@ -1,124 +1,32 @@
-Harshikaa and the Rain
+Sereja and Two Arrays
 Problem
-There is a tree with
-N nodes numbered from
-1 to
-N outside Harshikaa's house. The tree is rooted at node
-1. Initially the tree was dry, there were no raindrops on any node of the tree. Suddenly it started raining, and every second a drop falls on all the leaf nodes of the tree. Also, every second any drop which wasn't already on the root node moves one node closer to the root.
-Sometimes, strong winds shake the tree and all drops which were not on the root fall off. It is known that the wind will shake the tree
-M times at
-A
-1
-,A
-2
-,…A
-M
-seconds after it started raining.
-If multiple events happen at the same second, they are in this order:
-Raindrops move one node closer to the root.
-New raindrops fall on the leaves.
-Wind shakes the tree.
-How many drops are there at the root right after the
-M-th shake?
-Input Format
-The first line of each input contains
-T - the number of test cases. The test cases then follow.
-The first line of each test case contains two space-separated integers
-N and
-M - the number of nodes on the tree and the number of shake events.
-N−1 lines follow, each line containing two space-separated integers
-U and
-V denoting an edge between node
-U and
-V on the tree.
-The next line contains
-M space-separated integers
-A
-1
-,A
-2
-,…,A
-M
-- the timestamp of the shakes.
-Output Format
-For each test case, output in a single line the number of raindrops on the root right after the
-M-th shake.
-Constraints
-1≤T≤1000
-2≤N≤100000
-1≤U,V≤N
-U
-
-=V
-1≤M≤100000
-1≤A
-i
-≤10
-9
-A is strictly increasing
-Sum of
-N over all test cases is not more than
-5⋅10
-5
-Sum of
-M over all test cases is not more than
-4⋅10
-5
-Sample 1:
+Read problems statements in Mandarin Chinese and Russian.
+Sereja and Arrays 
+Sereja have an array that consist of n integers a[1], a[2], ..., a[n]. Also Sereja have an array that consist of m integers b[1], b[2], ..., b[m]. Sereja make next operations:
+  - random_shuffle(b) — shuffle elements of b
+  - random_merge(a, b) — merge array a and b to array a. From all possible merges Sereja chooses a random one. For better understanding you can imagine, that merged array is sequence q of n+m elements, each element if either zero or one. It contains exactly n zeroes and m ones. Then zeroes are replaced with elements of a, and ones are replaced with elements of b (without changing their relative order inside initial sequences).
+  Now Sereja want to know expected number of inversions in array a after described operations. Inversion is a pair (i, j) (1 ≤ i < j ≤ n + m) such that a[i] > a[j].
 Input
+First line contain number T — number of testcases. T tests follow. First line of each testcase contain two integers n and m. Next line contain n integers a[1], a[2], ..., a[n]. Next line contain m integers b[1], b[2], ..., b[m].
 Output
-1
-5 2
-2 1
-1 3
-4 3
-3 5
-2 5
-5
-Explanation:
-Test case
-1: Let's define an array
-R, where
-R
-i
-is the number of raindrops on the
-i-th node.
-At second
-0,
-R=[0,0,0,0,0].
-At second
-1, a raindrop fell on all leaves.
-R becomes
-[0,1,0,1,1].
-At second
-2,
-Firstly, raindrops moved closer to the root, so
-R becomes
-[1,0,2,0,0].
-Secondly, a raindrop fell on all leaves, so
-R becomes
-[1,1,2,1,1].
-Thirdly, the tree was shook, so every raindrop except the one on root fell. At the end of second
-2,
-R=[1,0,0,0,0].
-At second
-3, new raindrops fell, and
-R becomes
-[1,1,0,1,1].
-At second
-4,
-R becomes
-[2,1,2,1,1].
-At second
-5,
-Firstly, raindrops moved closer to the root, so
-R becomes
-[5,0,2,0,0].
-Secondly, a raindrop fell on all leaves, so
-R becomes
-[5,1,2,1,1].
-Thirdly, the tree was shook, so every raindrop except the one on root fell. At the end of second
-5,
-R=[5,0,0,0,0].
-Therefore, at the end there were
-5 drops at the root.
+For each testcase print expected number of inversions.
+  Constraints
+1 ≤ T ≤ 7
+1 ≤ n,m ≤ 10^5
+1 ≤ a[i], b[i] ≤ 10^5
+  Example
+Input:
+2
+5 3
+1 5 4 3 2
+2 6 3
+10 9
+10 3 6 4 8 4 1 9 7 2
+9 8 3 3 10 8 2 9 2
+Output:
+13.833333333
+87.818181818
+  Note
+Test #0-1 (25 points): n,m ≤ 10
+Test #2 (25 points): n,m ≤ 1000
+Test #3-4 (50 points): n,m ≤ 100000

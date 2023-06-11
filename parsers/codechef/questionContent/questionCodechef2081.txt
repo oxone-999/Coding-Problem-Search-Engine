@@ -1,60 +1,105 @@
-Operations on a Tuple
+Binary Substitution
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Consider the following operations on a triple of integers. In one operation, you should:
-Choose an integer
-d and an arithmetic operation ― either addition or multiplication.
-Choose a subset of elements of the triple.
-Apply the arithmetic operation to each of the chosen elements, i.e. either add
-d to each of them or multiply each of them by
-d.
-For example, if we have a triple
-(3,5,7), we may choose to add
-3 to the first and third element, and we get
-(6,5,10) using one operation.
-You are given an initial triple
-(p,q,r) and a target triple
-(a,b,c). Find the minimum number of operations needed to transform
-(p,q,r) into
-(a,b,c).
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains three space-separated integers
-p,
-q and
-r.
-The second line contains three space-separated integers
-a,
-b and
-c.
-Output
-For each test case, print a single line containing one integer ― the minimum required number of operations.
+Chef has binary string
+S of length
+N.
+Chef can perform the following operation on the string:
+Choose a contiguous subarray
+S
+L
+,S
+L+1
+,…,S
+R
+such that the count of set bits in the subarray is equal to the count of unset bits in the subarray.
+Replace the chosen subarray with either a set bit or an unset bit.
+Chef wants to reduce the string to minimum possible length using minimum number of given operations. Help Chef by telling him the minimum length and also the operations required to obtain that. If there are multiple ways to obtain the answer, print any.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first line of each test case contains a single integer
+N, denoting the length of the binary string.
+The second line of each test case contains a binary string
+S.
+Output Format
+For each test case, output
+K+1 lines:
+The first line should contain two space-separated integers
+M and
+K, denoting the minimum length that can be obtained and the minimum number of operations required to obtain it respectively.
+Then,
+K lines follow, where the
+i
+th
+line denotes the
+i
+th
+operation:
+Each operation is denoted using three space separated integers
+L,
+R, and
+B.
+The integers
+L and
+R denote the chosen substring such that
+(1≤L<R≤∣S∣) and the substring
+S[L,R] has equal count of set and unset bits. Note that,
+∣S∣ denotes the length of the current string.
+The integer
+B denotes the bit with which the substring is replaced.
 Constraints
-1≤T≤1,000
-∣p∣,∣q∣,∣r∣,∣a∣,∣b∣,∣c∣≤10
-9
-Subtasks
-Subtask #1 (10 points):
-∣p∣,∣q∣,∣r∣,∣a∣,∣b∣,∣c∣≤10
-Subtask #2 (90 points): original constraints
+1≤T≤100
+1≤N≤1000
 Sample 1:
 Input
 Output
-2
-3 5 7
-6 5 10
-8 6 3
-9 7 8
+3
+4
+1100
 1
-2
+1
+5
+11000
+1 1
+1 4 0
+1 0
+1 2
+1 4 1
+1 2 1
 Explanation:
-Example case 1: We add
-3 to the first and third element of
-(3,5,7) to form
-(6,5,10).
-Example case 2: We can add
-1 to each element to form
-(9,7,4) and then multiply the third element by
-2.
+Test case
+1: We can reduce the string to a string of length
+1. We require only
+1 operation to do so:
+Choose
+L=1,R=4, and
+B=0. We chose the substring
+S[1,4] which contains
+2 set bits and
+2 unset bits. We can replace the chosen substring with bit
+0.
+Test case
+2: The given string is of length
+1. Thus, we cannot reduce it any further.
+Test case
+3: We can reduce the string to a string of length
+1. We require
+2 operations to do so:
+Operation
+1: Choose
+L=1,R=4, and
+B=1. We chose the substring
+S[1,4] which contains
+2 set bits and
+2 unset bits. We can replace the chosen substring with bit
+1. Thus, the string after this operation is
+S=10.
+Operation
+2: Choose
+L=1,R=2, and
+B=1. We chose the substring
+S[1,2] which contains
+1 set bit and
+1 unset bit. We can replace the chosen substring with bit
+1. Thus, the string after this operation is
+S=1.

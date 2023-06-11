@@ -1,58 +1,59 @@
-B. Maximum Substring
-time limit per test1 second
+C. Complementary XOR
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A binary string is a string consisting only of the characters 0 and 1. You are given a binary string
-s
-.
-For some non-empty substring
-†
-†
-t
-of string
-s
-containing
-x
-characters 0 and
-y
-characters 1, define its cost as:
-x⋅y
-, if
-x>0
+You have two binary strings
+a
 and
-y>0
-;
-x
-2
-, if
-x>0
-and
-y=0
-;
-y
-2
-, if
-x=0
-and
-y>0
-.
-Given a binary string
-s
+b
 of length
 n
-, find the maximum cost across all its non-empty substrings.
-†
-†
-A string
+. You would like to make all the elements of both strings equal to
+0
+. Unfortunately, you can modify the contents of these strings using only the following operation:
+You choose two indices
+l
+and
+r
+(
+1≤l≤r≤n
+);
+For every
+i
+that respects
+l≤i≤r
+, change
 a
-is a substring of a string
-b
-if
+i
+to the opposite. That is,
 a
-can be obtained from
+i
+:=1−
+a
+i
+;
+For every
+i
+that respects either
+1≤i<l
+or
+r<i≤n
+, change
 b
-by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
+i
+to the opposite. That is,
+b
+i
+:=1−
+b
+i
+.
+Your task is to determine if this is possible, and if it is, to find such an appropriate chain of operations. The number of operations should not exceed
+n+5
+. It can be proven that if such chain of operations exists, one exists with at most
+n+5
+operations.
 Input
 Each test consists of multiple test cases. The first line contains a single integer
 t
@@ -64,94 +65,142 @@ t
 The first line of each test case contains a single integer
 n
 (
-1≤n≤2⋅
+2≤n≤2⋅
 10
 5
-) — the length of the string
-s
-.
+) — the length of the strings.
 The second line of each test case contains a binary string
-s
-of length
+a
+, consisting only of characters 0 and 1, of length
 n
 .
-It is guaranteed that the sum of
+The third line of each test case contains a binary string
+b
+, consisting only of characters 0 and 1, of length
 n
-over all test cases does not exceed
+.
+It is guaranteed that sum of
+n
+over all test cases doesn't exceed
 2⋅
 10
 5
 .
 Output
-For each test case, print a single integer — the maximum cost across all substrings.
+For each testcase, print first "YES" if it's possible to make all the elements of both strings equal to
+0
+. Otherwise, print "NO". If the answer is "YES", on the next line print a single integer
+k
+(
+0≤k≤n+5
+) — the number of operations. Then
+k
+lines follows, each contains two integers
+l
+and
+r
+(
+1≤l≤r≤n
+) — the description of the operation.
+If there are several correct answers, print any of them.
 Example
 input
 Copy
-6
 5
-11100
-7
-1100110
-6
-011110
-7
-1001010
+3
+010
+101
+2
+11
+10
 4
 1000
-1
-0
+0011
+2
+10
+10
+3
+111
+111
 output
 Copy
-9
-12
-16
-12
-9
+YES
 1
+2 2
+NO
+NO
+YES
+2
+1 2
+2 2
+YES
+2
+1 1
+2 3
 Note
-In the first test case, we can take a substring
-111
-. It contains
-3
-characters 1 and
-0
-characters 0. So
-a=3
-,
-b=0
-and its cost is
-3
+In the first test case, we can perform one operation with
+l=2
+and
+r=2
+. So
+a
 2
-=9
-.
-In the second test case, we can take the whole string. It contains
-4
-characters 1 and
-3
-characters 0. So
-a=4
+:=1−1=0
+and string
+a
+became equal to 000.
+b
+1
+:=1−1=0
 ,
-b=3
-and its cost is
-4⋅3=12
-.
-In the third test case, we can can take a substring
-1111
-and its cost is
-4
-2
-=16
-.
-In the fourth test case, we can take the whole string and cost is
-4⋅3=12
-.
-In the fifth test case, we can take a substring
-000
-and its cost is
-3⋅3=9
-.
-In the sixth test case, we can only take the substring
+b
+3
+:=1−1=0
+and string
+b
+became equal to 000.
+In the second and in the third test cases, it can be proven that it's impossible to make all elements of both strings equal to
 0
-and its cost is
-1⋅1=1
 .
+In the fourth test case, we can perform an operation with
+l=1
+and
+r=2
+, then string
+a
+became equal to 01, and string
+b
+doesn't change. Then we perform an operation with
+l=2
+and
+r=2
+, then
+a
+2
+:=1−1=0
+and
+b
+1
+=1−1=0
+. So both of string
+a
+and
+b
+became equal to 00.
+In the fifth test case, we can perform an operation with
+l=1
+and
+r=1
+. Then string
+a
+became equal to 011 and string
+b
+became equal to 100. Then we can perform an operation with
+l=2
+and
+r=3
+, so both of string
+a
+and
+b
+became equal to 000.

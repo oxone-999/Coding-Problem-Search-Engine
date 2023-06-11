@@ -1,38 +1,49 @@
-B. Teams Formation
+A. Short Program
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This time the Berland Team Olympiad in Informatics is held in a remote city that can only be reached by one small bus. Bus has n passenger seats, seat i can be occupied only by a participant from the city ai.
-Today the bus has completed m trips, each time bringing n participants. The participants were then aligned in one line in the order they arrived, with people from the same bus standing in the order of their seats (i. e. if we write down the cities where the participants came from, we get the sequence a1, a2, ..., an repeated m times).
-After that some teams were formed, each consisting of k participants form the same city standing next to each other in the line. Once formed, teams left the line. The teams were formed until there were no k neighboring participants from the same city.
-Help the organizers determine how many participants have left in the line after that process ended. We can prove that answer doesn't depend on the order in which teams were selected.
+Petya learned a new programming language CALPAS. A program in this language always takes one non-negative integer and returns one non-negative integer as well.
+In the language, there are only three commands: apply a bitwise operation AND, OR or XOR with a given constant to the current integer. A program can contain an arbitrary sequence of these operations with arbitrary constants from 0 to 1023. When the program is run, all operations are applied (in the given order) to the argument and in the end the result integer is returned.
+Petya wrote a program in this language, but it turned out to be too long. Write a program in CALPAS that does the same thing as the Petya's program, and consists of no more than 5 lines. Your program should return the same integer as Petya's program for all arguments from 0 to 1023.
 Input
-The first line contains three integers n, k and m (1 ≤ n ≤ 105, 2 ≤ k ≤ 109, 1 ≤ m ≤ 109).
-The second line contains n integers a1, a2, ..., an (1 ≤ ai ≤ 105), where ai is the number of city, person from which must take seat i in the bus.
+The first line contains an integer n (1 ≤ n ≤ 5·105) — the number of lines.
+Next n lines contain commands. A command consists of a character that represents the operation ("&", "|" or "^" for AND, OR or XOR respectively), and the constant xi 0 ≤ xi ≤ 1023.
 Output
-Output the number of remaining participants in the line.
+Output an integer k (0 ≤ k ≤ 5) — the length of your program.
+Next k lines must contain commands in the same format as in the input.
 Examples
 input
 Copy
-4 2 5
-1 2 3 1
+3
+| 3
+^ 2
+| 1
 output
 Copy
-12
+2
+| 3
+^ 2
 input
 Copy
-1 9 10
-1
+3
+& 1
+& 3
+& 5
 output
 Copy
 1
+& 1
 input
 Copy
-3 2 10
-1 2 1
+3
+^ 1
+^ 2
+^ 3
 output
 Copy
 0
 Note
-In the second example, the line consists of ten participants from the same city. Nine of them will form a team. At the end, only one participant will stay in the line.
+You can read about bitwise operations in https://en.wikipedia.org/wiki/Bitwise_operation.
+Second sample:
+Let x be an input of the Petya's program. It's output is ((x&1)&3)&5 = x&(1&3&5) = x&1. So these two programs always give the same outputs.

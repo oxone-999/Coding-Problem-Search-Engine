@@ -1,89 +1,77 @@
-Non Zero Subarray Xor
+Crazy Subsequences
 Problem
-JJ is back with another challenge. He challenges you to construct an array
-A containing
-N integers such that the following conditions hold:
-For all
-1≤i≤N,
-1≤A
-i
-≤10
-6
-Every subarray has non-zero XOR. That is, for every
-1≤L≤R≤N,
+Chef has a binary string
+S. He can modify it by choosing any subsequence of length
+3 from it and deleting the first and last character of the subsequence.
+For example, if
+S=110101, Chef can choose the subsequence marked in red and delete its first and last characters, obtaining the string
+S=1011.
+Chef wonders what is the lexicographically largest string he can obtain by modifying the original string using a finite number of operations. Please help Chef in this task.
+Note: A binary string
+A is said to be lexicographically larger than another binary string
+B if:
+B is a proper prefix of
+A (for example,
+101 is lexicographically larger than
+10); or
+There exists an index
+i such that
 A
-L
-⊕A
-L+1
-⊕…⊕A
-R
-
-=0. Here,
-⊕ denotes the bitwise XOR operation.
-Can you complete JJ's challenge?
-Under the given constraints, it can be proved that there always exists at least one array satisfying these conditions. If there are multiple possible arrays, print any of them.
+1
+=B
+1
+,A
+2
+=B
+2
+,…,A
+i−1
+=B
+i−1
+and
+A
+i
+>B
+i
+.
 Input Format
-The first line contains a single integer
-T, denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains an integer
-N — the size of the array
-A to be constructed.
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of a single line of input containing the original binary string
+S.
 Output Format
-For each test case, output a single line containing
-N space-separated integers, denoting the elements of array
-A. The
-i
-th
-of these
-N integers is
-A
-i
-. If multiple arrays exist which satisfy the conditions, print any of them.
+For each test case, output on a new line the lexicographically largest string Chef can obtain.
 Constraints
-1≤T≤1000
-1≤N≤10
+1≤T≤2⋅10
+4
+3≤∣S∣≤10
 5
-It is guaranteed that the sum of
-N over all test cases does not exceed
-2⋅10
+S is a binary string, i.e, only contains the characters
+0 and
+1 in it
+The sum of
+∣S∣ over all test cases won't exceed
+3⋅10
 5
 .
 Sample 1:
 Input
 Output
-3
-1
-6
-6
-7
-1 2 4 8 16 32
-2 3 5 7 11 13
+4
+101
+1010
+0000
+0001
+101
+11
+0000
+01
 Explanation:
-Test Case
-1: There is only one subarray,
-[7]. Its XOR is non-zero.
-Test Case
-2: Some of the subarray XORS are:
-XOR([2,4,8])=14
-
-=0
-XOR([1,2])=3
-
-=0
-XOR([4,8,16,32])=60
-
-=0.
-Similarly, it can be checked that every subarray has non-zero XOR.
-Test Case
-3: Some of the subarray XORS are:
-XOR([2,3,5,7])=3
-
-=0
-XOR([7,11])=12
-
-=0
-XOR([2,3,5,7,11,13])=5
-
-=0
-Similarly, it can be checked that every subarray has non-zero XOR.
+Test case
+1: It is optimal to not perform any moves.
+Test case
+2: In one move, by choosing the subsequence
+1010, the string can be made into
+11, which is the lexicographically largest possible.
+Test case
+3: It is optimal to not perform any move.

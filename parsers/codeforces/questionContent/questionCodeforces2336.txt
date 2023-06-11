@@ -1,167 +1,152 @@
-B. Maximum Product
-time limit per test2 seconds
+E. Deleting Numbers
+time limit per test1 second
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given an array of integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-. Find the maximum possible value of
-a
-i
-a
-j
-a
-k
-a
-l
-a
-t
-among all five indices
-(i,j,k,l,t)
+This is an interactive problem.
+There is an unknown integer
+x
 (
-i<j<k<l<t
-).
-Input
-The input consists of multiple test cases. The first line contains an integer
-t
-(
-1≤t≤2⋅
-10
-4
-) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains a single integer
-n
-(
-5≤n≤
-10
-5
-) — the size of the array.
-The second line of each test case contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−3×
-10
-3
-≤
-a
-i
-≤3×
-10
-3
-) — given array.
-It's guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
+1≤x≤n
+). You want to find
+x
 .
-Output
-For each test case, print one integer — the answer to the problem.
+At first, you have a set of integers
+{1,2,…,n}
+. You can perform the following operations no more than
+10000
+times:
+A
+a
+: find how many numbers are multiples of
+a
+in the current set.
+B
+a
+: find how many numbers are multiples of
+a
+in this set, and then delete all multiples of
+a
+, but
+x
+will never be deleted (even if it is a multiple of
+a
+). In this operation,
+a
+must be greater than
+1
+.
+C
+a
+: it means that you know that
+x=a
+. This operation can be only performed once.
+Remember that in the operation of type B
+a>1
+must hold.
+Write a program, that will find the value of
+x
+.
+Input
+The first line contains one integer
+n
+(
+1≤n≤
+10
+5
+). The remaining parts of the input will be given throughout the interaction process.
+Interaction
+In each round, your program needs to print a line containing one uppercase letter A, B or C and an integer
+a
+(
+1≤a≤n
+for operations A and C,
+2≤a≤n
+for operation B). This line desribes operation you make.
+If your operation has type C your program should terminate immediately.
+Else your program should read one line containing a single integer, which is the answer to your operation.
+After outputting each line, don't forget to flush the output. To do it use:
+fflush(stdout) in C/C++;
+System.out.flush() in Java;
+sys.stdout.flush() in Python;
+flush(output) in Pascal;
+See the documentation for other languages.
+It is guaranteed, that the number
+x
+is fixed and won't change during the interaction process.
+Hacks:
+To make a hack, use such input format:
+The only line should contain two integers
+n
+,
+x
+(
+1≤x≤n≤
+10
+5
+).
 Example
 input
 Copy
+10
+
+2
+
 4
-5
--1 -2 -3 -4 -5
-6
--1 -2 -3 1 2 -1
-6
--1 0 0 0 -1 -1
-6
--9 -7 -5 -3 -2 1
+
+0
 output
 Copy
--120
-12
-0
-945
+B 4
+
+A 2
+
+A 8
+
+C 4
 Note
-In the first test case, choosing
-a
-1
-,
-a
-2
-,
-a
-3
-,
-a
+Note that to make the sample more clear, we added extra empty lines. You shouldn't print any extra empty lines during the interaction process.
+In the first test
+n=10
+and
+x=4
+.
+Initially the set is:
+{1,2,3,4,5,6,7,8,9,10}
+.
+In the first operation, you ask how many numbers are multiples of
 4
-,
-a
-5
-is a best choice:
-(−1)⋅(−2)⋅(−3)⋅(−4)⋅(−5)=−120
-.
-In the second test case, choosing
-a
-1
-,
-a
+and delete them. The answer is
 2
-,
-a
-3
-,
-a
-5
-,
-a
-6
-is a best choice:
-(−1)⋅(−2)⋅(−3)⋅2⋅(−1)=12
-.
-In the third test case, choosing
-a
-1
-,
-a
-2
-,
-a
-3
-,
-a
+because there are two numbers divisible by
 4
-,
-a
-5
-is a best choice:
-(−1)⋅0⋅0⋅0⋅(−1)=0
+:
+{4,8}
 .
-In the fourth test case, choosing
-a
-1
-,
-a
-2
-,
-a
-3
-,
-a
+8
+will be deleted but
 4
-,
-a
-6
-is a best choice:
-(−9)⋅(−7)⋅(−5)⋅(−3)⋅1=945
+won't, because the number
+x
+will never be deleted. Now the set is
+{1,2,3,4,5,6,7,9,10}
 .
+In the second operation, you ask how many numbers are multiples of
+2
+. The answer is
+4
+because there are four numbers divisible by
+2
+:
+{2,4,6,10}
+.
+In the third operation, you ask how many numbers are multiples of
+8
+. The answer is
+0
+because there isn't any number divisible by
+8
+in the current set.
+In the fourth operation, you know that
+x=4
+, which is the right answer.

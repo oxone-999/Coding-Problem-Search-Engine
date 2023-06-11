@@ -1,73 +1,33 @@
-Maximize It
+Chef And Land Labeling
 Problem
-###Read problems statements Mandarin , Bengali , Hindi , Russian and Vietnamese as well.
-You are given a sequence of
-N powers of an integer
-k; let's denote the
-i-th of these powers by
-k
-A
-i
-. You should partition this sequence into two non-empty contiguous subsequences; each element of the original sequence should appear in exactly one of these subsequences. In addition, the product of (the sum of elements of the left subsequence) and (the sum of elements of the right subsequence) should be maximum possible.
-Find the smallest position at which you should split this sequence in such a way that this product is maximized.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+ChefsLand can be viewed as a graph consisting of N cities and bidirectional roads. Each pair of cities is directly connected by a road. Recently, Chef came up with following game to make the Number Theory course more interesting for students in country schools.
+At the beginning of each lesson, Chef draws ChefsLand as a graph with N vertices corresponding to cities and N(N-1)/2 edges corresponding to roads between them. Then he labels the cities; each city is given a distinct label between 1 and N (inclusive). Next, he labels each edge — the label of the edge between vertices u and v is the common divisor count of lblu and lblv (the number of positive integers which divide both lblu and lblv), where lblu and lblv denote the labels of vertices u and v respectively.
+Now, Chef erases the vertex labels, retaining only edge labels in the graph. You, as the number theory student, should find some assignment of labels to vertices which produces a graph with the given edge labels.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-k.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains a single integer N denoting the number of vertices in the graph.
+The following N lines describe the labels of edges. For each valid i, the i-th of these lines contains N space-separated integers Mi1, Mi2, ..., MiN; for each valid j ≠ i, Mij represents the label of the edge connecting vertices i and j.
 Output
-For each test case, print a single line containing one integer — the size of the left subsequence. If there is more than one possible answer, print the smallest possible one.
+For each test case, print N lines. For each valid i, the i-th of these lines should contain a single integer — the label of the i-th vertex.
+If there are multiple solutions, you may output any one.
 Constraints
-1≤T≤10
-2≤N≤10
-5
-2≤k≤10
-9
-0≤A
-i
-≤10
-5
-for each valid
-i
+1 ≤ N ≤ 1000
+for each valid i, Mii = 0
+it's guaranteed that for the given edge labels, at least one possible assignment of labels to vertices exists
 Subtasks
-Subtask #1 (30 points):
-2≤N≤1,000
-0≤A
-i
-≤1,000 for each valid
-i
-Subtask #2 (70 points): original constraints
-Sample 1:
-Input
-Output
+Subtask #1 (15 points): sum of N for all test cases ≤ 10
+Subtask #2 (85 points): sum of N for all test cases ≤ 1000
+Example
+Input:
 1
-5 2
-1 1 3 3 5
 4
-Explanation:
-Example case 1: The actual sequence of powers is
-[2
-1
-,2
-1
-,2
+0 1 1 1
+1 0 1 1
+1 1 0 2
+1 1 2 0
+Output:
 3
-,2
-3
-,2
-5
-]=[2,2,8,8,32]. The maximum product is
-20⋅32=640. In the optimal solution, the sequence is partitioned into
-[2,2,8,8] and
-[32].
+1
+2
+4

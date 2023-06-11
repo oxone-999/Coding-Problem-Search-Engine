@@ -1,116 +1,40 @@
-Potato to Gold
+The Kingdom of Exodiastaan
 Problem
-You are given an array
-A of
-N integers and an integer
-K. Find the number of (possibly empty) subsequences of
-A such that no two elements in the subsequence have a sum that is divisible by
-K.
-Two subsequences are considered distinct if they are made up of different indices. For example,
-A=[1,2,1,2] contains
-[1,2] as a subsequence three times, and all
-3 must be counted separately in the answer.
-More formally,
-Let
-S={x
-1
-,x
-2
-,…,x
-m
-} be a (possibly empty) set such that
-1≤x
-1
-<x
-2
-<…<x
-m
-≤N.
-S is said to be good if
-A
-x
-i
-+A
-x
-j
-is not divisible by
-K for any
-1≤i<j≤m. In particular, any subsequence of size
-≤1 is good.
-Your task is to count the number of good sets.
-Since the answer can be very large, print it modulo
-10
-9
-+7.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of two lines of input.
-The first line of each test case contains two space separated integers,
-N and
-K.
-The second line of each test case contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-Output Format
-For each test case, output on a new line number of subsequences satisfying the condition, modulo
-10
-9
-+7.
-Constraints
-1≤T≤10
-4
-1≤N≤10
+There was a kingdom 'Exodistaan' ruled by 'JonSnow'. The kingdom was divided into
+n x
+m cities. The cities are arranged in a grid, with
+n rows of
+m cities each. Now the ruler 'JonSnow' had a list of enemies (not exceeding 10). The enemies want Exodistaan for themselves, as it is quite popular. Their strategy was to first attack the cities row-wise and then attack column-wise. The enemies attacked the rows and were able to capture some continuous segments of cities in some rows. Each row was attacked by at most one enemy. Now they want to attack columns and all the columns which have maximum number of distinct rulers will be attacked first. 'JonSnow' is busy in preparing for the war. You have to help him which columns will be attacked and what is the maximum number of distinct rulers (including 'JonSnow').
+###Input:
+The first line contains three integers
+n,m,k.
+Each of the next
+k lines contains 4 values
+i,l,r,S. This means that in row
+i, cities from column
+l to column
+r both inclusive have been captured by enemy
+S.
+###Output: Print 2 space separated integers
+A and
+B, where:
+A is the number of columns which will be attacked.
+B is the maximum number of distinct rulers in the columns.
+###Constraints
+1≤n,m≤10
 5
-1≤K≤5⋅10
-5
-1≤A
-i
-≤10
-9
-The sum of
-N and
-K over all test cases won't exceed
-10
-6
-.
-Sample 1:
-Input
-Output
-3
-3 4
-4 5 7
-5 4
-1 2 3 4 5
-5 3
-1 2 3 4 5
-6
-20
-14
-Explanation:
-Test case
-1: Here,
-K=4. There are
-8 subsequences of the array, and they are considered as follows:
-[]: the empty subsequence. It satisfies the condition.
-[4],[5],[7]: size
-1 subsequences, all are good.
-[4,5]: good, because
-4+5=9 is not a multiple of
-4
-[4,7]: good, because
-4+7=11 is not a multiple of
-4
-[5,7]: not good, because
-5+7=12 is a multiple of
-4.
-[4,5,7]: not good, again because it contains
-5 and
-7.
-So,
-6 of the subsequences are good.
+1≤k≤n
+1≤l≤r≤m
+1≤ length of
+S≤10
+The number of distinct enemies do not exceed
+10.
+###Sample Input: 4 4 3 1 2 3 Lannister 2 1 2 Bolton 4 1 1 Lannister
+###Sample Output: 2 3
+###Explanation:
+The matrix is as follows -
+JonSnow     Lannister   Lannister    JonSnow
+Bolton    Bolton    JonSnow      JonSnow
+JonSnow     JonSnow     JonSnow      JonSnow
+Lannister   JonSnow     JonSnow      JonSnow
+The first and second Columns have 3 rulers each - {JonSnow, Bolton, Lannister}. And that is the maximum possible. Since there are two column with maximum distinct rulers, the first integer in the output is 2. And since the maximum number of rulers in a single column is 3, the second output is 3.

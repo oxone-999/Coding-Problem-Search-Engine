@@ -1,77 +1,127 @@
-B. Circle Game
-time limit per test1 second
+D1. Tree Queries (Easy Version)
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Mike and Joe are playing a game with some stones. Specifically, they have
+The only difference between this problem and D2 is the bound on the size of the tree.
+You are given an unrooted tree with
 n
-piles of stones of sizes
-a
+vertices. There is some hidden vertex
+x
+in that tree that you are trying to find.
+To do this, you may ask
+k
+queries
+v
 1
 ,
-a
+v
 2
 ,…,
-a
-n
-. These piles are arranged in a circle.
-The game goes as follows. Players take turns removing some positive number of stones from a pile in clockwise order starting from pile
-1
-. Formally, if a player removed stones from pile
+v
+k
+where the
+v
 i
-on a turn, the other player removes stones from pile
-((imodn)+1)
-on the next turn.
-If a player cannot remove any stones on their turn (because the pile is empty), they lose. Mike goes first.
-If Mike and Joe play optimally, who will win?
+are vertices in the tree. After you are finished asking all of the queries, you are given
+k
+numbers
+d
+1
+,
+d
+2
+,…,
+d
+k
+, where
+d
+i
+is the number of edges on the shortest path between
+v
+i
+and
+x
+. Note that you know which distance corresponds to which query.
+What is the minimum
+k
+such that there exists some queries
+v
+1
+,
+v
+2
+,…,
+v
+k
+that let you always uniquely identify
+x
+(no matter what
+x
+is).
+Note that you don't actually need to output these queries.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤1000
+1≤t≤100
 ). Description of the test cases follows.
 The first line of each test case contains a single integer
 n
 (
-1≤n≤50
-)  — the number of piles.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
+1≤n≤2000
+)  — the number of vertices in the tree.
+Each of the next
+n−1
+lines contains two integers
+x
+and
+y
 (
-1≤
-a
-i
-≤
-10
-9
-)  — the size of the piles.
+1≤x,y≤n
+), meaning there is an edges between vertices
+x
+and
+y
+in the tree.
+It is guaranteed that the given edges form a tree.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2000
+.
 Output
-For each test case print the winner of the game, either "Mike" or "Joe" on its own line (without quotes).
+For each test case print a single nonnegative integer, the minimum number of queries you need, on its own line.
 Example
 input
 Copy
-2
+3
 1
-37
 2
-100 100
+1 2
+10
+2 4
+2 1
+5 7
+3 10
+8 6
+6 1
+1 3
+4 7
+9 6
 output
 Copy
-Mike
-Joe
-Note
-In the first test case, Mike just takes all
-37
-stones on his first turn.
-In the second test case, Joe can just copy Mike's moves every time. Since Mike went first, he will hit
 0
-on the first pile one move before Joe does so on the second pile.
+1
+2
+Note
+In the first test case, there is only one vertex, so you don't need any queries.
+In the second test case, you can ask a single query about the node
+1
+. Then, if
+x=1
+, you will get
+0
+, otherwise you will get
+1
+.

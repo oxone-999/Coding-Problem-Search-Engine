@@ -1,75 +1,45 @@
-F. Parametric MST
-time limit per test1 second
-memory limit per test256 megabytes
+H. Equal LCM Subsets
+time limit per test10 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-. For any real number
-t
-, consider the complete weighted graph on
-n
-vertices
-K
-n
-(t)
-with weight of the edge between vertices
-i
+You are given two sets of positive integers
+A
 and
-j
-equal to
-w
-ij
-(t)=
-a
-i
-⋅
-a
-j
-+t⋅(
-a
-i
-+
-a
-j
-)
+B
+. You have to find two non-empty subsets
+S
+A
+⊆A
+,
+S
+B
+⊆B
+so that the least common multiple (LCM) of the elements of
+S
+A
+is equal to the least common multiple (LCM) of the elements of
+S
+B
 .
-Let
-f(t)
-be the cost of the minimum spanning tree of
-K
-n
-(t)
-. Determine whether
-f(t)
-is bounded above and, if so, output the maximum value it attains.
 Input
-The input consists of multiple test cases. The first line contains a single integer
-T
+The input consists of multiple test cases. The first line of the input contains one integer
+t
 (
-1≤T≤
-10
-4
-) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains an integer
-n
+1≤t≤200
+), the number of test cases.
+For each test case, there is one line containing two integers
+n,m
 (
-2≤n≤2⋅
-10
-5
-) — the number of vertices of the graph.
-The second line of each test case contains
+1≤n,m≤1000
+), the sizes of the sets
+A
+and
+B
+, respectively.
+The next line contains
 n
-integers
+distinct integers
 a
 1
 ,
@@ -79,47 +49,138 @@ a
 a
 n
 (
-−
-10
-6
-≤
+1≤
 a
 i
-≤
+≤4⋅
 10
-6
-).
+36
+), the elements of
+A
+.
+The next line contains
+m
+distinct integers
+b
+1
+,
+b
+2
+,…,
+b
+m
+(
+1≤
+b
+i
+≤4⋅
+10
+36
+), the elements of
+B
+.
 The sum of
 n
+for all test cases and the sum of
+m
 for all test cases is at most
-2⋅
-10
-5
+1000
 .
 Output
-For each test case, print a single line with the maximum value of
-f(t)
-(it can be shown that it is an integer), or INF if
-f(t)
-is not bounded above.
+For each test case, if there do not exist two subsets with equal least common multiple, output one line with NO.
+Otherwise, output one line with YES, followed by a line with two integers
+|
+S
+A
+|,|
+S
+B
+|
+(
+1≤|
+S
+A
+|≤n
+,
+1≤|
+S
+B
+|≤m
+), the sizes of the subsets
+S
+A
+and
+S
+B
+The next line should contain
+|
+S
+A
+|
+integers
+x
+1
+,
+x
+2
+,…,
+x
+|
+S
+A
+|
+, the elements of
+S
+A
+, followed by a line with
+|
+S
+B
+|
+integers
+y
+1
+,
+y
+2
+,…,
+y
+|
+S
+B
+|
+, the elements of
+S
+B
+. If there are multiple possible pairs of subsets, you can print any.
 Example
 input
 Copy
-5
-2
-1 0
-2
--1 1
-3
-1 -1 -2
-3
-3 -1 -2
 4
-1 2 3 -4
+3 4
+5 6 7
+2 8 9 10
+4 4
+5 6 7 8
+2 3 4 9
+1 3
+1
+1 2 3
+5 6
+3 4 9 7 8
+2 15 11 14 20 12
 output
 Copy
-INF
--1
-INF
--6
--18
+NO
+YES
+1 2
+6
+2 3
+YES
+1 1
+1
+1
+YES
+3 2
+3 7 4
+12 14

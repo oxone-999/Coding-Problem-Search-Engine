@@ -1,197 +1,40 @@
-Energetic Node(Hard Version)
+Chef and Science
 Problem
-This is the hard version of the problem. The only difference is that, in this version,
-K
-i
-≤10
-18
-.
-There’s a tree having
-N nodes, out of which, some nodes are energetic.
-Initially, energy of all the nodes is
-0. In the
-i
-th
-second, every energetic node will make the energy of itself and all its neighbours increase by
-i.
-You need to answer
-Q queries. For the
-i
-th
-query, you are given three integers:
-X
-i
-T
-i
-K
-i
-: Find the minimum number of seconds after which, there are at least
-T
-i
-nodes with energy not less than
-K
-i
-on the path from node
-1 to node
-X
-i
-. If it is not possible to have at least
-T
-i
-nodes with energy not less than
-K
-i
-on the path from node
-1 to node
-X
-i
-after any amount of time, print
-−1 instead.
-Input Format
-The first line contains an integer
-N — the number of nodes.
-The second line contains
-N space-separated integers, the array
-A denoting whether the nodes are energetic. If
-A
-i
-=1, it means that the
-i
-th
-node is energetic, otherwise the
-i
-th
-node is not energetic.
-The next
-N−1 lines describe the edges. The
-i
-th
-of these
-N−1 lines contains two space-separated integers
-U
-i
-and
-V
-i
-, denoting an edge between
-U
-i
-and
-V
-i
-.
-The next line contains an integer
-Q — the number of queries.
-The next
-Q lines contain three space-separated integers
-X
-i
-,T
-i
-,K
-i
-, the query.
-Output Format
-For each query, output on a new line: the minimum number of seconds after which, there are at least
-T
-i
-nodes with energy not less than
-K
-i
-on the path from node
-1 to node
-X
-i
-.
-If it is not possible to have at least
-T
-i
-nodes with energy not less than
-K
-i
-on the path from node
-1 to node
-X
-i
-after any amount of time, print
-−1 instead.
-Constraints
-1≤N,Q≤4⋅10
-4
-0≤A
-i
-≤1
-1≤U
-i
-,V
-i
-,X
-i
-,T
-i
-≤N
-1≤K
-i
-≤10
-18
-Sample 1:
-Input
+  Chef studied science at school. But now he was tired of it. He likes to solve problems on Codechef. Here and now, he decided to go to his favourite site and solve several interesting problems. But as it turned out Chef is not yet ready to solve the harder problems. So you have to help him.
+If you take away all the foreword, then the task set is this: you have N non-negative numbers A1, A2 ... AN and M requests. Each request consists of three numbers (l, v, k). MagicInteger(l,v) is equal to concatenation of the numbers Ai, such that (i = l + v * q & 1 <= i <= n & q >= 0). For each such request you have to write the k-th digit of MagicInteger(l,v).
+Concatanation example:
+If you have 2 numbers 11, 22 - after concatenation you will have 1122.
+If you have 3 number 13, 44, 12 - after concatenation you will have 134412.
+One more example: 0, 3, 11, 0 - after concatenation you will have 03110. First digit of this string is 0, not 3.
+  Input
+The first line contains an integer N denoting the number of integers in the given array. The second line contains N space-separated integers A1, A2, ..., AN denoting the given array. The third line has a single integer M denoting the number of requests. The next M lines contains three space separated numbers in each line (l, v, k) denoting each request.
 Output
-7
-1 0 1 0 0 1 0
-1 2
-1 3
-1 4
-3 5
-3 6
-4 7
+For each request output a single line containing k-th digit of MagicInteger(l, v). If the length of MagicInteger(l,v) is smaller than k, you need to output "So sad" without quotes.
+Constraints
+1 ≤ N ≤ 105
+1 ≤ M ≤ 105
+0 ≤ Ai ≤ 109
+1 ≤ l, v ≤ 105
+1 ≤ k ≤ 106
+  Example
+Input:
 4
-7 3 1
-6 3 2
-7 2 3
-5 3 5
--1
+0 1 2 3
+5
+1 1 2
+1 2 2
+1 2 1
+2 2 3
+4 100000 1
+Output:
 1
 2
+0
+So sad
 3
-Explanation:
-Query
-1: No matter how long, there will not be at least
-3 nodes having energy not less than
-1 on the path from node
-1 to node
-7. Thus, the answer is
-−1.
-Query
-2: In the
-1
-st
-second, the energy of nodes
-1,3, and
-6 becomes
-2,3, and
-2 respectively. Thus, there are at least
-3 nodes with energy not less than
-2.
-Query
-3: In the
-2
-nd
-second, the energy of nodes
-1,4, and
-7 becomes
-6,3, and
-0 respectively. Thus, there are at least
-2 nodes with energy not less than
-3.
-Query
-4: In the
-3
-rd
-second, the energy of nodes
-1,3, and
-5 is
-12,18, and
-6 respectively. Thus, there are at least
-3 nodes with energy not less than
-5.
+  Scoring
+Subtask 1 (30 points): N ≤ 1000
+
+Subtask 2 (25 points): V ≤ 100
+
+Subtask 3 (45 points): Look at constraints

@@ -1,185 +1,104 @@
-G. Graph Coloring
-time limit per test7 seconds
-memory limit per test1024 megabytes
+B. Two chandeliers
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a bipartite graph consisting of
-n
-1
-vertices in the first part,
-n
-2
-vertices in the second part, and
-m
-edges, numbered from
-1
-to
-m
-. You have to color each edge into one of two colors, red and blue. You have to minimize the following value:
-∑
-v∈V
-|r(v)−b(v)|
-, where
-V
-is the set of vertices of the graph,
-r(v)
-is the number of red edges incident to
-v
-, and
-b(v)
-is the number of blue edges incident to
-v
-.
-Sounds classical and easy, right? Well, you have to process
-q
-queries of the following format:
-1
-v
-1
-v
-2
-— add a new edge connecting the vertex
-v
-1
-of the first part with the vertex
-v
-2
-of the second part. This edge gets a new index as follows: the first added edge gets the index
-m+1
-, the second —
-m+2
-, and so on. After adding the edge, you have to print the hash of the current optimal coloring (if there are multiple optimal colorings, print the hash of any of them). Actually, this hash won't be verified, you may print any number as the answer to this query, but you may be asked to produce the coloring having this hash;
-2
-— print the optimal coloring of the graph with the same hash you printed while processing the previous query. The query of this type will only be asked after a query of type
-1
-, and there will be at most
-10
-queries of this type. If there are multiple optimal colorings corresponding to this hash, print any of them.
-Note that if an edge was red or blue in some coloring, it may change its color in next colorings.
-The hash of the coloring is calculated as follows: let
-R
-be the set of indices of red edges, then the hash is
-(
-∑
-i∈R
-2
-i
-)mod998244353
-.
-Note that you should solve the problem in online mode. It means that you can't read the whole input at once. You can read each query only after writing the answer for the last query. Use functions fflush in C++ and BufferedWriter.flush in Java languages after each writing in your program.
+Vasya is a CEO of a big construction company. And as any other big boss he has a spacious, richly furnished office with two crystal chandeliers. To stay motivated Vasya needs the color of light at his office to change every day. That's why he ordered both chandeliers that can change its color cyclically. For example: red – brown – yellow – red – brown – yellow and so on.
+There are many chandeliers that differs in color set or order of colors. And the person responsible for the light made a critical mistake — they bought two different chandeliers.
+Since chandeliers are different, some days they will have the same color, but some days — different. Of course, it looks poor and only annoys Vasya. As a result, at the
+k
+-th time when chandeliers will light with different colors, Vasya will become very angry and, most probably, will fire the person who bought chandeliers.
+Your task is to calculate the day, when it happens (counting from the day chandeliers were installed). You can think that Vasya works every day without weekends and days off.
 Input
 The first line contains three integers
 n
-1
 ,
-n
-2
-and
 m
-(
-1≤
-n
-1
-,
-n
-2
-,m≤2⋅
-10
-5
-).
-Then
-m
-lines follow, the
-i
--th of them contains two integers
-x
-i
 and
-y
+k
+(
+1≤n,m≤500000
+;
+1≤k≤
+10
+12
+) — the number of colors in the first and the second chandeliers and how many times colors should differ to anger Vasya.
+The second line contains
+n
+different integers
+a
 i
 (
 1≤
-x
+a
 i
-≤
-n
-1
-;
-1≤
-y
-i
-≤
-n
-2
-) meaning that the
-i
--th edge connects the vertex
-x
-i
-from the first part and the vertex
-y
-i
-from the second part.
-The next line contains one integer
-q
+≤2⋅max(n,m)
+) that describe the first chandelier's sequence of colors.
+The third line contains
+m
+different integers
+b
+j
 (
-1≤q≤2⋅
-10
-5
-) — the number of queries you have to process.
-The next
-q
-lines contain the queries in the format introduced in the statement.
-Additional constraints on the input:
-at any moment, the graph won't contain any multiple edges;
-the queries of type
-2
-are only asked if the previous query had type
-1
-;
-there are at most
-10
-queries of type
-2
+1≤
+b
+i
+≤2⋅max(n,m)
+) that describe the second chandelier's sequence of colors.
+At the
+i
+-th day, the first chandelier has a color
+a
+x
+, where
+x=((i−1)modn)+1)
+and the second one has a color
+b
+y
+, where
+y=((i−1)modm)+1)
 .
+It's guaranteed that sequence
+a
+differs from sequence
+b
+, so there are will be days when colors of chandeliers differs.
 Output
-To answer a query of type
-1
-, print one integer — the hash of the optimal coloring.
-To answer a query of type
-2
-, print one line. It should begin with the integer
-k
- — the number of red edges. Then,
-k
-distinct integer should follow — the indices of red edges in your coloring, in any order. Each index should correspond to an existing edge, and the hash of the coloring you produce should be equal to the hash you printed as the answer to the previous query.
-If there are multiple answers to a query, you may print any of them.
-Example
+Print the single integer — the index of day when Vasya will become angry.
+Examples
 input
 Copy
-3 4 2
-1 2
-3 4
-10
-1 1 3
-1 2 3
-2
-1 3 3
-2
-1 2 4
-2
-1 2 1
-1 1 1
-2
+4 2 4
+4 2 3 1
+2 1
 output
 Copy
-8
-8
-1 3
-40
-2 3 5
-104
-3 5 6 3
-104
-360
-4 5 6 3 8
+5
+input
+Copy
+3 8 41
+1 3 2
+1 6 4 3 5 7 2 8
+output
+Copy
+47
+input
+Copy
+1 2 31
+1
+1 2
+output
+Copy
+62
+Note
+In the first example, the chandeliers will have different colors at days
+1
+,
+2
+,
+3
+and
+5
+. That's why the answer is
+5
+.

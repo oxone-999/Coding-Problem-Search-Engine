@@ -1,157 +1,207 @@
-H. MEX Tree Manipulation
-time limit per test5 seconds
+I. Arranging Crystal Balls
+time limit per test4 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Given a rooted tree, define the value of vertex
-u
-in the tree recursively as the MEX
-†
-†
-of the values of its children. Note that it is only the children, not all of its descendants. In particular, the value of a leaf is
+In the world of Compfestnesia, Pak Chanek discovers a secret underground dungeon. Inside it, there is a treasure chest that is surrounded by
+n
+statues that are arranged in a circular manner. The statues are numbered from
 0
-.
-Pak Chanek has a rooted tree that initially only contains a single vertex with index
-1
-, which is the root. Pak Chanek is going to do
-q
-queries. In the
+to
+n−1
+with statue
 i
--th query, Pak Chanek is given an integer
-x
-i
-. Pak Chanek needs to add a new vertex with index
+being to the left of statue
 i+1
-as the child of vertex
-x
-i
-. After adding the new vertex, Pak Chanek needs to recalculate the values of all vertices and report the sum of the values of all vertices in the current tree.
-†
-†
-The MEX (minimum excluded) of an array is the smallest non-negative integer that does not belong to the array. For example, the MEX of
-[0,1,1,2,6,7]
-is
-3
-and the MEX of
-[6,9]
-is
+and statue
+n−1
+being to the left of statue
 0
 .
+Pak Chanek observes that each statue is holding a crystal ball with an integer between
+0
+and
+m−1
+inclusive. Let's say the integer in the crystal ball of statue
+i
+is
+a
+i
+.
+The dungeon provides instructions that every integer in the crystal balls must be
+0
+in order to open the treasure chest. To achieve that, Pak Chanek is given an integer
+k
+, and he can do zero or more operations. In a single operation, Pak Chanek does the following:
+Choose exactly
+k
+consecutive statues. In other words, choose the statues
+p,(p+1)modn,(p+2)modn,(p+3)modn,…,(p+k−1)modn
+for some chosen index
+p
+.
+Do one of the following:
+For all chosen statues, change their values of
+a
+i
+into
+(
+a
+i
++1)modm
+.
+For all chosen statues, change their values of
+a
+i
+into
+(
+a
+i
+−1)modm
+.
+Help Pak Chanek find the minimum possible number of operations to open the treasure chest.
 Input
-The first line contains a single integer
-q
+The first line contains three integers
+n
+,
+m
+, and
+k
 (
-1≤q≤3⋅
+2≤n,m≤
 10
-5
-) — the number of operations.
-Each of the next
-q
-lines contains a single integer
-x
-i
+6
+,
+nm≤2⋅
+10
+6
+,
+1≤k<n
+) — the number of statues, the bound of the integers in the crystal balls, and the number of statues that can be operated in a single operation.
+The second line contains
+n
+integers
+a
+0
+,
+a
+1
+,…,
+a
+n−1
 (
-1≤
-x
+0≤
+a
 i
-≤i
-) — the description of the
-i
--th query.
+<m
+) — the integers in the crystal balls.
 Output
-For each query, print a line containing an integer representing the sum of the new values of all vertices in the tree after adding the vertex.
+If it is possible to perform zero or more operations so that
+a
+0
+=
+a
+1
+=…=
+a
+n−1
+=0
+, output the minimum number of operations required. Otherwise, output
+−1
+.
 Examples
 input
 Copy
-7
-1
-1
-3
-2
-5
-2
-1
+5 9 3
+8 1 4 5 0
 output
 Copy
-1
-1
-3
-2
-4
-4
 7
 input
 Copy
-8
-1
-1
-1
-1
-5
-6
-7
-8
+4 4 2
+1 0 0 0
 output
 Copy
-1
-1
-1
-1
-3
-2
-4
-3
+-1
+input
+Copy
+5 5 2
+1 0 0 0 0
+output
+Copy
+10
 Note
-In the first example, the tree after the
-6
--th query will look like this.
-Vertex
-7
-is a leaf, so its value is
-0
-.
-Vertex
-6
-is a leaf, so its value is
-0
-.
-Vertex
-5
-only has a child with value
-0
-, so its value is
-1
-.
-Vertex
-4
-is a leaf, so its value is
-0
-.
-Vertex
+In the first example, Pak Chanek can do the following operations:
+Do the
+a
+i
+:=(
+a
+i
+−1)modm
+operation
 3
-only has a child with value
-0
-, so its value is
+times for statues
 1
-.
-Vertex
+,
 2
-has children with values
-0
-and
-1
-, so its value is
-2
+, and
+3
+. Now
+a=[8,7,1,2,0]
 .
-Vertex
+Do the
+a
+i
+:=(
+a
+i
+−1)modm
+operation
 1
-has children with values
-1
-and
-2
-, so its value is
+time for statues
+3
+,
+4
+, and
 0
+. Now
+a=[7,7,1,1,8]
 .
-The sum of the values of all vertices is
-0+0+1+0+1+2+0=4
+Do the
+a
+i
+:=(
+a
+i
++1)modm
+operation
+2
+times for statues
+4
+,
+0
+, and
+1
+. Now
+a=[0,0,1,1,1]
+.
+Do the
+a
+i
+:=(
+a
+i
+−1)modm
+operation
+1
+time for statues
+2
+,
+3
+, and
+4
+. Now
+a=[0,0,0,0,0]
 .

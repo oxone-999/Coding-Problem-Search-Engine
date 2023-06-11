@@ -1,73 +1,30 @@
-Valid Expression
+Internet Media Types
 Problem
-The correct way of evaluating an expression with
-∗,+, and
-− is, first multiplication, then addition, and then subtraction. For example, the expression
-2+3∗7−5=2+21−5=23−5=18.
-You are given integers
-N and
-X. Your task is to generate a string
-S of length
-N consisting only of
-∗,+, and
-− such that when these
-N operators are placed in order between
-(N+1) ones, the result of the expression becomes
-X.
-For example, if
-S= ++-*-, the resulting expression is
-1+1+1−1∗1−1, which is then evaluated based on the rules above.
-If multiple such strings exist, print any of them. If no such string exists, print
-−1 instead.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of two space-separated integers
-N and
-X — the number of characters in the string and the result of expression after appending
-(N+1) ones between all operators.
-Output Format
-For each test case, output on a new line a string
-S of length
-N consisting only of
-∗,+, and
-− that satisfies the given condition.
-If multiple such strings exist, print any of them. If no such string exists, print
-−1 instead.
-Constraints
-1≤T≤2000
-1≤N≤10
-5
-−10
-5
-≤X≤10
-5
-The sum of
-N over all test cases won't exceed
-2⋅10
-5
-.
+Many internet protocols these days include the option of associating a media type with the content being sent. The type is usually inferred from the file extension. You are to write a program that facilitates the lookup of media types for a number of files.
+You will be given a table of media type associations that associate a certain file extension with a certain media type. You will then be given a number of file names, and tasked to determine the correct media type for each file. A file extension is defined as the part of the file name after the final period. If a file name has no periods, then it has no extension and the media type cannot be determined. If the file extension is not present in the table, then the media type cannot be determined. In such cases you will print "unknown" as the media type. If the file extension does appear in the table (case matters), then print the associated media type.
+Input
+Input begins with 2 integers N and Q on a line. N is the number of media type associations, and Q is the number of file names. Following this are N lines, each containing a file extension and a media type, separated by a space. Finally, Q lines, each containing the name of a file.
+N and Q will be no greater than 100 each. File extensions will consist only of alphanumeric characters, will have length at most 10, and will be distinct. Media types will have length at most 50, and will contain only alphanumeric characters and punctuation. File names will consist only of alphanumeric characters and periods and have length at most 50.
+Output
+For each of the Q file names, print on a line the media type of the file. If there is no matching entry, print "unknown" (quotes for clarity).
 Sample 1:
 Input
 Output
-3
-3 4
-2 -5
-3 1
-+++
--1
-*+-
-Explanation:
-Test case
-1: A possible string satisfying the condition is +++. The corresponding expression is
-1+1+1+1=4 which is equal to
-X.
-Test case
-2: It can be proven that no such string with length
-N=2 exists such that the corresponding expression evaluates to
-−5.
-Test case
-3: A possible string satisfying the condition is *+-. The corresponding expression is
-1∗1+1−1=1+1−1=2−1=1 which is equal to
-X.
-Note that there are other valid strings, such as +*- and -*+. Any valid string will be accepted as output.
+5 6
+html text/html
+htm text/html
+png image/png
+svg image/svg+xml
+txt text/plain
+index.html
+this.file.has.lots.of.dots.txt
+nodotsatall
+virus.exe
+dont.let.the.png.fool.you
+case.matters.TXT
+text/html
+text/plain
+unknown
+unknown
+unknown
+unknown

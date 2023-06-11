@@ -1,89 +1,77 @@
-C. Not Adjacent Matrix
-time limit per test4 seconds
+E. Arranging The Sheep
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-We will consider the numbers
-a
-and
-b
-as adjacent if they differ by exactly one, that is,
-|a−b|=1
-.
-We will consider cells of a square matrix
-n×n
-as adjacent if they have a common side, that is, for cell
-(r,c)
-cells
-(r,c−1)
-,
-(r,c+1)
-,
-(r−1,c)
-and
-(r+1,c)
-are adjacent to it.
-For a given number
+You are playing the game "Arranging The Sheep". The goal of this game is to make the sheep line up. The level in the game is described by a string of length
 n
-, construct a square matrix
-n×n
-such that:
-Each integer from
-1
-to
-n
+, consisting of the characters '.' (empty space) and '*' (sheep). In one move, you can move any sheep one square to the left or one square to the right, if the corresponding square exists and is empty. The game ends as soon as the sheep are lined up, that is, there should be no empty cells between any sheep.
+For example, if
+n=6
+and the level is described by the string "**.*..", then the following game scenario is possible:
+the sheep at the
+4
+position moves to the right, the state of the level: "**..*.";
+the sheep at the
 2
-occurs in this matrix exactly once;
-If
-(
-r
+position moves to the right, the state of the level: "*.*.*.";
+the sheep at the
 1
-,
-c
-1
-)
-and
-(
-r
+position moves to the right, the state of the level: ".**.*.";
+the sheep at the
+3
+position moves to the right, the state of the level: ".*.**.";
+the sheep at the
 2
-,
-c
-2
-)
-are adjacent cells, then the numbers written in them must not be adjacent.
+position moves to the right, the state of the level: "..***.";
+the sheep are lined up and the game ends.
+For a given level, determine the minimum number of moves you need to make to complete the level.
 Input
 The first line contains one integer
 t
 (
-1≤t≤100
+1≤t≤
+10
+4
 ). Then
 t
 test cases follow.
-Each test case is characterized by one integer
+The first line of each test case contains one integer
 n
 (
-1≤n≤100
+1≤n≤
+10
+6
 ).
+The second line of each test case contains a string of length
+n
+, consisting of the characters '.' (empty space) and '*' (sheep) — the description of the level.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+6
+.
 Output
-For each test case, output:
--1, if the required matrix does not exist;
-the required matrix, otherwise (any such matrix if many of them exist).
-The matrix should be outputted as
-n
-lines, where each line contains
-n
-integers.
+For each test case output the minimum number of moves you need to make to complete the level.
 Example
 input
 Copy
+5
+6
+**.*..
+5
+*****
 3
-1
-2
+.*.
 3
+...
+10
+*.*...*.**
 output
 Copy
 1
--1
-2 9 7
-4 6 3
-1 8 5
+0
+0
+0
+9

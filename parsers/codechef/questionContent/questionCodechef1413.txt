@@ -1,59 +1,120 @@
-The One Who Knocks!
+K-Flip
 Problem
-“I am not in danger, Skyler. I am the danger. A guy opens his door and gets shot, and you think that of me? No! I am the one who knocks!”
-Skyler fears Walter and ponders escaping to Colorado. Walter wants to clean his lab as soon as possible and then go back home to his wife.
-In order clean his lab, he has to achieve cleaning level of lab as
-Y. The current cleaning level of the lab is
-X.
-He must choose one positive odd integer
-a and one positive even integer
-b. Note that, he cannot change
-a or
-b once he starts cleaning.
-He can perform any one of the following operations for one round of cleaning:
-1. Replace
-X with
-X+a.
-2. Replace
-X with
-X−b.
-Find minimum number of rounds (possibly zero) to make lab clean.
-###Input:
-First line will contain
-T, number of test cases.
-T testcases follow :
-Each test case contains two space separated integers
-X,Y.
-###Output: For each test case, output an integer denoting minimum number of rounds to clean the lab. ###Constraints
-1≤T≤10
+You are given a binary string
+S=S
+1
+S
+2
+…S
+N
+of length
+N. You are also given an integer
+K. You can do the following operation at most
+N−K+1 times:
+First, choose a substring
+S
+i
+S
+i+1
+…S
+i+K−1
+of
+S of length exactly
+K. This substring shouldn't have been chosen in any of the previous operations. That is, the same starting index of the substring can't be chosen twice.
+Then, flip all the characters of the chosen substring (i.e. change every
+0 to
+1 and vice versa).
+Find the lexicographically smallest string possible after the operations if you do them in an optimal way.
+Note:
+A substring is consecutive elements of a string. For eg. in the string "01011", "101" is a substring, but "111" is not a substring.
+A string
+A is lexicographically smaller than string
+B, if
+A
+i
+<B
+i
+, where
+i is the first index where
+A and
+B differ.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first line of each test case contains two space-separated integers:
+N,
+K.
+The second line of each test case contains the string
+S.
+Output Format
+For each test case, output on a new line the lexicographically smallest string that you can achieve.
+Constraints
+1≤T≤100
+1≤N≤10
 5
-∣X∣,∣Y∣≤10
-9
+1≤K≤N
+Each element of
+S is either
+0 or
+1
+The sum of
+N over all test cases won't exceed
+3×10
+5
+.
+Subtasks
+Subtask 1 (10 points):
+1≤M≤10
+Subtask 2 (20 points): The sum of
+N across all test cases won't exceed
+20.
+Subtask 3 (70 points): No further constraints.
 Sample 1:
 Input
 Output
-3
-0 5
-4 -5
-0 10000001
-1
-2
-1
+4
+3 2
+101
+4 2
+1011
+5 3
+01010
+5 2
+01010
+000
+0001
+00011
+00000
 Explanation:
-For the first testcase, you can convert
-X to
-Y by choosing
-a=5 and
-b=2.
-It will cost minimum of
-1 cleaning round. You can select any other combination of
-a,b satisfying above condition but will take minimum of
-1 cleaning round in any case.
-For the second testcase, you can convert
-X to
-Y by choosing
-a=1 and
-b=10. In first round they will replace
-X to
-X+a and then in second round replace to
-X−b. You can perform only one operation in one round.
+Test case
+1: Choose the substring
+101 and flip it. So now
+S becomes
+110. Then choose the substring
+110 and flip it. So now
+S becomes
+000. This is the lexicographically smallest string that can be achieved, and hence this is the answer.
+Test case
+2: Choose the substring
+1011 and flip it. So now
+S becomes
+1101. Then choose the substring
+1101 and flip it. So now
+S becomes
+0001. This is the lexicographically smallest string that can be achieved, and hence this is the answer.
+Test case
+3: Choose the substring
+01010 and flip it. So now
+S becomes
+00100. Then choose the substring
+00100 and flip it. So now
+S becomes
+00011. This is the lexicographically smallest string that can be achieved, and hence this is the answer.
+Test case
+4: Choose the substring
+01010 and flip it. So now
+S becomes
+01100. Then choose the substring
+01100 and flip it. So now
+S becomes
+00000. This is the lexicographically smallest string that can be achieved, and hence this is the answer.

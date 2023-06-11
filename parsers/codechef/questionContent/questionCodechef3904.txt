@@ -1,198 +1,42 @@
-Graph Labelling
+Chef and Chefcoin
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-You are given a directed graph
-G with
-N vertices (numbered
-1 through
-N) and
-M edges. Let's denote the set of its vertices by
-V, the set of its edges by
-E and an edge from a vertex
-u to a vertex
-v by
-(u,v). Then, let's define:
-For each
-u,v∈V,
-R(u,v) is true if
-v can be reached from
-u or false otherwise. Specifically, if
-u=v, it is always true.
-For each
-v∈V, a set of vertices
-N(v)={u∈V∣R(u,v)∧R(v,u)}.
-For each subset
-U⊆V, two sets of edges
-Out(U)={(u,v)∈E∣u∈U} and
-In(U)={(v,u)∈E∣u∈U}.
-You need to assign a label to each edge in
-E; you may only use labels
-1 and
-2. The costs of labelling an edge are
-c
-1
-and
-c
-2
-for the labels
-1 and
-2 respectively.
-In the resulting graph,
-Q constraints (numbered
-1 through
-Q) need to be satisfied. For each valid
-i, the
-i-th constraint is that the number of edges in a set
-S
-i
-with the label
-x
-i
-should be between
-l
-i
-and
-r
-i
-(inclusive);
-S
-i
-is determined by a given vertex
-w
-i
-and the type of this constraint
-t
-i
-as follows:
-t
-i
-=1:
-S
-i
-=Out(N(w
-i
-))
-t
-i
-=2:
-S
-i
-=In(N(w
-i
-))
-t
-i
-=3:
-S
-i
-=Out({w
-i
-})
-t
-i
-=4:
-S
-i
-=In({w
-i
-})
-Find the smallest cost of labelling all the edges in such a way that these
-Q constraints are satisfied or determine that there is no solution satisfying all constraints.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+Everybody's heard about Chefland — the digital country where dreams come true, where nobody hears about crime and where everyone can get Accepted without submitting solutions. Of course, Chefland has the shape of a tree — there are N servers and N-1 bidirectional channels connecting pairs of servers in such a way that there is exactly one path between each pair of servers.
+The citizens in Chefland are living online; each citizen lives on exactly one server at any point in time. Don't be surprised, it's a futuristic scenario! Each channel connecting two servers has a value called ping. Each citizen can move to a different server through channels; moving through a channel with ping 2w takes w nanoseconds. Initially, there are ci citizens living on the i-th server (for each 1 ≤ i ≤ N).
+Recently, Chef has created an ICO for Chefcoin — the cryptocurrency of the future in Chefland. Everyone in Chefland should receive exactly 1 Chefcoin. How to organize this process? Chefcoins can only be received on certain servers containing cryptoexchanges. Unfortunately, Chef can only create cryptoexchanges on two servers, since they consume a lot of electric power. The citizens want to receive Chefcoin as fast as possible; therefore, each citizen chooses the closest server with a cryptoexchange and moves to that server. Receiving Chefcoin at a cryptoexchange takes zero time.
+Chef wants to minimize the sum of the times each citizen needs to spend moving to receive Chefcoin. The two servers containing cryptoexchanges can be chosen arbitrarily. Compute the minimum total time it takes Chefland's citizens to receive Chefcoin!
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains three space-separated integers
-N,
-M and
-Q.
-Each of the following
-M lines contains two space-separated integers
-u and
-v denoting a directed edge
-(u,v).
-The next line contains two space-separated integers
-c
-1
-and
-c
-2
-.
-Q lines follow. For each valid
-i, the
-i-th of these lines contains five space-separated integers
-t
-i
-,
-w
-i
-,
-x
-i
-,
-l
-i
-and
-r
-i
-.
+The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains a single integer N.
+The second line contains N space-separated integers c1, c2, ..., cN.
+N-1 lines follow. Each of these lines contains three space-separated integers u, v and w denoting a channel with ping 2w nanoseconds connecting servers u and v.
 Output
-For each test case, print a single line containing one integer ― the smallest cost of labelling the edges or
-−1 if it is impossible to label the edges in such a way that all constraints are satisfied.
+For each test case, print a single line containing one integer — the minimal sum of times it takes each citizen to receive Chefcoin if the two cryptoexchanges are placed optimally.
 Constraints
-1≤T≤100
-1≤N≤3⋅10
-4
-0≤M≤3⋅10
-4
-0≤Q≤3⋅10
-5
-1≤u,v≤N
-1≤c
-1
-,c
-2
-≤10
-9
-1≤t
-i
-≤4 for each valid
-i
-1≤w
-i
-≤N for each valid
-i
-x
-i
-∈{1,2} for each valid
-i
-0≤l
-i
-≤r
-i
-≤M for each valid
-i
-the sum of
-N over all test cases does not exceed
-6⋅10
-4
-the sum of
-M over all test cases does not exceed
-6⋅10
-4
-the sum of
-Q over all test cases does not exceed
-6⋅10
-5
+2 ≤ N ≤ 50000
+1 ≤ ci ≤ 50000 for each valid i
+1 ≤ w ≤ 50000
+1 ≤ u, v ≤ N
+the channels describe a tree
+1 ≤ sum of N over all test cases ≤ 250000
 Sample 1:
 Input
 Output
-1
-4 4 1
-1 2
-2 3
-1 3
-3 4
-10 20
-3 1 1 1 1
-50
+2
+4
+10 25 15 40
+1 2 1
+2 3 3
+1 4 4
+7
+24786 24640 17641 19735 8667 15790 5948
+3 7 17108
+7 6 4875
+7 1 9317
+1 2 8597
+3 4 28200
+1 5 22026
+55
+1148402043
+Explanation:
+Example case 1: Chef can create cryptoexchanges on servers 2 and 4. Citizens on these servers receive Chefcoins immediately. The total time for Chefland's remaining citizens is the time it takes 15 citizens to move from server 3 to server 2 (3 · 15 = 45) plus the time it takes 10 citizens to move from server 1 to server 2 (1 · 10 = 10), so the optimal total time is 55.

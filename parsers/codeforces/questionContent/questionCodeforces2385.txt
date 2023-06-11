@@ -1,10 +1,37 @@
-C. Boboniu and Bit Operations
-time limit per test1 second
-memory limit per test256 megabytes
+C. Monster Invaders
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Boboniu likes bit operations. He wants to play a game with you.
-Boboniu gives you two sequences of non-negative integers
+Ziota found a video game called "Monster Invaders".
+Similar to every other shooting RPG game, "Monster Invaders" involves killing monsters and bosses with guns.
+For the sake of simplicity, we only consider two different types of monsters and three different types of guns.
+Namely, the two types of monsters are:
+a normal monster with
+1
+hp.
+a boss with
+2
+hp.
+And the three types of guns are:
+Pistol, deals
+1
+hp in damage to one monster,
+r
+1
+reloading time
+Laser gun, deals
+1
+hp in damage to all the monsters in the current level (including the boss),
+r
+2
+reloading time
+AWP, instantly kills any monster,
+r
+3
+reloading time
+The guns are initially not loaded, and the Ziota can only reload 1 gun at a time.
+The levels of the game can be considered as an array
 a
 1
 ,
@@ -13,63 +40,74 @@ a
 ,…,
 a
 n
+, in which the
+i
+-th stage has
+a
+i
+normal monsters and 1 boss. Due to the nature of the game, Ziota cannot use the Pistol (the first type of gun) or AWP (the third type of gun) to shoot the boss before killing all of the
+a
+i
+normal monsters.
+If Ziota damages the boss but does not kill it immediately, he is forced to move out of the current level to an arbitrary adjacent level (adjacent levels of level
+i
+(1<i<n)
+are levels
+i−1
 and
-b
+i+1
+, the only adjacent level of level
 1
-,
-b
+is level
 2
-,…,
-b
-m
-.
-For each
-i
-(
-1≤i≤n
-), you're asked to choose a
-j
-(
-1≤j≤m
-) and let
-c
-i
-=
-a
-i
-&
-b
-j
-, where
-&
-denotes the bitwise AND operation. Note that you can pick the same
-j
-for different
-i
-'s.
-Find the minimum possible
-c
-1
-|
-c
-2
-|…|
-c
+, the only adjacent level of level
 n
-, where
-|
-denotes the bitwise OR operation.
+is level
+n−1
+). Ziota can also choose to move to an adjacent level at any time. Each move between adjacent levels are managed by portals with
+d
+teleportation time.
+In order not to disrupt the space-time continuum within the game, it is strictly forbidden to reload or shoot monsters during teleportation.
+Ziota starts the game at level 1. The objective of the game is rather simple, to kill all the bosses in all the levels. He is curious about the minimum time to finish the game (assuming it takes no time to shoot the monsters with a loaded gun and Ziota has infinite ammo on all the three guns). Please help him find this value.
 Input
-The first line contains two integers
+The first line of the input contains five integers separated by single spaces:
 n
-and
-m
-(
-1≤n,m≤200
-).
-The next line contains
+(2≤n≤
+10
+6
+)
+ — the number of stages,
+r
+1
+,
+r
+2
+,
+r
+3
+(1≤
+r
+1
+≤
+r
+2
+≤
+r
+3
+≤
+10
+9
+)
+ — the reload time of the three guns respectively,
+d
+(1≤d≤
+10
+9
+)
+ — the time of moving between adjacent levels.
+The second line of the input contains
 n
-integers
+integers separated by single spaces
 a
 1
 ,
@@ -78,121 +116,57 @@ a
 ,…,
 a
 n
-(
-0≤
+(1≤
 a
 i
-<
-2
-9
-).
-The next line contains
-m
-integers
-b
-1
-,
-b
-2
-,…,
-b
-m
-(
-0≤
-b
-i
-<
-2
-9
-).
-Output
-Print one integer: the minimum possible
-c
-1
-|
-c
-2
-|…|
-c
-n
+≤
+10
+6
+,1≤i≤n)
 .
+Output
+Print one integer, the minimum time to finish the game.
 Examples
 input
 Copy
-4 2
-2 6 4 0
-2 4
+4 1 3 4 3
+3 2 5 1
 output
 Copy
-2
+34
 input
 Copy
-7 6
-1 9 1 9 8 1 0
-1 1 4 5 1 4
+4 2 4 4 1
+4 5 1 2
 output
 Copy
-0
-input
-Copy
-8 5
-179 261 432 162 82 43 10 38
-379 357 202 184 197
-output
-Copy
-147
+31
 Note
-For the first example, we have
-c
-1
-=
-a
-1
-&
-b
-2
-=0
-,
-c
-2
-=
-a
-2
-&
-b
-1
-=2
-,
-c
-3
-=
-a
-3
-&
-b
-1
-=0
-,
-c
-4
-=
-a
-4
-&
-b
-1
-=0
-.Thus
-c
-1
-|
-c
-2
-|
-c
-3
-|
-c
-4
-=2
-, and this is the minimal answer we can get.
+In the first test case, the optimal strategy is:
+Use the pistol to kill three normal monsters and AWP to kill the boss (Total time
+1⋅3+4=7
+)
+Move to stage two (Total time
+7+3=10
+)
+Use the pistol twice and AWP to kill the boss (Total time
+10+1⋅2+4=16
+)
+Move to stage three (Total time
+16+3=19
+)
+Use the laser gun and forced to move to either stage four or two, here we move to stage four (Total time
+19+3+3=25
+)
+Use the pistol once, use AWP to kill the boss (Total time
+25+1⋅1+4=30
+)
+Move back to stage three (Total time
+30+3=33
+)
+Kill the boss at stage three with the pistol (Total time
+33+1=34
+)
+Note that here, we do not finish at level
+n
+, but when all the bosses are killed.

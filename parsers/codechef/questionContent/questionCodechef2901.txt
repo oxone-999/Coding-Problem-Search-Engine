@@ -1,39 +1,104 @@
-Save the nature
+Tree Flow
 Problem
-Read problems statements in Mandarin Chinese and Russian
-The new king of Byteland, John-2318, has just ascended the throne. As every new king, he wants to build a spectacular palace to showcase his wealth and power.
-We can consider Byteland as an N x M rectangular matrix A. If A[i][j] is positive, then it means that A[i][j] litres of oxygen are produced by trees in the cell with coordinates (i, j) every day. On the other hand, a negative value of A[i][j] indicates that a Byteland resident lives in this cell, who consumes A[i][j] litres of oxygen every day.
-The palace will occupy some rectangle submatrix of A. All the cells within the palace premises will not produce nor consume any oxygen.
-Byteland scientists discovered the new important fact: if Byteland will be producing S less litres of oxygen every day than it produces now, it will lead to a natural disaster. So now everyone is interested in the following question: how many ways exist for choosing a rectangular region for the planned palace?
+Djenka has a rooted tree with
+N nodes (numbered
+1 through
+N) and
+N−1 edges; node
+1 is the root. For each
+i (
+1≤i≤N−1), the
+i-th edge connects node
+i with its parent node
+p
+i
+and it has capacity
+c
+i
+.
+Each node can store an arbitrary non-negative amount of water. The capacity of each edge denotes the maximum amount of water which can flow across this edge in one second ― if
+x units of water flow from one endpoint of this edge (
+x may be any non-negative real number not exceeding the capacity of the edge) at a time
+t, then
+x units of water flow into the other endpoint of this edge at time
+t+1.
+At the beginning (at time
+0), there is an infinite amount of water in the root and all other nodes are empty. For each node at any time, you may choose the amount of water that flows from it to each of its children in an arbitrary way (possibly a different amount of water for different children), as long the amount of water flowing across each edge does not exceed its capacity and the total amount of water flowing from this node does not exceed the amount of water which is currently stored in it. For each leaf of the tree (a leaf is a node without children), all water that flows into this node remains stored in it.
+Djenka is interested in the minimum time (in seconds) such that it is possible to have at least
+X units of water in total stored in the leaves at this time, i.e. the sum of amounts of water stored in all leaves is at least
+X. Can you help Djenka find it?
 Input
-The first line contains one integer T denoting the number of testcases.
-Each testcase starts with a line containing three space-separated integers N, M, and S. The following N lines contain M integers each and describe the cells of the matrix A.
-Output
-For each testcase, output a single line containing one integer - the number of rectangles where the palace can be built without causing a disaster.
-Constraints
-1 ≤ T ≤ 10
-1 ≤ N, M ≤ 150
--109 ≤ A[i][j] ≤ 109
-1 ≤ S ≤ 109
-Subtasks
-Subtask 1 (27 points) 1 ≤ N, M ≤ 20, time limit = 1 sec
-Subtask 2 (30 points) 1 ≤ N, M ≤ 50, time limit = 1 sec
-Subtask 3 (43 points) 1 ≤ N, M ≤ 150, time limit = 3 sec
-Example
-Input:
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+X.
+The second line contains
+N−1 space-separated integers
+p
 2
-2 3 7
-1 2 3
-4 5 6
-3 3 12
-3 3 3
-4 4 4
-3 3 3
-Output:
-11
-27
-Explanation
-Test case 1: we have the following matrix A:
-1 2 3
-4 5 6
-There are 11 rectangular submatrices with sum ≤ S = 7: all the 6 cells themselves, 2 columns (the left and the middle), 1 row (the first), and 2 segments in the first row of length 2 each.
+,p
+3
+,…,p
+N
+.
+The third line contains
+N−1 space-separated integers
+c
+2
+,c
+3
+,…,c
+N
+.
+Output
+For each test case, print a single line containing one integer ― the minimum time needed to store enough water in leaves.
+Constraints
+1≤T≤10
+3
+2≤N≤10
+3
+1≤X≤10
+9
+1≤p
+i
+<i for each valid
+i
+1≤c
+i
+≤10
+9
+for each valid
+i
+the sum of
+N over all test cases does not exceed
+5⋅10
+4
+Subtasks
+Subtask #1 (20 points):
+1≤N,X≤20
+1≤c
+i
+≤20 for each valid
+i
+Subtask #2 (35 points):
+1≤N≤100
+1≤X≤1,000
+1≤c
+i
+≤1,000 for each valid
+i
+the sum of
+N over all test cases does not exceed
+10
+3
+Subtask #3 (45 points): original constraints
+Sample 1:
+Input
+Output
+1
+4 5
+1 2 2
+3 2 1
+3

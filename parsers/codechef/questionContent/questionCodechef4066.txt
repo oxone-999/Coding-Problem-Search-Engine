@@ -1,92 +1,107 @@
-Efficient Delivery
+Weird full graph
 Problem
-Read problems statements in Mandarin Chinese and Russian
-Sergey works as a delivery boy. Every day he has a number of deliveries to be completed.
-Sergey lives in Bytetown - a city, consisting of N junctions, and M roads connecting these junctions. More precisely, the ith road connects the junctions with the numbers Xi and Yi. Each of these roads has its own (positive) length Zi, and no road connects a junction to itself.
-There are K delivery orders for Sergey. Each order is denoted with four integers: Aj, Bj, Vj and Cj. It means that for the jth order Sergey has to pick a parcel of weight Vj at the junction numbered Aj and deliver it to the junction numbered Bj. After the parcel is delivered, Sergey gets Cj burles of reward. Sergey can't complete the same order twice or more times.
-So, the business day for Sergey looks as follows: he remembers the whole list of orders and starts at his initial junction numbered S. Then, he travel the streets of the city via his bike. If Sergey visits a junction, where there is one or more orders available he can either take some of the orders and load the corresponding parcels on his bike, or not take anything now but do it later, if he appears at the same junction again. When Sergey visits a junction which is the destination for some of the parcels that are currently with him, he can complete these orders and unload the corresponding parcels.
-Sadly, Sergey is not infinitely strong. Though he can carry any number of parcels at once, if the total weight of the parcels exceeds W Sergey won't be able to carry them on his bike. Sergey also can't take a parcel and not deliver it because there will be complains, hurting Sergey's reputation.
-The bike has enough fuel to travel only for D units of distance. It is not necessary for Sergey to get back to his initial junction because he has a lot of friends in Bytetown who will drop him back after the party (Sorry, you're not invited). It is clear that under the given constraints, Sergey might be not able to deliver all the parcels. So your task is to plan the delivery for Sergey in such a way that:
-He moves only by streets
-The total travelled distance doesn't exceed D.
-There are no undelivered parcels with Sergey by the end of the delivery. In other words, all the parcels that Sergey has picked up should be delivered.
-At any time, Sergey does not carry more than W units of weight.
-The most important: the profit Sergey gets by the end of the day is maximized. You don't have to find the optimal delivery, but the more profit there is, the more are the points you'll get.
+You are given a weighted directed graph of
+N vertices and
+N
+2
+edges, and an array
+A of length
+N. Initially, every ordered pair of vertices
+(u,v) is connected by a directed edge
+u→v of cost
+A
+u
+(this also includes self-loops).
+Then there were
+M changes in edges' weights such that the weight of the directed edge
+u→v is now equal to
+c. You are asked to find the sum of the lengths of the shortest paths over all ordered pairs of distinct vertices.
+###Input
+The first line contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+The third line of each test case contains a single integer
+M.
+The next
+M lines contain information about the changed edges in the
+u
+v
+c format.
+###Output For each test case, output the sum of the lengths of the shortest paths over all ordered pairs of vertices.
+###Constraints
+1≤N≤10
+6
+0≤M≤2000
+0≤A
+i
+,c≤10
+6
+1≤u,v≤N
+The sum of
+N over all tests does not exceed
+10
+6
+.
+The sum of
+M over all tests does not exceed
+2000.
+It is guaranteed that the weight of the edge
+u→v was changed at most once.
+###Subtasks Subtask #1 (8 points, time limit 1 second): The sum
+N for all tests does not exceed
+500.
+Subtask #2 (22 points, time limit 1 second): Each vertex belongs to at most one changed edge (in other words, the edges do not overlap).
+Subtask #3 (30 points, time limit 1 second): The sum
+M for all tests does not exceed
+500.
+Subtask #4 (40 points, time limit 4.5 seconds): original constraints.
+Sample 1:
 Input
-The first line contains two space separated integers N and M denoting the number of junctions and the number of streets.
-Each of the following M lines contain three space separated integers Xi, Yi and Zi, denoting that the ith street of length Zi connects the Xith and the Yith junctions. All the streets are bidirectional.
-The next line contains a single integer K denoting the number of orders.
-Each of the following K lines contain four space-separated integers Aj, Bj, Vj and Cj, denoting that for the jth order, the parcel should be picked up at the Ajth junction, left at the Bjth junction, has the weight of Vj, and when delivered, gives Cj burles of profit.
-The following line contains three space-separated integers S, D and W denoting the starting junction, the maximal distance that Sergey can travel and the maximum weight he can carry at any time, respectively.
 Output
-The first line of output should contain a single integer Op, denoting the number of operations. Each of the following Op lines should contain the operation code and the parameter. The following are the descriptions of the operation codes and the meanings of the parameters:
-0 P. Here 0 is the operation code and P is the parameter. The meaning is that Sergey should move from his current junction to the adjacent junction P. In case there is no direct one-street connection between Sergey's current position and the junction P, you will receive a wrong answer verdict. In case Sergey is unable to reach the junction P because the amount of fuel is too low, you will also get wrong answer verdict.
-1 P. Here 1 is the operation code and P is the parameter. The meaning is that Sergey should takes the order numbered P in the orders' list. In case this order was already taken or Sergey is not in the junction which is the pick-up junction for the order, you will get a wrong answer verdict. In case the weight that Sergey will have to carry exceeds W after taking this order, you'll also get a wrong answer verdict.
-2 P. Here 2 is the operation code and P is the parameter. The meaning is that Sergey should deliver the parcel for the order number P in 1-based orders' list. In case Sergey doesn't carry the parcel from this order, you'll receive wrong answer verdict.
-You can also get a wrong answer if your output doesn't satisfy the format above or some parcels picked up by Sergey are left undelivered. If all the requirements are satisfied, you'll receive an accepted verdict ;).
-Test data and scoring
-There are 20 test cases in total. They are split into 5 groups, 4 tests in each.
-In all the test cases:
-1 ≤ Xi, Yi, Aj, Bj, S ≤ N
-1 ≤ Vj ≤ W
-1 ≤ Cj ≤ 106
-It is possible to reach any junction from the initial junction S via the streets.
-The streets are bidirectional.
-Each pair of junctions is connected with no more that one street.
-Group 1:
-1 ≤ N ≤ 100
-1 ≤ M, K ≤ 1000
-1 ≤ D, W ≤ 10000
-1 ≤ Zi ≤ 100, for all the streets.
-Group 2:
-1 ≤ N ≤ 1000
-1 ≤ M, K ≤ 1000
-1 ≤ D ≤ 10000
-1 ≤ W ≤ 106
-Zi = 1 for all the streets.
-Group 3:
-1 ≤ N ≤ 10000
-M = N-1
-1 ≤ K ≤ 10000
-1 ≤ D ≤ 105
-1 ≤ W ≤ 10000
-1 ≤ Zi ≤ 100, for all the streets
-Group 4:
-1 ≤ N ≤ 105
-1 ≤ M, K ≤ 105
-1 ≤ D ≤ 105
-1 ≤ W ≤ 105
-1 ≤ Zi ≤ 10, for all the streets
-Group 5:
-1 ≤ N ≤ 105
-1 ≤ M, K ≤ 105
-1 ≤ D ≤ 105
-1 ≤ W ≤ 109
-1 ≤ Zi ≤ 10, for all the streets
-The score for a single test case equals the total profit of Sergey. The score for the whole task is the sum of the scores among all the test cases.
-During the contest, you won't see the score of your solution on the complete test set. Instead of this, you will see the score, based on 4 test cases: one test case for each of groups 1-4. You will also see whether your program got accepted verdict on all the test cases (not only these 4), but time and memory stats will be reported based only on four premilinary test cases.
-Example
-Input:
-5 5
-1 2 1
-2 3 2
-1 4 1
-4 5 1
-5 2 3
 3
-1 4 5 10
-2 5 6 15
-4 1 10 10
-1 5 12
-Output:
-7
-1 1
-0 2
-1 2
-0 5
-2 2
-0 4
-2 1
-Explanation
-Sergey starts at the junction numbered the 1st. Before moving on, he takes the order numbered the 1st. Then he moves to the 2nd junction and there he takes the 2nd order. Then, Sergey moves to the 5th junction, where he delivers the parcel from the 2nd order. Finally, he moves to the 4th junction, where he delivers the parcel from the 1th order.
-The total profit that Sergey receives from this delivery is (10 + 15) = 25 burles. Hence, this answer will get the score of 25.
+3
+2 4 1
+0
+4
+1 2 3 4
+2
+1 2 1
+3 4 2
+5
+2 6 5 1 7
+5
+1 3 4
+2 4 3
+3 5 4
+4 1 2
+5 2 3
+14
+29
+72
+Explanation:
+Example case 1: The lengths of the shortest paths between vertices
+u and
+v are
+A
+u
+and the answer is
+2⋅(2+4+1)=14.
+Example case 2: The lengths of the shortest paths between the vertices
+u and
+v are equal to
+A
+u
+except for the pair of vertices
+(3,4) for which the distance is
+2.

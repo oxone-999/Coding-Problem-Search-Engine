@@ -1,172 +1,105 @@
-D. New Year and the Permutation Concatenation
+E. New Year and the Acquaintance Estimation
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let
-n
-be an integer. Consider all permutations on integers
-1
-to
-n
-in lexicographic order, and concatenate them into one big sequence
-p
-. For example, if
-n=3
+Bob is an active user of the social network Faithbug. On this network, people are able to engage in a mutual friendship. That is, if
+a
+is a friend of
+b
 , then
-p=[1,2,3,1,3,2,2,1,3,2,3,1,3,1,2,3,2,1]
-. The length of this sequence will be
-n⋅n!
-.
-Let
-1≤i≤j≤n⋅n!
-be a pair of indices. We call the sequence
-(
-p
-i
-,
-p
-i+1
-,…,
-p
-j−1
-,
-p
-j
-)
-a subarray of
-p
-. Its length is defined as the number of its elements, i.e.,
-j−i+1
-. Its sum is the sum of all its elements, i.e.,
-∑
-j
-k=i
-p
-k
-.
-You are given
-n
-. Find the number of subarrays of
-p
-of length
-n
-having sum
-n(n+1)
-2
-. Since this number may be large, output it modulo
-998244353
-(a prime number).
+b
+is also a friend of
+a
+. Each user thus has a non-negative amount of friends.
+This morning, somebody anonymously sent Bob the following link: graph realization problem and Bob wants to know who that was. In order to do that, he first needs to know how the social network looks like. He investigated the profile of every other person on the network and noted down the number of his friends. However, he neglected to note down the number of his friends. Help him find out how many friends he has. Since there may be many possible answers, print all of them.
 Input
-The only line contains one integer
+The first line contains one integer
 n
  (
-1≤n≤
+1≤n≤5⋅
 10
-6
-), as described in the problem statement.
-Output
-Output a single integer — the number of subarrays of length
+5
+), the number of people on the network excluding Bob.
+The second line contains
 n
-having sum
-n(n+1)
+numbers
+a
+1
+,
+a
 2
-, modulo
-998244353
+,…,
+a
+n
+ (
+0≤
+a
+i
+≤n
+), with
+a
+i
+being the number of people that person
+i
+is a friend of.
+Output
+Print all possible values of
+a
+n+1
+ — the amount of people that Bob can be friend of, in increasing order.
+If no solution exists, output
+−1
 .
 Examples
 input
 Copy
 3
+3 3 3
 output
 Copy
-9
+3 
 input
 Copy
 4
+1 1 1 1
 output
 Copy
-56
+0 2 4 
 input
 Copy
-10
+2
+0 2
 output
 Copy
-30052700
+-1
+input
+Copy
+35
+21 26 18 4 28 2 15 13 16 25 6 32 11 5 31 17 9 3 24 33 14 27 29 1 20 4 12 7 10 30 34 8 19 23 22
+output
+Copy
+13 15 17 19 21 
 Note
-In the first sample, there are
-16
-subarrays of length
+In the first test case, the only solution is that everyone is friends with everyone. That is why Bob should have
 3
-. In order of appearance, they are:
-[1,2,3]
+friends.
+In the second test case, there are three possible solutions (apart from symmetries):
+a
+is friend of
+b
 ,
-[2,3,1]
-,
-[3,1,3]
-,
-[1,3,2]
-,
-[3,2,2]
-,
-[2,2,1]
-,
-[2,1,3]
-,
-[1,3,2]
-,
-[3,2,3]
-,
-[2,3,1]
-,
-[3,1,3]
-,
-[1,3,1]
-,
-[3,1,2]
-,
-[1,2,3]
-,
-[2,3,2]
-,
-[3,2,1]
-.
-Their sums are
-6
-,
-6
-,
-7
-,
-6
-,
-7
-,
-5
-,
-6
-,
-6
-,
-8
-,
-6
-,
-7
-,
-5
-,
-6
-,
-6
-,
-7
-,
-6
-. As
-n(n+1)
-2
-=6
-, the answer is
-9
-.
+c
+is friend of
+d
+, and Bob has no friends, or
+a
+is a friend of
+b
+and both
+c
+and
+d
+are friends with Bob, or
+Bob is friends of everyone.
+The third case is impossible to solve, as the second person needs to be a friend with everybody, but the first one is a complete stranger.

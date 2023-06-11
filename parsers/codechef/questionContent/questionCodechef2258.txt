@@ -1,53 +1,27 @@
-Chef and Magic Arrays
+Longest Xommon Subsequence
 Problem
-Read problems statements in mandarin chinese, russian and vietnamese as well.
-Yesterday Chef had cooked N very tasty dishes. A dish is prepared of several ingredients. You are given this information by N arrays, each array contains elements equal to the number of ingredients used in that dish. Also, an element of the array denotes the tastiness of the ingredient in the corresponding dish.
-Chef placed his N dishes in a line, one after the other. You can make a simple observation that the last ingredient of a dish will be a neighbor of the first ingredient of the next dish. Of course, this is not valid for the N-th dish, as it's the last dish.
-Overall quality of these dishes will be calculated as follows. Consider dish i and i + 1, if the last ingredient of dish i be of tastiness x, and the first ingredient of dish i + 1 of tastiness of y, then the quality of dish will be increased by |x - y| * i, where (|t| denotes the absolute value of t).
-Chef wants to maximize the quality of the dish. For each dish, he is allowed to take its ingredients and cyclically rotate/shift them by as many rotations as he wishes. Find the maximum possible quality of the dishes that he can obtain.
-Input
-The first line of the input contains an integer T denoting the number of test cases.
-The first line of each test case contains a single integer N denoting the number of dishes.
-Next N lines follows. i-th line contains integer M denoting the number of ingredients in i-th dish and M space-separated integers A1, A2, ..., AM denoting the tastiness of ingredients of i-th dish.".
-Output
-For each test case, output in a single line an integer corresponding to the maximum possible quality of the dishes.
-Constraints
-Total number of ingredients over all the test cases in a single test file won't exceed 106
-M ≥ 1
-1 ≤ Ai ≤ 106
-Subtasks
-Subtask #1 (20 points): Total number of dishes = 2.
-Subtask #2 (30 points): 1 ≤ Ai ≤ 500
-Subtask #3 (50 points): original constraints
-Example
-Input:
-3
-3
-3 1 2 3
-2 3 2
-2 4 5
+Given an array of
+n integers :
+A
+1
+,A
 2
-2 1 2
-2 4 5
+,...,A
+n
+, find the longest size subsequence which satisfies the following property: The xor of adjacent integers in the subsequence must be non-decreasing.
+###Input:
+First line contains an integer
+n, denoting the length of the array.
+Second line will contain
+n space separated integers, denoting the elements of the array.
+###Output: Output a single integer denoting the longest size of subsequence with the given property.
+###Constraints
+1≤n≤10
 3
-2 1 2
-3 3 2 5
-2 4 5
-Output:
-8
-4
-10
-Explanation
-Example case 1. 
-01) 123|32|45 = 0 * 1 + 2 * 2 = 4
-02) 312|32|45 = 1 * 1 + 2 * 2 = 5
-03) 231|32|45 = 2 * 1 + 2 * 2 = 6
-04) 123|23|45 = 1 * 1 + 1 * 2 = 3
-05) 312|23|45 = 0 * 1 + 1 * 2 = 2
-06) 231|23|45 = 1 * 1 + 1 * 2 = 3
-07) 123|32|54 = 0 * 1 + 3 * 2 = 6
-08) 312|32|54 = 1 * 1 + 3 * 2 = 7 
-09) 231|32|54 = 2 * 1 + 3 * 2 = 8
-10) 123|23|54 = 1 * 1 + 2 * 2 = 5
-11) 312|23|54 = 0 * 1 + 2 * 2 = 4
-12) 231|23|54 = 1 * 1 + 2 * 2 = 5
+0≤A
+i
+≤10
+18
+###Sample Input: 8 1 200 3 0 400 4 1 7
+###Sample Output: 6
+###EXPLANATION: The subsequence of maximum length is {1, 3, 0, 4, 1, 7} with Xor of adjacent indexes as {2,3,4,5,6} (non-decreasing)

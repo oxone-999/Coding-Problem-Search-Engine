@@ -1,30 +1,25 @@
-A. Avoid Trygub
+C2. Errich-Tac-Toe (Hard Version)
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A string
-b
-is a subsequence of a string
-a
-if
-b
-can be obtained from
-a
-by deletion of several (possibly, zero or all) characters. For example, "xy" is a subsequence of "xzyw" and "xy", but not "yx".
-You are given a string
-a
-. Your task is to reorder the characters of
-a
-so that "trygub" is not a subsequence of the resulting string.
-In other words, you should find a string
-b
-which is a permutation of symbols of the string
-a
-and "trygub" is not a subsequence of
-b
-.
-We have a truly marvelous proof that any string can be arranged not to contain "trygub" as a subsequence, but this problem statement is too short to contain it.
+The only difference between the easy and hard versions is that tokens of type O do not appear in the input of the easy version.
+Errichto gave Monogon the following challenge in order to intimidate him from taking his top contributor spot on Codeforces.
+In a Tic-Tac-Toe grid, there are
+n
+rows and
+n
+columns. Each cell of the grid is either empty or contains a token. There are two types of tokens: X and O. If there exist three tokens of the same type consecutive in a row or column, it is a winning configuration. Otherwise, it is a draw configuration.
+The patterns in the first row are winning configurations. The patterns in the second row are draw configurations.
+In an operation, you can change an X to an O, or an O to an X. Let
+k
+denote the total number of tokens in the grid. Your task is to make the grid a draw in at most
+⌊
+k
+3
+⌋
+(rounding down) operations.
+You are not required to minimize the number of operations.
 Input
 The first line contains a single integer
 t
@@ -34,42 +29,70 @@ t
 The first line of each test case contains a single integer
 n
 (
-1≤n≤200
-) — the length of
-a
+1≤n≤300
+) — the size of the grid.
+The following
+n
+lines each contain a string of
+n
+characters, denoting the initial grid. The character in the
+i
+-th row and
+j
+-th column is '.' if the cell is empty, or it is the type of token in the cell: 'X' or 'O'.
+It is guaranteed that not all cells are empty.
+The sum of
+n
+across all test cases does not exceed
+300
 .
-The next line contains the string
-a
-of length
-n
-, consisting of lowercase English letters.
 Output
-For each test case, output a string
-b
-of length
-n
-which is a permutation of characters of the string
-a
-, and such that "trygub" is not a subsequence of it.
-If there exist multiple possible strings
-b
-, you can print any.
+For each test case, print the state of the grid after applying the operations.
+We have proof that a solution always exists. If there are multiple solutions, print any.
 Example
 input
 Copy
 3
-11
-antontrygub
-15
-bestcoordinator
-19
-trywatchinggurabruh
+3
+.O.
+OOO
+.O.
+6
+XXXOOO
+XXXOOO
+XX..OO
+OO..XX
+OOOXXX
+OOOXXX
+5
+.OOO.
+OXXXO
+OXXXO
+OXXXO
+.OOO.
 output
 Copy
-bugyrtnotna
-bestcoordinator
-bruhtrywatchinggura
+.O.
+OXO
+.O.
+OXXOOX
+XOXOXO
+XX..OO
+OO..XX
+OXOXOX
+XOOXXO
+.OXO.
+OOXXO
+XXOXX
+OXXOO
+.OXO.
 Note
-In the first test case, "bugyrtnotna" does not contain "trygub" as a subsequence. It does contain the letters of "trygub", but not in the correct order, so it is not a subsequence.
-In the second test case, we did not change the order of characters because it is not needed.
-In the third test case, "bruhtrywatchinggura" does contain "trygu" as a subsequence, but not "trygub".
+In the first test case, there are initially three 'O' consecutive in the second row and the second column. By changing the middle token to 'X' we make the grid a draw, and we only changed
+1≤⌊5/3⌋
+token.
+In the second test case, the final grid is a draw. We only changed
+8≤⌊32/3⌋
+tokens.
+In the third test case, the final grid is a draw. We only changed
+7≤⌊21/3⌋
+tokens.

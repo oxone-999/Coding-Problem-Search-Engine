@@ -1,231 +1,176 @@
-G. Directing Edges
-time limit per test4 seconds
-memory limit per test512 megabytes
+C. Cyclic Permutations
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an undirected connected graph consisting of
+A permutation of length
 n
-vertices and
-m
-edges.
-k
-vertices of this graph are special.
-You have to direct each edge of this graph or leave it undirected. If you leave the
-i
--th edge undirected, you pay
-w
-i
-coins, and if you direct it, you don't have to pay for it.
-Let's call a vertex saturated if it is reachable from each special vertex along the edges of the graph (if an edge is undirected, it can be traversed in both directions). After you direct the edges of the graph (possibly leaving some of them undirected), you receive
-c
-i
-coins for each saturated vertex
-i
-. Thus, your total profit can be calculated as
-∑
-i∈S
-c
-i
-−
-∑
-j∈U
-w
+is an array consisting of
+n
+distinct integers from
+1
+to
+n
+in arbitrary order. For example,
+[2,3,1,5,4]
+is a permutation, but
+[1,2,2]
+is not a permutation (
+2
+appears twice in the array) and
+[1,3,4]
+is also not a permutation (
+n=3
+but there is
+4
+in the array).
+Consider a permutation
+p
+of length
+n
+, we build a graph of size
+n
+using it as follows:
+For every
+1≤i≤n
+, find the largest
 j
-, where
-S
-is the set of saturated vertices, and
-U
-is the set of edges you leave undirected.
-For each vertex
+such that
+1≤j<i
+and
+p
+j
+>
+p
 i
-, calculate the maximum possible profit you can get if you have to make the vertex
+, and add an undirected edge between node
 i
-saturated.
+and node
+j
+For every
+1≤i≤n
+, find the smallest
+j
+such that
+i<j≤n
+and
+p
+j
+>
+p
+i
+, and add an undirected edge between node
+i
+and node
+j
+In cases where no such
+j
+exists, we make no edges. Also, note that we make edges between the corresponding indices, not the values at those indices.
+For clarity, consider as an example
+n=4
+, and
+p=[3,1,4,2]
+; here, the edges of the graph are
+(1,3),(2,1),(2,3),(4,3)
+.
+A permutation
+p
+is cyclic if the graph built using
+p
+has at least one simple cycle.
+Given
+n
+, find the number of cyclic permutations of length
+n
+. Since the number may be very large, output it modulo
+10
+9
++7
+.
+Please refer to the Notes section for the formal definition of a simple cycle
 Input
-The first line contains three integers
-n
-,
-m
-and
-k
-(
-2≤n≤3⋅
-10
-5
-,
-n−1≤m≤min(3⋅
-10
-5
-,
-n(n−1)
-2
-)
-,
-1≤k≤n
-).
-The second line contains
-k
-pairwise distinct integers
-v
-1
-,
-v
-2
-, ...,
-v
-k
-(
-1≤
-v
-i
-≤n
-) — the indices of the special vertices.
-The third line contains
-n
-integers
-c
-1
-,
-c
-2
-, ...,
-c
+The first and only line contains a single integer
 n
 (
-0≤
-c
-i
-≤
+3≤n≤
 10
-9
+6
 ).
-The fourth line contains
-m
-integers
-w
-1
-,
-w
-2
-, ...,
-w
-m
-(
-0≤
-w
-i
-≤
-10
-9
-).
-Then
-m
-lines follow, the
-i
--th line contains two integers
-x
-i
-and
-y
-i
-(
-1≤
-x
-i
-,
-y
-i
-≤n
-,
-x
-i
-≠
-y
-i
-) — the endpoints of the
-i
--th edge.
-There is at most one edge between each pair of vertices.
 Output
-Print
+Output a single integer
+0≤x<
+10
+9
++7
+, the number of cyclic permutations of length
 n
-integers, where the
-i
--th integer is the maximum profit you can get if you have to make the vertex
-i
-saturated.
+modulo
+10
+9
++7
+.
 Examples
 input
 Copy
-3 2 2
-1 3
-11 1 5
-10 10
-1 2
-2 3
+4
 output
 Copy
-11 2 5 
+16
 input
 Copy
-4 4 4
-1 2 3 4
-1 5 7 8
-100 100 100 100
-1 2
-2 3
-3 4
-1 4
+583291
 output
 Copy
-21 21 21 21 
+135712853
 Note
-Consider the first example:
-the best way to make vertex
-1
-saturated is to direct the edges as
-2→1
-,
-3→2
-;
-1
-is the only saturated vertex, so the answer is
-11
-;
-the best way to make vertex
-2
-saturated is to leave the edge
-1−2
-undirected and direct the other edge as
-3→2
-;
-1
-and
-2
-are the saturated vertices, and the cost to leave the edge
-1−2
-undirected is
-10
-, so the answer is
-2
-;
-the best way to make vertex
-3
-saturated is to direct the edges as
-2→3
-,
-1→2
-;
-3
-is the only saturated vertex, so the answer is
-5
+There are
+16
+cyclic permutations for
+n=4
 .
-The best course of action in the second example is to direct the edges along the cycle:
-1→2
+[4,2,1,3]
+is one such permutation, having a cycle of length four:
+4→3→2→1→4
+.
+Nodes
+v
+1
 ,
-2→3
+v
+2
 ,
-3→4
+…
+,
+v
+k
+form a simple cycle if the following conditions hold:
+k≥3
+.
+v
+i
+≠
+v
+j
+for any pair of indices
+i
 and
-4→1
-. That way, all vertices are saturated.
+j
+. (
+1≤i<j≤k
+)
+v
+i
+and
+v
+i+1
+share an edge for all
+i
+(
+1≤i<k
+), and
+v
+1
+and
+v
+k
+share an edge.

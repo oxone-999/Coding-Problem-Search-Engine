@@ -1,122 +1,146 @@
-C. BA-String
+E. Replace the Numbers
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer
-k
-and a string
-s
-that consists only of characters 'a' (a lowercase Latin letter) and '*' (an asterisk).
-Each asterisk should be replaced with several (from
-0
-to
-k
-inclusive) lowercase Latin letters 'b'. Different asterisk can be replaced with different counts of letter 'b'.
-The result of the replacement is called a BA-string.
-Two strings
-a
-and
-b
-are different if they either have different lengths or there exists such a position
-i
-that
-a
-i
-≠
-b
-i
-.
-A string
-a
-is lexicographically smaller than a string
-b
-if and only if one of the following holds:
-a
-is a prefix of
-b
-, but
-a≠b
-;
-in the first position where
-a
-and
-b
-differ, the string
-a
-has a letter that appears earlier in the alphabet than the corresponding letter in
-b
-.
-Now consider all different BA-strings and find the
+You have an array of integers (initially empty).
+You have to perform
+q
+queries. Each query is of one of two types:
+"
+1
 x
--th lexicographically smallest of them.
+" — add the element
+x
+to the end of the array;
+"
+2
+x
+y
+" — replace all occurrences of
+x
+in the array with
+y
+.
+Find the resulting array after performing all the queries.
 Input
 The first line contains a single integer
-t
+q
 (
-1≤t≤2000
-) — the number of testcases.
-The first line of each testcase contains three integers
-n
-,
-k
-and
-x
-(
-1≤n≤2000
-;
-0≤k≤2000
-;
-1≤x≤
+1≤q≤5⋅
 10
-18
+5
+) — the number of queries.
+Next
+q
+lines contain queries (one per line). Each query is of one of two types:
+"
+1
+x
+" (
+1≤x≤5⋅
+10
+5
+);
+"
+2
+x
+y
+" (
+1≤x,y≤5⋅
+10
+5
 ).
-n
-is the length of string
-s
-.
-The second line of each testcase is a string
-s
-. It consists of
-n
-characters, each of them is either 'a' (a lowercase Latin letter) or '*' (an asterisk).
-The sum of
-n
-over all testcases doesn't exceed
-2000
-. For each testcase
-x
-doesn't exceed the total number of different BA-strings. String
-s
-contains at least one character 'a'.
+It's guaranteed that there is at least one query of the first type.
 Output
-For each testcase, print a single string, consisting only of characters 'b' and 'a' (lowercase Latin letters) — the
-x
--th lexicographically smallest BA-string.
-Example
+In a single line, print
+k
+integers — the resulting array after performing all the queries, where
+k
+is the number of queries of the first type.
+Examples
 input
 Copy
-3
-2 4 3
-a*
-4 1 3
-a**a
-6 3 20
-**a***
+7
+1 3
+1 1
+2 1 2
+1 2
+1 1
+1 2
+2 1 3
 output
 Copy
-abb
-abba
-babbbbbbbbb
+3 2 2 3 2 
+input
+Copy
+4
+1 1
+1 2
+1 1
+2 2 2
+output
+Copy
+1 2 1 
+input
+Copy
+8
+2 1 4
+1 1
+1 4
+1 2
+2 2 4
+2 4 3
+1 2
+2 2 7
+output
+Copy
+1 3 3 7 
 Note
-In the first testcase of the example, BA-strings ordered lexicographically are:
-a
-ab
-abb
-abbb
-abbbb
-In the second testcase of the example, BA-strings ordered lexicographically are:
-aa
-aba
-abba
-Note that string "aba" is only counted once, even though there are two ways to replace asterisks with characters 'b' to get it.
+In the first example, the array changes as follows:
+[]
+→
+[3]
+→
+[3,1]
+→
+[3,2]
+→
+[3,2,2]
+→
+[3,2,2,1]
+→
+[3,2,2,1,2]
+→
+[3,2,2,3,2]
+.
+In the second example, the array changes as follows:
+[]
+→
+[1]
+→
+[1,2]
+→
+[1,2,1]
+→
+[1,2,1]
+.
+In the third example, the array changes as follows:
+[]
+→
+[]
+→
+[1]
+→
+[1,4]
+→
+[1,4,2]
+→
+[1,4,4]
+→
+[1,3,3]
+→
+[1,3,3,2]
+→
+[1,3,3,7]
+.

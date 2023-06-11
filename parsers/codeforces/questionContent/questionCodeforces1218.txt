@@ -1,202 +1,196 @@
-G. Subsequences Galore
-time limit per test10 seconds
-memory limit per test1024 megabytes
+B. Integers Shop
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-For a sequence of strings
-[
-t
-1
-,
-t
-2
-,…,
-t
-m
-]
-, let's define the function
-f([
-t
-1
-,
-t
-2
-,…,
-t
-m
-])
-as the number of different strings (including the empty string) that are subsequences of at least one string
-t
+The integers shop sells
+n
+segments. The
 i
+-th of them contains all integers from
+l
+i
+to
+r
+i
+and costs
+c
+i
+coins.
+Tomorrow Vasya will go to this shop and will buy some segments there. He will get all integers that appear in at least one of bought segments. The total cost of the purchase is the sum of costs of all segments in it.
+After shopping, Vasya will get some more integers as a gift. He will get integer
+x
+as a gift if and only if all of the following conditions are satisfied:
+Vasya hasn't bought
+x
 .
-f([])=0
-(i. e. the number of such strings for an empty sequence is
-0
-).
-You are given a sequence of strings
-[
-s
-1
-,
-s
-2
-,…,
-s
-n
-]
-. Every string in this sequence consists of lowercase Latin letters and is sorted (i. e., each string begins with several (maybe zero) characters a, then several (maybe zero) characters b, ..., ends with several (maybe zero) characters z).
-For each of
-2
-n
-subsequences of
-[
-s
-1
-,
-s
-2
-,…,
-s
-n
-]
-, calculate the value of the function
-f
-modulo
-998244353
+Vasya has bought integer
+l
+that is less than
+x
 .
-Input
-The first line contains one integer
-n
-(
-1≤n≤23
-) — the number of strings.
-Then
-n
-lines follow. The
-i
--th line contains the string
+Vasya has bought integer
+r
+that is greater than
+x
+.
+Vasya can get integer
+x
+as a gift only once so he won't have the same integers after receiving a gift.
+For example, if Vasya buys segment
+[2,4]
+for
+20
+coins and segment
+[7,8]
+for
+22
+coins, he spends
+42
+coins and receives integers
+2,3,4,7,8
+from these segments. He also gets integers
+5
+and
+6
+as a gift.
+Due to the technical issues only the first
 s
-i
-(
-1≤|
-s
-i
-|≤2⋅
-10
-4
-), consisting of lowercase Latin letters. Each string
-s
-i
-is sorted.
-Output
-Since printing up to
-2
-23
-integers would be really slow, you should do the following:
-For each of the
-2
-n
-subsequences (which we denote as
+segments (that is, segments
 [
-s
-i
+l
 1
 ,
-s
-i
+r
+1
+],[
+l
 2
-,…,
+,
+r
+2
+],…,[
+l
 s
-i
-k
+,
+r
+s
 ]
-), calculate
-f([
+) will be available tomorrow in the shop.
+Vasya wants to get (to buy or to get as a gift) as many integers as possible. If he can do this in differents ways, he selects the cheapest of them.
+For each
 s
-i
-1
-,
-s
-i
-2
-,…,
-s
-i
-k
-])
-, take it modulo
-998244353
-, then multiply it by
-k⋅(
-i
-1
-+
-i
-2
-+⋯+
-i
-k
-)
-. Print the XOR of all
-2
-n
-integers you get.
-The indices
-i
-1
-,
-i
-2
-,…,
-i
-k
-in the description of each subsequences are
-1
--indexed (i. e. are from
+from
 1
 to
 n
-).
-Examples
-input
-Copy
-3
-a
-b
-c
-output
-Copy
-92
-input
-Copy
-2
-aa
-a
-output
-Copy
-21
-input
-Copy
-2
-a
-a
-output
-Copy
+, find how many coins will Vasya spend if only the first
+s
+segments will be available.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤1000
+) — the number of test cases.
+The first line of each test case contains the single integer
+n
+(
+1≤n≤
 10
-input
-Copy
-2
-abcd
-aabb
-output
-Copy
-124
+5
+) — the number of segments in the shop.
+Each of next
+n
+lines contains three integers
+l
+i
+,
+r
+i
+,
+c
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤
+10
+9
+,1≤
+c
+i
+≤
+10
+9
+) — the ends of the
+i
+-th segments and its cost.
+It is guaranteed that the total sum of
+n
+over all test cases doesn't exceed
+2⋅
+10
+5
+.
+Output
+For each test case output
+n
+integers: the
+s
+-th (
+1≤s≤n
+) of them should be the number of coins Vasia will spend in the shop if only the first
+s
+segments will be available.
+Example
 input
 Copy
 3
-ddd
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaabbbbbbbbbbbcccccccccccciiiiiiiiiiiiiiiiiiiiiiooooooooooqqqqqqqqqqqqqqqqqqvvvvvzzzzzzzzzzzz
+2
+2 4 20
+7 8 22
+2
+5 11 42
+5 11 42
+6
+1 4 4
+5 8 9
+7 8 7
+2 10 252
+1 11 271
+1 10 1
 output
 Copy
-15706243380
+20
+42
+42
+42
+4
+13
+11
+256
+271
+271
+Note
+In the first test case if
+s=1
+then Vasya can buy only the segment
+[2,4]
+for
+20
+coins and get
+3
+integers.
+The way to get
+7
+integers for
+42
+coins in case
+s=2
+is described in the statement.
+In the second test case note, that there can be the same segments in the shop.

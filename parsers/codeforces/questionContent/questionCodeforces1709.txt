@@ -1,153 +1,142 @@
-C. Pursuit
+E. Minimax
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You and your friend Ilya are participating in an individual programming contest consisting of multiple stages. A contestant can get between
-0
-and
-100
-points, inclusive, for each stage, independently of other contestants.
-Points received by contestants in different stages are used for forming overall contest results. Suppose that
-k
-stages of the contest are completed. For each contestant,
-k−⌊
-k
-4
-⌋
-stages with the highest scores are selected, and these scores are added up. This sum is the overall result of the contestant. (Here
-⌊t⌋
-denotes rounding
+Prefix function of string
+t=
 t
-down.)
-For example, suppose
-9
-stages are completed, and your scores are
-50,30,50,50,100,10,30,100,50
-. First,
-7
-stages with the highest scores are chosen — for example, all stages except for the
+1
+t
 2
--nd and the
-6
--th can be chosen. Then your overall result is equal to
-50+50+50+100+30+100+50=430
-.
-As of now,
+…
+t
 n
-stages are completed, and you know the points you and Ilya got for these stages. However, it is unknown how many more stages will be held. You wonder what the smallest number of additional stages is, after which your result might become greater than or equal to Ilya's result, at least in theory. Find this number!
+and position
+i
+in it is defined as the length
+k
+of the longest proper (not equal to the whole substring) prefix of substring
+t
+1
+t
+2
+…
+t
+i
+which is also a suffix of the same substring.
+For example, for string
+t=
+abacaba the values of the prefix function in positions
+1,2,…,7
+are equal to
+[0,0,1,0,1,2,3]
+.
+Let
+f(t)
+be equal to the maximum value of the prefix function of string
+t
+over all its positions. For example,
+f(
+abacaba
+)=3
+.
+You are given a string
+s
+. Reorder its characters arbitrarily to get a string
+t
+(the number of occurrences of any character in strings
+s
+and
+t
+must be equal). The value of
+f(t)
+must be minimized. Out of all options to minimize
+f(t)
+, choose the one where string
+t
+is the lexicographically smallest.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤1000
-). Description of the test cases follows.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤
+1≤t≤
 10
 5
-) — the number of completed stages.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
+). Description of the test cases follows.
+The only line of each test case contains string
+s
 (
-0≤
-a
-i
-≤100
-) — your points for the completed stages.
-The third line contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-0≤
-b
-i
-≤100
-) — Ilya's points for the completed stages.
-It is guaranteed that the sum of
-n
+1≤|s|≤
+10
+5
+) consisting of lowercase English letters.
+It is guaranteed that the sum of lengths of
+s
 over all test cases does not exceed
 10
 5
 .
 Output
-For each test case print a single integer — the smallest number of additional stages required for your result to be able to become greater than or equal to Ilya's result.
-If your result is already not less than Ilya's result, print
-0
+For each test case print a single string
+t
 .
+The multisets of letters in strings
+s
+and
+t
+must be equal. The value of
+f(t)
+, the maximum of prefix functions in string
+t
+, must be as small as possible. String
+t
+must be the lexicographically smallest string out of all strings satisfying the previous conditions.
 Example
 input
 Copy
-5
-1
-100
-0
-1
-0
-100
-4
-20 30 40 50
-100 100 100 100
-4
-10 20 30 40
-100 100 100 100
-7
-7 59 62 52 27 31 55
-33 35 50 98 83 80 64
+3
+vkcup
+abababa
+zzzzzz
 output
 Copy
-0
-1
-3
-4
-2
+ckpuv
+aababab
+zzzzzz
 Note
-In the first test case, you have scored
-100
-points for the first stage, while Ilya has scored
-0
-. Thus, your overall result (
-100
-) is already not less than Ilya's result (
-0
-).
-In the second test case, you have scored
-0
-points for the first stage, while Ilya has scored
-100
-. A single stage with an opposite result is enough for both your and Ilya's overall scores to become equal to
-100
+A string
+a
+is lexicographically smaller than a string
+b
+if and only if one of the following holds:
+a
+is a prefix of
+b
+, but
+a≠b
+;
+in the first position where
+a
+and
+b
+differ, the string
+a
+has a letter that appears earlier in the alphabet than the corresponding letter in
+b
 .
-In the third test case, your overall result is
-30+40+50=120
-, while Ilya's result is
-100+100+100=300
-. After three additional stages your result might become equal to
-420
-, while Ilya's result might become equal to
-400
+In the first test case,
+f(t)=0
+and the values of prefix function are
+[0,0,0,0,0]
+for any permutation of letters. String ckpuv is the lexicographically smallest permutation of letters of string vkcup.
+In the second test case,
+f(t)=1
+and the values of prefix function are
+[0,1,0,1,0,1,0]
 .
-In the fourth test case, your overall result after four additional stages might become equal to
-470
-, while Ilya's result might become equal to
-400
-. Three stages are not enough.
+In the third test case,
+f(t)=5
+and the values of prefix function are
+[0,1,2,3,4,5]
+.

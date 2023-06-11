@@ -1,138 +1,59 @@
-Dearrange sorting
+Chef and Balanced Polygons
 Problem
-You are given a permutation
-P of length
-N. A permutation of length
-N is an array where every element from
-1 to
-N occurs exactly once.
-You must perform some operations on the array to make it sorted in increasing order. In one operation, you must:
-Select two indices
-L and
-R
-(1≤L<R≤N)
-Completely dearrange the subarray
-P
-L
-,P
-L+1
-,…P
-R
-A dearrangement of an array
-A is any permutation
-B of
-A for which
-B
-i
-
-=A
-i
-for all
-i.
-For example, consider the array
-A=[2,1,3,4]. Some examples of dearrangements of
-A are
-[1,2,4,3],
-[3,2,4,1] and
-[4,3,2,1].
-[3,5,2,1] is not a valid dearrangement since it is not a permutation of
-A.
-[1,2,3,4] is not a valid dearrangement either since
-B
-3
-=A
-3
-and
-B
-4
-=A
-4
-.
-Find the minimum number of operations required to sort the array in increasing order. It is guaranteed that the given permutation can be sorted in atmost
-1000 operations.
-Input Format
-The first line contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first line of each test case contains an integer
-N — the size of the permutation
-P.
-The second line of each test case contains
-N space-separated integers
-P
-1
-,P
-2
-,…,P
-N
-denoting the permutation
-P.
-Output Format
-On the first line of each test case output the minimum number of operations
-M. The description of the
-M operations must follow.
-Each operation must be described in two lines
-On the first line of each operation output two space separated integers
-L and
-R
-(1≤L<R≤N) — the indices of the subarray chosen.
-On the second line output
-N space separated integers — the permutation
-P after dearranging the subarray
-P
-L
-,P
-L+1
-,…P
-R
-. Note that you have to output the whole permutation
-{P
-1
-,P
-2
-,…P
-N
-}
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+You are given a convex polygon consisting of n vertices in 2-D plane. You are also given m points, each colored in either red or blue.
+A convex polygon is called w00t, if the number of red and blue colored points inside this (inside or on the boundary) are equal.
+You want to find number of w00t convex polygons whose vertices are a subset of the vertices of the given convex polygon.
+Input
+The first line of the input contains an integer T denoting the number of the test cases.
+The first line of each test case will contain two space separated integers n, m denoting the number of points on the convex polygon, and number of the colored points, respectively.
+In the next n lines, each line contains two space separated integers x, y denoting the x and y coordinates of the points of convex polygon. The points of the convex polygon are given to you in anticlockwise order. It is guaranteed that no three points on the convex polygon are collinear.
+In the next m lines, each line contains three space separated integers x, y, c, where x, y denotes the x and y coordinates of the colored points, and c denotes the color of the point. If c = 0, the point is red colored, where if c = 1, point is blue colored..
+Output
+For each test case, output a single integer corresponding to the number of w00t convex polygons whose vertices are subset of the given convex polygon.
 Constraints
-1≤T≤200
-3≤N≤1000
-P is a permutation of length
-N
-The sum of
-N over all test cases does not exceed
-1000
-It is guaranteed that the given permutations can be sorted in atmost
-1000 operations.
+1 ≤ T ≤ 20
+1 ≤ n, m ≤ 50
+n ≥ 3
+-106 ≤ |xi, yi| ≤ -106
+In the given m points, two or more points might coincide.
+Subtasks
+Subtask #1: (15 points)
+1 ≤ n, m ≤ 12
+Subtask #2: (20 points)
+Each of the m points has same coordinates as that of some vertices of the convex polygon.
+All the colored points have different coordinates.
+Subtask #3: (25 points)
+Each of the m points has same coordinates as that of some vertices of the convex polygon.
+Subtask #4: (40 points)
+Original Constraints
 Sample 1:
 Input
 Output
 2
-5
-1 2 3 4 5
-5
-2 1 3 5 4
-0
-2
+4 4
+0 0
+1 0
+1 1
+0 1
+0 0 0
+1 0 1
+1 1 0
+0 1 1
+6 6
+-1 1
+0 0
+1 0
+2 1
 1 2
-1 2 3 5 4
-4 5
-1 2 3 4 5
+0 2
+-1 1 0
+0 0 1
+1 0 0
+2 1 1
+1 2 0 
+0 2 1
+1
+10
 Explanation:
-Test case
-1: No operations are required since the permutation is already sorted.
-Test case
-2: Initially,
-P=[2,1,3,5,4]. Consider the following sequence of operations.
-Choose
-L=1 and
-R=2 and dearrange the subarray in the following manner
-[
-2,1
-,3,5,4]→[1,2,3,5,4]
-Choose
-L=4 and
-R=5 and dearrange the subarray in the following manner
-[1,2,3,
-5,4
-]→[1,2,3,4,5]
-It can be shown that it is not possible to sort the given permutation in less than
-2 operations.
+Example case 1. The entire rectangle is w00t.

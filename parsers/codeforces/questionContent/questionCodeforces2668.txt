@@ -1,143 +1,129 @@
-B. Boot Camp
+E. Magic Tricks
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Berland State University (BSU) is conducting a programming boot camp. The boot camp will last for
+Masha is going to participate in a talent show conducted by the university she studies at. She wants to impress the audience with lots of different magic tricks!
+For one of her tricks, she uses
 n
-days, and the BSU lecturers are planning to give some number of lectures during these days.
-Some days of the boot camp are already planned as excursion days, and no lectures should be held during these days. To make sure the participants don't get too tired of learning to program, the number of lectures for each day should not exceed
+sponge balls, one of which is a special one. First, she arranges the balls in a row in such a way that the special ball is put on position
 k
+(positions are numbered from
 1
-, and the number of lectures for each pair of consecutive days should not exceed
-k
-2
-.
-Can you calculate the maximum number of lectures that can be conducted during the boot camp? Formally, find the maximum integer
+to
+n
+from left to right). After that, she performs
 m
-such that it is possible to choose
-n
-non-negative integers
-c
-1
-,
-c
-2
-, ...,
-c
-n
-(where
-c
+swaps: during the
 i
-is the number of lectures held during day
+-th swap, she chooses the ball on position
+x
 i
-) so that:
-c
-1
-+
-c
-2
-+⋯+
-c
-n
-=m
-;
-for each excursion day
-d
-,
-c
-d
-=0
-;
-for each day
+and the ball on position
+y
 i
-,
-c
-i
-≤
-k
-1
-;
-for each pair of consecutive days
-(i,i+1)
-,
-c
-i
-+
-c
-i+1
-≤
-k
-2
-.
-Note that there might be some non-excursion days without lectures (i. e., it is possible that
-c
-i
-=0
-even if
-i
-is not an excursion day).
+, and swaps them.
+Since Masha is a magician, she fakes some of her actions to trick the audience — when she starts performing a swap, she may fake it, so it is not performed (but it looks like it is performed for the audience). There are no constraints on which swaps Masha should fake or should actually perform — for example, she may fake all of the swaps, or even not fake anything at all.
+For the trick to work perfectly, the special ball should end up on a specific position — Masha has not decided yet, which position is perfect. Since faking swaps is difficult, for each position she wants to know the minimum number of swaps she has to fake so that the special ball ends up there.
+Unfortunately, Masha is a magician, neither a mathematician nor a programmer. So she needs your help in calculating what she wants!
 Input
-The first line contains one integer
-t
-(
-1≤t≤50
-) — the number of testcases.
-Then the testcases follow, each consists of two lines. The first line contains three integers
+The first line contains three integers
 n
 ,
-k
-1
-,
-k
-2
-(
-1≤n≤5000
-;
-1≤
-k
-1
-≤
-k
-2
-≤200000
-).
-The second line contains one string
-s
-consisting of exactly
-n
-characters, each character is either 0 or 1. If
-s
-i
-=0
-, then day
-i
-is an excursion day (so there should be no lectures during that day); if
-s
-i
-=1
-, then day
-i
-is not an excursion day.
-Output
-For each test case, print one integer — the maximum possible value of
 m
-(the number of lectures that can be conducted).
-Example
+and
+k
+(
+2≤n≤2⋅
+10
+5
+;
+1≤m≤2⋅
+10
+5
+;
+1≤k≤n
+) — the number of balls, the number of swaps and the initial position of the special ball, respectively.
+Then
+m
+lines follow, the
+i
+-th line contains two integers
+x
+i
+and
+y
+i
+(
+1≤
+x
+i
+,
+y
+i
+≤n
+;
+x
+i
+≠
+y
+i
+) denoting the
+i
+-th swap.
+Output
+Print
+n
+integers. The
+i
+-th integer should be the minimum number of swaps Masha has to fake so the special ball ends up on position
+i
+(or
+−1
+, if Masha cannot put the special ball there).
+Examples
 input
 Copy
-4
-4 5 7
-1011
-4 4 10
-0101
-5 3 4
-11011
-6 4 6
-011101
+4 5 1
+3 4
+2 1
+4 1
+3 1
+3 1
 output
 Copy
-12
-8
-8
-14
+2 0 3 1 
+input
+Copy
+5 7 4
+3 2
+3 2
+4 2
+3 4
+4 1
+3 2
+5 2
+output
+Copy
+2 2 0 3 1 
+input
+Copy
+7 15 5
+5 3
+4 2
+6 1
+2 4
+1 6
+3 7
+5 6
+4 2
+6 4
+2 6
+6 3
+6 3
+7 6
+2 6
+7 2
+output
+Copy
+-1 1 1 1 2 1 0 

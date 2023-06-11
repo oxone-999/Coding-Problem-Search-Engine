@@ -1,87 +1,132 @@
-A. Balanced Substring
+C. Jury Meeting
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string
-s
-, consisting of
 n
-letters, each letter is either 'a' or 'b'. The letters in the string are numbered from
+people gathered to hold a jury meeting of the upcoming competition, the
+i
+-th member of the jury came up with
+a
+i
+tasks, which they want to share with each other.
+First, the jury decides on the order which they will follow while describing the tasks. Let that be a permutation
+p
+of numbers from
 1
 to
 n
-.
-s[l;r]
-is a continuous substring of letters from index
-l
+(an array of size
+n
+where each integer from
+1
 to
-r
-of the string inclusive.
-A string is called balanced if the number of letters 'a' in it is equal to the number of letters 'b'. For example, strings "baba" and "aabbab" are balanced and strings "aaab" and "b" are not.
-Find any non-empty balanced substring
-s[l;r]
-of string
-s
-. Print its
-l
-and
-r
-(
-1≤l≤r≤n
-). If there is no such substring, then print
-−1
-−1
+n
+occurs exactly once).
+Then the discussion goes as follows:
+If a jury member
+p
+1
+has some tasks left to tell, then they tell one task to others. Otherwise, they are skipped.
+If a jury member
+p
+2
+has some tasks left to tell, then they tell one task to others. Otherwise, they are skipped.
+...
+If a jury member
+p
+n
+has some tasks left to tell, then they tell one task to others. Otherwise, they are skipped.
+If there are still members with tasks left, then the process repeats from the start. Otherwise, the discussion ends.
+A permutation
+p
+is nice if none of the jury members tell two or more of their own tasks in a row.
+Count the number of nice permutations. The answer may be really large, so print it modulo
+998244353
 .
 Input
 The first line contains a single integer
 t
 (
-1≤t≤1000
-) — the number of testcases.
-Then the descriptions of
-t
-testcases follow.
-The first line of the testcase contains a single integer
+1≤t≤
+10
+4
+) — the number of test cases.
+The first line of the test case contains a single integer
 n
 (
-1≤n≤50
-) — the length of the string.
-The second line of the testcase contains a string
-s
-, consisting of
+2≤n≤2⋅
+10
+5
+) — number of jury members.
+The second line contains
 n
-letters, each letter is either 'a' or 'b'.
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
+10
+9
+) — the number of problems that the
+i
+-th member of the jury came up with.
+The sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+.
 Output
-For each testcase print two integers. If there exists a non-empty balanced substring
-s[l;r]
-, then print
-l
-r
-(
-1≤l≤r≤n
-). Otherwise, print
-−1
-−1
+For each test case, print one integer — the number of nice permutations, taken modulo
+998244353
 .
 Example
 input
 Copy
 4
-1
-a
+2
+1 2
+3
+5 5 5
+4
+1 3 3 7
 6
-abbaba
-6
-abbaba
-9
-babbabbaa
+3 4 2 1 3 3
 output
 Copy
--1 -1
-1 6
-3 6
-2 5
+1
+6
+0
+540
 Note
-In the first testcase there are no non-empty balanced subtrings.
-In the second and third testcases there are multiple balanced substrings, including the entire string "abbaba" and substring "baba".
+Explanation of the first test case from the example:
+There are two possible permutations,
+p=[1,2]
+and
+p=[2,1]
+. For
+p=[1,2]
+, the process is the following:
+the first jury member tells a task;
+the second jury member tells a task;
+the first jury member doesn't have any tasks left to tell, so they are skipped;
+the second jury member tells a task.
+So, the second jury member has told two tasks in a row (in succession), so the permutation is not nice.
+For
+p=[2,1]
+, the process is the following:
+the second jury member tells a task;
+the first jury member tells a task;
+the second jury member tells a task.
+So, this permutation is nice.

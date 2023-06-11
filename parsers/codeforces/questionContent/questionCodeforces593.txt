@@ -1,93 +1,58 @@
-E. Location
-time limit per test3 seconds
-memory limit per test512 megabytes
+A. Consecutive Sum
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given two arrays of integers
+You are given an array
 a
-1
-,
-a
-2
-,…,
-a
+with
 n
+integers. You can perform the following operation at most
+k
+times:
+Choose two indices
+i
 and
-b
-1
-,
-b
-2
-,…,
-b
-n
-. You need to handle
-q
-queries of the following two types:
-1
-l
-r
-x
-: assign
-a
-i
-:=x
-for all
-l≤i≤r
-;
-2
-l
-r
-: find the minimum value of the following expression among all
-l≤i≤r
-:
-lcm(
-a
-i
-,
-b
-i
-)
-gcd(
-a
-i
-,
-b
-i
-)
-.
-lcm
+j
+, in which
+imodk=jmodk
 (
-b
-)
-In this problem
-gcd(x,y)
-denotes the greatest common divisor of
-x
+1≤i<j≤n
+).
+Swap
+a
+i
 and
-y
-, and
-lcm(x,y)
-denotes the least common multiple of
+a
+j
+.
+After performing all operations, you have to select
+k
+consecutive elements, and the sum of the
+k
+elements becomes your score. Find the maximum score you can get.
+Here
+xmody
+denotes the remainder from dividing
 x
-and
+by
 y
 .
 Input
-The first line contains two integers
+The first line contains one integer
+t
+(
+1≤t≤600
+) — the number of test cases.
+Each test case consists of two lines.
+The first line of each test case contains two integers
 n
 and
-q
+k
 (
-1≤n,q≤5⋅
-10
-4
-) — the number of numbers in the arrays
-a
-and
-b
-and the number of queries.
-The second line contains
+1≤k≤n≤100
+) — the length of the array and the number in the statement above.
+The second line of each test case contains
 n
 integers
 a
@@ -99,194 +64,61 @@ a
 a
 n
 (
-1≤
+0≤
 a
 i
-≤5⋅
-10
-4
-) — the elements of the array
-a
-.
-The third line contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-1≤
-b
-i
-≤5⋅
-10
-4
-) — the elements of the array
-b
-.
-Then
-q
-lines follow,
-j
--th of which starts with an integer
-t
-j
-(
-1≤
-t
-j
-≤2
-) and means that the
-j
--th query has type
-t
-j
-.
-If
-t
-j
-=1
-, it is followed by three integers
-l
-j
-,
-r
-j
-, and
-x
-j
-(
-1≤
-l
-j
 ≤
-r
-j
-≤n
-,
-1≤
-x
-j
-≤5⋅
 10
-4
-).
-If
-t
-j
-=2
-, it is followed by two integers
-l
-j
-and
-r
-j
-(
-1≤
-l
-j
-≤
-r
-j
-≤n
-).
-It is guaranteed that there is at least one query of type
-2
-.
-Output
-For each query of the second type, output the minimum value of the expression.
-Examples
-input
-Copy
-10 10
-6 10 15 4 9 25 2 3 5 30
-1 2 3 4 6 9 12 15 18 30
-2 1 10
-1 7 10 9
-2 5 10
-1 1 6 14
-2 4 7
-2 3 9
-1 2 9 30
-2 1 4
-2 3 7
-2 5 10
-output
-Copy
-1
-2
-12
-2
-10
-5
-2
-input
-Copy
-4 4
-10 2 12 5
-1 12 16 1
-2 2 4
-1 2 3 18
-1 2 2 10
-2 2 3
-output
-Copy
-5
-30
-Note
-In the first example:
-For the first query we can choose
-i=4
-. So the value is
-lcm(4,4)
-gcd(4,4)
-=
-4
-4
-=1
-.
-After the second query the array
-a=[6,10,15,4,9,25,9,9,9,9]
-.
-For the third query we can choose
-i=9
-. So the value is
-lcm(9,18)
-gcd(9,18)
-=
-18
 9
-=2
-.
-In the second:
-For the first query we can choose
-i=4
-. So the value is
-lcm(1,5)
-gcd(1,5)
-=
+)  — the array itself.
+Output
+For each test case, print the maximum score you can get, one per line.
+Example
+input
+Copy
 5
+3 2
+5 6 0
+1 1
+7
+5 3
+7 0 4 0 4
+4 2
+2 7 3 4
+3 3
+1000000000 1000000000 999999997
+output
+Copy
+11
+7
+15
+10
+2999999997
+Note
+In the first test case, we can get a score of
+11
+if we select
+a
 1
-=5
-.
-After the second query the array
-a=[10,18,18,5]
-.
-After the third query the array
-a=[10,10,18,5]
-.
-For the fourth query we can choose
-i=2
-. So the value is
-lcm(10,12)
-gcd(10,12)
-=
-60
+,
+a
 2
-=30
+without performing any operations.
+In the third test case, we can get a score of
+15
+if we first swap
+a
+1
+with
+a
+4
+and then select
+a
+3
+,
+a
+4
+,
+a
+5
 .

@@ -1,139 +1,143 @@
-E. Bracket Cost
+F. Majority
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Daemon Targaryen decided to stop looking like a Metin2 character. He turned himself into the most beautiful thing, a bracket sequence.
-For a bracket sequence, we can do two kind of operations:
-Select one of its substrings
-†
-†
-and cyclic shift it to the right. For example, after a cyclic shift to the right, "(())" will become ")(()";
-Insert any bracket, opening '(' or closing ')', wherever you want in the sequence.
-We define the cost of a bracket sequence as the minimum number of such operations to make it balanced
-‡
-‡
-.
-Given a bracket sequence
+Everyone was happy coding, until suddenly a power shortage happened and the best competitive programming site went down. Fortunately, a system administrator bought some new equipment recently, including some UPSs. Thus there are some servers that are still online, but we need all of them to be working in order to keep the round rated.
+Imagine the servers being a binary string
 s
 of length
 n
-, find the sum of costs across all its
-n(n+1)
-2
-non-empty substrings. Note that for each substring we calculate the cost independently.
-†
-†
-A string
-a
-is a substring of a string
-b
-if
-a
-can be obtained from
-b
-by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
-‡
-‡
-A sequence of brackets is called balanced if one can turn it into a valid math expression by adding characters
+. If the
+i
+-th server is online, then
+s
+i
+=1
+, and
+s
+i
+=0
+otherwise.
+A system administrator can do the following operation called electricity spread, that consists of the following phases:
+Select two servers at positions
+1≤i<j≤n
+such that both are online (i.e.
+s
+i
+=
+s
+j
+=1
+). The spread starts only from online servers.
+Check if we have enough power to make the spread. We consider having enough power if the number of turned on servers in range
+[i,j]
+is at least the number of turned off servers in range
+[i,j]
+. More formally, check whether
+2⋅(
+s
+i
 +
-and
-1
-. For example, sequences "(())()", "()", and "(()(()))" are balanced, while ")(", "(()", and "(()))(" are not.
+s
+i+1
++…+
+s
+j
+)≥j−i+1
+.
+If the check is positive, turn on all the offline servers in range
+[i,j]
+. More formally, make
+s
+k
+:=1
+for all
+k
+from
+i
+to
+j
+.
+We call a binary string
+s
+of length
+n
+rated if we can turn on all servers (i.e. make
+s
+i
+=1
+for
+1≤i≤n
+) using the electricity spread operation any number of times (possibly,
+0
+). Your task is to find the number of rated strings of length
+n
+modulo
+m
+.
 Input
-Each test consists of multiple test cases. The first line contains a single integer
-t
+The first and only line contains two integers
+n
+and
+m
 (
-1≤t≤
+1≤n≤5000
+,
+10≤m≤
 10
-5
-) — the number of test cases. The description of test cases follows.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤2⋅
-10
-5
-) — the length of the bracket sequence.
-The second line of each test case contains a string
-s
-, consisting only of characters '(' and ')', of length
-n
-— the bracket sequence.
-It is guaranteed that sum of
-n
-across all test cases does not exceed
-2⋅
-10
-5
-.
+9
+) — the length of the string and the required module.
 Output
-For each test case, print a single integer — the sum of costs of all substrings of
-s
+Print a single integer — the number of rated binary strings of length
+n
+. Since this number can be large, print it modulo
+m
 .
-Example
+Examples
 input
 Copy
-5
-1
-)
-4
-)()(
-3
-())
-5
-(((((
-10
-)(())))())
+2 100
 output
 Copy
 1
-9
-6
-35
-112
-Note
-In the first test case, there is the only substring ")". Its cost is
-1
-because we can insert '(' to the beginning of this substring and get a string "()", that is a balanced string.
-In the second test case, the cost of each substring of length one is
-1
-. The cost of a substring ")(" is
-1
-because we can cyclically shift it to right and get a string "()". The cost of strings ")()" and "()(" is
-1
-because its enough to insert one bracket to each of them. The cost of substring ")()(" is
-1
-because we can cyclically shift it to right and get a string "()()". So there are
-4+2+2+1=9
-substring of cost
-1
-and
-1
-substring of cost
-0
-. So the sum of the costs is
-9
-.
-In the third test case,
-"(", the cost is
-1
-;
-"()", the cost is
-0
-;
-"())", the cost is
-1
-;
-")", the cost is
-1
-;
-"))", the cost is
+input
+Copy
+3 10
+output
+Copy
 2
-;
-")", the cost is
+input
+Copy
+4 3271890
+output
+Copy
+4
+input
+Copy
+17 123456
+output
+Copy
+32347
+Note
+In the first example, the only rated string is 11. So the answer is
 1
 .
-So the sum of the costs is
-6
+In the second example, the rated strings are:
+111;
+101, because we can perform an operation with
+i=1
+and
+j=3
+.
+So the answer is
+2
+.
+In the third sample, the rated strings are:
+1001;
+1111;
+1011;
+1101.
+So the answer is
+4
 .

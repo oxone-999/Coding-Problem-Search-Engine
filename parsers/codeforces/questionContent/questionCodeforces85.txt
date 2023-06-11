@@ -1,189 +1,169 @@
-C. Similar Polynomials
-time limit per test4 seconds
+B. Fish Graph
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A polynomial
-A(x)
-of degree
-d
-is an expression of the form
-A(x)=
-a
-0
-+
-a
+You are given a simple undirected graph with
+n
+nodes and
+m
+edges. Note that the graph is not necessarily connected. The nodes are labeled from
 1
-x+
-a
-2
-x
-2
-+⋯+
-a
-d
-x
-d
-, where
-a
-i
-are integers, and
-a
-d
-≠0
-. Two polynomials
-A(x)
-and
-B(x)
-are called similar if there is an integer
-s
-such that for any integer
-x
-it holds that
-B(x)≡A(x+s)(mod
-10
-9
-+7).
-9
-For two similar polynomials
-A(x)
-and
-B(x)
-of degree
-d
-, you're given their values in the points
-x=0,1,…,d
-modulo
-10
-9
-+7
+to
+n
 .
-Find a value
-s
-such that
-B(x)≡A(x+s)(mod
-10
-9
-+7)
-for all integers
-x
-.
+We define a graph to be a Fish Graph if it contains a simple cycle with a special node
+u
+belonging to the cycle. Apart from the edges in the cycle, the graph should have exactly
+2
+extra edges. Both edges should connect to node
+u
+, but they should not be connected to any other node of the cycle.
+Determine if the graph contains a subgraph that is a Fish Graph, and if so, find any such subgraph.
+In this problem, we define a subgraph as a graph obtained by taking any subset of the edges of the original graph.
+Visualization of example 1. The red edges form one possible subgraph that is a Fish Graph.
 Input
-The first line contains a single integer
-d
+The first line of input contains the integer
+t
 (
-1≤d≤2500000
-).
-The second line contains
-d+1
-integers
-A(0),A(1),…,A(d)
-(
-0≤A(i)<
-10
-9
-+7
-) — the values of the polynomial
-A(x)
-.
-The third line contains
-d+1
-integers
-B(0),B(1),…,B(d)
-(
-0≤B(i)<
-10
-9
-+7
-) — the values of the polynomial
-B(x)
-.
-It is guaranteed that
-A(x)
+1≤t≤1000
+), the number of test cases. The description of test cases follows.
+The first line of each test case contains two integers,
+n
 and
-B(x)
-are similar and that the leading coefficients (i.e., the coefficients in front of
-x
-d
-) of
-A(x)
+m
+(
+1≤n,m≤2000
+) — the number of nodes and the number of edges.
+Each of the next
+m
+lines contains the description of an edge. Each line contains two integers
+u
+i
 and
-B(x)
-are not divisible by
-10
-9
-+7
+v
+i
+(
+1≤
+u
+i
+,
+v
+i
+≤n
+,
+u
+i
+≠
+v
+i
+) — an edge connects node
+u
+i
+to node
+v
+i
+.
+It is guaranteed that no two edges connect the same unordered pair of nodes.
+Furthermore, it is guaranteed that the sum of
+n
+and the sum of
+m
+over all test cases both do not exceed
+2000
 .
 Output
-Print a single integer
-s
+For each testcase, output "YES" if the graph contains a subgraph that is a Fish Graph, otherwise print "NO". If the answer is "YES", on the following lines output a description of the subgraph.
+The first line of the description contains one integer
+k
+— the number of edges of the subgraph.
+On the next
+k
+lines, output the edges of the chosen subgraph. Each of the
+k
+lines should contains two integers
+u
+and
+v
 (
-0≤s<
-10
-9
-+7
-) such that
-B(x)≡A(x+s)(mod
-10
-9
-+7)
-for all integers
-x
-.
+1≤u,v≤n
+,
+u≠v
+) — the edge between
+u
+and
+v
+belongs to the subgraph. The order in which
+u
+and
+v
+are printed does not matter, as long as the two nodes are connected by an edge in the original graph. The order in which you print the edges does not matter, as long as the resulting subgraph is a fish graph.
 If there are multiple solutions, print any.
-Examples
+Example
 input
-Copy
-1
-1000000006 0
-2 3
-output
 Copy
 3
-input
-Copy
-2
-1 4 9
-100 121 144
+7 8
+1 2
+2 3
+3 4
+4 1
+4 5
+4 6
+4 2
+6 7
+7 7
+6 7
+1 2
+2 3
+3 4
+4 1
+1 3
+3 5
+4 4
+1 3
+3 4
+4 1
+1 2
 output
 Copy
-9
+YES
+6
+5 4
+6 4
+4 3
+1 4
+2 1
+3 2
+YES
+5
+5 3
+2 3
+3 1
+4 3
+1 4
+NO
 Note
-In the first example,
-A(x)≡x−1(mod
-10
-9
-+7)
+In the first example, a possible valid subgraph contains the cycle
+1→2→3→4→1
+. The special node of this cycle is node
+4
+. The two extra edges
+4−5
 and
-B(x)≡x+2(mod
-10
-9
-+7)
-. They're similar because
-B(x)≡A(x+3)(mod
-10
-9
-+7).
-9
-In the second example,
-A(x)≡(x+1
-)
-2
-(mod
-10
-9
-+7)
+4−6
+are both connected to
+4
+, completing the Fish Graph.
+In the second example, a possible valid subgraph contains the cycle
+1→3→4→1
+. The special node of this cycle is node
+3
+. The two extra edges
+3−2
 and
-B(x)≡(x+10
-)
-2
-(mod
-10
-9
-+7)
-, hence
-B(x)≡A(x+9)(mod
-10
-9
-+7).
-9
+3−5
+are both connected to
+3
+, completing the Fish Graph.
+In the last example, it can be proven that there is no valid subgraph.

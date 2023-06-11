@@ -1,157 +1,116 @@
-Departments (Hard Version)
+Ddakji
 Problem
-This is the hard version of the problem. The only difference between the easy and hard versions is that in the hard one, there are no constraints on the number of employees in every department.
-ChefCorp has
-N employees. Each employee belongs to exactly one of the
-M departments. Each department is headed by exactly one of the employees belonging to that department.
-The management structure of ChefCorp is as follows:
-Each employee of a department (including its head) is in contact with every other employee of that department.
-The head of each department is in contact with the heads of all the other departments.
-For example, let
-N=7,
-M=3 and employees
-1,2,3 belong to the first department, employees
-4,5 belong to the second department and employees
-6,7 belong to the third department (employees in bold represent the heads of the departments). The following pairs of employees are in contact with each other:
-(1,2),(1,3),(2,3),(4,5),(6,7),(2,4),(4,6),(2,6).
-However, due to some inexplicable reasons, ChefCorp loses all its data on the departments. Given the total number of employees
-N and every pair of employees who are in contact with each other, can you help recover the number of departments and the employees belonging to each of the departments?
+“You can make a lot by playing such games.”
+Every player has to play a game of Ddakji with the recruiter in order to enter the squid game. Gi-Hun has played many rounds but was unable to win even once. The recruiter thus decided to give him a puzzle instead.
+Gi-Hun is given an array
+A of
+N elements. He can perform the following operation on array
+A any number of times:
+Select any two indexes
+1≤i,j≤N such that
+i
+
+=j and replace
+A
+i
+with
+A
+i
+−A
+j
+.
+His task is to find the minimum possible value of
+∣A
+1
+∣+∣A
+2
+∣+…+∣A
+N
+∣ attainable by performing these operations several (possibly,
+0) times.
 Input Format
-The first line contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first line of each test case contains a single integer
-N — the total number of employees in ChefCorp.
-The second line of each test case contains a single integer
-K — the number of pairs of employees in contact with each other.
-K lines follow. The
-i
-th
-of these
-K lines contain two space-separated integers
-u
-i
-and
-v
-i
-, denoting that employee
-u
-i
-is in contact with
-v
-i
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains
+N, the number of elements in the array.
+The second line of each test case contains
+N space-separated integers —
+A
+1
+,A
+2
+,…,A
+N
 .
 Output Format
-For each test case, output the following:
-In the first line output
-M — the number of departments.
-In the second line, output
-N space-separated integers
-D
+For each testcase, print on a new line one integer — minimum possible value of
+∣A
 1
-,D
+∣+∣A
 2
-,…,D
+∣+…+∣A
 N
-(1≤D
-i
-≤M) — denoting that the
-i
-th
-employee belongs to the
-D
-i
-th
-department.
-In the third line, output
-M space-separated integers
-H
-1
-,H
-2
-,…,H
-M
-(1≤H
-i
-≤N,H
-i
-
-=H
-j
-when
-i
-
-=j) — denoting that the
-H
-i
-th
-employee is the head of the
-i
-th
-department.
-If there are multiple answers, output any. It is guaranteed that at least one solution always exists.
+∣.
 Constraints
-1≤T≤1000
-2≤N≤1000
-1≤K≤
-2
-N⋅(N−1)
-1≤u
+1≤T≤10
+5
+2≤N≤10
+5
+−10
+9
+≤A
 i
-,v
-i
-≤N
-u
-i
-
-=v
-i
-for each
-1≤i≤K.
-The sum of
-N over all test cases does not exceed
-3000.
+≤10
+9
+Sum of
+N across all test cases doesn't exceed
+10
+6
 Sample 1:
 Input
 Output
+5
+2
+4 1
+5
+0 0 0 0 0
+5
+10 10 10 10 10
 4
-7
-8
-1 2
-1 3
-2 3
-4 5
-6 7
-2 4
-4 6
-2 6
-2
+0 2 -2 6
+10
+10 9 8 7 6 -5 -4 -3 -2 -1
 1
-1 2
-3
+0
+10
+4
 2
-3 2
-3 1
-6
-8
-6 2
-5 4
-3 1
-5 2
-3 6
-2 1
-6 1
-2 3
-3
-1 1 1 2 2 3 3
-2 4 6
-2
-1 2
-1 2
-2
-1 2 1
-3 2
-2
-1 1 1 2 2 1
-2 5
 Explanation:
-Test case 1: Explained in the problem statement.
+Test Case 1: Perform the operation with
+i=1 and
+j=2 four times. The array is now
+[0,1], and its value is
+∣0∣+∣1∣=1.
+Test Case 2: No operations need to be performed.
+Test Case 4: Perform the following operations:
+Choose
+i=4,j=2 and set
+A
+4
+=6−2=4. The array is now
+[0,2,−2,4].
+Choose
+i=4,j=2 and set
+A
+4
+=4−2=2. The array is now
+[0,2,−2,2].
+Choose
+i=2,j=4 and set
+A
+2
+=2−2=0. The array is now
+[0,0,−2,2].
+The value of the array is now
+∣0∣+∣0∣+∣−2∣+∣2∣=4, and it can be proved that this is the minimum possible value.

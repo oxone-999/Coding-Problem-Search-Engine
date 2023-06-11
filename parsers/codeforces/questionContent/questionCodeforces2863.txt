@@ -1,157 +1,80 @@
-F. Number of Components
-time limit per test4 seconds
+B. Longest Palindrome
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a matrix
-n×m
-, initially filled with zeroes. We define
-a
-i,j
-as the element in the
-i
--th row and the
-j
--th column of the matrix.
-Two cells of the matrix are connected if they share a side, and the elements in these cells are equal. Two cells of the matrix belong to the same connected component if there exists a sequence
-s
-1
-,
-s
-2
-, ...,
-s
-k
-such that
-s
-1
-is the first cell,
-s
-k
-is the second cell, and for every
-i∈[1,k−1]
-,
-s
-i
-and
-s
-i+1
-are connected.
-You are given
-q
-queries of the form
-x
-i
-y
-i
-c
-i
-(
-i∈[1,q]
-). For every such query, you have to do the following:
-replace the element
-a
-x,y
-with
-c
-;
-count the number of connected components in the matrix.
-There is one additional constraint: for every
-i∈[1,q−1]
-,
-c
-i
-≤
-c
-i+1
-.
-Input
-The first line contains three integers
+Returning back to problem solving, Gildong is now studying about palindromes. He learned that a palindrome is a string that is the same as its reverse. For example, strings "pop", "noon", "x", and "kkkkkk" are palindromes, while strings "moon", "tv", and "abab" are not. An empty string is also a palindrome.
+Gildong loves this concept so much, so he wants to play with it. He has
 n
-,
+distinct strings of equal length
 m
+. He wants to discard some of the strings (possibly none or all) and reorder the remaining strings so that the concatenation becomes a palindrome. He also wants the palindrome to be as long as possible. Please help him find one.
+Input
+The first line contains two integers
+n
 and
-q
+m
 (
-1≤n,m≤300
+1≤n≤100
 ,
-1≤q≤2⋅
-10
-6
-) — the number of rows, the number of columns and the number of queries, respectively.
-Then
-q
-lines follow, each representing a query. The
-i
--th line contains three integers
-x
-i
-,
-y
-i
-and
-c
-i
-(
-1≤
-x
-i
-≤n
-,
-1≤
-y
-i
-≤m
-,
-1≤
-c
-i
-≤max(1000,⌈
-2⋅
-10
-6
-nm
-⌉)
-). For every
-i∈[1,q−1]
-,
-c
-i
-≤
-c
-i+1
-.
+1≤m≤50
+) — the number of strings and the length of each string.
+Next
+n
+lines contain a string of length
+m
+each, consisting of lowercase Latin letters only. All strings are distinct.
 Output
-Print
-q
-integers, the
-i
--th of them should be equal to the number of components in the matrix after the first
-i
-queries are performed.
-Example
+In the first line, print the length of the longest palindrome string you made.
+In the second line, print that palindrome. If there are multiple answers, print any one of them. If the palindrome is empty, print an empty line or don't print this line at all.
+Examples
 input
 Copy
-3 2 10
-2 1 1
-1 2 1
-2 2 1
-1 1 2
-3 1 2
-1 2 2
-2 2 2
-2 1 2
-3 2 4
-2 1 5
+3 3
+tab
+one
+bat
 output
 Copy
-2
-4
-3
-3
-4
-4
-4
-2
-2
-4
+6
+tabbat
+input
+Copy
+4 2
+oo
+ox
+xo
+xx
+output
+Copy
+6
+oxxxxo
+input
+Copy
+3 5
+hello
+codef
+orces
+output
+Copy
+0
+input
+Copy
+9 4
+abab
+baba
+abcd
+bcde
+cdef
+defg
+wxyz
+zyxw
+ijji
+output
+Copy
+20
+ababwxyzijjizyxwbaba
+Note
+In the first example, "battab" is also a valid answer.
+In the second example, there can be 4 different valid answers including the sample output. We are not going to provide any hints for what the others are.
+In the third example, the empty string is the only valid palindrome string.

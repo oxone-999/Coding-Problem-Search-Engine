@@ -1,114 +1,88 @@
-C. Coin Rows
+F. Good Graph
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alice and Bob are playing a game on a matrix, consisting of
-2
-rows and
-m
-columns. The cell in the
-i
--th row in the
-j
--th column contains
-a
-i,j
-coins in it.
-Initially, both Alice and Bob are standing in a cell
-(1,1)
-. They are going to perform a sequence of moves to reach a cell
-(2,m)
-.
-The possible moves are:
-Move right — from some cell
-(x,y)
-to
-(x,y+1)
-;
-Move down — from some cell
-(x,y)
-to
-(x+1,y)
-.
-First, Alice makes all her moves until she reaches
-(2,m)
-. She collects the coins in all cells she visit (including the starting cell).
-When Alice finishes, Bob starts his journey. He also performs the moves to reach
-(2,m)
-and collects the coins in all cells that he visited, but Alice didn't.
-The score of the game is the total number of coins Bob collects.
-Alice wants to minimize the score. Bob wants to maximize the score. What will the score of the game be if both players play optimally?
+You have an undirected graph consisting of
+n
+vertices with weighted edges.
+A simple cycle is a cycle of the graph without repeated vertices. Let the weight of the cycle be the XOR of weights of edges it consists of.
+Let's say the graph is good if all its simple cycles have weight
+1
+. A graph is bad if it's not good.
+Initially, the graph is empty. Then
+q
+queries follow. Each query has the next type:
+u
+v
+x
+ — add edge between vertices
+u
+and
+v
+of weight
+x
+if it doesn't make the graph bad.
+For each query print, was the edge added or not.
 Input
-The first line contains a single integer
-t
+The first line contains two integers
+n
+and
+q
 (
-1≤t≤
-10
-4
-) — the number of testcases.
-Then the descriptions of
-t
-testcases follow.
-The first line of the testcase contains a single integer
-m
-(
-1≤m≤
+3≤n≤3⋅
 10
 5
-) — the number of columns of the matrix.
-The
-i
--th of the next
-2
-lines contain
-m
-integers
-a
-i,1
+;
+1≤q≤5⋅
+10
+5
+) — the number of vertices and queries.
+Next
+q
+lines contain queries — one per line. Each query contains three integers
+u
 ,
-a
-i,2
-,…,
-a
-i,m
+v
+and
+x
 (
-1≤
-a
-i,j
-≤
-10
-4
-) — the number of coins in the cell in the
-i
--th row in the
-j
--th column of the matrix.
-The sum of
-m
-over all testcases doesn't exceed
-10
-5
-.
+1≤u,v≤n
+;
+u≠v
+;
+0≤x≤1
+) — the vertices of the edge and its weight.
+It's guaranteed that there are no multiple edges in the input.
 Output
-For each testcase print a single integer — the score of the game if both players play optimally.
+For each query, print YES if the edge was added to the graph, or NO otherwise (both case-insensitive).
 Example
 input
 Copy
-3
-3
-1 3 7
-3 5 1
-3
-1 3 9
-3 5 1
-1
-4
-7
+9 12
+6 1 0
+1 3 1
+3 6 0
+6 2 0
+6 4 1
+3 4 1
+2 4 0
+2 5 0
+4 5 0
+7 8 1
+8 9 1
+9 7 0
 output
 Copy
-7
-8
-0
-Note
-The paths for the testcases are shown on the following pictures. Alice's path is depicted in red and Bob's path is depicted in blue.
+YES
+YES
+YES
+YES
+YES
+NO
+YES
+YES
+NO
+YES
+YES
+NO

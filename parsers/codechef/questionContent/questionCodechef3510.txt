@@ -1,37 +1,106 @@
-Polygon & Circles
+MEX Permutation Difference
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef recently fell in love with geometry problems. Today, his friend John asks him to help. John is a student of Kiev National University and he is currently studying a beautiful subject called "Analytic Geometry". This subject is well known for its hard problems. John asked the following question to Chef, but Chef could not solve it and asked your help in solving this.
-You are given a convex polygon and M circles in 2-D plane. Find out the area of the parts of polygon which are covered by some circle. In other words, you have to output area of parts which lie in the polygon and in at least one of the circles.
-Input
-There is only one test case per test file.
-The first line of test case contains a single integer M denoting number of circles.
-Each of the next M lines contains three integers x, y, r, where (x, y) denotes the x and y coordinates respectively of the center of the circle and r denotes the radius of each circle.
-Next line contains an integer N denoting number of vertices in given polygon.
-Each of the next N lines contains two integer x, y denoting the coordinate of a vertex of polygon.
-Output
-Output a single line denoting the answer of the problem. Your answer will be considered correct if it has an absolute error less than 10-2.
-Constraints
-1 ≤ N ≤ 50
--10^4 ≤ x[i],y[i] ≤ 10^4
-(coordinates of polygon)
-1 ≤ M ≤ 50
--10^4 ≤ x, y ≤ 10^4
-0 < r ≤ 10^4
-Subtasks
-Subtask #1 [30 points]: 1 ≤ N, M ≤ 5
-Subtask #2 [70 points]: 1 ≤ N, M ≤ 50
-Example
-Input:
+For a set
+S of non-negative integers,
+MEX(S) is defined as the smallest non-negative integer which does not appear in
+S.
+For a given permutation
+{P
+0
+,P
+1
+,P
 2
-0 0 11
-10 10 1
+,…,P
+N
+} of integers
+0 to
+N, we define the beauty of the permutation as
+∣A−B∣, where:
+A=∑
+i=0
+N
+MEX({P
+0
+,P
+1
+,P
+2
+,…,P
+i
+})
+B=∑
+i=0
+N
+MEX({P
+N
+,P
+N−1
+,…,P
+N−i
+})
+Find any permutation
+P with beauty
+K, or determine whether no such permutation exists.
+Input Format
+The first line contains a single integer
+T, the number of test cases.
+The only line of each test case contains two integers
+N and
+K, where
+(N+1) is the length of the permutation and
+K is the desired beauty of the permutation.
+Output Format
+For each test case, if there is no permutation of integers from
+0 to
+N with beauty
+K, output
+−1.
+Otherwise, output
+N+1 space-separated integers
+P
+0
+,P
+1
+,…,P
+N
+(0≤P
+i
+≤N), the needed permutation.
+Constraints
+1≤T≤10
 4
-0 0
-50 50
-100 50
-100 0
-Output:
-49.087385212341
-Explanation
-Example case 1. Two circles that are not intersecting each other.
+1≤N≤2⋅10
+5
+0≤K≤10
+18
+The sum of
+N over all test cases won't exceed
+2⋅10
+5
+.
+Sample 1:
+Input
+Output
+3
+3 4
+2 2
+4 100000
+0 3 1 2
+1 2 0
+-1
+Explanation:
+Test case
+1: A valid permutation is
+P={0,3,1,2}. Here,
+A=1+1+2+4=8, and
+B=0+0+0+4=4, so
+∣A−B∣=4.
+Test case
+2: A valid permutation is
+P={1,2,0}. Here,
+A=0+0+3=3, and
+B=1+1+3=5, so
+∣A−B∣=2.
+Test case
+3: There exists no valid permutation.

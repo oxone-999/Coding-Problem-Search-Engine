@@ -1,21 +1,113 @@
-Short II
+Max BIT Sum
 Problem
-Given a prime number p, find the number of pairs of integers (a, b) such that p < a, p < b and ab is divisible by (a-p)(b-p).
+Given two arrays
+A and
+B each of length
+N.
+Find the value
+∑
+i=1
+N
+∑
+j=1
+N
+max(A
+i
+⊕B
+j
+,A
+i
+&B
+j
+).
+Here
+⊕ and
+& denote the bitwise XOR operation and bitwise AND operation respectively.
+Input Format
+The first line of input contains a single integer
+T - the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains an integer
+N - the length of arrays
+A and
+B.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+representing the array
+A.
+The third line of each test case contains
+N space-separated integers
+B
+1
+,B
+2
+,…,B
+N
+representing the array
+B.
+Output Format
+For each test case, output the value
+∑
+i=1
+N
+∑
+j=1
+N
+max(A
+i
+⊕B
+j
+,A
+i
+&B
+j
+).
+Constraints
+1≤T≤10
+5
+1≤N≤10
+5
+0≤A
+i
+,B
+i
+<2
+20
+Sum of
+N does not exceed
+2⋅10
+5
+over all test cases.
+Sample 1:
 Input
-The first line contains the number of test cases t (1 ≤ t ≤ 5). Then t test cases follow, each test case consists of a line containing one prime integer p (1 < p < 1012).
 Output
-For each test case output one line containing the required number. It's guaranteed that this number won't exceed 263-1.
-Example
-Input:
 3
 2
-23
-59
-
-Output:
-14
-80
-116
-
+3 4
+1 2
+1
+0
+0
+3
+2 4 3
+1 2 1
+15
+0
+30
 Explanation:
-In the first test case the sought pairs are (3,3), (3,4), (3,5), (3,8), (4,3), (4,4), (4,6), (5,3), (5,12), (6,4), (6,8), (8,3), (8,6) and (12,5).
+Test Case
+1: For the given arrays, the value is:
+max(3⊕1,3&1)+max(3⊕2,3&2)+max(4⊕1,4&1)+max(4⊕2,4&2)=2+2+5+6=15.
+Test Case
+2: For the given arrays, the value is:
+max(0⊕0,0&0)=0.
+Test Case
+3: For the given arrays, the value is:
+max(2⊕1,2&1)+max(2⊕2,2&2)+max(2⊕1,2&1)+max(4⊕1,4&1)+max(4⊕2,4&2)+max(4⊕1,4&1)+max(3⊕1,3&1)+max(3⊕2,3&2)+max(3⊕1,3&1)
+=3+2+3+5+6+5+2+2+2=30.

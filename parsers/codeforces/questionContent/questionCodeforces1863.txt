@@ -1,98 +1,105 @@
-F. Diameter Cuts
+A. Going Home
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer
-k
-and an undirected tree, consisting of
-n
-vertices.
-The length of a simple path (a path in which each vertex appears at most once) between some pair of vertices is the number of edges in this path. A diameter of a tree is the maximum length of a simple path between all pairs of vertices of this tree.
-You are about to remove a set of edges from the tree. The tree splits into multiple smaller trees when the edges are removed. The set of edges is valid if all the resulting trees have diameter less than or equal to
-k
+It was the third month of remote learning, Nastya got sick of staying at dormitory, so she decided to return to her hometown. In order to make her trip more entertaining, one of Nastya's friend presented her an integer array
+a
 .
-Two sets of edges are different if there is an edge such that it appears in only one of the sets.
-Count the number of valid sets of edges modulo
-998244353
+Several hours after starting her journey home Nastya remembered about the present. To entertain herself she decided to check, are there four different indices
+x,y,z,w
+such that
+a
+x
++
+a
+y
+=
+a
+z
++
+a
+w
 .
+Her train has already arrived the destination, but she still hasn't found the answer. Can you help her unravel the mystery?
 Input
-The first line contains two integers
+The first line contains the single integer
 n
-and
-k
 (
-2≤n≤5000
+4≤n≤200000
+) — the size of the array.
+The second line contains
+n
+integers
+a
+1
 ,
-0≤k≤n−1
-) — the number of vertices of the tree and the maximum allowed diameter, respectively.
-Each of the next
-n−1
-lines contains a description of an edge: two integers
-v
-and
-u
+a
+2
+,…,
+a
+n
 (
-1≤v,u≤n
-,
-v≠u
+1≤
+a
+i
+≤2.5⋅
+10
+6
 ).
-The given edges form a tree.
 Output
-Print a single integer — the number of valid sets of edges modulo
-998244353
-.
+Print "YES" if there are such four indices, and "NO" otherwise.
+If such indices exist, print these indices
+x
+,
+y
+,
+z
+and
+w
+(
+1≤x,y,z,w≤n
+).
+If there are multiple answers, print any of them.
 Examples
 input
 Copy
-4 3
-1 2
-1 3
-1 4
+6
+2 1 5 2 7 4
 output
 Copy
-8
+YES
+2 3 1 6 
 input
 Copy
-2 0
-1 2
+5
+1 3 1 9 20
 output
 Copy
-1
-input
-Copy
-6 2
-1 6
-2 4
-2 6
-3 6
-5 6
-output
-Copy
-25
-input
-Copy
-6 3
-1 2
-1 5
-2 3
-3 4
-5 6
-output
-Copy
-29
+NO
 Note
-In the first example the diameter of the given tree is already less than or equal to
-k
-. Thus, you can choose any set of edges to remove and the resulting trees will have diameter less than or equal to
-k
-. There are
+In the first example
+a
 2
++
+a
 3
-sets, including the empty one.
-In the second example you have to remove the only edge. Otherwise, the diameter will be
+=1+5=2+4=
+a
 1
-, which is greater than
-0
-.
-Here are the trees for the third and the fourth examples:
++
+a
+6
+. Note that there are other answer, for example, 2 3 4 6.
+In the second example, we can't choose four indices. The answer 1 2 2 3 is wrong, because indices should be different, despite that
+a
+1
++
+a
+2
+=1+3=3+1=
+a
+2
++
+a
+3

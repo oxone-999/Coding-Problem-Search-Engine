@@ -1,183 +1,411 @@
-E. Add Modulo 10
-time limit per test2 seconds
+G. Path Prefixes
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array of
+You are given a rooted tree. It contains
 n
-integers
-a
+vertices, which are numbered from
 1
-,
-a
-2
-,…,
-a
+to
 n
-You can apply the following operation an arbitrary number of times:
-select an index
+. The root is the vertex
+1
+.
+Each edge has two positive integer values. Thus, two positive integers
+a
+j
+and
+b
+j
+are given for each edge.
+Output
+n−1
+numbers
+r
+2
+,
+r
+3
+,…,
+r
+n
+, where
+r
+i
+is defined as follows.
+Consider the path from the root (vertex
+1
+) to
 i
 (
-1≤i≤n
-) and replace the value of the element
+2≤i≤n
+). Let the sum of the costs of
 a
+j
+along this path be
+A
 i
-with the value
-a
+. Then
+r
 i
-+(
-a
+is equal to the length of the maximum prefix of this path such that the sum of
+b
+j
+along this prefix does not exceed
+A
 i
-mod10)
-, where
-a
-i
-mod10
-is the remainder of the integer dividing
-a
-i
-by
-10
 .
-For a single index (value
-i
-), this operation can be applied multiple times. If the operation is applied repeatedly to the same index, then the current value of
+Example for
+n=9
+. The blue color shows the costs of
 a
-i
-is taken into account each time. For example, if
-a
-i
-=47
-then after the first operation we get
-a
-i
-=47+7=54
-, and after the second operation we get
-a
-i
-=54+4=58
+j
+, and the red color shows the costs of
+b
+j
 .
-Check if it is possible to make all array elements equal by applying multiple (possibly zero) operations.
-For example, you have an array
-[6,11]
-.
-Let's apply this operation to the first element of the array. Let's replace
+Consider an example. In this case:
+r
+2
+=0
+, since the path to
+2
+has an amount of
 a
+j
+equal to
+5
+, only the prefix of this path of length
+0
+has a smaller or equal amount of
+b
+j
+;
+r
+3
+=3
+, since the path to
+3
+has an amount of
+a
+j
+equal to
+5+9+5=19
+, the prefix of length
+3
+of this path has a sum of
+b
+j
+equal to
+6+10+1=17
+( the number is
+17≤19
+);
+r
+4
+=1
+, since the path to
+4
+has an amount of
+a
+j
+equal to
+5+9=14
+, the prefix of length
 1
-=6
-with
+of this path has an amount of
+b
+j
+equal to
+6
+(this is the longest suitable prefix, since the prefix of length
+2
+already has an amount of
+b
+j
+equal to
+6+10=16
+, which is more than
+14
+);
+r
+5
+=2
+, since the path to
+5
+has an amount of
 a
+j
+equal to
+5+9+2=16
+, the prefix of length
+2
+of this path has a sum of
+b
+j
+equal to
+6+10=16
+(this is the longest suitable prefix, since the prefix of length
+3
+already has an amount of
+b
+j
+equal to
+6+10+1=17
+, what is more than
+16
+);
+r
+6
+=1
+, since the path up to
+6
+has an amount of
+a
+j
+equal to
+2
+, the prefix of length
 1
-+(
-a
+of this path has an amount of
+b
+j
+equal to
 1
-mod10)=6+(6mod10)=6+6=12
-. We get the array
-[12,11]
+;
+r
+7
+=1
+, since the path to
+7
+has an amount of
+a
+j
+equal to
+5+3=8
+, the prefix of length
+1
+of this path has an amount of
+b
+j
+equal to
+6
+(this is the longest suitable prefix, since the prefix of length
+2
+already has an amount of
+b
+j
+equal to
+6+3=9
+, which is more than
+8
+);
+r
+8
+=2
+, since the path up to
+8
+has an amount of
+a
+j
+equal to
+2+4=6
+, the prefix of length
+2
+of this path has an amount of
+b
+j
+equal to
+1+3=4
+;
+r
+9
+=3
+, since the path to
+9
+has an amount of
+a
+j
+equal to
+2+4+1=7
+, the prefix of length
+3
+of this path has a sum of
+b
+j
+equal to
+1+3+3=7
 .
-Then apply this operation to the second element of the array. Let's replace
-a
-2
-=11
-with
-a
-2
-+(
-a
-2
-mod10)=11+(11mod10)=11+1=12
-. We get the array
-[12,12]
-.
-Thus, by applying
-2
-operations, you can make all elements of an array equal.
 Input
-The first line contains one integer
+The first line contains an integer
 t
 (
 1≤t≤
 10
 4
-) — the number of test cases. What follows is a description of each test case.
-The first line of each test case contains one integer
+) — the number of test cases in the test.
+The descriptions of test cases follow.
+Each description begins with a line that contains an integer
 n
 (
-1≤n≤2⋅
+2≤n≤2⋅
 10
 5
-) — the size of the array.
-The second line of each test case contains
-n
-integers
+) — the number of vertices in the tree.
+This is followed by
+n−1
+string, each of which contains three numbers
+p
+j
+,
 a
-i
+j
+,
+b
+j
 (
-0≤
+1≤
+p
+j
+≤n
+;
+1≤
 a
-i
+j
+,
+b
+j
 ≤
 10
 9
-) — array elements.
+) — the ancestor of the vertex
+j
+, the first and second values an edge that leads from
+p
+j
+to
+j
+. The value of
+j
+runs through all values from
+2
+to
+n
+inclusive. It is guaranteed that each set of input data has a correct hanged tree with a root at the vertex
+1
+.
 It is guaranteed that the sum of
 n
-over all test cases does not exceed
+over all input test cases does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case print:
-YES if it is possible to make all array elements equal;
-NO otherwise.
-You can print YES and NO in any case (for example, the strings yEs, yes, Yes and YES will be recognized as a positive answer) .
+For each test case, output
+n−1
+integer in one line:
+r
+2
+,
+r
+3
+,…,
+r
+n
+.
 Example
 input
 Copy
-10
-2
-6 11
-3
-2 18 22
-5
-5 10 5 10 5
 4
-1 2 4 8
-2
-4 5
-3
-93 96 102
-2
-40 6
-2
-50 30
-2
-22 44
-2
-1 5
+9
+1 5 6
+4 5 1
+2 9 10
+4 2 1
+1 2 1
+2 3 3
+6 4 3
+8 1 3
+4
+1 1 100
+2 1 1
+3 101 1
+4
+1 100 1
+2 1 1
+3 1 101
+10
+1 1 4
+2 3 5
+2 5 1
+3 4 3
+3 1 5
+5 3 5
+5 2 1
+1 3 2
+6 2 1
 output
 Copy
-Yes
-No
-Yes
-Yes
-No
-Yes
-No
-No
-Yes
-No
+0 3 1 2 1 1 2 3 
+0 0 3 
+1 2 2 
+0 1 2 1 1 2 2 1 1 
 Note
-The first test case is clarified above.
-In the second test case, it is impossible to make all array elements equal.
-In the third test case, you need to apply this operation once to all elements equal to
-5
-.
-In the fourth test case, you need to apply this operation to all elements until they become equal to
-8
-.
-In the fifth test case, it is impossible to make all array elements equal.
-In the sixth test case, you need to apply this operation to all elements until they become equal to
+The first example is clarified in the statement.
+In the second example:
+r
+2
+=0
+, since the path to
+2
+has an amount of
+a
+j
+equal to
+1
+, only the prefix of this path of length
+0
+has a smaller or equal amount of
+b
+j
+;
+r
+3
+=0
+, since the path to
+3
+has an amount of
+a
+j
+equal to
+1+1=2
+, the prefix of length
+1
+of this path has an amount of
+b
+j
+equal to
+100
+(
+100>2
+);
+r
+4
+=3
+, since the path to
+4
+has an amount of
+a
+j
+equal to
+1+1+101=103
+, the prefix of length
+3
+of this path has an amount of
+b
+j
+equal to
 102
-.
+, .

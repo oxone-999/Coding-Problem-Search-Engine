@@ -1,107 +1,89 @@
-D. Omkar and Circle
-time limit per test2 seconds
+B. 01 Game
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Danny, the local Math Maniac, is fascinated by circles, Omkar's most recent creation. Help him solve this circle problem!
-You are given
-n
-nonnegative integers
-a
+Alica and Bob are playing a game.
+Initially they have a binary string
+s
+consisting of only characters 0 and 1.
+Alice and Bob make alternating moves: Alice makes the first move, Bob makes the second move, Alice makes the third one, and so on. During each move, the current player must choose two different adjacent characters of string
+s
+and delete them. For example, if
+s=1011001
+then the following moves are possible:
+delete
+s
 1
-,
-a
-2
-,…,
-a
-n
-arranged in a circle, where
-n
-must be odd (ie.
-n−1
-is divisible by
-2
-). Formally, for all
-i
-such that
-2≤i≤n
-, the elements
-a
-i−1
 and
-a
-i
-are considered to be adjacent, and
-a
-n
+s
+2
+:
+1011001→11001
+;
+delete
+s
+2
 and
-a
-1
-are also considered to be adjacent. In one operation, you pick a number on the circle, replace it with the sum of the two elements adjacent to it, and then delete the two adjacent elements from the circle. This is repeated until only one number remains in the circle, which we call the circular value.
-Help Danny find the maximum possible circular value after some sequences of operations.
-Input
-The first line contains one odd integer
-n
-(
-1≤n<2⋅
-10
+s
+3
+:
+1011001→11001
+;
+delete
+s
+4
+and
+s
 5
-,
-n
-is odd)  — the initial size of the circle.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤
-10
-9
-)  — the initial numbers in the circle.
-Output
-Output the maximum possible circular value after applying some sequence of operations to the given circle.
-Examples
-input
-Copy
-3
-7 10 2
-output
-Copy
-17
-input
-Copy
-1
-4
-output
-Copy
-4
-Note
-For the first test case, here's how a circular value of
-17
-is obtained:
-Pick the number at index
-3
-. The sum of adjacent elements equals
-17
-. Delete
-7
+:
+1011001→10101
+;
+delete
+s
+6
 and
-10
-from the circle and replace
-2
-with
-17
+s
+7
+:
+1011001→10110
 .
-Note that the answer may not fit in a
-32
--bit integer.
+If a player can't make any move, they lose. Both players play optimally. You have to determine if Alice can win.
+Input
+First line contains one integer
+t
+(
+1≤t≤1000
+) — the number of test cases.
+Only line of each test case contains one string
+s
+(
+1≤|s|≤100
+), consisting of only characters 0 and 1.
+Output
+For each test case print answer in the single line.
+If Alice can win print DA (YES in Russian) in any register. Otherwise print NET (NO in Russian) in any register.
+Example
+input
+Copy
+3
+01
+1111
+0011
+output
+Copy
+DA
+NET
+NET
+Note
+In the first test case after Alice's move string
+s
+become empty and Bob can not make any move.
+In the second test case Alice can not make any move initially.
+In the third test case after Alice's move string
+s
+turn into
+01
+. Then, after Bob's move string
+s
+become empty and Alice can not make any move.

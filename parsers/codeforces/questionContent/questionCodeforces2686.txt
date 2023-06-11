@@ -1,229 +1,140 @@
-D. Multiple Testcases
-time limit per test2 seconds
+A. Candies
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-So you decided to hold a contest on Codeforces. You prepared the problems: statements, solutions, checkers, validators, tests... Suddenly, your coordinator asks you to change all your tests to multiple testcases in the easiest problem!
-Initially, each test in that problem is just an array. The maximum size of an array is
-k
-. For simplicity, the contents of arrays don't matter. You have
+Recently Vova found
 n
-tests — the
-i
--th test is an array of size
-m
-i
-(
-1≤
-m
-i
-≤k
-).
-Your coordinator asks you to distribute all of your arrays into multiple testcases. Each testcase can include multiple arrays. However, each testcase should include no more than
-c
-1
-arrays of size greater than or equal to
-1
-(
-≥1
-), no more than
-c
-2
-arrays of size greater than or equal to
-2
-,
+candy wrappers. He remembers that he bought
+x
+candies during the first day,
+2x
+candies during the second day,
+4x
+candies during the third day,
 …
-, no more than
-c
-k
-arrays of size greater than or equal to
-k
-. Also,
-c
-1
-≥
-c
+,
 2
-≥⋯≥
-c
+k−1
+x
+candies during the
 k
+-th day. But there is an issue: Vova remembers neither
+x
+nor
+k
+but he is sure that
+x
+and
+k
+are positive integers and
+k>1
 .
-So now your goal is to create the new testcases in such a way that:
-each of the initial arrays appears in exactly one testcase;
-for each testcase the given conditions hold;
-the number of testcases is minimum possible.
-Print the minimum possible number of testcases you can achieve and the sizes of arrays included in each testcase.
+Vova will be satisfied if you tell him any positive integer
+x
+so there is an integer
+k>1
+that
+x+2x+4x+⋯+
+2
+k−1
+x=n
+. It is guaranteed that at least one solution exists. Note that
+k>1
+.
+You have to answer
+t
+independent test cases.
 Input
-The first line contains two integers
-n
-and
-k
+The first line of the input contains one integer
+t
 (
-1≤n,k≤2⋅
+1≤t≤
 10
-5
-) — the number of initial tests and the limit for the size of each array.
-The second line contains
-n
-integers
-m
-1
-,
-m
-2
-,…,
-m
-n
-(
-1≤
-m
-i
-≤k
-) — the sizes of the arrays in the original tests.
-The third line contains
-k
-integers
-c
-1
-,
-c
-2
-,…,
-c
-k
-(
-n≥
-c
-1
-≥
-c
-2
-≥⋯≥
-c
-k
-≥1
-);
-c
-i
-is the maximum number of arrays of size greater than or equal to
-i
-you can have in a single testcase.
-Output
-In the first line print a single integer
-ans
-(
-1≤ans≤n
-) — the minimum number of testcases you can achieve.
-Each of the next
-ans
-lines should contain the description of a testcase in the following format:
-t
-a
-1
-a
-2
-…
-a
-t
-(
-1≤t≤n
-) — the testcase includes
-t
-arrays,
-a
-i
-is the size of the
-i
--th array in that testcase.
-Each of the initial arrays should appear in exactly one testcase. In particular, it implies that the sum of
-t
-over all
-ans
-testcases should be equal to
-n
-.
-Note that the answer always exists due to
-c
-k
-≥1
-(and therefore
-c
-1
-≥1
-).
-If there are multiple answers, you can output any one of them.
-Examples
-input
-Copy
-4 3
-1 2 2 3
-4 1 1
-output
-Copy
-3
-1 2
-2 1 3
-1 2
-input
-Copy
-6 10
-5 8 1 10 8 7
-6 6 4 4 3 2 2 2 1 1
-output
-Copy
-2
-3 8 5 7
-3 10 8 1
-input
-Copy
-5 1
-1 1 1 1 1
-5
-output
-Copy
-1
-5 1 1 1 1 1
-input
-Copy
-5 1
-1 1 1 1 1
-1
-output
-Copy
-5
-1 1
-1 1
-1 1
-1 1
-1 1
-Note
-In the first example there is no way to distribute the tests into less than
-3
-testcases. The given answer satisfies the conditions: each of the testcases includes no more than
 4
-arrays of size greater than or equal to
-1
-and no more than
-1
-array of sizes greater than or equal to
+) — the number of test cases. Then
+t
+test cases follow.
+The only line of the test case contains one integer
+n
+(
+3≤n≤
+10
+9
+) — the number of candy wrappers Vova found. It is guaranteed that there is some positive integer
+x
+and integer
+k>1
+that
+x+2x+4x+⋯+
 2
-and
-3
+k−1
+x=n
 .
-Note that there are multiple valid answers for this test. For example, testcases with sizes
-[[2],[1,2],[3]]
-would also be correct.
-However, testcases with sizes
-[[1,2],[2,3]]
-would be incorrect because there are
+Output
+Print one integer — any positive integer value of
+x
+so there is an integer
+k>1
+that
+x+2x+4x+⋯+
 2
-arrays of size greater than or equal to
+k−1
+x=n
+.
+Example
+input
+Copy
+7
+3
+6
+7
+21
+28
+999999999
+999999984
+output
+Copy
+1
 2
-in the second testcase.
-Note the difference between the third and the fourth examples. You can include up to
-5
-arrays of size greater than or equal to
 1
-in the third example, so you can put all arrays into a single testcase. And you can have only up to
-1
-array in the fourth example. Thus, every array should be included in a separate testcase.
+7
+4
+333333333
+333333328
+Note
+In the first test case of the example, one of the possible answers is
+x=1,k=2
+. Then
+1⋅1+2⋅1
+equals
+n=3
+.
+In the second test case of the example, one of the possible answers is
+x=2,k=2
+. Then
+1⋅2+2⋅2
+equals
+n=6
+.
+In the third test case of the example, one of the possible answers is
+x=1,k=3
+. Then
+1⋅1+2⋅1+4⋅1
+equals
+n=7
+.
+In the fourth test case of the example, one of the possible answers is
+x=7,k=2
+. Then
+1⋅7+2⋅7
+equals
+n=21
+.
+In the fifth test case of the example, one of the possible answers is
+x=4,k=3
+. Then
+1⋅4+2⋅4+4⋅4
+equals
+n=28
+.

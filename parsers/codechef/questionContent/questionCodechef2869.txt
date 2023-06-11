@@ -1,58 +1,32 @@
-Graph Construction
+Lucy and Palindromes
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-You are given integers
-N and
-K. Construct a connected undirected unweighted graph with
-N nodes (numbered
-1 through
-N) such that there are exactly
-K unordered pairs of nodes which have distance equal to the diameter of the graph (the largest distance between two nodes), or determine that no such graph exists.
+Read problems statements in Russian here
+Lucy had recently learnt about palindromes. As you may probably know, palindrome is a string that reads the same way in the both directions, that is left-to-right or right-to-left. For example, strings "radar" and "level" are palindromes, at the same time, strings "hello" and "world" are not.
+There is a string of N latin letters. Lucy asks you to answer the following queries:
+1 L R - reverse the substring from the L-th to the R-th character (1-indexed), inclusive.
+2 L R - calculate the number of distinct palindromes that can be obtained by permutting characters from the L-th to the R-th in the arbitrary order (ignoring all other characters of the string).
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains two space-separated integers
-N and
-K.
+The first line of input consists of two space separated integers N and M - the length of the string and the number of queries. The second line consists of N characters from the set {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'}, describing the string. Then, M queries follow. Each query is given in one of the following forms:
+1 L R - reverse the substring from the L-th to the R-th character.
+2 L R - calculate the number of distinct palindromes that can be obtained by permutting characters from the L-th to the R-th in the arbitrary order, modulo 109+7 (ignoring all other characters).
 Output
-For each test case:
-If no valid graph exists, print a single line containing the integer
-−1.
-Otherwise, first, print a line containing a single integer
-M — the number of edges in your graph.
-Then, print
-M lines. Each of these lines must contain two space-separated integers
-u and
-v (
-1≤u,v≤N;
-u
-
-=v) denoting the endpoints of one edge. All edges must be different, i.e. parallel edges are not allowed.
-Constraints
-1≤T≤100
-2≤N≤100
-1≤K≤
-2
-N(N−1)
-Example Input
+For every query of the type 2 output the answer on the separate line.
+Example
+Input:
+7 4
+abacaba
+2 1 7
+2 2 3
+1 1 2
+2 2 3
+Output:
+3
+0
 1
-6 4
-Example Output
-7
-1 2
-2 3
-3 1
-3 4
-4 5
-5 6
-6 4
-Explanation
-Example case 1: The diameter of the graph is
-3. There are exactly
-4 unordered pairs of nodes at distance
-3:
-(1,5),
-(1,6),
-(2,5) and
-(2,6).
+Scoring
+In all the subtasks, 1 <= L <= R <= N.
+Subtask 1 (33 points): 1 <= N <= 10, 1 <= M <= 1000
+Subtask 2 (17 points): 1 <= N <= 1000, 1 <= M <= 1000
+Subtask 3 (23 points): 1 <= N <= 4*104, 1 <= M <= 4*104
+Subtask 4 (27 points): 1 <= N <= 105, 1 <= M <= 105
+Time limit for subtasks 1 and 2 is 1 sec, and for the subtasks 3 and 4 it's equal to 2 sec.

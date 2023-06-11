@@ -1,168 +1,121 @@
-Count Number of Sequences
+K-th Element on Grid
 Problem
-Define
-f(x) to be the largest divisor of
-x which is not equal to
-x; in the case of
-x=1, we define
-f(1)=1 as an exception.
-You are given a tree containing
-N nodes numbered from
-1 to
-N, where each node
-i has a value
-V
-i
-assigned to it. Define
-g(X,R) with
-1≤X,R≤N as the number of arrays of nodes
-A that satisfy the following conditions:
-1≤A
-i
-≤N (i.e.
+Read problem statements in Mandarin, Russian, and Vietnamese as well.
+Given is a
+N×N grid
 A
-i
-represents a node on the tree).
-A
-1
-=X.
-A
-i
-
-=A
-j
-for all
-1≤i<j≤∣A∣.
-The distance between node
-A
-i
-and
-A
-1
-is no more than
-R for all
-1<i≤∣A∣. The distance between two nodes
-A
-i
-and
-A
-1
-on a tree is defined as the number of edges on the simple path from
-A
-i
-to
-A
-1
-.
-V
-A
-i
-=f(V
-A
-i−1
-) or
-V
-A
-i
-=V
-A
-i−1
-for all
-1<i≤∣A∣.
-Two arrays are considered the same if both have the same length and same element at each position.
-You are given
-Q queries, each of which contains two integers
-X and
-R, and for each of which you need to find the value
-g(X,R). As this number can be very large, output it under modulo
-10
-9
-+7.
-Input Format
-The first line of the input contains an integer
-N - the number of nodes in the tree.
-The next line contains
-N space-separated integers
-V
-1
-,V
-2
-,…,V
+rc
+which is a permutation of numbers from 1 to
 N
-- the values of the nodes.
-Each of
-N−1 lines contains two space-separated integers
-u and
-v denoting an edge between node
-u and
-v on the tree.
-The next line contains an integer
-Q - the number of queries.
-Each of the next
-Q lines contains two space-separated integer
-X and
-R - the initial node and the specified distance of that query.
+2
+. You have to process
+Q queries, in each query you are asked to find the value of
+k-th minimum in the subgrid with corners
+(r
+1
+,c
+1
+) and
+(r
+2
+,c
+2
+).
+Input Format
+The input consists of seven integers N Q seed minR maxR minC maxC.
+The actual input to the problem will be generated using the following code (C++, use it as a reference to implement the same generator in your programming language, uint64_t is an unsigned 64-bit integer type):
+uint64_t state;
+uint64_t nextRand() { // https://en.wikipedia.org/wiki/Xorshift
+    state ^= state << 13;
+    state ^= state >> 7;
+    state ^= state << 17;
+    return state >> 10;
+}
+int nextBounded(int B) {
+    return nextRand() % B;
+}
+
+int N, Q, minR, maxR, minC, maxC;
+
+void genGrid() {
+    vector<int> p(N * N);
+    for (int i = 0; i < N * N; i++)
+        p[i] = i + 1;
+    // https://en.wikipedia.org/wiki/Fisher-Yates_shuffle
+    for (int i = 0; i < N * N; i++)
+        swap(p[i], p[nextBounded(i + 1)]);
+    // A_{rc} is p[(r - 1) * N + (c - 1)]
+}
+
+void genQuery() {
+    int lenR = minR + nextBounded(maxR - minR + 1);
+    int lenC = minC + nextBounded(maxC - minC + 1);
+    int r1 = 1 + nextBounded(N - lenR + 1);
+    int c1 = 1 + nextBounded(N - lenC + 1);
+    int r2 = r1 + lenR - 1;
+    int c2 = c1 + lenC - 1;
+    int k = 1 + nextBounded(lenR * lenC);
+    // (r1 c1 r2 c2 k) is the query described in the statement
+}
+
+int main() {
+    cin >> N >> Q >> state >> minR >> maxR >> minC >> maxC;
+    genGrid();
+    for (int i = 0; i < Q; i++) {
+        genQuery();
+    }
+}
 Output Format
-For each query, output on a single line
-g(X,R)mod10
-9
-+7.
+Print
+Q integers - answers to queries in the order they are generated.
 Constraints
-1≤N≤10
-5
-1≤V
-i
-≤10
-5
-1≤u,v≤N
-u
-
-=v
-1≤Q≤10
-4
-1≤X,R≤N
+1≤N≤5000
+1≤Q≤5000
+1≤seed≤10
+18
+1≤minR≤maxR≤N
+1≤minC≤maxC≤N
+Important note about generator input and constraints for subtasks:
+None of the intended solutions for any subtasks uses input format (pseudorandomness) to get better complexity. They can have slightly (less than an order of magnitude) better constant factor due to the input format, and TL/limitations are set based on the runtime of our solutions on the generated tests.
+ML on CodeChef is 1.5 GB. TL in this problem is 8 seconds. For any of the first 4 subtasks and any solution that is intended to pass it, the following holds:
+There exists an implementation of this solution in C++ that uses less than 1 GB of memory and less than 5 seconds per test on those subtasks.
+The last two subtasks are added for fun of top contestants :)
+To get your verdict faster and not kill our servers it is highly recommended not to execute your program on tests from subtasks you are not even dreaming to pass. If you are just trying to get those juicy 20 extra points from subtask 3, please put assert(N &lt;= 2500) after reading input.
+Subtasks
+Subtask 1 (5 points):
+N≤500,
+Q≤5000
+Subtask 2 (30 points):
+N≤1500,
+Q≤5000
+Subtask 3 (20 points):
+N≤2500,
+Q≤4000
+Subtask 4 (40 points):
+N≤4000,
+Q≤4000
+Subtask 5 (3 points):
+N≤4500,
+Q≤4500
+Subtask 6 (2 points): Original constraints
 Sample 1:
 Input
 Output
-8
-4 6 8 2 3 3 2 2
-1 2
-2 3
-3 4
-3 5
-5 7
-2 6
-1 8
-10
-3 1
-3 2
-3 3
-3 4
-3 5
-2 1
-2 2
-2 3
-4 1
-4 3
+4 5 42 1 4 2 3
+11
 1
-6
-17
-17
-17
-2
 5
-5
-1
-2
+7
+14
 Explanation:
-Query
-1: The only possible array is
-[3].
-Query
-2: The possible arrays are:
-[3]
-[3,1]
-[3,1,4]
-[3,1,7]
-[3,1,4,7]
-[3,1,7,4]
+The actual sample input would look like this:
+4 5
+8 10 2 5
+7 16 14 13
+4 15 1 11
+3 6 9 12
+1 2 3 4 5
+2 1 4 3 1
+1 3 1 4 2
+2 1 2 2 1
+1 2 4 3 6

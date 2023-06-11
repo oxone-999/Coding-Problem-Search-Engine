@@ -1,117 +1,132 @@
-English
+Wildcard Replacement
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef is learning English. So far, he knows
-N words, and he wants to write a verse.
-Let's call a pair of English words a stanza. A verse is a list of stanzas. The prefixal rhyme of a stanza is the longest common prefix of the words in it. Similarly, the suffixal rhyme of a stanza is the longest common suffix of the words in it. The beauty of a stanza whose prefixal and suffixal rhymes have lengths
-l
-p
-and
-l
-s
-respectively is
-min(l
-p
-,l
-s
-)
-2
-.
-For example, a stanza formed by the words "abcdefghijkl" and "abcxyzhijkl" has a prefixal rhyme "abc" (with length
-3), suffixal rhyme "hijkl" (with length
-5) and beauty
-min(3,5)
-2
-=3
-2
-=9.
-The beauty of a verse is the sum of beauties of all its stanzas. For example, the beauty of the verse (("abcdefghijkl", "abcxyzhijkl"), ("world", "word"), ("code", "chef")) is
-9+1+0=10.
-You are given
-N words
-W
-1
-,W
-2
-,…,W
-N
-(they are not necessarily distinct). Help Chef write the most beautiful verse. It is not necessary to use all the words, but each word may be used at most once in the whole verse (more precisely, each element of the sequence
-W may be used only once, but if some word appears
-k times in
-W, we can use it up to
-k times).
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-N lines follow. For each
-i (
-1≤i≤N), the
-i-th of these lines contains a single string
-W
-i
-.
-Output
-For each test case, print a single line containing one integer ― the greatest possible beauty of Chef's verse.
+Read problem statements in Bengali, Russian, Mandarin and Vietnamese as well.
+A string
+S whose characters are one of the following 5:
+(,
+),
++,
+− and
+?, is said to be a valid string if one of the following conditions holds:
+S= ?
+S=(x+y), where
+x and
+y are valid strings.
+S=(x−y), where
+x and
+y are valid strings.
+For example, strings
+?,
+(?−?),
+(?+(?−?)) are valid strings, while strings
+(?−+),
+??,
+(?),
+?−?,
+(?+?)) are not.
+The power of a valid string
+S is defined to be the maximum value attainable by replacing each
+? in it by either
+0 or
+1 and evaluating the resulting expression.
+For example, the power of
+(?−?) is
+1 because we can obtain
+(1−0) which evaluates to
+1.
+You are given a valid string
+S, and
+Q queries on it. Each query is represented by two integers
+L and
+R (
+L≤R). Your task is to find the power of the substring
+S
+L
+,S
+L+1
+,…,S
+R
+. It is guaranteed that this substring is a valid string.
+Note: The input of this problem is large, so use fast input/output methods.
+Input Format
+The first line of input contains an integer
+T, denoting the number of test cases. The description of
+T test cases follows:
+The first line of each test case contains the string
+S.
+The next line contains an integer
+Q, representing the number of queries to answer.
+Each of the following
+Q lines contains two space-separated integers,
+L and
+R, representing the query.
+Output Format
+For each test case, print one line containing
+Q space-separated integers, the
+i-th of which represents the answer to the
+i-th query.
 Constraints
-1≤T≤10
-5
-1≤N≤10
-5
-1≤∣W
-i
-∣≤10
-5
-for each valid
-i
-all words contain only lowercase English letters
-the sum of
-∣W
-1
-∣+∣W
-2
-∣+…+∣W
-N
-∣ over all test cases does not exceed
+1≤T≤1000
+1≤∣S∣≤10
+6
+1≤Q≤10
+6
+1≤L≤R≤∣S∣
+∑∣S∣ and
+∑Q over all test cases does not exceed
 10
-5
+6
+.
 Subtasks
-Subtask #1 (50 points): all words are palindromes
-Subtask #2 (50 points): original constraints
+Subtask #1 (20 points):
+1≤∣S∣≤1000
+1≤Q≤1000
+∑∣S∣ and
+∑Q over all test case does not exceed
+10
+4
+.
+Subtask #2 (80 points):
+Original constraints
 Sample 1:
 Input
 Output
 3
-6
-abcdefghijkl
-chef
-world
-code
-abcxyzhijkl
-word
-4
-problem
-poem
-problem
-problem
-3
-contest
-coolest
-unused
-10
-50
-4
+(?+?)
+2
+2 2
+1 5
+(?-(?-?))
+2
+1 9
+4 8
+(?-(?+?))
+1
+1 9
+1 2
+2 1
+1
 Explanation:
-Example case 1: The best verse is (("abcdefghijkl", "abcxyzhijkl"), ("world", "word"), ("code", "chef")), which was described above.
-Example case 2: The best verse is (("problem", "problem"), ("problem", "poem")). Its beauty is
-7
-2
-+1
-2
-=49+1=50. Note that we have three copies of the word "problem", so we can use it three times.
-Example case 3: The best verse is (("coolest", "contest")), which contains only one stanza. Its beauty is
-2
-2
-=4. Note that it is not necessary to use all the words ? the word "unused" is left unused.
+Test case 1:
+Query 1: Power of the string
+? is
+1, as it can be converted to
+1.
+Query 2: Power of the string
+(?+?) is
+2, as it can be converted to
+(1+1).
+Test case 2:
+Query 1: Power of the string
+(?−(?−?)) is
+2, as it can be converted to
+(1−(0−1)).
+Query 2: Power of the string
+(?−?) is
+1, as it can be converted to
+(1−0).
+Test case 3:
+Query 1: Power of the string
+(?−(?+?)) is
+1, as it can be converted to
+(1−(0+0)).

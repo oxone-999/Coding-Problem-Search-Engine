@@ -1,29 +1,72 @@
-Bytelandian gold coins
+Tekken
 Problem
-In Byteland they have a very strange monetary system.
-Each Bytelandian gold coin has an integer number written on it. A coin n can be exchanged in a bank into three coins: n/2, n/3 and n/4. But these numbers are all rounded down (the banks have to make a profit).
-You can also sell Bytelandian coins for American dollars. The exchange rate is 1:1. But you can not buy Bytelandian coins.
-You have one gold coin. What is the maximum amount of American dollars you can get for it?
+The ultimate battle has begun in Tekken.
+Each fight has two players. Let the initial health of the players be
+X and
+Y, then, after the fight, the health of both the players reduces by
+min(X, Y).
+Anna, Bob, and Claudio have initial health levels of
+A,B, and
+C respectively. Each pair of players fight exactly once.
+Considering that you can schedule the fight between each pair in any order, find whether Anna can have a positive health level at the end of the battle.
 Input Format
-The input will contain several test cases (not more than 10).
-Each testcase is a single line with a number n, it is the number written on your coin.
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first and only line of each test case contains three space-separated integers
+A,B, and
+C — the initial health levels of Anna, Bob, and Claudio respectively.
 Output Format
-For each test case output a single line, containing the maximum amount of American dollars you can make.
+For each test case, output on a new line, YES, if you can schedule the fight between each pair in an order such that Anna can have a positive health at the end of the battle. Otherwise, output NO.
+You can print each character in uppercase or lowercase. For example NO, no, No, and nO are all considered identical.
 Constraints
-0≤n≤10
-9
+1≤T≤1000
+0≤A,B,C≤1000
 Sample 1:
 Input
 Output
-12
-2
-13
-2
+3
+4 2 0
+2 7 4
+5 1 4
+YES
+NO
+YES
 Explanation:
-Test case 1: You can change 12 into 6, 4 and 3, and then change these into
-6+4+3=13.
-Test case 2: If you try changing the coin 2 into 3 smaller coins, you will get 1, 0 and 0, and later you can get no more than
-1 out of them.
-It is better just to change the
-2 coin directly into
-2.
+Test case
+1: Consider the following sequence of fights:
+Fight
+1: Anna and Bob fight. Thus, the health level of both players reduces by
+min(4, 2)=2. The final health levels of Anna and Bob after the fight are
+2 and
+0 respectively.
+Fight
+2: Bob and Claudio fight. Thus, the health level of both players reduces by
+min(0, 0)=0. The final health levels of Bob and Claudio after the fight are
+0 and
+0 respectively.
+Fight
+3: Anna and Claudio fight. Thus, the health level of both players reduces by
+min(2, 0)=0. The final health levels of Anna and Claudio after the fight are
+2 and
+0 respectively.
+Thus, in the above sequence of fights, Anna has a positive health remaining at the end.
+Test case
+2: It can be shown that there exists no sequence of fights such that Anna has a positive health remaining at the end of the battle.
+Test case
+3: Consider the following sequence of fights:
+Fight
+1: Bob and Claudio fight. Thus, the health level of both players reduces by
+min(1, 4)=1. The final health levels of Bob and Claudio after the fight are
+0 and
+3 respectively.
+Fight
+2: Anna and Bob fight. Thus, the health level of both players reduces by
+min(5, 0)=0. The final health levels of Anna and Bob after the fight are
+5 and
+0 respectively.
+Fight
+3: Anna and Claudio fight. Thus, the health level of both players reduces by
+min(5, 3)=3. The final health levels of Anna and Claudio after the fight are
+2 and
+0 respectively.
+Thus, in the above sequence of fights, Anna has a positive health remaining at the end.

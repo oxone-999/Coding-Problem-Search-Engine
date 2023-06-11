@@ -1,38 +1,132 @@
-Chef and Polyhedron
+Crazy Row
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef likes stereometry a lot. Recently he learned about polyhedrons. During his assignments, he found a problem which he couldn't solve. Can you please help him in solving the problem?
-You are given a convex polyhedron. Each face of polyhedron is a regular polygon. All polyhedral angles are equal. You have to find number of different ways to paint all the faces of the polyhedron in one of the C colors. Note that two painting of the polyhedron are said to be same, if one can be reached from other by a sequence of rotations or mirror reflections of the polyhedron. As this value could be large, output it by modulo 109+7.
-Input
-There is a single test case.
-First line of the input contains two positive integers - N (number faces of the polyhedron) and C (number of possible colors)
-Next N lines contain information about the faces of polyhedron:
-First number of each line contains an integer ki denoting number of faces adjacent to i-th face. Next ki integers in the same line denote the faces adjacent to i-th face.
-Output
-Output a single integer in a line denoting number of ways to color polyhedron in different ways modulo 109+7
-Constraints
-4 ≤ N ≤ 25
-1 ≤ C ≤ 109
-Subtasks
-Subtask 1: Polyhedron is regular. Points - 20
-Subtask 2: Original constraints. Points - 80
-Example
-Input:
-6 2
-4 2 3 4 5
-4 1 3 5 6
-4 1 2 4 6
-4 1 3 5 6
-4 1 2 4 6
-4 2 3 4 5
-Output:
-10
-Input:
-4 4
-3 2 3 4
-3 1 3 4
-3 1 2 4
-3 1 2 3
+There are strings of infinite length
+S
+0
+,S
+1
+,S
+2
+,… consisting of zeros and ones.
+The first string has the following form:
+S
+0
+= ...00000001111111... (the leftmost one is located at position
+1, and the rightmost zero is located at position
+0).
+For
+i≥1, the string
+S
+i
+is defined as follows:
+S
+i,j
+=S
+i−1,j−1
+⊕S
+i−1,j
+⊕S
+i−1,j+1
 
-Output:
-35
+where
+⊕ denotes the bitwise XOR operation.
+The first five strings are shown below:
+S
+0
+= ...00000001111111...
+S
+1
+= ...00000010111111...
+S
+2
+= ...00000110011111...
+S
+3
+= ...00001001101111...
+S
+4
+= ...00011110000111...
+You are given
+N queries of the form
+L,R,K. For each query, find the value of
+i=L
+∑
+R
+S
+K,i
+.
+In other words, find the number of ones in the substring
+[L,R] of string
+S
+K
+.
+Input Format
+The first line contains a single integer
+N — the number of queries.
+Each of the next
+N lines contain three space-separated integers
+L,
+R, and
+K — the parameters of the query.
+Output Format
+For each query, print in a separate line, one integer — the desired value.
+Constraints
+1≤N≤10
+5
+,
+−10
+18
+≤L≤R≤10
+18
+,
+0≤K≤10
+18
+,
+The sum of the values
+(R−L+1) for all queries does not exceed
+10
+7
+.
+Sample 1:
+Input
+Output
+2
+0 2 0
+0 2 2
+2
+1
+Explanation:
+Query
+1:
+S
+0
+= ...00000001111111.... Thus the substring
+[0,2] in
+S
+0
+is
+011.
+The number of ones in the substring is
+2.
+Query
+2:
+S
+2
+= ...00000110011111.... Thus the substring
+[0,2] in
+S
+2
+is
+100.
+The number of ones in the substring is
+1.
+Sample 2:
+Input
+Output
+3
+-2 1 3
+-5 6 3
+-5 6 4
+2
+6
+6

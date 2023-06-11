@@ -1,164 +1,154 @@
-B. String Modification
-time limit per test1 second
+E. Team Building
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Vasya has a string
-s
-of length
-n
-. He decides to make the following modification to the string:
-Pick an integer
+Alice, the president of club FCB, wants to build a team for the new volleyball tournament. The team should consist of
+p
+players playing in
+p
+different positions. She also recognizes the importance of audience support, so she wants to select
 k
-, (
-1≤k≤n
-).
-For
+people as part of the audience.
+There are
+n
+people in Byteland. Alice needs to select exactly
+p
+players, one for each position, and exactly
+k
+members of the audience from this pool of
+n
+people. Her ultimate goal is to maximize the total strength of the club.
+The
 i
-from
-1
-to
-n−k+1
-, reverse the substring
-s[i:i+k−1]
-of
+-th of the
+n
+persons has an integer
+a
+i
+associated with him — the strength he adds to the club if he is selected as a member of the audience.
+For each person
+i
+and for each position
+j
+, Alice knows
 s
-. For example, if string
-s
-is qwer and
-k=2
-, below is the series of transformations the string goes through:
-qwer (original string)
-wqer (after reversing the first substring of length
-2
-)
-weqr (after reversing the second substring of length
-2
-)
-werq (after reversing the last substring of length
-2
-)
-Hence, the resulting string after modifying
-s
-with
-k=2
-is werq.
-Vasya wants to choose a
-k
-such that the string obtained after the above-mentioned modification is lexicographically smallest possible among all choices of
-k
-. Among all such
-k
-, he wants to choose the smallest one. Since he is busy attending Felicity 2020, he asks for your help.
-A string
-a
-is lexicographically smaller than a string
-b
-if and only if one of the following holds:
-a
-is a prefix of
-b
-, but
-a≠b
-;
-in the first position where
-a
-and
-b
-differ, the string
-a
-has a letter that appears earlier in the alphabet than the corresponding letter in
-b
-.
+i,j
+ — the strength added by the
+i
+-th person to the club if he is selected to play in the
+j
+-th position.
+Each person can be selected at most once as a player or a member of the audience. You have to choose exactly one player for each position.
+Since Alice is busy, she needs you to help her find the maximum possible strength of the club that can be achieved by an optimal choice of players and the audience.
 Input
-Each test contains multiple test cases.
-The first line contains the number of test cases
-t
+The first line contains
+3
+integers
+n,p,k
 (
-1≤t≤5000
-). The description of the test cases follows.
-The first line of each test case contains a single integer
+2≤n≤
+10
+5
+,1≤p≤7,1≤k,p+k≤n
+).
+The second line contains
 n
-(
-1≤n≤5000
-) — the length of the string
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+. (
+1≤
+a
+i
+≤
+10
+9
+).
+The
+i
+-th of the next
+n
+lines contains
+p
+integers
 s
-.
-The second line of each test case contains the string
+i,1
+,
 s
-of
-n
-lowercase latin letters.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-5000
-.
+i,2
+,…,
+s
+i,p
+. (
+1≤
+s
+i,j
+≤
+10
+9
+)
 Output
-For each testcase output two lines:
-In the first line output the lexicographically smallest string
-s
-′
-achievable after the above-mentioned modification.
-In the second line output the appropriate value of
-k
-(
-1≤k≤n
-) that you chose for performing the modification. If there are multiple values of
-k
-that give the lexicographically smallest string, output the smallest value of
-k
-among them.
-Example
+Print a single integer
+res
+ — the maximum possible strength of the club.
+Examples
 input
 Copy
-6
-4
-abab
-6
-qwerty
-5
-aaaaa
-6
-alaska
-9
-lfpbavjsm
-1
-p
+4 1 2
+1 16 10 3
+18
+19
+13
+15
 output
 Copy
-abab
-1
-ertyqw
-3
-aaaaa
-1
-aksala
-6
-avjsmbpfl
-5
-p
-1
+44
+input
+Copy
+6 2 3
+78 93 9 17 13 78
+80 97
+30 52
+26 17
+56 68
+60 36
+84 55
+output
+Copy
+377
+input
+Copy
+3 2 1
+500 498 564
+100002 3
+422332 2
+232323 1
+output
+Copy
+422899
 Note
-In the first testcase of the first sample, the string modification results for the sample abab are as follows :
-for
-k=1
-: abab
-for
-k=2
-: baba
-for
-k=3
-: abab
-for
-k=4
-: baba
-The lexicographically smallest string achievable through modification is abab for
-k=1
+In the first sample, we can select person
+1
+to play in the
+1
+-st position and persons
+2
 and
 3
-. Smallest value of
-k
-needed to achieve is hence
-1
+as audience members. Then the total strength of the club will be equal to
+a
+2
++
+a
+3
++
+s
+1,1
 .

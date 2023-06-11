@@ -1,125 +1,75 @@
-A. Skyscrapers
-time limit per test2 seconds
+B. Camp Schedule
+time limit per test1 second
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Dora loves adventures quite a lot. During some journey she encountered an amazing city, which is formed by
-n
-streets along the Eastern direction and
-m
-streets across the Southern direction. Naturally, this city has
-nm
-intersections. At any intersection of
+The new camp by widely-known over the country Spring Programming Camp is going to start soon. Hence, all the team of friendly curators and teachers started composing the camp's schedule. After some continuous discussion, they came up with a schedule
+s
+, which can be represented as a binary string, in which the
 i
--th Eastern street and
-j
--th Southern street there is a monumental skyscraper. Dora instantly became curious and decided to explore the heights of the city buildings.
-When Dora passes through the intersection of the
+-th symbol is '1' if students will write the contest in the
 i
--th Eastern and
-j
--th Southern street she examines those two streets. After Dora learns the heights of all the skyscrapers on those two streets she wonders: how one should reassign heights to the skyscrapers on those two streets, so that the maximum height would be as small as possible and the result of comparing the heights of any two skyscrapers on one street wouldn't change.
-Formally, on every of
-nm
-intersections Dora solves an independent problem. She sees
-n+m−1
-skyscrapers and for each of them she knows its real height. Moreover, any two heights can be compared to get a result "greater", "smaller" or "equal". Now Dora wants to select some integer
-x
-and assign every skyscraper a height from
-1
-to
-x
-. When assigning heights, Dora wants to preserve the relative order of the skyscrapers in both streets. That is, the result of any comparison of heights of two skyscrapers in the current Eastern street shouldn't change and the result of any comparison of heights of two skyscrapers in current Southern street shouldn't change as well. Note that skyscrapers located on the Southern street are not compared with skyscrapers located on the Eastern street only. However, the skyscraper located at the streets intersection can be compared with both Southern and Eastern skyscrapers. For every intersection Dora wants to independently calculate the minimum possible
-x
-.
-For example, if the intersection and the two streets corresponding to it look as follows:
-Then it is optimal to replace the heights of the skyscrapers as follows (note that all comparisons "less", "equal", "greater" inside the Eastern street and inside the Southern street are preserved)
-The largest used number is
-5
-, hence the answer for this intersection would be
-5
-.
-Help Dora to compute the answers for each intersection.
+-th day and '0' if they will have a day off.
+At the last moment Gleb said that the camp will be the most productive if it runs with the schedule
+t
+(which can be described in the same format as schedule
+s
+). Since the number of days in the current may be different from number of days in schedule
+t
+, Gleb required that the camp's schedule must be altered so that the number of occurrences of
+t
+in it as a substring is maximum possible. At the same time, the number of contest days and days off shouldn't change, only their order may change.
+Could you rearrange the schedule in the best possible way?
 Input
-The first line contains two integers
-n
+The first line contains string
+s
+(
+1⩽|s|⩽500000
+), denoting the current project of the camp's schedule.
+The second line contains string
+t
+(
+1⩽|t|⩽500000
+), denoting the optimal schedule according to Gleb.
+Strings
+s
 and
-m
-(
-1≤n,m≤1000
-) — the number of streets going in the Eastern direction and the number of the streets going in Southern direction.
-Each of the following
-n
-lines contains
-m
-integers
-a
-i,1
-,
-a
-i,2
-, ...,
-a
-i,m
-(
-1≤
-a
-i,j
-≤
-10
-9
-). The integer
-a
-i,j
-, located on
-j
--th position in the
-i
--th line denotes the height of the skyscraper at the intersection of the
-i
--th Eastern street and
-j
--th Southern direction.
+t
+contain characters '0' and '1' only.
 Output
-Print
-n
-lines containing
-m
-integers each. The integer
-x
-i,j
-, located on
-j
--th position inside the
-i
--th line is an answer for the problem at the intersection of
-i
--th Eastern street and
-j
--th Southern street.
+In the only line print the schedule having the largest number of substrings equal to
+t
+. Printed schedule should consist of characters '0' and '1' only and the number of zeros should be equal to the number of zeros in
+s
+and the number of ones should be equal to the number of ones in
+s
+.
+In case there multiple optimal schedules, print any of them.
 Examples
 input
 Copy
-2 3
-1 2 1
-2 1 2
+101101
+110
 output
 Copy
-2 2 2 
-2 2 2 
+110110
 input
 Copy
-2 2
-1 2
-3 4
+10010110
+100011
 output
 Copy
-2 3 
-3 2 
+01100011
+input
+Copy
+10
+11100
+output
+Copy
+01
 Note
-In the first example, it's not possible to decrease the maximum used height for the problem at any intersection, hence we don't have to change any heights.
-In the second example, the answers are as follows:
-For the intersection of the first line and the first column
-For the intersection of the first line and the second column
-For the intersection of the second line and the first column
-For the intersection of the second line and the second column
+In the first example there are two occurrences, one starting from first position and one starting from fourth position.
+In the second example there is only one occurrence, which starts from third position. Note, that the answer is not unique. For example, if we move the first day (which is a day off) to the last position, the number of occurrences of
+t
+wouldn't change.
+In the third example it's impossible to make even a single occurrence.

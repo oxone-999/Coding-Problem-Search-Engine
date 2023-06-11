@@ -1,49 +1,117 @@
-Bear and Haircut
+Beautiful Array
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Bear Limak has just gotten his hair cut. Looking in a mirror, he realized that his fur looks so-so just after a haircut. After some thinking, he stated that he looks good when his most recent haircut was between A and B days ago (inclusive). It's guaranteed that A ≥ 1, so Limak doesn't look good on a day of a haircut in particular (you can assume that he gets a haircut in the morning).
-After his new realization, Limak decided to plan his haircuts. Today is the day 0, and he has just gotten a haircut. For each of the following days, starting from the day 1, he can decide whether to get a haircut or not. It's allowed to get a haircut many days in a row.
-There will be N days that are important for Limak (because he's going to meet a girl he likes). The i-th of them is the day ti. Limak wants to look good on as many of those days as possible.
-Please, find the maximum possible number of important days when Limak will look good.
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains three integers N, A and B, denoting the number of important days and values describing when Limak looks good respectively.
-The second line contains N distinct integers t1, t2, ..., tN, denoting important days. These values are sorted increasingly.
-Output
-For each test case, output a single line containing one integer — the maximum possible number of important days when Limak will look good.
+You're given an array
+A of
+N integers. You need to find the minimum cost of creating another array
+B of
+N integers with the following properties
+B
+i
+≥0 for each
+1≤i≤N
+The GCD of adjacent elements of
+B is equal to
+1, i.e,
+gcd(B
+i
+,B
+i+1
+)=1 for each
+1≤i<N
+The cost of creating
+B is defined as follows:
+i=1
+∑
+N
+2
+∣A
+i
+−B
+i
+∣
+Find the minimum possible cost to create the array
+B. Since the answer can be huge print it modulo
+10
+9
++7
+Note: You need to minimize the value of total cost of creating the array
+B, and then print this minimum value modulo
+10
+9
++7. For example, suppose there is a way to create the required
+B with a cost of
+500, and another way to do it with a cost of
+10
+9
++7 (which is
+0(mod10
+9
++7)). The output in this case would be
+500 and not
+0.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first line of each test case contains an integer
+N - the length of the array
+A
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+Output Format
+For each test case, output on a new line the minimum cost of creating the array
+B, modulo
+10
+9
++7.
 Constraints
-1 ≤ T ≤ 6
-1 ≤ N ≤ 150,000
-1 ≤ A ≤ B ≤ 109
-1 ≤ ti ≤ 109
-ti < ti+1
-Subtasks
-Subtask #1 (20 points): 1 ≤ N, ti, A, B ≤ 50
-Subtask #2 (20 points): 1 ≤ N ≤ 1000
-Subtask #3 (20 points): A = 1
-Subtask #4 (40 points): Original constraints.
+1≤T≤150
+1≤N≤10
+4
+1≤A
+i
+≤10
+6
+The sum of
+N over all test cases won't exceed
+10
+4
+.
 Sample 1:
 Input
 Output
-6
-5 4 8
-2 3 6 8 9
-8 6 12
-8 9 12 13 15 17 18 25
-8 6 12
-8 9 12 13 15 17 18 24
-5 50000123 100000123
-700000123 710000123 770000123 780000123 790000123
-22 6 20
-3 9 12 22 24 25 34 46 47 51 53 62 64 66 68 73 79 92 93 95 96 98
-3 1 1000
-1 17 1000
 3
-6
-5
-5
-20
 3
+15 16 19
+2
+5 10
+7
+9 15 7 19 10 7 1
+3
+3
+8
 Explanation:
-Test case 1. There are 5 important days. Since Limak had his hair cut on the day 0, he can just wait and he will look good on days 4 through 8 (during that time, the number of days from the most recent haircut will be between A and B). There are 2 important days (6 and 8) in that interval. There exists a strategy that allows Limak to look good on 3 important days. For example, he could get a new haircut on the day 1 — then he will look good on days 5 through 9, including 3 important days. It turns out that it's impossible that Limak would look good on 4 or more important days. So the answer is 3.
-Test case 2. Limak should get a haircut on the day 6, to look good on days 12 through 18. Then he should get a haircut on the day 19, to look good on days 25 through 31. In total, he will look good on 6 important days: 12, 13, 15, 17, 18, 25.
+Test case
+1: The given input already satisfies all the conditions, hence we can take
+B=A with a cost of
+2
+0
++2
+0
++2
+0
+=3.
+Test case
+2: One optimal way is to choose
+B as
+[5,11], with a cost of
+2
+0
++2
+1
+=3.

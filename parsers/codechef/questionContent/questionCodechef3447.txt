@@ -1,125 +1,156 @@
-Permutation and GCD Set
+Tennis
 Problem
-Read problems statements in Russian.
-We define the GCD set of an array
-A of length
-N as the set containing the GCD of all prefixes of
-A. More formally, the GCD set
-G of
-A contains the values
-gcd([A
+Tennis is a popular game. Consider a simplified view of a tennis game from directly above. The game will appear to be played on a 2 dimensional rectangle, where each player has his own court, a half of the rectangle. Consider the players and the ball to be points moving on this 2D plane. The ball can be assumed to always move with fixed velocity (speed and direction) when it is hit by a player. The ball changes its velocity when hit by the other player. And so on, the game continues.
+Chef also enjoys playing tennis, but in
+n+1 dimensions instead of just 3. From the perspective of the previously discussed overhead view, Chef's court is an
+n-dimensional hyperrectangle which is axis-aligned with one corner at
+(0,0,0,…,0) and the opposite corner at
+(l
 1
-]),gcd([A
-1
-,A
+,l
 2
-]),gcd([A
-1
-,A
-2
-,A
+,l
 3
-]),…,gcd([A
-1
-,A
-2
-,…,A
+,…,l
 n
-]), where
-gcd(B) is the largest integer
-d such that all the numbers in array
-B are divisible by
-d. Note that all values in
-G are distinct.
-For example,
-gcd([6])=6,
-gcd([6,12])=6,
-gcd([6,12,9])=3, and
-gcd([6,12,9,2])=1. Therefore, the GCD set of the array
-[6,12,9,2] is
-{1,3,6}.
-You are given an integer set
-S of size
-M and two integers
-N,MOD, where
-MOD is a prime. You need to calculate the probability that the GCD set of
-P is equal to
-S, where
-P is a permutation of values
-1 to
-N chosen uniformly randomly.
-It can be shown that the answer is in the form of
-Q
-P
-where
-P and
-Q are coprime non-negative integers and
-Q
-
-=0. You need to find the value
-P⋅Q
-−1
-(modMOD).
-Input Format
-The first line contains an integer
-T denoting the number of test cases. The
-T test cases then follow.
-The first line of each test case contains three integers
-N,M,MOD denoting the length of the permutation, the size of the given integer set, and the modulo respectively.
-The second line of each test case contains
-m integers in increasing order
-S
+). The court of his opponent is the reflection of Chef's court across the
+n−1 dimensional surface with equation
+x
 1
-,S
+=0.
+At time
+t=0, Chef notices that the ball is at position
+(0,b
 2
-,…,S
-M
-representing the given integer set.
-Output Format
-For each test case, output on one line an integer equals to the answer of that test case.
-Constraints
-1≤T≤10
-1≤N≤10
-9
-1≤M≤2⋅10
-4
-10^9 &lt; MOD \lt 2 \cdot 10^9
-MOD is a prime
-1 \leq S_1 &lt; S_2 &lt; \ldots \lt S_M \leq N
-Sample 1:
-Input
-Output
-4
-4 3 1000000007
-1 2 4
-9 2 1000000009
-1 3
-10 3 1000000007
-2 4 8
-864197532 5 1876248763
-1 4019 727439 19640853 864197532
-83333334
-888888897
-0
-1828476640
-Explanation:
-For the first test case, there are 2 permutations that satisfy the condition:
-[4,2,1,3]
-[4,2,3,1]
-Since there are
-4! permutations of length
-4 in total, the probability is
-4!
+,…,b
+n
+) after being hit by his opponent. The velocity components of the ball in each of the
+n dimensions are also immediately known to Chef, the component in the
+i
+th
+dimension being
+v
+i
+. The ball will continue to move with fixed velocity until it leaves Chef's court. The ball is said to leave Chef's court when it reaches a position strictly outside the bounds of Chef's court. Chef is currently at position
+(c
+1
+,c
 2
-=
-12
-1
-. As
-83333334⋅12≡1(mod10
-9
-+7), we output
-83333334.
-For the second test case, the probability is
-9
-1
+,…,c
+n
+). To hit the ball back, Chef must intercept the ball before it leaves his court, which means at a certain time the ball's position and Chef's position must coincide.
+To achieve this, Chef is free to change his speed and direction at any time starting from time
+t=0. However, Chef is lazy so he does not want to put in more effort than necessary. Chef wants to minimize the maximum speed that he needs to acquire at any point in time until he hits the ball. Find this minimum value of speed
+s
+min
 .
+Note: If an object moves with fixed velocity
+v
+and is at position
+x
+at time
+0, its position at time
+t is given by
+x
++
+v
+⋅t.
+Input
+The first line contains
+t, the number of test cases.
+t cases follow.
+The first line of each test case contains
+n, the number of dimensions.
+The next line contains
+n integers
+l
+1
+,l
+2
+,…,l
+n
+, the bounds of Chef's court.
+The next line contains
+n integers
+b
+1
+,b
+2
+,…,b
+n
+, the position of the ball at
+t=0.
+The next line contains
+n integers
+v
+1
+,v
+2
+,…,v
+n
+, the velocity components of the ball.
+The next line contains
+n integers,
+c
+1
+,c
+2
+,…,c
+n
+, Chef's position at
+t=0.
+Output
+For each test case, output a single line containing the value of
+s
+min
+. Your answer will be considered correct if the absolute error does not exceed
+10
+−2
+.
+Constraints
+1≤t≤1500
+2≤n≤50
+1≤l
+i
+≤50
+0≤b
+i
+≤l
+i
+and
+b
+1
+=0
+−10≤v
+i
+≤10 and
+v
+1
+>0
+0≤c
+i
+≤l
+i
+It is guaranteed that the ball stays in the court for a non-zero amount of time.
+Sample Input
+2
+2
+3 4
+0 2
+2 -2
+2 2
+3
+10 10 10
+0 0 0
+1 1 1
+5 5 5
+Sample Output
+2.0000
+0.0000
+Explanation
+Case 1: The court is 2-dimentional.
+The ball's trajectory is marked in red. For Chef it is optimal to move along the blue line at a constant speed of 2 until he meets the ball at the boundary.
+Case 2: The court is 3-dimensional and the ball is coming straight at Chef. So it is best for Chef to not move at all, thus
+s
+min
+=0.

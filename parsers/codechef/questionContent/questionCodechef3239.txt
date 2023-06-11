@@ -1,19 +1,138 @@
-Crystals
+Two Merchants
 Problem
-The Evil Magician of Byteland was performing evil magical experiments, and he has left you with an impressive collection of evil magical crystals which he produced. Honestly, you would be overjoyed to dispose of (or in other words: destroy) these crystals, but destroying a magical crystal is not so easy. To achieve thus, you need to connect three different crystals (red, green and blue) and cast some magic spell to destroy this particular triplet. Each magical crystal has its own mana level. You need a certain amount of your own mana to destroy the triplet, precisely equal to the product of the mana levels of the crystals in the triplet you are destroying. Fortunately, your crystals are all already grouped in triplets, and there are no leftovers (so it is possible to actually destroy all of them); unfortunately, the composition of the triplets is not necessarily optimal from the point of view of mana consumption. However, you are allowed to choose two crystals of the same color, and swap them within triplets (crystals become very unstable and hazardous when not part of a triplet, so you cannot perform any operations more complicated than swapping). But there is a catch (there always is, isn't there?): swapping crystals requires a magic spell -- a spell with a significant mana cost, and what makes matters worse, using this spell (as any other spell) on the crystals being swapped makes them accumulate more mana into their mana level (exactly by 1). Try to minimize the amount of mana you need to use to destroy all the crystals!
-Input
-First, 2 ≤ n ≤ 105, the number of crystals of each color. Then, 0 ≤ c ≤ 104, the mana cost of the swapping spell. After that, n triplets of integers follow, the ith triplet consisting of 0 ≤ ri ≤ 100, 0 ≤ gi ≤ 100, 0 ≤ bi ≤ 100, representing the initial mana levels of successive Red, Green and Blue crystals, respectively.
-Output
-First 0 ≤ t ≤ 106, the number of swaps. Then, t descriptions of the swaps in the order in which they are applied, each of the form: 1≤p≤3, 1≤x≤n, 1≤y≤n, meaning a swap between crystals of the xth and yth triplets (p=1 stands for Red, 2 for Green, 3 for Blue).
-Example
-Input:
-3 10
-1 1 1
-5 5 5
-10 10 10
-Output:
+There are two merchants in the market. Initially, the first merchant has
+N items for sale at distinct prices
+A
+1
+,A
 2
-1 1 3
-3 1 2
-Score:
-1116 + 552 + 21010 + 10 + 10 = 336
+,…,A
+N
+and the second merchant has
+M items for sale at distinct prices
+B
+1
+,B
+2
+,…,B
+M
+.
+If you buy an item from a merchant, the prices of all remaining items for both merchants change in the following manner:
+The cost of all the remaining items of the chosen merchant will increase by
+1.
+The cost of all the remaining items of the other merchant will decrease by
+1.
+Note that prices may become negative during this process.
+For e.g. if
+A=[3,4,5],B=[1,3,4] and you buy the second item from the second merchant then the prices of remaining items will be as follows
+A=[2,3,4],B=[2,−,5]
+You can only buy an item if its cost is at most
+C. Can you buy all items from both merchants in the market in some order?
+Input Format
+The first line of the input contains a single integer
+T - the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains three integers
+N,
+M and
+C - the number of items of the first merchant, the number of items of the second merchant and the maximum cost of an item you can buy respectively.
+The second line contains
+N space-separated integers
+A
+1
+<A
+2
+<⋯<A
+N
+- the prices of items of first merchant.
+The third line contains
+M space-separated integers
+B
+1
+<B
+2
+<⋯<B
+M
+- the prices of items of second merchant.
+Output Format
+For each test case, output Yes if it is possible to buy all items from both merchants in the market in some order. Otherwise, output No.
+You may print each character of Yes and No in uppercase or lowercase (for example, the strings yEs, yes, Yes and YES will all be treated as identical).
+Constraints
+1≤T≤10
+5
+1≤N,M≤5⋅10
+5
+1≤A
+i
+,B
+i
+,C≤10
+9
+A
+i
+<A
+i+1
+for all
+1≤i<N
+B
+i
+<B
+i+1
+for all
+1≤i<M
+the sum of
+N over all test cases does not exceed
+5⋅10
+5
+the sum of
+M over all test cases does not exceed
+5⋅10
+5
+Sample 1:
+Input
+Output
+6
+1 2 1
+1
+1 2
+2 1 2
+1 2
+1
+3 2 5
+1 2 4
+4 9
+3 3 7
+2 4 8
+1 4 8
+5 10 27
+3 6 17 28 30
+1 3 4 5 7 9 21 27 29 30
+9 4 21
+1 5 6 8 14 16 19 22 25
+2 9 23 27
+YES
+YES
+NO
+YES
+YES
+NO
+Explanation:
+Test case 1: One possible sequence of operations is shown below. The item we purchase in a given turn is highlighted in red.
+A=[1],B=[1,2]
+A=[−],B=[0,1]
+A=[−],B=[1,−]
+Test case 2: One possible sequence of operations is shown below. The item we purchase in a given turn is highlighted in red.
+A=[1,2],B=[1]
+A=[2,−],B=[0]
+A=[−,−],B=[−1]
+Note that prices may become
+negative during this process and in such a case the item can still be bought.
+Test case 3: It can be shown that there is no way to buy the second item sold by Merchant
+2 regardless of the order in which we buy the items.
+Test case 4: One possible sequence of operations is shown below. The item we purchase in a given turn is highlighted in red.
+A=[2,4,8],B=[1,4,8]
+A=[−,5,9],B=[0,3,7]
+A=[−,4,8],B=[1,4,−]
+A=[−,3,7],B=[2,−,−]
+A=[−,4,−],B=[1,−,−]
+A=[−,−,−],B=[0,−,−]

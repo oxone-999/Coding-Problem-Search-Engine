@@ -1,46 +1,25 @@
-C. Monsters (hard version)
+B. Letter Exchange
 time limit per test4 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is the hard version of the problem. In this version, you need to find the answer for every prefix of the monster array.
-In a computer game, you are fighting against
-n
-monsters. Monster number
-i
-has
-a
-i
-health points, all
-a
-i
-are integers. A monster is alive while it has at least
-1
-health point.
-You can cast spells of two types:
-Deal
-1
-damage to any single alive monster of your choice.
-Deal
-1
-damage to all alive monsters. If at least one monster dies (ends up with
-0
-health points) as a result of this action, then repeat it (and keep repeating while at least one monster dies every time).
-Dealing
-1
-damage to a monster reduces its health by
-1
-.
-Spells of type 1 can be cast any number of times, while a spell of type 2 can be cast at most once during the game.
-For every
-k=1,2,…,n
-, answer the following question. Suppose that only the first
-k
-monsters, with numbers
-1,2,…,k
-, are present in the game. What is the smallest number of times you need to cast spells of type 1 to kill all
-k
-monsters?
+A cooperative game is played by
+m
+people. In the game, there are
+3m
+sheets of paper:
+m
+sheets with letter 'w',
+m
+sheets with letter 'i', and
+m
+sheets with letter 'n'.
+Initially, each person is given three sheets (possibly with equal letters).
+The goal of the game is to allow each of the
+m
+people to spell the word "win" using their sheets of paper. In other words, everyone should have one sheet with letter 'w', one sheet with letter 'i', and one sheet with letter 'n'.
+To achieve the goal, people can make exchanges. Two people participate in each exchange. Both of them choose exactly one sheet of paper from the three sheets they own and exchange it with each other.
+Find the shortest sequence of exchanges after which everyone has one 'w', one 'i', and one 'n'.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
@@ -49,142 +28,114 @@ t
 10
 4
 ). The description of the test cases follows.
-Each test case consists of two lines. The first line contains a single integer
-n
+The first line of each test case contains a single integer
+m
  (
-1≤n≤2⋅
+2≤m≤
 10
 5
-) — the number of monsters.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
- (
-1≤
-a
+) — the number of people.
+The
 i
-≤n
-) — monsters' health points.
+-th of the next
+m
+lines contains a string
+s
+i
+of length
+3
+consisting of lowercase English letters 'w', 'i', and 'n', denoting the letters person
+i
+has on their sheets of paper at the beginning of the game, in arbitrary order.
+Each of the letters 'w', 'i', and 'n' appears on the sheets of paper exactly
+m
+times in total.
 It is guaranteed that the sum of
-n
+m
 over all test cases does not exceed
-2⋅
 10
 5
 .
 Output
-For each test case, print
-n
-integers. The
+For each test case, print a non-negative integer
 k
--th of these integers must be equal to the smallest number of times you need to cast spells of type 1 to kill all
+ — the smallest number of exchanges people need to make everyone have one 'w', one 'i', and one 'n'.
+In each of the next
 k
-monsters, if only monsters with numbers
-1,2,…,k
-are present in the game.
+lines print four tokens
+a
+1
+c
+1
+a
+2
+c
+2
+, describing the exchanges in chronological order (
+1≤
+a
+1
+,
+a
+2
+≤m
+;
+a
+1
+≠
+a
+2
+;
+c
+1
+,
+c
+2
+are one of
+{w,i,n}
+): person
+a
+1
+gives letter
+c
+1
+to person
+a
+2
+, while person
+a
+2
+gives letter
+c
+2
+to person
+a
+1
+at the same time.
+If there are multiple solutions, print any.
 Example
 input
 Copy
-2
 3
-3 1 2
-6
-4 1 5 4 1 1
+2
+nwi
+inw
+3
+inn
+nww
+wii
+4
+win
+www
+iii
+nnn
 output
 Copy
-2 1 0
-3 2 4 4 4 4
-Note
-In the first test case, for
-k=n
-, the initial health points of the monsters are
-[3,1,2]
-. It is enough to cast a spell of type 2:
-Monsters' health points change to
-[2,0,1]
-. Since monster number
-2
-dies, the spell is repeated.
-Monsters' health points change to
-[1,0,0]
-. Since monster number
-3
-dies, the spell is repeated.
-Monsters' health points change to
-[0,0,0]
-. Since monster number
-1
-dies, the spell is repeated.
-Monsters' health points change to
-[0,0,0]
-.
-Since it is possible to use no spells of type 1 at all, the answer is
 0
-.
-In the second test case, for
-k=n
-, the initial health points of the monsters are
-[4,1,5,4,1,1]
-. Here is one of the optimal action sequences:
-Using a spell of type 1, deal
-1
-damage to monster number
-1
-. Monsters' health points change to
-[3,1,5,4,1,1]
-.
-Using a spell of type 1, deal
-1
-damage to monster number
-4
-. Monsters' health points change to
-[3,1,5,3,1,1]
-.
-Using a spell of type 1, deal
-1
-damage to monster number
-4
-again. Monsters' health points change to
-[3,1,5,2,1,1]
-.
-Use a spell of type 2:
-Monsters' health points change to
-[2,0,4,1,0,0]
-. Since monsters number
 2
-,
-5
-, and
-6
-die, the spell is repeated.
-Monsters' health points change to
-[1,0,3,0,0,0]
-. Since monster number
-4
-dies, the spell is repeated.
-Monsters' health points change to
-[0,0,2,0,0,0]
-. Since monster number
-1
-dies, the spell is repeated.
-Monsters' health points change to
-[0,0,1,0,0,0]
-.
-Using a spell of type 1, deal
-1
-damage to monster number
+2 w 3 i
+3 w 1 n
 3
-. Monsters' health points change to
-[0,0,0,0,0,0]
-.
-Spells of type 1 are cast
-4
-times in total. It can be shown that this is the smallest possible number.
+2 w 3 i
+2 w 4 n
+3 i 4 n

@@ -1,43 +1,47 @@
-Chef and Land
+Communicating Servers
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef lives in Chefland. Chefland can be thought as a two-dimensional grid of dimensions NxM. Some of the cells of the Chefland are prohibited to visit (denoted by '*'). One can never step on such prohibited cells. There is a city at each at each non-prohibited cell (will be denoted by '.' or 'C' (denoting capital city)).
-Sadly people in the capital city of Chefland (denoted by 'C') are lazy for their shopping. So they invented a robot for carrying their groceries. They want to feed a command of at max 105 characters to the robot such that if the robot starts from any cell (non-prohibited) of the grid, it should be able to visit the capital city during its walk. Each character of the command will be one of 'U', 'D', 'L', 'R' denoting the movement to go up, down, left and right cell from the current cell (provided it exists and the cell is not prohibited to visit). Otherwise, the robot will just stay at its current cell. The characters of the command will be followed in the order from left to right.
-Now, after thinking a lot, citizens of Chefland could not come up such a command to feed to robot. So, they ask your help in it. They have come to know from an oracle that it is guaranteed that such a command exists.
+The servers working at the Chef's restaurant communicate over a distance using wireless devices to relay requests as quickly as possible. Each server has exactly one device. However, unforseen technical difficulties make it such that some pairs of devices cannot communicate directly. Still, if a server A wants to communicate with another server B but their devices don't communicate directly, then server A may ask relay their request to server B using intermediate devices/servers.
+There are two additional complications. First, the Chef is worried that relaying requests using intermediate servers may get confusing. Thus, for any two servers who can communicate, either directly or indirectly through other servers, there should be a unique way to pass messages between these servers. Second, each pair of devices that can communicate directly does so over a specified frequency. However, if too many pairs of devices communicate over the same frequency, then the messages may be corrupted.
+Because of these two problems, the Chef has ordered that some pairs of devices be forbidden to communicate. This may result in some pairs of servers who could communicate before to be unable to communicate, but the Chef thinks this negative effect is outweighed by the guarantee that the above problems don't occur.
+Your goal is to determine the maximum number of pairs of devices that may be allowed to communicate directly without having to go through intermediate devices. To restate the constraints, if S is such a set of pairs of devices then there should be at most one way to relay a message between any two servers using only pairs of devices in S. Furthermore, for each frequency f, the number of pairs of devices in S that communicate over frequency f is less than some prescribed value c(f).
 Input
-First line contains two space separated integers N, M, denoting the dimensions of the grid.
-Each of next N lines contains M symbols denoting the map of Chefland.
+The first line of input contains a single integer T ≤ 30 indicating the number of test cases. Each test case begins with three integers n,m, and k on a single line. Here, n is the number of servers, m is the number of pairs of devices that are able to communicate directly, and k is the number of available frequencies. The next line consists of k integers, each between 1 and m, where the i'th such integer is the value c(i) specifying how many devices may communicate using frequency i without worrying about messages being corrupted.
+Following this is m lines where each line describes a pair of devices that may communicate directly. Each line begins with two distinct integers u,v, each between 1 and n, and ends with an integer f, between 1 and k. This means that devices u and v may communicate directly using frequency f. No pair of devices will appear more than once in the input. There will be a blank line separating test cases including a blank line preceding the first case.
+Bounds: 1 ≤ n ≤ 40, 1 ≤ m ≤ 200, and 1 ≤ k ≤ m.
 Output
-Output one non-empty string corresponding to the command with length ≤ 105 containing only symbols 'U', 'L', 'D', 'R'. it's guaranteed that such pattern exists.
-Constraints
-4 ≤ N, M ≤ 20
-Each cell can be one of three types: 'C', '.', '*'.
-All border cells are '*'.
+For each test case you are to output a single line consisting of a single integer. This integer should be the size of S where S is a maximum size subset of communicating pairs satisfying the constraints outlined in the last paragraph of the problem description.
 Example
 Input:
+3
 
-4 4
-****
-*.C*
-*..*
-****
+4 4 2
+1 1
+1 2 1
+2 3 2
+3 4 1
+4 1 2
+
+4 4 1
+4
+1 2 1
+2 3 1
+3 4 1
+4 1 1
+
+5 7 2
+3 1
+1 2 1
+2 3 1
+3 1 1
+4 1 2
+4 2 2
+5 1 2
+5 2 2
 
 Output:
-LDUR
-Input:
-5 6
-******
-*.C..*
-**.***
-*....*
-******
-Output:
-RLLURUU
-Explanation
-You can reach to capital city by feeding this command to robot starting from any city. We have shown one such application of the command for the city on the cell (2, 2).
-From cell (2, 2), you can go to following cells in order when you apply the command.
-Start at (2, 2).
-Apply the command 'L'. The cell at the left (2, 1) is prohibited, so you stay at (2, 2).
-Apply the command 'D'. You go to cell (3, 2).
-Apply the command 'U'. You come back to cell (2, 2).
-Apply the command 'R'. You come back to cell (2, 3), i.e. the capital city.
+2
+3
+3
+Notes On The Sample Data
+One solution to the first test cases uses communicating pairs (1,2) and (2,3). We can't have 3 pairs since one of the frequencies would then be used by two devices. A solution for the second test case uses pairs (1,2), (2,3), and (3,4). All four pairs may not be used since there would be multiple ways for 1 and 3 to communicate (using either 2 or 4 as an intermediate device).
+Finally, one solution to the last test case uses (1,2), (2,3), and (4,1). One cannot have 4 pairs for the following reason. We can't use all of (1,2),(2,3), and (3,1) since this creates more than one way for 1 and 2 to communicate. On the other hand, we can't use two of (4,1),(4,2),(5,1), or (5,2) since this would violate the bound on the frequencies.

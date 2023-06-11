@@ -1,92 +1,104 @@
-Maximum Factors Problem
+Yet Another Problem About Sequences
 Problem
-You are given an integer
-N. Let
-K be a divisor of
-N of your choice such that
-K>1, and let
-M=
-K
-N
-. You need to find the smallest
-K such that
-M has as many divisors as possible.
-Note:
-U is a divisor of
-V if
-V is divisible by
-U.
-Input Format
-The first line of the input contains an integer
-T - the number of test cases. The test cases then follow.
-The only line of each test case contains an integer
-N.
-Output Format
-For each test case, output in a single line minimum value of
-K such that
-M has as many divisors as possible.
-Constraints
-1≤T≤3000
-2≤N≤10
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+For a set of positive integers
+S, let's define
+gcd(S) as the greatest integer which divides each element of
+S. If
+gcd(S)=1, the set
+S is called coprime. For example, the set
+{7,12,15} is coprime, but
+{6,12,15} is not coprime, since every element of this set is divisible by
+3.
+Your task is to find an integer sequence
+A
+0
+,A
+1
+,…,A
+N−1
+such that:
+for each valid
+i,
+1≤A
+i
+≤10
 9
+A
+0
+,A
+1
+,…,A
+N−1
+are pairwise distinct
+for each valid
+i, the set
+{A
+i
+,A
+(i+1)%N
+} is not coprime (
+% denotes the modulo operator)
+for each valid
+i, the set
+{A
+i
+,A
+(i+1)%N
+,A
+(i+2)%N
+} is coprime
+It is possible that there is no solution. If there are multiple solutions, you may find any one.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains a single integer
+N.
+Output
+For each test case:
+If there is no solution, print a single line containing the integer
+−1.
+Otherwise, print a single line containing
+N space-separated integers
+A
+0
+,A
+1
+,…,A
+N−1
+.
+Constraints
+1≤T≤1,000
+3≤N≤50,000
+the sum of
+N over all test cases does not exceed
+10
+6
+Subtasks
+Subtask #1 (19 points):
+3≤N≤3,333
+Subtask #2 (81 points): original constraints
 Sample 1:
 Input
 Output
-3
+2
 3
 4
-6
-3
-2
-2
+6 10 15
+374 595 1365 858
 Explanation:
-Test case
-1: The only possible value for
-K is
-3, and that is the answer.
-Test case
-2: There are two cases:
-K=2. Then
-M=
-2
-4
-=2, which has
-2 divisors (
-1 and
-2).
-K=4. Then
-M=
-4
-4
-=1, which has
-1 divisor (
-1).
-Therefore the answer is
-2.
-Test case
-3: There are three cases:
-K=2. Then
-M=
-2
-6
-=3, which has
-2 divisors (
-1 and
-3).
-K=3. Then
-M=
-3
-6
-=2, which has
-2 divisors (
-1 and
-2).
-K=6. Then
-M=
-6
-6
-=1, which has
-1 divisor (
-1).
-Therefore the answer is
-2.
+Example case 1: Let's check the answer:
+gcd(6,10)=2,
+gcd(10,15)=5,
+gcd(15,6)=3,
+gcd(6,10,15)=1. Every two cyclically consecutive numbers are not coprime, but every three cyclically consecutive numbers are coprime.
+Example case 2:
+gcd(374,595)=17,
+gcd(595,1365)=35,
+gcd(1365,868)=39,
+gcd(858,374)=22
+gcd(374,595,1365)=1,
+gcd(595,1365,858)=1,
+gcd(1365,858,374)=1,
+gcd(858,374,595)=1

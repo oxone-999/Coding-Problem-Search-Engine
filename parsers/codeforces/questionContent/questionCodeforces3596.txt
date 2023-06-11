@@ -1,249 +1,94 @@
-F. Density of subarrays
-time limit per test6 seconds
+A. A pile of stones
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let
-c
-be some positive integer. Let's call an array
-a
-1
-,
-a
-2
-,…,
-a
+Vasya has a pile, that consists of some number of stones.
 n
-of positive integers
-c
--array, if for all
-i
-condition
-1≤
-a
-i
-≤c
-is satisfied. Let's call
-c
--array
-b
-1
-,
-b
-2
-,…,
-b
-k
-a subarray of
-c
--array
-a
-1
-,
-a
-2
-,…,
-a
+times he either took one stone from the pile or added one stone to the pile. The pile was non-empty before each operation of taking one stone from the pile.
+You are given
 n
-, if there exists such set of
-k
-indices
-1≤
-i
-1
-<
-i
-2
-<…<
-i
-k
-≤n
-that
-b
-j
-=
-a
-i
-j
-for all
-1≤j≤k
-. Let's define density of
-c
--array
-a
-1
-,
-a
-2
-,…,
-a
-n
-as maximal non-negative integer
-p
-, such that any
-c
--array, that contains
-p
-numbers is a subarray of
-a
-1
-,
-a
-2
-,…,
-a
-n
-.
-You are given a number
-c
-and some
-c
--array
-a
-1
-,
-a
-2
-,…,
-a
-n
-. For all
-0≤p≤n
-find the number of sequences of indices
-1≤
-i
-1
-<
-i
-2
-<…<
-i
-k
-≤n
-for all
-1≤k≤n
-, such that density of array
-a
-i
-1
-,
-a
-i
-2
-,…,
-a
-i
-k
-is equal to
-p
-. Find these numbers by modulo
-998244353
-, because they can be too large.
+operations which Vasya has made. Find the minimal possible number of stones that can be in the pile after making these operations.
 Input
-The first line contains two integers
+The first line contains one positive integer
 n
-and
-c
-, separated by spaces (
-1≤n,c≤3000
-). The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-, separated by spaces (
-1≤
-a
-i
-≤c
+ — the number of operations, that have been made by Vasya (
+1≤n≤100
 ).
-Output
-Print
-n+1
-numbers
+The next line contains the string
 s
-0
-,
-s
-1
-,…,
-s
+, consisting of
 n
-.
+symbols, equal to "-" (without quotes) or "+" (without quotes). If Vasya took the stone on
+i
+-th operation,
 s
-p
-should be equal to the number of sequences of indices
-1≤
 i
-1
-<
+is equal to "-" (without quotes), if added,
+s
 i
-2
-<…<
-i
-k
-≤n
-for all
-1≤k≤n
-by modulo
-998244353
-, such that the density of array
-a
-i
-1
-,
-a
-i
-2
-,…,
-a
-i
-k
-is equal to
-p
-.
+is equal to "+" (without quotes).
+Output
+Print one integer — the minimal possible number of stones that can be in the pile after these
+n
+operations.
 Examples
 input
 Copy
-4 1
-1 1 1 1
-output
-Copy
-0 4 6 4 1 
-input
-Copy
-3 3
-1 2 3
-output
-Copy
-6 1 0 0 
-input
-Copy
-5 2
-1 2 1 2 1
-output
-Copy
-10 17 4 0 0 0 
-Note
-In the first example, it's easy to see that the density of array will always be equal to its length. There exists
-4
-sequences with one index,
-6
-with two indices,
-4
-with three and
-1
-with four.
-In the second example, the only sequence of indices, such that the array will have non-zero density is all indices because in other cases there won't be at least one number from
-1
-to
 3
-in the array, so it won't satisfy the condition of density for
-p≥1
+---
+output
+Copy
+0
+input
+Copy
+4
+++++
+output
+Copy
+4
+input
+Copy
+2
+-+
+output
+Copy
+1
+input
+Copy
+5
+++-++
+output
+Copy
+3
+Note
+In the first test, if Vasya had
+3
+stones in the pile at the beginning, after making operations the number of stones will be equal to
+0
+. It is impossible to have less number of piles, so the answer is
+0
+. Please notice, that the number of stones at the beginning can't be less, than
+3
+, because in this case, Vasya won't be able to take a stone on some operation (the pile will be empty).
+In the second test, if Vasya had
+0
+stones in the pile at the beginning, after making operations the number of stones will be equal to
+4
+. It is impossible to have less number of piles because after making
+4
+operations the number of stones in the pile increases on
+4
+stones. So, the answer is
+4
+.
+In the third test, if Vasya had
+1
+stone in the pile at the beginning, after making operations the number of stones will be equal to
+1
+. It can be proved, that it is impossible to have less number of stones after making the operations.
+In the fourth test, if Vasya had
+0
+stones in the pile at the beginning, after making operations the number of stones will be equal to
+3
 .

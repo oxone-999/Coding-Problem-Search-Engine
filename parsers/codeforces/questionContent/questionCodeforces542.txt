@@ -1,192 +1,239 @@
-F. Conditional Mix
-time limit per test2 seconds
+G. Dangerous Laser Power
+time limit per test4 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Pak Chanek is given an array
-a
-of
-n
-integers. For each
+Pak Chanek has an
+n×m
+grid of portals. The portal on the
 i
-(
-1≤i≤n
-), Pak Chanek will write the one-element set
-{
-a
-i
-}
-on a whiteboard.
-After that, in one operation, Pak Chanek may do the following:
-Choose two different sets
-S
+-th row and
+j
+-th column is denoted as portal
+(i,j)
+. The portals
+(1,1)
 and
-T
-on the whiteboard such that
-S∩T=∅
-(
-S
-and
-T
-do not have any common elements).
-Erase
-S
-and
-T
-from the whiteboard and write
-S∪T
-(the union of
-S
-and
-T
-) onto the whiteboard.
-After performing zero or more operations, Pak Chanek will construct a multiset
-M
-containing the sizes of all sets written on the whiteboard. In other words, each element in
-M
-corresponds to the size of a set after the operations.
-How many distinct
-†
-†
-multisets
-M
-can be created by this process? Since the answer may be large, output it modulo
-998244353
-.
-†
-†
-Multisets
-B
-and
-C
-are different if and only if there exists a value
-k
-such that the number of elements with value
-k
-in
-B
-is different than the number of elements with value
-k
-in
-C
-.
-Input
-The first line contains a single integer
-n
-(
-1≤n≤2000
-).
-The second line contains
-n
-integers
-a
+(n,m)
+are on the north-west and south-east corner of the grid respectively.
+The portal
+(i,j)
+has two settings:
+Type
+t
+i,j
+, which is either
+0
+or
 1
+.
+Strength
+s
+i,j
+, which is an integer between
+1
+and
+10
+9
+inclusive.
+Each portal has
+4
+faces labelled with integers
+0,1,2,3
+, which correspond to the north, east, south, and west direction respectively.
+When a laser enters face
+k
+of portal
+(i,j)
+with speed
+x
+in
+, it leaves the portal going out of face
+(k+2+
+t
+i,j
+)mod4
+with speed
+x
+out
+=max(
+x
+in
 ,
-a
+s
+i,j
+)
+. The portal also has to consume
+x
+out
+−
+x
+in
+units of energy.
+Pak Chanek is very bored today. He will shoot
+4nm
+lasers with an initial speed of
+1
+, one into each face of each portal. Each laser will travel throughout this grid of portals until it moves outside the grid or it has passed through
+10
+100
+portals.
+At the end, Pak Chanek thinks that a portal is good if and only if the total energy consumed by that portal modulo
 2
-,…,
-a
+is equal to its type. Given the strength settings of all portals, find a way to assign the type settings of each portal such that the number of good portals is maximised.
+Input
+The first line contains two integers
 n
+and
+m
+(
+1≤n,m≤1000
+) — the number of rows and columns in the grid.
+The
+i
+-th of the next
+n
+lines contains
+m
+integers, with the
+j
+-th integer being
+s
+i,j
 (
 1≤
-a
-i
-≤n
-).
-Output
-Output the number of distinct multisets
-M
-modulo
-998244353
+s
+i,j
+≤
+10
+9
+) — the strength of portal
+(i,j)
 .
+Output
+Print
+n
+lines with each line containing a string of length
+m
+consisting of characters
+0
+or
+1
+representing the type settings. The
+j
+-th character in the
+i
+-th string is the type setting of portal
+(i,j)
+.
+If there are multiple solutions, you can output any of them.
 Examples
 input
 Copy
-6
-1 1 2 1 4 3
+2 3
+8 8 2
+6 5 7
 output
 Copy
-7
+110
+100
 input
 Copy
-7
-3 5 4 3 7 4 5
+1 2
+420 69
 output
 Copy
-11
+10
 Note
-In the first example, the possible multisets
-M
-are
-{1,1,1,1,1,1}
-,
-{1,1,1,1,2}
-,
-{1,1,1,3}
-,
-{1,1,2,2}
-,
-{1,1,4}
-,
-{1,2,3}
-, and
-{2,2,2}
-.
-As an example, let's consider a possible sequence of operations.
-In the beginning, the sets are
-{1}
-,
-{1}
-,
-{2}
-,
-{1}
-,
-{4}
-, and
-{3}
-.
-Do an operation on sets
-{1}
+In the first example, let's consider the laser Pak Chanek shoots into face
+1
+of portal
+(2,2)
+. The laser travels as follows:
+The laser enters face
+1
+of portal
+(2,2)
+with speed
+1
+. It leaves the portal going out of face
+3
+with speed
+5
+. Portal
+(2,2)
+consumes
+4
+units of energy.
+The laser enters face
+1
+of portal
+(2,1)
+with speed
+5
+. It leaves the portal going out of face
+0
+with speed
+6
+. Portal
+(2,1)
+consumes
+1
+units of energy.
+The laser enters face
+2
+of portal
+(1,1)
+with speed
+6
+. It leaves the portal going out of face
+1
+with speed
+8
+. Portal
+(1,1)
+consumes
+2
+units of energy.
+The laser enters face
+3
+of portal
+(1,2)
+with speed
+8
+. It leaves the portal going out of face
+2
+with speed
+8
+. Portal
+(1,2)
+consumes
+0
+units of energy.
+The laser enters face
+0
+of portal
+(2,2)
+with speed
+8
+. It leaves the portal going out of face
+2
+with speed
+8
+. Portal
+(2,2)
+consumes
+0
+units of energy.
+The illustration of the travel of the laser above is as follows.
+As an example, consider portal
+(2,3)
+. We can calculate that the total energy consumed by that portal in the end will be
+32
+. Since
+32mod2=0
 and
-{3}
-. Now, the sets are
-{1}
-,
-{1}
-,
-{2}
-,
-{4}
-, and
-{1,3}
-.
-Do an operation on sets
-{2}
-and
-{4}
-. Now, the sets are
-{1}
-,
-{1}
-,
-{1,3}
-, and
-{2,4}
-.
-Do an operation on sets
-{1,3}
-and
-{2,4}
-. Now, the sets are
-{1}
-,
-{1}
-, and
-{1,2,3,4}
-.
-The multiset
-M
-that is constructed is
-{1,1,4}
-.
+t
+2,3
+=0
+, then it is a good portal.

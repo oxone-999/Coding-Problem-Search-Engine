@@ -1,128 +1,375 @@
-A. Feeding Chicken
-time limit per test1.5 seconds
+C. Point Ordering
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Long is a huge fan of CFC (Codeforces Fried Chicken). But the price of CFC is increasing, so he decides to breed the chicken on his own farm.
-His farm is presented by a rectangle grid with
-r
-rows and
-c
-columns. Some of these cells contain rice, others are empty.
-k
-chickens are living on his farm. The number of chickens is not greater than the number of cells with rice on the farm.
-Long wants to give his chicken playgrounds by assigning these farm cells to his chickens. He would like to satisfy the following requirements:
-Each cell of the farm is assigned to exactly one chicken.
-Each chicken is assigned at least one cell.
-The set of cells assigned to every chicken forms a connected area. More precisely, if two cells
-(x,y)
-and
-(u,v)
-are assigned to the same chicken, this chicken is able to walk from
-(x,y)
-to
-(u,v)
-by passing only its cells and moving from each cell to another cell sharing a side.
-Long also wants to prevent his chickens from fighting for food. Hence he wants the difference between the maximum and the minimum number of cells with rice assigned to a chicken to be as small as possible. Please help him.
-Input
-Each test contains multiple test cases. The first line contains the number of test cases
-T
-(
-1≤T≤2⋅
-10
-4
-). Description of the test cases follows.
-The first line of each test case contains three integers
-r
+This is an interactive problem.
+Khanh has
+n
+points on the Cartesian plane, denoted by
+a
+1
 ,
-c
+a
+2
+,…,
+a
+n
+. All points' coordinates are integers between
+−
+10
+9
 and
+10
+9
+, inclusive. No three points are collinear. He says that these points are vertices of a convex polygon; in other words, there exists a permutation
+p
+1
+,
+p
+2
+,…,
+p
+n
+of integers from
+1
+to
+n
+such that the polygon
+a
+p
+1
+a
+p
+2
+…
+a
+p
+n
+is convex and vertices are listed in counter-clockwise order.
+Khanh gives you the number
+n
+, but hides the coordinates of his points. Your task is to guess the above permutation by asking multiple queries. In each query, you give Khanh
+4
+integers
+t
+,
+i
+,
+j
+,
+k
+; where either
+t=1
+or
+t=2
+; and
+i
+,
+j
+,
+k
+are three distinct indices from
+1
+to
+n
+, inclusive. In response, Khanh tells you:
+if
+t=1
+, the area of the triangle
+a
+i
+a
+j
+a
+k
+multiplied by
+2
+.
+if
+t=2
+, the sign of the cross product of two vectors
+a
+i
+a
+j
+−
+→
+−
+and
+a
+i
+a
+k
+−
+→
+−
+.
+Recall that the cross product of vector
+a
+→
+=(
+x
+a
+,
+y
+a
+)
+→
+and vector
+b
+→
+=(
+x
+b
+,
+y
+b
+)
+→
+is the integer
+x
+a
+⋅
+y
+b
+−
+x
+b
+⋅
+y
+a
+. The sign of a number is
+1
+it it is positive, and
+−1
+otherwise. It can be proven that the cross product obtained in the above queries can not be
+0
+.
+You can ask at most
+3⋅n
+queries.
+Please note that Khanh fixes the coordinates of his points and does not change it while answering your queries. You do not need to guess the coordinates. In your permutation
+a
+p
+1
+a
+p
+2
+…
+a
+p
+n
+,
+p
+1
+should be equal to
+1
+and the indices of vertices should be listed in counter-clockwise order.
+Interaction
+You start the interaction by reading
+n
+(
+3≤n≤1000
+) — the number of vertices.
+To ask a query, write
+4
+integers
+t
+,
+i
+,
+j
+,
 k
 (
-1≤r,c≤100,1≤k≤62
-), representing the size of Long's farm and the number of chickens Long has.
-Each of the next
-r
-lines contains
-c
-characters, each is either "." or "R", representing an empty cell or a cell with rice. It is guaranteed that the number of chickens is not greater than the number of cells with rice on the farm.
-It is guaranteed that the sum of
-r⋅c
-over all test cases does not exceed
-2⋅
+1≤t≤2
+,
+1≤i,j,k≤n
+) in a separate line.
+i
+,
+j
+and
+k
+should be distinct.
+Then read a single integer to get the answer to this query, as explained above. It can be proven that the answer of a query is always an integer.
+When you find the permutation, write a number
+0
+. Then write
+n
+integers
+p
+1
+,
+p
+2
+,…,
+p
+n
+in the same line.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+Hack format
+To hack, use the following format:
+The first line contains an integer
+n
+(
+3≤n≤1000
+) — the number of vertices.
+The
+i
+-th of the next
+n
+lines contains two integers
+x
+i
+and
+y
+i
+(
+−
 10
-4
+9
+≤
+x
+i
+,
+y
+i
+≤
+10
+9
+) — the coordinate of the point
+a
+i
 .
-Output
-For each test case, print
-r
-lines with
-c
-characters on each line. Each character should be either a lowercase English character, an uppercase English character, or a digit. Two characters should be equal if and only if the two corresponding cells are assigned to the same chicken. Uppercase and lowercase characters are considered different, so "A" and "a" belong to two different chickens.
-If there are multiple optimal answers, print any.
 Example
 input
 Copy
-4
-3 5 3
-..R..
-...R.
-....R
-6 4 6
-R..R
-R..R
-RRRR
-RRRR
-R..R
-R..R
-5 5 4
-RRR..
-R.R..
-RRR..
-R..R.
-R...R
-2 31 62
-RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+6
+
+15
+
+-1
+
+1
 output
 Copy
-11122
-22223
-33333
-aacc
-aBBc
-aBBc
-CbbA
-CbbA
-CCAA
-11114
-22244
-32444
-33344
-33334
-abcdefghijklmnopqrstuvwxyzABCDE
-FGHIJKLMNOPQRSTUVWXYZ0123456789
+1 1 4 6
+
+2 1 5 6
+
+2 2 1 4
+
+0 1 3 4 2 6 5
 Note
-These pictures explain the sample output. Each color represents one chicken. Cells filled with patterns (not solid colors) contain rice.
-In the first test case, each chicken has one cell with rice. Hence, the difference between the maximum and the minimum number of cells with rice assigned to a chicken is
-0
+The image below shows the hidden polygon in the example:
+The interaction in the example goes as below:
+Contestant reads
+n=6
 .
-In the second test case, there are
+Contestant asks a query with
+t=1
+,
+i=1
+,
+j=4
+,
+k=6
+.
+Jury answers
+15
+. The area of the triangle
+A
+1
+A
 4
-chickens with
-3
-cells of rice, and
-2
-chickens with
-2
-cells of rice. Hence, the difference between the maximum and the minimum number of cells with rice assigned to a chicken is
-3−2=1
+A
+6
+is
+7.5
+. Note that the answer is two times the area of the triangle.
+Contestant asks a query with
+t=2
+,
+i=1
+,
+j=5
+,
+k=6
 .
-In the third test case, each chicken has
-3
-cells with rice.
-In the last test case, since there are
-62
-chicken with exactly
-62
-cells of rice, each chicken must be assigned to exactly one cell. The sample output is one of the possible way.
+Jury answers
+−1
+. The cross product of
+A
+1
+A
+5
+−
+→
+−
+−
+=(2,2)
+and
+A
+1
+A
+6
+−
+→
+−
+−
+=(4,1)
+is
+−2
+. The sign of
+−2
+is
+−1
+.
+Contestant asks a query with
+t=2
+,
+i=2
+,
+j=1
+,
+k=4
+.
+Jury answers
+1
+. The cross product of
+A
+2
+A
+1
+−
+→
+−
+−
+=(−5,2)
+and
+A
+2
+A
+4
+−
+→
+−
+−
+=(−2,−1)
+is
+1
+. The sign of
+1
+is
+1
+.
+Contestant says that the permutation is
+(1,3,4,2,6,5)
+.

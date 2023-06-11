@@ -1,64 +1,66 @@
-Shortest path queries
+Hamel Paths
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-With the impressive achievement in competitive programming Jem was offered an internship at IBER - a tech company that provides an alternative to tradditional taxi service.
-Jem first task was help IBER quickly calculate the distance between two arbitrary locations in Jem's city. As an experienced competitive programmer Jem understand that this is not a trivial problem with general graph. Fortunately after investigate the city map Jem found out that the roads system is have a special form which may make Jem's problem easier to deal with.
-There are N locations in the city and M bidirectional road connecting them. Each road i have the length of Ci and no two road connect the same pair of locations. The roads system is designed in a way that from a specific location one can travel to any other locations. The most important point is that there is no location belong to more than one cycle in the graph corresponding to road network.
-So Jem already got his solution. If you want to secure an internship at IBER maybe you can try to solve this problem too!
+Read problem statement in Mandarin chinese and Vietnamese.
+Chefsberg consists of
+N islands numbered
+1 through
+N connected by
+M bridges numbered
+1 through
+M (in the order in which they are given in the input). Chefsberg was designed by the best coders of the world, and they decided to create the bridges in a way that makes Chefsberg extremely connected. In particular, it is always necessary to remove more than
+3 bridges to disconnect Chefsberg.
+In his free time, Suzumo keeps trying to find a way to visit all islands without crossing the same bridge twice (crossing it once in each direction is also forbidden).
+Help Suzumo find a valid route. Remember that we are not in Königsberg, but in Chefsberg, so we don't want to cross each bridge, but visit each island. Also, we are not helping Hamilton, but Suzumo, so it is allowed to visit the same island multiple times.
+It is guaranteed that under the given constraints, at least one valid route exists.
 Input
-The first line of the input contains two number N and M
-In the next M line each line contains three numbers u, v and c represent a road of length c connects location u and v.
-Next line contains a single number Q represents the number of queries.
-In the next Q lines each line contains two numbers u and v corresponding to a query of the length of the shortest path between location u and v.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+M denoting the number of islands and the number of bridges.
+Each of the following
+M lines contains two space-separated integers
+u and
+v representing a bidirectional bridge between islands
+u and
+v.
 Output
-For each query print out the corresponding result in one line.
-Constraint
-2 ≤ N ≤ 105
-<li>
-  1 ≤ <b>M</b> ≤ 2 × 10<sup>5</sup>
-</li>
-
-<li>
-  1 ≤ <b>Q</b> ≤ 10<sup>5</sup>
-</li>
-
-<li>
-  1 ≤ <b>c</b> ≤ 10<sup>4</sup>
-</li>
-
-Example
-Input 1:
-4 3
-1 2 2
-2 3 3
-2 4 4
+For each test case, print a single line. This line should start with an integer
+s denoting the number of bridges in your chosen route, followed by
+s space-separated integers — the indices of the bridges in the order in which they should be crossed.
+For any given sequence of bridges, there are two possible choices of the starting island. Your answer will be considered correct if at least one of them produces a valid route.
+Constraints
+2≤T≤64
+2≤N≤64
+1≤M≤(
 2
+64
+)
+1≤u,v≤N
+there can be multiple bridges between the same pair of islands
+there is no bridge connecting an island to itself
+Example Input
+1
+8 16
+1 2
+1 5
 1 4
-4 3
-Output 1:
-6
-7
-Input 2:
+1 4
+2 3
+2 3
+2 6
+3 7
+3 4
+4 8
+5 6
+5 6
+5 8
+6 7
 7 8
-1 2 2
-1 3 4
-2 3 1
-3 4 1
-4 5 1
-4 7 1
-5 6 2
-6 7 1
-3
-1 4
-5 7
-1 6
-Output 2:
-4
-2
-6
-Explaination
-Test 2: the graph is shown in the picture below.
-The shortest path for each query are:
-From 1 to 4: 1 -> 2 -> 3 -> 4
-From 5 to 7: 5 -> 4 -> 7
-From 1 to 6: 1 -> 2 -> 3 -> 4 -> 7 -> 6
+7 8
+Example Output
+9 2 11 12 13 15 16 10 9 5
+Explanation
+Example case 1:
+The structure of Chefsberg is described in the picture above. The bridges used by the route are highlighted in yellow.

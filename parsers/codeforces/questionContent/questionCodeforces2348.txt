@@ -1,131 +1,113 @@
-C. Star Trek
-time limit per test1 second
+C. Chess Rush
+time limit per test1.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The United Federation of Planets is an alliance of
-N
-planets, they are indexed from
+The mythic world of Chess Land is a rectangular grid of squares with
+R
+rows and
+C
+columns,
+R
+being greater than or equal to
+C
+. Its rows and columns are numbered from
 1
 to
-N
-. Some planets are connected by space tunnels. In a space tunnel, a starship can fly both ways really fast. There are exactly
-N−1
-space tunnels, and we can travel from any planet to any other planet in the Federation using these tunnels.
-It's well known that there are
-D
-additional parallel universes. These are exact copies of our universe, they have the same planets and space tunnels. They are indexed from
-1
-to
-D
-(our universe has index
-0
-). We denote the planet
-x
-in universe
-i
-by
-P
-i
-x
-. We can travel from one universe to another using dimension portals. For every
-i
-(
-0≤i≤D−1
-), we will place exactly one portal that allows us to fly from
-P
-i
-A
-i
-to
-P
-i+1
-B
-i
-, for some planet indices
-A
-i
+R
 and
-B
-i
-(i.e.
-1≤
-A
-i
-,
-B
-i
-≤N
-).
-Once all the portals are placed, Starship Batthyány will embark on its maiden voyage. It is currently orbiting around
-P
-0
 1
-. Captain Ágnes and Lieutenant Gábor have decided to play the following game: they choose alternately a destination (a planet) to fly to. This planet can be in the same universe, if a space tunnel goes there, or it can be in another universe, if a portal goes there. Their aim is to visit places where no one has gone before. That's why, once they have visited a planet
-P
-i
-x
-, they never go back there (but they can visit the planet
-x
-in another universe). Captain Ágnes chooses the first destination (then Gábor, then Ágnes etc.). If somebody can't choose a planet where they have not been before in his/her turn, he/she loses.
-Captain Ágnes and Lieutenant Gábor are both very clever: they know the locations of all tunnels and portals, and they both play optimally. For how many different placements of portals does Captain Ágnes win the game? Two placements are different if there is an index
-i
-(
-0≤i≤D−1
-), where the
-i
-th portal connects different pairs of planets in the two placements (i.e
-A
-i
-or
-B
-i
-differs).
-This number can be very big, so we are interested in it modulo
-10
-9
-+7
-.
-Input
-The first line contains two space-separated integers,
-N
-(
-1≤N≤
-10
+to
+C
+, respectively.
+The inhabitants of Chess Land are usually mentioned as pieces in everyday language, and there are
 5
-) – the number of planets and
-D
-(
-1≤D≤
+specific types of them roaming the land: pawns, rooks, bishops, queens and kings. Contrary to popular belief, chivalry is long dead in Chess Land, so there are no knights to be found.
+Each piece is unique in the way it moves around from square to square: in one step,
+a pawn can move one row forward (i.e. from row
+r
+to
+r+1
+), without changing columns;
+a rook can move any number of columns left/right without changing rows OR move any number of rows forward/backward without changing columns;
+a bishop can move to any square of the two diagonals intersecting at its currently occupied square;
+a queen can move to any square where a rook or a bishop could move to from her position;
+and a king can move to any of the
+8
+adjacent squares.
+In the following figure, we marked by X the squares each piece can move to in a single step (here, the rows are numbered from bottom to top, and the columns from left to right).
+Recently, Chess Land has become a dangerous place: pieces that are passing through the land can get captured unexpectedly by unknown forces and simply disappear. As a consequence, they would like to reach their destinations as fast (i.e. in as few moves) as possible, and they are also interested in the number of different ways it is possible for them to reach it, using the minimal number of steps – because more paths being available could mean lower chances of getting captured. Two paths are considered different if they differ in at least one visited square.
+For this problem, let us assume that pieces are entering Chess Land in a given column of row
+1
+, and exit the land in a given column of row
+R
+. Your task is to answer
+Q
+questions: given the type of a piece, the column it enters row
+1
+and the column it must reach in row
+R
+in order to exit, compute the minimal number of moves it has to make in Chess Land, and the number of different ways it is able to do so.
+Input
+The first line contains three space-separated integers
+R
+,
+C
+, and
+Q
+(1≤Q≤1000
+,
+2≤C≤1000
+and
+C≤R≤
 10
-18
-) – the number of additional parallel universes. Each of the next
-N−1
-lines contains two space-separated integers
-u
+9
+)
+– the number of rows and columns of Chess Land, and the number of questions, respectively. Then
+Q
+lines follow.
+Each line consists of
+a character
+T
+, corresponding to the type of the piece in question ('P' for pawn, 'R' for rook, 'B' for bishop, 'Q' for queen and 'K' for king);
+two integers
+c
+1
 and
-v
-(
-1≤u,v≤N
-), denoting that
-P
-i
-u
-and
-P
-i
-v
-are connected by a space tunnel for all
-i
-(
-0≤i≤D
-).
+c
+R
+,
+1≤
+c
+1
+,
+c
+R
+≤C
+, denoting that the piece starts from the
+c
+1
+-th column of row
+1
+, and has to reach the
+c
+R
+-th column of row
+R
+.
 Output
-You should print a single integer, the number of possible placements of portals where Captain Ágnes wins modulo
+You have to print
+Q
+lines, the
+i
+-th one containing two space separated integers, the answer to the
+i
+-th question: the first one is the minimal number of steps needed, the second is the number of different paths available using this number of steps. Since the answer can be quite large, you have to compute it modulo
 10
 9
 +7
 .
+If it is impossible to reach the target square, output the line "0 0".
 Scoring
 Subtask
 1
@@ -136,38 +118,42 @@ Subtask
 6
 7
 8
+9
 Points
 0
-7
 8
 15
+22
+5
+8
 15
 20
-20
-15
+7
 Constraints
 samples
-N=2
-N≤100andD=1
-N≤1000andD=1
-D=1
-N≤1000andD≤
-10
-5
-D≤
-10
-5
+T∈{'P','R','Q'}, i.e. all pieces are pawns, rooks or queens
+T='B' and C,R≤100
+T='B'
+T='K' and C,R≤100andQ≤50
+T='K' and C,R≤100
+T='K' and C≤100
+T='K'
 no additional constraints
 Example
 input
 Copy
-3 1
-1 2
-2 3
+8 8 5
+P 1 2
+R 4 8
+Q 2 3
+B 3 6
+K 5 5
 output
 Copy
-4
+0 0
+2 2
+2 5
+2 2
+7 393
 Note
-There is only 1 portal and
-3⋅3=9
-different placements. The following 4 placements are when the Captain wins.
+You can download the above example and an additional (bigger) sample input here: https://gofile.io/d/GDzwfC

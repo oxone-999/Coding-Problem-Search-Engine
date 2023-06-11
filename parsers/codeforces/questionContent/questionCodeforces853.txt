@@ -1,114 +1,134 @@
-D. Cute number
-time limit per test2 seconds
-memory limit per test256 megabytes
+F. Koishi's Unconscious Permutation
+time limit per test12 seconds
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Ran is especially skilled in computation and mathematics. It is said that she can do unimaginable calculation work in an instant.
-—Perfect Memento in Strict Sense
-Ran Yakumo is a cute girl who loves creating cute Maths problems.
-Let
-f(x)
-be the minimal square number strictly greater than
-x
-, and
-g(x)
-be the maximal square number less than or equal to
-x
-. For example,
-f(1)=f(2)=g(4)=g(8)=4
-.
-A positive integer
-x
-is cute if
-x−g(x)<f(x)−x
-. For example,
-1,5,11
-are cute integers, while
-3,8,15
-are not.
-Ran gives you an array
-a
-of length
+As she closed the Satori's eye that could read minds, Koishi gained the ability to live in unconsciousness. Even she herself does not know what she is up to.
+— Subterranean Animism
+Koishi is unconsciously permuting
 n
-. She wants you to find the smallest non-negative integer
-k
-such that
-a
+numbers:
+1,2,…,n
+.
+She thinks the permutation
+p
+is beautiful if
+s=
+∑
+i=1
+n−1
+[
+p
 i
-+k
-is a cute number for any element of
-a
++1=
+p
+i+1
+]
+.
+[x]
+equals to
+1
+if
+x
+holds, or
+0
+otherwise.
+For each
+k∈[0,n−1]
+, she wants to know the number of beautiful permutations of length
+n
+satisfying
+k=
+∑
+i=1
+n−1
+[
+p
+i
+<
+p
+i+1
+]
 .
 Input
-The first line contains one integer
+There is one line containing two intergers
 n
 (
-1≤n≤
-10
-6
-) — the length of
-a
-.
-The second line contains
-n
-intergers
-a
-1
-,
-a
-2
-,…,
-a
-n
+1≤n≤250000
+) and
+s
 (
-1≤
-a
-1
-≤
-a
-2
-≤…≤
-a
-n
-≤2⋅
-10
-6
-) — the array
-a
-.
+0≤s<n
+).
 Output
-Print a single interger
-k
-— the answer.
+Print one line with
+n
+intergers. The
+i
+-th integers represents the answer of
+k=i−1
+, modulo
+998244353
+.
 Examples
 input
 Copy
-4
-1 3 8 10
+2 0
 output
 Copy
-1
+1 0
 input
 Copy
-5
-2 3 8 9 11
+4 1
 output
 Copy
-8
+0 3 6 0
 input
 Copy
-8
-1 2 3 4 5 6 7 8
+8 3
 output
 Copy
-48
+0 0 0 35 770 980 70 0
 Note
-Test case 1:
-3
-is not cute integer, so
-k≠0
+Let
+f(p)=
+∑
+i=1
+n−1
+[
+p
+i
+<
+p
+i+1
+]
 .
-2,4,9,11
-are cute integers, so
-k=1
+Testcase 1:
+[2,1]
+is the only beautiful permutation. And
+f([2,1])=0
+.
+Testcase 2:
+Beautiful permutations:
+[1,2,4,3]
+,
+[1,3,4,2]
+,
+[1,4,2,3]
+,
+[2,1,3,4]
+,
+[2,3,1,4]
+,
+[3,1,2,4]
+,
+[3,4,2,1]
+,
+[4,2,3,1]
+,
+[4,3,1,2]
+. The first six of them satisfy
+f(p)=2
+, while others satisfy
+f(p)=1
 .

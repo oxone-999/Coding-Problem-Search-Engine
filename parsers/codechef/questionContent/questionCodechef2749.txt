@@ -1,75 +1,107 @@
-Rise of Cyborgs
+Double Delivery
 Problem
-Doctor Kunj installed new software on cyborg Shresth. This software introduced Shresth to range minimum queries.
-Cyborg Shresth thought of
-T different problems in each of which you will be given an array
-A of length
-N and an array
-B of length
-M. In each of these problems, you have to calculate:
-∑
-i=1
-m
-∑
-j=i
-m
-rangeMin(B[i],B[j])
-Where
-rangeMin(i,j) returns the minimum element in the range of indices
-i to
-j (both included) in array
-A.
-It is given that array
-B consists of pairwise distinct elements and is in ascending order.
-###Input Format:
-First line will contain
-T, the number of different problems Cyborg Shresth thought of.
-Each problem's input data will be given in three different lines.
-The first line will contain
-N and
-M, the length of array
+You are given a
+M x
+M grid representing a city. A cell in this grid is represented as
+(i,j), i.e. the cell at the
+i-th row and
+j-th column in the grid. You own two trucks
 A and
-B respectively.
-The second line will contain
-N space separated positive integers, which form the array
-A. -
-The third line will contain
-M space separated positive integers, which form the array
-B.
-###Output Format:
-For each different problem, print on a new line the answer to the problem, i.e. the value of
-∑
-i=1
-m
-∑
-j=i
-m
-rangeMin(B[i],B[j]) .
-Constraints:
-1≤T≤10
-5
-1≤N≤10
-5
-1≤M≤10
-5
-1≤A[i]≤10
-9
-1≤B[i]≤N
-It is guaranteed that the sum of
-N over all test cases does not exceed
-10
-6
-.
-Sample Input:
+B that deliver goods. Truck
+A is located at at
+(Ax,Ay) and Truck
+B is located at
+(Bx,By). Both trucks have an infinite number of goods. The two trucks could initially be at the same location.
+The distance to travel between cells
+(i
 1
-7 3
-10 3 7 9 1 19 2
-1 4 6
-Sample Output:
-43
-###Explanation:
-For the given array
-A, we have to calculate
-rangeMin(1,1)+rangeMin(1,4)+rangeMin(1,6)+rangeMin(4,4)+rangeMin(4,6)+rangeMin(6,6).
-This is equal to
-10+3+1+9+1+19=43.
+,j
+1
+) and
+(i
+2
+,j
+2
+) is the Manhattan Distance, i.e.,
+∣i
+1
+−i
+2
+∣+∣j
+1
+−j
+2
+∣ units.
+Your company has to serve
+N orders, where the
+i-th order is located at position
+(x
+i
+,y
+i
+). An order is said to be served if some truck moves to the location of the
+i-th order. Additionally, the
+i-th order can be served only once all order numbers from 1 to
+i−1 have been served.
+What is the minimum total distance that the trucks must travel to serve all
+N orders?
+###Input:
+First line will contain
+N, the number of orders to serve.
+The next line contains 2 space separated integers,
+Ax,Ay, the co-ordinates of truck A
+The next line contains 2 space separated integers,
+Bx,By, the co-ordinates of truck B
+N lines lines follow,
+i-th of which contains 2 space separated integers,
+(x
+i
+,y
+i
+), the location of the
+i-th order.
+###Output: Print a single integer, denoting the minimum total distance travelled by the trucks.
+###Constraints
+1≤N≤5000
+1≤A
+x
+,A
+y
+,B
+x
+,B
+y
+,x
+i
+,y
+i
+≤10
+9
+###Subtasks
+30 points :
+1≤N≤100 and
+1≤A
+x
+,A
+y
+,B
+x
+,B
+y
+,x
+i
+,y
+i
+,≤100
+70 points : original constraints
+###Sample Input: 3
+3 2
+4 2
+2 1
+2 4
+2 1
+###Sample Output: 6
+###EXPLANATION:
+Truck A serves orders 1 and 3 while truck B serves order number 2. Total distance covered by A is 2 units and by B is 4 units. The total distance covered by both trucks combined is 6 units and this is optimal.
+One should keep in mind that order number 3 is not served instantly when truck A arrives at location
+(2,1). Instead it is served only after both orders 1 and 2 have been served.

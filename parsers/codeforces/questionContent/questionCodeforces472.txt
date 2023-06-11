@@ -1,186 +1,160 @@
-E. N Machines
-time limit per test1 second
-memory limit per test256 megabytes
+F. Minecraft Series
+time limit per test6 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You have been invited as a production process optimization specialist to some very large company. The company has
-n
-machines at its factory, standing one behind another in the production chain. Each machine can be described in one of the following two ways:
-(+, 
-a
-i
-)
-or
-(∗, 
-a
-i
-)
+Little Misha goes to the programming club and solves nothing there. It may seem strange, but when you find out that Misha is filming a Minecraft series, everything will fall into place...
+Misha is inspired by Manhattan, so he built a city in Minecraft that can be imagined as a table of size
+n×m
 .
-If a workpiece with the value
+k
+students live in a city, the
+i
+-th student lives in the house, located at the intersection of the
 x
-is supplied to the machine of kind
-(+, 
-a
 i
-)
-, then the output workpiece has value
-x+
-a
+-th row and the
+y
 i
-.
-If a workpiece with the value
-x
-is supplied to the machine of kind
-(∗, 
-a
+-th column. Also, each student has a degree of his aggressiveness
+w
 i
-)
-, then the output workpiece has value
-x⋅
-a
-i
-.
-The whole production process is as follows. The workpiece with the value
+. Since the city turned out to be very large, Misha decided to territorially limit the actions of his series to some square
+s
+, which sides are parallel to the coordinate axes. The length of the side of the square should be an integer from
 1
-is supplied to the first machine, then the workpiece obtained after the operation of the first machine is supplied to the second machine, then the workpiece obtained after the operation of the second machine is supplied to the third machine, and so on. The company is not doing very well, so now the value of the resulting product does not exceed
-2⋅
-10
-9
-.
-The directors of the company are not satisfied with the efficiency of the production process and have given you a budget of
-b
-coins to optimize it.
-To optimize production you can change the order of machines in the chain. Namely, by spending
-p
-coins, you can take any machine of kind
-(+, 
-a
-i
-)
-and move it to any place in the chain without changing the order of other machines. Also, by spending
-m
-coins, you can take any machine of kind
-(∗, 
-a
-i
-)
-and move it to any place in the chain.
-What is the maximum value of the resulting product that can be achieved if the total cost of movements that are made should not exceed
-b
-coins?
+to
+min(n,m)
+cells.
+According to the plot, the main hero will come to the city and accidentally fall into the square
+s
+. Possessing a unique degree of aggressiveness
+0
+, he will be able to show his leadership qualities and assemble a team of calm, moderate and aggressive students.
+In order for the assembled team to be versatile and close-knit, degrees of aggressiveness of all students of the team must be pairwise distinct and must form a single segment of consecutive integers. Formally, if there exist students with degrees of aggressiveness
+l,l+1,…,−1,1,…,r−1,r
+inside the square
+s
+, where
+l≤0≤r
+, the main hero will be able to form a team of
+r−l+1
+people (of course, he is included in this team).
+Notice, that it is not required to take all students from square
+s
+to the team.
+Misha thinks that the team should consist of at least
+t
+people. That is why he is interested, how many squares are there in the table in which the main hero will be able to form a team of at least
+t
+people. Help him to calculate this.
 Input
 The first line contains four integers
 n
 ,
-b
-,
-p
-and
 m
+,
+k
+and
+t
 (
-1≤n≤
+1≤n,m≤40000
+,
+1≤n⋅m≤40000
+,
+1≤k≤
 10
 6
 ,
-1≤b,p,m≤
-10
-9
-) — the number of machine at the factory, your budget and costs of movements of both kinds of machines.
+1≤t≤k+1
+) — the number of rows and columns in the table, and the number of students living in the city, respectively.
 Each of the following
-n
-lines contains description of a machine. The description begins with one of the following characters: "+" or "*", that denotes the kind of the machine. Then an integer
-a
+k
+lines contains three integers
+x
 i
-follows (
+,
+y
+i
+and
+w
+i
+(
 1≤
-a
+x
 i
-≤2⋅
+≤n
+,
+1≤
+y
+i
+≤m
+,
+1≤|
+w
+i
+|≤
 10
 9
-).
-It's guaranteed that the current value of the resulting product does not exceed
-2⋅
-10
-9
-.
+) — the number of row and column, where the
+i
+-th student is living, and the degree of his aggressiveness.
 Output
-Print one integer — the maximum value of the resulting product that can be achieved if the total cost of movements that are made does not exceed
-b
-coins.
+Print one integer — the number of ways to choose the square
+s
+in such way that the main hero will be able to form a team of at least
+t
+people.
 Examples
 input
 Copy
-3 2 1 3
-* 2
-+ 1
-+ 1
+2 2 1 2
+1 1 2
 output
 Copy
-6
+0
 input
 Copy
-4 2 2 2
-* 2
-+ 1
-* 3
-+ 2
+2 2 2 2
+1 1 1
+2 2 2
 output
 Copy
-21
+2
 input
 Copy
-8 2 1 1
-* 2
-+ 1
-* 4
-+ 1
-+ 1
-+ 1
-* 5
-+ 3
+2 2 4 2
+1 1 1
+1 1 -1
+1 2 1
+2 2 1
 output
 Copy
-240
+4
 Note
-In the first example our budget is too low to move machine
-(∗, 2)
-, but we can move both machines
-(+, 1)
-to the beginning of the chain. So the final chain will be
-(+, 1)
-(+, 1)
-(∗, 2)
-. If the workpiece with the value
-1
-is supplied to the first machine, its value will be changed in the following way:
-1,2,3,6
+In the first example the main hero will not be able to form a team of more than one person in any square
+s
 .
-In the second example we can move only one machine. Let's move machine
-(+, 2)
-to the beginning of the chain. The final chain will be
-(+, 2)
-(∗, 2)
-(+, 1)
-(∗, 3)
-. The value of the workpiece will be changed in the following way:
-1,3,6,7,21
-.
-In the third example we can place machine
-(∗, 4)
-before the machine
-(∗, 5)
-, and move machine
-(+, 3)
-to the beginning of the chain. The final chain will be
-(+, 3)
-(∗, 2)
-(+, 1)
-(+, 1)
-(+, 1)
-(+, 1)
-(∗, 4)
-(∗, 5)
-. The value of the workpiece will be changed in the following way:
-1,4,8,9,10,11,12,48,240
-.
+Illustration for the first example.
+In the second example there are two ways to select square
+s
+. Both of them are illustrated below. In one of them the main hero will be able to form a team of students with degrees of aggressiveness
+[0,1]
+, and in the another — with degrees of aggressiveness
+[0,1,2]
+. Notice, that the main hero with degree of aggressiveness
+0
+will be included to the team regardless of the chosen square.
+Illustration for the second example.
+In the third example there are four ways to select square
+s
+. All of them are illustrated below. The main hero will be able to form a team with degrees of aggressiveness:
+[−1,0,1]
+,
+[0,1]
+,
+[0,1]
+,
+[−1,0,1]
+, respectively.
+Illustration for the third example.

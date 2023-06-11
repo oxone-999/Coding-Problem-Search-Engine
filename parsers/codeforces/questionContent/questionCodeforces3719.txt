@@ -1,108 +1,115 @@
-A. Even Substrings
-time limit per test0.5 seconds
+B. Chocolates
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string
-s=
-s
-1
-s
-2
-…
-s
+You went to the store, selling
 n
-of length
-n
-, which only contains digits
-1
+types of chocolates. There are
+a
+i
+chocolates of type
+i
+in stock.
+You have unlimited amount of cash (so you are not restricted by any prices) and want to buy as many chocolates as possible. However if you buy
+x
+i
+chocolates of type
+i
+(clearly,
+0≤
+x
+i
+≤
+a
+i
+), then for all
+1≤j<i
+at least one of the following must hold:
+x
+j
+=0
+(you bought zero chocolates of type
+j
+)
+x
+j
+<
+x
+i
+(you bought less chocolates of type
+j
+than of type
+i
+)
+For example, the array
+x=[0,0,1,2,10]
+satisfies the requirement above (assuming that all
+a
+i
+≥
+x
+i
+), while arrays
+x=[0,1,0]
 ,
-2
-, ...,
-9
-.
-A substring
-s[l…r]
-of
-s
-is a string
-s
-l
-s
-l+1
-s
-l+2
-…
-s
-r
-. A substring
-s[l…r]
-of
-s
-is called even if the number represented by it is even.
-Find the number of even substrings of
-s
-. Note, that even if some substrings are equal as strings, but have different
-l
+x=[5,5]
 and
-r
-, they are counted as different substrings.
+x=[3,2]
+don't.
+Calculate the maximum number of chocolates you can buy.
 Input
 The first line contains an integer
 n
 (
-1≤n≤65000
-) — the length of the string
-s
-.
-The second line contains a string
-s
-of length
+1≤n≤2⋅
+10
+5
+), denoting the number of types of chocolate.
+The next line contains
 n
-. The string
-s
-consists only of digits
-1
-,
-2
-, ...,
+integers
+a
+i
+(
+1≤
+a
+i
+≤
+10
 9
-.
+), denoting the number of chocolates of each type.
 Output
-Print the number of even substrings of
-s
-.
+Print the maximum number of chocolates you can buy.
 Examples
 input
 Copy
-4
-1234
+5
+1 2 1 3 6
 output
 Copy
-6
+10
+input
+Copy
+5
+3 2 5 4 10
+output
+Copy
+20
 input
 Copy
 4
-2244
+1 1 1 1
 output
 Copy
-10
+1
 Note
-In the first example, the
-[l,r]
-pairs corresponding to even substrings are:
-s[1…2]
-s[2…2]
-s[1…4]
-s[2…4]
-s[3…4]
-s[4…4]
-In the second example, all
-10
-substrings of
-s
-are even substrings. Note, that while substrings
-s[1…1]
-and
-s[2…2]
-both define the substring "2", they are still counted as different substrings.
+In the first example, it is optimal to buy:
+0+0+1+3+6
+chocolates.
+In the second example, it is optimal to buy:
+1+2+3+4+10
+chocolates.
+In the third example, it is optimal to buy:
+0+0+0+1
+chocolates.

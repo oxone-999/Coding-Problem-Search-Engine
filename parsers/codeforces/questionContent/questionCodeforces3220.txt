@@ -1,145 +1,80 @@
-C. Primes and Multiplication
+E. Another Filling the Grid
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let's introduce some definitions that will be needed later.
-Let
-prime(x)
-be the set of prime divisors of
-x
-. For example,
-prime(140)={2,5,7}
-,
-prime(169)={13}
-.
-Let
-g(x,p)
-be the maximum possible integer
-p
+You have
+n×n
+square grid and an integer
 k
-where
-k
-is an integer such that
-x
-is divisible by
-p
-k
-. For example:
-g(45,3)=9
-(
-45
-is divisible by
-3
-2
-=9
-but not divisible by
-3
-3
-=27
-),
-g(63,7)=7
-(
-63
-is divisible by
-7
+. Put an integer in each cell while satisfying the conditions below.
+All numbers in the grid should be between
 1
-=7
-but not divisible by
-7
-2
-=49
-).
-Let
-f(x,y)
-be the product of
-g(y,p)
-for all
-p
-in
-prime(x)
-. For example:
-f(30,70)=g(70,2)⋅g(70,3)⋅g(70,5)=
-2
-1
-⋅
-3
-0
-⋅
-5
-1
-=10
-,
-f(525,63)=g(63,3)⋅g(63,5)⋅g(63,7)=
-3
-2
-⋅
-5
-0
-⋅
-7
-1
-=63
-.
-You have integers
-x
 and
-n
-. Calculate
-f(x,1)⋅f(x,2)⋅…⋅f(x,n)mod(
+k
+inclusive.
+Minimum number of the
+i
+-th row is
+1
+(
+1≤i≤n
+).
+Minimum number of the
+j
+-th column is
+1
+(
+1≤j≤n
+).
+Find the number of ways to put integers in the grid. Since the answer can be very large, find the answer modulo
+(
 10
 9
 +7)
 .
+These are the examples of valid and invalid grid when
+n=k=2
+.
 Input
-The only line contains integers
-x
-and
+The only line contains two integers
 n
+and
+k
 (
-2≤x≤
+1≤n≤250
+,
+1≤k≤
 10
 9
-,
-1≤n≤
-10
-18
-) — the numbers used in formula.
+).
 Output
-Print the answer.
+Print the answer modulo
+(
+10
+9
++7)
+.
 Examples
 input
 Copy
-10 2
+2 2
 output
 Copy
-2
+7
 input
 Copy
-20190929 1605
+123 456789
 output
 Copy
-363165664
-input
-Copy
-947 987654321987654321
-output
-Copy
-593574252
+689974806
 Note
-In the first example,
-f(10,1)=g(1,2)⋅g(1,5)=1
-,
-f(10,2)=g(2,2)⋅g(2,5)=2
-.
-In the second example, actual value of formula is approximately
-1.597⋅
-10
-171
-. Make sure you print the answer modulo
+In the first example, following
+7
+cases are possible.
+In the second example, make sure you print the answer modulo
 (
 10
 9
 +7)
 .
-In the third example, be careful about overflow issue.

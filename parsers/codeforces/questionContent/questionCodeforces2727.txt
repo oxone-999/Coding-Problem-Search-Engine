@@ -1,126 +1,138 @@
-A. Level Statistics
+D. Minimum Euler Cycle
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp has recently created a new level in this cool new game Berlio Maker 85 and uploaded it online. Now players from all over the world can try his level.
-All levels in this game have two stats to them: the number of plays and the number of clears. So when a player attempts the level, the number of plays increases by
-1
-. If he manages to finish the level successfully then the number of clears increases by
-1
-as well. Note that both of the statistics update at the same time (so if the player finishes the level successfully then the number of plays will increase at the same time as the number of clears).
-Polycarp is very excited about his level, so he keeps peeking at the stats to know how hard his level turns out to be.
-So he peeked at the stats
+You are given a complete directed graph
+K
 n
-times and wrote down
+with
 n
-pairs of integers —
-(
-p
-1
-,
-c
-1
-),(
-p
-2
-,
-c
-2
-),…,(
-p
+vertices: each pair of vertices
+u≠v
+in
+K
 n
-,
-c
-n
-)
-, where
-p
-i
-is the number of plays at the
-i
--th moment of time and
-c
-i
-is the number of clears at the same moment of time. The stats are given in chronological order (i.e. the order of given pairs is exactly the same as Polycarp has written down).
-Between two consecutive moments of time Polycarp peeked at the stats many players (but possibly zero) could attempt the level.
-Finally, Polycarp wonders if he hasn't messed up any records and all the pairs are correct. If there could exist such a sequence of plays (and clears, respectively) that the stats were exactly as Polycarp has written down, then he considers his records correct.
-Help him to check the correctness of his records.
-For your convenience you have to answer multiple independent test cases.
-Input
-The first line contains a single integer
-T
-(1≤T≤500)
-— the number of test cases.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤100
-) — the number of moments of time Polycarp peeked at the stats.
-Each of the next
-n
-lines contains two integers
-p
-i
+have both directed edges
+(u,v)
 and
-c
-i
+(v,u)
+; there are no self-loops.
+You should find such a cycle in
+K
+n
+that visits every directed edge exactly once (allowing for revisiting vertices).
+We can write such cycle as a list of
+n(n−1)+1
+vertices
+v
+1
+,
+v
+2
+,
+v
+3
+,…,
+v
+n(n−1)−1
+,
+v
+n(n−1)
+,
+v
+n(n−1)+1
+=
+v
+1
+— a visiting order, where each
 (
-0≤
-p
+v
 i
 ,
-c
-i
-≤1000
-) — the number of plays and the number of clears of the level at the
-i
--th moment of time.
-Note that the stats are given in chronological order.
+v
+i+1
+)
+occurs exactly once.
+Find the lexicographically smallest such cycle. It's not hard to prove that the cycle always exists.
+Since the answer can be too large print its
+[l,r]
+segment, in other words,
+v
+l
+,
+v
+l+1
+,…,
+v
+r
+.
+Input
+The first line contains the single integer
+T
+(
+1≤T≤100
+) — the number of test cases.
+Next
+T
+lines contain test cases — one per line. The first and only line of each test case contains three integers
+n
+,
+l
+and
+r
+(
+2≤n≤
+10
+5
+,
+1≤l≤r≤n(n−1)+1
+,
+r−l+1≤
+10
+5
+) — the number of vertices in
+K
+n
+, and segment of the cycle to print.
+It's guaranteed that the total sum of
+n
+doesn't exceed
+10
+5
+and the total sum of
+r−l+1
+doesn't exceed
+10
+5
+.
 Output
-For each test case print a single line.
-If there could exist such a sequence of plays (and clears, respectively) that the stats were exactly as Polycarp has written down, then print "YES".
-Otherwise, print "NO".
-You can print each letter in any case (upper or lower).
+For each test case print the segment
+v
+l
+,
+v
+l+1
+,…,
+v
+r
+of the lexicographically smallest cycle that visits every edge exactly once.
 Example
 input
 Copy
-6
 3
-0 0
-1 1
-1 2
-2
-1 0
-1000 3
-4
-10 1
-15 2
-10 2
-15 2
-1
-765 432
-2
-4 4
-4 3
-5
-0 0
-1 0
-1 0
-1 0
-1 0
+2 1 3
+3 3 6
+99995 9998900031 9998900031
 output
 Copy
-NO
-YES
-NO
-YES
-NO
-YES
+1 2 1 
+1 3 2 3 
+1 
 Note
-In the first test case at the third moment of time the number of clears increased but the number of plays did not, that couldn't have happened.
-The second test case is a nice example of a Super Expert level.
-In the third test case the number of plays decreased, which is impossible.
-The fourth test case is probably an auto level with a single jump over the spike.
-In the fifth test case the number of clears decreased, which is also impossible.
-Nobody wanted to play the sixth test case; Polycarp's mom attempted it to make him feel better, however, she couldn't clear it.
+In the second test case, the lexicographically minimum cycle looks like:
+1,2,1,3,2,3,1
+.
+In the third test case, it's quite obvious that the cycle should start and end in vertex
+1
+.

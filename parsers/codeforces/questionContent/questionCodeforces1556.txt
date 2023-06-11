@@ -1,145 +1,95 @@
-B. Two Tables
-time limit per test2 seconds
+E. Boring Segments
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have an axis-aligned rectangle room with width
-W
-and height
-H
-, so the lower left corner is in point
-(0,0)
-and the upper right corner is in
-(W,H)
-.
-There is a rectangular table standing in this room. The sides of the table are parallel to the walls, the lower left corner is in
-(
-x
+You are given
+n
+segments on a number line, numbered from
 1
-,
-y
-1
-)
-, and the upper right corner in
-(
-x
-2
-,
-y
-2
-)
-.
-You want to place another rectangular table in this room with width
+to
+n
+. The
+i
+-th segments covers all integer points from
+l
+i
+to
+r
+i
+and has a value
 w
-and height
-h
-with the width of the table parallel to the width of the room.
-The problem is that sometimes there is not enough space to place the second table without intersecting with the first one (there are no problems with tables touching, though).
-You can't rotate any of the tables, but you can move the first table inside the room.
-Example of how you may move the first table.
-What is the minimum distance you should move the first table to free enough space for the second one?
+i
+.
+You are asked to select a subset of these segments (possibly, all of them). Once the subset is selected, it's possible to travel between two integer points if there exists a selected segment that covers both of them. A subset is good if it's possible to reach point
+m
+starting from point
+1
+in arbitrary number of moves.
+The cost of the subset is the difference between the maximum and the minimum values of segments in it. Find the minimum cost of a good subset.
+In every test there exists at least one good subset.
 Input
-The first line contains the single integer
-t
-(
-1≤t≤5000
-) — the number of the test cases.
-The first line of each test case contains two integers
-W
+The first line contains two integers
+n
 and
-H
+m
 (
-1≤W,H≤
+1≤n≤3⋅
 10
-8
-) — the width and the height of the room.
-The second line contains four integers
-x
-1
-,
-y
-1
-,
-x
-2
-and
-y
-2
-(
-0≤
-x
-1
-<
-x
-2
-≤W
+5
 ;
-0≤
-y
-1
-<
-y
-2
-≤H
-) — the coordinates of the corners of the first table.
-The third line contains two integers
+2≤m≤
+10
+6
+) — the number of segments and the number of integer points.
+Each of the next
+n
+lines contains three integers
+l
+i
+,
+r
+i
+and
 w
-and
-h
+i
 (
-1≤w≤W
+1≤
+l
+i
+<
+r
+i
+≤m
 ;
-1≤h≤H
-) — the width and the height of the second table.
-Output
-For each test case, print the minimum distance you should move the first table, or
-−1
-if there is no way to free enough space for the second table.
-Your answer will be considered correct if its absolute or relative error doesn't exceed
+1≤
+w
+i
+≤
 10
-−6
-.
-Example
+6
+) — the description of the
+i
+-th segment.
+In every test there exists at least one good subset.
+Output
+Print a single integer — the minimum cost of a good subset.
+Examples
 input
 Copy
-5
-8 5
-2 1 7 4
-4 2
-5 4
-2 2 5 4
-3 3
-1 8
-0 3 1 6
-1 5
-8 1
-3 0 6 1
-5 1
-8 10
-4 5 7 8
-8 5
+5 12
+1 5 5
+3 4 10
+4 10 6
+11 12 5
+10 12 3
 output
 Copy
-1.000000000
--1
-2.000000000
-2.000000000
-0.000000000
-Note
-The configuration of the first test case is shown in the picture. But the movement of the first table is not optimal. One of the optimal movement, for example, is to move the table by
-(0,−1)
-, so the lower left corner will move from
-(2,1)
-to
-(2,0)
-. Then you can place the second table at
-(0,3)−(4,5)
-.
-In the second test case, there is no way to fit both tables in the room without intersecting.
-In the third test case, you can move the first table by
-(0,2)
-, so the lower left corner will move from
-(0,3)
-to
-(0,5)
-.
+3
+input
+Copy
+1 10
+1 10 23
+output
+Copy
+0

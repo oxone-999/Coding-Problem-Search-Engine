@@ -1,165 +1,93 @@
-F. Playing Around the Table
-time limit per test2 seconds
+B. Madoka and the Elegant Gift
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-players, numbered from
+Madoka's father just reached
 1
-to
+million subscribers on Mathub! So the website decided to send him a personalized award — The Mathhub's Bit Button!
+The Bit Button is a rectangular table with
 n
-sitting around a round table. The
-(i+1)
--th player sits to the right of the
-i
--th player for
-1≤i<n
-, and the
+rows and
+m
+columns with
+0
+or
 1
--st player sits to the right of the
-n
--th player.
-There are
-n
-2
-cards, each of which has an integer between
-1
-and
-n
-written on it. For each integer from
-1
-to
-n
-, there are exactly
-n
-cards having this number.
-Initially, all these cards are distributed among all the players, in such a way that each of them has exactly
-n
-cards. In one operation, each player chooses one of his cards and passes it to the player to his right. All these actions are performed simultaneously.
-Player
-i
-is called solid if all his cards have the integer
-i
-written on them. Their objective is to reach a configuration in which everyone is solid. Find a way to do it using at most
-(
-n
-2
-−n)
-operations. You do not need to minimize the number of operations.
+in each cell. After exploring the table Madoka found out that:
+A subrectangle
+A
+is contained in a subrectangle
+B
+if there's no cell contained in
+A
+but not contained in
+B
+.
+Two subrectangles intersect if there is a cell contained in both of them.
+A subrectangle is called black if there's no cell with value
+0
+inside it.
+A subrectangle is called nice if it's black and it's not contained in another black subrectangle.
+The table is called elegant if there are no two nice intersecting subrectangles.
+For example, in the first illustration the red subrectangle is nice, but in the second one it's not, because it's contained in the purple subrectangle.
+Help Madoka to determine whether the table is elegant.
 Input
-The first line contains a single integer
-n
+Each test contains multiple test cases. The first line contains a single integer
+t
 (
-2≤n≤100
+1≤t≤200
+) — the number of test cases. Description of the test cases follows.
+The first line of each test case contains two positive integers
+n,m
+(
+1≤n,m≤100
 ).
-Then
+The next
 n
-lines follow. The
-i
--th of them contains
+lines contain strings of length
+m
+consisting of zeros and ones — the description of the table.
+It is guaranteed that the sum of the values of
 n
-integers
-c
-1
-,
-c
-2
-,…,
-c
-n
-(
-1≤
-c
-j
-≤n
-) — the initial cards of the
-i
--th player.
-It is guaranteed that for each integer
-i
-from
-1
-to
-n
-, there are exactly
-n
-cards having the number
-i
+and the sum of the values of
+m
+for all test cases do not exceed
+777
 .
 Output
-In the first line print an integer
-k
-(
-0≤k≤(
-n
-2
-−n)
-) — the numbers of operations you want to make.
-Then
-k
-lines should follow. In the
-i
--th of them print
-n
-integers
-d
-1
-,
-d
-2
-,…,
-d
-n
-(
-1≤
-d
-j
-≤n
-) where
-d
-j
-is the number written on the card which
-j
--th player passes to the player to his right in the
-i
--th operation.
-We can show that an answer always exists under the given constraints. If there are multiple answers, print any.
-Examples
+For each test case print "YES" if its table is elegant or print "NO" otherwise.
+You may print each letter in any case (for example, "YES", "Yes", "yes", "yEs" will all be recognized as positive answer).
+Example
 input
 Copy
-2
-2 1
-1 2
+5
+3 3
+100
+011
+011
+3 3
+110
+111
+110
+1 5
+01111
+4 5
+11111
+01010
+01000
+01000
+3 2
+11
+00
+11
 output
 Copy
-1
-2 1 
-input
-Copy
-3
-1 1 1
-2 2 2
-3 3 3
-output
-Copy
-6
-1 2 3
-3 1 2
-2 3 1
-1 2 3
-3 1 2
-2 3 1
+YES
+NO
+YES
+NO
+YES
 Note
-In the first test case, if the first player passes a card with number
-2
-and the second player passes a card with number
-1
-, then the first player has two cards with number
-1
-and the second player has two cards with number
-2
-. Then, after making this operation, both players are solid.
-In the second test case,
-0
-operations would be enough too. Note that you do not need to minimize the number of operations.
+In the second test case the table is not elegant, because the red and the purple subrectangles are nice and intersect.
+In the fourth test case the table is not elegant, because the red and the purple subrectangles are nice and intersect.

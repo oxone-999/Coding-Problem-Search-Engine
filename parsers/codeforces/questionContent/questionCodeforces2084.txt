@@ -1,144 +1,116 @@
-B. Glass Half Spilled
+E. Nim Shortcuts
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-There are
+After your debut mobile game "Nim" blew up, you decided to make a sequel called "Nim 2". This game will expand on the trusted Nim game formula, adding the much awaited second heap!
+In the game, there are two heaps, each containing a non-negative number of stones. Two players make moves in turn. On their turn, a player can take any positive number of stones from either one of the heaps. A player who is unable to move loses the game.
+To make the game easier to playtest, you've introduced developer shortcuts. There are
 n
-glasses on the table numbered
-1,…,n
-. The glass
-i
-can hold up to
-a
-i
-units of water, and currently contains
-b
-i
-units of water.
-You would like to choose
-k
-glasses and collect as much water in them as possible. To that effect you can pour water from one glass to another as many times as you like. However, because of the glasses' awkward shape (and totally unrelated to your natural clumsiness), each time you try to transfer any amount of water, half of the amount is spilled on the floor.
-Formally, suppose a glass
-i
-currently contains
-c
-i
-units of water, and a glass
-j
-contains
-c
-j
-units of water. Suppose you try to transfer
-x
-units from glass
-i
-to glass
-j
-(naturally,
-x
-can not exceed
-c
-i
-). Then,
-x/2
-units is spilled on the floor. After the transfer is done, the glass
-i
-will contain
-c
-i
-−x
-units, and the glass
-j
-will contain
-min(
-a
-j
-,
-c
-j
-+x/2)
-units (excess water that doesn't fit in the glass is also spilled).
-Each time you transfer water, you can arbitrarlly choose from which glass
-i
-to which glass
-j
-to pour, and also the amount
-x
-transferred can be any positive real number.
-For each
-k=1,…,n
-, determine the largest possible total amount of water that can be collected in arbitrarily chosen
-k
-glasses after transferring water between glasses zero or more times.
-Input
-The first line contains a single integer
-n
+shortcut positions
 (
-1≤n≤100
-) — the number of glasses.
+x
+1
+,
+y
+1
+),…,(
+x
+n
+,
+y
+n
+)
+. These change the game as follows: suppose that before a player's turn the first and second heap contain
+x
+and
+y
+stones respectively. If the pair
+(x,y)
+is equal to one of the pairs
+(
+x
+i
+,
+y
+i
+)
+, then the player about to move loses instantly, otherwise they are able to make moves as normal. Note that in the above explanation the two heaps and all pairs are ordered, that is,
+x
+must refer to the size of the first heap, and
+y
+must refer to the size of the second heap.
+The game release was followed by too much celebration, and next thing you know is developer shortcuts made their way to the next official update of the game! Players now complain that the AI opponent has become unbeatable at certain stages of the game. You now have to write a program to figure out which of the given initial positions can be won by the starting player, assuming both players act optimally.
+Input
+The first line contains two integers
+n
+and
+m
+(
+1≤n,m≤
+10
+5
+) — the number of shortcut positions, and the number of initial positions that need to be evaluated.
 The following
 n
-lines describe the glasses. The
+lines describe shortcut positions. The
+i
+-th of these lines contains two integers
+x
+i
+,
+y
+i
+(
+0≤
+x
+i
+,
+y
+i
+≤
+10
+9
+). It is guaranteed that all shortcut positions are distinct.
+The following
+m
+lines describe initial positions. The
 i
 -th of these lines contains two integers
 a
 i
-and
+,
 b
 i
 (
 0≤
+a
+i
+,
 b
 i
 ≤
-a
-i
-≤100
-,
-a
-i
->0
-) — capacity, and water amount currently contained for the glass
-i
-, respectively.
-Output
-Print
-n
-real numbers — the largest amount of water that can be collected in
-1,…,n
-glasses respectively. Your answer will be accepted if each number is within
 10
-−9
-absolute or relative tolerance of the precise answer.
+9
+) — the number of stones in the first and second heap respectively. It is guaranteed that all initial positions are distinct. However, initial positions are not necessarily distinct from shortcut positions.
+Output
+For each initial position, on a separate line print "WIN" if the starting player is able to win from this position, and "LOSE" otherwise.
 Example
 input
 Copy
-3
-6 5
-6 5
-10 2
+3 5
+3 0
+0 1
+2 2
+0 0
+1 1
+2 2
+3 3
+5 4
 output
 Copy
-7.0000000000 11.0000000000 12.0000000000
-Note
-In the sample case, you can act as follows:
-for
-k=1
-, transfer water from the first two glasses to the third one, spilling
-(5+5)/2=5
-units and securing
-2+(5+5)/2=7
-units;
-for
-k=2
-, transfer water from the third glass to any of the first two, spilling
-2/2=1
-unit and securing
-5+5+2/2=11
-units;
-for
-k=3
-, do nothing. All
-5+5+2=12
-units are secured.
+LOSE
+WIN
+LOSE
+WIN
+LOSE

@@ -1,138 +1,87 @@
-B. Guarding warehouses
-time limit per test1 second
-memory limit per test256 megabytes
+D. Xor Spanning Tree
+time limit per test2 seconds
+memory limit per test128 megabytes
 inputstandard input
 outputstandard output
-Bob Bubblestrong just got a new job as security guard. Bob is now responsible for safety of a collection of warehouses, each containing the most valuable Bubble Cup assets - the high-quality bubbles. His task is to detect thieves inside the warehouses and call the police.
-Looking from the sky, each warehouse has a shape of a convex polygon. Walls of no two warehouses intersect, and of course, none of the warehouses is built inside of another warehouse.
-Little did the Bubble Cup bosses know how lazy Bob is and that he enjoys watching soap operas (he heard they are full of bubbles) from the coziness of his office. Instead of going from one warehouse to another to check if warehouses are secured, the plan Bob has is to monitor all the warehouses from the comfort of his office using the special X-ray goggles. The goggles have an infinite range, so a thief in any of the warehouses could easily be spotted.
-However, the goggles promptly broke and the X-rays are now strong only enough to let Bob see through a single wall. Now, Bob would really appreciate if you could help him find out what is the total area inside of the warehouses monitored by the broken goggles, so that he could know how much area of the warehouses he needs to monitor in person.
-Input
-The first line contains one integer
+In the galaxy far far away is the ancient interplanetary republic of Bubbleland, consisting of
 N
-(
+planets. Between them, there are
+M
+bidirectional wormholes, each connecting a pair of planets. Bubbleland is a very centralized republic, having a capital planet Whiteplanet, from which any another planet can be reached using these wormholes. It is also guaranteed that no wormhole connects planet to itself and that no two different wormholes connect same pair of planets.
+We call a path that begins at one planet, visits other planets and each of them at most once and returns to starting point a tour. Interplanetary Safety Regulations guarantee that each planet belongs to at most one tour and that there are at most
+42
+tours.
+After many eons of usage, wormholes need to be repaired and each wormhole has the cost
+W
+i
+which needs to be payed for reparation. Unfortunately, the Senate of Bubbleland is short on budget. Therefore, they have decided only to fix as many wormholes as they need in order to have all planets reachable from capital and to pay as little money as they have to for this repair. However the way in which the Senate calculates the cost is different. Cost of the set of reparations is binary xor of costs of each individual reparation, that is if reparations to be made have costs
+A
 1
-≤
-N
-≤
-10
-4
-) – the number of warehouses.
-The next
-N
-lines describe the warehouses.
-The first number of the line is integer
-c
-i
-(
-3
-≤
-c
-i
-≤
-10
-4
-) – the number corners in the
-i
-th
-warehouse, followed by
-c
-i
-pairs of integers. The
-j
-th
-pair is
-(
-x
-j
 ,
-y
-j
-)
-– the coordinates of the
-j
-th
-corner (
-|
-x
-j
-|
-,
-|
-y
-j
-|
-≤
-3∗
-10
-4
-). The corners are listed in the clockwise order. The total number of corners in all the warehouses is at most
-5∗
-10
-4
+A
+2
+,...,
+A
+k
+, the cost of entire set is
+A
+1
+⊕
+A
+2
+⊕...⊕
+A
+k
 .
-Bob's office is positioned at the point with coordinates
-(0,0)
-. The office is not contained within any of the warehouses.
+Now the Senate would like to know how much money do they have to pay and also the number of different ways to achieve that cost modulo
+1000000007
+.
+Input
+First line of input contains two numbers
+N(1≤N≤100.000)
+, the number of planets and
+M(1≤M≤100.041)
+, the number of wormholes. Following
+M
+lines contain three numbers
+U,V(1≤U≠V≤N)
+and
+W(1≤W≤100.000)
+, meaning that there exists a wormhole connecting planets
+U
+and
+V
+, with repair cost of
+W
+.
 Output
-Print a single line containing a single decimal number accurate to at least four decimal places – the total area of the warehouses Bob can monitor using the broken X-ray goggles.
+Output two numbers, the smallest possible cost of entire reparation and the number of different valid reparations with that cost modulo
+1000000007
+.
 Example
 input
 Copy
-5
-4 1 1 1 3 3 3 3 1
-4 4 3 6 2 6 0 4 0
-6 -5 3 -4 4 -3 4 -2 3 -3 2 -4 2
-3 0 -1 1 -3 -1 -3
-4 1 -4 1 -6 -1 -6 -1 -4
+6 6
+4 1 5
+5 2 1
+6 3 2
+1 2 6
+1 3 3
+2 3 4
 output
 Copy
-13.333333333333
+1 1
 Note
-Areas monitored by the X-ray goggles are colored green and areas not monitored by the goggles are colored red.
-The warehouses
-ABCD
+We can repair wormholes
+1
 ,
-IJK
-and
-LMNOPQ
-are completely monitored using the googles.
-The warehouse
-EFGH
-is partially monitored using the goggles: part
-EFW
-is not monitored because to monitor each point inside it, the X-rays must go through two walls of warehouse
-ABCD
-.
-The warehouse
-RUTS
-is not monitored from the Bob's office, because there are two walls of the warehouse
-IJK
-between Bob's office and each point in
-RUTS
-.
-The total area monitored by the goggles is
-P
-=
-P
-ABCD
-+
-P
-FGHW
-+
-P
-IJK
-+
-P
-LMNOPQ
-=
-4
-+
-3.333333333333
-+
 2
-+
-4
-=
-13.333333333333
-.
+,
+3
+,
+5
+and
+6
+, paying
+5⊕1⊕2⊕3⊕4=1
+, one can check that this is the cheapest repair in which all of the planets are connected and the only valid repair with that cost.

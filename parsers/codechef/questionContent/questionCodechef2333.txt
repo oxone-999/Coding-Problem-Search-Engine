@@ -1,65 +1,92 @@
-Guests like slippers
+Merging Binary Strings
 Problem
-Read problem statements in Mandarin, Vietnamese, and Russian as well.
-Miana and Serdenopis have guests for dinner tonight and thus they have prepared
-N pairs of slippers for their guests (who shall take off their shoes before entering the house). The slippers are on a line and the
-i-th pair of slippers has size
-S
+You have two binary strings
+A and
+B, both of length
+N. You have to merge both the binary strings to form a new binary string
+C of length
+2⋅N. The relative order of characters in the original binary strings
+A and
+B should not change in the binary string
+C.
+For example, if
+A=01011 and
+B=10100, one possible way to merge them to form
+C is:
+C=0101101100.
+Minimize the number of inversions in the merged binary string
+C.
+As a reminder, a pair of indices
+(i,j) is an inversion for binary string
+C if and only if
+1≤i<j≤∣C∣,
+C
 i
-.
-When a guest enters, he takes the first pair of slippers which are still in the line (i.e., they are not taken by a previous guest) and are big enough for him (that is, the slippers' size must be larger or equal than his shoes' size) and does not touch any other pair of slippers. If he cannot find any fitting slippers, he does not take any pair of slippers.
-Miana and Serdenopis do not remember how many guests they will have for dinner (and of course, they don't know their shoes' sizes either), but they are interested in the possible subsets of taken slippers.
-A (possibly empty) subset of the slippers is interesting if there is a configuration of guests such that all the slippers in the subset are taken and all the slippers not in the subset are not taken.
-Count the number of interesting subsets. Since this number may be very large, compute it modulo
-998244353.
+=1 and
+C
+j
+=0.
 Input Format
-The first line contains a single integer
-N, the number of pairs of slippers.
-The second line contains
-N integers
-S
-1
-,S
-2
-,…,S
-N
-, where the
-i-th pair of slippers in the line has size
-S
-i
-.
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N — the length of the binary strings
+A and
+B.
+The second line of each test case contains the binary string
+A.
+The third line of each test case contains the binary string
+B.
 Output Format
-Print the number of interesting subsets modulo
-998244353.
+For each test case, output a single line containing the minimum number of inversions in the merged binary string
+C.
 Constraints
-1≤N≤200000
-1≤S
-i
-≤200000
+1≤T≤1000
+1≤N≤1000
+It is guaranteed that the sum of
+N over all test cases does not exceed
+2000.
+∣A∣=∣B∣=N
+A and
+B are binary strings, i.e, contain only
+0 and
+1.
 Sample 1:
 Input
 Output
 3
-38 43 41
+4
+1010
+0101
+5
+10010
+11001
+5
+00001
+11110
 6
+12
+4
 Explanation:
-Explanation of the first testcase: The sizes of the slippers are, in order, $[38, 43, 41]$.
-The
-6 interesting subsets are (the slippers in the interesting subset are given in bold):
-$[38, 43, 41]$ (the empty subset is interesting)
-$[\textbf{38}, 43, 41]$ (only the first pair of slippers is taken)
-$[38, \textbf{43}, 41]$ (only the second pair of slippers is taken)
-$[\textbf{38}, \textbf{43}, 41]$
-$[38, \textbf{43}, \textbf{41}]$
-$[\textbf{38}, \textbf{43}, \textbf{41}]$ (all slippers are taken)
-Let us describe, for certain configurations of guests, which slippers are taken:
-If there is only one guest and his shoes' size is $44$, he will not take any pair of slippers because they are too small for him. The subset of taken slippers is the empty set in this case.
-Assume that there are two guests, the first one has shoes' size $41$ and the second one has shoes' size $42$. The first guest takes the second pair of slippers (with size $43$) and the second guest does not take any pair of slippers because the remaining slippers are too small for him. The subset of taken slippers is $[38, \textbf{43}, 41]$ in this case.
-Assume that there are two guests, the first one has shoes' size $42$ and the second one has shoes' size $41$. The first guest takes the second pair of slippers (with size $43$) and the second guest takes the third pair of slippers (with size $41$). The subset of taken slippers is $[38, \textbf{43}, \textbf{41}]$ in this case.
-Assume that there are $100$ guests, all with shoes' size equal to $36$. The first three guests take, in order, the three available pairs of slippers and the remaining guests take no slippers. The subset of taken slippers is $[\textbf{38}, \textbf{43}, \textbf{41}]$ in this case.
-Sample 2:
-Input
-Output
-8
-42 42 43 37 38 38 41 42
-29
+Test Case
+1:
+A=1010 and
+B=0101. One optimal
+C is
+01010101. The
+6 inversions in this
+C are
+{(2,3),(2,5),(2,7),(4,5),(4,7),(6,7)}.
+Test Case
+2:
+A=10010 and
+B=11001. One optimal
+C is
+1001100101.
+Test Case
+3:
+A=00001 and
+B=11110. One optimal
+C is
+0000111101.

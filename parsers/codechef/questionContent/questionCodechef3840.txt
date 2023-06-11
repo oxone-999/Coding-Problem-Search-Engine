@@ -1,137 +1,146 @@
-BFS before DFS
+Bounded Spanning Tree
 Problem
-Alice and Bob live in a country in which there are
-N cities (numbered from
+You are given a connected undirected edge-weighted graph with
+N vertices and
+M edges. There are no self-loops in this graph (that is, there is no edge which goes from a vertex to itself), but there can be multiple edges between some pairs of vertices.
+Your friend told you the following about this graph:
+The edge weights are distinct integers from the range
+[1,M]. In other words, they form some permutation of integers from
 1 to
-N) connected to each other using
-N−1 bidirectional roads in such a way that any two cities are reachable from each other.
-This country has a special property: for each city in the country, there are at most
-6 roads directly connected to it.
-Alice and Bob both decide to go on a tour of the country, starting from city number
-1. Alice uses Depth First traversal (DFS) order to travel through all the
-N cities while Bob uses Breadth First Traversal (BFS) order. At any city, if there is more than one possibility for the next city to be visited, then each option is equally likely to be chosen by both Alice and Bob.
-The pseudocode of their respective traversals are as follows:
-// Alice's DFS traversal
-dfs(u):
-    // Let C denote the set of children of u
-    shuffle(C)
-    // Let the current state of C be [C[1], C[2], ..., C[k]]
-    for i from 1 to k:
-        dfs(C[i])
-// Bob's BFS traversal
-queue Q
-Q.push(1)
-while Q is not empty:
-    u = front(Q)
-    pop(Q)
-    // Let C denote the set of children of u
-    shuffle(C)
-    // Let the current state of C be [C[1], C[2], ..., C[k]]
-    for i from 1 to k:
-        Q.push(C[i])
-Define the index of a city in some traversal order to be the number of distinct cities visited before that city during that traversal. Find the expected number of cities whose index in Bob's traversal is strictly less than its index in Alice's traversal.
-It can be shown that this expected value can be expressed as a fraction
-Q
-P
-, where
-P and
-Q are coprime integers,
-P≥0,
-Q>0 and
-Q is coprime with
-998244353. You should compute
-(P⋅Q
-−1
-)(mod998244353), where
-Q
-−1
-denotes the multiplicative inverse of
-Q modulo
-998244353.
+M.
+The weight of the
+i-th edge is from the range
+[L
+i
+,R
+i
+] for each
+i from
+1 to
+M.
+The edges with indices
+1,2,…,N−1 (the first
+N−1 edges in the input) form a minimum spanning tree of this graph.
+You want to know if it is possible. Determine if there exist such assignments of edge weights for which these conditions hold and if yes, find any of them.
+As a reminder, a spanning tree of a graph is any subset of its edges that forms a tree (connected graph on
+N vertices with
+N−1 edges). The minimum spanning tree of a graph is any spanning tree with the smallest sum of weights among all spanning trees of the graph.
 Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains a single integers
-N — the number of cities.
-The next
-N−1 lines describe the roads. The
-i-th of these
-N−1 lines contains two space-separated integers
-u
+The first line contains a single integer
+T
+− the number of test cases. The description of test cases follows.
+The first line of each test case contains two integers
+N and
+M
+− the number of vertices and the number of edges, respectively.
+The
+i-th of the following
+M lines contains four integers
+U
 i
-and
-v
+,V
 i
-, denoting a road between cities
-u
+,L
 i
-and
-v
+,R
 i
-.
+− indicating that there is an edge connecting vertices
+U
+i
+,V
+i
+, and that its weight should be in range
+[L
+i
+,R
+i
+].
 Output Format
-For each test case, output on a new line
-(P⋅Q
-−1
-)(mod998244353).
+For each test case, if an array of edge weights that satisfy the conditions doesn't exist, output NO in the first line.
+Otherwise, in the first line, output YES. In the second line output
+M integers
+W
+1
+,W
+2
+,…,W
+m
+(
+1≤W
+i
+≤M, all
+W
+i
+are distinct)
+− the edge weights (where
+W
+i
+is the weight assigned to the
+i-th edge in the input).
+If there are multiple answers, output any of them.
+You can output each letter in any case (for example, YES, Yes, yes, yEs will be recognized as a positive answer).
 Constraints
-1≤T≤50
-1≤N≤200
-1≤u
+1≤T≤10
+5
+1≤N−1≤M≤5⋅10
+5
+1≤U
 i
-,v
+<V
 i
-≤N
-Each city has at most
-6 roads directly connected to it.
+≤N,1≤L
+i
+≤R
+i
+≤M
+For each test case, edges with indices
+1,2,…,N−1 form a spanning tree of the given graph.
 The sum of
-N over all test cases won't exceed
-300.
+M over all test cases doesn't exceed
+5⋅10
+5
+.
+Subtasks
+Subtask 1 (20 points):
+M=N−1
+Subtask 2 (20 points):
+M=N
+Subtask 3 (20 points): The sum of
+M over all test cases doesn't exceed
+5000
+Subtask 4 (15 points):
+U
+i
+=i,V
+i
+=i+1 (
+1≤i≤N−1)
+Subtask 5 (25 points): No additional constraints
 Sample 1:
 Input
 Output
-2
-4
-1 2
-1 4
-2 3
-5
-1 2
-1 3
-1 4
-3 5
-249561089
-332748119
-Explanation:
-Test case
-1: There are two possible DFS traversals :
-[1,2,3,4] and
-[1,4,2,3]. Also, there are two possible BFS traversals :
-[1,2,4,3] and
-[1,4,2,3].
-Probability that Bob reaches city
-1 before Alice =
-0
-Probability that Bob reaches city
-2 before Alice =
-4
-1
-Probability that Bob reaches city
-3 before Alice =
-0
-Probability that Bob reaches city
-4 before Alice =
-2
-1
-Therefore, the required expected value is
-4
-1
-+
-2
-1
-=
-4
 3
-, which is
-249561089(mod998244353)
+4 6
+1 2 1 3
+1 3 2 6
+3 4 1 2
+1 4 2 5
+2 3 2 4
+2 4 4 6
+4 4
+1 2 2 2
+2 3 3 3
+3 4 4 4
+1 4 1 4
+5 6
+1 2 1 1
+2 3 1 2
+3 4 2 4
+4 5 6 6
+1 4 4 6
+1 4 5 6
+YES
+2 3 1 5 4 6
+NO
+YES
+1 2 3 6 4 5

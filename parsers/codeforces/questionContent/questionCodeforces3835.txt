@@ -1,145 +1,150 @@
-F. Sasha and Algorithm of Silence's Sounds
-time limit per test1.5 seconds
+A. Parity
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-One fine day Sasha went to the park for a walk. In the park, he saw that his favorite bench is occupied, and he had to sit down on the neighboring one. He sat down and began to listen to the silence. Suddenly, he got a question: what if in different parts of the park, the silence sounds in different ways? So it was. Let's divide the park into
-1×1
-meter squares and call them cells, and numerate rows from
-1
-to
+You are given an integer
 n
-from up to down, and columns from
+(
+n≥0
+) represented with
+k
+digits in base (radix)
+b
+. So,
+n=
+a
 1
-to
-m
-from left to right. And now, every cell can be described with a pair of two integers
-(x,y)
-, where
-x
- — the number of the row, and
-y
- — the number of the column. Sasha knows that the level of silence in the cell
-(i,j)
-equals to
-f
-i,j
-, and all
-f
-i,j
-form a permutation of numbers from
-1
-to
-n⋅m
-. Sasha decided to count, how many are there pleasant segments of silence?
-Let's take some segment
-[l…r]
-. Denote
-S
-as the set of cells
-(i,j)
-that
-l≤
-f
-i,j
-≤r
-. Then, the segment of silence
-[l…r]
-is pleasant if there is only one simple path between every pair of cells from
-S
-(path can't contain cells, which are not in
-S
-). In other words, set
-S
-should look like a tree on a plain. Sasha has done this task pretty quickly, and called the algorithm — "algorithm of silence's sounds".
-Time passed, and the only thing left from the algorithm is a legend. To prove the truthfulness of this story, you have to help Sasha and to find the number of different pleasant segments of silence. Two segments
-[
-l
-1
-…
-r
-1
-]
-,
-[
-l
+⋅
+b
+k−1
++
+a
 2
-…
-r
-2
-]
-are different, if
-l
+⋅
+b
+k−2
++…
+a
+k−1
+⋅b+
+a
+k
+.
+k
 1
-≠
-l
+k
 2
-or
-r
-1
-≠
-r
+For example, if
+b=17,k=3
+and
+a=[11,15,7]
+then
+n=11⋅
+17
 2
-or both at the same time.
++15⋅17+7=3179+255+7=3441
+.
+Determine whether
+n
+is even or odd.
 Input
 The first line contains two integers
-n
+b
 and
-m
+k
 (
-1≤n,m≤1000
+2≤b≤100
 ,
-1≤n⋅m≤2⋅
+1≤k≤
 10
 5
-) — the size of the park.
-Each from next
-n
-lines contains
-m
+) — the base of the number and the number of digits.
+The second line contains
+k
 integers
-f
-i,j
+a
+1
+,
+a
+2
+,…,
+a
+k
 (
-1≤
-f
-i,j
-≤n⋅m
-) — the level of silence in the cell with number
-(i,j)
+0≤
+a
+i
+<b
+) — the digits of
+n
 .
-It is guaranteed, that all
-f
-i,j
-are different.
+The representation of
+n
+contains no unnecessary leading zero. That is,
+a
+1
+can be equal to
+0
+only if
+k=1
+.
 Output
-Print one integer — the number of pleasant segments of silence.
+Print "even" if
+n
+is even, otherwise print "odd".
+You can print each letter in any case (upper or lower).
 Examples
 input
 Copy
-1 5
-1 2 3 4 5
+13 3
+3 2 7
 output
 Copy
-15
+even
 input
 Copy
-2 3
-1 2 3
-4 5 6
+10 9
+1 2 3 4 5 6 7 8 9
 output
 Copy
-15
+odd
 input
 Copy
-4 4
-4 3 2 16
-1 13 14 15
-5 7 8 12
-6 11 9 10
+99 5
+32 92 85 74 4
 output
 Copy
-50
+odd
+input
+Copy
+2 2
+1 0
+output
+Copy
+even
 Note
-In the first example, all segments of silence are pleasant.
-In the second example, pleasant segments of silence are the following:
+In the first example,
+n=3⋅
+13
+2
++2⋅13+7=540
+, which is even.
+In the second example,
+n=123456789
+is odd.
+In the third example,
+n=32⋅
+99
+4
++92⋅
+99
+3
++85⋅
+99
+2
++74⋅99+4=3164015155
+is odd.
+In the fourth example
+n=2
+.

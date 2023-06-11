@@ -1,178 +1,119 @@
-A. Absolute Maximization
+B. Incinerate
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of length
+To destroy humanity, The Monster Association sent
 n
-. You can perform the following operation several (possibly, zero) times:
-Choose
+monsters to Earth's surface. The
 i
-,
-j
-,
-b
-: Swap the
-b
--th digit in the binary representation of
-a
+-th monster has health
+h
 i
-and
-a
-j
+and power
+p
+i
 .
-Find the maximum possible value of
-max(a)−min(a)
-.
-In a binary representation, bits are numbered from right (least significant) to left (most significant). Consider that there are an infinite number of leading zero bits at the beginning of any binary representation.
-For example, swap the
+With his last resort attack, True Spiral Incineration Cannon, Genos can deal
+k
+damage to all monsters alive. In other words, Genos can reduce the health of all monsters by
+k
+(if
+k>0
+) with a single attack.
+However, after every attack Genos makes, the monsters advance. With their combined efforts, they reduce Genos' attack damage by the power of the
+†
+†
+weakest monster
+‡
+‡
+alive. In other words, the minimum
+p
+i
+among all currently living monsters is subtracted from the value of
+k
+after each attack.
+†
+†
+The Weakest monster is the one with the least power.
+‡
+‡
+A monster is alive if its health is strictly greater than
 0
--th bit for
-4=
-100
-2
-and
-3=
-11
-2
-will result
-101
-2
-=5
-and
-10
-2
-=2
-. Swap the
-2
--nd bit for
-4=
-100
-2
-and
-3=
-11
-2
-will result
-000
-2
-=
-0
-2
-=0
-and
-111
-2
-=7
 .
-Here,
-max(a)
-denotes the maximum element of array
-a
-and
-min(a)
-denotes the minimum element of array
-a
-.
-The binary representation of
-x
-is
-x
-written in base
-2
-. For example,
-9
-and
-6
-written in base
-2
-are
-1001
-and
-110
-, respectively.
+Will Genos be successful in killing all the monsters?
 Input
-The first line contains a single integer
+The first line of the input contains a single integer
 t
 (
-1≤t≤128
-) — the number of testcases.
-The first line of each test case contains a single integer
+1≤t≤100
+) — the number of test cases. The description of test cases follows.
+The first line of each test case contains two integers,
 n
+and
+k
 (
-3≤n≤512
-) — the length of array
-a
-.
-The second line of each test case contains
+1≤n,k≤
+10
+5
+) — the number of monsters and Genos' initial attack damage. Then two lines follow, each containing
 n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
+integers describing the arrays
+h
+and
+p
 (
-0≤
-a
+1≤
+h
 i
-<1024
-) — the elements of array
-a
-.
+,
+p
+i
+≤
+10
+9
+).
 It's guaranteed that the sum of
 n
-over all testcases does not exceed
-512
+over all test cases does not exceed
+2⋅
+10
+5
 .
 Output
-For each testcase, print one integer — the maximum possible value of
-max(a)−min(a)
-.
+For each test case, print the answer — "YES" (without quotes) if Genos could kill all monsters and "NO" otherwise.
 Example
 input
 Copy
-4
 3
-1 0 1
-4
-5 5 5 5
-5
-1 2 3 4 5
-7
-20 85 100 41 76 49 36
+6 7
+18 5 13 9 10 1
+2 7 2 1 2 6
+3 4
+5 5 5
+4 4 4
+3 2
+2 1 3
+1 1 1
 output
 Copy
-1
-0
-7
-125
+YES
+NO
+YES
 Note
-In the first example, it can be shown that we do not need to perform any operations — the maximum value of
-max(a)−min(a)
-is
-1−0=1
-.
-In the second example, no operation can change the array — the maximum value of
-max(a)−min(a)
-is
-5−5=0
-.
-In the third example, initially
-a=[1,2,3,4,5]
-, we can perform one operation taking
-i=2
-,
-j=5
-,
-b=1
-. The array now becomes
-a=[1,0,3,4,7]
-. It can be shown that any further operations do not lead to a better answer — therefore the answer is
-max(a)−min(a)=7−0=7
-.
+In the first example, after Genos' first attack,
+h
+and
+k
+will update to:
+h:[11,0,6,2,3,0]
+k:7−1=6
+After second attack:
+h:[5,0,0,0,0,0]
+k:6−2=4
+After third attack:
+h:[1,0,0,0,0,0]
+k:4−2=2
+After fourth attack:
+h:[0,0,0,0,0,0]
+As Genos could kill all monsters, the answer is YES.

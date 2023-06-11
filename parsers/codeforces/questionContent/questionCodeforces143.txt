@@ -1,154 +1,77 @@
-D. DSU Master
-time limit per test2 seconds
+C. Sequence Master
+time limit per test1 second
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-You are given an integer
+For some positive integer
+m
+, YunQian considers an array
+q
+of
+2m
+(possibly negative) integers good, if and only if for every possible subsequence of
+q
+that has length
+m
+, the product of the
+m
+elements in the subsequence is equal to the sum of the
+m
+elements that are not in the subsequence. Formally, let
+U={1,2,…,2m}
+. For all sets
+S⊆U
+such that
+|S|=m
+,
+∏
+i∈S
+q
+i
+=
+∑
+i∈U∖S
+q
+i
+.
+Define the distance between two arrays
+a
+and
+b
+both of length
+k
+to be
+∑
+i=1
+k
+|
+a
+i
+−
+b
+i
+|
+.
+You are given a positive integer
 n
 and an array
-a
-of length
-n−1
-whose elements are either
-0
-or
-1
-.
-Let us define the value of a permutation
-†
-†
 p
-of length
-m−1
-(
-m≤n
-) by the following process.
-Let
-G
-be a graph of
-m
-vertices labeled from
-1
-to
-m
-that does not contain any edges. For each
-i
-from
-1
-to
-m−1
-, perform the following operations:
-define
-u
-and
-v
-as the (unique) vertices in the weakly connected components
-‡
-‡
-containing vertices
-p
-i
-and
-p
-i
-+1
-respectively with only incoming edges
-††
-;
-in graph
-G
-, add a directed edge from vertex
-v
-to
-u
-if
-a
-p
-i
-=0
-, otherwise add a directed edge from vertex
-u
-to
-v
-(if
-a
-p
-i
-=1
-).
-Note that after each step, it can be proven that each weakly connected component of
-G
-has a unique vertex with only incoming edges.
-Then, the value of
-p
-is the number of incoming edges of vertex
-1
 of
-G
-.
-For each
-k
-from
-1
-to
-n−1
-, find the sum of values of all
-k!
-permutations of length
-k
-. Since this value can be big, you are only required to compute this value under modulo
-998244353
-.
-Operations when
-n=3
-,
-a=[0,1]
+2n
+integers.
+Find the minimum distance between
+p
 and
-p=[1,2]
-†
-†
-A permutation of length
+q
+over all good arrays
+q
+of length
+2n
+. It can be shown for all positive integers
 n
-is an array consisting of
-n
-distinct integers from
-1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
-2
-appears twice in the array), and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
-‡
-‡
-The weakly connected components of a directed graph is the same as the components of the undirected version of the graph. Formally, for directed graph
-G
-, define a graph
-H
-where for all edges
-a→b
-in
-G
-, you add an undirected edge
-a↔b
-in
-H
-. Then the weakly connected components of
-G
-are the components of
-H
-.
-††
-Note that a vertex that has no edges is considered to have only incoming edges.
+, at least one good array exists. Note that you are not required to construct the array
+q
+that achieves this minimum distance.
 Input
 The first line contains a single integer
 t
@@ -160,134 +83,64 @@ t
 The first line of each test case contains a single integer
 n
 (
-2≤n≤5⋅
+1≤n≤2⋅
 10
 5
 ).
 The second line of each test case contains
-n−1
+2n
 integers
-a
+p
 1
 ,
-a
+p
 2
 ,…,
-a
-n−1
+p
+2n
 (
-a
+|
+p
 i
-is
-0
-or
-1
+|≤
+10
+9
 ).
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
-5⋅
+2⋅
 10
 5
 .
 Output
-For each test case, output
-n−1
-integers in a line, the
-i
--th integer should represent the answer when
-k=i
-, under modulo
-998244353
+For each test case, output the minimum distance between
+p
+and a good
+q
 .
 Example
 input
 Copy
+4
+1
+6 9
 2
-3
-0 0
-9
-0 1 0 0 0 1 0 0
+1 2 2 1
+2
+-2 -2 2 2
+4
+-3 -2 -1 0 1 2 3 4
 output
 Copy
-1 3 
-1 2 7 31 167 1002 7314 60612 
+3
+2
+5
+13
 Note
-Consider the first test case.
-When
-k=1
-, there is only
-1
-permutation
-p
+In the first test case, it is optimal to let
+q=[6,6]
 .
-When
-p=[1]
-, we will add a single edge from vertex
-2
-to
-1
-. Vertex
-1
-will have
-1
-incoming edge. So the value of
-[1]
-is
-1
-.
-Therefore when
-k=1
-, the answer is
-1
-.
-When
-k=2
-, there are
-2
-permutations
-p
-.
-When
-p=[1,2]
-, we will add an edge from vertex
-2
-to
-1
-and an edge from
-3
-to
-1
-. Vertex
-1
-will have
-2
-incoming edges. So the value of
-[1,2]
-is
-2
-.
-When
-p=[2,1]
-, we will add an edge from vertex
-3
-to
-2
-and an edge from
-2
-to
-1
-. Vertex
-1
-will have
-1
-incoming edge. So the value of
-[2,1]
-is
-1
-.
-Therefore when
-k=2
-, the answer is
-2+1=3
+In the second test case, it is optimal to let
+q=[2,2,2,2]
 .

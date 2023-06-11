@@ -1,96 +1,107 @@
-Swapping Chefs Way
+Doubled Distances
 Problem
-Chef is working on his swap-based sorting algorithm for strings.
-Given a string
-S of length
-N, he wants to know whether he can sort the string using his algorithm.
-According to the algorithm, one can perform the following operation on string
-S any number of times:
-Choose some index
+You are given
+N integers
+{A
+1
+,A
+2
+,…,A
+N
+}. Determine whether they can be reordered such that each pair of consecutive differences differ by a factor of
+2.
+Formally, determine whether there exists a rearrangement of the given integers into an array
+[B
+1
+,B
+2
+,…,B
+N
+] such that, for each
+2≤i≤N−1, at least one of the following two conditions holds:
+B
 i
-(1≤i≤N) and swap the
+−B
+i−1
+=2⋅(B
+i+1
+−B
 i
-th
-character from the front and the
+), or
+2⋅(B
 i
-th
-character from the back.
-More formally, choose an index
-i and swap
-S
+−B
+i−1
+)=B
+i+1
+−B
 i
-and
-S
-(N+1−i)
-.
-For example,
-d
-cb
-a
-can be converted to
-a
-cb
-d
-using one operation where
-i=1.
-Help Chef find if it is possible to sort the string using any (possibly zero) number of operations.
+Note that different conditions can hold at different indices — the only restriction is that at each index, at least one of the given conditions must hold. Please see the sample tests below for examples.
 Input Format
-The first line of the input contains a single integer
+The first line of input will contain a single integer
 T, denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains
-N, the length of the string.
-The second line contains a string
-S of length
-N consisting of lowercase letters of the Latin alphabet.
+Each test case consists of two lines of input.
+The first line of each test case contains a single integer,
+N.
+The second line of each test case contains
+N space-separated integers, denoting
+A
+1
+,A
+2
+,…,A
+N
+.
 Output Format
-For each test case, print
-YES if it is possible to sort the string by performing any number of operations. Otherwise, print
-NO.
-You may print each character of the string in uppercase or lowercase (for example, the strings
-YeS,
-yEs,
-yes and
-YES will all be treated as identical).
+For each test case, output in a single line the answer —
+YES if a rearrangement that satisfies the given conditions exists, and
+NO otherwise.
+The output is not case sensitive, so for example the strings
+YES, Yes, yES, etc. will all be treated as correct.
 Constraints
 1≤T≤100
-1≤N≤10
-3
-Sum of
-N over all test cases does not exceed
-2⋅10
-3
-.
-S consists of lowercase Latin alphabets only.
+3≤N≤10
+5
+0≤A
+i
+≤10
+9
+The sum of
+N across all test cases won't exceed
+10
+5
 Sample 1:
 Input
 Output
-3
 4
-dbca
 3
-ccc
-3
-bza
-YES
-YES
-NO
+5 2 4
+5
+2 1 16 8 4
+5
+97 98 100 96 88
+6
+16 19 18 21 24 22
+Yes
+Yes
+No
+Yes
 Explanation:
 Test case
-1: Chef can sort the string using
-1 operation.
-Choose
-i=1 and swap
-S
-1
-=d and
-S
-4
-=a. This way, the string becomes
-abcd.
-Hence, the string is sorted.
+1: Rearrange the numbers to form
+[5,4,2]. The consecutive differences are
+[4−5,2−4]=[−1,−2], and
+−2=2⋅(−1).
 Test case
-2: Chef needs
-0 operations to sort this string as it is already sorted.
+2: One possible rearrangement is
+[1,2,4,8,16]. The consecutive differences are consecutive powers of
+2.
 Test case
-3: It can be proven that the given string cannot be sorted using any number of operations.
+3: No rearrangement of the numbers satisfies the condition. For example, one rearrangement is
+[97,98,100,96,88] with consecutive differences
+[1,2,−4,−8].
+2 and
+−4 do not differ by a factor of
+2 (they differ by a factor of
+−2), so this is not a valid arrangement.

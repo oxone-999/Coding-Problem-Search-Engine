@@ -1,153 +1,42 @@
-X and Two Groups
+Correct Bracket Sequence
 Problem
-Read problems statements in Mandarin chinese , Russian and Vietnamese as well.
-Tumut, the best programmer in his village Applidz, invented a problem and decided to share it with you:
-You are given two integer sequences
-S
+A string consisting only of parentheses ('(' and ')') is called a bracket sequence. Some bracket sequence are called correct bracket sequences(CBS). More formally:
+Empty string is a CBS.
+If S is a CBS, then (S) is also a CBS.
+If S and T are CBS, then ST (concatenation of S and T) is also a CBS.
+A 'good' CBS is a sequence where the first (N/2) characters are '(' and the next (N/2) characters are ')',where N is the length of sequence.
+You are given two numbers N and K. Find the probability that a N length CBS can be converted into a 'good' CBS by at most K 'good' swaps. A swap is 'good' if the sequence after the swap is a CBS.
+If the answer is of the form P/Q where P and Q are coprime, print (P*Q-1) modulo 1000000007.
+Input Format:
+The first line contains an integer T, the number of test cases. Next T lines contains two space separated integers N, K.
+Output Format:
+For each test case, output the corresponding answer in a separate line.
+Constraints:
+1<=T<=20
+1<=N<=100000
+0<=K<=100000
+N is even.
+Sample Input:
 1
-,S
-2
-,…,S
-N
-and
-T
-1
-,T
-2
-,…,T
-M
-and an integer
-x. You are allowed to perform the following operation any number of times:
-choose an element of
-S and an element of
-T (let's denote them by
-S
-i
-and
-T
-j
-respectively)
-decrease both
-S
-i
-and
-T
-j
-by
-x, i.e. replace
-S
-i
-by
-S
-i
-−x and
-T
-j
-by
-T
-j
-−x
-Let's denote the minimum and maximum value in the sequence
-S after performing the chosen operations (possibly none) by
-minS and
-maxS respectively. Similarly, let's denote the minimum and maximum value in
-T after performing the chosen operations by
-minT and
-maxT respectively. The goal is minimizing the expression
-(maxS+maxT)−(minS+minT). Compute the minimum value of this expression.
-Input
-The first line of the input contains three space-separated integers
-N,
-M and
-x.
-The second line contains
-N space-separated integers
-S
-1
-,S
-2
-…S
-N
-.
-The third line contains
-M space-separated integers
-T
-1
-,T
-2
-…T
-M
-.
-Output
-Print a single line containing one integer — the minimum possible value of the expression
-(maxS+maxT)−(minS+minT).
-Constraints
-1≤N,M≤5⋅10
-5
-1≤S
-i
-≤10
-9
-for each valid
-i
-1≤T
-i
-≤10
-9
-for each valid
-i
-1≤x≤10
-9
-Subtasks
-Subtask #1 (20 points):
-N,M≤20
-S
-i
-≤20 for each valid
-i
-T
-i
-≤20 for each valid
-i
-Subtask #2 (30 points):
-N,M≤1,000
-S
-i
-≤1,000 for each valid
-i
-T
-i
-≤1,000 for each valid
-i
-Subtask #3 (50 points): original constraints
-Sample 1:
-Input
-Output
-2 2 3
-1 8
-2 3
-2
+8 1
+Sample Output:
+714285720
 Explanation:
-We can perform these two operations:
-decrease
-S
-2
-and
-T
-1
-by
-x
-decrease
-S
-2
-and
-T
-2
-by
-x
-Afterwards, the sequence
-S will be
-[1,2] and the sequence
-T will be
-[−1,0]. The resulting value of the given expression is
-(2+0)−(1+(−1))=2. It is impossible to obtain a smaller value no matter how many operations are performed.
+Correct Bracket sequences for n = 8:
+1. (((())))
+2. ((()()))
+3. (()(()))
+4. ()((()))
+5. ((())())
+6. (()()())
+7. ()(()())
+8. (())(())
+9. ()()(())
+10. ((()))()
+11. (()())()
+12. ()(())()
+13. (())()()
+14. ()()()()
+In 3, the 3rd and 5th characters can be swapped to form a good CBS since it is a good swap.
+Similarly 1,2,4,5,6,7,10,11,12 can also be converted to good CBS.
+Thus the probability is 10/14.

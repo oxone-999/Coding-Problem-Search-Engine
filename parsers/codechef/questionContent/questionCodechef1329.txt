@@ -1,50 +1,106 @@
-Flu Shot Lineup
+Average Gift
 Problem
-A new strain of flu has broken out. Fortunately, a vaccine was developed very quickly and is now being administered to the public. Your local health clinic is administering this vaccine, but the waiting line is very long.
-For safety reasons, people are not allowed to stand very close to each other as the flu is not under control yet. However, many people were not aware of this precaution. A health and safety official recently examined the line and has determined that people need to spread out more in the line so that they are at least T units away from each other. This needs to be done as quickly as possible so we need to calculate the minimum distance D such that it is possible for every person to move at most D units so the distance between any two people is at least T. Specifically, D should be the minimum value such that there are locations x'i so that |xi - x'i| ≤ D for each person i and |x'i - x'j| ≥ T for any two distinct people i,j. Furthermore, since nobody can move past the receptionist we must also have that x'i ≥ 0.
-The location of each person is given by the number of meters they are standing from the receptionist. When spreading out, people may move either forward or backward in line but nobody may move past the location of the receptionist.
-Input
-The first line of input contains a single integer K ≤ 30 indicating the number of test cases to follow. Each test case begins with a line containing an integer N (the number of people) and a floating point value T (the minimum distance that should be between people). The location of each person i is described by single floating point value xi which means person i is xi meters from the receptionist. These values appear in non-decreasing order on the following N lines, one value per line.
-Bounds: 1 ≤ N ≤ 10,000 and T and every xi is between 0 and 1,000,000 and is given with at most 3 decimals of precision.
-Output
-For each test case, you should output the minimum value of D with exactly 4 decimals of precision on a single line.
+Chef has a set
+S containing
+N distinct integers.
+Chef wants to gift Chefina an array
+A of any finite length such that the following conditions hold true:
+A
+i
+∈S
+∀i. In other words, each element of the array
+A should belong to the set
+S.
+Mean value of all the elements in
+A is exactly
+X.
+Find whether there exists an array
+A of finite length satisfying the above conditions.
+Input Format
+First line will contain
+T, the number of test cases. Then the test cases follow.
+First line of each test case contains two integers
+N and
+X - denoting the size of set
+S and the mean value of the required array.
+Second line contains
+N distinct integers
+S
+1
+,S
+2
+,…,S
+N
+- denoting the set
+S.
+Output Format
+For each test case, output in a single line, YES if there exists an array satisfying the given conditions, NO otherwise.
+You may print each character of the string in uppercase or lowercase (for example, the strings YES, yEs, yes, and yeS will all be treated as identical).
+Constraints
+1≤T≤1000
+1≤N≤10
+5
+1≤S
+i
+≤10
+9
+1≤X≤10
+9
+S
+i
+
+=S
+j
+for
+i
+
+=j
+Sum of
+N over all test case do not exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
+4
+3 2
+1 2 3
+1 5
 3
-2 4
-1
-2
-2 2
-1
-2
-4 1
-0
-0.5
-0.6
-2.75
-2.0000
-0.5000
-1.4000
+2 5
+4 6
+1 5
+5
+YES
+NO
+YES
+YES
 Explanation:
-Test case
-1: To maintain a distance of
-4 units, the first person can move to location
-0 and the second can move to location
-4. The maximum distance a person has to move is
-2.
-Test case
-2: To maintain a distance of
-2 units, the first person can move to location
-0.5 and the second person can move to location
-2.5. The maximum distance a person has to move is
-0.5.
-Test case
-3: To maintain a distance of
-1 unit, the first person does not move, the second moves to location
-1, the third moves to location
-2, and the fourth moves to location
-3. The corresponding distances moved by each of them is
-0,0,5,1.4, and
-0.25 respectively. Thus, the maximum distance moved by any person is
-1.4 moved by the third person.
+Test Case
+1: One of the valid arrays is
+A=[2,2]. Here,
+2∈{1,2,3}. Also, mean value of the array is
+2
+2+2
+=2.
+Test Case
+2: Since all elements of the array can only be equal to
+3, the mean value of
+A cannot be equal to
+5.
+Test Case
+3: One of the valid arrays is
+A=[4,6]. Here,
+4∈{4,6} and
+6∈{4,6}. Also, mean value of the array is
+2
+4+6
+=5.
+Test Case
+4: One of the valid arrays is
+A=[5]. Here,
+5∈{5}. Also, mean value of the array is
+1
+5
+=5.

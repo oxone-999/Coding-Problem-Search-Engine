@@ -1,73 +1,36 @@
-ICPC Balloons
+Brackets
 Problem
-Read problems statements in Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-Chef is participating in an ICPC regional contest, in which there is a total of
-N problems (numbered
-1 through
-N) with varying difficulties. For each valid
-i, the
-i-th easiest problem is problem
-A
-i
-.
-After a team solves a problem, a balloon with a colour representing that problem is tied next to their desk. Chef is fond of colours in VIBGYOR, which are representative of the problems with numbers
-1 through
-7. The remaining problems have their own representative colours too.
-Find the minimum number of problems which Chef's team needs to solve in order to get all the balloons for problems
-1 through
-7 (and possibly some other balloons too) tied next to their desk, if you know that Chef's team knows the difficulties of all problems and solves the problems in increasing order of difficulty.
+Read problems statements in Mandarin Chinese and Russian as well.
+A valid parentheses sequence is a non-empty string where each character is either '(' or ')', which satisfies the following constraint:
+You can find a way to repeat erasing adjacent pairs of parentheses '()' until it becomes empty.
+For example, '(())' and '()((()()))' are valid parentheses sequences, but ')()(' and '(()' are not.
+Mike has a valid parentheses sequence. He really likes everything about his sequence, except the fact that it is quite long. So Mike has recently decided that he will replace his parentheses sequence with a new one in the near future. But not every valid parentheses sequence will satisfy him. To help you understand his requirements we'll introduce the pseudocode of function F(S):
+ FUNCTION F( S - a valid parentheses sequence )
+ BEGIN
+  balance = 0
+  max_balance = 0
+  FOR index FROM 1 TO LENGTH(S)
+  BEGIN
+   if S[index] == '(' then balance = balance + 1
+   if S[index] == ')' then balance = balance - 1
+   max_balance = max( max_balance, balance )
+  END
+  RETURN max_balance
+ END
+In other words, F(S) is equal to the maximal balance over all prefixes of S.
+Let's denote A as Mike's current parentheses sequence, and B as a candidate for a new one. Mike is willing to replace A with B if F(A) is equal to F(B). He would also like to choose B with the minimal possible length amongst ones satisfying the previous condition. If there are several such strings with the minimal possible length, then Mike will choose the least one lexicographically, considering '(' to be less than ')'.
+Help Mike!
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+The first line of the input contains one integer T denoting the number of testcases to process.
+The only line of each testcase contains one string A denoting Mike's parentheses sequence. It is guaranteed that A only consists of the characters '(' and ')'. It is also guaranteed that A is a valid parentheses sequence.
 Output
-For each test case, print a single line containing one integer ― the minimum number of problems Chef's team needs to solve.
+The output should contain exactly T lines, one line per each testcase in the order of their appearance. The only line of each testcase should contain one string B denoting the valid parentheses sequence that should be chosen by Mike to replace A.
 Constraints
-1≤T≤10,500
-7≤N≤15
-1≤A
-i
-≤N for each valid
-i
-A
-1
-,A
-2
-,…,A
-N
-are pairwise distinct
+1 ≤ T ≤ 5;
+1 ≤ |A| ≤ 100000(105).
 Sample 1:
 Input
 Output
-3
-7
-1 2 3 4 5 7 6
-8
-8 7 6 5 4 3 2 1
-9
-7 4 3 5 6 1 8 2 9
-7
-8
-8
-Explanation:
-Example case 1: Since there are a total of
-7 problems, Chef's team will have to solve all of them.
-Example case 2: Problems
-1 through
-7 appear among the first
-8 problems.
-Example case 3: Problems
-1 through
-7 again appear among the first
-8 problems.
+1
+()((()()))
+((()))

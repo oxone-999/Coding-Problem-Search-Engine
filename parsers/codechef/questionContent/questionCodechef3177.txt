@@ -1,109 +1,44 @@
-Subway Ride
+Harry Potter and the Goblet of Fire
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-Being a newcomer to Computopia, Chef is confused by the countless subway lines in the city. Help him!
-You are given an undirected graph with
-N vertices and
-M edges. There are no self-loops and no simple cycles that contain more than 2 edges in the graph (i.e. if we replaced each set of multiple edges connecting the same pair of vertices by one edge, we would obtain a tree). Each edge also has a colour.
-Consider a simple path with length
-K in the graph that passes through edges with colours
-A
-1
-,A
-2
-,…,A
-K
-in this order. The cost of this path is defined as
-(A
-1
-
-=A
-2
-)+(A
-2
-
-=A
-3
-)+⋯+(A
-K−1
-
-=A
-K
-), where the boolean value true is interpreted as the integer
-1 and false is interpreted as
-0. In other words, the cost of a simple path is the number of pairs of neighbouring (consecutive) edges on this path with different colours. The cost of a path with length
-0 is defined to be
-0.
-You need to answer
-Q queries. In each query, you are given vertices
-u and
-v; you should find the maximum possible cost of some simple path connecting them.
-Note that a simple path may not visit a vertex more than once.
+"If you want to know what a man’s like, take a good look at how he treats his inferiors, not his equals."
+There are N wizards in Hogwarts with each wizard at level Ai. Harry is analyzing behaviour of different wizards. Sirius maps behaviour of one wizard using a Generous function defined as:
+Sirius asks Harry several queries. Each query contains L, R and P. Harry has to find Total Generosity for each query defined by function:
+Since the value of Total Generosity can be very large, output Total Generosity%(109 + 7)
 Input
-The first line of the input contains two space-separated integers
-N and
-M.
-Each of the next
-M lines contains three space-separated integers
-u,
-v and
-w denoting an edge between vertices
-u and
-v with colour
-w.
-The next line contains an integer
-Q.
-Each of the next
-Q lines contains two space-separated integers
-u and
-v describing a query.
+The first line of input contains 3 space separated integers N denoting the number of wizards, Q denoting the number of queries and K.
+The second line contains N space-separated integers A1, A2, ..., AN denoting the level of each wizard.
+Each of the next Q lines contains 3 space seaparated integers L, R and P denoting the query parameters.
 Output
-For each query, print a single line containing one integer — the maximum cost of a simple path.
+Output Total Generosity%(109 + 7) for each query in new line
 Constraints
-1≤N,Q≤500,000
-1≤M≤1,000,000
-1≤u,v≤N
-for each edge,
-u
-
-=v
-1≤w≤M
-Subtasks
-Subtask #1 (20 points):
-1≤N,Q≤10
-1≤M≤100
-Subtask #2 (20 points):
-1≤N,Q≤500
-1≤M≤10,000
-Subtask #3 (20 points):
-1≤N,Q≤5,000
-1≤M≤100,000
-Subtask #4 (20 points):
-1≤N,Q≤100,000
-1≤M≤300,000
-Subtask #5 (20 points): original constraints
-Sample 1:
-Input
-Output
-8 10
+1 ≤ N, Q ≤ 5 * 105
+1 ≤ Ai, P, K ≤ 109
+1 ≤ L ≤ R ≤ N
+Example
+Input:
+4 3 1
+1 3 4 2
 1 2 1
-1 2 2
-1 3 2
-1 3 3
-2 4 2
-2 5 1
-3 6 3
-3 7 1
-3 8 1
-3 8 3
-5
-2 3
-5 6
-4 6
-4 8
-4 7
+3 3 6
+2 4 3
+Output:
+7
 1
-2
-3
-3
-3
+36
+Explanation
+Q1 :
+I = 1, J = 1 :- Generosity(1, 1) = 1
+I = 1, J = 2 :- Generosity(1, 1) * Generosity(3, 1) = 1 * 3 = 3
+I = 2, J = 2 :- Generosity(3, 1) = 3
+Total Generosity = 1 + 3 + 3 = 7%(109 + 7) = 7
+Q2 :
+I = 3, J = 3 :- Generosity(4, 6) = 1
+Total Generosity = 1%(109 + 7) = 1
+Q3 :
+I = 2, J = 2 :- Generosity(3, 3) = 3
+I = 2, J = 3 :- Generosity(3, 3) * Generosity(4, 3) = 3 * 4 = 12
+I = 2, J = 4 :- Generosity(3, 3) * Generosity(4, 3) * Generosity(2, 3) = 3 * 4 * 1 = 12
+I = 3, J = 3 :- Generosity(4, 3) = 4
+I = 3, J = 4 :- Generosity(4, 3) * Generosity(2, 3) = 4 * 1 = 4
+I = 4, J = 4 :- Generosity(2, 3) = 1
+Total Generosity = 3 + 12 + 12 + 4 + 4 + 1= 36%(109 + 7) = 36

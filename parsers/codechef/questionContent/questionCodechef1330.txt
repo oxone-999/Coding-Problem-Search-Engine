@@ -1,43 +1,160 @@
-Suffix Sort
+Mystical Numbers
 Problem
-The match is set and your team is ready to win!
-The team has
-N players, each with the ability
+A number
+M is said to be a Mystical Number with respect to a number
+X if
+(M⊕X)>(M&X).
+You are given an array
+A of size
+N. You are also given
+Q queries. Each query consists of three integers
+L,
+R, and
+X.
+For each query, find the count of Mystical Numbers in the subarray
+A[L:R] with respect to the number
+X.
+Notes:
+⊕ represents the Bitwise XOR operation and
+& represents the Bitwise AND operation.
+A[L:R] denotes the subarray
+A[L],A[L+1],…,A[R].
+Input Format
+The first line contains a single integer
+T - the number of test cases. Then the test cases follow.
+The first line of each test case contains an integer
+N - the size of the array
+A.
+The second line of each test case contains
+N space-separated integers
 A
+1
+,A
+2
+,…,A
+N
+denoting the array
+A.
+The third line of each test case contains an integer 
+Q - denoting the number of queries.
+The
 i
-.
-
-But you are not happy with the given playing order. You are wondering how to create a new order so that the player with lesser ability go earlier, i.e., in non-decreasing order.
-
-In one move, you can break a suffix of any length of the array and attach it to the front. You can do the move as many times as you like.
-For example, the Array
-A=[1,2,3,4,5,6] can become
-A=[5,6,1,2,3,4] in one move by breaking and reattaching the suffix of length
-2.
-
-For each testcase, if the array can be sorted non-decreasingly, print YES and the minimum number of moves to do so. Otherwise, print NO.
-Input
-The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
-Each testcase contains two lines. The first line has a single integer $N$, denoting the number of players in the team.
-The second list has $N$ space-separated integers of the array $A$, where $A_i$ represents the ability of the $i^{th}$ player
-Output
-Print a single line containing the string "YES" if the string can be sorted or "NO" if it does not (without quotes). If answer is yes, print a second line containing a single integer, the minimum number of moves.
-You may print each character of each string in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
+th
+of the next
+Q lines contains three space-separated integers
+L ,
+R and
+X.
+Output Format
+For each testcase,
+For each query, print in a new line, the count of Mystical Numbers among
+A[L],A[L+1],…,A[R] with respect to the number
+X.
 Constraints
-$1 ≤ T, N ≤ 3 \cdot 10^{5}$
-$0 ≤ A_i ≤ 10^{9}$
-The sum of all $N$ over all testcases $T$, does not exceed $3 \cdot 10^{5}$.
+1≤T≤100
+1≤N≤2⋅10
+5
+0≤A
+i
+<2
+31
+1≤Q≤2⋅10
+5
+1≤L≤R≤N
+0≤X<2
+31
+Sum of
+N over all test cases does not exceed
+2⋅10
+5
+.
+Sum of
+Q over all test cases does not exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
+1
+5
+1 2 3 4 5
 2
-2
-1 2
+1 5 4
+2 5 2
 3
-2 1 3
-YES
-0
-NO
+2
 Explanation:
-Example Case 1: The array is already sorted non-decreasingly. Hence, 0 moves required.
-Example Case 2: We cannot satisfy the condition for the given array. Hence, answer is NO.
+Test case
+1:
+Query
+1:
+L=1,R=5,X=4.
+A
+1
+⊕X=5,A
+1
+&X=0.
+A
+2
+⊕X=6,A
+2
+&X=0.
+A
+3
+⊕X=7,A
+3
+&X=0.
+A
+4
+⊕X=0,A
+4
+&X=4.
+A
+5
+⊕X=1,A
+5
+&X=4.
+Mystical numbers are
+A
+1
+,A
+2
+, and
+A
+3
+with respect to
+4. Therefore, the answer to this query is
+3.
+Query
+2:
+L=2,R=5,X=2.
+A
+2
+⊕X=0,A
+2
+&X=2.
+A
+3
+⊕X=1,A
+3
+&X=2.
+A
+4
+⊕X=6,A
+4
+&X=0.
+A
+5
+⊕X=7,A
+5
+&X=0.
+Mystical numbers are
+A
+4
+and
+A
+5
+with respect to
+2. Therefore , the answer to this query is
+2.

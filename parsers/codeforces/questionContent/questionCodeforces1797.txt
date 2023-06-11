@@ -1,84 +1,100 @@
-B. AND Sequences
+D. GCD and MST
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A sequence of
-n
-non-negative integers (
-n≥2
-)
-a
-1
-,
-a
-2
-,…,
-a
-n
-is called good if for all
-i
-from
-1
-to
-n−1
-the following condition holds true:
-a
-1
-&
-a
-2
-&…&
-a
-i
-=
-a
-i+1
-&
-a
-i+2
-&…&
-a
-n
-,
-&
-&
-&
-&
-&
-&
-where
-&
-denotes the bitwise AND operation.
 You are given an array
 a
-of size
+of
 n
 (
 n≥2
-). Find the number of permutations
+) positive integers and an integer
 p
-of numbers ranging from
+. Consider an undirected weighted graph of
+n
+vertices numbered from
 1
 to
 n
-, for which the sequence
+for which the edges between the vertices
+i
+and
+j
+(
+i<j
+) are added in the following manner:
+If
+gcd(
 a
-p
-1
+i
 ,
 a
-p
-2
-, ... ,
+i+1
+,
 a
-p
-n
-is good. Since this number can be large, output it modulo
-10
-9
-+7
+i+2
+,…,
+a
+j
+)=min(
+a
+i
+,
+a
+i+1
+,
+a
+i+2
+,…,
+a
+j
+)
+, then there is an edge of weight
+min(
+a
+i
+,
+a
+i+1
+,
+a
+i+2
+,…,
+a
+j
+)
+between
+i
+and
+j
 .
+If
+i+1=j
+, then there is an edge of weight
+p
+between
+i
+and
+j
+.
+Here
+gcd(x,y,…)
+denotes the greatest common divisor (GCD) of integers
+x
+,
+y
+, ....
+Note that there could be multiple edges between
+i
+and
+j
+if both of the above conditions are true, and if both the conditions fail for
+i
+and
+j
+, then there is no edge between these vertices.
+The goal is to find the weight of the minimum spanning tree of this graph.
 Input
 The first line contains a single integer
 t
@@ -86,15 +102,23 @@ t
 1≤t≤
 10
 4
-), denoting the number of test cases.
-The first line of each test case contains a single integer
+) — the number of test cases.
+The first line of each test case contains two integers
 n
 (
 2≤n≤2⋅
 10
 5
-) — the size of the array.
-The second line of each test case contains
+) and
+p
+(
+1≤p≤
+10
+9
+) — the number of nodes and the parameter
+p
+.
+The second line contains
 n
 integers
 a
@@ -102,20 +126,23 @@ a
 ,
 a
 2
+,
+a
+3
 ,…,
 a
 n
 (
-0≤
+1≤
 a
 i
 ≤
 10
 9
-) — the elements of the array.
+).
 It is guaranteed that the sum of
 n
-over all test cases doesn't exceed
+over all test cases does not exceed
 2⋅
 10
 5
@@ -123,122 +150,28 @@ over all test cases doesn't exceed
 Output
 Output
 t
-lines, where the
-i
--th line contains the number of good permutations in the
-i
--th test case modulo
-10
-9
-+7
-.
+lines. For each test case print the weight of the corresponding graph.
 Example
 input
 Copy
 4
-3
-1 1 1
-5
-1 2 3 4 5
-5
-0 2 0 3 0
-4
-1 3 5 1
+2 5
+10 10
+2 5
+3 3
+4 5
+5 2 4 9
+8 8
+5 3 3 6 10 100 9 15
 output
 Copy
-6
-0
-36
-4
+5
+3
+12
+46
 Note
-In the first test case, since all the numbers are equal, whatever permutation we take, the sequence is good. There are a total of
-6
-permutations possible with numbers from
-1
-to
-3
-:
-[1,2,3]
-,
-[1,3,2]
-,
-[2,1,3]
-,
-[2,3,1]
-,
-[3,1,2]
-,
-[3,2,1]
-.
-In the second test case, it can be proved that no permutation exists for which the sequence is good.
-In the third test case, there are a total of
-36
-permutations for which the sequence is good. One of them is the permutation
-[1,5,4,2,3]
-which results in the sequence
-s=[0,0,3,2,0]
-. This is a good sequence because
-s
-1
-=
-s
-2
-&
-s
-3
-&
-s
-4
-&
-s
-5
-=0
-,
-s
-1
-&
-s
-2
-=
-s
-3
-&
-s
-4
-&
-s
-5
-=0
-,
-s
-1
-&
-s
-2
-&
-s
-3
-=
-s
-4
-&
-s
-5
-=0
-,
-s
-1
-&
-s
-2
-&
-s
-3
-&
-s
-4
-=
-s
-5
-=0
-.
+Here are the graphs for the four test cases of the example (the edges of a possible MST of the graphs are marked pink):
+For test case 1
+For test case 2
+For test case 3
+For test case 4

@@ -1,73 +1,135 @@
-B. Subsequence Hate
-time limit per test1 second
+F. Rotating Substrings
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Shubham has a binary string
+You are given two strings
 s
-. A binary string is a string containing only characters "0" and "1".
-He can perform the following operation on the string any amount of times:
-Select an index of the string, and flip the character at that index. This means, if the character was "0", it becomes "1", and vice versa.
-A string is called good if it does not contain "010" or "101" as a subsequence  — for instance, "1001" contains "101" as a subsequence, hence it is not a good string, while "1000" doesn't contain neither "010" nor "101" as subsequences, so it is a good string.
-What is the minimum number of operations he will have to perform, so that the string becomes good? It can be shown that with these operations we can make any string good.
+and
+t
+, each of length
+n
+and consisting of lowercase Latin alphabets. You want to make
+s
+equal to
+t
+.
+You can perform the following operation on
+s
+any number of times to achieve it —
+Choose any substring of
+s
+and rotate it clockwise once, that is, if the selected substring is
+s[l,l+1...r]
+, then it becomes
+s[r,l,l+1...r−1]
+. All the remaining characters of
+s
+stay in their position.
+For example, on rotating the substring
+[2,4]
+, string "abcde" becomes "adbce".
 A string
 a
-is a subsequence of a string
+is a substring of a string
 b
 if
 a
 can be obtained from
 b
-by deletion of several (possibly, zero or all) characters.
+by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
+Find the minimum number of operations required to convert
+s
+to
+t
+, or determine that it's impossible.
 Input
 The first line of the input contains a single integer
 t
-(1≤t≤100)
- — the number of test cases.
-Each of the next
-t
-lines contains a binary string
+(1≤t≤2000)
+ — the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single integer
+n
+(1≤n≤2000)
+ — the length of the strings.
+The second and the third lines contain strings
 s
-(1≤|s|≤1000)
+and
+t
+respectively.
+The sum of
+n
+over all the test cases does not exceed
+2000
 .
 Output
-For every string, output the minimum number of operations required to make it good.
+For each test case, output the minimum number of operations to convert
+s
+to
+t
+. If it is not possible to convert
+s
+to
+t
+, output
+−1
+instead.
 Example
 input
 Copy
-7
-001
-100
-101
-010
-0
+6
 1
-001100
+a
+a
+2
+ab
+ba
+3
+abc
+cab
+3
+abc
+cba
+4
+abab
+baba
+4
+abcc
+aabc
 output
 Copy
 0
-0
 1
 1
-0
-0
 2
+1
+-1
 Note
-In test cases
+For the
 1
-,
+-st test case, since
+s
+and
+t
+are equal, you don't need to apply any operation.
+For the
 2
-,
-5
-,
-6
-no operations are required since they are already good strings.
+-nd test case, you only need to apply one operation on the entire string ab to convert it to ba.
 For the
 3
-rd test case: "001" can be achieved by flipping the first character  — and is one of the possible ways to get a good string.
+-rd test case, you only need to apply one operation on the entire string abc to convert it to cab.
 For the
 4
-th test case: "000" can be achieved by flipping the second character  — and is one of the possible ways to get a good string.
+-th test case, you need to apply the operation twice: first on the entire string abc to convert it to cab and then on the substring of length
+2
+beginning at the second character to convert it to cba.
 For the
-7
-th test case: "000000" can be achieved by flipping the third and fourth characters  — and is one of the possible ways to get a good string.
+5
+-th test case, you only need to apply one operation on the entire string abab to convert it to baba.
+For the
+6
+-th test case, it is not possible to convert string
+s
+to
+t
+.

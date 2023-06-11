@@ -1,36 +1,106 @@
-C. Sum on Subarrays
+B. Points on Plane
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-For an array $$$a = [a_1, a_2, \dots, a_n]$$$, let's denote its subarray $$$a[l, r]$$$ as the array $$$[a_l, a_{l+1}, \dots, a_r]$$$.
-For example, the array $$$a = [1, -3, 1]$$$ has $$$6$$$ non-empty subarrays:
-$$$a[1,1] = [1]$$$;
-$$$a[1,2] = [1,-3]$$$;
-$$$a[1,3] = [1,-3,1]$$$;
-$$$a[2,2] = [-3]$$$;
-$$$a[2,3] = [-3,1]$$$;
-$$$a[3,3] = [1]$$$.
-You are given two integers $$$n$$$ and $$$k$$$. Construct an array $$$a$$$ consisting of $$$n$$$ integers such that:
-all elements of $$$a$$$ are from $$$-1000$$$ to $$$1000$$$;
-$$$a$$$ has exactly $$$k$$$ subarrays with positive sums;
-the rest $$$\dfrac{(n+1) \cdot n}{2}-k$$$ subarrays of $$$a$$$ have negative sums.
+You are given a two-dimensional plane, and you need to place
+n
+chips on it.
+You can place a chip only at a point with integer coordinates. The cost of placing a chip at the point
+(x,y)
+is equal to
+|x|+|y|
+(where
+|a|
+is the absolute value of
+a
+).
+The cost of placing
+n
+chips is equal to the maximum among the costs of each chip.
+You need to place
+n
+chips on the plane in such a way that the Euclidean distance between each pair of chips is strictly greater than
+1
+, and the cost is the minimum possible.
 Input
-The first line contains one integer $$$t$$$ ($$$1 \le t \le 5000$$$) — the number of test cases.
-Each test case consists of one line containing two integers $$$n$$$ and $$$k$$$ ($$$2 \le n \le 30$$$; $$$0 \le k \le \dfrac{(n+1) \cdot n}{2}$$$).
+The first line contains one integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases. Next
+t
+cases follow.
+The first and only line of each test case contains one integer
+n
+(
+1≤n≤
+10
+18
+) — the number of chips you need to place.
 Output
-For each test case, print $$$n$$$ integers — the elements of the array meeting the constraints. It can be shown that the answer always exists. If there are multiple answers, print any of them.
+For each test case, print a single integer — the minimum cost to place
+n
+chips if the distance between each pair of chips must be strictly greater than
+1
+.
 Example
 input
 Copy
 4
-3 2
-2 0
-2 2
-4 6
+1
+3
+5
+975461057789971042
 output
 Copy
-1 -3 1
--13 -42
--13 42
--3 -4 10 -2
+0
+1
+2
+987654321
+Note
+In the first test case, you can place the only chip at point
+(0,0)
+with total cost equal to
+0+0=0
+.
+In the second test case, you can, for example, place chips at points
+(−1,0)
+,
+(0,1)
+and
+(1,0)
+with costs
+|−1|+|0|=1
+,
+|0|+|1|=1
+and
+|0|+|1|=1
+. Distance between each pair of chips is greater than
+1
+(for example, distance between
+(−1,0)
+and
+(0,1)
+is equal to
+2
+–
+√
+). The total cost is equal to
+max(1,1,1)=1
+.
+In the third test case, you can, for example, place chips at points
+(−1,−1)
+,
+(−1,1)
+,
+(1,1)
+,
+(0,0)
+and
+(0,2)
+. The total cost is equal to
+max(2,2,2,0,2)=2
+.

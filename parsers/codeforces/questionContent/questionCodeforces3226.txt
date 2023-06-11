@@ -1,115 +1,156 @@
-E. Arson In Berland Forest
-time limit per test2 seconds
-memory limit per test512 megabytes
+F2. Wrong Answer on test 233 (Hard Version)
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The Berland Forest can be represented as an infinite cell plane. Every cell contains a tree. That is, contained before the recent events.
-A destructive fire raged through the Forest, and several trees were damaged by it. Precisely speaking, you have a
-n×m
-rectangle map which represents the damaged part of the Forest. The damaged trees were marked as "X" while the remaining ones were marked as ".". You are sure that all burnt trees are shown on the map. All the trees outside the map are undamaged.
-The firemen quickly extinguished the fire, and now they are investigating the cause of it. The main version is that there was an arson: at some moment of time (let's consider it as
-0
-) some trees were set on fire. At the beginning of minute
-0
-, only the trees that were set on fire initially were burning. At the end of each minute, the fire spread from every burning tree to each of
-8
-neighboring trees. At the beginning of minute
-T
-, the fire was extinguished.
-The firemen want to find the arsonists as quickly as possible. The problem is, they know neither the value of
-T
-(how long the fire has been raging) nor the coordinates of the trees that were initially set on fire. They want you to find the maximum value of
-T
-(to know how far could the arsonists escape) and a possible set of trees that could be initially set on fire.
-Note that you'd like to maximize value
-T
-but the set of trees can be arbitrary.
-Input
-The first line contains two integer
-n
-and
-m
-(
-1≤n,m≤
+Your program fails again. This time it gets "Wrong answer on test 233"
+.
+This is the harder version of the problem. In this version,
+1≤n≤2⋅
 10
-6
+5
+. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems.
+The problem is to finish
+n
+one-choice-questions. Each of the questions contains
+k
+options, and only one of them is correct. The answer to the
+i
+-th question is
+h
+i
+, and if your answer of the question
+i
+is
+h
+i
+, you earn
+1
+point, otherwise, you earn
+0
+points for this question. The values
+h
+1
 ,
-1≤n⋅m≤
+h
+2
+,…,
+h
+n
+are known to you in this problem.
+However, you have a mistake in your program. It moves the answer clockwise! Consider all the
+n
+answers are written in a circle. Due to the mistake in your program, they are shifted by one cyclically.
+Formally, the mistake moves the answer for the question
+i
+to the question
+imodn+1
+. So it moves the answer for the question
+1
+to question
+2
+, the answer for the question
+2
+to the question
+3
+, ..., the answer for the question
+n
+to the question
+1
+.
+We call all the
+n
+answers together an answer suit. There are
+k
+n
+possible answer suits in total.
+You're wondering, how many answer suits satisfy the following condition: after moving clockwise by
+1
+, the total number of points of the new answer suit is strictly larger than the number of points of the old one. You need to find the answer modulo
+998244353
+.
+For example, if
+n=5
+, and your answer suit is
+a=[1,2,3,4,5]
+, it will submitted as
+a
+′
+=[5,1,2,3,4]
+because of a mistake. If the correct answer suit is
+h=[5,2,2,3,4]
+, the answer suit
+a
+earns
+1
+point and the answer suite
+a
+′
+earns
+4
+points. Since
+4>1
+, the answer suit
+a=[1,2,3,4,5]
+should be counted.
+Input
+The first line contains two integers
+n
+,
+k
+(
+1≤n≤2⋅
 10
-6
-) — the sizes of the map.
-Next
+5
+,
+1≤k≤
+10
+9
+) — the number of questions and the number of possible answers to each question.
+The following line contains
 n
-lines contain the map. The
+integers
+h
+1
+,
+h
+2
+,…,
+h
+n
+, (
+1≤
+h
 i
--th line corresponds to the
-i
--th row of the map and contains
-m
--character string. The
-j
--th character of the
-i
--th string is "X" if the corresponding tree is burnt and "." otherwise.
-It's guaranteed that the map contains at least one "X".
+≤k)
+ — answers to the questions.
 Output
-In the first line print the single integer
-T
-— the maximum time the Forest was on fire. In the next
-n
-lines print the certificate: the map (
-n×m
-rectangle) where the trees that were set on fire are marked as "X" and all other trees are marked as ".".
+Output one integer: the number of answers suits satisfying the given condition, modulo
+998244353
+.
 Examples
 input
 Copy
-3 6
-XXXXXX
-XXXXXX
-XXXXXX
+3 3
+1 3 1
 output
 Copy
-1
-......
-.X.XX.
-......
+9
 input
 Copy
-10 10
-.XXXXXX...
-.XXXXXX...
-.XXXXXX...
-.XXXXXX...
-.XXXXXXXX.
-...XXXXXX.
-...XXXXXX.
-...XXXXXX.
-...XXXXXX.
-..........
+5 5
+1 1 4 2 2
 output
 Copy
-2
-..........
-..........
-...XX.....
-..........
-..........
-..........
-.....XX...
-..........
-..........
-..........
+1000
 input
 Copy
-4 5
-X....
-..XXX
-..XXX
-..XXX
+6 2
+1 1 2 2 1 1
 output
 Copy
-0
-X....
-..XXX
-..XXX
-..XXX
+16
+Note
+For the first example, valid answer suits are
+[2,1,1],[2,1,2],[2,1,3],[3,1,1],[3,1,2],[3,1,3],[3,2,1],[3,2,2],[3,2,3]
+.

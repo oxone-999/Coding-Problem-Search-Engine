@@ -1,64 +1,77 @@
-Digit Removal
+Anti Palindrome
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given an integer
-N and a digit
-D. Find the minimum non-negetive integer you should add to
-N such that the final value of
-N does not contain the digit
-D.
+A (
+1-indexed) string
+S of length
+N is said to be anti-palindrome if, for each
+1≤i≤N,
+S
+i
+
+=S
+(N+1−i)
+.
+You are given a string
+S of length
+N (consisting of lowercase Latin letters only). Rearrange the string to convert it into an anti-palindrome or determine that there is no rearrangement which is an anti-palindrome.
+If there are multiple rearrangements of the string which are anti-palindromic, print any of them.
 Input Format
-The first line contains
-T denoting the number of test cases. Then the test cases follow.
-Each test case contains two integers
-N and
-D on a single line denoting the original number and the digit you need to avoid.
+The first line of input contains a single integer
+T — the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains an integer
+N — the length of the string
+S.
+The second line of each test case contains the string
+S.
 Output Format
-For each test case, output on a single line the minimum non-negetive integer you should add to
-N.
+For each test case, if it is possible to rearrange
+S to convert it into an anti-palindrome, print YES in the first line and print the rearranged string in the second line. Otherwise, print NO.
+You may print each character of YES and NO in uppercase or lowercase (for e.g. yes, yEs, Yes will be considered identical).
+If there are multiple rearrangements of the string which are anti-palindromic, print any of them.
 Constraints
 1≤T≤10
-5
+4
 1≤N≤10
-9
-0≤D≤9
-Subtasks
-Subtask 1 (100 points): Original constraints
+5
+S contains only lowercase Latin letters
+It is guaranteed that the sum of
+N over all test cases does not exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
-5
-21 5
-8 8
-100 0
-5925 9
-434356 3
-0
-1
-11
-75
-5644
+4
+3
+abc
+8
+abccccdd
+4
+xyyx
+6
+ppppqr
+NO
+YES
+abddcccc
+YES
+xxyy
+NO
 Explanation:
 Test case
-1:
-N=21 does not contain the digit
-D=5. Hence there is no need to add any integers to
-N.
+1: No matter how the string is rearranged, the condition
+S
+i
+
+=S
+(N+1−i)
+will not be satisfied for
+i=2.
 Test case
-2: If
-1 is added to
-N=8, it becomes equal to
-9, which does not contain the digit
-D=8.
+2: One possible rearrangement of the string which is anti-palindromic is abddcccc. Other answers, such as ccdaccdb, will also be accepted.
 Test case
-3: The minimum integer you should add to
-N=100 such that the final value of
-N does not contain the digit
-D=0 is
-11.
+3: One possible rearrangement of the string which is anti-palindromic is xxyy.
 Test case
-5: The minimum integer which is greater than
-434356 and does not contain the digit
-D=3 is
-440000. So we should add
-440000−434356=5644.
+4: It can be shown that none of the rearrangements of
+A is anti-palindromic.

@@ -1,151 +1,127 @@
-B. Orac and Medians
+E. Slime and Hats
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Slime has a sequence of positive integers
-a
-1
-,
-a
-2
-,…,
-a
+Slime and Orac are holding a turn-based game. In a big room, there are
 n
-.
-In one operation Orac can choose an arbitrary subsegment
-[l…r]
-of this sequence and replace all values
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-to the value of median of
-{
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-}
-.
-In this problem, for the integer multiset
-s
-, the median of
-s
-is equal to the
-⌊
-|s|+1
-2
-⌋
--th smallest number in it. For example, the median of
-{1,4,4,6,5}
-is
-4
-, and the median of
-{1,7,5,8}
-is
-5
-.
-Slime wants Orac to make
-a
+players sitting on the chairs, looking forward to a column and each of them is given a number: player
 1
-=
-a
+sits in the front of the column, player
 2
-=…=
-a
+sits directly behind him; player
+3
+sits directly behind player
+2
+, and so on; player
 n
-=k
-using these operations.
-Orac thinks that it is impossible, and he does not want to waste his time, so he decided to ask you if it is possible to satisfy the Slime's requirement, he may ask you these questions several times.
+sits directly behind player
+n−1
+. Each player wears a hat that is either black or white. As each player faces forward, player
+i
+knows the color of player
+j
+'s hat if and only if
+i
+is larger than
+j
+.
+At the start of each turn, Orac will tell whether there exists a player wearing a black hat in the room.
+After Orac speaks, if the player can uniquely identify the color of his hat, he will put his hat on the chair, stand up and leave the room. All players are smart, so if it is possible to understand the color of their hat using the obtained information during this and previous rounds, they will understand it.
+In each turn, all players who know the color of their hats will leave at the same time in this turn, which means a player can only leave in the next turn if he gets to know the color of his hat only after someone left the room at this turn.
+Note that when the player needs to leave, he will put the hat on the chair before leaving, so the players ahead of him still cannot see his hat.
+The
+i
+-th player will know who exactly left the room among players
+1,2,…,i−1
+, and how many players among
+i+1,i+2,…,n
+have left the room.
+Slime stands outdoor. He watches the players walking out and records the numbers of the players and the time they get out. Unfortunately, Slime is so careless that he has only recorded some of the data, and this given data is in the format "player
+x
+leaves in the
+y
+-th round".
+Slime asked you to tell him the color of each player's hat. If there are multiple solutions, you can find any of them.
 Input
-The first line of the input is a single integer
-t
-: the number of queries.
-The first line of each query contains two integers
-n (1≤n≤100000)
-and
-k (1≤k≤
-10
-9
-)
-, the second line contains
+The first line contains a integer
+n (1≤n≤200000)
+.
+The second line contains
 n
-positive integers
-a
+integers
+t
 1
 ,
-a
+t
 2
 ,…,
-a
+t
 n
- (1≤
-a
+ (0≤
+t
 i
 ≤
 10
-9
+15
 )
-The total sum of
-n
-is at most
-100000
-.
-Output
-The output should contain
+. If
 t
-lines. The
 i
--th line should be equal to 'yes' if it is possible to make all integers
-k
-in some number of operations or 'no', otherwise. You can print each letter in lowercase or uppercase.
-Example
+=0
+, then there are no data about player
+i
+; otherwise it means player
+i
+leaves in the
+t
+i
+-th round.
+At least one solution exists for the given input.
+Output
+Print one binary string of
+n
+characters. The
+i
+-th character of the string should be '1' if player
+i
+wears a black hat and should be '0', otherwise. If there are multiple solutions, you can print any of them.
+Examples
 input
 Copy
 5
-5 3
-1 5 2 6 1
-1 6
-6
-3 2
-1 2 3
-4 3
-3 1 2 3
-10 3
-1 2 3 4 5 6 7 8 9 10
+0 1 1 0 0
 output
 Copy
-no
-yes
-yes
-no
-yes
+00000
+input
+Copy
+5
+0 2 2 0 0
+output
+Copy
+00001
+input
+Copy
+5
+0 0 0 0 0
+output
+Copy
+00000
+input
+Copy
+5
+4 4 0 4 4
+output
+Copy
+00100
 Note
-In the first query, Orac can't turn all elements into
-3
-.
-In the second query,
-a
-1
-=6
-is already satisfied.
-In the third query, Orac can select the complete array and turn all elements into
-2
-.
-In the fourth query, Orac can't turn all elements into
-3
-.
-In the fifth query, Orac can select
-[1,6]
-at first and then select
-[2,10]
-.
+In the first example, for the given solution, all the players wear white hats. In the first turn, Orac tells all the players that there are no players wearing a black hat, so each player knows that he is wearing a white hat, and he will leave in the first turn.
+In the second example, for the given solution, the player
+5
+wears a black hat, other players wear white hats. Orac tells all the players that there exists a player wearing a black hat, and player
+5
+know that the other players are all wearing white hats, so he can infer that he is wearing a black hat; therefore he leaves in the first turn, other players leave in the second turn. Note that other players can infer that they are wearing white hats immediately after player
+5
+leaves, but they have to wait for the next turn to leave according to the rule.
+In the third example, there is no information about the game, so any output is correct.

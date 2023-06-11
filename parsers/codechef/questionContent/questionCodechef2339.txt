@@ -1,46 +1,32 @@
-Big Queries
+ABABAABA
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-WARNING: This problem has large input / output files. Use of faster I/O methods is recommended.
-You are given an array A consisting of N integers. You have to answer M queries on it. Each query belongs to one of the following three types:
-1 L R X : multiply each number in the range AL, AL + 1, ..., AR by X.
-2 L R Y : Replace the elements AL, AL + 1, ..., AR by Y, 2 * Y, ... (R - L + 1) * Y. In other words, the number Ai will be equal to (i - L + 1) * Y for each i from L to R.
-3 L R : Find the product of all numbers in the range AL, AL + 1, ..., AR. As this number could be very large, you have to just find the number of trailing zeros of this number when represented in decimal notation.
+Read problems statements in Mandarin Chinese , Russian and Vietnamese as well.
+You are given a uniformly randomly generated string S, consisting of letters from the set {"A", "B"}. Your task is to find a string T that appears in S as a subsequence exactly twice.
+In other words, you need to find such a string T, that there exist exactly two sets of indexes i1, i2, ..., i|T| and j1, j2, ..., j|T| such that there exists some k, where ik ≠ jk and S{i1...i|T|} = S{j1...j|T|} = T.
 Input
-The first line of the input contains an integer T denoting the number of test cases. T test cases follow.
-The first line of each test case contains two space-separated integers N and M.
-The second line contains N space-separated integers denoting A1, A2, ..., AN
-For next M lines, each line contains a query.
-Each query is given by three or four (please refer to the statement) space separated integers.
-The first integer denotes type of the query. For every type of query next two integers denote L and R. For each query of type 1, next integer denote X. For each query of type 2, next integer denote Y.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first and only line of each test case contains a single string S.
+The string S was generated randomly. For a generating string S, we first choose an integer N denoting a length of S. After that every symbol of the string S is chosen randomly from the set {"A", "B"} and the both symbols have equal probability to be chosen. Note that N is not choosen randomly.
 Output
-For each test case, output a single line containing the sum of answers of all the queries of type 3.
+For each test case, output a string that occurs exactly twice as a subsequence in S, or output -1 if there is no such string. If there are more than one possible subsequences occurring exactly two times, you can print any one of them.
 Constraints
-1 ≤ T ≤ 5
-1 ≤ N, M, N + M ≤ 105
-1 ≤ L ≤ R ≤ N
-1 ≤ X, Y, Ai ≤ 109
+1 ≤ T ≤ 10
 Subtasks
-Subtask #1 (18 points): 1 ≤ N, M, X, Y, Ai ≤ 10
-Subtask #2 (31 points): 1 ≤ N, M ≤ 1000
-Subtask #3 (51 points): original constraints
-Example
-Input:
-1
-5 5
-2 4 3 5 5
-3 2 4
-3 2 5
-2 2 4 1
-1 3 3 10
-3 1 5
-Output:
-5
-Explanation
-Array: [2, 4, 3, 5, 5]
-1st query: [4, 3, 5], 4 * 3 * 5 = 60 : answer 1.
-2nd query: [4, 3, 5, 5], 4 * 3 * 5 * 5 = 300 : answer 2.
-3rd query: [2, 4, 3, 5, 5] => [2, 1, 2, 3, 5].
-4th query: [2, 1, 2, 3, 5] => [2, 1, 20, 3, 5].
-5th query: [2, 1, 20, 3, 5], 2 * 1 * 20 * 3 * 5 = 600 - answer 2.
-Sum of all answers = 5.
+Subtask #1 (10 points): 2 ≤ N ≤ 3
+Subtask #2 (26 points): 2 ≤ N ≤ 10
+Subtask #3 (64 points): 2 ≤ N ≤ 5000
+Sample 1:
+Input
+Output
+2
+AAAA
+BAB
+-1
+B
+Explanation:
+Test case #1:
+The string "AAAA" appears once as a subsequence in itself.
+The string "AAA" appears four times as a subsequence in "AAAA"; possible positions: {2, 3, 4}, {1, 3, 4}, {1, 2, 4}, {1, 2, 3}.
+The strings "AA" and "A" also appear in "AAAA" as a subsequence strictly more than twice.
+So, there is no string of "AAAA", which appears exactly twice. Hence answer is -1.
+Test case #2: Two occurrences of "B" in "BAB" are {1} and {3} (1-based indexing).

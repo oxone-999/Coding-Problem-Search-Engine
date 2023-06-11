@@ -1,48 +1,84 @@
-Random Permutation
+Plus Xor Increase
 Problem
-Read problems statements in Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-Chef has a random permutation
-P
+You are given
+N nonnegative integers
+A
 1
-,P
+,A
 2
-,…,P
+,…,A
 N
-and an integer
-K.
-A subsequence (not necessarily contiguous) of this permutation is called good if it has at most
-K pairs of neighbouring elements such that the left element is larger than the right element.
-Chef wants to know the maximum length of a good subsequence of his permutation. Can you help him?
-Input
-The first line of the input contains two space-separated integers
-N and
-K.
-The second line contains
-N space-separated integers
-P
+. Determine if there exist nonnegative integers
+B,C such that the following condition holds:
+(A
 1
-,P
++B)⊕C<(A
 2
-,…,P
++B)⊕C<…<(A
+N
++B)⊕C
+Here
+⊕ denotes the XOR operation (bitwise exclusive OR).
+Input Format
+The first line of the input contains a single integer
+T, denoting the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single integer
+N — the number of integers.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
 N
 .
-Output
-Print a single line containing one integer ― the maximum length of a good subsequence.
+Output Format
+For each test case, if such integers exist, output YES. Otherwise, output NO.
+You may print each character of the string in either uppercase or lowercase (for example, the strings YES, yeS, YeS, and yEs will all be treated as identical).
 Constraints
-0≤K<N≤50,000
-1≤P
-i
-≤N for each valid
-i
-the permutation is chosen uniformly randomly among all permutations of the integers
-1 through
-N; note that
-K is not independent from the chosen permutation (it can be chosen differently depending on the permutation)
-Example Input
-8 1
-2 7 6 3 4 1 8 5
-Example Output
+1≤T≤10
+4
+2≤N≤10
 5
-Explanation
-One good subsequence with the maximum length is
-[2,3,4,1,5].
+0≤A
+i
+≤2
+30
+−1
+The sum of
+N over all test cases doesn't exceed
+2⋅10
+5
+.
+Sample 1:
+Input
+Output
+5
+3
+1 2 1
+3
+1 2 3
+3
+3 2 1
+3
+1 163 2
+4
+1 63 2 64
+NO
+YES
+YES
+YES
+NO
+Explanation:
+Test case
+2: One possible choice is
+B=C=0
+Test case
+3: One possible choice is
+B=0 and
+C=3
+Test case
+4: One possible choice is
+B=510 and
+C=384

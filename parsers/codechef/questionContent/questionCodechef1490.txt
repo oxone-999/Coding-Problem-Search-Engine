@@ -1,31 +1,28 @@
-Maximum Unique Segment
+Plant Location
 Problem
-Read problems statements in mandarin chinese, russian and vietnamese as well.
-You are given 2 arrays W = (W1, W2, .., WN) and C = (C1, C2, .., CN) with N elements each. A range [l, r] is unique if all the elements Cl, Cl+1, .., Cr are unique (ie. no duplicates). The sum of the range is Wl + Wl+1 + ... + Wr.
-You want to find an unique range with the maximum sum possible, and output this sum.
+A new highway called Highway 1 has just been built in the Kingdom of Byteland. Ingoo, the largest CPU manufacturer in Byteland, would like to build a new chipset plant along the highway.
+Ingoo currently has N warehouses in the kingdom. None of these warehouses are near the new highway. Chipsets manufactured from the new plant must be delivered to the warehouses. Thus, the further the distances from the new plant to the warehouses, the more the delivery cost Ingoo needs to bear.
+Therefore, the CEO of Ingoo would like to find a place on Highway 1 to build the new plant in such a way that the total distance from the plant to all the warehouses is minimized.
+You are visiting Byteland on December vacation and have decided to help Ingoo to locate the new plant!
 Input
-The first line of the input contains an integer T, denoting the number of test cases. The description of each testcase follows.
-The first line of each test case contains a single integer N, denoting the size of the arrays.
-The second line contains N space-separated integers : C1, C2, .., CN.
-The third line contains N space-separated integers : W1, W2, .., WN.
+The first line contains T (about 20), the number of test cases. Then T test cases follow. Each test case has the following form:
+The first line contains a number N (1 <= N <= 2000), the number of Ingoo's warehouses.
+The second line contains three integers A, B, C which describe the line equation (Ax+By+C=0) of Highway 1 (|A|, |B|, |C| <= 5000).
+The next N lines contains the coordinates (x, y) of the warehouses (|x|, |y| <= 5000).
+You are guaranteed that A, B, C form a valid line equation (i.e. A and B are not both 0) and no warehouses lie on Highway 1.
 Output
-For each testcase, output a single integer in a new line, which should be the maximum possible sum of an unique range.
-Constraints
-1 ≤ T ≤ 100
-1 ≤ N ≤ 1000000
-0 ≤ Ci < N
-0 ≤ Wi ≤ 1000000000
-1 ≤ Sum of N over all test cases ≤ 1000000
-Subtasks
-Subtask #1 (30 points): Sum of N over all test cases ≤ 10000
-Subtask #2 (70 points): Original constraints
+For each test case, print in a single line the minimum total distance between the new plant and all the warehouses, rounded to 6 decimal places. If there is no optimum distance, print "NO" instead.
 Sample 1:
 Input
 Output
 1
 5
-0 1 2 0 2
-5 6 7 8 2
-21
+3 -5 -7 
+1 3
+-2 4
+4 -7
+7 6
+3 3
+26.232349
 Explanation:
-The range [2, 4] is an unique range because (1, 2, 0) has no duplicates. Its sum is 6 + 7 + 8 = 21. This is the maximum possible, and hence is the answer.
+The line equation of Highway 1 is 3x-5x-7=0. Ingoo have 5 warehouses: A(1,3), B(-2,4), C(4,-7), D(7,6), and E(3,3). The optimum location of the new plant is P as shown in the figure below:

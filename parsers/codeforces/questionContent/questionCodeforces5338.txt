@@ -1,31 +1,32 @@
-J. Stepan's Series
+H. Repairing Of String
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Well, the series which Stepan watched for a very long time, ended. In total, the series had n episodes. For each of them, Stepan remembers either that he definitely has watched it, or that he definitely hasn't watched it, or he is unsure, has he watched this episode or not.
-Stepan's dissatisfaction is the maximum number of consecutive series that Stepan did not watch.
-Your task is to determine according to Stepan's memories if his dissatisfaction could be exactly equal to k.
+Stepan had a favorite string s which consisted of the lowercase letters of the Latin alphabet.
+After graduation, he decided to remember it, but it was a long time ago, so he can't now remember it. But Stepan remembers some information about the string, namely the sequence of integers c1, c2, ..., cn, where n equals the length of the string s, and ci equals the number of substrings in the string s with the length i, consisting of the same letters. The substring is a sequence of consecutive characters in the string s.
+For example, if the Stepan's favorite string is equal to "tttesst", the sequence c looks like: c = [7, 3, 1, 0, 0, 0, 0].
+Stepan asks you to help to repair his favorite string s according to the given sequence c1, c2, ..., cn.
 Input
-The first line contains two integers n and k (1 ≤ n ≤ 100, 0 ≤ k ≤ n) — the number of episodes in the series and the dissatisfaction which should be checked.
-The second line contains the sequence which consists of n symbols "Y", "N" and "?". If the i-th symbol equals "Y", Stepan remembers that he has watched the episode number i. If the i-th symbol equals "N", Stepan remembers that he hasn't watched the epizode number i. If the i-th symbol equals "?", Stepan doesn't exactly remember if he has watched the episode number i or not.
+The first line contains the integer n (1 ≤ n ≤ 2000) — the length of the Stepan's favorite string.
+The second line contains the sequence of integers c1, c2, ..., cn (0 ≤ ci ≤ 2000), where ci equals the number of substrings of the string s with the length i, consisting of the same letters.
+It is guaranteed that the input data is such that the answer always exists.
 Output
-If Stepan's dissatisfaction can be exactly equal to k, then print "YES" (without qoutes). Otherwise print "NO" (without qoutes).
+Print the repaired Stepan's favorite string. If there are several answers, it is allowed to print any of them. The string should contain only lowercase letters of the English alphabet.
 Examples
 input
 Copy
-5 2
-NYNNY
+6
+6 3 1 0 0 0
 output
 Copy
-YES
+kkrrrq
 input
 Copy
-6 1
-????NN
+4
+4 0 0 0
 output
 Copy
-NO
+abcd
 Note
-In the first test Stepan remembers about all the episodes whether he has watched them or not. His dissatisfaction is 2, because he hasn't watch two episodes in a row — the episode number 3 and the episode number 4. The answer is "YES", because k = 2.
-In the second test k = 1, Stepan's dissatisfaction is greater than or equal to 2 (because he remembers that he hasn't watch at least two episodes in a row — number 5 and number 6), even if he has watched the episodes from the first to the fourth, inclusive.
+In the first test Stepan's favorite string, for example, can be the string "kkrrrq", because it contains 6 substrings with the length 1, consisting of identical letters (they begin in positions 1, 2, 3, 4, 5 and 6), 3 substrings with the length 2, consisting of identical letters (they begin in positions 1, 3 and 4), and 1 substring with the length 3, consisting of identical letters (it begins in the position 3).

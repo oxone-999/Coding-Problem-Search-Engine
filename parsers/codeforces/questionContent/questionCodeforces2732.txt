@@ -1,167 +1,82 @@
-B. Kind Anton
+E. Road to 1600
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Once again, Boris needs the help of Anton in creating a task. This time Anton needs to solve the following problem:
-There are two arrays of integers
-a
-and
-b
-of length
-n
-. It turned out that array
-a
-contains only elements from the set
-{−1,0,1}
-.
-Anton can perform the following sequence of operations any number of times:
-Choose any pair of indexes
-(i,j)
-such that
-1≤i<j≤n
-. It is possible to choose the same pair
-(i,j)
-more than once.
-Add
-a
-i
+Egor wants to achieve a rating of 1600 points on the well-known chess portal ChessForces and he needs your help!
+Before you start solving the problem, Egor wants to remind you how the chess pieces move. Chess rook moves along straight lines up and down, left and right, as many squares as it wants. And when it wants, it can stop. The queen walks in all directions vertically and diagonally at any distance. You can see the examples below.
+To reach the goal, Egor should research the next topic:
+There is an
+N×N
+board. Each cell of the board has a number from
+1
 to
-a
-j
-. In other words,
-j
--th element of the array becomes equal to
-a
-i
-+
-a
-j
-.
-For example, if you are given array
-[1,−1,0]
-, you can transform it only to
-[1,−1,−1]
-,
-[1,0,0]
-and
-[1,−1,1]
-by one operation.
-Anton wants to predict if it is possible to apply some number (zero or more) of these operations to the array
-a
-so that it becomes equal to array
-b
-. Can you help him?
+N
+2
+in it and numbers in all cells are distinct.
+In the beginning, some chess figure stands in the cell with the number
+1
+. Note that this cell is already considered as visited. After that every move is determined by the following rules:
+Among all not visited yet cells to which the figure can get in one move, it goes to the cell that has minimal number.
+If all accessible cells were already visited and some cells are not yet visited, then the figure is teleported to the not visited cell that has minimal number. If this step happens, the piece pays a fee of
+1
+vun.
+If all cells are already visited, the process is stopped.
+Egor should find an
+N×N
+board on which the rook pays strictly less vuns than the queen during the round with this numbering. Help him to find such
+N×N
+numbered board, or tell that it doesn't exist.
 Input
-Each test contains multiple test cases.
-The first line contains the number of test cases
-t
-(
-1≤t≤10000
-). The description of the test cases follows.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤
-10
-5
-)  — the length of arrays.
-The second line of each test case contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−1≤
-a
-i
-≤1
-)  — elements of array
-a
-. There can be duplicates among elements.
-The third line of each test case contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-−
-10
-9
-≤
-b
-i
-≤
-10
-9
-)  — elements of array
-b
-. There can be duplicates among elements.
-It is guaranteed that the sum of
-n
-over all test cases doesn't exceed
-10
-5
+The only line contains one integer
+N
+ — the size of the board,
+1≤N≤500
 .
 Output
-For each test case, output one line containing "YES" if it's possible to make arrays
-a
-and
-b
-equal by performing the described operations, or "NO" if it's impossible.
-You can print each letter in any case (upper or lower).
-Example
+The output should contain
+N
+lines.
+In
+i
+-th line output
+N
+numbers  — numbers on the
+i
+-th row of the board. All numbers from
+1
+to
+N×N
+must be used exactly once.
+On your board rook must pay strictly less vuns than the queen.
+If there are no solutions, print
+−1
+.
+If there are several solutions, you can output any of them.
+Examples
 input
 Copy
-5
-3
-1 -1 0
-1 1 -2
-3
-0 1 1
-0 2 2
-2
-1 0
-1 41
-2
--1 0
--1 -41
-5
-0 1 -1 1 -1
-1 1 -1 1 -1
+1
 output
 Copy
-YES
-NO
-YES
-YES
-NO
+-1
+input
+Copy
+4
+output
+Copy
+4 3 6 12 
+7 5 9 15 
+14 1 11 10 
+13 8 16 2 
 Note
-In the first test-case we can choose
-(i,j)=(2,3)
-twice and after that choose
-(i,j)=(1,2)
-twice too. These operations will transform
-[1,−1,0]→[1,−1,−2]→[1,1,−2]
-In the second test case we can't make equal numbers on the second position.
-In the third test case we can choose
-(i,j)=(1,2)
-41
-times. The same about the fourth test case.
-In the last lest case, it is impossible to make array
-a
-equal to the array
-b
+In case we have
+1×1
+board, both rook and queen do not have a chance to pay fees.
+In second sample rook goes through cells
+1→3→4→6→9→5→7→13→2→8→16→11→10→12→15→(1 vun)→14
 .
+Queen goes through
+1→3→4→2→5→6→9→7→13→8→11→10→12→15→(1 vun)→14→(1 vun)→16
+.
+As a result rook pays 1 vun and queen pays 2 vuns.

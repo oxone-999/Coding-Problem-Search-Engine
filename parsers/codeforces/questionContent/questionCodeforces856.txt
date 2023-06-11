@@ -1,75 +1,72 @@
-A. The Enchanted Forest
-time limit per test2 seconds
+C. Sanae and Giant Robot
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The enchanted forest got its name from the magical mushrooms growing here. They may cause illusions and generally should not be approached.
-—Perfect Memento in Strict Sense
-Marisa comes to pick mushrooms in the Enchanted Forest.
-The Enchanted forest can be represented by
+Is it really?! The robot only existing in my imagination?! The Colossal Walking Robot?!!
+— Kochiya Sanae
+Sanae made a giant robot — Hisoutensoku, but something is wrong with it. To make matters worse, Sanae can not figure out how to stop it, and she is forced to fix it on-the-fly.
+The state of a robot can be represented by an array of integers of length
 n
-points on the
-X
--axis numbered
-1
-through
-n
-. Before Marisa started, her friend, Patchouli, used magic to detect the initial number of mushroom on each point, represented by
+. Initially, the robot is at state
 a
-1
-,
-a
-2
-,…,
-a
-n
+. She wishes to turn it into state
+b
 .
-Marisa can start out at any point in the forest on minute
-0
-. Each minute, the followings happen in order:
-She moves from point
-x
-to
-y
+As a great programmer, Sanae knows the art of copy-and-paste. In one operation, she can choose some segment from given segments, copy the segment from
+b
+and paste it into the same place of the robot, replacing the original state there. However, she has to ensure that the sum of
+a
+does not change after each copy operation in case the robot go haywire. Formally, Sanae can choose segment
+[l,r]
+and assign
+a
+i
+=
+b
+i
 (
-|x−y|≤1
-, possibly
-y=x
-).
-She collects all mushrooms on point
-y
-.
-A new mushroom appears on each point in the forest.
-Note that she cannot collect mushrooms on minute
-0
-.
-Now, Marisa wants to know the maximum number of mushrooms she can pick after
-k
-minutes.
+l≤i≤r
+) if
+∑
+i=1
+n
+a
+i
+does not change after the operation.
+Determine whether it is possible for Sanae to successfully turn the robot from the initial state
+a
+to the desired state
+b
+with any (possibly, zero) operations.
 Input
 Each test contains multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤
+1≤t≤2⋅
 10
 4
-) — the number of test cases. The description of the test cases follows.
+) — the number of test cases. The descriptions of the test cases follow.
 The first line of each test case contains two integers
 n
 ,
-k
+m
 (
-1≤n≤2⋅
+2≤n≤2⋅
 10
 5
 ,
-1≤k≤
+1≤m≤2⋅
 10
-9
-) — the number of positions with mushrooms and the time Marisa has, respectively.
-The second line of each test case contains
+5
+) — the length of
+a
+,
+b
+and the number of segments.
+The second line contains
 n
-integers
+intergers
 a
 1
 ,
@@ -85,65 +82,103 @@ i
 ≤
 10
 9
-) — the initial number of mushrooms on point
-1,2,…,n
+) — the initial state
+a
 .
-It is guaranteed that the sum of
+The third line contains
 n
+intergers
+b
+1
+,
+b
+2
+,…,
+b
+n
+(
+1≤
+b
+i
+≤
+10
+9
+) — the desired state
+b
+.
+Then
+m
+lines follow, the
+i
+-th line contains two intergers
+l
+i
+,
+r
+i
+(
+1≤
+l
+i
+<
+r
+i
+≤n
+) — the segments that can be copy-pasted by Sanae.
+It is guaranteed that both the sum of
+n
+and the sum of
+m
 over all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case, print the maximum number of mushrooms Marisa can pick after
-k
-minutes.
+For each test case, print "YES" (without quotes) if
+a
+can be turned into
+b
+, or "NO" (without quotes) otherwise.
+You can output "YES" and "NO" in any case (for example, strings "yEs", "yes" and "Yes" will be recognized as a positive response).
 Example
 input
 Copy
-4
+2
 5 2
-5 6 1 2 3
-5 7
-5 6 1 2 3
+1 5 4 2 3
+3 2 5 4 1
+1 3
+2 5
+5 2
+1 5 4 2 3
+3 2 4 5 1
 1 2
-999999
-5 70000
-1000000000 1000000000 1000000000 1000000000 1000000000
+2 4
 output
 Copy
-12
-37
-1000000
-5000349985
+YES
+NO
 Note
 Test case 1:
-Marisa can start at
-x=2
-. In the first minute, she moves to
-x=1
-and collect
-5
-mushrooms. The number of mushrooms will be
-[1,7,2,3,4]
-. In the second minute, she moves to
-x=2
-and collects
-7
-mushrooms. The numbers of mushrooms will be
-[2,1,3,4,5]
-. After
-2
-minutes, Marisa collects
-12
-mushrooms.
-It can be shown that it is impossible to collect more than
-12
-mushrooms.
+One possible way of turning
+a
+to
+b
+:
+First, select
+[1,3]
+. After the operation,
+a=[3,2,5,2,3]
+.
+Then, select
+[2,5]
+. After the operation,
+a=[3,2,5,4,1]=b
+.
 Test case 2:
-This is one of her possible moving path:
-2→3→2→1→2→3→4→5
-It can be shown that it is impossible to collect more than
-37
-mushrooms.
+It can be shown that it is impossible to turn
+a
+into
+b
+.

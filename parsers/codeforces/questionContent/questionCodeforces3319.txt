@@ -1,133 +1,179 @@
-E. Wojtek and Card Tricks
-time limit per test3.5 seconds
+F1. Marek and Matching (easy version)
+time limit per test7 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Wojtek has just won a maths competition in Byteland! The prize is admirable — a great book called 'Card Tricks for Everyone.' 'Great!' he thought, 'I can finally use this old, dusted deck of cards that's always been lying unused on my desk!'
-The first chapter of the book is 'How to Shuffle
-k
-Cards in Any Order You Want.' It's basically a list of
+This is an easier version of the problem. In this version,
+n≤6
+.
+Marek is working hard on creating strong testcases to his new algorithmic problem. You want to know what it is? Nah, we're not telling you. However, we can tell you how he generates the testcases.
+Marek chooses an integer
 n
-intricate methods of shuffling the deck of
-k
-cards in a deterministic way. Specifically, the
-i
--th recipe can be described as a permutation
+and
+n
+2
+integers
+p
+ij
 (
-P
-i,1
+1≤i≤n
 ,
-P
-i,2
+1≤j≤n
+). He then generates a random bipartite graph with
+2n
+vertices. There are
+n
+vertices on the left side:
+ℓ
+1
+,
+ℓ
+2
 ,…,
-P
-i,k
-)
-of integers from
-1
-to
-k
-. If we enumerate the cards in the deck from
-1
-to
-k
-from top to bottom, then
-P
-i,j
-indicates the number of the
-j
--th card from the top of the deck after the shuffle.
-The day is short and Wojtek wants to learn only some of the tricks today. He will pick two integers
-l,r
-(
-1≤l≤r≤n
-), and he will memorize each trick from the
-l
--th to the
+ℓ
+n
+, and
+n
+vertices on the right side:
 r
--th, inclusive. He will then take a sorted deck of
-k
-cards and repeatedly apply random memorized tricks until he gets bored. He still likes maths, so he started wondering: how many different decks can he have after he stops shuffling it?
-Wojtek still didn't choose the integers
-l
+1
+,
+r
+2
+,…,
+r
+n
+. For each
+i
+and
+j
+, he puts an edge between vertices
+ℓ
+i
 and
 r
-, but he is still curious. Therefore, he defined
-f(l,r)
-as the number of different decks he can get if he memorizes all the tricks between the
-l
--th and the
-r
--th, inclusive. What is the value of
-∑
-l=1
-n
-∑
-r=l
-n
-f(l,r)?
-n
-n
+j
+with probability
+p
+ij
+percent.
+It turns out that the tests will be strong only if a perfect matching exists in the generated graph. What is the probability that this will occur?
+It can be shown that this value can be represented as
+P
+Q
+where
+P
+and
+Q
+are coprime integers and
+Q≢0(mod
+10
+9
++7)
+. Let
+Q
+−1
+be an integer for which
+Q⋅
+Q
+−1
+≡1(mod
+10
+9
++7)
+. Print the value of
+P⋅
+Q
+−1
+modulo
+10
+9
++7
+.
 Input
-The first line contains two integers
+The first line of the input contains a single integer
 n
-,
-k
 (
-1≤n≤200000
-,
-1≤k≤5
-) — the number of tricks and the number of cards in Wojtek's deck.
-Each of the following
+1≤n≤6
+). The following
 n
-lines describes a single trick and is described by
-k
-distinct integers
-P
-i,1
+lines describe the probabilities of each edge appearing in the graph. The
+i
+-th of the lines contains
+n
+integers
+p
+i1
 ,
-P
-i,2
+p
+i2
 ,…,
-P
-i,k
+p
+in
 (
-1≤
-P
-i,j
-≤k
-).
+0≤
+p
+ij
+≤100
+);
+p
+ij
+denotes the probability, in percent, of an edge appearing between
+ℓ
+i
+and
+r
+j
+.
 Output
-Output the value of the sum described in the statement.
+Print a single integer — the probability that the perfect matching exists in the bipartite graph, written as
+P⋅
+Q
+−1
+(mod
+10
+9
++7)
+for
+P
+,
+Q
+defined above.
 Examples
 input
 Copy
-3 3
-2 1 3
-3 1 2
-1 3 2
+2
+50 50
+50 50
 output
 Copy
-25
+937500007
 input
 Copy
-2 4
-4 1 3 2
-4 3 1 2
+3
+3 1 4
+1 5 9
+2 6 5
 output
 Copy
-31
+351284554
 Note
-Consider the first sample:
-The first trick swaps two top cards.
-The second trick takes a card from the bottom and puts it on the top of the deck.
-The third trick swaps two bottom cards.
-The first or the third trick allow Wojtek to generate only two distinct decks (either the two cards are swapped or not). Therefore,
-f(1,1)=f(3,3)=2
-.
-The second trick allows him to shuffle the deck in a cyclic order. Therefore,
-f(2,2)=3
-.
-It turns that two first tricks or two last tricks are enough to shuffle the deck in any way desired by Wojtek. Therefore,
-f(1,2)=f(2,3)=f(1,3)=3!=6
+In the first sample test, each of the
+16
+graphs below is equally probable. Out of these,
+7
+have a perfect matching:
+Therefore, the probability is equal to
+7
+16
+. As
+16⋅562500004=1(mod
+10
+9
++7)
+, the answer to the testcase is
+7⋅562500004mod(
+10
+9
++7)=937500007
 .

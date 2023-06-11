@@ -1,50 +1,44 @@
-Algebra Score
+Optimal Trip
 Problem
-Pankhuri hates Algebra. Doesn't matter how hard she tries, she always fails to get good marks in her assessments. One of her marked assessments has been recently returned. She noticed that this time, the professor has only given per question marks and filled the total marks section with an expression consisting of +,- operations rather than a calculated number. For example - if there were 3 questions and she was awarded 10 marks in first question while 6 and 2 marks were deducted in second and third questions, then the professor would have written 10-6-2 in the total marks section.
-Pankhuri might not be good at algebra but she is very smart. She came up with a brilliant idea. She plans to insert parentheses
-( or
-) at some places in the expression to create a valid bracket expression which evaluates to the maximum possible value. For example in the above scenario, she could create the expression 10-(6-2) which evaluates to 6 unlike the original expression which evaluates to 4. But the expression given to her is very long and she is not able to figure out the maximum marks that she can get.
-Given an expression of
-N numbers and N-1 operators (either + or -) between them. We can enclose parts of the expression in parentheses to form any valid expression. What is the maximum value of the resulting expression?
-###Input
-First line contains a single integer
-T - the number of test cases.
-For each testcase,
-First line contains a single integer
-N. The second line contains the expression.
-The input format is of the following form.
-N
-a
-1
-o
-1
-a
+Chef has decided to take a break, and go for a ride. He is currently in city 0, and he wants to get to city N. The cities along the road from 0 to N are numbered 0, 1, 2, 3, ... N-1, N in increasing order of distance from city 0. The distance between cities i and i-1 is denoted by di.
+However, as is always the case, it is unsafe to travel at night, so he will have to break his journey over multiple days. Chef may travel at most D distance in any day, so he will have to book hotel for overnight stay in some of the cities. On any day, Chef will begin his journey from some city and end his journey at some other city. Chef wants to reach city N in as few days as possible, so he has to plan his trip accordingly. Let L be the minimum number of days in which he can reach city N.
+Chef knows the cost of overnight stay in each city. The cost of overnight stay in city i is ci. Chef will need to get all his hotel bills re-embersed, and his boss might get suspicious if cost for any single day exceeds a threshold.
+Chef knows that his boss wants him to reach as soon as possible. Thus, if it is possible for Chef to go from 0 to N in L days with no restriction on where Chef stays, then his boss will want him to reach in exactly L days. However, if the boss puts a threshold value i then we know that the Chef may not be able to reach in L days (since he may not be allowed to stay at some hotels). Help him him find the minimum threshold value C such that if he only stays in hotels of cost <= C, it is possible for him to reach the destination N in exactly L days (remember, here L is the minimum number of days needed by Chef if there were absolutely no restrictions on where he stays).
+Formally, let L be the minimal number of days it takes Chef to get from city 0 to city N. Let F(i) be the minimal number of days it takes Chef to get from city 0 to city N if it's not allowed to pay more than i for a single stay in hotel. Find the smallest C that will still allow Chef to get to city N without losing time. In other words F(C)=L. Find and output L as well.
+Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. The first line of each test case has two space separated integers N and D. N lines follow, each having two space separated integers, di and ci.
+Output
+For each test case, output a separate line containing the values of L and C.
+Constraints
+1 ≤ T ≤ 15
+2 ≤ N ≤ 105
+1 ≤ D ≤ 109
+1 ≤ di ≤ D
+1 ≤ ci ≤ N
+The sum of N over all test cases in any file is at most 4*105.
+Subtack 1 (30 points)
+N ≤ 103
+Subtack 2 (30 points)
+di = 1, D = 9
+Subtask 3 (40 points):
+No special constraints
+Example:
+Sample Input
 2
-o
-2
-a
-3
-o
-3
-.. o
-n−1
-a
-n
-###Output For each testcase, print a line containing a single integer representing the maximum value of the expression.
-###Constraints
-1≤T≤10
-1≤N≤200
-1≤a
-i
-≤10
-9
-o
-i
-is
-+ or
-−
-###Sample Input 3 3 8 - 1 - 25 2 38 + 20 4 40 - 8 - 1 + 25
-###Sample Output 32 58 58
-###Explanation Test 1: 8 - ( 1 - 25 ) = 32
-Test 2: 38 + 20 = 58
-Test 3: 40 - ( 8 - ( 1 + 25 ) ) = 58
+4 5
+2 4
+1 2
+3 3
+1 1
+5 6
+2 1
+4 4
+2 2
+2 3
+4 5
+Sample output
+2 2
+3 2
+Explanation
+For test case# 1, the optimal trip is 0 → 2 → 4
+For test case# 2, the optimal trip is 0 → 1 → 3 → 5

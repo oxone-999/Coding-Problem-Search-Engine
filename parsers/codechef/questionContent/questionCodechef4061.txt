@@ -1,124 +1,136 @@
-(Challenge) Nanobots
+Increase to Zero
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-To heal people with virus infections, Ada designed small robots (nanobots) that travel through the bloodstream, scanning all tissues of the body.
-The nanobots have detected a region of infected cells described by a matrix with
-N rows (numbered
-1 through
-N from top to bottom) and
-N columns (numbered
-1 through
-N from left to right). For each valid
-r and
-c, the cell in row
-r and column
-c has a membrane with thickness
-T
-r,c
-.
-To prevent the spread of the virus, the nanobots surrounded the infected region and decided to destroy all the infected cells. The nanobots can form a powerful laser with force
-F and shoot this laser horizontally from the left or from the right of any row, or vertically from the top or from the bottom of any column. Whenever the laser is fired, it breaks through the maximum number of cells in its way such that the total thickness of these cells' membranes is less than or equal to
-F and destroys them; the cells that lie behind them are unaffected. Formally, if the laser destroys
-C cells, then they are the first
-C cells which lie in the laser's way (from the direction in which it is fired), haven't been destroyed before, and the sum of thicknesses of their membranes is at most
-F.
-The laser may be fired multiple times from any directions in any rows or columns. It may also be fired repeatedly in the same direction and the same row or column. However, each shot uses a lot of the nanobots' energy, so Ada wants to destroy all cells using as few shots as possible.
-Let
-H be the minimum number of shots needed to destroy all cells when using only horizontal shots, and
-V the minimum number of shots needed to destroy all cells when using only vertical shots. Ada programmed the nanobots to perform
-K=min(V,H) shots. Help Ada write a program that uses a strictly smaller number of shots.
-Input
-The first line of the input contains two space-separated integers
-N and
-F.
-N lines follow. For each valid
-i, the
-i-th of these lines contains
-N space-separated integers
-T
-i,1
-,T
-i,2
-,…,T
-i,N
-.
-The last line contains a single integer
-K.
-Output
-First, print a line containing a single integer
-S (
-K>S) ― the number of shots you want to make.
-Then, print
-S lines describing the shots. Each of these lines should contain a character
-X, followed by a space and an integer
-Y.
-X can be 'L', 'R', 'U' or 'D', denoting a laser fired from the left, right, up or down respectively. If
-X is 'L' or 'R', then
-Y denotes the row in which the laser is fired; otherwise,
-Y denotes the column in which the laser is fired.
+Given an array of
+N non-negative integers
+A
+1
+,A
+2
+,…,A
+N
+. In one operation, you can increase any one of the elements by
+1.
+Find the minimum number of operations needed to make the XOR of all elements (
+A
+1
+⊕A
+2
+⊕…⊕A
+N
+) equal to
+0. Here
+⊕ denotes the bitwise XOR operation.
+Input Format
+The first line of input contains one integer
+T - the number of test cases. Descriptions of
+T test cases follow.
+The first line of each test case contains one integer
+N - the size of the array. The second line of each test case contains
+N integers
+A
+1
+,A
+2
+,…,A
+N
+- the elements of the array.
+Output Format
+For each test case, print one number - the minimum number of operations required to make the array XOR equal to
+0. It can be shown that it is always possible.
 Constraints
-N=F=512
-1≤T
-i,j
-≤F for each valid
-i,j
-there is a solution that uses less than
-K shots
-Example Input
-4 10
-2 6 4 3
-1 2 3 4
-3 2 3 5
-6 9 1 1
-8
-Example Output
+1≤T≤100
+2≤N≤10
+6
+∑N≤10
+6
+0≤A
+i
+<2
+60
+Subtasks
+Subtask 1 (10 points):
+2≤N≤5,
+A
+i
+<2
+4
+Subtask 2 (20 points):
+2≤N≤100,
+∑N≤1000,
+A
+i
+<2
 7
-L 1
-U 3
-D 4
-U 2
-D 1
-L 4
-R 1
-Explanation
-The shots and the state of the grid in between the shots are shown below. The positions of the laser in the shots are denoted by '*' and destroyed cells are denoted by 'X'.
- L 1       U 3       D 4
-
-               *
-*X X 4 3   X X X 3   X X X 3
- 1 2 3 4   1 2 X 4   1 2 X X
- 3 2 3 5   3 2 X 5   3 2 X X
- 6 9 1 1   6 9 1 1   6 9 1 X
-                           *
-
- U 2       D 1       L 4
-   *
- X X X 3   X X X 3   X X X 3
- 1 X X X   X X X X   X X X X
- 3 X X X   X X X X   X X X X
- 6 9 1 X   X 9 1 X  *X X X X
-           *
-Test Generation
-Let
-Z={1,F/4,F/2,3F/4,F}.
-For each pair of elements
-(L,R) of
-Z such that
-L<R, except
-(3F/4,F), there is one test file that uses these parameters
-L and
-R to generate the matrix
-T.
-For each valid
-i and
-j,
-T
-i,j
-is chosen uniformly randomly between
-L and
-R (inclusive).
-Scoring
-If
-S≥K, you will receive the Wrong Answer verdict; otherwise, the score of a test file is
-K−S. The score of a submission is the sum of scores of all test files. Your goal is to maximise the score of your submission.
-There are nine test files. During the contest, the displayed score will account for exactly 3 test files, i.e. your score reflects your submission's performance on approximately 33% (3/9) of the test files. However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to include the sum of your program's scores over the other 6 test files.
+Subtask 3 (10 points):
+2≤N≤7,
+∑N≤100,
+A
+i
+<2
+60
+Subtask 4 (10 points):
+2≤N≤13,
+∑N≤100,
+A
+i
+<2
+60
+Subtask 5 (25 points):
+2≤N≤1000,
+∑N≤10000,
+A
+i
+<2
+30
+Subtask 6 (15 points):
+2≤N≤10
+6
+,
+∑N≤10
+6
+,
+A
+i
+<2
+30
+Subtask 7 (10 points): Original constraints
+Sample 1:
+Input
+Output
+4
+3
+3 4 5
+4
+5 3 0 7
+3
+2 3 1
+5
+7 7 7 7 7
+2
+1
+0
+9
+Explanation:
+Test case
+1: Increase
+A
+3
+twice by using two operations. Thus, the array becomes
+[3,4,7]. The XOR of all elements of the array is
+3⊕4⊕7=0. It can be shown that the XOR of all elements cannot be made equal to
+0 using less than
+2 operations.
+Test case
+2: Use one operation to increase
+A
+3
+by
+1. Thus, the array becomes
+[5,3,1,7]. The XOR of all elements of the array is
+5⊕3⊕1⊕7=0. It can be shown that the XOR of all elements cannot be made equal to
+0 using less than
+1 operation.
+Test case
+3: The XOR of all elements is already
+0. Thus, we require
+0 operations.

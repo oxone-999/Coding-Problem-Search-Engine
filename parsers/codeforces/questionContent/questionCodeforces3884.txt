@@ -1,51 +1,115 @@
-B. Accordion
-time limit per test3 seconds
+C. Division and Union
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-An accordion is a string (yes, in the real world accordions are musical instruments, but let's forget about it for a while) which can be represented as a concatenation of: an opening bracket (ASCII code
-091
-), a colon (ASCII code
-058
-), some (possibly zero) vertical line characters (ASCII code
-124
-), another colon, and a closing bracket (ASCII code
-093
-). The length of the accordion is the number of characters in it.
-For example, [::], [:||:] and [:|||:] are accordions having length
-4
+There are
+n
+segments
+[
+l
+i
 ,
-6
-and
-7
-. (:|:), {:||:}, [:], ]:||:[ are not accordions.
-You are given a string
-s
-. You want to transform it into an accordion by removing some (possibly zero) characters from it. Note that you may not insert new characters or reorder existing ones. Is it possible to obtain an accordion by removing characters from
-s
-, and if so, what is the maximum possible length of the result?
+r
+i
+]
+for
+1≤i≤n
+. You should divide all segments into two non-empty groups in such way that there is no pair of segments from different groups which have at least one common point, or say that it's impossible to do it. Each segment should belong to exactly one group.
+To optimize testing process you will be given multitest.
 Input
-The only line contains one string
-s
+The first line contains one integer
+T
 (
-1≤|s|≤500000
-). It consists of lowercase Latin letters and characters [, ], : and |.
+1≤T≤50000
+) — the number of queries. Each query contains description of the set of segments. Queries are independent.
+First line of each query contains single integer
+n
+(
+2≤n≤
+10
+5
+) — number of segments. It is guaranteed that
+∑n
+over all queries does not exceed
+10
+5
+.
+The next
+n
+lines contains two integers
+l
+i
+,
+r
+i
+per line (
+1≤
+l
+i
+≤
+r
+i
+≤2⋅
+10
+5
+) — the
+i
+-th segment.
 Output
-If it is not possible to obtain an accordion by removing some characters from
-s
-, print
+For each query print
+n
+integers
+t
+1
+,
+t
+2
+,…,
+t
+n
+(
+t
+i
+∈{1,2}
+) — for each segment (in the same order as in the input)
+t
+i
+equals
+1
+if the
+i
+-th segment will belongs to the first group and
+2
+otherwise.
+If there are multiple answers, you can print any of them. If there is no answer, print
 −1
-. Otherwise print maximum possible length of the resulting accordion.
-Examples
+.
+Example
 input
 Copy
-|[a:b:|]
+3
+2
+5 5
+2 3
+3
+3 5
+2 3
+2 3
+3
+3 3
+4 4
+5 5
 output
 Copy
-4
-input
-Copy
-|]:[|:]
-output
-Copy
+2 1 
 -1
+1 1 2 
+Note
+In the first query the first and the second segments should be in different groups, but exact numbers don't matter.
+In the second query the third segment intersects with the first and the second segments, so they should be in the same group, but then the other group becomes empty, so answer is
+−1
+.
+In the third query we can distribute segments in any way that makes groups non-empty, so any answer of
+6
+possible is correct.

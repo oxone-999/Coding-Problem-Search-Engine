@@ -1,67 +1,71 @@
-import prepare
+import json
+import sys
 import os
-import re
 
-def preprocess_name(name):
-    #remove number. from the name
-    #removing the digits
-    pattern = r'\d+'
-    name = re.sub(pattern, '', name)
-    
-    #remove dots and starting and ending spaces
-    name = name.replace('.', '')
-    name = name.strip()
-    
-    return name
-
-def main():
-    document = prepare.main()[1]
-    TF_IDF_map = prepare.main()[0]
-    
-    query = input("Enter the query: ")
-    query = query.split()
-    
-    potential_documents = {}
-    
-    for word in query:
-        if word in TF_IDF_map:
-            for index in TF_IDF_map[word]:
-                if index in potential_documents:
-                    potential_documents[index] += TF_IDF_map[word][index]
-                else:
-                    potential_documents[index] = TF_IDF_map[word][index]
-                    
-    potential_documents = sorted(potential_documents.items(), key=lambda x: x[1], reverse=True)
-    
-    document_links = []
-    document_names = []
-   
-    #open the questions Link folder and read all the files and save all the content in a list
-    targetDirectory = "../parsers/leetcode/questionLinks/"
-    length = len(os.listdir(targetDirectory))
-    
-    for i in range(1,length+1):
-        with open(targetDirectory + f'questionsLink_{i}.txt') as f:
-            data = f.read()
-            document_links.append(data)
-            f.close()
-            
-    targetDirectory = "../parsers/leetcode/questionHeadings/"
-    length = len(os.listdir(targetDirectory))         
-            
-    for i in range(1,length+1):
-        with open(targetDirectory + f'questionsName_{i}.txt') as f:
-            data = f.read()
-            data = preprocess_name(data)
-            document_names.append(data)
-            f.close()
-    
-    for index , score in potential_documents:
-        print(document_names[index])
-        print(document_links[index])
+def main(TF_IDF_map, document_links, document_names, document):
+    if len(sys.argv) > 1:
+        query = sys.argv[1]
+    else:
+        query = input("Enter your query: ")
         
-    print("Total documents found: ", len(potential_documents))
-    print()
+    query = query.lower()
+    query = query.split()
 
-if __name__ == "__main__":
-    main()    
+    potential_documents = {}
+    results = []
+
+    try:
+        for word in query:
+            if word in TF_IDF_map:
+                for index in TF_IDF_map[word]:
+                    if index in potential_documents:
+                        potential_documents[index] += TF_IDF_map[word][index]
+                    else:
+                        potential_documents[index] = TF_IDF_map[word][index]
+                        
+        potential_documents = sorted(potential_documents.items(), key=lambda x: x[1], reverse=True)
+
+
+        for index , score in potential_documents:
+            index = int(index)
+            results.append(document_names[index])
+            # print(document_names[index])
+            # print("question link : " + document_links[index])
+    except:
+        exit()
+        
+    #convert the results elements unique
+    results = list(set(results))
+
+    output_data = {
+        'results': results
+    }
+
+    # Convert the output data to JSON string
+    json_data = json.dumps(output_data)
+
+    print(json_data)
+    
+if __name__ == '__main__':
+    try:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        output_file = os.path.join(current_dir, 'output.json')
+        doc_file = os.path.join(current_dir, 'doc.json')
+        links_file = os.path.join(current_dir, 'links.json')
+        names_file = os.path.join(current_dir, 'names.json')
+        
+        with open(output_file, 'r') as file:
+            TF_IDF_map = json.load(file)
+
+        with open(doc_file, 'r') as file:
+            document = json.load(file)
+        
+        with open(links_file, 'r') as file:
+            document_links = json.load(file)
+
+        with open(names_file, 'r') as file:
+            document_names = json.load(file)
+    except:
+        exit()
+        
+    main(TF_IDF_map, document_links, document_names, document)

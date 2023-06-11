@@ -1,111 +1,143 @@
-D. Professional layer
-time limit per test3 seconds
-memory limit per test512 megabytes
+E. Radix sum
+time limit per test4 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Cardbluff is popular sport game in Telegram. Each Cardbluff player has ever dreamed about entrance in the professional layer. There are
-n
-judges now in the layer and you are trying to pass the entrance exam. You have a number
-k
-— your skill in Cardbluff.
-Each judge has a number
+Let's define radix sum of number
 a
-i
-— an indicator of uncertainty about your entrance to the professional layer and a number
-e
-i
-— an experience playing Cardbluff. To pass the exam you need to convince all judges by playing with them. You can play only one game with each judge. As a result of a particular game, you can divide the uncertainty of
-i
--th judge by any natural divisor of
+consisting of digits
 a
-i
-which is at most
-k
-. If GCD of all indicators is equal to
 1
-, you will enter to the professional layer and become a judge.
-Also, you want to minimize the total amount of spent time. So, if you play with
-x
-judges with total experience
-y
-you will spend
-x⋅y
-seconds.
-Print minimal time to enter to the professional layer or
-−1
-if it's impossible.
-Input
-There are two numbers in the first line
-n
-and
+,…,
+a
 k
+and number
+b
+consisting of digits
+b
+1
+,…,
+b
+k
+(we add leading zeroes to the shorter number to match longer length) as number
+s(a,b)
+consisting of digits
 (
-1≤n≤
-10
-6
-,
-1≤k≤
-10
-12
-) — the number of judges and your skill in Cardbluff.
+a
+1
++
+b
+1
+)mod10,…,(
+a
+k
++
+b
+k
+)mod10
+. The radix sum of several integers is defined as follows:
+s(
+t
+1
+,…,
+t
+n
+)=s(
+t
+1
+,s(
+t
+2
+,…,
+t
+n
+))
+You are given an array
+x
+1
+,…,
+x
+n
+. The task is to compute for each integer
+i(0≤i<n)
+number of ways to consequently choose one of the integers from the array
+n
+times, so that the radix sum of these integers is equal to
+i
+. Calculate these values modulo
+2
+58
+.
+Input
+The first line contains integer
+n
+ — the length of the array(
+1≤n≤100000
+).
 The second line contains
 n
-integers, where
-i
--th number
-a
-i
-(
-1≤
-a
-i
-≤
-10
-12
-) — the uncertainty of
-i
--th judge
-The third line contains
+integers
+x
+1
+,…
+x
 n
-integers in the same format (
-1≤
-e
+ — array elements(
+0≤
+x
 i
-≤
-10
-9
-),
-e
-i
-— the experience of
-i
--th judge.
+<100000
+).
 Output
-Print the single integer — minimal number of seconds to pass exam, or
-−1
-if it's impossible
+Output
+n
+integers
+y
+0
+,…,
+y
+n−1
+ —
+y
+i
+should be equal to corresponding number of ways modulo
+2
+58
+.
 Examples
 input
 Copy
-3 6
-30 30 30
-100 4 5
+2
+5 6
 output
 Copy
-18
-input
-Copy
-1 1000000
 1
-100
-output
-Copy
-0
+2
 input
 Copy
-3 5
-7 7 7
-1 1 1
+4
+5 7 5 7
 output
 Copy
--1
+16
+0
+64
+0
+Note
+In the first example there exist sequences: sequence
+(5,5)
+with radix sum
+0
+, sequence
+(5,6)
+with radix sum
+1
+, sequence
+(6,5)
+with radix sum
+1
+, sequence
+(6,6)
+with radix sum
+2
+.

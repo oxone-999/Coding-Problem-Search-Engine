@@ -1,93 +1,71 @@
-E. Black, White and Grey Tree
+B. Saving the City
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a tree with each vertex coloured white, black or grey. You can remove elements from the tree by selecting a subset of vertices in a single connected component and removing them and their adjacent edges from the graph. The only restriction is that you are not allowed to select a subset containing a white and a black vertex at once.
-What is the minimum number of removals necessary to remove all vertices from the tree?
+Bertown is a city with
+n
+buildings in a straight line.
+The city's security service discovered that some buildings were mined. A map was compiled, which is a string of length
+n
+, where the
+i
+-th character is "1" if there is a mine under the building number
+i
+and "0" otherwise.
+Bertown's best sapper knows how to activate mines so that the buildings above them are not damaged. When a mine under the building numbered
+x
+is activated, it explodes and activates two adjacent mines under the buildings numbered
+x−1
+and
+x+1
+(if there were no mines under the building, then nothing happens). Thus, it is enough to activate any one mine on a continuous segment of mines to activate all the mines of this segment. For manual activation of one mine, the sapper takes
+a
+coins. He can repeat this operation as many times as you want.
+Also, a sapper can place a mine under a building if it wasn't there. For such an operation, he takes
+b
+coins. He can also repeat this operation as many times as you want.
+The sapper can carry out operations in any order.
+You want to blow up all the mines in the city to make it safe. Find the minimum number of coins that the sapper will have to pay so that after his actions there are no mines left in the city.
 Input
-Each test contains multiple test cases. The first line contains an integer
+The first line contains one positive integer
 t
 (
-1≤t≤100000
-), denoting the number of test cases, followed by a description of the test cases.
-The first line of each test case contains an integer
-n
+1≤t≤
+10
+5
+) — the number of test cases. Then
+t
+test cases follow.
+Each test case begins with a line containing two integers
+a
+and
+b
 (
-1≤n≤200000
-): the number of vertices in the tree.
-The second line of each test case contains
-n
-integers
-a
-v
-(
-0≤
-a
-v
-≤2
-): colours of vertices. Gray vertices have
-a
-v
-=0
-, white have
-a
-v
-=1
-, black have
-a
-v
-=2
-.
-Each of the next
-n−1
-lines contains two integers
-u,v
-(
-1≤u,v≤n
-): tree edges.
-The sum of all
-n
-throughout the test is guaranteed to not exceed
-200000
+1≤a,b≤1000
+) — the cost of activating and placing one mine, respectively.
+The next line contains a map of mines in the city — a string consisting of zeros and ones.
+The sum of the string lengths for all test cases does not exceed
+10
+5
 .
 Output
-For each test case, print one integer: the minimum number of operations to solve the problem.
+For each test case, output one integer — the minimum number of coins that the sapper will have to pay.
 Example
 input
 Copy
-4
 2
 1 1
-1 2
-4
-1 2 1 2
-1 2
-2 3
-3 4
-5
-1 1 0 1 2
-1 2
-2 3
-3 4
-3 5
-8
-1 2 1 2 2 2 1 2
-1 3
-2 3
-3 4
-4 5
-5 6
-5 7
-5 8
+01000010
+5 1
+01101110
 output
 Copy
-1
-3
 2
-3
+6
 Note
-In the first test case, both vertices are white, so you can remove them at the same time.
-In the second test case, three operations are enough. First, we need to remove both black vertices (2 and 4), then separately remove vertices 1 and 3. We can't remove them together because they end up in different connectivity components after vertex 2 is removed.
-In the third test case, we can remove vertices 1, 2, 3, 4 at the same time, because three of them are white and one is grey. After that, we can remove vertex 5.
-In the fourth test case, three operations are enough. One of the ways to solve the problem is to remove all black vertices at once, then remove white vertex 7, and finally, remove connected white vertices 1 and 3.
+In the second test case, if we place a mine under the fourth building and then activate it, then all mines on the field are activated. The cost of such operations is six,
+b=1
+coin for placing a mine and
+a=5
+coins for activating.

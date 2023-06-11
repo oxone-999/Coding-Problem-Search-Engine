@@ -1,243 +1,126 @@
-C. Train and Queries
-time limit per test3 seconds
+E. Split Into Two Sets
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Along the railroad there are stations indexed from
+Polycarp was recently given a set of
+n
+(number
+n
+ — even) dominoes. Each domino contains two integers from
 1
 to
-10
-9
-. An express train always travels along a route consisting of
-n
-stations with indices
-u
-1
-,
-u
-2
-,…,
-u
-n
-, where (
-1≤
-u
-i
-≤
-10
-9
-). The train travels along the route from left to right. It starts at station
-u
-1
-, then stops at station
-u
-2
-, then at
-u
-3
-, and so on. Station
-u
-n
- — the terminus.
-It is possible that the train will visit the same station more than once. That is, there may be duplicates among the values
-u
-1
-,
-u
-2
-,…,
-u
 n
 .
-You are given
-k
-queries, each containing two different integers
-a
-j
+Can he divide all the dominoes into two sets so that all the numbers on the dominoes of each set are different? Each domino must go into exactly one of the two sets.
+For example, if he has
+4
+dominoes:
+{1,4}
+,
+{1,3}
+,
+{3,2}
 and
-b
-j
-(
-1≤
-a
-j
-,
-b
-j
-≤
-10
-9
-). For each query, determine whether it is possible to travel by train from the station with index
-a
-j
-to the station with index
-b
-j
-.
-For example, let the train route consist of
-6
-of stations with indices [
-3,7,1,5,1,4
-] and give
-3
-of the following queries:
-a
-1
-=3
-,
-b
-1
-=5
-It is possible to travel from station
-3
-to station
-5
-by taking a section of the route consisting of stations [
-3,7,1,5
-]. Answer: YES.
-a
-2
-=1
-,
-b
-2
-=7
-You cannot travel from station
-1
-to station
-7
-because the train cannot travel in the opposite direction. Answer: NO.
-a
-3
-=3
-,
-b
-3
-=10
-It is not possible to travel from station
-3
-to station
-10
-because station
-10
-is not part of the train's route. Answer: NO.
+{4,2}
+, then Polycarp will be able to divide them into two sets in the required way. The first set can include the first and third dominoes (
+{1,4}
+and
+{3,2}
+), and the second set — the second and fourth ones (
+{1,3}
+and
+{4,2}
+).
 Input
-The first line of the input contains an integer
+The first line contains a single integer
 t
 (
 1≤t≤
 10
 4
-) —the number of test cases in the test.
+) — the number of test cases.
 The descriptions of the test cases follow.
-The first line of each test case is empty.
-The second line of each test case contains two integers:
-n
-and
-k
-(
-1≤n≤2⋅
-10
-5
-,1≤k≤2⋅
-10
-5
-) —the number of stations the train route consists of and the number of queries.
-The third line of each test case contains exactly
-n
-integers
-u
-1
-,
-u
-2
-,…,
-u
+The first line of each test case contains a single even integer
 n
 (
-1≤
-u
+2≤n≤2⋅
+10
+5
+) — the number of dominoes.
+The next
+n
+lines contain pairs of numbers
+a
 i
-≤
-10
-9
-). The values
-u
-1
-,
-u
-2
-,…,
-u
-n
-are not necessarily different.
-The following
-k
-lines contain two different integers
-a
-j
 and
 b
-j
+i
 (
 1≤
 a
-j
+i
 ,
 b
-j
-≤
-10
-9
-) describing the query with index
-j
-.
+i
+≤n
+) describing the numbers on the
+i
+-th domino.
 It is guaranteed that the sum of
 n
-values over all test cases in the test does not exceed
+over all test cases does not exceed
 2⋅
 10
 5
-. Similarly, it is guaranteed that the sum of
-k
-values over all test cases in the test also does not exceed
-2⋅
-10
-5
+.
 Output
-For each test case, output on a separate line:
-YES, if you can travel by train from the station with index
-a
-j
-to the station with index
-b
-j
-NO otherwise.
-You can output YES and NO in any case (for example, strings yEs, yes, Yes and YES will be recognized as a positive response).
+For each test case print:
+YES, if it is possible to divide
+n
+dominoes into two sets so that the numbers on the dominoes of each set are different;
+NO if this is not possible.
+You can print YES and NO in any case (for example, the strings yEs, yes, Yes and YES will be recognized as a positive answer).
 Example
 input
 Copy
-3
-
-6 3
-3 7 1 5 1 4
-3 5
-1 7
-3 10
-
-3 3
-1 2 1
+6
+4
+1 2
+4 3
 2 1
+3 4
+6
 1 2
 4 5
-
-7 5
-2 1 1 1 2 4 4
 1 3
-1 4
-2 1
-4 1
+4 6
+2 3
+5 6
+2
+1 1
+2 2
+2
 1 2
+2 1
+8
+2 1
+1 2
+4 3
+4 3
+5 6
+5 7
+8 6
+7 8
+8
+1 2
+2 1
+4 3
+5 3
+5 4
+6 7
+8 6
+7 8
 output
 Copy
 YES
@@ -246,10 +129,21 @@ NO
 YES
 YES
 NO
-NO
-YES
-YES
-NO
-YES
 Note
-The first test case is explained in the problem statement.
+In the first test case, the dominoes can be divided as follows:
+First set of dominoes:
+[{1,2},{4,3}]
+Second set of dominoes:
+[{2,1},{3,4}]
+In other words, in the first set we take dominoes with numbers
+1
+and
+2
+, and in the second set we take dominoes with numbers
+3
+and
+4
+.
+In the second test case, there's no way to divide dominoes into
+2
+sets, at least one of them will contain repeated number.

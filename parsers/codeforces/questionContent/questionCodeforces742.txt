@@ -1,184 +1,125 @@
-D. Mark and Lightbulbs
-time limit per test1.5 seconds
+F. Mark and the Online Exam
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Mark has just purchased a rack of
+Mark is administering an online exam consisting of
 n
-lightbulbs. The state of the lightbulbs can be described with binary string
-s=
-s
-1
-s
-2
-…
-s
+true-false questions. However, he has lost all answer keys. He needs a way to retrieve the answers before his client gets infuriated.
+Fortunately, he has access to the grading system. Thus, for each query, you can input the answers to all
 n
-, where
-s
-i
-=1
-means that the
-i
--th lightbulb is turned on, while
-s
-i
-=0
-means that the
-i
--th lightbulb is turned off.
-Unfortunately, the lightbulbs are broken, and the only operation he can perform to change the state of the lightbulbs is the following:
-Select an index
-i
-from
-2,3,…,n−1
-such that
-s
-i−1
-≠
-s
-i+1
-.
-Toggle
-s
-i
-. Namely, if
-s
-i
-is
-0
-, set
-s
-i
-to
-1
-or vice versa.
-Mark wants the state of the lightbulbs to be another binary string
-t
-. Help Mark determine the minimum number of operations to do so.
+questions, and the grading system will output how many of them are correct.
+He doesn't have much time, so he can use the grading system at most
+675
+times. Help Mark determine the answer keys.
+Note that answer keys are fixed in advance and will not change depending on your queries.
 Input
-The first line of the input contains a single integer
-q
-(
-1≤q≤
-10
-4
-) — the number of test cases.
-The first line of each test case contains a single integer
+The first line of the input consists of an integer
 n
 (
-3≤n≤2⋅
-10
-5
-) — the number of lightbulbs.
-The second line of each test case contains a binary string
+1≤n≤1000
+) — the number of questions.
+Interaction
+After reading
+n
+, you can start making queries to the grading system. For each query, print a line containing a string
 s
 of length
 n
-— the initial state of the lightbulbs.
-The third line of each test case contains a binary string
-t
-of length
-n
-— the final state of the lightbulbs.
-It is guaranteed that the sum of
-n
-across all test cases does not exceed
-2⋅
-10
-5
-.
-Output
-For each test case, print a line containing the minimum number of operations Mark needs to perform to transform
+consisting of only letters 'T' and 'F'.
 s
-to
-t
-. If there is no such sequence of operations, print
+i
+=
+'T' means that you answer the
+i
+-question true.
+s
+i
+=
+'F' means that you answer the
+i
+-question false.
+After a successful query, you should read an integer
+k
+(
+0≤k≤n
+) — the number of correct answers. If you read
+n
+, then you found the answers, and your program should not make any more queries.
+If your program reads
+k=−1
+instead of the number of correct answers, it means that you either made an invalid query or exceeded the query limits. Exit immediately after receiving
 −1
-.
-Example
+, and you will see Wrong answer verdict. Otherwise, you can get an arbitrary verdict because your solution will continue to read from a closed stream.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+Hacks
+To hack, use the following format:
+The first line contains an integer
+n
+(
+1≤n≤1000
+) — the number of questions.
+The second line contains a string
+s
+of length
+n
+consisting of only 'T' and 'F' — the answer key.
+Examples
+input
+Copy
+3
+
+1
+
+3
+output
+Copy
+FTT
+
+TTF
 input
 Copy
 4
+
+0
+
+3
+
 4
-0100
-0010
-4
-1010
-0100
-5
-01001
-00011
-6
-000101
-010011
 output
 Copy
-2
--1
--1
-5
+FTFF
+
+TTTT
+
+TFTT
 Note
-In the first test case, one sequence of operations that achieves the minimum number of operations is the following.
-Select
-i=3
-, changing
-0100
-to
-0110
+The empty lines in the example are just for you to better understand the interaction process. You're not required to print them.
+In the first example, there are
+3
+questions, and the answer to each question is 'true', 'true', and 'false', respectively.
+The first query, guessing the answers to be 'false', 'true', and 'true', respectively, guesses only one question — the
+2
+-nd question — correctly.
+Then, in the second query, the program correctly guesses the answer key. The interaction ends here.
+In the second example, there are
+4
+questions, and the answer to each question is 'true', 'false', 'true', and 'true', respectively.
+The first query guessed none of the questions correctly, resulting in the answer
+0
 .
-Select
-i=2
-, changing
-0110
-to
-0010
+The second query guessed the
+1
+-st,
+3
+-rd, and
+4
+-th question correctly, resulting in the answer
+3
 .
-In the second test case, there is no sequence of operations because one cannot change the first digit or the last digit of
-s
-.
-In the third test case, even though the first digits of
-s
-and
-t
-are the same and the last digits of
-s
-and
-t
-are the same, it can be shown that there is no sequence of operations that satisfies the condition.
-In the fourth test case, one sequence that achieves the minimum number of operations is the following:
-Select
-i=3
-, changing
-000101
-to
-001101
-.
-Select
-i=2
-, changing
-001101
-to
-011101
-.
-Select
-i=4
-, changing
-011101
-to
-011001
-.
-Select
-i=5
-, changing
-011001
-to
-011011
-.
-Select
-i=3
-, changing
-011011
-to
-010011
-.
+In the third query, the program correctly guesses the answer key. Then, the interaction ends.

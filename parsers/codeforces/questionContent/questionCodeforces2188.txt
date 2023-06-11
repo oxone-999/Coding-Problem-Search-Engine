@@ -1,178 +1,93 @@
-C. Dominant Piranha
-time limit per test2 seconds
+F. Zero Remainder Sum
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-piranhas with sizes
+You are given a matrix
 a
-1
-,
-a
+of size
+n×m
+consisting of integers.
+You can choose no more than
+⌊
+m
 2
-,…,
-a
-n
-in the aquarium. Piranhas are numbered from left to right in order they live in the aquarium.
-Scientists of the Berland State University want to find if there is dominant piranha in the aquarium. The piranha is called dominant if it can eat all the other piranhas in the aquarium (except itself, of course). Other piranhas will do nothing while the dominant piranha will eat them.
-Because the aquarium is pretty narrow and long, the piranha can eat only one of the adjacent piranhas during one move. Piranha can do as many moves as it needs (or as it can). More precisely:
-The piranha
-i
-can eat the piranha
-i−1
-if the piranha
-i−1
-exists and
-a
-i−1
-<
-a
-i
+⌋
+elements in each row. Your task is to choose these elements in such a way that their sum is divisible by
+k
+and this sum is the maximum.
+In other words, you can choose no more than a half (rounded down) of elements in each row, you have to find the maximum sum of these elements divisible by
+k
 .
-The piranha
-i
-can eat the piranha
-i+1
-if the piranha
-i+1
-exists and
-a
-i+1
-<
-a
-i
-.
-When the piranha
-i
-eats some piranha, its size increases by one (
-a
-i
-becomes
-a
-i
-+1
+Note that you can choose zero elements (and the sum of such set is
+0
 ).
-Your task is to find any dominant piranha in the aquarium or determine if there are no such piranhas.
-Note that you have to find any (exactly one) dominant piranha, you don't have to find all of them.
-For example, if
-a=[5,3,4,4,5]
-, then the third piranha can be dominant. Consider the sequence of its moves:
-The piranha eats the second piranha and
-a
-becomes
-[5,
-5
-–
-,4,5]
-(the underlined piranha is our candidate).
-The piranha eats the third piranha and
-a
-becomes
-[5,
-6
-–
-,5]
-.
-The piranha eats the first piranha and
-a
-becomes
-[
-7
-–
-,5]
-.
-The piranha eats the second piranha and
-a
-becomes
-[
-8
-–
-]
-.
-You have to answer
-t
-independent test cases.
 Input
-The first line of the input contains one integer
-t
-(
-1≤t≤2⋅
-10
-4
-) — the number of test cases. Then
-t
-test cases follow.
-The first line of the test case contains one integer
+The first line of the input contains three integers
 n
-(
-2≤n≤3⋅
-10
-5
-) — the number of piranhas in the aquarium. The second line of the test case contains
-n
-integers
-a
-1
 ,
-a
-2
-,…,
-a
+m
+and
+k
+(
+1≤n,m,k≤70
+) — the number of rows in the matrix, the number of columns in the matrix and the value of
+k
+. The next
 n
+lines contain
+m
+elements each, where the
+j
+-th element of the
+i
+-th row is
+a
+i,j
 (
 1≤
 a
-i
-≤
-10
-9
-), where
-a
-i
-is the size of the
-i
--th piranha.
-It is guaranteed that the sum of
-n
-does not exceed
-3⋅
-10
-5
-(
-∑n≤3⋅
-10
-5
+i,j
+≤70
 ).
 Output
-For each test case, print the answer: -1 if there are no dominant piranhas in the aquarium or index of any dominant piranha otherwise. If there are several answers, you can print any.
-Example
+Print one integer — the maximum sum divisible by
+k
+you can obtain.
+Examples
 input
 Copy
-6
-5
-5 3 4 4 5
-3
-1 1 1
-5
-4 4 3 4 4
-5
-5 5 4 3 2
-3
-1 1 2
-5
-5 4 3 5 5
+3 4 3
+1 2 3 4
+5 2 2 2
+7 1 1 4
 output
 Copy
-3
--1
-4
-3
-3
-1
+24
+input
+Copy
+5 5 4
+1 2 4 2 1
+3 5 1 2 4
+1 5 7 1 2
+3 8 7 1 2
+8 4 7 1 6
+output
+Copy
+56
 Note
-The first test case of the example is described in the problem statement.
-In the second test case of the example, there are no dominant piranhas in the aquarium.
-In the third test case of the example, the fourth piranha can firstly eat the piranha to the left and the aquarium becomes
-[4,4,5,4]
-, then it can eat any other piranha in the aquarium.
+In the first example, the optimal answer is
+2
+and
+4
+in the first row,
+5
+and
+2
+in the second row and
+7
+and
+4
+in the third row. The total sum is
+2+4+5+2+7+4=24
+.

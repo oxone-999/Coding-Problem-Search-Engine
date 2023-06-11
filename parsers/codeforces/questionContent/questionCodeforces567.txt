@@ -1,127 +1,113 @@
-B. Ela's Fitness and the Luxury Number
+C. Ela and Crickets
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-While working at DTL, Ela is very aware of her physical and mental health. She started to practice various sports, such as Archery, Yoga, and Football.
-Since she started engaging in sports activities, Ela switches to trying a new sport on days she considers being "Luxury" days. She counts the days since she started these activities, in which the day she starts is numbered as day
-1
-. A "Luxury" day is the day in which the number of this day is a luxurious number.
-An integer
+Ela likes Chess a lot. During breaks, she usually challenges her co-worker in DTL to some chess games. She's not an expert at classic chess, but she's very interested in Chess variants, where she has to adapt to new rules and test her tactical mindset to win the game.
+The problem, which involves a non-standard chess pieces type that is described below, reads: given
+3
+white crickets on a
+n⋅n
+board, arranged in an "L" shape next to each other, there are no other pieces on the board. Ela wants to know with a finite number of moves, can she put any white cricket on the square on row
 x
-is called a luxurious number if it is divisible by
-⌊
-x
-−
-−
-√
-⌋
-.
-Here
-⌊r⌋
-denotes the "floor" of a real number
-r
-. In other words, it's the largest integer not greater than
-r
-.
-For example:
-8
-,
-56
-,
-100
-are luxurious numbers, since
-8
-is divisible by
-⌊
-8
-–
-√
-⌋=⌊2.8284⌋=2
-,
-56
-is divisible
-⌊
-56
-−
-−
-√
-⌋=⌊7.4833⌋=7
-, and
-100
-is divisible by
-⌊
-100
-−
-−
-−
-√
-⌋=⌊10⌋=10
-, respectively. On the other hand
-5
-,
-40
-are not, since
-5
-are not divisible by
-⌊
-5
-–
-√
-⌋=⌊2.2361⌋=2
-, and
-40
-are not divisible by
-⌊
-40
-−
-−
-√
-⌋=⌊6.3246⌋=6
-.
-Being a friend of Ela, you want to engage in these fitness activities with her to keep her and yourself accompanied (and have fun together, of course). Between day
-l
-and day
-r
-, you want to know how many times she changes the activities.
+, column
+y
+?
+An "L"-shape piece arrangement can only be one of the below:
+For simplicity, we describe the rules for crickets on the board where only three white crickets are. It can move horizontally, vertically, or diagonally, but only to a square in some direction that is immediately after another cricket piece (so that it must jump over it). If the square immediately behind the piece is unoccupied, the cricket will occupy the square. Otherwise (when the square is occupied by another cricket, or does not exist), the cricket isn't allowed to make such a move.
+See an example of valid crickets' moves on the pictures in the Note section.
 Input
-Each test contains multiple test cases. The first line has the number of test cases
+Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤10 000
-). The description of the test cases follows.
-The only line of each test case contains two integers
-l
-and
-r
-(
-1≤l≤r≤
+1≤t≤
 10
-18
-) — the intervals at which you want to know how many times Ela changes her sports.
+4
+). The description of the test cases follows.
+The first line of each test case contains
+n
+(
+4≤n≤
+10
+5
+) — denotes the size of the chessboard.
+The second line of each test case contains 6 numbers:
+r
+1
+,
+c
+1
+,
+r
+2
+,
+c
+2
+,
+r
+3
+,
+c
+3
+(
+1≤
+r
+1
+,
+c
+1
+,
+r
+2
+,
+c
+2
+,
+r
+3
+,
+c
+3
+≤n
+) — coordinates of the crickets. The input ensures that the three crickets are arranged in an "L" shape that the legend stated.
+The third line of each test case contains 2 numbers:
+x
+,
+y
+(
+1≤x,y≤n
+) — coordinates of the target square.
 Output
-For each test case, output an integer that denotes the answer.
+For each test case, print "YES" or "NO" to denotes whether Ela can put a cricket on the target square.
 Example
 input
 Copy
-5
-8 19
-8 20
-119 121
-1 100000000000000000
-1234567891011 1000000000000000000
+6
+8
+7 2 8 2 7 1
+5 1
+8
+2 2 1 2 2 1
+5 5
+8
+2 2 1 2 2 1
+6 6
+8
+1 1 1 2 2 1
+5 5
+8
+2 2 1 2 2 1
+8 8
+8
+8 8 8 7 7 8
+4 8
 output
 Copy
-5
-6
-2
-948683296
-2996666667
+YES
+NO
+YES
+NO
+YES
+YES
 Note
-In the first test case,
-5
-luxury numbers in range
-[8,19]
-are:
-8,9,12,15,16
-.
+Here's the solution for the first test case. The red square denotes where the crickets need to reach. Note that in chess horizontals are counted from bottom to top, as well as on this picture.

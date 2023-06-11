@@ -1,8 +1,39 @@
-F. I Might Be Wrong
-time limit per test2 seconds
+B. Paranoid String
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
+Let's call a binary string
+T
+of length
+m
+indexed from
+1
+to
+m
+paranoid if we can obtain a string of length
+1
+by performing the following two kinds of operations
+m−1
+times in any order :
+Select any substring of
+T
+that is equal to 01, and then replace it with 1.
+Select any substring of
+T
+that is equal to 10, and then replace it with 0.
+For example, if
+T=
+001, we can select the substring
+[
+T
+2
+T
+3
+]
+and perform the first operation. So we obtain
+T=
+01.
 You are given a binary string
 S
 of length
@@ -11,58 +42,20 @@ indexed from
 1
 to
 n
-. You can perform the following operation any number of times (possibly zero):
-Choose two integers
-l
-and
-r
-(
+. Find the number of pairs of integers
+(l,r)
 1≤l≤r≤n
-). Let
-cn
-t
-0
-be the number of times 0 occurs in
+such that
 S[l…r]
-and
-cn
-t
-1
-be the number of times 1 occurs in
-S[l…r]
-. You can pay
-|cn
-t
-0
-−cn
-t
-1
-|+1
-coins and sort the
-S[l…r]
-. (by
-S[l…r]
-we mean the substring of
+(the substring of
 S
-starting at position
+from
 l
-and ending at position
+to
 r
-)
-For example if
-S=
-11001, we can perform the operation on
-S[2…4]
-, paying
-|2−1|+1=2
-coins, and obtain
-S=
-10011 as a new string.
-Find the minimum total number of coins required to sort
-S
-in increasing order.
+) is a paranoid string.
 Input
-The first line contains a single integer
+The first line contains an integer
 t
 (
 1≤t≤1000
@@ -107,43 +100,64 @@ over all test cases doesn't exceed
 5
 .
 Output
-For each test case, output the minimum total number of coins required to sort
+For each test case, output the number of pairs of integers
+(l,r)
+1≤l≤r≤n
+such that
+S[l…r]
+(the substring of
 S
-in increasing order.
+from
+l
+to
+r
+) is a paranoid string.
 Example
 input
 Copy
-7
+5
 1
 1
 2
-10
+01
 3
-101
+100
 4
-1000
+1001
 5
-11010
-6
-110000
-20
-01000010001010011000
+11111
 output
 Copy
-0
-1
 1
 3
-2
-2
+4
+8
 5
 Note
-In the first test case,
+In the first sample,
 S
-is already sorted.
-In the second test case, it's enough to apply the operation with
-l=1,r=2
-.
-In the third test case, it's enough to apply the operation with
-l=1,r=2
-.
+already has length
+1
+and doesn't need any operations.
+In the second sample, all substrings of
+S
+are paranoid. For the entire string, it's enough to perform the first operation.
+In the third sample, all substrings of
+S
+are paranoid except
+[
+S
+2
+S
+3
+]
+, because we can't perform any operations on it, and
+[
+S
+1
+S
+2
+S
+3
+]
+(the entire string).

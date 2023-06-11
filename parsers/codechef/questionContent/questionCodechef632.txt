@@ -1,162 +1,55 @@
-Minimum or Maximum
+Disabled King
 Problem
-From a hidden array
-A of length
-N, Stack constructs an array
-B of length
-N such that:
-For all
-i
-(1≤i≤N),
-B
-i
-=max(A
-1
-,A
-2
-,…,A
-i
-) or
-B
-i
-=min(A
-1
-,A
-2
-,…,A
-i
-).
-For the given array
-B of length
-N, Stack wants you to check whether a possible array
-A exists or not.
+Read problem statements in Mandarin, Vietnamese, and Russian as well.
+Chef loves Chess and has thus invented a new piece named "Disabled King".
+Let's denote the cell at the intersection of the
+i-th column from the left and
+j-th row from the top by
+(i,j).
+If he is currently in cell
+(x,y), the disabled king can move to the following positions in one move (provided that he remains in the chessboard):
+(x,y+1)
+(x,y−1)
+(x+1,y+1)
+(x+1,y−1)
+(x−1,y+1)
+(x−1,y−1)
+In short, the Disabled King cannot move horizontally.
+In an
+N×N chessboard, the Disabled King is currently situated at the top-left corner (cell
+(1,1)) and wants to reach the top-right corner (cell
+(N,1)). Determine the minimum number of moves in which the task can be accomplished.
 Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of
-T test cases follow.
-The first line of each test case contains an integer
-N - the length of the array
-B.
-The second line of each test case contains
-N space-separated integers
-B
-1
-,B
-2
-,…,B
-N
-representing the array
-B.
+The first line will contain
+T, the number of test cases. Then the test cases follow.
+Each test case contains a single integer
+N in a separate line.
 Output Format
-For each test case, output in a single line YES if
-A exists, otherwise print NO.
-You may print each character of the string in uppercase or lowercase (for example, the strings YES, yEs, yes, and yeS will all be treated as identical).
+Output the minimum number of moves to get from the top-left cell to the top-right one.
 Constraints
-1≤T≤10
-5
-1≤N≤10
-5
-1≤B
-i
-≤10
-5
-Sum of
-N over all test cases does not exceed
-10
-5
-.
+1≤T≤500
+2≤N≤500
 Sample 1:
 Input
 Output
+2
+2
 3
-1
-343
-4
-1 1 2 3
-3
-1 3 2
-YES
-YES
-NO
+2
+2
 Explanation:
-Test case
-1: The only possible array is
-A=[343].
-Test case
-2: One possible array is
-A=[1,1,2,3]. In this case
-B
-i
-=max(A
-1
-,A
-2
-,…,A
-i
-) satisfies for all
-1≤i≤4.
-Test case
-3: It can be proven that there exists no
-A from which we can obtain the given array
-B.
-Sample 2:
-Input
-Output
-2
-5
-1 1 1 1 1 
-5
-1 2 1 2 1
-YES
-YES
-Explanation:
-Test case
-1: The only possible array is
-A=[1,1,1,1,1].
-Test case
-2: One possible array is
-A=[1,2,1,1,1]. In this case,
-B
-1
-=A
-1
-B
-2
-=max(A
-1
-,A
-2
-)
-B
-3
-=min(A
-1
-,A
-2
-,A
-3
-)
-B
-4
-=max(A
-1
-,A
-2
-,A
-3
-,A
-4
-)
-B
-5
-=min(A
-1
-,A
-2
-,A
-3
-,A
-4
-,A
-5
-)
+Test case 1:
+Initially chef is at
+(1,1). He cannot directly move to
+(2,1) as the disabled king cannot move horizontally. So he needs at least
+2 moves to reach
+(2,1). And that can be achieved by first moving to
+(1,2) and then moving to
+(2,1) from there.
+Test case 2:
+Clearly we cannot reach
+(3,1) from
+(1,1) in just one move. We require at least
+2 moves. And this can be achieved by first moving to
+(2,2) and then moving to
+(3,1) from there.

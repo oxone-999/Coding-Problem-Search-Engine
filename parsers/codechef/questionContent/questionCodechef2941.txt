@@ -1,36 +1,83 @@
-Knight Moving
+Is This a Long Challenge
 Problem
-Consider an infinitely large chess table. From the cell (0, 0), our knight has to move to the cell (X, Y) by the rule: our knight could only move from a cell (u, v) to the cell (u+AX, v+AY) or (u+BX, v+BY) in one move. Note that it may be different from ordinary knight's move of chess.
-In addition, there is K blocked cell(s) on the table where the knight could not move on.
-Your task is to count how many distinct ways the knight could complete his mission. Two ways are called "distinct" if and only if they have different numbers of steps or there exists i such that they are in different cells after i-th step. Note that our knight may continue to move after he reaches the cell (X, Y).
-Input
-The first line contains an integer T, denoting the number of test cases. Each test case is described as follows:
-The first line contains 3 integer X, Y, K.
-The second line contains 4 integers AX, AY, BX, BY.
-The third line contains K pair(s) of integers, each represents co-ordinate of a blocked cell. This line does not exist if K = 0.
-Output
-For each test case, output on a line the number of ways found modulo 1000000007 (109+7). If there are infinitely many ways, then output -1 instead.
-Constraints
-1 ≤ T ≤ 5
-0 ≤ K ≤ 15
-The absolute values of all other input values are at most 500.
-(0, 0) is not a blocked cell.
-(X, Y) is not a blocked cell.
-Example
-Input:
-3
-3 3 0
-1 2 2 1
-9 9 2
-1 2 2 1
-1 2 6 6
-1 1 0
-0 0 0 0
-
-Output:
+You are given a string
+S of length
+N consisting only of A's and B's. You will be given
+Q queries each of which can be either of Type 1 or Type 2.
+For a query of Type 1, you will be given two numbers
+L and
+R and a character
+C. You are supposed to replace every character in
+S from position
+L to
+R with
+C.
+For a query of Type 2, you will be given 4 numbers
+L,
+R,
+p and
+q. Now, for every character in
+S from position
+L to
+R, perform the following operations in the order left to right:
+If the character is "A", then replace
+p with
+(p−q+MOD)%MOD and
+q with
+(p+q)%MOD.
+If the character is "B", then replace
+p with
+(p+q)%MOD and
+q with
+(q−p+MOD)%MOD.
+MOD is
+10
+9
++7.
+Your task is to print the final values of
+p and
+q for each query of Type 2. ###Input:
+First line will contain
+T, number of testcases. Then the testcases follow.
+Each testcase contains multiple lines of input.
+The first line of a testcase contains the integer
+N
+The second line containes the string
+S
+The third line contains the number of queries for that testcase,
+Q
+The next
+Q lines contain the actual queries.
+For Type 1 query, the input would be
+1
+L
+R
+C
+For Type 2 query, the input would be
 2
+L
+R
+p
+q
+###Output: For each testcase, for each query of type 2, output in separate lines the value of
+p followed by
+q. ###Constraints
+1≤T≤5
+1≤N≤10
+5
+1≤Q≤10
 4
-0
-Explanations:
-In the first and second examples, our knight's move is the similar to ordinary knight's, but only 2 directions are allowed. In the first example, there are 2 ways (0, 0) -> (1, 2) -> (3, 3) and (0, 0) -> (2, 1) -> (3, 3).
-In the third example, our knight's cannot move toward, so our knight's cannot complete his mission.
+0≤p,q≤10
+9
+1≤L,R≤N
+C∈A,B
+The sum of
+N over all testcases is less than equal to
+10
+5
+and sum of
+Q over all testcases is less than equal to
+10
+4
+###Sample Input: 1 2 AA 3 1 2 2 B 2 1 1 1 1 2 1 2 1 2
+###Sample Output: 0 2 2 4

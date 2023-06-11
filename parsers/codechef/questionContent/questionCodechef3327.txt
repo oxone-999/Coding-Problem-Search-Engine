@@ -1,103 +1,27 @@
-Good Arrangement
+Two Roads
 Problem
-An array
-B=[B
-1
-,B
-2
-,B
-3
-,…,B
-N
-] is called a good array if the following condition holds for every
-1≤i≤N:
-B
-i
-is either the maximum or the minimum element in the subarray
-[B
-1
-,B
-2
-,…,B
-i
-].
-You are given an array
-A containing
-N integers. Find the number of its distinct rearrangements that are good.
-Two rearrangements
-B and
-C are considered different if there exists an index
-i such that
-B
-i
-
-=C
-i
-.
-In particular,
-A=[1,2,2] has three distinct rearrangements:
-[1,2,2],[2,1,2],[2,2,1].
-Since the answer can be very large, print it modulo
-10
-9
-+7.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of two lines of input.
-The first line of each test case contains a single integer
-N — the size of the array.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,A
-3
-,…,A
-N
-.
-Output Format
-For each test case, output on a new line the number of good rearrangements, modulo
-10
-9
-+7.
-Constraints
-1≤T≤1000
-1≤N≤10
-6
-0≤A
-i
-≤10
-9
-The sum of
-N over all test cases won't exceed
-10
-6
-.
-Sample 1:
+  Byteland is notorious for its poor transportation system. There are N villages located far away from each other. So the only way of going from one village to another is using the narrow pathways. But now it's time to make some changes. People in Byteland are going to improve the transportation system in their own way. They have planned to build two straight roads. These roads will not necessary connect any cities but they should decrease the time of traveling between some cities. People can use a pathway to go from one city to the nearest point on the road. Then they can move [along the road] to the point of the road that is the nearest to their destination. And finally, they can use another pathway to move from that point to the destination.
+Let d be the distance from the city to the closest point that belongs to one of the roads, then the sadness of that city will be equal to d2. The sadness of the whole country is the average of the sadness of all cities. Can you help Byteland to find the plan that will minimize the sadness of the country? You can assume that:
+The cities are considered to be points on the plane and the roads are considered to be line segments.
+A road can have arbitrary length if that reduces the sadness of the country.
+The two roads may have a common point.
+A road can go through some cities (so the distance from these cities to the road is 0).
+No 3 or more cities lie on the same line.
 Input
+The first line contains an integer N. The next N lines give co-ordinates of the N cities. The i-th line contains two real numbers xi and yi that give co-ordinates of the i-th city.
 Output
-3
-3
-1 2 3
+Print out the minimum sadness of the country with absolute error less than 10-6.
+Constraints
+3 ≤ N ≤ 100
+0.0 ≤ x i , y i ≤ 1000.0
+Example
+Input:
 4
-4 3 8 3
-2
 1 1
-4
-7
-1
-Explanation:
-Test case
-1: The good rearrangements are:
-[1,2,3],
-[2,1,3],
-[3,2,1],
-[2,3,1].
-Test case
-2: The good rearrangements are:
-[3,3,4,8],[3,4,8,3],[3,4,3,8],[4,8,3,3],[4,3,8,3],[4,3,3,8],[8,4,3,3].
-[3,3,8,4] for example is not a good rearrangement, because
-4 is neither the maximum nor the minimum of all the elements before it.
+2 2
+10 0
+20 0
+Output:
+0
+Explanation
+The first road goes through the first two cities and the second road goes through the last two cities.

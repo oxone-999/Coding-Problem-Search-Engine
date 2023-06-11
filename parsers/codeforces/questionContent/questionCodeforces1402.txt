@@ -1,128 +1,130 @@
-E. Game with Stones
-time limit per test2 seconds
+G. Eligible Segments
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Bob decided to take a break from calculus homework and designed a game for himself.
-The game is played on a sequence of piles of stones, which can be described with a sequence of integers
-s
-1
-,…,
-s
-k
-, where
-s
-i
-is the number of stones in the
-i
--th pile. On each turn, Bob picks a pair of non-empty adjacent piles
-i
-and
-i+1
-and takes one stone from each. If a pile becomes empty, its adjacent piles do not become adjacent. The game ends when Bob can't make turns anymore. Bob considers himself a winner if at the end all piles are empty.
-We consider a sequence of piles winning if Bob can start with it and win with some sequence of moves.
-You are given a sequence
-a
-1
-,…,
-a
+You are given
 n
-, count the number of subsegments of
-a
-that describe a winning sequence of piles. In other words find the number of segments
-[l,r]
-(
-1≤l≤r≤n
-), such that the sequence
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-is winning.
-Input
-Each test consists of multiple test cases. The first line contains a single integer
-t
-(
-1≤t≤3⋅
-10
-5
-) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤3⋅
-10
-5
-).
-The second line of each test case contains
-n
-integers
-a
+distinct points
+p
 1
 ,
-a
+p
 2
 ,…,
-a
+p
 n
+on the plane and a positive integer
+R
+.
+Find the number of pairs of indices
+(i,j)
+such that
+1≤i<j≤n
+, and for every possible
+k
 (
-0≤
-a
+1≤k≤n
+) the distance from the point
+p
+k
+to the segment between points
+p
+i
+and
+p
+j
+is at most
+R
+.
+Input
+The first line contains two integers
+n
+,
+R
+(
+1≤n≤3000
+,
+1≤R≤
+10
+5
+) — the number of points and the maximum distance between a point and a segment.
+Each of the next
+n
+lines contains two integers
+x
+i
+,
+y
+i
+(
+−
+10
+5
+≤
+x
+i
+,
+y
 i
 ≤
 10
-9
-).
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-3⋅
-10
 5
+) that define the
+i
+-th point
+p
+i
+=(
+x
+i
+,
+y
+i
+)
+. All points are distinct.
+It is guaranteed that the answer does not change if the parameter
+R
+is changed by at most
+10
+−2
 .
 Output
-Print a single integer for each test case — the answer to the problem.
-Example
+Print the number of suitable pairs
+(i,j)
+.
+Examples
 input
-6
-2
-2 2
-3
-1 2 3
-4
-1 1 1 1
-4
-1 2 2 1
-4
-1 2 1 2
-8
-1 2 1 2 1 2 1 2
+Copy
+4 2
+0 1
+0 -1
+3 0
+-3 0
 output
+Copy
 1
-0
-4
-2
-1
+input
+Copy
+3 3
+1 -1
+-1 -1
+0 1
+output
+Copy
 3
 Note
-In the first test case, Bob can't win on subsegments of length
-1
-, as there is no pair of adjacent piles in an array of length
-1
-.
-In the second test case, every subsegment is not winning.
-In the fourth test case, the subsegment
-[1,4]
-is winning, because Bob can make moves with pairs of adjacent piles:
-(2,3)
+In the first example, the only pair of points
+(−3,0)
 ,
-(1,2)
-,
-(3,4)
-. Another winning subsegment is
-[2,3]
+(3,0)
+is suitable. The distance to the segment between these points from the points
+(0,1)
+and
+(0,−1)
+is equal to
+1
+, which is less than
+R=2
 .
+In the second example, all possible pairs of points are eligible.

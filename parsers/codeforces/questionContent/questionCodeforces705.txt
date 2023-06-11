@@ -1,224 +1,157 @@
-A. Traveling Salesman Problem
+C. Build Permutation
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are living on an infinite plane with the Cartesian coordinate system on it. In one move you can go to any of the four adjacent points (left, right, up, down).
-More formally, if you are standing at the point
-(x,y)
-, you can:
-go left, and move to
-(x−1,y)
-, or
-go right, and move to
-(x+1,y)
-, or
-go up, and move to
-(x,y+1)
-, or
-go down, and move to
-(x,y−1)
-.
-There are
+A
+0
+-indexed array
+a
+of size
 n
-boxes on this plane. The
+is called good if for all valid indices
 i
--th box has coordinates
 (
-x
+0≤i≤n−1
+),
+a
 i
-,
-y
-i
-)
-. It is guaranteed that the boxes are either on the
-x
--axis or the
-y
--axis. That is, either
-x
-i
-=0
-or
-y
-i
-=0
++i
+is a perfect square
+†
+†
 .
-You can collect a box if you and the box are at the same point. Find the minimum number of moves you have to perform to collect all of these boxes if you have to start and finish at the point
-(0,0)
+Given an integer
+n
+. Find a permutation
+‡
+‡
+p
+of
+[0,1,2,…,n−1]
+that is good or determine that no such permutation exists.
+†
+†
+An integer
+x
+is said to be a perfect square if there exists an integer
+y
+such that
+x=
+y
+2
+.
+‡
+‡
+An array
+b
+is a permutation of an array
+a
+if
+b
+consists of the elements of
+a
+in arbitrary order. For example,
+[4,2,3,4]
+is a permutation of
+[3,2,4,4]
+while
+[1,2,2]
+is not a permutation of
+[1,2,3]
 .
 Input
 The first line contains a single integer
 t
 (
-1≤t≤100
+1≤t≤
+10
+4
 ) — the number of test cases.
-The first line of each test case contains a single integer
+The only line of each test case contains a single integer
 n
 (
-1≤n≤100
-) — the number of boxes.
-The
-i
--th line of the following
-n
-lines contains two integers
-x
-i
-and
-y
-i
-(
-−100≤
-x
-i
-,
-y
-i
-≤100
-) — the coordinate of the
-i
--th box. It is guaranteed that either
-x
-i
-=0
-or
-y
-i
-=0
+1≤n≤
+10
+5
+) — the length of the permutation
+p
 .
-Do note that the sum of
+It is guaranteed that the sum of
 n
-over all test cases is not bounded.
+over all test cases does not exceed
+10
+5
+.
 Output
-For each test case output a single integer — the minimum number of moves required.
+For each test case, output
+n
+distinct integers
+p
+0
+,
+p
+1
+,…,
+p
+n−1
+(
+0≤
+p
+i
+≤n−1
+) — the permutation
+p
+— if the answer exists, and
+−1
+otherwise.
 Example
 input
 Copy
 3
-4
-0 -2
-1 0
--1 0
-0 2
 3
-0 2
--3 0
-0 -1
-1
-0 0
+4
+7
 output
 Copy
-12
-12
-0
+1 0 2 
+0 3 2 1 
+1 0 2 6 5 4 3 
 Note
-In the first test case, a possible sequence of moves that uses the minimum number of moves required is shown below.
-(0,0)→(1,0)→(1,1)→(1,2)→(0,2)→(−1,2)→(−1,1)→(−1,0)→(−1,−1)→(−1,−2)→(0,−2)→(0,−1)→(0,0)
-(
-0
-0
-)
-(
-1
-0
-)
-(
-1
-1
-)
-(
+In the first test case, we have
+n=3
+. The array
+p=[1,0,2]
+is good since
+1+0=
 1
 2
-)
-(
-0
-2
-)
-(
+,
+0+1=
 1
 2
-)
-(
-1
-1
-)
-(
-1
-0
-)
-(
-1
-1
-)
-(
-1
-2
-)
-(
-0
-2
-)
-(
-0
-1
-)
-(
-0
-0
-)
-In the second test case, a possible sequence of moves that uses the minimum number of moves required is shown below.
-(0,0)→(0,1)→(0,2)→(−1,2)→(−2,2)→(−3,2)→(−3,1)→(−3,0)→(−3,−1)→(−2,−1)→(−1,−1)→(0,−1)→(0,0)
-(
-0
-0
-)
-(
-0
-1
-)
-(
-0
-2
-)
-(
-1
-2
-)
-(
+, and
+2+2=
 2
 2
-)
-(
-3
+In the second test case, we have
+n=4
+. The array
+p=[0,3,2,1]
+is good since
+0+0=
+0
 2
-)
-(
-3
-1
-)
-(
-3
-0
-)
-(
-3
-1
-)
-(
+,
+3+1=
 2
-1
-)
-(
-1
-1
-)
-(
-0
-1
-)
-(
-0
-0
-)
-In the third test case, we can collect all boxes without making any moves.
+2
+,
+2+2=
+2
+2
+, and
+1+3=
+2
+2
+.

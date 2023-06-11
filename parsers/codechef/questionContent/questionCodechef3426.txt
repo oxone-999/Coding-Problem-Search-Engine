@@ -1,34 +1,37 @@
-A Game of Game
+Tree Again
 Problem
-Lets define G(x, {A1, A2, A3, ..., Ax}) as a game played by 2 players in which we have x piles of stones with ith pile having Ai stones. Player 1 moves first. The players move alternatively. In a move a player can select a single non empty pile of stones and remove any number ( > 0 ) of stones from it. When a player cannot make a move, the player loses.
-
-Adarsh and Saharsh are playing a modification of this game. There are N piles of stones lined up and ith pile has Ai number of stones. Saharsh needs to divide the N piles into disjoint contiguous segments. It is possible for a pile to not belong in a segment at all. The segments need to be selected in such a way such that, if ith pile is in a segment, then all the j's such that Ai = Aj, are also in the segment. Now they play games on these segments considering only the 'distinct sized piles' in the segment with Adarsh as Player 1 and Saharsh as Player 2.
-
-Consider A = {1, 1, 2, 3, 3, 2}.
-A possible division is {1, 1} and {2, 3, 3, 2}.
-For the segment {1, 1}, game G(1, {1}) would be played. For the segment {2, 3, 3, 2}, game G(2, {2, 3}) would be played.
-G(1, {1}) would be won by Player 1
-G(2, {2, 3}) would be won by Player 1
-So number of games that Player 2 wins would be 0.
-
-Another possible division is {1, 1, 2, 3, 3, 2}.
-For the segment {1, 1, 2, 3, 3, 2}, game G(3, {1, 2, 3}) would be played.
-G(3, {1, 2, 3}) would be won by Player 2
-So number of games that Player 2 wins would be 1.
-
-What is the maximum possible games that Saharsh can win?
-Input Format:
-The first line contains an integer N, the number of piles.
-Next line contains N space separated integers where ith integer denotes number of stones in the ith pile, Ai.
-Output Format:
-For each test case, output the corresponding answer.
-Constraints:
-1<= N <=500000
-1<= Ai <=500000
-Sample Input:
-6
-1 1 2 3 3 2
-Sample Output:
+Read problems statements in Mandarin Chinese and Russian as well.
+  Misha likes playing DotA and he would do nothing else but play it if he could. Unfortunately for Misha, real life is rough and he has to solve following problem before spending a day playing.
+You are given a rooted tree with N vertices. Vertices are numerated from 1 to N and vertex 1 is the root of the tree. A positive integer Wi is assigned to every node. Consider following code:
+Integer sum := 0;
+Array of boolean marked := {false, false, false, ..., false};
+Procedure Dfs(Integer v)
+    Begin
+        sum := sum + Wv;
+        marked[sum] := true;
+        For each node u that v is a parent of u do
+            Begin
+                Dfs(u);
+            End;
+    End;
+One can notice that the state of marked[] array depends on the order vertices u processed. You are to check for every integer number s from 1 to the sum of Wi whether there exists some order of viewing children in Dfs that marked[s] = true. Note that marked[] and sum are global variables and Dfs(1) is initially called.
+  Input
+The first line contains integer N — the number of vertices in given tree. N integers Wi follow in the next line. Then N-1 lines follow, ith of them contains a parent of vertex i+1.
+  Output
+Let S be the sum over all Wi. You should output S characters ith of which should be equal to 1 if it is possible to get marked[i] = true and 0 otherwise. Have a look at the example for better understanding.
+Constraints
+1 ≤ N ≤ 500
+1 ≤ sum of all Wi ≤ 100000
+1 ≤ Wi ≤ 100000
+If u is the parent of vertex v then u < v
+  Example
+Input:
+5
+1 7 7 2 4
 1
-Explanation:
-Given in the problem statement.
+1
+2
+4
+Output:
+100000010100011010001
+ 

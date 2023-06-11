@@ -1,120 +1,95 @@
-A. We Need the Zero
-time limit per test1 second
-memory limit per test256 megabytes
+H. Code Lock
+time limit per test7 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-There is an array
-a
-consisting of non-negative integers. You can choose an integer
-x
-and denote
-b
-i
-=
-a
-i
-⊕x
-for all
-1≤i≤n
-, where
-⊕
-denotes the bitwise XOR operation. Is it possible to choose such a number
-x
-that the value of the expression
-b
+Lara has a safe that is locked with a circle-shaped code lock that consists of a rotating arrow, a static circumference around the arrow, an input screen, and an input button.
+The circumference of the lock is split into
+k
+equal sections numbered from
 1
-⊕
-b
-2
-⊕…⊕
-b
+to
+k
+in clockwise order. Arrow always points to one of the sections. Each section is marked with one of the first
+k
+letters of the English alphabet. No two sections are marked with the same letter.
+Due to the lock limitations, the safe's password is a string of length
 n
-equals
-0
-?
-It can be shown that if a valid number
-x
-exists, then there also exists
-x
-such that (
-0≤x<
-2
-8
-).
-Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤1000
-). The description of the test cases follows.
-The first line of the test case contains one integer
-n
-(
-1≤n≤
-10
-3
-) — the length of the array
-a
+that consists of first
+k
+letters of the English alphabet only. Lara enters the password by rotating the lock's arrow and pressing the input button. Initially, the lock's arrow points to section
+1
+and the input screen is empty. In one second she can do one of the following actions.
+Rotate the arrow one section clockwise. If the arrow was pointing at section
+x<k
+it will now point at section
+x+1
+. If the arrow was pointing at section
+k
+it will now point at section
+1
 .
-The second line of the test case contains
-n
-integers — array
-a
-(
-0≤
-a
+Rotate the arrow one section counter-clockwise. If the arrow was pointing at section
+x>1
+it will now point at section
+x−1
+. If the arrow was pointing at section
+1
+it will now point at section
+k
+.
+Press the input button. The letter marked on the section that the arrow points to will be added to the content of the input screen.
+As soon as the content of the input screen matches the password, the safe will open. Lara always enters her password in the minimum possible time.
+Lara has recently found out that the safe can be re-programmed. She can take the first
+k
+letters of the English alphabet and assign them to the sectors in any order she likes. Now she wants to re-arrange the letters in a way that will minimize the number of seconds it takes her to input the password. Compute this minimum number of seconds and the number of ways to assign letters, for which this minimum number of seconds is achieved.
+Two ways to assign letters to sectors are considered to be distinct if there exists at least one sector
 i
-<
-2
-8
-).
-It is guaranteed that the sum of
+that is assigned different letters.
+Input
+The first line of the input contains two integers
+k
+and
 n
-over all test cases does not exceed
-10
-3
-.
-Output
-For each set test case, print the integer
-x
 (
-0≤x<
-2
-8
-) if it exists, or
-−1
-otherwise.
-Example
+2≤k≤16
+,
+2≤n≤100000
+) — the number of sectors on the lock's circumference and the length of Lara's password, respectively.
+The second line of the input contains a string of length
+n
+that consists of the first
+k
+lowercase letters of the English alphabet only. This string is the password.
+Output
+On the first line print minimum possible number of seconds it can take Lara to enter the password and open the safe if she assigns letters to sectors optimally.
+On the second line print the number of ways to assign letters optimally.
+Examples
 input
 Copy
-5
-3
-1 2 5
-3
-1 2 3
-4
-0 1 2 3
-4
-1 2 2 3
-1
-1
+3 10
+abcabcabca
 output
 Copy
-6
-0
-3
--1
-1
+19
+2
+input
+Copy
+4 20
+bcbcbcbcadadadadcbda
+output
+Copy
+40
+2
+input
+Copy
+4 6
+adcbda
+output
+Copy
+12
+4
 Note
-In the first test case, after applying the operation with the number
-6
-the array
-b
-becomes
-[7,4,3]
-,
-7⊕4⊕3=0
-.
-There are other answers in the third test case, such as the number
-0
-.
+The initial states of optimal arrangements for the first example are shown in the figure below.
+The initial states of optimal arrangements for the second example are shown in the figure below.
+The initial states of optimal arrangements for the third example are shown in the figure below.

@@ -1,29 +1,36 @@
-Alien Clock
+A Game of Primes
 Problem
-The Chef has been kidnapped by aliens ( they want to utilize his excellent cooking skills :P ) and has been transported to the alien planet "ZX532". Interestingly, "ZX532" uses a different time scale which has Y AlienHours on the face of a clock (instead of the 12 hours that we have). They also have 'X*Y' AlienMinutes (instead of the 60 that we have). X is defined as the number of minute divisions between each hour (the earth clock has X=5).
-The Chef has been forced to cook a lot of dishes by the aliens. He is short of ingredients and hence needs to go out to the market to get them. However when he returns, he makes an interesting observation. The hands of AlienClock have exactly swapped position from the time he left (the big hand and the little hand have switched)!
-Given the times between which The Chef might have left and the times between which The Chef may have returned, you are supposed to find out the actual time when he left. If there is more than one possibility, print the one that maximizes the amount of time that The Chef is out.
-Details of the Clock
-The AlienClock is circular and has exactly 2 hands : the hour hand and the minute hand. The whole circumference of the AlienClock is divided into Y divisions , each of which is further divided into X subdivisions [ X and Y are both positive integers ]. The clock is not discrete but continuous (the hands move continuously instead of moving at certain intervals such as every second, etc.... ).
-Input
-First line of input contains t (1≤ t ≤ 100) - the number of test cases. Each test case contains 2 lines each. The first line contains 2 space separated integers , X and Y (same as those specified in the problem statement; X ≤ 109 and Y ≤ 109 ).
-The next line contains 8 space separated integers (a,b,c,d,e,f,g,h; 0 ≤ a ≤ c < Y; 0 ≤ e ≤ g < Y; a ≤ e; 0 ≤ b,d,f,h < X*Y ): specifying the times between which The Chef might have left (a:b => a hours and b minutes TO c:d => c hours and d minutes) and the times between which The Chef may have returned (The Chef returns sometime between e:f and g:h).
-The interval at which The Chef re-enters the kitchen will never start prior to the interval at which he first leaves the kitchen to purchase the ingredients.
-Output
-The output should contain one line for each test case specifying the time when The Chef left the kitchen. This should be in the form (h:m => h hours and m minutes). h will be an integer, and m should be rounded to 2 decimal places. In case, there is no solution possible, output -1 for that test case.
-Example
-Input:
-3
-5 12
-1 0 2 0 4 0 5 0
-5 12
-3 30 4 0 5 0 6 0
-5 12
-3 0 4 0 5 0 6 0
-
-Output:
-1:20.56
--1
-3:26.43
-
-Note: Be careful with precision.
+Given an empty array A of infinite length and a positive integer K you have to process Q queries of type:
+! l r x: Fill the value x in all the empty places in the array from index l to r (both inclusive).
+? l r: Print the number of prime factors of K which is also a prime factor of at least one number in A[l], A[l + 1], A[l + 2], … A[r].
+###Input
+The first line contains two space separated integers K and Q respectively.
+Then Q lines follow:
+Each of the
+i
+th
+line contains one of the above two types of queries.
+###Output
+For each query of the second type, print in a new line the answer to that query. i.e. number of prime factors of K which is also a prime factor of at least one number in A[l], A[l + 1], A[l + 2], … A[r].
+###Constraints
+1≤K,x≤10
+9
+1≤l≤r≤10
+5
+1≤Q≤10
+5
+###Sample Input
+20 5
+? 1 5
+! 3 5 4
+? 1 5
+! 1 4 15
+? 1 5
+###Sample Output 0
+1
+2
+###EXPLANATION Initially, all the places in the array are empty. i.e _ _ _ _ _
+After first update the array looks like: _ _ 4 4 4
+In the range [1, 5] the only factor of 20 which is also a prime factor of at least one number in _ _ 4 4 4 is 2.
+After the second update the array looks like: 15 15 4 4 4
+In the range [1, 5] the prime factors of 20 i.e. 5 is a prime factor of 15, 15 and 2 is the prime factor of 4, 4, 4.

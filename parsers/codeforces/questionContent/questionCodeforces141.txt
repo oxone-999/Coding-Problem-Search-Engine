@@ -1,77 +1,111 @@
-F1. GCD Master (easy version)
+E. Tree Master
 time limit per test3 seconds
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-This is the easy version of the problem. The only difference between the two versions is the constraint on
-m
-. You can make hacks only if both versions of the problem are solved.
-You are given an array
-a
-of length
+You are given a tree with
 n
-and two integers
-m
-and
-k
-. Each element in
-a
-satisfies
-1≤
+weighted vertices labeled from
+1
+to
+n
+rooted at vertex
+1
+. The parent of vertex
+i
+is
+p
+i
+and the weight of vertex
+i
+is
 a
 i
-≤m
+. For convenience, define
+p
+1
+=0
 .
-In one operation, you choose two indices
+For two vertices
+x
+and
+y
+of the same depth
+†
+†
+, define
+f(x,y)
+as follows:
+Initialize
+ans=0
+.
+While both
+x
+and
+y
+are not
+0
+:
+ans←ans+
+a
+x
+⋅
+a
+y
+;
+x←
+p
+x
+;
+y←
+p
+y
+.
+f(x,y)
+is the value of
+ans
+.
+You will process
+q
+queries. In the
+i
+-th query, you are given two integers
+x
 i
 and
-j
-such that
-1≤i<j≤|a|
-, then append
-gcd(
-a
+y
+i
+and you need to calculate
+f(
+x
 i
 ,
-a
-j
+y
+i
 )
-to the back of the array and delete
-a
-i
-and
-a
-j
-from the array. Note that the length of the array decreases by one after this operation.
-Find the maximum possible sum of the array after performing exactly
-k
-operations.
+.
+†
+†
+The depth of vertex
+v
+is the number of edges on the unique simple path from the root of the tree to vertex
+v
+.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-5
-) — the number of test cases. The description of test cases follows.
-The first line of each test case contains three integers
+The first line contains two integers
 n
-,
-m
 and
-k
+q
 (
 2≤n≤
 10
-6
+5
 ;
-1≤m≤
+1≤q≤
 10
-6
-;
-1≤k≤n−1
+5
 ).
-The second line of each test case contains
+The second line contains
 n
 integers
 a
@@ -86,43 +120,141 @@ n
 1≤
 a
 i
-≤m
+≤
+10
+5
 ).
-It is guaranteed that the sum of
+The third line contains
+n−1
+integers
+p
+2
+,…,
+p
 n
-over all test cases does not exceed
-10
-6
-and the sum of
-m
-over all test cases does not exceed
-10
-6
-.
+(
+1≤
+p
+i
+<i
+).
+Each of the next
+q
+lines contains two integers
+x
+i
+and
+y
+i
+(
+1≤
+x
+i
+,
+y
+i
+≤n
+). It is guaranteed that
+x
+i
+and
+y
+i
+are of the same depth.
 Output
-For each test case, output the maximum possible sum of the array after performing
-k
-operations optimally.
-Example
+Output
+q
+lines, the
+i
+-th line contains a single integer, the value of
+f(
+x
+i
+,
+y
+i
+)
+.
+Examples
 input
 Copy
-3
-3 8 1
-4 7 8
-5 114 2
-7 2 4 1 6
-3 514 2
-2 3 3
+6 2
+1 5 2 3 1 1
+1 2 3 3 2
+4 5
+6 6
 output
 Copy
-11
+33
+27
+input
+Copy
+14 8
+3 2 5 3 1 4 2 2 2 5 5 5 2 4
+1 2 3 1 1 4 7 3 3 1 5 3 8
+4 4
+4 10
+13 10
+3 12
+13 9
+3 12
+9 10
+11 5
+output
+Copy
+47
+53
+48
+36
+42
+36
+48
 14
-1
 Note
-In the first test case, the best way is to choose
-i=1
-,
-j=3
-in the first operation. The final sequence is
-[7,4]
+Consider the first example:
+In the first query, the answer is
+a
+4
+⋅
+a
+5
++
+a
+3
+⋅
+a
+3
++
+a
+2
+⋅
+a
+2
++
+a
+1
+⋅
+a
+1
+=3+4+25+1=33
+.
+In the second query, the answer is
+a
+6
+⋅
+a
+6
++
+a
+2
+⋅
+a
+2
++
+a
+1
+⋅
+a
+1
+=1+25+1=27
 .

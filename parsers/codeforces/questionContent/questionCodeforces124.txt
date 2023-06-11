@@ -1,52 +1,90 @@
-A. Garland
-time limit per test2 seconds
+E3. Minibuses on Venus (hard version)
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have a garland consisting of
-4
-colored light bulbs, the color of the
-i
--th light bulb is
-s
-i
-.
-Initially, all the light bulbs are turned off. Your task is to turn all the light bulbs on. You can perform the following operation any number of times: select a light bulb and switch its state (turn it on if it was off, and turn it off if it was on). The only restriction on the above operation is that you can apply the operation to a light bulb only if the previous operation was applied to a light bulb of a different color (the first operation can be applied to any light bulb).
-Calculate the minimum number of operations to turn all the light bulbs on, or report that this is impossible.
-Input
-The first line contains a single integer
-t
-(
-1≤t≤
+This is the hard version of the problem. The only difference between the three versions is the constraints on
+n
+and
+k
+. You can make hacks only if all versions of the problem are solved.
+Maxim is a minibus driver on Venus.
+To ride on Maxim's minibus, you need a ticket. Each ticket has a number consisting of
+n
+digits. However, as we know, the residents of Venus use a numeral system with base
+k
+, rather than the decimal system. Therefore, the ticket number can be considered as a sequence of
+n
+integers from
+0
+to
+k−1
+, inclusive.
+The residents of Venus consider a ticket to be lucky if there is a digit on it that is equal to the sum of the remaining digits, modulo
+k
+. For example, if
+k=10
+, then the ticket
+7135
+is lucky because
+7+1+5≡3(mod10)
+. On the other hand, the ticket
+7136
+is not lucky because no digit is equal to the sum of the others modulo
 10
-4
-) — the number of test cases.
-The single line of each test case contains
-s
- — a sequence of
-4
-characters, where each character is a decimal digit. The
-i
--th character denotes the color of the
-i
--th light bulb.
+.
+Once, while on a trip, Maxim wondered: how many lucky tickets exist? At the same time, Maxim understands that this number can be very large, so he is interested only in the answer modulo some prime number
+m
+.
+Input
+The only line of the input contains three integers
+n
+,
+k
+and
+m
+(
+1≤n≤
+10
+18
+,
+1≤k≤2000
+,
+10
+8
+≤m≤
+10
+9
++7
+,
+m
+is a prime number) — the number of digits on the ticket, the base of the numeral system on Venus, and the module for answer calculation.
 Output
-For each test case, print one integer — the minimum number of operations to turn all the light bulbs on. If it is impossible to turn all the bulbs on, print -1.
-Example
+Print one integer — the number of lucky tickets modulo
+m
+, i. e. the remainder after dividing the answer by
+m
+.
+Examples
 input
 Copy
-3
-9546
-0000
-3313
+3 2 1000000007
 output
 Copy
 4
--1
-6
+input
+Copy
+3 4 1000000007
+output
+Copy
+28
 Note
-In the first example, all the colors are different, so you can just turn all the bulbs on in
-4
-operations.
-In the second example, it is impossible to turn all the bulbs on, because after you switch one light bulb, it is impossible to turn the others on.
-In the third example, you can proceed as follows: turn the first light bulb on, turn the third light bulb on, turn the fourth light bulb on, turn the third light bulb off, turn the second light bulb on, turn the third light bulb on.
+In the first example, there are only four lucky tickets:
+000
+,
+011
+,
+101
+, and
+110
+.

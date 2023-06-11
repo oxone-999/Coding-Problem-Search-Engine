@@ -1,32 +1,33 @@
-Blocked websites
+Closest Ranking
 Problem
-Read problems statements in mandarin chinese, russian and vietnamese as well.
-Mike is a network administrator in a university. One of his primary responsibilities in the job is to create an effective firewall so that the students are not able to visit the blocked sites in the network.
-The network have access to exactly N sites. Some of these can be blocked. The names of the sites will be given in lowercase English letters.
-The firewall will consist of several filters. A filter is a string that should be a prefix of some blocked site, and it should not be a prefix of any unblocked site. You want to minimize the sum of length of filters in the firewall so that for each of the blocked site, there should be a filter that contains the name of blocked site(filter is a prefix of blocked site).
-Input
-The first line of the input contains an integer N denoting the number of sites in the network.
-Then N lines follow, each of them describes the site. Each line starts from the char С. If the site is unblocked, С is equal to '+', otherwise С is equal to '-'., followed by a string denoting the name of the site.
-Output
-If it is not possible to choose set of filters and satisfy all constraints, output a single line containing an integer -1.
-Otherwise, in the first line print the number of filters K in the firewall. Then print K lines, in each line print the chosen filter. Please dislpay them in lexicographical order. You can prove that answer will be unique.
-Constraints
-1 ≤ N ≤ 2 * 105
-The sum of lengths of names of sites does not exceed 2*105
-No two sites have same name.
-Subtasks
-Subtask #1 (30 points) 1 ≤ N, the sum of lengths of names of sites ≤ 3 * 103
-Subtask #2 (70 points) Original constraints
+You have just begun his job with Educated Guessing Pollsters. An election is only weeks away and the company would like to get a general idea of how the voters feel about the candidates. They asked a (probably not) random subset of N voters to submit a ranking of the M candidates. Say the candidates are numbered from 1 to M. A ranking is then a permutation of the set {1,2,...,M} listed as:
+c_1 c_2 ... c_M
+The list is such that the voter prefers candidate c_i to candidate c_j if i > j. Your task is to determine a ranking R = r_1, r_2, ..., r_M such that the total number of disagreements with all voters who were polled is minimized.
+More precisely, for a voter V we say the distance d(V,R) between voter V and ranking R is precisely the number of pairs (i,j) with 1 <= i < j <= M such that V actually prefers candidate r_i over candidate r_j. Say there are N voters labeled V_1, V_2, ..., V_n. The task is then to find a ranking R such that the sum
+d(V_1, R) + d(V_2, R) + ... + d(V_n, R)
+is minimized.
+Input:
+The first line of input consists of a single integer T ≤ 25 indicating the number of test cases to follow.
+Each test case begins with two integers N and M on a single line where N represents the number of voters and M represents the number of candidates. The following N lines contain th e rankings of the voters, one per line.
+Each ranking is given as a permutation c_1, c_2, ..., c_M of the numbers 1,2,...,M where consecutive numbers are separated by a space. In this ranking, c_i is preferred over c_j by precisely when i > j.
+A blank line appears between test cases (including a blank line just before the first test case).
+The bounds are 1 <= N <= 1000 and 1 <= M <= 15.
+Output:
+Each test case has a single line of output of the following form:
+D: r_1 r_2 ... r_M
+Where D is the sum of the distances between the optimum ranking and the input rankings and r_1, r_2, ..., r_M is a ranking of the same form as the input rankings that achieves this minimum distance. If there are multiple such orderings, then output the one that minimizes r_M. Among those that minimize r_M, you should output the one that minimizes r_{M-1} and so on.
+(note that in the second case that the ranking 1 2 3 also has total distance 4, but 2 1 3 is output based on the rules outlined in the output specification)
 Sample 1:
 Input
 Output
-4
-- codeforces
-+ codechef
-- youtube
-+ google
 2
-codef
-y
-Explanation:
-You can see that the filter "codef" is a prefix of the blocked site "codeforces", but not a prefix of approved sites "codechef" and "google". Similarly, filter "y" is also a prefix of blocked site "youtube", but not a prefix of the approved sites. You can also see that there exists at least one filter for both the blocked sites "codeforces" and "youtube".
+2 3
+1 2 3
+1 2 3
+4 3
+1 2 3
+2 1 3
+1 2 3
+3 2 1
+0: 1 2 3
+4: 2 1 3

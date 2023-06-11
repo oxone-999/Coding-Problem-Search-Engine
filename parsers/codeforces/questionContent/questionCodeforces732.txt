@@ -1,146 +1,204 @@
-B. Difference Array
-time limit per test1 second
+D. Partial Virtual Trees
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-consisting of
+Kawashiro Nitori is a girl who loves competitive programming. One day she found a rooted tree consisting of
 n
-non-negative integers. It is guaranteed that
-a
-is sorted from small to large.
-For each operation, we generate a new array
-b
-i
-=
-a
-i+1
-−
-a
-i
-for
-1≤i<n
-. Then we sort
-b
-from small to large, replace
-a
-with
-b
-, and decrease
-n
-by
+vertices. The root is vertex
 1
+. As an advanced problem setter, she quickly thought of a problem.
+Kawashiro Nitori has a vertex set
+U={1,2,…,n}
+. She's going to play a game with the tree and the set. In each operation, she will choose a vertex set
+T
+, where
+T
+is a partial virtual tree of
+U
+, and change
+U
+into
+T
 .
-After performing
-n−1
-operations,
-n
-becomes
+A vertex set
+S
 1
-. You need to output the only integer in array
-a
-(that is to say, you need to output
-a
+is a partial virtual tree of a vertex set
+S
+2
+, if
+S
 1
-).
-Input
-The input consists of multiple test cases. The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains one integer
-n
-(
-2≤n≤
-10
-5
-) — the length of the array
-a
-.
-The second line contains
-n
-integers
-a
+is a subset of
+S
+2
+,
+S
+1
+≠
+S
+2
+, and for all pairs of vertices
+i
+and
+j
+in
+S
 1
 ,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
+LCA(i,j)
+is in
+S
 1
-≤…≤
-a
+, where
+LCA(x,y)
+denotes the lowest common ancestor of vertices
+x
+and
+y
+on the tree. Note that a vertex set can have many different partial virtual trees.
+Kawashiro Nitori wants to know for each possible
+k
+, if she performs the operation exactly
+k
+times, in how many ways she can make
+U={1}
+in the end? Two ways are considered different if there exists an integer
+z
+(
+1≤z≤k
+) such that after
+z
+operations the sets
+U
+are different.
+Since the answer could be very large, you need to find it modulo
+p
+. It's guaranteed that
+p
+is a prime number.
+Input
+The first line contains two integers
 n
-≤5⋅
+and
+p
+(
+2≤n≤2000
+,
 10
-5
-) — the array
-a
+8
++7≤p≤
+10
+9
++9
+). It's guaranteed that
+p
+is a prime number.
+Each of the next
+n−1
+lines contains two integers
+u
+i
+,
+v
+i
+(
+1≤
+u
+i
+,
+v
+i
+≤n
+), representing an edge between
+u
+i
+and
+v
+i
 .
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2.5⋅
-10
-5
-, and the sum of
-a
-n
-over all test cases does not exceed
-5⋅
-10
-5
-.
+It is guaranteed that the given edges form a tree.
 Output
-For each test case, output the answer on a new line.
-Example
+The only line contains
+n−1
+integers — the answer modulo
+p
+for
+k=1,2,…,n−1
+.
+Examples
 input
 Copy
-5
-3
-1 10 100
-4
-4 8 9 13
-5
-0 0 0 8 13
-6
-2 4 8 16 32 64
-7
-0 0 0 0 0 0 0
+4 998244353
+1 2
+2 3
+1 4
 output
 Copy
-81
-3
-1
-2
-0
+1 6 6 
+input
+Copy
+7 100000007
+1 2
+1 3
+2 4
+2 5
+3 6
+3 7
+output
+Copy
+1 47 340 854 880 320 
+input
+Copy
+8 1000000007
+1 2
+2 3
+3 4
+4 5
+5 6
+6 7
+7 8
+output
+Copy
+1 126 1806 8400 16800 15120 5040 
 Note
-To simplify the notes, let
-sort(a)
-denote the array you get by sorting
-a
-from small to large.
-In the first test case,
-a=[1,10,100]
-at first. After the first operation,
-a=sort([10−1,100−10])=[9,90]
-. After the second operation,
-a=sort([90−9])=[81]
+In the first test case, when
+k=1
+, the only possible way is:
+{1,2,3,4}→{1}
 .
-In the second test case,
-a=[4,8,9,13]
-at first. After the first operation,
-a=sort([8−4,9−8,13−9])=[1,4,4]
-. After the second operation,
-a=sort([4−1,4−4])=[0,3]
-. After the last operation,
-a=sort([3−0])=[3]
+When
+k=2
+, there are
+6
+possible ways:
+{1,2,3,4}→{1,2}→{1}
+;
+{1,2,3,4}→{1,2,3}→{1}
+;
+{1,2,3,4}→{1,2,4}→{1}
+;
+{1,2,3,4}→{1,3}→{1}
+;
+{1,2,3,4}→{1,3,4}→{1}
+;
+{1,2,3,4}→{1,4}→{1}
+.
+When
+k=3
+, there are
+6
+possible ways:
+{1,2,3,4}→{1,2,3}→{1,2}→{1}
+;
+{1,2,3,4}→{1,2,3}→{1,3}→{1}
+;
+{1,2,3,4}→{1,2,4}→{1,2}→{1}
+;
+{1,2,3,4}→{1,2,4}→{1,4}→{1}
+;
+{1,2,3,4}→{1,3,4}→{1,3}→{1}
+;
+{1,2,3,4}→{1,3,4}→{1,4}→{1}
 .

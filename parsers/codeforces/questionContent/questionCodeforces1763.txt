@@ -1,179 +1,246 @@
-C. Berland Regional
+E. Off by One
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp is an organizer of a Berland ICPC regional event. There are
+There are
 n
-universities in Berland numbered from
-1
-to
-n
-. Polycarp knows all competitive programmers in the region. There are
-n
-students: the
+points on an infinite plane. The
 i
--th student is enrolled at a university
-u
+-th point has coordinates
+(
+x
 i
-and has a programming skill
-s
+,
+y
 i
-.
-Polycarp has to decide on the rules now. In particular, the number of members in the team.
-Polycarp knows that if he chooses the size of the team to be some integer
-k
-, each university will send their
-k
-strongest (with the highest programming skill
-s
-) students in the first team, the next
-k
-strongest students in the second team and so on. If there are fewer than
-k
-students left, then the team can't be formed. Note that there might be universities that send zero teams.
-The strength of the region is the total skill of the members of all present teams. If there are no teams present, then the strength is
-0
-.
-Help Polycarp to find the strength of the region for each choice of
-k
+)
+such that
+x
+i
+>0
+and
+y
+i
+>0
+. The coordinates are not necessarily integer.
+In one move you perform the following operations:
+choose two points
+a
+and
+b
+(
+a≠b
+);
+move point
+a
 from
-1
-to
-n
+(
+x
+a
+,
+y
+a
+)
+to either
+(
+x
+a
++1,
+y
+a
+)
+or
+(
+x
+a
+,
+y
+a
++1)
+;
+move point
+b
+from
+(
+x
+b
+,
+y
+b
+)
+to either
+(
+x
+b
++1,
+y
+b
+)
+or
+(
+x
+b
+,
+y
+b
++1)
+;
+remove points
+a
+and
+b
 .
+However, the move can only be performed if there exists a line that passes through the new coordinates of
+a
+, new coordinates of
+b
+and
+(0,0)
+.
+Otherwise, the move can't be performed and the points stay at their original coordinates
+(
+x
+a
+,
+y
+a
+)
+and
+(
+x
+b
+,
+y
+b
+)
+, respectively.
+The numeration of points does not change after some points are removed. Once the points are removed, they can't be chosen in any later moves. Note that you have to move both points during the move, you can't leave them at their original coordinates.
+What is the maximum number of moves you can perform? What are these moves?
+If there are multiple answers, you can print any of them.
 Input
 The first line contains a single integer
-t
-(
-1≤t≤1000
-) — the number of testcases.
-The first line of each testcase contains a single integer
 n
 (
 1≤n≤2⋅
 10
 5
-) — the number of universities and the number of students.
-The second line of each testcase contains
+) — the number of points.
+The
+i
+-th of the next
 n
-integers
-u
-1
+lines contains four integers
+a
+i
 ,
-u
-2
-,…,
-u
-n
+b
+i
+,
+c
+i
+,
+d
+i
 (
 1≤
-u
+a
 i
-≤n
-) — the university the
-i
--th student is enrolled at.
-The third line of each testcase contains
-n
-integers
-s
-1
 ,
-s
-2
-,…,
-s
-n
-(
-1≤
-s
+b
+i
+,
+c
+i
+,
+d
 i
 ≤
 10
 9
-) — the programming skill of the
+). The coordinates of the
 i
--th student.
-The sum of
-n
-over all testcases doesn't exceed
-2⋅
-10
-5
+-th point are
+x
+i
+=
+a
+i
+b
+i
+and
+y
+i
+=
+c
+i
+d
+i
 .
 Output
-For each testcase print
-n
-integers: the strength of the region — the total skill of the members of the present teams — for each choice of team size
-k
-.
-Example
+In the first line print a single integer
+c
+ — the maximum number of moves you can perform.
+Each of the next
+c
+lines should contain a description of a move: two integers
+a
+and
+b
+(
+1≤a,b≤n
+,
+a≠b
+) — the points that are removed during the current move. There should be a way to move points
+a
+and
+b
+according to the statement so that there's a line that passes through the new coordinates of
+a
+, the new coordinates of
+b
+and
+(0,0)
+. No removed point can be chosen in a later move.
+If there are multiple answers, you can print any of them. You can print the moves and the points in the move in the arbitrary order.
+Examples
+input
+Copy
+7
+4 1 5 1
+1 1 1 1
+3 3 3 3
+1 1 4 1
+6 1 1 1
+5 1 4 1
+6 1 1 1
+output
+Copy
+3
+1 6
+2 4
+5 7
 input
 Copy
 4
-7
-1 2 1 2 1 2 1
-6 8 3 1 5 1 5
-10
-1 1 1 2 2 2 2 3 3 3
-3435 3014 2241 2233 2893 2102 2286 2175 1961 2567
-6
-3 3 3 3 3 3
-5 9 6 7 9 7
-1
-1
-3083
+2 1 1 1
+1 1 2 1
+2 1 1 2
+1 2 1 2
 output
 Copy
-29 28 26 19 0 0 0 
-24907 20705 22805 9514 0 0 0 0 0 0 
-43 43 43 32 38 43 
-3083 
+1
+1 2
+input
+Copy
+4
+182 168 60 96
+78 72 45 72
+69 21 144 63
+148 12 105 6
+output
+Copy
+1
+2 4
 Note
-In the first testcase the teams from each university for each
-k
-are:
-k=1
-:
-university
-1
-:
-[6],[5],[5],[3]
-;
-university
-2
-:
-[8],[1],[1]
-;
-k=2
-:
-university
-1
-:
-[6,5],[5,3]
-;
-university
-2
-:
-[8,1]
-;
-k=3
-:
-university
-1
-:
-[6,5,5]
-;
-university
-2
-:
-[8,1,1]
-;
-k=4
-:
-university
-1
-:
-[6,5,5,3]
-;
+Here are the points and the moves for the ones that get chosen for the moves from the first example:

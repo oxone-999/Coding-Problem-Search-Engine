@@ -1,4 +1,5 @@
 import time
+from bs4 import BeautifulSoup
 import sys
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -10,9 +11,17 @@ from selenium.webdriver.common.by import By as by
 body_id = "#problem-statement"
 heading_class = "._titleStatus__container_1dtux_838"
 
-def writeToFile2(heading,body,index):
+def writeToFile2(heading,body,index,pageUrl):
     file = open(f'questionContent/questionCodechef{index}.txt','w',encoding='utf-8')
     file.write(heading + "\n" + body)
+    file.close()
+    
+    file = open(f'questionLinks/questionsLink_{index}.txt','w',encoding="utf-8")
+    file.write(pageUrl)
+    file.close()
+    
+    file = open(f'questionHeadings/questionsName_{index}.txt','w',encoding="utf-8")
+    file.write(heading)
     file.close()
     
 def openBrowser(url):
@@ -40,10 +49,11 @@ def singlePageData(pageUrl,index):
         wait = WebDriverWait(browser, 10)
         wait.until(EC.presence_of_element_located((by.CSS_SELECTOR, body_id)))
         time.sleep(1)
-        heading = browser.find_element(by.CSS_SELECTOR, heading_class)
         bodyContent = browser.find_element(by.CSS_SELECTOR, body_id)
+        soup = BeautifulSoup(browser.page_source, 'html.parser')
+        heading = soup.find_all("h1")[0]
         if(bodyContent.text):
-            writeToFile2(heading.text,bodyContent.text,index)
+            writeToFile2(heading.text,bodyContent.text,index,pageUrl)
             print("    ----------->  saving data ")
         time.sleep(1)
         return True
@@ -70,5 +80,4 @@ def main_function():
             index = index + 1
     
 if __name__ == "__main__":
-    sys.stdout.reconfigure(encoding='utf-8')
     main_function()

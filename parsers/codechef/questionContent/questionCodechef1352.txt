@@ -1,157 +1,47 @@
-Minimum Coloring
+Chef Anup
 Problem
-There is a matrix of size
-N×M. Two distinct cells of the matrix
-(x
-1
-,y
-1
-) and
-(x
-2
-,y
-2
-) are painted with colors
-1 and
-2 respectively.
-You have to paint the remaining cells of the matrix such that:
-No two adjacent cells are painted in same color.
-Each color is an integer from
-1 to
-10
-9
-(both inclusive).
-The number of distinct colors used is minimum (including
-1 and
-2).
-Note:
-You cannot repaint the cells
-(x
-1
-,y
-1
-) and
-(x
-2
-,y
-2
-).
-Two cells are adjacent if they share a common edge. Thus, for a cell
-(x,y) there are
-4 adjacent cells. The adjacent cells are
-(x,y+1),(x,y−1),(x+1,y), and
-(x−1,y).
+Read problems statements in Mandarin Chinese and Russian.
+Chef Anup is making dishes. Each dish consists of N ingredients, and quantity of each ingredient is an integer between 1 and K inclusive.
+Relative quality of 2 dishes is determined by their lexicographic order. Dish A is of lower quality than dish B if there is a position i (1<=i<=N) such that Aj = Bj for all j < i and Ai < Bi.
+E.g., if N = 2 and K = 2, then the possible dishes in lexicographic order are (1,1), (1,2), (2,1), (2,2).
+Given an integer L, determine the Lth possible dish in increasing order of quality.
 Input Format
-First line will contain
-T, number of test cases. Then the test cases follow. Each test case consists of
-3 lines.
-The first line contains two space seperated integers
-N and
-M denoting the dimensions of the matrix.
-The second line contains two integers
-x
-1
-and
-y
-1
-, denoting the coordinates of cell which is painted
-1.
-The third line contains two integers
-x
-2
-and
-y
-2
-, denoting the coordinates of cell which is painted
-2.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+Each test case description consists of a single line containing three integers N, K and L as described above.
 Output Format
-For each test case, output
-N lines, each consisting of
-M space separated integers where
-j
-th
-integer in
-i
-th
-line denotes the color of cell in
-i
-th
-row and
-j
-th
-column of the matrix and must be in
-[1,10
-9
-] inclusive.
-In case of multiple possible answers, output any.
+For each test case, print N space-separated integers in a single line describing the quantities of the ingredients for the Lth dish.
 Constraints
-1≤T≤100
-2≤N,M≤10
-5
-1≤x
-1
-,x
-2
-≤N
-1≤y
-1
-,y
-2
-≤M
-(x
-1
-,y
-1
-)
-
-=(x
-2
-,y
-2
-)
-Sum of
-N⋅M over all test cases does not exceed
-10
-5
-.
+1 ≤ T ≤ 10
+L will not exceed the total number of possible dishes.
+Subtasks
+For 20 points : N = 3, 2 ≤ K ≤ 102, 1 ≤ L ≤ 106
+For 30 points : 1 ≤ N ≤ 102, 2 ≤ K ≤ 102, 1 ≤ L ≤ 104
+For 50 points : 1 ≤ N ≤ 103, 2 ≤ K ≤ 103, 1 ≤ L ≤ 1018
 Sample 1:
 Input
 Output
-2
-2 2
-1 1
-2 2
-2 3
-1 1
-1 2
-1 4
-4 2
+4
+3 3 1
+3 3 2
+3 3 3
+3 3 4
+1 1 1
+1 1 2
+1 1 3
 1 2 1
-2 1 2
 Explanation:
-Test Case
-1:
-
-The initially painted cells are
-(1,1) and
-(2,2). One possible way is to paint the remaining cells with color
-4. This way, no two adjacent cells have the same color.
-Note that, instead of color
-4, we can use any other color in the range
-[1,10
-9
-] except colors
-1 and
-2.
-The number of distinct colors used in this case is
-3. It can be shown that the minimum number of distinct colors cannot be less than
-3.
-Test Case
-2:
-
-The initially painted cells are
-(1,1) and
-(1,2). One possible way is to paint the remaining cells as shown in the figure. This way, no two adjacent cells have the same color.
-The number of distinct colors used in this case is
-2. It can be shown that the minimum number of distinct colors cannot be less than
-2.
+First 4 dishes in order have ingredients (1,1,1), (1,1,2), (1,1,3), and (1,2,1).
+Sample 2:
+Input
+Output
+4
+4 3 1
+4 3 2
+4 3 3
+4 3 4
+1 1 1 1
+1 1 1 2
+1 1 1 3
+1 1 2 1
+Explanation:
+First 4 dishes in order have ingredients (1,1,1,1), (1,1,1,2), (1,1,1,3), and (1,1,2,1).

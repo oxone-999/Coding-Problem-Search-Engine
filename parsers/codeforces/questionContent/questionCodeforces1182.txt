@@ -1,177 +1,122 @@
-C. Monsters And Spells
-time limit per test2 seconds
-memory limit per test256 megabytes
+E. Black and White Tree
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Monocarp is playing a computer game once again. He is a wizard apprentice, who only knows a single spell. Luckily, this spell can damage the monsters.
-The level he's currently on contains
+You are given a tree consisting of
 n
-monsters. The
-i
--th of them appears
-k
-i
-seconds after the start of the level and has
-h
-i
-health points. As an additional constraint,
-h
-i
-≤
-k
-i
-for all
-1≤i≤n
-. All
-k
-i
-are different.
-Monocarp can cast the spell at moments which are positive integer amounts of second after the start of the level:
-1,2,3,…
-The damage of the spell is calculated as follows. If he didn't cast the spell at the previous second, the damage is
-1
-. Otherwise, let the damage at the previous second be
+vertices. Some of the vertices (at least two) are black, all the other vertices are white.
+You place a chip on one of the vertices of the tree, and then perform the following operations:
+let the current vertex where the chip is located is
 x
-. Then he can choose the damage to be either
-x+1
-or
-1
-. A spell uses mana: casting a spell with damage
+. You choose a black vertex
+y
+, and then move the chip along the first edge on the simple path from
 x
-uses
-x
-mana. Mana doesn't regenerate.
-To kill the
+to
+y
+.
+You are not allowed to choose the same black vertex
+y
+in two operations in a row (i. e., for every two consecutive operations, the chosen black vertex should be different).
+You end your operations when the chip moves to the black vertex (if it is initially placed in a black vertex, you don't perform the operations at all), or when the number of performed operations exceeds
+100
+500
+.
+For every vertex
 i
--th monster, Monocarp has to cast a spell with damage at least
-h
-i
-at the exact moment the monster appears, which is
-k
+, you have to determine if there exists a (possibly empty) sequence of operations that moves the chip to some black vertex, if the chip is initially placed on the vertex
 i
 .
-Note that Monocarp can cast the spell even when there is no monster at the current second.
-The mana amount required to cast the spells is the sum of mana usages for all cast spells. Calculate the least amount of mana required for Monocarp to kill all monsters.
-It can be shown that it's always possible to kill all monsters under the constraints of the problem.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of testcases.
-The first line of the testcase contains a single integer
+The first line contains one integer
 n
 (
-1≤n≤100
-) — the number of monsters in the level.
-The second line of the testcase contains
+3≤n≤3⋅
+10
+5
+) — the number of vertices in the tree.
+The second line contains
 n
 integers
-k
-1
-<
-k
-2
-<⋯<
-k
-n
-(
-1≤
-k
-i
-≤
-10
-9
-) — the number of second from the start the
-i
--th monster appears at. All
-k
-i
-are different,
-k
-i
-are provided in the increasing order.
-The third line of the testcase contains
-n
-integers
-h
+c
 1
 ,
-h
+c
 2
 ,…,
-h
+c
 n
 (
-1≤
-h
+0≤
+c
 i
-≤
-k
+≤1
+), where
+c
 i
-≤
-10
-9
-) — the health of the
+=0
+means that the
 i
--th monster.
-The sum of
-n
-over all testcases doesn't exceed
-10
-4
+-th vertex is white, and
+c
+i
+=1
+means that the
+i
+-th vertex is black. At least two values of
+c
+i
+are equal to
+1
 .
+Then
+n−1
+lines follow, each of them contains two integers
+u
+i
+and
+v
+i
+(
+1≤
+u
+i
+,
+v
+i
+≤n
+;
+u
+i
+≠
+v
+i
+) — the endpoints of some edge. These edges form a tree.
 Output
-For each testcase, print a single integer — the least amount of mana required for Monocarp to kill all monsters.
+Print
+n
+integers. The
+i
+-th integer should be equal to
+1
+if there exists a (possibly empty) sequence of operations that moves the chip to some black vertex if it is placed on the vertex
+i
+, and
+0
+if no such sequence of operations exists.
 Example
 input
 Copy
-3
-1
-6
-4
-2
+8
+0 1 0 0 0 0 1 0
+8 6
+2 5
+7 8
+6 5
 4 5
-2 2
-3
-5 7 9
-2 1 2
+6 1
+7 3
 output
 Copy
-10
-6
-7
-Note
-In the first testcase of the example, Monocarp can cast spells
-3,4,5
-and
-6
-seconds from the start with damages
-1,2,3
-and
-4
-, respectively. The damage dealt at
-6
-seconds is
-4
-, which is indeed greater than or equal to the health of the monster that appears.
-In the second testcase of the example, Monocarp can cast spells
-3,4
-and
-5
-seconds from the start with damages
-1,2
-and
-3
-, respectively.
-In the third testcase of the example, Monocarp can cast spells
-4,5,7,8
-and
-9
-seconds from the start with damages
-1,2,1,1
-and
-2
-, respectively.
+0 1 1 1 1 0 1 1 

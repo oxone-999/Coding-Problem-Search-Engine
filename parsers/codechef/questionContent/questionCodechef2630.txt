@@ -1,43 +1,95 @@
-Chef and Problems
+Mean equals Median
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Chef was invited to the party of N people numbered from 1 to N. Chef knows the growth of all the people, i.e. he knows the growth of the ith person is denoted by an integer Ai not exceeding M.
-Chef decided to have some fun. At first, he forms K groups of people. The ith group consists of all the people numbered from Li to Ri. Groups may overlap too.
-For each group, Chef wants to know the following information: the maximum difference between the numberings of two people having same growth. Formally, Chef wants to know the following:
-max{|x − y| : Li ≤ x, y ≤ Ri and Ax = Ay}
-Please help Chef to have fun.
+Chef gets confused between mean and median very often, and as a result, he has developed a dislike of arrays whose mean and median are not equal.
+Chef has an array
+A of
+N elements. He can perform the following operation on it:
+Pick an index
+1≤i≤N and increase
+A
+i
+by
+1.
+He would like to obtain an array whose mean and median are equal. Determine the minimum number of operations required to achieve this.
+Note: The median of an array
+A of length
+N is defined as follows: Sort the array
+A. Then,
+If
+N is even, the median is the
+(
+2
+N
+)
+th
+element
+If
+N is odd, the median is the
+(
+2
+N+1
+)
+th
+element
+For example, the median of the array
+[3,4,1,2] is
+2 and the median of the array
+[3,4,1] is
+3.
+Input Format
+The first line of input contains a single integer
+T, denoting the number of testcases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N, denoting the size of the array.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+Output Format
+For each test case, print a single line containing one integer — the minimum number of operations Chef needs to perform to make the mean and median equal.
+Constraints
+1≤T≤10
+4
+2≤N≤3⋅10
+5
+1≤A
+i
+≤10
+9
+Sum of
+N over all test cases does not exceed
+3⋅10
+5
+Sample 1:
 Input
-There is only one test case in one test file.
-The first line of input contains three space-separated integers N, M and K, denoting the number of people, the maximum growth and number of groups respectively. The second line contains N space-separated integers A1, A2, ..., AN denoting the growth of people. Then the ith line of the next K lines contains two space-separated integers Li, Ri, denoting the ith group.
 Output
-For each group, output the integer denoting the maximum difference between numbering of two people having same growth in a single line.
-Constraints and Subtasks
-1 ≤ Ai ≤ M
-1 ≤ Li ≤ Ri ≤ N
-
-Subtask 1: 20 points
-1 ≤ N, M, K ≤ 1000 = 103
-
-Subtask 2: 80 points
-1 ≤ N, M, K ≤ 100000 = 105
-Example
-Input:
-7 7 5
-4 5 6 6 5 7 4
-6 6
-5 6
-3 5
-3 7
-1 7
-Output:
+3
+3
+1 2 3
+4
+1 1 3 3
+5
+1 1000000000 1 1000000000 1
 0
-0
+4
+500000002
+Explanation:
+Test Case
+1: The mean and median of the array are both
+2. They are already equal, so no operations are required.
+Test Case
+2: It is optimal to apply the operation on
 1
-1
-6
-Explanation
-Group 1. There is only one person in the group. Thus the maximum difference of numbers should be 0.
-Group 2. There are two persons in the group. Their growth are A5 = 5 and A6 = 7. Thus there is no pair of persons who have the same growth. Thus the answer for this group will also be 0.
-Group 3. There are three persons in the group. Their growth are A3 = 6, A4 = 6 and A5 = 5. Here person 3 and person 4 has the same growth. Thus the answer is |4 − 3| = 1.
-Group 4. There are more persons than the group 3. But they has different growth, other than person 3 and person 4.Thus the answer is also |4 − 3| = 1.
-Group 5. This group contains all the people, and person 1 and person 7 has the same growth A1 = A7 = 4. So the answer is |7 − 1| = 6.
+st
+and
+2
+nd
+index twice each. The array after applying these operations will be
+[3,3,3,3], which has both mean and median
+3.

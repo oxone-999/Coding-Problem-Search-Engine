@@ -1,200 +1,191 @@
-E1. AquaMoon and Time Stop (easy version)
-time limit per test3 seconds
-memory limit per test1024 megabytes
+A. AquaMoon and Two Arrays
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Note that the differences between easy and hard versions are the constraints on
+AquaMoon and Cirno are playing an interesting game with arrays. Cirno has prepared two arrays
+a
+and
+b
+, both consist of
 n
-and the time limit. You can make hacks only if both versions are solved.
-AquaMoon knew through foresight that some ghosts wanted to curse tourists on a pedestrian street. But unfortunately, this time, these ghosts were hiding in a barrier, and she couldn't enter this barrier in a short time and destroy them. Therefore, all that can be done is to save any unfortunate person on the street from the ghosts.
-The pedestrian street can be represented as a one-dimensional coordinate system. There is one person hanging out on the pedestrian street. At the time
-0
-he is at coordinate
-x
-, moving with a speed of
-1
-unit per second. In particular, at time
+non-negative integers. AquaMoon can perform the following operation an arbitrary number of times (possibly zero):
+She chooses two indices
 i
-the person will be at coordinate
-x+i
+and
+j
+(
+1≤i,j≤n
+), then decreases the
+i
+-th element of array
+a
+by
+1
+, and increases the
+j
+-th element of array
+a
+by
+1
+. The resulting values at
+i
+-th and
+j
+-th index of array
+a
+are
+a
+i
+−1
+and
+a
+j
++1
+, respectively. Each element of array
+a
+must be non-negative after each operation. If
+i=j
+this operation doesn't change the array
+a
 .
-The ghosts are going to cast
-n
-curses on the street. The
-i
--th curse will last from time
-t
-l
-i
-−1+
-10
-−18
-to time
-t
-r
-i
-+1−
-10
-−18
-(exclusively) and will kill people with coordinates from
-l
-i
-−1+
-10
-−18
-to
-r
-i
-+1−
-10
-−18
-(exclusively). Formally that means, that the person, whose coordinate is between
-(
-l
-i
-−1+
-10
-−18
-,
-r
-i
-+1−
-10
-−18
-)
-in the time range
-(t
-l
-i
-−1+
-10
-−18
-,t
-r
-i
-+1−
-10
-−18
-)
-will die.
-To save the person on the street, AquaMoon can stop time at any moment
-t
-, and then move the person from his current coordinate
-x
-to any coordinate
-y
-(
-t
-,
-x
+AquaMoon wants to make some operations to make arrays
+a
 and
-y
-are not necessarily integers). The movement costs AquaMoon
-|x−y|
-energy. The movement is continuous, so if there exists some cursed area between points
-x
+b
+equal. Two arrays
+a
 and
-y
-at time
-t
-, the person will die too.
-AquaMoon wants to know what is the minimum amount of energy she needs to spend in order to save the person on the street from all
-n
-curses. But she is not good at programming. As her friend, can you help her?
+b
+are considered equal if and only if
+a
+i
+=
+b
+i
+for all
+1≤i≤n
+.
+Help AquaMoon to find a sequence of operations that will solve her problem or find, that it is impossible to make arrays
+a
+and
+b
+equal.
+Please note, that you don't have to minimize the number of operations.
 Input
-The first line contains a single integer
+The input consists of multiple test cases. The first line contains a single integer
+t
+(
+1≤t≤100
+) — the number of test cases.
+The first line of each test case contains a single integer
 n
 (
-1≤n≤2000
-) — the number of curses.
-The next line contains a single integer
-x
-(
-1≤x≤
-10
-6
-) — the initial coordinate of the person.
-The following
-n
-lines contain four integers
-t
-l
-i
-,
-t
-r
-i
-,
-l
-i
-,
-r
-i
-each (
-1≤t
-l
-i
-≤t
-r
-i
-≤
-10
-6
-,
-1≤
-l
-i
-≤
-r
-i
-≤
-10
-6
+1≤n≤100
 ).
-Output
-Print a single integer — the minimum energy which AquaMoon needs to spent, rounded up to the nearest integer (in case there are two nearest integers you should round the answer to the highest of them).
-Examples
-input
-Copy
-2
+The second line of each test case contains
+n
+integers
+a
 1
-1 2 1 2
-2 3 2 3
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤100
+). The sum of all
+a
+i
+does not exceed
+100
+.
+The third line of each test case contains
+n
+integers
+b
+1
+,
+b
+2
+,…,
+b
+n
+(
+0≤
+b
+i
+≤100
+). The sum of all
+b
+i
+does not exceed
+100
+.
+Output
+For each test case print "-1" on the only line if it is impossible to make two arrays equal with some sequence of operations.
+Otherwise, print an integer
+m
+(
+0≤m≤100
+) in the first line — the number of operations. Then print
+m
+lines, each line consists of two integers
+i
+and
+j
+— the indices you choose for the operation.
+It can be proven that if it is possible to make two arrays equal with some sequence of operations, there exists a sequence with
+m≤100
+.
+If there are multiple possible solutions, you can print any.
+Example
+input
+Copy
+4
+4
+1 2 3 4
+3 1 2 4
+2
+1 3
+2 1
+1
+0
+0
+5
+4 3 2 1 0
+0 1 2 3 4
 output
 Copy
 2
-input
-Copy
-3
-4
-1 4 1 2
-1 4 4 15
-6 7 1 4
-output
-Copy
-8
-input
-Copy
-4
-3
-1 5 1 1
-4 10 1 4
-1 2 3 13
-1 10 7 19
-output
-Copy
-14
-input
-Copy
-7
-5
-78 96 76 91
-6 16 18 37
-53 63 40 56
-83 88 21 38
-72 75 17 24
-63 63 53 60
-34 46 60 60
-output
-Copy
-20
+2 1
+3 1
+-1
+0
+6
+1 4
+1 4
+1 5
+1 5
+2 5
+2 5
+Note
+In the first example, we do the following operations:
+i=2
+,
+j=1
+:
+[1,2,3,4]→[2,1,3,4]
+;
+i=3
+,
+j=1
+:
+[2,1,3,4]→[3,1,2,4]
+;
+In the second example, it's impossible to make two arrays equal.

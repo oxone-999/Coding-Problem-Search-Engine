@@ -1,33 +1,116 @@
-Chef And Land Labeling
+Matrix Pain
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-ChefsLand can be viewed as a graph consisting of N cities and bidirectional roads. Each pair of cities is directly connected by a road. Recently, Chef came up with following game to make the Number Theory course more interesting for students in country schools.
-At the beginning of each lesson, Chef draws ChefsLand as a graph with N vertices corresponding to cities and N(N-1)/2 edges corresponding to roads between them. Then he labels the cities; each city is given a distinct label between 1 and N (inclusive). Next, he labels each edge — the label of the edge between vertices u and v is the common divisor count of lblu and lblv (the number of positive integers which divide both lblu and lblv), where lblu and lblv denote the labels of vertices u and v respectively.
-Now, Chef erases the vertex labels, retaining only edge labels in the graph. You, as the number theory student, should find some assignment of labels to vertices which produces a graph with the given edge labels.
-Input
-The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains a single integer N denoting the number of vertices in the graph.
-The following N lines describe the labels of edges. For each valid i, the i-th of these lines contains N space-separated integers Mi1, Mi2, ..., MiN; for each valid j ≠ i, Mij represents the label of the edge connecting vertices i and j.
-Output
-For each test case, print N lines. For each valid i, the i-th of these lines should contain a single integer — the label of the i-th vertex.
-If there are multiple solutions, you may output any one.
+Chef is here with another matrix
+A having
+N rows and
+M columns,
+such that
+A
+(i,j)
+=(i−1)⋅M+j.
+Chef decided to make this matrix interesting. He performed
+K operations on the matrix. In each operation, he will choose either a row or column and multiply all values in that row/column with a non-negative integer
+V.
+An operation is of the form
+Q,X,V:
+If
+Q=0: Multiply each element of the
+X
+th
+row with
+V.
+If
+Q=1: Multiply each element of the
+X
+th
+column with
+V.
+Find the sum of all values in the matrix after all
+K operations are done. Since the value can be large, print it modulo
+10
+9
++7.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains three space-separated integers
+N,
+M, and
+K — the number of rows, columns, and the operations to be done, respectively.
+The next
+K lines describe the operations. The
+i
+th
+of these
+K lines contain three space-separated integers
+Q
+i
+,
+X
+i
+, and
+V
+i
+, as mentioned in the statement.
+Output Format
+For each test case, output on a new line, the sum of all elements of the matrix after performing the operations, modulo
+10
+9
++7.
 Constraints
-1 ≤ N ≤ 1000
-for each valid i, Mii = 0
-it's guaranteed that for the given edge labels, at least one possible assignment of labels to vertices exists
-Subtasks
-Subtask #1 (15 points): sum of N for all test cases ≤ 10
-Subtask #2 (85 points): sum of N for all test cases ≤ 1000
-Example
-Input:
-1
-4
-0 1 1 1
-1 0 1 1
-1 1 0 2
-1 1 2 0
-Output:
-3
-1
+1≤T≤100
+1≤N,M≤10
+9
+1≤K≤2⋅10
+5
+0≤Q
+i
+≤1
+1≤X≤N if
+Q
+i
+=0
+1≤X≤M if
+Q
+i
+=1
+0≤V
+i
+≤10
+9
+The sum of
+K over all test cases won't exceed
+2⋅10
+5
+Sample 1:
+Input
+Output
 2
-4
+2 2 2
+1 2 0
+0 1 2
+1 3 1
+1 2 6
+5
+16
+Explanation:
+Test case
+1 : The initial matrix is
+[[1,2],[3,4]].
+In the first operation, multiply all elements of the second column with
+0. Thus, the matrix becomes
+[[1,0],[3,0]].
+In the second operation, multiply all elements of the first row with
+2. Thus, the matrix becomes
+[[2,0],[3,0]].
+The sum of the elements of the updated matrix is
+2+3=5.
+Test case
+2: The initial matrix is
+[[1,2,3]].
+In the first operation, multiply all elements of the second column with
+6. Thus, the matrix becomes
+[[1,12,3]].
+The sum of the elements of the updated matrix is
+1+12+3=16.

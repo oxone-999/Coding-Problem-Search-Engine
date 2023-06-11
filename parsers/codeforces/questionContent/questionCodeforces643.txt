@@ -1,120 +1,200 @@
-C. Circular Mirror
-time limit per test1 second
-memory limit per test256 megabytes
+E. Electrical Efficiency
+time limit per test3 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Pak Chanek has a mirror in the shape of a circle. There are
+In the country of Dengkleknesia, there are
 N
-lamps on the circumference numbered from
+factories numbered from
 1
 to
 N
-in clockwise order. The length of the arc from lamp
+. Factory
 i
-to lamp
-i+1
-is
-D
+has an electrical coefficient of
+A
 i
-for
-1≤i≤N−1
-. Meanwhile, the length of the arc between lamp
-N
-and lamp
-1
-is
-D
-N
-.
-Pak Chanek wants to colour the lamps with
-M
-different colours. Each lamp can be coloured with one of the
-M
-colours. However, there cannot be three different lamps such that the colours of the three lamps are the same and the triangle made by considering the three lamps as vertices is a right triangle (triangle with one of its angles being exactly
-90
-degrees).
-The following are examples of lamp colouring configurations on the circular mirror.
-Figure 1. an example of an incorrect colouring because lamps
-1
+. There are also
+N−1
+power lines with the
+j
+-th power line connecting factory
+U
+j
+and factory
+V
+j
+. It can be guaranteed that each factory in Dengkleknesia is connected to all other factories in Dengkleknesia through one or more power lines. In other words, the collection of factories forms a tree. Each pair of different factories in Dengkleknesia can use one or more existing power lines to transfer electricity to each other. However, each power line needs to be turned on first so that electricity can pass through it.
+Define
+f(x,y,z)
+as the minimum number of power lines that need to be turned on so that factory
+x
+can make electrical transfers to factory
+y
+and factory
+z
+. Also define
+g(x,y,z)
+as the number of distinct prime factors of
+GCD(
+A
+x
 ,
-2
-, and
-3
-form a right triangle Figure 2. an example of a correct colouring Figure 3. an example of a correct colouring
-Before colouring the lamps, Pak Chanek wants to know the number of distinct colouring configurations he can make. Count the number of distinct possible lamp colouring configurations, modulo
+A
+y
+,
+A
+z
+)
+.
+To measure the electrical efficiency, you must find the sum of
+f(x,y,z)×g(x,y,z)
+for all combinations of
+(x,y,z)
+such that
+1≤x<y<z≤N
+. Because the answer can be very large, you just need to output the answer modulo
 998244353
 .
-Input
-The first line contains two integers
-N
-and
-M
-(
-1≤N≤3⋅
-10
-5
+Note:
+GCD(
+k
+1
 ,
-2≤M≤3⋅
+k
+2
+,
+k
+3
+)
+is the greatest common divisor of
+k
+1
+,
+k
+2
+, and
+k
+3
+, which is the biggest integer that simultaneously divides
+k
+1
+,
+k
+2
+, and
+k
+3
+.
+Input
+The first line contains a single integer
+N
+(
+1≤N≤2⋅
 10
 5
-) — the number of lamps in the mirror and the number of different colours used.
+) — the number of factories in Dengkleknesia.
 The second line contains
 N
 integers
-D
+A
 1
 ,
-D
+A
 2
 ,…,
-D
+A
 N
 (
 1≤
-D
+A
 i
-≤
+≤2⋅
 10
-9
-) — the lengths of the arcs between the lamps in the mirror.
+5
+) — the electrical coefficients of the factories.
+The
+j
+-th of the next
+N−1
+lines contains two integers
+U
+j
+and
+V
+j
+(
+1≤
+U
+j
+,
+V
+j
+≤N
+) — a power line that connects cities
+U
+j
+and
+V
+j
+. The collection of factories forms a tree.
 Output
-An integer representing the number of possible lamp colouring configurations, modulo
+An integer representing the sum of
+f(x,y,z)×g(x,y,z)
+for all combinations of
+(x,y,z)
+such that
+1≤x<y<z≤N
+, modulo
 998244353
-.
 Examples
 input
 Copy
-4 2
-10 10 6 14
+3
+1 2 3
+1 2
+2 3
 output
 Copy
-10
+0
 input
 Copy
+4
+6 14 6 6
 1 2
-10
+2 3
+2 4
 output
 Copy
-2
+12
 Note
-In the first example, all correct lamp colouring configurations are
-[1,1,2,1]
+In the first example, the only
+(x,y,z)
+possible is
+(1,2,3)
+. Because
+GCD(
+A
+1
 ,
-[1,1,2,2]
+A
+2
 ,
-[1,2,1,2]
-,
-[1,2,2,1]
-,
-[1,2,2,2]
-,
-[2,1,1,1]
-,
-[2,1,1,2]
-,
-[2,1,2,1]
-,
-[2,2,1,1]
-, and
-[2,2,1,2]
+A
+3
+)=GCD(1,2,3)=1
+has
+0
+distinct prime factors, therefore
+f(x,y,z)×g(x,y,z)=2×0=0
+.
+In the second example, all triples
+(x,y,z)
+that satisfy the condition are as follows:
+(1,2,3)→f(1,2,3)×g(1,2,3)=2×1=2
+(1,2,4)→f(1,2,4)×g(1,2,4)=2×1=2
+(1,3,4)→f(1,3,4)×g(1,3,4)=3×2=6
+(2,3,4)→f(2,3,4)×g(2,3,4)=2×1=2
+So the electrical efficiency is
+2+2+6+2=12
 .

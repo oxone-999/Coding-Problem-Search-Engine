@@ -1,142 +1,105 @@
-D. Martial Arts Tournament
-time limit per test2 seconds
-memory limit per test256 megabytes
+F. A Random Code Problem
+time limit per test3 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Monocarp is planning to host a martial arts tournament. There will be three divisions based on weight: lightweight, middleweight and heavyweight. The winner of each division will be determined by a single elimination system.
-In particular, that implies that the number of participants in each division should be a power of two. Additionally, each division should have a non-zero amount of participants.
-n
-participants have registered for the tournament so far, the
-i
--th of them weighs
+You are given an integer array
 a
-i
-. To split participants into divisions, Monocarp is going to establish two integer weight boundaries
-x
-and
-y
-(
-x<y
-).
-All participants who weigh strictly less than
-x
-will be considered lightweight. All participants who weigh greater or equal to
-y
-will be considered heavyweight. The remaining participants will be considered middleweight.
-It's possible that the distribution doesn't make the number of participants in each division a power of two. It can also lead to empty divisions. To fix the issues, Monocarp can invite an arbitrary number of participants to each division.
-Note that Monocarp can't kick out any of the
-n
-participants who have already registered for the tournament.
-However, he wants to invite as little extra participants as possible. Help Monocarp to choose
-x
-and
-y
-in such a way that the total amount of extra participants required is as small as possible. Output that amount.
-Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of testcases.
-The first line of each testcase contains a single integer
-n
-(
-1≤n≤2⋅
-10
-5
-) — the number of the registered participants.
-The second line of each testcase contains
-n
-integers
-a
-1
+0
 ,
 a
-2
+1
 ,…,
 a
+n−1
+, and an integer
+k
+. You perform the following code with it:
+long long ans = 0; // create a 64-bit signed variable which is initially equal to 0
+for(int i = 1; i <= k; i++)
+{
+  int idx = rnd.next(0, n - 1); // generate a random integer between 0 and n - 1, both inclusive
+                                // each integer from 0 to n - 1 has the same probability of being chosen
+  ans += a[idx];
+  a[idx] -= (a[idx] % i);
+}
+Your task is to calculate the expected value of the variable ans after performing this code.
+Note that the input is generated according to special rules (see the input format section).
+Input
+The only line contains six integers
 n
+,
+a
+0
+,
+x
+,
+y
+,
+k
+and
+M
 (
+1≤n≤
+10
+7
+;
 1≤
 a
+0
+,x,y<M≤998244353
+;
+1≤k≤17
+).
+The array
+a
+in the input is constructed as follows:
+a
+0
+is given in the input;
+for every
 i
-≤n
-) — the weights of the registered participants.
-The sum of
-n
-over all testcases doesn't exceed
-2⋅
-10
-5
+from
+1
+to
+n−1
+, the value of
+a
+i
+can be calculated as
+a
+i
+=(
+a
+i−1
+⋅x+y)modM
 .
 Output
-For each testcase, print a single integer — the smallest number of extra participants Monocarp is required to invite after he chooses the weight boundaries
-x
-and
-y
+Let the expected value of the variable ans after performing the code be
+E
+. It can be shown that
+E⋅
+n
+k
+is an integer. You have to output this integer modulo
+998244353
 .
-Example
+Examples
 input
 Copy
-4
-4
-3 1 2 1
-1
-1
-6
-2 2 2 1 1 1
-8
-6 3 6 3 6 3 6 6
+3 10 3 5 13 88
 output
 Copy
-0
-2
-3
-2
+382842030
+input
+Copy
+2 15363 270880 34698 17 2357023
+output
+Copy
+319392398
 Note
-In the first testcase of the example, Monocarp can choose
-x=2
-and
-y=3
-. Lightweight, middleweight and heavyweight divisions will have
-2
-,
-1
-and
-1
-participants, respectively. They all are powers of two, so no extra participants are required.
-In the second testcase of the example, regardless of the choice of
-x
-and
-y
-, one division will have
-1
-participant, the rest will have
-0
-. Thus, Monocarp will have to invite
-1
-participant into both of the remaining divisions.
-In the third testcase of the example, Monocarp can choose
-x=1
-and
-y=2
-. Lightweight, middleweight and heavyweight divisions will have
-0
-,
-3
-and
-3
-participants, respectively. So an extra participant is needed in each division.
-In the fourth testcase of the example, Monocarp can choose
-x=8
-and
-y=9
-. Lightweight, middleweight and heavyweight divisions will have
-8
-,
-0
-and
-0
-participants, respectively. Middleweight and heavyweight division need an extra participant each.
+The array in the first example test is
+[10,35,22]
+. In the second example, it is
+[15363,1418543]
+.

@@ -1,71 +1,75 @@
-E1. String Coloring (easy version)
-time limit per test1 second
+A. Likes Display
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an easy version of the problem. The actual problems are different, but the easy version is almost a subtask of the hard version. Note that the constraints and the output format are different.
-You are given a string
-s
-consisting of
+Polycarp is working on the implementation of displaying likes on the Codehorses social network. The number of likes should be displayed in a format that will be easy to read by users. It was decided that for large numbers of likes the format should be like 123K (one hundred twenty-three thousand) or like 56M (fifty-six million).
+The following displaying strategy has been approved:
+the number will be displayed either as an integer number from 0 to 999, or as a positive integer number of thousands (from 1K to 999K), or as a positive integer number of millions (from 1M on),
+the specified exact number of likes
 n
-lowercase Latin letters.
-You have to color all its characters one of the two colors (each character to exactly one color, the same letters can be colored the same or different colors, i.e. you can choose exactly one color for each index in
-s
-).
-After coloring, you can swap any two neighboring characters of the string that are colored different colors. You can perform such an operation arbitrary (possibly, zero) number of times.
-The goal is to make the string sorted, i.e. all characters should be in alphabetical order.
-Your task is to say if it is possible to color the given string so that after coloring it can become sorted by some sequence of swaps. Note that you have to restore only coloring, not the sequence of swaps.
+when displaying should be rounded to the nearest view from the case above (if rounding is ambiguous, it must be rounded up): for example,
+1785
+should be rounded to 2K instead of 1K,
+4500000
+should be rounded to 5M.
+Help Polycarp implement this part of the functionality: for a given non-negative integer number of likes
+n
+, print its view in the Codehorses interface.
 Input
-The first line of the input contains one integer
+The first line contains an integer
+t
+(
+1≤t≤1000
+) — the number of test cases in the input. The following are descriptions of the
+t
+input test cases, one per line.
+The description of each test case consists of a single line that contains a non-negative integer
 n
 (
-1≤n≤200
-) — the length of
-s
-.
-The second line of the input contains the string
-s
-consisting of exactly
-n
-lowercase Latin letters.
+0≤n≤2⋅
+10
+9
+) — the number of likes.
 Output
-If it is impossible to color the given string so that after coloring it can become sorted by some sequence of swaps, print "NO" (without quotes) in the first line.
-Otherwise, print "YES" in the first line and any correct coloring in the second line (the coloring is the string consisting of
+Print
+t
+answers to the given test cases in the order from the input. Each printed value must have one of the following types:
+either an integer from 0 to 999 which corresponds just to the number of likes,
+or a number of thousands from 1K to 999K,
+or a number of millions from 1M to 2000M.
+The answer is equal to a view which is the closest (by difference) to the given number
 n
-characters, the
-i
--th character should be '0' if the
-i
--th character is colored the first color and '1' otherwise).
-Examples
+. If this rounding is ambiguous, then round answer up (to a greater value).
+Example
 input
 Copy
 9
-abacbecfd
+999
+123
+0
+1782
+31415926
+1500
+999999
+35499710
+2000000000
 output
 Copy
-YES
-001010101
-input
-Copy
-8
-aaabbcbb
-output
-Copy
-YES
-01011011
-input
-Copy
-7
-abcdedc
-output
-Copy
-NO
-input
-Copy
-5
-abcde
-output
-Copy
-YES
-00000
+999
+123
+0
+2K
+31M
+2K
+1M
+35M
+2000M
+Note
+Let's describe some test cases:
+1782
+can be displayed either as 1K or as 2K but 2K is the nearest view;
+1500
+have same difference with 1K and 2K so it should be rounded up;
+999999
+should be displayed as 1M since it's closer to it than to 999K.

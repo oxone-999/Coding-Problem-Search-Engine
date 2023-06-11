@@ -1,108 +1,144 @@
-Killing Zombies
+Alice and the Array
 Problem
-The zombie apocalypse is here and Chef is stuck at an old construction site. The site is surrounded by walls on three sides. On the fourth side is a fence where
-N zombies are standing in a row. The zombies are numbered from
+Alice is playing a game with permutations of size
+N.
+She selects a random permutation
+P of size
+N and a random index
+i
+(1≤i≤N);
+She keeps incrementing the index
+i until:
+The next element is greater than the current element
+(P
+(i+1)
+>P
+i
+), or;
+She reaches the last index
+(i=N).
+Find the expected number of indices that Alice will visit throughout the game.
+It can be shown that this expected value can be expressed as a fraction
+Q
+P
+, where
+P and
+Q are coprime integers,
+P≥0,Q>0 and
+Q is coprime with
+10
+9
++7. You should compute
+P⋅Q
+−1
+%(10
+9
++7), where
+Q
+−1
+denotes the multiplicative inverse of
+Q modulo
+10
+9
++7.
+Note that a permutation of size
+N consists of all integers from
 1 to
-N from left to right. Zombie
-i has
-Z
-i
-health points initially.
-Luckily there are
-M cranes Chef has access to. The
-i
-th
-crane carries
-K
-i
-construction beams. Chef can drop any number
-≥0 and
-≤K
-i
-of these beams from crane
-i and they will hit all zombies whose numbers lie between
-L
-i
-to
-R
-i
-both inclusive. A single beam decreases the health of all zombies it hits by
-1 point. If a zombie's health equals
-0 after being hit it is considered dead.
-Can Chef kill all the zombies using the beams? If yes, what is the minimum number of beams that Chef has to drop to achieve this?
-Warning: Large I/O, it is advisable to use fast I/O methods.
-Input:
-The first line contains
-T, number of testcases.
-The first line of each test case contains two integers
-N and
-M.
-The second line of each test case contains
-N integers
-Z
-1
-,Z
-2
-,...,Z
-N
-.
-M lines follow. The
-i
-th
-line contains
-3 integers
-L
-i
-,
-R
-i
-and
-K
-i
-.
-Output:
-For each test case, if it is possible for Chef to kill all the zombies print a single line containing "YES" followed by the minimum number of beams he needs to drop. If it is impossible, print "NO" instead. (Note that the judge is case-sensitive)
+N, where each element is present exactly once.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of single lines of input containing an integer
+N, the size of permutation.
+Output Format
+For each test case, print in a single line, the expected number of indices that Alice will visit throughout the game.
+It can be shown that this expected value can be expressed as a fraction
+Q
+P
+, where
+P and
+Q are coprime integers,
+P≥0,Q>0 and
+Q is coprime with
+10
+9
++7. You should compute
+P⋅Q
+−1
+%(10
+9
++7), where
+Q
+−1
+denotes the multiplicative inverse of
+Q modulo
+10
+9
++7.
 Constraints
 1≤T≤10
-1≤N,M≤10
+3
+1≤N≤2⋅10
 5
-Sum of
-N over all test cases
-≤3⋅10
+The sum of
+N over all test cases won't exceed
+2⋅10
 5
-Sum of
-M over all test cases
-≤3⋅10
-5
-1≤Z
-i
-≤10
-9
-1≤L
-i
-≤R
-i
-≤N
-1≤K
-i
-≤10
-9
-Sample Input:
+.
+Sample 1:
+Input
+Output
+3
+1
 2
-5 5
-1 2 3 4 5
-1 2 3
-1 5 1
-2 4 3
-3 5 3
-4 5 3
-3 2
-2 5 2
-1 2 2
-2 3 2
-Sample Output:
-YES 6
-NO
+3
+1
+250000003
+388888893
 Explanation:
-Case 1: One possible way is for Chef to drop the only beam from crane 2, 1 beam from crane 3, 1 beam from crane 4 and all 3 beams from crane 5.
-Case 2: Zombie 1 and 3 can be killed but zombie 2 remains at health 1 even if all the beams are dropped.
+Test case
+1: There is only one possible way to select a permutation of size
+1 and an index from the permutation
+1. Thus, we choose
+P={1} and
+i=1. The number of indices covered after this choice is
+1.
+Test case
+2: The possible cases are:
+P={1,2} and
+i=1: We cannot increment the index
+i=1 as
+P
+2
+>P
+1
+. Thus, number of indices covered is
+1.
+P={1,2} and
+i=2: We cannot increment the index
+i=2 as it is the last index. Thus, number of indices covered is
+1.
+P={2,1} and
+i=1: We can increment the index
+i=1 as
+P
+2
+<P
+1
+. We reach index
+i=2. Now we cannot increment the index. Thus, number of indices covered is
+2.
+P={2,1} and
+i=2: We cannot increment the index
+i=2 as it is the last index. Thus, number of indices covered is
+1.
+Thus, the expected value of number of indices visited is
+4
+3
+⋅1+
+4
+1
+⋅2=
+4
+5
+.

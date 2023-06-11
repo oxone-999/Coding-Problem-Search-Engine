@@ -1,47 +1,135 @@
-House Cleaning
+Maximum Topological Sort
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Jane lives in N-dimensional space. Her house is a N-dimensional hypercube, with the centre located in the origin, with each edge having length equal to 2. There is a room in every vertex of the hypercube. The room can be denoted with N it's coordinates. For any two rooms, there is a corridor between them if the square of the euclidean distance is no more than D units.
-Sometimes, Jane wants to make a clean-up in her house. In order to do that, she needs to visit all the rooms. She starts with a room with the coordinates (S1, S2, ... SN) and then wants to move through all the rooms via corridors in such a way that she will visit all the rooms, and, at the same time, won't visit any room twice (she does not want to step on a floor which is not dried yet).
-Please find such a route for Jane or state that it's impossible to find one.
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef has a tree
+G with
+N nodes (numbered
+1 through
+N) and
+N−1 undirected edges. For each node
+u in the tree, he can assign directions to the edges in such a way that
+u is reachable from all the other nodes. Let
+C
+u
+be the number of valid topological orderings in the resulting directed acyclic graph.
+This way, Chef obtains
+N pairs
+(C
+1
+,1),(C
+2
+,2),…,(C
+N
+,N) and he sorts all these pairs
+(C
+i
+,i) in descending order (first by
+C
+i
+and in the case of a tie by
+i).
+For example, consider the tree below:
+The sorted list of pairs is
+((2,2),(1,3),(1,1)).
+Chef quizzes you on this list ― he wants you to find the
+K-th pair in the sorted list. To make that task easier, Chef only asks for
+K=1 (the largest pair) or
+K=2 (the second largest pair). Since the number of topological orderings can be very large, compute it modulo
+10
+9
++7.
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains two space separated integers N and D denoting the number of dimensions of the space Jane lives in and the square of the maximal euclidean distance between two rooms, connected via corridor.
-The second line contains N space-separated integers S1, S2, ..., SN denoting the coordinates of the room where Jane starts the cleaning.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+K.
+Each of the next
+N−1 lines contains two space-separated integers
+u and
+v, denoting that nodes
+u and
+v are connected by an edge.
 Output
-For each test case output:
-if the a route exists output 2N lines, each containing N space separated integers, denoting the coordinates of the corresponding room in the route. For every test case, the coordinates of the first room in the route should coincide with the given location. If there is more than one solution, you can print any one of them.
-if such a route doesn't exist, output just -2 on the separate line.
+For each test case, print a single line containing two space-separated integers
+u and
+C
+u
+modulo
+10
+9
++7, where
+(C
+u
+,u) is the
+K-th pair in the sorted list.
 Constraints
-Subtask 1 (7 points):
-1 ≤ T ≤ 4
-2 ≤ N ≤ 14
-D = 4N
-Subtask 2 (9 points):
-1 ≤ T ≤ 100
-2 ≤ N ≤ 3
-1 ≤ D ≤ 16N
-Subtask 3 (13 points):
-1 ≤ T ≤ 100
-2 ≤ N ≤ 4
-1 ≤ D ≤ 16N
-Subtask 4 (71 point):
-1 ≤ T ≤ 4
-2 ≤ N ≤ 14
-1 ≤ D ≤ 16N
+1≤T≤5
+1≤N≤5⋅10
+5
+1≤K≤2
+1≤u,v≤N
+the graph described on the input is a tree
+the sum of
+N over all test cases does not exceed
+5⋅10
+5
+Subtasks
+Subtask #1 (10 points):
+N≤10
+Subtask #2 (30 points):
+K=1
+Subtask #3 (60 points):
+K=2
 Sample 1:
 Input
 Output
-2
-2 5
--1 -1
-4 3
-1 -1 1 -1
--1 -1
-1 -1
-1 1
--1 1
--2
+1
+4 2
+1 2
+2 3
+2 4
+4 2
 Explanation:
-Example case 1. It is easy to see that the square of the euclidean distance between any two adjacent rooms in the route will not exceed D = 5.
-Example case 2. It is clearly impossible to accomplish the task.
+Example case 1: The tree is
+For
+u=1, there are
+C
+1
+=2 possible topological orderings:
+(3,4,2,1) and
+(4,3,2,1)
+For
+u=2, there are
+C
+2
+=6 possible topological orderings:
+(3,4,1,2),
+(4,3,1,2),
+(3,1,4,2),
+(4,1,3,2),
+(1,3,4,2) and
+(1,4,3,2).
+For
+u=3, there are
+C
+3
+=2 possible topological orderings:
+(1,4,2,3) and
+(4,1,2,3).
+For
+u=4, there are
+C
+4
+=2 possible topological orderings:
+(3,1,2,4) and
+(1,3,2,4).
+The sorted list of pairs is
+((6,2),(2,4),(2,3),(2,1)). The node for the
+2-nd pair is
+4 and the corresponding number of topological orderings modulo
+10
+9
++7 is
+2.

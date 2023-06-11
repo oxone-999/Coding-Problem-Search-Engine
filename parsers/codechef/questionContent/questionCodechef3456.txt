@@ -1,50 +1,104 @@
-The Counties
+Black-and-White Tree
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-The map of Ancient ChefLand can be represented as a graph with N nodes, denoting the cities and N-1 edges, denoting the roads connecting these cities. It was possible to get from any city of Ancient ChefLand to any other one using only these roads, possibly, via some intermediate cities in a unique simple path. So, in other words, the city-road structure of this country could be represented as a tree.
-There were M counties in the ChefLand, numbered 1 through M. Each county had a country, consisting of at least one city. Because of the constant wars between the counties, it was not guaranteed that it is possible to get from one city of the county to any other city of this county only via the cities, belonging to the county.
-Sometimes, the counties were in battles against each other. The battle could be defined by a pair of integers (Vi and Ci), denoting that the counties Ci attacked a city Vi. Sometimes, the counties could attack their own cities, by a mistake.
-Sergey studies the history of Ancient ChefLand. Now he read about the attacks of the cities and now he wonders to know the distance to the closest city to the attacked one, which belongs to the attacker county. In other words, for each query he wants to find minimal distance to any city of the county Ci from the city Vi. Please help him to find these values.
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+Chefland is a country with
+N cities (numbered
+1 through
+N) connected by
+N−1 bidirectional roads. It is possible to travel from each city to any other city using the roads. Moreover, each city is specialised in either black or white chocolate.
+Chef wants to construct three new restaurants. However, he is still not sure where to build them. You should answer
+Q queries; in each query, Chef gives you two cities
+L and
+R and you should find the number of ways to choose a set of three distinct cities that satisfies the following conditions:
+The chosen cities belong to the shortest path between the cities
+L and
+R (both inclusive).
+For any two chosen cities (let's denote them by
+u and
+v;
+u
+
+=v), there is at least one city specialised in black chocolate on the shortest path between the cities
+u and
+v (both inclusive).
 Input
-The first line of the input contains two space-separated integer numbers N and M, denoting the number of the cities and the number of counties.
-The second line contains N space separated integer numbers Oi, denoting the county owning the ith city.
-Each of the following N-1 lines contains two space-separated numbers Xj Yj, denoting a road connecting the cities Xj and Yj.
-The following line contains an integer number Q, denoting the number of attacks.
-Each of Q following lines contains two space-separated integers Vi Ci, denoting an attack. For this pair of integers you will need to find the minimal distance from any city belonging to the county Ci to the city Vi.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+. For each valid
+i,
+A
+i
+=1 if the
+i-th city is specialised in black chocolate or
+0 if it is specialised in white chocolate.
+Each of the following
+N−1 lines contains two space-separated integers
+x and
+y denoting that cities
+x and
+y are connected by a road.
+The next line contains a single integer
+Q.
+Each of the following
+Q lines contains two space-separated integers
+L and
+R describing a query.
 Output
-For each of Q queries, output the sought minimal distance on a separate line.
+For each query, print a single line containing one integer — the number of ways to choose three cities.
 Constraints
-1 ≤ M ≤ N
-1 ≤ Oi ≤ M
-1 ≤ Ci ≤ M
-1 ≤ Vi ≤ N
-1 ≤ Xi, Yi ≤ N
-For each county there is at least one city, belonging to this county.
-Subtask 1 (15 points): 1 ≤ N, Q ≤ 100
-Subtask 2 (26 points): 1 ≤ N, Q ≤ 4000
-Subtask 3 (25 points): 1 ≤ N, Q ≤ 105
-Subtask 4 (34 points): 1 ≤ N, Q ≤ 5 × 105. The time limit for this subtask is 5 seconds.
-The time limit for subtasks 1-3 is 2 seconds.
-  Example
-Input:
-6 5
-3 5 1 1 4 2
-3 6
-2 3
-4 3
-6 1
-3 5
-6
-3 5
-2 3
-2 1
-4 4
-1 1
-4 2
-Output:
+1≤T≤5
+1≤N,Q≤10
+5
+0≤A
+i
+≤1 for each valid
+i
+1≤x,y≤N
+1≤L,R≤N
+Sample 1:
+Input
+Output
 1
-3
+12
+1 1 0 0 1 0 1 1 0 1 1 1
+1 10
+5 1
+7 6
+6 12
+4 6
+1 6
+2 6
+11 1
+3 1
+1 9
+8 1
+9
+8 4
+2 9
+3 8
+6 12
+2 9
+1 9
+7 12
+1 5
+10 6
+2
+4
 1
-2
-2
-2
+0
+4
+0
+1
+0
+1

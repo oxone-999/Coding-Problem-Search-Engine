@@ -1,75 +1,72 @@
-Chef and Balls
+Dinner by Candlelight
 Problem
-Read problems statements in Mandarin Chinese and Russian as well.
-Chef has bought ten balls of five colours. There are two balls of each colour. Balls of same colour have same weight. Let us enumerate colours by numbers from 1 to 5. Chef knows that all balls, except two (of same colour), weigh exactly one kilogram. He also knows that each of these two balls is exactly 1 kg heavier than other balls.
-You need to find the colour which balls are heavier than others.
-To do that, you can use mechanical scales with two weighing pans. As your scales are very accurate, you can know the exact difference of weights of objects from first and second pans. Formally, the scales will give you the difference (signed difference) of weights of the objects put into the first pan and the second pan. See the following examples for details.
-If you put two balls of the same colour on your scales, each ball to one pan, the scales will tell you that difference is "0".
-But if you put into the first pan some balls of total weight 3 kg, and into the second pan of 5 kg, then scales will tell you "-2" because the second pan is 2 kg heavier than first.
-Similarly, if you put 5 kg weight in first pan and 3 kg in the second pan, then scale will tell you "2" as first pan is 2 kg heavier than second.
-Input & Output
-The interaction process have two phases. At first phase you perform sequence of weighings on the mechanical scales. At the second phase you should output the colour of the heavier balls.
-To use the mechanical scales, you should print "1"(without quotes) and then print two lines, the first line will describe the enumeration of colours of balls on the first pan and second line should that of second pan.
-To describe some pan, you need to print one integer n - the number of balls you put in this pan, followed by n space-separated integers - colours of the balls you put in this pan.
-Once you have printed required data, you can read from the standard input one integer - the difference of weights of the first and the second pans.
-To output the colour of the heavier balls, you should print "2"(without quotes) and one integer in next line - colour of the heavier balls.
+Read problem statements in Russian
+Chef is having a candlelit dinner with his girlfriend at his place. Currently, it is time
+0, Chef just managed to light a candle, but he is out of matchsticks.
+Since Chef has an infinite supply of (unlit) candles, he can use the following strategy: each second (starting at time
+0), he takes one lit candle and lights up
+X other candles using it. This process takes
+1 unit of time to complete, i.e. if Chef starts lighting up
+X candles at a time
+t
+1
+, he is able to finish at the time
+t
+1
++1.
+However, since candle wax is limited, a candle can only burn for
+Y units of time and then it is extinguished.
+Chef's girlfriend arrives at a time
+A — specifically, after all the candles that were supposed to get extinguished at time
+A have been extinguished and after Chef lights up all the candles that he was lighting up since time
+A−1. Now Chef wants to know the maximum number of candles which can be lit at the time
+A to impress his girlfriend.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains three space-separated integers
+A,
+Y and
+X.
+Output
+For each test case, print a single line containing one integer — the maximum number of lit candles Chef can impress his girlfriend with.
 Constraints
-Each colour you print should be between 1 and 5.
-In each weighings, you can use at most two balls of same colour.
-Note that you can use scales as much times as you want (even zero).
-Once your program printed the colour of the heavier balls, it should finish its work, i.e. you should exit the program.
-Do not forget to flush standard output after each line you print.
+1≤T≤10
+5
+1≤A,Y,X≤10
+9
 Subtasks
-If you output incorrect colour (i.e. colour you printed is not that of heavier balls), your score will be zero.
-Let K will be the number of times you used scales.
-Then your score will be 100/K points.
-Please note that if K equals to zero, your score also will also be 100 points.
-Example 1
-Please note that the content in left side denotes output of your program where content in the right side denotes the response of judge which you should read as input.
-Input and Output
+Subtask #1 (40 points):
+A≥Y
+Subtask #2 (60 points): original constraints
+Sample 1:
+Input
+Output
+3
+1 1 1
+1 2 1
+2 2 1
 1
-1 1
-1 1 
-     0
-1
-1 1
-1 5
-     -1
 2
-5
-Example 2
-Input and Output
-1
-3 1 2 5
-0
-     4
-1
-0
-1 2
-     -1
-1
-0
-1 5
-     -2
 2
-5
-Explanation
-In the first example, you first printed :
-1
-1 1
-1 1
-This means that you want to use the scale. Each of the first and second pan has one ball of colour 1. Don't forget to flush the standard output after printing this.
-After that you should read the input, the difference of weights between the two pans, in this case, it will be 0.
-Now you printed :
-1
-1 1
-1 5
-It means, that you decided to use scale again. Now first pan contains one ball of colour 1 and the second pan contains one ball of colour 5.
-Now, you should read the input, the difference of weights between the two pans, in this case, it will be -1.
-Now, you realize that ball of colour 5 is heavier than of colour 1. It means that 5th colour is the colour of heaviest ball. So your print 2 followed by 5 in separate lines and exit your program.
-You have used scale total 2 times. Hence your score will be 100/2 = 50.
-In the second example, your score will be 100 / 3 = 33.3333333
-Notes
-Please note that clearing the output buffer can be done by using fflush(stdout) command or by setting the proper type of buffering at the beginning of the execution - setlinebuf(stdout). Failure to flush the output buffer will result in Time Limit Exceeded verdict.
-There are 5 test files. For each of the test file, score you will get is described above. The total sum of scores of your program for all the test files will be displayed on the contest page. This will be considered your final score for the problem.
-Total points awarded for this problem will be equal to (your score) / (best score achieved in the contest) * 100.
+Explanation:
+Example case 1: At the time
+0, there is one lit candle, using which we light
+1 more candle. At the time
+1, the starting candle gets extinguished and the candle which we started lighting up at the time
+0 is lit, so we have only
+1 candle lit up when Chef's girlfriend arrives.
+Example case 2: At the time
+0, there is one lit candle, using which we light
+1 more candle. At the time
+1, the candle which we started lighting up at the time
+0 and the starting candle are both lit.
+Example case 3: At the time
+0, there is one lit candle, using which we light
+1 more candle. At the time
+1, the candle which we started lighting up at time
+0 is lit, and we start lighting up one more candle. At the time
+2, the starting candle gets extinguished and the candle which we started lighting up at the time
+1 is lit. In total, we have
+2 lit candles when Chef's girlfriend arrives.

@@ -1,45 +1,36 @@
-A-E Hash Function
+A String Game
 Problem
-Chef Ash and Chef Elsh invented a new hash function! Their hash function will map a binary string consisting of characters 'A' and 'E' into an integer called the hash value of the string.
-The pseudocode of the hash function is as below. hash(S) is the hash value of a binary string S. |S| denotes the length of S.
-function hash(S):
- result = number of characters 'A' in S
- if |S| > 1:
-  (S1, S2) = split(S)
-  result = result + max(hash(S1), hash(S2))
- end if
- return result
-end function
-The function split in the above pseudocode takes a binary string S as the parameter and returns a pair of binary strings (S1, S2) such that:
-|S1| <= |S2|.
-The difference of |S1| and |S2| is at most 1.
-The concatenation of S1 and S2 (in that order) is S.
-For example, split("AAAEE") returns ("AA", "AEE"), whereas split("AEAEAE") returns ("AEA", "EAE").
-You doubt that this hash function have good distribution of different hash values. So, you wonder how many different binary strings consisting of A 'A' characters and E 'E' characters that have hash value of V.
+Teddy and Tracy like to play a game based on strings. The game is as follows. Initially, Tracy writes a long random string on a whiteboard. Then, each player starting with Teddy makes turn alternately. Each turn, the player must erase a contiguous substring that exists in the dictionary. The dictionary consists of N words.
+Of course, the player that can't erase any substring in his turn loses the game, and the other player is declared the winner.
+Note that after a substring R is erased, the remaining substring becomes separated, i.e. they cannot erase a word that occurs partially to the left of R and partially to the right of R.
+Determine the winner of the game, assuming that both players play optimally.
 Input
-The first line contains a single integer T, the number of test cases. T test cases follow. Each testcase consists of a single line consisting of three integers A, E, and V.
+The first line contains a single integer T, the number of test cases. T test cases follow. The first line of each testcase contains a string S, the string Tracy writes on the whiteboard. The next line contains a single integer N. N lines follow. The i-th line contains a single string wi, the i-th word in the dictionary.
 Output
-For each test case, output a single line consisting the number of different binary strings satisfying the rule, modulo 1000000007.
+For each test case, output a single line containing the name of the winner of the game.
 Constraints
-1 ≤ T ≤ 1000
-0 ≤ A ≤ 50
-0 ≤ E ≤ 50
-0 ≤ V ≤ 1000
+1 <= T <= 5
+1 <= N <= 30
+1 <= |S| <= 30
+1 <= |wi| <= 30
+S and wi contain only characters 'a'-'z'
 Sample 1:
 Input
 Output
-4
-0 0 0
-1 0 1
-3 2 6
-4 2 8
-1
-1
 3
+codechef
+2
+code
+chef
+foo
+1
+bar
+mississippi
 4
-Explanation:
-For the last test case, the solutions are:
-AAEAAE
-AEAAAE
-AAEAEA
-AEAAEA
+ssissi
+mippi
+mi
+ppi
+Tracy
+Tracy
+Teddy

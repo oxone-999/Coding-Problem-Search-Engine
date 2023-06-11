@@ -1,117 +1,127 @@
-B. Serval and Inversion Magic
+A. Serval and Mocha's Array
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Serval has a string
-s
-that only consists of 0 and 1 of length
-n
-. The
-i
--th character of
-s
-is denoted as
-s
-i
-, where
-1≤i≤n
+Mocha likes arrays, and Serval gave her an array consisting of positive integers as a gift.
+Mocha thinks that for an array of positive integers
+a
+, it is good iff the greatest common divisor of all the elements in
+a
+is no more than its length. And for an array of at least
+2
+positive integers, it is beautiful iff all of its prefixes whose length is no less than
+2
+are good.
+For example:
+[3,6]
+is not good, because
+gcd(3,6)=3
+is greater than its length
+2
 .
-Serval can perform the following operation called Inversion Magic on the string
-s
-:
-Choose an segment
-[l,r]
-(
-1≤l≤r≤n
-). For
-l≤i≤r
-, change
-s
-i
-into 1 if
-s
-i
-is 0, and change
-s
-i
-into 0 if
-s
-i
-is 1.
-For example, let
-s
-be 010100 and the segment
-[2,5]
-is chosen. The string
-s
-will be 001010 after performing the Inversion Magic.
-Serval wants to make
-s
-a palindrome after performing Inversion Magic exactly once. Help him to determine whether it is possible.
-A string is a palindrome iff it reads the same backwards as forwards. For example, 010010 is a palindrome but 10111 is not.
+[1,2,4]
+is both good and beautiful, because all of its prefixes whose length is no less than
+2
+, which are
+[1,2]
+and
+[1,2,4]
+, are both good.
+[3,6,1]
+is good but not beautiful, because
+[3,6]
+is not good.
+Now Mocha gives you the gift array
+a
+of
+n
+positive integers, and she wants to know whether array
+a
+could become beautiful by reordering the elements in
+a
+. It is allowed to keep the array
+a
+unchanged.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
-10
-4
+1≤t≤500
 ). The description of the test cases follows.
 The first line of each test case contains a single integer
 n
 (
-2≤n≤
-10
-5
-) — the length of string
-s
+2≤n≤100
+) — the length of array
+a
 .
-The second line of each test case contains a binary string
-s
-of length
+The second line of each test case contains
 n
-. Only characters 0 and 1 can appear in
-s
-.
-It's guaranteed that the sum of
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
-over all test cases does not exceed
-2⋅
+(
+1≤
+a
+1
+,
+a
+2
+,…,
+a
+n
+≤
 10
-5
+6
+) — the elements of array
+a
 .
 Output
-For each test case, print Yes if
-s
-can be a palindrome after performing Inversion Magic exactly once, and print No if not.
+For each test case, print Yes if it is possible to reorder the elements in
+a
+to make it beautiful, and print No if not.
 You can output Yes and No in any case (for example, strings yEs, yes, Yes and YES will be recognized as a positive response).
 Example
 input
 Copy
+6
+2
+3 6
 3
+1 2 4
+3
+3 6 1
+3
+15 35 21
 4
-1001
+35 10 35 14
 5
-10010
-7
-0111011
+1261 227821 143 4171 1941
 output
 Copy
+No
 Yes
 Yes
 No
+Yes
+Yes
 Note
-In the first test case, Serval can perform Inversion Magic on the segment
-[1,4]
-. The string
-s
-will be 0110 after the magic.
-In the second test case, Serval can perform Inversion Magic on the segment
-[1,3]
-. The string
-s
-will be 01110 after the magic.
-In the third test case, Serval can't make
-s
-a palindrome by performing Inversion Magic exactly once.
+In the first test case, neither
+[3,6]
+nor
+[6,3]
+are beautiful, so it's impossible to obtain a beautiful array by reordering the elements in
+a
+.
+In the second test case,
+[1,2,4]
+is already beautiful. Keeping the array
+a
+unchanged can obtain a beautiful array.

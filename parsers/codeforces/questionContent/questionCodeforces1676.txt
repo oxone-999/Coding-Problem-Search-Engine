@@ -1,210 +1,135 @@
-D. Lost Tree
-time limit per test3 seconds
-memory limit per test256 megabytes
+F1. Falling Sand (Easy Version)
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem.
-Little Dormi was faced with an awkward problem at the carnival: he has to guess the edges of an unweighted tree of
+This is the easy version of the problem. The difference between the versions is the constraints on
+a
+i
+. You can make hacks only if all versions of the problem are solved.
+Little Dormi has recently received a puzzle from his friend and needs your help to solve it.
+The puzzle consists of an upright board with
 n
-nodes! The nodes of the tree are numbered from
-1
-to
-n
-.
-The game master only allows him to ask one type of question:
-Little Dormi picks a node
-r
-(
-1≤r≤n
-), and the game master will reply with an array
-d
+rows and
+m
+columns of cells, some empty and some filled with blocks of sand, and
+m
+non-negative integers
+a
 1
 ,
-d
+a
 2
 ,…,
-d
-n
-, where
-d
+a
+m
+(
+0≤
+a
 i
-is the length of the shortest path from node
-r
+≤n
+). In this version of the problem,
+a
+i
+will be equal to the number of blocks of sand in column
+i
+.
+When a cell filled with a block of sand is disturbed, the block of sand will fall from its cell to the sand counter at the bottom of the column (each column has a sand counter). While a block of sand is falling, other blocks of sand that are adjacent at any point to the falling block of sand will also be disturbed and start to fall. Specifically, a block of sand disturbed at a cell
+(i,j)
+will pass through all cells below and including the cell
+(i,j)
+within the column, disturbing all adjacent cells along the way. Here, the cells adjacent to a cell
+(i,j)
+are defined as
+(i−1,j)
+,
+(i,j−1)
+,
+(i+1,j)
+, and
+(i,j+1)
+(if they are within the grid). Note that the newly falling blocks can disturb other blocks.
+In one operation you are able to disturb any piece of sand. The puzzle is solved when there are at least
+a
+i
+blocks of sand counted in the
+i
+-th sand counter for each column from
+1
 to
-i
-, for all
-1≤i≤n
+m
 .
-Additionally, to make the game unfair challenge Little Dormi the game master will allow at most
-⌈
-n
-2
-⌉
-questions, where
-⌈x⌉
-denotes the smallest integer greater than or equal to
-x
-.
-Faced with the stomach-churning possibility of not being able to guess the tree, Little Dormi needs your help to devise a winning strategy!
-Note that the game master creates the tree before the game starts, and does not change it during the game.
+You are now tasked with finding the minimum amount of operations in order to solve the puzzle. Note that Little Dormi will never give you a puzzle that is impossible to solve.
 Input
-The first line of input contains the integer
+The first line consists of two space-separated positive integers
 n
-(
-2≤n≤2000
-), the number of nodes in the tree.
-You will then begin interaction.
-Output
-When your program has found the tree, first output a line consisting of a single "!" followed by
-n−1
-lines each with two space separated integers
-a
 and
-b
-, denoting an edge connecting nodes
-a
-and
-b
+m
 (
-1≤a,b≤n
-). Once you are done, terminate your program normally immediately after flushing the output stream.
-You may output the edges in any order and an edge
-(a,b)
-is considered the same as an edge
-(b,a)
-. Answering is not considered as a query.
-Interaction
-After taking input, you may make at most
-⌈
+1≤n⋅m≤400000
+).
+Each of the next
 n
-2
-⌉
-queries. Each query is made in the format "? r", where
-r
-is an integer
-1≤r≤n
-that denotes the node you want to pick for that query.
-You will then receive
-n
-space separated integers
-d
+lines contains
+m
+characters, describing each row of the board. If a character on a line is '.', the corresponding cell is empty. If it is '#', the cell contains a block of sand.
+The final line contains
+m
+non-negative integers
+a
 1
 ,
-d
+a
 2
 ,…,
-d
-n
-, where
-d
+a
+m
+(
+0≤
+a
 i
-is the length of the shortest path from node
-r
-to
+≤n
+) — the minimum amount of blocks of sand that needs to fall below the board in each column. In this version of the problem,
+a
 i
-, followed by a newline.
-After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-If at any point you make an invalid query or try to make more than
-⌈
-n
-2
-⌉
-queries, the interaction will terminate immediately and you will receive a Wrong Answer verdict.
-Hacks
-To hack a solution, use the following format.
-The first line contains the integer
-n
-(
-2≤n≤2000
-).
-The next
-n−1
-lines contain two integers
-u
-and
-v
-(
-1≤u,v≤n
-) denoting an edge between
-u
-and
-v
-(
-u≠v
-). These
-n−1
-edges must form a tree.
+will be equal to the number of blocks of sand in column
+i
+.
+Output
+Print one non-negative integer, the minimum amount of operations needed to solve the puzzle.
 Examples
 input
 Copy
-4
-
-0 1 2 2
-
-1 0 1 1
+5 7
+#....#.
+.#.#...
+#....#.
+#....##
+#.#....
+4 1 1 1 0 3 1
 output
 Copy
-? 1
-
-? 2
-
-!
-4 2
-1 2
-2 3
+3
 input
 Copy
-5
-
-2 2 1 1 0
+3 3
+#.#
+#..
+##.
+3 1 1
 output
 Copy
-? 5
-
-!
-4 5
-3 5
-2 4
-1 3
+1
 Note
-Here is the tree from the first example.
-Notice that the edges can be output in any order.
-Additionally, here are the answers for querying every single node in example
+For example
 1
-:
-1
-:
-[0,1,2,2]
-2
-:
-[1,0,1,1]
+, by disturbing both blocks of sand on the first row from the top at the first and sixth columns from the left, and the block of sand on the second row from the top and the fourth column from the left, it is possible to have all the required amounts of sand fall in each column. It can be proved that this is not possible with fewer than
 3
-:
-[2,1,0,2]
-4
-:
-[2,1,2,0]
-Below is the tree from the second example interaction.
-Lastly, here are the answers for querying every single node in example
-2
-:
-1
-:
-[0,4,1,3,2]
-2
-:
-[4,0,3,1,2]
+operations, and as such the answer is
 3
-:
-[1,3,0,2,1]
-4
-:
-[3,1,2,0,1]
-5
-:
-[2,2,1,1,0]
+. Here is the puzzle from the first example.
+For example
+2
+, by disturbing the cell on the top row and rightmost column, one can cause all of the blocks of sand in the board to fall into the counters at the bottom. Thus, the answer is
+1
+. Here is the puzzle from the second example.

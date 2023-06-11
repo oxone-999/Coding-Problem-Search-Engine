@@ -1,51 +1,9 @@
-A. Divan and a Store
+C. Divan and bitwise operations
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Businessman Divan loves chocolate! Today he came to a store to buy some chocolate. Like all businessmen, Divan knows the value of money, so he will not buy too expensive chocolate. At the same time, too cheap chocolate tastes bad, so he will not buy it as well.
-The store he came to has
-n
-different chocolate bars, and the price of the
-i
--th chocolate bar is
-a
-i
-dollars. Divan considers a chocolate bar too expensive if it costs strictly more than
-r
-dollars. Similarly, he considers a bar of chocolate to be too cheap if it costs strictly less than
-l
-dollars. Divan will not buy too cheap or too expensive bars.
-Divan is not going to spend all his money on chocolate bars, so he will spend at most
-k
-dollars on chocolates.
-Please determine the maximum number of chocolate bars Divan can buy.
-Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤100
-). Description of the test cases follows.
-The description of each test case consists of two lines. The first line contains integers
-n
-,
-l
-,
-r
-,
-k
-(
-1≤n≤100
-,
-1≤l≤r≤
-10
-9
-,
-1≤k≤
-10
-9
-) — the lowest acceptable price of a chocolate, the highest acceptable price of a chocolate and Divan's total budget, respectively.
-The second line contains a sequence
+Once Divan analyzed a sequence
 a
 1
 ,
@@ -54,70 +12,153 @@ a
 ,…,
 a
 n
-(
-1≤
+consisting of
+n
+non-negative integers as follows. He considered each non-empty subsequence of the sequence
 a
-i
-≤
+, computed the bitwise XOR of its elements and added up all the XORs, obtaining the coziness of the sequence
+a
+.
+A sequence
+c
+is a subsequence of a sequence
+d
+if
+c
+can be obtained from
+d
+by deletion of several (possibly, zero or all) elements. For example,
+[1,2,3,4]
+,
+[2,4]
+, and
+[2]
+are subsequences of
+[1,2,3,4]
+, but
+[4,3]
+and
+[0]
+are not.
+Divan was very proud of his analysis, but now he lost the sequence
+a
+, and also the coziness value! However, Divan remembers the value of bitwise OR on
+m
+contiguous subsegments of the sequence
+a
+. It turns out that each element of the original sequence is contained in at least one of these
+m
+segments.
+Divan asks you to help find the coziness of the sequence
+a
+using the information he remembers. If several coziness values are possible, print any.
+As the result can be very large, print the value modulo
 10
 9
-) integers — the prices of chocolate bars in the store.
++7
+.
+Input
+The first line contains one integer number
+t
+(
+1≤t≤
+10
+3
+) — the number of test cases.
+The first line of each test case contains two integer numbers
+n
+and
+m
+(
+1≤n,m≤2⋅
+10
+5
+) — the length of the sequence and the number of contiguous segments whose bitwise OR values Divan remembers, respectively.
+The following
+m
+lines describe the segments, one per line.
+Each segment is described with three integers
+l
+,
+r
+, and
+x
+(
+1≤l≤r≤n
+,
+0≤x≤
+2
+30
+−1
+) — the first and last elements of the segment and the bitwise OR of
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+, respectively.
+It is guaranteed that each element of the sequence is contained in at least one of the segments. It is guaranteed that there exists a sequence that satisfies all constraints.
+It is guaranteed that the sum of
+n
+and the sum of
+m
+over all test cases do not exceed
+2⋅
+10
+5
+.
 Output
-For each test case print a single integer — the maximum number of chocolate bars Divan can buy.
+For each test case print the coziness any suitable sequence
+a
+modulo
+10
+9
++7
+.
 Example
 input
 Copy
-8
-3 1 100 100
-50 100 50
-6 3 5 10
-1 2 3 4 5 6
-6 3 5 21
-1 2 3 4 5 6
-10 50 69 100
-20 30 40 77 1 1 12 4 70 10000
-3 50 80 30
-20 60 70
-10 2 7 100
-2 2 2 2 2 7 7 7 7 7
-4 1000000000 1000000000 1000000000
-1000000000 1000000000 1000000000 1000000000
-1 1 1 1
-1
+3
+2 1
+1 2 2
+3 2
+1 3 5
+2 3 5
+5 4
+1 2 7
+3 3 7
+4 4 0
+4 5 2
 output
 Copy
-2
-2
-3
-0
-0
-10
-1
-1
+4
+20
+112
 Note
-In the first example Divan can buy chocolate bars
-1
-and
-3
-and spend
-100
-dollars on them.
-In the second example Divan can buy chocolate bars
-3
-and
+In first example, one of the sequences that fits the constraints is
+[0,2]
+. Consider all its non-empty subsequences:
+[0]
+: the bitwise XOR of this subsequence is
+0
+;
+[2]
+: the bitwise XOR of this subsequence is
+2
+;
+[0,2]
+: the bitwise XOR of this subsequence is
+2
+.
+The sum of all results is
 4
-and spend
-7
-dollars on them.
-In the third example Divan can buy chocolate bars
-3
-,
-4
-, and
-5
-for
-12
-dollars.
-In the fourth example Divan cannot buy any chocolate bar because each of them is either too cheap or too expensive.
-In the fifth example Divan cannot buy any chocolate bar because he considers the first bar too cheap, and has no budget for the second or third.
-In the sixth example Divan can buy all the chocolate bars in the shop.
+, so it is the answer.
+In second example, one of the sequences that fits the constraints is
+[0,5,5]
+.
+In third example, one of the sequences that fits the constraints is
+[5,6,7,0,2]
+.

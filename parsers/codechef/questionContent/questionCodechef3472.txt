@@ -1,124 +1,106 @@
-Escape Plan
+E - Guess the Number
 Problem
-“Animal instinct. When faced with danger, seek refuge in the herd.”
-Jun-Ho has come to know about the escape passage route that VIPs use in case of emergency. Jun-Ho is in the leader's office and he is planning his escape from the building.
-The building has a tree-like structure, with the leader's office as the root. Jun-Ho has obtained information on this structure, in the form of a tree on
-N nodes rooted at
-1. The building has some security, which can be calculated as follows:
-Each node of the tree has a value assigned to it — say,
-A
-i
-for node
-i.
-Let
-u be a leaf node of the tree. The security of
-u is defined to be the bitwise OR of all values on the (unique) path from the root to
-u. Let this value be denoted
-L
-u
-.
-The security of the tree is then defined to be the sum of the security of all its leaf nodes, i.e, the sum of
-L
-u
-across all leaf nodes
-u of the tree.
-The tree is considered to be secure when
-L
-u
->0 for every leaf node
-u of the tree; otherwise it is said to be insecure.
-Jun-Ho would like the security of the tree to be as low as possible when making his escape. To this end, he can perform the following operation zero or more times:
-Pick a node
-1≤u≤N of the tree, and set
-A
-u
-=0.
-However, if the tree ever becomes insecure as a result of an operation, the leader is immediately alerted and will foil Jun-Ho's plan. Thus, Jun-Ho cannot perform an operation that would make the tree insecure.
-Help Jun-Ho find the minimum possible security the tree can have, such that the tree remains secure after every operation.
-Note:
-A leaf is a node of the tree without any child nodes.
-For
-N=1, the root is also considered to be a leaf.
-Given input tree will be secured tree.
-Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N, denoting the number of nodes of the tree.
-The next
-N−1 lines each contain two space-separated integers
-u and
-v, denoting an edge between nodes
-u and
-v in the tree.
-The next line contains
-N space-separated integers
-A
-1
-,A
+Chef has a sorted array
+A of size
+N consisting of
+distinct elements which you
+don’t know. You will be provided with an integer
+X. You have to check whether
+X exists in Chef's array or not. If it exists, find out at which index it exists. You can ask just
+one type of query as follows
+:-
+You can ask at-most
+q such queries. If you ask a question for an index say
+m, then Chef returns the sum of
+K elements of his array starting from index
+m, where
+K =
 2
-,…,A
-N
-— the values of the nodes.
-Output Format
-For each test case, output a single integer denoting the minimum security of the tree.
-Constraints
+i
+and
+i is the maximum value of
+integer such that
+m is perfectly divisible by
+K.
+For Example, if
+m=13 then
+K is
+1, if
+m=8 then
+K is
+8, if
+m=12 then
+K is
+4. So, if say
+m is 12, i.e.
+K is 4, Chef will return sum of A[12] + A[13] + A[14] + A[15].
+NOTE - If you will ask for index greater than
+N then Chef will return
+0.
+NOTE - As for any query Chef will return sum of array elements from
+m to
+m+K−1. So if
+m+K−1 gets larger than
+N then Chef will return sum upto last element of the array.
+For eg :  If size of array is 26 and
+K for
+m = 16 is
+16, so
+m+K−1 is
+31. Chef will return sum of A[16 : 26].
+###Interaction:
+First, you should read a line containing a single integer
+T denoting the number of test cases. The description of interaction for
+T test cases follows-
+For every test case, you have to read two space separated integers
+N and X, for
+subtask 2, N is unknown so when
+N is -1 consider you don't know
+N.
+For each test case, you should start by asking questions as follows- - To ask a question, print a line containing two space separated integer
+1 and
+m.
+ - Then, you must read a line containing a single integer.
+When you think you know index of
+X in Chef's array, print a line containing two space separated integers
+2 and index of
+X.
+If
+X is not present in Chef's array, print a line containing two space separated integers
+2 and
+−1.
+Then, you must read a line containing a single string
+Yes or
+No. If this string is
+Yes, you should continue solving the remaining test cases, otherwise your answer was incorrect and you should immediately terminate your program to receive the
+Wrong Answer verdict.
+Don't forget to flush the output after printing each line!
+###Constraints
 1≤T≤10
-3
 1≤N≤10
 6
-0≤A
-i
-≤10
-9
-1≤u,v≤N
-The graph given in the input will always be a secured tree
-Sum of
-N over all test cases does not exceed
-10
+1≤X≤10
 6
-.
-Sample 1:
-Input
-Output
-3
-1
-5
-5
-1 2
-1 3
-3 4
-3 5
-5 2 3 1 4
-4
-1 2
-1 3
-1 4
-2 2 2 2
-5
-7
+1≤A[i]≤10
 6
-Explanation:
-Test Case 1: No operation can be done, and the minimum security of the tree is thus
-5.
-Test Case 2: Set
-A
-1
-and
-A
+###Subtasks
+30 points :
+N is known. -
+1≤N≤10
 3
-to
-0. It can be seen that
-L
-2
-=2,
-L
-4
-=1 and
-L
+- You can ask at most max(44, N) queries. That is,
+q=max(44,N).
+30 points :
+N is known -
+1≤N≤10
 5
-=4; so every leaf has positive security. The security of the tree is
-2+1+4=7, and this is the minimum attainable.
-Test Case 3: The given tree already has minimum security, that being
-6.
+-
+q=44
+65 points :
+N is unknown (N = -1) -
+1≤N≤10
+6
+-
+q=44
+###Example: You Grader 1 7 8 1 3
+8 2 3 Yes

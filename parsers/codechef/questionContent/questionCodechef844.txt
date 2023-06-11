@@ -1,38 +1,27 @@
-Cards Game
+Please like me
 Problem
-Let us play a game of cards. As you all know there are 52 cards in a regular deck, but our deck is somewhat different. Our deck consists of N cards. Each card simply contains a unique number from 1 to N. Initially all the cards are kept on the table, facing up. Rob, the notorious kid, flipped some of the cards, i.e. made them face down. Now, your task is to print any valid sequence of magic operations (as defined below) such that after a maximum of K magic operations, all the cards are facing upwards only.
-A magic operation on card at position i consists of flipping its direction from up to down and vice versa. Also, if there exists a card on its right side, i.e. at position (i+1), that is also flipped.
-Print the index of the cards that you are going to perform the magic operation on.
+Read problems statements in Mandarin Chinese and Russian.
+In a far away dystopian world, the measure of the quality of a person’s life is the numbers of likes he gets for an article about their life. For a person to stay alive, he has to acquire at least L number of likes before D days pass.
+People in this world employ various techniques to increase the number of likes. One of the famous ones is to dis-like and re-like their own article once per day. On doing so you can assume that the number of likes for the post increase by a constant factor C.
+So if one starts with S likes on Day-1, he would have D2 = S + C * S likes on Day-2, D3 = D2 + D2 * C on Day-3 etc. You are to answer if the person would survive at the end of Day-D or not.
 Input
-Input consists of 2 lines. The first line contains 2 integers N and K, denoting the number of cards in our deck and the maximum possible number of moves allowed.
-The second line contains N integers, whose absolute value lies from 1 to N. If a number is less than 0, it is initially facing down, else it is facing upwards.
-It is guaranteed that all the absolute values on the cards are unique.
+First line contains a single positive integer T denoting the number of test cases. The following T lines represent a test case each. Each test case contains 4 space-separated integers L, D, S and C.
 Output
-Output on the first line an integer X, denoting the number of operations you intend to make for making all the cards face upwards. This integer should be less than or equal to K.
-On the next line of the output, print X space separated integers, denoting the order in which you want to carry on the magic operations on any of the N cards.
-Note: You have to print the index of the cards that you are going to perform the magic operation on.
-If there exist multiple solutions, output any of them
+For each test case, print a single line containing “ALIVE AND KICKING” if the person would live, otherwise print, “DEAD AND ROTTING”.
 Constraints
-1 ≤ N ≤ 1000
-N ≤ K ≤ max(5000, N * N)
+1 <= T <= 1000
+1 <= L <= 1000000000
+1 <= D <= 1000000000
+1 <= S <= 1000000000
+1 <= C <= 1000000000
 Sample 1:
 Input
 Output
-3 4
-1 2 3
-0
-Explanation:
-All the cards are already facing up.
-Sample 2:
-Input
-Output
-5 12
-4 -2 3 -1 5
 2
-2 3
+5 1 5 1
+10 2 2 2
+ALIVE AND KICKING
+DEAD AND ROTTING
 Explanation:
-Below sequence shows the cards after every magic operation:
-t = 0,    4 -2  3 -1 5
-t = 1,    4  2 -3 -1 5
-t = 2,    4  2  3  1 5
-Finally all the cards are now facing upwards and the number of steps are also less than k i.e. 12.
+In the first case by the end of Day-1 we would be having S that is 5 number of likes, as it is ? L, the answer is ALIVE AND KICKING.
+In the second case, D2 =S + C*S, therefore D2 = 2 + 2 * 2 = 6, as 6 is less than 10, the answer is DEAD AND ROTTING.

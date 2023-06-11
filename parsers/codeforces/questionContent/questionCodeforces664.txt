@@ -1,86 +1,139 @@
-A. Burenka Plays with Fractions
+C. Corners
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Burenka came to kindergarden. This kindergarten is quite strange, so each kid there receives two fractions (
-a
-b
-and
-c
-d
-) with integer numerators and denominators. Then children are commanded to play with their fractions.
-Burenka is a clever kid, so she noticed that when she claps once, she can multiply numerator or denominator of one of her two fractions by any integer of her choice (but she can't multiply denominators by
+You are given a matrix consisting of
+n
+rows and
+m
+columns. Each cell of this matrix contains
 0
-). Now she wants know the minimal number of claps to make her fractions equal (by value). Please help her and find the required number of claps!
+or
+1
+.
+Let's call a square of size
+2×2
+without one corner cell an L-shape figure. In one operation you can take one L-shape figure, with at least one cell containing
+1
+and replace all numbers in it with zeroes.
+Find the maximum number of operations that you can do with the given matrix.
 Input
 The first line contains one integer
 t
 (
-1≤t≤
-10
-4
+1≤t≤500
 ) — the number of test cases. Then follow the descriptions of each test case.
-The only line of each test case contains four integers
-a
-,
-b
-,
-c
+The first line of each test case contains two integers
+n
 and
-d
+m
 (
-0≤a,c≤
-10
-9
-,
-1≤b,d≤
-10
-9
-) — numerators and denominators of the fractions given to Burenka initially.
+2≤n,m≤500
+) — the size of the matrix.
+Each of the following
+n
+lines contains a binary string of length
+m
+— the description of the matrix.
+It is guaranteed that the sum of
+n
+and the sum of
+m
+over all test cases does not exceed
+1000
+.
 Output
-For each test case print a single integer — the minimal number of claps Burenka needs to make her fractions equal.
+For each test case output the maximum number of operations you can do with the given matrix.
 Example
 input
 Copy
-8
-2 1 1 1
-6 3 2 1
-1 2 2 3
-0 1 0 100
-0 1 228 179
-100 3 25 6
-999999999 300000000 666666666 100000000
-33 15 0 84
+4
+4 3
+101
+111
+011
+110
+3 4
+1110
+0111
+0111
+2 2
+00
+00
+2 2
+11
+11
 output
 Copy
-1
+8
+9
 0
 2
-0
-1
-1
-1
-1
 Note
-In the first case, Burenka can multiply
-c
-by
+In the first testcase one of the optimal sequences of operations is the following (bold font shows l-shape figure on which operation was performed):
+Matrix before any operation was performed:
+1 0 1
+1 1 1
+0 1 1
+1 1 0
+Matrix after
+1
+operation was performed:
+1 0 0
+1 0 1
+0 1 1
+1 1 0
+Matrix after
 2
-, then the fractions will be equal.
-In the second case, fractions are already equal.
-In the third case, Burenka can multiply
-a
-by
+operations were performed:
+1 0 0
+1 0 0
+0 1 1
+1 1 0
+Matrix after
+3
+operations were performed:
+1 0 0
+1 0 0
+0 1 0
+1 1 0
+Matrix after
 4
-, then
-b
-by
-3
-. Then the fractions will be equal (
-1⋅4
-2⋅3
-=
+operations were performed:
+1 0 0
+0 0 0
+0 1 0
+1 1 0
+Matrix after
+5
+operations were performed:
+1 0 0
+0 0 0
+0 1 0
+1 0 0
+Matrix after
+6
+operations were performed:
+1 0 0
+0 0 0
+0 0 0
+1 0 0
+Matrix after
+7
+operations were performed:
+0 0 0
+0 0 0
+0 0 0
+1 0 0
+Matrix after
+8
+operations were performed:
+0 0 0
+0 0 0
+0 0 0
+0 0 0
+In the third testcase from the sample we can not perform any operation because the matrix doesn't contain any ones.
+In the fourth testcase it does not matter which L-shape figure we pick in our first operation. We will always be left with single one. So we will perform
 2
-3
-).
+operations.

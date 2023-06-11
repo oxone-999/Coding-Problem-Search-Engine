@@ -1,52 +1,36 @@
-C. Peterson Polyglot
-time limit per test4 seconds
+A. String Game
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Peterson loves to learn new languages, but his favorite hobby is making new ones. Language is a set of words, and word is a sequence of lowercase Latin letters.
-Peterson makes new language every morning. It is difficult task to store the whole language, so Peterson have invented new data structure for storing his languages which is called broom. Broom is rooted tree with edges marked with letters. Initially broom is represented by the only vertex — the root of the broom. When Peterson wants to add new word to the language he stands at the root and processes the letters of new word one by one. Consider that Peterson stands at the vertex u. If there is an edge from u marked with current letter, Peterson goes through this edge. Otherwise Peterson adds new edge from u to the new vertex v, marks it with the current letter and goes through the new edge. Size of broom is the number of vertices in it.
-In the evening after working day Peterson can't understand the language he made this morning. It is too difficult for bored Peterson and he tries to make it simpler. Simplification of the language is the process of erasing some letters from some words of this language. Formally, Peterson takes some positive integer p and erases p-th letter from all the words of this language having length at least p. Letters in words are indexed starting by 1. Peterson considers that simplification should change at least one word, i.e. there has to be at least one word of length at least p. Peterson tries to make his language as simple as possible, so he wants to choose p such that the size of the broom for his simplified language is as small as possible.
-Peterson is pretty annoyed with this task so he asks you for help. Write a program to find the smallest possible size of the broom and integer p.
+Little Nastya has a hobby, she likes to remove some letters from word, to obtain another word. But it turns out to be pretty hard for her, because she is too young. Therefore, her brother Sergey always helps her.
+Sergey gives Nastya the word t and wants to get the word p out of it. Nastya removes letters in a certain order (one after another, in this order strictly), which is specified by permutation of letters' indices of the word t: a1... a|t|. We denote the length of word x as |x|. Note that after removing one letter, the indices of other letters don't change. For example, if t = "nastya" and a = [4, 1, 5, 3, 2, 6] then removals make the following sequence of words "nastya" "nastya" "nastya" "nastya" "nastya" "nastya" "nastya".
+Sergey knows this permutation. His goal is to stop his sister at some point and continue removing by himself to get the word p. Since Nastya likes this activity, Sergey wants to stop her as late as possible. Your task is to determine, how many letters Nastya can remove before she will be stopped by Sergey.
+It is guaranteed that the word p can be obtained by removing the letters from word t.
 Input
-The first line of input contains integer n (2 ≤ n ≤ 3·105) — the size of the broom.
-Next n - 1 lines describe the broom: i-th of them contains integers ui, vi and letter xi — describing the edge from ui to vi marked with letter xi.
-Vertices are numbered from 1 to n. All xi are lowercase latin letters. Vertex 1 is the root of the broom.
-Edges describe correct broom which is made from Peterson's language.
+The first and second lines of the input contain the words t and p, respectively. Words are composed of lowercase letters of the Latin alphabet (1 ≤ |p| < |t| ≤ 200 000). It is guaranteed that the word p can be obtained by removing the letters from word t.
+Next line contains a permutation a1, a2, ..., a|t| of letter indices that specifies the order in which Nastya removes letters of t (1 ≤ ai ≤ |t|, all ai are distinct).
 Output
-The first line of output should contain the minimum possible size of the broom after its simplification. The second line of output should contain integer p to choose. If there are several suitable p values, print the smallest one.
+Print a single integer number, the maximum number of letters that Nastya can remove.
 Examples
 input
 Copy
-5
-1 2 c
-2 3 a
-3 4 t
-2 5 t
+ababcba
+abb
+5 3 4 1 7 6 2
 output
 Copy
 3
-2
 input
 Copy
-16
-1 2 o
-2 3 f
-1 4 p
-4 5 i
-5 6 e
-6 7 c
-7 8 e
-4 9 r
-9 10 e
-10 11 t
-11 12 t
-12 13 y
-10 14 f
-14 15 i
-15 16 x
+bbbabb
+bb
+1 6 3 4 2 5
 output
 Copy
-12
-2
+4
 Note
-Broom from the second sample test can be built using language "piece", "of", "pie", "pretty", "prefix". Its simplification with p = 2 obtains the language of words "pece", "o", "pe", "petty", "pefix". This language gives us the broom with minimum possible size.
+In the first sample test sequence of removing made by Nastya looks like this:
+"ababcba" "ababcba" "ababcba" "ababcba"
+Nastya can not continue, because it is impossible to get word "abb" from word "ababcba".
+So, Nastya will remove only three letters.

@@ -1,54 +1,117 @@
-(Challenge) Delete DAG
+(Challenge) Building Anthills
 Problem
-###Read problems statements Hindi , Vietnamese , Mandarin Chinese , Russian and Bengali as well.
-You are given a directed acyclic graph with
-N vertices (numbered
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+The queen of ants hired Ada to build their anthill. Ada designed the anthill as
+N rooms (numbered
 1 through
-N) and
-M edges. You want to destroy it all! To destroy the graph, you should delete all of its vertices.
-In one step, you are allowed to delete at most two vertices; you may only delete a vertex when there is no edge from it to another (not yet deleted) vertex. You may not delete two vertices when there is an edge between them either.
-Find a way to destroy the graph in the minimum number of steps.
+N) interconnected by
+M bidirectional roads (numbered
+1 through
+M). For simplicity, let's denote a road that connects rooms
+u and
+v by
+(u,v). At any time, there may be at most one road between any two rooms and roads connecting a room with itself are not allowed.
+Ada started from scratch by building the
+N rooms and choosing the
+M roads that should be built. In order to create the roads, she wants to give instructions to the ants and pay them in antcoins (a very small currency). There are two possible types of instructions:
+K,
+E={(x
+1
+,y
+1
+),(x
+2
+,y
+2
+),…,(x
+K
+,y
+K
+)}: Let
+E be a set of
+K distinct roads. The ants should build all roads in the set
+E that do not already exist. Moreover, for every three distinct rooms
+u,
+v and
+w, if
+(u,v)∈E and
+(v,w)∈E, then the ants should also build the road
+(u,w) if it does not already exist. The cost of this instruction is
+A⋅K antcoins.
+u,
+v: The ants should remove the road
+(u,v) if it exists. The cost of this instruction is
+R antcoins.
+After all the instructions are executed, only the planned
+M roads should be built. Help Ada build the anthill while spending as few antcoins as possible.
 Input
-The first line of the input contains two space-separated integers
-N and
-M.
+The first line of the input contains four space-separated integers
+N,
+M,
+A and
+R.
 Each of the next
 M lines contains two space-separated integers
-U and
-V denoting an edge from vertex
-U to vertex
-V.
+u and
+v denoting a road that connects rooms
+u and
+v.
 Output
-The first line of the output should contain a single integer
-S denoting the minimum number of steps needed to destroy the graph.
-Each of the next
-S lines should describe one step; it should contain an integer
-K (
-1≤K≤2), followed by a space and
-K space-separated integers denoting the numbers of vertices deleted in this step.
-Constraints
-1≤N,M≤10
-6
-the graph on the input does not contain any cycles or self-loops
+First, print a line containing a single integer
+Q ― the number of instructions. Then, print
+Q lines; each of these lines should describe one instruction in the format 1 K x_1 y_1 x_2 y_2 ... x_K y_K or 2 u v.
+Test generation
+For all test files (except the example),
+N=512,
+A=10 and
+R=2. Next, internal parameters
+S,
+L and
+D are chosen in the following way:
+S and
+L can be
+1 and
+2,048,
+2 and
+1024,
+16 and
+256, or
+64 and
+128.
+D can be
+0,
+128 or
+2,048.
+There is one test file for each possible combination of these parameters.
+The anthill is then generated as follows:
+S sets of
+L distinct roads are chosen uniformly randomly and independently (In total
+S⋅L distinct roads are chosen). The first instruction is executed
+S times, once for each of these sets of roads.
+Then,
+D distinct existing roads are chosen uniformly randomly and independently. The second instruction is executed
+D times, once for each of these roads.
 Scoring
-The score for each test file is
-10⋅(C/S)
+If any of your instructions are invalid, the sum of
+K
 2
-, where
-C is the number of steps in which you deleted exactly
-2 vertices. The final score of your submission is equal to the sum of scores for each test file.
-There are twenty test cases. During the contest, the displayed score will account for exactly four test files, i.e. your score reflects your submission's performance on 20% (4/20) of the test files. However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to include the sum of your program's scores over the other sixteen test files.
+over all instructions of the first type exceeds
+10
+6
+or the number of instructions
+Q>10
+6
+, you will receive the Wrong Answer verdict. Otherwise, the score of a test file is the cost of constructing the anthill, i.e. the total number of antcoins paid to perform all instructions. The score of a submission is the sum of scores of all test files. Your goal is to minimise the score of your submission.
+There are twelve test files. During the contest, the displayed score will account for exactly four test files, i.e. your score reflects your submission's performance on approximately 33.33% (4/12) of the test files. However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to include the sum of your program's scores over the other 8 test files.
 Example Input
-6 6
+4 5 10 2
 1 2
 2 3
-1 3
 3 4
-3 5
-1 6
+4 1
+1 3
 Example Output
-4
-2 4 5
-2 6 3
-1 2
-1 1
+3
+1 3 1 2 2 3 3 4
+2 2 4
+1 1 1 4

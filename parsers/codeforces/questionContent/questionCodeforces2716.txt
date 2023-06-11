@@ -1,189 +1,123 @@
-E1. Three Blocks Palindrome (easy version)
-time limit per test3 seconds
+A. Linova and Kingdom
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The only difference between easy and hard versions is constraints.
-You are given a sequence
-a
-consisting of
+Writing light novels is the most important thing in Linova's life. Last night, Linova dreamed about a fantastic kingdom. She began to write a light novel for the kingdom as soon as she woke up, and of course, she is the queen of it.
+ There are
 n
-positive integers.
-Let's define a three blocks palindrome as the sequence, consisting of at most two distinct elements (let these elements are
-a
-and
-b
-,
-a
-can be equal
-b
-) and is as follows:
-[
-a,a,…,a
-
-
-
-
-
-
-
-
-
-
-
-x
-,
-b,b,…,b
-
-
-
-
-
-
-
-
-
-y
-,
-a,a,…,a
-
-
-
-
-
-
-
-
-
-
-
-x
-]
-. There
-x,y
-are integers greater than or equal to
-0
-. For example, sequences
-[]
-,
-[2]
-,
-[1,1]
-,
-[1,2,1]
-,
-[1,2,2,1]
-and
-[1,1,2,1,1]
-are three block palindromes but
-[1,2,3,2,1]
-,
-[1,2,1,2,1]
-and
-[1,2]
-are not.
-Your task is to choose the maximum by length subsequence of
-a
-that is a three blocks palindrome.
-You have to answer
-t
-independent test cases.
-Recall that the sequence
-t
-is a a subsequence of the sequence
-s
-if
-t
-can be derived from
-s
-by removing zero or more elements without changing the order of the remaining elements. For example, if
-s=[1,2,1,3,1,2,1]
-, then possible subsequences are:
-[1,1,1,1]
-,
-[3]
-and
-[1,2,1,3,1,2,1]
-, but not
-[3,2,3]
-and
-[1,1,1,1,2]
-.
-Input
-The first line of the input contains one integer
-t
-(
-1≤t≤2000
-) — the number of test cases. Then
-t
-test cases follow.
-The first line of the test case contains one integer
-n
-(
-1≤n≤2000
-) — the length of
-a
-. The second line of the test case contains
-n
-integers
-a
+cities and
+n−1
+two-way roads connecting pairs of cities in the kingdom. From any city, you can reach any other city by walking through some roads. The cities are numbered from
 1
+to
+n
+, and the city
+1
+is the capital of the kingdom. So, the kingdom has a tree structure.
+As the queen, Linova plans to choose exactly
+k
+cities developing industry, while the other cities will develop tourism. The capital also can be either industrial or tourism city.
+A meeting is held in the capital once a year. To attend the meeting, each industry city sends an envoy. All envoys will follow the shortest path from the departure city to the capital (which is unique).
+Traveling in tourism cities is pleasant. For each envoy, his happiness is equal to the number of tourism cities on his path.
+In order to be a queen loved by people, Linova wants to choose
+k
+cities which can maximize the sum of happinesses of all envoys. Can you calculate the maximum sum for her?
+Input
+The first line contains two integers
+n
+and
+k
+(
+2≤n≤2⋅
+10
+5
 ,
-a
-2
-,…,
-a
-n
+1≤k<n
+)  — the number of cities and industry cities respectively.
+Each of the next
+n−1
+lines contains two integers
+u
+and
+v
 (
-1≤
-a
-i
-≤26
-), where
-a
-i
-is the
-i
--th element of
-a
-. Note that the maximum value of
-a
-i
-can be up to
-26
+1≤u,v≤n
+), denoting there is a road connecting city
+u
+and city
+v
 .
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2000
-(
-∑n≤2000
-).
+It is guaranteed that from any city, you can reach any other city by the roads.
 Output
-For each test case, print the answer — the maximum possible length of some subsequence of
-a
-that is a three blocks palindrome.
-Example
+Print the only line containing a single integer  — the maximum possible sum of happinesses of all envoys.
+Examples
 input
 Copy
-6
-8
-1 1 2 2 3 2 1 1
-3
-1 3 3
-4
-1 10 10 1
-1
-26
-2
-2 1
-3
-1 1 1
+7 4
+1 2
+1 3
+1 4
+3 5
+3 6
+4 7
 output
 Copy
 7
+input
+Copy
+4 1
+1 2
+1 3
+2 4
+output
+Copy
 2
-4
+input
+Copy
+8 5
+7 5
+1 7
+6 1
+3 7
+8 3
+2 1
+4 5
+output
+Copy
+9
+Note
+In the first example, Linova can choose cities
+2
+,
+5
+,
+6
+,
+7
+to develop industry, then the happiness of the envoy from city
+2
+is
 1
-1
+, the happiness of envoys from cities
+5
+,
+6
+,
+7
+is
+2
+. The sum of happinesses is
+7
+, and it can be proved to be the maximum one.
+In the second example, choosing cities
 3
+,
+4
+developing industry can reach a sum of
+3
+, but remember that Linova plans to choose exactly
+k
+cities developing industry, then the maximum sum is
+2
+.

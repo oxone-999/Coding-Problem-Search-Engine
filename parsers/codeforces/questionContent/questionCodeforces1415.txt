@@ -1,156 +1,186 @@
-G. Kuzya and Homework
+B. Omkar and Heavenly Tree
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Kuzya started going to school. He was given math homework in which he was given an array
-a
-of length
+Lord Omkar would like to have a tree with
 n
-and an array of symbols
-b
-of length
-n
-, consisting of symbols '*' and '/'.
-Let's denote a path of calculations for a segment
-[l;r]
-(
-1≤l≤r≤n
-) in the following way:
-Let
-x=1
-initially. For every
-i
-from
-l
-to
-r
-we will consequently do the following: if
-b
-i
-=
-'*',
-x=x∗
-a
-i
-, and if
-b
-i
-=
-'/', then
-x=
-x
-a
-i
-. Let's call a path of calculations for the segment
-[l;r]
-a list of all
-x
-that we got during the calculations (the number of them is exactly
-r−l+1
-).
-For example, let
-a=[7,
-12,
-3,
-5,
-4,
-10,
-9]
-,
-b=[/,
-∗,
-/,
-/,
-/,
-∗,
-∗]
-,
-l=2
-,
-r=6
-, then the path of calculations for that segment is
-[12,
-4,
-0.8,
-0.2,
-2]
-.
-Let's call a segment
-[l;r]
-simple if the path of calculations for it contains only integer numbers.
-Kuzya needs to find the number of simple segments
-[l;r]
-(
-1≤l≤r≤n
-). Since he obviously has no time and no interest to do the calculations for each option, he asked you to write a program to get to find that number!
-Input
-The first line contains a single integer
-n
-(
-2≤n≤
+nodes (
+3≤n≤
 10
-6
-).
-The second line contains
+5
+) and has asked his disciples to construct the tree. However, Lord Omkar has created
+m
+(
+1≤m<n
+) restrictions to ensure that the tree will be as heavenly as possible.
+A tree with
 n
-integers
+nodes is an connected undirected graph with
+n
+nodes and
+n−1
+edges. Note that for any two nodes, there is exactly one simple path between them, where a simple path is a path between two nodes that does not contain any node more than once.
+Here is an example of a tree:
+A restriction consists of
+3
+pairwise distinct integers,
 a
-1
 ,
+b
+, and
+c
+(
+1≤a,b,c≤n
+). It signifies that node
+b
+cannot lie on the simple path between node
 a
-2
-,…,
-a
+and node
+c
+.
+Can you help Lord Omkar and become his most trusted disciple? You will need to find heavenly trees for multiple sets of restrictions. It can be shown that a heavenly tree will always exist for any set of restrictions under the given constraints.
+Input
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤
+10
+4
+). Description of the test cases follows.
+The first line of each test case contains two integers,
 n
+and
+m
+(
+3≤n≤
+10
+5
+,
+1≤m<n
+), representing the size of the tree and the number of restrictions.
+The
+i
+-th of the next
+m
+lines contains three integers
+a
+i
+,
+b
+i
+,
+c
+i
 (
 1≤
 a
 i
-≤
-10
-6
-).
-The third line contains
-n
-symbols without spaces between them — the array
-b
-1
 ,
 b
-2
-…
+i
+,
+c
+i
+≤n
+,
+a
+,
 b
-n
-(
+,
+c
+are distinct), signifying that node
 b
 i
-=
-'/' or
-b
+cannot lie on the simple path between nodes
+a
 i
-=
-'*' for every
-1≤i≤n
-).
-Output
-Print a single integer — the number of simple segments
-[l;r]
+and
+c
+i
 .
-Examples
+It is guaranteed that the sum of
+n
+across all test cases will not exceed
+10
+5
+.
+Output
+For each test case, output
+n−1
+lines representing the
+n−1
+edges in the tree. On each line, output two integers
+u
+and
+v
+(
+1≤u,v≤n
+,
+u≠v
+) signifying that there is an edge between nodes
+u
+and
+v
+. Given edges have to form a tree that satisfies Omkar's restrictions.
+Example
 input
-Copy
-3
-1 2 3
-*/*
-output
 Copy
 2
-input
-Copy
-7
-6 4 10 1 2 15 1
-*/*/*//
+7 4
+1 2 3
+3 4 5
+5 6 7
+6 5 4
+5 3
+1 2 3
+2 3 4
+3 4 5
 output
 Copy
-8
+1 2
+1 3
+3 5
+3 4
+2 7
+7 6
+5 1
+1 3
+3 2
+2 4
+Note
+The output of the first sample case corresponds to the following tree:
+For the first restriction, the simple path between
+1
+and
+3
+is
+1,3
+, which doesn't contain
+2
+. The simple path between
+3
+and
+5
+is
+3,5
+, which doesn't contain
+4
+. The simple path between
+5
+and
+7
+is
+5,3,1,2,7
+, which doesn't contain
+6
+. The simple path between
+6
+and
+4
+is
+6,7,2,1,3,4
+, which doesn't contain
+5
+. Thus, this tree meets all of the restrictions.
+The output of the second sample case corresponds to the following tree:

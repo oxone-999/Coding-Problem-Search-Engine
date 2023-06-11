@@ -1,166 +1,100 @@
-D. Bubble Popping
-time limit per test2.5 seconds
+F. Mars
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-N
-bubbles in a coordinate plane. Bubbles are so tiny that it can be assumed that each bubble is a point
-(
-X
+In the year 2420 humans have finally built a colony on Mars thanks to the work of Elon Tusk. There are
+10
+9
++7
+cities arranged in a circle in this colony and none of them are connected yet. Elon Tusk wants to connect some of those cities using only roads of the same size in order to lower the production cost of those roads. Because of that he gave a list on N cites where some cites can appear more than once and Q queries that you need to answer. For the query you need to determine if it is possible to connect all the cities from
+L
 i
-,
-Y
+to
+R
 i
-)
+on that list using only roads of length
+D
+i
 .
-Q
-Bubble Cup finalists plan to play with the bubbles. Each finalist would link to use infinitely long Bubble Cup stick to pop some bubbles. The
-i
--th finalist would like to place the stick in the direction of vector
-(dxi,dyi)
-, and plays the following game until
-K
-i
-bubbles are popped. The game starts with finalist placing the stick in the direction of vector
-(d
-x
-i
-,d
-y
-i
-)
-, and sweeping it from the infinity to the left until it hits some bubble, which is immediately popped. It is guaranteed that only one bubble will be hit in this step. After that the finalist starts rotating the stick in the counter clockwise direction with the center of rotation in point where the previous bubble was popped. When the next bubble is hit, it is immediately popped and becomes the new center of rotation. The process continues until
-K
-i
-bubbles have been popped. It is guaranteed that the stick won't hit two bubbles simultaneously in this process.
-For each finalist find which bubble would be popped the last. Note that each game starts with the configuration of all
-N
-bubbles, so the games don't depend on the previous games.
 Input
-The first line contains one integer
+The first line contains two integers
 N
-— the number of bubbles. (
-1≤N≤
-10
-5
-)
-Each of the next
-N
-lines contains two integers. The
-i
--th line contains integers
-X
-i
 and
-Y
-i
-— the coordinates of the
-i
--th bubble. (
-−
-10
-9
-≤
-X
-i
-,
-Y
-i
-≤
-10
-9
-,
-(
-X
-i
-,
-Y
-i
-)≠(
-X
-j
-,
-Y
-j
-)
-for
-i≠j
-)
-The next line contains one integer
 Q
-— the number of finalists willing to play with the bubbles. (
-1≤Q≤
+(
+1≤N,Q≤2⋅
 10
 5
-)
-Each of the next Q lines contains 3 integers. The
-i
--th line contains integers
-d
-x
-i
-,
-d
-y
-i
+) — the length of the array of cities and the number of queries you need to answer.
+The second lines contains
+N
+integers representing the array of cites. Next Q lines contain three integers
+L,R
 and
-K
-i
-. (
-−
-10
-9
-≤d
-x
-i
-,d
-y
-i
-≤
-10
-9
-,
+D
+(
 1≤
-K
+L
+i
+,
+R
 i
 ≤N
-)
+,
+0≤
+D
+i
+≤
+10
+9
++6
+) — the range of cities that needs to be connected and the length of the road that you can use.
 Output
-For each of the
-Q
-finalists, print the index of the bubble which would be popped last, in the separate line.
+The output contains Q lines. If it is possible to connect all the cities from the i-th query can be connected with roads of length
+D
+i
+the i-th line should contain the word "Yes", otherwise it should contain the word "No".
 Examples
 input
 Copy
-4
-0 0
-1 0
-0 1
-1 1
-2
-1 -1 3
--1 1 4
+9 8
+17 0 12 6 10 8 2 4 5
+2 3 12
+2 3 6
+2 4 6
+4 6 2
+2 8 2
+1 2 17
+1 8 2
+9 9 14
 output
 Copy
-4
-2
+Yes
+No
+Yes
+Yes
+Yes
+Yes
+No
+Yes
 input
 Copy
-4
-1 1
-2 2
-7 1
-1 7
-3
-2 2 1
-1 -5 4
--6 5 3
+4 1
+7 21 14 0
+1 4 1000000000
 output
 Copy
-3
-2
-3
+Yes
 Note
-There are two finalists willing to play with the bubbles. If the first finalist plays with the bubbles, then the bubbles at coordinates (0, 0), (1, 0) and (1, 1) would be popped in that order. Their indexes are 1, 2 and 4, so the answer is 4. If the second finalist plays with the bubbles, then the bubbles at coordinates (1, 1), (0, 1), (0, 0) and (1, 0) would be popped in that order, so the answer is 2.
-Visualization: link.
+In the
+5
+th
+query of the first test case we can connect cities in this order 0-2-4-6-8-10-12 this way distance between any two connected cities is 2. In the second test case we can connect cities in this order 21-14-7-0 this way distance between any two connected cities is
+10
+9
+module
+10
+9
++7
+.

@@ -1,134 +1,125 @@
-Unusual Queries
+Efficient Delivery
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-There are
-N mountains in Chefland, arranged in a line and numbered
-1 through
-N from left to right. For each valid
-i, the
-i-th mountain from the left has a height
-H
+Salmon runs a fish delivery company in Fish City. Fish City has
+N vertical roads numbered
+1,2,...,N from left to right, each spaced 1 unit apart; similarly, there are
+M horizontal roads numbered
+1,2,...,M from bottom to top, each spaced 1 unit apart. We will denote the intersection between the
+x-th vertical road and the
+y-th horizontal road as
+(x,y).
+Salmon has to make
+K deliveries, with the
+i-th delivery starting at
+(x
 i
-.
-Chef wants to choose a contiguous sequence of mountains
-l,l+1,…,r and visit them in this order. He has a notebook where he writes down some heights of mountains. Initially, the notebook contains only the integer
-0 and each time he visits a new mountain whose height is strictly greater than all the integers written in the notebook so far, he writes its height in the notebook. The satisfaction Chef gets from travelling is the number of positive integers written in the notebook at the end. For example, if the mountains have heights
-(
-1
-,
-5
-,2,5,3,
-7
-,2,
-9
-), Chef's satisfaction is
-4 and the integers written in the notebook at the end are
-0,1,5,7,9.
-Your task is to answer
-Q queries. In each query, Chef gives you two integers
-L and
-R (
-1≤L≤R≤N) and you should find the maximum satisfaction he can get if he can choose to visit any contiguous sequence of mountains from
-l to
-r such that
-L≤l≤r≤R. Note that the queries are encoded in such a way that they have to be processed online.
-Input
-The first line of each test case contains three space-separated integers
+,y
+i
+) and ending at
+(x
+i
+′
+,y
+i
+′
+). He can also travel every road with speed
+0.5 (meaning it would take him
+2 units of time to travel
+1 unit of distance). However, Salmon can bribe the mayor of Fish City and make the mayor change exactly one horizontal road to a highway, meaning the speed on that road would increase to
+1.
+He wants to choose a road to be a highway such that the sum of durations of all the deliveries is minimum possible. Help him find this minimum sum!
+Note that each delivery starts exactly at
+(x
+i
+,y
+i
+) and ends at
+(x
+i
+′
+,y
+i
+′
+), i.e., we don't count the time taken to travel from
+(x
+i−1
+′
+,y
+i−1
+′
+) to
+(x
+i
+,y
+i
+) in our answer.
+###Input: The first line contains 3 integers,
 N,
-Q and
-s.
-The second line contains
-N space-separated integers
-H
-1
-,H
-2
-,…,H
-N
-.
-Each of the following
-Q lines contains two space-separated integers
-x and
-y describing a query. The parameters
-L and
-R for this query can be computed as follows:
-Let
-last be the answer to the previous query, or
-0 if this is the first query in this test case.
-Set
-L to
-(x+s⋅last−1)%N+1.
-Set
-R to
-(y+s⋅last−1)%N+1.
-If
-L>R, swap
-L and
-R.
-Output
-For each query, print a single line containing one integer — the maximum satisfaction Chef can get.
-Constraints
-1≤N,Q≤10
+M and
+K (
+1≤N,M,K≤10
 5
-0≤s≤1
-1≤H
+).
+The next
+K lines describe deliveries. Each line contains 4 space-separated integers
+x
 i
-≤10
-5
-for each valid
+,
+y
 i
-1≤x,y≤N
-Subtasks
-Subtask #1 (15 points):
-N≤1,000
-Subtask #2 (35 points):
-s=0, i.e. the queries do not have to be processed online
-Subtask #2 (50 points): original constraints
-Example Input 1
-6 3 0
-4 2 3 1 5 5
-1 6
-2 4
-3 4
-Example Output 1
-3
-2
-1
-Explanation
-In the first query, Chef can choose to visit a contiguous subsequence of mountains with heights
-(4,2,3,1,5,5). The subsequence that gives the maximum satisfaction is
-(2,3,1,5). In that case, Chef writes the integers
-0,2,3,5 to his notebook, so the answer is
-3.
-In the second query, Chef can choose to visit a contiguous subsequence of mountains with heights
-(2,3,1). The whole sequence has the maximum satisfaction
-2, since Chef writes the integers
-0,2,3.
-In the third query, the largest (and the only possible) satisfaction is
-1, since Chef writes either
-0,3 or
-0,1.
-Example Input 2
-10 10 1
-7 8 8 9 10 10 2 3 5 10
-9 6
-2 9
-10 6
-4 2
-5 10
-4 5
-8 7
-8 2
-7 7
-9 5
-Example Output 2
-3
-3
-3
-1
-4
-2
-2
-4
-1
-4
+,
+x
+i
+′
+,
+y
+i
+′
+(
+1≤x
+i
+,x
+i
+′
+≤N,
+1≤y
+i
+,y
+i
+′
+≤M), describing the
+i-th delivery.
+###Output: Print one integer -- the minimum sum of durations possible.
+###Subtasks
+Subtask 1 [17 points]:
+y
+i
+=y
+i−1
+for all
+i>0.
+Subtask 2 [34 points]:
+K≤10.
+Subtask 3 [49 points]: No additional constraints.
+###Sample Input 1: 5 4 3 2 3 4 1 1 4 5 2 3 3 5 3
+###Sample Output 1: 16
+###Explanation:
+![fig2](https://codechef_shared.s3.amazonaws.com/download/HYC/External_contest_images/UWCOI21/sample1.png =600x400)
+Salmon can turn the 3rd horizontal road into a highway.
+For the first delivery, we can go 2 units to the right taking 2 units of time, and 2 units down taking 4 units of time. The time taken is
+2+4=6.
+For the second delivery, we can go 1 unit down taking 2 units of time, 4 units right taking 4 units of time, and 1 unit down taking 2 units of time. The time taken is
+2+4+2=8.
+For the third delivery, we can go 2 units right taking 2 units of time.
+Therefore, the total time taken is
+6+8+2=16.
+###Sample Input 2: 10 2 3 1 2 10 2 2 1 9 1 4 1 7 1
+###Sample Output 2: 23
+###Explanation: ![fig1](https://codechef_shared.s3.amazonaws.com/download/HYC/External_contest_images/UWCOI21/sample2.png =600x300)
+Salmon can turn the 1st horizontal road into a highway.
+For the first delivery, we can go 1 unit down taking 2 units of time, 9 units right taking 9 units of time, and 1 unit up taking 2 units of time. The time taken is
+2+9+2=13.
+For the second delivery, we can go 7 units right taking 7 units of time.
+For the third delivery, we can go 3 units to the right taking 3 units of time.
+Therefore, the total time taken is
+13+7+3=23.

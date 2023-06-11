@@ -1,100 +1,186 @@
-A. Lucky Numbers
-time limit per test1 second
+G2. Subsequence Addition (Hard Version)
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Olympus City recently launched the production of personal starships. Now everyone on Mars can buy one and fly to other planets inexpensively.
-Each starship has a number —some positive integer
-x
-. Let's define the luckiness of a number
-x
-as the difference between the largest and smallest digits of that number. For example,
-142857
-has
-8
-as its largest digit and
+The only difference between the two versions is that in this version, the constraints are higher.
+Initially, array
+a
+contains just the number
 1
-as its smallest digit, so its luckiness is
-8−1=7
-. And the number
-111
-has all digits equal to
+. You can perform several operations in order to change the array. In an operation, you can select some subsequence
+†
+†
+of
+a
+and add into
+a
+an element equal to the sum of all elements of the subsequence.
+You are given a final array
+c
+. Check if
+c
+can be obtained from the initial array
+a
+by performing some number (possibly 0) of operations on the initial array.
+†
+†
+A sequence
+b
+is a subsequence of a sequence
+a
+if
+b
+can be obtained from
+a
+by the deletion of several (possibly zero, but not all) elements. In other words, select
+k
+(
+1≤k≤|a|
+) distinct indices
+i
 1
-, so its luckiness is zero.
-Hateehc is a famous Martian blogger who often flies to different corners of the solar system. To release interesting videos even faster, he decided to buy himself a starship. When he came to the store, he saw starships with numbers from
-l
-to
-r
-inclusively. While in the store, Hateehc wanted to find a starship with the luckiest number.
-Since there are a lot of starships in the store, and Hateehc can't program, you have to help the blogger and write a program that answers his question.
+,
+i
+2
+,…,
+i
+k
+and insert anywhere into
+a
+a new element with the value equal to
+a
+i
+1
++
+a
+i
+2
++⋯+
+a
+i
+k
+.
 Input
-The first line contains an integer
+The first line of the input contains an integer
 t
 (
-1≤t≤10000
-) —the number of test cases.
-Each of the following
-t
-lines contains a description of the test case. The description consists of two integers
-l
-and
-r
+1≤t≤1000
+) — the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single integer
+n
 (
-1≤l≤r≤
+1≤n≤2⋅
 10
-6
-) — the largest and smallest numbers of the starships in the store.
+5
+)  — the number of elements the final array
+c
+should have.
+The second line of each test case contains
+n
+space-separated integers
+c
+i
+(
+1≤
+c
+i
+≤2⋅
+10
+5
+)  — the elements of the final array
+c
+that should be obtained from the initial array
+a
+.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+.
 Output
-Print
-t
-lines, one line for each test case, containing the luckiest starship number in the store.
-If there are several ways to choose the luckiest number, output any of them.
+For each test case, output "YES" (without quotes) if such a sequence of operations exists, and "NO" (without quotes) otherwise.
+You can output the answer in any case (for example, the strings "yEs", "yes", "Yes" and "YES" will be recognized as a positive answer).
 Example
 input
 Copy
+6
+1
+1
+1
+2
 5
-59 63
-42 49
-15 15
-53 57
-1 100
+5 1 3 2 1
+5
+7 1 5 2 1
+3
+1 1 1
+5
+1 1 4 2 1
 output
 Copy
-60
-49
-15
-57
-90
+YES
+NO
+YES
+NO
+YES
+YES
 Note
-Let's look at two test examples:
-the luckiness of the number
-59
-is
-9−5=4
-;
-the luckiness of
-60
-equals
-6−0=6
-;
-the luckiness of
-61
-equals
-6−1=5
-;
-the luckiness of
-62
-equals
-6−2=4
-;
-the luckiness of
-63
-is
-6−3=3
+For the first test case, the initial array
+a
+is already equal to
+[1]
+, so the answer is "YES".
+For the second test case, performing any amount of operations will change
+a
+to an array of size at least two which doesn't only have the element
+2
+, thus obtaining the array
+[2]
+is impossible and the answer is "NO".
+For the third test case, we can perform the following operations in order to obtain the final given array
+c
+:
+Initially,
+a=[1]
 .
-Thus, the luckiest number is
-60
+By choosing the subsequence
+[1]
+, and inserting
+1
+in the array,
+a
+changes to
+[1,1]
 .
-In the fifth test example, the luckiest number is
-90
+By choosing the subsequence
+[1,1]
+, and inserting
+1+1=2
+in the middle of the array,
+a
+changes to
+[1,2,1]
 .
+By choosing the subsequence
+[1,2]
+, and inserting
+1+2=3
+after the first
+1
+of the array,
+a
+changes to
+[1,3,2,1]
+.
+By choosing the subsequence
+[1,3,1]
+and inserting
+1+3+1=5
+at the beginning of the array,
+a
+changes to
+[5,1,3,2,1]
+(which is the array we needed to obtain).

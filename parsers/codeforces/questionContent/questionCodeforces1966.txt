@@ -1,177 +1,205 @@
-B. The Great Hero
+B. New Colony
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The great hero guards the country where Homer lives. The hero has attack power
-A
-and initial health value
-B
-. There are
-n
-monsters in front of the hero. The
-i
--th monster has attack power
-a
-i
-and initial health value
-b
-i
-.
-The hero or a monster is said to be living, if his or its health value is positive (greater than or equal to
+After reaching your destination, you want to build a new colony on the new planet. Since this planet has many mountains and the colony must be built on a flat surface you decided to flatten the mountains using boulders (you are still dreaming so this makes sense to you).
+You are given an array
+h
 1
-); and he or it is said to be dead, if his or its health value is non-positive (less than or equal to
-0
-).
-In order to protect people in the country, the hero will fight with monsters until either the hero is dead or all the monsters are dead.
-In each fight, the hero can select an arbitrary living monster and fight with it. Suppose the
+,
+h
+2
+,…,
+h
+n
+, where
+h
 i
--th monster is selected, and the health values of the hero and the
+is the height of the
 i
--th monster are
-x
-and
-y
-before the fight, respectively. After the fight, the health values of the hero and the
+-th mountain, and
+k
+ — the number of boulders you have.
+You will start throwing boulders from the top of the first mountain one by one and they will roll as follows (let's assume that the height of the current mountain is
+h
 i
--th monster become
-x−
-a
+):
+if
+h
 i
-and
-y−A
-, respectively.
-Note that the hero can fight the same monster more than once.
-For the safety of the people in the country, please tell them whether the great hero can kill all the monsters (even if the great hero himself is dead after killing the last monster).
+≥
+h
+i+1
+, the boulder will roll to the next mountain;
+if
+h
+i
+<
+h
+i+1
+, the boulder will stop rolling and increase the mountain height by
+1
+(
+h
+i
+=
+h
+i
++1
+);
+if the boulder reaches the last mountain it will fall to the waste collection system and disappear.
+You want to find the position of the
+k
+-th boulder or determine that it will fall into the waste collection system.
 Input
-Each test contains multiple test cases. The first line contains
+The first line contains a single integer
 t
 (
-1≤t≤
-10
-5
-) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains three integers
-A
-(
-1≤A≤
-10
-6
-),
-B
-(
-1≤B≤
-10
-6
-) and
+1≤t≤100
+) — the number of test cases.
+Each test case consists of two lines. The first line in each test case contains two integers
 n
+and
+k
 (
-1≤n≤
+1≤n≤100
+;
+1≤k≤
 10
-5
-) — the attack power of the great hero, the initial health value of the great hero, and the number of monsters.
-The second line of each test case contains
+9
+) — the number of mountains and the number of boulders.
+The second line contains
 n
 integers
-a
+h
 1
 ,
-a
+h
 2
 ,…,
-a
+h
 n
 (
 1≤
-a
+h
 i
-≤
-10
-6
-), where
-a
-i
-denotes the attack power of the
-i
--th monster.
-The third line of each test case contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-1≤
-b
-i
-≤
-10
-6
-), where
-b
-i
-denotes the initial health value of the
-i
--th monster.
+≤100
+) — the height of the mountains.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
-10
-5
+100
 .
 Output
-For each test case print the answer: "YES" (without quotes) if the great hero can kill all the monsters. Otherwise, print "NO" (without quotes).
+For each test case, print
+−1
+if the
+k
+-th boulder will fall into the collection system. Otherwise, print the position of the
+k
+-th boulder.
 Example
 input
 Copy
-5
-3 17 1
-2
-16
-10 999 3
-10 20 30
-100 50 30
-1000 1000 4
-200 300 400 500
-1000 1000 1000 1000
-999 999 1
-1000
-1000
-999 999 1
-1000000
-999
+4
+4 3
+4 1 2 3
+2 7
+1 8
+4 5
+4 1 2 3
+3 1
+5 3 1
 output
 Copy
-YES
-YES
-YES
-NO
-YES
-Note
-In the first example: There will be
-6
-fights between the hero and the only monster. After that, the monster is dead and the health value of the hero becomes
-17−6×2=5>0
-. So the answer is "YES", and moreover, the hero is still living.
-In the second example: After all monsters are dead, the health value of the hero will become
-709
-, regardless of the order of all fights. So the answer is "YES".
-In the third example: A possible order is to fight with the
-1
--st,
 2
--nd,
+1
+-1
+-1
+Note
+Let's simulate the first case:
+The first boulder starts at
+i=1
+; since
+h
+1
+≥
+h
+2
+it rolls to
+i=2
+and stops there because
+h
+2
+<
+h
 3
--rd and
+.
+The new heights are
+[4,2,2,3]
+.
+The second boulder starts at
+i=1
+; since
+h
+1
+≥
+h
+2
+the boulder rolls to
+i=2
+; since
+h
+2
+≥
+h
+3
+the boulder rolls to
+i=3
+and stops there because
+h
+3
+<
+h
 4
--th monsters. After all fights, the health value of the hero becomes
-−400
-. Unfortunately, the hero is dead, but all monsters are also dead. So the answer is "YES".
-In the fourth example: The hero becomes dead but the monster is still living with health value
-1000−999=1
-. So the answer is "NO".
+.
+The new heights are
+[4,2,3,3]
+.
+The third boulder starts at
+i=1
+; since
+h
+1
+≥
+h
+2
+it rolls to
+i=2
+and stops there because
+h
+2
+<
+h
+3
+.
+The new heights are
+[4,3,3,3]
+.
+The positions where each boulder stopped are the following:
+[2,3,2]
+.
+In the second case, all
+7
+boulders will stop right at the first mountain rising its height from
+1
+to
+8
+.
+The third case is similar to the first one but now you'll throw
+5
+boulders. The first three will roll in the same way as in the first test case. After that, mountain heights will be equal to
+[4,3,3,3]
+, that's why the other two boulders will fall into the collection system.
+In the fourth case, the first and only boulders will fall straight into the collection system.

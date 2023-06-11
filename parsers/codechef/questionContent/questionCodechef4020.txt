@@ -1,39 +1,35 @@
-Chef and Making Triples
+Maximum Difference Walk
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef has an array A of 3 x N integers. He wants to make as many disjoint triples as possible (a triple is a set of three integers) from this array such that sum of elements in each triple is equal. Two triples (A[a], A[b], A[c]) and (A[x], A[y], A[z]) are considered disjoint iff the sets {a, b, c} and {x, y, z} are disjoint.
-Please, help Chef achieve this task.
+Read problems statements in Mandarin Chinese and Russian.
+Chef has a complete directed graph composed of N vertices. The graph contains a directed edge from every vertex i (1 ≤ i ≤ N) to every other vertex j (j != i) .We will denote such an edge by (i, j) and we will say that i is its starting vertex and j is its destination vertex. Thus, there are N(N-1) directed edges overall. Each of the directed edges has a unique cost in the range 1, 2, ... N(N-1).
+Chef wants to play a game on this graph and has chosen you as his opponent. The game consists of alternating moves and you make the first move. Your first move consists of choosing a directed edge from the graph. Let's assume that this edge is (v1, v2). Then Chef will choose an edge (v2, v3). After that, at his/her turn, each player (whether you or Chef) will choose a directed edge which has not been chosen before by any of the players and whose starting vertex is the destination vertex of the directed edge chosen in the previous move (by the opponent). Thus, at your second move, you will choose an edge (v3, v4), then Chef will choose an edge (v4, v5), and so on. The game will end when the player whose turn is next cannot make any move (meaning that the destination vertex of the last chosen edge has no unselected outgoing edges left). Note that depending on how the game is played, the final move may be made by either Chef or you. Also note that the sequence of selected edges denotes a walk in Chef's graph, which may visit the same vertex zero or more times, but cannot visit the same directed edge more than once.
+At the end of the game your game score GSyou and Chef's game score GSChef will be computed. GSyou is defined as the sum of the costs of all the edges you selected during the game and GSChef is analogously defined as the sum of the costs of all the edges Chef selected during the game. Your final score FS for the game is defined as the difference GSyou - GSChef (note that FS could be zero or negative as well).
+Chef implemented his strategy in the interactive judge for this problem. However, this problem seems very complex to Chef, so he could only implement one of the two basic strategies described below:
+Strategy MAX: Let's assume that the last edge you selected is (a, b) and it is now Chef's turn to move. Chef will select the non-selected edge (b, c) having maximum cost among all the possible edges he can select (if any).
+Strategy RANDOM: Let's assume that the last edge you selected is (a, b) and it is now Chef's turn to move. Among all the non-selected edges (b, c), Chef will select one uniformly at random.
+Your task is to write a program which plays the game against Chef (i.e. against the interactive judge). Your program will have perfect information about the graph before making the first move, but will not know Chef's strategy before-hand. Once you start playing, though, you may be able to guess Chef's strategy from the moves he makes.
 Input
-The first line of each test file contains a single integer N indicating that the number of elements in the array A is 3 x N.
-The second line contains 3 × N space-separated integers A1, A2, … , A3 x N.
-Output
-Output two lines as described below.
-The first line should contain one integer K denoting the number of triples you found.
-In the second line you should print K triples of integers — indices of numbers in each triple.
+The first line contains the number N, representing the number of vertices in the graph. Then N lines describing the graph follow. The ith of these lines contains N integers representing the costs of the directed edges having i as their starting vertex. The jth of these N numbers represents the cost C(i, j) of the directed edge (i, j). C(i, i) will be 0 for all the vertices i.
+Interaction with the judge
+After reading the information describing the graph you will start interacting with the judge. Whenever it is your turn you will print a line containing two space-separated integers a and b, meaning that you selected the edge (a, b). Whenever it is Chef's turn you will read from the standard input two integers c and d, meaning that Chef selected the edge (c, d). Remember that after every line you print you need to flush the output.
+Test case generation
+There are 20 test cases. Overall there are only 10 different graphs, but for each graph there is a test case for each of the 2 strategies that Chef implemented (thus, the number of test cases is 10*2 = 20). For each test case Chef will use only one of the 2 strategies (i.e., he will not change strategies during the game) - the strategy that Chef uses for each test case is actually predefined, but this information is not available to you at the beginning of the game.
+All the 10 graphs have N = 50 and the cost of each directed edge is chosen uniformly at random from the range 1...N(N-1) (with the constraint that all the edge costs are different).
 Scoring
-Your score for each test case will be the number of triples you found. Your goal is to maximise this score.
-Your total score for the problem will be the sum of scores on all the test cases.
-Your solution will be tested only on 20% of the test files during the contest and will be rejudged against 100% after the end of competition.
-You will get "Wrong Answer" verdict if some element of the array is repeated in your output (triples are not disjoint), or if there are two triples with different sum of elements (invalid triples). If you output only one triple, that's ok, you'll get a score of 1.
-Constraints
-N = 105
--109 ≤ Ai ≤ 109
+Your score for each test case will be the value FS. If FS ≤ 0, then you will get Wrong answer - this means that you need to obtain a game score larger than Chef's on every test case. It is guaranteed that this is possible on all the official test cases. Your overall score will be the average score on all the test cases.
+During the contest, your score is computed on only the first 4 test cases (they correspond to 2 different graphs and each of the 2 strategies for each graph). The score for the other 16 test cases is considered 0 during the contest (but your program is evaluated on all the test cases and you will only get Correct answer if you correctly solve all the 20 test cases, i.e., if FS > 0 on all the test cases). After the contest, your program will be re-evaluated on all the test cases and the correct score for each test case will be considered.
 Example
 Input:
-4
-3 7 2 12 1 11 8 9 4 6 5 10
-Output:
 3
-5 6 11 3 4 1 10 2 9
+0 1 2
+3 0 4
+5 6 0
+2 3
+1 3
+2 1
+Output:
+1 2
+3 1
+3 2
 Explanation
-In this example we made three triples: (A5, A6, A11) = (1, 11, 5), (A3, A4, A1) = (2, 12, 3) and (A10, A2, A9) = (6, 7, 4). As you can see, 1 + 11 + 5 = 2 + 12 + 3 = 6 + 7 + 4 = 17. So, this output is correct because the sum of numbers in each triple is equal to the same number and there is no element of array that occurs more than once in triples. Score for this testcase will be 3 because you found three triples. Note that this test case can't be in the official test data because N doesn't equal 105.
-Test data generation
-There will be two types of test files.
-Type #1: We manually choose numbers lo and hi. N will be equal 105. Each element of an array will be randomly chosen from interval [lo..hi].
-Type #2: We manually choose the number S, lo and hi. N will be equal 105. Then we generate N random triples with sum of elements equal to S and each element from [lo … hi] , add all those elements to the array and shuffle it.
-There will be 10 test files of type #1 and 10 test files of type #2. In each test file we can manually change one element (to prevent recognizing type of test file by sum of numbers in it). During the contest, your solutions will be tested on two tests of the first type and two tests of the second type.
-Also you can assume that:
-In 20% of test data: hi-lo ≤ 2 * 103
-In 30% of test data: hi-lo ≤ 2 * 105
-In 60% of test data: hi-lo ≤ 2 * 107
-In 100% of test data: hi-lo ≤ 2 * 109
+The example test case describes a graph with N = 3 vertices. The Output section describes your moves, while the Input section contains Chef's moves using strategy MAX (after the description of the graph). The interaction is as follows. First, you choose the edge (1,2) (with cost 1). Then, Chef chooses the maximum outgoing edge from 2: edge (2,3) (with cost 4). Then you choose the edge (3,1) (with cost 5). Then, Chef chooses the only remaining outgoing edge from 1: edge (1,3) (with cost 2). Then you choose the edge (3,2) (with cost 6). Then, Chef chooses the only remaining outgoing edge from 2: edge (2,1) (with cost 3). At your turn, you cannot make any moves anymore, so the game ends. GSyou is equal to 1+5+6 = 12. GSChef is equal to 4+2+3 = 9. The score for this test is 12-9 = 3.

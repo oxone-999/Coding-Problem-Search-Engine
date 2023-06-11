@@ -1,113 +1,168 @@
-A. Three Indices
+D. Berserk And Fireball
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a permutation
-p
+There are
+n
+warriors in a row. The power of the
+i
+-th warrior is
+a
+i
+. All powers are pairwise distinct.
+You have two types of spells which you may cast:
+Fireball: you spend
+x
+mana and destroy exactly
+k
+consecutive warriors;
+Berserk: you spend
+y
+mana, choose two consecutive warriors, and the warrior with greater power destroys the warrior with smaller power.
+For example, let the powers of warriors be
+[2,3,7,8,11,5,4]
+, and
+k=3
+. If you cast Berserk on warriors with powers
+8
+and
+11
+, the resulting sequence of powers becomes
+[2,3,7,11,5,4]
+. Then, for example, if you cast Fireball on consecutive warriors with powers
+[7,11,5]
+, the resulting sequence of powers becomes
+[2,3,4]
+.
+You want to turn the current sequence of warriors powers
+a
 1
 ,
-p
+a
 2
 ,…,
-p
+a
 n
-. Recall that sequence of
-n
-integers is called a permutation if it contains all integers from
+into
+b
 1
-to
-n
-exactly once.
-Find three indices
-i
 ,
-j
-and
-k
-such that:
-1≤i<j<k≤n
-;
-p
-i
-<
-p
-j
-and
-p
-j
->
-p
-k
-.
-Or say that there are no such indices.
+b
+2
+,…,
+b
+m
+. Calculate the minimum amount of mana you need to spend on it.
 Input
-The first line contains a single integer
-T
-(
-1≤T≤200
-) — the number of test cases.
-Next
-2T
-lines contain test cases — two lines per test case. The first line of each test case contains the single integer
+The first line contains two integers
 n
+and
+m
 (
-3≤n≤1000
-) — the length of the permutation
-p
-.
-The second line contains
+1≤n,m≤2⋅
+10
+5
+) — the length of sequence
+a
+and the length of sequence
+b
+respectively.
+The second line contains three integers
+x,k,y
+(
+1≤x,y,≤
+10
+9
+;1≤k≤n
+) — the cost of fireball, the range of fireball and the cost of berserk respectively.
+The third line contains
 n
 integers
-p
+a
 1
 ,
-p
+a
 2
 ,…,
-p
+a
 n
 (
 1≤
-p
+a
 i
 ≤n
-;
-p
+). It is guaranteed that all integers
+a
 i
-≠
-p
-j
-if
-i≠j
-) — the permutation
-p
-.
-Output
-For each test case:
-if there are such indices
-i
+are pairwise distinct.
+The fourth line contains
+m
+integers
+b
+1
 ,
-j
-and
-k
-, print YES (case insensitive) and the indices themselves;
-if there are no such indices, print NO (case insensitive).
-If there are multiple valid triples of indices, print any of them.
-Example
+b
+2
+,…,
+b
+m
+(
+1≤
+b
+i
+≤n
+). It is guaranteed that all integers
+b
+i
+are pairwise distinct.
+Output
+Print the minimum amount of mana for turning the sequnce
+a
+1
+,
+a
+2
+,…,
+a
+n
+into
+b
+1
+,
+b
+2
+,…,
+b
+m
+, or
+−1
+if it is impossible.
+Examples
 input
 Copy
-3
-4
-2 1 4 3
-6
-4 6 1 2 5 3
-5
-5 3 1 2 4
+5 2
+5 2 3
+3 1 4 5 2
+3 5
 output
 Copy
-YES
-2 3 4
-YES
-3 5 6
-NO
+8
+input
+Copy
+4 4
+5 1 4
+4 3 1 2
+2 4 3 1
+output
+Copy
+-1
+input
+Copy
+4 4
+2 1 11
+1 3 2 4
+1 3 2 4
+output
+Copy
+0

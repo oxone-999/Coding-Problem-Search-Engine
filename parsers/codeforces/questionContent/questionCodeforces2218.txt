@@ -1,163 +1,133 @@
-G. One Billion Shades of Grey
-time limit per test3 seconds
+B. Belted Rooms
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have to paint with shades of grey the tiles of an
-n×n
-wall. The wall has
+In the snake exhibition, there are
 n
-rows of tiles, each with
-n
-tiles.
-The tiles on the boundary of the wall (i.e., on the first row, last row, first column and last column) are already painted and you shall not change their color. All the other tiles are not painted. Some of the tiles are broken, you shall not paint those tiles. It is guaranteed that the tiles on the boundary are not broken.
-You shall paint all the non-broken tiles that are not already painted. When you paint a tile you can choose from
-10
-9
-shades of grey, indexed from
-1
+rooms (numbered
+0
 to
-10
-9
-. You can paint multiple tiles with the same shade. Formally, painting the wall is equivalent to assigning a shade (an integer between
+n−1
+) arranged in a circle, with a snake in each room. The rooms are connected by
+n
+conveyor belts, and the
+i
+-th conveyor belt connects the rooms
+i
+and
+(i+1)modn
+. In the other words, rooms
+0
+and
+1
+,
 1
 and
-10
-9
-) to each non-broken tile that is not already painted.
-The contrast between two tiles is the absolute value of the difference between the shades of the two tiles. The total contrast of the wall is the sum of the contrast of all the pairs of adjacent non-broken tiles (two tiles are adjacent if they share a side).
-Compute the minimum possible total contrast of the wall.
+2
+,
+…
+,
+n−2
+and
+n−1
+,
+n−1
+and
+0
+are connected with conveyor belts.
+The
+i
+-th conveyor belt is in one of three states:
+If it is clockwise, snakes can only go from room
+i
+to
+(i+1)modn
+.
+If it is anticlockwise, snakes can only go from room
+(i+1)modn
+to
+i
+.
+If it is off, snakes can travel in either direction.
+Above is an example with
+4
+rooms, where belts
+0
+and
+3
+are off,
+1
+is clockwise, and
+2
+is anticlockwise.
+Each snake wants to leave its room and come back to it later. A room is returnable if the snake there can leave the room, and later come back to it using the conveyor belts. How many such returnable rooms are there?
 Input
-The first line contains
+Each test contains multiple test cases. The first line contains a single integer
+t
+(
+1≤t≤1000
+): the number of test cases. The description of the test cases follows.
+The first line of each test case description contains a single integer
 n
 (
-3≤n≤200
-) – the number of rows and columns.
-Then
+2≤n≤300000
+): the number of rooms.
+The next line of each test case description contains a string
+s
+of length
 n
-lines, each containing
+, consisting of only '<', '>' and '-'.
+If
+s
+i
+=
+'>', the
+i
+-th conveyor belt goes clockwise.
+If
+s
+i
+=
+'<', the
+i
+-th conveyor belt goes anticlockwise.
+If
+s
+i
+=
+'-', the
+i
+-th conveyor belt is off.
+It is guaranteed that the sum of
 n
-integers, follow. The
-i
--th of these lines describe the
-i
--th row of tiles. It contains the
-n
-integers
-a
-ij
-(
-−1≤
-a
-ij
-≤
-10
-9
-)
-. The value of
-a
-ij
-described the tile on the
-i
--th row and
-j
--th column:
-If
-a
-ij
-=0
-, then the tile is not painted and shall be painted.
-If
-a
-ij
-=−1
-, then the tile is broken and shall not be painted.
-If
-1≤
-a
-ij
-≤
-10
-9
-, then the tile is already painted with the shade
-a
-ij
+among all test cases does not exceed
+300000
 .
-It is guaranteed that the tiles on the boundary are already painted, the tiles not on the boundary are not already painted, and the tiles on the boundary are not broken.
 Output
-Print a single integer – the minimum possible total contrast of the wall.
-Examples
+For each test case, output the number of returnable rooms.
+Example
 input
 Copy
-3
-1 7 6
-4 0 6
-1 1 1
-output
-Copy
-26
-input
-Copy
-3
-10 100 1
-1 -1 100
-10 10 10
-output
-Copy
-396
-input
-Copy
+4
+4
+-><-
 5
-6 6 5 4 4
-6 0 0 0 4
-7 0 0 0 3
-8 0 0 0 2
-8 8 1 2 2
+>>>>>
+3
+<--
+2
+<>
 output
 Copy
-34
-input
-Copy
-7
-315055237 841510063 581663979 148389224 405375301 243686840 882512379
-683199716 -1 -1 0 0 0 346177625
-496442279 0 0 0 0 0 815993623
-223938231 0 0 -1 0 0 16170511
-44132173 0 -1 0 0 0 130735659
-212201259 0 0 -1 0 0 166102576
-123213235 506794677 467013743 410119347 791447348 80193382 142887538
-output
-Copy
-10129482893
+3
+5
+3
+0
 Note
-Explanation of the first testcase: The initial configuration of the tiles is (tiles to paint are denoted by ?):
-
-1 7 6
-4 ? 6
-1 1 1
-A possible way to paint the tile achieving the minimum possible contrast of
-26
-is:
-
-1 7 6
-4 5 6
-1 1 1
-Explanation of the second testcase: Since all tiles are either painted or broken, there is nothing to do. The total contrast is
-396
-.
-Explanation of the third testcase: The initial configuration of the tiles is (tiles to paint are denoted by ?):
-
-6 6 5 4 4
-6 ? ? ? 4
-7 ? ? ? 3
-8 ? ? ? 2
-8 8 1 2 2
-A possible way to paint the tiles achieving the minimum possible contrast of
-34
-is:
-
-6 6 5 4 4
-6 6 5 4 4
-7 7 5 3 3
-8 8 2 2 2
-8 8 1 2 2
+In the first test case, all rooms are returnable except room
+2
+. The snake in the room
+2
+is trapped and cannot exit. This test case corresponds to the picture from the problem statement.
+In the second test case, all rooms are returnable by traveling on the series of clockwise belts.

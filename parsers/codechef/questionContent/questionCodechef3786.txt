@@ -1,50 +1,134 @@
-Ciel and Random Walk
+Binary String Randomizer
 Problem
-Today, Ciel's restaurant is closed. Ciel is bored, so she decides to take a walk randomly.
-This town has N intersections and M one way roads. The i-th road connects from the Ai-th intersection to the Bi-th intersection. Ciel is in the 1st intersection now, and Ciel's house is in the N-th intersection.
-If Ciel is in the i-th intersection, she will take a walk as follows:
-If i = N, her walk is ended.
-Otherwise, she chooses an integer k such that Ak = i uniformly randomly, she walks along the k-th road.
-On the way, S intersections have beautiful flowers. Let the F1-th intersection, the F2-th intersection, ..., and the FS-th intersection have beautiful flowers. Can you tell the probability that Ciel last sees the flowers in the Fi-th intersection? That is to say, can you tell the probability that she visits the Fi-th intersection, then she goes to N-th intersection without visiting other intersections having beautiful flowers?
-Input
-The first line contains 3 integers N, M and S. Then, next line has S integers F1, F2, ..., FS. Next M lines have 2 integers each, Ai and Bi.
-Output
-An output should contain S lines. In the i-th line, print the probability that Ciel last sees beautiful flowers at the Fi-th intersection. These values must have an absolute error no more than 10-6.
+Chef JJ is a fan of random events and calculating probabilities.
+He designed a machine called the binary string randomizer (BSRand). BSRand takes a binary string
+A (say, of length
+N) as input and then generates a binary string
+B (of the same length
+N) as output using the following algorithm:
+For each
+i from
+1 to
+N,
+Uniformly randomly choose an integer
+j between
+1 and
+N.
+Uniformly randomly choose an integer
+k between
+1 and
+N.
+Set
+B
+i
+:=A
+j
+⊕A
+k
+(where
+⊕ represents the bitwise XOR operation)
+Given a binary string
+A, Chef JJ passes it through BSRand
+T times (i.e, first he passes the binary string
+A through the BSRand, then he passes the resultant binary string through BSRand again, and so on. This is done
+T times in total). Calculate the probability that the final binary string obtained is
+B.
+You need to print the probability of getting binary string
+B modulo
+998244353. Formally, let
+M=998244353. It can be shown that the answer can be expressed as an irreducible fraction
+q
+p
+, where
+p and
+q are integers and
+q
+
+≡0(modM). Output
+p⋅q
+−1
+(modM). In other words, output the (unique) integer
+x which satisfies
+0≤x<M and
+x⋅q≡p(modM).
+Input Format
+The first line of the input contains two integers
+N and
+T - the length of the binary strings
+A and
+B and the number of times chef JJ passes the binary string through BSRand, respectively.
+The second line contains the binary string
+A.
+The third line contains the binary string
+B.
+Output Format
+Output the probability of getting binary string
+B from binary string
+A after passing it through BSRand
+T times, modulo
+998244353.
 Constraints
-1 ≤ S < N ≤ 30
-1 ≤ F1 < F2 < ... < FS < N
-Ai ≠ Bi
-If i ≠ j and Ai = Aj, then Bi ≠ Bj
-For each 1 ≤ i < N, Ciel can go from the i-th intersection to the N-th intersection, directly or indirectly.
-Sample Input 1
-4 6 3
-1 2 3
-1 2
+1≤N≤100
+1≤T≤10
+6
+Sample 1:
+Input
+Output
 2 1
-1 3
-3 1
-2 4
-3 4
-Sample Output 1
+01
+11
+748683265
+Sample 2:
+Input
+Output
+2 1
+00
+11
 0
-0.5
-0.5
-Sample Input 2
-4 6 1
+Sample 3:
+Input
+Output
+2 2
+11
+00
+1
+Explanation:
+Test Case
+1: For
+i=1, we notice that the BSRand can select the following combinations of
+(j,k):
+(1,1),(1,2),(2,1),(2,2). Out of these
+4 combinations, we see that only
+2 of them give
+1 as result. Therefore, the probability that
+B
+1
+becomes
+1 is
 2
-1 2
-2 1
-1 3
-3 1
-2 4
-3 4
-Sample Output 2
-0.6666666666667
-Sample Input 3
-2 1 1
 1
-1 2
-Sample Output 3
+.
+For
+i=2, similarly the the probability that
+B
+2
+becomes
+1 is
+2
 1
-Notes
-The sum of output values can be less than 1, because Ciel may go back to her house without seeing beautiful flowers.
+.
+Therefore the probability that the final string is
+11 is
+2
+1
+⋅
+2
+1
+=
+4
+1
+=748683265(mod998244353).
+Test Case
+2: It can be proved that there is no way to get string
+11 from
+00.

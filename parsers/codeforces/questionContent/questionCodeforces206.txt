@@ -1,134 +1,157 @@
-A. Typical Interview Problem
-time limit per test2 seconds
-memory limit per test512 megabytes
+G. Removal Sequences
+time limit per test4 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The FB-string is formed as follows. Initially, it is empty. We go through all positive integers, starting from
+You are given a simple undirected graph, consisting of
+n
+vertices and
+m
+edges. The vertices are numbered from
 1
-, in ascending order, and do the following for each integer:
-if the current integer is divisible by
-3
-, append F to the end of the FB-string;
-if the current integer is divisible by
-5
-, append B to the end of the FB-string.
-Note that if an integer is divisible by both
-3
-and
-5
-, we append F, and then B, not in the opposite order.
-The first
-10
-characters of the FB-string are FBFFBFFBFB: the first F comes from the integer
-3
-, the next character (B) comes from
-5
-, the next F comes from the integer
-6
-, and so on. It's easy to see that this string is infinitely long. Let
-f
+to
+n
+. The
 i
-be the
+-th vertex has a value
+a
 i
--th character of FB-string; so,
-f
+written on it.
+You will be removing vertices from that graph. You are allowed to remove vertex
+i
+only if its degree is equal to
+a
+i
+. When a vertex is removed, all edges incident to it are also removed, thus, decreasing the degree of adjacent non-removed vertices.
+A valid sequence of removals is a permutation
+p
 1
-is F,
-f
+,
+p
 2
-is B,
-f
-3
-is F,
-f
-4
-is F, and so on.
-You are given a string
-s
-, consisting of characters F and/or B. You have to determine whether it is a substring (contiguous subsequence) of the FB-string. In other words, determine if it is possible to choose two integers
-l
-and
-r
-(
-1≤l≤r
-) so that the string
-f
-l
-f
-l+1
-f
-l+2
-…
-f
-r
-is exactly
-s
+,…,
+p
+n
+(1≤
+p
+i
+≤n)
+such that the
+i
+-th vertex to be removed is
+p
+i
+, and every removal is allowed.
+A pair
+(x,y)
+of vertices is nice if there exist two valid sequences of removals such that
+x
+is removed before
+y
+in one of them and
+y
+is removed before
+x
+in the other one.
+Count the number of nice pairs
+(x,y)
+such that
+x<y
 .
-For example:
-FFB is a substring of the FB-string: if we pick
-l=3
-and
-r=5
-, the string
-f
-3
-f
-4
-f
-5
-is exactly FFB;
-BFFBFFBF is a substring of the FB-string: if we pick
-l=2
-and
-r=9
-, the string
-f
-2
-f
-3
-f
-4
-…
-f
-9
-is exactly BFFBFFBF;
-BBB is not a substring of the FB-string.
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤2046
-) — the number of test cases.
-Each test case consists of two lines. The first line contains one integer
-k
+1≤t≤
+10
+4
+) — the number of testcases.
+The first line of each testcase contains two integers
+n
+and
+m
 (
-1≤k≤10
-) — the number of characters in
-s
-. The second line contains
-s
-, which is a string of exactly
-k
-characters. Each character of
-s
-is either F or B.
+1≤n≤
+10
+5
+;
+0≤m≤min(
+10
+5
+,
+n⋅(n−1)
+2
+)
+) — the number of vertices and the number of edges of the graph.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤n−1
+) — the degree requirements for each removal.
+Each of the next
+m
+lines contains two integers
+v
+and
+u
+(
+1≤v,u≤n
+;
+v≠u
+) — the description of an edge.
+The graph doesn't contain any self-loops or multiple edges.
+The sum of
+n
+over all testcases doesn't exceed
+10
+5
+. The sum of
+m
+over all testcases doesn't exceed
+10
+5
+.
+Additional constraint on the input: there always exists at least one valid sequence of removals.
 Output
-For each test case, print YES if
-s
-is a substring of the FB-string, or NO otherwise.
-You may print each letter in any case (YES, yes, Yes will all be recognized as positive answer, NO, no and nO will all be recognized as negative answer).
+For each testcase, print a single integer — the number of nice pairs of vertices.
 Example
 input
 Copy
-3
-3
-FFB
-8
-BFFBFFBF
-3
-BBB
+4
+3 2
+1 0 1
+2 3
+1 2
+3 3
+1 2 0
+1 2
+2 3
+1 3
+5 6
+3 0 2 1 0
+1 2
+4 1
+4 2
+3 4
+2 3
+5 1
+1 0
+0
 output
 Copy
-YES
-YES
-NO
+1
+0
+4
+0

@@ -1,39 +1,56 @@
-Pizza Delivery
+Gcd Queries
 Problem
-Chef Po had recently started home delivery service for pizzas. Po has only a single delivery boy that delivers the orders by riding his motorcycle. The motorcycle has an unlimited capacity of fuel tank. However, it is too old and can only ride 1 km for each 1 liter of fuel.
-There are $N$ fuel stations near the restaurant. The $i^{th}$ fuel station can fill a fuel tank exactly $K_{i}$ litres; not more and not less. Filling a fuel tank with any amount of fuel in those stations tends to take a long time. Since the fuel stations are placed near the restaurant, no fuel is needed to go to a fuel station.
-Today Chef Po received $N$ pizza orders, which is the same number of fuel stations fortuitously. The house of the person that ordered the $i^{th}$ order is $H_{i}$ km away from the restaurant. The delivery boy cannot deliver more than one order at a time. Therefore, after delivering an order, he must return back to the restaurant to take the next order.
-The delivery boy is an efficient person and thus he wants to fill the fuel tank with the exact amount of fuel required to deliver an order and return back. He also does not want to spends much time filling the tank, so he wants to minimize the number of times he fills the tank. Help him determine the minimum number of times he must fill the tank to deliver all orders.
+Read problems statements in Mandarin Chinese and Russian.
+You are given an array A of integers of size N. You will be given Q queries where each query is represented by two integers L, R. You have to find the gcd(Greatest Common Divisor) of the array after excluding the part from range L to R inclusive (1 Based indexing). You are guaranteed that after excluding the part of the array remaining array is non empty.
 Input
-The first line contains a single integer $T$ denoting the number test cases. The description of $T$ test cases follows. For each test case, the first line contains a single integer $N$. The second line contains $N$ space-separated integers $H_{i}$. The third line contains $N$ space-separated integers $K_{i}$.
+First line of input contains an integer T denoting number of test cases.
+For each test case, first line will contain two space separated integers N, Q.
+Next line contains N space separated integers denoting array A.
+For next Q lines, each line will contain a query denoted by two space separated integers L, R.
 Output
-For each test case, output a single line containing the minimum number of times the delivery boy must fill the tank.
+For each query, print a single integer representing the answer of that query.
 Constraints
-1≤T≤500
-1≤N≤500
-1≤H
-i
-≤500
-1≤K
-i
-≤500
-There is at least one way for completing the deliveries. That is, the delivery boy always can fill a fuel tank exactly
-2∗H
-i
-litres for
-1≤i≤N.
+Subtask #1: 40 points
+2 ≤ T, N ≤ 100, 1 ≤ Q ≤ N, 1 ≤ A[i] ≤ 105
+1 ≤ L, R ≤ N and L ≤ R
+Subtask #2: 60 points
+2 ≤ T, N ≤ 105, 1 ≤ Q ≤ N, 1 ≤ A[i] ≤ 105
+1 ≤ L, R ≤ N and L ≤ R
+Sum of N over all the test cases will be less than or equal to 106.
+Warning : Large IO(input output), please use faster method for IO.
 Sample 1:
 Input
 Output
 1
-4
-1 2 3 4
-1 4 5 3
-7
+3 3
+2 6 9
+1 1
+2 2
+2 3
+3
+1
+2
 Explanation:
-Here is one possible solution.
-For the first order, the delivery boy must ride 1 + 1 = 2 km long. Fill the tank twice in the first fuel station.
-For the second order, the delivery boy must ride 2 + 2 = 4 km long. Fill the tank once in the second fuel station.
-For the third order, the delivery boy must ride 3 + 3 = 6 km long. Fill the tank twice in the fourth fuel station.
-For the fourth order, the delivery boy must ride 4 + 4 = 8 km long. Fill the tank in the third and fourth fuel stations.
-In total, the delivery boy must fill the tank 7 times. There is no way to fill the tank less than 7 times.
+Test case
+1: The given array is
+[2,6,9].
+Query
+1: On excluding the range
+[1,1], the remaining elements are
+[6,9]. The gcd of
+6 and
+9 is
+3.
+Query
+2: On excluding the range
+[2,2], the remaining elements are
+[2,9]. The gcd of
+2 and
+9 is
+1.
+Query
+3: On excluding the range
+[2,3], the remaining elements are
+[2]. The gcd of
+2 is
+2.

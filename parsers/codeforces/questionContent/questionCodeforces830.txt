@@ -1,265 +1,131 @@
-F. K-Set Tree
-time limit per test3 seconds
-memory limit per test512 megabytes
+B. All Distinct
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a tree
-G
-with
+Sho has an array
+a
+consisting of
 n
-vertices and an integer
-k
-. The vertices of the tree are numbered from
+integers. An operation consists of choosing two distinct indices
+i
+and
+j
+and removing
+a
+i
+and
+a
+j
+from the array.
+For example, for the array
+[2,3,4,2,5]
+, Sho can choose to remove indices
 1
-to
-n
-.
-For a vertex
-r
-and a subset
-S
-of vertices of
-G
-, such that
-|S|=k
-, we define
-f(r,S)
-as the size of the smallest rooted subtree containing all vertices in
-S
-when the tree is rooted at
-r
-. A set of vertices
-T
-is called a rooted subtree, if all the vertices in
-T
-are connected, and for each vertex in
-T
-, all its descendants belong to
-T
-.
-You need to calculate the sum of
-f(r,S)
-over all possible distinct combinations of vertices
-r
-and subsets
-S
-, where
-|S|=k
-. Formally, compute the following:
-∑
-r∈V
-∑
-S⊆V,|S|=k
-f(r,S),
-∑
-∑
-f
-(
-S
-)
-where
-V
-is the set of vertices in
-G
-.
-Output the answer modulo
-10
-9
-+7
-.
+and
+3
+. After this operation, the array becomes
+[3,2,5]
+. Note that after any operation, the length of the array is reduced by two.
+After he made some operations, Sho has an array that has only distinct elements. In addition, he made operations such that the resulting array is the longest possible.
+More formally, the array after Sho has made his operations respects these criteria:
+No pairs such that (
+i<j
+) and
+a
+i
+=
+a
+j
+exist.
+The length of
+a
+is maximized.
+Output the length of the final array.
 Input
-The first line contains two integers
+The first line contains a single integer
+t
+(
+1≤t≤
+10
+3
+) — the number of test cases.
+The first line of each test case contains a single integer
 n
-and
-k
 (
-3≤n≤2⋅
+1≤n≤50
+) — the length of the array.
+The second line of each test case contains
+n
+integers
+a
+i
+(
+1≤
+a
+i
+≤
 10
-5
-,
-1≤k≤n
-).
-Each of the following
-n−1
-lines contains two integers
-x
-and
-y
-(
-1≤x,y≤n
-), denoting an edge between vertex
-x
-and
-y
-.
-It is guaranteed that the given edges form a tree.
+4
+) — the elements of the array.
 Output
-Print the answer modulo
-10
-9
-+7
-.
-Examples
+For each test case, output a single integer — the length of the final array. Remember that in the final array, all elements are different, and its length is maximum.
+Example
 input
 Copy
-3 2
-1 2
-1 3
+4
+6
+2 2 2 3 3 3
+5
+9 1 9 9 1
+4
+15 16 16 15
+4
+10 100 1000 10000
 output
 Copy
-25
-input
-Copy
-7 2
-1 2
-2 3
-2 4
-1 5
-4 6
-4 7
-output
-Copy
-849
+2
+1
+2
+4
 Note
-The tree in the second example is given below:
-We have
-21
-subsets of size
-2
-in the given tree. Hence,
-S∈{{1,2},{1,3},{1,4},{1,5},{1,6},{1,7},{2,3},{2,4},{2,5},{2,6},{2,7},{3,4},{3,5},{3,6},{3,7},{4,5},{4,6},{4,7},{5,6},{5,7},{6,7}}.
-S
-{
-{
+For the first test case Sho can perform operations as follows:
+Choose indices
 1
-2
-}
-{
-1
-3
-}
-{
-1
-4
-}
-{
-1
-5
-}
-{
-1
-6
-}
-{
-1
-7
-}
-{
-2
-3
-}
-{
-2
-4
-}
-{
-2
-5
-}
-{
-2
-6
-}
-{
-2
-7
-}
-{
-3
-4
-}
-{
-3
-5
-}
-{
-3
-6
-}
-{
-3
-7
-}
-{
-4
-5
-}
-{
-4
-6
-}
-{
-4
-7
-}
-{
-5
-6
-}
-{
-5
-7
-}
-{
-6
-7
-}
-}
-And since we have
-7
-vertices,
-1≤r≤7
-. We need to find the sum of
-f(r,S)
-over all possible pairs of
-r
 and
-S
-.
-Below we have listed the value of
-f(r,S)
-for some combinations of
-r
-and
-S
-.
-r=1
-,
-S={3,7}
-. The value of
-f(r,S)
-is
 5
-and the corresponding subtree is
-{2,3,4,6,7}
+to remove. The array becomes
+[2,2,2,3,3,3]→[2,2,3,3]
 .
-r=1
-,
-S={5,4}
-. The value of
-f(r,S)
-is
-7
-and the corresponding subtree is
-{1,2,3,4,5,6,7}
+Choose indices
+1
+and
+4
+to remove. The array becomes
+[2,2,3,3]→[2,3]
 .
-r=1
-,
-S={4,6}
-. The value of
-f(r,S)
-is
+The final array has a length of
+2
+, so the answer is
+2
+. It can be proven that Sho cannot obtain an array with a longer length.
+For the second test case Sho can perform operations as follows:
+Choose indices
 3
-and the corresponding subtree is
-{4,6,7}
+and
+4
+to remove. The array becomes
+[9,1,9,9,1]→[9,1,1]
 .
+Choose indices
+1
+and
+3
+to remove. The array becomes
+[9,1,1]→[1]
+.
+The final array has a length of
+1
+, so the answer is
+1
+. It can be proven that Sho cannot obtain an array with a longer length.

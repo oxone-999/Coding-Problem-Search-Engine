@@ -1,44 +1,311 @@
-DARTS501
+(Challenge) Bacteria Synthesis
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Note: This is an interactive problem. Interactive problems differ from classic problems in that your solution will send and receive data from a special judge program instead of from static files. Pay special attention to the notice on output buffering described in the "Input + Output" section below.
-In this problem you will play the most famous darts game: 501 with double out.
-The dartboard is circular board, divided into 20 numbered sections, scoring from 1 to 20 points, by wires running from the small central circle to the outer circular wire. Circular wires within the outer wire subdivide each section into single, double and triple areas. You can find the full description of 501 double out game with rules of playing on dartboard here.
- The 501 double out game: Each leg your score start from 501 and your darts score will decrease this score. In each turn you will have three darts to throw. The leg finish if your score is 0 and your last dart is in the double. A new leg starts with the score 501 just after finishing the previous one and the remaining darts of the finishing turn will not be considered used. If your current turn score is greater than your score, then you will lose remaining darts of this turn and the score will remain same. If one uses all his darts and neither the leg finishes nor the turn, then the current turn score will be added to the total score if it is a valid turn. It is highly recommended to use our offline tester given below to understand the gaming process more clearly.
-Examples:
-If your score 501 before the turn and you double 20, triple 19 and bull's eye, then you earn in this turn 2*20+3*19+2*25=147 score, then your scores after this turn is 501-147=354.
-If your score 100 before the turn and you throw triple 20 and after that double 20, than this leg finishes, and you use in this turn 2 darts.
-If your score 20 before the turn and you throw simple 19, then your scores go back to 20 (because from 1 you cannot checkout with double), and you lose those darts what in your hand for this turn. This turn we will call invalid turn.
-The center of the board is (0,0), the top of the board is (0,-1), the left side is (-1,0), etc. So the dartboard is a circle of radius 1. For every tests belongs an Gaussian distribution with zero expected value and a standard deviation between 0 and 1. This will responsible for the throw precision. Every player has some (between 2 to 5) preferred place where he like to throw, to this place the throws are more precise. If your throw target covered by multiple preferred area than the better deviation is selected. All these are hidden. More description in the example section.
-Firstly you can throw darts for practice. This phase is to detect how the current player play darts. After that you can use 99999 darts. Your score is the sum of the score of your valid turns. You can not aim your darts outside the 1.2 radius. ( If the dart flew outside this radius that is valid but your target can not be outside this circle.)
-Input + Output
-The output begins with a line containing an integer the number N ≤ 100000 of darts you would like to throw in practice mode. After that you can throw N darts
-A B
-A,B can be double numbers this is your target position
-after each throw you will get the answer in one line with format:
-C D M S
-(C,D) is the real position where your darts flew. M is an integer between 1 and 3 representing the dart multiplier (1- simple, 2- double, 3- triple) and S is another integer number representing dart score (without a multiplier). Now the compete mode begins. Here will use 99999 darts. (This doesn't mean you will throw 99999 darts. You may lose some dart in invalid turns.) The communication is the same as the training mode.
-Attention: the program should clear the output buffer after printing each line. It can be done using fflush(stdout) command or by setting the proper type of buffering at the beginning of the execution - setlinebuf(stdout). Failure to flush the output buffer will result in Time Limit Exceeded verdict.
-Test Case Generation
-The 20% of the test files the deviation V selected from [0.01,0.1], the 60% selected from [0.1,0.3], and the remaining 20% selected from [0.3,1] interval. After that generate a number P between 2 and 5 (inclusive) how many preferred position has the player. Each preferred position is a circular area with center (X,Y) and radius R. Then the test case generator will generate X, Y and R, where (X,Y) are two real numbers inside the 1 radius circle centered at (0,0) and R is between 0.05 and 0.3. A multiplier Z for each preferred place will be generated, Z will be between 0.25 and 0.75, this means here the deviation is less by this multiplier (Z*V instead of V).
-We have 30 official test files. You must correctly solve all test files to receive "Correct Answer". During the contest, your overall score is the sum of the scores on the first 6 test files. After the contest, all solutions will be rescored by the sum of the scores on the rest 24 test files. Note, that public part of the tests may not contain some border cases.
-More information about the game:
-Hint.
-The dimensions of the board.
-outside of the double 170mm from the center.
-outside of the triple 107 mm from the center.
-bull's eye diameter is 12.7 mm.
-bull's diameter is 31.8 mm.
-double and triple inside width is 8 mm.
-For normal distribution we have used this implementation.
-Example (of a throw)
-Lets the current deviation V = 0.1, and we have two preferred places
-the first center is (0,0.5) with radius 0.1, and the deviation multiplier 0.5 this means in this circle the deviation is 0.05.
-the second center is (-0.3,0.0) with radius 0.2, and the deviation multiplier 0.3 this means in this circle the deviation is 0.03.
-if our target is (0,0.55) which is inside the first preferred place then the deviation multiplier here will be 0.05. So we ask two random numbers (K,L) from our normal distribution generator (which generate with 0 expected value and 1 standard deviation). The real target will be (0+K0.05,0.55+L0.05). E.g. K=0.11, L= -0.28 then the dart will flew (0.0055,0.536).
-If our target is (0,0.7) which is outside of both the preferred places then the deviation multiplier here will be V = 0.1. In that case, the real target will be (0+K*V, 0.7+L*V), where (K,L) are two random numbers generated from our normal distributor.
-Offline tester/Visualization
-Darts.jar
-How to use it.
-Final Darts.jar
-Note: we can not guarantee the offline tester produce the same score as the online judge.
+Read problem statements in Bengali, Hindi, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef Ada always prepares delicious and nutritious dishes. Her secret is to use genetic engineering of bacteria to synthesise proteins. A protein is denoted by a string of uppercase English characters 'A'-'T'; each character represents an amino acid.
+The genome of Ada's bacteria is also denoted by a string with length
+N. Each character of this string is 'A', 'C', 'T' or 'G', representing a nucleotide. The nucleotides are also numbered
+1 through
+4 in the same order 'A', 'C', 'T', 'G'. Let's denote the number of a nucleotide
+x by
+n(x).
+You are given the starting genome
+G of Ada's bacteria; at any point, all bacteria must have the same genome. You may perform operations of the following types (in any order, any number of times):
+1 L R: Reverse the substring between the
+L-th and
+R-th character inclusive (
+1≤L≤R≤N), i.e. for each
+L≤i<L+R−i≤R, swap the
+i-th and
+L+R−i-th nucleotide of the current genome. The cost of this operation is
+K+min(L−1,R−L,N−R) chefcoins.
+2 i Y: Mutate, i.e. change the
+i-th nucleotide of the current genome (
+1≤i≤N) to the nucleotide
+Y. The cost of this operation is
+A+min(i,N+1−i)⋅B
+n(X),n(Y)
+chefcoins, where
+X denotes the
+i-th nucleotide before this mutation.
+Each amino acid is encoded by one or more codons ― a codon is a string of three nucleotides. Each codon encodes exactly one amino acid. Note that there are
+4
+3
+different codons and only
+20 amino acids. For each codon, you are given the amino acid it encodes.
+A bacteria can produce a protein
+P with length
+L amino acids if its genome contains a substring of
+3⋅L nucleotides that can be translated to
+P, i.e. split into a sequence of
+L consecutive substrings
+Z
+1
+,Z
+2
+,…,Z
+L
+with lengths
+3 such that for each
+i (
+1≤i≤L),
+Z
+i
+is a codon for the
+i-th amino acid (character) of
+P.
+For example, let's suppose that codons "ATA" and "TAT" are translated to amino acids 'R' and 'S' respectively. Then, a bacteria with a genome "ATATATA" can produce only the following proteins (the codons used to produce them are marked by brackets):
+"[ATA]TATA" to "R"
+"A[TAT]ATA" to "S"
+"[ATA][TAT]A" to "RS"
+"A[TAT][ATA]" to "SR"
+For her next dish, Ada needs
+M proteins
+P
+1
+,P
+2
+,…,P
+M
+. Her bacteria do not have to produce all proteins, since they can be bought on the market; for each valid
+i, the cost of the protein
+P
+i
+is
+C
+i
+chefcoins. However, Ada wants the final bacteria to be able to synthesise at least
+50 of the required proteins.
+As her apprentice, your task is to perform some (possibly zero) genetic operations on the initial genome and decide which proteins should be produced from the resulting genome; all other proteins are bought on the market. Your goal is to minimise the total cost (in chefcoins).
+Input
+The first line of the input contains four space-separated integers
+N,
+M,
+K and
+A.
+M lines follow. For each
+i (
+1≤i≤M), the
+i-th of these lines contains a string
+P
+i
+, followed by a space and an integer
+C
+i
+.
+The next line contains a single string
+G with length
+N.
+Each of the next four lines contains four space-separated integers. For each
+i and
+j (
+1≤i,j≤4), the
+j-th integer on the
+i-th line is
+B
+i,j
+.
+Each of the next
+64 lines contains a single string with length
+4. The first three characters of this string denote a unique codon and the last character denotes the amino acid which it encodes.
+Output
+First, print a line containing two space-separated integers
+Q (
+0≤Q≤10
+5
+) and
+U (
+50≤U≤M) ― the number of operations you want to perform and the number of required proteins the final bacteria will produce.
+Then, print
+Q lines. Each of these lines should contain the description of an operation you want to perform, in the format given above.
+Finally, print
+U lines. Each of these lines should contain two space-separated integers
+i and
+L denoting that the protein
+P
+i
+can be generated by the substring which starts with the
+L-th character in the final genome. You will receive a Wrong Answer veredict if you print the same
+i twice.
+Constraints
+N=2
+15
+1≤M≤2
+12
+K=2
+13
+A=2
+13
+0≤B
+i,j
+≤2
+2
+for each valid
+i,j
+2
+27
+≤C
+i
+≤2
+28
+for each valid
+i
+Example Input
+9 3 8192 8192
+AB 134217728
+BC 134217728
+ABC 134217728
+ACCATGGAA
+0 1 2 3
+1 2 3 0
+2 3 0 1
+3 0 1 2
+ACGA
+TACB
+GTAC
+...
+[61 codons more]
+...
+Example Output
+2 3
+1 3 6
+2 8 T
+1 1
+2 4
+3 1
+Explanation
+The initial genome is "ACCATGGAA".
+In the first operation, the substring "CATG" is reversed: "AC[CATG]GAA" becomes "ACGTACGAA".
+In the second operation, the
+8-th nucleotide ('A') is replaced by 'T': "ACGTACG[A]A" becomes "ACGTACGTA".
+Some of the proteins which can be synthesised from the final genome are:
+"AB" from "[ACG][TAC]GTA"
+"BC" from "ACG[TAC][GTA]"
+"ABC" from "[ACG][TAC][GTA]"
+Scoring
+The score of a test file is the cost of obtaining all required proteins, i.e. the number of chefcoins you need to pay. The score of a submission is the sum of costs of all test files. Your goal is to minimise the score of your submission.
+There are twelve test files. During the contest, the displayed score will account for exactly four test files, i.e. your score reflects your submission's performance on approximately 33.33% (4/12) of the test files; However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to include the sum of your program's scores over the other 8 test files.
+Test Generation
+All translations codon -> amino acid are generated independently from each other. For each codon, the amino acid it encodes is chosen uniformly randomly.
+B
+x,y
+is randomly chosen between
+0 and
+2
+2
+(inclusive).
+To generate the genome
+G, first, a genome
+T with length
+N is generated; each nucleotide of this genome is chosen uniformly randomly. Next, each of the proteins
+P
+1
+,P
+2
+,…,P
+M
+is generated as follows:
+Choose the length
+l of the protein uniformly randomly between
+L
+p
+and
+R
+p
+inclusive.
+Choose a substring
+S
+p
+in the genome uniformly randomly among all substrings with length
+3l.
+Translate
+S
+p
+to get the protein
+P
+i
+.
+Choose the cost
+C
+i
+uniformly randomly between
+2
+27
+and
+2
+28
+inclusive.
+Then, the genome
+T is modified by performing the following operations in this order:
+Mutations:
+N
+M
+different nucleotides are chosen uniformly randomly. Each of them is changed to a uniformly random (possibly the same) nucleotide, independently from all other changed nucleotides.
+Reversals:
+N
+R
+times, a substring of the current genome is chosen uniformly randomly and reversed.
+The resulting string after these
+N
+M
++N
+R
+operations is the genome
+G.
+Finally, here is how the remaining parameters are chosen:
+M can be either
+2
+10
+or
+2
+12
+.
+L
+p
+and
+R
+p
+can be either
+100 and
+200 respectively, or
+200 and
+300 respectively.
+N
+M
+and
+N
+R
+can be either
+0 and
+2
+12
+espectively,
+2
+12
+−2
+7
+and
+2
+7
+respectively, or
+2
+9
+and
+2
+12
+−2
+9
+respectively.
+There is one test file for each combination of the parameters
+M,
+L
+p
+,
+R
+p
+,
+N
+M
+and
+N
+R
+.

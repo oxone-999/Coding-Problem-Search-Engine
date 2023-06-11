@@ -1,92 +1,33 @@
-Chef and Number Game
+Ups and Downs
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Recently, Chef hosted a strange competition at the Byteland annual fair. There were
-N participants in the competition (numbered
-1 through
-N); at the end of the competition, their scores were
-A
-1
-,A
-2
-,…,A
-N
-. Since it was a strange competition, negative scores were allowed too.
-The total score of the competition is calculated as follows:
-Divide the participants into one or more non-empty groups (subsets); if there are
-K groups, let's denote them by
-G
-1
-,G
-2
-,…,G
-K
-. Each participant should be a member of exactly one group.
-Sum up the scores of participants in each individual group. For each valid
-i, let's denote the sum of scores of participants in group
-i by
-X
-i
-.
-The total score of the competition is the sum of squares of these summed up scores, i.e.
-X
-1
-2
-+X
-2
-2
-+…+X
-K
-2
-.
-Chef wants to choose the groups in such a way that the total score is maximum possible. Since there may be many ways to form the groups that lead to the maximum total score, Chef wants to know just the size of the largest group and the size of the smallest group which could be formed while still maximising the total score. These sizes are independent - formally, they are the maximum and minimum size
-s of a group such that there is a way to form groups which maximises the total score and contains a group with size
-s.
+Read problems statements in Mandarin Chinese and Russian as well.
+Problem description
+You will be given a zero-indexed array A. You need to rearrange its elements in such a way that the following conditions are satisfied:
+A[i] ≤ A[i+1] if i is even.
+A[i] ≥ A[i+1] if i is odd.
+In other words the following inequality should hold: A[0] ≤ A[1] ≥ A[2] ≤ A[3] ≥ A[4], and so on. Operations ≤ and ≥ should alter.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+The first line contains a single integer T denoting the number of test cases. The first line of each test case contains an integer N, that is the size of the array A. The second line of each test case contains the elements of array A
 Output
-For each test case, print a single line containing two space-separated integers - the size of the largest possible group and the size of the smallest possible group.
+For each test case, output a single line containing N space separated integers, which are the elements of A arranged in the required order. If there are more than one valid arrangements, you can output any of them.
 Constraints
-1≤T≤20
-1≤N≤10
-5
-1≤∣A
-i
-∣≤10
-9
-for each valid
-i
-the sum of
-N over all test cases does not exceed
-5⋅10
-5
-Subtasks
-Subtask #1 (100 points): original constraints
+1 ≤ N ≤ 100000
+Sum of N in one test file ≤ 600000
+1 ≤ A[i] ≤ 10^9
 Sample 1:
 Input
 Output
-1
-5
-5 2 4 6 7
-5 5
-Explanation:
-Example case 1: To maximise the total score, everyone has to belong to the same group with scores
-[5,2,4,6,7]. For this group,
-X=5+2+4+6+7=24 and the total score is
-24
 2
-=576. The size of the largest possible group, as well as the size of the smallest possible group, is
-5.
+2
+3 2
+3
+10 5 2
+2 3
+2 10 5
+Explanation:
+Example case 1.
+A[0] ? A[1] is satisfied, 2 ? 3.
+Example case 2.
+A[0] ? A[1] is satisfied, 2 ? 10.
+A[1] ? A[2] is satisfied, 10 ? 5.
+Note: 5 10 2 is also valid answer.

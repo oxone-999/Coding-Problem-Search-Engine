@@ -1,90 +1,48 @@
-A. Matrix Game
-time limit per test1 second
+E. Maximum Subsequence Value
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ashish and Vivek play a game on a matrix consisting of
-n
-rows and
-m
-columns, where they take turns claiming cells. Unclaimed cells are represented by
-0
-, while claimed cells are represented by
-1
-. The initial state of the matrix is given. There can be some claimed cells in the initial state.
-In each turn, a player must claim a cell. A cell may be claimed if it is unclaimed and does not share a row or column with any other already claimed cells. When a player is unable to make a move, he loses and the game ends.
-If Ashish and Vivek take turns to move and Ashish goes first, determine the winner of the game if both of them are playing optimally.
-Optimal play between two players means that both players choose the best possible strategy to achieve the best possible outcome for themselves.
+Ridhiman challenged Ashish to find the maximum valued subsequence of an array $$$a$$$ of size $$$n$$$ consisting of positive integers.
+The value of a non-empty subsequence of $$$k$$$ elements of $$$a$$$ is defined as $$$\sum 2^i$$$ over all integers $$$i \ge 0$$$ such that at least $$$\max(1, k - 2)$$$ elements of the subsequence have the $$$i$$$-th bit set in their binary representation (value $$$x$$$ has the $$$i$$$-th bit set in its binary representation if $$$\lfloor \frac{x}{2^i} \rfloor \mod 2$$$ is equal to $$$1$$$).
+Recall that $$$b$$$ is a subsequence of $$$a$$$, if $$$b$$$ can be obtained by deleting some(possibly zero) elements from $$$a$$$.
+Help Ashish find the maximum value he can get by choosing some subsequence of $$$a$$$.
 Input
-The first line consists of a single integer
-t
-(1≤t≤50)
- — the number of test cases. The description of the test cases follows.
-The first line of each test case consists of two space-separated integers
-n
-,
-m
-(1≤n,m≤50)
- — the number of rows and columns in the matrix.
-The following
-n
-lines consist of
-m
-integers each, the
-j
--th integer on the
-i
--th line denoting
-a
-i,j
-(
-a
-i,j
-∈{0,1})
-.
+The first line of the input consists of a single integer $$$n$$$ $$$(1 \le n \le 500)$$$ — the size of $$$a$$$.
+The next line consists of $$$n$$$ space-separated integers — the elements of the array $$$(1 \le a_i \le 10^{18})$$$.
 Output
-For each test case if Ashish wins the game print "Ashish" otherwise print "Vivek" (without quotes).
-Example
+Print a single integer — the maximum value Ashish can get by choosing some subsequence of $$$a$$$.
+Examples
+input
+Copy
+3
+2 1 3
+output
+Copy
+3
+input
+Copy
+3
+3 1 4
+output
+Copy
+7
+input
+Copy
+1
+1
+output
+Copy
+1
 input
 Copy
 4
-2 2
-0 0
-0 0
-2 2
-0 0
-0 1
-2 3
-1 0 1
-1 1 0
-3 3
-1 0 0
-0 0 0
-1 0 0
+7 7 1 1
 output
 Copy
-Vivek
-Ashish
-Vivek
-Ashish
+7
 Note
-For the first case: One possible scenario could be: Ashish claims cell
-(1,1)
-, Vivek then claims cell
-(2,2)
-. Ashish can neither claim cell
-(1,2)
-, nor cell
-(2,1)
-as cells
-(1,1)
-and
-(2,2)
-are already claimed. Thus Ashish loses. It can be shown that no matter what Ashish plays in this case, Vivek will win.
-For the second case: Ashish claims cell
-(1,1)
-, the only cell that can be claimed in the first move. After that Vivek has no moves left.
-For the third case: Ashish cannot make a move, so Vivek wins.
-For the fourth case: If Ashish claims cell
-(2,3)
-, Vivek will have no moves left.
+For the first test case, Ashish can pick the subsequence $$$\{{2, 3}\}$$$ of size $$$2$$$. The binary representation of $$$2$$$ is 10 and that of $$$3$$$ is 11. Since $$$\max(k - 2, 1)$$$ is equal to $$$1$$$, the value of the subsequence is $$$2^0 + 2^1$$$ (both $$$2$$$ and $$$3$$$ have $$$1$$$-st bit set in their binary representation and $$$3$$$ has $$$0$$$-th bit set in its binary representation). Note that he could also pick the subsequence $$$\{{3\}}$$$ or $$$\{{2, 1, 3\}}$$$.
+For the second test case, Ashish can pick the subsequence $$$\{{3, 4\}}$$$ with value $$$7$$$.
+For the third test case, Ashish can pick the subsequence $$$\{{1\}}$$$ with value $$$1$$$.
+For the fourth test case, Ashish can pick the subsequence $$$\{{7, 7\}}$$$ with value $$$7$$$.

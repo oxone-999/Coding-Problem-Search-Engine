@@ -1,81 +1,111 @@
-Chef and Fixed Deposits
+Single Operation Part 2
 Problem
-Chef wants to make a purchase. For this, he needs
-X gold coins, but he has none at the moment.
-Chef has
-N fixed deposits, the
-i
-th
-of which is worth
-A
-i
-coins. He wants to open the minimum number of these deposits so that he has at least
-X coins.
-You have to tell Chef the minimum number of fixed deposits he must open in order to have
-X coins, or say that this is impossible.
+Chef has the binary representation
+S of a number
+X with him. He can modify the number by applying the following operation exactly once:
+Make
+X:=X⊕⌊
+2
+Y
+X
+⌋, where
+(1≤Y≤∣S∣) and
+⊕ denotes the bitwise XOR operation.
+Chef wants to minimize the value of
+X after performing the operation. Help Chef in determining the value of
+Y which will minimize the value of
+X after the operation.
 Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers —
-N and
-X, as described in the statement.
-The second line of each test case contains
-N space-separated integers — the
-i
-th
-of which is
-A
-i
-.
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of inputs:
+The first line contains the length of the binary string
+S.
+The second line contains the binary string
+S.
 Output Format
-For each test case, output one line containing the answer — the minimum number of FDs Chef must open to have at least
-X coins. If it is not possible for him to open FDs such that he has at least
-X coins, output
-−1.
+For each test case, output on a new line, the value of
+Y which will minimize the value of
+X after the operation.
 Constraints
-1≤T,A
-i
-,N≤100
-1≤X≤10
+1≤T≤5⋅10
 4
-Subtasks
-Subtask #1 (100 points): Original constraints
+1≤∣S∣≤10
+5
+The sum of
+∣S∣ over all test cases won't exceed
+5⋅10
+5
+.
+S contains the characters
+0 and
+1 only.
 Sample 1:
 Input
 Output
 4
-4 6
-4 3 5 1
-3 15
-1 5 3
-2 5
-10 3
-4 7
-1 2 3 4
 2
--1
+10
+2
+11
+3
+101
+3
+110
+2
 1
 2
+1
 Explanation:
 Test case
-1: Chef can open the first and second FDs to get
-4+3=7 coins, which is more than the
-6 coins he needs. There are other combinations of two FDs giving at least
-6 coins — for example, the first and third (for
-4+5=9) and third and fourth (for
-5+1=6), but there is no way to open only one FD and get
-6 or more coins.
+1: Since
+S=10 is the binary representation of
+2, the current value of
+X=2. On choosing
+Y=2,
+X becomes
+2⊕⌊
+2
+2
+2
+⌋=2. We can show that this is the minimum value of
+X we can achieve after one operation.
 Test case
-2: No matter which FDs Chef opens, he cannot have
-≥15 coins, so the answer is
-−1 — even if he opens all of them, he will have only
-1+5+3=9 coins.
+2: Since
+S=11 is the binary representation of
+3, the current value of
+X=3. On choosing
+Y=1,
+X becomes
+3⊕⌊
+2
+1
+3
+⌋=2. We can show that this is the minimum value of
+X we can achieve after one operation.
 Test case
-3: Chef can open the first FD to obtain
-10 coins, which is larger than the
-5 coins he needs.
+3: Since
+S=101 is the binary representation of
+5, the current value of
+X=5. On choosing
+Y=2,
+X becomes
+5⊕⌊
+2
+2
+5
+⌋=4. We can show that this is the minimum value of
+X we can achieve after one operation.
 Test case
-4: Chef can open the third and fourth FDs to get
-3+4=7 coins, which is enough because he needs
-7 coins.
+4: Since
+S=110 is the binary representation of
+6, the current value of
+X=6. On choosing
+Y=1,
+X becomes
+6⊕⌊
+2
+1
+6
+⌋=5. We can show that this is the minimum value of
+X we can achieve after one operation.

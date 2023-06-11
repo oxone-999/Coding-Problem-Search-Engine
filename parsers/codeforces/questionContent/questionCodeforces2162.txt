@@ -1,229 +1,193 @@
-A2. Binary Table (Hard Version)
-time limit per test1 second
+D. INOI Final Contests
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the hard version of the problem. The difference between the versions is in the number of possible operations that can be made. You can make hacks if and only if you solved both versions of the problem.
-You are given a binary table of size
-n×m
-. This table consists of symbols
-0
-and
-1
-.
-You can make such operation: select
-3
-different cells that belong to one
-2×2
-square and change the symbols in these cells (change
-0
-to
-1
-and
+Today is the final contest of INOI (Iranian National Olympiad in Informatics). The contest room is a row with
+n
+computers. All computers are numbered with integers from
 1
 to
-0
-).
-Your task is to make all symbols in the table equal to
-0
-. You are allowed to make at most
-nm
-operations. You don't need to minimize the number of operations.
-It can be proved, that it is always possible.
-Input
-The first line contains a single integer
-t
-(
-1≤t≤5000
-) — the number of test cases. The next lines contain descriptions of test cases.
-The first line of the description of each test case contains two integers
 n
-,
+from left to right. There are
 m
-(
-2≤n,m≤100
-).
-Each of the next
-n
-lines contains a binary string of length
+participants, numbered with integers from
+1
+to
 m
-, describing the symbols of the next row of the table.
-It is guaranteed, that the sum of
-nm
-for all test cases does not exceed
-20000
 .
-Output
-For each test case print the integer
-k
-(
-0≤k≤nm
-) — the number of operations.
-In the each of the next
-k
-lines print
-6
-integers
-x
-1
-,
-y
-1
-,
-x
-2
-,
-y
-2
-,
-x
-3
-,
-y
-3
+We have an array
+a
+of length
+m
+where
+a
+i
 (
 1≤
-x
+a
+i
+≤n
+) is the computer behind which the
+i
+-th participant wants to sit.
+Also, we have another array
+b
+of length
+m
+consisting of characters 'L' and 'R'.
+b
+i
+is the side from which the
+i
+-th participant enters the room. 'L' means the participant enters from the left of computer
 1
-,
-x
-2
-,
-x
-3
-≤n,1≤
-y
+and goes from left to right, and 'R' means the participant enters from the right of computer
+n
+and goes from right to left.
+The participants in the order from
 1
-,
-y
+to
+m
+enter the room one by one. The
+i
+-th of them enters the contest room in the direction
+b
+i
+and goes to sit behind the
+a
+i
+-th computer. If it is occupied he keeps walking in his direction until he reaches the first unoccupied computer. After that, he sits behind it. If he doesn't find any computer he gets upset and gives up on the contest.
+The madness of the
+i
+-th participant is the distance between his assigned computer (
+a
+i
+) and the computer he ends up sitting behind. The distance between computers
+i
+and
+j
+is equal to
+|i−j|
+.
+The values in the array
+a
+can be equal. There exist
+n
+m
+⋅
 2
+m
+possible pairs of arrays
+(a,b)
+.
+Consider all pairs of arrays
+(a,b)
+such that no person becomes upset. For each of them let's calculate the sum of participants madnesses. Find the sum of all these values.
+You will be given some prime modulo
+p
+. Find this sum by modulo
+p
+.
+Input
+The only line contains three integers
+n
 ,
-y
-3
-≤m
-) describing the next operation. This operation will be made with three cells
+m
+,
+p
 (
-x
-1
-,
-y
-1
-)
-,
-(
-x
-2
-,
-y
-2
-)
-,
-(
-x
-3
-,
-y
-3
-)
-. These three cells should be different. These three cells should belong to some
-2×2
-square.
-Example
+1≤m≤n≤500,
+10
+8
+≤p≤
+10
+9
++9
+).
+It is guaranteed, that the number
+p
+is prime.
+Output
+Print only one integer — the required sum by modulo
+p
+.
+Examples
 input
 Copy
-5
-2 2
-10
-11
-3 3
-011
-101
-110
-4 4
-1111
-0110
-0110
-1111
-5 5
-01011
-11001
-00010
-11011
-10000
-2 3
-011
-101
+3 1 1000000007
 output
 Copy
-1
-1 1 2 1 2 2
-2 
-2 1 3 1 3 2
-1 2 1 3 2 3
+0
+input
+Copy
+2 2 1000000009
+output
+Copy
 4
-1 1 1 2 2 2 
-1 3 1 4 2 3
-3 2 4 1 4 2
-3 3 4 3 4 4
-4
-1 2 2 1 2 2 
-1 4 1 5 2 5 
-4 1 4 2 5 1
-4 4 4 5 3 4
-2
-1 3 2 2 2 3
-1 2 2 1 2 2
+input
+Copy
+3 2 998244353
+output
+Copy
+8
+input
+Copy
+20 10 1000000009
+output
+Copy
+352081045
 Note
-In the first test case, it is possible to make only one operation with cells
-(1,1)
+In the first test, there are three possible arrays
+a
+:
+{1}
 ,
-(2,1)
-,
-(2,2)
-. After that, all symbols will be equal to
+{2}
+, and
+{3}
+and two possible arrays
+b
+:
+{L}
+and
+{R}
+. For all six pairs of arrays
+(a,b)
+, the only participant will sit behind the computer
+a
+1
+, so his madness will be
+0
+. So the total sum of madnesses will be
 0
 .
-In the second test case:
-operation with cells
-(2,1)
-,
-(3,1)
-,
-(3,2)
-. After it the table will be:
-
-011
-001
-000
-operation with cells
-(1,2)
-,
-(1,3)
-,
-(2,3)
-. After it the table will be:
-
-000
-000
-000
-In the fifth test case:
-operation with cells
-(1,3)
-,
-(2,2)
-,
-(2,3)
-. After it the table will be:
-
-010
-110
-operation with cells
-(1,2)
-,
-(2,1)
-,
-(2,2)
-. After it the table will be:
-
-000
-000
+In the second test, all possible pairs of arrays
+(a,b)
+, such that no person becomes upset are:
+({1,1},{L,L})
+, the sum of madnesses is
+1
+;
+({1,1},{R,L})
+, the sum of madnesses is
+1
+;
+({2,2},{R,R})
+, the sum of madnesses is
+1
+;
+({2,2},{L,R})
+, the sum of madnesses is
+1
+;
+all possible pairs of
+a∈{{1,2},{2,1}}
+and
+b∈{{L,L},{R,L},{L,R},{R,R}}
+, the sum of madnesses is
+0
+.
+So, the answer is
+1+1+1+1+0…=4
+.

@@ -1,101 +1,155 @@
-C. Omkar and Baseball
+A. Donut Shops
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Patrick likes to play baseball, but sometimes he will spend so many hours hitting home runs that his mind starts to get foggy! Patrick is sure that his scores across
-n
-sessions follow the identity permutation (ie. in the first game he scores
-1
-point, in the second game he scores
-2
-points and so on). However, when he checks back to his record, he sees that all the numbers are mixed up!
-Define a special exchange as the following: choose any subarray of the scores and permute elements such that no element of subarray gets to the same position as it was before the exchange. For example, performing a special exchange on
-[1,2,3]
-can yield
-[3,1,2]
-but it cannot yield
-[3,2,1]
-since the
-2
-is in the same position.
-Given a permutation of
-n
-integers, please help Patrick find the minimum number of special exchanges needed to make the permutation sorted! It can be proved that under given constraints this number doesn't exceed
-10
-18
+There are two rival donut shops.
+The first shop sells donuts at retail: each donut costs
+a
+dollars.
+The second shop sells donuts only in bulk: box of
+b
+donuts costs
+c
+dollars. So if you want to buy
+x
+donuts from this shop, then you have to buy the smallest number of boxes such that the total number of donuts in them is greater or equal to
+x
 .
-An array
-a
-is a subarray of an array
-b
-if
-a
-can be obtained from
-b
-by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end.
+You want to determine two positive integer values:
+how many donuts can you buy so that they are strictly cheaper in the first shop than in the second shop?
+how many donuts can you buy so that they are strictly cheaper in the second shop than in the first shop?
+If any of these values doesn't exist then that value should be equal to
+−1
+. If there are multiple possible answers, then print any of them.
+The printed values should be less or equal to
+10
+9
+. It can be shown that under the given constraints such values always exist if any values exist at all.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
+The first line contains a single integer
 t
 (
-1≤t≤100
-). Description of the test cases follows.
-The first line of each test case contains integer
-n
-(
-1≤n≤2⋅
-10
-5
-)  — the length of the given permutation.
-The second line of each test case contains
-n
-integers
+1≤t≤1000
+) — the number of testcases.
+Each of the next
+t
+lines contains three integers
 a
-1
 ,
-a
-2
-,...,
-a
-n
+b
+and
+c
 (
-1≤
-a
-i
-≤n
-)  — the initial permutation.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
+1≤a≤
 10
-5
-.
+9
+,
+2≤b≤
+10
+9
+,
+1≤c≤
+10
+9
+).
 Output
-For each test case, output one integer: the minimum number of special exchanges needed to sort the permutation.
+For each testcase print two positive integers. For both shops print such
+x
+that buying
+x
+donuts in this shop is strictly cheaper than buying
+x
+donuts in the other shop.
+x
+should be greater than
+0
+and less or equal to
+10
+9
+.
+If there is no such
+x
+, then print
+−1
+. If there are multiple answers, then print any of them.
 Example
 input
 Copy
-2
-5
-1 2 3 4 5
-7
-3 2 4 5 1 6 7
+4
+5 10 4
+4 5 20
+2 2 3
+1000000000 1000000000 1000000000
 output
 Copy
-0
-2
+-1 20
+8 -1
+1 2
+-1 1000000000
 Note
-In the first permutation, it is already sorted so no exchanges are needed.
-It can be shown that you need at least
+In the first testcase buying any number of donuts will be cheaper in the second shop. For example, for
+3
+or
+5
+donuts you'll have to buy a box of
+10
+donuts for
+4
+dollars.
+3
+or
+5
+donuts in the first shop would cost you
+15
+or
+25
+dollars, respectively, however. For
+20
+donuts you'll have to buy two boxes for
+8
+dollars total. Note that
+3
+and
+5
+are also valid answers for the second shop, along with many other answers.
+In the second testcase buying any number of donuts will be either cheaper in the first shop or the same price.
+8
+donuts cost
+32
+dollars in the first shop and
+40
+dollars in the second shop (because you have to buy two boxes).
+10
+donuts will cost
+40
+dollars in both shops, so
+10
+is not a valid answer for any of the shops.
+In the third testcase
+1
+donut costs
 2
-exchanges to sort the second permutation.
-[3,2,4,5,1,6,7]
-Perform special exchange on range (
-1,5
-)
-[4,1,2,3,5,6,7]
-Perform special exchange on range (
-1,4
-)
-[1,2,3,4,5,6,7]
+and
+3
+dollars, respectively.
+2
+donuts cost
+4
+and
+3
+dollars. Thus,
+1
+is a valid answer for the first shop and
+2
+is a valid answer for the second shop.
+In the fourth testcase
+10
+9
+donuts cost
+10
+18
+dollars in the first shop and
+10
+9
+dollars in the second shop.

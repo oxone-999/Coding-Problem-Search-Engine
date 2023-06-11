@@ -1,130 +1,163 @@
-E. Partial Sorting
-time limit per test1.5 seconds
-memory limit per test1024 megabytes
+F. Wonderful Jump
+time limit per test4 seconds
+memory limit per test128 megabytes
 inputstandard input
 outputstandard output
-Consider a permutation
-†
-†
-p
+You are given an array of positive integers
+a
+1
+,
+a
+2
+,…,
+a
+n
 of length
-3n
-. Each time you can do one of the following operations:
-Sort the first
-2n
-elements in increasing order.
-Sort the last
-2n
-elements in increasing order.
-We can show that every permutation can be made sorted in increasing order using only these operations. Let's call
-f(p)
-the minimum number of these operations needed to make the permutation
-p
-sorted in increasing order.
-Given
 n
-, find the sum of
-f(p)
-over all
-(3n)!
-permutations
-p
-of size
-3n
 .
-Since the answer could be very large, output it modulo a prime
-M
-.
-†
-†
-A permutation of length
-n
-is an array consisting of
-n
-distinct integers from
+In one operation you can jump from index
+i
+to index
+j
+(
+1≤i≤j≤n
+) by paying
+min(
+a
+i
+,
+a
+i+1
+,…,
+a
+j
+)⋅(j−i
+)
+2
+eris.
+For all
+k
+from
 1
 to
 n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
-2
-appears twice in the array), and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
+, find the minimum number of eris needed to get from index
+1
+to index
+k
+.
 Input
-The only line of input contains two numbers
+The first line contains a single integer
 n
-and
-M
 (
-1≤n≤
+2≤n≤4⋅
 10
-6
+5
+).
+The second line contains
+n
+integers
+a
+1
 ,
-10
-8
-≤M≤
-10
-9
-). It is guaranteed that
-M
-is a prime number.
+a
+2
+,…
+a
+n
+(
+1≤
+a
+i
+≤n
+).
 Output
-Output the answer modulo
-M
+Output
+n
+integers — the
+k
+-th integer is the minimum number of eris needed to reach index
+k
+if you start from index
+1
 .
 Examples
 input
 Copy
-1 100009067
-output
-Copy
-9
-input
-Copy
-2 100000357
-output
-Copy
-1689
-input
-Copy
-69 999900997
-output
-Copy
-193862705
-Note
-In the first test case, all the permutations are:
-[1,2,3]
-, which requires
-0
-operations;
-[1,3,2]
-, which requires
-1
-operation;
-[2,1,3]
-, which requires
-1
-operation;
-[2,3,1]
-, which requires
-2
-operations;
-[3,1,2]
-, which requires
-2
-operations;
-[3,2,1]
-, which requires
 3
-operations.
-Therefore, the answer is
-0+1+1+2+2+3=9
+2 1 3
+output
+Copy
+0 1 2 
+input
+Copy
+6
+1 4 1 6 3 2
+output
+Copy
+0 1 2 3 6 8 
+input
+Copy
+2
+1 2
+output
+Copy
+0 1 
+input
+Copy
+4
+1 4 4 4
+output
+Copy
+0 1 4 8 
+Note
+In the first example:
+From
+1
+to
+1
+: the cost is
+0
+,
+From
+1
+to
+2
+:
+1→2
+— the cost is
+min(2,1)⋅(2−1
+)
+2
+=1
+,
+From
+1
+to
+3
+:
+1→2→3
+— the cost is
+min(2,1)⋅(2−1
+)
+2
++min(1,3)⋅(3−2
+)
+2
+=1+1=2
+.
+In the fourth example from
+1
+to
+4
+:
+1→3→4
+— the cost is
+min(1,4,4)⋅(3−1
+)
+2
++min(4,4)⋅(4−3
+)
+2
+=4+4=8
 .

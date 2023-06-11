@@ -1,51 +1,67 @@
-C. Jumping on Tiles
-time limit per test1 second
+D. Friends and the Restaurant
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp was given a row of tiles. Each tile contains one lowercase letter of the Latin alphabet. The entire sequence of tiles forms the string
-s
-.
-In other words, you are given a string
-s
-consisting of lowercase Latin letters.
-Initially, Polycarp is on the first tile of the row and wants to get to the last tile by jumping on the tiles. Jumping from
-i
--th tile to
-j
--th tile has a cost equal to
-|index(
-s
-i
-)−index(
-s
-j
-)|
-, where
-index(c)
-is the index of the letter
-c
-in the alphabet (for example,
-index(
-'a'
-)=1
-,
-index(
-'b'
-)=2
-, ...,
-index(
-'z'
-)=26
-) .
-Polycarp wants to get to the
+A group of
 n
--th tile for the minimum total cost, but at the same time make maximum number of jumps.
-In other words, among all possible ways to get to the last tile for the minimum total cost, he will choose the one with the maximum number of jumps.
-Polycarp can visit each tile at most once.
-Polycarp asks you to help — print the sequence of indices of string
-s
-on which he should jump.
+friends decide to go to a restaurant. Each of the friends plans to order meals for
+x
+i
+burles and has a total of
+y
+i
+burles (
+1≤i≤n
+).
+The friends decide to split their visit to the restaurant into several days. Each day, some group of at least two friends goes to the restaurant. Each of the friends visits the restaurant no more than once (that is, these groups do not intersect). These groups must satisfy the condition that the total budget of each group must be not less than the amount of burles that the friends in the group are going to spend at the restaurant. In other words, the sum of all
+x
+i
+values in the group must not exceed the sum of
+y
+i
+values in the group.
+What is the maximum number of days friends can visit the restaurant?
+For example, let there be
+n=6
+friends for whom
+x
+= [
+8,3,9,2,4,5
+] and
+y
+= [
+5,3,1,4,5,10
+]. Then:
+first and sixth friends can go to the restaurant on the first day. They will spend
+8+5=13
+burles at the restaurant, and their total budget is
+5+10=15
+burles. Since
+15≥13
+, they can actually form a group.
+friends with indices
+2,4,5
+can form a second group. They will spend
+3+2+4=9
+burles at the restaurant, and their total budget will be
+3+4+5=12
+burles (
+12≥9
+).
+It can be shown that they will not be able to form more groups so that each group has at least two friends and each group can pay the bill.
+So, the maximum number of groups the friends can split into is
+2
+. Friends will visit the restaurant for a maximum of two days. Note that the
+3
+-rd friend will not visit the restaurant at all.
+Output the maximum number of days the friends can visit the restaurant for given
+n
+,
+x
+and
+y
+.
 Input
 The first line of the input contains an integer
 t
@@ -54,119 +70,103 @@ t
 10
 4
 ) — the number of test cases in the test.
-Each test case is given by the string
-s
+The descriptions of the test cases follow.
+The first line of each test case contains a single integer
+n
 (
-2≤|s|≤2⋅
+2≤n≤
 10
 5
-), where
-|s|
- — is the length of string
-s
-. The string
-s
-consists of lowercase Latin letters.
-It is guaranteed that the sum of string lengths
-s
-over all test cases does not exceed
-2⋅
+) — the number of friends.
+The second line of each test case contains exactly
+n
+integers
+x
+1
+,
+x
+2
+,…,
+x
+n
+(
+1≤
+x
+i
+≤
+10
+9
+). The value of
+x
+i
+corresponds to the number of burles that the friend numbered
+i
+plans to spend at the restaurant.
+The third line of each test case contains exactly
+n
+integers
+y
+1
+,
+y
+2
+,…,
+y
+n
+(
+1≤
+y
+i
+≤
+10
+9
+). The value
+y
+i
+corresponds to the number of burles that the friend numbered
+i
+has.
+It is guaranteed that the sum of
+n
+values over all test cases does not exceed
 10
 5
 .
 Output
-The answer to each test case consists of two lines.
-In the first line print two integers
-cost
-,
-m
-, where
-cost
-is the minimum total cost of the path, and
-m
-is the maximum number of visited tiles Polycarp can make to get to
-n
--th tiles for the minimum total cost
-cost
-(i.e. the number of jumps is
-m−1
-).
-In the next line print
-m
-different numbers
-j
-1
-,
-j
-2
-,…,
-j
-m
-(
-1≤
-j
-i
-≤|s|
-) — the sequence of indices of the tiles Polycarp will jump on. The first number in the sequence must be
-1
-(that is,
-j
-1
-=1
-) and the last number must be the value of
-|s|
-(that is,
-j
-m
-=|s|
-).
-If there are multiple answers, print any of them.
+For each test case, print the maximum number of days to visit the restaurant. If friends cannot form even one group to visit the restaurant, print 0.
 Example
 input
 Copy
 6
-logic
-codeforces
-bca
-aaaaaaaaaaa
-adbaadabad
-to
+6
+8 3 9 2 4 5
+5 3 1 4 5 10
+4
+1 2 3 4
+1 1 2 2
+3
+2 3 7
+1 3 10
+6
+2 3 6 9 5 7
+3 2 7 10 6 10
+6
+5 4 2 1 8 100
+1 1 1 1 1 200
+6
+1 4 1 2 4 2
+1 3 3 2 3 4
 output
 Copy
-9 4
-1 4 3 5
-16 10
-1 8 3 4 9 5 2 6 7 10
-1 2
-1 3
-0 11
-1 8 10 4 3 5 7 2 9 6 11
-3 10
-1 9 5 4 7 3 8 6 2 10
-5 2
-1 2
+2
+0
+1
+3
+1
+3
 Note
-In the first test case, the required path corresponds to the picture:
-In this case, the minimum possible total cost of the path is achieved. Since
-index(
-'l'
-)=12
-,
-index(
-'o'
-)=15
-,
-index(
-'g'
-)=7
-,
-index(
-'i'
-)=9
-,
-index(
-'c'
-)=3
-, then the total cost of the path is
-|12−9|+|9−7|+|7−3|=3+2+4=9
-.
+The first test case in explained in the problem statement.
+In the second test case, friends cannot form at least one group of two or more people.
+In the third test case, one way to visit the restaurant in one day is to go in a group of all three friends (
+1+3+10≥2+3+7
+). Note that they do not have the option of splitting into two groups.

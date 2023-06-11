@@ -1,130 +1,343 @@
-E. Tick, Tock
-time limit per test1 second
+F. Decent Division
+time limit per test5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Tannhaus, the clockmaker in the town of Winden, makes mysterious clocks that measure time in
-h
-hours numbered from
+A binary string is a string where every character is
 0
-to
-h−1
-. One day, he decided to make a puzzle with these clocks.
-The puzzle consists of an
-n×m
-grid of clocks, and each clock always displays some hour exactly (that is, it doesn't lie between two hours). In one move, he can choose any row or column and shift all clocks in that row or column one hour forward
-†
-†
-.
-The grid of clocks is called solvable if it is possible to make all the clocks display the same time.
-While building his puzzle, Tannhaus suddenly got worried that it might not be possible to make the grid solvable. Some cells of the grid have clocks already displaying a certain initial time, while the rest of the cells are empty.
-Given the partially completed grid of clocks, find the number of ways
-‡
-‡
-to assign clocks in the empty cells so that the grid is solvable. The answer can be enormous, so compute it modulo
-10
-9
-+7
-.
-†
-†
-If a clock currently displays hour
+or
+1
+. Call a binary string decent if it has an equal number of
+0
+s and
+1
+s.
+Initially, you have an infinite binary string
 t
-and is shifted one hour forward, then the clock will instead display hour
-(t+1)modh
-.
-‡
-‡
-Two assignments are different if there exists some cell with a clock that displays a different time in both arrangements.
-Input
-The first line of input contains
-t
-(
-1≤t≤5⋅
-10
-4
-) — the number of test cases.
-The first line of each test case consists of 3 integers
+whose characters are all
+0
+s. You are given a sequence
+a
+of
 n
-,
-m
+updates, where
+a
+i
+indicates that the character at index
+a
+i
+will be flipped (
+0↔1
+). You need to keep and modify after each update a set
+S
+of disjoint ranges such that:
+for each range
+[l,r]
+, the substring
+t
+l
+…
+t
+r
+is a decent binary string, and
+for all indices
+i
+such that
+t
+i
+=1
+, there exists
+[l,r]
+in
+S
+such that
+l≤i≤r
+.
+You only need to output the ranges that are added to or removed from
+S
+after each update. You can only add or remove ranges from
+S
+at most
+10
+6
+times.
+More formally, let
+S
+i
+be the set of ranges after the
+i
+-th update, where
+S
+0
+=∅
+(the empty set). Define
+X
+i
+to be the set of ranges removed after update
+i
 , and
-h
+Y
+i
+to be the set of ranges added after update
+i
+. Then for
+1≤i≤n
+,
+S
+i
+=(
+S
+i−1
+∖
+X
+i
+)∪
+Y
+i
+. The following should hold for all
+1≤i≤n
+:
+∀a,b∈
+S
+i
+,(a≠b)→(a∩b=∅)
+;
+X
+i
+⊆
+S
+i−1
+;
 (
-1≤n,m≤2⋅
+S
+i−1
+∖
+X
+i
+)∩
+Y
+i
+=∅
+;
+∑
+i=1
+n
+(|
+X
+i
+|+|
+Y
+i
+|)≤
+10
+6
+.
+Input
+The first line contains a single integer
+n
+(
+1≤n≤2⋅
 10
 5
-;
-1≤h≤
-10
-9
-) — the number of rows in the grid, the number of columns in the grid, and the number of the hours in the day respectively.
+) — the number of updates.
 The next
 n
-lines each contain
-m
-integers, describing the clock grid. The integer
-x
-(
-−1≤x<h
-) in the
+lines each contain a single integer
+a
 i
--th row and the
-j
--th column represents the initial hour of the corresponding clock, or if
-x=−1
-, an empty cell.
-It is guaranteed that the sum of
-n⋅m
-over all test cases does not exceed
-2⋅
+(
+1≤
+a
+i
+≤2⋅
 10
 5
-.
+) — the index of the
+i
+-th update to the string.
 Output
-For each test case, output the number of ways to assign clocks in the empty cells so that the grid is solvable. The answer can be huge, so output it modulo
-10
-9
-+7
+After the
+i
+-th update, first output a single integer
+x
+i
+— the number of ranges to be removed from
+S
+after update
+i
 .
+In the following
+x
+i
+lines, output two integers
+l
+and
+r
+(
+1≤l<r≤
+10
+6
+), which denotes that the range
+[l,r]
+should be removed from
+S
+. Each of these ranges should be distinct and be part of
+S
+.
+In the next line, output a single integer
+y
+i
+— the number of ranges to be added to
+S
+after update
+i
+.
+In the following
+y
+i
+lines, output two integers
+l
+and
+r
+(
+1≤l<r≤
+10
+6
+), which denotes that the range
+[l,r]
+should be added to
+S
+. Each of these ranges should be distinct and not be part of
+S
+.
+The total number of removals and additions across all updates must not exceed
+10
+6
+.
+After processing the removals and additions for each update, all the ranges in
+S
+should be disjoint and cover all ones.
+It can be proven that an answer always exists under these constraints.
 Example
 input
 Copy
 5
-2 3 4
-1 0 -1
--1 -1 2
-2 2 10
-1 2
-3 5
-4 5 1024
-1 -1 -1 -1 -1
--1 -1 -1 1000 -1
--1 -1 -1 -1 69
-420 -1 -1 999 -1
-3 3 3
--1 -1 1
-2 -1 1
-2 -1 2
-3 3 3
-1 -1 2
--1 0 -1
--1 1 0
+1
+6
+5
+5
+6
 output
 Copy
-4
-0
-73741817
 0
 1
+1 2
+
+0
+1
+5 6
+
+1
+5 6
+2
+6 7
+4 5
+
+1
+4 5
+0
+
+1
+6 7
+0
 Note
-For the first sample, this is a possible configuration for the clocks:
-1 0 3
-0 3 2
-This is solvable since we can:
-Move the middle column forward one hour.
-Move the third column forward one hour.
-Move the third column forward one hour.
-Move the second row forward one hour.
-After that all the clocks show one hour.
-For the second test case, it can be shown that there are no possible solvable clock configurations.
+Line breaks are provided in the sample only for the sake of clarity, and you don't need to print them in your output.
+After the first update, the set of indices where
+a
+i
+=1
+is
+{1}
+. The interval
+[1,2]
+is added, so
+S
+1
+={[1,2]}
+, which has one
+0
+and one
+1
+.
+After the second update, the set of indices where
+a
+i
+=1
+is
+{1,6}
+. The interval
+[5,6]
+is added, so
+S
+2
+={[1,2],[5,6]}
+, each of which has one
+0
+and one
+1
+.
+After the third update, the set of indices where
+a
+i
+=1
+is
+{1,5,6}
+. The interval
+[5,6]
+is removed and the intervals
+[4,5]
+and
+[6,7]
+are added, so
+S
+3
+={[1,2],[4,5],[6,7]}
+, each of which has one
+0
+and one
+1
+.
+After the fourth update, the set of indices where
+a
+i
+=1
+is
+{1,6}
+. The interval
+[4,5]
+is removed, so
+S
+4
+={[1,2],[6,7]}
+, each of which has one
+0
+and one
+1
+.
+After the fifth update, the set of indices where
+a
+i
+=1
+is
+{1}
+. The interval
+[6,7]
+is removed, so
+S
+5
+={[1,2]}
+, which has one
+0
+and one
+1
+.

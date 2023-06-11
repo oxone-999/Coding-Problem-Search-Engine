@@ -1,114 +1,51 @@
-E. Replace
-time limit per test1.5 seconds
-memory limit per test1024 megabytes
+A. Difference Operations
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer array
+You are given an array
 a
-1
-,…,
-a
+consisting of
 n
-, where
-1≤
+positive integers.
+You are allowed to perform this operation any number of times (possibly, zero):
+choose an index
+i
+(
+2≤i≤n
+), and change
 a
 i
-≤n
-for all
+to
+a
 i
+−
+a
+i−1
 .
-There's a "replace" function
-f
-which takes a pair of integers
-(l,r)
-, where
-l≤r
-, as input and outputs the pair
-f((l,r))=(min{
+Is it possible to make
 a
-l
-,
-a
-l+1
-,…,
-a
-r
-},max{
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-}).
-f
-(
-(
-l
-)
-)
-(
-min
-{
-}
-{
-}
-)
-Consider repeated calls of this function. That is, from a starting pair
-(l,r)
-we get
-f((l,r))
-, then
-f(f((l,r)))
-, then
-f(f(f((l,r))))
-, and so on.
-Now you need to answer
-q
-queries. For the
 i
--th query you have two integers
-l
-i
-and
-r
-i
-(
-1≤
-l
-i
-≤
-r
-i
-≤n
-). You must answer the minimum number of times you must apply the "replace" function to the pair
-(
-l
-i
-,
-r
-i
-)
-to get
-(1,n)
-, or report that it is impossible.
+=0
+for all
+2≤i≤n
+?
 Input
-The first line contains two positive integers
-n
-,
-q
+The input consists of multiple test cases. The first line contains a single integer
+t
 (
-1≤n,q≤
-10
-5
-) — the length of the sequence
+1≤t≤100
+)  — the number of test cases. The description of the test cases follows.
+The first line contains one integer
+n
+(
+2≤n≤100
+) — the length of array
 a
-and the number of the queries.
+.
 The second line contains
 n
-positive integers
+integers
 a
 1
 ,
@@ -121,97 +58,83 @@ n
 1≤
 a
 i
-≤n
-) — the sequence
-a
-.
-Each line of the following
-q
-lines contains two integers
-l
-i
-,
-r
-i
-(
-1≤
-l
-i
 ≤
-r
-i
-≤n
-) — the queries.
+10
+9
+).
 Output
-For each query, output the required number of times, or
-−1
-if it is impossible.
-Examples
+For each test case, print "YES" (without quotes), if it is possible to change
+a
+i
+to
+0
+for all
+2≤i≤n
+, and "NO" (without quotes) otherwise.
+You can print letters in any case (upper or lower).
+Example
 input
 Copy
-5 6
-2 5 4 1 3
-4 4
-1 5
-1 4
-3 5
-4 5
-2 3
-output
-Copy
--1
-0
-1
-2
-3
 4
-input
-Copy
-6 3
-2 3 4 6 1 2
-5 6
-2 5
-2 3
-output
-Copy
-5
-1
+2
+5 10
 3
-input
-Copy
-5 3
-3 2 2 4 1
-2 5
-1 3
-1 5
+1 2 3
+4
+1 1 1 1
+9
+9 9 8 2 4 4 3 5 3
 output
 Copy
--1
--1
-0
+YES
+YES
+YES
+NO
 Note
-In the first example,
-n=5
-and
-a=[2,5,4,1,3]
+In the first test case, the initial array is
+[5,10]
+. You can perform
+2
+operations to reach the goal:
+Choose
+i=2
+, and the array becomes
+[5,5]
 .
-For the first query:
-(4,4)→(1,1)→(2,2)→(5,5)→(3,3)→(4,4)→…
-, so it's impossible to get
-(1,5)
+Choose
+i=2
+, and the array becomes
+[5,0]
 .
-For the second query, you already have
-(1,5)
+In the second test case, the initial array is
+[1,2,3]
+. You can perform
+4
+operations to reach the goal:
+Choose
+i=3
+, and the array becomes
+[1,2,1]
 .
-For the third query:
-(1,4)→(1,5)
+Choose
+i=2
+, and the array becomes
+[1,1,1]
 .
-For the fourth query:
-(3,5)→(1,4)→(1,5)
+Choose
+i=3
+, and the array becomes
+[1,1,0]
 .
-For the fifth query:
-(4,5)→(1,3)→(2,5)→(1,5)
+Choose
+i=2
+, and the array becomes
+[1,0,0]
 .
-For the sixth query:
-(2,3)→(4,5)→(1,3)→(2,5)→(1,5)
+In the third test case, you can choose indices in the order
+4
+,
+3
+,
+2
 .

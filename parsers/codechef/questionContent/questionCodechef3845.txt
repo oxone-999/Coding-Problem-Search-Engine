@@ -1,83 +1,177 @@
-Simple Queries
+Isomorphic Morphism
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Given an array A consisting of N positive integers, and Q queries on it. The queries can be of five types:
-1 l r - let S - sorted set of elements with indices between l and r. You need to find:
-2 x y - assign the value y to element at position x.
-3 x - delete element at position x from array.
-4 z y - insert y after element at position z. If z equal 0 then y should insert before the first element.
-5 l r - count the number of distinct numbers in array between indices l and r.
-
-All the indices in the queries are 1-based.
-Array always contains at least one element.
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+If I keep moving, they won't know | I'll morph to someone else | What they throw at me's too slow | I'll morph to someone else | I'm just a ghost | I'll morph to someone else | Defense mechanism mode!
+You are given two integer sequences
+A
+1
+,A
+2
+,…,A
+N
+and
+B
+1
+,B
+2
+,…,B
+N
+and an integer
+K. You may perform the following operation at most
+3⋅N times:
+Select a contiguous subsequence of
+A with length
+K. Let's denote this subsequence by
+A
+L
+,A
+L+1
+,…,A
+L+K−1
+.
+Create an integer sequence
+S
+1
+,S
+2
+,…,S
+K
+which is isomorphic to the selected subsequence ― for each pair of integers
+i and
+j (
+1≤i,j≤K),
+S
+i
+=S
+j
+must hold if
+A
+L−1+i
+=A
+L−1+j
+and
+S
+i
+
+=S
+j
+must hold if
+A
+L−1+i
+
+=A
+L−1+j
+. In addition,
+1≤S
+i
+≤1,000 must hold for each valid
+i.
+For each valid
+i, replace
+A
+L−1+i
+by
+S
+i
+.
+Is it possible to change the sequence
+A to
+B? If it is possible, find a sequence of operations which morphs
+A to
+B.
 Input
-The first line of input contains two integers N and Q denoting the number of elements in A, and the number of queries to be executed. The second line of input contains N integers denoting the array A. Each of the next Q lines contains one query.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+K.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+The third line contains
+N space-separated integers
+B
+1
+,B
+2
+,…,B
+N
+.
 Output
-For each query of type 1 or type 5, output the answer to the query in a single line.
+For each test case:
+If it is impossible to morph
+A to
+B using no more than
+3⋅N operations, print a single line containing the string "NO" (without quotes).
+Otherwise, start by printing a line containing the string "YES" (without quotes).
+Then, print a line containing a single integer
+P (
+0≤P≤3⋅N) ― the number of operations you want to perform.
+Finally, print
+P lines. Each of these lines should contain
+K+1 space-separated integers
+L,S
+1
+,S
+2
+,…,S
+K
+describing an operation (
+1≤L≤N−K+1;
+1≤S
+i
+≤1,000 for each valid
+i).
+If there are multiple solutions, you may find any one of them.
 Constraints
-1 ≤ N, Q ≤ 105
-1 ≤ Ai, y ≤ 109 + 6
-1 ≤ x ≤ |A|
-1 ≤ l ≤ r ≤ |A|
-0 ≤ z ≤ |A|
-Example
-Input:
-5 8
-1 2 3 2 1
-1 1 3
-5 1 5
-2 2 4
-1 2 4
-3 3
-4 0 5
-1 1 2
-1 1 5
-Output:
-6
-3
-24
-0
-78
-Input:
-10 15
-5 4 3 5 4 1 5 4 3 1
-2 8 580347
-4 6 503576
-1 2 5
-5 8 11
-1 2 6
-4 7 565239
-3 6
-3 11
-3 3
-2 9 674360
-1 1 6
-2 2 589693
-4 5 236488
-1 8 9
-5 2 7
-Output:
-60
+1≤T≤100
+1≤K≤N≤100
+1≤A
+i
+,B
+i
+≤1,000 for each valid
+i
+Example Input
 4
-107
-788510349
-0
-6
-Subtasks
-Subtask 1: Q*N ≤ 2*107. Points - 10
-Subtask 2: Queries are of type 5 only. Points - 5
-Subtask 3: Queries are of type 1 only. Points - 10
-Subtask 4: Queries are of types 2, 5 only. Points - 15
-Subtask 5: Queries are of types 1, 2, 5 only. N, Q ≤ 50000 Points - 15
-Subtask 6: Queries are of types 2, 3, 4 only. Points - 5
-Subtask 7: N, Q ≤ 50000. Points - 10
-Subtask 8: Original constraints. Points - 30
+4 3
+1 2 3 4
+4 3 2 1
+7 5
+2 1 2 1 1 3 2
+5 4 1 5 4 3 9 
+6 4 
+1 1 5 4 3 6
+5 3 4 5 1 1
+3 1
+1 1 1
+9 10 21
+Example Output
+YES
+2
+1 4 3 2
+2 3 2 1
+NO
+YES
+3
+2 3 4 1 6
+1 5 3 4 5
+3 4 5 1 1
+YES
+3
+1 9
+2 10
+3 21
 Explanation
-Query 1 Sorted set of elements with positions between 1 and 3 is S = {1, 2, 3}, ans = 1 * 2 * 3 = 6.
-Query 2 Set of elements with positions between 1 and 5 is S = {1, 2, 3}, ans = |S| = 3.
-Query 3 After this query A = {1, 4, 3, 2, 1}.
-Query 4 Sorted set of elements with positions between 2 and 4 is S = {2, 3, 4}, ans = 2 * 3 * 4 = 24.
-Query 5 After this query A = {1, 4, 2, 1}.
-Query 6 After this query A = {5, 1, 4, 2, 1}.
-Query 7 Sorted set of elements with positions between 1 and 2 is S = {1, 5}, ans = 0.
-Query 8 Sorted set of elements with positions between 1 and 5 is S = {1, 2, 4, 5}, ans = 1 * 2 * 4 + 1 * 2 * 5 + 2 * 4 * 5 + 1 * 4 * 5 = 78.
+Example case 1: The state of the sequence after each operation is
+[1,2,3,4]→[4,3,2,4]→[4,3,2,1].
+Example case 3: The state of the sequence after each operation is
+[1,1,5,4,3,6]→[1,3,4,1,6,6]→[5,3,4,5,6,6]→[5,3,4,5,1,1].
+See the following animation for more clarity:

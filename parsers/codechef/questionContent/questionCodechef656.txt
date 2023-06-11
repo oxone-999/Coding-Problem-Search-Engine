@@ -1,70 +1,55 @@
-Breaking Bricks
+Subtraction Game 1
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-For her next karate demonstration, Ada will break some bricks.
-Ada stacked three bricks on top of each other. Initially, their widths (from top to bottom) are
-W
-1
-,W
-2
-,W
-3
-.
-Ada's strength is
-S. Whenever she hits a stack of bricks, consider the largest
-k≥0 such that the sum of widths of the topmost
-k bricks does not exceed
-S; the topmost
-k bricks break and are removed from the stack. Before each hit, Ada may also decide to reverse the current stack of bricks, with no cost.
-Find the minimum number of hits Ada needs in order to break all bricks if she performs the reversals optimally. You are not required to minimise the number of reversals.
+Chef is playing a game on a sequence of N positive integers, say A1, A2, ... AN. The game is played as follows.
+If all the numbers are equal, the game ends.
+Otherwise
+Select two numbers which are unequal
+Subtract the smaller number from the larger number
+Replace the larger number with the result from above (see the explanation section for clarity)
+Chef has already figured out that the game always terminates. He also knows, for a given sequence of integers, the game will always terminate on the same value, no matter how the game is played. Chef wants you to simulate the game for him and tell him on which value will the game terminate for a given sequence of integers.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains four space-separated integers
-S,
-W
-1
-,
-W
-2
-and
-W
-3
-.
+The first line of the input contains an integer T, the number of test cases. Then follow the description of T test cases. The first line of each test case contains a single integer N, the length of the sequence. The second line contains N positive integers, each separated by a single space.
 Output
-For each test case, print a single line containing one integer ― the minimum required number of hits.
+For each test case, output a single integer - the value of all the numbers when they are equal (and the game terminates), on a line by itself.
 Constraints
-1≤T≤64
-1≤S≤8
-1≤W
-i
-≤2 for each valid
-i
-it is guaranteed that Ada can break all bricks
-Subtasks
-Subtask #1 (50 points):
-W
-1
-=W
-2
-=W
-3
-Subtask #2 (50 points): original constraints
+1 ≤ T ≤ 100
+1 ≤ N ≤ 1000
+1 ≤ Ai ≤ 109
 Sample 1:
 Input
 Output
 3
-3 1 2 2
-2 1 1 1
-3 2 2 1
 2
+10 12
 2
+5 9
+3
+6 10 15
 2
+1
+1
 Explanation:
-Example case 1: Ada can reverse the stack and then hit it two times. Before the first hit, the widths of bricks in the stack (from top to bottom) are
-(2,2,1). After the first hit, the topmost brick breaks and the stack becomes
-(2,1). The second hit breaks both remaining bricks.
-In this particular case, it is also possible to hit the stack two times without reversing. Before the first hit, it is
-(1,2,2). The first hit breaks the two bricks at the top (so the stack becomes
-(2)) and the second hit breaks the last brick.
+Test Case 1: Since there are only two numbers, the operations are forced.
+{ 10, 12 } => Replace 12 with ( 12 - 10 = 2 ) => { 10, 2 }
+{ 10, 2 } => Replace 10 with ( 10 - 2 = 8 ) => { 8, 2 }
+{ 8, 2 } => Replace 8 with ( 8 - 2 = 6 ) => { 6, 2 }
+{ 6, 2 } => Replace 6 with ( 6 - 2 = 4 ) => { 4, 2 }
+{ 4, 2 } => Replace 4 with ( 4 - 2 = 2 ) => { 2, 2 }
+The value of all the numbers when the game ends is 2.
+Test Case 2: Since there are only two numbers, the operations are forced.
+{ 5, 9 } => Replace 9 with ( 9 - 5 = 4 ) => { 5, 4 }
+{ 5, 4 } => Replace 5 with ( 5 - 4 = 1 ) => { 1, 4 }
+{ 1, 4 } => Replace 4 with ( 4 - 1 = 3 ) => { 1, 3 }
+{ 1, 3 } => Replace 3 with ( 3 - 1 = 2 ) => { 1, 2 }
+{ 1, 2 } => Replace 2 with ( 2 - 1 = 1 ) => { 1, 1 }
+The value of all the numbers when the game ends is 1.
+Test Case 3: One way to play the game is
+{ 6, 10, 15 } => Replace 15 with ( 15 - 6 = 9 ) => { 6, 10, 9 }
+{ 6, 10, 9 } => Replace 10 with ( 10 - 6 = 4 ) => { 6, 4, 9 }
+{ 6, 4, 9 } => Replace 9 with ( 9 - 6 = 3 ) => { 6, 4, 3 }
+{ 6, 4, 3 } => Replace 6 with ( 6 - 4 = 2 ) => { 2, 4, 3 }
+{ 2, 4, 3 } => Replace 3 with ( 3 - 2 = 1 ) => { 2, 4, 1 }
+{ 2, 4, 1 } => Replace 4 with ( 4 - 2 = 2 ) => { 2, 2, 1 }
+{ 2, 2, 1 } => Replace first 2 with ( 2 - 1 = 1 ) => { 1, 2, 1 }
+{ 1, 2, 1 } => Replace 2 with ( 2 - 1 = 1 ) => { 1, 1, 1 }
+The value of all the numbers when the game ends is 1. You may try to play the game differently and observe that the game will always end when all the values are 1.

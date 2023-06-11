@@ -1,164 +1,96 @@
-Positive or Negative Subarrays
+Largest Family
 Problem
-Consider an array
-A having length
-N such that
+A certain parallel universe has exactly
+N people living in it.
+The
+i-th of these
+N people claims that they are the parent of exactly
 A
 i
-=2
-i−1
-for all
-1≤i≤N.
-You are given an integer array
-B having length
-N such that
-B
+of these
+N people.
+However, some of these people might be lying — the
+i-th person may be either telling the truth (in which case they have exactly
+A
 i
-=+1 or
-B
-i
-=−1 for all
-1≤i≤N.
-We create another array
-C of length
-N such that
-C
-i
-=B
-i
-⋅A
-i
-Let the number of subarrays of
-C having sum strictly greater than
-0 be
-P and
-Let the number of subarrays of
-C having sum strictly less than
-0 be
-Q
-Determine the value of
-∣P−Q∣. (Here
-∣x∣ denotes the absolute value of
-x)
-Note: An array
-X is a subarray of an array
-Y if
-X can be obtained from
-Y by the deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end.
+children) or lying (in which case they can have any number of children).
+It is known that each person has at most one parent. Further, as one would expect, it is not allowed for a person's child to also be their ancestor.
+What is the maximum possible number of truth-tellers in this universe?
 Input Format
-The first line contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first line of each test case contains an integer
-N — the size of the array
-B.
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test case contains a single integer
+N, the number of people.
 The second line of each test case contains
 N space-separated integers
-B
+A
 1
-,B
+,A
 2
-,…,B
+,…,A
 N
-denoting the array
-B.
+.
 Output Format
-For each test case, output the absolute difference between the number of subarrays of
-C having sum strictly greater than
-0 and the number of subarrays of
-C having sum strictly less than
-0.
+For each test case, output on a new line the maximum number of people that can be telling the truth.
 Constraints
-1≤T≤10
+1≤T≤4⋅10
+4
+1≤N≤3⋅10
 5
-1≤N≤10
-5
-B
+0≤A
 i
-=+1 or
-B
-i
-=−1
+<N
 The sum of
-N over all test cases won't exceed
+N across all test cases won't exceed
 3⋅10
 5
 .
+Subtasks
+Subtask 1 (20 points):
+1≤T≤5
+1≤N≤20
+Subtask 2 (80 points):
+No further constraints.
 Sample 1:
 Input
 Output
 4
-4
-1 -1 1 1
-3
--1 -1 -1
 2
-1 -1
+1 0
 2
 1 1
-6
-6
-1
 3
+2 0 1
+5
+2 3 1 2 3
+2
+1
+2
+2
 Explanation:
-In the first test case:-
-the given array
-B is
-[1,−1,1,1] and the given array
-A is
-[1,2,4,8],.
-We need to create array
-C by multiplying corresponding elements of
-A and
-B.
-Thus,
-C=[1,−2,4,8].
-The subarrays of the array
-[1,−2,4,8] and their corresponding sum are:
-[1]: sum
-=1
-[1,−2]: sum
-=−1
-[1,−2,4]: sum
-=3
-[1,−2,4,8]: sum
-=11
-[−2]: sum
-=−2
-[−2,4]: sum
-=2
-[−2,4,8]: sum
-=10
-[4]: sum
-=4
-[4,8]: sum
-=12
-[8]: sum
-=8
-So, the number of subarrays having sum strictly greater than
-0 is
-8, and the number of subarrays having sum strictly less than
-0 is
-2. Therefore, the answer is
-∣8−2∣=6.
-In the 4th test case:-
-Given the array
-A=[1,2] and the array
-B=[1,1], we need to create an array
-C by multiplying corresponding elements of
-A and
-B. Thus, we have:
-C=[1,2]
-The subarrays of the array
-C and their corresponding sum are:
-[1]: sum
-=1
-[2]: sum
-=2
-[1,2]: sum
-=3
-So, the number of subarrays having sum strictly greater than
-0 is
-3, and the number of subarrays having sum strictly less than
-0 is
-0. Therefore, the answer is
-∣3−0∣=3.
+Test case
+1: Both people can be telling the truth, with the first person being the parent of the second.
+Test case
+2: If both people were telling the truth, they would be each others' parents — and that is not allowed. Hence, at most one of them can be telling the truth.
+Test case
+3: The first and third people cannot be telling the truth at the same time. However, it is possible for the first and second people to be truthful — person
+1 can be the parent of person
+2 and person
+3. Hence, the answer is
+2.
+Test case
+4: There are several ways to pick
+2 people to be telling the truth — for example,
+The parent of person
+2 and person
+3 is person
+1
+The parent of person
+1 and person
+5 is person
+4
+in which case persons number
+1 and
+4 would be telling the truth.
+However, it can be shown that it is impossible for any three of them to be simultaneously telling the truth.

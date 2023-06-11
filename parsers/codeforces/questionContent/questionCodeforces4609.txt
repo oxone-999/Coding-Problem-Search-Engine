@@ -1,41 +1,44 @@
-E. Maximize!
-time limit per test3 seconds
+F. Cutlet
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a multiset S consisting of positive integers (initially empty). There are two kind of queries:
-Add a positive integer to S, the newly added integer is not less than any number in it.
-Find a subset s of the set S such that the value is maximum possible. Here max(s) means maximum value of elements in s,  — the average value of numbers in s. Output this maximum possible value of .
+Arkady wants to have a dinner. He has just returned from a shop where he has bought a semifinished cutlet. He only needs to fry it. The cutlet should be fried for 2n seconds, in particular, it should be fried for n seconds on one side and n seconds on the other side. Arkady has already got a frying pan and turn on fire, but understood that maybe he won't be able to flip the cutlet exactly after n seconds after the beginning of cooking.
+Arkady is too busy with sorting sticker packs in his favorite messenger and can flip the cutlet only in some periods of time. Namely, there are k periods of time in which he can do it, the i-th of them is an interval of time from li seconds after he starts cooking till ri seconds, inclusive. Arkady decided that it's not required to flip the cutlet exactly in the middle of cooking, instead, he will flip it several times in such a way that the cutlet will be fried exactly n seconds on one side and n seconds on the other side in total.
+Help Arkady and find out if it's possible for him to cook the cutlet, if he is able to flip the cutlet only in given periods of time; and if yes, find the minimum number of flips he needs to cook the cutlet.
 Input
-The first line contains a single integer Q (1 ≤ Q ≤ 5·105) — the number of queries.
-Each of the next Q lines contains a description of query. For queries of type 1 two integers 1 and x are given, where x (1 ≤ x ≤ 109) is a number that you should add to S. It's guaranteed that x is not less than any number in S. For queries of type 2, a single integer 2 is given.
-It's guaranteed that the first query has type 1, i. e. S is not empty when a query of type 2 comes.
+The first line contains two integers n and k (1 ≤ n ≤ 100 000, 1 ≤ k ≤ 100) — the number of seconds the cutlet should be cooked on each side and number of periods of time in which Arkady can flip it.
+The next k lines contain descriptions of these intervals. Each line contains two integers li and ri (0 ≤ li ≤ ri ≤ 2·n), meaning that Arkady can flip the cutlet in any moment starting from li seconds after the beginning of cooking and finishing at ri seconds after beginning of cooking. In particular, if li = ri then Arkady can flip the cutlet only in the moment li = ri. It's guaranteed that li > ri - 1 for all 2 ≤ i ≤ k.
 Output
-Output the answer for each query of the second type in the order these queries are given in input. Each number should be printed in separate line.
-Your answer is considered correct, if each of your answers has absolute or relative error not greater than 10 - 6.
-Formally, let your answer be a, and the jury's answer be b. Your answer is considered correct if .
+Output "Hungry" if Arkady won't be able to fry the cutlet for exactly n seconds on one side and exactly n seconds on the other side.
+Otherwise, output "Full" in the first line, and the minimum number of times he should flip the cutlet in the second line.
 Examples
 input
 Copy
-6
-1 3
-2
-1 4
-2
-1 8
-2
+10 2
+3 5
+11 13
 output
 Copy
-0.0000000000
-0.5000000000
-3.0000000000
+Full
+2
 input
 Copy
-4
-1 1
-1 4
-1 5
-2
+10 3
+3 5
+9 10
+11 13
 output
 Copy
-2.0000000000
+Full
+1
+input
+Copy
+20 1
+3 19
+output
+Copy
+Hungry
+Note
+In the first example Arkady should flip the cutlet in time moment 3 seconds after he starts cooking and in time moment 13 seconds after he starts cooking.
+In the second example, Arkady can flip the cutlet at 10 seconds after he starts cooking.

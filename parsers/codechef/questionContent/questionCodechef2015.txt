@@ -1,23 +1,33 @@
-Parallel Computing
+Box and Ball System
 Problem
-Chef needs a program to solve a simple task. The program will start with an array of integers X. After the execution it should hold values X[1] + X[2] + ... + X[i] at all positions 1 <= i <= N. However, he wants this done fast and efficiently. He needs your help to output a program which can be executed in parallel on N machines and will produce a correct result. Note that he needs a program for some fixed size of array 1 <= N <= 1000.
-A program consists of a series of synchronized steps. Instructions within one step are executed in parallel on multiple (at most N) machines which all have access to the shared memory where the array is located. You should not make any assumptions about the order in which these parallel instructions will be completed, but you can be sure that all instructions in the current step will be completed before any other instruction from the next step. There is only one type of instruction and it has the form "a+b=c". It reads the values X[a], X[b] and writes their sum in X[c]. The program should contain at most 20 steps and the total number of instructions should not exceed 2000.
+Chef Ciel has forgotten the combination to the safe. It's a serious incident, because the safe contains this month's waitstaff salaries.
+To open the safe, N boxes and N balls are used. The safe has N boxes that numbered from 1 to N uniquely. Each box can contain only one ball. Now, the box i contains one ball that numbered i, and the safe is locked.
+The only things which Ciel remember for unlocking the safe are the followings:
+She must put every ball into some box.
+Let the box i contains the ball Ai. When the safe is opened the number of divisors of i equals to the number of divisors of Ai for all i from 1 to N.
+How many combinations which satisfy above conditions should she check? The number of combinations can be very large, so you should print this number modulo 500009 (5*105+9).
 Input
-Input contains a single positive integer N.
+The first line contains an integer T, the number of test cases. Then T test cases follow. The only line of each test case contains an integer N.
 Output
-Output the number of steps in your program. In the following lines describe these steps. First output the number of instructions which should be executed in parallel on this step followed by a list of instructions. All items should be separated by a single space.
+For each test case, print the number of combinations modulo 500009 (5*105+9).
+Constraints
+1 ≤ T ≤ 100000 (105)
+3 ≤ N ≤ 2000000000 (2*109)
 Sample 1:
 Input
 Output
-6
 3
-2 1+2=2 4+5=5
-2 2+3=3 5+6=6
-3 3+4=4 3+5=5 3+6=6
+3
+5
+100
+1
+5
+43264
 Explanation:
-Lets name values in the array with letters from a to f. The table below describes contents of the array after each step:
-1 2 3 4 5 6
-initial values: a b c d e f
-after step 1: a a+b c d d+e f
-after step 2: a a+b a+b+c d d+e d+e+f
-after step 3: a a+b a+b+c a+b+c+d a+b+c+d+e a+b+c+d+e+f
+In the first case, the valid combination is
+Box: 123
+Ball: 132
+since the number of divisors of 2 is equal to the number of divisors of 3.
+In the second case, the valid combinations are
+Box: 12345 12345 12345 12345 12345
+Ball: 12543 13245 13542 15243 15342

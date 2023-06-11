@@ -1,116 +1,45 @@
-B. GCD Partition
+A. Hayato and School
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-While at Kira's house, Josuke saw a piece of paper on the table with a task written on it.
-The task sounded as follows. There is an array
+Today Hayato came home from school with homework.
+In the assignment, Hayato was given an array
 a
 of length
 n
-. On this array, do the following:
-select an integer
-k>1
-;
-split the array into
+. The task was to find
+3
+numbers in this array whose sum is odd. At school, he claimed that there are such
+3
+numbers, but Hayato was not sure, so he asked you for help.
+Answer if there are such three numbers, and if so, output indices
+i
+,
+j
+, and
 k
-subsegments
-†
-†
-;
-calculate the sum in each of
-k
-subsegments and write these sums to another array
-b
-(where the sum of the subsegment
-(l,r)
-is
-∑
-r
-j=l
+such that
+a
+i
++
 a
 j
-);
-the final score of such a split will be
-gcd(
-b
-1
-,
-b
++
+a
+k
+is odd.
+The odd numbers are integers that are not divisible by
 2
-,…,
-b
-k
-)
-‡
-.
-The task is to find such a partition that the score is maximum possible. Josuke is interested in this task but is not strong in computer science. Help him to find the maximum possible score.
-†
-†
-A division of an array into
-k
-subsegments is
-k
-pairs of numbers
-(
-l
+:
 1
 ,
-r
-1
-),(
-l
-2
+3
 ,
-r
-2
-),…,(
-l
-k
-,
-r
-k
-)
-such that
-l
-i
-≤
-r
-i
-and for every
-1≤j≤k−1
-l
-j+1
-=
-r
-j
-+1
-, also
-l
-1
-=1
-and
-r
-k
-=n
-. These pairs represent the subsegments.
-‡
-‡
-gcd(
-b
-1
-,
-b
-2
-,…,
-b
-k
-)
-stands for the greatest common divisor (GCD) of the array
-b
-.
+5
+, and so on.
 Input
-The first line contains a single number
+The first line contains a single integer
 t
 (
 1≤t≤
@@ -120,10 +49,8 @@ t
 For each test case, the first line contains one integer
 n
 (
-2≤n≤2⋅
-10
-5
-) — the length of the array
+3≤n≤300
+) — the length of
 a
 .
 The second line contains
@@ -134,9 +61,6 @@ a
 ,
 a
 2
-,
-a
-3
 ,…,
 a
 n
@@ -146,10 +70,10 @@ a
 i
 ≤
 10
-9
+5
 ) — the array
 a
-itself.
+.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
@@ -158,59 +82,58 @@ over all test cases does not exceed
 5
 .
 Output
-For each test case print a single integer — the maximum score for the optimal partition.
+For each test case, in the first line print one word "YES" (without quotes) if there are
+3
+numbers with an odd sum or "NO" (without quotes) if there are no such
+3
+numbers.
+If the answer exists, then on the second line print
+3
+distinct integers
+i,j,k
+(
+1≤i,j,k≤n
+) — the indices of the numbers. If there are several answers, output any.
 Example
 input
 Copy
 6
-4
-2 2 1 3
-2
-1 2
 3
-1 4 5
-6
-1 2 1 1 1 3
-10
-12 30 37 88 12 78 89 17 2 12
-6
-7 7 7 7 7 7
+1 1 1
+4
+1 1 2 2
+3
+1 2 3
+5
+1 4 5 1 2
+4
+2 6 2 4
+5
+5 6 3 2 1
 output
 Copy
-4
-1
-5
-3
-1
-21
+YES
+1 2 3
+YES
+3 4 1
+NO
+YES
+1 3 4
+NO
+YES
+1 3 5
 Note
-In the first test case, you can choose
-k=2
-and split the array into subsegments
-(1,2)
-and
-(3,4)
-.
-Then the score of such a partition will be equal to
-gcd(
-a
-1
-+
-a
-2
-,
-a
+In the first test case, there is one way to choose
 3
-+
-a
-4
-)=gcd(2+2,1+3)=gcd(4,4)=4
+numbers, and since
+1+1+1=3
+, this triple is fine for us.
+In the second test case, you need to choose the numbers
+1,2,2
+, since
+1+2+2=5
 .
-In the fourth test case, you can choose
-k=3
-and split the array into subsegments
-(1,2),(3,5),(6,6)
-.
-The split score is
-gcd(1+2,1+1+1,3)=3
-.
+In the third test case, there is one way to choose three numbers, but
+1+2+3=6
+is an even number, so the required triple does not exist.
+In the fifth test case, no matter what three numbers we choose, their sum is even.

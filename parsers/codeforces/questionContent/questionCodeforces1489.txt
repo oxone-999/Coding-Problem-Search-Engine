@@ -1,199 +1,116 @@
-A. Sequence of Comparisons
+C. Rhyme
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Once upon a time, Petya had an array of integers
-a
-of length
-n
-. But over time, the array itself was lost, and only
-n−1
-results of comparisons of neighboring array elements remained. In other words, for every
-i
-from
-1
-to
-n−1
-, Petya knows exactly one of these three facts:
-a
-i
-<
-a
-i+1
-;
-a
-i
-=
-a
-i+1
-;
-a
-i
->
-a
-i+1
-.
-Petya wonders if it is possible to uniquely determine the result of comparing
-a
-1
+Let's say that two strings
+s
 and
-a
+t
+rhyme if both strings have length at least
+k
+, and their last
+k
+characters are equal. For example, if
+k=3
+, the strings abcd and cebcd rhyme, the strings ab and ab don't rhyme, the strings aaaa and aaaaa rhyme, the strings abcd and abce don't rhyme.
+You have
 n
-.
-You have to help Petya determine the result of comparing
-a
-1
-and
-a
-n
-or report that the result cannot be determined unambiguously.
+pairs of strings
+(
+s
+i
+,
+t
+i
+)
+, and for each pair of strings you know, should they rhyme or should not.
+Find all possible non-negative integer values for
+k
+such that pairs that have to rhyme, rhyme and pairs that must not rhyme, don't rhyme.
 Input
-The first line contains a single integer
+Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤500
-) — the number of test cases.
-The only line of the test case contains the string
-s
+1≤t≤1000
+). Description of the test cases follows.
+The first line of each test case contains a single integer
+n
 (
-1≤|s|≤100
-), where
+1≤n≤
+10
+5
+) — the number of string pairs.
+Next
+n
+lines contains descriptions of pairs — one per line. The
+i
+-th line contains space-separated strings
 s
 i
-is:
-<, if
-a
+and
+t
 i
-<
-a
-i+1
-;
->, if
-a
+and marker
+r
 i
->
-a
-i+1
-;
-=, if
-a
+. Strings are non-empty, consist of lowercase Latin letters and each have length at most
+2⋅
+10
+5
+. The marker
+r
 i
-=
-a
-i+1
+equals to
+1
+if strings have to rhyme, or
+0
+if they must not rhyme.
+It's guaranteed that for each test case there is at least one pair with
+r
+i
+equal to
+1
+and that the total length of all strings over all test cases doesn't exceed
+4⋅
+10
+5
 .
 Output
-For each test case, print a single string equal to:
-<, if
-a
-1
-<
-a
-n
-;
->, if
-a
-1
->
-a
-n
-;
-=, if
-a
-1
-=
-a
-n
-;
-?, if it is impossible to uniquely determine the result of the comparison.
+For each test case, firstly print integer
+m
+ — the number of possible non-negative integer values of
+k
+such that pairs that have to rhyme, rhyme and pairs that must not rhyme, don't rhyme. Next, print all these values of
+k
+(without repetitions). You can print them in any order.
 Example
 input
 Copy
+3
+1
+kotlin heroes 1
+2
+join kotlin 1
+episode eight 0
 4
->>>
-<><=<
-=
-<<==
+abc abcdef 0
+xyz zzz 1
+aaa bba 0
+c d 0
 output
 Copy
->
-?
-=
-<
+1
+0
+2
+1 2
+0
 Note
-Consider the test cases of the example:
-in the first test case, it's easy to see that
-a
+In the first test case, if
+k
+is at least
 1
->
-a
-4
-since
-a
-1
->
-a
-2
->
-a
-3
->
-a
-4
-;
-in the second test case, both sequences
-[1,2,0,10,10,15]
-and
-[10,11,1,2,2,5]
-meet the constraints; in the first one,
-a
-1
-<
-a
-6
-, and in the second one,
-a
-1
->
-a
-6
-, so it's impossible to compare
-a
-1
-and
-a
-6
-;
-in the third test case, we already know that
-a
-1
-=
-a
-2
-;
-in the fourth test case, it's easy to see that
-a
-3
-=
-a
-4
-=
-a
-5
-, and
-a
-1
-<
-a
-2
-<
-a
-3
-, so
-a
-1
-<
-a
-5
-.
+then kotlin and heroes don't rhyme.
+In the second test case, for
+k=2
+join and kotlin rhyme, and episode and eight don't rhyme.

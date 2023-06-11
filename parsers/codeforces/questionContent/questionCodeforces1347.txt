@@ -1,142 +1,121 @@
-B. Frog Traveler
+D. Difficult Mountain
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Frog Gorf is traveling through Swamp kingdom. Unfortunately, after a poor jump, he fell into a well of
+A group of
 n
-meters depth. Now Gorf is on the bottom of the well and has a long way up.
-The surface of the well's walls vary in quality: somewhere they are slippery, but somewhere have convenient ledges. In other words, if Gorf is on
-x
-meters below ground level, then in one jump he can go up on any integer distance from
-0
-to
-a
-x
-meters inclusive. (Note that Gorf can't jump down, only up).
-Unfortunately, Gorf has to take a break after each jump (including jump on
-0
-meters). And after jumping up to position
-x
-meters below ground level, he'll slip exactly
-b
-x
-meters down while resting.
-Calculate the minimum number of jumps Gorf needs to reach ground level.
-Input
-The first line contains a single integer
-n
-(
-1≤n≤300000
-) — the depth of the well.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤i
-), where
-a
-i
-is the maximum height Gorf can jump from
-i
-meters below ground level.
-The third line contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-0≤
-b
-i
-≤n−i
-), where
-b
-i
-is the distance Gorf will slip down if he takes a break on
-i
-meters below ground level.
-Output
-If Gorf can't reach ground level, print
-−1
-. Otherwise, firstly print integer
-k
- — the minimum possible number of jumps.
-Then print the sequence
+alpinists has just reached the foot of the mountain. The initial difficulty of climbing this mountain can be described as an integer
 d
-1
-,
-d
-2
-,…,
-d
-k
-where
-d
-j
-is the depth Gorf'll reach after the
-j
--th jump, but before he'll slip down during the break. Ground level is equal to
-0
 .
-If there are multiple answers, print any of them.
+Each alpinist can be described by two integers
+s
+and
+a
+, where
+s
+is his skill of climbing mountains and
+a
+is his neatness.
+An alpinist of skill level
+s
+is able to climb a mountain of difficulty
+p
+only if
+p≤s
+. As an alpinist climbs a mountain, they affect the path and thus may change mountain difficulty. Specifically, if an alpinist of neatness
+a
+climbs a mountain of difficulty
+p
+the difficulty of this mountain becomes
+max(p,a)
+.
+Alpinists will climb the mountain one by one. And before the start, they wonder, what is the maximum number of alpinists who will be able to climb the mountain if they choose the right order. As you are the only person in the group who does programming, you are to answer the question.
+Note that after the order is chosen, each alpinist who can climb the mountain, must climb the mountain at that time.
+Input
+The first line contains two integers
+n
+and
+d
+(
+1≤n≤500000
+;
+0≤d≤
+10
+9
+) — the number of alpinists and the initial difficulty of the mountain.
+Each of the next
+n
+lines contains two integers
+s
+i
+and
+a
+i
+(
+0≤
+s
+i
+,
+a
+i
+≤
+10
+9
+) that define the skill of climbing and the neatness of the
+i
+-th alpinist.
+Output
+Print one integer equal to the maximum number of alpinists who can climb the mountain if they choose the right order to do so.
 Examples
 input
 Copy
-3
-0 2 2
-1 1 0
+3 2
+2 6
+3 5
+5 7
 output
 Copy
 2
-1 0 
 input
 Copy
-2
-1 1
-1 0
+3 3
+2 4
+6 4
+4 6
 output
 Copy
--1
+2
 input
 Copy
-10
-0 1 2 3 5 5 6 7 8 5
-9 8 7 1 5 4 3 2 0 0
+5 0
+1 5
+4 8
+2 7
+7 6
+3 2
 output
 Copy
 3
-9 4 0 
 Note
-In the first example, Gorf is on the bottom of the well and jump to the height
-1
-meter below ground level. After that he slip down by meter and stays on height
+In the first example, alpinists
 2
-meters below ground level. Now, from here, he can reach ground level in one jump.
-In the second example, Gorf can jump to one meter below ground level, but will slip down back to the bottom of the well. That's why he can't reach ground level.
-In the third example, Gorf can reach ground level only from the height
+and
+3
+can climb the mountain if they go in this order. There is no other way to achieve the answer of
+2
+.
+In the second example, alpinist
+1
+is not able to climb because of the initial difficulty of the mountain, while alpinists
+2
+and
+3
+can go up in any order.
+In the third example, the mountain can be climbed by alpinists
 5
-meters below the ground level. And Gorf can reach this height using a series of jumps
-10⇒9⇢9⇒4⇢5
-where
-⇒
-is the jump and
-⇢
-is slipping during breaks.
+,
+3
+and
+4
+in this particular order. There is no other way to achieve optimal answer.

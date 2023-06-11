@@ -1,97 +1,111 @@
-Game on a Strip
+Matchsticks
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Tzuyu gave Nayeon a strip of
-N cells (numbered
-1 through
-N) for her birthday. This strip is described by a sequence
-A
-1
-,A
-2
-,…,A
-N
-, where for each valid
-i, the
-i-th cell is blocked if
-A
+Chef Ceil has some matchsticks in his kitchen.
+Detail of matchsticks:
+There are
+N matchsticks in total. They are numbered from to
+0 to
+N−1 inclusive. The
 i
-=1 or free if
-A
+th
+matchstick takes
+b
 i
-=0. Tzuyu and Nayeon are going to use it to play a game with the following rules:
-The players alternate turns; Nayeon plays first.
-Initially, both players are outside of the strip. However, note that afterwards during the game, their positions are always different.
-In each turn, the current player should choose a free cell and move there. Afterwards, this cell becomes blocked and the players cannot move to it again.
-If it is the current player's first turn, she may move to any free cell.
-Otherwise, she may only move to one of the left and right adjacent cells, i.e. from a cell
-c, the current player may only move to the cell
-c−1 or
-c+1 (if it is free).
-If a player is unable to move to a free cell during her turn, this player loses the game.
-Nayeon and Tzuyu are very smart, so they both play optimally. Since it is Nayeon's birthday, she wants to know if she can beat Tzuyu. Find out who wins.
+time to burn when lighted at one end, and it burns at a uniform rate.
+If lighted at both ends simultaneously, the matchstick will take only half of the original time to burn down.
+Arrangement:
+He ties rear end of the all the matchsticks together at one point and the front end is kept free. The matchstick numbered
+i is adjacent to matchstick numbered
+i+1 for all
+0≤i≤N−2.
+Bodies of matchsticks do not touch each other, except at the rear end.
+Task:
+There are
+Q queries, in each query we ask: If he lights the free end of all matchsticks numbered between
+L and
+R inclusive, what will be the time needed for all matchsticks to get completely burnt?
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
+First line of input contains a single integer
 N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+The next line contains
+N space separated integers, the
+i
+th
+of which is
+b
+i
+The next line contains a single integer
+Q
+The next
+Q lines each contain two space separated integers -
+L and
+R. The
+i
+th
+line represents the
+i
+th
+query.
 Output
-For each test case, print a single line containing the string "Yes" if Nayeon wins the game or "No" if Tzuyu wins (without quotes).
-Constraints
-1≤T≤40,000
-2≤N≤3⋅10
+For each query, print the answer on a new line.
+Constraints:
+1≤N≤10
 5
-0≤A
+1≤b
 i
-≤1 for each valid
-i
-A
-1
-=A
-N
-=1
-the sum of
-N over all test cases does not exceed
-10
-6
-Subtasks
-Subtask #1 (50 points):
-A
-i
-=0 for each
-i (
-2≤i≤N−1)
-Subtask #2 (50 points): original constraints
+≤10
+8
+1≤Q≤10
+5
+0≤L≤R≤N−1
 Sample 1:
 Input
 Output
-4
-7
-1 1 0 0 0 1 1
-8
-1 0 1 1 1 0 0 1
-4
-1 1 0 1
-4
-1 1 1 1
-Yes
-No
-Yes
-No
+1
+5
+1
+0 0
+5.0
+Sample 2:
+Input
+Output
+2
+3 5
+1
+0 1
+4.0
+Sample 3:
+Input
+Output
+18
+3 4 2 1 5 7 9 7 10 5 12 3 1 1 2 1 3 2
+1
+4 10
+9.0
 Explanation:
-Example case 1: Since both Nayeon and Tzuyu play optimally, Nayeon can start e.g. by moving to cell
-4, which then becomes blocked. Tzuyu has to pick either the cell
-3 or the cell
-5, which also becomes blocked. Nayeon is then left with only one empty cell next to cell
-4 (the one Tzuyu did not pick); after she moves there, Tzuyu is unable to move, so she loses the game.
-Example case 2: Regardless of what cell Nayeon moves to at the start, Tzuyu will always be able to beat her.
+Test Case 3: , in the figure above, yellow colored matches are lighted by a lighter simultaneously.
+The numbers indicate the time required to burn that matchstick (if lighted at one end).
+Now the first lighted matchstick will completely burn in
+5 seconds. Then it will light up all the rest matches from the rear end.
+Some matches will have fire at both ends and thus after
+5 seconds, they will start burning with twice the original rate.
+Thus time taken for matches to burn completely will be : (from left to right):
+8.0,
+9.0,
+7.0,
+6.0,
+5.0,
+6.0,
+7.0,
+6.0,
+7.5,
+5.0,
+8.5,
+8.0,
+6.0,
+6.0,
+7.0,
+6.0,
+8.0,
+7.0. So, the answer will be
+9.0 (the maximum among these).

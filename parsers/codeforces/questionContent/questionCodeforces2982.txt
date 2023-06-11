@@ -1,200 +1,106 @@
-C. Jeremy Bearimy
-time limit per test3 seconds
+F. Intergalactic Sliding Puzzle
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Welcome! Everything is fine.
-You have arrived in The Medium Place, the place between The Good Place and The Bad Place. You are assigned a task that will either make people happier or torture them for eternity.
-You have a list of
-k
-pairs of people who have arrived in a new inhabited neighborhood. You need to assign each of the
-2k
-people into one of the
-2k
-houses. Each person will be the resident of exactly one house, and each house will have exactly one resident.
-Of course, in the neighborhood, it is possible to visit friends. There are
-2k−1
-roads, each of which connects two houses. It takes some time to traverse a road. We will specify the amount of time it takes in the input. The neighborhood is designed in such a way that from anyone's house, there is exactly one sequence of distinct roads you can take to any other house. In other words, the graph with the houses as vertices and the roads as edges is a tree.
-The truth is, these
-k
-pairs of people are actually soulmates. We index them from
+You are an intergalactic surgeon and you have an alien patient. For the purposes of this problem, we can and we will model this patient's body using a
+2×(2k+1)
+rectangular grid. The alien has
+4k+1
+distinct organs, numbered
 1
 to
-k
-. We denote by
-f(i)
-the amount of time it takes for the
-i
--th pair of soulmates to go to each other's houses.
-As we have said before, you will need to assign each of the
-2k
-people into one of the
-2k
-houses. You have two missions, one from the entities in The Good Place and one from the entities of The Bad Place. Here they are:
-The first mission, from The Good Place, is to assign the people into the houses such that the sum of
-f(i)
-over all pairs
-i
-is minimized. Let's define this minimized sum as
-G
-. This makes sure that soulmates can easily and efficiently visit each other;
-The second mission, from The Bad Place, is to assign the people into the houses such that the sum of
-f(i)
-over all pairs
-i
-is maximized. Let's define this maximized sum as
-B
-. This makes sure that soulmates will have a difficult time to visit each other.
-What are the values of
-G
-and
-B
-?
+4k+1
+.
+In healthy such aliens, the organs are arranged in a particular way. For example, here is how the organs of a healthy such alien would be positioned, when viewed from the top, for
+k=4
+:
+Here, the E represents empty space.
+In general, the first row contains organs
+1
+to
+2k+1
+(in that order from left to right), and the second row contains organs
+2k+2
+to
+4k+1
+(in that order from left to right) and then empty space right after.
+Your patient's organs are complete, and inside their body, but they somehow got shuffled around! Your job, as an intergalactic surgeon, is to put everything back in its correct position. All organs of the alien must be in its body during the entire procedure. This means that at any point during the procedure, there is exactly one cell (in the grid) that is empty. In addition, you can only move organs around by doing one of the following things:
+You can switch the positions of the empty space E with any organ to its immediate left or to its immediate right (if they exist). In reality, you do this by sliding the organ in question to the empty space;
+You can switch the positions of the empty space E with any organ to its immediate top or its immediate bottom (if they exist) only if the empty space is on the leftmost column, rightmost column or in the centermost column. Again, you do this by sliding the organ in question to the empty space.
+Your job is to figure out a sequence of moves you must do during the surgical procedure in order to place back all
+4k+1
+internal organs of your patient in the correct cells. If it is impossible to do so, you must say so.
 Input
 The first line of input contains a single integer
 t
 (
-1≤t≤500
+1≤t≤4
 ) denoting the number of test cases. The next lines contain descriptions of the test cases.
-The first line of each test case contains a single integer
+Each test case consists of three lines. The first line contains a single integer
 k
-denoting the number of pairs of people (
-1≤k≤
-10
-5
-). The next
-2k−1
-lines describe the roads; the
-i
--th of them contains three space-separated integers
-a
-i
-,
-b
-i
-,
-t
-i
-which means that the
-i
--th road connects the
-a
-i
--th and
-b
-i
--th houses with a road that takes
-t
-i
-units of time to traverse (
-1≤
-a
-i
-,
-b
-i
-≤2k
-,
-a
-i
-≠
-b
-i
-,
-1≤
-t
-i
-≤
-10
-6
-). It is guaranteed that the given roads define a tree structure.
-It is guaranteed that the sum of the
-k
-in a single file is at most
-3⋅
-10
-5
-.
+(
+1≤k≤15
+) which determines the size of the grid. Then two lines follow. Each of them contains
+2k+1
+space-separated integers or the letter E. They describe the first and second rows of organs, respectively. It is guaranteed that all
+4k+1
+organs are present and there is exactly one E.
 Output
-For each test case, output a single line containing two space-separated integers
-G
-and
-B
-.
+For each test case, first, print a single line containing either:
+SURGERY COMPLETE if it is possible to place back all internal organs in the correct locations;
+SURGERY FAILED if it is impossible.
+If it is impossible, then this is the only line of output for the test case. However, if it is possible, output a few more lines describing the sequence of moves to place the organs in the correct locations.
+The sequence of moves will be a (possibly empty) string of letters u, d, l or r, representing sliding the organ that's directly above, below, to the left or to the right of the empty space, respectively, into the empty space. Print the sequence of moves in the following line, as such a string.
+For convenience, you may use shortcuts to reduce the size of your output. You may use uppercase letters as shortcuts for sequences of moves. For example, you could choose T to represent the string lddrr. These shortcuts may also include other shortcuts on their own! For example, you could choose E to represent TruT, etc.
+You may use any number of uppercase letters (including none) as shortcuts. The only requirements are the following:
+The total length of all strings in your output for a single case is at most
+10
+4
+;
+There must be no cycles involving the shortcuts that are reachable from the main sequence;
+The resulting sequence of moves is finite, after expanding all shortcuts. Note that the final sequence of moves (after expanding) may be much longer than
+10
+4
+; the only requirement is that it's finite.
+As an example, if T = lddrr, E = TruT and R = rrr, then TurTlER expands to:
+TurTlER
+lddrrurTlER
+lddrrurlddrrlER
+lddrrurlddrrlTruTR
+lddrrurlddrrllddrrruTR
+lddrrurlddrrllddrrrulddrrR
+lddrrurlddrrllddrrrulddrrrrr
+To use shortcuts, print each one of them in a single line as the uppercase letter, then space, and then the string that this shortcut represents. They may be printed in any order. At the end of all of those, print a single line containing DONE.
+Note: You still need to print DONE even if you don't plan on using shortcuts.
+Your sequence does not need to be the shortest. Any valid sequence of moves (satisfying the requirements above) will be accepted.
 Example
 input
 Copy
 2
 3
-1 2 3
-3 2 4
-2 4 3
-4 5 6
-5 6 5
-2
-1 2 1
-1 3 2
-1 4 3
+1 2 3 5 6 E 7
+8 9 10 4 11 12 13
+11
+34 45 6 22 16 43 38 44 5 4 41 14 7 29 28 19 9 18 42 8 17 33 1
+E 15 40 36 31 24 10 2 21 11 32 23 30 27 35 25 13 12 39 37 26 20 3
 output
 Copy
-15 33
-6 6
+SURGERY COMPLETE
+IR
+R SrS
+S rr
+I lldll
+DONE
+SURGERY FAILED
 Note
-For the sample test case, we have a minimum sum equal to
-G=15
-. One way this can be achieved is with the following assignment:
-The first pair of people get assigned to houses
-5
-and
-6
-, giving us
-f(1)=5
-;
-The second pair of people get assigned to houses
-1
-and
-4
-, giving us
-f(2)=6
-;
-The third pair of people get assigned to houses
-3
-and
-2
-, giving us
-f(3)=4
-.
-Note that the sum of the
-f(i)
-is
-5+6+4=15
-.
-We also have a maximum sum equal to
-B=33
-. One way this can be achieved is with the following assignment:
-The first pair of people get assigned to houses
-1
-and
-4
-, giving us
-f(1)=6
-;
-The second pair of people get assigned to houses
-6
-and
-2
-, giving us
-f(2)=14
-;
-The third pair of people get assigned to houses
-3
-and
-5
-, giving us
-f(3)=13
-.
-Note that the sum of the
-f(i)
-is
-6+14+13=33
-.
+There are three shortcuts defined in the first sample output:
+R = SrS
+S = rr
+I = lldll
+The sequence of moves is IR and it expands to:
+IR
+lldllR
+lldllSrS
+lldllrrrS
+lldllrrrrr

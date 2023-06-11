@@ -1,55 +1,53 @@
-D. Magic Breeding
-time limit per test4 seconds
-memory limit per test1024 megabytes
+C. Tournament
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Nikita and Sasha play a computer game where you have to breed some magical creatures. Initially, they have k creatures numbered from 1 to k. Creatures have n different characteristics.
-Sasha has a spell that allows to create a new creature from two given creatures. Each of its characteristics will be equal to the maximum of the corresponding characteristics of used creatures. Nikita has a similar spell, but in his spell, each characteristic of the new creature is equal to the minimum of the corresponding characteristics of used creatures. A new creature gets the smallest unused number.
-They use their spells and are interested in some characteristics of their new creatures. Help them find out these characteristics.
+Recently a tournament in k kinds of sports has begun in Berland. Vasya wants to make money on the bets.
+The scheme of the tournament is very mysterious and not fully disclosed. Competitions are held back to back, each of them involves two sportsmen who have not left the tournament yet. Each match can be held in any of the k kinds of sport. Loser leaves the tournament. The last remaining sportsman becomes the winner. Apart of this, the scheme can be arbitrary, it is not disclosed in advance.
+Vasya knows powers of sportsmen in each kind of sport. He believes that the sportsmen with higher power always wins.
+The tournament is held every year, and each year one new participant joins it. In the first tournament, only one sportsman has participated, in the second there were two sportsmen, and so on. Vasya has been watching the tournament for the last n years. Help him to find the number of possible winners for each of the n tournaments.
 Input
-The first line contains integers n, k and q (1 ≤ n ≤ 105, 1 ≤ k ≤ 12, 1 ≤ q ≤ 105) — number of characteristics, creatures and queries.
-Next k lines describe original creatures. The line i contains n numbers ai1, ai2, ..., ain (1 ≤ aij ≤ 109) — characteristics of the i-th creature.
-Each of the next q lines contains a query. The i-th of these lines contains numbers ti, xi and yi (1 ≤ ti ≤ 3). They denote a query:
-ti = 1 means that Sasha used his spell to the creatures xi and yi.
-ti = 2 means that Nikita used his spell to the creatures xi and yi.
-ti = 3 means that they want to know the yi-th characteristic of the xi-th creature. In this case 1 ≤ yi ≤ n.
-It's guaranteed that all creatures' numbers are valid, that means that they are created before any of the queries involving them.
+The first line contains two integers n and k (1 ≤ n ≤ 5·104, 1 ≤ k ≤ 10) — the number of tournaments and the number of kinds of sport, respectively.
+Each of the next n lines contains k integers si1, si2, ..., sik (1 ≤ sij ≤ 109), where sij is the power of the i-th sportsman in the j-th kind of sport. The sportsman with higher powers always wins. It's guaranteed that for any kind of sport all of these powers are distinct.
 Output
-For each query with ti = 3 output the corresponding characteristic.
+For each of the n tournaments output the number of contenders who can win.
 Examples
 input
 Copy
-2 2 4
-1 2
-2 1
-1 1 2
-2 1 2
-3 3 1
-3 4 2
+3 2
+1 5
+5 1
+10 10
 output
 Copy
+1
 2
 1
 input
 Copy
-5 3 8
-1 2 3 4 5
-5 1 2 3 4
-4 5 1 2 3
-1 1 2
-1 2 3
-2 4 5
-3 6 1
-3 6 2
-3 6 3
-3 6 4
-3 6 5
+3 2
+2 2
+3 3
+1 10
 output
 Copy
-5
-2
-2
+1
+1
 3
-4
+input
+Copy
+3 2
+2 3
+1 1
+3 2
+output
+Copy
+1
+1
+2
 Note
-In the first sample, Sasha makes a creature with number 3 and characteristics (2, 2). Nikita makes a creature with number 4 and characteristics (1, 1). After that they find out the first characteristic for the creature 3 and the second characteristic for the creature 4.
+In the first sample:
+In the first tournament there is only one sportsman, and he is the winner.
+In the second tournament, there are two sportsmen, and everyone can defeat another, depending on kind of sports.
+In the third tournament, the third sportsman in the strongest in both kinds of sports, so he is the winner regardless of the scheme.

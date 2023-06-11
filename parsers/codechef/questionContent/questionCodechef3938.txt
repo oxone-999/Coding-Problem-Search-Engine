@@ -1,173 +1,35 @@
-Roman Routing
+Maximum Sub-rectangle in Matrix
 Problem
-Salmon has time-travelled to the dying days of the Roman Empire, and needs to travel to Rome.
-There are
-N cities in the Roman Empire; these are numbered from
-0 to
-N−1. City
-0 is Rome. There are also
-M unidirectional roads between some of these
-N cities. The
-i-th road is from city
-A
-i
-to city
-B
-i
-, and has a length of
-W
-i
-.
-As the old saying goes, "All roads lead to Rome". In particular, starting at a city and following an arbitrary sequence of roads, one will eventually reach Rome and terminate. Note that there are no directed cycles in this graph. In other words, it is not possible to leave a city and then return to it later.
-In addition, to prevent the Empire from becoming too fractured, the roads were built such that the largest set of cities such that all cities in the set are pairwise unreachable from each other has size
-≤10. In other words, it is guaranteed that in any set of
-11 or more vertices, there will exist at least two vertices
-u and
-v, such that it is possible to travel from
-u to
-v in the original graph.
-Salmon will make a journey from each city towards Rome. Each journey can be represented as a sequence of cities,
-S, such that the first integer is the origin city and the last integer is city 0, Rome. Note that
-S may have any size.
-Salmon needs to travel between every two consecutive cities on his journey. It is not necessary that the cities are directly connected, however, the latter city must be reachable from the earlier one. Roman authorities now mandate that to travel from city
-X to
-Y, one must hire soldiers for protection in city
-X. As nowadays journeys near Rome are more dangerous, the number of soldiers to hire is equal to
-K−d
-Y
-where
-d
-Y
-represents the length of the longest path from
-Y to Rome, and
-K is a constant. The cost of hiring a single soldier in city
-X is
-c
-X
-. In addition, Salmon will have to pay an entry tax
-t
-Y
-upon arrival in city
-Y, to enter. Notice that Salmon is not required to pay the entry fee for the city he starts in (the origin city), and that he only has to pay the entry fee for cities in the sequence
-S.
-Given that Salmon chooses his journeys optimally, what is the minimum cost of travelling from every city from
-1…N−1 to Rome?
-###Input:
-The first line will contain three integers:
-N,
-M, and
-K.
-The second line will contain
-N integers:
-c
-0
-c
-1
-…c
-N−1
-The third line will contain
-N integers:
-t
-0
-t
-1
-…t
-N−1
-The next
-M lines will contain three integers each:
-u
-i
-v
-i
-w
-i
-, representing that there is an road from
-u
-i
-to
-v
-i
-of length
-w
-i
-.
-Output:
+You are given a matrix of the size H × W with integer elements. So it has H rows and W columns. The rows are numbered by integers in the range [0, H – 1] while for the columns the range [0, W – 1] is used. Your task is to find out a sub-rectangle of this matrix with a large sum. The sum of a sub-rectangle is the sum of all its elements. However, sub-rectangle does not need to be contiguous. More formally, you have to find out a subset of rows R and a subset of columns C. Then your sub-rectangle contains all those cells (r, c) where r is in R and c is in C.
+This is a challenge problem so you don't have to find out the optimal solution. You would get a partial score depending on how large the sum of your chosen rectangle is.
+Input
+The first line of the input contains two space separated integers H and W, the height and the width of the matrix respectively. Each of the following H lines contains W space separated integers, the elements of the corresponding row of the matrix.
 Output
-N−1 space-separated integers: the
-i-th integer is the minimum cost to travel from city
-i to Rome (city 0).
+Your output should consist of 3 lines. The first line of the output should contain two space separated integers R_SIZE and C_SIZE, the sizes of your row set and the column set respectively. In the next line there should be R_SIZE distinct integers in the range [0, H – 1] in ascending order, the set of rows you have chosen. In the third line there should be C_SIZE distinct integers in the range [0, W – 1] in ascending order, the set of columns you have chosen.
+Your program will get accepted if and only if all of the following conditions are satisfied:
+Both your row set and column set are non-empty, that is, R_SIZE ≥ 1 and C_SIZE ≥ 1.
+The second line of your output contains R_SIZE distinct integers in the range [0, H – 1] in ascending order.
+The third line of your output contains C_SIZE distinct integers in the range [0, W – 1] in ascending order.
+The sum of your chosen sub-rectangle is positive. You are guaranteed that such a sub-rectangle always exists.
+Scoring
+Let numerator = Sum of your chosen sub-rectangle
+and denominator = Sum of all positive elements of the matrix.
+Then your score for a single file is equal to numerator / denominator. Your total score is the average of individual scores for each file multiplied by 10000 for convenience. Your goal is to maximize your total score.
 Constraints
-2≤N≤10
-5
-1≤M≤2∗10
-5
-d
-max
-≤K≤10
-9
-, where
-d
-max
-is the highest value of
-d
-i
-across all cities.
-0≤u
-i
-,v
-i
-≤N−1
-1≤w
-i
-≤10
-4
-1≤c
-i
-,t
-i
-≤10
-4
-The road network forms a connected Directed Acyclic Graph, with node
-0 as the sole sink.
-There are no multi-edges.
-The largest set of cities such that all cities are pairwise unreachable from each other has size
-≤10.
-Subtasks
-Subtask 1 [10 points]:
-N≤1000,
-M≤2000
-Subtask 2 [15 points]:
-M=N−1;
-u
-i
-=i+1,
-v
-i
-=i for all
-i
-Subtask 3 [25 points]:
-M=N−1
-Subtask 4 [50 points]: No additional constraints.
-Sample Input 1
-2 1 5
-1 2 
-3 4
-1 0 2
-Sample Output 1
-13
+1 ≤ H, W ≤ 300
+Each element of the matrix does not exceed 109 by the absolute value.
+There exists a sub-rectangle of the given matrix which has positive sum.
+In each official test file H, W ≥ 200.
+Example
+Input:
+3 3
+-1 -2 4
+2 3 -1
+8 9 -1
+
+Output:
+1 2
+1
+1 2
 Explanation
-Salmon travels directly from city 1 to Rome (city 0). He has to hire
-5−0=5 soldiers. The hiring-cost of each soldier in city 1 is
-2. So, he has to spend
-10 on soldier salaries. In addition, he has to pay a tax of
-3 to enter city 0, for a total of
-13.
-Sample Input 2
-3 3 17
-4 4 1
-9 6 8
-2 0 5
-2 1 8
-1 0 2
-Sample Output 2
-77 26 
+In this output the set of one row R = {1} and the set of two columns C = {1, 2} have been chosen. The chosen cells of the matrix are M[1][1] = 3, M[1][2] = -1 (recall that the numeration of rows and columns is 0-based). So the sum of the chosen sub-rectangle is 3 + (-1) = 2 > 0. The sum of all positive elements of the matrix is 4 + 2 + 3 + 8 + 9 = 26. So the score you will get for such output is 2 / 26 = 0.0769231. Note that this is not the optimal solution for this matrix.

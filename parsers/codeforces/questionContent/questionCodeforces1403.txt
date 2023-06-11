@@ -1,237 +1,82 @@
-D. Guess the Permutation
-time limit per test1 second
+F. Strange LCS
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem.
-Jury initially had a sequence
-a
-of length
+You are given
 n
-, such that
-a
-i
-=i
-.
-The jury chose three integers
-i
+strings
+s
+1
 ,
-j
-,
-k
-, such that
-1≤i<j<k≤n
-,
-j−i>1
-. After that, Jury reversed subsegments
-[i,j−1]
-and
-[j,k]
-of the sequence
-a
-.
-Reversing a subsegment
-[l,r]
-of the sequence
-a
-means reversing the order of elements
-a
-l
-,
-a
-l+1
+s
+2
 ,…,
-a
-r
-in the sequence, i. e.
-a
-l
-is swapped with
-a
-r
-,
-a
-l+1
-is swapped with
-a
-r−1
-, etc.
-You are given the number
+s
 n
-and you should find
-i
-,
-j
-,
-k
-after asking some questions.
-In one question you can choose two integers
-l
-and
-r
-(
-1≤l≤r≤n
-) and ask the number of inversions on the subsegment
-[l,r]
-of the sequence
-a
-. You will be given the number of pairs
-(i,j)
-such that
-l≤i<j≤r
-, and
-a
-i
->
-a
-j
-.
-Find the chosen numbers
-i
-,
-j
-,
-k
-after at most
-40
-questions.
-The numbers
-i
-,
-j
-, and
-k
-are fixed before the start of your program and do not depend on your queries.
+, each consisting of lowercase and uppercase English letters. In addition, it's guaranteed that each character occurs in each string at most twice. Find the longest common subsequence of these strings.
+A string
+t
+is a subsequence of a string
+s
+if
+t
+can be obtained from
+s
+by deletion of several (possibly, zero or all) symbols.
 Input
 Each test consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤100
+1≤t≤5
 ) — the number of test cases. Description of the test cases follows.
-The single line of each test case contains a single integer
+The first line of each test case contains a single integer
 n
 (
-4≤n≤
-10
-9
-). After reading it you should start an interaction process by asking questions for that test case. After giving an answer you should:
-Terminate your program if that is the last test case.
-Proceed to the next test case otherwise.
-Interaction
-To ask number of inversions on a subsegment
-[l,r]
-, print "? l r", where (
-1≤l≤r≤n
-). You can ask at most
-40
-questions in each test case. As a result you should read a single integer
-x
-.
-If
-x=−1
-, your program made an invalid question or you exceeded the number of questions for that test case. Your program should terminate immediately (otherwise it can get any verdict instead of "Wrong Answer").
-Otherwise
-x
-is equal to the number of inversions on the subsegment
-[l,r]
-of the sequence
-a
-.
-To give the answer, print "! i j k", where
-i
-,
-j
-,
-k
-are the numbers you found. You should continue solving the next test cases or terminate the program after that.
-After printing a question or an answer do not forget to print the end of line and flush the output. Otherwise, you will get an "Idleness limit exceeded" verdict. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-See the documentation for other languages.
-Hacks
-To make a hack, use the following format:
-The first line contains a single integer
-t
-(
-1≤t≤100
-) — the number of test cases.
+2≤n≤10
+) — the number of strings.
 Each of the next
-t
-lines contains four integers
 n
-,
+lines contains the corresponding string
+s
 i
-,
-j
-,
-k
-(
-4≤n≤
-10
-9
-,
-1≤i<j<k≤n
-,
-j−i>1
-).
+. Each
+s
+i
+is non-empty, consists only of uppercase and lowercase English letters, and no character appears more than twice in each string.
+Output
+For each test case print the answer in two lines:
+In the first line print the length of the longest common subsequence.
+In the second line print the longest common subsequence. If there are multiple such subsequences, print any of them.
 Example
 input
 Copy
-2 
-5 
-
-4 
-
-3 
-
-3 
-
-5 
-
-2 
-
-2 
-
-1 
+4
+2
+ABC
+CBA
+2
+bacab
+defed
+3
+abcde
+aBcDe
+ace
+2
+codeforces
+technocup
 output
 Copy
-? 1 5
+1
+A
+0
 
-? 2 5
-
-? 3 5
-
-! 1 3 5
-
-? 1 5
-
-? 2 5
-
-? 3 5
-
-! 2 4 5
+3
+ace
+3
+coc
 Note
-In the first test case,
-i=1
-,
-j=3
-,
-k=5
-, so the sequence
-a
-is
-[2,1,5,4,3]
+In the first test case, the longest common subsequence is "A". There are no common subsequences of length
+2
 .
-In the second test case,
-i=2
-,
-j=4
-,
-k=5
-, so the sequence
-a
-is
-[1,3,2,5,4]
-.
+In the second test case, sets of characters of strings don't intersect, so any non-empty string can't be a common subsequence.

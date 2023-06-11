@@ -1,88 +1,154 @@
-Flip to Invert
+Maximum Sum
 Problem
-JJ has a binary string
-S of length
-N. JJ can perform the following operation on
-S:
-Select an
-i such that
-1≤i≤N, and flip
-S
+You are given an array 
+A of size
+N.
+In one operation, you can do the following:
+Choose any two adjacent elements
+A
 i
-(i.e. change
-0 to
-1 and
-1 to
-0)
-JJ wants to minimize the number of inversions in
-S by performing the above operation at most
-K times. Can you help JJ do so?
-Recall that a pair of indices
-(i,j) in
-S is called an inversion if
-i<j and
-S
+and
+A
+i+1
+(1≤i<N).
+Let
+X=gcd(A
 i
->S
-j
-.
+,A
+i+1
+) and
+Y=lcm(A
+i
+,A
+i+1
+). Here
+gcd denotes the greatest common divisor and
+lcm denotes the least common multiple respectively.
+Replace
+A
+i
+with
+X and
+A
+i+1
+with
+Y.
+Find the maximum value of
+Σ
+i=1
+N
+A
+i
+you can achieve, after performing the above operation any (possibly zero) number of times.
+Since the result may be very large, you need to output the result modulo
+10
+9
++7.
 Input Format
-The first line contains a single integer
-T - the number of test cases. Then the test cases follow.
-The first line of each test case contains two integers
-N and
-K - the length of the binary string
-S and the maximum number of times JJ can perform the given operation.
-The second line of each test case contains a binary string
-S of length
-N containing
-0s and
-1s only.
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains an integer
+N — the size of
+A.
+The next line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+, the elements of the array.
 Output Format
-For each test case, output the minimum number of inversions possible after performing the given operation at most
-K times.
+For each test case, output the maximum value of
+Σ
+i=1
+N
+A
+i
+you can achieve, after performing the above operation any (possibly zero) number of times, modulo
+10
+9
++7.
 Constraints
 1≤T≤10
-5
 1≤N≤10
 5
-0≤K≤N
-Sum of
-N over all test cases does not exceed
-2⋅10
+1≤A
+i
+≤10
+6
+The sum of
+N over all test cases won't exceed
+10
 5
+.
 Sample 1:
 Input
 Output
 3
-8 3
-00010111
-5 1
-10100
-6 2
-111000
-0
-2
+4
+4 4 6 1
 3
+108 24 18
+10
+93179 93187 93199 93229 93239 93241 93251 93253 93257 93263
+19
+258
+392286903
 Explanation:
-Test case 1: We are allowed to perform at most
-3 operations. We can perform the following operation on
-S:
-0001
-0
-111→00011111 which has
-0 inversions. Therefore
-0 is the answer.
-Test case 2: We can perform the following operation on
-S:
+Test case
+1: Initially,
+A=[4,4,6,1].
+Operation
+1: Choose
+A
+2
+,A
+3
+. Thus,
+X=gcd(4,6)=2 and
+Y=lcm(4,6)=12. Thus
+A becomes
+[4,2,12,1].
+The sum of the array is
+4+2+12+1=19. It can be shown that this is the maximum sum of array we can achieve after applying any number of operations.
+Test case
+2: Initially,
+A=[108,24,18].
+Operation
+1: Choose
+A
 1
-0100→00100 which has
-2 inversions. It can be proven that this is the minimum number of inversions possible.
-Test case 3: We can perform the following operations on
-S:
-1110
-0
-0→11101
-0
-→111011 which has
-3 inversions. It can be proven that this is the minimum number of inversions possible.
+,A
+2
+. Thus,
+X=gcd(108,24)=12 and
+Y=lcm(108,24)=216. Thus
+A becomes
+[12,216,18].
+Operation
+2: Choose
+A
+2
+,A
+3
+. Thus,
+X=gcd(216,18)=18 and
+Y=lcm(216,18)=216. Thus
+A becomes
+[12,18,216].
+Operation
+3: Choose
+A
+1
+,A
+2
+. Thus,
+X=gcd(12,18)=6 and
+Y=lcm(12,18)=36. Thus
+A becomes
+[6,36,216].
+The sum of the array is
+6+36+216=258. It can be shown that this is the maximum sum of array we can achieve after applying any number of operations.

@@ -1,45 +1,9 @@
-F. XOR, Tree, and Queries
-time limit per test3 seconds
+E. Sum Over Zero
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a tree of
-n
-vertices. The vertices are numbered from
-1
-to
-n
-.
-You will need to assign a weight to each edge. Let the weight of the
-i
--th edge be
-a
-i
-(
-1≤i≤n−1
-). The weight of each edge should be an integer between
-0
-and
-2
-30
-−1
-, inclusive.
-You are given
-q
-conditions. Each condition consists of three integers
-u
-,
-v
-, and
-x
-. This means that the bitwise XOR of all edges on the shortest path from
-u
-to
-v
-should be
-x
-.
-Find out if there exist
+You are given an array
 a
 1
 ,
@@ -47,266 +11,180 @@ a
 2
 ,…,
 a
-n−1
-that satisfy the given conditions. If yes, print a solution such that
-a
-1
-⊕
-a
-2
-⊕…⊕
-a
-n−1
-is the smallest. Here,
-⊕
-denotes the bitwise XOR operation.
-If there are multiple solutions such that
-a
-1
-⊕
-a
-2
-⊕…⊕
-a
-n−1
-is the smallest, print any.
-Input
-The first line contains two integers
 n
+of
+n
+integers. Consider
+S
+as a set of segments satisfying the following conditions.
+Each element of
+S
+should be in form
+[x,y]
+, where
+x
 and
-q
-(
-2≤n≤2.5⋅
-10
-5
+y
+are integers between
+1
+and
+n
+, inclusive, and
+x≤y
+.
+No two segments in
+S
+intersect with each other. Two segments
+[a,b]
+and
+[c,d]
+intersect if and only if there exists an integer
+x
+such that
+a≤x≤b
+and
+c≤x≤d
+.
+For each
+[x,y]
+in
+S
 ,
-0≤q≤2.5⋅
+a
+x
++
+a
+x+1
++…+
+a
+y
+≥0
+.
+The length of the segment
+[x,y]
+is defined as
+y−x+1
+.
+f(S)
+is defined as the sum of the lengths of every element in
+S
+. In a formal way,
+f(S)=
+∑
+[x,y]∈S
+(y−x+1)
+. Note that if
+S
+is empty,
+f(S)
+is
+0
+.
+What is the maximum
+f(S)
+among all possible
+S
+?
+Input
+The first line contains one integer
+n
+(
+1≤n≤2⋅
 10
 5
 ).
-The
-i
--th of the following
-n−1
-lines contains two integers
-x
-i
-and
-y
-i
-(
-1≤
-x
-i
+The next line is followed by
+n
+integers
+a
+1
 ,
-y
-i
-≤n
-,
-x
-i
-≠
-y
-i
-), meaning that the
-i
--th edge connects vertices
-x
-i
-and
-y
-i
-in the tree.
-It is guaranteed that the given edges form a tree.
-The following
-q
-lines contain information about conditions.
-Each line contains three integers
-u
-,
-v
-,
-x
-(
-1≤u,v≤n
-,
-u≠v
-,
-0≤x≤
+a
 2
-30
-−1
-), meaning that the bitwise XOR of all edges on the shortest path from
-u
-to
-v
-should be
-x
-.
+,…,
+a
+n
+(
+−
+10
+9
+≤
+a
+i
+≤
+10
+9
+).
 Output
-If there do not exist
-a
-1
-,
-a
-2
-, ...,
-a
-n−1
-that satisfy the given conditions, print "No".
-Otherwise, print "Yes" in the first line.
-Then print
-n−1
-integers on the next line, where the
-i
--th integer is the weight of the
-i
--th edge. If there are multiple solutions that satisfy the given conditions, print a solution such that
-a
-1
-⊕
-a
-2
-⊕…⊕
-a
-n−1
-is the smallest.
-If there are multiple solutions such that
-a
-1
-⊕
-a
-2
-⊕…⊕
-a
-n−1
-is the smallest, print any.
-When printing "Yes" or "No", you can print each letter in any case (either upper or lower). For example, the strings "yEs", "yes", "Yes", and "YES" will be recognized as positive responses.
+Print a single integer, the maximum
+f(S)
+among every possible
+S
+.
 Examples
 input
 Copy
-4 4
-1 2
-2 3
-3 4
-1 4 3
-2 4 2
-1 3 1
-2 3 1
+5
+3 -3 -2 5 -4
 output
 Copy
-No
+4
 input
 Copy
-6 2
-1 2
-2 3
-3 4
-2 5
-5 6
-1 4 2
-2 6 7
+10
+5 -2 -4 -6 2 3 -6 5 3 -2
 output
 Copy
-Yes
-4 2 4 1 6
+9
 input
 Copy
-6 2
-1 2
-2 3
-3 4
-2 5
-5 6
-1 4 3
-1 6 5
+4
+-1 -2 -3 -4
 output
 Copy
-Yes
-6 1 4 3 0
+0
 Note
-For the first example, there does not exist a set of edge weights that satisfies the given conditions.
-For the second example, the two given conditions are
+In the first example,
+S={[1,2],[4,5]}
+can be a possible
+S
+because
 a
 1
-⊕
++
 a
 2
-⊕
-a
-3
-=2
+=0
 and
 a
 4
-⊕
++
 a
 5
-=7
-. There can be multiple solutions, for example,
-(
-a
-1
-,
-a
-2
-,
-a
-3
-,
-a
-4
-,
-a
-5
-)=(1,2,1,4,3)
+=1
 .
-For the third example, the two given conditions are
-a
-1
-⊕
-a
-2
-⊕
-a
-3
-=3
-and
-a
-1
-⊕
-a
+S={[1,4]}
+can also be a possible solution.
+Since there does not exist any
+S
+that satisfies
+f(S)>4
+, the answer is
 4
-⊕
-a
-5
-=5
-. There are multiple solutions that satisfy the given conditions.
-(
-a
-1
-,
-a
-2
-,
-a
-3
-,
-a
-4
-,
-a
-5
-)=(1,1,3,4,0)
-satisfies the given conditions, but the bitwise XOR of all edge weights is
-7
-, which does not have the smallest
-a
-1
-⊕
-a
-2
-⊕…⊕
-a
-n−1
-, so it cannot be the answer.
+.
+In the second example,
+S={[1,9]}
+is the only set that satisfies
+f(S)=9
+. Since every possible
+S
+satisfies
+f(S)≤9
+, the answer is
+9
+.
+In the third example,
+S
+can only be an empty set, so the answer is
+0
+.

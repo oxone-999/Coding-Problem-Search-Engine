@@ -1,46 +1,53 @@
-Discrepancies in the Voters List
+Game of Pooks
 Problem
-As you might remember, the collector of Siruseri had ordered a complete revision of the Voters List. He knew that constructing the list of voters is a difficult task, prone to errors. Some voters may have been away on vacation, others may have moved during the enrollment and so on.
-To be as accurate as possible, he entrusted the task to three different officials. Each of them was to independently record the list of voters and send it to the collector. In Siruseri, every one has a ID number and the list would only list the ID numbers of the voters and not their names. The officials were expected to arrange the ID numbers in ascending order in their lists.
-On receiving the lists, the Collector realised that there were discrepancies - the three lists were not identical. He decided to go with the majority. That is, he decided to construct the final list including only those ID numbers that appeared in at least 2 out of the 3 lists. For example if the three lists were
-23  30  42  57  90
-21  23  35  57  90  92
-21  23  30  57  90 
-then the final list compiled by the collector would be:
-21  23  30  57  90
-The ID numbers 35, 42 and 92 which appeared in only one list each do not figure in the final list.
-Your task is to help the collector by writing a program that produces the final list from the three given lists.
-Input format
-The first line of the input contains 3 integers N1, N2 and N3. N1 is the number of voters in the first list, N2 is the number of voters in the second list and N3 is the number of voters in the third list. The next N1 lines (lines 2,...,N1+1) contain one positive integer each and describe the first list in ascending order. The following
-N2 lines (lines N1+2,...,N1+N2+1) describe the second list in ascending order and the final N3 lines (lines
-N1+N2+2,...,N1+N2+N3+1) describe the third list in ascending order.
-Output format
-The first line of the output should contain a single integer M indicating the number voters in the final list. The next M lines (lines 2,...,M+1) should contain one positive integer each, describing the list of voters in the final list, in ascending order.
-Test data
-You may assume that 1 ≤ N1,N2,N3 ≤ 50000.
+We have found a new chess character — pook. It has the qualities of both a rook and a pawn. Specifically, treating the chessboard to be an
+N×N grid where
+(i,j) denotes the intersection of the
+i-th row and the
+j-th column, a pook placed at square
+(x,y) threatens the following squares:
+(i,y) for every
+1≤i≤N
+(x,i) for every
+1≤i≤N
+(x+1,y−1), if
+x<N and
+y≥2
+(x+1,y+1), if
+x<N and
+y<N
+Find the maximum number of pooks that can be placed on an empty
+N×N chessboard such that none of them threaten each other.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases. Then the test cases follow.
+Each test case consists of a single line of input, containing a single integer
+N.
+Output Format
+For each test case, output in a single line the maximum number of pooks that can be placed on the chessboard such that they don't threaten each other.
+Constraints
+1≤T≤10
+5
+1≤N≤10
+9
 Sample 1:
 Input
 Output
-5 6 5
-23
-30
-42
-57
-90
-21 
-23 
-35 
-57 
-90 
-92 
-21 
-23 
-30 
-57 
-90
-5
-21 
-23 
-30 
-57 
-90
+3
+1
+2
+3
+1
+1
+2
+Explanation:
+Test case
+1: There is a single square, so we have a single pook.
+Test case
+2: We can only place one pook. No matter where the first is placed, placing a second will lead to one of the two being threatened.
+Test case
+3: Placing
+2 pooks on a
+3×3 grid is easy — for example, place one at
+(1,2) and another at
+(3,3). It can be shown that placing three is not possible.

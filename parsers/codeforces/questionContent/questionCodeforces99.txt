@@ -1,208 +1,84 @@
-C. Search in Parallel
+B. Long Legs
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Suppose you have
-n
-boxes. The
-i
--th box contains infinitely many balls of color
-i
-. Sometimes you need to get a ball with some specific color; but you're too lazy to do it yourself.
-You have bought two robots to retrieve the balls for you. Now you have to program them. In order to program the robots, you have to construct two lists
-[
-a
+A robot is placed in a cell
+(0,0)
+of an infinite grid. This robot has adjustable length legs. Initially, its legs have length
 1
-,
-a
-2
-,…,
-a
-k
-]
-and
-[
-b
-1
-,
-b
-2
-,…,
-b
-n−k
-]
-, where the list
-a
-represents the boxes assigned to the first robot, and the list
-b
-represents the boxes assigned to the second robot. Every integer from
-1
-to
-n
-must be present in exactly one of these lists.
-When you request a ball with color
-x
-, the robots work as follows. Each robot looks through the boxes that were assigned to that robot, in the order they appear in the list. The first robot spends
-s
-1
-seconds analyzing the contents of a box; the second robot spends
-s
-2
-. As soon as one of the robots finds the box with balls of color
-x
-(and analyzes its contents), the search ends. The search time is the number of seconds from the beginning of the search until one of the robots finishes analyzing the contents of the
-x
--th box. If a robot analyzes the contents of all boxes assigned to it, it stops searching.
-For example, suppose
-s
-1
-=2
-,
-s
-2
-=3
-,
-a=[4,1,5,3,7]
-,
-b=[2,6]
-. If you request a ball with color
-3
-, the following happens:
-initially, the first robot starts analyzing the box
-4
-, and the second robot starts analyzing the box
-2
+.
+Let the robot currently be in the cell
+(x,y)
+and have legs of length
+m
+. In one move, it can perform one of the following three actions:
+jump into the cell
+(x+m,y)
 ;
-at the end of the
-2
--nd second, the first robot finishes analyzing the box
-4
-. It is not the box you need, so the robot continues with the box
-1
+jump into the cell
+(x,y+m)
 ;
-at the end of the
-3
--rd second, the second robot finishes analyzing the box
-2
-. It is not the box you need, so the robot continues with the box
-6
-;
-at the end of the
-4
--th second, the first robot finishes analyzing the box
+increase the length of the legs by
 1
-. It is not the box you need, so the robot continues with the box
-5
-;
-at the end of the
-6
--th second, the first robot finishes analyzing the box
-5
-. It is not the box you need, so the robot continues with the box
-3
-. At the same time, the second robot finishes analyzing the box
-6
-. It is not the box you need, and the second robot has analyzed all the boxes in its list, so that robot stops searching;
-at the end of the
-8
--th second, the first robot finishes analyzing the box
-3
-. It is the box you need, so the search ends;
-so, the search time is
-8
-seconds.
-You know that you are going to request a ball of color
-1
-r
-1
-times, a ball of color
-2
-r
-2
-times, and so on. You want to construct the lists
-a
-and
-b
-for the robots in such a way that the total search time over all requests is the minimum possible.
+, i. e. set it to
+m+1
+.
+What's the smallest number of moves robot has to make to reach a cell
+(a,b)
+?
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤
-10
-4
+1≤t≤100
 ) — the number of test cases.
-Each test case consists of two lines:
-the first line contains three integers
-n
-,
-s
-1
-,
-s
-2
-(
-2≤n≤2⋅
-10
-5
-;
-1≤
-s
-1
-,
-s
-2
-≤10
-);
-the second line contains
-n
-integers
-r
-1
-,
-r
-2
-,…,
-r
-n
-(
-1≤
-r
-i
-≤
-10
-6
-).
-Additional constraint on the input: the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-.
-Output
-For each test case, print two lines. The first line should contain the list
+The only line of each test case contains two integers
 a
-, the second line — the list
+and
 b
-. Each list has to be printed as follows: first, print the number of elements in it, and then the elements themselves.
-If there are multiple answers, you may print any of them.
+(
+1≤a,b≤
+10
+9
+) — the ending cell.
+Output
+For each test case, print a single integer — the smallest number of moves the robot is required to make to reach a cell
+(a,b)
+from a cell
+(0,0)
+.
 Example
 input
 Copy
 3
-7 3 1
-8 6 4 4 4 1 7
-5 1 10
-1 1 1 1 1
-8 1 1
-4 5 6 8 1 7 3 2
+1 1
+1 6
+8 4
 output
 Copy
-2 5 6
-5 1 7 2 4 3
-5 4 3 5 2 1
-0
-4 4 2 7 5
-4 6 3 1 8
+2
+5
+6
+Note
+In the first testcase, the robot can first jump to
+(0,1)
+, then to
+(1,1)
+. If it ever increases the length of its legs, it will only be able to jump past
+(1,1)
+.
+In the second testcase, the robot can jump to
+(1,0)
+, then increase the length of its length to
+2
+and jump three times to reach
+(1,6)
+.
+In the third testcase, the robot can increase the length of its legs three times to make it
+4
+. Then jump to
+(0,4)
+. Then jump twice to reach
+(8,4)
+.

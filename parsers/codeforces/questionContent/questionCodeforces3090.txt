@@ -1,156 +1,74 @@
-E. Yet Another Division Into Teams
-time limit per test2 seconds
+B. Magic Stick
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-students at your university. The programming skill of the
-i
--th student is
+Recently Petya walked in the forest and found a magic stick.
+Since Petya really likes numbers, the first thing he learned was spells for changing numbers. So far, he knows only two spells that can be applied to a positive integer:
+If the chosen number
 a
-i
-. As a coach, you want to divide them into teams to prepare them for the upcoming ICPC finals. Just imagine how good this university is if it has
-2⋅
-10
-5
-students ready for the finals!
-Each team should consist of at least three students. Each student should belong to exactly one team. The diversity of a team is the difference between the maximum programming skill of some student that belongs to this team and the minimum programming skill of some student that belongs to this team (in other words, if the team consists of
-k
-students with programming skills
-a[
-i
-1
-],a[
-i
+is even, then the spell will turn it into
+3a
 2
-],…,a[
-i
-k
-]
-, then the diversity of this team is
-max
-j=1
-k
-a[
-i
-j
-]−
-min
-j=1
-k
-a[
-i
-j
-]
-).
-The total diversity is the sum of diversities of all teams formed.
-Your task is to minimize the total diversity of the division of students and find the optimal way to divide the students.
+;
+If the chosen number
+a
+is greater than one, then the spell will turn it into
+a−1
+.
+Note that if the number is even and greater than one, then Petya can choose which spell to apply.
+Petya now has only one number
+x
+. He wants to know if his favorite number
+y
+can be obtained from
+x
+using the spells he knows. The spells can be used any number of times in any order. It is not required to use spells, Petya can leave
+x
+as it is.
 Input
-The first line of the input contains one integer
-n
+The first line contains single integer
+T
 (
-3≤n≤2⋅
+1≤T≤
 10
-5
-) — the number of students.
-The second line of the input contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
+4
+) — the number of test cases. Each test case consists of two lines.
+The first line of each test case contains two integers
+x
+and
+y
 (
-1≤
-a
-i
-≤
+1≤x,y≤
 10
 9
-), where
-a
-i
-is the programming skill of the
-i
--th student.
+) — the current number and the number that Petya wants to get.
 Output
-In the first line print two integers
-res
-and
-k
-— the minimum total diversity of the division of students and the number of teams in your division, correspondingly.
-In the second line print
-n
-integers
-t
-1
-,
-t
-2
-,…,
-t
-n
-(
-1≤
-t
+For the
 i
-≤k
-), where
-t
-i
-is the number of team to which the
-i
--th student belong.
-If there are multiple answers, you can print any. Note that you don't need to minimize the number of teams. Each team should consist of at least three students.
-Examples
+-th test case print the answer on it — YES if Petya can get the number
+y
+from the number
+x
+using known spells, and NO otherwise.
+You may print every letter in any case you want (so, for example, the strings yEs, yes, Yes and YES will all be recognized as positive answer).
+Example
 input
 Copy
-5
-1 1 3 4 2
+7
+2 3
+1 1
+3 6
+6 8
+1 2
+4 1
+31235 6578234
 output
 Copy
-3 1
-1 1 1 1 1 
-input
-Copy
-6
-1 5 12 13 2 15
-output
-Copy
-7 2
-2 2 1 1 2 1 
-input
-Copy
-10
-1 2 5 129 185 581 1041 1909 1580 8150
-output
-Copy
-7486 3
-3 3 3 2 2 2 2 1 1 1 
-Note
-In the first example, there is only one team with skills
-[1,1,2,3,4]
-so the answer is
-3
-. It can be shown that you cannot achieve a better answer.
-In the second example, there are two teams with skills
-[1,2,5]
-and
-[12,13,15]
-so the answer is
-4+3=7
-.
-In the third example, there are three teams with skills
-[1,2,5]
-,
-[129,185,581,1041]
-and
-[1580,1909,8150]
-so the answer is
-4+912+6570=7486
-.
+YES
+YES
+NO
+YES
+NO
+YES
+YES

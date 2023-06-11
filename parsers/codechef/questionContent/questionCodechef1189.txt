@@ -1,38 +1,112 @@
-Count Relations
+Bench Press
 Problem
-Read problems statements in Mandarian Chinise.
-Let A be a set of the first N positive integers :A={1,2,3,4.........N}
-Let B be the set containing all the subsets of A.
-
-Let A be a set of the first N positive integers :A={1,2,3,4.........N}
-Let B be the set containing all the subsets of A.
-
-Professor Eric is a mathematician who defined two kind of relations R1 and R2 on set B.
-The relations are defined as follows:
-
-R1={ (x,y) : x and y belong to B and x is not a subset of y and y is not a subset of x and the intersection of x and y is equal to empty set }
-
-R2={ (x,y) : x and y belong to B and x is not a subset of y and y is not a subset of x and the intersection of x and y is not equal to empty set }
-
-Now given the number N,Professor Eric wants to know how many relations of kind R1 and R2 exists.Help him.
-
-NOTE : (x,y) is the same as (y,x) ,i.e the pairs are unordered.
-Input format:
-The first line contains the number of test cases T.Each of the test case is denoted by a single integer N.
-Output format:
-Output T lines, one for each test case,containing two integers denoting the number of relations of kind R1 and R2 respectively, modulo 100000007.
-Constraints:
-1 <= T <= 1000
-1 <= N <= 10^18
+In the gym, Chef prefers to lift at least
+W grams during a bench press and if that's impossible, Chef considers his workout to be incomplete and feels bad.
+The rod weighs
+W
+r
+grams and there are
+N other weights lying on the floor that weigh
+w
+1
+,w
+2
+,...,w
+N
+grams. To maintain balance and to ensure that there is no unnecessary load due to torque, it's important that the weights added to the left side are symmetric to the weights added to the right side. It is not required to use all of the weights. It is also not required to use any weights at all, if Chef feels satisfied lifting only the rod.
+For example:
+1
+2
+2
+1
+∣Rod Center
+∣
+1
+1
+1
+3 is a wrong configuration, but
+1
+2
+3
+1
+∣Rod Center
+∣
+1
+3
+2
+1 is a right configuration.
+Find whether Chef will be able to collect the required weights to feel satisfied.
+###Input
+The first line contains an integer
+T, the number of test cases. Then the test cases follow.
+Each test case contains two lines of input.
+The first line contains three space-separated integers
+N,W,W
+r
+.
+The second line contains
+N space-separated integers
+w
+1
+,w
+2
+,…,w
+N
+.
+###Output For each test case, output the answer in a single line: "YES" if Chef will be satisfied after his workout and "NO" if not (without quotes).
+You may print each character of each string in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
+###Constraints
+1≤T≤10
+1≤N≤10
+5
+1≤W≤2⋅10
+5
+1≤w
+i
+≤10
+5
+1≤W
+r
+≤2⋅10
+4
+###Subtasks Subtask #1 (30 points):
+w
+i
+=1 for all valid
+i
+Subtask #2 (70 points): original constraints
 Sample 1:
 Input
 Output
 3
-1
-2
-3
-0 0
-1 0
-6 3
+2 5 10 
+2 2
+7 100 50
+100 10 10 10 10 10 90 
+6 100 40 
+10 10 10 10 10 10
+YES
+NO
+YES
 Explanation:
-Let A={1,2} Then B={Phi,{1},{2},{1,2}} Phi=Empty Set So R1=Either {({1},{2})} or {({2},{1})} and R2=No relation exists So,there is 1 relation of kind R1 and 0 relation of kind R2.
+Test case 1: Since the weight of the rod is at least the required weight to be lifted, Chef will feel satisfied after the workout.
+Test case 2: The configuration having maximum weight is:
+10
+10
+∣Rod Center
+∣
+10
+10
+So the maximum total weight Chef can lift is
+50+4⋅10=90 which is less than the required amount to get satisfied.
+Test case 3: The configuration having maximum weight is:
+10
+10
+10
+∣Rod Center
+∣
+10
+10
+10
+So the maximum total weight Chef can lift is
+40+6⋅10=100 which is equal to the required amount to get satisfied.

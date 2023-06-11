@@ -1,139 +1,210 @@
-B. Histogram Ugliness
-time limit per test2 seconds
+D. Lost Tree
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Little Dormi received a histogram with
+This is an interactive problem.
+Little Dormi was faced with an awkward problem at the carnival: he has to guess the edges of an unweighted tree of
 n
-bars of height
-a
+nodes! The nodes of the tree are numbered from
+1
+to
+n
+.
+The game master only allows him to ask one type of question:
+Little Dormi picks a node
+r
+(
+1≤r≤n
+), and the game master will reply with an array
+d
 1
 ,
-a
+d
 2
 ,…,
-a
+d
 n
-for Christmas. However, the more he played with his new histogram, the more he realized its imperfections, so today he wanted to modify it to his liking.
-To modify the histogram, Little Dormi is able to perform the following operation an arbitrary number of times:
-Select an index
+, where
+d
 i
-(
+is the length of the shortest path from node
+r
+to
+i
+, for all
 1≤i≤n
-) where
-a
-i
->0
-, and assign
-a
-i
-:=
-a
-i
-−1
 .
-Little Dormi defines the ugliness score of his histogram (after performing some number of operations) as the sum of the vertical length of its outline and the number of operations he performed on it. And to make the histogram as perfect as possible, he would like to minimize the ugliness score after modifying it with some number of operations.
-However, as his histogram is very large, Little Dormi is having trouble minimizing the ugliness score, so as Little Dormi's older brother, help him find the minimal ugliness.
-Consider the following example where the histogram has
-4
-columns of heights
-4,8,9,6
-:
-The blue region represents the histogram, and the red lines represent the vertical portion of the outline. Currently, the vertical length of the outline is
-4+4+1+3+6=18
-, so if Little Dormi does not modify the histogram at all, the ugliness would be
-18
-.
-However, Little Dormi can apply the operation once on column
+Additionally, to make the game unfair challenge Little Dormi the game master will allow at most
+⌈
+n
 2
-and twice on column
-3
-, resulting in a histogram with heights
-4,7,7,6
-:
-Now, as the total vertical length of the outline (red lines) is
-4+3+1+6=14
-, the ugliness is
-14+3=17
-dollars. It can be proven that this is optimal.
+⌉
+questions, where
+⌈x⌉
+denotes the smallest integer greater than or equal to
+x
+.
+Faced with the stomach-churning possibility of not being able to guess the tree, Little Dormi needs your help to devise a winning strategy!
+Note that the game master creates the tree before the game starts, and does not change it during the game.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤
-10
-4
-). Description of the test cases follows.
-The first line of each test case contains a single integer
+The first line of input contains the integer
 n
 (
-1≤n≤4⋅
-10
-5
-).
-The second line of each test case contains
-n
-integers
+2≤n≤2000
+), the number of nodes in the tree.
+You will then begin interaction.
+Output
+When your program has found the tree, first output a line consisting of a single "!" followed by
+n−1
+lines each with two space separated integers
 a
+and
+b
+, denoting an edge connecting nodes
+a
+and
+b
+(
+1≤a,b≤n
+). Once you are done, terminate your program normally immediately after flushing the output stream.
+You may output the edges in any order and an edge
+(a,b)
+is considered the same as an edge
+(b,a)
+. Answering is not considered as a query.
+Interaction
+After taking input, you may make at most
+⌈
+n
+2
+⌉
+queries. Each query is made in the format "? r", where
+r
+is an integer
+1≤r≤n
+that denotes the node you want to pick for that query.
+You will then receive
+n
+space separated integers
+d
 1
 ,
-a
+d
 2
 ,…,
-a
+d
+n
+, where
+d
+i
+is the length of the shortest path from node
+r
+to
+i
+, followed by a newline.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+If at any point you make an invalid query or try to make more than
+⌈
+n
+2
+⌉
+queries, the interaction will terminate immediately and you will receive a Wrong Answer verdict.
+Hacks
+To hack a solution, use the following format.
+The first line contains the integer
 n
 (
-0≤
-a
-i
-≤
-10
-9
+2≤n≤2000
 ).
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-4⋅
-10
-5
-.
-Output
-For each test case output one integer, the minimal ugliness Little Dormi can achieve with the histogram in that test case.
-Example
+The next
+n−1
+lines contain two integers
+u
+and
+v
+(
+1≤u,v≤n
+) denoting an edge between
+u
+and
+v
+(
+u≠v
+). These
+n−1
+edges must form a tree.
+Examples
 input
 Copy
-2
 4
-4 8 9 6
-6
-2 1 7 4 0 0
+
+0 1 2 2
+
+1 0 1 1
 output
 Copy
-17
-12
+? 1
+
+? 2
+
+!
+4 2
+1 2
+2 3
+input
+Copy
+5
+
+2 2 1 1 0
+output
+Copy
+? 5
+
+!
+4 5
+3 5
+2 4
+1 3
 Note
-Example
+Here is the tree from the first example.
+Notice that the edges can be output in any order.
+Additionally, here are the answers for querying every single node in example
 1
-is the example described in the statement.
-The initial histogram for example
-2
-is given below:
-The ugliness is currently
-2+1+6+3+4=16
-.
-By applying the operation once on column
-1
-, six times on column
-3
-, and three times on column
-4
-, we can end up with a histogram with heights
-1,1,1,1,0,0
 :
-The vertical length of the outline is now
-1+1=2
-and Little Dormi made
-1+6+3=10
-operations, so the final ugliness is
-2+10=12
-, which can be proven to be optimal.
+1
+:
+[0,1,2,2]
+2
+:
+[1,0,1,1]
+3
+:
+[2,1,0,2]
+4
+:
+[2,1,2,0]
+Below is the tree from the second example interaction.
+Lastly, here are the answers for querying every single node in example
+2
+:
+1
+:
+[0,4,1,3,2]
+2
+:
+[4,0,3,1,2]
+3
+:
+[1,3,0,2,1]
+4
+:
+[3,1,2,0,1]
+5
+:
+[2,2,1,1,0]

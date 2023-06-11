@@ -1,56 +1,46 @@
-C. Sum of Substrings
-time limit per test1 second
+E. Number of Groups
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a binary string
-s
-of length
+You are given
 n
-.
-Let's define
-d
+colored segments on the number line. Each segment is either colored red or blue. The
 i
-as the number whose decimal representation is
-s
+-th segment can be represented by a tuple
+(
+c
 i
-s
-i+1
-(possibly, with a leading zero). We define
-f(s)
-to be the sum of all the valid
-d
+,
+l
 i
-. In other words,
-f(s)=
-∑
-i=1
-n−1
-d
+,
+r
 i
-.
-For example, for the string
-s=1011
+)
+. The segment contains all the points in the range
+[
+l
+i
+,
+r
+i
+]
+, inclusive, and its color denoted by
+c
+i
 :
-d
-1
-=10
-(ten);
-d
-2
-=01
-(one)
-d
-3
-=11
-(eleven);
-f(s)=10+01+11=22
-.
-In one operation you can swap any two adjacent elements of the string. Find the minimum value of
-f(s)
-that can be achieved if at most
-k
-operations are allowed.
+if
+c
+i
+=0
+, it is a red segment;
+if
+c
+i
+=1
+, it is a blue segment.
+We say that two segments of different colors are connected, if they share at least one common point. Two segments belong to the same group, if they are either connected directly, or through a sequence of directly connected segments. Find the number of groups of segments.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
@@ -59,64 +49,85 @@ t
 10
 5
 ). Description of the test cases follows.
-First line of each test case contains two integers
+The first line of each test case contains a single integer
 n
-and
-k
 (
-2≤n≤
+1≤n≤
 10
 5
+) — the number of segments.
+Each of the next
+n
+lines contains three integers
+c
+i
 ,
-0≤k≤
+l
+i
+,
+r
+i
+(
+0≤
+c
+i
+≤1,0≤
+l
+i
+≤
+r
+i
+≤
 10
 9
-) — the length of the string and the maximum number of operations allowed.
-The second line of each test case contains the binary string
-s
-of length
+), describing the
+i
+-th segment.
+It is guaranteed that the sum of
 n
-, consisting of only zeros and ones.
-It is also given that sum of
-n
-over all the test cases doesn't exceed
+over all test cases does not exceed
 10
 5
 .
 Output
-For each test case, print the minimum value of
-f(s)
-you can obtain with at most
+For each test case, print a single integer
 k
-operations.
+, the number of groups of segments.
 Example
 input
 Copy
+2
+5
+0 0 5
+1 2 12
+0 4 7
+1 9 16
+0 13 19
 3
-4 0
-1010
-7 1
-0010100
-5 2
-00110
+1 0 1
+1 1 2
+0 3 4
 output
 Copy
-21
-22
-12
+2
+3
 Note
-For the first example, you can't do any operation so the optimal string is
-s
-itself.
-f(s)=f(1010)=10+01+10=21
-.
-For the second example, one of the optimal strings you can obtain is "0011000". The string has an
-f
-value of
-22
-.
-For the third example, one of the optimal strings you can obtain is "00011". The string has an
-f
-value of
-12
+In the first example there are
+5
+segments. The segments
+1
+and
+2
+are connected, because they are of different colors and share a point. Also, the segments
+2
+and
+3
+are connected, and so are segments
+4
+and
+5
+. Thus, there are two groups: one containing segments
+{1,2,3}
+, and the other one containing segments
+{4,5}
 .

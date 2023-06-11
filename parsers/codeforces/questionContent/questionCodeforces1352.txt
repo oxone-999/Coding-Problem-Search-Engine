@@ -1,99 +1,86 @@
-J. Bob's Beautiful Array
+F. Party Organization
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Bob really likes playing with arrays of numbers. That's why for his birthday, his friends bought him a really interesting machine – an array beautifier.
-The array beautifier takes an array
-A
-consisting of
+On the great island of Baltia, there live
 N
-integers, and it outputs a new array
-B
-of length N that it constructed based on the array given to it. The array beautifier constructs the new array in the following way: it takes two numbers at different indices from the original array and writes their sum to the end of the new array. It does this step
+people, numbered from
+1
+to
 N
-times - resulting in an output array of length
-N
-. During this process, the machine can take the same index multiple times in different steps.
-Bob was very excited about the gift that his friends gave him, so he put his favorite array in the machine. However, when the machine finished, Bob was not happy with the resulting array. He misses his favorite array very much, and hopes to get it back.
-Given the array that the machine outputted, help Bob find an array that could be the original array that he put in the machine. Sometimes the machine makes mistakes, so it is possible that no appropriate input array exists for the array it has outputted. In such case, let Bob know that his array is forever lost.
+. There are exactly
+M
+pairs of people that are friends with each other. The people of Baltia want to organize a successful party, but they have very strict rules on what a party is and when the party is successful. On the island of Baltia, a party is a gathering of exactly
+5
+people. The party is considered to be successful if either all the people at the party are friends with each other (so that they can all talk to each other without having to worry about talking to someone they are not friends with) or no two people at the party are friends with each other (so that everyone can just be on their phones without anyone else bothering them). Please help the people of Baltia organize a successful party or tell them that it's impossible to do so.
 Input
-The first line contains one positive integer
+The first line contains two integer numbers,
 N
 (
-2≤N≤
+5≤N≤2∗
 10
-3
-) – the length of Bob's array.
-The second line contains
-N
-integers
-B
-1
-,
-B
-2
-, ...,
-B
-N
+5
+) and
+M
+(
+0≤M≤2∗
+10
+5
+) – the number of people that live in Baltia, and the number of friendships. The next
+M
+lines each contains two integers
+U
+i
+and
+V
+i
 (
 1≤
-B
+U
 i
-≤
-10
-6
-) – the elements of the array the machine outputted.
-Output
-If an appropriate input array exists, print "YES", followed by the input array
-A
-1
 ,
-A
-2
-, ...,
-A
-N
-(
-−
-10
-9
-≤
-A
+V
 i
-≤
-10
-9
-) in the next line. Otherwise, print "NO".
+≤N
+) – meaning that person
+U
+i
+is friends with person
+V
+i
+. Two friends can not be in the list of friends twice (no pairs are repeated) and a person can be friends with themselves (
+U
+i
+≠
+V
+i
+).
+Output
+If it's possible to organize a successful party, print
+5
+numbers indicating which
+5
+people should be invited to the party. If it's not possible to organize a successful party, print
+−1
+instead. If there are multiple successful parties possible, print any.
 Examples
 input
 Copy
-2
-5 5
+6 3
+1 4
+4 2
+5 4
 output
 Copy
-YES
+1 2 3 5 6
+input
+Copy
+5 4
+1 2
 2 3
-input
-Copy
-3
-1 2 3
+3 4
+4 5
 output
 Copy
-YES
-0 1 2
-input
-Copy
-3
-2 4 5
-output
-Copy
-NO
-input
-Copy
-4
-1 3 5 7
-output
-Copy
-YES
-6 -3 4 1
+-1

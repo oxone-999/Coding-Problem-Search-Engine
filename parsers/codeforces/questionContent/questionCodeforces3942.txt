@@ -1,143 +1,172 @@
-C. New Year and the Sphere Transmission
-time limit per test1 second
+D. New Year and the Permutation Concatenation
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
+Let
 n
-people sitting in a circle, numbered from
+be an integer. Consider all permutations on integers
 1
 to
 n
-in the order in which they are seated. That is, for all
+in lexicographic order, and concatenate them into one big sequence
+p
+. For example, if
+n=3
+, then
+p=[1,2,3,1,3,2,2,1,3,2,3,1,3,1,2,3,2,1]
+. The length of this sequence will be
+n⋅n!
+.
+Let
+1≤i≤j≤n⋅n!
+be a pair of indices. We call the sequence
+(
+p
 i
-from
-1
-to
-n−1
-, the people with id
-i
-and
+,
+p
 i+1
-are adjacent. People with id
-n
-and
-1
-are adjacent as well.
-The person with id
-1
-initially has a ball. He picks a positive integer
+,…,
+p
+j−1
+,
+p
+j
+)
+a subarray of
+p
+. Its length is defined as the number of its elements, i.e.,
+j−i+1
+. Its sum is the sum of all its elements, i.e.,
+∑
+j
+k=i
+p
 k
-at most
-n
-, and passes the ball to his
-k
--th neighbour in the direction of increasing ids, that person passes the ball to his
-k
--th neighbour in the same direction, and so on until the person with the id
-1
-gets the ball back. When he gets it back, people do not pass the ball any more.
-For instance, if
-n=6
-and
-k=4
-, the ball is passed in order
-[1,5,3,1]
 .
-Consider the set of all people that touched the ball. The fun value of the game is the sum of the ids of people that touched it. In the above example, the fun value would be
-1+5+3=9
-.
-Find and report the set of possible fun values for all choices of positive integer
-k
-. It can be shown that under the constraints of the problem, the ball always gets back to the
-1
--st player after finitely many steps, and there are no more than
-10
-5
-possible fun values for given
+You are given
 n
-.
+. Find the number of subarrays of
+p
+of length
+n
+having sum
+n(n+1)
+2
+. Since this number may be large, output it modulo
+998244353
+(a prime number).
 Input
-The only line consists of a single integer
+The only line contains one integer
 n
  (
-2≤n≤
+1≤n≤
 10
-9
-) — the number of people playing with the ball.
+6
+), as described in the problem statement.
 Output
-Suppose the set of all fun values is
-f
-1
-,
-f
+Output a single integer — the number of subarrays of length
+n
+having sum
+n(n+1)
 2
-,…,
-f
-m
+, modulo
+998244353
 .
-Output a single line containing
-m
-space separated integers
-f
-1
-through
-f
-m
-in increasing order.
 Examples
 input
 Copy
-6
+3
 output
 Copy
-1 5 9 21
+9
 input
 Copy
-16
+4
 output
 Copy
-1 10 28 64 136
-Note
-In the first sample, we've already shown that picking
-k=4
-yields fun value
-9
-, as does
-k=2
-. Picking
-k=6
-results in fun value of
-1
-. For
-k=3
-we get fun value
-5
-and with
-k=1
-or
-k=5
-we get
-21
-.
-In the second sample, the values
-1
-,
+56
+input
+Copy
 10
+output
+Copy
+30052700
+Note
+In the first sample, there are
+16
+subarrays of length
+3
+. In order of appearance, they are:
+[1,2,3]
 ,
-28
+[2,3,1]
 ,
-64
-and
-136
-are achieved for instance for
-k=16
+[3,1,3]
+,
+[1,3,2]
+,
+[3,2,2]
+,
+[2,2,1]
+,
+[2,1,3]
+,
+[1,3,2]
+,
+[3,2,3]
+,
+[2,3,1]
+,
+[3,1,3]
+,
+[1,3,1]
+,
+[3,1,2]
+,
+[1,2,3]
+,
+[2,3,2]
+,
+[3,2,1]
+.
+Their sums are
+6
+,
+6
+,
+7
+,
+6
+,
+7
+,
+5
+,
+6
+,
+6
 ,
 8
 ,
-4
+6
 ,
-10
-and
-11
-, respectively.
+7
+,
+5
+,
+6
+,
+6
+,
+7
+,
+6
+. As
+n(n+1)
+2
+=6
+, the answer is
+9
+.

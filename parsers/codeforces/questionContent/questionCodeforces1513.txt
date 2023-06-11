@@ -1,211 +1,212 @@
-D2. Two Hundred Twenty One (hard version)
-time limit per test2 seconds
+F. Tubular Bells
+time limit per test5 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is the hard version of the problem. The difference between the versions is that the hard version does require you to output the numbers of the rods to be removed. You can make hacks only if all versions of the problem are solved.
-Stitch likes experimenting with different machines with his friend Sparky. Today they built another machine.
-The main element of this machine are
+Do you know what tubular bells are? They are a musical instrument made up of cylindrical metal tubes. In an orchestra, tubular bells are used to mimic the ringing of bells.
+Mike has tubular bells, too! They consist of
 n
-rods arranged along one straight line and numbered from
-1
-to
-n
-inclusive. Each of these rods must carry an electric charge quantitatively equal to either
-1
-or
-−1
-(otherwise the machine will not work). Another condition for this machine to work is that the sign-variable sum of the charge on all rods must be zero.
-More formally, the rods can be represented as an array of
-n
-numbers characterizing the charge: either
-1
-or
-−1
-. Then the condition must hold:
-a
-1
-−
-a
-2
-+
-a
-3
-−
-a
-4
-+…=0
-, or
-∑
-i=1
-n
-(−1
-)
-i−1
-⋅
-a
-i
-=0
-.
-Sparky charged all
-n
-rods with an electric current, but unfortunately it happened that the rods were not charged correctly (the sign-variable sum of the charge is not zero). The friends decided to leave only some of the rods in the machine. Sparky has
-q
-questions. In the
-i
-th question Sparky asks: if the machine consisted only of rods with numbers
+tubes, and each of the tubes has a length that can be expressed by a integer from
 l
-i
 to
 r
+inclusive. It is clear that the lengths of all the tubes are different (it makes no sense to make the same tubes). It is also known that
+r−l+1=n
+.
+Formally, we can say that Mike's tubular bells are described by a permutation
+a
+of length
+n
+that contains all numbers from
+l
+to
+r
+inclusive, with
+a
 i
-inclusive, what minimal number of rods could be removed from the machine so that the sign-variable sum of charges on the remaining ones would be zero? Also Sparky wants to know the numbers of these rods. Perhaps the friends got something wrong, and the sign-variable sum is already zero. In that case, you don't have to remove the rods at all.
-If the number of rods is zero, we will assume that the sign-variable sum of charges is zero, that is, we can always remove all rods.
-Help your friends and answer all of Sparky's questions!
+denoting the length of the
+i
+-th tube.
+You are offered an interesting task: to guess what Mike's instrument looks like. Simply, you must guess the permutation.
+Mike won't tell you
+l
+or
+r
+. He will only tell you
+n
+, and will allow you to ask no more than
+n+5000
+queries.
+In each query, you name two positive integers
+x
+,
+y
+such that
+1≤x,y≤n,x≠y
+. In response to this query, the program written by Mike will give you
+lcm(
+a
+x
+,
+a
+y
+)
+, where
+lcm(c,d)
+denotes the least common multiple of
+c
+and
+d
+.
+Solve Mike's problem!
 Input
 Each test contains multiple test cases.
 The first line contains one positive integer
 t
 (
-1≤t≤
-10
-3
+1≤t≤20
 ), denoting the number of test cases. Description of the test cases follows.
-The first line of each test case contains two positive integers
+The single line of each test case contains one positive integer
 n
+(
+3≤n≤
+10
+5
+) — number of tubes in Mike's tubular bells. Also
+1≤l≤r≤2⋅
+10
+5
+, i.e. the lengths of the tubes do not exceed
+2⋅
+10
+5
+.
+It is guaranteed that the sum of maximal number of queries (i.e.
+n+5000
+) over all test cases does not exceed
+10
+5
++5000
+. It means that sum of
+n
+does not exceed
+10
+5
++5000−t⋅5000
+.
+Interaction
+For each set of input data, read one integer
+n
+. You are allowed to make no more than
+n+5000
+queries.
+If you want to make a query, output it in the format "?
+x
+y
+", where
+x
 and
-q
-(
-1≤n,q≤3⋅
-10
-5
-) — the number of rods and the number of questions.
-The second line of each test case contains a non-empty string
-s
-of length
-n
-, where the charge of the
-i
--th rod is
+y
+ — the numbers of tubes for which you learn the lcm (least common multiple) of their lengths. Note that
+1≤x,y≤n,x≠y
+must be satisfied. The interactor will return a single integer —the answer to your query.
+If you are ready to print the answer, print it in the format "!
+a
 1
-if
-s
-i
-is the "+" symbol, or
-−1
-if
-s
-i
-is the "-" symbol.
-Each next line from the next
-q
-lines contains two positive integers
-l
-i
-ans
-r
-i
-(
-1≤
-l
-i
-≤
-r
-i
-≤n
-) — numbers, describing Sparky's questions.
-It is guaranteed that the sum of
+a
+2
+...
+a
 n
-over all test cases does not exceed
-3⋅
+". The output of the answer is not considered a query and is not included in the number of queries.
+After each query and answer output, don't forget to output the line translation and reset the output buffer. Otherwise you will get the verdict "Idleness limit exceeded". To reset the buffer use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+Note that the interactor is not adaptive. That is, the original permutation is fixed in the beginning and don't depend on your queries.
+Hacks:
+Use the following format for hacks:
+The first line contains a single positive integer
+t
+(
+1≤t≤20
+) — the number of input datasets. A description of the input data sets is given below.
+The first line of each test case contains one positive integer
+n
+(
+3≤n≤
 10
 5
-, and the sum of
-q
-over all test cases does not exceed
-3⋅
+) —the number of tubes. It is known that
+1≤l≤r≤2⋅
+10
+5
+, i.e. the lengths of the tubes do not exceed
+2⋅
 10
 5
 .
-It is guaranteed that the sum of the answers (minimal number of rods that can be removed) over all test cases does not exceed
-10
-6
-.
-Output
-For each test case, print the answer in the following format:
-In the first line print a single integer
-k
- — the minimal number of rods that can be removed.
-In the second line print
-k
-numbers separated by a space — the numbers of rods to be removed.
-If there is more than one correct answer, you can print any.
+The second line of each test case contains an array
+a
+of
+n
+positive integers — the lengths of the tubes in each input dataset. Remember that
+l≤
+a
+i
+≤r
+and
+r−l+1=n
+, and that all
+a
+i
+are different.
 Example
 input
 Copy
 3
-14 1
-+--++---++-++-
-1 14
-14 3
-+--++---+++---
-1 14
-6 12
-3 10
-4 10
-+-+-
-1 1
-1 2
-1 3
-1 4
-2 2
-2 3
-2 4
-3 3
-3 4
-4 4
+5
+8 10 7 6 9
+5
+24 25 28 27 26
+7
+1 2 3 4 5 6 7
 output
 Copy
-2
-5 8
-2
-1 11
-1
-9
-0
-1
-1
-2
-1 2
-1
-2
-2
-1 3
-1
-2
-2
-2 3
-1
-3
-1
-3
-2
-3 4
-1
+? 1 2
+40
+? 2 5
+90
+? 3 1
+56
+? 4 5
+18
+! 8 10 7 6 9
+? 1 5
+312
+? 2 4
+675
+! 24 25 28 27 26
+? 1 4
 4
-Note
-In the first test case for the first query you can remove the rods numbered
-5
-and
-8
-, then the following set of rods will remain: +--+--++-++-. It is easy to see that here the sign-variable sum is zero.
-In the second test case:
-For the first query, we can remove the rods numbered
-1
-and
-11
-, then the following set of rods will remain: --++---++---. It is easy to see that here the sign-variable sum is zero.
-For the second query we can remove the rod numbered
-9
-, then the following set of rods will remain: ---++-. It is easy to see that here the variable sum is zero.
-For the third query we can not remove the rods at all.
+? 2 5
+10
+? 3 7
+21
+? 6 2
+6
+? 2 5
+10
+? 1 2
+2
+? 1 2
+2
+? 1 2
+2
+? 1 2
+2
+? 1 2
+2
+! 1 2 3 4 5 6 7

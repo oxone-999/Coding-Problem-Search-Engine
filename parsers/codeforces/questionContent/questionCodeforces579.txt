@@ -1,97 +1,99 @@
-B. Tea with Tangerines
-time limit per test1 second
+C. Phase Shift
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-pieces of tangerine peel, the
-i
--th of them has size
-a
-i
-. In one step it is possible to divide one piece of size
-x
-into two pieces of positive integer sizes
-y
-and
-z
-so that
-y+z=x
+There was a string
+s
+which was supposed to be encrypted. For this reason, all
+26
+lowercase English letters were arranged in a circle in some order, afterwards, each letter in
+s
+was replaced with the one that follows in clockwise order, in that way the string
+t
+was obtained.
+You are given a string
+t
+. Determine the lexicographically smallest string
+s
+that could be a prototype of the given string
+t
 .
-You want that for each pair of pieces, their sizes differ strictly less than twice. In other words, there should not be two pieces of size
-x
+A string
+a
+is lexicographically smaller than a string
+b
+of the same length if and only if:
+in the first position where
+a
 and
-y
-, such that
-2x≤y
-. What is the minimum possible number of steps needed to satisfy the condition?
+b
+differ, the string
+a
+has a letter, that appears earlier in the alphabet than the corresponding letter in
+b
+.
 Input
 The first line of the input contains a single integer
 t
 (
-1≤t≤100
-) — the number of test cases. The description of test cases follows.
-The first line of each test case contains the integer
-n
-(
-1≤n≤100
-).
-Then one line follows, containing
-n
-integers
-a
-1
-≤
-a
-2
-≤…≤
-a
-n
-(
-1≤
-a
-i
-≤
+1≤t≤3⋅
 10
-7
-).
+4
+) — the number of test cases. The description of test cases follows.
+The first line of each test case contains one integer
+n
+(
+1≤n≤
+10
+5
+) — the length of the string
+t
+.
+The next line contains the string
+t
+of the length
+n
+, containing lowercase English letters.
+It is guaranteed that the sum of
+n
+over all test cases doesn't exceed
+2⋅
+10
+5
+.
 Output
-For each test case, output a single line containing the minimum number of steps.
+For each test case, output a single line containing the lexicographically smallest string
+s
+which could be a prototype of
+t
+.
 Example
 input
 Copy
-3
 5
-1 2 3 4 5
 1
-1033
-5
-600 900 1300 2000 2550
+a
+2
+ba
+10
+codeforces
+26
+abcdefghijklmnopqrstuvwxyz
+26
+abcdefghijklmnopqrstuvwxzy
 output
 Copy
-10
-0
-4
+b
+ac
+abcdebfadg
+bcdefghijklmnopqrstuvwxyza
+bcdefghijklmnopqrstuvwxyaz
 Note
-In the first test case, we initially have a piece of size
-1
-, so all final pieces must have size
-1
-. The total number of steps is:
-0+1+2+3+4=10
-.
-In the second test case, we have just one piece, so we don't need to do anything, and the answer is
-0
-steps.
-In the third test case, one of the possible cut options is:
-600, 900, (600|700), (1000|1000), (1000|1000|550)
-. You can see this option in the picture below. The maximum piece has size
-1000
-, and it is less than
+In the first test case, we couldn't have the string "a", since the letter a would transit to itself. Lexicographically the second string "b" is suitable as an answer.
+In the second test case, the string "aa" is not suitable, since a would transit to itself. "ab" is not suitable, since the circle would be closed with
 2
-times bigger than the minimum piece of size
-550
-.
-4
-steps are done. We can show that it is the minimum possible number of steps.
+letters, but it must contain all
+26
+. The next string "ac" is suitable.
+Below you can see the schemes for the first three test cases. The non-involved letters are skipped, they can be arbitrary placed in the gaps.

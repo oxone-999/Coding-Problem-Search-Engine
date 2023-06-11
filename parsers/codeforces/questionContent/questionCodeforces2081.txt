@@ -1,116 +1,47 @@
-E. Nim Shortcuts
+B. Move and Turn
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-After your debut mobile game "Nim" blew up, you decided to make a sequel called "Nim 2". This game will expand on the trusted Nim game formula, adding the much awaited second heap!
-In the game, there are two heaps, each containing a non-negative number of stones. Two players make moves in turn. On their turn, a player can take any positive number of stones from either one of the heaps. A player who is unable to move loses the game.
-To make the game easier to playtest, you've introduced developer shortcuts. There are
-n
-shortcut positions
-(
-x
+A robot is standing at the origin of the infinite two-dimensional plane. Each second the robot moves exactly
 1
-,
-y
-1
-),…,(
-x
+meter in one of the four cardinal directions: north, south, west, and east. For the first step the robot can choose any of the four directions, but then at the end of every second it has to turn 90 degrees left or right with respect to the direction it just moved in. For example, if the robot has just moved north or south, the next step it takes has to be either west or east, and vice versa.
+The robot makes exactly
 n
-,
-y
-n
-)
-. These change the game as follows: suppose that before a player's turn the first and second heap contain
-x
-and
-y
-stones respectively. If the pair
-(x,y)
-is equal to one of the pairs
-(
-x
-i
-,
-y
-i
-)
-, then the player about to move loses instantly, otherwise they are able to make moves as normal. Note that in the above explanation the two heaps and all pairs are ordered, that is,
-x
-must refer to the size of the first heap, and
-y
-must refer to the size of the second heap.
-The game release was followed by too much celebration, and next thing you know is developer shortcuts made their way to the next official update of the game! Players now complain that the AI opponent has become unbeatable at certain stages of the game. You now have to write a program to figure out which of the given initial positions can be won by the starting player, assuming both players act optimally.
+steps from its starting position according to the rules above. How many different points can the robot arrive to at the end? The final orientation of the robot can be ignored.
 Input
-The first line contains two integers
+The only line contains a single integer
 n
-and
-m
 (
-1≤n,m≤
-10
-5
-) — the number of shortcut positions, and the number of initial positions that need to be evaluated.
-The following
-n
-lines describe shortcut positions. The
-i
--th of these lines contains two integers
-x
-i
-,
-y
-i
-(
-0≤
-x
-i
-,
-y
-i
-≤
-10
-9
-). It is guaranteed that all shortcut positions are distinct.
-The following
-m
-lines describe initial positions. The
-i
--th of these lines contains two integers
-a
-i
-,
-b
-i
-(
-0≤
-a
-i
-,
-b
-i
-≤
-10
-9
-) — the number of stones in the first and second heap respectively. It is guaranteed that all initial positions are distinct. However, initial positions are not necessarily distinct from shortcut positions.
+1≤n≤1000
+) — the number of steps the robot makes.
 Output
-For each initial position, on a separate line print "WIN" if the starting player is able to win from this position, and "LOSE" otherwise.
-Example
+Print a single integer — the number of different possible locations after exactly
+n
+steps.
+Examples
 input
 Copy
-3 5
-3 0
-0 1
-2 2
-0 0
-1 1
-2 2
-3 3
-5 4
+1
 output
 Copy
-LOSE
-WIN
-LOSE
-WIN
-LOSE
+4
+input
+Copy
+2
+output
+Copy
+4
+input
+Copy
+3
+output
+Copy
+12
+Note
+In the first sample case, the robot will end up 1 meter north, south, west, or east depending on its initial direction.
+In the second sample case, the robot will always end up
+2
+–
+√
+meters north-west, north-east, south-west, or south-east.

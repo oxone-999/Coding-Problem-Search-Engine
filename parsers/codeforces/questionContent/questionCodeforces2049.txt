@@ -1,147 +1,131 @@
-I. The Riddle of the Sphinx
+C. Three Bags
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-What walks on four feet in the morning, two in the afternoon, and three at night?
-This is an interactive problem. This problem doesn't support hacks.
-Sphinx's duty is to guard the city of Thebes by making sure that no unworthy traveler crosses its gates. Only the ones who answer her riddle timely and correctly (or get an acc for short) are allowed to pass. As of those who fail, no one heard of them ever again...
-So you don't have a choice but to solve the riddle. Sphinx has an array
+You are given three bags. Each bag contains a non-empty multiset of numbers. You can perform a number of operations on these bags. In one operation, you can choose any two non-empty bags, and choose one number from each of the bags. Let's say that you choose number
 a
+from the first bag and number
+b
+from the second bag. Then, you remove
+b
+from the second bag and replace
+a
+with
+a−b
+in the first bag. Note that if there are multiple occurrences of these numbers, then you shall only remove/replace exactly one occurrence.
+You have to perform these operations in such a way that you have exactly one number remaining in exactly one of the bags (the other two bags being empty). It can be shown that you can always apply these operations to receive such a configuration in the end. Among all these configurations, find the one which has the maximum number left in the end.
+Input
+The first line of the input contains three space-separated integers
+n
 1
 ,
-a
+n
 2
-,…,
-a
+and
 n
-of nonnegative integers strictly smaller than
+3
+(
+1≤
+n
+1
+,
+n
 2
-b
-and asked you to find the maximum value among its elements. Of course, she will not show you the array, but she will give you
+,
 n
-and
-b
-. As it is impossible to answer this riddle blindly, you can ask her some questions. For given
-i,y
-, she'll answer you whether
-a
-i
-is bigger than
-y
-. As sphinxes are not very patient, you can ask at most
-3⋅(n+b)
-such questions.
-Although cunning, sphinxes are honest. Even though the array can change between your queries, answers to the previously asked questions will remain valid.
-Input
-The first line contains two integers
+3
+≤3⋅
+10
+5
+,
+1≤
 n
-and
-b
-(
-1≤n,b≤200
-). The remaining parts of the input will be given throughout the interaction process.
-Interaction
-In each round your program must output a single line with an integer
+1
++
+n
+2
++
+n
+3
+≤3⋅
+10
+5
+) — the number of numbers in the three bags.
+The
 i
-(
-0≤i≤n
-) and a binary string of length exactly
-b
-denoting the binary representation of
-y
-(most significant bit first).
-If
-i>0
-, this line encodes the question: Is
+-th of the next three lines contain
+n
+i
+space-separated integers
 a
+i,1
+,
+a
+i,2
+, ...,
+a
+i,
+n
 i
-bigger than
-y
-?. There should be at most
-3⋅(n+b)
-such lines; after each of them, the interactor will print yes or no in a single line.
-If
-i=0
-, this is the last round of interaction, after which your program should terminate, and
-y
-should be the maximal value among the elements of Sphinx's array. Note that this round does not count to the query limit.
-Note that the interactor is adaptive.
-After printing a query, do not forget to output the end of the line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see the documentation for other languages.
-If your solution does not correctly follow the interaction guideline above, it may receive an arbitrary verdict. Otherwise, your program will receive the Wrong Answer judgment if it reports the wrong maximum.
+(
+1≤
+a
+i,j
+≤
+10
+9
+) — the numbers in the
+i
+-th bag.
+Output
+Print a single integer — the maximum number which you can achieve in the end.
 Examples
 input
 Copy
-5 3
-
-yes
-
-no
-
-no
-
-no
-
-no
-
-yes
+2 4 1
+1 2
+6 3 4 5
+5
 output
 Copy
-5 101
-
-5 110
-
-4 100
-
-3 101
-
-2 001
-
-1 000
-
-0 110
+20
 input
 Copy
-4 3
-
-no
-
-no
-
-no
-
-no
+3 2 2
+7 5 4
+2 9
+7 1
 output
 Copy
-1 000
-
-2 000
-
-3 000
-
-4 000
-
-0 000
-input
-Copy
-1 1
-output
-Copy
-0 0
+29
 Note
-In all examples, the sequence is fixed beforehand.
-In the first example, the sequence is
-2,1,4,0,6
+In the first example input, let us perform the following operations:
+[1,2],[6,3,4,5],[5]
+[−5,2],[3,4,5],[5]
+(Applying an operation to
+(1,6)
+)
+[−10,2],[3,4],[5]
+(Applying an operation to
+(−5,5)
+)
+[2],[3,4],[15]
+(Applying an operation to
+(5,−10)
+)
+[−1],[4],[15]
+(Applying an operation to
+(2,3)
+)
+[−5],[],[15]
+(Applying an operation to
+(−1,4)
+)
+[],[],[20]
+(Applying an operation to
+(15,−5)
+)
+You can verify that you cannot achieve a bigger number. Hence, the answer is
+20
 .
-In the second example, the sequence is
-0,0,0,0
-.
-In the third example, the sequence is
-0
-.
-Note that if the interactor was adaptive, then the interaction in the first and the third example would not be sufficient to return the correct value of maximum.

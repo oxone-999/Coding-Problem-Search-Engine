@@ -1,97 +1,84 @@
-Subsequence LCS
+Danya and Numbers
 Problem
-Read problem statements in Mandarin, Bengali, Russian, and Vietnamese as well.
-You are given a sequence
-A
-1
-,A
-2
-,…,A
-N
-. Consider every pair that consists of:
-1) One of the longest non-decreasing subsequences of
-A.
-2) One of the longest non-increasing subsequences of
-A.
-Find the maximum possible length of the longest common subsequence of the two sequences in such a pair.
-Input Format
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains an integer
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+Danya has a sequence
+A of non-negative integers. Initially,
+A has length
 N.
+Let's define a function
+f(x,A), where
+x is a positive integer
+≤∣A∣, as the maximum of bitwise ANDs of all subsequences of
+A with length equal to
+x.
+Kostya gives Danya
+M requests. There are three types of requests:
+1v: append an integer
+v to
+A
+2v: delete an element equal to
+v from
+A; it is guaranteed that
+A contains
+v at least once, but if there are more elements equal to
+v, you should only delete one of them
+3x: calculate
+f(x,A)
+Also, Kostya knows that at any time, all elements of
+A are smaller than
+2
+k
+for a fixed
+k.
+Help Danya process all of Kostya's requests.
+Input
+The first line of the input contains three space-separated integers
+N,
+M and
+k.
 The second line contains
 N space-separated integers
-A
+a
 1
-,A
+,a
 2
-,…,A
+,…,a
 N
-.
-Output Format
-For each test case, print a single line containing one integer ― the maximum possible length of the longest common subsequence of any longest non-decreasing subsequence of
-A and any longest non-increasing subsequence of
+denoting the initial sequence
 A.
+Each of the following
+M lines contains two space-separated integers describing a request in the format
+1v,
+2v or
+3x.
+Output
+For each request of type 3, print a single line containing one integer — the value of
+f(x,A).
 Constraints
-1≤T≤100
-1≤N≤2⋅10
-5
-the sum of
-N over all test cases does not exceed
-2⋅10
-5
-1≤A
-i
-≤N for each valid
-i
-Subtasks
-Subtask #1 (20 points):
-T≤90
-N≤1000
-the sum of
-N over all test cases does not exceed
-5000
-the numbers in the sequence
-A are pairwise distinct
-Subtask #2 (20 points):
-T≤42
-N≤1000
-the sum of
-N over all test cases does not exceed
-5000
-Subtask #3 (60 points): original constraints
+1≤N,M≤75,000
+1≤k≤18
+0≤v<2
+k
+1≤x≤∣A∣
 Sample 1:
 Input
 Output
+4 7 3
+6 7 5 2
+3 2
+3 3
+1 7
+3 3
+2 7
+2 6
+3 2
+6
 4
-8
-6 5 1 2 7 8 4 3
 6
-1 6 5 2 3 4
-7
-2 5 3 3 1 3 7
-6
-6 1 4 2 4 5
-0
-1
-3
-2
+5
 Explanation:
-Example case 1: No pair of subsequences, containing one of the longest non-decreasing subsequences and one of longest non-increasing subsequences have a number in common. Hence, the answer is
-0.
-Example case 2: The maximum length of the longest common subsequence is
-1 and it can be achieved by choosing the longest non-decreasing subsequence
-{1,2,3,4} and the longest non-increasing subsequence
-{6,5,2}. The longest common subsequence of those two subsequences is
-{2}.
-Example case 3: The maximum length of the longest common subsequence is
-3 and it can be achieved by choosing the longest non-decreasing subsequence
-{2,3,3,3,7} and the longest non-increasing subsequence
-{5,3,3,3}. The longest common subsequence of those two subsequences is
-{3,3,3}.
-Example case 4: The maximum length of the longest common subsequence is
-2 and it can be achieved by choosing the longest non-decreasing subsequence
-{1,4,4,5} and the longest non-increasing subsequence
-{6,4,4}. The longest common subsequence of those two subsequences is
-{4,4}.
+Subsequences giving optimal answers for the requests of type 3 are, in order:
+(6,7);
+(6,7,5);
+(6,7,7);
+(7,5).

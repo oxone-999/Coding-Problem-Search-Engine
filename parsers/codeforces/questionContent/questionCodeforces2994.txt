@@ -1,116 +1,74 @@
-C. Berry Jam
-time limit per test2 seconds
+F. Cards
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Karlsson has recently discovered a huge stock of berry jam jars in the basement of the house. More specifically, there were
-2n
-jars of strawberry and blueberry jam.
-All the
-2n
-jars are arranged in a row. The stairs to the basement are exactly in the middle of that row. So when Karlsson enters the basement, he sees exactly
+Consider the following experiment. You have a deck of
+m
+cards, and exactly one card is a joker.
 n
-jars to his left and
-n
-jars to his right.
-For example, the basement might look like this:
-Being the starightforward man he is, he immediately starts eating the jam. In one minute he chooses to empty either the first non-empty jar to his left or the first non-empty jar to his right.
-Finally, Karlsson decided that at the end the amount of full strawberry and blueberry jam jars should become the same.
-For example, this might be the result:
-He has eaten
-1
-jar to his left and then
-5
-jars to his right. There remained exactly
-3
-full jars of both strawberry and blueberry jam.
-Jars are numbered from
-1
-to
-2n
-from left to right, so Karlsson initially stands between jars
-n
-and
-n+1
+times, you do the following: shuffle the deck, take the top card of the deck, look at it and return it into the deck.
+Let
+x
+be the number of times you have taken the joker out of the deck during this experiment. Assuming that every time you shuffle the deck, all
+m!
+possible permutations of cards are equiprobable, what is the expected value of
+x
+k
+? Print the answer modulo
+998244353
 .
-What is the minimum number of jars Karlsson is required to empty so that an equal number of full strawberry and blueberry jam jars is left?
-Your program should answer
-t
-independent test cases.
 Input
-The first line contains one integer
-t
-(
-1≤t≤1000
-) — the number of test cases.
-The first line of each test case contains a single integer
+The only line contains three integers
 n
-(
-1≤n≤
-10
-5
-).
-The second line of each test case contains
-2n
-integers
-a
-1
 ,
-a
-2
-,…,
-a
-2n
+m
+and
+k
 (
-1≤
-a
-i
-≤2
-) —
-a
-i
-=1
-means that the
-i
--th jar from the left is a strawberry jam jar and
-a
-i
-=2
-means that it is a blueberry jam jar.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-5
-.
+1≤n,m<998244353
+,
+1≤k≤5000
+).
 Output
-For each test case print the answer to it — the minimum number of jars Karlsson is required to empty so that an equal number of full strawberry and blueberry jam jars is left.
-Example
+Print one integer — the expected value of
+x
+k
+, taken modulo
+998244353
+(the answer can always be represented as an irreducible fraction
+a
+b
+, where
+bmod998244353≠0
+; you have to print
+a⋅
+b
+−1
+mod998244353
+).
+Examples
 input
 Copy
-4
-6
-1 1 1 2 2 1 2 1 2 1 1 2
-2
-1 2 1 2
-3
-1 1 1 1 1 1
-2
-2 1 1 1
+1 1 1
 output
 Copy
-6
-0
-6
-2
-Note
-The picture from the statement describes the first test case.
-In the second test case the number of strawberry and blueberry jam jars is already equal.
-In the third test case Karlsson is required to eat all
-6
-jars so that there remain
-0
-jars of both jams.
-In the fourth test case Karlsson can empty either the second and the third jars or the third and the fourth one. The both scenarios will leave
 1
-jar of both jams.
+input
+Copy
+1 1 5000
+output
+Copy
+1
+input
+Copy
+2 2 2
+output
+Copy
+499122178
+input
+Copy
+998244352 1337 5000
+output
+Copy
+326459680

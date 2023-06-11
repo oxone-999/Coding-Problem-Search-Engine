@@ -1,41 +1,113 @@
-B. Construct the String
-time limit per test2 seconds
+E1. Three Blocks Palindrome (easy version)
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given three positive integers
+The only difference between easy and hard versions is constraints.
+You are given a sequence
+a
+consisting of
 n
-,
+positive integers.
+Let's define a three blocks palindrome as the sequence, consisting of at most two distinct elements (let these elements are
 a
 and
 b
-. You have to construct a string
-s
-of length
-n
-consisting of lowercase Latin letters such that each substring of length
+,
 a
-has exactly
+can be equal
 b
-distinct letters. It is guaranteed that the answer exists.
+) and is as follows:
+[
+a,a,…,a
+
+
+
+
+
+
+
+
+
+
+
+x
+,
+b,b,…,b
+
+
+
+
+
+
+
+
+
+y
+,
+a,a,…,a
+
+
+
+
+
+
+
+
+
+
+
+x
+]
+. There
+x,y
+are integers greater than or equal to
+0
+. For example, sequences
+[]
+,
+[2]
+,
+[1,1]
+,
+[1,2,1]
+,
+[1,2,2,1]
+and
+[1,1,2,1,1]
+are three block palindromes but
+[1,2,3,2,1]
+,
+[1,2,1,2,1]
+and
+[1,2]
+are not.
+Your task is to choose the maximum by length subsequence of
+a
+that is a three blocks palindrome.
 You have to answer
 t
 independent test cases.
-Recall that the substring
-s[l…r]
-is the string
+Recall that the sequence
+t
+is a a subsequence of the sequence
 s
-l
+if
+t
+can be derived from
+s
+by removing zero or more elements without changing the order of the remaining elements. For example, if
+s=[1,2,1,3,1,2,1]
+, then possible subsequences are:
+[1,1,1,1]
 ,
-s
-l+1
-,…,
-s
-r
-and its length is
-r−l+1
-. In this problem you are only interested in substrings of length
-a
+[3]
+and
+[1,2,1,3,1,2,1]
+, but not
+[3,2,3]
+and
+[1,1,1,1,2]
 .
 Input
 The first line of the input contains one integer
@@ -45,22 +117,40 @@ t
 ) — the number of test cases. Then
 t
 test cases follow.
-The only line of a test case contains three space-separated integers
+The first line of the test case contains one integer
 n
+(
+1≤n≤2000
+) — the length of
+a
+. The second line of the test case contains
+n
+integers
+a
+1
 ,
 a
-and
-b
-(
-1≤a≤n≤2000,1≤b≤min(26,a)
-), where
+2
+,…,
+a
 n
-is the length of the required string,
+(
+1≤
 a
-is the length of a substring and
-b
-is the required number of distinct letters in each substring of length
+i
+≤26
+), where
 a
+i
+is the
+i
+-th element of
+a
+. Note that the maximum value of
+a
+i
+can be up to
+26
 .
 It is guaranteed that the sum of
 n
@@ -70,39 +160,30 @@ over all test cases does not exceed
 ∑n≤2000
 ).
 Output
-For each test case, print the answer — such a string
-s
-of length
-n
-consisting of lowercase Latin letters that each substring of length
+For each test case, print the answer — the maximum possible length of some subsequence of
 a
-has exactly
-b
-distinct letters. If there are multiple valid answers, print any of them. It is guaranteed that the answer exists.
+that is a three blocks palindrome.
 Example
 input
 Copy
+6
+8
+1 1 2 2 3 2 1 1
+3
+1 3 3
 4
-7 5 3
-6 1 1
-6 6 1
-5 2 2
+1 10 10 1
+1
+26
+2
+2 1
+3
+1 1 1
 output
 Copy
-tleelte
-qwerty
-vvvvvv
-abcde
-Note
-In the first test case of the example, consider all the substrings of length
-5
-:
-"tleel": it contains
+7
+2
+4
+1
+1
 3
-distinct (unique) letters,
-"leelt": it contains
-3
-distinct (unique) letters,
-"eelte": it contains
-3
-distinct (unique) letters.

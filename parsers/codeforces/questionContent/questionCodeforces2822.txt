@@ -1,141 +1,73 @@
-F. Attack on Red Kingdom
-time limit per test3 seconds
-memory limit per test512 megabytes
+B. Different Rules
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The Red Kingdom is attacked by the White King and the Black King!
-The Kingdom is guarded by
+Nikolay has only recently started in competitive programming, but already qualified to the finals of one prestigious olympiad. There going to be
 n
-castles, the
-i
--th castle is defended by
-a
-i
-soldiers. To conquer the Red Kingdom, the Kings have to eliminate all the defenders.
-Each day the White King launches an attack on one of the castles. Then, at night, the forces of the Black King attack a castle (possibly the same one). Then the White King attacks a castle, then the Black King, and so on. The first attack is performed by the White King.
-Each attack must target a castle with at least one alive defender in it. There are three types of attacks:
-a mixed attack decreases the number of defenders in the targeted castle by
+participants, one of whom is Nikolay. Like any good olympiad, it consists of two rounds. Tired of the traditional rules, in which the participant who solved the largest number of problems wins, the organizers came up with different rules.
+Suppose in the first round participant A took
 x
-(or sets it to
-0
-if there are already less than
+-th place and in the second round —
+y
+-th place. Then the total score of the participant A is sum
+x+y
+. The overall place of the participant A is the number of participants (including A) having their total score less than or equal to the total score of A. Note, that some participants may end up having a common overall place. It is also important to note, that in both the first and the second round there were no two participants tying at a common place. In other words, for every
+i
+from
+1
+to
+n
+exactly one participant took
+i
+-th place in first round and exactly one participant took
+i
+-th place in second round.
+Right after the end of the Olympiad, Nikolay was informed that he got
 x
-defenders);
-an infantry attack decreases the number of defenders in the targeted castle by
+-th place in first round and
 y
-(or sets it to
-0
-if there are already less than
-y
-defenders);
-a cavalry attack decreases the number of defenders in the targeted castle by
-z
-(or sets it to
-0
-if there are already less than
-z
-defenders).
-The mixed attack can be launched at any valid target (at any castle with at least one soldier). However, the infantry attack cannot be launched if the previous attack on the targeted castle had the same type, no matter when and by whom it was launched. The same applies to the cavalry attack. A castle that was not attacked at all can be targeted by any type of attack.
-The King who launches the last attack will be glorified as the conqueror of the Red Kingdom, so both Kings want to launch the last attack (and they are wise enough to find a strategy that allows them to do it no matter what are the actions of their opponent, if such strategy exists). The White King is leading his first attack, and you are responsible for planning it. Can you calculate the number of possible options for the first attack that allow the White King to launch the last attack? Each option for the first attack is represented by the targeted castle and the type of attack, and two options are different if the targeted castles or the types of attack are different.
+-th place in the second round. Nikolay doesn't know the results of other participants, yet he wonders what is the minimum and maximum place he can take, if we consider the most favorable and unfavorable outcome for him. Please help Nikolay to find the answer to this question.
 Input
-The first line contains one integer
+The first line contains an integer
 t
 (
-1≤t≤1000
-) — the number of test cases.
-Then, the test cases follow. Each test case is represented by two lines.
-The first line contains four integers
+1≤t≤100
+) — the number of test cases to solve.
+Each of the following
+t
+lines contains integers
 n
 ,
 x
 ,
 y
-and
-z
 (
-1≤n≤3⋅
+1≤n≤
 10
-5
+9
 ,
-1≤x,y,z≤5
-).
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-, ...,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-18
-).
-It is guaranteed that the sum of values of
-n
-over all test cases in the input does not exceed
-3⋅
-10
-5
-.
+1≤x,y≤n
+) — the number of participants in the olympiad, the place that Nikolay took in the first round and the place that Nikolay took in the second round.
 Output
-For each test case, print the answer to it: the number of possible options for the first attack of the White King (or
-0
-, if the Black King can launch the last attack no matter how the White King acts).
+Print two integers — the minimum and maximum possible overall place Nikolay could take.
 Examples
 input
 Copy
-3
-2 1 3 4
-7 6
-1 1 2 3
 1
-1 1 2 2
-3
+5 1 3
 output
 Copy
-2
-3
-0
+1 3
 input
 Copy
-10
-6 5 4 5
-2 3 2 3 1 3
-1 5 2 3
-10
-4 4 2 3
-8 10 8 5
-2 2 1 4
-8 5
-3 5 3 5
-9 2 10
-4 5 5 5
-2 10 4 2
-2 3 1 4
-1 10
-3 1 5 3
-9 8 7
-2 5 4 5
-8 8
-3 5 1 4
-5 5 10
+1
+6 3 4
 output
 Copy
-0
-2
-1
-2
-5
-12
-5
-0
-0
-2
+2 6
+Note
+Explanation for the first example:
+Suppose there were 5 participants A-E. Let's denote Nikolay as A. The the most favorable results for Nikolay could look as follows:
+However, the results of the Olympiad could also look like this:
+In the first case Nikolay would have taken first place, and in the second — third place.

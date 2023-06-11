@@ -1,156 +1,121 @@
-F. Inverse Transformation
+E. The Harmonization of XOR
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A permutation scientist is studying a self-transforming permutation
-a
-consisting of
+You are given an array of exactly
 n
-elements
-a
-1
-,
-a
-2
-,…,
-a
-n
-.
-A permutation is a sequence of integers from
-1
-to
-n
-of length
-n
-containing each number exactly once. For example,
-[1]
-,
-[4,3,5,1,2]
-are permutations, while
-[1,1]
-,
-[4,3,1]
-are not.
-The permutation transforms day by day. On each day, each element
-x
-becomes
-a
-x
-, that is,
-a
-x
-becomes
-a
-a
-x
-. Specifically:
-on the first day, the permutation becomes
-b
-, where
-b
-x
-=
-a
-a
-x
-;
-on the second day, the permutation becomes
-c
-, where
-c
-x
-=
-b
-b
-x
-;
-…
-For example, consider permutation
-a=[2,3,1]
-. On the first day, it becomes
-[3,1,2]
-. On the second day, it becomes
-[2,3,1]
-.
-You're given the permutation
-a
-′
-on the
+numbers
+[1,2,3,…,n]
+along with integers
 k
--th day.
-Define
-σ(x)=
-a
+and
 x
-, and define
-f(x)
-as the minimal positive integer
-m
-such that
-σ
-m
-(x)=x
-, where
-σ
-m
-(x)
-denotes
-σ(σ(…σ
-
-
-
-
-
-
-
-
-
-m times
-(x)…))
 .
-For example, if
-a=[2,3,1]
-, then
-σ(1)=2
-,
-σ
-2
-(1)=σ(σ(1))=σ(2)=3
-,
-σ
-3
-(1)=σ(σ(σ(1)))=σ(3)=1
-, so
-f(1)=3
-. And if
-a=[4,2,1,3]
-,
-σ(2)=2
-so
-f(2)=1
-;
-σ(3)=1
-,
-σ
-2
-(3)=4
-,
-σ
-3
-(3)=3
-so
-f(3)=3
-.
-Find the initial permutation
+Partition the array in exactly
+k
+non-empty disjoint subsequences such that the bitwise XOR of all numbers in each subsequence is
+x
+, and each number is in exactly one subsequence. Notice that there are no constraints on the length of each subsequence.
+A sequence
 a
-such that
-∑
-i=1
-n
+is a subsequence of a sequence
+b
+if
+a
+can be obtained from
+b
+by the deletion of several (possibly, zero or all) elements.
+For example, for
+n=15
+,
+k=6
+,
+x=7
+, the following scheme is valid:
+[6,10,11]
+,
+6⊕10⊕11=7
+,
+[5,12,14]
+,
+5⊕12⊕14=7
+,
+[3,9,13]
+,
+3⊕9⊕13=7
+,
+[1,2,4]
+,
+1⊕2⊕4=7
+,
+[8,15]
+,
+8⊕15=7
+,
+[7]
+,
+7=7
+,
+where
+⊕
+represents the bitwise XOR operation.
+The following scheme is invalid, since
+8
+,
+15
+do not appear:
+[6,10,11]
+,
+6⊕10⊕11=7
+,
+[5,12,14]
+,
+5⊕12⊕14=7
+,
+[3,9,13]
+,
+3⊕9⊕13=7
+,
+[1,2,4]
+,
+1⊕2⊕4=7
+,
+[7]
+,
+7=7
+.
+The following scheme is invalid, since
+3
+appears twice, and
 1
-f(i)
-is minimum possible.
+,
+2
+do not appear:
+[6,10,11]
+,
+6⊕10⊕11=7
+,
+[5,12,14]
+,
+5⊕12⊕14=7
+,
+[3,9,13]
+,
+3⊕9⊕13=7
+,
+[3,4]
+,
+3⊕4=7
+,
+[8,15]
+,
+8⊕15=7
+,
+[7]
+,
+7=7
+.
 Input
 Each test contains multiple test cases. The first line contains an integer
 t
@@ -159,44 +124,21 @@ t
 10
 4
 ) — the number of test cases.
-The first line of each test case contains two integers
+The first and the only line of each test case contains three integers
 n
-and
+,
 k
+,
+x
 (
-1≤n≤2⋅
+1≤k≤n≤2⋅
 10
 5
 ;
-1≤k≤
+1≤x≤
 10
 9
-) — the length of
-a
-, and the last day.
-The second line contains
-n
-integers
-a
-′
-1
-,
-a
-′
-2
-,…,
-a
-′
-n
-(
-1≤
-a
-′
-i
-≤n
-) — the permutation on the
-k
--th day.
+) — the length of the array, the number of subsequences and the required XOR.
 It's guaranteed that the sum of
 n
 does not exceed
@@ -205,145 +147,115 @@ does not exceed
 5
 .
 Output
-For each test case, if at least one initial
-a
-consistent with the given
-a
-′
-exists, print "YES", then print
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-— the initial permutation with the smallest sum
-∑
-i=1
-n
-1
-f(i)
-. If there are multiple answers with the smallest sum, print any.
-If there are no valid permutations, print "NO".
+For each test case, if it is possible to partition the sequence, print "YES" in the first line. In the
+i
+-th of the following
+k
+lines first print the length
+s
+i
+of the
+i
+-th subsequence, then print
+s
+i
+integers, representing the elements in the
+i
+-th subsequence. If there are multiple answers, print any. Note that you can print a subsequence in any order.
+If it is not possible to partition the sequence, print "NO".
 Example
 input
 Copy
-10
-5 3
-1 2 3 4 5
-7 2
-1 2 3 4 5 6 7
-8 998
-1 2 3 4 5 6 7 8
-6 1
-6 3 5 4 1 2
-4 8
-4 2 1 3
-9 1
-1 5 4 8 7 6 3 2 9
-5 9999999
-2 3 4 5 1
-7 97843220
-4 6 1 2 7 5 3
-3 1000000000
-2 1 3
-12 3
-8 9 10 1 5 3 11 4 7 6 12 2
+7
+15 6 7
+11 4 5
+5 3 2
+4 1 4
+6 1 7
+11 5 5
+11 6 5
 output
 Copy
 YES
-2 3 4 1 5
+3 6 10 11
+3 5 12 14
+3 3 9 13
+3 1 2 4
+2 8 15
+1 7
 YES
-6 2 5 7 1 3 4
-YES
-2 3 4 5 6 7 8 1
-YES
-3 1 6 4 2 5
-YES
-4 2 1 3
+2 1 4
+2 2 7
+2 3 6
+5 5 8 9 10 11
 NO
 YES
-3 4 5 1 2
+4 1 2 3 4
 YES
-2 5 4 6 3 7 1
+6 1 2 3 4 5 6
 NO
-YES
-3 7 8 6 5 1 12 10 11 4 2 9
+NO
 Note
-In the second test case, the initial permutation can be
-a=[6,2,5,7,1,3,4]
-, which becomes
-[3,2,1,4,6,5,7]
-on the first day and
-a
-′
-=[1,2,3,4,5,6,7]
-on the second day (the
-k
--th day). Also, among all the permutations satisfying that, it has the minimum
-∑
-i=1
-n
-1
-f(i)
-, which is
-1
-4
-+
-1
-1
-+
-1
-4
-+
-1
-2
-+
-1
-4
-+
-1
-4
-+
-1
-2
-=3
+In the first test case, we construct the following
+6
+subsequences:
+[6,10,11]
+,
+6⊕10⊕11=7
+,
+[5,12,14]
+,
+5⊕12⊕14=7
+,
+[3,9,13]
+,
+3⊕9⊕13=7
+,
+[1,2,4]
+,
+1⊕2⊕4=7
+,
+[8,15]
+,
+8⊕15=7
+,
+[7]
+,
+7=7
 .
-In the fifth test case, the initial permutation can be
-a=[4,2,1,3]
-, which becomes
-[3,2,4,1]
-on the first day,
-[4,2,1,3]
-on the second day, and so on. So it finally becomes
-a
-′
-=[4,2,1,3]
-on the
-8
--th day (the
-k
--th day). And it has the minimum
-∑
-i=1
-n
-1
-f(i)
-=
-1
-3
-+
-1
-1
-+
-1
-3
-+
-1
-3
-=2
+In the second test case, we construct the following
+4
+subsequences:
+[1,4]
+,
+1⊕4=5
+,
+[2,7]
+,
+2⊕7=5
+,
+[3,6]
+,
+3⊕6=5
+,
+[5,8,9,10,11]
+,
+5⊕8⊕9⊕10⊕11=5
+.
+The following solution is considered correct in this test case as well:
+[1,4]
+,
+1⊕4=5
+,
+[2,7]
+,
+2⊕7=5
+,
+[5]
+,
+5=5
+,
+[3,6,8,9,10,11]
+,
+3⊕6⊕8⊕9⊕10⊕11=5
 .

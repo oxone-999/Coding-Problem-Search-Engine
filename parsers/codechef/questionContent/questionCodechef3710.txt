@@ -1,245 +1,117 @@
-Trees Are Fun
+Rotate it
 Problem
-You are given a rooted tree consisting of
-N nodes numbered from
-1 to
-N, where the
-i
-th
-node has color
-C
-i
-.
-The root of the tree is node
-1.
-Let
-F
-i
-denote the frequency of color
-i in the tree, and,
-S
-u
-denote the set of colors of all vertices in the subtree of node
-u.
-For each node
-u
-(1≤u≤N), find
-∏
-i∈S
-1
-∖S
-u
-F
-i
-.
-In other words, for each node
-u, find the product of frequency of colors that are present in the tree but not in the subtree of node
-u.
-Since the product can be huge, print it modulo
-M.
-Note:
-The subtree of a node includes the node and all its descendants.
-A∖B denotes the set difference of
+Given two arrays
 A and
-B.
-Input Format
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test contains integers
-N and
-M, denoting the number of nodes in the tree and mod.
-The second line of each test case contains
-N space-separated integers
-C
+B of length
+N each.
+You can do the following operation on the array
+B exactly once:
+Chose two integers
+R
+(1≤R≤N) and
+K(K≥0) and apply
+K right-rotations to the subarray
+[1,R].
+Applying a right-rotation to the array
+C=[C
+1
+,C
+2
+,C
+3
+,…,C
+M
+] changes it to
+[C
+M
+,C
 1
 ,C
 2
 ,…,C
+(M−1)
+]
+Find whether you can transform the array
+B into the array
+A by applying the mentioned operation exactly once. If it is possible, find the minimum value of
+K for which it is possible.
+Input Format
+The first line of input contains an integer
+T denoting the number of test cases.
+T test cases follow.
+The first line of each test case contains the integer
+N - the size of arrays
+A and
+B.
+The second line contains
+N integers
+A
+1
+,A
+2
+,…,A
 N
-representing the array
-C.
-The next
-N−1 lines contain two space-separated integers
-u
-i
-and
-v
-i
-, denoting an edge between the nodes
-u
-i
-and
-v
-i
-.
+- the elements of the array
+A.
+The third line contains
+N integers
+B
+1
+,B
+2
+,…,B
+N
+- the elements of the array
+B.
 Output Format
-For each test case, output on a new line,
-N space-separated integers where the
-i
-th
-integer should denote the answer for
-i
-th
-node, modulo
-M.
+For each test case, output in a single line, the minimum possible value of
+K. If it is not possible to convert
+B to
+A, print -1.
 Constraints
-1≤T≤10
+1≤T≤2⋅10
 5
-1≤N≤10
-6
-1≤C
+1≤N≤2⋅10
+5
+1≤A
 i
-≤N
-1≤M≤10
+,B
+i
+≤10
 9
-1≤u
-i
-,v
-i
-≤N,u
-i
-
-=v
-i
-The sum of
-N over all test cases won't exceed
-10
-6
+Sum of
+N across all test cases does not exceed
+2⋅10
+5
 .
 Sample 1:
 Input
 Output
 2
-5 10
-3 1 1 4 3
-1 2
-2 3
-1 4
-2 5
-5 1
-1 1 1 2 2
-1 2
-2 3
-3 4
-4 5
-1 1 2 4 2
-0 0 0 0 0
+4
+1 4 5 2
+4 5 1 2
+6
+1 2 3 4 5 6
+1 2 5 6 3 4
+1
+-1
 Explanation:
 Test case
-1: For the given tree
-F
-1
-=2,F
-2
-=0,F
-3
-=2,F
-4
-=1,F
-5
-=0. Also,
-S
-1
-={1,3,4}.
-For node
-1:
-S
-1
-={1,3,4}. Thus
-S
-1
-∖S
-1
-={}. The product of elements of empty set is
+1: Let
+R=3 and
+K=1. Thus, we apply
+1 right-rotation on the subarray
+[4,5,1]. The rotated subarray is
+[1,4,5]. The updated array is
+[1,4,5,2] which is equal to the array
+A.
+It can be shown that the array
+B cannot be converted into the array
+A using
+K less than
 1.
-For node
-2:
-S
-2
-={1,3}. Thus
-S
-1
-∖S
-2
-={4}. Thus,
-∏
-i∈S
-1
-∖S
-2
-F
-i
-=F
-4
-=1.
-For node
-3:
-S
-3
-={1}. Thus
-S
-1
-∖S
-3
-={3,4}. Thus,
-∏
-i∈S
-1
-∖S
-3
-F
-i
-=F
-3
-⋅F
-4
-=2⋅1=2.
-For node
-4:
-S
-4
-={4}. Thus
-S
-1
-∖S
-4
-={1,3}. Thus,
-∏
-i∈S
-1
-∖S
-4
-F
-i
-=F
-1
-⋅F
-3
-=2⋅2=4.
-For node
-5:
-S
-5
-={3}. Thus
-S
-1
-∖S
-5
-={1,4}. Thus,
-∏
-i∈S
-1
-∖S
-5
-F
-i
-=F
-1
-⋅F
-4
-=2⋅1=2.
 Test case
-2: Since
-M=1, all answers would be
-0.
+2: The array
+B cannot be converted to the array
+A using the mentioned operation exactly once.

@@ -1,44 +1,32 @@
-C. Maximum splitting
-time limit per test2 seconds
+B. Maximum of Maximums of Minimums
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given several queries. In the i-th query you are given a single positive integer ni. You are to represent ni as a sum of maximum possible number of composite summands and print this maximum number, or print -1, if there are no such splittings.
-An integer greater than 1 is composite, if it is not prime, i.e. if it has positive divisors not equal to 1 and the integer itself.
+You are given an array a1, a2, ..., an consisting of n integers, and an integer k. You have to split the array into exactly k non-empty subsegments. You'll then compute the minimum integer on each subsegment, and take the maximum integer over the k obtained minimums. What is the maximum possible integer you can get?
+Definitions of subsegment and array splitting are given in notes.
 Input
-The first line contains single integer q (1 ≤ q ≤ 105) — the number of queries.
-q lines follow. The (i + 1)-th line contains single integer ni (1 ≤ ni ≤ 109) — the i-th query.
+The first line contains two integers n and k (1 ≤ k ≤ n ≤  105) — the size of the array a and the number of subsegments you have to split the array to.
+The second line contains n integers a1,  a2,  ...,  an ( - 109  ≤  ai ≤  109).
 Output
-For each query print the maximum possible number of summands in a valid splitting to composite summands, or -1, if there are no such splittings.
+Print single integer — the maximum possible integer you can get if you split the array into k non-empty subsegments and take maximum of minimums on the subsegments.
 Examples
 input
 Copy
-1
-12
+5 2
+1 2 3 4 5
 output
 Copy
-3
+5
 input
 Copy
-2
-6
-8
+5 1
+-4 -5 -3 -2 -1
 output
 Copy
-1
-2
-input
-Copy
-3
-1
-2
-3
-output
-Copy
--1
--1
--1
+-5
 Note
-12 = 4 + 4 + 4 = 4 + 8 = 6 + 6 = 12, but the first splitting has the maximum possible number of summands.
-8 = 4 + 4, 6 can't be split into several composite summands.
-1, 2, 3 are less than any composite number, so they do not have valid splittings.
+A subsegment [l,  r] (l ≤ r) of array a is the sequence al,  al + 1,  ...,  ar.
+Splitting of array a of n elements into k subsegments [l1, r1], [l2, r2], ..., [lk, rk] (l1 = 1, rk = n, li = ri - 1 + 1 for all i > 1) is k sequences (al1, ..., ar1), ..., (alk, ..., ark).
+In the first example you should split the array into subsegments [1, 4] and [5, 5] that results in sequences (1, 2, 3, 4) and (5). The minimums are min(1, 2, 3, 4) = 1 and min(5) = 5. The resulting maximum is max(1, 5) = 5. It is obvious that you can't reach greater result.
+In the second example the only option you have is to split the array into one subsegment [1, 5], that results in one sequence ( - 4,  - 5,  - 3,  - 2,  - 1). The only minimum is min( - 4,  - 5,  - 3,  - 2,  - 1) =  - 5. The resulting maximum is  - 5.

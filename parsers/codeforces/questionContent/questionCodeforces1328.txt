@@ -1,283 +1,127 @@
-E. Array Equalizer
+A. AB Balance
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Jeevan has two arrays
-a
-and
-b
-of size
+You are given a string
+s
+of length
 n
-. He is fond of performing weird operations on arrays. This time, he comes up with two types of operations:
-Choose any
+consisting of characters a and/or b.
+Let
+AB(s)
+be the number of occurrences of string ab in
+s
+as a substring. Analogically,
+BA(s)
+is the number of occurrences of ba in
+s
+as a substring.
+In one step, you can choose any index
 i
-(
-1≤i≤n
-) and increment
-a
-j
-by
-1
-for every
-j
-which is a multiple of
+and replace
+s
 i
-and
-1≤j≤n
-.
-Choose any
-i
-(
-1≤i≤n
-) and decrement
-a
-j
-by
-1
-for every
-j
-which is a multiple of
-i
-and
-1≤j≤n
-.
-He wants to convert array
-a
-into an array
-b
-using the minimum total number of operations. However, Jeevan seems to have forgotten the value of
-b
-1
-. So he makes some guesses. He will ask you
-q
-questions corresponding to his
-q
-guesses, the
-i
--th of which is of the form:
-If
-b
-1
-=
-x
-i
-, what is the minimum number of operations required to convert
-a
-to
-b
+with character a or b.
+What is the minimum number of steps you need to make to achieve
+AB(s)=BA(s)
 ?
-Help him by answering each question.
+Reminder:
+The number of occurrences of string
+d
+in
+s
+as substring is the number of indices
+i
+(
+1≤i≤|s|−|d|+1
+) such that substring
+s
+i
+s
+i+1
+…
+s
+i+|d|−1
+is equal to
+d
+. For example,
+AB(
+aabbbabaa
+)=2
+since there are two indices
+i
+:
+i=2
+where aabbbabaa and
+i=6
+where aabbbabaa.
 Input
-The first line contains a single integer
-n
-(1≤n≤2⋅
-10
-5
-)
- — the size of arrays
-a
-and
-b
-.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,...,
-a
-n
-(1≤
-a
-i
-≤
-10
-6
-)
-.
-The third line contains
-n
-integers
-b
-1
-,
-b
-2
-,...,
-b
-n
-(1≤
-b
-i
-≤
-10
-6
-for
-i≠1
-;
-b
-1
-=−1
-, representing that the value of
-b
-1
-is unknown
-)
-.
-The fourth line contains a single integer
-q
-(1≤q≤2⋅
-10
-5
-)
- — the number of questions.
-Each of the following
-q
-lines contains a single integer
-x
-i
-(1≤
-x
-i
-≤
-10
-6
-)
- — representing the
-i
--th question.
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤1000
+). Description of the test cases follows.
+The first and only line of each test case contains a single string
+s
+(
+1≤|s|≤100
+, where
+|s|
+is the length of the string
+s
+), consisting only of characters a and/or b.
 Output
-Output
-q
-integers  — the answers to each of his
-q
-questions.
-Examples
+For each test case, print the resulting string
+s
+with
+AB(s)=BA(s)
+you'll get making the minimum number of steps.
+If there are multiple answers, print any of them.
+Example
 input
 Copy
-2
-3 7
--1 5
-3
-1
 4
-3
+b
+aabbbabaa
+abbb
+abbaab
 output
 Copy
-2
-4
-2
-input
-Copy
-6
-2 5 4 1 3 6
--1 4 6 2 3 5
-3
-1
-8
-4
-output
-Copy
-10
-29
-9
+b
+aabbbabaa
+bbbb
+abbaaa
 Note
-Consider the first test case.
-b
+In the first test case, both
+AB(s)=0
+and
+BA(s)=0
+(there are no occurrences of ab (ba) in b), so can leave
+s
+untouched.
+In the second test case,
+AB(s)=2
+and
+BA(s)=2
+, so you can leave
+s
+untouched.
+In the third test case,
+AB(s)=1
+and
+BA(s)=0
+. For example, we can change
+s
 1
-=1
-: We need to convert
-[3,7]→[1,5]
-. We can perform the following operations:
-[3,7]
-−
-→
-−
-−
-−
-decrease
-i = 1
-[2,6]
-−
-→
-−
-−
-−
-decrease
-i = 1
-[1,5]
-Hence the answer is
-2
-.
-b
+to b and make both values zero.
+In the fourth test case,
+AB(s)=2
+and
+BA(s)=1
+. For example, we can change
+s
+6
+to a and make both values equal to
 1
-=4
-: We need to convert
-[3,7]→[4,5]
-. We can perform the following operations:
-[3,7]
-−
-→
-−
-−
-−
-decrease
-i = 2
-[3,6]
-−
-→
-−
-−
-−
-decrease
-i = 2
-[3,5]
-−
-→
-−
-−
-−
-increase
-i = 1
-[4,6]
-−
-→
-−
-−
-−
-decrease
-i = 2
-[4,5]
-Hence the answer is
-4
-.
-b
-1
-=3
-: We need to convert
-[3,7]→[3,5]
-. We can perform the following operations:
-[3,7]
-−
-→
-−
-−
-−
-decrease
-i = 2
-[3,6]
-−
-→
-−
-−
-−
-decrease
-i = 2
-[3,5]
-Hence the answer is
-2
 .

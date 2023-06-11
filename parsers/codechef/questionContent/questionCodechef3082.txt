@@ -1,82 +1,106 @@
-K - Magical String
+Winning Ways
 Problem
-You have been given a string
-S of size
-N which consists of uppercase characters only. A
-K-Magical String is a string in which the longest non - decreasing subsequence is of size exactly
-K.
-You have been given
-Q queries where each query is in the form
-L,R, and
-K. For each query, check whether substring from index
-L to index
-R can be converted into a
-K-Magical String or not by rearranging its characters and print the final rearranged string too.
-If there exist multiple answers, print the lexicographically largest string possible.
-Note:
-Each query will be treated independently i.e. after each query the string will remain the same as it was initially.
-The input files are large. The use of Fast I/O is recommended.
-Input Format
-The first line contains 
-T denoting the number of test cases.
-The first line of each test case contains an integer 
-N denoting the length of the string.
-The second line of each test case contains the string 
-S given in question.
-The third line of the test case contains an integer 
-Q denoting the number of queries.
-Next,
-Q lines contain three space-separated integers 
-L,R, and
-K.
-Output Format
-For each query in each test case, print "Yes" if it is possible to rearrange the characters of that substring such that it can be converted into
-K-Magical string and print the rearranged string else print "No" without quotes.
-You may print each character of the string in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
-Constraints
-1≤T≤100
-1≤N≤10
-5
-1≤Q≤10
-5
-1≤L≤R≤N
-1≤K≤N
-The sum of
-(R−L+1) over all
-Q queries over all test cases whose answer is "Yes" is less than or equal to
-10
-6
+Read problem statements in Hindi, Bengali, and Mandarin Chinese, Russian, and Vietnamese as well.
+Welcome to the finals of Chef's Combinatorial Games Competition 2019! The finalists Irshad and Mehedi are ready to play against each other no matter what game is given. As it is the final round, Chef prepared a completely new game with the following rules:
+There are
+K stacks of stones (numbered
+1 through
+K). For each valid
+i, the
+i-th stack has a threshold
+H
+i
 .
+Initially, each stack contains one stone.
+The players alternate turns; Irshad plays first.
+During each turn, the current player must choose one or two stacks and make a move in each chosen stack.
+To make a move in a stack
+i containing
+x stones at the beginning of the current turn, the current player must add one or more stones to this stack in such a way that the resulting number of stones
+y (
+y>x) divides that stack's threshold
+H
+i
+. (If this stack already contains
+H
+i
+stones, it is impossible to make a move.)
+When it is impossible to make a move in any stack, the current player loses the game.
+Of course, Irshad and Mehedi are brilliant programmers, so they can easily play this game optimally for given thresholds. Therefore, to spice up the game, Chef chose
+K people from the audience and gave one stack to each of them. He also provided a set
+S={x
+1
+,x
+2
+,…,x
+N
+}. Each of the chosen people should uniformly randomly, independently from all other people, choose the threshold of his/her stack from the set
+S.
+While this is happening, Irshad asks you: "Hey, in how many ways can these people set the thresholds such that I win?" You need to find the answer modulo
+1,000,000,007 (
+10
+9
++7).
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+K.
+N lines follow. For each valid
+i, the
+i-th of these lines contains a single integer
+x
+i
+.
+Output
+For each test case, print a single line containing one integer ― the number of ways to choose the thresholds such that Irshad wins, modulo
+1,000,000,007 (
+10
+9
++7).
+Constraints
+1≤T≤5
+1≤N≤100,000
+1≤K≤10
+9
+1≤x
+i
+≤10
+9
+for each valid
+i
+x
+1
+,x
+2
+,…,x
+N
+are pairwise distinct
+Subtasks
+Subtask #1 (10 points):
+N,K≤12
+x
+i
+≤12 for each valid
+i
+Subtask #2 (30 points):
+N,K≤50,000
+x
+i
+≤50,000 for each valid
+i
+Subtask #3 (60 points): original constraints
 Sample 1:
 Input
 Output
 1
-9
-EFDAABCBD
+2 3
+2
 4
-1 9 6
-6 8 1
-4 7 3
-1 2 1
-Yes
-FEDAABBCD
-No
-Yes
-CAAB
-Yes
-FE
+6
 Explanation:
-Test case
-1:
-For the first query :
-L=1,R=9,K=6 , the substring we are concerned with is "EFDAABCBD", we can rearrange its characters to "FEDAABBCD". Now, as it has the longest non-decreasing subsequence of size exactly
-K=6 (The longest non decreasing subsequence being "AABBCD"). Therefore, the answer to this query is "Yes".
-For the second query:
-L=6,R=8,K=1, the substring is "BCB", as there is no way in which we could rearrange the characters such that the longest non decreasing subsequence could become of size exactly
-K=1. Therefore, the answer to this query is "No".
-For the third query:
-L=4,R=7,K=3 , the substring is "AABC", we can rearrange its characters to "CAAB". Now, as this string has the longest non-decreasing subsequence of size exactly
-K=3 and the subsequence will be "AAB". Therefore the answer to this query is "Yes".
-For the fourth query:
-L=1,R=2,K=1, the substring is "EF", we can rearrange its characters to "FE" . Now, as this string has the longest non-decreasing subsequence of size exactly
-K=1 and the subsequence will be "F". Therefore the answer to this query is "Yes".
+Example case 1: There are two choices of thresholds that are losing for Irshad:
+(2,2,2) and
+(4,4,4). If these thresholds are used, Mehedi always wins regarless of Irshad's moves. All six remaining choices are winning for Irshad.

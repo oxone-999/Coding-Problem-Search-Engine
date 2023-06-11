@@ -1,27 +1,159 @@
-Chef and Numbers
+Permutation Composition Queries
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-You are given some integers in the range between 1 and N. You have to answer Q queries, each query is given by number X, you have to tell whether you can write number X as a sum of allowed numbers. You can use an allowed integer zero or multiple times.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+You are given
+N sequences
+P
+1
+,P
+2
+,…,P
+N
+. Each of them is a permutation of numbers
+1 through
+M.
+Let's define a product of two permutations
+X and
+Y of numbers
+1 through
+M as a permutation
+Z=X⋅Y such that
+Z
+i
+=Y
+X
+i
+for each valid
+i.
+You should answer
+Q queries. Each query is described by two numbers
+L and
+R. Let's define a permutation
+B=P
+L
+⋅P
+L+1
+⋅…⋅P
+R
+; the multiplication of permutations is evaluated left to right, i.e. as
+((P
+L
+⋅P
+L+1
+)⋅…)⋅P
+R
+. The answer to a query is
+∑
+i=1
+M
+i⋅B
+i
+.
 Input
-The first line contains three integer numbers N and K, Q, where K denotes number of allowed integers, Q denotes number of queries. The second line containing K distinct integers Fi - allowed numbers.
-Each of the next Q lines containing one integer number X.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+M.
+N lines follow. For each valid
+i, the
+i-th of these lines contains
+M space-separated integers
+P
+i,1
+,P
+i,2
+,…,P
+i,M
+denoting the permutation
+P
+i
+.
+The next line contains a single integer
+Q.
+Each of the following
+Q lines contains two space-separated integers
+L and
+R describing one query.
 Output
-For each query output "Yes" or "No" (without quotess) in separate line.
+For each test case, print
+Q lines. For each valid
+i, the
+i-th of these lines should contain a single integer — the answer to the
+i-th query.
 Constraints
-1 ≤ N, K, Q, X ≤ 200,000
-1 ≤ Fi ≤ N
+1≤T≤1,000
+1≤N,M≤10
+5
+1≤N⋅M≤2⋅10
+5
+1≤P
+i,j
+≤M for each valid
+i and
+j
+1≤Q≤2⋅10
+5
+1≤L≤R≤N
+for each valid
+i,
+P
+i
+is permutation of numbers
+1 through
+M
+the sum of
+N⋅M for all test cases does not exceed
+2⋅10
+5
+the sum of
+Q for all test cases does not exceed
+2⋅10
+5
+Subtasks
+Subtask #1 (15 points):
+1≤T≤100
+1≤Q≤50
+1≤N⋅M≤200
+Subtask #2 (25 points):
+1≤T≤100
+1≤M≤10
+Subtask #3 (60 points): original constraints
 Sample 1:
 Input
 Output
-4 2 3
-2 4
-2
-8
+1
+4 3
+3 2 1
+1 3 2
+1 2 3
+2 3 1
 5
-Yes
-Yes
-No
+1 1
+1 4
+3 4
+3 3
+1 3
+10
+11
+11
+14
+11
 Explanation:
-Example case 1. 2 = 2
-Example case 2. 8 = 2 + 2 + 4
-Example case 3. 5 can't be sum of any number of addends 2 and 4
+Example case 1:
+query 1:
+B=[3,2,1], so the answer is
+1⋅3+2⋅2+3⋅1=10
+query 2:
+B=[3,1,2], the answer is
+11
+query 3:
+B=[2,3,1], the answer is
+11
+query 4:
+B=[1,2,3], the answer is
+14
+query 5:
+B=[2,3,1], the answer is
+11

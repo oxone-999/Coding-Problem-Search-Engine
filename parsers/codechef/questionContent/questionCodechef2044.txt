@@ -1,92 +1,136 @@
-Good Median
+Firdavs and Planet F
 Problem
-###Read problems statements Hindi , Vietnamese , Mandarin Chinese , Russian and Bengali as well.
-Raja only participates in contests and does not upsolve, but he claims that he has been upsolving. Chef wants to test if he is really improving, so he asks Raja to solve the following problem.
-The median of a sequence of numbers is computed in the following way:
-sort the sequence in non-decreasing order
-if the number of elements of this sequence is odd, the median is its middle element
-if the number of elements is even, the median is the average (arithmetic mean) of its two middle elements
-For example, the median of
-[1,3,2] is
-2 and the median of
-[2,3,3,2] is
-(2+3)/2=5/2.
-You are given a sequence
-A
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Firdavs is living on planet F. There are
+N cities (numbered
+1 through
+N) on this planet; let's denote the value of city
+i by
+v
+i
+. Firdavs can travel directly from each city to any other city. When he travels directly from city
+x to city
+y, he needs to pay
+f(x,y)=∣v
+y
+−v
+x
+∣+y−x coins (this number can be negative, in which case he receives
+−f(x,y) coins).
+Let's define a simple path from city
+x to city
+y with length
+k≥1 as a sequence of cities
+a
 1
-,A
+,a
 2
-,…,A
-N
-. Let's call a subsequence
-A
-i
-1
-,A
-i
-2
-,…,A
-i
+,…,a
 k
-(for any
-k>0,
-1≤i
+such that all cities in this sequence are different,
+a
 1
-<i
-2
-<…<i
+=x and
+a
 k
-≤N) good if the median of this subsequence is an element of this subsequence. Find the number of good subsequences. Since this number may be large, compute it modulo
-1000000007 (
-10
-9
-+7).
+=y. The cost of such a path is
+∑
+i=1
+k−1
+f(a
+i
+,a
+i+1
+).
+You need to answer some queries for Firdavs. In each query, you are given two cities
+x and
+y, and you need to find the minimum cost of a simple path from city
+x to city
+y. Then, you need to find the length of the longest simple path from
+x to
+y with this cost.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains a single integer
-N.
+The first line of each test case contains two space-separated integers
+N and
+Q.
 The second line contains
 N space-separated integers
-A
+v
 1
-,A
+,v
 2
-,…,A
+,…,v
 N
 .
+The following
+Q lines describe queries. Each of these lines contains two space-separated integers
+x and
+y.
 Output
-For each test case, print a single line containing one integer — the number of good subsequences modulo
-10
-9
-+7.
+For each query, print a single line containing two space-separated integers ― the minimum cost and the maximum length.
 Constraints
-1≤T≤30
-1≤N≤1,000
-1≤A
+1≤T≤100
+1≤N,Q≤2⋅10
+5
+0≤v
 i
-≤2N for each valid
+≤10
+9
+for each valid
 i
+1≤x,y≤N
+the sum of
+N in all test cases does not exceed
+5⋅10
+5
+the sum of
+Q in all test cases does not exceed
+5⋅10
+5
 Subtasks
-Subtask #1 (5 points):
-A is a permutation of integers
-1 through
+Subtask #1 (30 points):
+1≤N,Q≤1,000
+v
+1
+<v
+2
+<…<v
 N
-Subtask #2 (25 points):
-1≤N≤100
-Subtask #3 (70 points): original constraints
+the sum of
+N in all test cases does not exceed
+5,000
+the sum of
+Q in all test cases does not exceed
+5,000
+Subtask #2 (70 points): original constraints
 Sample 1:
 Input
 Output
-1
-3
-2 3 2
-5
+2
+4 2
+4 2 5 7
+2 3
+3 4
+2 1
+1 1
+2 1
+4 3
+3 2
+-1 2
 Explanation:
-Example case 1: The good subsequences are
-[2],
-[3],
-[2],
-[2,2],
-[2,3,2].
+Example case 1: For the first query, there are two paths with cost
+4 from city
+2 to city
+3:
+2→1→3: cost
+(∣4−2∣+1−2)+(∣5−4∣+3−1)=4, length
+3
+2→3: cost
+∣5−2∣+3−2=4, length
+2
+All other paths have greater costs, so the minimum cost is
+4. Among these two paths, we want the one with greater length, which is
+3.

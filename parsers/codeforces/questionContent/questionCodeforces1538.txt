@@ -1,132 +1,248 @@
-A. Charmed by the Game
-time limit per test2 seconds
+D. Top-Notch Insertions
+time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Alice and Borys are playing tennis.
-A tennis match consists of games. In each game, one of the players is serving and the other one is receiving.
-Players serve in turns: after a game where Alice is serving follows a game where Borys is serving, and vice versa.
-Each game ends with a victory of one of the players. If a game is won by the serving player, it's said that this player holds serve. If a game is won by the receiving player, it's said that this player breaks serve.
-It is known that Alice won
+Consider the insertion sort algorithm used to sort an integer sequence
+[
 a
-games and Borys won
-b
-games during the match. It is unknown who served first and who won which games.
-Find all values of
-k
-such that exactly
-k
-breaks could happen during the match between Alice and Borys in total.
+1
+,
+a
+2
+,…,
+a
+n
+]
+of length
+n
+in non-decreasing order.
+For each
+i
+in order from
+2
+to
+n
+, do the following. If
+a
+i
+≥
+a
+i−1
+, do nothing and move on to the next value of
+i
+. Otherwise, find the smallest
+j
+such that
+a
+i
+<
+a
+j
+, shift the elements on positions from
+j
+to
+i−1
+by one position to the right, and write down the initial value of
+a
+i
+to position
+j
+. In this case we'll say that we performed an insertion of an element from position
+i
+to position
+j
+.
+It can be noticed that after processing any
+i
+, the prefix of the sequence
+[
+a
+1
+,
+a
+2
+,…,
+a
+i
+]
+is sorted in non-decreasing order, therefore, the algorithm indeed sorts any sequence.
+For example, sorting
+[4,5,3,1,3]
+proceeds as follows:
+i=2
+:
+a
+2
+≥
+a
+1
+, do nothing;
+i=3
+:
+j=1
+, insert from position
+3
+to position
+1
+:
+[3,4,5,1,3]
+;
+i=4
+:
+j=1
+, insert from position
+4
+to position
+1
+:
+[1,3,4,5,3]
+;
+i=5
+:
+j=3
+, insert from position
+5
+to position
+3
+:
+[1,3,3,4,5]
+.
+You are given an integer
+n
+and a list of
+m
+integer pairs
+(
+x
+i
+,
+y
+i
+)
+. We are interested in sequences such that if you sort them using the above algorithm, exactly
+m
+insertions will be performed: first from position
+x
+1
+to position
+y
+1
+, then from position
+x
+2
+to position
+y
+2
+, ..., finally, from position
+x
+m
+to position
+y
+m
+.
+How many sequences of length
+n
+consisting of (not necessarily distinct) integers between
+1
+and
+n
+, inclusive, satisfy the above condition? Print this number modulo
+998244353
+.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
 1≤t≤
 10
-3
+5
 ). Description of the test cases follows.
-Each of the next
-t
-lines describes one test case and contains two integers
-a
+The first line of each test case contains two integers
+n
 and
-b
+m
 (
-0≤a,b≤
+2≤n≤2⋅
 10
 5
 ;
-a+b>0
-) — the number of games won by Alice and Borys, respectively.
+0≤m<n
+) — the length of the sequence and the number of insertions.
+The
+i
+-th of the following
+m
+lines contains two integers
+x
+i
+and
+y
+i
+(
+2≤
+x
+1
+<
+x
+2
+<…<
+x
+m
+≤n
+;
+1≤
+y
+i
+<
+x
+i
+). These lines describe the sequence of insertions in chronological order.
 It is guaranteed that the sum of
-a+b
+m
 over all test cases does not exceed
 2⋅
 10
 5
-.
+. Note that there is no constraint on the sum of
+n
+of the same kind.
 Output
-For each test case print two lines.
-In the first line, print a single integer
-m
- (
-1≤m≤a+b+1
-) — the number of values of
-k
-such that exactly
-k
-breaks could happen during the match.
-In the second line, print
-m
-distinct integers
-k
+For each test case, print the number of sequences of length
+n
+consisting of integers from
 1
-,
-k
-2
-,…,
-k
-m
-(
-0≤
-k
-1
-<
-k
-2
-<…<
-k
-m
-≤a+b
-) — the sought values of
-k
-in increasing order.
+to
+n
+such that sorting them with the described algorithm produces the given sequence of insertions, modulo
+998244353
+.
 Example
 input
 Copy
 3
+3 0
+3 2
 2 1
-1 1
-0 5
+3 1
+5 3
+3 1
+4 1
+5 3
 output
 Copy
-4
-0 1 2 3
-2
-0 2
-2
-2 3
-Note
-In the first test case, any number of breaks between
-0
-and
-3
-could happen during the match:
-Alice holds serve, Borys holds serve, Alice holds serve:
-0
-breaks;
-Borys holds serve, Alice holds serve, Alice breaks serve:
+10
 1
-break;
-Borys breaks serve, Alice breaks serve, Alice holds serve:
-2
-breaks;
-Alice breaks serve, Borys breaks serve, Alice breaks serve:
-3
-breaks.
-In the second test case, the players could either both hold serves (
-0
-breaks) or both break serves (
-2
-breaks).
-In the third test case, either
-2
-or
-3
-breaks could happen:
-Borys holds serve, Borys breaks serve, Borys holds serve, Borys breaks serve, Borys holds serve:
-2
-breaks;
-Borys breaks serve, Borys holds serve, Borys breaks serve, Borys holds serve, Borys breaks serve:
-3
-breaks.
+21
+Note
+In the first test case, the algorithm performs no insertions — therefore, the initial sequence is already sorted in non-decreasing order. There are
+10
+such sequences:
+[1,1,1],[1,1,2],[1,1,3],[1,2,2],[1,2,3],[1,3,3],[2,2,2],[2,2,3],[2,3,3],[3,3,3]
+.
+In the second test case, the only sequence satisfying the conditions is
+[3,2,1]
+.
+In the third test case,
+[4,5,3,1,3]
+is one of the sought sequences.

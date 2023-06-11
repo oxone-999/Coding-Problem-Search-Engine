@@ -1,146 +1,168 @@
-B. Two Fairs
-time limit per test3 seconds
-memory limit per test256 megabytes
+E. Four Stones
+time limit per test1 second
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-cities in Berland and some pairs of them are connected by two-way roads. It is guaranteed that you can pass from any city to any other, moving along the roads. Cities are numerated from
+There are four stones on an infinite line in integer coordinates
+a
 1
-to
-n
-.
-Two fairs are currently taking place in Berland — they are held in two different cities
+,
 a
-and
-b
-(
-1≤a,b≤n
-;
-a≠b
-).
-Find the number of pairs of cities
-x
-and
-y
-(
-x≠a,x≠b,y≠a,y≠b
-) such that if you go from
-x
-to
-y
-you will have to go through both fairs (the order of visits doesn't matter). Formally, you need to find the number of pairs of cities
-x,y
-such that any path from
-x
-to
-y
-goes through
+2
+,
 a
-and
-b
-(in any order).
-Print the required number of pairs. The order of two cities in a pair does not matter, that is, the pairs
-(x,y)
-and
-(y,x)
-must be taken into account only once.
-Input
-The first line of the input contains an integer
-t
-(
-1≤t≤4⋅
-10
+3
+,
+a
 4
-) — the number of test cases in the input. Next,
-t
-test cases are specified.
-The first line of each test case contains four integers
-n
-,
-m
-,
-a
-and
+. The goal is to have the stones in coordinates
 b
+1
+,
+b
+2
+,
+b
+3
+,
+b
+4
+. The order of the stones does not matter, that is, a stone from any position
+a
+i
+can end up in at any position
+b
+j
+, provided there is a required number of stones in each position (that is, if a coordinate
+x
+appears
+k
+times among numbers
+b
+1
+,…,
+b
+4
+, there should be exactly
+k
+stones at
+x
+in the end).
+We are allowed to move stones with the following operation: choose two stones at distinct positions
+x
+and
+y
+with at least one stone each, and move one stone from
+x
+to
+2y−x
+. In other words, the operation moves a stone to a symmetric position relative to some other stone. At any moment it is allowed to have any number of stones at the same position.
+Find any sequence of operations that achieves the goal, or determine that it is impossible. The sequence does not have to be shortest, but it may contain at most
+1000
+operations.
+Input
+The first line contains four integers
+a
+1
+,…,
+a
+4
 (
-4≤n≤2⋅
+−
 10
-5
-,
-n−1≤m≤5⋅
-10
-5
-,
-1≤a,b≤n
-,
-a≠b
-) — numbers of cities and roads in Berland and numbers of two cities where fairs are held, respectively.
-The following
-m
-lines contain descriptions of roads between cities. Each of road description contains a pair of integers
-u
+9
+≤
+a
 i
-,
-v
+≤
+10
+9
+) — initial coordinates of the stones. There may be multiple stones sharing the same coordinate.
+The second line contains four integers
+b
+1
+,…,
+b
+4
+(
+−
+10
+9
+≤
+b
+i
+≤
+10
+9
+) — target coordinates of the stones. There may be multiple targets sharing the same coordinate.
+Output
+If there is no sequence of operations that achieves the goal, print a single integer
+−1
+. Otherwise, on the first line print a single integer
+k
+(
+0≤k≤1000
+) — the number of operations in your sequence. On the next
+k
+lines, describe the operations. The
+i
+-th of these lines should contain two integers
+x
+i
+and
+y
 i
 (
-1≤
-u
-i
-,
-v
-i
-≤n
-,
-u
+x
 i
 ≠
-v
+y
 i
-) — numbers of cities connected by the road.
-Each road is bi-directional and connects two different cities. It is guaranteed that from any city you can pass to any other by roads. There can be more than one road between a pair of cities.
-The sum of the values of
-n
-for all sets of input data in the test does not exceed
-2⋅
+) — coordinates of the moved stone and the center of symmetry stone for the
+i
+-th operation.
+For each operation
+i
+, there should at least one stone in each of the coordinates
+x
+i
+and
+y
+i
+, and the resulting coordinate
+2
+y
+i
+−
+x
+i
+must not exceed
 10
-5
-. The sum of the values of
-m
-for all sets of input data in the test does not exceed
-5⋅
-10
-5
-.
-Output
-Print
-t
-integers — the answers to the given test cases in the order they are written in the input.
-Example
+18
+by absolute value.
+If there are multiple suitable sequences, print any of them. It is guaranteed that if there is a suitable sequence of operations, then there is also a suitable sequence that satisfies all the additional requirement.
+Examples
 input
 Copy
-3
-7 7 3 5
-1 2
-2 3
-3 4
-4 5
-5 6
-6 7
-7 5
-4 5 2 3
-1 2
-2 3
-3 4
-4 1
-4 2
-4 3 2 1
-1 2
-2 3
-4 1
+0 1 2 3
+3 5 6 8
 output
 Copy
-4
-0
-1
+3
+1 3
+2 5
+0 3
+input
+Copy
+0 0 0 0
+1 1 1 1
+output
+Copy
+-1
+input
+Copy
+0 0 0 1
+0 1 0 1
+output
+Copy
+-1

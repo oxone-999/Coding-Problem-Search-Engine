@@ -1,58 +1,157 @@
-C. Perfect Keyboard
-time limit per test2 seconds
+F. Number of Components
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp wants to assemble his own keyboard. Layouts with multiple rows are too complicated for him — his keyboard will consist of only one row, where all
-26
-lowercase Latin letters will be arranged in some order.
-Polycarp uses the same password
+You are given a matrix
+n×m
+, initially filled with zeroes. We define
+a
+i,j
+as the element in the
+i
+-th row and the
+j
+-th column of the matrix.
+Two cells of the matrix are connected if they share a side, and the elements in these cells are equal. Two cells of the matrix belong to the same connected component if there exists a sequence
 s
-on all websites where he is registered (it is bad, but he doesn't care). He wants to assemble a keyboard that will allow to type this password very easily. He doesn't like to move his fingers while typing the password, so, for each pair of adjacent characters in
+1
+,
 s
-, they should be adjacent on the keyboard. For example, if the password is abacaba, then the layout cabdefghi... is perfect, since characters a and c are adjacent on the keyboard, and a and b are adjacent on the keyboard. It is guaranteed that there are no two adjacent equal characters in
+2
+, ...,
 s
-, so, for example, the password cannot be password (two characters s are adjacent).
-Can you help Polycarp with choosing the perfect layout of the keyboard, if it is possible?
+k
+such that
+s
+1
+is the first cell,
+s
+k
+is the second cell, and for every
+i∈[1,k−1]
+,
+s
+i
+and
+s
+i+1
+are connected.
+You are given
+q
+queries of the form
+x
+i
+y
+i
+c
+i
+(
+i∈[1,q]
+). For every such query, you have to do the following:
+replace the element
+a
+x,y
+with
+c
+;
+count the number of connected components in the matrix.
+There is one additional constraint: for every
+i∈[1,q−1]
+,
+c
+i
+≤
+c
+i+1
+.
 Input
-The first line contains one integer
-T
+The first line contains three integers
+n
+,
+m
+and
+q
 (
-1≤T≤1000
-) — the number of test cases.
+1≤n,m≤300
+,
+1≤q≤2⋅
+10
+6
+) — the number of rows, the number of columns and the number of queries, respectively.
 Then
-T
-lines follow, each containing one string
-s
+q
+lines follow, each representing a query. The
+i
+-th line contains three integers
+x
+i
+,
+y
+i
+and
+c
+i
 (
-1≤|s|≤200
-) representing the test case.
-s
-consists of lowercase Latin letters only. There are no two adjacent equal characters in
-s
+1≤
+x
+i
+≤n
+,
+1≤
+y
+i
+≤m
+,
+1≤
+c
+i
+≤max(1000,⌈
+2⋅
+10
+6
+nm
+⌉)
+). For every
+i∈[1,q−1]
+,
+c
+i
+≤
+c
+i+1
 .
 Output
-For each test case, do the following:
-if it is impossible to assemble a perfect keyboard, print NO (in upper case, it matters in this problem);
-otherwise, print YES (in upper case), and then a string consisting of
-26
-lowercase Latin letters — the perfect layout. Each Latin letter should appear in this string exactly once. If there are multiple answers, print any of them.
+Print
+q
+integers, the
+i
+-th of them should be equal to the number of components in the matrix after the first
+i
+queries are performed.
 Example
 input
 Copy
-5
-ababa
-codedoca
-abcda
-zxzytyz
-abcdefghijklmnopqrstuvwxyza
+3 2 10
+2 1 1
+1 2 1
+2 2 1
+1 1 2
+3 1 2
+1 2 2
+2 2 2
+2 1 2
+3 2 4
+2 1 5
 output
 Copy
-YES
-bacdefghijklmnopqrstuvwxyz
-YES
-edocabfghijklmnpqrstuvwxyz
-NO
-YES
-xzytabcdefghijklmnopqrsuvw
-NO
+2
+4
+3
+3
+4
+4
+4
+2
+2
+4

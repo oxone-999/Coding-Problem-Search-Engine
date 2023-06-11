@@ -1,160 +1,114 @@
-E. Double Permutation Inc.
-time limit per test5 seconds
+F. kotlinkotlinkotlinkotlin...
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp recently became an employee of the company "Double Permutation Inc." Now he is a fan of permutations and is looking for them everywhere!
-A permutation in this problem is a sequence of integers
-p
+Polycarp really likes writing the word "kotlin". He wrote this word several times in a row without spaces. For example, he could write the string like "kotlinkotlinkotlinkotlin".
+Polycarp sliced (cut) the written string into
+n
+pieces and mixed them. As a result, he has
+n
+strings
+s
 1
 ,
-p
+s
 2
 ,…,
-p
-k
-such that every integer from
-1
-to
-k
-occurs exactly once in it. For example, the following sequences are permutations of
-[3,1,4,2]
-,
-[1]
-and
-[6,1,2,3,5,4]
-. The following sequences are not permutations:
-[0,1]
-,
-[1,2,2]
-,
-[1,2,4]
-and
-[2,3]
-.
-In the lobby of the company's headquarter statistics on visits to the company's website for the last
+s
 n
-days are published — the sequence
-a
+and he can arrange them in the right order, concatenate (join) all of them and get a string like "kotlinkotlin...kotlin".
+Help Polycarp to find the right order of strings
+s
 1
 ,
-a
+s
 2
 ,…,
-a
+s
 n
-. Polycarp wants to color all the elements of this sequence in one of three colors (red, green or blue) so that:
-all red numbers, being written out of
-a
-1
-,
-a
-2
-,…,
-a
-n
-from left to right (that is, without changing their relative order), must form some permutation (let's call it
-P
-);
-all green numbers, being written out of
-a
-1
-,
-a
-2
-,…,
-a
-n
-from left to right (that is, without changing their relative order), must form the same permutation
-P
-;
-among blue numbers there should not be elements that are equal to some element of the permutation
-P
-.
-Help Polycarp to color all
-n
-numbers so that the total number of red and green elements is maximum.
+, so that if he writes the strings in this order, he will get the word "kotlin" or the sequence of this word.
+Pay attention that you must use all given strings and you must use each string only once.
 Input
-The first line contains an integer
+The first line of the input contains one integer
 n
 (
-1≤n≤2⋅
+1≤n≤
 10
 5
-) — the length of the sequence
-a
-. The second line contains
+) — the number of Polycarp's strings. Next lines of the input contain
 n
-integers
-a
+Polycarp's strings.
+Total sum of their lengths doesn't exceed
+3⋅
+10
+5
+. It's guaranteed that there is the right order of arrangement the strings that if you concatenate them into one string, you will get some non-empty sequence of the word "kotlin".
+Output
+Print
+n
+different integers
+p
 1
 ,
-a
+p
 2
 ,…,
-a
+p
 n
 (
 1≤
-a
+p
 i
-≤2⋅
-10
-5
-).
-Output
-Print a string
+≤n
+), where
+p
+i
+is an index of the string that should be the
+i
+-th in a required concatenation. In other words, the result of concatenation
 s
-of length
+p
+1
++
+s
+p
+2
++⋯+
+s
+p
 n
-such that:
-s
-i
-='R', if the element
-a
-i
-must be colored in red;
-s
-i
-='G', if the element
-a
-i
-must be colored in green;
-s
-i
-='B', if the element
-a
-i
-must be colored in blue.
-The string
-s
-should maximize the total number of red and green elements when fulfilling the requirements from the main part of the problem statement. If there are several optimal answers, print any of them.
+must be in the form "kotlinkotlin...kotlin". If there are many solutions, print any of them.
 Examples
 input
 Copy
-5
-1 2 3 2 1
+2
+lin
+kot
 output
 Copy
-RBBBG
+2 1 
 input
 Copy
-3
-1 1 1
+4
+linkotlinkotlinkotl
+kotlin
+in
+kot
 output
 Copy
-BBB
+2 4 1 3 
 input
 Copy
-10
-3 3 2 2 5 4 1 5 4 1
+8
+i
+n
+tlin
+o
+ko
+t
+k
+l
 output
 Copy
-RGRGRRRGGG
-input
-Copy
-10
-3 9 3 1 2 1 2 4 4 4
-output
-Copy
-RBGRRGGBBB
+7 4 3 5 6 8 1 2 

@@ -1,213 +1,181 @@
-D. Searchlights
-time limit per test1 second
+G. Clusterization Counting
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
 There are
 n
-robbers at coordinates
-(
-a
+computers in the company network. They are numbered from
 1
-,
-b
-1
-)
-,
-(
-a
-2
-,
-b
-2
-)
-, ...,
-(
-a
+to
 n
-,
-b
-n
-)
-and
-m
-searchlight at coordinates
-(
-c
-1
-,
-d
-1
-)
-,
-(
-c
-2
-,
-d
-2
-)
-, ...,
-(
-c
-m
-,
-d
-m
-)
 .
-In one move you can move each robber to the right (increase
+For each pair of two computers
+1≤i<j≤n
+you know the value
 a
-i
-of each robber by one) or move each robber up (increase
-b
-i
-of each robber by one). Note that you should either increase all
-a
-i
-or all
-b
-i
-, you can't increase
-a
-i
-for some points and
-b
-i
-for some other points.
-Searchlight
-j
-can see a robber
-i
-if
-a
-i
-≤
-c
-j
-and
-b
-i
-≤
-d
-j
-.
-A configuration of robbers is safe if no searchlight can see a robber (i.e. if there is no pair
 i,j
-such that searchlight
-j
-can see a robber
+: the difficulty of sending data between computers
 i
-).
-What is the minimum number of moves you need to perform to reach a safe configuration?
-Input
-The first line of input contains two integers
-n
 and
-m
+j
+. All values
+a
+i,j
+for
+i<j
+are different.
+You want to separate all computers into
+k
+sets
+A
+1
+,
+A
+2
+,…,
+A
+k
+, such that the following conditions are satisfied:
+for each computer
+1≤i≤n
+there is exactly one set
+A
+j
+, such that
+i∈
+A
+j
+;
+for each two pairs of computers
+(s,f)
+and
+(x,y)
 (
-1≤n,m≤2000
-): the number of robbers and the number of searchlight.
-Each of the next
+s≠f
+,
+x≠y
+), such that
+s
+,
+f
+,
+x
+are from the same set but
+x
+and
+y
+are from different sets,
+a
+s,f
+<
+a
+x,y
+.
+For each
+1≤k≤n
+find the number of ways to divide computers into
+k
+groups, such that all required conditions are satisfied. These values can be large, so you need to find them by modulo
+998244353
+.
+Input
+The first line contains a single integer
 n
-lines contains two integers
+(
+1≤n≤1500
+): the number of computers.
+The
+i
+-th of the next
+n
+lines contains
+n
+integers
 a
-i
+i,1
 ,
-b
-i
+a
+i,2
+,…,
+a
+i,n
 (
 0≤
 a
-i
-,
-b
-i
+i,j
 ≤
-10
-6
-), coordinates of robbers.
-Each of the next
-m
-lines contains two integers
-c
-i
-,
-d
-i
-(
-0≤
-c
-i
-,
-d
-i
-≤
-10
-6
-), coordinates of searchlights.
+n(n−1)
+2
+).
+It is guaranteed that:
+for all
+1≤i≤n
+a
+i,i
+=0
+;
+for all
+1≤i<j≤n
+a
+i,j
+>0
+;
+for all
+1≤i<j≤n
+a
+i,j
+=
+a
+j,i
+;
+all
+a
+i,j
+for
+i<j
+are different.
 Output
-Print one integer: the minimum number of moves you need to perform to reach a safe configuration.
+Print
+n
+integers: the
+k
+-th of them should be equal to the number of possible ways to divide computers into
+k
+groups, such that all required conditions are satisfied, modulo
+998244353
+.
 Examples
 input
 Copy
-1 1
-0 0
-2 3
-output
-Copy
-3
-input
-Copy
-2 3
-1 6
-6 1
-10 1
-1 10
-7 7
-output
-Copy
 4
-input
-Copy
-1 2
-0 0
-0 0
-0 0
+0 3 4 6
+3 0 2 1
+4 2 0 5
+6 1 5 0
 output
 Copy
-1
+1 0 1 1 
 input
 Copy
-7 3
-0 8
-3 8
-2 7
-0 10
-5 5
-7 0
-3 5
-6 6
-3 11
-11 5
+7
+0 1 18 15 19 12 21
+1 0 16 13 17 20 14
+18 16 0 2 7 10 9
+15 13 2 0 6 8 11
+19 17 7 6 0 4 5
+12 20 10 8 4 0 3
+21 14 9 11 5 3 0
 output
 Copy
-6
+1 1 2 3 4 3 1 
 Note
-In the first test, you can move each robber to the right three times. After that there will be one robber in the coordinates
-(3,0)
+Here are all possible ways to separate all computers into
+4
+groups in the second example:
+{1,2},{3,4},{5},{6,7}
+;
+{1},{2},{3,4},{5,6,7}
+;
+{1,2},{3},{4},{5,6,7}
 .
-The configuration of the robbers is safe, because the only searchlight can't see the robber, because it is in the coordinates
-(2,3)
-and
-3>2
-.
-In the second test, you can move each robber to the right two times and two times up. After that robbers will be in the coordinates
-(3,8)
-,
-(8,3)
-.
-It's easy the see that the configuration of the robbers is safe.
-It can be proved that you can't reach a safe configuration using no more than
-3
-moves.

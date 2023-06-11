@@ -1,101 +1,81 @@
-E. Li Hua and Array
-time limit per test3 seconds
-memory limit per test512 megabytes
+D. Li Hua and Tree
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Li Hua wants to solve a problem about
-φ
- — Euler's totient function. Please recall that
-φ(x)=
-∑
-i=1
-x
-[gcd(i,x)=1]
-.
-†,‡
-He has a sequence
-a
-1
-,
-a
-2
-,⋯,
-a
+Li Hua has a tree of
 n
-and he wants to perform
+vertices and
+n−1
+edges. The root of the tree is vertex
+1
+. Each vertex
+i
+has importance
+a
+i
+. Denote the size of a subtree as the number of vertices in it, and the importance as the sum of the importance of vertices in it. Denote the heavy son of a non-leaf vertex as the son with the largest subtree size. If multiple of them exist, the heavy son is the one with the minimum index.
+Li Hua wants to perform
 m
 operations:
 "1
-l
-r
+x
 " (
-1≤l≤r≤n
-) — for each
-x∈[l,r]
-, change
-a
+1≤x≤n
+) — calculate the importance of the subtree whose root is
 x
-into
-φ(
-a
-x
-)
 .
 "2
-l
-r
+x
 " (
-1≤l≤r≤n
-) — find out the minimum changes needed to make sure
-a
-l
-=
-a
-l+1
-=⋯=
-a
-r
-. In each change, he chooses one
-x∈[l,r]
-, change
-a
+2≤x≤n
+) — rotate the heavy son of
 x
-into
-φ(
-a
-x
-)
-. Each operation of this type is independent, which means the array doesn't actually change.
-Suppose you were Li Hua, please solve this problem.
-†
-†
-gcd(x,y)
-denotes the greatest common divisor (GCD) of integers
-x
-and
-y
-.
-‡
-‡
-The notation
-[cond]
-equals
-1
-if the condition
-cond
-is true, and
-0
-otherwise.
-Input
-The first line contains two integers
+up. Formally, denote
+so
 n
+x
+as the heavy son of
+x
+,
+f
+a
+x
+as the father of
+x
+. He wants to remove the edge between
+x
 and
-m
+f
+a
+x
+and connect an edge between
+so
+n
+x
+and
+f
+a
+x
+. It is guaranteed that
+x
+is not root, but not guaranteed that
+x
+is not a leaf. If
+x
+is a leaf, please ignore the operation.
+Suppose you were Li Hua, please solve this problem.
+Input
+The first line contains 2 integers
+n,m
 (
-1≤n,m≤
+2≤n≤
 10
 5
-) — the number of elements in the array and the number of operations to process, respectively.
+,1≤m≤
+10
+5
+) — the number of vertices in the tree and the number of operations.
 The second line contains
 n
 integers
@@ -104,195 +84,177 @@ a
 ,
 a
 2
-,⋯,
+,…,
 a
 n
 (
-1≤
-a
-i
-≤5⋅
+−
 10
-6
-) — the elements of the array.
-Next
-m
-lines, each line contains three integers
-t
-i
-,
-l
-i
-,
-r
-i
-(
-t
-i
-∈{1,2},1≤
-l
+9
+≤
+a
 i
 ≤
-r
+10
+9
+) — the importance of each vertex.
+Next
+n−1
+lines contain the edges of the tree. The
+i
+-th line contains two integers
+u
+i
+and
+v
+i
+(
+1≤
+u
+i
+,
+v
 i
 ≤n
-) — the
+,
+u
 i
+≠
+v
+i
+) — the corresponding edge. The given edges form a tree.
+Next
+m
+lines contain operations — one operation per line. The
+j
+-th operation contains two integers
+t
+j
+,
+x
+j
+(
+t
+j
+∈{1,2}
+,
+1≤
+x
+j
+≤n
+,
+x
+j
+≠1
+if
+t
+j
+=2
+) — the
+j
 -th operation.
 Output
-For each "2
-l
-r
-", output the answer in an separate line.
-Example
+For each query "1
+x
+", output the answer in an independent line.
+Examples
 input
 Copy
-5 4
-8 1 6 3 7
-2 1 5
-2 3 4
-1 1 3
-2 3 4
+7 4
+1 1 1 1 1 1 1
+1 2
+1 3
+2 4
+2 5
+3 6
+6 7
+1 6
+2 3
+1 6
+1 2
 output
 Copy
-10
 2
-1
+3
+3
+input
+Copy
+10 14
+-160016413 -90133231 -671446275 -314847579 -910548234 121155052 -359359950 83112406 -704889624 145489303
+1 6
+1 10
+10 8
+1 4
+3 4
+2 7
+2 5
+3 2
+9 8
+1 4
+2 2
+2 4
+1 4
+1 10
+2 10
+1 9
+1 6
+2 8
+2 10
+1 5
+1 8
+1 1
+2 5
+output
+Copy
+-2346335269
+-314847579
+-476287915
+-704889624
+121155052
+-1360041415
+228601709
+-2861484545
 Note
-Denote
-φ
-k
-(x)={
-x,
-φ(
-φ
-k−1
-(x)),
-k=0
-k>0
-.
-At first,
-a=[8,1,6,3,7]
-.
-To make sure
+In the first example:
+The initial tree is shown in the following picture:
+The importance of the subtree of
+6
+is
 a
-1
-=
+6
++
 a
-2
-=
+7
+=2
+.
+After rotating the heavy son of
+3
+(which is
+6
+) up, the tree is shown in the following picture:
+The importance of the subtree of
+6
+is
+a
+6
++
 a
 3
-=
++
+a
+7
+=3
+.
+The importance of the subtree of
+2
+is
+a
+2
++
 a
 4
-=
++
 a
 5
-, we can change
-a
-to
-a
-′
-=[
-φ
-3
-(8),
-φ
-0
-(1),
-φ
-2
-(6),
-φ
-2
-(3),
-φ
-3
-(7)]=[1,1,1,1,1]
-, using
-3+0+2+2+3=10
-changes.
-To make sure
-a
-3
-=
-a
-4
-, we can change
-a
-to
-a
-′
-=[
-φ
-0
-(8),
-φ
-0
-(1),
-φ
-1
-(6),
-φ
-1
-(3),
-φ
-0
-(7)]=[8,1,2,2,7]
-, using
-0+0+1+1+0=2
-changes.
-After "1
-1
-3
-",
-a
-is changed to
-a=[
-φ
-1
-(8),
-φ
-1
-(1),
-φ
-1
-(6),
-φ
-0
-(3),
-φ
-0
-(7)]=[4,1,2,3,7]
+=3
 .
-To make sure
-a
-3
-=
-a
-4
-, we can change
-a
-to
-a
-′
-=[
-φ
-0
-(4),
-φ
-0
-(1),
-φ
-0
-(2),
-φ
-1
-(3),
-φ
-0
-(7)]=[4,1,2,2,7]
-, using
-0+0+0+1+0=1
-change.

@@ -1,101 +1,118 @@
-G. No Game No Life
+C. Perform Easily
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let's consider the following game of Alice and Bob on a directed acyclic graph. Each vertex may contain an arbitrary number of chips. Alice and Bob make turns alternating. Alice goes first. In one turn player can move exactly one chip along any edge outgoing from the vertex that contains this chip to the end of this edge. The one who cannot make a turn loses. Both players play optimally.
-Consider the following process that takes place every second on a given graph with
+After battling Shikamaru, Tayuya decided that her flute is too predictable, and replaced it with a guitar. The guitar has
+6
+strings and an infinite number of frets numbered from
+1
+. Fretting the fret number
+j
+on the
+i
+-th string produces the note
+a
+i
++j
+.
+Tayuya wants to play a melody of
 n
-vertices:
-An integer
-v
-is chosen equiprobably from
-[1,n+1]
-.
-If
-v≤n
-, we add a chip to the
-v
--th vertex and go back to step 1.
-If
-v=n+1
-, Alice and Bob play the game with the current arrangement of chips and the winner is determined. After that, the process is terminated.
-Find the probability that Alice will win the game. It can be shown that the answer can be represented as
-P
-Q
-, where
-P
-and
-Q
-are coprime integers and
-Q≢0(mod998244353)
-. Print the value of
-P⋅
-Q
-−1
-mod998244353
-.
+notes. Each note can be played on different string-fret combination. The easiness of performance depends on the difference between the maximal and the minimal indices of used frets. The less this difference is, the easier it is to perform the technique. Please determine the minimal possible difference.
+For example, if
+a=[1,1,2,2,3,3]
+, and the sequence of notes is
+4,11,11,12,12,13,13
+(corresponding to the second example), we can play the first note on the first string, and all the other notes on the sixth string. Then the maximal fret will be
+10
+, the minimal one will be
+3
+, and the answer is
+10−3=7
+, as shown on the picture.
 Input
-The first line contains two integers
-n
-and
-m
- — the number of vertices and edges of the graph (
-1≤n≤
-10
-5
+The first line contains
+6
+space-separated numbers
+a
+1
 ,
-0≤m≤
-10
-5
-).
-The following
-m
-lines contain edges description. The
-i
--th of them contains two integers
-u
-i
-and
-v
-i
- — the beginning and the end vertices of the
-i
--th edge (
+a
+2
+, ...,
+a
+6
+(
 1≤
-u
+a
 i
+≤
+10
+9
+) which describe the Tayuya's strings.
+The second line contains the only integer
+n
+(
+1≤n≤100000
+) standing for the number of notes in the melody.
+The third line consists of
+n
+integers
+b
+1
 ,
-v
+b
+2
+, ...,
+b
+n
+(
+1≤
+b
 i
-≤n
-). It's guaranteed that the graph is acyclic.
+≤
+10
+9
+), separated by space. They describe the notes to be played. It's guaranteed that
+b
+i
+>
+a
+j
+for all
+1≤i≤n
+and
+1≤j≤6
+, in other words, you can play each note on any string.
 Output
-Output a single integer — the probability of Alice victory modulo
-998244353
-.
+Print the minimal possible difference of the maximal and the minimal indices of used frets.
 Examples
 input
 Copy
-1 0
+1 4 100 10 30 5
+6
+101 104 105 110 130 200
 output
 Copy
 0
 input
 Copy
-2 1
-1 2
+1 1 2 2 3 3
+7
+13 4 11 12 11 13 12
 output
 Copy
-332748118
-input
-Copy
-5 5
-1 4
-5 2
-4 3
-1 5
-5 4
-output
-Copy
-931694730
+7
+Note
+In the first sample test it is optimal to play the first note on the first string, the second note on the second string, the third note on the sixth string, the fourth note on the fourth string, the fifth note on the fifth string, and the sixth note on the third string. In this case the
+100
+-th fret is used each time, so the difference is
+100−100=0
+.
+In the second test it's optimal, for example, to play the second note on the first string, and all the other notes on the sixth string. Then the maximal fret will be
+10
+, the minimal one will be
+3
+, and the answer is
+10−3=7
+.

@@ -1,18 +1,129 @@
-F. October 18, 2017
-time limit per test4 seconds
-memory limit per test512 megabytes
+B. XOR Specia-LIS-t
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-It was October 18, 2017. Shohag, a melancholic soul, made a strong determination that he will pursue Competitive Programming seriously, by heart, because he found it fascinating. Fast forward to 4 years, he is happy that he took this road. He is now creating a contest on Codeforces. He found an astounding problem but has no idea how to solve this. Help him to solve the final problem of the round.
-You are given three integers
-n
+YouKn0wWho has an integer sequence
+a
+1
 ,
+a
+2
+,…
+a
+n
+. Now he will split the sequence
+a
+into one or more consecutive subarrays so that each element of
+a
+belongs to exactly one subarray. Let
+k
+be the number of resulting subarrays, and
+h
+1
+,
+h
+2
+,…,
+h
+k
+be the lengths of the longest increasing subsequences of corresponding subarrays.
+For example, if we split
+[2,5,3,1,4,3,2,2,5,1]
+into
+[2,5,3,1,4]
+,
+[3,2,2,5]
+,
+[1]
+, then
+h=[3,2,1]
+.
+YouKn0wWho wonders if it is possible to split the sequence
+a
+in such a way that the bitwise XOR of
+h
+1
+,
+h
+2
+,…,
+h
+k
+is equal to
+0
+. You have to tell whether it is possible.
+The longest increasing subsequence (LIS) of a sequence
+b
+1
+,
+b
+2
+,…,
+b
+m
+is the longest sequence of valid indices
+i
+1
+,
+i
+2
+,…,
+i
+k
+such that
+i
+1
+<
+i
+2
+<…<
+i
 k
 and
-x
-. Find the number, modulo
-998244353
-, of integer sequences
+b
+i
+1
+<
+b
+i
+2
+<…<
+b
+i
+k
+. For example, the LIS of
+[2,5,3,3,5]
+is
+[2,3,5]
+, which has length
+3
+.
+An array
+c
+is a subarray of an array
+b
+if
+c
+can be obtained from
+b
+by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤10000
+)  — the number of test cases.
+The first line of each test case contains a single integer
+n
+(
+2≤n≤
+10
+5
+).
+The second line of each test case contains
+n
+integers
 a
 1
 ,
@@ -21,102 +132,51 @@ a
 ,…,
 a
 n
-such that the following conditions are satisfied:
-0≤
+(
+1≤
 a
 i
-<
-2
-k
-for each integer
-i
-from
-1
-to
-n
-.
-There is no non-empty subsequence in
-a
-such that the bitwise XOR of the elements of the subsequence is
-x
-.
-A sequence
-b
-is a subsequence of a sequence
-c
-if
-b
-can be obtained from
-c
-by deletion of several (possibly, zero or all) elements.
-Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-5
-)  — the number of test cases.
-The first and only line of each test case contains three space-separated integers
-n
-,
-k
-, and
-x
-(
-1≤n≤
+≤
 10
 9
-,
-0≤k≤
-10
-7
-,
-0≤x<
-2
-min(20,k)
 ).
 It is guaranteed that the sum of
-k
-over all test cases does not exceed
-5⋅
+n
+over all test cases doesn't exceed
+3⋅
 10
-7
+5
 .
 Output
-For each test case, print a single integer — the answer to the problem.
+For each test case, print "YES" (without quotes) if it is possible to split into subarrays in the desired way, print "NO" (without quotes) otherwise. You can print each letter in any register (upper or lower).
 Example
 input
 Copy
-6
-2 2 0
-2 1 1
-3 2 3
-69 69 69
-2017 10 18
-5 7 0
+4
+7
+1 3 4 2 2 1 5
+3
+1 3 4
+5
+1 3 2 4 2
+4
+4 3 2 1
 output
 Copy
-6
-1
-15
-699496932
-892852568
-713939942
+YES
+NO
+YES
+YES
 Note
-In the first test case, the valid sequences are
-[1,2]
+In the first test case, YouKn0wWho can split the sequence in the following way:
+[1,3,4]
 ,
-[1,3]
+[2,2]
 ,
-[2,1]
-,
-[2,3]
-,
-[3,1]
-and
-[3,2]
+[1,5]
+. This way, the LIS lengths are
+h=[3,1,2]
+, and the bitwise XOR of the LIS lengths is
+3⊕1⊕2=0
 .
-In the second test case, the only valid sequence is
-[0,0]
-.
+In the second test case, it can be shown that it is impossible to split the sequence into subarrays that will satisfy the condition.

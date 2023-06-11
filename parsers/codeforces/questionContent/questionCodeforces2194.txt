@@ -1,77 +1,109 @@
-G. Number Deletion Game
-time limit per test2 seconds
-memory limit per test512 megabytes
+J. Zero-XOR Array
+time limit per test6 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alice and Bob play a game. They have a set that initially consists of
-n
-integers. The game is played in
-k
-turns. During each turn, the following events happen:
-firstly, Alice chooses an integer from the set. She can choose any integer except for the maximum one. Let the integer chosen by Alice be
+You are given an array of integers
 a
-;
-secondly, Bob chooses an integer from the set. He can choose any integer that is greater than
-a
-. Let the integer chosen by Bob be
-b
-;
-finally, both
-a
-and
-b
-are erased from the set, and the value of
-b−a
-is added to the score of the game.
-Initially, the score is
-0
-. Alice wants to maximize the resulting score, Bob wants to minimize it. Assuming that both Alice and Bob play optimally, calculate the resulting score of the game.
-Input
-The first line contains two integers
+of size
 n
-and
-k
-(
-2≤n≤400
-,
-1≤k≤⌊
-n
-2
-⌋
-) — the initial size of the set and the number of turns in the game.
-The second line contains
-n
-integers
+. This array is non-decreasing, i. e.
 a
 1
-,
+≤
 a
 2
-,…,
+≤⋯≤
 a
 n
+.
+You have to find arrays of integers
+b
+of size
+2n−1
+, such that:
+b
+2i−1
+=
+a
+i
 (
-1≤
+1≤i≤n
+);
+array
+b
+is non-decreasing;
+b
+1
+⊕
+b
+2
+⊕⋯⊕
+b
+2n−1
+=0
+(
+⊕
+denotes bitwise XOR operation: https://en.wikipedia.org/wiki/Exclusive_or. In Kotlin, it is xor function).
+Calculate the number of arrays that meet all the above conditions, modulo
+998244353
+.
+Input
+The first line contains a single integer
+n
+(
+2≤n≤17
+) — the size of the array
+a
+.
+The second line contains
+n
+integers (
+0≤
 a
 i
 ≤
-10
-6
-) — the initial contents of the set. These integers are pairwise distinct.
+2
+60
+−1;
+a
+i
+≤
+a
+i+1
+) — elements of the array
+a
+.
 Output
-Print one integer — the resulting score of the game (assuming that both Alice and Bob play optimally).
+Print a single integer — the number of arrays that meet all the above conditions, modulo
+998244353
+.
 Examples
 input
 Copy
-5 2
-3 4 1 5 2
+3
+0 1 3
 output
 Copy
-4
+2
 input
 Copy
-7 3
-101 108 200 1 201 109 100
+4
+0 3 6 7
 output
 Copy
-283
+6
+input
+Copy
+5
+1 5 9 10 23
+output
+Copy
+20
+input
+Copy
+10
+39 62 64 79 81 83 96 109 120 122
+output
+Copy
+678132

@@ -1,47 +1,128 @@
-Power Sums
+Three-People Contests
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef has n non-negative integers a1, a2, ..., an. He defined the following function f(k) = (a1k + a2k + ... + ank) mod (109 + 7) over them.
-Chef knows the values f(1), f(2), ..., f(n), but he has forgotten the values a1, a2, ..., an.
-Now Chef wants to evaluate the function f over some integers (total Q of them), can you please help him in this?
-Input
-The first line of the input contains an integer T denoting the number of test cases. T test cases follow.
-Each test case consists of three lines.
-The first line contains two space separated integers n and Q.
-The second line contains n space separated integers - the values of f(1), f(2), ..., f(n).
-The third line contains Q space separated integers x1, x2, ..., xq, where xi denotes the number in the i-th query.
-Output
-For each test case, print a single line containing Q space separate integers denoting the values of f(x1), f(x2), ..., f(xq).
+Chef is organizing "Three-People Contests" for his nephews.
+Alice, Bob, and Charles took part in
+N contests, where, in the
+i
+th
+contest, they got
+A
+i
+,
+B
+i
+, and
+C
+i
+points respectively.
+For each person, find the longest subarray
+[L,R], such that the person gets the first place if we only consider the contests in the range
+[L,R]. The length of such subarray is
+(R−L+1), or
+0, if there are no such subarrays.
+A person gets first place if the total points they score in these contests are not less than that of any other contestant.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains one integer
+N — the number of contests organized by Chef.
+The second line of each test case contains an array of
+N integers,
+A
+1
+,A
+2
+,…,A
+N
+, the score of Alice in the
+N contests.
+The third line contains an array of
+N integers,
+B
+1
+,B
+2
+,…,B
+N
+, the score of Bob in the
+N contests.
+The fourth line contains an array of
+N integers,
+C
+1
+,C
+2
+,…,C
+N
+, the score of Charles in the
+N contests.
+Output Format
+For each test case, output on a new line,
+3 space-separated integers, answer for Alice, Bob, and Charles in the same order.
 Constraints
-1 ≤ n ≤ 300
-1 ≤ Q ≤ 30
-0 ≤ f(i) < 109 + 7
-n < xi ≤ 1018
-It is guaranteed that given information is enough to restore the function f and that there exist exactly one such function.
-Subtasks
-Subtask #1: T = 100; xi ≤ 4 (8 points)
-Subtask #2: T = 1; xi ≤ 5000 (42 points)
-Subtask #3: T = 1; 1 ≤ n ≤ 42 (13 points)
-Subtask #4: T = 1; 1 ≤ n ≤ 100 (17 points)
-Subtask #5: T = 1; original constraints (20 points)
+1≤T≤2⋅10
+4
+1≤N≤2⋅10
+5
+0≤A
+i
+,B
+i
+,C
+i
+≤10
+9
+The sum of
+N over all test cases won't exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
-1
-4 3
-4 6 10 18
-5 6 30
-34 66 73741819
+3
+6
+5 5 8 1 3 7
+0 8 1 1 2 0
+8 8 3 9 3 3
+4
+1 1 1 1
+1 1 1 1
+1 1 1 1
+2
+3 3
+2 2
+1 1
+4 1 6
+4 4 4
+2 0 0
 Explanation:
-Test case 1. The initial 4 numbers Chef has are 1, 2, 0, 1, so, the function f was defined as follows: f(k) = (1k + 2k + 0k + 1k) mod (109 + 7) = (2k + 2) mod (109 + 7).
-So, the values given in the input are:
-f(1) = (21 + 2) mod (109 + 7) = 4
-f(2) = (22 + 2) mod (109 + 7) = 6
-f(3) = (23 + 2) mod (109 + 7) = 10
-f(4) = (24 + 2) mod (109 + 7) = 18
-And the values Chef asked you to calculate are:
-f(5) = (25 + 2) mod (109 + 7) = 34
-f(6) = (26 + 2) mod (109 + 7) = 66
-f(30) = (230 + 2) mod (109 + 7) = 1073741826  mod (109 + 7) = 73741819
-Note
-You can read about the modulo operation (mod) here: https://en.wikipedia.org/wiki/Modulo_operation.
+Test case
+1: Alice gets first place in the contests between
+L=3 and
+R=6 as she gets
+8+1+3+7=19 points, while Bob and Charles get
+1+1+2+0=4 and
+3+9+3+3=18 points, respectively. The answer for Alice is
+6−3+1=4.
+Bob gets first place in the contest
+3 with score
+8. Note that in
+L=R=3, Charles also gets
+8 points, so they both get first place. The answer for Bob is
+3−3+1=1.
+Charles wins in
+L=1 and
+R=6, as he gets
+8+8+3+9+3+3=34 points, which is not less than
+5+5+8+1+3+7=29 and
+0+8+1+1+2+0=12. The answer for Charles is
+6−1+1=6.
+Test case
+2: Everyone has a score of
+4 points. Since the score of each person is not less than the score of other
+2 people, everyone gets the first place. Thus,
+L=1 and
+R=4 for everyone. The length of the array is
+4−1+1=4.

@@ -1,92 +1,38 @@
-Recipe for Philosopher Stone
+Palindromeness
 Problem
-With the help of Sheska, Edward now has the research notes of Dr. Marcho. To prevent the secret of Philosopher stone falling into the wrong hands, Marcho has encoded the secret in the form of a list of triplets of numbers. Edward remembers that Dr. Marcho gave him a hint while he was leaving, "Sometimes you should try transmutation rectangles instead of circles, maybe they are better for making philosopher stones". Edward first thought that this was a joke, but he has understood the hint now. He interprets each triplet as the length, breadth, and color of a rectangle centered at the origin. Given below is his interpretation to decode the numbers.
-There are
-N colored rectangles numbered from
-1 to
-N, with the
-i-th rectangle having length
-L
-i
-, breadth
-B
-i
-and color
-C
-i
-. Each rectangle is centered at the origin. That is, if for any rectangle, we draw both diagonals, the diagonals shall intersect at the origin. For example, a rectangle having length 10 and breadth 2 would have its 4 corners as (5, 1), (5, -1), (-5, 1) and (-5, -1).
-The rectangles are placed one over the other. Specifically, the rectangles are placed in the order in which they appear in the input, overlapping the previous rectangles. The rectangle
-i is partially hidden by the rectangle
-j if
-j >
-i. That is, only the colour of the top rectangle is visible in the overlapping region.
-Edward believes that the ratio of the area of each color in the final figure is pointing to some ratio of ingredients for making the philosopher stone.
-Can you find out how many unit squares of each colour are visible in the final figure?
-Input:
-The first line contains
-T, the number of test cases. Then the test cases follow.
-For each test case, the first line consists of
-N, denoting the number of rectangles and
-C denoting the number of colours.
-For each test case,
-N lines follow, the
-i-th of which contains three integers
-L
-i
-,
-B
-i
-and
-C
-i
-describing length, breadth and color of the
-i-th rectangle respectively.
-Output:
-For each test case, output a single line containing
-C space-separated integers denoting the number of unit squares of each color
-1 to
-C visible in the final figure.
+Read problems statements in Mandarin Chinese and Russian.
+Let us define the palindromeness of a string in the following way:
+If the string is not a palindrome, its' palindromeness is zero.
+The palindromeness of an one-letter string is 1.
+The palindromness of a string S of the length greater than one is 1 + "palindromeness of the string that is formed by the first [|S|/2] symbols of S".
+Let us consider some examples for better understanding:
+The palindromeness of the string zxqfd is 0, since the string is not a palindrome.
+The palindromeness of the string a is 1, by definition.
+The palindromeness of the string aa is 2, beucase for "aa" we get 1 + palindromeness of "a", that is one, so we get 2.
+The palindromeness of the string abacaba is 3.
+You are given a string S. Find the sum of the palindromenesses of all the non empty substrings of S (i.e. S[i..j], where i <= j). In other words, you have to calculate the sum of palindromenesses of N * (N + 1) / 2 substrings of S, where N is the length of S.
+Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first and only line of every test case contains a single string S for the corresponding test case.
+Output
+For each test case, output a single line containing an integer corresponding to the answer to the problem.
 Constraints
-1≤T≤50
-1≤N≤10
+1 ≤ T ≤ 3
+S consists only of lower-case Latin letters.
+Subtask 1 (15 points):
+1 ≤ |S| ≤ 100
+Subtask 2 (23 points):
+1 ≤ |S| ≤ 1000
+Subtask 3 (62 points):
+1 ≤ |S| ≤ 105
+Sample 1:
+Input
+Output
+2
+zxqfd
+aba
 5
-1≤C≤100
-2≤L
-i
-≤10
-9
-2≤B
-i
-≤10
-9
-L
-i
-and
-B
-i
-are even for all
-1≤i≤N
-1≤C
-i
-≤C
-Sum of
-N over all test cases doesn't exceed
-10
-6
-Sample Input:
-1
-5 4
-2 2 1
-2 8 3
-10 2 1
-8 4 2
-4 6 4
-Sample Output:
-4 16 4 24
-EXPLANATION:
-![](https://codechef_shared.s3.amazonaws.com/download/HYC/External_contest_images/DCOD2019/image3.png =500x432)
-In the above figure, Green represents color
-1, Blue represents color
-2, Yellow represents color
-3, and Red color represents color
-4.
+5
+Explanation:
+Example case 1: There is no palindrome that occurs as the substring of zxqfd and has the length more than 1. The individual characters are palindromes of the palindromeness of 1.
+Example case 2: The palindromeness of aba is 2 and the sum of the palindromenesses of single characters is 3.

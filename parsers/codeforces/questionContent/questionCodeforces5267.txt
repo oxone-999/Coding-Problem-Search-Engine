@@ -1,45 +1,81 @@
-G. Oleg and chess
-time limit per test6.5 seconds
-memory limit per test256 megabytes
+F. Julia the snail
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Oleg the bank client solves an interesting chess problem: place on n × n chessboard the maximum number of rooks so that they don't beat each other. Of course, no two rooks can share the same cell.
-Remind that a rook standing in the cell (a, b) beats a rook standing in the cell (x, y) if and only if a = x or b = y.
-Unfortunately (of fortunately?) for Oleg the answer in this problem was always n, so the task bored Oleg soon. He decided to make it more difficult by removing some cells from the board. If a cell is deleted, Oleg can't put a rook there, but rooks do beat each other "through" deleted cells.
-Oleg deletes the cells in groups, namely, he repeatedly choose a rectangle with sides parallel to the board sides and deletes all the cells inside the rectangle. Formally, if he chooses a rectangle, lower left cell of which has coordinates (x1, y1), and upper right cell of which has coordinates (x2, y2), then he deletes all such cells with coordinates (x, y) that x1 ≤ x ≤ x2 and y1 ≤ y ≤ y2. It is guaranteed that no cell is deleted twice, i.e. the chosen rectangles do not intersect.
-This version of the problem Oleg can't solve, and his friend Igor is busy at a conference, so he can't help Oleg.
-You are the last hope for Oleg! Help him: given the size of the board and the deleted rectangles find the maximum possible number of rooks that could be placed on the board so that no two rooks beat each other.
+After hard work Igor decided to have some rest.
+He decided to have a snail. He bought an aquarium with a slippery tree trunk in the center, and put a snail named Julia into the aquarium.
+Igor noticed that sometimes Julia wants to climb onto the trunk, but can't do it because the trunk is too slippery. To help the snail Igor put some ropes on the tree, fixing the lower end of the i-th rope on the trunk on the height li above the ground, and the higher end on the height ri above the ground.
+For some reason no two ropes share the same position of the higher end, i.e. all ri are distinct. Now Julia can move down at any place of the trunk, and also move up from the lower end of some rope to its higher end. Igor is proud of his work, and sometimes think about possible movements of the snail. Namely, he is interested in the following questions: «Suppose the snail is on the trunk at height x now. What is the highest position on the trunk the snail can get on if it would never be lower than x or higher than y?» Please note that Julia can't move from a rope to the trunk before it reaches the higher end of the rope, and Igor is interested in the highest position on the tree trunk.
+Igor is interested in many questions, and not always can answer them. Help him, write a program that answers these questions.
 Input
-The first line contains single integer n (1  ≤  n ≤  10000) — the size of the board.
-The second line contains single integer q (0  ≤  q  ≤  10000) — the number of deleted rectangles.
-The next q lines contain the information about the deleted rectangles.
-Each of these lines contains four integers x1, y1, x2 and y2 (1  ≤ x1 ≤ x2 ≤ n, 1  ≤ y1 ≤ y2 ≤ n) — the coordinates of the lower left and the upper right cells of a deleted rectangle.
-If is guaranteed that the rectangles do not intersect.
+The first line contains single integer n (1  ≤  n ≤  100000) — the height of the trunk.
+The second line contains single integer m (1  ≤  m  ≤  100000) — the number of ropes.
+The next m lines contain information about the ropes.
+The i-th of these lines contains two integers li and ri (1  ≤ li ≤ ri ≤ n) — the heights on which the lower and the higher ends of the i-th rope are fixed, respectively. It is guaranteed that all ri are distinct.
+The next line contains single integer q (1  ≤  q  ≤  100000) — the number of questions.
+The next q lines contain information about the questions.
+Each of these lines contain two integers x and y (1  ≤ x ≤ y ≤ n), where x is the height where Julia starts (and the height Julia can't get lower than), and y is the height Julia can't get higher than.
 Output
-In the only line print the maximum number of rooks Oleg can place on the board so that no two rooks beat each other.
+For each question print the maximum reachable for Julia height.
 Examples
-input
-Copy
-5
-5
-1 1 2 1
-1 3 1 5
-4 1 5 5
-2 5 2 5
-3 2 3 5
-output
-Copy
-3
 input
 Copy
 8
 4
-2 2 4 6
-1 8 1 8
-7 1 8 2
-5 4 6 8
+1 2
+3 4
+2 5
+6 7
+5
+1 2
+1 4
+1 6
+2 7
+6 8
 output
 Copy
-8
+2
+2
+5
+5
+7
+input
+Copy
+10
+10
+3 7
+1 4
+1 6
+5 5
+1 1
+3 9
+7 8
+1 2
+3 3
+7 10
+10
+2 4
+1 7
+3 4
+3 5
+2 8
+2 5
+5 5
+3 5
+7 7
+3 10
+output
+Copy
+2
+7
+3
+3
+2
+2
+5
+3
+7
+10
 Note
-Here is the board and the example of rooks placement in the first example:
+The picture of the first sample is on the left, the picture of the second sample is on the right. Ropes' colors are just for clarity, they don't mean anything.

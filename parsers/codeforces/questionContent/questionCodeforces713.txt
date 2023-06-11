@@ -1,181 +1,126 @@
-B. Party
-time limit per test2 seconds
+B. Woeful Permutation
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A club plans to hold a party and will invite some of its
+I wonder, does the falling rain
+Forever yearn for it's disdain?
+Effluvium of the Mind
+You are given a positive integer
 n
-members. The
-n
-members are identified by the numbers
-1,2,…,n
-. If member
-i
-is not invited, the party will gain an unhappiness value of
-a
-i
 .
-There are
-m
-pairs of friends among the
+Find any permutation
+p
+of length
 n
-members. As per tradition, if both people from a friend pair are invited, they will share a cake at the party. The total number of cakes eaten will be equal to the number of pairs of friends such that both members have been invited.
-However, the club's oven can only cook two cakes at a time. So, the club demands that the total number of cakes eaten is an even number.
-What is the minimum possible total unhappiness value of the party, respecting the constraint that the total number of cakes eaten is even?
+such that the sum
+lcm(1,
+p
+1
+)+lcm(2,
+p
+2
+)+…+lcm(n,
+p
+n
+)
+is as large as possible.
+Here
+lcm(x,y)
+denotes the least common multiple (LCM) of integers
+x
+and
+y
+.
+A permutation is an array consisting of
+n
+distinct integers from
+1
+to
+n
+in arbitrary order. For example,
+[2,3,1,5,4]
+is a permutation, but
+[1,2,2]
+is not a permutation (
+2
+appears twice in the array) and
+[1,3,4]
+is also not a permutation (
+n=3
+but there is
+4
+in the array).
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
-10
-4
-). The description of the test cases follows.
-The first line of each test case contains two integers
+1≤t≤1000
+). Description of the test cases follows.
+The only line for each test case contains a single integer
 n
-and
-m
 (
 1≤n≤
 10
 5
-,
-0≤m≤min(
-10
-5
-,
-n(n−1)
-2
-)
-) — the number of club members and pairs of friends.
-The second line of each test case contains
+).
+It is guaranteed that the sum of
 n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤
-10
-4
-) — the unhappiness value array.
-Each of the next
-m
-lines contains two integers
-x
-and
-y
-(
-1≤x,y≤n
-,
-x≠y
-) indicating that
-x
-and
-y
-are friends. Each unordered pair
-(x,y)
-appears at most once in each test case.
-It is guaranteed that both the sum of
-n
-and the sum of
-m
-over all test cases do not exceed
+over all test cases does not exceed
 10
 5
 .
 Output
-For each test case, print a line containing a single integer – the minimum possible unhappiness value of a valid party.
+For each test case print
+n
+integers
+p
+1
+,
+p
+2
+,
+…
+,
+p
+n
+ — the permutation with the maximum possible value of
+lcm(1,
+p
+1
+)+lcm(2,
+p
+2
+)+…+lcm(n,
+p
+n
+)
+.
+If there are multiple answers, print any of them.
 Example
 input
 Copy
-4
-1 0
+2
 1
-3 1
-2 1 3
-1 3
-5 5
-1 2 3 4 5
-1 2
-1 3
-1 4
-1 5
-2 3
-5 5
-1 1 1 1 1
-1 2
-2 3
-3 4
-4 5
-5 1
+2
 output
 Copy
-0
-2
-3
-2
+1 
+2 1 
 Note
-In the first test case, all members can be invited. So the unhappiness value is
-0
+For
+n=1
+, there is only one permutation, so the answer is
+[1]
 .
-In the second test case, the following options are possible:
-invite
-1
-and
-2
-(
-0
-cakes eaten, unhappiness value equal to
-3
-);
-invite
-2
-and
-3
-(
-0
-cakes eaten, unhappiness value equal to
-2
-);
-invite only
-1
-(
-0
-cakes eaten, unhappiness value equal to
-4
-);
-invite only
-2
-(
-0
-cakes eaten, unhappiness value equal to
-5
-);
-invite only
-3
-(
-0
-cakes eaten, unhappiness value equal to
-3
-);
-invite nobody (
-0
-cakes eaten, unhappiness value equal to
-6
-).
-The minimum unhappiness value is achieved by inviting
-2
-and
-3
+For
+n=2
+, there are two permutations:
+[1,2]
+ — the sum is
+lcm(1,1)+lcm(2,2)=1+2=3
 .
-In the third test case, inviting members
-3,4,5
-generates a valid party with the minimum possible unhappiness value.
+[2,1]
+ — the sum is
+lcm(1,2)+lcm(2,1)=2+2=4
+.

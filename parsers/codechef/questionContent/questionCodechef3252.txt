@@ -1,102 +1,128 @@
-Chef Cooks Permutation
+Perfect Imperfections 2
 Problem
-Chef is bored cooking his regular dishes, so he decided to cook permutations instead. Since this is his first time cooking permutations, he takes some help.
-Chef has two permutations
-A and
-B, each of size
-N. Chef cooks a permutation
-C of size
-N
+An array of integers is called good if all its elements are perfect squares.
+You are given an array
+A of
+N integers. In one move, you can do the following:
+Pick a subset of indices of the array, say
+{i
+1
+,i
 2
-by doing the following:
-for i = 1 to N:
-    for j = 1 to N:
-        C[i + (j-1) * N] = A[i] + (B[j] - 1) * N
-Chef is allowed to make some (maybe
-0) moves on permutation
-C. In one move, Chef can:
-Pick two indices
-1≤i<j≤N
+,…,i
+k
+} where
+1≤i
+1
+<i
 2
-and swap the elements
-C
+<…<i
+k
+≤N
+Next, pick an integer
+X>0
+Finally, multiply the value at each chosen index by
+X, i.e, set
+A
 i
-and
-C
 j
-.
-Find the minimum number of moves required to sort permutation
-C in ascending order.
+to
+A
+i
+j
+⋅X for each
+1≤j≤k
+Find the minimum number of moves required to make the array good.
+Note: The value of
+X is fixed for a given move, but can vary between moves.
 Input Format
-The first line of the input contains a single integer
-T - the number of test cases. The description of test cases follows.
-The first line of each test case contains an integer
-N - the length of permutations
-A and
-B.
-The second line of each test case contains
-N integers
+The first line of input contains an integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+Each test case contains two lines of input.
+The first line of each test case contains
+N, the size of the array.
+The second line contains
+N space-separated integers
 A
 1
 ,A
 2
 ,…,A
 N
-, denoting permutation
-A.
-The third line of each test case contains
-N integers
-B
-1
-,B
-2
-,…,B
-N
-, denoting permutation
-B.
+.
 Output Format
-For each test case, print a single integer representing the number of moves required to sort permutation
-C.
+For each testcase, output in a single line the minimum number of moves required to make the array good.
 Constraints
 1≤T≤10
-5
-1≤N≤2⋅10
-5
+4
+1≤N≤10
+4
 1≤A
 i
-,B
-i
-≤N
+≤10
+8
 The sum of
-N over all test cases doesn't exceed
+N across all testcases won't exceed
 10
-6
+4
+.
 Subtasks
-Subtask #1 (100 points): original constraints
+Subtask #1 (100 points): Original constraints
 Sample 1:
 Input
 Output
+5
 3
+15 2 4
+4
+15 14 4 9
 3
-3 1 2
-2 1 3
+10 3 6
 2
-1 2
-1 2
+4 9
 2
-2 1
-2 1
-7
+2 8
+2
+2
+3
 0
-2
+1
 Explanation:
-In the first test case,
-C=[6,4,5,3,1,2,9,7,8]. Minimum number of moves required to sort permutation
-C are
-7.
-In the second test case,
-C=[1,2,3,4]. The permutation is already sorted, so we need
-0 moves.
-In the third test case,
-C=[4,3,2,1]. We need
-2 moves to sort the permutation.
+Test case
+1: One possible sequence of moves is:
+Multiply the first element by
+15
+Multiply the second element by
+2
+The array is now
+[225,4,4]=[15
+2
+,2
+2
+,2
+2
+], which is good.
+Test case
+3: One possible sequence of moves is:
+Multiply the first and third elements by
+8
+Multiply the second and third elements by
+3
+Multiply the first element by
+20
+The array is now
+[1600,9,144]=[40
+2
+,3
+2
+,12
+2
+], which is good.
+Test case
+4: The array is already good, since
+[4,9]=[2
+2
+,3
+2
+], so no moves need to be made.

@@ -1,68 +1,115 @@
-B. NIT Destroys the Universe
+D. Permutation Graph
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-For a collection of integers
-S
-, define
-mex(S)
-as the smallest non-negative integer that does not appear in
-S
-.
-NIT, the cleaver, decides to destroy the universe. He is not so powerful as Thanos, so he can only destroy the universe by snapping his fingers several times.
-The universe can be represented as a 1-indexed array
-a
-of length
+A permutation is an array consisting of
 n
-. When NIT snaps his fingers, he does the following operation on the array:
-He selects positive integers
-l
-and
-r
-such that
-1≤l≤r≤n
-. Let
-w=mex({
+distinct integers from
+1
+to
+n
+in arbitrary order. For example,
+[2,3,1,5,4]
+is a permutation, but
+[1,2,2]
+is not a permutation (
+2
+appears twice in the array) and
+[1,3,4]
+is also not a permutation (
+n=3
+but there is
+4
+in the array).
+You are given a permutation of
+1,2,…,n
+,
+[
 a
-l
+1
 ,
 a
-l+1
+2
 ,…,
 a
-r
-})
-. Then, for all
-l≤i≤r
-, set
-a
+n
+]
+. For integers
 i
-to
-w
-.
-We say the universe is destroyed if and only if for all
-1≤i≤n
 ,
+j
+such that
+1≤i<j≤n
+, define
+mn(i,j)
+as
+min
+k=i
+j
+a
+k
+, and define
+mx(i,j)
+as
+max
+k=i
+j
+a
+k
+.
+Let us build an undirected graph of
+n
+vertices, numbered
+1
+to
+n
+. For every pair of integers
+1≤i<j≤n
+, if
+mn(i,j)=
 a
 i
-=0
-holds.
-Find the minimum number of times NIT needs to snap his fingers to destroy the universe. That is, find the minimum number of operations NIT needs to perform to make all elements in the array equal to
-0
+and
+mx(i,j)=
+a
+j
+both holds, or
+mn(i,j)=
+a
+j
+and
+mx(i,j)=
+a
+i
+both holds, add an undirected edge of length
+1
+between vertices
+i
+and
+j
 .
+In this graph, find the length of the shortest path from vertex
+1
+to vertex
+n
+. We can prove that
+1
+and
+n
+will always be connected via some path, so a shortest path always exists.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
+1≤t≤5⋅
 10
 4
 ). Description of the test cases follows.
 The first line of each test case contains one integer
 n
 (
-1≤n≤
+1≤n≤2.5⋅
 10
 5
 ).
@@ -80,62 +127,59 @@ a
 a
 n
 (
-0≤
+1≤
 a
 i
-≤
-10
-9
-).
+≤n
+). It's guaranteed that
+a
+is a permutation of
+1
+,
+2
+,
+…
+,
+n
+.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
-2⋅
+5⋅
 10
 5
 .
 Output
-For each test case, print one integer — the answer to the problem.
+For each test case, print a single line containing one integer — the length of the shortest path from
+1
+to
+n
+.
 Example
 input
 Copy
-4
-4
-0 0 0 0
 5
-0 1 2 3 4
-7
-0 2 3 0 1 2 0
 1
-1000000000
+1
+2
+1 2
+5
+1 4 2 3 5
+5
+2 1 5 3 4
+10
+7 4 8 1 6 10 3 5 2 9
 output
 Copy
 0
 1
-2
 1
+4
+6
 Note
-In the first test case, we do
-0
-operations and all elements in the array are already equal to
-0
-.
-In the second test case, one optimal way is doing the operation with
-l=2
-,
-r=5
-.
-In the third test case, one optimal way is doing the operation twice, respectively with
-l=4
-,
-r=4
-and
-l=2
-,
-r=6
-.
-In the fourth test case, one optimal way is doing the operation with
-l=1
-,
-r=1
-.
+The following are illustrations of constructed graphs in example test cases.
+the constructed graph in test case 1
+the constructed graph in test case 2
+the constructed graph in test case 3
+the constructed graph in test case 4
+the constructed graph in test case 5

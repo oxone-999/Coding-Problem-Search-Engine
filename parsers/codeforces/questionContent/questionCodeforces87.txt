@@ -1,14 +1,21 @@
-A. Almost Increasing Subsequence
-time limit per test2 seconds
+B. Grid Reconstruction
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A sequence is almost-increasing if it does not contain three consecutive elements
-x,y,z
-such that
-x≥y≥z
-.
-You are given an array
+Consider a
+2×n
+grid, where
+n
+is an even integer. You may place the integers
+1,2,…,2n
+on the grid, using each integer exactly once.
+A path is a sequence of cells achieved by starting at
+(1,1)
+, then repeatedly walking either downwards or to the right, and stopping when
+(2,n)
+is reached. The path should not extend beyond the grid.
+The cost of a path is the alternating sum of the numbers written on the cells in a path. That is, let the numbers written on the cells be
 a
 1
 ,
@@ -16,167 +23,102 @@ a
 2
 ,…,
 a
-n
-and
-q
-queries.
-Each query consists of two integers
-1≤l≤r≤n
-. For each query, find the length of the longest almost-increasing subsequence of the subarray
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-.
-A subsequence is a sequence that can be derived from the given sequence by deleting zero or more elements without changing the order of the remaining elements.
-Input
-The first line of input contains two integers,
-n
-and
-q
-(
-1≤n,q≤200000
-)  — the length of the array
-a
-and the number of queries.
-The second line contains
-n
-integers
+k
+(in the order that it is visited), the cost of the path is
 a
 1
-,
+−
 a
 2
-,…,
++
 a
-n
-(
-1≤
+3
+−
+a
+4
++…=
+∑
+k
+i=1
 a
 i
-≤
-10
-9
-)  — the values of the array
-a
+⋅(−1
+)
+i+1
 .
-Each of the next
-q
-lines contains the description of a query. Each line contains two integers
-l
-and
-r
+Construct a way to place the integers
+1,2,…,2n
+on the grid, such that the minimum cost over all paths from
+(1,1)
+to
+(2,n)
+is maximized. If there are multiple such grids that result in the maximum value, output any of them.
+Input
+The first line contains a single integer
+t
 (
-1≤l≤r≤n
-)  — the query is about the subarray
-a
-l
+1≤t≤1000
+) — the number of test cases. The description of test cases follows.
+The first and the only line of each test case contains a single integer
+n
+(
+2≤n≤
+10
+5
 ,
-a
-l+1
-,…,
-a
-r
+n
+is even) — the number of the columns in the grid.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+5
 .
 Output
-For each of the
-q
-queries, print a line containing the length of the longest almost-increasing subsequence of the subarray
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-.
+For each test case, output
+2
+lines, each containing
+n
+integers — the desired grid. If there are multiple solutions, output any of them.
 Example
 input
 Copy
-9 8
-1 2 4 3 3 5 6 2 1
-1 3
-1 4
-2 5
-6 6
-3 7
-7 8
-1 8
-8 8
+3
+2
+4
+6
 output
 Copy
-3
-4
-3
-1
-4
-2
-7
-1
+3 2
+1 4
+8 2 6 4
+1 5 3 7
+11 5 9 1 7 3
+6 10 2 8 4 12
 Note
-In the first query, the subarray is
-a
-1
-,
-a
-2
-,
-a
-3
-=[1,2,4]
-. The whole subarray is almost-increasing, so the answer is
-3
-.
-In the second query, the subarray is
-a
-1
-,
-a
-2
-,
-a
-3
-,
-a
-4
-=[1,2,4,3]
-. The whole subarray is a almost-increasing, because there are no three consecutive elements such that
-x≥y≥z
-. So the answer is
-4
-.
-In the third query, the subarray is
-a
-2
-,
-a
-3
-,
-a
-4
-,
-a
+In the first test case, there are only two paths from cell
+(1,1)
+to cell
+(2,2)
+. Their costs are
+3−1+4=6
+and
+3−2+4=5
+. Then the minimum cost is
 5
-=[2,4,3,3]
-. The whole subarray is not almost-increasing, because the last three elements satisfy
-4≥3≥3
-. An almost-increasing subsequence of length
-3
-can be found (for example taking
-a
-2
+, which is the maximum possible value.
+In the second test case, there are four paths from cell
+(1,1)
+to cell
+(2,4)
+. Their costs are
+8−1+5−3+7=16
 ,
-a
-3
+8−2+5−3+7=15
 ,
-a
-5
-=[2,4,3]
-). So the answer is
-3
-.
+8−2+6−3+7=16
+, and
+8−2+6−4+7=15
+. Then the minimum value is
+15
+, which is the maximum possible value.

@@ -1,50 +1,156 @@
-Weasel finds Staircase
+In The Green Zone
 Problem
-Read problems statements in mandarin chinese, russian and vietnamese as well.
-Weasel loves histograms. Weasel feels that he is very much out of shape and asks for Chef’s advice. Chef convinced Weasel that the only way to get back in shape is to work out. Weasel decides to follow Chef’s advice and has formulated the greatest workout plan - to reflect his love for histograms - in which he will go down the staircase every day. However, Weasel is not in the best shape, so, for starters, he can only go down at most K steps.
-Formally, a staircase is a set of adjacent rectangles with at most K changes of height. These rectangles should have either increasing or decreasing heights. The rectangles should start from the bottom (see images in the explanation section for clarification), and the height of rectangle at i-th position shouldn't be more than histogrami.
-For each of the T cases, you have to find the greatest area of a staircase that matches the above-mentioned restrictions.
-Input
-The first line of the input contains an integer T, denoting the number of test cases.
-For each of the T cases, you will be given two integers N, denoting the number of elements of the histogram, and K, the maximum number of steps, on the first line.
-For each of the T cases, you will be given histogram array on the second line.
-Output
-For each test case you should print an integer, the maximum area of a staircase that satisfies Weasel's conditions.
+There are
+N cans lying on the X-axis at points
+X
+i
+(1≤i≤N). Each of the N cans is associated with two values
+A
+i
+and
+B
+i
+. Also, the segment between the points
+L and
+R
+(L≤R) is considered to be green zone including the points
+L and
+R. There are two types of operations -
+1. Select a can
+i out of the
+N cans and move it one unit in either direction along the axis, i.e. if before the operation can is at
+X
+i
+then after the operation, it moves to either
+X
+i
++1 or
+X
+i
+−1. This costs
+B
+i
+coins and it can be performed any number of times for each of the cans.
+2. Choose any integer
+k and shift the green zone to the segment between
+L
+′
+and
+R
+′
+, where
+L
+′
+and
+R
+′
+are the mirror images of points
+R and
+L with respect to line
+X=k respectively. This operation should be performed exactly once.
+After all the operations, you get number of coins equal to sum of values of
+A
+i
+of the cans which lie in the final green zone. We define the net coins as:
+Number of coins you get - Number of coins spent
+Find the maximum possible net coins you can earn.
+Input Format
+First line will contain
+T, number of testcases. Then the testcases follow.
+Each of the testcases consists of four lines.
+First lines consists of three integers
+N,
+L and
+R.
+Next line consist of
+N space separated integers
+X
+1
+,X
+2
+,...,X
+N
+.
+Next line consist of
+N space separated integers
+A
+1
+,A
+2
+,...,A
+N
+.
+Next line consist of
+N space separated integers
+B
+1
+,B
+2
+,...,B
+N
+.
+Output Format
+For each testcase, output in a single integer, the maximum number of net coins you can earn.
 Constraints
-1 ≤ T ≤ 5
-1 ≤ N ≤ 105
-0 ≤ K ≤ 50
-The sum of N over all testcases does not exceed 105.
-0 ≤ histogrami ≤ 105
-Subtasks
-Subtask #1 (10 points): K = 0.
-Subtask #2 (30 points): The sum of N over all testcases does not exceed 1,500.
-Subtask #3 (60 points): original constraints
+1≤T≤1000
+1≤N≤3⋅10
+5
+1≤A
+i
+,B
+i
+≤10
+9
+−10
+9
+≤L≤R≤10
+9
+−10
+9
+≤X
+i
+≤10
+9
+Sum of
+N over all test cases does not exceed
+3⋅10
+5
 Sample 1:
 Input
 Output
-4
-5 2
-1 2 3 4 5
-5 3
-9 8 7 6 4
-5 1
-8 7 5 7 8
-4 10
-0 1 1 0
-13
-33
-29
 2
+1 7 10
+2
+6
+1
+3 7 10
+2 8 1
+6 20 1
+1 3 2
+6
+22
 Explanation:
-The cells which form the staircase are colored with yellow. The discarded cells are colored with grey.
-Case 1:
-The computed area is 1 + 2 × 2 + 4 × 2 = 13.
-There are 2 changes of height: we start with a height of 1, we change to 2 and then we change to 4.
-Case 2:
-The computed area is 9 + 7 × 2 + 6 + 4 = 33.
-Case 3:
-The computed area is 7 × 2 + 5 × 3 = 29.
-Here is another possible solution:
-Case 4:
-We take the second and the third cell. We have 0 changes in height. This is a viable solution because we can also have staircases with less than K changes.
+Test case
+1 : Lets choose the axis at
+X=5 and Shift the green zone in the range
+[0,3], such that can lies in green zone. So, there is no need for operation of type
+1 and total number of coins earned is
+A
+1
+, i.e.
+6.
+Test case
+2 : Choose the axis at
+X=8, so the new green zone lies in the region
+[6,9]. Move the can
+1 to
+X=6. Number of coins received is equal to
+A
+1
++A
+2
+and number of coins spent is
+4⋅B
+1
+. So, the net coins earned is
+20+6−4=22. This is also the maximum possible.

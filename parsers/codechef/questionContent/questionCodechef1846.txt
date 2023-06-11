@@ -1,73 +1,26 @@
-Devu and his Class
+Longest Weird Subsequence
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Devu is a class teacher of a class of n students. One day, in the morning prayer of the school, all the students of his class were standing in a line. You are given information of their arrangement by a string s. The string s consists of only letters 'B' and 'G', where 'B' represents a boy and 'G' represents a girl.
-Devu wants inter-gender interaction among his class should to be maximum. So he does not like seeing two or more boys/girls standing nearby (i.e. continuous) in the line. e.g. he does not like the arrangements BBG and GBB, but he likes BG, GBG etc.
-Now by seeing the initial arrangement s of students, Devu may get furious and now he wants to change this arrangement into a likable arrangement. For achieving that, he can swap positions of any two students (not necessary continuous). Let the cost of swapping people from position i with position j (i ≠ j) be c(i, j). You are provided an integer variable type, then the cost of the the swap will be defined by c(i, j) = |j − i|type.
-Please help Devu in finding minimum cost of swaps needed to convert the current arrangement into a likable one.
+Finding the longest increasing subsequence is an old and well-known problem now. Here you will have to do something similar. You need to find the longest weird subsequence (LWS) of the given string. The subsequence is called weird if it can be split into two disjoint subsequences, one of which is non-decreasing and the other one is non-increasing.
+Just for clarity, by subsequence of the given string S we mean any string that can be obtained from S by erasing from it zero or more characters. So empty string is a subsequence of any string and any string is a subsequence of itself. Further, note that we consider only strings composed of lowercase Latin letters and these letters compared by their ASCII codes. So, for example, 'a' is smaller than 'b' and 'p' is larger than 'h'.
+Now let's consider some example. Let S="aabcazcczba". Then "abczz" is its some non-decreasing subsequene, "zccb" is its some non-increasing subsequence and "aabczcczba" is its some weird subsequence since it can be split into non-decreasing subsequence "aabzz" and non-increasing subsequence "cccba": "AABcZccZba" (first subsequence is shown by capital letters just for calrity).
 Input
-The first line of input contains an integer T, denoting the number of test cases. Then T test cases are follow.
-The first line of each test case contains an integer type, denoting the type of the cost function. Then the next line contains string s of length n, denoting the initial arrangement s of students.
-Note that the integer n is not given explicitly in input.
+The first line contains a single positive integer T, the number of test cases. T test cases follow. The only line of each test case contains a non-empty string S composed of lowercase Latin letters.
 Output
-For each test case, print a single line containing the answer of the test case, that is, the minimum cost to convert the current arrangement into a likable one. If it is not possible to convert the current arrangement into a likable one, then print -1 instead of the minimum cost.
-Constraints and Subtasks
-Subtask 1: 25 points
-1 ≤ T ≤ 105
-1 ≤ n ≤ 105
-type = 0
-Sum of n over all the test cases in one test file does not exceed 106.
-Subtask 2: 25 points
-1 ≤ T ≤ 105
-1 ≤ n ≤ 105
-type = 1
-Sum of n over all the test cases in one test file does not exceed 106.
-Subtask 3: 25 points
-1 ≤ T ≤ 105
-1 ≤ n ≤ 105
-type = 2
-Sum of n over all the test cases in one test file does not exceed 106.
-Subtask 4: 25 points
-1 ≤ T ≤ 102
-1 ≤ n ≤ 103
-type can be 0, 1 or 2, that is type ∈ {0, 1, 2}.
-Note type of the first 3 test cases is 0. So c(i, j) = 1. Hence we just have to count minimum number of swaps needed.
+For every test case, output the length of the LWS of the given string.
+Constraints
+1 ≤ T ≤ 10
+1 ≤ length of S ≤ 2000
 Sample 1:
 Input
 Output
-8
-0
-BB
-0
-BG
-0
-BBGG
-1
-BGG
-1
-BGGB
-1
-BBBGG
-2
-BBGG
-2
-BGB
--1
-0
-1
-1
-1
 3
-1
-0
+abc
+cbazyzabc
+ddaabbaacc
+3
+6
+10
 Explanation:
-Example case 1. There is no way to make sure that both the boys does not stand nearby. So answer is -1.
-Example case 2. Arrangement is already valid. No swap is needed. So answer is 0.
-Example case 3. Swap boy at position 1 with girl at position 2. After swap the arrangement will be BGBG which is a valid arrangement. So answer is 1.
-Now type of the next 3 test cases is 1. So c(i, j) = |j ? i|, that is, the absolute value of the difference between i and j.
-Example case 4. Swap boy at position 0 with girl at position 1. After swap the arrangement will be GBG which is a valid arrangement. So answer is |1 - 0| = 1.
-Example case 5. Swap boy at position 0 with girl at position 1. After swap the arrangement will be GBGB which is a valid arrangement. So answer is |1 - 0| = 1.
-Example case 6. Swap boy at position 1 with girl at position 4. After swap the arrangement will be BGBGB which is a valid arrangement. So answer is |4 - 1| = 3.
-Then type of the last 2 test cases is 2. So c(i, j) = (j ? i)2
-Example case 7. Swap boy at position 1 with girl at position 2. After swap the arrangement will be BGBG which is a valid arrangement. So answer is (2 - 1)2 = 1.
-Example case 8. Arrangement is already valid. No swap is needed. So answer is 0.
+First case: The string itself is LWS since it can be split into non-decreasing subsequence "abc" and non-increasing empty subsequence.
+Second case: One of the possible LWS is "cbaabc" since it can be split as "cbaABC". Here we indicate by capital letters non-decreasing subsequence and by lowercase letters non-increasing one. Other possible LWS's are "cbaZZa", "AzyaBC".
+Third case: Here the desired splitting is "ddAABBaaCC".

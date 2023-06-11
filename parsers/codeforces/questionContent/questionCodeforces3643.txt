@@ -1,64 +1,46 @@
-F. Sonya and Informatics
-time limit per test1 second
+A. Neko Finds Grapes
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A girl named Sonya is studying in the scientific lyceum of the Kingdom of Kremland. The teacher of computer science (Sonya's favorite subject!) invented a task for her.
-Given an array
-a
-of length
+On a random day, Neko found
 n
-, consisting only of the numbers
-0
-and
-1
-, and the number
-k
-. Exactly
-k
-times the following happens:
-Two numbers
+treasure chests and
+m
+keys. The
 i
-and
-j
-are chosen equiprobable such that (
-1≤i<j≤n
-).
-The numbers in the
-i
-and
-j
-positions are swapped.
-Sonya's task is to find the probability that after all the operations are completed, the
+-th chest has an integer
 a
-array will be sorted in non-decreasing order. She turned to you for help. Help Sonya solve this problem.
-It can be shown that the desired probability is either
-0
-or it can be represented as
-P
-Q
-, where
-P
-and
-Q
-are coprime integers and
-Q≢0 (mod
-10
-9
-+7)
-.
+i
+written on it and the
+j
+-th key has an integer
+b
+j
+on it. Neko knows those chests contain the powerful mysterious green Grapes, thus Neko wants to open as many treasure chests as possible.
+The
+j
+-th key can be used to unlock the
+i
+-th chest if and only if the sum of the key number and the chest number is an odd number. Formally,
+a
+i
++
+b
+j
+≡1(mod2)
+. One key can be used to open at most one chest, and one chest can be opened at most once.
+Find the maximum number of chests Neko can open.
 Input
-The first line contains two integers
+The first line contains integers
 n
 and
-k
+m
 (
-2≤n≤100,1≤k≤
+1≤n,m≤
 10
-9
-) — the length of the array
-a
-and the number of operations.
+5
+) — the number of chests and the number of keys.
 The second line contains
 n
 integers
@@ -71,81 +53,65 @@ a
 a
 n
 (
-0≤
+1≤
 a
 i
-≤1
-) — the description of the array
-a
-.
-Output
-If the desired probability is
-0
-, print
-0
-, otherwise print the value
-P⋅
-Q
-−1
-(mod
+≤
 10
 9
-+7)
-, where
-P
-and
-Q
-are defined above.
+) — the numbers written on the treasure chests.
+The third line contains
+m
+integers
+b
+1
+,
+b
+2
+,…,
+b
+m
+(
+1≤
+b
+i
+≤
+10
+9
+) — the numbers written on the keys.
+Output
+Print the maximum number of chests you can open.
 Examples
 input
 Copy
-3 2
-0 1 0
+5 4
+9 14 6 2 11
+8 4 7 20
 output
 Copy
-333333336
+3
 input
 Copy
 5 1
-1 1 1 0 0
+2 4 6 8 10
+5
 output
 Copy
-0
+1
 input
 Copy
-6 4
-1 0 0 1 1 0
+1 4
+10
+20 30 40 50
 output
 Copy
-968493834
-Note
-In the first example, all possible variants of the final array
-a
-, after applying exactly two operations:
-(0,1,0)
-,
-(0,0,1)
-,
-(1,0,0)
-,
-(1,0,0)
-,
-(0,1,0)
-,
-(0,0,1)
-,
-(0,0,1)
-,
-(1,0,0)
-,
-(0,1,0)
-. Therefore, the answer is
-3
-9
-=
-1
-3
-.
-In the second example, the array will not be sorted in non-decreasing order after one operation, therefore the answer is
 0
-.
+Note
+In the first example, one possible way to unlock
+3
+chests is as follows:
+Use first key to unlock the fifth chest,
+Use third key to unlock the second chest,
+Use fourth key to unlock the first chest.
+In the second example, you can use the only key to unlock any single chest (note that one key can't be used twice).
+In the third example, no key can unlock the given chest.

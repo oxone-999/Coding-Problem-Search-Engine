@@ -1,124 +1,143 @@
-C. Save the Magazines
-time limit per test2 seconds
-memory limit per test256 megabytes
+D. Problem with Random Tests
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Monocarp has been collecting rare magazines for quite a while, and now he has decided to sell them. He distributed the magazines between
+You are given a string
+s
+consisting of
 n
-boxes, arranged in a row. The
-i
--th box contains
-a
-i
-magazines. Some of the boxes are covered with lids, others are not.
-Suddenly it started to rain, and now Monocarp has to save as many magazines from the rain as possible. To do this, he can move the lids between boxes as follows: if the
-i
--th box was covered with a lid initially, he can either move the lid from the
-i
--th box to the box
-(i−1)
-(if it exists), or keep the lid on the
-i
--th box. You may assume that Monocarp can move the lids instantly at the same moment, and no lid can be moved more than once. If a box will be covered with a lid after Monocarp moves the lids, the magazines in it will be safe from the rain; otherwise they will soak.
-You have to calculate the maximum number of magazines Monocarp can save from the rain.
-Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of the testcases.
-The first line of each testcase contains a single integer
-n
-(
-1≤n≤2⋅
-10
-5
-) — the number of boxes.
-The second line contains a string of
-n
-characters 0 and/or 1. If the
-i
--th character is 1, the
-i
--th box is initially covered with a lid. If the
-i
--th character is 0, the
-i
--th box is initially not covered.
-The third line contains a sequence of integers
-a
+characters. Each character of
+s
+is either 0 or 1.
+A substring of
+s
+is a contiguous subsequence of its characters.
+You have to choose two substrings of
+s
+(possibly intersecting, possibly the same, possibly non-intersecting — just any two substrings). After choosing them, you calculate the value of the chosen pair of substrings as follows:
+let
+s
 1
-,
-a
+be the first substring,
+s
 2
-,…,
-a
-n
-(
-1≤
-a
+be the second chosen substring, and
+f(
+s
 i
-≤
-10
-4
-), where
-a
+)
+be the integer such that
+s
 i
-is the number of magazines in the
+is its binary representation (for example, if
+s
 i
--th box.
-The sum of
-n
-over all testcases doesn't exceed
-2⋅
-10
-5
+is 11010,
+f(
+s
+i
+)=26
+);
+the value is the bitwise OR of
+f(
+s
+1
+)
+and
+f(
+s
+2
+)
 .
+Calculate the maximum possible value you can get, and print it in binary representation without leading zeroes.
+Input
+The first line contains one integer
+n
+— the number of characters in
+s
+.
+The second line contains
+s
+itself, consisting of exactly
+n
+characters 0 and/or 1.
+All non-example tests in this problem are generated randomly: every character of
+s
+is chosen independently of other characters; for each character, the probability of it being 1 is exactly
+1
+2
+.
+This problem has exactly
+40
+tests. Tests from
+1
+to
+3
+are the examples; tests from
+4
+to
+40
+are generated randomly. In tests from
+4
+to
+10
+,
+n=5
+; in tests from
+11
+to
+20
+,
+n=1000
+; in tests from
+21
+to
+40
+,
+n=
+10
+6
+.
+Hacks are forbidden in this problem.
 Output
-For each testcase, print one integer — the maximum number of magazines Monocarp can save from the rain.
-Example
+Print the maximum possible value you can get in binary representation without leading zeroes.
+Examples
+input
+Copy
+5
+11010
+output
+Copy
+11111
+input
+Copy
+7
+1110010
+output
+Copy
+1111110
 input
 Copy
 4
-5
-01110
-10 5 8 9 6
-6
-011011
-20 10 9 30 20 19
-4
 0000
-100 100 100 100
-4
-0111
-5 4 5 1
 output
 Copy
-27
-80
 0
-14
 Note
-In the first testcase of the example, Monocarp can move the lid from the second box to the first box, so the boxes
+In the first example, you can choose the substrings 11010 and 101.
+f(
+s
 1
+)=26
 ,
-3
-and
-4
-are covered, and
-10+8+9=27
-magazines are saved.
-In the second testcase, Monocarp can move the lid from the second box to the first box, then from the third box to the second box, then from the fifth box to the fourth box, and then from the sixth box to the fifth box. The boxes
-1
-,
+f(
+s
 2
-,
-4
-and
-5
-will be covered, so
-20+10+30+20=80
-magazines can be saved.
-There are no lids in the third testcase, so it's impossible to save even a single magazine.
+)=5
+, their bitwise OR is
+31
+, and the binary representation of
+31
+is 11111.
+In the second example, you can choose the substrings 1110010 and 11100.

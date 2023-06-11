@@ -1,36 +1,111 @@
-Bishops
+Kuroni and the Cowsheds
 Problem
-Last night, the Chef had a strange dream. He got lost in a Chess Kingdom where the chess pieces lived together on a huge chess board. In that dream, the Chef met the King and asked him for help. Unfortunately, The King really admired the cooking skills of the Chef and wanted The Chef to cook for him every day. The King gave the Chef a task and said that the Chef could leave only after solving it. The task of the King required a lot of calculations and The Chef thought he would have to stay in the Chess Kingdom forever. Hopefully, the Chef woke up and realized that it was just a dream. No! Actually, it was a nightmare. The Chef could not sleep in the rest of the night, worrying that he might meet the King again. Thus, the Chef really needs your help to finish the task of the King.
-The task that the King gave to the Chef is described as follows. The Chess Kingdom is a N × N chess board. The rows are numbered by integers from 1 to N, inclusive, from the top to the bottom. Similarly, the columns are numbered by integers from 1 to N, inclusive, from the left to the right. The cell at the intersection of the row i and the column j is denoted as cell (i, j). The Chess Kingdom is guarded by K bishops standing at K different cells of the board. Additionally, There are M other chess pieces standing on M different cells on the board. The bishop can move any number of squares (maybe zero) diagonally, but can not leap over other pieces. In other words, a bishop at the cell (a, b) can move to the cell (u, v) if we can pick the vector (x, y) in the set {(1, 1), (1, -1), (-1, 1), (-1, -1)} so that u = a + t * x and v = b + t * y for some positive integer t and all the cells of the form (a + i * x, b + i * y) in which 1 ≤ i ≤ t are empty. The cell is called safe if some of the bishops can move to this cell. In particular, all cells, where bishops stand, are safe. The Chef is required to find the number of safe cells.
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Kuroni is not only a great programmer, but also a successful farmer. He has already built
+N cowsheds for his cows (numbered
+1 through
+N) and equipped them with air conditioners, refrigerators, etc. Despite these facilities and high quality food, the cows do not seem to be happy. Through research, Kuroni figured out that cows also need the Internet to communicate and chit-chat with each other.
+Kuroni decided to build a LAN system of connections between his cowsheds. Initially, no connections between the cowsheds exist. Then, for
+Q days (numbered
+1 through
+Q), Kuroni adds some direct connections without removing any previously added connections. For each valid
+i, on the
+i-th day, Kuroni adds direct bidirectional connections between pairs of cowsheds
+(L
+i
+,R
+i
+),(L
+i
++1,R
+i
+−1),…,(R
+i
+,L
+i
+), i.e.
+(L
+i
++k,R
+i
+−k) for each
+0≤k≤R
+i
+−L
+i
+. (There may be multiple connections between some pairs of cowsheds. A cowshed may also be connected with itself.)
+Two cowsheds are in the same group if they can communicate with each other either directly or indirectly ― through connections with some other cowsheds. At the end of each day, tell Kuroni the number of groups of cowsheds that currently exist.
 Input
-The first line of the input contains three space-separated integers N, K, M. Each of the following K lines contains two space separated integers X and Y, meaning that the cell (X, Y) is occupied by the bishop. Each of the following M lines contains two space separated integers U and V, meaning that the cell (U, V) is occupied by other chess piece.
+The first line of the input contains two space-separated integers
+N and
+Q.
+Q lines follow. For each valid
+i, the
+i-th of these lines contains two space-separated integers
+L
+i
+and
+R
+i
+.
 Output
-Output a single line containing the number of safe cells.
+Print
+Q lines. For each valid
+i, the
+i-th of these lines should contain a single integer ― the number of groups at the end of the
+i-th day.
 Constraints
-1 ≤ N ≤ 109
-1 ≤ K ≤ 100000 (105)
-0 ≤ M ≤ 100000 (105)
-1 ≤ X, Y, U, V ≤ N
-Positions of all K + M chess pieces are distinct
-Example
-Input:
-8 2 2
-5 4
-4 6
-2 4
+2≤N≤2⋅10
+5
+1≤Q≤5⋅10
+5
+1≤L
+i
+≤R
+i
+≤N for each valid
+i
+Subtasks
+Subtask #1 (50 points):
+N,Q≤5,000
+Subtask #2 (50 points): original constraints
+Example Input 1
+5 3
+3 5
+4 5
+2 3
+Example Output 1
+4
+3
+2
+Example Input 2
 7 3
-Output:
-22
+3 5
+3 7
+1 7
+Example Output 2
+6
+4
+2
 Explanation
--------*
-*--o--**
--*--***-
---*-*b--
----b*-*-
---***--*
--*o--*--
-*-----*-
-Bishops are marked by 'b'.
-Other chess pieces are marked by 'o'.
-Safe cells other than bishop positions are marked by '*'.
-There are 20 '*'s plus two 'b's so the result is 22.
+Example case 1: On the first, second and third day, one connection between cowsheds
+(3,5),
+(4,5) and
+(2,3) is added, respectively.
+Example case 2:
+On the first day, only one connection between cowsheds
+(3,5) is added, so the number of group is
+6.
+On the second day, connections between pairs of cowsheds
+(3,7) and
+(4,6) are added, so we now have four groups
+{1},
+{2},
+{3,5,7} and
+{4,6}.
+On the third day, connections between pairs of cowsheds
+(1,7),
+(2,6) and
+(3,5) are added, so at the end, there are only two groups
+{1,3,5,7} and
+{2,4,6}.

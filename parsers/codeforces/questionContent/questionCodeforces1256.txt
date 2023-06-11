@@ -1,117 +1,173 @@
-F. LEGOndary Grandmaster
+H. Reindeer Games
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-After getting bored by playing with crayons, you decided to switch to Legos! Today, you're working with a long strip, with height
+There are
+n
+reindeer at the North Pole, all battling for the highest spot on the "Top Reindeer" leaderboard on the front page of CodeNorses (a popular competitive reindeer gaming website). Interestingly, the "Top Reindeer" title is just a measure of upvotes and has nothing to do with their skill level in the reindeer games, but they still give it the utmost importance.
+Currently, the
+i
+-th reindeer has a score of
+a
+i
+. You would like to influence the leaderboard with some operations. In an operation, you can choose a reindeer, and either increase or decrease his score by
 1
-and length
-n
-, some positions of which are occupied by
-1
-by
-1
-Lego pieces.
-In one second, you can either remove two adjacent Lego pieces from the strip (if both are present), or add two Lego pieces to adjacent positions (if both are absent). You can only add or remove Lego's at two adjacent positions at the same time, as otherwise your chubby fingers run into precision issues.
-You want to know exactly how much time you'll spend playing with Legos. You value efficiency, so given some starting state and some ending state, you'll always spend the least number of seconds to transform the starting state into the ending state. If it's impossible to transform the starting state into the ending state, you just skip it (so you spend
-0
-seconds).
-The issue is that, for some positions, you don't remember whether there were Legos there or not (in either the starting state, the ending state, or both). Over all pairs of (starting state, ending state) that are consistent with your memory, find the total amount of time it will take to transform the starting state to the ending state. Print this value modulo
-1000000007
-(
-10
-9
-+7
-).
-Input
-The first line contains one integer
-t
-(
-1≤t≤1000
-) — the number of test cases. Then
-t
-cases follow.
-The first line of each test case contains one integer
-n
-(
-2≤n≤2000
-) — the size of the Lego strip.
-The second line of each test case contains a string
-s
-of length
-n
-, consisting of the characters 0, 1, and ? — your memory of the starting state:
-1 represents a position that definitely has a Lego piece,
-0 represents a position that definitely does not have a Lego piece,
-and ? represents a position that you don't remember.
-The third line of each test case contains a string
-t
-of length
-n
-, consisting of the characters 0, 1, and ? — your memory of the ending state. It follows a similar format to the starting state.
-It's guaranteed that the sum of
-n
-over all test cases doesn't exceed
-2000
+unit. Negative scores are allowed.
+You have
+m
+requirements for the resulting scores. Each requirement is given by an ordered pair
+(u,v)
+, meaning that after all operations, the score of reindeer
+u
+must be less than or equal to the score of reindeer
+v
 .
-Output
-For each test case, output a single integer — the answer to the problem modulo
-1000000007
+Your task is to perform the minimum number of operations so that all requirements will be satisfied.
+Input
+The first line contains two integers
+n
+and
+m
 (
+2≤n≤1000
+;
+1≤m≤1000
+) — the number of reindeer and requirements, respectively.
+The second line contains
+n
+integers
+a
+1
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
 10
 9
-+7
-).
-Example
+), where
+a
+i
+is the current score of reindeer
+i
+.
+The next
+m
+lines describe the requirements.
+The
+i
+-th of these lines contains two integers
+u
+i
+and
+v
+i
+(
+1≤
+u
+i
+,
+v
+i
+≤n
+;
+u
+i
+≠
+v
+i
+) — the two reindeer of the
+i
+-th requirement.
+Output
+Print
+n
+integers
+b
+1
+,…,
+b
+n
+(
+−
+10
+15
+≤
+b
+i
+≤
+10
+15
+), where
+b
+i
+is the score of the
+i
+-th reindeer after all operations.
+If there are multiple solutions achieving the minimum number of operations, you may output any.
+We can prove that there is always an optimal solution such that
+|
+b
+i
+|≤
+10
+15
+for all
+i
+.
+Examples
 input
 Copy
-6
-2
-00
-11
-3
-???
-???
-3
-??1
-0?0
-4
-??0?
-??11
-5
-?????
-0??1?
-10
-?01??01?1?
-??100?1???
+7 6
+3 1 4 9 2 5 6
+1 2
+2 3
+3 4
+4 5
+5 6
+6 7
 output
 Copy
-1
-16
-1
-14
-101
-1674
-Note
-For the first test case,
-00
-is the only possible starting state, and
-11
-is the only possible ending state. It takes exactly one operation to change
-00
-to
-11
-.
-For the second test case, some of the possible starting and ending state pairs are:
-(000,011)
- — takes
-1
-operation.
-(001,100)
- — takes
-2
-operations.
-(010,000)
- — takes
-0
-operations, as it's impossible to achieve the ending state.
+1 1 4 4 4 5 6 
+input
+Copy
+4 6
+6 5 8 2
+3 1
+4 1
+3 2
+1 2
+2 3
+3 1
+output
+Copy
+6 6 6 2 
+input
+Copy
+10 18
+214 204 195 182 180 176 176 172 169 167
+1 2
+3 2
+4 2
+5 2
+6 2
+7 2
+8 2
+9 2
+10 2
+6 1
+6 2
+6 3
+6 4
+6 5
+6 7
+6 8
+6 9
+6 10
+output
+Copy
+204 204 195 182 180 167 176 172 169 167 

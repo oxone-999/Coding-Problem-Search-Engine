@@ -1,48 +1,56 @@
-Chef and medium problem
+Transmutation Diamonds
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Chef has an array. The size of the array is equal to N.
-Chef wants to make M queries. Each query has one of the two types:
-1 l r - Calculate some interesting function F for subarray indexed from l to r inclusive.
-2 l r - Modify the given array by removing all elements having indices in range from l to r and then putting these numbers at the beginning of
-array. Order of all other elements remains same.
-For example: you have array [1, 2, 3, 4, 5, 6, 7, 8] and query (2 4 6), the modified array after the operation will look like [4, 5, 6, 1, 2, 3, 7, 8].
-All queries that goes after this query have to be executed at new the array.
-Now let us define the interesting function F :).
-Lets call this array B. Let |B| be the length of array B. Assume that B is having 1 based indexing.
-Then the function F can be calculated by following code.
-X = 1;
-for (i = 2; i <= |B|; i++)
-    if (B[i] != B[i - 1])
-        X++;
-X is the output of the function F(B).
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains a single integer N denoting the number of the elements in given array.
-Next line contains N numbers denoting the elements of given array.
-Third line contains a single integer M denoting the number of queries that Chef wants to execute.
-Each of the next M lines describes a single query in the format given in the statement.
-Output
-For each query of the first type output a single line containing a single integer - the answer for this query.
-Constraints
-1 ≤ T ≤ 3
-1 ≤ Ai ≤ 109
-1 ≤ l ≤ r ≤ N
-Subtask 1 (15 points): 1 ≤ N ≤ 100, 1 ≤ M ≤ 1000
-Subtask 2 (25 points): 1 ≤ N, M ≤ 105, there is no query with type 2
-Subtask 3 (60 points): 1 ≤ N, M ≤ 105
-Example
+In the nation of Amestris, people use transmutation circles for Alchemy, but in different regions of the world people have come up with different methods to harness the power of Alchemy. In the nation of Creta, people use transmutation figures in the shape of a Diamond for Alchemy. Refer to the figure below to understand what a Diamond shape is.
+The Elric brothers come to Creta to learn this form of Alchemy. For this Alchemy, the energy from the earth is used to deconstruct and reconstruct. Now Edward is standing on a piece of land, which can be considered to be a grid of dimensions
+N×N. For every block of land, the energy it provides in Alchemy is given as
+E
+ij
+. It is also possible for some block to have negative energy, in which case it reduces the power of transmutation diamond.
+The power of transmutation from a diamond figure is the sum of the energies (
+E
+ij
+) of the blocks included in the transmutation diamond.
+Given that the diamond figure must lie inside the grid, find the maximum power that can be generated from any diamond transmutation figure. Note that you have to select at least one block.
+![](https://codechef_shared.s3.amazonaws.com/download/HYC/External_contest_images/DCOD2019/problem3.png =500x500)
+The above figure shows the smallest three diamonds shapes that can be formed in the grid.
 Input:
-1
-5
-1 1 2 1 3
-5
-1 1 5
-1 2 4
-2 2 3
-1 1 5
-2 3 3
+The first line contains
+T, the number of test cases. Then the test cases follow.
+For each test case, the first line contains
+N.
+Then
+N lines follow, each containing
+N integers. The
+j
+th
+integer in the
+i
+th
+line is
+E
+ij
+.
 Output:
-4
+For each test case, output a single integer in a new line, denoting the maximum transmutation power of any diamond in the grid.
+Constraints
+1≤T≤100
+1≤N≤100
+∣E
+ij
+∣≤10
+9
+Sample Input:
 3
-4
+1
+-5
+2
+-1 1
+1 1
+3
+-10 5 -50
+26 -1 10
+0 6 45
+Sample Output:
+-5
+1
+46

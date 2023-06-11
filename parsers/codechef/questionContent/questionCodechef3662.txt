@@ -1,125 +1,112 @@
-Bracket Removal
+Permutation Segments
 Problem
-A bracket sequence is made up of brackets '(' and ')'. We define a balanced bracket sequence as following:
-Empty sequence is balanced
-If
-P is balanced,
-(P) is also balanced
-If
-P and
-Q are balanced,
-PQ is also balanced
-For example, empty sequence and sequences
-(())(),
-(),
-(()(())) are balanced. While
-(,
-)(,
-(() and
-(()))( are not balanced.
-You are given a bracket sequence
-A of length
+You are given two positive integers
 N and
-Q queries of the following form:
-L
-R : You are given two integers
-L and
-R
-(1≤L≤R≤N). Find the number of pairs
-(X,Y), where
-L≤X≤Y≤R, such that after removing the substring
-A
-[X,Y]
-from
-A
-[L,R]
-, the substring
-A
-[L,R]
-becomes a balanced bracket sequence.
-In other words, for a given
-(L,R), find the number of pairs
-(X,Y), such that the sequence
-A
-L
-…A
-X−1
-A
-Y+1
-…A
-R
-is a balanced bracket sequence.
-Note that,
-A
-[L,R]
-denotes the substring
-A
-L
-A
-L+1
-A
-L+2
-…A
-R−1
-A
-R
-.
+K.
+A permutation
+P
+1
+,P
+2
+,…,P
+N
+of the first
+N positive integers is good if the following statement holds:
+Consider a set
+S of segments, initially empty. For each
+i (
+1≤i≤N−1) such that
+P
+i
+<P
+i+1
+, insert the segment
+[P
+i
+,P
+i+1
+] into
+S. Then, if you pick any subset of
+K segments of
+S, their intersection is empty.
+Count the number of good permutations
+P
+1
+,P
+2
+,…,P
+N
+. As the result can be very large, you should print it modulo
+998244353.
 Input Format
-The first line of the input contains
-2 integers
+The only line contains two space-separated integers
 N and
-Q - the size of the bracket sequence and the number of queries.
-The second line contains a string
-A of length
-N - the bracket sequence.
-The next
-Q lines, each contain two integers
-L
-i
-and
-R
-i
-- the queries to be answered.
+K.
 Output Format
-Print
-Q lines, representing the answer for each query.
+Print a single integer: the number of good permutations, modulo
+998244353.
 Constraints
-1≤N≤3000
-1≤Q≤2⋅10
-6
-Subtasks
-Subtask #1 (100 points): original constraints
+2≤N≤2000
+1≤K≤N−1
 Sample 1:
 Input
 Output
-10 3
-(()()((())
-1 4
-3 9
-7 9
+7 1
 1
-2
-3
-Explanation:
-The first query is
-(()(. The only valid removal is (()(. Thus, answer for this query is
-1.
-The second query is
-)()(((). The valid removals are )()((() and )()((().
-The third query is
-((). The valid removals are ((), (() and (().
 Sample 2:
 Input
 Output
-10 3
-(())()()()
-1 10
-3 5
-5 10
-20
-1
-9
+7 3
+2820
+Sample 3:
+Input
+Output
+4 2
+13
+Sample 4:
+Input
+Output
+2000 900
+739821732
 Explanation:
-The first query is the whole string.
-Some examples of valid removals in the first query are (())()()() and (())()()(). Total number of valid removals in this case is
-20.
+Test case
+1:
+There is only
+1 good permutation:
+[7,6,5,4,3,2,1]. In fact,
+S is empty, so all its subsets of size
+K=1 have an empty intersection. For any other permutation,
+S contains at least
+1 segment, and so at least one subset of
+S has a non-empty intersection.
+Test case
+2:
+There are
+2820 good permutations. One of them is
+[1,2,4,3,5,6,7]: the set
+S is
+{[1,2],[2,4],[3,5],[5,6],[6,7]}, and any subset of size
+k=3 has an empty intersection. On the other hand,
+[1,7,2,3,5,4,6] is not a good permutation: the set
+S is
+{[1,7],[2,3],[3,5],[4,6]}, and the segments in the subset
+{[1,7],[3,5],[4,6]} of size
+3 has a non-empty intersection (i.e.,
+[4,5]).
+Test case
+3:
+There are
+13 good permutations:
+[1,4,3,2],
+[2,1,4,3],
+[2,4,3,1],
+[3,1,4,2],
+[3,2,1,4],
+[3,2,4,1],
+[3,4,1,2],
+[3,4,2,1],
+[4,1,3,2],
+[4,2,1,3],
+[4,2,3,1],
+[4,3,1,2],
+[4,3,2,1].

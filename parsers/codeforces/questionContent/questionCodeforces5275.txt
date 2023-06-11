@@ -1,33 +1,29 @@
-E. Colored Balls
-time limit per test1 second
+D. Paths in a Complete Binary Tree
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are n boxes with colored balls on the table. Colors are numbered from 1 to n. i-th box contains ai balls, all of which have color i. You have to write a program that will divide all balls into sets such that:
-each ball belongs to exactly one of the sets,
-there are no empty sets,
-there is no set containing two (or more) balls of different colors (each set contains only balls of one color),
-there are no two sets such that the difference between their sizes is greater than 1.
-Print the minimum possible number of sets.
+T is a complete binary tree consisting of n vertices. It means that exactly one vertex is a root, and each vertex is either a leaf (and doesn't have children) or an inner node (and has exactly two children). All leaves of a complete binary tree have the same depth (distance from the root). So n is a number such that n + 1 is a power of 2.
+In the picture you can see a complete binary tree with n = 15.
+Vertices are numbered from 1 to n in a special recursive way: we recursively assign numbers to all vertices from the left subtree (if current vertex is not a leaf), then assign a number to the current vertex, and then recursively assign numbers to all vertices from the right subtree (if it exists). In the picture vertices are numbered exactly using this algorithm. It is clear that for each size of a complete binary tree exists exactly one way to give numbers to all vertices. This way of numbering is called symmetric.
+You have to write a program that for given n answers q queries to the tree.
+Each query consists of an integer number ui (1 ≤ ui ≤ n) and a string si, where ui is the number of vertex, and si represents the path starting from this vertex. String si doesn't contain any characters other than 'L', 'R' and 'U', which mean traverse to the left child, to the right child and to the parent, respectively. Characters from si have to be processed from left to right, considering that ui is the vertex where the path starts. If it's impossible to process a character (for example, to go to the left child of a leaf), then you have to skip it. The answer is the number of vertex where the path represented by si ends.
+For example, if ui = 4 and si = «UURL», then the answer is 10.
 Input
-The first line contains one integer number n (1 ≤ n ≤ 500).
-The second line contains n integer numbers a1, a2, ... , an (1 ≤ ai ≤ 109).
+The first line contains two integer numbers n and q (1 ≤ n ≤ 1018, q ≥ 1). n is such that n + 1 is a power of 2.
+The next 2q lines represent queries; each query consists of two consecutive lines. The first of these two lines contains ui (1 ≤ ui ≤ n), the second contains non-empty string si. si doesn't contain any characters other than 'L', 'R' and 'U'.
+It is guaranteed that the sum of lengths of si (for each i such that 1 ≤ i ≤ q) doesn't exceed 105.
 Output
-Print one integer number — the minimum possible number of sets.
-Examples
+Print q numbers, i-th number must be the answer to the i-th query.
+Example
 input
 Copy
-3
-4 7 8
-output
-Copy
-5
-input
-Copy
-2
-2 7
-output
-Copy
+15 2
 4
-Note
-In the first example the balls can be divided into sets like that: one set with 4 balls of the first color, two sets with 3 and 4 balls, respectively, of the second color, and two sets with 4 balls of the third color.
+UURL
+8
+LRLLLLLLLL
+output
+Copy
+10
+5

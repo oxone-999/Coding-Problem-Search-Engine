@@ -1,131 +1,134 @@
-E. Gardener and Tree
-time limit per test4 seconds
+G. Changing Brackets
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A tree is an undirected connected graph in which there are no cycles. This problem is about non-rooted trees. A leaf of a tree is a vertex that is connected to at most one vertex.
-The gardener Vitaly grew a tree from
-n
-vertices. He decided to trim the tree. To do this, he performs a number of operations. In one operation, he removes all leaves of the tree.
-Example of a tree.
-For example, consider the tree shown in the figure above. The figure below shows the result of applying exactly one operation to the tree.
-The result of applying the operation "remove all leaves" to the tree.
-Note the special cases of the operation:
-applying an operation to an empty tree (of
+A sequence of round and square brackets is given. You can change the sequence by performing the following operations:
+change the direction of a bracket from opening to closing and vice versa without changing the form of the bracket: i.e. you can change '(' to ')' and ')' to '('; you can change '[' to ']' and ']' to '['. The operation costs
 0
-vertices) does not change it;
-applying an operation to a tree of one vertex removes this vertex (this vertex is treated as a leaf);
-applying an operation to a tree of two vertices removes both vertices (both vertices are treated as leaves).
-Vitaly applied
-k
-operations sequentially to the tree. How many vertices remain?
+burles.
+change any square bracket to round bracket having the same direction: i.e. you can change '[' to '(' but not from '(' to '['; similarly, you can change ']' to ')' but not from ')' to ']'. The operation costs
+1
+burle.
+The operations can be performed in any order any number of times.
+You are given a string
+s
+of the length
+n
+and
+q
+queries of the type "l r" where
+1≤l<r≤n
+. For every substring
+s[l…r]
+, find the minimum cost to pay to make it a correct bracket sequence. It is guaranteed that the substring
+s[l…r]
+has an even length.
+The queries must be processed independently, i.e. the changes made in the string for the answer to a question
+i
+don't affect the queries
+j
+(
+j>i
+). In other words, for every query, the substring
+s[l…r]
+is given from the initially given string
+s
+.
+A correct bracket sequence is a sequence that can be built according the following rules:
+an empty sequence is a correct bracket sequence;
+if "s" is a correct bracket sequence, the sequences "(s)" and "[s]" are correct bracket sequences.
+if "s" and "t" are correct bracket sequences, the sequence "st" (the concatenation of the sequences) is a correct bracket sequence.
+E.g. the sequences "", "(()[])", "[()()]()" and "(())()" are correct bracket sequences whereas "(", "[(])" and ")))" are not.
 Input
 The first line contains one integer
 t
 (
-1≤t≤
-10
-4
+1≤t≤100
 ) — the number of test cases. Then
 t
 test cases follow.
-Each test case is preceded by an empty line.
-Each test case consists of several lines. The first line of the test case contains two integers
-n
-and
-k
+For each test case, the first line contains a non-empty string
+s
+containing only round ('(', ')') and square ('[', ']') brackets. The length of the string doesn't exceed
+10
+6
+. The string contains at least
+2
+characters.
+The second line contains one integer
+q
 (
-1≤n≤4⋅
+1≤q≤2⋅
 10
 5
-,
-1≤k≤2⋅
-10
-5
-) — the number of vertices in the tree and the number of operations, respectively. Then
-n−1
+) — the number of queries.
+Then
+q
 lines follow, each of them contains two integers
-u
+l
 and
-v
+r
 (
-1≤u,v≤n
-,
-u≠v
-) which describe a pair of vertices connected by an edge. It is guaranteed that the given graph is a tree and has no loops or multiple edges.
-It is guaranteed that the sum of
+1≤l<r≤n
+where
 n
-from all test cases does not exceed
-4⋅
+is the length of
+s
+). It is guaranteed that the substring
+s[l…r]
+has even length.
+It is guaranteed that the sum of the lengths of all strings given in all test cases doesn't exceed
+10
+6
+. The sum of all
+q
+given in all test cases doesn't exceed
+2⋅
 10
 5
 .
 Output
-For each test case output on a separate line a single integer — the number of vertices that remain in the tree after applying
-k
-operations.
+For each test case output in a separate line for each query one integer
+x
+(
+x≥0
+) — the minimum cost to pay to make the given substring a correct bracket sequence.
 Example
 input
 Copy
-6
-
-14 1
-1 2
+3
+([))[)()][]]
+3
+1 12
+4 9
+3 6
+))))))
+2
 2 3
-2 4
-4 5
-4 6
-2 7
-7 8
-8 9
-8 10
-3 11
-3 12
-1 13
-13 14
-
-2 200000
+1 4
+[]
+1
 1 2
-
-3 2
-1 2
-2 3
-
-5 1
-5 1
-3 2
-2 1
-5 4
-
-6 2
-5 1
-2 5
-5 6
-4 2
-3 4
-
-7 1
-4 3
-5 1
-1 3
-6 1
-1 7
-2 1
 output
 Copy
-7
 0
-0
-3
-1
 2
+1
+0
+0
+0
 Note
-The first test case is considered in the statement.
-The second test case contains a tree of two vertices.
-200000
-operations are applied to it. The first one removes all two vertices, the other operations do not change the tree.
-In the third test case, a tree of three vertices is given. As a result of the first operation, only
-1
-vertex remains in it (with the index
+Consider the first test case. The first query describes the whole given string, the string can be turned into the following correct bracket sequence: "([()])()[[]]". The forms of the brackets aren't changed so the cost of changing is
+0
+.
+The second query describes the substring ")[)()]". It may be turned into "(()())", the cost is equal to
 2
-), the second operation makes the tree empty.
+.
+The third query describes the substring "))[)". It may be turned into "()()", the cost is equal to
+1
+.
+The substrings of the second test case contain only round brackets. It's possible to prove that any sequence of round brackets having an even length may be turned into a correct bracket sequence for the cost of
+0
+burles.
+In the third test case, the single query describes the string "[]" that is already a correct bracket sequence.

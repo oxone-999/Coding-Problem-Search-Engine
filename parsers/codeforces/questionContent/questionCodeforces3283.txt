@@ -1,109 +1,197 @@
-B. Shooting
+C. White Sheet
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Recently Vasya decided to improve his pistol shooting skills. Today his coach offered him the following exercise. He placed
-n
-cans in a row on a table. Cans are numbered from left to right from
-1
-to
-n
-. Vasya has to knock down each can exactly once to finish the exercise. He is allowed to choose the order in which he will knock the cans down.
-Vasya knows that the durability of the
-i
--th can is
-a
-i
-. It means that if Vasya has already knocked
-x
-cans down and is now about to start shooting the
-i
--th one, he will need
+There is a white sheet of paper lying on a rectangle table. The sheet is a rectangle with its sides parallel to the sides of the table. If you will take a look from above and assume that the bottom left corner of the table has coordinates
+(0,0)
+, and coordinate axes are left and bottom sides of the table, then the bottom left corner of the white sheet has coordinates
 (
-a
-i
-⋅x+1)
-shots to knock it down. You can assume that if Vasya starts shooting the
-i
--th can, he will be shooting it until he knocks it down.
-Your task is to choose such an order of shooting so that the number of shots required to knock each of the
-n
-given cans down exactly once is minimum possible.
-Input
-The first line of the input contains one integer
-n
-(2≤n≤1000)
-— the number of cans.
-The second line of the input contains the sequence
-a
+x
 1
 ,
-a
-2
-,…,
-a
-n
-(1≤
-a
-i
-≤1000)
-, where
-a
-i
-is the durability of the
-i
--th can.
-Output
-In the first line print the minimum number of shots required to knock each of the
-n
-given cans down exactly once.
-In the second line print the sequence consisting of
-n
-distinct integers from
+y
 1
-to
-n
-— the order of indices of cans that minimizes the number of shots required. If there are several answers, you can print any of them.
+)
+, and the top right —
+(
+x
+2
+,
+y
+2
+)
+.
+After that two black sheets of paper are placed on the table. Sides of both black sheets are also parallel to the sides of the table. Coordinates of the bottom left corner of the first black sheet are
+(
+x
+3
+,
+y
+3
+)
+, and the top right —
+(
+x
+4
+,
+y
+4
+)
+. Coordinates of the bottom left corner of the second black sheet are
+(
+x
+5
+,
+y
+5
+)
+, and the top right —
+(
+x
+6
+,
+y
+6
+)
+.
+Example of three rectangles.
+Determine if some part of the white sheet can be seen from the above after the two black sheets are placed. The part of the white sheet can be seen if there is at least one point lying not strictly inside the white sheet and strictly outside of both black sheets.
+Input
+The first line of the input contains four integers
+x
+1
+,
+y
+1
+,
+x
+2
+,
+y
+2
+(0≤
+x
+1
+<
+x
+2
+≤
+10
+6
+,0≤
+y
+1
+<
+y
+2
+≤
+10
+6
+)
+— coordinates of the bottom left and the top right corners of the white sheet.
+The second line of the input contains four integers
+x
+3
+,
+y
+3
+,
+x
+4
+,
+y
+4
+(0≤
+x
+3
+<
+x
+4
+≤
+10
+6
+,0≤
+y
+3
+<
+y
+4
+≤
+10
+6
+)
+— coordinates of the bottom left and the top right corners of the first black sheet.
+The third line of the input contains four integers
+x
+5
+,
+y
+5
+,
+x
+6
+,
+y
+6
+(0≤
+x
+5
+<
+x
+6
+≤
+10
+6
+,0≤
+y
+5
+<
+y
+6
+≤
+10
+6
+)
+— coordinates of the bottom left and the top right corners of the second black sheet.
+The sides of each sheet of paper are parallel (perpendicular) to the coordinate axes.
+Output
+If some part of the white sheet can be seen from the above after the two black sheets are placed, print "YES" (without quotes). Otherwise print "NO".
 Examples
 input
 Copy
-3
-20 10 20
+2 2 4 4
+1 1 3 5
+3 1 5 5
 output
 Copy
-43
-1 3 2 
+NO
 input
 Copy
-4
-10 10 10 10
+3 3 7 5
+0 0 4 6
+0 0 7 4
 output
 Copy
-64
-2 1 4 3 
+YES
 input
 Copy
-6
-5 4 5 4 4 5
+5 2 10 5
+3 1 7 6
+8 1 11 7
 output
 Copy
-69
-6 1 3 5 2 4 
+YES
 input
 Copy
-2
-1 4
+0 0 1000000 1000000
+0 0 499999 1000000
+500000 0 1000000 1000000
 output
 Copy
-3
-2 1 
+YES
 Note
-In the first example Vasya can start shooting from the first can. He knocks it down with the first shot because he haven't knocked any other cans down before. After that he has to shoot the third can. To knock it down he shoots
-20⋅1+1=21
-times. After that only second can remains. To knock it down Vasya shoots
-10⋅2+1=21
-times. So the total number of shots is
-1+21+21=43
-.
-In the second example the order of shooting does not matter because all cans have the same durability.
+In the first example the white sheet is fully covered by black sheets.
+In the second example the part of the white sheet can be seen after two black sheets are placed. For example, the point
+(6.5,4.5)
+lies not strictly inside the white sheet and lies strictly outside of both black sheets.

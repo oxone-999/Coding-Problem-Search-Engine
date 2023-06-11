@@ -1,47 +1,194 @@
-A. Regular Bracket Sequence
-time limit per test1 second
-memory limit per test512 megabytes
+D. Ceil Divisions
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A bracket sequence is called regular if it is possible to obtain correct arithmetic expression by inserting characters + and 1 into this sequence. For example, sequences (())(), () and (()(())) are regular, while )(, (() and (()))( are not. Let's call a regular bracket sequence "RBS".
-You are given a sequence
-s
-of
+You have an array
+a
+1
+,
+a
+2
+,…,
+a
 n
-characters (, ), and/or ?. There is exactly one character ( and exactly one character ) in this sequence.
-You have to replace every character ? with either ) or ( (different characters ? can be replaced with different brackets). You cannot reorder the characters, remove them, insert other characters, and each ? must be replaced.
-Determine if it is possible to obtain an RBS after these replacements.
+where
+a
+i
+=i
+.
+In one step, you can choose two indices
+x
+and
+y
+(
+x≠y
+) and set
+a
+x
+=⌈
+a
+x
+a
+y
+⌉
+(ceiling function).
+Your goal is to make array
+a
+consist of
+n−1
+ones and
+1
+two in no more than
+n+5
+steps. Note that you don't have to minimize the number of steps.
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
 1≤t≤1000
 ) — the number of test cases.
-Each test case consists of one line containing
-s
+The first and only line of each test case contains the single integer
+n
 (
-2≤|s|≤100
-) — a sequence of characters (, ), and/or ?. There is exactly one character ( and exactly one character ) in this sequence.
+3≤n≤2⋅
+10
+5
+) — the length of array
+a
+.
+It's guaranteed that the sum of
+n
+over test cases doesn't exceed
+2⋅
+10
+5
+.
 Output
-For each test case, print YES if it is possible to obtain a regular bracket sequence, or NO otherwise}.
-You may print each letter in any case (for example, YES, Yes, yes, yEs will all be recognized as positive answer).
+For each test case, print the sequence of operations that will make
+a
+as
+n−1
+ones and
+1
+two in the following format: firstly, print one integer
+m
+(
+m≤n+5
+) — the number of operations; next print
+m
+pairs of integers
+x
+and
+y
+(
+1≤x,y≤n
+;
+x≠y
+) (
+x
+may be greater or less than
+y
+) — the indices of the corresponding operation.
+It can be proven that for the given constraints it's always possible to find a correct sequence of operations.
 Example
 input
 Copy
-5
-()
-(?)
-(??)
-??()
-)?(?
+2
+3
+4
 output
 Copy
-YES
-NO
-YES
-YES
-NO
+2
+3 2
+3 2
+3
+3 4
+4 2
+4 2
 Note
-In the first test case, the sequence is already an RBS.
-In the third test case, you can obtain an RBS as follows: ()() or (()).
-In the fourth test case, you can obtain an RBS as follows: ()().
+In the first test case, you have array
+a=[1,2,3]
+. For example, you can do the following:
+choose
+3
+,
+2
+:
+a
+3
+=⌈
+a
+3
+a
+2
+⌉=2
+and array
+a=[1,2,2]
+;
+choose
+3
+,
+2
+:
+a
+3
+=⌈
+2
+2
+⌉=1
+and array
+a=[1,2,1]
+.
+You've got array with
+2
+ones and
+1
+two in
+2
+steps.
+In the second test case,
+a=[1,2,3,4]
+. For example, you can do the following:
+choose
+3
+,
+4
+:
+a
+3
+=⌈
+3
+4
+⌉=1
+and array
+a=[1,2,1,4]
+;
+choose
+4
+,
+2
+:
+a
+4
+=⌈
+4
+2
+⌉=2
+and array
+a=[1,2,1,2]
+;
+choose
+4
+,
+2
+:
+a
+4
+=⌈
+2
+2
+⌉=1
+and array
+a=[1,2,1,1]
+.

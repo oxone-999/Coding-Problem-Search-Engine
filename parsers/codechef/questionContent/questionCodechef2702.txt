@@ -1,94 +1,84 @@
-Counting Graphs
+Absolute Min Max
 Problem
 Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-One day, Tanya was studying graph theory. She is very inquisitive, so the following problem soon came to her mind.
-Find the number of undirected unweighted connected simple graphs with
-N vertices (numbered
-1 through
-N) and
-M edges, such that for each
-i (
-2≤i≤N), the shortest path from vertex
-1 to vertex
-i is unique and its length is equal to
+Chef is given a sequence of integers
 A
-i
-. In other words, for each
-i (
-2≤i≤N), there should be exactly one path with length
+1
+,A
+2
+,…,A
+N
+.
+Chef considers a contiguous subsequence
 A
-i
-between vertices
-1 and
-i, and there should be no paths with smaller length between these vertices.
-Two graphs with
-N vertices are distinct if we can find two vertices
-u and
-v such that there is an edge between these vertices in one graph, but not in the other graph.
-Since the answer could be very large, compute it modulo
-1,000,000,007 (
-10
-9
-+7).
+l
+,A
+l+1
+,…,A
+r
+(where
+1≤l≤r≤N) fruitful if it satisfies the condition
+∣A
+l
+−A
+r
+∣=max(A
+l
+,A
+l+1
+,…,A
+r
+)−min(A
+l
+,A
+l+1
+,…,A
+r
+).
+Please help Chef find the number of fruitful contiguous subsequences of the sequence
+A.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-M.
+The first line of each test case contains a single integer
+N.
 The second line contains
-N−1 space-separated integers
+N space-separated integers
 A
-2
+1
 ,A
-3
+2
 ,…,A
 N
 .
 Output
-For each test case, print a single line containing one integer ― the number of graphs modulo
-10
-9
-+7.
+For each test case, print a single line containing one integer ― the number of fruitful contiguous subsequences.
 Constraints
-1≤T≤1,000
-2≤N≤10
-5
-N−1≤M≤min(2⋅10
-5
-,
-2
-N(N−1)
-)
+1≤T≤10
+1≤N≤250,000
 1≤A
 i
-≤N−1 for each valid
+≤10
+9
+for each valid
 i
-the sum of
-N over all test cases does not exceed
-2⋅10
-5
-the sum of
-M over all test cases does not exceed
-2⋅10
-5
 Subtasks
-Subtask #1 (50 points):
-M=N−1
-Subtask #2 (50 points): original constraints
+Subtask #1 (20 points):
+N≤2,000
+Subtask #2 (80 points): original constraints
 Sample 1:
 Input
 Output
+1
 3
-4 3
-1 2 1
-4 6
-1 2 1
-3 2
-2 2
-2
-0
-0
+1 2 3
+6
 Explanation:
-Example case 1: The two graphs which satisfy all conditions are:
+Example case 1: All contiguous subsequences, i.e.
+[1],
+[2],
+[3],
+[1,2],
+[2,3] and
+[1,2,3], are fruitful.

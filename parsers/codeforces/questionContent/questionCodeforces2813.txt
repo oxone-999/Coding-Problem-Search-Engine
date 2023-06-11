@@ -1,194 +1,164 @@
-B. Homecoming
+B. String Modification
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-After a long party Petya decided to return home, but he turned out to be at the opposite end of the town from his home. There are
-n
-crossroads in the line in the town, and there is either the bus or the tram station at each crossroad.
-The crossroads are represented as a string
+Vasya has a string
 s
 of length
 n
-, where
-s
-i
-=A
-, if there is a bus station at
-i
--th crossroad, and
-s
-i
-=B
-, if there is a tram station at
-i
--th crossroad. Currently Petya is at the first crossroad (which corresponds to
-s
-1
-) and his goal is to get to the last crossroad (which corresponds to
-s
-n
+. He decides to make the following modification to the string:
+Pick an integer
+k
+, (
+1≤k≤n
 ).
-If for two crossroads
+For
 i
-and
-j
-for all crossroads
-i,i+1,…,j−1
-there is a bus station, one can pay
-a
-roubles for the bus ticket, and go from
-i
--th crossroad to the
-j
--th crossroad by the bus (it is not necessary to have a bus station at the
-j
--th crossroad). Formally, paying
-a
-roubles Petya can go from
-i
-to
-j
-if
-s
-t
-=A
-for all
-i≤t<j
-.
-If for two crossroads
-i
-and
-j
-for all crossroads
-i,i+1,…,j−1
-there is a tram station, one can pay
-b
-roubles for the tram ticket, and go from
-i
--th crossroad to the
-j
--th crossroad by the tram (it is not necessary to have a tram station at the
-j
--th crossroad). Formally, paying
-b
-roubles Petya can go from
-i
-to
-j
-if
-s
-t
-=B
-for all
-i≤t<j
-.
-For example, if
-s
-="AABBBAB",
-a=4
-and
-b=3
-then Petya needs:
-buy one bus ticket to get from
+from
 1
 to
-3
-,
-buy one tram ticket to get from
-3
-to
-6
-,
-buy one bus ticket to get from
-6
-to
-7
-.
-Thus, in total he needs to spend
-4+3+4=11
-roubles. Please note that the type of the stop at the last crossroad (i.e. the character
+n−k+1
+, reverse the substring
+s[i:i+k−1]
+of
 s
-n
-) does not affect the final expense.
-Now Petya is at the first crossroad, and he wants to get to the
-n
--th crossroad. After the party he has left with
-p
-roubles. He's decided to go to some station on foot, and then go to home using only public transport.
-Help him to choose the closest crossroad
-i
-to go on foot the first, so he has enough money to get from the
-i
--th crossroad to the
-n
--th, using only tram and bus tickets.
+. For example, if string
+s
+is qwer and
+k=2
+, below is the series of transformations the string goes through:
+qwer (original string)
+wqer (after reversing the first substring of length
+2
+)
+weqr (after reversing the second substring of length
+2
+)
+werq (after reversing the last substring of length
+2
+)
+Hence, the resulting string after modifying
+s
+with
+k=2
+is werq.
+Vasya wants to choose a
+k
+such that the string obtained after the above-mentioned modification is lexicographically smallest possible among all choices of
+k
+. Among all such
+k
+, he wants to choose the smallest one. Since he is busy attending Felicity 2020, he asks for your help.
+A string
+a
+is lexicographically smaller than a string
+b
+if and only if one of the following holds:
+a
+is a prefix of
+b
+, but
+a≠b
+;
+in the first position where
+a
+and
+b
+differ, the string
+a
+has a letter that appears earlier in the alphabet than the corresponding letter in
+b
+.
 Input
-Each test contains one or more test cases. The first line contains the number of test cases
+Each test contains multiple test cases.
+The first line contains the number of test cases
 t
 (
-1≤t≤
-10
-4
-).
-The first line of each test case consists of three integers
-a,b,p
+1≤t≤5000
+). The description of the test cases follows.
+The first line of each test case contains a single integer
+n
 (
-1≤a,b,p≤
-10
-5
-) — the cost of bus ticket, the cost of tram ticket and the amount of money Petya has.
-The second line of each test case consists of one string
+1≤n≤5000
+) — the length of the string
 s
-, where
+.
+The second line of each test case contains the string
 s
-i
-=A
-, if there is a bus station at
-i
--th crossroad, and
-s
-i
-=B
-, if there is a tram station at
-i
--th crossroad (
-2≤|s|≤
-10
-5
-).
-It is guaranteed, that the sum of the length of strings
-s
-by all test cases in one test doesn't exceed
-10
-5
+of
+n
+lowercase latin letters.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+5000
 .
 Output
-For each test case print one number — the minimal index
-i
-of a crossroad Petya should go on foot. The rest of the path (i.e. from
-i
-to
-n
-he should use public transport).
+For each testcase output two lines:
+In the first line output the lexicographically smallest string
+s
+′
+achievable after the above-mentioned modification.
+In the second line output the appropriate value of
+k
+(
+1≤k≤n
+) that you chose for performing the modification. If there are multiple values of
+k
+that give the lexicographically smallest string, output the smallest value of
+k
+among them.
 Example
 input
 Copy
+6
+4
+abab
+6
+qwerty
 5
-2 2 1
-BB
-1 1 1
-AB
-3 2 8
-AABBBBAABB
-5 3 4
-BBBBB
-2 1 1
-ABABAB
+aaaaa
+6
+alaska
+9
+lfpbavjsm
+1
+p
 output
 Copy
-2
+abab
 1
+ertyqw
 3
+aaaaa
 1
+aksala
 6
+avjsmbpfl
+5
+p
+1
+Note
+In the first testcase of the first sample, the string modification results for the sample abab are as follows :
+for
+k=1
+: abab
+for
+k=2
+: baba
+for
+k=3
+: abab
+for
+k=4
+: baba
+The lexicographically smallest string achievable through modification is abab for
+k=1
+and
+3
+. Smallest value of
+k
+needed to achieve is hence
+1
+.

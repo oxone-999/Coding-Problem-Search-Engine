@@ -1,111 +1,224 @@
-C1. Skyscrapers (easy version)
-time limit per test1 second
+E. Concatenation with intersection
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is an easier version of the problem. In this version
-n≤1000
-The outskirts of the capital are being actively built up in Berland. The company "Kernel Panic" manages the construction of a residential complex of skyscrapers in New Berlskva. All skyscrapers are built along the highway. It is known that the company has already bought
-n
-plots along the highway and is preparing to build
-n
-skyscrapers, one skyscraper per plot.
-Architects must consider several requirements when planning a skyscraper. Firstly, since the land on each plot has different properties, each skyscraper has a limit on the largest number of floors it can have. Secondly, according to the design code of the city, it is unacceptable for a skyscraper to simultaneously have higher skyscrapers both to the left and to the right of it.
-Formally, let's number the plots from
-1
-to
-n
-. Then if the skyscraper on the
-i
--th plot has
+Vasya had three strings
 a
-i
-floors, it must hold that
+,
+b
+and
+s
+, which consist of lowercase English letters. The lengths of strings
 a
-i
-is at most
+and
+b
+are equal to
+n
+, the length of the string
+s
+is equal to
 m
-i
-(
-1≤
-a
-i
-≤
-m
-i
-). Also there mustn't be integers
-j
-and
-k
-such that
-j<i<k
-and
-a
-j
->
-a
-i
-<
-a
-k
-. Plots
-j
-and
-k
-are not required to be adjacent to
-i
 .
-The company wants the total number of floors in the built skyscrapers to be as large as possible. Help it to choose the number of floors for each skyscraper in an optimal way, i.e. in such a way that all requirements are fulfilled, and among all such construction plans choose any plan with the maximum possible total number of floors.
-Input
-The first line contains a single integer
-n
-(
-1≤n≤1000
-) — the number of plots.
-The second line contains the integers
-m
+Vasya decided to choose a substring of the string
+a
+, then choose a substring of the string
+b
+and concatenate them. Formally, he chooses a segment
+[
+l
 1
 ,
-m
-2
-,…,
-m
-n
+r
+1
+]
 (
 1≤
-m
-i
+l
+1
 ≤
-10
-9
-) — the limit on the number of floors for every possible number of floors for a skyscraper on each plot.
-Output
-Print
-n
-integers
+r
+1
+≤n
+) and a segment
+[
+l
+2
+,
+r
+2
+]
+(
+1≤
+l
+2
+≤
+r
+2
+≤n
+), and after concatenation he obtains a string
+a[
+l
+1
+,
+r
+1
+]+b[
+l
+2
+,
+r
+2
+]=
 a
-i
- — the number of floors in the plan for each skyscraper, such that all requirements are met, and the total number of floors in all skyscrapers is the maximum possible.
-If there are multiple answers possible, print any of them.
+l
+1
+a
+l
+1
++1
+…
+a
+r
+1
+b
+l
+2
+b
+l
+2
++1
+…
+b
+r
+2
+.
+Now, Vasya is interested in counting number of ways to choose those segments adhering to the following conditions:
+segments
+[
+l
+1
+,
+r
+1
+]
+and
+[
+l
+2
+,
+r
+2
+]
+have non-empty intersection, i.e. there exists at least one integer
+x
+, such that
+l
+1
+≤x≤
+r
+1
+and
+l
+2
+≤x≤
+r
+2
+;
+the string
+a[
+l
+1
+,
+r
+1
+]+b[
+l
+2
+,
+r
+2
+]
+is equal to the string
+s
+.
+Input
+The first line contains integers
+n
+and
+m
+(
+1≤n≤500000,2≤m≤2⋅n
+) — the length of strings
+a
+and
+b
+and the length of the string
+s
+.
+The next three lines contain strings
+a
+,
+b
+and
+s
+, respectively. The length of the strings
+a
+and
+b
+is
+n
+, while the length of the string
+s
+is
+m
+.
+All strings consist of lowercase English letters.
+Output
+Print one integer — the number of ways to choose a pair of segments, which satisfy Vasya's conditions.
 Examples
 input
 Copy
-5
-1 2 3 2 1
+6 5
+aabbaa
+baaaab
+aaaaa
 output
 Copy
-1 2 3 2 1 
+4
 input
 Copy
-3
-10 6 8
+5 4
+azaza
+zazaz
+azaz
 output
 Copy
-10 6 6 
+11
+input
+Copy
+9 12
+abcabcabc
+xyzxyzxyz
+abcabcayzxyz
+output
+Copy
+2
 Note
-In the first example, you can build all skyscrapers with the highest possible height.
-In the second test example, you cannot give the maximum height to all skyscrapers as this violates the design code restriction. The answer
-[10,6,6]
-is optimal. Note that the answer of
-[6,6,8]
-also satisfies all restrictions, but is not optimal.
+Let's list all the pairs of segments that Vasya could choose in the first example:
+[2,2]
+and
+[2,5]
+;
+[1,2]
+and
+[2,4]
+;
+[5,5]
+and
+[2,5]
+;
+[5,6]
+and
+[3,5]
+;

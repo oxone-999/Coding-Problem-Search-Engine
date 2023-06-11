@@ -1,142 +1,123 @@
-C. Xor Tree
-time limit per test2 seconds
+E. Long Recovery
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-For a given sequence of distinct non-negative integers
-(
-b
-1
+A patient has been infected with an unknown disease. His body can be seen as an infinite grid of triangular cells which looks as follows:
+Two cells are neighboring if they share a side. Therefore, each cell (
+x
 ,
-b
-2
-,…,
-b
-k
-)
-we determine if it is good in the following way:
-Consider a graph on
-k
-nodes, with numbers from
-b
-1
-to
-b
-k
-written on them.
-For every
-i
-from
-1
-to
-k
-: find such
-j
+y
+) has exactly three neighbors:
 (
-1≤j≤k
+x+1
 ,
-j≠i
-), for which
-(
-b
-i
-⊕
-b
-j
+y
 )
-is the smallest among all such
-j
-, where
-⊕
-denotes the operation of bitwise XOR (https://en.wikipedia.org/wiki/Bitwise_operation#XOR). Next, draw an undirected edge between vertices with numbers
-b
-i
-and
-b
-j
-in this graph.
-We say that the sequence is good if and only if the resulting graph forms a tree (is connected and doesn't have any simple cycles).
-It is possible that for some numbers
-b
-i
-and
-b
-j
-, you will try to add the edge between them twice. Nevertheless, you will add this edge only once.
-You can find an example below (the picture corresponding to the first test case).
-Sequence
-(0,1,5,2,6)
-is not good as we cannot reach
-1
-from
-5
-.
-However, sequence
-(0,1,5,2)
-is good.
-You are given a sequence
 (
-a
-1
+x−1
 ,
-a
-2
-,…,
-a
-n
+y
 )
-of distinct non-negative integers. You would like to remove some of the elements (possibly none) to make the remaining sequence good. What is the minimum possible number of removals required to achieve this goal?
-It can be shown that for any sequence, we can remove some number of elements, leaving at least
+(
+x+1
+,
+y−1
+) if
+x
+is even and (
+x−1
+,
+y+1
+) otherwise.
+Initially some cells are infected, all the others are healthy. The process of recovery begins. Each second, for exactly one cell (even though there might be multiple cells that could change its state) one of the following happens:
+A healthy cell with at least
 2
-, so that the remaining sequence is good.
+infected neighbors also becomes infected.
+An infected cell with at least
+2
+healthy neighbors also becomes healthy.
+If no such cell exists, the process of recovery stops. Patient is considered recovered if the process of recovery has stopped and all the cells are healthy.
+We're interested in a worst-case scenario: is it possible that the patient never recovers, or if it's not possible, what is the maximum possible duration of the recovery process?
 Input
-The first line contains a single integer
+The first line contains one integer
 n
-(
-2≤n≤200,000
-) — length of the sequence.
-The second line contains
-n
-distinct non-negative integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
+(1≤n≤250000)
+ — the number of infected cells.
+The
 i
-≤
-10
-9
-) — the elements of the sequence.
+-th of the next
+n
+lines contains two space-separated integers
+x
+i
+and
+y
+i
+(0≤
+x
+i
+,
+y
+i
+<500)
+, meaning that cell
+(
+x
+i
+,
+y
+i
+)
+is infected. All cells
+(
+x
+i
+,
+y
+i
+)
+are distinct, and all other cells are considered healthy.
 Output
-You should output exactly one integer — the minimum possible number of elements to remove in order to make the remaining sequence good.
+If it is possible that the organism never fully recovers from the disease, print SICK. Otherwise, you should print RECOVERED and in the next line an integer
+k
+ — the longest possible recovery period, modulo
+998244353
+.
 Examples
 input
 Copy
-5
-0 1 5 2 6
+4
+0 0
+1 0
+2 0
+0 1
 output
 Copy
-1
+RECOVERED
+4
 input
 Copy
-7
-6 9 8 7 3 5 2
+3
+1 0
+3 0
+1 1
 output
 Copy
-2
+SICK
 Note
-Note that numbers which you remove don't impact the procedure of telling whether the resulting sequence is good.
-It is possible that for some numbers
-b
-i
-and
-b
-j
-, you will try to add the edge between them twice. Nevertheless, you will add this edge only once.
+For the first testcase, the following drawings describe the longest possible recovery process. It can be proven that there are no recovery periods of length
+5
+or longer, and the organism always recovers in this testcase.
+↓
+↓
+↓
+↓
+RECOVERED
+For the second testcase, it is possible for the cells
+(2,0)
+,
+(2,1)
+,
+(0,1)
+to become infected. After that, no cell can change its state, so the answer is SICK, as not all of the cells are healthy.

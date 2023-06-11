@@ -1,165 +1,149 @@
-C. Manipulating History
-time limit per test1 second
+B. Mystic Permutation
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-As a human, she can erase history of its entirety. As a Bai Ze (Hakutaku), she can create history out of nothingness.
-—Perfect Memento in Strict Sense
-Keine has the ability to manipulate history.
-The history of Gensokyo is a string
-s
-of length
+Monocarp is a little boy who lives in Byteland and he loves programming.
+Recently, he found a permutation of length
+n
+. He has to come up with a mystic permutation. It has to be a new permutation such that it differs from the old one in each position.
+More formally, if the old permutation is
+p
 1
-initially. To fix the chaos caused by Yukari, she needs to do the following operations
+,
+p
+2
+,…,
+p
 n
-times, for the
-i
--th time:
-She chooses a non-empty substring
-t
-2i−1
-of
-s
+and the new one is
+q
+1
+,
+q
+2
+,…,
+q
+n
+it must hold that
+p
+1
+≠
+q
+1
+,
+p
+2
+≠
+q
+2
+,…,
+p
+n
+≠
+q
+n
 .
-She replaces
-t
-2i−1
-with a non-empty string,
-t
-2i
-. Note that the lengths of strings
-t
-2i−1
-and
-t
-2i
-can be different.
-Note that if
-t
-2i−1
-occurs more than once in
-s
-, exactly one of them will be replaced.
-For example, let
-s=
-"marisa",
-t
-2i−1
-=
-"a", and
-t
-2i
-=
-"z". After the operation,
-s
-becomes "mzrisa" or "marisz".
-After
-n
-operations, Keine got the final string and an operation sequence
-t
-of length
-2n
-. Just as Keine thinks she has finished, Yukari appears again and shuffles the order of
-t
-. Worse still, Keine forgets the initial history.
-Help Keine find the initial history of Gensokyo!
-Recall that a substring is a sequence of consecutive characters of the string. For example, for string "abc" its substrings are: "ab", "c", "bc" and some others. But the following strings are not its substring: "ac", "cba", "acb".
-Hacks
-You cannot make hacks in this problem.
+≠
+≠
+≠
+Monocarp is afraid of lexicographically large permutations. Can you please help him to find the lexicographically minimal mystic permutation?
 Input
-Each test contains multiple test cases. The first line contains a single integer
-T
+There are several test cases in the input data. The first line contains a single integer
+t
 (
-1≤T≤
-10
-3
-) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains a single integer
+1≤t≤200
+) — the number of test cases. This is followed by the test cases description.
+The first line of each test case contains a positive integer
 n
 (
-1≤n<
-10
-5
-) — the number of operations.
-The next
-2n
-lines contains one non-empty string
-t
+1≤n≤1000
+) — the length of the permutation.
+The second line of each test case contains
+n
+distinct positive integers
+p
+1
+,
+p
+2
+,…,
+p
+n
+(
+1≤
+p
 i
-— the
+≤n
+). It's guaranteed that
+p
+is a permutation, i. e.
+p
 i
--th string of the shuffled sequence
-t
+≠
+p
+j
+for all
+i≠j
 .
-The next line contains one non-empty string
-s
-— the final string.
-It is guaranteed that the total length of given strings (including
-t
-i
-and
-s
-) over all test cases does not exceed
-2⋅
-10
-5
-. All given strings consist of lowercase English letters only.
-It is guaranteed that the initial string exists. It can be shown that the initial string is unique.
+It is guaranteed that the sum of
+n
+does not exceed
+1000
+over all test cases.
 Output
-For each test case, print the initial string in one line.
+For each test case, output
+n
+positive integers — the lexicographically minimal mystic permutations. If such a permutation does not exist, output
+−1
+instead.
 Example
 input
 Copy
-2
-2
-a
-ab
-b
-cd
-acd
+4
 3
-z
-a
-a
-aa
-yakumo
-ran
-yakumoran
+1 2 3
+5
+2 3 4 5 1
+4
+2 3 1 4
+1
+1
 output
 Copy
-a
-z
+2 3 1
+1 2 3 4 5
+1 2 4 3
+-1
 Note
-Test case 1:
-Initially
-s
-is "a".
-In the first operation, Keine chooses "a", and replaces it with "ab".
-s
-becomes "ab".
-In the second operation, Keine chooses "b", and replaces it with "cd".
-s
-becomes "acd".
-So the final string is "acd", and
-t=[
-"a", "ab", "b", "cd"
-]
-before being shuffled.
-Test case 2:
-Initially
-s
-is "z".
-In the first operation, Keine chooses "z", and replaces it with "aa".
-s
-becomes "aa".
-In the second operation, Keine chooses "a", and replaces it with "ran".
-s
-becomes "aran".
-In the third operation, Keine chooses "a", and replaces it with "yakumo".
-s
-becomes "yakumoran".
-So the final string is "yakumoran", and
-t=[
-"z", "aa", "a", "ran", "a", "yakumo"
-]
-before being shuffled.
+In the first test case possible permutations that are mystic are
+[2,3,1]
+and
+[3,1,2]
+. Lexicographically smaller of the two is
+[2,3,1]
+.
+In the second test case,
+[1,2,3,4,5]
+is the lexicographically minimal permutation and it is also mystic.
+In third test case possible mystic permutations are
+[1,2,4,3]
+,
+[1,4,2,3]
+,
+[1,4,3,2]
+,
+[3,1,4,2]
+,
+[3,2,4,1]
+,
+[3,4,2,1]
+,
+[4,1,2,3]
+,
+[4,1,3,2]
+and
+[4,3,2,1]
+. The smallest one is
+[1,2,4,3]
+.

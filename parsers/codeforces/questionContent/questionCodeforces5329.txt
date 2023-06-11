@@ -1,36 +1,50 @@
-F. Sherlock's bet to Moriarty
+D. The Door Problem
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Sherlock met Moriarty for a final battle of wits. He gave him a regular n sided convex polygon. In addition to it, he gave him certain diagonals to form regions on the polygon. It was guaranteed that the diagonals did not intersect in interior points.
-He took each of the region and calculated its importance value. Importance value for a region formed by vertices a1, a2, ... , ax of the polygon will be given by 2a1 + 2a2 + ... + 2ax. Then, he sorted these regions on the basis of their importance value in ascending order. After that he assigned each region an index from 1 to k, where k is the number of regions, and index of region is its position in the sorted array calculated above.
-He wants Moriarty to color the regions using not more than 20 colors, such that two regions have same color only if all the simple paths between these two regions have at least one region with color value less than the color value assigned to these regions. Simple path between two regions f and h is a sequence of regions r1, r2, ... rt such that r1 = f, rt = h, for each 1 ≤ i < t regions ri and ri + 1 share an edge, and ri = rj if and only if i = j.
-Moriarty couldn't answer and asks Sherlock to solve it himself. Help Sherlock in doing so.
+Moriarty has trapped n people in n distinct rooms in a hotel. Some rooms are locked, others are unlocked. But, there is a condition that the people in the hotel can only escape when all the doors are unlocked at the same time. There are m switches. Each switch control doors of some rooms, but each door is controlled by exactly two switches.
+You are given the initial configuration of the doors. Toggling any switch, that is, turning it ON when it is OFF, or turning it OFF when it is ON, toggles the condition of the doors that this switch controls. Say, we toggled switch 1, which was connected to room 1, 2 and 3 which were respectively locked, unlocked and unlocked. Then, after toggling the switch, they become unlocked, locked and locked.
+You need to tell Sherlock, if there exists a way to unlock all doors at the same time.
 Input
-First line contains two integers n and m (3 ≤ n ≤ 100000, 0 ≤ m ≤ n - 3), the number of vertices in the polygon and the number of diagonals added.
-Each of the next m lines contains two integers a and b (1 ≤ a, b ≤ n), describing a diagonal between vertices a and b. It is guaranteed that the diagonals are correct, i. e. a and b don't coincide and are not neighboring. It is guaranteed that the diagonals do not intersect.
+First line of input contains two integers n and m (2 ≤ n ≤ 105, 2 ≤ m ≤ 105) — the number of rooms and the number of switches.
+Next line contains n space-separated integers r1, r2, ..., rn (0 ≤ ri ≤ 1) which tell the status of room doors. The i-th room is locked if ri = 0, otherwise it is unlocked.
+The i-th of next m lines contains an integer xi (0 ≤ xi ≤ n) followed by xi distinct integers separated by space, denoting the number of rooms controlled by the i-th switch followed by the room numbers that this switch controls. It is guaranteed that the room numbers are in the range from 1 to n. It is guaranteed that each door is controlled by exactly two switches.
 Output
-Let the number of regions be k.
-Output k space-separated integers, each between 1 and 20, representing the colors of the regions in the order of increasing importance.
-If there are multiple answers, print any of them. It can be shown that at least one answer exists.
+Output "YES" without quotes, if it is possible to open all doors at the same time, otherwise output "NO" without quotes.
 Examples
 input
 Copy
-4 1
-1 3
+3 3
+1 0 1
+2 1 3
+2 1 2
+2 2 3
 output
 Copy
-1 2
+NO
 input
 Copy
-6 3
-1 3
-1 4
-1 5
+3 3
+1 0 1
+3 1 2 3
+1 2
+2 1 3
 output
 Copy
-2 1 2 3
+YES
+input
+Copy
+3 3
+1 0 1
+3 1 2 3
+2 1 2
+1 3
+output
+Copy
+NO
 Note
-In 2nd input, regions formed in order after sorting will be (1, 2, 3), (1, 3, 4), (1, 4, 5), (1, 5, 6), i.e, region (1, 2, 3) is first region followed by region (1, 3, 4) and so on.
-So, we can color regions 1 and 3 with same color, as region number 2 is on the path from 1 to 3 and it has color 1 which is less than color of 1 and 3, i.e., color number 2.
+In the second example input, the initial statuses of the doors are [1, 0, 1] (0 means locked, 1 — unlocked).
+After toggling switch 3, we get [0, 0, 0] that means all doors are locked.
+Then, after toggling switch 1, we get [1, 1, 1] that means all doors are unlocked.
+It can be seen that for the first and for the third example inputs it is not possible to make all doors unlocked.

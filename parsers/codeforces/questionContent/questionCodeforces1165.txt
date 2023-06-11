@@ -1,93 +1,121 @@
-A. Download More RAM
+A. And Matching
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Did you know you can download more RAM? There is a shop with
+You are given a set of
 n
-different pieces of software that increase your RAM. The
-i
--th RAM increasing software takes
+(
+n
+is always a power of
+2
+) elements containing all integers
+0,1,2,…,n−1
+exactly once.
+Find
+n
+2
+pairs of elements such that:
+Each element in the set is in exactly one pair.
+The sum over all pairs of the bitwise AND of its elements must be exactly equal to
+k
+. Formally, if
 a
 i
-GB of memory to run (temporarily, once the program is done running, you get the RAM back), and gives you an additional
+and
 b
 i
-GB of RAM (permanently). Each software can only be used once. Your PC currently has
-k
-GB of RAM.
-Note that you can't use a RAM-increasing software if it takes more GB of RAM to use than what you currently have.
-Since RAM is the most important thing in the world, you wonder, what is the maximum possible amount of RAM achievable?
+are the elements of the
+i
+-th pair, then the following must hold:
+∑
+i=1
+n/2
+a
+i
+&
+b
+i
+=k,
+/
+2
+where
+&
+denotes the bitwise AND operation.
+If there are many solutions, print any of them, if there is no solution, print
+−1
+instead.
 Input
-The first line of the input contains a single integer
+The input consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤100
-) — the number of test cases. The description of test cases follows.
-The first line of each test case contains the integers
+1≤t≤400
+) — the number of test cases. Description of the test cases follows.
+Each test case consists of a single line with two integers
 n
 and
 k
 (
-1≤n≤100
+4≤n≤
+2
+16
 ,
-1≤k≤1000
-). Then two lines follow, each containing
 n
-integers describing the arrays
+is a power of
+2
+,
+0≤k≤n−1
+).
+The sum of
+n
+over all test cases does not exceed
+2
+16
+. All test cases in each individual input will be pairwise different.
+Output
+For each test case, if there is no solution, print a single line with the integer
+−1
+.
+Otherwise, print
+n
+2
+lines, the
+i
+-th of them must contain
 a
+i
 and
 b
-(
-1≤
-a
 i
-,
-b
+, the elements in the
 i
-≤1000
-).
-Output
-For each test case, output a single line containing the largest amount of RAM you can achieve.
+-th pair.
+If there are many solutions, print any of them. Print the pairs and the elements in the pairs in any order.
 Example
 input
 Copy
 4
-3 10
-20 30 10
-9 100 10
-5 1
-1 1 5 1 1
-1 1 1 1 1
-5 1
-2 2 2 2 2
-100 100 100 100 100
-5 8
-128 64 32 16 8
-128 64 32 16 8
+4 0
+4 1
+4 2
+4 3
 output
 Copy
-29
-6
-1
-256
+0 3
+1 2
+0 2
+1 3
+0 1
+2 3
+-1
 Note
-In the first test case, you only have enough RAM to run the third software initially, but that increases your RAM to
-20
-GB, which allows you to use the first software, increasing your RAM to
-29
-GB. The only software left needs
-30
-GB of RAM, so you have to stop here.
-In the second test case, you can use the first, second, fourth and fifth software that need only
-1
-GB of RAM per software to run to increase your RAM to
-5
-GB, and then use the last remaining one to increase your RAM to
-6
-GB.
-In the third test case, all the software need more than
-1
-GB of RAM to run, so the amount of RAM you have stays at
-1
-GB.
+In the first test,
+(0&3)+(1&2)=0
+.
+In the second test,
+(0&2)+(1&3)=1
+.
+In the third test,
+(0&1)+(2&3)=2
+.
+In the fourth test, there is no solution.

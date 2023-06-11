@@ -1,46 +1,45 @@
-C. Matrix Walk
+D. Fight Against Traffic
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There is a matrix A of size x × y filled with integers. For every , Ai, j = y(i - 1) + j. Obviously, every integer from [1..xy] occurs exactly once in this matrix.
-You have traversed some path in this matrix. Your path can be described as a sequence of visited cells a1, a2, ..., an denoting that you started in the cell containing the number a1, then moved to the cell with the number a2, and so on.
-From the cell located in i-th line and j-th column (we denote this cell as (i, j)) you can move into one of the following cells:
-(i + 1, j) — only if i < x;
-(i, j + 1) — only if j < y;
-(i - 1, j) — only if i > 1;
-(i, j - 1) — only if j > 1.
-Notice that making a move requires you to go to an adjacent cell. It is not allowed to stay in the same cell. You don't know x and y exactly, but you have to find any possible values for these numbers such that you could start in the cell containing the integer a1, then move to the cell containing a2 (in one step), then move to the cell containing a3 (also in one step) and so on. Can you choose x and y so that they don't contradict with your sequence of moves?
+Little town Nsk consists of n junctions connected by m bidirectional roads. Each road connects two distinct junctions and no two roads connect the same pair of junctions. It is possible to get from any junction to any other junction by these roads. The distance between two junctions is equal to the minimum possible number of roads on a path between them.
+In order to improve the transportation system, the city council asks mayor to build one new road. The problem is that the mayor has just bought a wonderful new car and he really enjoys a ride from his home, located near junction s to work located near junction t. Thus, he wants to build a new road in such a way that the distance between these two junctions won't decrease.
+You are assigned a task to compute the number of pairs of junctions that are not connected by the road, such that if the new road between these two junctions is built the distance between s and t won't decrease.
 Input
-The first line contains one integer number n (1 ≤ n ≤ 200000) — the number of cells you visited on your path (if some cell is visited twice, then it's listed twice).
-The second line contains n integers a1, a2, ..., an (1 ≤ ai ≤ 109) — the integers in the cells on your path.
+The firt line of the input contains integers n, m, s and t (2 ≤ n ≤ 1000, 1 ≤ m ≤ 1000, 1 ≤ s, t ≤ n, s ≠ t) — the number of junctions and the number of roads in Nsk, as well as the indices of junctions where mayors home and work are located respectively. The i-th of the following m lines contains two integers ui and vi (1 ≤ ui, vi ≤ n, ui ≠ vi), meaning that this road connects junctions ui and vi directly. It is guaranteed that there is a path between any two junctions and no two roads connect the same pair of junctions.
 Output
-If all possible values of x and y such that 1 ≤ x, y ≤ 109 contradict with the information about your path, print NO.
-Otherwise, print YES in the first line, and in the second line print the values x and y such that your path was possible with such number of lines and columns in the matrix. Remember that they must be positive integers not exceeding 109.
+Print one integer — the number of pairs of junctions not connected by a direct road, such that building a road between these two junctions won't decrease the distance between junctions s and t.
 Examples
 input
 Copy
-8
-1 2 3 6 9 8 5 2
+5 4 1 5
+1 2
+2 3
+3 4
+4 5
 output
 Copy
-YES
-3 3
+0
 input
 Copy
-6
-1 2 1 2 5 3
+5 4 3 5
+1 2
+2 3
+3 4
+4 5
 output
 Copy
-NO
+5
 input
 Copy
-2
-1 10
+5 6 1 5
+1 2
+1 3
+1 4
+4 5
+3 5
+2 5
 output
 Copy
-YES
-4 9
-Note
-The matrix and the path on it in the first test looks like this:
-Also there exist multiple correct answers for both the first and the third examples.
+3

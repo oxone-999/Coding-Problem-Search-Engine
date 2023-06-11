@@ -1,49 +1,94 @@
-Cats and Dogs
+Make Palindrome 2
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef is a farmer and a pet lover. He has a lot of his favorite pets cats and dogs in the barn. He knows that there are
-C cats and
-D dogs in the barn. Also, one day went to field and found that there were
-L legs of the animals touching the ground. Chef knows that cats love to ride on the dogs. So, they might ride on the dogs, and their legs won't touch the ground and Chef would miss counting their legs. Chef's dogs are strong enough to ride at max two cats on their back.
-It was a cold foggy morning, when Chef did this counting. So he is now wondering whether he counted the legs properly or not. Specifically, he is wondering whether it is possible that he counted correctly. Please help Chef in finding it.
-Input
-First line of the input contains an integer
-T, denoting number of test cases.
-T test cases follow.
-The only line of each test case contains three space separated integers
-C,D,L, denoting number of the cats, number of the dogs and number of legs of animals counted by Chef, respectively.
-Output
-For each test case, output a single line containing a string yes or no, according to the situation.
+You are given a binary string
+S of length
+N. You want to obtain a palindrome from
+S by applying the following operation at most
+⌊
+2
+N
+⌋ times:
+Choose an index
+i(1≤i≤∣S∣), delete the character
+S
+i
+from
+S and concatenate the remaining parts of the string. Here
+∣S∣ denotes the current length of string
+S.
+For example, if
+S= 11010, then applying the operation on index
+i=2 makes
+S= 1010.
+Note that after each operation, the length of the string
+S decreases by one.
+Find any palindrome you can obtain after the operations. It can be proved that it is always possible to obtain a palindrome from
+S under the given constraints.
+Here,
+⌊
+2
+N
+⌋ denotes floor division of the integer
+N by
+2. For example,
+⌊
+2
+5
+⌋=2,
+⌊
+2
+8
+⌋=4. A binary string is a string that consists of only the characters 0 and 1.
+Input Format
+The first line of input contains an integer
+T, denoting the number of test cases. The
+T test cases then follow:
+The first line of each test case contains an integer
+N, denoting the length of the binary string
+S.
+The second line of each test case contains the binary string
+S.
+Output Format
+For each test case, print on a separate line any palindromic string that can be obtained from
+S by applying the given operation at most
+⌊
+2
+N
+⌋ times.
 Constraints
-1≤T≤10
-5
-0≤C,D,L≤10
-9
-Subtasks
-Subtask #1 (20 points):
-1≤T≤10
-4
-0≤C,D≤100
-Subtask #2 (30 points):
-1≤T≤10
-5
-0≤C,D≤1000
-Subtask #3 (50 points):
-Original constraints
+1≤T≤1000
+1≤N≤100
+S contains only the characters 0 and 1.
 Sample 1:
 Input
 Output
+4
 3
-1 1 8
-1 1 4
-1 1 2
-yes
-yes
-no
+101
+3
+001
+4
+1011
+6
+010011
+101
+00
+111
+1001
 Explanation:
-Example 1: There is one cat and one dog. The number of legs of these animals on the ground are
-8, it can be possible when both cat and dog are standing on the ground.
-Example 2: There is one cat and one dog. The number of legs of these animals on the ground are
-4, it can be possible if the cat will ride on the dog, so its legs won't be counted by Chef, only the dog's legs will be counted.
-Example 3: There is one cat and one dog. The number of legs of these animals are
-2, it can not be true at all, Chef might have made some mistake. Hence, the answer is no.
+Test case
+1: The given string is already a palindrome.
+Test case
+2: Applying the operation on index
+i=3 makes
+S= 00 which is a palindrome.
+Test case
+3: Applying the operation on index
+i=2 makes
+S= 111 which is a palindrome.
+Test case
+4: Applying the operation on index
+i=1 makes
+S= 10011. Then applying the operation on index
+i=5 makes
+S= 1001 which is a palindrome.

@@ -1,155 +1,83 @@
-C. Poisoned Dagger
+E. Crazy Robot
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Monocarp is playing yet another computer game. In this game, his character has to kill a dragon. The battle with the dragon lasts
-100
-500
-seconds, during which Monocarp attacks the dragon with a poisoned dagger. The
-i
--th attack is performed at the beginning of the
-a
-i
--th second from the battle start. The dagger itself does not deal damage, but it applies a poison effect on the dragon, which deals
-1
-damage during each of the next
-k
-seconds (starting with the same second when the dragon was stabbed by the dagger). However, if the dragon has already been poisoned, then the dagger updates the poison effect (i.e. cancels the current poison effect and applies a new one).
-For example, suppose
-k=4
-, and Monocarp stabs the dragon during the seconds
-2
-,
-4
-and
-10
-. Then the poison effect is applied at the start of the
-2
--nd second and deals
-1
-damage during the
-2
--nd and
-3
--rd seconds; then, at the beginning of the
-4
--th second, the poison effect is reapplied, so it deals exactly
-1
-damage during the seconds
-4
-,
-5
-,
-6
-and
-7
-; then, during the
-10
--th second, the poison effect is applied again, and it deals
-1
-damage during the seconds
-10
-,
-11
-,
-12
-and
-13
-. In total, the dragon receives
-10
-damage.
-Monocarp knows that the dragon has
-h
-hit points, and if he deals at least
-h
-damage to the dragon during the battle — he slays the dragon. Monocarp has not decided on the strength of the poison he will use during the battle, so he wants to find the minimum possible value of
-k
-(the number of seconds the poison effect lasts) that is enough to deal at least
-h
-damage to the dragon.
+There is a grid, consisting of
+n
+rows and
+m
+columns. Each cell of the grid is either free or blocked. One of the free cells contains a lab. All the cells beyond the borders of the grid are also blocked.
+A crazy robot has escaped from this lab. It is currently in some free cell of the grid. You can send one of the following commands to the robot: "move right", "move down", "move left" or "move up". Each command means moving to a neighbouring cell in the corresponding direction.
+However, as the robot is crazy, it will do anything except following the command. Upon receiving a command, it will choose a direction such that it differs from the one in command and the cell in that direction is not blocked. If there is such a direction, then it will move to a neighbouring cell in that direction. Otherwise, it will do nothing.
+We want to get the robot to the lab to get it fixed. For each free cell, determine if the robot can be forced to reach the lab starting in this cell. That is, after each step of the robot a command can be sent to a robot such that no matter what different directions the robot chooses, it will end up in a lab.
 Input
 The first line contains a single integer
 t
 (
 1≤t≤1000
-) — the number of test cases.
-The first line of the test case contains two integers
+) — the number of testcases.
+The first line of each testcase contains two integers
 n
 and
-h
+m
 (
-1≤n≤100;1≤h≤
+1≤n,m≤
 10
-18
-) — the number of Monocarp's attacks and the amount of damage that needs to be dealt.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-, ...,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-9
+6
 ;
-a
+n⋅m≤
+10
+6
+) — the number of rows and the number of columns in the grid.
+The
 i
-<
-a
-i+1
-), where
-a
+-th of the next
+n
+lines provides a description of the
 i
-is the second when the
-i
--th attack is performed.
+-th row of the grid. It consists of
+m
+elements of one of three types:
+'.' — the cell is free;
+'#' — the cell is blocked;
+'L' — the cell contains a lab.
+The grid contains exactly one lab. The sum of
+n⋅m
+over all testcases doesn't exceed
+10
+6
+.
 Output
-For each test case, print a single integer — the minimum value of the parameter
-k
-, such that Monocarp will cause at least
-h
-damage to the dragon.
+For each testcase find the free cells that the robot can be forced to reach the lab from. Given the grid, replace the free cells (marked with a dot) with a plus sign ('+') for the cells that the robot can be forced to reach the lab from. Print the resulting grid.
 Example
 input
 Copy
 4
-2 5
-1 5
-3 10
-2 4 10
-5 3
-1 2 4 5 7
-4 1000
-3 25 64 1337
+3 3
+...
+.L.
+...
+4 5
+#....
+..##L
+...#.
+.....
+1 1
+L
+1 9
+....L..#.
 output
 Copy
-3
-4
-1
-470
+...
+.L.
+...
+#++++
+..##L
+...#+
+...++
+L
+++++L++#.
 Note
-In the first example, for
-k=3
-, damage is dealt in seconds
-[1,2,3,5,6,7]
-.
-In the second example, for
-k=4
-, damage is dealt in seconds
-[2,3,4,5,6,7,10,11,12,13]
-.
-In the third example, for
-k=1
-, damage is dealt in seconds
-[1,2,4,5,7]
-.
+In the first testcase there is no free cell that the robot can be forced to reach the lab from. Consider a corner cell. Given any direction, it will move to a neighbouring border grid that's not a corner. Now consider a non-corner free cell. No matter what direction you send to the robot, it can choose a different direction such that it ends up in a corner.
+In the last testcase, you can keep sending the command that is opposite to the direction to the lab and the robot will have no choice other than move towards the lab.

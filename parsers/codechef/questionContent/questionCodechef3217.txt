@@ -1,80 +1,81 @@
-LCM equation
+Expected Maximum Matching
 Problem
-Read problems statements in Mandarin Chinese and Russian
-Chef is exploring a new mathematical problem, which can be stated as follows:
-
-
-where [x] means greatest integer which doesn't exceed x.
-Chef wants you to answer some questions for a given pair of integers N, K: What is the least common multiple of F(N, 1), F(N, 2), ... , F(N, K) modulo 109 + 7.
-Chef is not willing to give you all queries at once. Instead, he gives you the first query and suggests you generate all the following queries in this way:
-Ni = 1 + (A * Answeri-1 + Ci) mod M ,
-Ki = 1 + (B * Answeri-1 + Di) mod Ni,
-where Answeri is the answer for the ith query.
+You are given two sets of vertexes U = {U[1], U[2], ..., U[N]} and V = {V[1], V[2], ..., V[M]}. All N + M vertexes here are different. You are also given the matrix P of size N x M composed of real numbers from the segment [0, 1]. The number that stands at the intersection of the ith row and the jth column of this matrix is denoted by P[i][j] and means the probability that the vertexes U[i] and V[j] are connected by the bidirected edge. In other words, you are given a complete bipartite graph where each edge occurs with some probability. Your task is to find the expected size of the maximum matching of this graph.
+What exactly does it mean?
+Let's call our complete bipartite graph with random edges as random bipartite graph. Consider some arbitrary bipartite graph G = (U, V, E). Denote by P(G) the probability that our random bipartite graph is equal to G. How to calculate P(G)? Consider some pair of vertexes (U[i], V[j]). If these vertexes are connected by the edge in G then put PG[i][j] = P[i][j] otherwise put PG[i][j] = 1 – P[i][j]. Then P(G) is equal to the product of PG[i][j] for all N ∙ M pairs of (i, j), where 1 ≤ i ≤ N and 1 ≤ j ≤ M.
+Next, denote by MM(G) the size of the maximum matching in the graph G. In other words, MM(G) is the size of the largest set of edges of G such that no two edges share a common vertex.
+Finally, the expected size of the maximum matching is the sum of products P(G) ∙ MM(G) for all possible bipartite graphs G with parts U and V. Note that there are 2 N ∙ M such graphs in all. So don't try to calculate the answer directly by definition if you do not want to get verdict Time Limit Exceeded ;)
 Input
-The first line of input contains an integer T denoting the number of questions Chef wants to ask you.
-Second line contains two space-separated integers N1, K1.
-Third line contains three space-separated integers A, B, and M, described in the statement.
-Next line contains T-1 space-separated integers: C2, C3, ... , CT
-Next line contains T-1 space-separated integers: D2, D3, ... , DT
+The first line of the input file contains two integers N and M. Each of the following N lines contains M real numbers. jth number in the ith line of these N lines denotes P[i][j], the probability that the vertexes U[i] and V[j] are connected by the direct edge. Each pair of consecutive numbers in every line is separated by exactly one space.
 Output
-For each test case, output a single integer — the answer for the given query.
-Constraints and Subtasks
-1 ≤ T ≤ 106
-0 ≤ A, B, Ci, Di < M ≤ 105
-1 ≤ K1 ≤ N1< M
-
-Subtask1:(10 points)
-1 ≤ M ≤ 10
-Time Limit is 1 second
-
-Subtask2: (20 points)
-1 ≤ T ≤ 102
-1 ≤ M ≤ 103
-Time Limit is 1 second
-
-Subtask3: (30 points)
-A = B = 0
-Time Limit is 4 seconds
-
-Subtask4: (40 points)
-No additional constraints
-Time Limit is 4 seconds
+In the only line of the output file print the expected size of the maximum matching. Your answer will be considered as correct if it has an absolute error less than 10-6.
+Constraints
+1 ≤ N ≤ 5
+1 ≤ M ≤ 100
+0 ≤ P[i][j] ≤ 1
+P[i][j] will have exactly 5 digits after the decimal point
 Example
-Input:
-3
-2 1
-0 0 3
-2 2
-0 1
-Output:
-2
-3
-6
+Input 1:
+3 3
+0.38064 0.30000 0.29486
+0.41715 0.90000 0.67837
+0.53316 1.00000 1.00000
 
-Input:
-4
-5 2
-2 3 6
-4 2 3
-2 4 2
-Output:
-20
-6
-6
-4
+Output 1:
+2.575940
+
+
+Input 2:
+2 2
+0.40000 1.00000
+0.10000 1.00000
+
+Output 2:
+1.46
 Explanation
-Example case 1. 
-F(2,1) = F(2,2) = 2,  F(3,1) = 3, F(3,2) = 6, F(3,3) = 3
-1st query - (2,1). Answer = 2.
-2nd query - (3,1). Answer = 3
-3rd query - (3,2). Answer = 6
-Example case 2. 
-F(4,1) = 4, F(5,2) = 20
-1st query - (5,2). 
-      Answer = lcm(F(5,1), F(5,2)) = lcm(5,20) = 20
-2nd query - (1 + (20 * 2 + 4) mod 6, 1 + (20 * 3 + 2) mod n) = (3, 3). 
-      Answer = lcm(F(3,1), F(3,2), F(3,3)) = lcm(3,6,3) = 6
-3rd query - (1 + (6*2 + 2) mod 6, 1 + (6*3 + 4) mod n) = (3,2). 
-      Answer = lcm(F(3,1), F(3,2)) = 6
-4th query - (1 + (6*2 + 3) mod 6, 1 + (6*3 + 2) mod n) = (4,1).
-      Answer = lcm(F(4,1)) = 4
+In the second example we have four different graphs with non-zero value of P(G). Their adjacent matrices with marked maximum matching as well as the values of MM(G) and P(G) are listed in the table below.
+<tr>
+  <td>
+    <table border="1" align="center"><tbody>
+      <tr><td>0</td><td bgcolor="yellow">1</td></tr>
+      <tr><td>0</td><td>1</td></tr>
+    </tbody></table>
+  </td>
+  <td align="center"><b>1</b></td>
+  <td align="right">(1 – 0.4) ∙ (1 – 0.1) = 0.6 ∙ 0.9 = <b>0.54</b></td>
+</tr>
+
+<tr>
+  <td>
+    <table border="1" align="center"><tbody>
+      <tr><td bgcolor="yellow">1</td><td>1</td></tr>
+      <tr><td>0</td><td bgcolor="yellow">1</td></tr>
+    </tbody></table>
+  </td>
+  <td align="center"><b>2</b></td>
+  <td align="right">0.4 ∙ (1 – 0.1) = 0.4 ∙ 0.9 = <b>0.36</b></td>
+</tr>
+
+<tr>
+  <td>
+    <table border="1" align="center"><tbody>
+      <tr><td>0</td><td bgcolor="yellow">1</td></tr>
+      <tr><td bgcolor="yellow">1</td><td>1</td></tr>
+    </tbody></table>
+  </td>
+  <td align="center"><b>2</b></td>
+  <td align="right">(1 – 0.4) ∙ 0.1 = 0.6 ∙ 0.1 = <b>0.06</b></td>
+</tr>
+
+<tr>
+  <td>
+    <table border="1" align="center"><tbody>
+      <tr><td bgcolor="yellow">1</td><td>1</td></tr>
+      <tr><td>1</td><td bgcolor="yellow">1</td></tr>
+    </tbody></table>
+  </td>
+  <td align="center"><b>2</b></td>
+  <td align="right">0.4 ∙ 0.1 = <b>0.04</b></td>
+</tr>
+Adjacent matrix MM(G) P(G)
+So the answer is 0.54 ∙ 1 + 0.36 ∙ 2 + 0.06 ∙ 2 + 0.04 ∙ 2 = 1.46.

@@ -1,116 +1,151 @@
-E. Phoenix and Berries
+B. Orac and Medians
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Phoenix is picking berries in his backyard. There are
-n
-shrubs, and each shrub has
+Slime has a sequence of positive integers
 a
-i
-red berries and
-b
-i
-blue berries.
-Each basket can contain
-k
-berries. But, Phoenix has decided that each basket may only contain berries from the same shrub or berries of the same color (red or blue). In other words, all berries in a basket must be from the same shrub or/and have the same color.
-For example, if there are two shrubs with
-5
-red and
-2
-blue berries in the first shrub and
-2
-red and
 1
-blue berries in the second shrub then Phoenix can fill
-2
-baskets of capacity
-4
-completely:
-the first basket will contain
-3
-red and
-1
-blue berries from the first shrub;
-the second basket will contain the
-2
-remaining red berries from the first shrub and
-2
-red berries from the second shrub.
-Help Phoenix determine the maximum number of baskets he can fill completely!
-Input
-The first line contains two integers
-n
-and
-k
-(
-1≤n,k≤500
-) — the number of shrubs and the basket capacity, respectively.
-The
-i
--th of the next
-n
-lines contain two integers
-a
-i
-and
-b
-i
-(
-0≤
-a
-i
 ,
-b
+a
+2
+,…,
+a
+n
+.
+In one operation Orac can choose an arbitrary subsegment
+[l…r]
+of this sequence and replace all values
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+to the value of median of
+{
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+}
+.
+In this problem, for the integer multiset
+s
+, the median of
+s
+is equal to the
+⌊
+|s|+1
+2
+⌋
+-th smallest number in it. For example, the median of
+{1,4,4,6,5}
+is
+4
+, and the median of
+{1,7,5,8}
+is
+5
+.
+Slime wants Orac to make
+a
+1
+=
+a
+2
+=…=
+a
+n
+=k
+using these operations.
+Orac thinks that it is impossible, and he does not want to waste his time, so he decided to ask you if it is possible to satisfy the Slime's requirement, he may ask you these questions several times.
+Input
+The first line of the input is a single integer
+t
+: the number of queries.
+The first line of each query contains two integers
+n (1≤n≤100000)
+and
+k (1≤k≤
+10
+9
+)
+, the second line contains
+n
+positive integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+ (1≤
+a
 i
 ≤
 10
 9
-) — the number of red and blue berries in the
-i
--th shrub, respectively.
+)
+The total sum of
+n
+is at most
+100000
+.
 Output
-Output one integer — the maximum number of baskets that Phoenix can fill completely.
-Examples
+The output should contain
+t
+lines. The
+i
+-th line should be equal to 'yes' if it is possible to make all integers
+k
+in some number of operations or 'no', otherwise. You can print each letter in lowercase or uppercase.
+Example
 input
 Copy
-2 4
-5 2
-2 1
+5
+5 3
+1 5 2 6 1
+1 6
+6
+3 2
+1 2 3
+4 3
+3 1 2 3
+10 3
+1 2 3 4 5 6 7 8 9 10
 output
 Copy
-2
-input
-Copy
-1 5
-2 3
-output
-Copy
-1
-input
-Copy
-2 5
-2 1
-1 3
-output
-Copy
-0
-input
-Copy
-1 2
-1000000000 1
-output
-Copy
-500000000
+no
+yes
+yes
+no
+yes
 Note
-The first example is described above.
-In the second example, Phoenix can fill one basket fully using all the berries from the first (and only) shrub.
-In the third example, Phoenix cannot fill any basket completely because there are less than
-5
-berries in each shrub, less than
-5
-total red berries, and less than
-5
-total blue berries.
-In the fourth example, Phoenix can put all the red berries into baskets, leaving an extra blue berry behind.
+In the first query, Orac can't turn all elements into
+3
+.
+In the second query,
+a
+1
+=6
+is already satisfied.
+In the third query, Orac can select the complete array and turn all elements into
+2
+.
+In the fourth query, Orac can't turn all elements into
+3
+.
+In the fifth query, Orac can select
+[1,6]
+at first and then select
+[2,10]
+.

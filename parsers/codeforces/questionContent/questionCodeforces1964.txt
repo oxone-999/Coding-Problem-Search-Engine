@@ -1,205 +1,167 @@
-B. New Colony
+D. AB Graph
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-After reaching your destination, you want to build a new colony on the new planet. Since this planet has many mountains and the colony must be built on a flat surface you decided to flatten the mountains using boulders (you are still dreaming so this makes sense to you).
-You are given an array
-h
-1
-,
-h
-2
-,…,
-h
+Your friend Salem is Warawreh's brother and only loves math and geometry problems. He has solved plenty of such problems, but according to Warawreh, in order to graduate from university he has to solve more graph problems. Since Salem is not good with graphs he asked your help with the following problem.
+You are given a complete directed graph with
 n
-, where
-h
-i
-is the height of the
-i
--th mountain, and
-k
- — the number of boulders you have.
-You will start throwing boulders from the top of the first mountain one by one and they will roll as follows (let's assume that the height of the current mountain is
-h
-i
-):
-if
-h
-i
-≥
-h
-i+1
-, the boulder will roll to the next mountain;
-if
-h
-i
-<
-h
-i+1
-, the boulder will stop rolling and increase the mountain height by
-1
+vertices without self-loops. In other words, you have
+n
+vertices and each pair of vertices
+u
+and
+v
 (
-h
-i
-=
-h
-i
-+1
-);
-if the boulder reaches the last mountain it will fall to the waste collection system and disappear.
-You want to find the position of the
-k
--th boulder or determine that it will fall into the waste collection system.
+u≠v
+) has both directed edges
+(u,v)
+and
+(v,u)
+.
+Every directed edge of the graph is labeled with a single character: either 'a' or 'b' (edges
+(u,v)
+and
+(v,u)
+may have different labels).
+You are also given an integer
+m>0
+. You should find a path of length
+m
+such that the string obtained by writing out edges' labels when going along the path is a palindrome. The length of the path is the number of edges in it.
+You can visit the same vertex and the same directed edge any number of times.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤100
+1≤t≤500
 ) — the number of test cases.
-Each test case consists of two lines. The first line in each test case contains two integers
+The first line of each test case contains two integers
 n
 and
-k
+m
 (
-1≤n≤100
+2≤n≤1000
 ;
-1≤k≤
+1≤m≤
 10
-9
-) — the number of mountains and the number of boulders.
-The second line contains
+5
+) — the number of vertices in the graph and desirable length of the palindrome.
+Each of the next
 n
-integers
-h
-1
-,
-h
-2
-,…,
-h
+lines contains
 n
-(
-1≤
-h
+characters. The
+j
+-th character of the
 i
-≤100
-) — the height of the mountains.
-It is guaranteed that the sum of
+-th line describes the character on the edge that is going from node
+i
+to node
+j
+.
+Every character is either 'a' or 'b' if
+i≠j
+, or '*' if
+i=j
+, since the graph doesn't contain self-loops.
+It's guaranteed that the sum of
 n
-over all test cases does not exceed
-100
+over test cases doesn't exceed
+1000
+and the sum of
+m
+doesn't exceed
+10
+5
 .
 Output
-For each test case, print
-−1
-if the
-k
--th boulder will fall into the collection system. Otherwise, print the position of the
-k
--th boulder.
+For each test case, if it is possible to find such path, print "YES" and the path itself as a sequence of
+m+1
+integers: indices of vertices in the path in the appropriate order. If there are several valid paths, print any of them.
+Otherwise, (if there is no answer) print "NO".
 Example
 input
 Copy
-4
-4 3
-4 1 2 3
-2 7
-1 8
-4 5
-4 1 2 3
+5
 3 1
-5 3 1
+*ba
+b*b
+ab*
+3 3
+*ba
+b*b
+ab*
+3 4
+*ba
+b*b
+ab*
+4 6
+*aaa
+b*ba
+ab*a
+bba*
+2 6
+*a
+b*
 output
 Copy
-2
-1
--1
--1
+YES
+1 2
+YES
+2 1 3 2
+YES
+1 3 1 3 1
+YES
+1 2 1 3 4 1 4
+NO
 Note
-Let's simulate the first case:
-The first boulder starts at
-i=1
-; since
-h
+The graph from the first three test cases is shown below:
+In the first test case, the answer sequence is
+[1,2]
+which means that the path is:
 1
-≥
-h
+→
+b
 2
-it rolls to
-i=2
-and stops there because
-h
+b
+So the string that is obtained by the given path is b.
+In the second test case, the answer sequence is
+[2,1,3,2]
+which means that the path is:
 2
-<
-h
-3
-.
-The new heights are
-[4,2,2,3]
-.
-The second boulder starts at
-i=1
-; since
-h
+→
+b
 1
-≥
-h
-2
-the boulder rolls to
-i=2
-; since
-h
-2
-≥
-h
+→
+a
 3
-the boulder rolls to
-i=3
-and stops there because
-h
-3
-<
-h
-4
-.
-The new heights are
-[4,2,3,3]
-.
-The third boulder starts at
-i=1
-; since
-h
+→
+b
+2
+b
+a
+b
+So the string that is obtained by the given path is bab.
+In the third test case, the answer sequence is
+[1,3,1,3,1]
+which means that the path is:
 1
-≥
-h
-2
-it rolls to
-i=2
-and stops there because
-h
-2
-<
-h
+→
+a
 3
-.
-The new heights are
-[4,3,3,3]
-.
-The positions where each boulder stopped are the following:
-[2,3,2]
-.
-In the second case, all
-7
-boulders will stop right at the first mountain rising its height from
+→
+a
 1
-to
-8
-.
-The third case is similar to the first one but now you'll throw
-5
-boulders. The first three will roll in the same way as in the first test case. After that, mountain heights will be equal to
-[4,3,3,3]
-, that's why the other two boulders will fall into the collection system.
-In the fourth case, the first and only boulders will fall straight into the collection system.
+→
+a
+3
+→
+a
+1
+a
+a
+a
+a
+So the string that is obtained by the given path is aaaa.
+The string obtained in the fourth test case is abaaba.

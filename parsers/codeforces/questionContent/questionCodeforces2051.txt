@@ -1,164 +1,119 @@
-G. Song of the Sirens
-time limit per test2 seconds
+A. Wizard of Orz
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Whoso in ignorance draws near to them and hears the Sirens' voice, he nevermore returns.
-Homer, Odyssey
-In the times of Jason and the Argonauts, it was well known that sirens use the sound of their songs to lure sailors into their demise. Yet only a few knew that every time sirens call a sailor by his name, his will weakens, making him more vulnerable.
-For the purpose of this problem, both siren songs and names of the sailors will be represented as strings of lowercase English letters. The more times the sailor's name occurs as a contiguous substring of the song, the greater danger he is in.
-Jason found out that sirens can sing one of the
-n+1
-songs, which have the following structure: let
-s
-i
-(
-0≤i≤n
-) be the
-i
--th song and
-t
-be a string of length
+There are
 n
-, then for every
-i<n
-:
-s
-i+1
-=
-s
-i
-t
-i
-s
-i
-. In other words
-i+1
--st song is the concatenation of
-i
--th song,
-i
--th letter (
+digital panels placed in a straight line. Each panel can show any digit from
 0
--indexed) of
-t
-and the
-i
--th song.
-Fortunately, he also knows
-s
-0
-and
-t
-. Jason wonders how many times a sailor's name is mentioned in a particular song. Answer
-q
-queries: given the sailor's name (
-w
-) and the index of a song (
-i
-) output the number of occurrences of
-w
-in
-s
-i
-as a substring. As this number can be quite large, output its remainder modulo
-10
+to
 9
-+7
+. Initially, all panels show
+0
+.
+Every second, the digit shown by each panel increases by
+1
+. In other words, at the end of every second, a panel that showed
+9
+would now show
+0
+, a panel that showed
+0
+would now show
+1
+, a panel that showed
+1
+would now show
+2
+, and so on.
+When a panel is paused, the digit displayed on the panel does not change in the subsequent seconds.
+You must pause exactly one of these panels, at any second you wish. Then, the panels adjacent to it get paused one second later, the panels adjacent to those get paused
+2
+seconds later, and so on. In other words, if you pause panel
+x
+, panel
+y
+(for all valid
+y
+) would be paused exactly
+|x−y|
+seconds later.
+For example, suppose there are
+4
+panels, and the
+3
+-rd panel is paused when the digit
+9
+is on it.
+The panel
+1
+pauses
+2
+seconds later, so it has the digit
+1
+;
+the panel
+2
+pauses
+1
+second later, so it has the digit
+0
+;
+the panel
+4
+pauses
+1
+second later, so it has the digit
+0
+.
+The resulting
+4
+-digit number is
+1090
+. Note that this example is not optimal for
+n=4
+.
+Once all panels have been paused, you write the digits displayed on them from left to right, to form an
+n
+digit number (it can consist of leading zeros). What is the largest possible number you can get? Initially, all panels show
+0
 .
 Input
-In the first line of input there are two integers
-n
-,
-q
+The first line of the input contains a single integer
+t
 (
-1≤n,q≤
+1≤t≤100
+) — the number of test cases. Each test case consists of a single line containing a single integer
+n
+(
+1≤n≤2⋅
 10
 5
-) meaning that there are
-n+1
-songs and
-q
-queries. In the next two lines strings
-s
-0
-and
-t
-follow (
-1≤|
-s
-0
-|≤100,|t|=n
 ).
-Next
-q
-lines describe the queries; each one contains an integer
-k
-(
-0≤k≤n
-), the index of the song sung by the sirens, and a non-empty string
-w
-, which is the name of a sailor. All strings in this problem consist only of lowercase English letters, and the sum of lengths of sailors' names does not exceed
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
 10
-6
+5
 .
 Output
-Output
-q
-lines,
-i
--th of them should contain the remainder modulo
-10
-9
-+7
-of the number of occurrences of
-w
-in
-s
-k
-.
-Examples
+For each test case, print the largest number you can achieve, if you pause one panel optimally.
+Example
 input
 Copy
-3 3
-aa
-bcd
-2 aba
-3 ca
-3 aa
-output
-Copy
 2
-2
-8
-input
-Copy
-4 5
-aba
-bbac
-1 a
-3 baca
-3 ab
-2 bab
-4 aba
-output
-Copy
-4
-0
-14
-6
-28
-Note
-In the first example songs of the sirens are as follows:
-Song
-0
-: aa
-Song
 1
-: aabaa
-Song
 2
-: aabaacaabaa
-Song
-3
-: aabaacaabaadaabaacaabaa
+output
+Copy
+9
+98
+Note
+In the first test case, it is optimal to pause the first panel when the number
+9
+is displayed on it.
+In the second test case, it is optimal to pause the second panel when the number
+8
+is displayed on it.

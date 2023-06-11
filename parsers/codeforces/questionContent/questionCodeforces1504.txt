@@ -1,180 +1,346 @@
-F. Points Movement
-time limit per test2 seconds
+H. Xor-quiz
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-points and
-m
-segments on the coordinate line. The initial coordinate of the
-i
--th point is
-a
-i
-. The endpoints of the
-j
--th segment are
-l
-j
+This is an interactive problem.
+You are given two integers
+c
 and
-r
-j
- — left and right endpoints, respectively.
-You can move the points. In one move you can move any point from its current coordinate
-x
-to the coordinate
-x−1
-or the coordinate
-x+1
-. The cost of this move is
-1
+n
+. The jury has a randomly generated set
+A
+of distinct positive integers not greater than
+c
+(it is generated from all such possible sets with equal probability). The size of
+A
+is equal to
+n
 .
-You should move the points in such a way that each segment is visited by at least one point. A point visits the segment
-[l,r]
-if there is a moment when its coordinate was on the segment
-[l,r]
-(including endpoints).
-You should find the minimal possible total cost of all moves such that all segments are visited.
-Input
-The input consists of multiple test cases. The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains two integers
-n
+Your task is to guess the set
+A
+. In order to guess it, you can ask at most
+⌈0.65⋅c⌉
+queries.
+In each query, you choose a single integer
+1≤x≤c
+. As the answer to this query you will be given the bitwise xor sum of all
+y
+, such that
+y∈A
 and
-m
-(
-1≤n,m≤2⋅
-10
-5
-) — the number of points and segments respectively.
-The next line contains
+gcd(x,y)=1
+(i.e.
+x
+and
+y
+are coprime). If there is no such
+y
+this xor sum is equal to
+0
+.
+You can ask all queries at the beginning and you will receive the answers to all your queries. After that, you won't have the possibility to ask queries.
+You should find any set
+A
+′
+, such that
+|
+A
+′
+|=n
+and
+A
+′
+and
+A
+have the same answers for all
+c
+possible queries.
+Input
+Firstly you are given two integers
+c
+and
 n
-distinct integers
-a
+(
+100≤c≤
+10
+6
+,
+0≤n≤c
+).
+Interaction
+In the first line you should print an integer
+q
+(0≤q≤⌈0.65⋅c⌉)
+ — the number of queries you want to ask. After that in the same line print
+q
+integers
+x
 1
 ,
-a
+x
 2
 ,…,
-a
-n
-(
-−
-10
-9
-≤
-a
+x
+q
+(1≤
+x
 i
-≤
-10
-9
-) — the initial coordinates of the points.
-Each of the next
-m
-lines contains two integers
-l
-j
-,
-r
-j
-(
-−
-10
-9
-≤
-l
-j
-≤
-r
-j
-≤
-10
-9
-) — the left and the right endpoints of the
-j
--th segment.
-It's guaranteed that the sum of
-n
-and the sum of
-m
-over all test cases does not exceed
-2⋅
-10
-5
+≤c)
+ — the queries.
+For these queries you should read
+q
+integers,
+i
+-th of them is the answer to the described query for
+x=
+x
+i
 .
-Output
-For each test case print a single integer — the minimal total cost of all moves such that all segments are visited.
+After that you should print
+n
+distinct integers
+A
+′
+1
+,
+A
+′
+2
+,…,
+A
+′
+n
+ — the set
+A
+′
+you found.
+If there are different sets
+A
+′
+that have the same answers for all possible queries, print any of them.
+If you will ask more than
+⌈0.65⋅c⌉
+queries or if the queries will be invalid, the interactor will terminate immediately and your program will receive verdict Wrong Answer.
+After printing the queries and answers do not forget to output end of line and flush the output buffer. Otherwise, you will get the Idleness limit exceeded verdict. To do flush use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+Read documentation for other languages.
+Hacks
+You cannot make hacks in this problem.
 Example
 input
 Copy
-2
-4 11
-2 6 14 18
-0 3
-4 5
-11 15
-3 5
-10 13
-16 16
-1 4
-8 12
-17 19
-7 13
-14 19
-4 12
--9 -16 12 3
--20 -18
--14 -13
--10 -7
--3 -1
-0 4
-6 11
-7 9
-8 10
-13 15
-14 18
-16 17
-18 19
+10 6
+
+1 4 2 11 4 4 4
 output
 Copy
-5
-22
+7 10 2 3 5 7 1 6
+
+1 4 5 6 8 10
 Note
-In the first test case the points can be moved as follows:
-Move the second point from the coordinate
+The sample is made only for you to understand the interaction protocol. Your solution will not be tested on the sample.
+In the sample
+A={1,4,5,6,8,10}
+.
+7
+queries are made,
+7≤⌈0.65⋅10⌉=7
+, so the query limit is not exceeded.
+Answers for the queries:
+For
+10
+:
+1
+is the only number in the set
+A
+coprime with
+10
+, so the answer is
+1
+For
+2
+:
+1
+10
+⊕
+5
+10
+=
+001
+2
+⊕
+101
+2
+=
+4
+10
+, where
+⊕
+is the bitwise xor
+For
+3
+:
+1
+10
+⊕
+4
+10
+⊕
+5
+10
+⊕
+8
+10
+⊕
+10
+10
+=
+0001
+2
+⊕
+0100
+2
+⊕
+0101
+2
+⊕
+1000
+2
+⊕
+1010
+2
+=
+2
+10
+For
+5
+:
+1
+10
+⊕
+4
+10
+⊕
 6
-to the coordinate
+10
+⊕
+8
+10
+=
+0001
+2
+⊕
+0100
+2
+⊕
+0110
+2
+⊕
+1000
+2
+=
+11
+10
+For
+7
+:
+1
+10
+⊕
+4
+10
+⊕
 5
-.
-Move the third point from the coordinate
-14
-to the coordinate
-13
-.
-Move the fourth point from the coordinate
-18
-to the coordinate
-17
-.
-Move the third point from the coordinate
-13
-to the coordinate
-12
-.
-Move the fourth point from the coordinate
-17
-to the coordinate
-16
-.
-The total cost of moves is
+10
+⊕
+6
+10
+⊕
+8
+10
+⊕
+10
+10
+=
+0001
+2
+⊕
+0100
+2
+⊕
+0101
+2
+⊕
+0110
+2
+⊕
+1000
+2
+⊕
+1010
+2
+=
+4
+10
+For
+1
+:
+1
+10
+⊕
+4
+10
+⊕
 5
-. It is easy to see, that all segments are visited by these movements. For example, the tenth segment (
-[7,13]
-) is visited after the second move by the third point.
-Here is the image that describes the first test case:
+10
+⊕
+6
+10
+⊕
+8
+10
+⊕
+10
+10
+=
+0001
+2
+⊕
+0100
+2
+⊕
+0101
+2
+⊕
+0110
+2
+⊕
+1000
+2
+⊕
+1010
+2
+=
+4
+10
+For
+6
+:
+1
+10
+⊕
+5
+10
+=
+0001
+2
+⊕
+0101
+2
+=
+4
+10

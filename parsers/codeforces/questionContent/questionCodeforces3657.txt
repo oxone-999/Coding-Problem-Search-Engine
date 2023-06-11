@@ -1,118 +1,316 @@
-G. Gold Experience
-time limit per test2 seconds
+H. Holy Diver
+time limit per test3 seconds
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Consider an undirected graph
-G
-with
+You are given an array which is initially empty. You need to perform
 n
-vertices. There is a value
+operations of the given format:
+"
 a
-i
-in each vertex.
-Two vertices
-i
+l
+r
+k
+": append
+a
+to the end of the array. After that count the number of integer pairs
+x,y
+such that
+l≤x≤y≤r
 and
-j
-are connected with an edge if and only if
-gcd(
+mex(
 a
-i
-,
-a
-j
-)>1
-, where
-gcd(x,y)
-denotes the greatest common divisor (GCD) of integers
 x
-and
-y
-.
-Consider a set of vertices. Let's call a vertex in this set fair if it is connected with an edge with all other vertices in this set.
-You need to find a set of
-k
-vertices (where
-k
-is a given integer,
-2⋅k≤n
-) where all vertices are fair or all vertices are not fair. One can show that such a set always exists.
-Input
-The first line contains integers
-n
-and
-k
-(
-6≤2⋅k≤n≤
-10
-5
-) — the number of vertices and parameter
-k
-.
-The second line contains
-n
-integers
-a
-1
 ,
 a
-2
+x+1
 ,…,
 a
+y
+)=k
+.
+The elements of the array are numerated from
+1
+in the order they are added to the array.
+To make this problem more tricky we don't say your real parameters of the queries. Instead your are given
+a
+′
+,
+l
+′
+,
+r
+′
+,
+k
+′
+. To get
+a
+,
+l
+,
+r
+,
+k
+on the
+i
+-th operation you need to perform the following:
+a:=(
+a
+′
++lans)mod(n+1)
+,
+l:=(
+l
+′
++lans)modi+1
+,
+r:=(
+r
+′
++lans)modi+1
+,
+if
+l>r
+swap
+l
+and
+r
+,
+k:=(
+k
+′
++lans)mod(n+1)
+,
+where
+lans
+is the answer to the previous operation, initially
+lans
+is equal to zero.
+i
+is the id of the operation, operations are numbered from
+1
+.
+The
+mex(S)
+, where
+S
+is a multiset of non-negative integers, is the smallest non-negative integer which does not appear in the set. For example,
+mex({2,2,3})=0
+and
+mex({0,1,4,1,6})=2
+.
+Input
+The first line contains a single integer
 n
 (
-2≤
+1≤n≤2⋅
+10
+5
+) — the length of the array.
+The next
+n
+lines contain the description of queries.
+Each of them
+n
+lines contains four non-negative integers
 a
-i
+′
+,
+l
+′
+,
+r
+′
+,
+k
+′
+(
+0,≤
+a
+′
+,
+l
+′
+,
+r
+′
+,
+k
+′
 ≤
 10
-7
-) — the values in the vertices.
+9
+), describing one operation.
 Output
-Print exactly
-k
-distinct integers — the indices of the vertices in the chosen set in any order.
+For each query print a single integer — the answer to this query.
 Examples
 input
 Copy
-6 3
-6 15 10 8 14 12
-output
-Copy
-2 4 5
-input
-Copy
-8 4
-11 15 10 6 21 15 10 6
-output
-Copy
-5 7 1 2
-input
-Copy
-10 5
-3003 17017 3230 49742 546 41990 17765 570 21945 36465
-output
-Copy
-1 2 4 5 6
-Note
-In the first test case, set
-{2,4,5}
-is an example of set where no vertices are fair. The vertex
-2
-does not share an edge with vertex
-4
-since
-gcd(15,8)=1
-. The vertex
-4
-does not share an edge with vertex
-2
-. The vertex
 5
-does not share an edge with vertex
+0 0 0 1
+0 1 0 5
+5 2 1 0
+5 2 1 0
+2 4 3 3
+output
+Copy
+1
+1
 2
-.
-In the second test case, set
-{8,5,6,4}
-is an example of a set where all vertices are fair.
+6
+3
+input
+Copy
+5
+2 0 0 2
+2 0 1 1
+0 0 2 0
+3 2 2 0
+0 2 3 0
+output
+Copy
+0
+0
+3
+0
+0
+Note
+For the first example the decoded values of
+a
+,
+l
+,
+r
+,
+k
+are the following:
+a
+1
+=0,
+l
+1
+=1,
+r
+1
+=1,
+k
+1
+=1
+a
+2
+=1,
+l
+2
+=1,
+r
+2
+=2,
+k
+2
+=0
+a
+3
+=0,
+l
+3
+=1,
+r
+3
+=3,
+k
+3
+=1
+a
+4
+=1,
+l
+4
+=1,
+r
+4
+=4,
+k
+4
+=2
+a
+5
+=2,
+l
+5
+=1,
+r
+5
+=5,
+k
+5
+=3
+For the second example the decoded values of
+a
+,
+l
+,
+r
+,
+k
+are the following:
+a
+1
+=2,
+l
+1
+=1,
+r
+1
+=1,
+k
+1
+=2
+a
+2
+=2,
+l
+2
+=1,
+r
+2
+=2,
+k
+2
+=1
+a
+3
+=0,
+l
+3
+=1,
+r
+3
+=3,
+k
+3
+=0
+a
+4
+=0,
+l
+4
+=2,
+r
+4
+=2,
+k
+4
+=3
+a
+5
+=0,
+l
+5
+=3,
+r
+5
+=4,
+k
+5
+=0

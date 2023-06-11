@@ -1,31 +1,43 @@
-A Bowling Game
+Restaurant Expansion
 Problem
-Mary and Johnny are playing a game with bowling pins. There is a row of N bowling pins. Mary and Johnny alternatively take their turn to bowl. They are such skillful bowling players that at each player's turn, any of them can take out any row of adjacent bowling pins, provided that the number of pins taken out is no more than K. It is important to notice that all the pins taken out must be adjacent. It is impossible to knock down pins separated by a greater distance. Whoever knocks out the last bowling pin wins the game.
-You have just come down to watch Mary and Johnny playing the game. Some pins are already removed and now it is Mary's turn. With a good knowledge of mathematical games, you know that it is possible to compute in advance whether Mary or Johnny will win the game, provided that the winner always plays the perfect strategy. So why not impress your two friends by telling them who will win? If Mary could win the game, show her a winning move. Since Mary always wants to win the game as fast as possible, if there are more than one possible winning moves, show her the move that has the most number of pins taken out. If there are still several solutions, show her the move in which the pins taken out are as near to the left as possible.
+You own a large local restaurant. Because now it is very popular, you want to expand your restaurant in a neighboring country.
+The country consists N cities numbered 1 to N. There are N-1 roads connecting the cities. The country is efficiently organized, so there is exactly one path between every pairs of cities. No road will connect a city to itself.
+You want to build new restaurants in some cities. From an amateur survey, for each city i you know its profit index Si, that is the profit you will get if you build a new restaurant in city i.
+Initially, you have C chefs in city 1. You have D days to accomplish your expansion. On each day, you may perform exactly one of these options:
+Do nothing.
+Transfer any number of chefs from a city to another city, provided that the two cities are connected by a road.
+Build a new restaurant in a city, provided that there is at least one chef in the city. After that, all chefs in the city cannot be transferred again. You can only build one restaurant per city.
+
+After D days has passed, you get the profit associated with a city if the city has a restaurant. Of course, you want the maximum possible total profit. Arrange your expansion plan in order to maximize your total profit.
 Input
-The first line contains t, the number of test cases (about 15). Then t test cases follow. Each test case has the following form:
-The first line contains two numbers N and K (1 ≤ N ≤ 2000, 1 ≤ K ≤ 20)
-The second lines contains a string of N characters 0 or 1 (without spaces) representing the row of N bowling pins. A character 0 means the bowling pin at the corresponding position is already taken out whereas a character 1 means the bowling pin is still in its position.
-Each test case is separated by a blank line.
+The first line contains three integers N, C, and D. The next line contains a sequence of N integers Si. The next N-1 lines contains two integers ui and vi, where ui and vi are the two cities connected by the i-th road.
 Output
-For each of the test case, print either the string "Mary wins" or "Johnny wins" depending on who will win the game. If Mary could win the game, in the next line print N characters 0 or 1 representing the row of N bowling pins after Mary's move. Use the same format as that of the input data.
-Remember to print a blank line after the output for each test case.
+In the first line, output the maximum possible total profit. The next D lines contain your expansion plan. In each of the next D lines, output exactly one of the following (quotes for clarity).
+"nothing", if you plan to do nothing on that day.
+"transfer a b c", if you plan to transfer c chefs from city a to city b on that day.
+"build a", if you plan to build a new restaurant in city a on that day.
+
+If there are several expansion plans that lead to the same maximum profit, you may output any.
+Constraints
+1 <= N <= 30
+1 <= C <= 30
+1 <= D <= 30
+-1000 <= Si <= 1000
+1 <= ui <= N
+1 <= vi <= N
+ui != vi
+There is exactly one path between every pair of cities
 Sample 1:
 Input
 Output
-3
-3 2
-111
-8 3
-10110111
-8 4
-11111111
-Mary wins
-101
-Johnny wins
-Mary wins
-11000011
-Explanation:
-Case 1: Mary knocks down the middle pin. Regardless of which pin Johnny takes out in the next move, Mary always takes out the remaining pin and wins the game.
-Case 2: Mary will lose the game regardless of which move she plays. For example if she takes out the rightmost pin, it is easy to verify that Johnny will always win if he then takes out the leftmost pin.
-Case 3: There is more than one move that allows Mary to win the game. The four middle pins make the most number of pins that Mary can take out.
+4 2 5
+-10 5 2 6
+1 2
+2 3
+2 4
+11
+transfer 1 2 2
+transfer 2 4 1
+nothing
+build 4
+build 2

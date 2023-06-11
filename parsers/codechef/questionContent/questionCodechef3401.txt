@@ -1,48 +1,82 @@
-VS and his marking scheme
+Guess My Age
 Problem
-Read problems statements in Mandarin Chinese and Russian as well.
-Chef VS recently conducted an exam on the subject of Computer Science. Being biased as well as lazy, he awards marks looking at only the students' roll numbers, and not their actual answers on the exam. Students have roll numbers ranging from 1 to N, where N is the number of students in his class. For a student with roll number i, chef VS's favouritism value is given by favi.
-For any two students with roll numbers next to each other, VS ensures that the one with the higher favouritism value gets strictly more than twice the marks received by the less favourite student.
-The paper consisted of many problems and each problem must be graded with either the full score allotted to that problem, or zero score.
-Since he does not want to get caught, VS must make sure that the number of marks awarded to any student must be expressible as a sum of maximum possible scores of problems, repeated any number of times. For example, suppose that the problems in the problem set carry marks from the set {2,5,7}. Clearly, no student can be awarded 1 mark. 7 marks may be awarded, as 7 = 2 + 5. 4 marks may also be handed out, as 4 = 2 + 2. Note that 0 marks can be awarded as well.
-One of the students, Sahil, aspires to top the class, and is therefore very concerned about the marks he would get. While Sahil topping the class could have really been possible if the exam was on The Harry Potter series, his chances are rather bleak on a Computer Science test. So, he finds out the fav array by breaking into VS's office, and uses this information to find the minimum possible average of marks obtained by the class and judge the ground reality. It is certain that VS never violates the conditions mentioned in the earlier paragraphs. Print the minimum possible average. Please note that test data is generated so as to ensure that every answer is always less than 252
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
+A group of
+N people (numbered
+1 through
+N) claimed that Chef is only good at cooking, but nothing else. Chef wanted to prove them wrong, so he accepted a challenge from them to guess their ages.
+The
+N people gave Chef
+M pieces of information to help him. Each piece of information is described by four integers
+t,
+u,
+v and
+c with the following meaning:
+If
+t=1, the
+u-th person is older than the
+v-th person by at least
+c years.
+If
+t=2, the
+u-th person is not older than the
+v-th person by at least
+c years.
+Chef also knows that all the ages are integers (strangely, not necessarily positive integers) and that the age of person
+1 is zero.
+Before Chef started thinking about the ages, he asked you to tell him whether it is even possible to determine the ages of all
+N people uniquely using the information he has. Find out if it is possible and what the ages of these
+N people are in that case.
 Input
-The first line contains an integer T, denoting the number of test cases to follow.
-Each test cases contains 4 lines.
-The first line contains N, the number of students in the class.
-The second line contains N space-separated integers, denoting the favouritism value for each student.
-The third line contains the number of distinct marks in the set, K.
-The fourth line contains K distinct numbers separated by a single space. These numbers represent the set of marks allotted to problems.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+M.
+Each of the following
+M lines contains four space-separated integers
+t,
+u,
+v and
+c describing one piece of information.
 Output
-Output exactly T lines, each containing the answer for the corresponding test case. Absolute error of the output should be less than 1e-6. Please note that test data is generated so as to ensure that every answer is always less than 252.
+For each test case:
+If it is impossible to uniquely determine the ages of all the people, print a single line containing the string "NO" (without quotes).
+Otherwise, print two lines.
+The first of these lines should contain a single string "YES" (without quotes).
+The second line should contain
+N space-separated integers denoting the ages of people
+1,2,…,N respectively.
 Constraints
-1 ≤ T ≤ 10
-1 ≤ N ≤ 1000
-0 ≤ favi ≤ 109
-1 ≤ K ≤ 50
-1 ≤ marks allotted to a problem ≤ 50
-Example:
-Sample Input:
-2
+1≤T≤1,000
+2≤N≤1,000
+1≤M≤5,000
+1≤t≤2
+u
+
+=v
+1≤c≤10
+9
+the sum of
+N over all test cases does not exceed
+10,000
+the sum of
+M over all test cases does not exceed
+50,000
+Sample 1:
+Input
+Output
 3
-1 2 3
-3
-2 5 7
-4
-1 2 2 3
-3
-2 4 8
-Sample Output:
-2.333333
-1.000000
-Explanation:
-Test 1:
-Award 0 to student 1, 2 to student 2 and 5 to student 3.
-Total score of the class = 7
-Average = 7 / 3 = 2.333333
-Note that 4 is also a possible total score for the class, but the condition that student 3 should get strictly more that twice the marks obtained by student 2 would have been violated.
-Test 2:
-Award 0 to students 1 and 3. Award 2 to students 2 and 4.
-Total score of the class = 4
-Average = 4 / 4 = 1.000000
-Here, you must notice that, despite the fact that student 2 and 3 are favoured equally by VS, they will not necessarily get the same number of marks.
+2 1
+1 1 2 5
+2 2
+1 2 1 6
+2 2 1 7
+2 2
+1 2 1 6
+2 2 1 6
+NO
+YES
+0 6
+NO

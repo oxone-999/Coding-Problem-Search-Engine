@@ -1,76 +1,75 @@
-Parity Again
+Alice vs Bob Faceoff
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given a set
-S and
-Q queries. Initially,
-S is empty. In each query:
-You are given a positive integer
+Read problem statements in Mandarin, Bengali, Russian, and Vietnamese as well.
+Alice and Bob have got an integer
+N. They decide to play a game. Alice and Bob make alternating moves: Alice makes the first move, Bob makes the second move, Alice makes the third one, and so on. The game continues until
+N becomes
+0. The player who is unable to make a move loses.
+During each turn a player can make one of the following moves:
+Choose an integer
+X such that
+X can be expressed as
+2
+Y
+,
+Y≥1. The chosen
+X must also be a factor of
+N. After choosing an integer
+X which satisfies the mentioned criteria, the player will divide
+N by
 X.
-You should insert
-X into
-S.
-For each
-y∈S before this query such that
-y
-
-=X, you should also insert
-y⊕X into
-S (
-⊕ denotes the XOR operation).
-Then, you should find two values
-E and
-O: the number of elements of
-S with an even number of
-1-s and with an odd number of
-1-s in the binary representation, respectively.
-Note that a set cannot have duplicate elements, so if you try to insert into
-S an element that is already present in
-S, then nothing happens.
-Input
-The first line of the input contains a single integer
+If Move
+1 is not possible , the player will subtract
+1 from
+N.
+Predict the winner of the game if the game is played optimally by both the players.
+Input Format
+The first line of input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains a single integer
-Q.
-Each of the next
-Q lines contains a single integer
-X describing a query.
-Output
-For each query, print a single line containing two space-separated integers
-E and
-O.
+The first line of each test case contains an integer
+N.
+Output Format
+For each test case, print "Alice" if Alice wins the game else print "Bob". Print the output without quotes.
 Constraints
-1≤T≤5
-1≤Q,X≤10
+1≤T≤2∗10
 5
+1≤N≤10
+18
 Subtasks
-Subtask #1 (30 points):
-1≤Q≤1,000
-1≤X≤128
-Subtask #2 (70 points): original constraints
+10 points :
+1≤N≤20 ,
+1≤T≤20
+30 points :
+1≤N≤10
+5
+,
+1≤T≤10
+5
+60 points :
+1≤N≤10
+18
 Sample 1:
 Input
 Output
-1
-3
-4
 2
-7
-0 1
-1 2
-3 4
+1
+2
+Alice
+Bob
 Explanation:
-Example case 1:
-Initially, the set is empty:
-S={}.
-After the first query,
-S={4}, so there is only one element with an odd number of
-1-s in the binary representation ("100").
-After the second query,
-S={4,2,6}, there is one element with an even number of
-1-s in the binary representation (
-6 is "110") and the other two elements have an odd number of
-1-s.
-After the third query,
-S={4,2,6,7,3,5,1}.
+Test case
+1: Alice can't perform the first move, hence she subtracts 1 from
+N and
+N becomes
+0. Bob can't make a move now.
+Test case
+1: Alice first divides
+N by
+2 , after which
+N becomes
+1. Bob, in the next move decrements
+N by
+1 after which
+N becomes
+0 and Alice loses.

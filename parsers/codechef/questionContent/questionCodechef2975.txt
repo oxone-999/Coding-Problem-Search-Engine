@@ -1,96 +1,36 @@
-Weird Product
+Ciel and Genjiko
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given a sequence
-A
-1
-,A
-2
-,…,A
-N
-and an integer
-X. The weirdness of a contiguous subsequence
-A
-l
-,A
-l+1
-,…,A
-r
-is defined as
-W(l,r)=∑
-i=l
-r
-A
-i
-⋅X
-i−l
-. Find
-P=∏
-i=1
-N
-∏
-j=i
-N
-W(i,j)
-2
-modulo
-998,244,353.
+Genjiko is one of the Japanese traditional games. Chef Ciel will take place a variant version of genjiko in her restaurant.
+The rules of the game are the following:
+The challenger must be blindfolded.
+Ciel feeds the challenger one of the N foods menus of her restaurant, M times.
+The challenger must answer whether the i-th food and the j-th food are same or not, for all 1 ≤ i < j ≤ M.
+For making the game difficult, Ciel cannot use the same menu for both the i-th menu and the (i+j)-th menu for all 1 ≤ j ≤ K. (The challenger knows this)
+Ciel wonders how many patterns can be the challenger's answer. Your task is calculating the number of the patterns modulo 1000000009 (109+9).
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-X.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+The first line contains an integer T, the number of test cases. Then T test cases follow. Each test case has 3 integers N, M and K.
 Output
-For each test case, print a single line containing one integer
-P modulo
-998,244,353.
+Print the number of the patterns of the possible answers modulo 1000000009 (109+9).
 Constraints
-1≤T≤10
+1 ≤ T ≤ 100
+1 ≤ N ≤ 200
+1 ≤ M ≤ 1000000000 (109)
+0 ≤ K ≤ 200
+Sample Input
 5
-1≤N≤10
-5
-0<X<998,244,353
-0≤A
-i
-<998,244,353 for each valid
-i
-the sum of
-N over all test cases does not exceed
-10
-5
-Subtasks
-Subtask #1 (15 points):
-A
+200 5 0
+2 3 1
+2 3 0
+3 3 1
+1 1000000000 200
+Sample Output
+52
 1
-=A
-2
-=…=A
-N
-Subtask #2 (85 points): original constraints
-Sample 1:
-Input
-Output
 4
-3 1
-2 1 1
-1 7
-1
-5 998244351
-5 5 5 5 5
-10 69
-2 0 1 6 3 3 1 0 5 1
-2304
-1
-253808779
+2
 0
+Output details
+The first case is the same as genjiko. In the traditional game genjiko, we make connections between each possible answer and the name of a book of The Tale of Genji. However The Tale of Genji is composed of 54 books, so the names of the first book and the last book are unused.
+Let the letters A, B, C, ... denote the N menus, and let "ABA" mean that Ciel uses A for the 1st food, and uses B for the 2nd food, and uses A for the 3rd food. In the second case, Ciel cannot use the same menu consecutively. So Ciel can use only 2 patterns "ABA" and "BAB". However there is only one possible answer [1st ≠ 2nd, 1st = 3rd, 2nd ≠ 3rd].
+In the third case, Ciel can use 8 patterns "AAA", "AAB", "ABA", "ABB", "BAA", "BAB", "BBA" and "BBB". And there are four possible answers [1st = 2nd, 1st = 3rd, 2nd = 3rd], [1st = 2nd, 1st ≠ 3rd, 2nd ≠ 3rd], [1st ≠ 2nd, 1st = 3rd, 2nd ≠ 3rd] and [1st ≠ 2nd, 1st ≠ 3rd, 2nd ≠ 3rd].
+In the fifth case, Ciel can use no patterns.

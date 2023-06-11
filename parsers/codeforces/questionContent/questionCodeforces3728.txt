@@ -1,220 +1,125 @@
-E. Nastya Hasn't Written a Legend
+A. Skyscrapers
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-In this task, Nastya asked us to write a formal statement.
-An array
-a
-of length
+Dora loves adventures quite a lot. During some journey she encountered an amazing city, which is formed by
 n
-and an array
-k
-of length
-n−1
-are given. Two types of queries should be processed:
-increase
-a
+streets along the Eastern direction and
+m
+streets across the Southern direction. Naturally, this city has
+nm
+intersections. At any intersection of
 i
-by
+-th Eastern street and
+j
+-th Southern street there is a monumental skyscraper. Dora instantly became curious and decided to explore the heights of the city buildings.
+When Dora passes through the intersection of the
+i
+-th Eastern and
+j
+-th Southern street she examines those two streets. After Dora learns the heights of all the skyscrapers on those two streets she wonders: how one should reassign heights to the skyscrapers on those two streets, so that the maximum height would be as small as possible and the result of comparing the heights of any two skyscrapers on one street wouldn't change.
+Formally, on every of
+nm
+intersections Dora solves an independent problem. She sees
+n+m−1
+skyscrapers and for each of them she knows its real height. Moreover, any two heights can be compared to get a result "greater", "smaller" or "equal". Now Dora wants to select some integer
 x
-. Then if
+and assign every skyscraper a height from
+1
+to
+x
+. When assigning heights, Dora wants to preserve the relative order of the skyscrapers in both streets. That is, the result of any comparison of heights of two skyscrapers in the current Eastern street shouldn't change and the result of any comparison of heights of two skyscrapers in current Southern street shouldn't change as well. Note that skyscrapers located on the Southern street are not compared with skyscrapers located on the Eastern street only. However, the skyscraper located at the streets intersection can be compared with both Southern and Eastern skyscrapers. For every intersection Dora wants to independently calculate the minimum possible
+x
+.
+For example, if the intersection and the two streets corresponding to it look as follows:
+Then it is optimal to replace the heights of the skyscrapers as follows (note that all comparisons "less", "equal", "greater" inside the Eastern street and inside the Southern street are preserved)
+The largest used number is
+5
+, hence the answer for this intersection would be
+5
+.
+Help Dora to compute the answers for each intersection.
+Input
+The first line contains two integers
+n
+and
+m
+(
+1≤n,m≤1000
+) — the number of streets going in the Eastern direction and the number of the streets going in Southern direction.
+Each of the following
+n
+lines contains
+m
+integers
 a
-i+1
-<
-a
-i
-+
-k
-i
+i,1
 ,
 a
-i+1
-becomes exactly
-a
-i
-+
-k
-i
-; again, if
-a
-i+2
-<
-a
-i+1
-+
-k
-i+1
-,
-a
-i+2
-becomes exactly
-a
-i+1
-+
-k
-i+1
-, and so far for
-a
-i+3
+i,2
 , ...,
 a
-n
-;
-print the sum of the contiguous subarray from the
-l
--th element to the
-r
--th element of the array
-a
-.
-It's guaranteed that initially
-a
-i
-+
-k
-i
-≤
-a
-i+1
-for all
-1≤i≤n−1
-.
-Input
-The first line contains a single integer
-n
+i,m
 (
-2≤n≤
-10
-5
-) — the number of elements in the array
+1≤
 a
-.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−
-10
-9
-≤
-a
-i
+i,j
 ≤
 10
 9
-) — the elements of the array
+). The integer
 a
-.
-The third line contains
-n−1
-integers
-k
-1
-,
-k
-2
-,…,
-k
-n−1
-(
-−
-10
-6
-≤
-k
+i,j
+, located on
+j
+-th position in the
 i
-≤
-10
-6
-) — the elements of the array
-k
-.
-The fourth line contains a single integer
-q
-(
-1≤q≤
-10
-5
-) — the number of queries.
-Each of the following
-q
-lines contains a query of one of two types:
-if the query has the first type, the corresponding line contains the character '+' (without quotes), and then there are two integers
+-th line denotes the height of the skyscraper at the intersection of the
 i
-and
-x
-(
-1≤i≤n
-,
-0≤x≤
-10
-6
-), it means that integer
-x
-is added to the
-i
--th element of the array
-a
-as described in the statement.
-if the query has the second type, the corresponding line contains the character 's' (without quotes) and then there are two integers
-l
-and
-r
-(
-1≤l≤r≤n
-).
+-th Eastern street and
+j
+-th Southern direction.
 Output
-For each query of the second type print a single integer in a new line — the sum of the corresponding subarray.
+Print
+n
+lines containing
+m
+integers each. The integer
+x
+i,j
+, located on
+j
+-th position inside the
+i
+-th line is an answer for the problem at the intersection of
+i
+-th Eastern street and
+j
+-th Southern street.
 Examples
 input
 Copy
-3
-1 2 3
-1 -1
-5
-s 2 3
-+ 1 2
-s 1 2
-+ 3 1
-s 2 3
+2 3
+1 2 1
+2 1 2
 output
 Copy
-5
-7
-8
+2 2 2 
+2 2 2 
 input
 Copy
-3
-3 6 7
-3 1
-3
-+ 1 3
-+ 2 4
-s 1 3
+2 2
+1 2
+3 4
 output
 Copy
-33
+2 3 
+3 2 
 Note
-In the first example:
-after the first change
-a=[3,4,3]
-;
-after the second change
-a=[3,4,4]
-.
-In the second example:
-after the first change
-a=[6,9,10]
-;
-after the second change
-a=[6,13,14]
-.
+In the first example, it's not possible to decrease the maximum used height for the problem at any intersection, hence we don't have to change any heights.
+In the second example, the answers are as follows:
+For the intersection of the first line and the first column
+For the intersection of the first line and the second column
+For the intersection of the second line and the first column
+For the intersection of the second line and the second column

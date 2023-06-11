@@ -1,109 +1,116 @@
-B. 0-1 MST
-time limit per test1 second
+D. Number Discovery
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ujan has a lot of useless stuff in his drawers, a considerable part of which are his math notebooks: it is time to sort them out. This time he found an old dusty graph theory notebook with a description of a graph.
-It is an undirected weighted graph on
-n
-vertices. It is a complete graph: each pair of vertices is connected by an edge. The weight of each edge is either
-0
-or
-1
-; exactly
-m
-edges have weight
-1
-, and all others have weight
-0
-.
-Since Ujan doesn't really want to organize his notes, he decided to find the weight of the minimum spanning tree of the graph. (The weight of a spanning tree is the sum of all its edges.) Can you find the answer for Ujan so he stops procrastinating?
-Input
-The first line of the input contains two integers
+Ujan needs some rest from cleaning, so he started playing with infinite sequences. He has two integers
 n
 and
-m
+k
+. He creates an infinite sequence
+s
+by repeating the following steps.
+Find
+k
+smallest distinct positive integers that are not in
+s
+. Let's call them
+u
+1
+,
+u
+2
+,…,
+u
+k
+from the smallest to the largest.
+Append
+u
+1
+,
+u
+2
+,…,
+u
+k
+and
+∑
+k
+i=1
+u
+i
+to
+s
+in this order.
+Go back to the first step.
+Ujan will stop procrastinating when he writes the number
+n
+in the sequence
+s
+. Help him find the index of
+n
+in
+s
+. In other words, find the integer
+x
+such that
+s
+x
+=n
+. It's possible to prove that all positive integers are included in
+s
+only once.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤
+10
+5
+), the number of test cases.
+Each of the following
+t
+lines contains two integers
+n
+and
+k
 (
 1≤n≤
 10
-5
+18
 ,
-0≤m≤min(
-n(n−1)
-2
-,
+2≤k≤
 10
-5
-)
-), the number of vertices and the number of edges of weight
-1
-in the graph.
-The
-i
--th of the next
-m
-lines contains two integers
-a
-i
-and
-b
-i
-(
-1≤
-a
-i
-,
-b
-i
-≤n
-,
-a
-i
-≠
-b
-i
-), the endpoints of the
-i
--th edge of weight
-1
+6
+), the number to be found in the sequence
+s
+and the parameter used to create the sequence
+s
 .
-It is guaranteed that no edge appears twice in the input.
 Output
-Output a single integer, the weight of the minimum spanning tree of the graph.
-Examples
+In each of the
+t
+lines, output the answer for the corresponding test case.
+Example
 input
-Copy
-6 11
-1 3
-1 4
-1 5
-1 6
-2 3
-2 4
-2 5
-2 6
-3 4
-3 5
-3 6
-output
 Copy
 2
-input
-Copy
-3 0
+10 2
+40 5
 output
 Copy
-0
+11
+12
 Note
-The graph from the first sample is shown below. Dashed edges have weight
-0
-, other edges have weight
-1
-. One of the minimum spanning trees is highlighted in orange and has total weight
-2
+In the first sample,
+s=(1,2,3,4,5,9,6,7,13,8,10,18,…)
 .
-In the second sample, all edges have weight
-0
-so any spanning tree has total weight
-0
+10
+is the
+11
+-th number here, so the answer is
+11
+.
+In the second sample,
+s=(1,2,3,4,5,15,6,7,8,9,10,40,…)
 .

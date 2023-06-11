@@ -1,166 +1,46 @@
-MEX on Trees
+First non-Palindrome
 Problem
-Consider a tree with
-N nodes, rooted at node
-1.
-The value of the
-i
-th
-node
-(1≤i≤N) is denoted by
-A
-i
-.
-Chef defines the function
-MEX(u,v) as follows:
-Let
-B denote the set of all the values of nodes that lie in the shortest path from
-u to
-v (including both
-u and
-v). Then,
-MEX(u,v) denotes the MEX of the set
-B.
-Find the maximum value of
-MEX(1,i), where
-1≤i≤N.
-Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of the
-T test cases follows.
-The first line of each test case contains a single integer
-N - the number of nodes in the tree.
-The second line of each test case contains
-N space separated integers
-A
-1
-,A
-2
-,...,A
-N
-.
-A
-i
-represents the value of the
-i
-th
-node.
-The following
-N−1 lines contain two space-separated integers
-X and
-Y, denoting that there exists an edge between the nodes
-X and
-Y.
-Output Format
-For each test case, output in a single line, the maximum value of
-MEX(1,i) where
-1≤i≤N.
-Constraints
-1≤T≤10
-4
-1≤N≤10
-5
-0≤A
-i
-≤N
-1≤X,Y≤N
-Sum of
-N over all test cases does not exceed
-3⋅10
-5
-.
-Sample 1:
+For the given string S of length N you need to find for each L from 1 to N the first non-palindrome substring of S that has length L. That is, for each L from 1 to N you need to find the smallest positive integer K <= N - L + 1 such that the string S[K, K + L - 1] is not a palindrome. Denote this number by K(L). Here S[i, j] stands for the substring of S composed of its characters in positions i, i + 1, ..., j. Characters of S are numbered from 1 to N. If for some L there is no such K set K(L) = 0. After you find all numbers K(1), K(2), ..., K(N) output the following sum
+
+
+100007N - 1 * K(1) + 100007N - 2 * K(2) + ... + 100007 * K(N - 1) + K(N)
+
+
+
+modulo 264.
+
+
+
+Remark. The string is called a palindrome if it coincides with its reverse. So abacaba and abba are palindromes but codechef and abbc are not.
 Input
+The first line contains a single integer T, the number of test cases. T test cases follow. The only line of each test case contains a non-empty string composed only of lowercase letters of the English alphabet.
 Output
-3
-3
-0 1 2
-1 2
-1 3
+For each test case, output a single line containing the corresponding sum constructed by numbers K(1), K(2), ..., K(N) as mentioned in the problem statement modulo 264.
+Constraints
+
+1 <= T <= 20
+
+
+1 <= length of S <= 100000
+Example
+Input:
 4
-0 1 2 3
-1 2
-2 3
-1 4
-5
-1 2 3 4 0
-1 2
-2 3
-2 4
-1 5
-2
-3
-2
-Explanation:
-Test case
-1:
-MEX(1,1)=MEX({A
-1
-})=MEX({0})=1.
-MEX(1,2)=MEX({A
-1
-,A
-2
-})=MEX({0,1})=2.
-MEX(1,3)=MEX({A
-1
-,A
-3
-})=MEX({0,2})=1.
-Thus, the answer is
-2.
-Test case
-2:
-MEX(1,1)=MEX({A
-1
-})=MEX({0})=1.
-MEX(1,2)=MEX({A
-1
-,A
-2
-})=MEX({0,1})=2.
-MEX(1,3)=MEX({A
-1
-,A
-2
-,A
-3
-})=MEX({0,1,2})=3.
-MEX(1,4)=MEX({A
-1
-,A
-4
-})=MEX({0,3})=1.
-Thus, the answer is
-3.
-Test case
-3:
-MEX(1,1)=MEX({A
-1
-})=MEX({1})=0.
-MEX(1,2)=MEX({A
-1
-,A
-2
-})=MEX({1,2})=0.
-MEX(1,3)=MEX({A
-1
-,A
-2
-,A
-3
-})=MEX({1,2,3})=0.
-MEX(1,4)=MEX({A
-1
-,A
-2
-,A
-4
-})=MEX({1,2,4})=0.
-MEX(1,5)=MEX({A
-1
-,A
-5
-})=MEX({1,0})=2.
-Thus, the answer is
-2.
+abacaba
+abba
+codechef
+aaaa
+Output:
+12789123637940213592
+10001500056
+18134494634143926857
+0
+Explanation
+Actual values of K(1), K(2), ..., K(N) in the tests are:
+
+abacaba: {0, 1, 2, 1, 1, 1, 0}
+
+abba: {0, 1, 1, 0}
+
+codechef: {0, 1, 1, 1, 1, 1, 1, 1}
+
+aaaa: {0, 0, 0, 0}

@@ -1,35 +1,86 @@
-Chef and Cookies
+Crazy Substrings
 Problem
-Chef is baking delicious cookies today! Since Chef is super hungry, he wants to eat at least
-N cookies.
-Since Chef is a messy eater, he drops a lot of crumbs. Crumbs of
-B cookies can be put together to make a new cookie!
-Given
-N and
-B, help Chef find out the minimum number of cookies he must initially bake,
-A, to satisfy his hunger.
-###Input:
+Gotham City is the home of Batman, and Batman likes to keep his people together.
+There are
+N houses in the city. The resident of the
+i
+th
+house is of type
+A
+i
+. It is known that people of the same type are friends and people of different types are not friends.
+To maintain peace, Batman can do the following type of operation:
+Choose indices
+i and
+j
+(1≤i≤j≤N) and reverse the substring
+A[i,j].
+Determine the length of the longest range of friends after applying at most
+k operations on the string for all
+0≤k≤N.
+Input Format
 First line will contain
-T, number of testcases. Then the testcases follow.
-Each testcase contains of two space separated integers
-N,B.
-###Output: For each test case, print a single integer
-A, the minimum number of cookies Chef must bake initially.
-###Constraints
+T, the number of test cases. Then the test cases follow.
+The first line of each test case contains a single integer
+N, the number of houses in Gotham city.
+The next line contains a string
+A with
+N characters. The
+i
+th
+character denotes the type of the
+i
+th
+person.
+Output Format
+For each test case, output a single line,
+(N+1) space-separated integers where the
+i
+th
+integer signifies the length of the longest range of friends after applying at most
+i operations.
+Constraints
 1≤T≤1000
-1≤N≤1000000000
-2≤B≤1000000000
+1≤N≤2⋅10
+5
+Sum of
+N over all test cases does not exceed
+2⋅10
+5
+.
+String
+A contains lowercase English alphabets only.
 Sample 1:
 Input
 Output
-1
- 3 2
-2
-Sample 2:
-Input
-Output
-1
- 11 2
-6
+3
+4
+aaaa
+4
+abca
+7
+babbaab
+4 4 4 4 4
+1 2 2 2 2
+2 3 4 4 4 4 4 4
 Explanation:
-Chef initially make 6 cookies. From the crumbs, Chef makes 3 new cookies with no crumbs left over. From the crumbs of the new cookies, Chef makes 1 new cookie and have crumbs left from one cookie. From the new cookie, Chef gets more crumbs. He adds the crumbs and gets one last cookie. After eating that, there are not enough crumbs left to make a new cookie. So a total of 11 cookies are consumed!
+Test case
+1: All
+4 people are friends. Thus, the answer is
+4 for all values of
+k.
+Test case
+2:
+For
+k=0, the length of the longest range of friends is
+1.
+For
+k=1, we can choose
+i=1 and
+j=3. On reversing the substring
+[1,3], we get cbaa. Thus, length of longest range of friends is
+2.
+For
+k=2,3, and
+4, the length of the longest range of friends is
+2 as no more people of the same type can be grouped together.

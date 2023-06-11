@@ -1,62 +1,167 @@
-Chef and Job and Rest
+Jigsaw Puzzle Solving
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef is working as a programmer. His job schedule is very interesting: he rests for R0 minutes, works for some time, then rests for R1 minutes, then works some more, and so on.
-By the way, Chef has M books he wants to read. Each book has some given number of pages, and Chef reads one page per minute independent of which page of whichever book it is. Chef has two types of books to read: the first type are too interesting for an interrupted read and, therefore, need to be finished in one continuous reading session, that is, some ith resting period or a part of it. Books of the second type are more casual reads which can be split up in any way between different resting periods (read a few pages, then read another book or do the job, and continue later).
-Chef is getting tired when switch, that is why each book can be read for some times only once per rest.
-Let us take an example: If Chef has a rest period array R = {4,1,1}, and books types to read: (1st, 3 min), (2nd, 3 min). Chef can finish the first book in the first rest period (minutes from 1st to 3rd), and use the 4th minute of first period, along with the second and third periods to finish the second book.
-Some books are part of a series, and need to be read in order. In other words, some books can't be started until some other books are done. You are given this information in the form of pairwise dependencies, indicating that one book cannot be started before the other is finished. Chef promises that there are no cycles across these directed dependencies. Each book has a rating, expressed as a positive integer. When Chef finishes a book, his happiness increases by this number.
-Scoring
-For each test, your result will be defined as the sum of ratings of books you finish.
-The total score for a submission is the sum of the scores for all test cases.
-Your task is to maximize the total score.
+Imagine a usual jigsaw puzzle. Let its picture be a completely white rectangle with the width of W pixels and the height of H pixels.
+The puzzle was splitted into K pieces, then they've got mixed up. Now you want to restore it again. Ideally, you'd like merge these pieces in such a way that they'd form a rectangle W pixels wide and H pixels tall, again. However, it can be very hard. Therefore, even reconstructing a part of a puzzle will make you happy.
+Let's formalize the things a bit. You have an empty matrix of H x W cells and K pieces, every piece is a connected component (see the further illustration for better understanding). By connected component, we mean that a piece is a figure where you can reach any pixel of a figure by going through side-adjacent pixels from the figure. You can place a piece anywhere in the matrix, in case it doesn't overlap with other pieces and doesn't crosses the border of the matrix. You can skip the piece and not to place it at all. You cannot rotate the pieces. Given that it is possible to place all the the pieces in such a way that the every cell of the matrix is exactly covered by one piece.
+Your goal is to place some (maybe, all) of the pieces in such a way that no two pieces overlap, no piece crosses the border of the matrix, and the number of the cells that are covered by placed pieces is maximized.
+Here is the example of the puzzle, splitted into pieces:
+9 9 9 9 9 9 8 8 8 1
+9 9 9 9 9 9 8 8 8 1
+9 5 5 5 5 9 9 9 4 1
+5 5 5 5 5 9 9 4 4 1
+5 3 5 5 4 4 4 4 7 1
+3 3 5 5 4 2 2 7 7 1
+3 3 3 2 2 2 7 7 1 1
+3 3 3 2 7 7 7 7 7 7
+3 3 3 2 6 7 7 7 6 6
+2 2 2 2 6 6 6 6 6 6
 Input
-The first line of each test case contains three integers — N denoting the number of rest periods, M denoting the number of books, and K denoting the number of dependencies. The second line contains N space-separated integers R1, R2, …, RN denoting the duration of each period.
-Next M lines describe the books, with the ith line describing the ith book. Each line contains tree integers Ti, Pi and Wi. Ti is the type of the ith book. Pi is the number of pages in it. Wi is the rating of the book.
-Next K lines describe the inter-book dependencies. Each line contains two integers — A and B — denoting that book A should be finished before book B can be started. The books are indexed in the order of their description in the input.
+The first line of input contains three space separated integers H, W and K - the number of rows, columns and pieces respectively.
+Then K blocks, describing a piece follow.
+Each description starts with a line, containing a single integer P, denoting the number of cells that this piece cover.
+Then there are P lines, each contains a pair of integers X, Y (1 <= X <= H, 1 <= Y <= W), denoting 1-based coordinates of piece's cell in its' bounding box. That is, the minimal X-coordinate and the minimal Y-coordinate in each piece's description are both 1.
+All the pieces are identified by consecutive positive integers (starting from 1) in the order of input.
 Output
-For each rest period, output a single line. The first integer in the line must be K', the number of books you read (fully or partially) in this period. Follow this up with two integers for each book: I — the index of the book you chose (books are enumerated from 1 to M as they are given in input) and W' — the number of minutes you spent on it.
-You are not allowed two print one book twice in one line.
-You can't read the book if it is already finished. Sum of all W' in a line should not be bigger than the rest period duration.
-If you do nothing in a rest period, just print 0.
-Any book of the first type should occur at most once in the output. If Chef reads such a book, it should be done completely in one segment.
-Chef can't start book B until he finishes book A if there is a dependency A, B in the input.
-Constraints
-1 ≤ N ≤ 5*104
-1 ≤ M, K ≤ 105
-20 ≤ Ri≤ 200
-10 ≤ Pi≤ 160
-1 ≤ Ti ≤ 2
-5 ≤ Wi ≤ 1600
-1 ≤ A, B ≤ M
+Output H lines of W integers separated by a single space. The j-th integer in the i-th line should denote the identification number of piece that covers the respective cell, or 0 if the cell is not covered by any piece.
+Test data information
+There will be several groups in this problem (20 test cases in total):
+The first group will contain 5 test cases. In these test cases, W and H will be chosen randomly between 10 and 50. K will be chosen randomly between W * H / 10 and W * H / 2, inclusively.
+The second group will contain 8 test cases. In these test cases, W and H will be chosen randomly between 100 and 200. K will be chosen randomly between W * H / 100 and W * H / 34, inclusively.
+The third group will contain 3 test cases. In these test cases, W and H will be chosen randomly between 600 and 800. K will be chosen randomly between W * H / 100 and W * H / 34, inclusively.
+The fourth group will contain 4 test cases. In these test cases, W and H will be chosen randomly between 500 and 1000. K will be chosen randomly between W * H / 50 and W * H / 5, inclusively.
+In the test data provided, the maximal number of pixels in a piece and the minimal number of pixels in a piece will differ in no more than 3 times. That is, the max_P - min_P <= 3 * min_P.
+Scoring
+Your score for the test case equals to the percentage of the matrix that is covered by pieces. Your score for the problem is the average of your scores for all the test cases. Pay attention that during the contest only the score on 20% of the test cases will be revealed. These 20% will contain a single test case from each of the groups.
 Example
 Input:
-3 8 2
-10 10 10
-1 8 2
-1 7 1
-2 5 4
-2 4 1
-2 3 1
-2 3 4
-2 6 1
-1 5 1
-1 3
+10 10 9
+8
+1 2
+2 2
 3 2
+4 2
+5 2
+6 2
+7 2
+7 1
+11
+1 7
+1 6
+2 5
+2 6
+5 3
+5 1
+5 2
+2 4
+3 4
+4 4
+5 4
+12
+4 3
+5 3
+5 1
+5 2
+1 2
+2 2
+2 1
+3 1
+3 2
+3 3
+4 1
+4 2
+8
+1 5
+2 5
+2 4
+3 4
+3 1
+4 1
+3 2
+3 3
+14
+2 4
+3 4
+2 3
+3 3
+4 3
+4 4
+1 2
+2 2
+2 1
+3 1
+1 3
+1 4
+1 5
+2 5
+9
+1 1
+2 1
+2 2
+2 3
+2 4
+2 5
+2 6
+1 6
+1 5
+14
+5 2
+5 3
+4 4
+5 4
+4 5
+4 6
+1 5
+2 5
+2 4
+3 4
+4 2
+4 1
+3 3
+4 3
+6
+1 2
+1 1
+1 3
+2 3
+2 1
+2 2
+18
+1 1
+1 2
+2 1
+3 1
+2 2
+2 3
+2 4
+2 5
+3 8
+3 7
+4 7
+4 6
+2 6
+3 6
+1 4
+1 3
+1 6
+1 5
 Output:
-2 1 8 3 2
-2 3 3 2 7
-3 4 4 5 3 6 3
-Test generation plan
-Sum of Ri's will be rand(5 * 105, 106).
-Sum of Pi's will be rand(3 * sum of R's, 8 * sum of R's).
-Let Rmin and Rmax denote the minimum and maximum values of Ri, respectively.
-Rmin will be rand(20, 100).
-Rmax will be rand(Rmin + 50, 200).
-We will generate the number of pages of the books in an incremental fashion such that number of pages in a book will be rand(Rmin / 2, Rmax* 4 / 5).
-There are total 4 types of test files, whose description is given below. Please note that the total number of books of type 2 in each test case will be rand(10, 20), unless stated otherwise.
-Type 1 : We will generate a directed acyclic graph (DAG) encoding the dependencies of books. Each connected component of the DAG has rand(10, 50) vertices. The rating of a book depends on the number of pages in it and the minimum number of books that need to be finished before starting that particular book. The ratio of weight / number of pages will be in the range [1, 10] for books of the first type and [0.5, 1] for that of second type.
-Type 2 : The DAG generator will be same as above. Rating of each book is computed as rand(20,500).
-Type 3 : Same as Type 1, but with no books of the second type.
-Type 4 : Same as Type 1, except that the underlying DAG will be a collections of paths.
-We have 20 test files, 5 for each type. During the contest, your solution will run on all the test files. If your program gives WA/TLE/RE on any of the test files out of 20, it will be reported to you. On the other hand, if you get an AC, then the score reported to you is not the total score for all the files; instead, it is only the score for 4 test files, one of each type.
+0 1 8 8 8 0 0 2 2 0
+0 1 8 8 8 2 2 2 3 0
+0 1 0 0 0 2 0 3 3 0
+0 1 0 0 0 2 0 3 3 3
+0 1 2 2 2 2 4 3 3 3
+0 1 0 0 0 4 4 3 3 3
+1 1 4 4 4 4 5 5 5 5
+0 0 4 0 0 5 5 5 5 5
+0 0 0 0 0 5 0 5 5 0
+0 0 0 0 0 0 0 5 5 0
+  Explanation
+How to assign coordinates to the pieces. ?
+Let us consider the 6th piece. Its coordinates will be (1, 1), (1, 5), (1, 6), (2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6). You can notice that x coordinate will increase when you go towards south direction, your y coordinate will increase when you towards east direction.
+Another example:
+Let us consider this piece.
+010
+110
+011
+Its actual coordinates will be given you in row major in following way. (1 2), (2 1), (2 2), (3 2), (3 3).
+This solution corresponding to given output would get 0.59 points.

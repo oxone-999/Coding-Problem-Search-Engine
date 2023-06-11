@@ -1,129 +1,175 @@
-B. Almost Rectangle
+D. Corrupted Array
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There is a square field of size
-n×n
-in which two cells are marked. These cells can be in the same row or column.
-You are to mark two more cells so that they are the corners of a rectangle with sides parallel to the coordinate axes.
-For example, if
-n=4
-and a rectangular field looks like this (there are asterisks in the marked cells):
+You are given a number
+n
+and an array
+b
+1
+,
+b
+2
+,…,
+b
+n+2
+, obtained according to the following algorithm:
+some array
+a
+1
+,
+a
+2
+,…,
+a
+n
+was guessed;
+array
+a
+was written to array
+b
+, i.e.
+b
+i
+=
+a
+i
+(
+1≤i≤n
+);
+The
+(n+1)
+-th element of the array
+b
+is the sum of the numbers in the array
+a
+, i.e.
+b
+n+1
+=
+a
+1
++
+a
+2
++…+
+a
+n
+;
+The
+(n+2)
+-th element of the array
+b
+was written some number
+x
+(
+1≤x≤
+10
+9
+), i.e.
+b
+n+2
+=x
+; The
+array
+b
+was shuffled.
+For example, the array
+b=[2,3,7,12,2]
+it could be obtained in the following ways:
+a=[2,2,3]
+and
+x=12
+;
+a=[3,2,7]
+and
+x=2
 .
-.
-∗
-.
-.
-.
-.
-.
-∗
-.
-.
-.
-.
-.
-.
-.
-Then you can mark two more cells as follows
-∗
-.
-∗
-.
-.
-.
-.
-.
-∗
-.
-∗
-.
-.
-.
-.
-.
-If there are several possible solutions, then print any of them.
+For the given array
+b
+, find any array
+a
+that could have been guessed initially.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤400
+1≤t≤
+10
+4
 ). Then
 t
 test cases follow.
-The first row of each test case contains a single integer
+The first line of each test case contains a single integer
 n
 (
-2≤n≤400
-) — the number of rows and columns in the table.
-The following
+1≤n≤2⋅
+10
+5
+).
+The second row of each test case contains
+n+2
+integers
+b
+1
+,
+b
+2
+,…,
+b
+n+2
+(
+1≤
+b
+i
+≤
+10
+9
+).
+It is guaranteed that the sum of
 n
-lines each contain
-n
-characters '.' or '*' denoting empty and marked cells, respectively.
-It is guaranteed that the sums of
-n
-for all test cases do not exceed
-400
+over all test cases does not exceed
+2⋅
+10
+5
 .
-It is guaranteed that there are exactly two asterisks on the field. They can be in the same row/column.
-It is guaranteed that the solution exists.
 Output
-For each test case, output
+For each test case, output:
+"-1", if the array
+b
+could not be obtained from any array
+a
+;
 n
-rows of
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
-characters — a field with four asterisks marked corresponding to the statements. If there multiple correct answers, print any of them.
+, otherwise.
+If there are several arrays of
+a
+, you can output any.
 Example
 input
 Copy
-6
 4
-..*.
-....
-*...
-....
-2
-*.
-.*
-2
-.*
-.*
 3
-*.*
-...
-...
-5
-.....
-..*..
-.....
-.*...
-.....
+2 3 7 12 2
 4
-....
-....
-*...
-*...
+9 1 7 1 6 5
+5
+18 2 2 3 2 9 2
+3
+2 6 9 2 1
 output
 Copy
-*.*.
-....
-*.*.
-....
-**
-**
-**
-**
-*.*
-*.*
-...
-.....
-.**..
-.....
-.**..
-.....
-....
-....
-**..
-**..
+2 3 7 
+-1
+2 2 2 3 9 
+1 2 6 

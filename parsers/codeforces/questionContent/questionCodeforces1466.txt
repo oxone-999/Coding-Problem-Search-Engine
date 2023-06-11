@@ -1,175 +1,134 @@
-F. Occurrences
-time limit per test7 seconds
+B. Building an Amusement Park
+time limit per test5 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-A subarray of array
-a
-from index
-l
-to the index
+Mr. Chanek lives in a city represented as a plane. He wants to build an amusement park in the shape of a circle of radius
 r
-is the array
-[
-a
-l
+. The circle must touch the origin (point
+(0,0)
+).
+There are
+n
+bird habitats that can be a photo spot for the tourists in the park. The
+i
+-th bird habitat is at point
+p
+i
+=(
+x
+i
 ,
-a
-l+1
-,…,
-a
+y
+i
+)
+.
+Find the minimum radius
 r
-]
-. The number of occurrences of the array
-b
-in the array
-a
-is the number of subarrays of
-a
-such that they are equal to
-b
-.
-You are given
-n
-arrays
-A
-1
-,
-A
-2
-,…,
-A
-n
-; the elements of these arrays are integers from
-1
-to
+of a park with at least
 k
-. You have to build an array
-a
-consisting of
-m
-integers from
-1
-to
-k
-in such a way that, for every given subarray
-A
+bird habitats inside.
+A point is considered to be inside the park if and only if the distance between
+p
 i
-, the number of occurrences of
-A
-i
-in the array
-a
-is not less than the number of occurrences of each non-empty subarray of
-A
-i
-in
-a
-. Note that if
-A
-i
-doesn't occur in
-a
-, and no subarray of
-A
-i
-occurs in
-a
-, this condition is still met for
-A
-i
-.
-Your task is to calculate the number of different arrays
-a
-you can build, and print it modulo
-998244353
+and the center of the park is less than or equal to the radius of the park. Note that the center and the radius of the park do not need to be integers.
+In this problem, it is guaranteed that the given input always has a solution with
+r≤2⋅
+10
+5
 .
 Input
-The first line contains three integers
+The first line contains two integers
 n
-,
-m
 and
 k
 (
-1≤n,m,k≤3⋅
+1≤n≤
 10
 5
-) — the number of the given arrays, the desired length of the array
-a
-, and the upper bound on the values in the arrays.
-Then
+,
+1≤k≤n
+) — the number of bird habitats in the city and the number of bird habitats required to be inside the park.
+The
+i
+-th of the next
 n
-lines follow. The
+lines contains two integers
+x
 i
--th line represents the array
-A
-i
-. The first integer in the
-i
--th line is
-c
+and
+y
 i
 (
-1≤
-c
+0≤|
+x
 i
-≤m
-) — the number of elements in
-A
+|,|
+y
 i
-; then,
-c
-i
-integers from
-1
-to
-k
-follow — the elements of the array
-A
-i
-.
-Additional constraint on the input:
-∑
-i=1
-n
-c
-i
-≤3⋅
+|≤
 10
 5
-; i. e., the number of elements in the given arrays in total does not exceed
-3⋅
-10
-5
-.
+) — the position of the
+i
+-th bird habitat.
 Output
-Print one integer — the number of different arrays
+Output a single real number
+r
+denoting the minimum radius of a park with at least
+k
+bird habitats inside. It is guaranteed that the given input always has a solution with
+r≤2⋅
+10
+5
+.
+Your answer is considered correct if its absolute or relative error does not exceed
+10
+−4
+.
+Formally, let your answer be
 a
-you can build, taken modulo
-998244353
+, and the jury's answer be
+b
+. Your answer is accepted if and only if
+|a−b|
+max(1,|b|)
+≤
+10
+−4
 .
 Examples
 input
 Copy
-2 4 3
-2 1 2
-1 3
+8 4
+-3 1
+-4 4
+1 5
+2 2
+2 -2
+-2 -4
+-1 -1
+-6 0
 output
 Copy
-5
+3.1622776589
 input
 Copy
-2 4 3
-2 1 2
-3 3 2 1
+1 1
+0 0
 output
 Copy
-0
-input
-Copy
-1 42 1337
-2 13 31
-output
-Copy
-721234447
+0.0000000000
+Note
+In the first example, Mr. Chanek can put the center of the park at
+(−3,−1)
+with radius
+10
+−
+−
+√
+≈3.162
+. It can be proven this is the minimum
+r
+.
+The following illustrates the first example. The blue points represent bird habitats and the red circle represents the amusement park.

@@ -1,163 +1,73 @@
-E. Half-sum
-time limit per test4 seconds
+D. Toy Machine
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You're given a multiset of non-negative integers
-{
-a
-1
-,
-a
-2
-,…,
-a
+There is a toy machine with toys arranged in two rows of
 n
-}
+cells each (
+n
+is odd).
+Initial state for
+n=9
 .
-In one step you take two elements
-x
+Initially,
+n−2
+toys are placed in the non-corner cells of the top row. The bottom row is initially empty, and its leftmost, rightmost, and central cells are blocked. There are
+4
+buttons to control the toy machine: left, right, up, and down marked by the letters L, R, U, and D correspondingly.
+When pressing L, R, U, or D, all the toys will be moved simultaneously in the corresponding direction and will only stop if they push into another toy, the wall or a blocked cell. Your goal is to move the
+k
+-th toy into the leftmost cell of the top row. The toys are numbered from
+1
+to
+n−2
+from left to right. Given
+n
 and
-y
-of the multiset, remove them and insert their mean value
-x+y
-2
-back into the multiset.
-You repeat the step described above until you are left with only two numbers
-A
-and
-B
-. What is the maximum possible value of their absolute difference
-|A−B|
-?
-Since the answer is not an integer number, output it modulo
-10
-9
-+7
-.
+k
+, find a solution that uses at most
+1000000
+button presses.
+To test out the toy machine, a web page is available that lets you play the game in real time.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤100
-). Description of the test cases follows.
-The first line of each test case contains a single integer
+The first and only line contains two integers,
 n
+and
+k
 (
-2≤n≤
-10
-6
-) — the size of the multiset.
-The second line contains
-n
-integers
-a
-1
+5≤n≤100000
 ,
-a
-2
-,…,
-a
 n
-(
-0≤
-a
-i
-≤
-10
-9
-) — the elements of the multiset.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-6
-.
+is odd,
+1≤k≤n−2
+) — the number of cells in a row, and the index of the toy that has to be moved to the leftmost cell of the top row.
 Output
-For each test case, output a single integer, the answer to the problem modulo
-10
-9
-+7
-.
-Formally, let
-M=
-10
-9
-+7
-. It can be shown that the answer can be expressed as an irreducible fraction
-p
-q
-, where
-p
-and
-q
-are integers and
-q≢0(modM)
-. Output the integer equal to
-p⋅
-q
-−1
-modM
-. In other words, output an integer
-x
-such that
-0≤x<M
-and
-x⋅q≡p(modM)
-.
-Example
+On a single line, output a description of the button presses as a string of at most
+1000000
+characters. The string should only contain the characters L, R, U, and D. The
+i
+-th character in the string is the
+i
+-th button that is pressed. After all the button presses are performed, the
+k
+-th toy should be in the leftmost cell of the top row.
+If there are multiple solutions, print any. The number of button presses does not have to be minimized.
+Examples
 input
 Copy
-5
-2
-7 3
-4
-1 2 10 11
-3
-1 2 3
-6
-64 32 64 16 64 0
-4
-1 1 1 1
+5 1
 output
 Copy
-4
-9
-500000005
-59
-0
+RDL
+input
+Copy
+7 2
+output
+Copy
+RDL
 Note
-In the first case, you can't do any operations, so the answer is
-|7−3|=4
-.
-In the second case, one of the optimal sequence of operations:
-Substitute
-1
-and
-2
-with
-1.5
-;
-Substitute
-10
-and
-11
-with
-10.5
-;
-The difference between
-1.5
-and
-10.5
-is
-9
-.
-In the third case, the exact answer is
-3
-2
-, and
-500000005⋅2≡3(mod
-10
-9
-+7)
-.
+In the first example, there will be
+5−2=3
+toys. The first toy needs to end up in the leftmost cell of the top row. The moves RDL will achieve this, see the picture for a better understanding. Another possible solution would be to do one button press L.
+Visualization of the moves for the first example.

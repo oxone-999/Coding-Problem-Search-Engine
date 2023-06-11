@@ -1,121 +1,160 @@
-D. Difficult Mountain
-time limit per test2 seconds
+F. Two Sorts
+time limit per test4 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-A group of
+Integers from
+1
+to
 n
-alpinists has just reached the foot of the mountain. The initial difficulty of climbing this mountain can be described as an integer
-d
-.
-Each alpinist can be described by two integers
-s
-and
+(inclusive) were sorted lexicographically (considering integers as strings). As a result, array
 a
-, where
-s
-is his skill of climbing mountains and
-a
-is his neatness.
-An alpinist of skill level
-s
-is able to climb a mountain of difficulty
-p
-only if
-p≤s
-. As an alpinist climbs a mountain, they affect the path and thus may change mountain difficulty. Specifically, if an alpinist of neatness
-a
-climbs a mountain of difficulty
-p
-the difficulty of this mountain becomes
-max(p,a)
-.
-Alpinists will climb the mountain one by one. And before the start, they wonder, what is the maximum number of alpinists who will be able to climb the mountain if they choose the right order. As you are the only person in the group who does programming, you are to answer the question.
-Note that after the order is chosen, each alpinist who can climb the mountain, must climb the mountain at that time.
-Input
-The first line contains two integers
-n
-and
-d
-(
-1≤n≤500000
-;
-0≤d≤
-10
-9
-) — the number of alpinists and the initial difficulty of the mountain.
-Each of the next
-n
-lines contains two integers
-s
-i
-and
-a
-i
-(
-0≤
-s
-i
+1
 ,
 a
+2
+,…,
+a
+n
+was obtained.
+Calculate value of
+(
+∑
+n
+i=1
+((i−
+a
 i
-≤
+)mod998244353))mod
 10
 9
-) that define the skill of climbing and the neatness of the
-i
--th alpinist.
++7
+.
+xmody
+here means the remainder after division
+x
+by
+y
+. This remainder is always non-negative and doesn't exceed
+y−1
+. For example,
+5mod3=2
+,
+(−1)mod6=5
+.
+Input
+The first line contains the single integer
+n
+(
+1≤n≤
+10
+12
+).
 Output
-Print one integer equal to the maximum number of alpinists who can climb the mountain if they choose the right order to do so.
+Print one integer — the required sum.
 Examples
 input
 Copy
-3 2
-2 6
-3 5
-5 7
-output
-Copy
-2
-input
-Copy
-3 3
-2 4
-6 4
-4 6
-output
-Copy
-2
-input
-Copy
-5 0
-1 5
-4 8
-2 7
-7 6
-3 2
-output
-Copy
 3
+output
+Copy
+0
+input
+Copy
+12
+output
+Copy
+994733045
+input
+Copy
+21
+output
+Copy
+978932159
+input
+Copy
+1000000000000
+output
+Copy
+289817887
 Note
-In the first example, alpinists
-2
+A string
+a
+is lexicographically smaller than a string
+b
+if and only if one of the following holds:
+a
+is a prefix of
+b
+, but
+a≠b
+;
+in the first position where
+a
 and
-3
-can climb the mountain if they go in this order. There is no other way to achieve the answer of
-2
+b
+differ, the string
+a
+has a letter that appears earlier in the alphabet than the corresponding letter in
+b
 .
-In the second example, alpinist
-1
-is not able to climb because of the initial difficulty of the mountain, while alpinists
-2
-and
-3
-can go up in any order.
-In the third example, the mountain can be climbed by alpinists
-5
-,
-3
-and
-4
-in this particular order. There is no other way to achieve optimal answer.
+For example,
+42
+is lexicographically smaller than
+6
+, because they differ in the first digit, and
+4<6
+;
+42<420
+, because
+42
+is a prefix of
+420
+.
+Let's denote
+998244353
+as
+M
+.
+In the first example, array
+a
+is equal to
+[1,2,3]
+.
+(1−1)modM=0modM=0
+(2−2)modM=0modM=0
+(3−3)modM=0modM=0
+As a result,
+(0+0+0)mod
+10
+9
++7=0
+In the second example, array
+a
+is equal to
+[1,10,11,12,2,3,4,5,6,7,8,9]
+.
+(1−1)modM=0modM=0
+(2−10)modM=(−8)modM=998244345
+(3−11)modM=(−8)modM=998244345
+(4−12)modM=(−8)modM=998244345
+(5−2)modM=3modM=3
+(6−3)modM=3modM=3
+(7−4)modM=3modM=3
+(8−5)modM=3modM=3
+(9−6)modM=3modM=3
+(10−7)modM=3modM=3
+(11−8)modM=3modM=3
+(12−9)modM=3modM=3
+As a result,
+(0+998244345+998244345+998244345+3+3+3+3+3+3+3+3)mod
+10
+9
++7
+=
+2994733059mod
+10
+9
++7
+=
+994733045

@@ -1,77 +1,42 @@
-Compress the List
+Median of adjacent maximum numbers
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given a strictly increasing sequence of integers
-A
-1
-,A
-2
-,…,A
-N
-. Your task is to compress this sequence.
-The compressed form of this sequence is a sequence of ranges separated by commas (characters ','). A range is either an integer or a pair of integers separated by three dots (the string "..."). When each range a...b in the compressed form is decompressed into the subsequence
-(a,a+1,…,b), we should obtain the (comma-separated) sequence
-A again.
-For each maximal contiguous subsequence
-(a,a+1,…,b) of
-A such that
-b≥a+2, the compressed form of
-A must contain the range a...b; if
-b≤a+1, such a sequence should not be compressed into a range. A contiguous subsequence is maximal if it cannot be extended by at least one element of
-A next to it. It can be proved that the compressed form of any sequence is unique (i.e. well-defined).
+Read problems statements in mandarin chinese, russian and vietnamese as well.
+You are given an array A of size 2 * N consisting of positive integers, where N is an odd number. You can construct an array B from A as follows, B[i] = max(A[2 * i - 1], A[2 * i]), i.e. B array contains the maximum of adjacent pairs of array A. Assume that we use 1-based indexing throughout the problem.
+You want to maximize the median of the array B. For achieving that, you are allowed to permute the entries of A. Find out the maximum median of corresponding B array that you can get. Also, find out any permutation for which this maximum is achieved.
+Note
+Median of an array of size n, where n is odd, is the middle element of the array when it is sorted in non-decreasing order. Note that n being odd, the middle element will be unique, i.e. at index (n+1) / 2.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains an integer N.
+The second line of each test case contains 2 * N space separated integers denoting array A.
 Output
-For each test case, print a single line containing one string ― the compressed form of the given sequence.
+For each test case, output two lines.
+The first of which should contain an integer corresponding to maximum value of the median of array B that you can get.
+In the second line, print 2 * N integers in a single line denoting any permutation of A for which the maximum value of median of array B is achieved.
 Constraints
-1≤T≤100
-1≤N≤100
-1≤A
-i
-≤1,000 for each valid
-i
-A
-1
-<A
-2
-<…<A
-N
+1 ≤ T ≤ 10
+1 ≤ N ≤ 50000
+1 ≤ Ai ≤ 2 * N
 Subtasks
-Subtask #1 (100 points): original constraints
+Subtask #1 (25 points) : 1 ≤ N ≤ 3
+Subtask #2 (75 points) : original constraints
 Sample 1:
 Input
 Output
 3
-12
-1 2 3 5 6 8 9 10 11 12 15 17
-4
-4 5 7 8
 1
-4
-1...3,5,6,8...12,15,17
-4,5,7,8
-4
+1 2
+3
+1 2 3 4 5 6
+3
+1 3 3 3 2 2
+2
+1 2
+5
+1 3 2 5 4 6
+3
+1 3 3 3 2 2
 Explanation:
-Example case 1:
-(1,2,3) is a contiguous subsequence with length
-3, so it is replaced by the string "1...3"
-(5,6) is a contiguous subsequence, but only with length
-2, so it is not compressed into a range
-(8,9,10,11,12) is a contiguous subsequence with length
-5, so it is replaced by "8...12"
-the elements
-15,
-17 are unaffected
+Example case 1. There are only two possible permutations of A, for both of those B will be 2. The median of B is 2.
+Example case 2. For following permutation of A: 1 3 2 5 4 6, the corresponding B will be: 3 5 6, whose median is 5, which is the maximum that you can achieve.
+Example case 3. For A: 1 3 3 3 2 2, the corresponding B will be: 3, 3, 2. Its median is 3, which is maximum that you can achieve.

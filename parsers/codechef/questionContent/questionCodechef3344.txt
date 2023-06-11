@@ -1,135 +1,39 @@
-Minimum Digit Sum 2
+A Game of Thrones
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-This problem is similar to the problem "MNDIGSUM". The only differences are in the constraints and in the input format. In this problem the range for the base
-B is
-[2,R], the value of
-n can be upto
-10
-12
-and the total number of queries is at most
-300. The differences are described in bold.
-Let
-f(n,B) be the sum of digits of the integer
-n when written in base
-B.
-More formally, if
-n=
-i=0
-∑
-∞
-a
-i
-B
-i
-where
-a
-i
-is an integer in the range
-[0,B−1], then
-f(n,B)=
-i=0
-∑
-∞
-a
-i
-.
-Given
-Q queries, each consisting of two integers
-n and
-r. Find the value of
-B corresponding to which
-f(n,B) is minimum for all
-2≤B≤r. If there are multiple such values, you can print any of them.
-Input Format
-The first line contains in single integer
-Q, the number of queries
-Each of the next
-Q lines contain two space separated integers
-n and
-r respectively.
-Output Format
-For each query (n r) find the value of the base
-B that lies within
-[2,r] such that
-f(n,B) is minimum.
-Constraints
-1≤Q≤300
-2≤n≤10
-12
-2≤r≤10
-12
-Subtasks
-Subtask #1 (50 points): original constraints
-This problem is worth a total of 50 points and is meant to be complementary to the problem "MNDIGSUM" (also worth 50 points) which is very similar to this problem, but has slightly different constraints.
-Sample 1:
+Bran and Tyrion are the last two high lords fighting for the Iron Throne. With a mutual agreement that included all knights of the realm, it was decided to settle the issue with a game of thrones, of course not a game of swords but a game of numbers, after all one of them is a cripple and other is a dwarf. Seven wisest men of the realm came forward and forged rules of this game which are as follows :
+Initially N numbers were written down on a notebook (possibly with multiple copies of every number).
+
+Players alternate their turns with Bran playing first.
+
+In the first turn Bran gets to choose a number of his choice from the numbers written on the notebook and declare it as the current number of the game.
+
+After that in every move this is what they do : let's say the current number of the game is u. They erase u from the notebook (if u was written multiple times, they erase it only once) and declare one of the numbers still written on the notebook v as current number of the game. v can be chosen iff prime factorization of u and v differ by exactly 1 prime factor. ( Read notes for a more formal definition)
+
+The player who can't make a move loses the game.
+
+
+You're one of Varys' spider and he has asked you to predict the outcome of this game beforehand so that he can devise future strategy. So you've to find out who has a winning strategy assuming both players play optimally.
+Notes:
+v can be chosen after u iff either of the following conditions hold :
+v > u and u | v and (v / u) is prime
+u > v and v | u and (u / v) is prime
+
+2) A natural number if prime if it has exactly two distinct positive factors. 1 is not a prime number.
 Input
+First line of the input contains a single integer N denoting number of different numbers written in the notebook. Then follow N lines. Each of the following lines contain two space separated integers : ui and ci where ui is the ith distinct integer written on notebook and it has been repeated ci number of times.
 Output
+Your program should print Bran if he has a a winning strategy else it should print Tyrion. Also in case Bran could win, your program must output the smallest number Bran could choose in the first turn to ensure a win. See sample output for details.
+Example
+Input:
 3
-216 7
-256 4
-31 5
-6
-2
-5
-Explanation:
-To compute
-f(n,B), first write the integer
-n in the form
-a
-0
-+a
-1
-B+a
-2
-B
-2
-+… such that
-0≤a
-i
-<B and
-a
-i
-is an integer. It can be shown that such a representation is unique. The sum of the digits is then
-i=0
-∑
-∞
-a
-i
-(to be computed in base 10).
-For example to compute
-f(216,2), observe that
-216=2
-7
-+2
-6
-+2
-4
-+2
-3
-, and so the sum of digits is
-1+1+1+1=4. Similarly, to compute
-f(216,100), write
-216 as
-2∗100+16 and so the sum of digits is
-2+16=18.
-Test case
-1: We have
-f(216,2)=f(216,3)=4,
-f(216,4)=6,
-f(216,5)=8,
-f(216,6=1) and finally
-f(216,7)=12. Clearly the minimum is obtained when
-B=6.
-Test case
-2: Note that
-f(256,2)=f(256,4) =
-1, therefore both the answers
-2 and
-4 will be considered correct.
-Test case
-3:
-f(31,3)=f(31,5)=3 and
-f(31,4)=7, therefore both the answers
-3 and
-5 will be considered correct.
+2 3
+14 3
+21 2
+
+Output:
+Bran 21
+Constraints:
+1 <= N <= 500
+1 <= ui <= 10^18
+1 <= ci <= 10^9
+All ui are distinct.

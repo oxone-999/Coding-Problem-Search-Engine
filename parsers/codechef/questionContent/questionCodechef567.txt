@@ -1,103 +1,49 @@
-Palindrome Flipping
+Dazzling GCD Pair
 Problem
-Chef has a binary string
-S of length
-N.
-In one operation, Chef can:
-Select two indices
+Dazzler has a task for you.
+Given two positive integers
+A and
+B, find two positive integers
 i and
-j
-(1≤i,j≤N,i
-
-=j) and flip
-S
-i
-and
-S
-j
-. (i.e. change
-0 to
-1 and
-1 to
-0)
-For example, if
-S=10010 and chef applys operation on
-i=1 and
-j=3 then:
-1
-0
-0
-10→00110.
-Find if it is possible to convert
-S to a palindrome by applying the above operation any (possibly zero) number of times.
-Note: A string is called a palindrome if it reads the same backwards and forwards, for e.g.
-10001 and
-0110 are palindromic strings.
+j such that:
+gcd
+(i,j)>1;
+A≤i<j≤B;
+The value
+(i+j) is minimum possible.
+If there are multiple solutions, you may print any of them. If no such pair exists, print
+−1.
 Input Format
-The first line contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first line of each test case contains an integer
-N — the length of the binary string
-S.
-The second line of each test case contains a binary string
-S of length
-N containing
-0s and
-1s only.
+First line will contain
+T, number of test cases. Then the test cases follow.
+Each test case contains of a single line of input, two integers
+A and
+B.
 Output Format
-For each test case, output YES if it is possible to convert
-S to a palindrome. Otherwise, output NO.
-You can print each character of the string in uppercase or lowercase. For example, the strings YES, yes, Yes, and yEs are all considered the same.
+For each test case, output in a single line two space-separated integers
+i and
+j satisfying all the conditions. If no such pair exists, print
+−1.
 Constraints
 1≤T≤10
 5
-1≤N≤10
-5
-S contains
-0 and
-1 only.
-Sum of
-N over all test cases does not exceed
-2⋅10
-5
-.
+1≤A<B≤10
+9
 Sample 1:
 Input
 Output
-3
-6
-101011
 2
-01
-7
-1110000
-YES
-NO
-YES
+2 3
+2 10
+-1
+2 4
 Explanation:
-Test case 1: We can perform the following operation:
-Select
-i=3 and
-j=5. Then
-10
-1
-0
-1
-1→100001, which is a palindrome.
-Test case 2: It can be proven that we can not make
-S a palindrome using the given operation.
-Test case 3: We can perform the following operations:
-Select
-i=4 and
-j=5. Then
-111
-0
-0
-00→1111100
-Select
-i=6 and
-j=7. Then
-11111
-0
-0
-→1111111, which is a palindrome.
+Test case
+1: There exists no pair satisfying all the conditions.
+Test case
+2: A valid pair satisfying all the conditions is
+(i,j)=(2,4). The value
+gcd(2,4)=2>1. The value
+(i+j)=6.
+It can be proven that no such pair exists that satisfies all the conditions and has sum less than
+6.

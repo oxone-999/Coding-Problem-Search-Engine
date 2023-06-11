@@ -1,56 +1,60 @@
-B. Diverse Substrings
+C. Zero-Sum Prefixes
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A non-empty digit string is diverse if the number of occurrences of each character in it doesn't exceed the number of distinct characters in it.
-For example:
-string "7" is diverse because 7 appears in it
+The score of an array
+v
 1
-time and the number of distinct characters in it is
+,
+v
+2
+,…,
+v
+n
+is defined as the number of indices
+i
+(
+1≤i≤n
+) such that
+v
 1
-;
-string "77" is not diverse because 7 appears in it
++
+v
 2
-times and the number of distinct characters in it is
-1
-;
-string "1010" is diverse because both 0 and 1 appear in it
-2
-times and the number of distinct characters in it is
-2
-;
-string "6668" is not diverse because 6 appears in it
-3
-times and the number of distinct characters in it is
-2
++…+
+v
+i
+=0
 .
-You are given a string
-s
+You are given an array
+a
+1
+,
+a
+2
+,…,
+a
+n
 of length
 n
-, consisting of only digits
-0
-to
-9
-. Find how many of its
-n(n+1)
-2
-substrings are diverse.
-A string
+. You can perform the following operation multiple times:
+select an index
+i
+(
+1≤i≤n
+) such that
 a
-is a substring of a string
-b
-if
+i
+=0
+;
+then replace
 a
-can be obtained from
-b
-by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
-Note that if the same diverse string appears in
-s
-multiple times, each occurrence should be counted independently. For example, there are two diverse substrings in "77" both equal to "7", so the answer for the string "77" is
-2
-.
+i
+by an arbitrary integer.
+What is the maximum possible score of
+a
+that can be obtained by performing a sequence of such operations?
 Input
 Each test contains multiple test cases. The first line contains a single integer
 t
@@ -59,83 +63,127 @@ t
 10
 4
 ) — the number of test cases.
-The first line of each test case contains a single integer
+The first line of each test case contains one integer
 n
 (
-1≤n≤
+1≤n≤2⋅
 10
 5
-) — the length of the string
-s
+) — the length of the array
+a
 .
-The second line of each test case contains a string
-s
-of length
+The second line of each test case contains
 n
-. It is guaranteed that all characters of
-s
-are digits from
-0
-to
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+−
+10
 9
+≤
+a
+i
+≤
+10
+9
+) — array
+a
 .
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
+2⋅
 10
 5
 .
 Output
-For each test case print one integer — the number of diverse substrings of the given string
-s
-.
+For each test case, print the maximum possible score of the array
+a
+after performing a sequence of operations.
 Example
 input
 Copy
-7
-1
-7
-2
-77
+5
+5
+2 0 1 -1 0
+3
+1000000000 1000000000 0
 4
-1010
-5
-01100
-6
-399996
-5
-23456
-18
-789987887987998798
+0 0 0 0
+8
+3 0 2 -10 10 -30 30 0
+9
+1 0 0 1 -1 0 1 0 -1
 output
 Copy
-1
-2
-10
-12
-10
-15
-106
-Note
-In the first test case, the diverse substring is "7".
-In the second test case, the only diverse substring is "7", which appears twice, so the answer is
-2
-.
-In the third test case, the diverse substrings are "0" (
-2
-times), "01", "010", "1" (
-2
-times), "10" (
-2
-times), "101" and "1010".
-In the fourth test case, the diverse substrings are "0" (
 3
-times), "01", "011", "0110", "1" (
-2
-times), "10", "100", "110" and "1100".
-In the fifth test case, the diverse substrings are "3", "39", "399", "6", "9" (
+1
 4
-times), "96" and "996".
-In the sixth test case, all
-15
-non-empty substrings of "23456" are diverse.
+4
+5
+Note
+In the first test case, it is optimal to change the value of
+a
+2
+to
+−2
+in one operation.
+The resulting array
+a
+will be
+[2,−2,1,−1,0]
+, with a score of
+3
+:
+a
+1
++
+a
+2
+=2−2=0
+;
+a
+1
++
+a
+2
++
+a
+3
++
+a
+4
+=2−2+1−1=0
+;
+a
+1
++
+a
+2
++
+a
+3
++
+a
+4
++
+a
+5
+=2−2+1−1+0=0
+.
+In the second test case, it is optimal to change the value of
+a
+3
+to
+−2000000000
+, giving us an array with a score of
+1
+.
+In the third test case, it is not necessary to perform any operations.

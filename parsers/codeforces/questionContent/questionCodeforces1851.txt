@@ -1,149 +1,50 @@
-C. Travelling Salesman Problem
-time limit per test2 seconds
+E. 2-Coloring
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
+There is a grid with
 n
-cities numbered from
-1
-to
-n
-, and city
-i
-has beauty
-a
-i
-.
-A salesman wants to start at city
-1
-, visit every city exactly once, and return to city
-1
-.
-For all
-i≠j
-, a flight from city
-i
-to city
-j
-costs
-max(
-c
-i
-,
-a
-j
-−
-a
-i
-)
-dollars, where
-c
-i
-is the price floor enforced by city
-i
-. Note that there is no absolute value. Find the minimum total cost for the salesman to complete his trip.
+rows and
+m
+columns. Every cell of the grid should be colored either blue or yellow.
+A coloring of the grid is called stupid if every row has exactly one segment of blue cells and every column has exactly one segment of yellow cells.
+In other words, every row must have at least one blue cell, and all blue cells in a row must be consecutive. Similarly, every column must have at least one yellow cell, and all yellow cells in a column must be consecutive.
+An example of a stupid coloring.
+Examples of clever colorings. The first coloring is missing a blue cell in the second row, and the second coloring has two yellow segments in the second column.
+How many stupid colorings of the grid are there? Two colorings are considered different if there is some cell that is colored differently.
 Input
-The first line contains a single integer
+The only line contains two integers
 n
-(
-2≤n≤
-10
-5
-) — the number of cities.
-The
-i
--th of the next
-n
-lines contains two integers
-a
-i
 ,
-c
-i
+m
 (
-0≤
-a
-i
-,
-c
-i
-≤
-10
-9
-) — the beauty and price floor of the
-i
--th city.
+1≤n,m≤2021
+).
 Output
-Output a single integer — the minimum total cost.
+Output a single integer — the number of stupid colorings modulo
+998244353
+.
 Examples
 input
 Copy
-3
-1 9
-2 1
-4 1
+2 2
 output
 Copy
-11
+2
 input
 Copy
-6
-4 2
-8 4
-3 0
-2 3
-7 1
-0 1
+4 3
 output
 Copy
-13
+294
+input
+Copy
+2020 2021
+output
+Copy
+50657649
 Note
-In the first test case, we can travel in order
-1→3→2→1
-.
-The flight
-1→3
-costs
-max(
-c
-1
-,
-a
-3
-−
-a
-1
-)=max(9,4−1)=9
-.
-The flight
-3→2
-costs
-max(
-c
-3
-,
-a
-2
-−
-a
-3
-)=max(1,2−4)=1
-.
-The flight
-2→1
-costs
-max(
-c
-2
-,
-a
-1
-−
-a
-2
-)=max(1,1−2)=1
-.
-The total cost is
-11
-, and we cannot do better.
+In the first test case, these are the only two stupid
+2×2
+colorings.

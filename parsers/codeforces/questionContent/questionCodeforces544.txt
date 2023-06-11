@@ -1,270 +1,290 @@
-D. Knowledge Cards
+E. Hanging Hearts
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Pak Chanek, a renowned scholar, invented a card puzzle using his knowledge. In the puzzle, you are given a board with
+Pak Chanek has
 n
-rows and
-m
-columns. Let
-(r,c)
-represent the cell in the
-r
--th row and the
+blank heart-shaped cards. Card
+1
+is attached directly to the wall while each of the other cards is hanging onto exactly one other card by a piece of string. Specifically, card
+i
+(
+i>1
+) is hanging onto card
+p
+i
+(
+p
+i
+<i
+).
+In the very beginning, Pak Chanek must write one integer number on each card. He does this by choosing any permutation
+a
+of
+[1,2,…,n]
+. Then, the number written on card
+i
+is
+a
+i
+.
+After that, Pak Chanek must do the following operation
+n
+times while maintaining a sequence
+s
+(which is initially empty):
+Choose a card
+x
+such that no other cards are hanging onto it.
+Append the number written on card
+x
+to the end of
+s
+.
+If
+x≠1
+and the number on card
+p
+x
+is larger than the number on card
+x
+, replace the number on card
+p
+x
+with the number on card
+x
+.
+Remove card
+x
+.
+After that, Pak Chanek will have a sequence
+s
+with
+n
+elements. What is the maximum length of the longest non-decreasing subsequence
+†
+†
+of
+s
+at the end if Pak Chanek does all the steps optimally?
+†
+†
+A sequence
+b
+is a subsequence of a sequence
 c
--th column.
-Initially, there are
-k
-cards stacked in cell
-(1,1)
-. Each card has an integer from
-1
-to
-k
-written on it. More specifically, the
-i
--th card from the top of the stack in cell
-(1,1)
-has the number
-a
-i
-written on it. It is known that no two cards have the same number written on them. In other words, the numbers written on the cards are a permutation of integers from
-1
-to
-k
-. All other cells are empty.
-You need to move the
-k
-cards to cell
-(n,m)
-to create another stack of cards. Let
+if
 b
-i
-be the number written on the
-i
--th card from the top of the stack in cell
-(n,m)
-. You should create the stack in cell
-(n,m)
-in such a way so that
-b
-i
-=i
-for all
-1≤i≤k
-.
-In one move, you can remove the top card from a cell and place it onto an adjacent cell (a cell that shares a common side). If the target cell already contains one or more cards, you place your card on the top of the stack. You must do each operation while satisfying the following restrictions:
-Each cell other than
-(1,1)
+can be obtained from
+c
+by deletion of several (possibly, zero or all) elements. For example,
+[3,1]
+is a subsequence of
+[3,2,1]
+,
+[4,3,1]
 and
-(n,m)
-must not have more than one card on it.
-You cannot move a card onto cell
-(1,1)
+[3,1]
+, but not
+[1,3,3,7]
+and
+[3,10,4]
 .
-You cannot move a card from cell
-(n,m)
-.
-Given the values of
-n
-,
-m
-,
-k
-and the array
-a
-, determine if the puzzle is solvable.
 Input
-Each test contains multiple test cases. The first line contains an integer
-t
-(
-1≤t≤2⋅
-10
-4
-) — the number of test cases. The following lines contain the description of each test case.
-The first line of each test case contains three integers
+The first line contains a single integer
 n
-,
-m
-, and
-k
 (
-3≤n,m≤
-10
-6
-,
-nm≤
-10
-6
-,
-1≤k≤
+2≤n≤
 10
 5
-) — the size of the board and the number of cards.
-The second line of the test case contains
-k
+) — the number of heart-shaped cards.
+The second line contains
+n−1
 integers
-a
-1
-,
-a
+p
 2
+,
+p
+3
 ,…,
-a
-k
-— the array
-a
-, representing the numbers written on the cards. The values of
-a
-are a permutation of integers from
-1
-to
-k
-.
-It is guaranteed that the sum of
-nm
-and
-k
-over all test cases do not exceed
-10
-6
-and
-10
-5
-respectively.
+p
+n
+(
+1≤
+p
+i
+<i
+) describing which card that each card hangs onto.
 Output
-For each test case, output "YA" (without quotes) if it is possible and "TIDAK" (without quotes) otherwise, which mean yes and no in Indonesian respectively.
-You can output "YA" and "TIDAK" in any case (for example, strings "tiDAk", "tidak", and "Tidak" will be recognised as a negative response).
-Example
+Print a single integer — the maximum length of the longest non-decreasing subsequence of
+s
+at the end if Pak Chanek does all the steps optimally.
+Examples
 input
 Copy
-4
-3 3 6
-3 6 4 1 2 5
-3 3 10
-1 2 3 4 5 6 7 8 9 10
-5 4 4
-2 1 3 4
-3 4 10
-10 4 9 3 5 6 8 2 7 1
+6
+1 2 1 4 2
 output
 Copy
-YA
-TIDAK
-YA
-YA
+4
+input
+Copy
+2
+1
+output
+Copy
+2
 Note
-In the first test case, the following is one way the puzzle can be done:
-Move the card with
-3
-written on it from cell
-(1,1)
-to cell
-(1,2)
-, then cell
-(1,3)
+The following is the structure of the cards in the first example.
+Pak Chanek can choose the permutation
+a=[1,5,4,3,2,6]
 .
-Move the card with
-6
-written on it from cell
-(1,1)
-to cell
-(2,1)
-, then cell
-(3,1)
-, then cell
-(3,2)
-, then cell
-(3,3)
-.
-Move the card with
-4
-written on it from cell
-(1,1)
-to cell
-(1,2)
-.
-Move the card with
-1
-written on it from cell
-(1,1)
-to cell
-(2,1)
-, then cell
-(2,2)
-, then cell
-(2,3)
-.
-Move the card with
-2
-written on it from cell
-(1,1)
-to cell
-(2,1)
-, then cell
-(2,2)
-.
-Move the card with
+Let
+w
+i
+be the number written on card
+i
+. Initially,
+w
+i
+=
+a
+i
+. Pak Chanek can do the following operations in order:
+Select card
 5
-written on it from cell
-(1,1)
-to cell
-(2,1)
-, then cell
-(3,1)
-, then cell
-(3,2)
-, then cell
-(3,3)
-.
-Move the card with
-2
-written on it from cell
-(2,2)
-to cell
-(2,1)
-.
-Move the card with
+. Append
+w
+5
+=2
+to the end of
+s
+. As
+w
 4
-written on it from cell
-(1,2)
-to cell
-(2,2)
-, then cell
-(3,2)
-, then cell
-(3,3)
-.
-Move the card with
-3
-written on it from cell
-(1,3)
-to cell
-(1,2)
-, then cell
-(2,2)
-, then cell
-(3,2)
-, then cell
-(3,3)
-.
-Move the card with
+>
+w
+5
+, the value of
+w
+4
+becomes
 2
-written on it from cell
-(2,1)
-to cell
-(3,1)
-, then cell
-(3,2)
-, then cell
-(3,3)
+. Remove card
+5
+. After this operation,
+s=[2]
 .
-Move the card with
+Select card
+6
+. Append
+w
+6
+=6
+to the end of
+s
+. As
+w
+2
+≤
+w
+6
+, the value of
+w
+2
+is left unchanged. Remove card
+6
+. After this operation,
+s=[2,6]
+.
+Select card
+4
+. Append
+w
+4
+=2
+to the end of
+s
+. As
+w
 1
-written on it from cell
-(2,3)
-to cell
-(3,3)
+≤
+w
+4
+, the value of
+w
+1
+is left unchanged. Remove card
+4
+. After this operation,
+s=[2,6,2]
 .
-An animated illustration regarding the process mentioned above is as follows:
+Select card
+3
+. Append
+w
+3
+=4
+to the end of
+s
+. As
+w
+2
+>
+w
+3
+, the value of
+w
+2
+becomes
+4
+. Remove card
+3
+. After this operation,
+s=[2,6,2,4]
+.
+Select card
+2
+. Append
+w
+2
+=4
+to the end of
+s
+. As
+w
+1
+≤
+w
+2
+, the value of
+w
+1
+is left unchanged. Remove card
+2
+. After this operation,
+s=[2,6,2,4,4]
+.
+Select card
+1
+. Append
+w
+1
+=1
+to the end of
+s
+. Remove card
+1
+. After this operation,
+s=[2,6,2,4,4,1]
+.
+One of the longest non-decreasing subsequences of
+s=[2,6,2,4,4,1]
+is
+[2,2,4,4]
+. Thus, the length of the longest non-decreasing subsequence of
+s
+is
+4
+. It can be proven that this is indeed the maximum possible length.

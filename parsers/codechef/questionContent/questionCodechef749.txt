@@ -1,41 +1,105 @@
-Gift Rift
+Construct String
 Problem
-Our Chef is very happy that his son was selected for training in one of the finest culinary schools of the world. So he and his wife decide to buy a gift for the kid as a token of appreciation. Unfortunately, the Chef hasn't been doing good business lately, and is in no mood on splurging money. On the other hand, the boy's mother wants to buy something big and expensive. To settle the matter like reasonable parents, they play a game.
-They spend the whole day thinking of various gifts and write them down in a huge matrix. Each cell of the matrix contains the gift's cost. Then they decide that the mother will choose a row number r while the father will choose a column number c, the item from the corresponding cell will be gifted to the kid in a couple of days.
-The boy observes all of this secretly. He is smart enough to understand that his parents will ultimately choose a gift whose cost is smallest in its row, but largest in its column. If no such gift exists, then our little chef has no option but to keep guessing. As the matrix is huge, he turns to you for help.
-He knows that sometimes the gift is not determined uniquely even if a gift exists whose cost is smallest in its row, but largest in its column. However, since the boy is so smart, he realizes that the gift's cost is determined uniquely. Your task is to tell him the gift's cost which is smallest in its row, but largest in its column, or to tell him no such gift exists.
-Input
-First line contains two integers R and C, the number of rows and columns in the matrix respectively. Then follow R lines, each containing C space separated integers - the costs of different gifts.
-Output
-Print a single integer - a value in the matrix that is smallest in its row but highest in its column. If no such value exists, then print "GUESS" (without quotes of course)
+Consider a string
+S consisting of lowercase Latin alphabets.
+In one operation, you can pick an index from string
+S and replace the character at that index with
+3 occurrences of the same character.
+For example, if
+S=dabc, in one operation, we can choose the index
+2 and replace
+S
+2
+with
+3 occurrences of
+S
+2
+. Thus, the string becomes
+S=d
+aaa
+bc.
+Chefina has a string
+U of length
+N.
+Help Chef design a string
+S of minimum length such that Chef can convert it to
+U using any (possibly zero) number of operations.
+It is guaranteed that exactly one such
+S exists.
+Input Format
+The first line of input contains a single integer
+T, the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case consists of an integer
+N — the length of the string
+U.
+The next line consists of string
+U.
+Output Format
+For each test case, output on a new line, the string
+S of minimum length, such that Chef can convert it to
+U using any (possibly zero) number of operations.
 Constraints
-1 <= R, C <= 100
-All gift costs are positive and less than 100000000 (10^8)
+1≤T≤10
+4
+1≤N≤10
+6
+U consists of lowercase Latin alphabets only.
+The sum of
+N over all test cases won't exceed
+10
+6
+.
 Sample 1:
 Input
 Output
-2 3
-9 8 8
-2 6 11
-8
+3
+6
+aaabbb
+7
+abbbbbc
+4
+abcd
+ab
+abc
+abcd
 Explanation:
-Example 1: The first row contains 9, 8, 8. Observe that both 8 are the minimum. Considering the first 8, look at the corresponding column (containing 8 and 6). Here, 8 is the largest element in that column. So it will be chosen.
-Sample 2:
-Input
-Output
-3 3
-9 8 11
-2 6 34
-5 9 11
-GUESS
-Explanation:
-Example 2: There is no value in the matrix that is smallest in its row but largest in its column.
-Sample 3:
-Input
-Output
-2 2
-10 10
-10 10
-10
-Explanation:
-Example 3: The required gift in matrix is not determined uniquely, but the required cost is determined uniquely.
+Test case
+1: With
+S as
+ab, we can first replace
+a
+b with
+aaa
+b, and then
+aaa
+b
+with
+aaa
+bbb
+.
+We cannot construct
+U from a string having length less than
+2.
+Test case
+2: With
+S as
+abc, we can first replace
+a
+b
+c with
+a
+bbb
+c, and then
+ab
+b
+bc with
+ab
+bbb
+bc.
+Test case
+3: Here
+S=abcd, and no operations need to be applied.
+We cannot construct
+U from a string having length less than
+4.

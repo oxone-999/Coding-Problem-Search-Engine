@@ -1,58 +1,37 @@
-B. Minor Reduction
+D. Martial Arts Tournament
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a decimal representation of an integer
+Monocarp is planning to host a martial arts tournament. There will be three divisions based on weight: lightweight, middleweight and heavyweight. The winner of each division will be determined by a single elimination system.
+In particular, that implies that the number of participants in each division should be a power of two. Additionally, each division should have a non-zero amount of participants.
+n
+participants have registered for the tournament so far, the
+i
+-th of them weighs
+a
+i
+. To split participants into divisions, Monocarp is going to establish two integer weight boundaries
 x
-without leading zeros.
-You have to perform the following reduction on it exactly once: take two neighboring digits in
-x
-and replace them with their sum without leading zeros (if the sum is
-0
-, it's represented as a single
-0
+and
+y
+(
+x<y
 ).
-For example, if
-x=10057
-, the possible reductions are:
-choose the first and the second digits
-1
+All participants who weigh strictly less than
+x
+will be considered lightweight. All participants who weigh greater or equal to
+y
+will be considered heavyweight. The remaining participants will be considered middleweight.
+It's possible that the distribution doesn't make the number of participants in each division a power of two. It can also lead to empty divisions. To fix the issues, Monocarp can invite an arbitrary number of participants to each division.
+Note that Monocarp can't kick out any of the
+n
+participants who have already registered for the tournament.
+However, he wants to invite as little extra participants as possible. Help Monocarp to choose
+x
 and
-0
-, replace them with
-1+0=1
-; the result is
-1057
-;
-choose the second and the third digits
-0
-and
-0
-, replace them with
-0+0=0
-; the result is also
-1057
-;
-choose the third and the fourth digits
-0
-and
-5
-, replace them with
-0+5=5
-; the result is still
-1057
-;
-choose the fourth and the fifth digits
-5
-and
-7
-, replace them with
-5+7=12
-; the result is
-10012
-.
-What's the largest number that can be obtained?
+y
+in such a way that the total amount of extra participants required is as small as possible. Output that amount.
 Input
 The first line contains a single integer
 t
@@ -61,34 +40,103 @@ t
 10
 4
 ) — the number of testcases.
-Each testcase consists of a single integer
-x
+The first line of each testcase contains a single integer
+n
 (
-10≤x<
+1≤n≤2⋅
 10
-200000
-).
-x
-doesn't contain leading zeros.
-The total length of the decimal representations of
-x
+5
+) — the number of the registered participants.
+The second line of each testcase contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤n
+) — the weights of the registered participants.
+The sum of
+n
 over all testcases doesn't exceed
 2⋅
 10
 5
 .
 Output
-For each testcase, print a single integer — the largest number that can be obtained after the reduction is applied exactly once. The number should not contain leading zeros.
+For each testcase, print a single integer — the smallest number of extra participants Monocarp is required to invite after he chooses the weight boundaries
+x
+and
+y
+.
 Example
 input
 Copy
-2
-10057
-90
+4
+4
+3 1 2 1
+1
+1
+6
+2 2 2 1 1 1
+8
+6 3 6 3 6 3 6 6
 output
 Copy
-10012
-9
+0
+2
+3
+2
 Note
-The first testcase of the example is already explained in the statement.
-In the second testcase, there is only one possible reduction: the first and the second digits.
+In the first testcase of the example, Monocarp can choose
+x=2
+and
+y=3
+. Lightweight, middleweight and heavyweight divisions will have
+2
+,
+1
+and
+1
+participants, respectively. They all are powers of two, so no extra participants are required.
+In the second testcase of the example, regardless of the choice of
+x
+and
+y
+, one division will have
+1
+participant, the rest will have
+0
+. Thus, Monocarp will have to invite
+1
+participant into both of the remaining divisions.
+In the third testcase of the example, Monocarp can choose
+x=1
+and
+y=2
+. Lightweight, middleweight and heavyweight divisions will have
+0
+,
+3
+and
+3
+participants, respectively. So an extra participant is needed in each division.
+In the fourth testcase of the example, Monocarp can choose
+x=8
+and
+y=9
+. Lightweight, middleweight and heavyweight divisions will have
+8
+,
+0
+and
+0
+participants, respectively. Middleweight and heavyweight division need an extra participant each.

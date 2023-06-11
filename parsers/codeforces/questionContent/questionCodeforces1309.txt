@@ -1,65 +1,143 @@
-D. Dominoes
-time limit per test1 second
+F. MEX counting
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given
+For an array
+c
+of nonnegative integers,
+MEX(c)
+denotes the smallest nonnegative integer that doesn't appear in it. For example,
+MEX([0,1,3])=2
+,
+MEX([42])=0
+.
+You are given integers
+n,k
+, and an array
+[
+b
+1
+,
+b
+2
+,…,
+b
 n
-dominoes. Each domino has a left and a right cell. Each cell can be colored either black or white. Some cells are already colored, while some aren't yet.
-The coloring is said to be valid if and only if it is possible to rearrange the dominoes in some order such that for each
-1≤i≤n
-the color of the right cell of the
+]
+.
+Find the number of arrays
+[
+a
+1
+,
+a
+2
+,…,
+a
+n
+]
+, for which the following conditions hold:
+0≤
+a
 i
--th domino is different from the color of the left cell of the
-((imodn)+1)
--st domino.
-Note that you can't rotate the dominoes, so the left cell always remains the left cell, and the right cell always remains the right cell.
-Count the number of valid ways to color the yet uncolored cells of dominoes. Two ways are considered different if there is a cell that is colored white in one way and black in the other. In particular, colorings BW WB and WB BW different (and both invalid).
+≤n
+for each
+i
+for each
+i
+from
+1
+to
+n
+.
+|MEX([
+a
+1
+,
+a
+2
+,…,
+a
+i
+])−
+b
+i
+|≤k
+for each
+i
+from
+1
+to
+n
+.
 As this number can be very big, output it modulo
 998244353
 .
 Input
-The first line of the input contains a single integer
+The first line of the input contains two integers
+n,k
+(
+1≤n≤2000
+,
+0≤k≤50
+).
+The second line of the input contains
+n
+integers
+b
+1
+,
+b
+2
+,…,
+b
 n
 (
-1≤n≤
-10
-5
-) — the number of dominoes.
-The next
-n
-lines describe dominoes. Each line contains two characters which represent the left and the right cell. Character B means that the corresponding cell is black, character W means that the corresponding cell is white, and ? means that the cell is yet to be colored.
+−k≤
+b
+i
+≤n+k
+) — elements of the array
+b
+.
 Output
-Print a single integer — the answer to the problem.
+Output a single integer — the number of arrays which satisfy the conditions from the statement, modulo
+998244353
+.
 Examples
 input
 Copy
-1
-?W
+4 0
+0 0 0 0
 output
 Copy
-1
+256
 input
 Copy
-2
-??
-W?
+4 1
+0 0 0 0
 output
 Copy
-2
+431
 input
 Copy
-4
-BB
-??
-W?
-??
+4 1
+0 0 1 1
 output
 Copy
-10
-Note
-In the first test case, there is only one domino, and we need the color of its right cell to be different from the color of its left cell. There is only one way to achieve this.
-In the second test case, there are only
-2
-such colorings:
-BB WW and WB WB.
+509
+input
+Copy
+5 2
+0 0 2 2 0
+output
+Copy
+6546
+input
+Copy
+3 2
+-2 0 4
+output
+Copy
+11

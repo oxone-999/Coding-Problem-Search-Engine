@@ -1,153 +1,228 @@
-C. League of Leesins
-time limit per test2 seconds
+C. Platforms Jumping
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Bob is an avid fan of the video game "League of Leesins", and today he celebrates as the League of Leesins World Championship comes to an end!
-The tournament consisted of
+There is a river of width
 n
-(
-n≥5
-) teams around the world. Before the tournament starts, Bob has made a prediction of the rankings of each team, from
-1
--st to
+. The left bank of the river is cell
+0
+and the right bank is cell
+n+1
+(more formally, the river can be represented as a sequence of
+n+2
+cells numbered from
+0
+to
+n+1
+). There are also
+m
+wooden platforms on a river, the
+i
+-th platform has length
+c
+i
+(so the
+i
+-th platform takes
+c
+i
+consecutive cells of the river). It is guaranteed that the sum of lengths of platforms does not exceed
 n
--th. After the final, he compared the prediction with the actual result and found out that the
-i
--th team according to his prediction ended up at the
-p
-i
--th position (
-1≤
-p
-i
-≤n
-, all
-p
-i
-are unique). In other words,
-p
-is a permutation of
-1,2,…,n
 .
-As Bob's favorite League player is the famous "3ga", he decided to write down every
-3
-consecutive elements of the permutation
-p
-. Formally, Bob created an array
-q
-of
-n−2
-triples, where
-q
-i
-=(
-p
-i
-,
-p
-i+1
-,
-p
-i+2
-)
-for each
-1≤i≤n−2
-. Bob was very proud of his array, so he showed it to his friend Alice.
-After learning of Bob's array, Alice declared that she could retrieve the permutation
-p
-even if Bob rearranges the elements of
-q
-and the elements within each triple. Of course, Bob did not believe in such magic, so he did just the same as above to see Alice's respond.
-For example, if
-n=5
+You are standing at
+0
+and want to reach
+n+1
+somehow. If you are standing at the position
+x
+, you can jump to any position in the range
+[x+1;x+d]
+. However you don't really like the water so you can jump only to such cells that belong to some wooden platform. For example, if
+d=1
+, you can jump only to the next position (if it belongs to the wooden platform). You can assume that cells
+0
 and
-p=[1,4,2,3,5]
-, then the original array
-q
-will be
-[(1,4,2),(4,2,3),(2,3,5)]
-. Bob can then rearrange the numbers within each triple and the positions of the triples to get
-[(4,3,2),(2,3,5),(4,1,2)]
-. Note that
-[(1,4,2),(4,2,2),(3,3,5)]
-is not a valid rearrangement of
-q
-, as Bob is not allowed to swap numbers belong to different triples.
-As Alice's friend, you know for sure that Alice was just trying to show off, so you decided to save her some face by giving her any permutation
-p
-that is consistent with the array
-q
-she was given.
-Input
-The first line contains a single integer
-n
-(
-5≤n≤
-10
-5
-) — the size of permutation
-p
+n+1
+belong to wooden platforms.
+You want to know if it is possible to reach
+n+1
+from
+0
+if you can move any platform to the left or to the right arbitrary number of times (possibly, zero) as long as they do not intersect each other (but two platforms can touch each other). It also means that you cannot change the relative order of platforms.
+Note that you should move platforms until you start jumping (in other words, you first move the platforms and then start jumping).
+For example, if
+n=7
+,
+m=3
+,
+d=2
+and
+c=[1,2,1]
+, then one of the ways to reach
+8
+from
+0
+is follow:
+The first example:
+n=7
 .
-The
-i
--th of the next
-n−2
-lines contains
-3
-integers
-q
-i,1
-,
-q
-i,2
-,
-q
-i,3
-(
-1≤
-q
-i,j
-≤n
-) — the elements of the
-i
--th triple of the rearranged (shuffled) array
-q
-i
-, in random order. Remember, that the numbers within each triple can be rearranged and also the positions of the triples can be rearranged.
-It is guaranteed that there is at least one permutation
-p
-that is consistent with the input.
-Output
-Print
+Input
+The first line of the input contains three integers
 n
-distinct integers
-p
+,
+m
+and
+d
+(
+1≤n,m,d≤1000,m≤n
+) — the width of the river, the number of platforms and the maximum distance of your jump, correspondingly.
+The second line of the input contains
+m
+integers
+c
 1
 ,
-p
+c
 2
 ,…,
-p
-n
+c
+m
 (
 1≤
-p
+c
+i
+≤n,
+∑
+i=1
+m
+c
 i
 ≤n
-) such that
-p
-is consistent with array
-q
+), where
+c
+i
+is the length of the
+i
+-th platform.
+Output
+If it is impossible to reach
+n+1
+from
+0
+, print NO in the first line. Otherwise, print YES in the first line and the array
+a
+of length
+n
+in the second line — the sequence of river cells (excluding cell
+0
+and cell
+n+1
+).
+If the cell
+i
+does not belong to any platform,
+a
+i
+should be
+0
+. Otherwise, it should be equal to the index of the platform (
+1
+-indexed, platforms are numbered from
+1
+to
+m
+in order of input) to which the cell
+i
+belongs.
+Note that all
+a
+i
+equal to
+1
+should form a contiguous subsegment of the array
+a
+of length
+c
+1
+, all
+a
+i
+equal to
+2
+should form a contiguous subsegment of the array
+a
+of length
+c
+2
+, ..., all
+a
+i
+equal to
+m
+should form a contiguous subsegment of the array
+a
+of length
+c
+m
+. The leftmost position of
+2
+in
+a
+should be greater than the rightmost position of
+1
+, the leftmost position of
+3
+in
+a
+should be greater than the rightmost position of
+2
+, ..., the leftmost position of
+m
+in
+a
+should be greater than the rightmost position of
+m−1
 .
-If there are multiple answers, print any.
-Example
+See example outputs for better understanding.
+Examples
 input
 Copy
-5
-4 3 2
-2 3 5
-4 1 2
+7 3 2
+1 2 1
 output
 Copy
-1 4 2 3 5 
+YES
+0 1 0 2 2 0 3 
+input
+Copy
+10 1 11
+1
+output
+Copy
+YES
+0 0 0 0 0 0 0 0 0 1 
+input
+Copy
+10 1 5
+2
+output
+Copy
+YES
+0 0 0 0 1 1 0 0 0 0 
+Note
+Consider the first example: the answer is
+[0,1,0,2,2,0,3]
+. The sequence of jumps you perform is
+0→2→4→5→7→8
+.
+Consider the second example: it does not matter how to place the platform because you always can jump from
+0
+to
+11
+.
+Consider the third example: the answer is
+[0,0,0,0,1,1,0,0,0,0]
+. The sequence of jumps you perform is
+0→5→6→11
+.

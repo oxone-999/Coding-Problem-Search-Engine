@@ -1,193 +1,232 @@
-B. Three Sevens
+A. Showstopper
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Lottery "Three Sevens" was held for
-m
-days. On day
-i
-,
-n
-i
-people with the numbers
+You are given two arrays
 a
-i,1
+1
+,
+a
+2
 ,…,
 a
-i,
 n
-i
-participated in the lottery.
-It is known that in each of the
-m
-days, only one winner was selected from the lottery participants. The lottery winner on day
-i
-was not allowed to participate in the lottery in the days from
-i+1
-to
-m
-.
-Unfortunately, the information about the lottery winners has been lost. You need to find any possible list of lottery winners on days from
+and
+b
 1
-to
-m
-or determine that no solution exists.
-Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤50000
-). The description of the test cases follows.
-The first line of each test case contains a single integer
-m
-(
-1≤m≤50000
-) — the number of days in which the lottery was held.
-Next, for each
+,
+b
+2
+,…,
+b
+n
+.
+In one operation, you can choose any integer
 i
 from
 1
 to
-m
-, follows a two-line block of data.
-The first line of each block contains a single integer
 n
+and swap the numbers
+a
 i
-(
-1≤
-n
-i
-≤50000
-) — the number of lottery participants on day
+and
+b
 i
 .
-The second line of the block contains integers
+Determine whether, after using any (possibly zero) number of operations, the following two conditions can be satisfied simultaneously:
 a
-i,1
-,…,
-a
-i,
 n
-i
-(
-1≤
+=max(
 a
-i,j
-≤50000
-) — lottery participants on day
-i
-. It is guaranteed that all the numbers
-a
-i,1
-,…,
-a
-i,
-n
-i
-are pairwise distinct.
-It is guaranteed that the sum of
-n
-i
-over all blocks of all test cases does not exceed
-50000
-.
-Output
-For each test case, if there is no solution, print a single integer
-−1
-.
-Otherwise, print
-m
-integers
-p
 1
 ,
-p
+a
 2
 ,…,
-p
-m
+a
+n
+)
+,
+b
+n
+=max(
+b
+1
+,
+b
+2
+,…,
+b
+n
+)
+.
+Here
+max(
+c
+1
+,
+c
+2
+,…,
+c
+k
+)
+denotes the maximum number among
+c
+1
+,
+c
+2
+,…,
+c
+k
+. For example,
+max(3,5,4)=5
+,
+max(1,7,7)=7
+,
+max(6,2)=6
+.
+Input
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤200
+). The description of the test cases follows.
+The first line of each test case contains a single integer
+n
+(
+1≤n≤100
+) — the length of the arrays.
+The second line of each test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
 (
 1≤
-p
+a
 i
-≤50000
-) — lottery winners on days from
+≤100
+) — elements of the first array.
+The third line of each test case contains
+n
+integers
+b
 1
-to
-m
-. If there are multiple solutions, print any of them.
+,
+b
+2
+,…,
+b
+n
+(
+1≤
+b
+i
+≤100
+) — elements of the second array.
+Output
+For each test case, print "Yes" if after using any (possibly zero) number of operations the conditions described above are satisfied. Otherwise, print "No".
+You can output the answer in any case (upper or lower). For example, the strings "yEs", "yes", "Yes", and "YES" will be recognized as positive responses.
 Example
 input
 Copy
+7
 3
-3
+7 9 7
+7 6 9
 4
-1 2 4 8
-3
-2 9 1
+10 10 15 15
+10 16 15 15
 2
-1 4
-2
-2
-1 2
-2
-2 1
-4
-4
-1 2 3 4
+100 99
+99 100
 1
 1
 1
-4
-1
-3
+9
+1 2 3 4 5 6 7 8 9
+9 9 9 9 9 9 6 6 6
+7
+1 1 2 2 1 1 2
+1 2 1 2 1 2 1
+2
+30 4
+5 30
 output
 Copy
-8 2 1 
--1
-2 1 4 3 
+Yes
+No
+Yes
+Yes
+Yes
+No
+No
 Note
-In the first test case, one of the answers is
-[8,2,1]
-since the participant with the number
-8
-participated on day
-1
-, but did not participate on days
-2
+In the first test case, you can swap the numbers
+a
+3
 and
+b
 3
-; the participant with the number
-2
-participated on day
-2
-, but did not participate on day
-3
-; and the participant with the number
+, after which the array
+a
+becomes equal to
+[7,9,9]
+, and the array
+b
+becomes equal to
+[7,6,7]
+, and both conditions are met.
+In the second test case, it can be proved that it is impossible to satisfy both conditions.
+In the third test case, you can swap the numbers
+a
 1
-participated on day
-3
-. Note that this is not the only possible answer, for example,
-[8,9,4]
-is also a correct answer.
-In the second test case, both lottery participants participated on both days, so any possible lottery winner on the day
+and
+b
 1
-must have participated on the day
-2
-, which is not allowed. Thus, there is no correct answer.
-In the third test case, only one participant participated on days
-2
+, after which the array
+a
+becomes equal to
+[99,99]
+, and the array
+b
+becomes equal to
+[100,100]
+, and both conditions are satisfied.
+In fifth test case, you can swap
+a
+7
+and
+b
+7
 ,
-3
+a
+8
+and
+b
+8
 ,
-4
-, and on day
-1
-there is only one participant who did not participate in the lottery on days
-2,3,4
- — participant
-2
-, which means
-[2,1,4,3]
-is the only correct answer to this test case.
+a
+9
+and
+b
+9
+, after which the array
+a
+becomes equal to
+[1,2,3,4,5,6,6,6,6]
+, and the array
+b
+becomes equal to
+[9,9,9,9,9,9,7,8,9]
+, and both conditions are satisfied.

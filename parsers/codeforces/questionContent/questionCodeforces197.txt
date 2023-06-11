@@ -1,260 +1,141 @@
-D. Li Hua and Tree
-time limit per test2 seconds
+C. Li Hua and Chess
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Li Hua has a tree of
-n
-vertices and
-n−1
-edges. The root of the tree is vertex
-1
-. Each vertex
-i
-has importance
-a
-i
-. Denote the size of a subtree as the number of vertices in it, and the importance as the sum of the importance of vertices in it. Denote the heavy son of a non-leaf vertex as the son with the largest subtree size. If multiple of them exist, the heavy son is the one with the minimum index.
-Li Hua wants to perform
-m
-operations:
-"1
+This is an interactive problem.
+Li Ming and Li Hua are playing a game. Li Hua has a chessboard of size
+n×m
+. Denote
+(r,c)
+(
+1≤r≤n,1≤c≤m
+) as the cell on the
+r
+-th row from the top and on the
+c
+-th column from the left. Li Ming put a king on the chessboard and Li Hua needs to guess its position.
+Li Hua can ask Li Ming no more than
+3
+questions. In each question, he can choose a cell and ask the minimum steps needed to move the king to the chosen cell. Each question is independent, which means the king doesn't actually move.
+A king can move from
+(x,y)
+to
+(
 x
-" (
-1≤x≤n
-) — calculate the importance of the subtree whose root is
-x
-.
-"2
-x
-" (
-2≤x≤n
-) — rotate the heavy son of
-x
-up. Formally, denote
-so
-n
-x
-as the heavy son of
-x
+′
 ,
-f
-a
+y
+′
+)
+if and only if
+max{|x−
 x
-as the father of
-x
-. He wants to remove the edge between
-x
-and
-f
-a
-x
-and connect an edge between
-so
-n
-x
-and
-f
-a
-x
-. It is guaranteed that
-x
-is not root, but not guaranteed that
-x
-is not a leaf. If
-x
-is a leaf, please ignore the operation.
+′
+|,|y−
+y
+′
+|}=1
+(shown in the following picture).
+The position of the king is chosen before the interaction.
 Suppose you were Li Hua, please solve this problem.
-Input
-The first line contains 2 integers
+Interaction
+The first line contains the number of test cases
+t
+(
+1≤t≤
+10
+3
+).
+The first line of each test case contains two integers
 n,m
 (
-2≤n≤
-10
-5
-,1≤m≤
-10
-5
-) — the number of vertices in the tree and the number of operations.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−
+1≤n,m≤
 10
 9
-≤
-a
-i
-≤
+) — the size of the chessboard, and then the interaction begins.
+To ask a question, print "?
+r
+c
+" (without quotes,
+1≤r≤n,1≤c≤m
+). Then you should input the response from standard input — the minimum steps the king needs to move to the chosen cell.
+If your program has asked an invalid question or has run out of questions, the interactor will terminate immediately and your program will get a verdict Wrong answer.
+To give the final answer, print "!
+r
+c
+" (without the quotes,
+(r,c)
+is the king's initial coordinate). Note that giving this answer is not counted towards the limit of
+3
+questions.
+After asking a question do not forget to output the end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see the documentation for other languages.
+Hacks
+To hack, use the following format.
+The first line should contain a single integer
+t
+(
+1≤t≤
+10
+3
+).
+The first and only line of each test case should contain four integers
+n,m,r,c
+(
+1≤r≤n≤
 10
 9
-) — the importance of each vertex.
-Next
-n−1
-lines contain the edges of the tree. The
-i
--th line contains two integers
-u
-i
-and
-v
-i
-(
-1≤
-u
-i
-,
-v
-i
-≤n
-,
-u
-i
-≠
-v
-i
-) — the corresponding edge. The given edges form a tree.
-Next
-m
-lines contain operations — one operation per line. The
-j
--th operation contains two integers
-t
-j
-,
-x
-j
-(
-t
-j
-∈{1,2}
-,
-1≤
-x
-j
-≤n
-,
-x
-j
-≠1
-if
-t
-j
-=2
-) — the
-j
--th operation.
-Output
-For each query "1
-x
-", output the answer in an independent line.
-Examples
+,1≤c≤m≤
+10
+9
+).
+Example
 input
-Copy
-7 4
-1 1 1 1 1 1 1
-1 2
-1 3
-2 4
-2 5
-3 6
-6 7
-1 6
-2 3
-1 6
-1 2
-output
 Copy
 2
-3
-3
-input
-Copy
-10 14
--160016413 -90133231 -671446275 -314847579 -910548234 121155052 -359359950 83112406 -704889624 145489303
-1 6
-1 10
-10 8
-1 4
 3 4
-2 7
-2 5
-3 2
-9 8
-1 4
-2 2
-2 4
-1 4
-1 10
-2 10
-1 9
-1 6
-2 8
-2 10
-1 5
-1 8
-1 1
-2 5
+
+1
+
+2
+
+5 3
+
+3
+
+1
+
+2
 output
 Copy
--2346335269
--314847579
--476287915
--704889624
-121155052
--1360041415
-228601709
--2861484545
+? 2 3
+
+? 2 4
+
+! 2 2
+
+? 2 2
+
+? 5 2
+
+? 5 3
+
+! 5 1
 Note
-In the first example:
-The initial tree is shown in the following picture:
-The importance of the subtree of
-6
-is
-a
-6
-+
-a
-7
-=2
-.
-After rotating the heavy son of
-3
-(which is
-6
-) up, the tree is shown in the following picture:
-The importance of the subtree of
-6
-is
-a
-6
-+
-a
-3
-+
-a
-7
-=3
-.
-The importance of the subtree of
+In test case 1, the king is at
+(2,2)
+. It takes
+1
+step to move to
+(2,3)
+and
 2
-is
-a
-2
-+
-a
-4
-+
-a
-5
-=3
+steps to move to
+(2,4)
 .
+Note that the questions may not seem sensible. They are just a sample of questions you may ask.

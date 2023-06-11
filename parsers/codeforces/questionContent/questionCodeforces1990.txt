@@ -1,141 +1,123 @@
-G. Strange Beauty
-time limit per test5 seconds
+B. Inflation
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp found on the street an array
-a
-of
+You have a statistic of price changes for one product represented as an array of
 n
-elements.
-Polycarp invented his criterion for the beauty of an array. He calls an array
-a
-beautiful if at least one of the following conditions must be met for each different pair of indices
-i≠j
-:
-a
+positive integers
+p0,p1,…,pn−1
+, where
+p0
+is the initial price of the product and
+pi
+is how the price was increased during the
 i
-is divisible by
-a
-j
-;
-or
-a
-j
-is divisible by
-a
-i
+-th month.
+Using these price changes you are asked to calculate the inflation coefficients for each month as the ratio of current price increase
+pi
+to the price at the start of this month
+(p0+p1+⋯+pi−1)
 .
-For example, if:
-n=5
-and
-a=[7,9,3,14,63]
-, then the
-a
-array is not beautiful (for
-i=4
-and
-j=2
-, none of the conditions above is met);
-n=3
-and
-a=[2,14,42]
-, then the
-a
-array is beautiful;
-n=4
-and
-a=[45,9,3,18]
-, then the
-a
-array is not beautiful (for
-i=1
-and
-j=4
-none of the conditions above is met);
-Ugly arrays upset Polycarp, so he wants to remove some elements from the array
-a
-so that it becomes beautiful. Help Polycarp determine the smallest number of elements to remove to make the array
-a
-beautiful.
+Your boss said you clearly that the inflation coefficients must not exceed
+k
+%, so you decided to increase some values
+pi
+in such a way, that all
+pi
+remain integers and the inflation coefficients for each month don't exceed
+k
+%.
+You know, that the bigger changes — the more obvious cheating. That's why you need to minimize the total sum of changes.
+What's the minimum total sum of changes you need to make all inflation coefficients not more than
+k
+%?
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤10
-) — the number of test cases. Then
-t
-test cases follow.
-The first line of each test case contains one integer
+1≤t≤1000
+) — the number of test cases.
+The first line of each test case contains two integers
 n
+and
+k
 (
-1≤n≤2⋅
-10
-5
-) — the length of the array
-a
+2≤n≤100
+;
+1≤k≤100
+) — the length of array
+p
+and coefficient
+k
 .
 The second line of each test case contains
 n
-numbers
-a
-1
-,
-a
-2
-,…,
-a
-n
+integers
+p0,p1,…,pn−1
 (
-1≤
-a
-i
-≤2⋅
-10
-5
-) — elements of the array
-a
+1≤pi≤109
+) — the array
+p
 .
 Output
-For each test case output one integer — the minimum number of elements that must be removed to make the array
-a
-beautiful.
+For each test case, print the minimum total sum of changes you need to make all inflation coefficients not more than
+k
+%.
 Example
 input
 Copy
-4
-5
-7 9 3 14 63
-3
-2 14 42
-4
-45 9 3 18
-3
-2 2 8
+2
+4 1
+20100 1 202 202
+3 100
+1 1 1
 output
 Copy
-2
-0
-1
+99
 0
 Note
-In the first test case, removing
-7
+In the first test case, you can, for example, increase
+p0
+by
+50
 and
-14
-will make array
-a
-beautiful.
-In the second test case, the array
-a
-is already beautiful.
-In the third test case, removing one of the elements
-45
-or
-18
-will make the array
-a
-beautiful.
-In the fourth test case, the array
-a
-is beautiful.
+p1
+by
+49
+and get array
+[20150,50,202,202]
+. Then you get the next inflation coefficients:
+50
+20150
+≤
+1
+100
+;
+202
+20150+50
+≤
+1
+100
+;
+202
+20200+202
+≤
+1
+100
+;
+In the second test case, you don't need to modify array
+p
+, since the inflation coefficients are already good:
+1
+1
+≤
+100
+100
+;
+1
+1+1
+≤
+100
+100
+;

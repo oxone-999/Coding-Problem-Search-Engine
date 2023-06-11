@@ -1,223 +1,129 @@
-F. Tasty Cookie
-time limit per test3 seconds
-memory limit per test256 megabytes
+D. Yet Another Yet Another Task
+time limit per test1.5 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Oh, no!
-The coronavirus has caught you, and now you're sitting in a dark cellar, with tied legs (but not hands). You have a delicious cookie, a laptop in front of you, and your ideal development environment is open. The coronavirus convinces you to solve the following problem.
-You are given two arrays
-A
-and
-B
-of size
+Alice and Bob are playing yet another card game. This time the rules are the following. There are
 n
-. You can do operations of two types with array
-A
-:
-Reverse array
-A
-. That is the array
-[
-A
-1
-, 
-A
-2
-, …, 
-A
-n
-]
-transformes into
-[
-A
-n
-, 
-A
-n−1
-, …, 
-A
-1
-]
+cards lying in a row in front of them. The
+i
+-th card has value
+a
+i
 .
-Replace
-A
-with an array of its prefix sums. That is, the array
-[
-A
-1
-, 
-A
-2
-, …, 
-A
-n
-]
-goes to
-[
-A
-1
-, (
-A
-1
+First, Alice chooses a non-empty consecutive segment of cards
+[l;r]
+(
+l≤r
+). After that Bob removes a single card
+j
+from that segment
+(l≤j≤r)
+. The score of the game is the total value of the remaining cards on the segment
+(
+a
+l
 +
-A
-2
-), …, (
-A
-1
+a
+l+1
++⋯+
+a
+j−1
 +
-A
-2
-+…+
-A
-n
-)]
+a
+j+1
++⋯+
+a
+r−1
++
+a
+r
+)
+. In particular, if Alice chooses a segment with just one element, then the score after Bob removes the only card is
+0
 .
-You need to understand if you can get an array
-B
-from the array
-A
-. If it is possible, you will have to restore the order of these operations by minimizing the number of operations of the second type. Fortunately, the coronavirus is good today, so he has allowed you not to restore actions if the minimum number of second type operations is more than
-2⋅
-10
-5
-. But coronavirus resents you, so if you restore the answer, the total number of operations should not exceed
-5⋅
-10
-5
-.
-Solve this problem and get the cookie, or the coronavirus will extend the quarantine for five years and make the whole economy collapse!
+Alice wants to make the score as big as possible. Bob takes such a card that the score is as small as possible.
+What segment should Alice choose so that the score is maximum possible? Output the maximum score.
 Input
 The first line contains a single integer
 n
 (
-1≤n≤2⋅
+1≤n≤
 10
 5
-).
+) — the number of cards.
 The second line contains
 n
 integers
-A
+a
 1
 ,
-A
+a
 2
 ,…,
-A
+a
 n
 (
-1≤
-A
+−30≤
+a
 i
-≤
-10
-12
-).
-The third line contains
-n
-integers
-B
-1
-,
-B
-2
-,…,
-B
-n
-(
-1≤
-B
-i
-≤
-10
-12
-).
+≤30
+) — the values on the cards.
 Output
-If you cannot get
-B
-from the
-A
-array, print "IMPOSSIBLE" (without quotes) on a single line.
-If the minimum number of operations of the second type exceeds
-2⋅
-10
-5
-, print "BIG" (without quotes). In the second line print the number of operations of the second type, that needs to be applied to get array
-B
-from
-A
-.
-Otherwise, in the first line print "SMALL" (without quotes). In the second line print the total number of operations of the first and second types
-m≤5⋅
-10
-5
-(it is guaranteed that in this case there is such a sequence of actions). In the third line print a line of length
-m
-, consisting of characters 'R"and 'P' (without quotes).
-The
-i
--th character should be 'R', if the
-i
--th action is of the first type, and should be 'P', otherwise.
-If there are several such sequences, you can print any of them.
-You can print each character in the uppercase or in the lowercase.
+Print a single integer — the final score of the game.
 Examples
 input
 Copy
-2
-5 7
-5 7
+5
+5 -2 10 -1 4
 output
 Copy
-SMALL
-0
-input
-Copy
-2
-1 1
-300000 1
-output
-Copy
-BIG
-299999
-input
-Copy
-2
-10 1
-13 14
-output
-Copy
-SMALL
 6
-RPPPRP
+input
+Copy
+8
+5 2 5 3 -30 -30 6 9
+output
+Copy
+10
 input
 Copy
 3
-1 2 1
-2 1 2
+-10 6 -15
 output
 Copy
-IMPOSSIBLE
+0
 Note
-In the first example, the arrays
-A
-and
-B
-already equal, so the number of required operations
-=0
-.
-In the second example, we need to replace
-A
-with the prefix sums
-299999
-times and then reverse the array. Since
-299999>2⋅
+In the first example Alice chooses a segment
+[1;5]
+— the entire row of cards. Bob removes card
+3
+with the value
 10
+from the segment. Thus, the final score is
+5+(−2)+(−1)+4=6
+.
+In the second example Alice chooses a segment
+[1;4]
+, so that Bob removes either card
+1
+or
+3
+with the value
 5
-, there is no need to restore the answer.
-In the fourth example, you cannot get
-B
-from the
-A
+, making the answer
+5+2+3=10
+.
+In the third example Alice can choose any of the segments of length
+1
+:
+[1;1]
+,
+[2;2]
+or
+[3;3]
+. Bob removes the only card, so the score is
+0
+. If Alice chooses some other segment then the answer will be less than
+0
 .

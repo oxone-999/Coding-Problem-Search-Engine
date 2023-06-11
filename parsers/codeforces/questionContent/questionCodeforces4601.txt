@@ -1,30 +1,32 @@
-A. Partition
+B. Weird Subtraction Process
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a sequence a consisting of n integers. You may partition this sequence into two sequences b and c in such a way that every element belongs exactly to one of these sequences.
-Let B be the sum of elements belonging to b, and C be the sum of elements belonging to c (if some of these sequences is empty, then its sum is 0). What is the maximum possible value of B - C?
+You have two variables a and b. Consider the following sequence of actions performed with these variables:
+If a = 0 or b = 0, end the process. Otherwise, go to step 2;
+If a ≥ 2·b, then set the value of a to a - 2·b, and repeat step 1. Otherwise, go to step 3;
+If b ≥ 2·a, then set the value of b to b - 2·a, and repeat step 1. Otherwise, end the process.
+Initially the values of a and b are positive integers, and so the process will be finite.
+You have to determine the values of a and b after the process ends.
 Input
-The first line contains one integer n (1 ≤ n ≤ 100) — the number of elements in a.
-The second line contains n integers a1, a2, ..., an ( - 100 ≤ ai ≤ 100) — the elements of sequence a.
+The only line of the input contains two integers n and m (1 ≤ n, m ≤ 1018). n is the initial value of variable a, and m is the initial value of variable b.
 Output
-Print the maximum possible value of B - C, where B is the sum of elements of sequence b, and C is the sum of elements of sequence c.
+Print two integers — the values of a and b after the end of the process.
 Examples
 input
 Copy
-3
-1 -2 0
+12 5
 output
 Copy
-3
+0 1
 input
 Copy
-6
-16 23 16 15 42 8
+31 12
 output
 Copy
-120
+7 12
 Note
-In the first example we may choose b = {1, 0}, c = { - 2}. Then B = 1, C =  - 2, B - C = 3.
-In the second example we choose b = {16, 23, 16, 15, 42, 8}, c = {} (an empty sequence). Then B = 120, C = 0, B - C = 120.
+Explanations to the samples:
+a = 12, b = 5 a = 2, b = 5 a = 2, b = 1 a = 0, b = 1;
+a = 31, b = 12 a = 7, b = 12.

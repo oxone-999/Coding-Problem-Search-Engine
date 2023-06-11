@@ -1,80 +1,222 @@
-A. Walking Master
-time limit per test1 second
-memory limit per test1024 megabytes
+F2. Survival of the Weakest (hard version)
+time limit per test3 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-YunQian is standing on an infinite plane with the Cartesian coordinate system on it. In one move, she can move to the diagonally adjacent point on the top right or the adjacent point on the left.
-That is, if she is standing on point
-(x,y)
-, she can either move to point
-(x+1,y+1)
-or point
-(x−1,y)
-.
-YunQian initially stands at point
-(a,b)
-and wants to move to point
-(c,d)
-. Find the minimum number of moves she needs to make or declare that it is impossible.
-Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases. The description of test cases follows.
-The first line and only line of each test case contain four integers
+This is the hard version of the problem. It differs from the easy one only in constraints on
+n
+. You can make hacks only if you lock both versions.
+Let
 a
+1
 ,
-b
+a
+2
+,…,
+a
+n
+be an array of non-negative integers. Let
+F(
+a
+1
 ,
-c
+a
+2
+,…,
+a
+n
+)
+be the sorted in the non-decreasing order array of
+n−1
+smallest numbers of the form
+a
+i
++
+a
+j
+, where
+1≤i<j≤n
+. In other words,
+F(
+a
+1
 ,
-d
-(
-−
-10
-8
-≤a,b,c,d≤
-10
-8
-).
-Output
-For each test case, if it is possible to move from point
-(a,b)
-to point
-(c,d)
-, output the minimum number of moves. Otherwise, output
-−1
+a
+2
+,…,
+a
+n
+)
+is the sorted in the non-decreasing order array of
+n−1
+smallest sums of all possible pairs of elements of the array
+a
+1
+,
+a
+2
+,…,
+a
+n
+. For example,
+F(1,2,5,7)=[1+2,1+5,2+5]=[3,6,7]
 .
-Example
+You are given an array of non-negative integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+. Determine the single element of the array
+F(F(F…F
+
+
+
+
+
+
+
+
+
+
+
+
+
+n−1
+(
+a
+1
+,
+a
+2
+,…,
+a
+n
+)…))
+. Since the answer can be quite large, output it modulo
+10
+9
++7
+.
+Input
+The first line contains one integer
+n
+(
+2≤n≤2⋅
+10
+5
+) — the initial length of the array.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤
+10
+9
+) — the array elements.
+Output
+Output a single number — the answer modulo
+10
+9
++7
+.
+Examples
 input
 Copy
-6
--1 0 -1 2
-0 0 4 5
--2 -1 1 1
--3 2 -3 2
-2 -1 -1 -1
-1 1 0 2
+5
+1 2 4 5 6
 output
 Copy
-4
-6
--1
-0
+34
+input
+Copy
+9
+1 1 1 7 7 7 9 9 9
+output
+Copy
+256
+input
+Copy
+7
+1 7 9 2 0 0 9
+output
+Copy
+20
+input
+Copy
 3
-3
+1000000000 1000000000 777
+output
+Copy
+1540
 Note
-In the first test case, one possible way using
-4
-moves is
-(−1,0)→(0,1)→(−1,1)→(0,2)→(−1,2)
-. It can be proven that it is impossible to move from point
-(−1,0)
-to point
-(−1,2)
-in less than
-4
-moves.
+In the first test, the array is transformed as follows:
+[1,2,4,5,6]→[3,5,6,6]→[8,9,9]→[17,17]→[34]
+. The only element of the final array is
+34
+.
+In the second test,
+F(
+a
+1
+,
+a
+2
+,…,
+a
+n
+)
+is
+[2,2,2,8,8,8,8,8]
+. This array is made up of
+3
+numbers of the form
+1+1
+and
+5
+numbers of the form
+1+7
+.
+In the fourth test, the array is transformed as follows:
+[
+10
+9
+,
+10
+9
+,777]→[
+10
+9
++777,
+10
+9
++777]→[2⋅
+10
+9
++1554]
+.
+2⋅
+10
+9
++1554
+modulo
+10
+9
++7
+equals
+1540
+.

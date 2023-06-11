@@ -1,35 +1,103 @@
-Many Chefs
+Copy and Paste
 Problem
-Chef Ciel wants to put a fancy neon signboard over the entrance of her restaurant. She has not enough money to buy the new one so she bought some old neon signboard through the internet. Ciel was quite disappointed when she received her order - some of its letters were broken. But she realized that this is even better - she could replace each broken letter by any letter she wants. So she decided to do such a replacement that the resulting signboard will contain the word "CHEF" as many times as possible.
-We can model the signboard as a string S having capital letters from 'A' to 'Z', inclusive, and question marks '?'. Letters in the string indicate the intact letters at the signboard, while question marks indicate broken letters. So Ciel will replace each question mark with some capital letter and her goal is to get the string that contains as many substrings equal to "CHEF" as possible. If there exist several such strings, she will choose the lexicographically smallest one.
-Note 1. The string S = S1...SN has the substring "CHEF" if for some i we have SiSi+1Si+2Si+3 = "CHEF". The number of times "CHEF" is the substring of S is the number of those i for which SiSi+1Si+2Si+3 = "CHEF".
-Note 2. The string A = A1...AN is called lexicographically smaller than the string B = B1...BN if there exists K from 1 to N, inclusive, such that Ai = Bi for i = 1, ..., K-1, and AK < BK. In particular, A is lexicographically smaller than B if A1 < B1. We compare capital letters by their positions in the English alphabet. So 'A' is the smallest letter, 'B' is the second smallest letter, ..., 'Z' is the largest letter.
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. The only line of each test case contains a string S.
-Output
-For each test case, output a single line containing the content of the signboard Chef Ciel will come up with. That is you should output the lexicographically smallest string that could be obtained from the input string by replacing all its question marks by some capital letters and having as many substrings equal to "CHEF" as possible.
+Chef has binary string
+A of length
+N. He constructs a new binary string
+B by concatenating
+M copies of
+A together. For example, if
+A="10010",
+M=3, then
+B="100101001010010".
+Chef calls an index
+i
+(1≤i≤N⋅M) good if:
+pref
+i
+=suf
+i+1
+.
+Here,
+pref
+j
+=B
+1
++B
+2
++…+B
+j
+and
+suf
+j
+=B
+j
++B
+j+1
++…+B
+N⋅M
+(Note that
+suf
+N⋅M+1
+=0 by definition)
+Chef wants to find the number of good indices in
+B. Can you help him do so?
+Input Format
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
+The first line of each test case contains two space-separated integers
+N and
+M — the length of the binary string
+A and the number of times
+A is concatenated to form $
+The second line of each test case contains a binary string
+A of length
+N containing
+0s and
+1s only.
+Output Format
+For each test case, output the number of good indices in
+B.
 Constraints
-1 ≤ T ≤ 2013
-1 ≤ length of S ≤ 2013
-Each character in S is either a capital letter from 'A' to 'Z', inclusive, or the question mark '?'.
+1≤T≤10
+5
+1≤N,M≤10
+5
+A is a binary string, i.e, contains only the characters
+0 and
+1.
+The sum of
+N over all test cases does not exceed
+2⋅10
+5
+.
+The sum of
+M over all test cases does not exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
-5
-????CIELIS???E?
-????CIELISOUR???F
-T?KEITE?SY
-????????
-???C???
-CHEFCIELISACHEF
-CHEFCIELISOURCHEF
-TAKEITEASY
-CHEFCHEF
-AAACHEF
+3
+2 2
+00
+2 4
+11
+3 3
+101
+4
+1
+2
 Explanation:
-Example Case 1. Here the resulting string can have at most 2 substrings equal to "CHEF". For example, some possible such strings are:
-CHEFCIELISACHEF
-CHEFCIELISQCHEF
-CHEFCIELISZCHEF
-However, lexicographically smallest one is the first one.
-Example Case 3. Here the resulting string cannot have "CHEF" as its substring. Therefore, you must simply output the lexicographically smallest string that can be obtained from the given one by replacing question marks with capital letters.
+Test case
+1:
+B="0000". In this string, all the indices are good.
+Test case
+2:
+B="11111111". In this string, only
+i=4 is good.
+Test case
+3:
+B="101101101". In this string,
+i=4 and
+i=5 are good.

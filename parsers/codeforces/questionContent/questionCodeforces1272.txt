@@ -1,74 +1,127 @@
-B. Absent Remainder
+D. MEX Sequences
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a sequence
+Let's call a sequence of integers
+x
+1
+,
+x
+2
+,…,
+x
+k
+MEX-correct if for all
+i
+(
+1≤i≤k
+)
+|
+x
+i
+−MEX(
+x
+1
+,
+x
+2
+,…,
+x
+i
+)|≤1
+holds. Where
+MEX(
+x
+1
+,…,
+x
+k
+)
+is the minimum non-negative integer that doesn't belong to the set
+x
+1
+,…,
+x
+k
+. For example,
+MEX(1,0,1,3)=2
+and
+MEX(2,1,5)=0
+.
+You are given an array
 a
+consisting of
+n
+non-negative integers. Calculate the number of non-empty MEX-correct subsequences of a given array. The number of subsequences can be very large, so print it modulo
+998244353
+.
+Note: a subsequence of an array
+a
+is a sequence
+[
+a
+i
 1
 ,
 a
+i
 2
 ,…,
 a
-n
-consisting of
-n
-pairwise distinct positive integers.
-Find
-⌊
-n
+i
+m
+]
+meeting the constraints
+1≤
+i
+1
+<
+i
 2
-⌋
-different pairs of integers
-x
-and
-y
-such that:
-x≠y
-;
-x
-and
-y
-appear in
-a
-;
-x mod y
-doesn't appear in
-a
-.
-Note that some
-x
-or
-y
-can belong to multiple pairs.
-⌊x⌋
-denotes the floor function — the largest integer less than or equal to
-x
-.
-x mod y
-denotes the remainder from dividing
-x
-by
-y
-.
-If there are multiple solutions, print any of them. It can be shown that at least one solution always exists.
+<⋯<
+i
+m
+≤n
+. If two different ways to choose the sequence of indices
+[
+i
+1
+,
+i
+2
+,…,
+i
+m
+]
+yield the same subsequence, the resulting subsequence should be counted twice (i. e. two subsequences are different if their sequences of indices
+[
+i
+1
+,
+i
+2
+,…,
+i
+m
+]
+are not the same).
 Input
 The first line contains a single integer
 t
 (
 1≤t≤
 10
-4
-) — the number of testcases.
-The first line of each testcase contains a single integer
+5
+) — the number of test cases.
+The first line of each test case contains a single integer
 n
 (
-2≤n≤2⋅
+1≤n≤5⋅
 10
 5
-) — the length of the sequence.
-The second line of each testcase contains
+).
+The second line contains
 n
 integers
 a
@@ -80,107 +133,53 @@ a
 a
 n
 (
-1≤
+0≤
 a
 i
-≤
-10
-6
+≤n
 ).
-All numbers in the sequence are pairwise distinct. The sum of
+The sum of
 n
-over all testcases doesn't exceed
-2⋅
+over all test cases doesn't exceed
+5⋅
 10
 5
 .
 Output
-The answer for each testcase should contain
-⌊
-n
-2
-⌋
-different pairs of integers
-x
-and
-y
-such that
-x≠y
-,
-x
-and
-y
-appear in
-a
-and
-x mod y
-doesn't appear in
-a
-. Print the pairs one after another.
-You can print the pairs in any order. However, the order of numbers in the pair should be exactly such that the first number is
-x
-and the second number is
-y
-. All pairs should be pairwise distinct.
-If there are multiple solutions, print any of them.
+For each test case, print a single integer — the number of non-empty MEX-correct subsequences of a given array, taken modulo
+998244353
+.
 Example
 input
 Copy
 4
+3
+0 2 1
 2
-1 4
-4
-2 8 3 4
+1 0
 5
-3 8 5 9 7
-6
-2 7 5 3 4 8
+0 0 0 0 0
+4
+0 1 2 3
 output
 Copy
-4 1
-8 2
-8 4
-9 5
-7 5
-8 7
-4 3
-5 2
-Note
-In the first testcase there are only two pairs:
-(1,4)
-and
-(4,1)
-.
-⌊
-2
-2
-⌋=1
-, so we have to find one pair.
-1 mod 4=1
-, and
-1
-appears in
-a
-, so that pair is invalid. Thus, the only possible answer is a pair
-(4,1)
-.
-In the second testcase, we chose pairs
-8 mod 2=0
-and
-8 mod 4=0
-.
-0
-doesn't appear in
-a
-, so that answer is valid. There are multiple possible answers for that testcase.
-In the third testcase, the chosen pairs are
-9 mod 5=4
-and
-7 mod 5=2
-. Neither
 4
-, nor
 2
-, appears in
-a
-, so that answer is valid.
+31
+7
+Note
+In the first example, the valid subsequences are
+[0]
+,
+[1]
+,
+[0,1]
+and
+[0,2]
+.
+In the second example, the valid subsequences are
+[0]
+and
+[1]
+.
+In the third example, any non-empty subsequence is valid.

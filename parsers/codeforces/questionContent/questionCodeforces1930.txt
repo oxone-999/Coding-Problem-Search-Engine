@@ -1,96 +1,133 @@
-B. RBS Deletion
-time limit per test3 seconds
-memory limit per test512 megabytes
+D. Problemsolving Marathon
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A bracket sequence is a string containing only characters "(" and ")". A regular bracket sequence (or, shortly, an RBS) is a bracket sequence that can be transformed into a correct arithmetic expression by inserting characters "1" and "+" between the original characters of the sequence. For example:
-bracket sequences "()()" and "(())" are regular (the resulting expressions are: "(1)+(1)" and "((1+1)+1)");
-bracket sequences ")(", "(" and ")" are not.
-You are given a string
+Polycarp has decided to do a problemsolving marathon. He wants to solve
 s
-, which is an RBS. You can apply any number of operations to this string. Each operation can have one of the following types:
-choose some non-empty prefix of
-s
-and remove it from
-s
-, so
-s
-is still an RBS. For example, we can apply this operation as follows: "(())()(())()()"
-→
-"()()" (the first
-10
-characters are removed);
-choose some contiguous non-empty substring of
-s
-and remove it from
-s
-, so
-s
-is still an RBS. For example, we can apply this operation as follows: "(())()(())()()"
-→
-"(())()()()" (the characters from the
-7
--th to the
-10
--th are removed).
-The operation
-2
-can be applied at most
-k
-times. Calculate the maximum number of operations you can apply until
-s
-becomes empty.
+problems in
+n
+days. Let
+a
+i
+be the number of problems he solves during the
+i
+-th day. He wants to find a distribution of problems into days such that:
+a
+i
+is an integer value for all
+i
+from
+1
+to
+n
+;
+a
+i
+≥1
+for all
+i
+from
+1
+to
+n
+;
+a
+i+1
+≥
+a
+i
+for all
+i
+from
+1
+to
+n−1
+;
+a
+i+1
+≤2⋅
+a
+i
+for all
+i
+from
+1
+to
+n−1
+;
+a
+n
+is maximized.
+Note that
+a
+1
+can be arbitrarily large.
+What is the largest value of
+a
+n
+Polycarp can obtain?
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤
-10
-5
-) — the number of test cases.
-Each test case is described by two lines. The first line contains two integers
+1≤t≤1000
+) — the number of testcases.
+Then the descriptions of
+t
+testcases follow.
+The only line of each testcase contains two integers
 n
 and
-k
+s
 (
-2≤n≤2⋅
+1≤n≤s≤
 10
-5
-;
-1≤k≤n
-;
-n
-is even) — the length of
-s
-and the maximum number of operations of type
-2
-you can apply.
-The second line contains a string
-s
-of
-n
-characters '(' and ')'. This string is an RBS.
-The sum of
-n
-over all test cases doesn't exceed
-2⋅
-10
-5
-.
+18
+) — the number of days and the number of problems Polycarp wants to solve.
+It's guaranteed that the distribution always exists within the given constraints.
 Output
-For each test case, print one integer — the maximum number of operations you can apply.
+For each testcase print a single integer — the maximum value of
+a
+n
+.
 Example
 input
 Copy
 3
-12 2
-(()())((()))
-6 3
-()()()
-8 1
-(((())))
+1 15
+3 9
+2 6
 output
 Copy
+15
 4
-3
-2
+4
+Note
+In the first testcase there is only one distribution:
+[15]
+.
+In the second testcase the distribution that maximizes
+a
+n
+is:
+[2,3,4]
+.
+In the third testcase the distribution that maximizes
+a
+n
+is:
+[2,4]
+.
+[3,3]
+is a valid distribution but
+a
+n
+=3
+which is smaller than
+4
+.
+[1,5]
+is not a valid distribution because
+5>2⋅1
+.

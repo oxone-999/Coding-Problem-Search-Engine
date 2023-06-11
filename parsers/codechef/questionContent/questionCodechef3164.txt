@@ -1,92 +1,86 @@
-Queries on Matrix
+Edgy
 Problem
 Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-"But I’m no longer the troublemaker you think I am!" - Naruto Uzumaki
-Sakshi had a matrix with
-N rows (numbered
+You are given a tree with
+N vertices (numbered
 1 through
-N) and
-M columns (numbered
-1 through
-M). Initially, all cells of this matrix contained
-0-s. Let's denote a cell in row
-r and column
-c by
-(r,c).
-Sakshi is well-known for troubling others. This time, her friends Nikki and Mansi planned to take revenge and teach her a lesson, so they changed her matrix by performing the following operation
-Q times:
-Choose any valid cell
-(x,y).
-Add
-1 to all the cells in row
-x.
-Add
-1 to all the cells in column
-y.
-Then, Nikki and Mansi challenged Sakshi to find the total number of ways to perform a sequence of
-Q operations on the initial matrix such that at the end, exactly
-Z cells in the matrix contain odd integers. Sakshi is not good at math, since she has spent all her life troubling others, so this time, she really needs your help. Help Sakshi count the number of ways. Since the answer may be large, compute it modulo
-998,244,353.
-Note: Two ways to perform a sequence of operations are considered different if there is a valid
-i such that the cell chosen in the
-i-th operation in one sequence is different from the cell chosen in the
-i-th operation in the other sequence. For example, if we choose the cells
-(1,1) and
-(2,2) in this order, it is different from choosing the cells
-(2,2) and
-(1,1).
+N). Each edge of this tree is coloured either black or white.
+A single-colour subtree of this tree is a non-empty maximal set
+S of its edges such that all edges in
+S have the same colour and each of these edges can be reached from any other edge in
+S by only traversing edges from
+S. A maximal set is a set to which we cannot add any edge without breaking this property.
+You should process
+Q queries. In each query, you are given two vertices
+u and
+v. Flip the colour of each edge on the path between
+u and
+v (black edges become white and white edges become black) and then compute the number of single-colour subtrees of the tree. The colours of the edges remain flipped in the subsequent queries.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first and only line of each test case contains four space-separated integers
-N,
-M,
-Q and
-Z.
+The first line of each test case contains a single integer
+N.
+Each of the next
+N−1 lines contains three space-separated integers
+a,
+b and
+c denoting that there is an edge between vertices
+a and
+b with colour
+c; a black edge is denoted by
+c=0 and a white edge by
+c=1.
+The next line contains a single integer
+Q.
+The following
+Q lines describe queries. Each of these lines contains two space-separated integers
+u and
+v.
 Output
-For each test case, print a single line containing one integer ― the number of ways to perform a sequence of operations modulo
-998,244,353.
+For each query, print a single line containing one integer — the number of single-colour subtrees.
 Constraints
-1≤T≤50
-1≤N,M≤2,000
-0≤Z≤N⋅M
-1≤Q≤10
-18
+1≤T≤100
+1≤N,Q≤10
+5
+1≤a,b,u,v≤N
+0≤c≤1
+the graph described on the input is a tree
+the sum of
+N over all test cases does not exceed
+3⋅10
+5
+the sum of
+Q over all test cases does not exceed
+3⋅10
+5
 Subtasks
-Subtask #1 (10 points):
-1≤N,M,Q≤300
-Subtask #2 (40 points):
-1≤N,M≤300
-Subtask #3 (10 points):
-1≤N,M≤500
-Subtask #4 (10 points):
-1≤N,M≤600
-Subtask #5 (10 points):
-1≤N,M≤700
-Subtask #6 (10 points):
-1≤N,M≤800
-Subtask #7 (10 points): original constraints
+Subtask #1 (100 points): original constraints
 Sample 1:
 Input
 Output
 2
-2 2 2 0
-2 2 2 4
-8
-8
-Explanation:
-Example case 1: If we start by choosing the cell
-(1,1), the matrix becomes
-2 1
-1 0
-Now we have two options ? we can choose either even-valued cell. If we choose
-(1,1) again, the matrix becomes
-4 2
-2 0
-If we choose
-(2,2) instead, it becomes
-2 2
-2 2
-For each of the other three possible initial cells, there are also two cells we can choose in the second operation, which is
-4⋅2=8 ways in total.
+4
+1 2 0
+2 3 0
+3 4 1
+3
+2 3
+1 4
+3 4
+7
+1 2 0
+2 3 0
+5 4 1
+4 3 1
+6 3 0
+7 6 0
+2
+2 6
+5 3
+2
+2
+3
+3
+4

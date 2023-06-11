@@ -1,358 +1,256 @@
-G. Flow Control
-time limit per test6 seconds
+F. Approximate Diameter
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Raj has a single physical network line that connects his office to the Internet. This line bandwidth is
-b
-bytes per millisecond.
-There are
+Jack has a graph of
 n
-users who would like to use this network line to transmit some data. The
-i
--th of them will use the line from millisecond
-s
-i
-to millisecond
-f
-i
-inclusive. His initial data rate will be set to
-d
-i
-. That means he will use data rate equal to
-d
-i
-for millisecond
-s
-i
-, and then it will change according to the procedure described below.
-The flow control will happen as follows. Suppose there are
+vertices and
 m
-users trying to transmit some data via the given network line during millisecond
-x
-. Denote as
-t
-i
-the data rate that the
-i
--th of these
-m
-users has at the beginning of this millisecond. All
-t
-i
-are non-negative integer values.
-If
-m=0
-, i. e. there are no users trying to transmit data during this millisecond, nothing happens.
-If the sum of all
-t
-i
-is less than or equal to
-b
-, each active user successfully completes his transmission (the
-i
--th active user transmits
-t
-i
-bytes). After that, the data rate of each active user grows by
-1
-, i. e. each
-t
-i
-is increased by
-1
-.
-If the sum of all
-t
-i
-is greater than
-b
-, the congestion occurs and no data transmissions succeed this millisecond at all. If that happens, each
-t
-i
-decreases twice, i. e. each
-t
-i
-is replaced with
-⌊
-t
-i
-2
-⌋
-.
-Raj knows all the values
-n
-,
-b
-,
-s
-i
-,
-f
-i
-, and
-d
-i
-, he wants to calculate the total number of bytes transmitted by all the users in the aggregate.
-Input
-The first line of the input contains two integers
-n
+edges. All edges are bidirectional and of unit length. The graph is connected, i. e. there exists a path between any two of its vertices. There can be more than one edge connecting the same pair of vertices. The graph can contain self-loops, i. e. edges connecting a node to itself.
+The distance between vertices
+u
 and
-b
+v
+is denoted as
+ρ(u,v)
+and equals the minimum possible number of edges on a path between
+u
+and
+v
+. The diameter of graph
+G
+is defined as the maximum possible distance between some pair of its vertices. We denote it as
+d(G)
+. In other words,
+d(G)=
+max
+1≤u,v≤n
+ρ(u,v).
+d
 (
-1≤n≤2⋅
+G
+)
+(
+)
+Jack plans to consecutively apply
+q
+updates to his graph. Each update adds exactly one edge to the graph. Denote as
+G
+i
+the graph after exactly
+i
+updates are made. Jack wants to calculate
+q+1
+values
+d(
+G
+0
+),d(
+G
+1
+),d(
+G
+2
+),…,d(
+G
+q
+)
+.
+However, Jack suspects that finding the exact diameters of
+q+1
+graphs might be a difficult task, so he is fine with approximate answers that differ from the correct answers no more than twice. Formally, Jack wants to find a sequence of positive integers
+a
+0
+,
+a
+1
+,
+a
+2
+,…,
+a
+q
+such that
+⌈
+d(
+G
+i
+)
+2
+⌉≤
+a
+i
+≤2⋅d(
+G
+i
+)
+d
+(
+G
+)
+for each
+i
+.
+Hacks
+You cannot make hacks in this problem.
+Input
+The first line of the input contains three integers
+n
+,
+m
+, and
+q
+(
+2≤n≤
 10
 5
 ,
-1≤b≤
+n−1≤m≤
 10
-9
-), the number of users who will use the line and the line bandwidth, respectively.
-Each of the following
-n
-lines contains three integers
-s
-i
+5
 ,
-f
+0≤q≤
+10
+5
+), the number of vertices in the given graph, the number of edges and the number of updates, respectively.
+Then follow
+m
+lines describing the initial edges of the graph. The
+i
+-th of these lines contains two integers
+u
 i
 and
-d
+v
 i
 (
 1≤
-s
+u
 i
-≤
-f
-i
-≤
-10
-9
 ,
-1≤
-d
+v
 i
-≤
-10
-9
-), denoting that the
+≤n
+), the indexes of the vertices connected by the
 i
--th user will try to transmit data during each millisecond between
-s
+-th edge.
+Then follow
+q
+lines describing the updates. The
+i
+-th of these lines contains two integers
+u
+′
 i
 and
-f
+v
+′
 i
-inclusive, and the initial data rate of the
+(
+1≤
+u
+′
 i
--th user.
+,
+v
+′
+i
+≤n
+), the indexes of the vertices connected by the edge that is added to the graph in the
+i
+-th update.
+Important note. For testing purposes, the input data may contain some extra lines after the mentioned input format. These will be used by the checker to verify your answer. They are not a part of the test data, you should not use them in any way and you can even omit reading them.
 Output
-Print one integer — the total number of bytes all users will successfully transmit.
+Print a sequence of
+q+1
+positive integers
+a
+0
+,
+a
+1
+,
+a
+2
+,…,
+a
+q
+. The
+i
+-th of these integers should differ from the diameter of graph
+G
+i
+no more than twice.
 Examples
 input
 Copy
-1 3
-1 5 2
+9 10 8
+1 2
+2 3
+2 4
+3 5
+4 5
+5 6
+5 7
+6 8
+7 8
+8 9
+3 4
+6 7
+2 8
+1 9
+1 6
+4 9
+3 9
+7 1
 output
 Copy
-10
+10 6 5 6 2 4 2 2 1
 input
 Copy
-1 10
-7 11 1000
+8 7 9
+1 2
+2 3
+3 4
+4 5
+5 6
+6 7
+7 8
+1 5
+3 7
+2 4
+4 6
+6 8
+8 2
+5 4
+2 4
+3 3
+1 652997 124613 653029 653029 124613 124613 124613 648901 124613 653029
 output
 Copy
-0
-input
-Copy
-2 6
-1 12 1
-8 20 3
-output
-Copy
-64
-input
-Copy
-3 10
-1 100 1
-30 60 20
-40 80 6
-output
-Copy
-534
+7 5 4 4 4 3 3 3 3 3
 Note
-Consider the first example.
-Millisecond
+In the first example, the correct sequence of
+d(
+G
+0
+),d(
+G
 1
-: User
-1
-transmits
+),d(
+G
 2
-bytes.
-Millisecond
-2
-: User
-1
-transmits
-3
-bytes.
-Millisecond
-3
-: Congestion occurs, and no user transmits data.
-Millisecond
-4
-: User
-1
-transmits
-2
-bytes.
-Millisecond
-5
-: User
-1
-transmits
-3
-bytes.
-In the second example, at each millisecond from the
-7
--th to the
-11
--th inclusive, congestion occurs, and the only user decreases their rate twice. However, they don't decrease the speed enough before disconnecting.
-Consider the third example.
-Millisecond
-1
-: User
-1
-transmits
-1
-bytes.
-Millisecond
-2
-: User
-1
-transmits
-2
-bytes.
-Millisecond
-3
-: User
-1
-transmits
-3
-bytes.
-Millisecond
-4
-: User
-1
-transmits
-4
-bytes.
-Millisecond
-5
-: User
-1
-transmits
-5
-bytes.
-Millisecond
-6
-: User
-1
-transmits
-6
-bytes.
-Millisecond
-7
-: Congestion occurs, and no user transmits data.
-Millisecond
-8
-: User
-1
-transmits
-3
-bytes. User
-2
-transmits
-3
-bytes.
-Millisecond
-9
-: Congestion occurs, and no user transmits data.
-Millisecond
-10
-: User
-1
-transmits
-2
-bytes. User
-2
-transmits
-2
-bytes.
-Millisecond
-11
-: User
-1
-transmits
-3
-bytes. User
-2
-transmits
-3
-bytes.
-Millisecond
-12
-: Congestion occurs, and no user transmits data.
-Millisecond
-13
-: User
-2
-transmits
-2
-bytes.
-Millisecond
-14
-: User
-2
-transmits
-3
-bytes.
-Millisecond
-15
-: User
-2
-transmits
-4
-bytes.
-Millisecond
-16
-: User
-2
-transmits
-5
-bytes.
-Millisecond
-17
-: User
-2
-transmits
-6
-bytes.
-Millisecond
-18
-: Congestion occurs, and no user transmits data.
-Millisecond
-19
-: User
-2
-transmits
-3
-bytes.
-Millisecond
-20
-: User
-2
-transmits
-4
-bytes.
+),…,d(
+G
+q
+)
+is
+6,6,6,3,3,3,2,2,2
+.
+In the second example, the input contains an extra line that you can omit reading. It is not a part of the test and will be used for verifying your answer. The output of the second example contains the correct values of
+d(
+G
+i
+)
+.

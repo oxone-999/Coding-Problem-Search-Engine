@@ -1,106 +1,172 @@
-A. Kids Seating
-time limit per test2 seconds
+E. Long Permutation
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Today the kindergarten has a new group of
-n
-kids who need to be seated at the dinner table. The chairs at the table are numbered from
+A permutation is a sequence of integers from
 1
 to
-4n
-. Two kids can't sit on the same chair. It is known that two kids who sit on chairs with numbers
+n
+of length
+n
+containing each number exactly once. For example,
+[1]
+,
+[4,3,5,1,2]
+,
+[3,2,1]
+ — are permutations, and
+[1,1]
+,
+[4,3,1]
+,
+[2,3,4]
+ — no.
+Permutation
 a
-and
+is lexicographically smaller than permutation
 b
+(they have the same length
+n
+), if in the first index
+i
+in which they differ,
+a[i]<b[i]
+. For example, the permutation
+[1,3,2,4]
+is lexicographically smaller than the permutation
+[1,3,4,2]
+, because the first two elements are equal, and the third element in the first permutation is smaller than in the second.
+The next permutation for a permutation
+a
+of length
+n
+ — is the lexicographically smallest permutation
+b
+of length
+n
+that lexicographically larger than
+a
+. For example:
+for permutation
+[2,1,4,3]
+the next permutation is
+[2,3,1,4]
+;
+for permutation
+[1,2,3]
+the next permutation is
+[1,3,2]
+;
+for permutation
+[2,1]
+next permutation does not exist.
+You are given the number
+n
+ — the length of the initial permutation. The initial permutation has the form
+a=[1,2,…,n]
+. In other words,
+a[i]=i
 (
-a≠b
-) will indulge if:
-gcd(a,b)=1
-or,
-a
-divides
-b
-or
-b
-divides
-a
+1≤i≤n
+).
+You need to process
+q
+queries of two types:
+1
+l
+r
+: query for the sum of all elements on the segment
+[l,r]
+. More formally, you need to find
+a[l]+a[l+1]+…+a[r]
 .
-gcd(a,b)
- — the maximum number
+2
 x
-such that
-a
-is divisible by
+:
 x
-and
-b
-is divisible by
-x
+times replace the current permutation with the next permutation. For example, if
+x=2
+and the current permutation has the form
+[1,3,4,2]
+, then we should perform such a chain of replacements
+[1,3,4,2]→[1,4,2,3]→[1,4,3,2]
 .
-For example, if
-n=3
-and the kids sit on chairs with numbers
-2
-,
-3
-,
-4
-, then they will indulge since
-4
-is divided by
-2
-and
-gcd(2,3)=1
-. If kids sit on chairs with numbers
-4
-,
-6
-,
-10
-, then they will not indulge.
-The teacher really doesn't want the mess at the table, so she wants to seat the kids so there are no
-2
-of the kid that can indulge. More formally, she wants no pair of chairs
-a
-and
-b
-that the kids occupy to fulfill the condition above.
-Since the teacher is very busy with the entertainment of the kids, she asked you to solve this problem.
+For each query of the
+1
+-st type output the required sum.
 Input
-The first line contains one integer
-t
-(
-1≤t≤100
-) — the number of test cases. Then
-t
-test cases follow.
-Each test case consists of one line containing an integer
+The first line contains two integers
 n
 (
-1≤n≤100
-) — the number of kids.
-Output
-Output
-t
-lines, which contain
+2≤n≤2⋅
+10
+5
+) and
+q
+(
+1≤q≤2⋅
+10
+5
+), where
 n
-distinct integers from
+ — the length of the initial permutation, and
+q
+ — the number of queries.
+The next
+q
+lines contain a single query of the
 1
-to
-4n
- — the numbers of chairs that the kids should occupy in the corresponding test case. If there are multiple answers, print any of them. You can print
-n
-numbers in any order.
+-st or
+2
+-nd type. The
+1
+-st type query consists of three integers
+1
+,
+l
+and
+r
+(1≤l≤r≤n)
+, the
+2
+-nd type query consists of two integers
+2
+and
+x
+(1≤x≤
+10
+5
+)
+.
+It is guaranteed that all requests of the
+2
+-nd type are possible to process.
+Output
+For each query of the
+1
+-st type, output on a separate line one integer — the required sum.
 Example
 input
 Copy
-3
-2
-3
-4
+4 4
+1 2 4
+2 3
+1 1 2
+1 3 4
 output
 Copy
-6 4
-4 6 10
-14 10 12 8
+9
+4
+6
+Note
+Initially, the permutation has the form
+[1,2,3,4]
+. Queries processing is as follows:
+2+3+4=9
+;
+[1,2,3,4]→[1,2,4,3]→[1,3,2,4]→[1,3,4,2]
+;
+1+3=4
+;
+4+2=6

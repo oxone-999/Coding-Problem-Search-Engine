@@ -1,221 +1,95 @@
-B. Meeting on the Line
-time limit per test2 seconds
+C. Minimum Notation
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-n
-people live on the coordinate line, the
-i
--th one lives at the point
-x
-i
-(
-1≤i≤n
-). They want to choose a position
-x
+You have a string
+s
+consisting of digits from
 0
-to meet. The
+to
+9
+inclusive. You can perform the following operation any (possibly zero) number of times:
+You can choose a position
 i
--th person will spend
-|
-x
+and delete a digit
+d
+on the
 i
-−
-x
-0
-|
-minutes to get to the meeting place. Also, the
-i
--th person needs
-t
-i
-minutes to get dressed, so in total he or she needs
-t
-i
-+|
-x
-i
-−
-x
-0
-|
-minutes.
-Here
-|y|
-denotes the absolute value of
-y
+-th position. Then insert the digit
+min(d+1,9)
+on any position (at the beginning, at the end or in between any two adjacent digits).
+What is the lexicographically smallest string you can get by performing these operations?
+A string
+a
+is lexicographically smaller than a string
+b
+of the same length if and only if the following holds:
+in the first position where
+a
+and
+b
+differ, the string
+a
+has a smaller digit than the corresponding digit in
+b
 .
-These people ask you to find a position
-x
-0
-that minimizes the time in which all
-n
-people can gather at the meeting place.
 Input
 The first line contains a single integer
 t
 (
 1≤t≤
 10
-3
+4
 ) — the number of test cases. Then the test cases follow.
-Each test case consists of three lines.
-The first line contains a single integer
-n
+Each test case consists of a single line that contains one string
+s
 (
-1≤n≤
+1≤|s|≤2⋅
 10
 5
-) — the number of people.
-The second line contains
-n
-integers
-x
-1
-,
-x
-2
-,…,
-x
-n
-(
-0≤
-x
-i
-≤
-10
-8
-) — the positions of the people.
-The third line contains
-n
-integers
-t
-1
-,
-t
-2
-,…,
-t
-n
-(
-0≤
-t
-i
-≤
-10
-8
-), where
-t
-i
-is the time
-i
--th person needs to get dressed.
-It is guaranteed that the sum of
-n
+) — the string consisting of digits. Please note that
+s
+is just a string consisting of digits, so leading zeros are allowed.
+It is guaranteed that the sum of lengths of
+s
 over all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case, print a single real number — the optimum position
-x
-0
-. It can be shown that the optimal position
-x
-0
-is unique.
-Your answer will be considered correct if its absolute or relative error does not exceed
-10
-−6
-. Formally, let your answer be
-a
-, the jury's answer be
-b
-. Your answer will be considered correct if
-|a−b|
-max(1,|b|)
-≤
-10
-−6
-.
+Print a single string — the minimum string that is possible to obtain.
 Example
 input
 Copy
-7
-1
-0
-3
-2
-3 1
-0 0
-2
-1 4
-0 0
-3
-1 2 3
-0 0 0
-3
-1 2 3
-4 1 2
-3
-3 3 3
-5 3 3
-6
-5 4 7 2 10 4
-3 2 5 1 4 6
+4
+04829
+9
+01
+314752277691991
 output
 Copy
-0
-2
-2.5
-2
-1
-3
-6
+02599
+9
+01
+111334567888999
 Note
-In the
-1
--st test case there is one person, so it is efficient to choose his or her position for the meeting place. Then he or she will get to it in
-3
-minutes, that he or she need to get dressed.
-In the
-2
--nd test case there are
-2
-people who don't need time to get dressed. Each of them needs one minute to get to position
-2
+In the first test case:
+Delete
+8
+and insert
+9
+at the end of the notation. The resulting notation is
+04299
 .
-In the
+Delete
+4
+and insert
 5
--th test case the
-1
--st person needs
-4
-minutes to get to position
-1
-(
-4
-minutes to get dressed and
-0
-minutes on the way); the
-2
--nd person needs
-2
-minutes to get to position
-1
-(
-1
-minute to get dressed and
-1
-minute on the way); the
+in the
 3
--rd person needs
-4
-minutes to get to position
-1
-(
-2
-minutes to get dressed and
-2
-minutes on the way).
+-rd position of the notation. The resulting notation is
+02599
+.
+Nothing needs to be done in the second and third test cases.

@@ -1,99 +1,466 @@
-C1. Madhouse (Easy version)
-time limit per test1 second
+E. Fedya the Potter Strikes Back
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This problem is different with hard version only by constraints on total answers length
-It is an interactive problem
-Venya joined a tour to the madhouse, in which orderlies play with patients the following game. Orderlies pick a string
-s
-of length
+Fedya has a string
+S
+, initially empty, and an array
+W
+, also initially empty.
+There are
 n
-, consisting only of lowercase English letters. The player can ask two types of queries:
-? l r – ask to list all substrings of
-s[l..r]
-. Substrings will be returned in random order, and in every substring, all characters will be randomly shuffled.
-! s – guess the string picked by the orderlies. This query can be asked exactly once, after that the game will finish. If the string is guessed correctly, the player wins, otherwise he loses.
-The player can ask no more than
-3
-queries of the first type.
-To make it easier for the orderlies, there is an additional limitation: the total number of returned substrings in all queries of the first type must not exceed
-(n+1
-)
-2
+queries to process, one at a time. Query
+i
+consists of a lowercase English letter
+c
+i
+and a nonnegative integer
+w
+i
+. First,
+c
+i
+must be appended to
+S
+, and
+w
+i
+must be appended to
+W
+. The answer to the query is the sum of suspiciousnesses for all subsegments of
+W
+[L, R]
+,
+(1≤L≤R≤i)
 .
-Venya asked you to write a program, which will guess the string by interacting with the orderlies' program and acting by the game's rules.
-Your program should immediately terminate after guessing the string using a query of the second type. In case your program guessed the string incorrectly, or it violated the game rules, it will receive verdict Wrong answer.
-Note that in every test case the string is fixed beforehand and will not change during the game, which means that the interactor is not adaptive.
+We define the suspiciousness of a subsegment as follows: if the substring of
+S
+corresponding to this subsegment (that is, a string of consecutive characters from
+L
+-th to
+R
+-th, inclusive) matches the prefix of
+S
+of the same length (that is, a substring corresponding to the subsegment
+[1, R−L+1]
+), then its suspiciousness is equal to the minimum in the array
+W
+on the
+[L, R]
+subsegment. Otherwise, in case the substring does not match the corresponding prefix, the suspiciousness is
+0
+.
+Help Fedya answer all the queries before the orderlies come for him!
 Input
-First line contains number
+The first line contains an integer
 n
-(
-1≤n≤100
-) — the length of the picked string.
-Interaction
-You start the interaction by reading the number
+(1≤n≤600000)
+ — the number of queries.
+The
+i
+-th of the following
 n
-.
-To ask a query about a substring from
-l
-to
-r
-inclusively (
-1≤l≤r≤n
-), you should output
-? l r
-on a separate line. After this, all substrings of
-s[l..r]
-will be returned in random order, each substring exactly once. In every returned substring all characters will be randomly shuffled.
-In the case, if you ask an incorrect query, ask more than
-3
-queries of the first type or there will be more than
-(n+1
-)
+lines contains the query
+i
+: a lowercase letter of the Latin alphabet
+c
+i
+and an integer
+w
+i
+(0≤
+w
+i
+≤
 2
-substrings returned in total, you will receive verdict Wrong answer.
-To guess the string
-s
-, you should output
-! s
-on a separate line.
-After printing each query, do not forget to flush the output. Otherwise, you will get Idleness limit exceeded. To flush the output, you can use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-If you received - (dash) as an answer to any query, you need to terminate your program with exit code 0 (for example, by calling exit(0)). This means that there was an error in the interaction protocol. If you don't terminate with exit code 0, you can receive any unsuccessful verdict.
-Hack format
-To hack a solution, use the following format:
-The first line should contain one integer
-n
-(
-1≤n≤100
-) — the length of the string, and the following line should contain the string
-s
+30
+−1)
 .
-Example
+All queries are given in an encrypted form. Let
+ans
+be the answer to the previous query (for the first query we set this value equal to
+0
+). Then, in order to get the real query, you need to do the following: perform a cyclic shift of
+c
+i
+in the alphabet forward by
+ans
+, and set
+w
+i
+equal to
+w
+i
+⊕(ans & MASK)
+, where
+⊕
+is the bitwise exclusive "or",
+&
+is the bitwise "and", and
+MASK=
+2
+30
+−1
+.
+Output
+Print
+n
+lines,
+i
+-th line should contain a single integer — the answer to the
+i
+-th query.
+Examples
+input
+Copy
+7
+a 1
+a 0
+y 3
+y 5
+v 4
+u 6
+r 8
+output
+Copy
+1
+2
+4
+5
+7
+9
+12
 input
 Copy
 4
-
-a
-aa
-a
-
-cb
-b
-c
-
-c
+a 2
+y 2
+z 0
+y 2
 output
 Copy
-? 1 2
-
-? 3 4
-
-? 4 4
-
-! aabc
+2
+2
+2
+2
+input
+Copy
+5
+a 7
+u 5
+t 3
+s 10
+s 11
+output
+Copy
+7
+9
+11
+12
+13
+Note
+For convenience, we will call "suspicious" those subsegments for which the corresponding lines are prefixes of
+S
+, that is, those whose suspiciousness may not be zero.
+As a result of decryption in the first example, after all requests, the string
+S
+is equal to "abacaba", and all
+w
+i
+=1
+, that is, the suspiciousness of all suspicious sub-segments is simply equal to
+1
+. Let's see how the answer is obtained after each request:
+1.
+S
+= "a", the array
+W
+has a single subsegment —
+[1, 1]
+, and the corresponding substring is "a", that is, the entire string
+S
+, thus it is a prefix of
+S
+, and the suspiciousness of the subsegment is
+1
+.
+2.
+S
+= "ab", suspicious subsegments:
+[1, 1]
+and
+[1, 2]
+, total
+2
+.
+3.
+S
+= "aba", suspicious subsegments:
+[1, 1]
+,
+[1, 2]
+,
+[1, 3]
+and
+[3, 3]
+, total
+4
+.
+4.
+S
+= "abac", suspicious subsegments:
+[1, 1]
+,
+[1, 2]
+,
+[1, 3]
+,
+[1, 4]
+and
+[3, 3]
+, total
+5
+.
+5.
+S
+= "abaca", suspicious subsegments:
+[1, 1]
+,
+[1, 2]
+,
+[1, 3]
+,
+[1, 4]
+,
+[1, 5]
+,
+[3, 3]
+and
+[5, 5]
+, total
+7
+.
+6.
+S
+= "abacab", suspicious subsegments:
+[1, 1]
+,
+[1, 2]
+,
+[1, 3]
+,
+[1, 4]
+,
+[1, 5]
+,
+[1, 6]
+,
+[3, 3]
+,
+[5, 5]
+and
+[5, 6]
+, total
+9
+.
+7.
+S
+= "abacaba", suspicious subsegments:
+[1, 1]
+,
+[1, 2]
+,
+[1, 3]
+,
+[1, 4]
+,
+[1, 5]
+,
+[1, 6]
+,
+[1, 7]
+,
+[3, 3]
+,
+[5, 5]
+,
+[5, 6]
+,
+[5, 7]
+and
+[7, 7]
+, total
+12
+.
+In the second example, after all requests
+S
+= "aaba",
+W=[2,0,2,0]
+.
+1.
+S
+= "a", suspicious subsegments:
+[1, 1]
+(suspiciousness
+2
+), totaling
+2
+.
+2.
+S
+= "aa", suspicious subsegments:
+[1, 1]
+(
+2
+),
+[1, 2]
+(
+0
+),
+[2, 2]
+(
+0
+), totaling
+2
+.
+3.
+S
+= "aab", suspicious subsegments:
+[1, 1]
+(
+2
+),
+[1, 2]
+(
+0
+),
+[1, 3]
+(
+0
+),
+[2, 2]
+(
+0
+), totaling
+2
+.
+4.
+S
+= "aaba", suspicious subsegments:
+[1, 1]
+(
+2
+),
+[1, 2]
+(
+0
+),
+[1, 3]
+(
+0
+),
+[1, 4]
+(
+0
+),
+[2, 2]
+(
+0
+),
+[4, 4]
+(
+0
+), totaling
+2
+.
+In the third example, from the condition after all requests
+S
+= "abcde",
+W=[7,2,10,1,7]
+.
+1.
+S
+= "a", suspicious subsegments:
+[1, 1]
+(
+7
+), totaling
+7
+.
+2.
+S
+= "ab", suspicious subsegments:
+[1, 1]
+(
+7
+),
+[1, 2]
+(
+2
+), totaling
+9
+.
+3.
+S
+= "abc", suspicious subsegments:
+[1, 1]
+(
+7
+),
+[1, 2]
+(
+2
+),
+[1, 3]
+(
+2
+), totaling
+11
+.
+4.
+S
+= "abcd", suspicious subsegments:
+[1, 1]
+(
+7
+),
+[1, 2]
+(
+2
+),
+[1, 3]
+(
+2
+),
+[1, 4]
+(
+1
+), totaling
+12
+.
+5.
+S
+= "abcde", suspicious subsegments:
+[1, 1]
+(
+7
+),
+[1, 2]
+(
+2
+),
+[1, 3]
+(
+2
+),
+[1, 4]
+(
+1
+),
+[1, 5]
+(
+1
+), totaling
+13
+.

@@ -1,40 +1,48 @@
-Count Steps in Matrix
+Digit Longest Increasing Subsequences 2
 Problem
-Read problems statements in Mandarin and Russian. Translations in Vietnamese to be uploaded soon.
-You have a matrix of size N * N with rows numbered through 1 to N from top to bottom and columns through 1 to N from left to right. It contains all values from 1 to N2, i.e. each value from 1 to N2 occurs exactly once in the matrix.
-Now, you start from the cell containing value 1, and from there visit the cell with value 2, and then from there visit the cell with value 3, and so on till you have visited cell containing the number N2. In a single step, you can move from a cell to one of its adjacent cells. Two cells are said to be adjacent to each other if they share an edge between them.
-Find out minimum number of steps required.
-For example, if matrix is
-1 3
-2 4
-
-You start from cell containing value 1 (i.e. (1,1)) and you want to visit cell with value 2 (i.e. (2,1)). Now, from cell (2,1) you have to visit cell (1,2), which can be done is 2 steps (First we go from (2, 1) to (1, 1) and then to (1, 2), total 2 steps). Finally you move to cell where value 4 is present in 1 step. So, total number of steps required is 4.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Recently Chef learned about Longest Increasing Subsequence. To be precise, he means longest strictly increasing subsequence, when he talks of longest increasing subsequence. To check his understanding, he took his favorite n-digit number and for each of its n digits, he computed the length of the longest increasing subsequence of digits ending with that digit. Then he stored these lengths in an array named LIS.
+For example, let us say that Chef's favourite 4-digit number is 1531, then the LIS array would be [1, 2, 2, 1]. The length of longest increasing subsequence ending at first digit is 1 (the digit 1 itself) and at the second digit is 2 ([1, 5]), at third digit is also 2 ([1, 3]), and at the 4th digit is 1 (the digit 1 itself).
+Now Chef wants to give you a challenge. He has a valid LIS array with him, and wants you to find any n-digit number having exactly the same LIS array? You are guaranteed that Chef's LIS array is valid, i.e. there exists at least one n-digit number corresponding to the given LIS array.
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains a single integer N denoting the size of matrix. Each of the next N lines contain N integers denoting the values in the rows of the matrix.
+The first line of the input contains an integer T denoting the number of test cases.
+For each test case, the first line contains an integer n denoting the number of digits in Chef's favourite number.
+The second line will contain n space separated integers denoting LIS array, i.e. LIS1, LIS2, ..., LISn.
 Output
-For each test case, output in a single line the required answer.
+For each test case, output a single n-digit number (without leading zeroes) having exactly the given LIS array. If there are multiple n-digit numbers satisfying this requirement, any of them will be accepted.
 Constraints
-1 ≤ T ≤ 5
-1 ≤ N ≤ 500
-Subtasks
-Subtask 1 (30 points) : 1 ≤ N ≤ 20
-Subtask 2 (70 points) : Original constraints
+1 ≤ T ≤ 30 000
+1 ≤ n ≤ 9
+It is guaranteed that at least one n-digit number having the given LIS array exists
 Sample 1:
 Input
 Output
-2
-2
-1 3
-2 4
-3
-1 7 9
-2 4 8
-3 6 5
+5
+1 
+1
+2 
+1 2
+2 
+1 1
 4
-12
+1 2 2 1
+7 
+1 2 2 1 3 2 4
+7
+36
+54
+1531
+1730418
 Explanation:
-Example case 1. Explained in the statement.
-Example case 2. This is the sequence of cells visited:
-(1,1) to (2,1) to (3,1) to (2,2) to (3,3) to (3,2) to (1,2) to (2,3) to (1,3).
-Warning: Large input files, use scanf instead of cin in C/C++.
+Example case 1. All one-digit numbers have the same LIS array, so any answer from 0 to 9 will be accepted.
+Example cases 2 & 3. For a two digit number we always have LIS1 = 1, but the value of LIS2 depends on whether the first digit is strictly less than the second one. If this is the case (like for number 36), LIS2 = 2, otherwise (like for numbers 54 or 77) the values of LIS2 is 1.
+Example case 4. This has already been explained in the problem statement.
+Example case 5. 7-digit number 1730418 has LIS array [1, 2, 2, 1, 3, 2, 4]:
+index LIS length
+1 1730418 1
+2 1730418 2
+3 1730418 2
+4 1730418 1
+5 1730418 3
+6 1730418 2
+7 1730418 4

@@ -1,73 +1,69 @@
-Fencing
+Spreading Charges
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-There is a field with plants — a grid with
-N rows (numbered
-1 through
-N) and
-M columns (numbered
-1 through
-M); out of its
-NM cells,
-K cells contain plants, while the rest contain weeds. Two cells are adjacent if they have a common side.
-You want to build fences in the field in such a way that the following conditions hold for each cell that contains a plant:
-it is possible to move from this cell to each adjacent cell containing a plant without crossing any fences
-it is impossible to move from this cell to any cell containing weeds or to leave the grid without crossing any fences
-The fences can only be built between cells or on the boundary of the grid, i.e. on the sides of cells. The total length of the built fences is the number of pairs of side-adjacent cells such that there is a fence built on their common side plus the number of sides of cells on the boundary of the grid which have fences built on them. Find the minimum required total length of fences that need to be built.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains three space-separated integers
-N,
-M and
-K.
-K lines follow. Each of these lines contains two space-separated integers
-r and
-c denoting that the cell in row
-r and column
-c contains a plant.
-Output
-For each test case, print a single line containing one integer — the minimum required length of fences.
+Chef has a string
+S of length
+N, consisting of +, -, and 0, where + denotes a source of positive charge, - denotes a source of negative charge, and 0 denotes a neutral object.
+Each second, the charge sources emit their respective charge to their immediate neighbours. The charge emissions cannot affect other charge sources but can convert a neutral object into a charge source as following:
+If an object was initially neutral, and had exactly one charged source as neighbour, it becomes a charged source as received by its neighbour.
+If an object was initially neutral, and had no charged source as neighbour, it remains a neutral object.
+If an object was initially neutral, and had both charged sources as neighbours, it becomes a charged source as received by its neighbours. Note that in case of neighbours with opposite charges, the object remains neutral.
+For example, after one second, +0+ becomes +++, 00- becomes 0--, 000 remains 000 and +0- remains +0-. Refer to samples for further explanation.
+Find out the number of neutral objects in the string after infinite time.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains an integer
+N — the number of objects.
+The next line contains a string
+S of length
+N, consisting of +, -, and 0, where + denotes a source of positive charge, - denotes a source of negative charge, and 0 denotes a neutral object.
+Output Format
+For each test case, output on a new line, the number of neutral objects in the string after infinite time.
 Constraints
-1≤T≤10
-1≤N,M≤10
-9
-1≤K≤10
+1≤T≤2000
+1≤N≤10
 5
-1≤r≤N
-1≤c≤M
-the cells containing plants are pairwise distinct
-Subtasks
-Subtask #1 (30 points):
-1≤N,M≤1,000
-Subtask #2 (70 points): original constraints
+S consists of +, -, and 0 only.
+The sum of
+N over all test cases won't exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
-2
-4 4 9
-1 4
-2 1 
-2 2
-2 3
-3 1
-3 3
-4 1
-4 2
-4 3
-4 4 1
-1 1
-20
 4
+2
+00
+3
+-+0
+6
+00+-00
+8
+0-0+000-
+2
+0
+0
+2
 Explanation:
-Example case 1: The field looks like this ('x' denotes a cell containing a plant, '.' denotes a cell containing weeds):
-...x
-xxx.
-x.x.
-xxx.
-An optimal solution is to build fences around the topmost plant (with length
-4), around the remaining eight plants (with length
-12) and around the hole between them (with length
-4). The total length is
-4+12+4=20.
+Test case
+1: Since there is no charge source, both neutral objects will remain neutral.
+Test case
+2: After
+1 second:
+The negative source emits a negative charge, but since there is no neutral neighbour for the negative source, it has no effect.
+The positive source emits a positive charge and since the neighbour to its right is neutral, the neutral object becomes a positive source.
+Thus, the string becomes -++ after one second. Note that the string will remain the same after this and thus, it has no neutral objects after infinite time.
+Test case
+3:
+After
+1 second, the string is 0++--0. Note that only the immediate neutral neighbours of charge sources have been affected.
+After
+2 seconds, the string is +++---. Since all objects are now charged sources, they will remain the same now onwards.
+Thus, after infinite time, the string has no neutral objects.
+Test case
+4: After
+1 second, the string is --0++0--. Note that the string will remain the same now onwards.
+Thus, after infinite time, the string has
+2 neutral objects.

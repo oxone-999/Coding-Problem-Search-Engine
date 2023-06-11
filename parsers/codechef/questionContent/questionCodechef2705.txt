@@ -1,49 +1,114 @@
-Xor Queries
+Chef and DAG
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Given an initially empty integer array (1-indexed) and some queries:
-Type 0: Add the integer number x at the end of the array.
-Type 1: On the interval L..R find a number y, to maximize (x xor y).
-Type 2: Delete last k numbers in the array
-Type 3: On the interval L..R, count the number of integers less than or equal to x.
-Type 4: On the interval L..R, find the kth smallest integer (kth order statistic).
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given
+K permutations of integers
+1 through
+N. For each
+i (
+1≤i≤K), the
+i-th permutation is denoted by
+A
+i,1
+,A
+i,2
+,…,A
+i,N
+.
+Construct a directed acyclic graph with
+N nodes (numbered
+1 through
+N) such that:
+Each of the given permutations is a valid topological sort of the graph. Formally, for each valid
+k and each
+i,j (
+1≤i<j≤N), there is no edge from the node
+A
+k,j
+to the node
+A
+k,i
+.
+The outdegree of each node is at most
+1.
+The number of nodes with indegree
+0 is the smallest possible.
+If there are multiple solutions, you may find any one.
 Input
-The first line contains a single integer M denoting number of queries.
-The following M lines contain queries, form of queries is as follows.
-Query type 0 has the form "0 x".
-Query type 1 has the form "1 L R x".
-Query type 2 has the form "2 k".
-Query type 3 has the form "3 L R x".
-Query type 4 has the form "4 L R k".
-Note that, there will be no invalid query in the input.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+K.
+K lines follow. For each
+i (
+1≤i≤K), the
+i-th of these lines contains
+N space-separated integers
+A
+i,1
+,A
+i,2
+,…,A
+i,N
+.
 Output
-For each Query of type 1, 3 and 4 output the result in a single line.
-Constraints
-Let N denote numbers of elements in before executing the query.
-1 ≤ M ≤ 5 * 105
-1 ≤ x ≤ 5 * 105
-1 ≤ L ≤ R ≤ N
-For query type 2, 1 ≤ k ≤ N and for query type 4, k ≤ R-L+1
-Subtasks
-Subtask #1 (40 points): 1 ≤ M ≤ 5 * 104
-Subtask #2: (60 points): 1 ≤ M ≤ 5 * 105
-Example
-Input:
-10
-0 8
-4 1 1 1
-0 2
-1 2 2 7
-1 2 2 7
-0 1
-3 2 2 2
-1 1 2 3
-3 1 3 5
-0 6
-Output:
-8
-2
-2
+For each test case, print two lines.
+The first of these lines should contain one integer ― the minimum number of nodes with indegree
+0.
+The second line should contain
+N space-separated integers
+v
 1
-8
+,v
 2
+,…,v
+N
+describing your graph in the following way: for each valid
+i, if
+v
+i
+=0, there is no outgoing edge from the
+i-th node; otherwise, there is an edge from the
+i-th node to the
+v
+i
+-th node.
+Constraints
+1≤T≤100
+1≤N≤500
+1≤K≤100
+1≤A
+i,j
+≤N for each valid
+i,j
+the sum of
+N over all test cases does not exceed
+2,000
+Subtasks
+Subtask #1 (20 points):
+N≤20
+K≤10
+Subtask #2 (80 points): original constraints
+Sample 1:
+Input
+Output
+2
+2 2
+1 2
+2 1
+2 2
+1 2
+1 2
+2
+0 0
+1
+2 0
+Explanation:
+Example case 1: The graph must consist of just two disconnected nodes, since no edges are allowed. Hence, there are two nodes with indegree
+0.
+Example case 2: The graph may contain an edge from node
+1 to node
+2. Then, there is only one node with indegree
+0.

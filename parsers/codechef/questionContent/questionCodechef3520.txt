@@ -1,67 +1,36 @@
-Magical Coins
+Bishops
 Problem
-You are shopping in a store that has
-n magical stones. For each stone, there is a probability
-g that you will put it in your bag. The value
-g is the same for all stones, all stones are independent, and you are given the value of
-g modulo
-998 244 353.
-Suppose when you checkout, you have
-r stones in your bag. Then you will be charged a price of
-(ar+b)
-k
-magical coins, where
-a,b,k are constants. What is the expected value of the price you will pay, for all
-1≤k≤k
-max
-? Find the expected values modulo
-998 244 353.
-###Input
-The first line contains five integers
-n,
-k
-max
-,
-a,
-b,
-g
-###Output
-For all
-1≤k≤k
-max
-, print the expected value of the price modulo
-998 244 353.
-###Constraints
-1≤n≤10
-9
-1≤k
-max
-≤5⋅10
-5
-1≤a≤998 244 352
-0≤b≤998 244 352
-1≤g≤998 244 352
-###Subtasks Subtask #1 (5 points):
-1≤n≤1000
-1≤k
-max
-≤1000
-Subtask #2 (20 points):
-1≤n≤10
-9
-1≤k
-max
-≤100
-Subtask #3 (50 points):
-1≤n≤10
-9
-1≤k
-max
-≤5⋅10
-4
-Subtask #4 (25 points): original constraints
-Sample 1:
+Last night, the Chef had a strange dream. He got lost in a Chess Kingdom where the chess pieces lived together on a huge chess board. In that dream, the Chef met the King and asked him for help. Unfortunately, The King really admired the cooking skills of the Chef and wanted The Chef to cook for him every day. The King gave the Chef a task and said that the Chef could leave only after solving it. The task of the King required a lot of calculations and The Chef thought he would have to stay in the Chess Kingdom forever. Hopefully, the Chef woke up and realized that it was just a dream. No! Actually, it was a nightmare. The Chef could not sleep in the rest of the night, worrying that he might meet the King again. Thus, the Chef really needs your help to finish the task of the King.
+The task that the King gave to the Chef is described as follows. The Chess Kingdom is a N × N chess board. The rows are numbered by integers from 1 to N, inclusive, from the top to the bottom. Similarly, the columns are numbered by integers from 1 to N, inclusive, from the left to the right. The cell at the intersection of the row i and the column j is denoted as cell (i, j). The Chess Kingdom is guarded by K bishops standing at K different cells of the board. Additionally, There are M other chess pieces standing on M different cells on the board. The bishop can move any number of squares (maybe zero) diagonally, but can not leap over other pieces. In other words, a bishop at the cell (a, b) can move to the cell (u, v) if we can pick the vector (x, y) in the set {(1, 1), (1, -1), (-1, 1), (-1, -1)} so that u = a + t * x and v = b + t * y for some positive integer t and all the cells of the form (a + i * x, b + i * y) in which 1 ≤ i ≤ t are empty. The cell is called safe if some of the bishops can move to this cell. In particular, all cells, where bishops stand, are safe. The Chef is required to find the number of safe cells.
 Input
+The first line of the input contains three space-separated integers N, K, M. Each of the following K lines contains two space separated integers X and Y, meaning that the cell (X, Y) is occupied by the bishop. Each of the following M lines contains two space separated integers U and V, meaning that the cell (U, V) is occupied by other chess piece.
 Output
-11 3 1 0 499122177
-499122182 33 249561300
+Output a single line containing the number of safe cells.
+Constraints
+1 ≤ N ≤ 109
+1 ≤ K ≤ 100000 (105)
+0 ≤ M ≤ 100000 (105)
+1 ≤ X, Y, U, V ≤ N
+Positions of all K + M chess pieces are distinct
+Example
+Input:
+8 2 2
+5 4
+4 6
+2 4
+7 3
+Output:
+22
+Explanation
+-------*
+*--o--**
+-*--***-
+--*-*b--
+---b*-*-
+--***--*
+-*o--*--
+*-----*-
+Bishops are marked by 'b'.
+Other chess pieces are marked by 'o'.
+Safe cells other than bishop positions are marked by '*'.
+There are 20 '*'s plus two 'b's so the result is 22.

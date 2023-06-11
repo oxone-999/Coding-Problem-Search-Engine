@@ -1,172 +1,219 @@
-A. Balanced Rating Changes
+C1. Balanced Removals (Easier)
 time limit per test1 second
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Another Codeforces Round has just finished! It has gathered
+This is an easier version of the problem. In this version,
+n≤2000
+.
+There are
 n
-participants, and according to the results, the expected rating change of participant
+distinct points in three-dimensional space numbered from
+1
+to
+n
+. The
 i
-is
-a
-i
-. These rating changes are perfectly balanced — their sum is equal to
-0
-.
-Unfortunately, due to minor technical glitches, the round is declared semi-rated. It means that all rating changes must be divided by two.
-There are two conditions though:
-For each participant
-i
-, their modified rating change
-b
-i
-must be integer, and as close to
-a
-i
-2
-as possible. It means that either
-b
-i
-=⌊
-a
-i
-2
-⌋
-or
-b
-i
-=⌈
-a
-i
-2
-⌉
-. In particular, if
-a
-i
-is even,
-b
-i
-=
-a
-i
-2
-. Here
-⌊x⌋
-denotes rounding down to the largest integer not greater than
+-th point has coordinates
+(
 x
+i
+,
+y
+i
+,
+z
+i
+)
+. The number of points
+n
+is even.
+You'd like to remove all
+n
+points using a sequence of
+n
+2
+snaps. In one snap, you can remove any two points
+a
+and
+b
+that have not been removed yet and form a perfectly balanced pair. A pair of points
+a
+and
+b
+is perfectly balanced if no other point
+c
+(that has not been removed yet) lies within the axis-aligned minimum bounding box of points
+a
+and
+b
+.
+Formally, point
+c
+lies within the axis-aligned minimum bounding box of points
+a
+and
+b
+if and only if
+min(
+x
+a
+,
+x
+b
+)≤
+x
+c
+≤max(
+x
+a
+,
+x
+b
+)
+,
+min(
+y
+a
+,
+y
+b
+)≤
+y
+c
+≤max(
+y
+a
+,
+y
+b
+)
 , and
-⌈x⌉
-denotes rounding up to the smallest integer not smaller than
-x
-.
-The modified rating changes must be perfectly balanced — their sum must be equal to
-0
-.
-Can you help with that?
+min(
+z
+a
+,
+z
+b
+)≤
+z
+c
+≤max(
+z
+a
+,
+z
+b
+)
+. Note that the bounding box might be degenerate.
+Find a way to remove all points in
+n
+2
+snaps.
 Input
 The first line contains a single integer
 n
 (
-2≤n≤13845
-), denoting the number of participants.
+2≤n≤2000
+;
+n
+is even), denoting the number of points.
 Each of the next
 n
-lines contains a single integer
-a
+lines contains three integers
+x
+i
+,
+y
+i
+,
+z
 i
 (
-−336≤
-a
+−
+10
+8
+≤
+x
 i
-≤1164
-), denoting the rating change of the
+,
+y
 i
--th participant.
-The sum of all
-a
+,
+z
 i
-is equal to
-0
-.
+≤
+10
+8
+), denoting the coordinates of the
+i
+-th point.
+No two points coincide.
 Output
 Output
 n
-integers
-b
-i
-, each denoting the modified rating change of the
-i
--th participant in order of input.
-For any
-i
-, it must be true that either
-b
-i
-=⌊
+2
+pairs of integers
 a
 i
-2
-⌋
-or
+,
 b
 i
-=⌈
+(
+1≤
 a
 i
-2
-⌉
-. The sum of all
+,
 b
 i
-must be equal to
-0
-.
-If there are multiple solutions, print any. We can show that a solution exists for any valid input.
+≤n
+), denoting the indices of points removed on snap
+i
+. Every integer between
+1
+and
+n
+, inclusive, must appear in your output exactly once.
+We can show that it is always possible to remove all points. If there are many solutions, output any of them.
 Examples
 input
 Copy
-3
-10
--5
--5
+6
+3 1 0
+0 3 0
+2 2 0
+1 0 0
+1 3 0
+0 1 0
 output
 Copy
-5
--2
--3
+3 6
+5 1
+2 4
 input
 Copy
-7
--7
--29
-0
-3
-24
--29
-38
+8
+0 1 1
+1 0 1
+1 1 0
+1 1 1
+2 2 2
+3 2 2
+2 3 2
+2 2 3
 output
 Copy
--3
--15
-0
-2
-12
--15
-19
+4 5
+1 6
+2 7
+3 8
 Note
-In the first example,
-b
-1
-=5
-,
-b
-2
-=−3
+In the first example, here is what points and their corresponding bounding boxes look like (drawn in two dimensions for simplicity, as all points lie on
+z=0
+plane). Note that order of removing matters: for example, points
+5
 and
-b
+1
+don't form a perfectly balanced pair initially, but they do after point
 3
-=−2
-is another correct solution.
-In the second example there are
-6
-possible solutions, one of them is shown in the example output.
+is removed.

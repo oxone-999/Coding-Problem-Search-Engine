@@ -1,189 +1,106 @@
-F. Favorite Game
+H. Hopping Around the Array
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-After William is done with work for the day, he enjoys playing his favorite video game.
-The game happens in a 2D world, starting at turn
-0
-. William can pick any cell in the game world and spawn in it. Then, each turn, William may remain at his current location or move from the current location (x, y) to one of the following locations: (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1).
-To accelerate movement the game has
+William really wants to get a pet. Since his childhood he dreamt about getting a pet grasshopper. William is being very responsible about choosing his pet, so he wants to set up a trial for the grasshopper!
+The trial takes place on an array
+a
+of length
 n
-fast travel towers.
+, which defines lengths of hops for each of
+n
+cells. A grasshopper can hop around the sells according to the following rule: from a cell with index
 i
--th tower is located at location (
-x
+it can jump to any cell with indices from
+i
+to
+i+
 a
 i
-,y
+inclusive.
+Let's call the
+k
+-grasshopper value of some array the smallest number of hops it would take a grasshopper to hop from the first cell to the last, but before starting you can select no more than
+k
+cells and remove them from the array. When a cell is removed all other cells are renumbered but the values of
 a
 i
-). To be able to instantly travel to the tower from any location in the game world it must first be activated. Activation of tower
-i
-happens at the moment when the player is in cell (
-x
+for each cell remains the same. During this the first and the last cells may not be removed.
+It is required to process
+q
+queries of the following format: you are given three numbers
+l
+,
+r
+,
+k
+. You are required to find the
+k
+-grasshopper value for an array, which is a subarray of the array
 a
-i
-,y
-a
-i
-) after this the tower remains active throughout the entire game.
-William also knows that the game has
-m
-quests.
-i
--th quest can be completed instantly by being at location (
-x
-b
-i
-,y
-b
-i
-) on turn
-t
-i
-.
-William wants to find out the maximal number of quests he will be able to complete by optimally traversing the game world.
+with elements from
+l
+to
+r
+inclusive.
 Input
 The first line contains two integers
 n
 and
-m
+q
 (
-0≤n≤14,1≤m≤100
-), which are the number of towers and the number of quests, respectively.
-Each of the next
+1≤n,q≤20000
+), the length of the array and the number of queries respectively.
+The second line contains
 n
-lines contains two integers
-x
+integers
 a
-i
-,y
-a
-i
-(
-1≤x
-a
-i
-,y
-a
-i
-≤
-10
-6
-), which are the coordinates of fast travel towers.
-Each of the next
-m
-lines contains two integers
-x
-b
-i
+1
 ,
-y
-b
-i
-and
-t
-i
+a
+2
+,…,
+a
+n
 (
-1≤x
-b
-i
-,y
-b
-i
-≤
-10
-6
-,
 1≤
-t
+a
 i
-≤
-10
-9
-), which are the coordinates of quests and the turn at which it may be completed.
-It is guaranteed that all locations in a test are different.
+≤n
+)  – the elements of the array.
+The following
+q
+lines contain queries: each line contains three integers
+l
+,
+r
+and
+k
+(
+1≤l≤r≤n
+,
+0≤k≤min(30,r−l)
+), which are the edges of the subarray and the number of the grasshopper value respectively.
 Output
-Print a single number  — the maximal number of quests William will be able to complete.
+For each query print a single number in a new line  — the response to a query.
 Example
 input
 Copy
-3 4
-1 1
-2 3
-5 2
-2 2 12
-5 1 4
-6 2 11
-3 5 10
+9 5
+1 1 2 1 3 1 2 1 1
+1 1 0
+2 5 1
+5 9 1
+2 8 2
+1 9 4
 output
 Copy
-3
+0
+2
+1
+2
+2
 Note
-In the first sample test one of the possible sequences of William's actions is as follows:
-Spawn at
-(3,2)
-On turn
-1
-move to
-(4,2)
-On turn
-2
-move to
-(5,2)
-. By visiting this cell William activates tower number
-3
-.
-On turn
-3
-move to
-(5,1)
-, where he waits for
-1
-turn to complete the
-2
-nd quest
-On turn
-5
-move to
-(5,2)
-On turn
-6
-move to
-(5,3)
-On turn
-7
-move to
-(5,4)
-On turn
-8
-move to
-(5,5)
-On turn
-9
-move to
-(4,5)
-On turn
-10
-move to
-(3,5)
-. By moving to this location William will complete the
-4
-th quest
-On turn
-10
-instantly move to an already activated fast travel tower at
-(5,2)
-On turn
-11
-move to
-(6,2)
-. By moving to this location William will complete the
-3
-rd quest
-William will not be able to complete the quest number
-1
-, because the tower at
-(2,3)
-was not activated
+For the second query the process occurs like this:
+For the third query the process occurs like this:

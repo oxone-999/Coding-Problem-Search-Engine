@@ -1,188 +1,172 @@
-J. Two Railroads
-time limit per test5 seconds
-memory limit per test1024 megabytes
+B. Xor of 3
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
+You are given a sequence
+a
+of length
 n
-cities in Berland, and they are connected by two railroads — the Main railroad and the Auxiliary railroad. Each city has two railway stations, one connected to the Main railroad (called the Main station), and the other connected to the Auxiliary railroad.
-The railroads are identical in their structure. The Main railroad consists of
-n−1
-railroad segments; the
+consisting of
+0
+s and
+1
+s.
+You can perform the following operation on this sequence:
+Pick an index
 i
--th railroad segment connects the Main station of the city
-i
-with the Main station of the city
-i+1
-. Similarly, the Auxiliary railroad consists of
-n−1
-railroad segments; the
-i
--th railroad segment connects the Auxiliary station of the city
-i
-with the Auxiliary station of the city
-i+1
-.
-These railroads are used to transfer different goods and resources from one city to another. In particular, the Ministry of Energetics is interested in using these railroads to transfer coal.
-The Ministry has estimated the following capabilities of the railroads:
-for every
-i∈[1,n−1]
-, at most
+from
+1
+to
+n−2
+(inclusive).
+Change all of
 a
 i
-tons of coal per day can be transferred from the Main station
-i
-to the Main station
+,
+a
 i+1
-(only in this direction);
-for every
-i∈[1,n−1]
-, at most
-b
+,
+a
+i+2
+to
+a
 i
-tons of coal per day can be transferred from the Auxiliary station
-i
-to the Auxiliary station
+⊕
+a
 i+1
-(only in this direction);
-for every
-i∈[1,n]
-, at most
-c
-i
-tons of coal per day can be transferred from the Main station
-i
-to the Auxiliary station
-i
-, or in the opposite direction.
-To analyze the capacity of the whole railroad network, the Ministry requires a software that would process and answer queries of the following format:
-calculate the maximum number of tons of coal that can be transferred per day from the Main station
-l
-i
-to the Main station
-r
-i
+⊕
+a
+i+2
+simultaneously, where
+⊕
+denotes the bitwise XOR operation
+Find a sequence of at most
+n
+operations that changes all elements of
+a
+to
+0
+s or report that it's impossible.
+We can prove that if there exists a sequence of operations of any length that changes all elements of
+a
+to
+0
+s, then there is also such a sequence of length not greater than
+n
 .
-Your task is to implement this software.
 Input
-The first line contains one integer
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤
+10
+4
+).
+The first line of each test case contains a single integer
 n
 (
-2≤n≤3⋅
+3≤n≤2⋅
 10
 5
-) — the number of cities.
-The second line contains
-n−1
-integers
+) — the length of
 a
-1
-,
-a
-2
-,…,
-a
-n−1
-(
-1≤
-a
-i
-≤
-10
-9
-).
-The third line contains
-n−1
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n−1
-(
-1≤
-b
-i
-≤
-10
-9
-).
-The fourth line contains
-n
-integers
-c
-1
-,
-c
-2
-,…,
-c
-n
-(
-1≤
-c
-i
-≤
-10
-9
-).
-The fifth line contains one integer
-q
-(
-1≤q≤3⋅
-10
-5
-) — the number of queries.
-Then
-q
-lines follow, the
-i
--th line contains two integers
-l
-i
-and
-r
-i
-(
-1≤
-l
-i
-<
-r
-i
-≤n
-) — the parameters of the
-i
--th query.
-Output
-Print
-q
-integers, where the
-i
--th integer should be the answer to the
-i
--th query, i. e. the maximum number of tons of coal that can be transferred per day from the Main station
-l
-i
-to the Main station
-r
-i
 .
+The second line of each test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+a
+i
+=0
+or
+a
+i
+=1
+) — elements of
+a
+.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+.
+Output
+For each test case, do the following:
+if there is no way of making all the elements of
+a
+equal to
+0
+after performing the above operation some number of times, print "NO".
+otherwise, in the first line print "YES", in the second line print
+k
+(
+0≤k≤n
+) — the number of operations that you want to perform on
+a
+, and in the third line print a sequence
+b
+1
+,
+b
+2
+,…,
+b
+k
+(
+1≤
+b
+i
+≤n−2
+) — the indices on which the operation should be applied.
+If there are multiple solutions, you may print any.
 Example
 input
 Copy
+3
+3
+0 0 0
 5
-3 4 7 4
-8 5 3 5
-10 5 3 4 10
+1 1 1 1 0
 4
-1 4
-1 2
-3 4
-2 4
+1 0 0 1
 output
 Copy
-9 8 10 9 
+YES
+0
+YES
+2
+3 1
+NO
+Note
+In the first example, the sequence contains only
+0
+s so we don't need to change anything.
+In the second example, we can transform
+[1,1,1,1,0]
+to
+[1,1,0,0,0]
+and then to
+[0,0,0,0,0]
+by performing the operation on the third element of
+a
+and then on the first element of
+a
+.
+In the third example, no matter whether we first perform the operation on the first or on the second element of
+a
+we will get
+[1,1,1,1]
+, which cannot be transformed to
+[0,0,0,0]
+.

@@ -1,84 +1,152 @@
-B. Digital root
+C. Brutality
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Today at the lesson of mathematics, Petya learns about the digital root.
-The digital root of a non-negative integer is the single digit value obtained by an iterative process of summing digits, on each iteration using the result from the previous iteration to compute a digit sum. The process continues until a single-digit number is reached.
-Let's denote the digital root of
-x
-as
-S(x)
-. Then
-S(5)=5
-,
-S(38)=S(3+8=11)=S(1+1=2)=2
-,
-S(10)=S(1+0=1)=1
-.
-As a homework Petya got
-n
-tasks of the form: find
-k
--th positive number whose digital root is
-x
-.
-Petya has already solved all the problems, but he doesn't know if it's right. Your task is to solve all
-n
-tasks from Petya's homework.
-Input
-The first line contains a single integer
-n
-(
-1≤n≤
-10
-3
-) — the number of tasks in Petya's homework. The next
-n
-lines contain two integers
-k
+You are playing a new famous fighting game: Kortal Mombat XII. You have to perform a brutality on your opponent's character.
+You are playing the game on the new generation console so your gamepad have
+26
+buttons. Each button has a single lowercase Latin letter from 'a' to 'z' written on it. All the letters on buttons are pairwise distinct.
+You are given a sequence of hits, the
 i
+-th hit deals
+a
+i
+units of damage to the opponent's character. To perform the
+i
+-th hit you have to press the button
+s
+i
+on your gamepad. Hits are numbered from
+1
+to
+n
+.
+You know that if you press some button more than
+k
+times in a row then it'll break. You cherish your gamepad and don't want to break any of its buttons.
+To perform a brutality you have to land some of the hits of the given sequence. You are allowed to skip any of them, however changing the initial order of the sequence is prohibited. The total damage dealt is the sum of
+a
+i
+over all
+i
+for the hits which weren't skipped.
+Note that if you skip the hit then the counter of consecutive presses the button won't reset.
+Your task is to skip some hits to deal the maximum possible total damage to the opponent's character and not break your gamepad buttons.
+Input
+The first line of the input contains two integers
+n
+and
+k
+(
+1≤k≤n≤2⋅
+10
+5
+) — the number of hits and the maximum number of times you can push the same button in a row.
+The second line of the input contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
 (
 1≤
-k
+a
 i
 ≤
 10
-12
-) and
-x
+9
+), where
+a
 i
-(
-1≤
-x
+is the damage of the
 i
-≤9
-) —
-i
--th Petya's task in which you need to find a
-k
-i
--th positive number, the digital root of which is
-x
-i
-.
-Output
-Output
+-th hit.
+The third line of the input contains the string
+s
+consisting of exactly
 n
-lines,
-i
--th line should contain a single integer — the answer to the
-i
--th problem.
-Example
+lowercase Latin letters — the sequence of hits (each character is the letter on the button you need to press to perform the corresponding hit).
+Output
+Print one integer
+dmg
+— the maximum possible damage to the opponent's character you can deal without breaking your gamepad buttons.
+Examples
 input
 Copy
-3
-1 5
-5 2
-3 1
+7 3
+1 5 16 18 7 2 10
+baaaaca
 output
 Copy
-5
-38
-19
+54
+input
+Copy
+5 5
+2 4 1 3 1000
+aaaaa
+output
+Copy
+1010
+input
+Copy
+5 4
+2 4 1 3 1000
+aaaaa
+output
+Copy
+1009
+input
+Copy
+8 1
+10 15 2 1 4 8 15 16
+qqwweerr
+output
+Copy
+41
+input
+Copy
+6 3
+14 18 9 19 2 15
+cccccc
+output
+Copy
+52
+input
+Copy
+2 1
+10 10
+qq
+output
+Copy
+10
+Note
+In the first example you can choose hits with numbers
+[1,3,4,5,6,7]
+with the total damage
+1+16+18+7+2+10=54
+.
+In the second example you can choose all hits so the total damage is
+2+4+1+3+1000=1010
+.
+In the third example you can choose all hits expect the third one so the total damage is
+2+4+3+1000=1009
+.
+In the fourth example you can choose hits with numbers
+[2,3,6,8]
+. Only this way you can reach the maximum total damage
+15+2+8+16=41
+.
+In the fifth example you can choose only hits with numbers
+[2,4,6]
+with the total damage
+18+19+15=52
+.
+In the sixth example you can change either first hit or the second hit (it does not matter) with the total damage
+10
+.

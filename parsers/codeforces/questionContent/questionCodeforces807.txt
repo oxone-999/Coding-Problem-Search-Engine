@@ -1,80 +1,125 @@
-A. NIT orz!
-time limit per test1 second
+C. Fishingprince Plays With Array
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-NIT, the cleaver, is new in town! Thousands of people line up to orz him. To keep his orzers entertained, NIT decided to let them solve the following problem related to
-orz
-. Can you solve this problem too?
-You are given a 1-indexed array of
+Fishingprince is playing with an array
+[
+a
+1
+,
+a
+2
+,…,
+a
 n
-integers,
-a
-, and an integer
-z
-. You can do the following operation any number (possibly zero) of times:
-Select a positive integer
-i
-such that
-1≤i≤n
-. Then, simutaneously set
-a
-i
-to
-(
-a
-i
-orz)
-and set
-z
-to
-(
-a
-i
-andz)
-. In other words, let
-x
-and
-y
-respectively be the current values of
-a
-i
-and
-z
-. Then set
-a
-i
-to
-(xory)
-and set
-z
-to
-(xandy)
+]
+. He also has a magic number
+m
 .
-Here
-or
-and
-and
-denote the bitwise operations OR and AND respectively.
-Find the maximum possible value of the maximum value in
+He can do the following two operations on it:
+Select
+1≤i≤n
+such that
 a
-after any number (possibly zero) of operations.
+i
+is divisible by
+m
+(that is, there exists an integer
+t
+such that
+m⋅t=
+a
+i
+). Replace
+a
+i
+with
+m
+copies of
+a
+i
+m
+. The order of the other elements doesn't change. For example, when
+m=2
+and
+a=[2,3]
+and
+i=1
+,
+a
+changes into
+[1,1,3]
+.
+Select
+1≤i≤n−m+1
+such that
+a
+i
+=
+a
+i+1
+=⋯=
+a
+i+m−1
+. Replace these
+m
+elements with a single
+m⋅
+a
+i
+. The order of the other elements doesn't change. For example, when
+m=2
+and
+a=[3,2,2,3]
+and
+i=2
+,
+a
+changes into
+[3,4,3]
+.
+Note that the array length might change during the process. The value of
+n
+above is defined as the current length of the array (might differ from the
+n
+in the input).
+Fishingprince has another array
+[
+b
+1
+,
+b
+2
+,…,
+b
+k
+]
+. Please determine if he can turn
+a
+into
+b
+using any number (possibly zero) of operations.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤100
+1≤t≤
+10
+4
 ). Description of the test cases follows.
 The first line of each test case contains two integers
 n
 and
-z
+m
 (
-1≤n≤2000
+1≤n≤5⋅
+10
+4
 ,
-0≤z<
-2
-30
+2≤m≤
+10
+9
 ).
 The second line of each test case contains
 n
@@ -84,133 +129,121 @@ a
 ,
 a
 2
-,
-…
-,
+,…,
 a
 n
 (
-0≤
+1≤
 a
 i
-<
-2
-30
+≤
+10
+9
 ).
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
+The third line of each test case contains one integer
+k
+(
+1≤k≤5⋅
 10
 4
+).
+The fourth line of each test case contains
+k
+integers
+b
+1
+,
+b
+2
+,…,
+b
+k
+(
+1≤
+b
+i
+≤
+10
+9
+).
+It is guaranteed that the sum of
+n+k
+over all test cases does not exceed
+2⋅
+10
+5
 .
 Output
-For each test case, print one integer — the answer to the problem.
+For each testcase, print Yes if it is possible to turn
+a
+into
+b
+, and No otherwise. You can print each letter in any case (upper or lower).
 Example
 input
 Copy
 5
-2 3
-3 4
-5 5
-0 2 4 6 8
-1 9
-10
-5 7
-7 15 30 29 27
-3 39548743
-10293834 10284344 13635445
+5 2
+1 2 2 4 2
+4
+1 4 4 2
+6 2
+1 2 2 8 2 2
+2
+1 16
+8 3
+3 3 3 3 3 3 3 3
+4
+6 6 6 6
+8 3
+3 9 6 3 12 12 36 12
+16
+9 3 2 2 2 3 4 12 4 12 4 12 4 12 4 4
+8 3
+3 9 6 3 12 12 36 12
+7
+12 2 4 3 4 12 56
 output
 Copy
-7
-13
-11
-31
-48234367
+Yes
+Yes
+No
+Yes
+No
 Note
-In the first test case of the sample, one optimal sequence of operations is:
-Do the operation with
-i=1
-. Now
-a
-1
-becomes
-(3or3)=3
-and
-z
-becomes
-(3and3)=3
-.
-Do the operation with
+In the first test case of the sample, we can do the second operation with
 i=2
-. Now
-a
-2
-becomes
-(4or3)=7
-and
-z
-becomes
-(4and3)=0
+:
+[1,2,2,4,2]→[1,4,4,2]
 .
-Do the operation with
-i=1
-. Now
-a
-1
-becomes
-(3or0)=3
-and
-z
-becomes
-(3and0)=0
+In the second testcase of the sample, we can:
+do the second operation with
+i=2
+:
+[1,2,2,8,2,2]→[1,4,8,2,2]
 .
-After these operations, the sequence
-a
-becomes
-[3,7]
-, and the maximum value in it is
-7
-. We can prove that the maximum value in
-a
-can never exceed
-7
-, so the answer is
-7
+do the second operation with
+i=4
+:
+[1,4,8,2,2]→[1,4,8,4]
 .
-In the fourth test case of the sample, one optimal sequence of operations is:
-Do the operation with
-i=1
-. Now
-a
-1
-becomes
-(7or7)=7
-and
-z
-becomes
-(7and7)=7
-.
-Do the operation with
+do the first operation with
 i=3
-. Now
-a
-3
-becomes
-(30or7)=31
-and
-z
-becomes
-(30and7)=6
+:
+[1,4,8,4]→[1,4,4,4,4]
 .
-Do the operation with
-i=5
-. Now
-a
-5
-becomes
-(27or6)=31
-and
-z
-becomes
-(27and6)=2
+do the second operation with
+i=2
+:
+[1,4,4,4,4]→[1,8,4,4]
+.
+do the second operation with
+i=3
+:
+[1,8,4,4]→[1,8,8]
+.
+do the second operation with
+i=2
+:
+[1,8,8]→[1,16]
 .

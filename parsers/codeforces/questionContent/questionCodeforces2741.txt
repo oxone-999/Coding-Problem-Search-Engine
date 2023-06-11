@@ -1,66 +1,136 @@
-H. It's showtime
-time limit per test1 second
-memory limit per test256 megabytes
+C. K-Complete Word
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given a mysterious language (codenamed "UnknownX") available in "Custom Test" tab. Find out what this language is, and use it to solve the following problem.
-You are given an integer
-input=1000∗n+mod
-(
-1≤n,mod≤999
-). Calculate double factorial of
+Word
+s
+of length
 n
-modulo
-mod
+is called
+k
+-complete if
+s
+is a palindrome, i.e.
+s
+i
+=
+s
+n+1−i
+for all
+1≤i≤n
+;
+s
+has a period of
+k
+, i.e.
+s
+i
+=
+s
+k+i
+for all
+1≤i≤n−k
 .
-Input
-The input contains a single integer
-input
+For example, "abaaba" is a
+3
+-complete word, while "abccba" is not.
+Bob is given a word
+s
+of length
+n
+consisting of only lowercase Latin letters and an integer
+k
+, such that
+n
+is divisible by
+k
+. He wants to convert
+s
+to any
+k
+-complete word.
+To do this Bob can choose some
+i
 (
-1001≤input≤999999
-). You are guaranteed that
-inputmod1000≠0
+1≤i≤n
+) and replace the letter at position
+i
+with some other lowercase Latin letter.
+So now Bob wants to know the minimum number of letters he has to replace to convert
+s
+to any
+k
+-complete word.
+Note that Bob can do zero changes if the word
+s
+is already
+k
+-complete.
+You are required to answer
+t
+test cases independently.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤
+10
+5
+) — the number of test cases.
+The first line of each test case contains two integers
+n
+and
+k
+(
+1≤k<n≤2⋅
+10
+5
+,
+n
+is divisible by
+k
+).
+The second line of each test case contains a word
+s
+of length
+n
+.
+It is guaranteed that word
+s
+only contains lowercase Latin letters. And it is guaranteed that the sum of
+n
+over all test cases will not exceed
+2⋅
+10
+5
 .
 Output
-Output a single number.
-Examples
+For each test case, output one integer, representing the minimum number of characters he has to replace to convert
+s
+to any
+k
+-complete word.
+Example
 input
 Copy
-6100
+4
+6 2
+abaaba
+6 3
+abaaba
+36 9
+hippopotomonstrosesquippedaliophobia
+21 7
+wudixiaoxingxingheclp
 output
 Copy
-48
-input
-Copy
-9900
-output
-Copy
-45
-input
-Copy
-100002
-output
-Copy
+2
 0
-input
-Copy
-123456
-output
-Copy
-171
+23
+16
 Note
-In the first test case you need to calculate
-6!!mod100
-;
-6!!=6∗4∗2=48
-.
-In the second test case you need to calculate
-9!!mod900
-;
-9!!=9∗7∗5∗3=945
-.
-In the third test case you need to calculate
-100!!mod2
-; you can notice that
-100!!
-is a multiple of 100 and thus is divisible by 2.
+In the first test case, one optimal solution is aaaaaa.
+In the second test case, the given word itself is
+k
+-complete.

@@ -1,46 +1,64 @@
-D. Perishable Roads
-time limit per test3 seconds
+B. Dynamic Problem Scoring
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-In the country of Never, there are n cities and a well-developed road system. There is exactly one bidirectional road between every pair of cities, thus, there are as many as roads! No two roads intersect, and no road passes through intermediate cities. The art of building tunnels and bridges has been mastered by Neverians.
-An independent committee has evaluated each road of Never with a positive integer called the perishability of the road. The lower the road's perishability is, the more pleasant it is to drive through this road.
-It's the year of transport in Never. It has been decided to build a museum of transport in one of the cities, and to set a single signpost directing to some city (not necessarily the one with the museum) in each of the other cities. The signposts must satisfy the following important condition: if any Neverian living in a city without the museum starts travelling from that city following the directions of the signposts, then this person will eventually arrive in the city with the museum.
-Neverians are incredibly positive-minded. If a Neverian travels by a route consisting of several roads, he considers the perishability of the route to be equal to the smallest perishability of all the roads in this route.
-The government of Never has not yet decided where to build the museum, so they consider all n possible options. The most important is the sum of perishabilities of the routes to the museum city from all the other cities of Never, if the travelers strictly follow the directions of the signposts. The government of Never cares about their citizens, so they want to set the signposts in a way which minimizes this sum. Help them determine the minimum possible sum for all n possible options of the city where the museum can be built.
+Vasya and Petya take part in a Codeforces round. The round lasts for two hours and contains five problems.
+For this round the dynamic problem scoring is used. If you were lucky not to participate in any Codeforces round with dynamic problem scoring, here is what it means. The maximum point value of the problem depends on the ratio of the number of participants who solved the problem to the total number of round participants. Everyone who made at least one submission is considered to be participating in the round.
+Pay attention to the range bounds. For example, if 40 people are taking part in the round, and 10 of them solve a particular problem, then the solvers fraction is equal to 1 / 4, and the problem's maximum point value is equal to 1500.
+If the problem's maximum point value is equal to x, then for each whole minute passed from the beginning of the contest to the moment of the participant's correct submission, the participant loses x / 250 points. For example, if the problem's maximum point value is 2000, and the participant submits a correct solution to it 40 minutes into the round, this participant will be awarded with 2000·(1 - 40 / 250) = 1680 points for this problem.
+There are n participants in the round, including Vasya and Petya. For each participant and each problem, the number of minutes which passed between the beginning of the contest and the submission of this participant to this problem is known. It's also possible that this participant made no submissions to this problem.
+With two seconds until the end of the round, all participants' submissions have passed pretests, and not a single hack attempt has been made. Vasya believes that no more submissions or hack attempts will be made in the remaining two seconds, and every submission will pass the system testing.
+Unfortunately, Vasya is a cheater. He has registered 109 + 7 new accounts for the round. Now Vasya can submit any of his solutions from these new accounts in order to change the maximum point values of the problems. Vasya can also submit any wrong solutions to any problems. Note that Vasya can not submit correct solutions to the problems he hasn't solved.
+Vasya seeks to score strictly more points than Petya in the current round. Vasya has already prepared the scripts which allow to obfuscate his solutions and submit them into the system from any of the new accounts in just fractions of seconds. However, Vasya doesn't want to make his cheating too obvious, so he wants to achieve his goal while making submissions from the smallest possible number of new accounts.
+Find the smallest number of new accounts Vasya needs in order to beat Petya (provided that Vasya's assumptions are correct), or report that Vasya can't achieve his goal.
 Input
-The first line contains a single integer n (2 ≤ n ≤ 2000) — the number of cities in Never.
-The following n - 1 lines contain the description of the road network. The i-th of these lines contains n - i integers. The j-th integer in the i-th line denotes the perishability of the road between cities i and i + j.
-All road perishabilities are between 1 and 109, inclusive.
+The first line contains a single integer n (2 ≤ n ≤ 120) — the number of round participants, including Vasya and Petya.
+Each of the next n lines contains five integers ai, 1, ai, 2..., ai, 5 ( - 1 ≤ ai, j ≤ 119) — the number of minutes passed between the beginning of the round and the submission of problem j by participant i, or -1 if participant i hasn't solved problem j.
+It is guaranteed that each participant has made at least one successful submission.
+Vasya is listed as participant number 1, Petya is listed as participant number 2, all the other participants are listed in no particular order.
 Output
-For each city in order from 1 to n, output the minimum possible sum of perishabilities of the routes to this city from all the other cities of Never if the signposts are set in a way which minimizes this sum.
+Output a single integer — the number of new accounts Vasya needs to beat Petya, or -1 if Vasya can't achieve his goal.
 Examples
 input
 Copy
-3
-1 2
-3
+2
+5 15 40 70 115
+50 45 40 30 15
 output
 Copy
 2
-2
+input
+Copy
+3
+55 80 10 -1 -1
+15 -1 79 60 -1
+42 -1 13 -1 -1
+output
+Copy
 3
 input
 Copy
-6
-2 9 9 6 6
-7 1 9 10
-9 2 5
-4 10
-8
+5
+119 119 119 119 119
+0 0 0 0 -1
+20 65 12 73 77
+78 112 22 23 11
+1 78 60 111 62
 output
 Copy
-6
-5
-7
-5
-7
-11
+27
+input
+Copy
+4
+-1 20 40 77 119
+30 10 73 50 107
+21 29 -1 64 98
+117 65 -1 -1 -1
+output
+Copy
+-1
 Note
-The first example is explained by the picture below. From left to right, there is the initial road network and the optimal directions of the signposts in case the museum is built in city 1, 2 and 3, respectively. The museum city is represented by a blue circle, the directions of the signposts are represented by green arrows.
-For instance, if the museum is built in city 3, then the signpost in city 1 must be directed to city 3, while the signpost in city 2 must be directed to city 1. Then the route from city 1 to city 3 will have perishability 2, while the route from city 2 to city 3 will have perishability 1. The sum of perishabilities of these routes is 3.
+In the first example, Vasya's optimal strategy is to submit the solutions to the last three problems from two new accounts. In this case the first two problems will have the maximum point value of 1000, while the last three problems will have the maximum point value of 500. Vasya's score will be equal to 980 + 940 + 420 + 360 + 270 = 2970 points, while Petya will score just 800 + 820 + 420 + 440 + 470 = 2950 points.
+In the second example, Vasya has to make a single unsuccessful submission to any problem from two new accounts, and a single successful submission to the first problem from the third new account. In this case, the maximum point values of the problems will be equal to 500, 1500, 1000, 1500, 3000. Vasya will score 2370 points, while Petya will score just 2294 points.
+In the third example, Vasya can achieve his goal by submitting the solutions to the first four problems from 27 new accounts. The maximum point values of the problems will be equal to 500, 500, 500, 500, 2000. Thanks to the high cost of the fifth problem, Vasya will manage to beat Petya who solved the first four problems very quickly, but couldn't solve the fifth one.

@@ -1,80 +1,30 @@
-Maximum Score
+Chef attic window
 Problem
-Chef's college is conducting online exams. Chef has a test tomorrow and he being irresponsible failed to prepare for it on time (just as always). However, fortunately, he now realises the gravity of the situation and decides to prepare as much as possible in the time remaining and try to score maximum marks possible using his analytical skills.
-There are
-N chapters and only
-K minutes are left before the exam. Chapter
-i will be worth
-M
-i
-marks in the exam, and shall take
-T
-i
-minutes to study. Chef can study the chapters in any order but needs to study them completely and at most once. He knows that he will forget the first chapter that he will prepare (due to lack of sleep) and won’t be able to score any marks in it. Find the maximum marks that Chef can score in the exam.
-Note that he cannot re-study the chapter that he has forgotten.
-###Input:
-First line will contain
-T, number of testcases. Then the testcases follow.
-Each testcase contain
-N+1 lines of input.
-First line will contain
-2 space separated integers
-N and
-K, total number of chapters and total time left before the exam respectively.
-Each of the next
-N lines contain
-2 space separated integers
-M
-i
-and
-T
-i
-, weightage and time for the
-i
-th
-chapter respectively.
-###Output: For each testcase, output in a single line answer to the problem.
-###Constraints
-1≤T≤10
-1≤N≤10
-3
-1≤K≤10
-4
-1≤M
-i
-≤10
-9
-1≤T
-i
-≤K
-Sum of
-N∗K over all tests is atmost
-10
-7
-Sample 1:
+Chef lives in a big house. Almost all is perfect in it except for one thing. Chef has an attic, but there is no window in it. Now, he wants to build a window there.
+
+The attic wall has the form of a right triangle. We can imagine it as a triangle on a coordinate plane with vertices (0; 0), (N; 0), (N; N * A / B), where N, A, B are some positive integers.
+
+As a modern guy Chef want to build a modern (L, K)-window on the attic wall. A modern (L, K)-window is made up of L+1 vertical lines and K+1 horizontal lines such that all their intersections lie on the attic wall. Here L, K are positive integers.
+
+Formally he can choose L+1 integers 0 <= x[0] < x[1] < ... < x[L] <= N and K+1 integers 0 <= y[0] < y[1] < ... < y[K] <= N*A/B such that all points (x[i], y[j]) lie on the wall. Then, rectangular grid with all these points as nodes is required window.
+
+Chef is interested in knowing how many ways he can choose the window. But since this number can be very large he wants to find it modulo 900000011. Help him.
 Input
+The first line contains a single positive integer T <= 50, the number of test cases. T test cases follow. The only line of each test case contains five positive integers N, A, B, K, L, where N, A, B <= 10^18 and K, L <= 10.
 Output
+For each test case, output a single line containing the number of ways to choose a window modulo 900000011.
+Example
+Input:
 3
-2 2
-1 1
-2 1
-3 3
-1 1
-2 2
-3 3
-5 6
-5 1
-4 2
-3 3
-2 4
-1 5
-2
-2
-9
-Explanation:
-TestCase 1: Optimal solution is to study first chapter first followed by second chapter. So total marks ensured
-=1+2−1=2
-TestCase 2: Optimal solution is to study first chapter first followed by second chapter. So total marks ensured
-=1+2−1=2
-TestCase 3: Optimal solution is to study third chapter first followed by second and first chapter. So total marks ensured
-=3+4+5−3=9
+4 2 3 1 1
+4 3 2 2 2
+1001 101 97 3 2
+
+Output:
+5
+4
+579415965
+Explanation
+In the first case we need calculate the number of rectangles which lie in triangle with vertices (0; 0), (4; 0), (4; 8/3). There exist 5 such rectangles. Among them 3 have size 1 x 1. One has size 2 x 1 and one have size 1 x 2.
+
+In the second case we have two rectangles 2 x 2 and one rectangle 2 x 3 where we can choose middle horizontal segment in two ways. So we have in total 4 possible choices.

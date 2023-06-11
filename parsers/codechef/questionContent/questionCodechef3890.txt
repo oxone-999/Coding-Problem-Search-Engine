@@ -1,94 +1,99 @@
-Triple Sundae
+Tree Query
 Problem
-Chef has opened a new ice cream parlor. His friend Chefina is going to visit the parlor very soon. Chef knows that Chefina is going to order a triple sundae on her visit. However, he does not know which flavors she would order.
-Chef has three storage containers with capacities
-X,Y and
-Z respectively. Each container can store multiple flavors of ice cream. Since Chef does not know which flavors Chefina would order, he wants to store maximum number of flavors in the storage containers.
-Chef has a total of
-N flavors. In order to store the
+Read problem statements in Hindi,Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given a tree with
+N vertices (numbered
+1 through
+N); vertex
+1 is the root. Initially, for each valid
+i, the
+i-th vertex has a weight
+w
 i
-th
-flavor, Chef must select exactly one container and fill it with
-C
+. You should perform a sequence of
+Q operations of the following two types:
+Add
+x to the weight of vertex
+v.
+Add
+x to the weight of each vertex in the subtree of vertex
+v (including
+v).
+Let's define a function
+f(u)=∑
+i=1
+N
+w
 i
-amount of flavor
-i.
-Note that the total amount of ice cream filled in a container should not exceed its capacity.
-Find the maximum number of flavors Chef can store in the containers.
-Input Format
-The first line will contain
-T - the number of test cases. Then the test cases follow.
-The first line of each test case contains four integers
-N,X,Y and
-Z.
-The next line contains
-N integers, where the
-i
-th
-integer denotes
-C
-i
+⋅d(i,u), where
+d(i,u) denotes the distance between vertices
+i and
+u. After each operation, find an integer
+u such that
+f(u) is minimum amoung
+f(1),f(2),…,f(N), if there are multiple values of
+u find smallest one.
+Input
+The first line of the input contains two space-separated integers
+N and
+Q.
+The second line contains
+N space-separated integers
+w
+1
+,w
+2
+,…,w
+N
 .
-Output Format
-For each test case, output in a single line the maximum number of distinct flavors Chef can store using the three containers.
+N−1 lines follow. Each of these lines contains two space-separated integers
+u and
+v denoting that vertices
+u and
+v are connected by an edge.
+Each of the next
+Q lines contains three space-separated integers
+t,
+v and
+x describing one operation, where
+t denotes the type of the operation.
+Output
+Print
+Q lines. For each valid
+i, the
+i-th of these lines should contain one integer
+u such that
+f(u) is minimum among
+f(1),f(2),…,f(N) after the
+i-th operation, if there are multiple values of
+u find smallest one.
 Constraints
-1≤T≤200
-1≤N≤2000
-1≤X,Y,Z≤1500
-1≤C
+1≤N,Q≤10
+5
+1≤w
 i
-≤1500
-Sum of
-N overall test cases does not exceed
-2000.
+≤10
+7
+for each valid
+i
+∣x∣≤10
+7
+the weights of all vertices remain positive after each operation
+Subtasks
+Subtask #1 (50 points):
+N,Q≤10
+3
+Subtask #2 (50 points): original constraints
 Sample 1:
 Input
 Output
-1
-5 12 16 15
-11 8 5 10 9
+5 2
+5 5 5 5 10
+1 2
+2 3
+3 4
+3 5
+1 5 -5
+2 4 50
+3
 4
-Explanation:
-Test Case
-1:
-Store flavor
-{4} in container
-X, since
-10≤∣X∣.
-Store flavors
-{1,3} in container
-Y, since
-(11+5)=16≤∣Y∣.
-Store flavors
-{5} in container
-Z, since
-9≤∣Z∣. This way we can store
-4 flavors.
-There can be other ways to store
-4 flavours but we cannot store more than
-4 flavours.
-Sample 2:
-Input
-Output
-1
-5 4 5 5
-1 2 3 4 5
-4
-Explanation:
-Test Case
-2:
-Store flavor
-{4} in container
-X, since
-4≤∣X∣=4.
-Store flavors
-{2,3} in container
-Y, since
-2+3=5≤∣Y∣=5.
-Store flavors
-{5} in container
-Z, since
-5≤∣Z∣=5. This way we can store
-4 flavors.
-It can be proven that we cannot store more than
-4 flavors in this case.

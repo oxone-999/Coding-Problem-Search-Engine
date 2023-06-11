@@ -1,161 +1,113 @@
-Set Queries
+The Secret Recipe
 Problem
 Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-This is an interactive problem. After printing a query do not forget to output the end of the line and flush the output. You can read more about it here.
-L was unhappy after losing a tennis match against Light. Being super competitive, he has been looking for ways to get back at him ever since. L knows that Light is weak in graph theory, so he decided to challenge Light to solve a graph problem.
-L has a hidden connected triangle-free graph with
-N vertices (numbered
+N people (numbered
 1 through
-N). The graph does not have any self-loops or parallel edges. L gives Light the degrees of all vertices and an integer
-K; for each valid
-i, let's denote the degree of the
-i-th vertex by
-d
+N) are trying to catch Chef because he has a secret recipe for the most delicious biryani ever. Chef does not have a number.
+The chase starts at time
+t=0 and takes place on a circular road with length
+L. Positions on the road are described by one real-valued coordinate; for each real number
+x, position
+x+L is the same as position
+x. Chef's initial position is
+X
+c
+=0 and for each valid
+i, the initial position of the
+i-th person is
+X
 i
 .
-Light has to divide the vertices of the graph into two disjoint sets
-S and
-R such that:
-Each vertex belongs to exactly one of the sets.
-The size of the set
-S is at least
-K.
-For each two distinct vertices
-u,v∈S, the shortest distance between
-u and
-v is greater than
-1.
-For each vertex
-v∈R, there is a vertex
-u∈S such that the shortest distance between
-u and
-v is
-1.
-To do so, Light may give L zero or more requests. There are two types of requests:
-1 u: Light asks L to add vertex
-u to the set
-S. L does that and then provides Light with the list of all vertices which are neighbours of
-u.
-2 u: L simply provides Light with the list of all vertices which are neighbours of
-u, without adding
-u to
-S.
-Light may not give L the same request more than once, i.e. he may not add any vertex to
-S more than once and he may only give L a request of type
-2 at most once. After Light finishes making his requests, all the vertices that Light did not ask to add to
-S are considered to be in
-R.
-L does not know that Light has been secretly practising graph theory for a year, more than eager to beat him again. Light thinks to himself: "In all things, one cannot win with thinking alone. To win, you must program." and starts laughing like an evil madman.
-You are acting as Light. The grader is acting as L. Construct a valid set
-S (and
-R) using these requests. It is guaranteed to be always possible.
-Interaction
-First, you should read a line containing two space-separated integers
-N and
-K.
-Next, you should read a line containing
+Chef's maximum velocity is
+V
+c
+and for each valid
+i, the maximum velocity of the
+i-th person is
+V
+i
+. At each moment in time, any person (including Chef) with maximum velocity
+V may choose any velocity
+v (a real number) between
+−V and
+V inclusive, possibly different at different moments in time, independently from all other people and this person's velocity at all other moments in time. All people move continuously — for any very small time difference
+Δt, a person at a position
+x and with a velocity
+v at time
+t is approximately at the position
+x+v⋅Δt at time
+t+Δt.
+When Chef is at the same position as one of the
+N people at the same moment in time, he is considered caught and the chase ends. It can be proved that Chef is unable to keep escaping forever; formally, there is a real number
+T
+u
+such that Chef can always be caught at a finite time which does not exceed
+T
+u
+, regardless of his choices.
+The
+N people want to catch Chef at the smallest possible time, while Chef wants to maximise the time when he will be caught. Find the time at which Chef gets caught if all people act optimally.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains three space-separated integers
+N,
+L and
+V
+c
+.
+The second line contains
 N space-separated integers
-d
+X
 1
-,d
+,X
 2
-,…,d
+,…,X
 N
 .
-Then, you may make your requests which the grader processes. To make a request:
-Print a line containing two space-separated integers
-t and
-u (
-1≤t≤2,
-1≤u≤N), where
-t is the type of the request.
-Read a line containing a single integer. If the format is invalid or you have made the same request before, this integer is
-−1; otherwise, it is
-d
-u
+The third line contains
+N space-separated integers
+V
+1
+,V
+2
+,…,V
+N
 .
-Read another line containing
-d
-u
-space-separated integers — the neighbours of the vertex
-u.
-Finally, when you have constructed your set
-S, print a single line containing the integer
-3.
-If you read
-−1, you must immediately terminate your program to receive a Wrong Answer verdict. Otherwise, you may receive any verdict. Don't forget to flush the output after printing each line!
+Output
+For each test case, print a single line containing one real number — the time when Chef gets caught. Your answer will be considered correct if its absolute or relative error does not exceed
+10
+−6
+.
 Constraints
+1≤T≤1,000
 2≤N≤10
 5
-1≤K
-2
-≤N
-1≤d
-i
-<N for each valid
-i
-d
-1
-+d
-2
-+…+d
-N
-≤2⋅10
+2≤L≤10
 6
-the graph is connected
-Example
-L (grader)      Light (you)
-4 2
-2 2 2 2
-                1 1
-2
-2 3
-                2 2
-2
-1 4
-                1 4
-2
-2 3
-                3
-Explanation
-L informs Light that the hidden graph has
-4 vertices, each with degree
-2, and the final size of the set
-S must be at least
-2.
-Light asks L to add vertex
-1 to
-S. L does so and reports that vertex
-1 has two neighbours: vertices
-2 and
-3.
-Light asks L about the neighbours of vertex
-2. L reports that this vertex has two neighbours: vertices
-1 and
-4.
-Light asks L to add vertex
-4 to
-S. L does so and reports that vertex
-4 has two neighbours: vertices
-2 and
-3.
-Light informs L that he is done adding vertices to the set
-S.
-The figure below describes L's hidden graph:
-Light puts vertices
-1 and
-4 in the set
-S, so vertices
-2 and
-3 are put in the set
-R. We can see that the size of set
-S is
-2≥K, the distance between vertices
-1 and
-4 is
-2>1 and both vertices
-2 and
-3 are at distance
-1 from vertex
-1. Thus, Light successfully created a valid set
-S.
+1≤X
+i
+≤L−1 for each valid
+i
+1≤V
+i
+≤10
+6
+for each valid
+i
+1≤V
+c
+≤10
+6
+the sum of
+N over all test cases does not exceed
+10
+6
+Example Input
+1
+3 10 2
+2 5 6
+3 1 1
+Example Output
+1.50000000000

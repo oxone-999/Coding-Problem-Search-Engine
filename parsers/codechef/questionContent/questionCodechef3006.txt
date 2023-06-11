@@ -1,100 +1,26 @@
-Egg-free DAG
+Shuffling
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Let's call a directed graph egg-free if it is acyclic and for any three pairwise distinct vertices
-x,
-y and
-z, if the graph contains edges
-x→y and
-x→z, then it also contains an edge
-y→z and/or an edge
-z→y.
-You are given an undirected graph with
-N vertices (numbered
-1 through
-N) and
-M edges (numbered
-1 through
-M). Find a way to assign a direction to each of its edges such that the resulting directed graph is egg-free, or determine that it is impossible. If there are multiple solutions, you may find any one.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+Chef simulating the next process, imagine that we have an array A = {1, 2, ..., M}. Split it into two arrays with equal size with odd and even indexes from it. After that let's erase in each array numbers on the place [S*X/Y], where S denoting the size of array and merge these arrays(the first element of the second array will be after the last element of the first array), after the first operation A will contain exactly M-2 elements after that, after the second operations M-4 and so on. Chef making this procedure until A has more than 2 elements. In the end he wants to know the value of bitwise XOR elements that remain. He needs your help!
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-M.
-M lines follow. For each valid
-i, the
-i-th of these lines contains two space-separated integers
-u
-i
-and
-v
-i
-denoting an edge between vertices
-u
-i
-and
-v
-i
-.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. The first line of each test case contains three non-negative integers M, X and Y.
 Output
-For each test case:
-If it is impossible to assign a direction to each edge in such a way that the resulting graph is egg-free, print a single line containing the string "No solution" (without quotes).
-Otherwise, print a single line containing a string with length
-M. For each valid
-i, the
-i-th character of this string should be '^' if you want to direct the
-i-th edge from
-u
-i
-to
-v
-i
-, or 'v' if you want to direct it from
-v
-i
-to
-u
-i
-.
+Output in a single line the value of bitwise XOR of two elements that remain in the array A after M/2-1 operations split/merge as described above.
 Constraints
-1≤T≤5
-1≤N,M≤200,000
-1≤u
-i
-,v
-i
-≤N for each valid
-i
-u
-i
-
-=v
-i
-for each valid
-i
-each pair of vertices is connected by at most one edge
+1 ≤ T ≤ 1000
+1 ≤ M ≤ 106
+M is even
+0 ≤ X < Y ≤ 106
+Sum of M over all test cases ≤ 5*106
 Subtasks
-Subtask #1 (10 points):
-N,M≤20
-Subtask #2 (20 points):
-N,M≤200
-Subtask #3 (70 points): original constraints
+Subtask #1: (30 points) Sum of M over all test cases ≤ 104
+Subtask #2: (10 points) X = 0
+Subtask #3: (60 points) Original constraints
 Sample 1:
 Input
 Output
-2
-3 3
-1 2
-2 3
-3 1
-7 6
-1 2
-2 3
-3 4
-4 5
-5 6
-6 7
-^^v
-^^^^^^
+1
+6 1 2
+4
+Explanation:
+Example case 1. Initially we have A = {1, 2, 3, 4, 5, 6}. After splitting in two arrays we will have A' = {1, 3, 5} and B' = {2, 4, 6}. Let's erase from 0-indexed A' and B' elements with index = [3*1/2]=1(3 and 4 respectively). After that merge A' and B' -> A = {1, 5, 2, 6}, split A once again in A' = {1, 2} and B' = {5, 6} and erase elements with index = [2*1/2]=1(2 and 6 respectively), merge arrays A' and B' -> A = {1, 5}. Answer is bitwise XOR of 1 and 5 = 4.

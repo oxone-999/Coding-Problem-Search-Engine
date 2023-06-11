@@ -1,182 +1,113 @@
-D. The way home
-time limit per test3 seconds
+C. Music Festival
+time limit per test1 second
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-The famous magician Borya Budini traveled through the country
-X
-, which consists of
+The boy Vitya loves to listen to music very much. He knows that
 n
-cities. However, an accident happened, and he was robbed in the city number
-1
-. Now Budini will have a hard way home to the city number
-n
+albums are due to be released this Friday,
+i
+-th of which contains
+k
+i
+tracks. Of course, Vitya has already listened to all the tracks, and knows that in the
+i
+-th album, the coolness of the
+j
+-th track is equal to
+a
+i,j
 .
-He's going to get there by plane. In total, there are
-m
-flights in the country,
-i
--th flies from city
-a
-i
-to city
-b
-i
-and costs
-s
-i
-coins. Note that the
-i
--th flight is one-way, so it can't be used to get from city
-b
-i
-to city
-a
-i
-. To use it, Borya must be in the city
-a
-i
-and have at least
-s
-i
-coins (which he will spend on the flight).
-After the robbery, he has only
-p
-coins left, but he does not despair! Being in the city
-i
-, he can organize performances every day, each performance will bring him
-w
-i
-coins.
-Help the magician find out if he will be able to get home, and what is the minimum number of performances he will have to organize.
+Vitya has a friend Masha, whom he really wants to invite to the festival, where his favorite bands perform. However, in order for a friend to agree, she must first evaluate the released novelties. Vitya knows that if Masha listens to a track that was cooler than all the previous ones, she will get 1 unit of impression. Unfortunately, albums can only be listened to in their entirety, without changing the songs in them in places.
+Help Vitya find such an order of albums so that Masha's impression turns out to be as much as possible, and she definitely went to the festival with him.
 Input
-Each test consists of multiple test cases. The first line contains a single integer
-t
-(
-1≤t≤80
-) – the number of test cases. The description of test cases follows.
-The first line contains three integers
+Each test consists of multiple test cases. The first line contains a single integer t (
+1≤t≤200000
+) — the number of test cases. The description of test cases follows.
+The first line of each test case contains a single integer
 n
-,
-m
-and
-p
 (
-2≤n≤800
-,
-1≤m≤3000
-,
-0≤p≤
-10
-9
-) — the number of cities, the number of flights and the initial amount of coins.
-The second line contains
-n
+1≤n≤200000
+) — number of albums.
+The album descriptions follow. Each album description consists of two lines:
+The first line contains a single integer
+k
+i
+(
+1≤
+k
+i
+≤200000
+) — the number of tracks in the
+i
+th album.
+The following line contains
+k
+i
 integers
-w
-1
-,
-w
-2
-,…,
-w
-n
-(1≤
-w
-i
-≤
-10
-9
-)
- — profit from representations.
-The following
-m
-lines each contain three integers
 a
-i
-,
-b
-i
-and
-s
+i,1
+, 
+a
+i,2
+, 
+a
+i,3
+, …, 
+a
+i,
+k
 i
 (
 1≤
 a
+i,j
+≤200000
+) — the coolness of the tracks in the
 i
-,
-b
+album.
+Denote for
+∑
+k
 i
-≤n
-,
-1≤
-s
+the sum of all
+k
 i
-≤
-10
-9
-) — the starting and ending city, and the cost of
+. It is guaranteed that
+∑
+k
 i
--th flight.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-800
-and the sum of
-m
-over all test cases does not exceed
-10000
+≤200000
 .
 Output
-For each test case print a single integer — the minimum number of performances Borya will have to organize to get home, or
-−1
-if it is impossible to do this.
+For each test case print the singular number  — the maximum impression that Masha can get.
 Example
 input
 Copy
+2
 4
-4 4 2
-7 4 3 1
-1 2 21
-3 2 6
-1 3 8
-2 4 11
-4 4 10
-1 2 10 1
-1 2 20
-2 4 30
-1 3 25
-3 4 89
-4 4 7
-5 1 6 2
-1 2 5
-2 3 10
-3 4 50
-3 4 70
-4 1 2
-1 1 1 1
-1 3 2
+5
+4 9 4 6 8
+1
+7
+2
+8 6
+1
+1
+4
+2
+3 4
+2
+1 8
+2
+2 8
+2
+7 9
 output
 Copy
 4
-24
-10
--1
+4
 Note
-In the first example, it is optimal for Borya to make
-4
-performances in the first city, having as a result
-2+7⋅4=30
-coins, and then walk along the route
-1−3−2−4
-, spending
-6+8+11=25
-coins. In the second example, it is optimal for Borya to make
-15
-performances in the first city, fly to
-3
-city, make
-9
-performances there, and then go to
-4
-city.
+In the first test example, the optimal order is listening to the 4th, 2nd, 3rd and 1st albums.
+In this case, Masha will listen to the tracks in the following order: 1; 7; 8, 6; 4, 9, 4, 6, 8 and will receive 4 units of impression.
+In the second test example, you must first listen to the 1st, then the 4th, and in any order the 2nd and 3rd. In this case, Masha will get the maximum impression, and for every song in the 1st and 4th albums and nothing for the 2nd and 3rd.

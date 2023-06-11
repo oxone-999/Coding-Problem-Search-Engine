@@ -1,89 +1,60 @@
-E. Modular Stability
+C. Similar Pairs
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-We define
-xmody
-as the remainder of division of
+We call two numbers
 x
-by
+and
 y
-(
-%
-operator in C++ or Java, mod operator in Pascal).
-Let's call an array of positive integers
-[
-a
-1
+similar if they have the same parity (the same remainder when divided by
+2
+), or if
+|x−y|=1
+. For example, in each of the pairs
+(2,6)
 ,
+(4,3)
+,
+(11,7)
+, the numbers are similar to each other, and in the pairs
+(1,4)
+,
+(3,12)
+, they are not.
+You are given an array
 a
-2
-,…,
-a
-k
-]
-stable if for every permutation
-p
-of integers from
-1
-to
-k
-, and for every non-negative integer
-x
-, the following condition is met:
-(((xmod
-a
-1
-)mod
-a
-2
-)…mod
-a
-k−1
-)mod
-a
-k
-=(((xmod
-a
-p
-1
-)mod
-a
-p
-2
-)…mod
-a
-p
-k−1
-)mod
-a
-p
-k
-That is, for each non-negative integer
-x
-, the value of
-(((xmod
-a
-1
-)mod
-a
-2
-)…mod
-a
-k−1
-)mod
-a
-k
-does not change if we reorder the elements of the array
+of
+n
+(
+n
+is even) positive integers. Check if there is such a partition of the array into pairs that each element of the array belongs to exactly one pair and the numbers in each pair are similar to each other.
+For example, for the array
+a=[11,14,16,12]
+, there is a partition into pairs
+(11,12)
+and
+(14,16)
+. The numbers in the first pair are similar because they differ by one, and in the second pair because they are both even.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤1000
+) — the number of test cases. Then
+t
+test cases follow.
+Each test case consists of two lines.
+The first line contains an even positive integer
+n
+(
+2≤n≤50
+) — length of array
 a
 .
-For two given integers
+The second line contains
 n
-and
-k
-, calculate the number of stable arrays
-[
+positive integers
 a
 1
 ,
@@ -91,84 +62,46 @@ a
 2
 ,…,
 a
-k
-]
-such that
+n
+(
 1≤
 a
-1
-<
-a
-2
-<⋯<
-a
-k
-≤n
-.
-Input
-The only line contains two integers
-n
-and
-k
-(
-1≤n,k≤5⋅
-10
-5
+i
+≤100
 ).
 Output
-Print one integer — the number of stable arrays
-[
-a
-1
-,
-a
+For each test case print:
+YES if the such a partition exists,
+NO otherwise.
+The letters in the words YES and NO can be displayed in any case.
+Example
+input
+Copy
+7
+4
+11 14 16 12
 2
-,…,
-a
-k
-]
-such that
-1≤
-a
-1
-<
-a
+1 8
+4
+1 1 1 1
+4
+1 2 5 6
 2
-<⋯<
-a
-k
-≤n
-. Since the answer may be large, print it modulo
-998244353
-.
-Examples
-input
-Copy
-7 3
+12 13
+6
+1 6 3 10 5 8
+6
+1 12 3 10 5 8
 output
 Copy
-16
-input
-Copy
-3 7
-output
-Copy
-0
-input
-Copy
-1337 42
-output
-Copy
-95147305
-input
-Copy
-1 1
-output
-Copy
-1
-input
-Copy
-500000 1
-output
-Copy
-500000
+YES
+NO
+YES
+YES
+YES
+YES
+NO
+Note
+The first test case was explained in the statement.
+In the second test case, the two given numbers are not similar.
+In the third test case, any partition is suitable.

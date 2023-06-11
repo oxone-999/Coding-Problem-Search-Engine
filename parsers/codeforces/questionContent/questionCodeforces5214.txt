@@ -1,40 +1,46 @@
-E. Roma and Poker
-time limit per test2 seconds
+D. Magazine Ad
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Each evening Roma plays online poker on his favourite website. The rules of poker on this website are a bit strange: there are always two players in a hand, there are no bets, and the winner takes 1 virtual bourle from the loser.
-Last evening Roma started to play poker. He decided to spend no more than k virtual bourles — he will stop immediately if the number of his loses exceeds the number of his wins by k. Also Roma will leave the game if he wins enough money for the evening, i.e. if the number of wins exceeds the number of loses by k.
-Next morning Roma found a piece of paper with a sequence on it representing his results. Roma doesn't remember the results exactly, and some characters in the sequence are written in a way such that it's impossible to recognize this character, so Roma can't recall whether he won k bourles or he lost.
-The sequence written by Roma is a string s consisting of characters W (Roma won the corresponding hand), L (Roma lost), D (draw) and ? (unknown result). Roma wants to restore any valid sequence by changing all ? characters to W, L or D. The sequence is called valid if all these conditions are met:
-In the end the absolute difference between the number of wins and loses is equal to k;
-There is no hand such that the absolute difference before this hand was equal to k.
-Help Roma to restore any such sequence.
+The main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:
+There are space-separated non-empty words of lowercase and uppercase Latin letters.
+There are hyphen characters '-' in some words, their positions set word wrapping points. Word can include more than one hyphen.
+It is guaranteed that there are no adjacent spaces and no adjacent hyphens. No hyphen is adjacent to space. There are no spaces and no hyphens before the first word and after the last word.
+When the word is wrapped, the part of the word before hyphen and the hyphen itself stay on current line and the next part of the word is put on the next line. You can also put line break between two words, in that case the space stays on current line. Check notes for better understanding.
+The ad can occupy no more that k lines and should have minimal width. The width of the ad is the maximal length of string (letters, spaces and hyphens are counted) in it.
+You should write a program that will find minimal width of the ad.
 Input
-The first line contains two numbers n (the length of Roma's sequence) and k (1 ≤ n, k ≤ 1000).
-The second line contains the sequence s consisting of characters W, L, D and ?. There are exactly n characters in this sequence.
+The first line contains number k (1 ≤ k ≤ 105).
+The second line contains the text of the ad — non-empty space-separated words of lowercase and uppercase Latin letters and hyphens. Total length of the ad don't exceed 106 characters.
 Output
-If there is no valid sequence that can be obtained from s by replacing all ? characters by W, L or D, print NO.
-Otherwise print this sequence. If there are multiple answers, print any of them.
+Output minimal width of the ad.
 Examples
 input
 Copy
-3 2
-L??
+4
+garage for sa-le
 output
 Copy
-LDL
+7
 input
 Copy
-3 1
-W??
+4
+Edu-ca-tion-al Ro-unds are so fun
 output
 Copy
-NO
-input
-Copy
-20 5
-?LLLLLWWWWW?????????
-output
-Copy
-WLLLLLWWWWWWWWLWLWDW
+10
+Note
+Here all spaces are replaced with dots.
+In the first example one of possible results after all word wraps looks like this:
+
+garage.
+for.
+sa-
+le
+The second example:
+
+Edu-ca-
+tion-al.
+Ro-unds.
+are.so.fun

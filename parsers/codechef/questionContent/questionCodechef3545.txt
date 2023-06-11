@@ -1,112 +1,81 @@
-Maximizing Minimum Segment Sum
+Tree Queries
 Problem
-Read problem statements in Mandarin, Bengali, Russian, and Vietnamese as well.
-You are given a positive integer
-k and an array
-a consisting of
-n integers. You will partition the array into
-k non-empty segments such that each number belongs to exactly one segment.
-Let's denote
-s
-i
-as the sum of all numbers belonging to
-i-th segment after partitioning. Your goal is to maximize the value of
-min(s
-1
-,…,s
-k
-). Calculate and print this value.
+You are given an undirected weighted tree of
+N nodes, numbered from
+1 to
+N.
+The cost of a path is defined as the bitwise AND of the weights of the edges on that path. The cost of the path having only one node is, by default,
+0.
+You are given
+Q queries. In each query, you will be given a node
+x. For each query, your task is to find two nodes
+u and
+v, such that
+The node
+x lies on the simple path from node
+u to node
+v.
+The cost of this path is greater than
+0.
+The number of nodes on this path is maximum
+If there are multiple answers, print any. If there exists no answer, print "
+−1−1" (without quotes).
 Input Format
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-Each test case contains two lines of input.
-The first line of each test case contains two space-separated integers
-n and
-k.
-The second line of each test case contains
-n space-separated integers
-a
-1
-,…,a
-n
-.
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains an integer
+N, denoting the number of nodes in the tree.
+The next
+N−1 lines contains three space-separated integers
+u,
+v and
+w, denoting an undirected edge between node
+u and node
+v with weight
+w.
+The next line contains an integer
+Q denoting the number of queries.
+The next
+Q lines contain an integer
+x denoting the query node.
 Output Format
-For each test case, print a single line containing a single integer --- the largest value of
-min(s
-1
-,…,s
-k
-) you can obtain.
+For each test case, output
+Q lines containing two space-separated integers, the answer to that query.
 Constraints
-1≤T≤5⋅10
-4
-2≤n≤10
+1≤T≤1000
+1≤N,Q≤10
 5
-1≤k≤n
-−10
-9
-≤a
-i
-≤10
+1≤u,v,x≤N
+0≤w≤10
 9
 The sum of
-n over all test cases does not exceed
+N and
+Q over all test cases won't exceed
 10
 5
-Subtasks
-Subtask #1 (10 points):
-n≤400
-The sum of
-n over all test cases does not exceed
-400.
-−10
-5
-≤a
-i
-≤10
-5
-Subtask #2 (20 points):
-n≤2000
-The sum of
-n over all test cases does not exceed
-4000.
-−10
-5
-≤a
-i
-≤10
-5
-Subtask #3 (70 points): original constraints
+.
 Sample 1:
 Input
 Output
-3
-5 2
-1 2 3 3 3
-8 5
-7 -6 1 -9 -4 -7 -6 7
-6 3
--2 6 -2 -3 2 -3
+1
 6
--7
--2
-Explanation:
-Test case
-1: You can partition the array as
-[1,2,3][3,3] and obtain
-min(s
-1
-,s
-2
-)=min(6,6)=6.
-Test case
-3: You can partition the array as
-[−2][6,−2,−3][2,−3] and obtain
-min(s
-1
-,s
-2
-,s
+2 1 5
+3 2 2
+4 2 4
+5 4 6
+6 4 0
 3
-)=min(−2,1,−1)=−2.
+2
+3
+6
+5 1
+3 2
+-1 -1
+Explanation:
+In the first query, the bitwise AND of the simple path from node
+5 to node
+1 is
+(6&4&5) which is
+4.
+In the third query, there is no possible answer.

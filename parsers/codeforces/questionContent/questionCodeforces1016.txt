@@ -1,224 +1,122 @@
-A. Array Balancing
-time limit per test2 seconds
+C. Water the Trees
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given two arrays of length
+There are
 n
-:
-a
+trees in a park, numbered from
 1
-,
-a
-2
-,…,
-a
+to
 n
-and
-b
-1
-,
-b
-2
-,…,
-b
-n
-.
-You can perform the following operation any number of times:
-Choose integer index
+. The initial height of the
 i
-(
-1≤i≤n
-);
-Swap
-a
-i
-and
-b
+-th tree is
+h
 i
 .
-What is the minimum possible sum
-|
-a
+You want to water these trees, so they all grow to the same height.
+The watering process goes as follows. You start watering trees at day
 1
-−
-a
-2
-|+|
-a
-2
-−
-a
-3
-|+⋯+|
-a
-n−1
-−
-a
-n
-|
-+
-|
-b
+. During the
+j
+-th day you can:
+Choose a tree and water it. If the day is odd (e.g.
+1,3,5,7,…
+), then the height of the tree increases by
 1
-−
-b
+. If the day is even (e.g.
+2,4,6,8,…
+), then the height of the tree increases by
 2
-|+|
-b
-2
-−
-b
-3
-|+⋯+|
-b
-n−1
-−
-b
-n
-|
-(in other words,
-∑
-i=1
-n−1
-(|
-a
-i
-−
-a
-i+1
-|+|
-b
-i
-−
-b
-i+1
-|)
-) you can achieve after performing several (possibly, zero) operations?
+.
+Or skip a day without watering any tree.
+Note that you can't water more than one tree in a day.
+Your task is to determine the minimum number of days required to water the trees so they grow to the same height.
+You have to answer
+t
+independent test cases.
 Input
-The first line contains a single integer
+The first line of the input contains one integer
 t
 (
-1≤t≤4000
-) — the number of test cases. Then,
-t
-test cases follow.
-The first line of each test case contains the single integer
+1≤t≤2⋅
+10
+4
+) — the number of test cases.
+The first line of the test case contains one integer
 n
 (
-2≤n≤25
-) — the length of arrays
-a
-and
-b
-.
-The second line of each test case contains
+1≤n≤3⋅
+10
+5
+) — the number of trees.
+The second line of the test case contains
 n
 integers
-a
+h
 1
 ,
-a
+h
 2
 ,…,
-a
+h
 n
 (
 1≤
-a
+h
 i
 ≤
 10
 9
-) — the array
-a
-.
-The third line of each test case contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-1≤
-b
+), where
+h
 i
-≤
+is the height of the
+i
+-th tree.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+3⋅
 10
-9
-) — the array
-b
-.
+5
+(
+∑n≤3⋅
+10
+5
+).
 Output
-For each test case, print one integer — the minimum possible sum
-∑
-i=1
-n−1
-(|
-a
-i
-−
-a
-i+1
-|+|
-b
-i
-−
-b
-i+1
-|)
-.
+For each test case, print one integer — the minimum number of days required to water the trees, so they grow to the same height.
 Example
 input
 Copy
 3
-4
-3 3 10 10
-10 10 3 3
+3
+1 2 4
 5
-1 2 3 4 5
-6 7 8 9 10
-6
-72 101 108 108 111 44
-10 87 111 114 108 100
+4 4 3 5 5
+7
+2 5 4 8 3 7 4
 output
 Copy
-0
-8
-218
+4
+3
+16
 Note
-In the first test case, we can, for example, swap
-a
-3
-with
-b
-3
-and
-a
-4
-with
-b
-4
-. We'll get arrays
-a=[3,3,3,3]
-and
-b=[10,10,10,10]
-with sum
-3⋅|3−3|+3⋅|10−10|=0
+Consider the first test case of the example. The initial state of the trees is
+[1,2,4]
 .
-In the second test case, arrays already have minimum sum (described above) equal to
-|1−2|+⋯+|4−5|+|6−7|+⋯+|9−10|
-=4+4=8
+During the first day, let's water the first tree, so the sequence of heights becomes
+[2,2,4]
+;
+during the second day, let's water the second tree, so the sequence of heights becomes
+[2,4,4]
+;
+let's skip the third day;
+during the fourth day, let's water the first tree, so the sequence of heights becomes
+[4,4,4]
 .
-In the third test case, we can, for example, swap
-a
-5
-and
-b
-5
+Thus, the answer is
+4
 .

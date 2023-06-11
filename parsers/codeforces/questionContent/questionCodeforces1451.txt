@@ -1,88 +1,183 @@
-A. Anti-Tetris
-time limit per test2 seconds
+C. Cactus Lady and her Cing
+time limit per test5 seconds
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Let us consider the game "Sticky Tetris". In this game, there is a field of
-n×m
-squares. Tiles appear on the field and the player can move the tiles.
-Each tile is a
-4
--connected set of at most
-7
-squares.
-Each new tile appears in any position that fits inside the field, does not intersect any other tile, and the top cell of the tile is at the top row of the field. The player can move the tile left, right, and down, and at any moment the tile must still entirely fit inside the field and must not intersect other tiles. The player can stop the tile at any position at any time. After that, it cannot be moved. Since this is "Sticky Tetris," the tile will not fall once stopped.
-You are given a final configuration of a "Sticky Tetris" game. You need to restore a sequence of steps that leads to that configuration if it exists.
+Cactus lady loves her cactuses very much. Especially she likes a small cactus named Cing. Cing can be seen as a connected undirected graph in which every vertex lies on at most one simple cycle. Intuitively, a cactus is a generalization of a tree where some cycles are allowed. Multiedges (multiple edges between a pair of vertices) and loops (edges that connect a vertex to itself) are not allowed.
+She bought a special grid for her special little cactus Cing. This grid can be represented as a graph consisting of two paths of length
+400000
+,
+u
+(0,−200000)
+−
+u
+(0,−199999)
+−…−
+u
+(0,200000)
+and
+u
+(1,−200000)
+−
+u
+(1,−199999)
+−…−
+u
+(1,200000)
+, connected together by
+400001
+edges
+(
+u
+(0,i)
+,
+u
+(1,i)
+)
+for each
+i
+. In other words, a grid can be seen as a ladder.
+Cactus lady wants to know whether she can embed Cing into this grid, i.e., map each vertex of the cactus onto a separate vertex of the grid while each edge of the cactus will be mapped onto some edge of the grid.
 Input
-The first line contains two integers
+The first line contains an integer
+t
+ — the number of test cases.
+Each test case begins with a line containing two integers
 n
 and
 m
-(
-1≤n,m≤50
-) — the size of the playing field.
-The next
-n
-lines contain a string of
+ — the number of vertices and the number of edges in a given cactus, respectively (
+1≤n≤200000
+;
+0≤m≤250000
+).
+Each of the following
 m
-characters each. Each character could be either a '.', or lowercase English letter. Connected components of the same letter correspond to a single tile. Each tile consists of at most
-7
-squares.
-Output
-If there is no solution, print
-−1
+lines contains two integers
+v
+and
+u
+, describing the edges of the cactus (
+1≤v,u≤n,u≠v
+).
+The total sum of all
+n
+in the input doesn't exceed
+200000
 .
-Otherwise, print
-k
- — the number of different tiles that are placed on the field.
-On the next
-k
-lines print the sequence of steps for each of the tiles in the order they are placed.
-Each line consists of a number
+Output
+Print an answer for each test case in the same order the cases appear in the input.
+For each test case print "No" in the first line, if no layout exists.
+Otherwise print "Yes" in the first line, and the following
+n
+lines describing the layout. The
+i
+-th of these
+n
+lines should contain two integers
 x
-followed by a string with steps.
+i
+and
+y
+i
+, the location of the
+i
+-th vertex (
+0≤
 x
-(
-1≤x≤m
-) is the starting column of the leftmost square in the top row of the tile. The string consists of characters 'L' (for left), 'R' (for right), and 'D' (for down), describing the path of that tile, ending with a single character 'S' (for stop). The final position of the tile determines which tile is being placed. The string with steps can have at most
-n⋅m+1
-characters.
-Examples
+i
+≤1
+;
+−200000≤
+y
+i
+≤200000
+).
+Example
 input
-Copy
-3 2
-aa
-ab
-aa
-output
-Copy
-2
-2 DS
-1 S
-input
-Copy
-5 6
-....dd
-.ccccd
-.cbbdd
-.aab.a
-aabbaa
-output
 Copy
 5
-2 DDDS
-4 DDLS
-6 DDDS
-2 DS
-5 S
-input
-Copy
-5 3
-...
-aab
-abb
-aab
-.bb
+4 3
+1 2
+2 3
+3 4
+
+8 7
+1 2
+3 2
+2 4
+4 5
+4 6
+6 7
+6 8
+
+5 4
+1 2
+1 3
+1 4
+1 5
+
+8 9
+1 2
+2 3
+3 4
+1 4
+4 5
+5 6
+6 7
+7 8
+5 8
+
+10 10
+1 2
+2 3
+3 4
+4 5
+5 6
+6 1
+3 7
+4 8
+1 9
+6 10
 output
 Copy
--1
+Yes
+0 0
+0 1
+1 1
+1 2
+Yes
+0 3
+1 3
+1 4
+1 2
+0 2
+1 1
+0 1
+1 0
+No
+Yes
+0 0
+1 0
+1 1
+0 1
+0 2
+0 3
+1 3
+1 2
+Yes
+1 1
+1 2
+1 3
+0 3
+0 2
+0 1
+1 4
+0 4
+1 0
+0 0
+Note
+Empty lines between test cases are for clarity. In real test cases there are no empty lines.
+In these notes, we consider the embeddings for tests 2 and 4.
+We start with the embedding for test 2.
+Here goes the embedding for test 4.

@@ -1,104 +1,45 @@
-Edges in Spanning Trees
+Chef and Sets
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-You are given two spanning trees
-T
-1
-and
-T
-2
-on the same set of
-N vertices (numbered
-1 through
-N). For each edge
-e
-1
-in
-T
-1
-, you have to calculate the number of edges
-e
-2
-∈T
-2
-which satisfy the following conditions:
-T
-1
-−e
-1
-+e
-2
-(the graph formed by removing the edge
-e
-1
-from
-T
-1
-and adding the edge
-e
-2
-) is a spanning tree
-T
-2
-−e
-2
-+e
-1
-is also a spanning tree
+Read problems statements in Mandarin Chinese and Russian.
+Chef passed all the exams. This month was really tiring. So, he decided to relax for a little bit. Well, there is no better way to relax than to play with sets of numbers.
+Chef loves to solve problems about sets. That does not mean that he is any good at it. Anyway, he opened his favorite problemset archive, and there he found a task that he thinks is best suited to him.
+Problem description
+You are given N sets and Q queries. Initially, each set consists only of a single element. The sets are indexed from 1 to N, and the ith set contains the number i. Each query may be one of the following two types.
+UNION a b - merge the ath and the bth. The new set will hold the index N + number of union operations before this one + 1. Also, after this operation, the ath set and the bth set will no longer exist.
+GET a k - find the kth smallest element in the set indexed a
+Please help our dear Chef! :)
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-Each of the following
-N−1 lines contains two space-separated integers
-u and
-v denoting an edge in
-T
-1
-between vertices
-u and
-v.
-The following
-N−1 lines describe the edges of
-T
-2
-in the same format.
+The first line of the input contains two integers N and Q denoting the number of sets in the very beginning and the number of queries. Each of the next Q lines contains one query per line - either UNION a b" or GET a k.
 Output
-For each test case, print
-N−1 space-separated integers — the number of valid edges
-e
-2
-for each edge
-e
-1
-∈T
-1
-(in the order in which they are given on the input).
+For each query of second type (i.e. GET) output the number that you've found.
 Constraints
-1≤T≤10
-2≤N≤2⋅10
-5
-the sum of
-N over all test cases does not exceed
-2⋅10
-5
-Subtasks
-Subtask #1 (20 points): the sum of
-N over all test cases does not exceed
-10
+1 ≤ N ≤ 105
+1 ≤ Q ≤ 2 * 105.
+All the queries are valid, that is, for any query GET i p, the ith set exists, and has a size of at least p; and for any query UNION a b, the sets indexed as a as well as b exist.
+Subtask 1 (35 points): 1 ≤ N, Q ≤ 500
+Subtask 2 (65 points): 1 ≤ N ≤ 105, 1 ≤ Q ≤ 2 * 105
+Example
+Input:
+7 8
+UNION 1 2
+UNION 8 3
+GET 4 1
+UNION 4 5
+GET 10 2
+GET 9 3
+GET 9 2
+GET 9 1
+Output:
 4
-Subtask #2 (80 points): original constraints
-Sample 1:
-Input
-Output
+5
+3
+2
 1
-4
-1 2
-1 3
-1 4
-1 2
-2 3
-3 4
-1 1 1
+  Explanation
+Initially, the sets are: {1}, {2}, {3}, {4}, {5}, {6}, {7}.
+After the first query: {}, {}, {3}, {4}, {5}, {6}, {7}, {1, 2}.
+After the second query the configuration of sets is: {}, {}, {}, {4}, {5}, {6}, {7}, {}, {1, 2, 3}.
+The third query: the set {4} contains only one number so the answer is 4
+The configuration of sets after the fourth query: {}, {}, {}, {}, {}, {6}, {7}, {}, {1, 2, 3}, {4, 5}
+The fifth query: the second smallest element in {4, 5} is 5.
+For queries 6, 7, 8, the set is {1, 2, 3}.

@@ -1,129 +1,93 @@
-Distinct Pairs
+Summary Power
 Problem
-###Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef has two integer sequences
-A
-1
-,A
-2
-,…,A
-N
-and
-B
-1
-,B
-2
-,…,B
-M
-. You should choose
-N+M−1 pairs, each in the form
-(A
-x
-,B
-y
-), such that the sums
-A
-x
-+B
-y
-are all pairwise distinct.
-It is guaranteed that under the given constraints, a solution always exists. If there are multiple solutions, you may find any one.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+You work as an engineer. You were given an empty board with
+K consecutive cells; at any moment, each cell can display one character.
+You want the board to display a string
+S with length
+N>K. Since the board isn't large enough, you want to display the string in
+N−K+1 steps. In the
+i-th step (
+1≤i≤N−K+1), you'll make the board display the characters
+S
+i
+,S
+i+1
+,…,S
+i+K−1
+.
+The power required to switch the board from step
+i to step
+i+1 (for
+1≤i≤N−K) is equal to the number of characters displayed on the board that have to change between these steps. You should find the total power required for the whole process of displaying a string, i.e. the sum of powers required for switching between all consecutive pairs of steps.
 Input
-The first line of the input contains two space-separated integers
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
 N and
-M.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
-The third line contains
-M space-separated integers
-B
-1
-,B
-2
-,…,B
-M
-.
+K.
+The second line contains a single string
+S with length
+N.
 Output
-Print
-N+M−1 lines. Each of these lines should contain two space-separated integers
-x and
-y denoting that you chose a pair
-(A
-x+1
-,B
-y+1
-).
+For each test case, print a single line containing one integer — the total power required for text switching.
 Constraints
-1≤N,M≤2⋅10
+1≤T≤1,000
+2≤N≤10
 5
-∣A
-i
-∣≤10
-9
-for each valid
-i
-∣B
-i
-∣≤10
-9
-for each valid
-i
-A
-1
-,A
-2
-,…,A
-N
-are pairwise distinct
-B
-1
-,B
-2
-,…,B
-M
-are pairwise distinct
+1≤K<N
+each character of
+S is a lowercase English letter
+the sum of
+N for all test cases does not exceed
+10
+6
 Subtasks
-Subtask #1 (25 points):
-1≤N,M≤10
-3
-Subtask #2 (75 points): original constraints
+Subtask #1 (20 points):
+1≤T≤100
+2≤N≤50
+Subtask #2 (80 points): original constraints
 Sample 1:
 Input
 Output
-3 2
-10 1 100
-4 3
-2 1
-0 0
-1 0
-0 1
-Explanation:
-The chosen pairs and their sums are:
-A
 3
-+B
-2
-=100+3=103
-A
+6 3
+aabbcc
+5 2
+abccc
+4 3
+aabb
+4
+3
 1
-+B
-1
-=10+4=14
-A
-2
-+B
-1
-=1+4=5
-A
-1
-+B
-2
-=10+3=13
-Since all sums are distinct, this is a correct output.
+Explanation:
+Example case 1:
+In step
+1, the board is displaying "aab".
+In step
+2, the board is displaying "abb".
+In step
+3, the board is displaying "bbc".
+In step
+4, the board is displaying "bcc".
+The power required for switching from the
+1-st to the
+2-nd step is
+1, because cell
+1 changes from 'a' to 'a' (requiring power
+0), cell
+2 changes from 'a' to 'b' (requiring power
+1) and cell
+3 changes from 'b' to 'b' (requiring power
+0);
+0+1+0=1.
+The power required for switching between the
+2-nd and
+3-rd step is
+2 and the power required for switching between the
+3-rd and
+4-th step is
+1.
+Therefore, the answer is
+1+2+1=4.

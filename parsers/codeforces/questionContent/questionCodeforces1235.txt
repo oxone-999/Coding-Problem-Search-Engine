@@ -1,80 +1,71 @@
-E. Singers' Tour
-time limit per test2 seconds
-memory limit per test256 megabytes
+G. Trader Problem
+time limit per test4.5 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-n
-towns are arranged in a circle sequentially. The towns are numbered from
-1
-to
-n
-in clockwise order. In the
-i
--th town, there lives a singer with a repertoire of
-a
-i
-minutes for each
-i∈[1,n]
+Monocarp plays a computer game (yet again!). This game has a unique trading mechanics.
+To trade with a character, Monocarp has to choose one of the items he possesses and trade it for some item the other character possesses. Each item has an integer price. If Monocarp's chosen item has price
+x
+, then he can trade it for any item (exactly one item) with price not greater than
+x+k
 .
-Each singer visited all
+Monocarp initially has
 n
-towns in clockwise order, starting with the town he lives in, and gave exactly one concert in each town. In addition, in each town, the
+items, the price of the
 i
--th singer got inspired and came up with a song that lasts
+-th item he has is
 a
 i
-minutes. The song was added to his repertoire so that he could perform it in the rest of the cities.
-Hence, for the
+. The character Monocarp is trading with has
+m
+items, the price of the
 i
--th singer, the concert in the
-i
--th town will last
-a
-i
-minutes, in the
-(i+1)
--th town the concert will last
-2⋅
-a
-i
-minutes, ..., in the
-((i+k)modn+1)
--th town the duration of the concert will be
-(k+2)⋅
-a
-i
-, ..., in the town
-((i+n−2)modn+1)
-—
-n⋅
-a
-i
-minutes.
-You are given an array of
-b
-integer numbers, where
+-th item they have is
 b
 i
-is the total duration of concerts in the
-i
--th town. Reconstruct any correct sequence of positive integers
-a
-or say that it is impossible.
+. Monocarp can trade with this character as many times as he wants (possibly even zero times), each time exchanging one of his items with one of the other character's items according to the aforementioned constraints. Note that if Monocarp gets some item during an exchange, he can trade it for another item (since now the item belongs to him), and vice versa: if Monocarp trades one of his items for another item, he can get his item back by trading something for it.
+You have to answer
+q
+queries. Each query consists of one integer, which is the value of
+k
+, and asks you to calculate the maximum possible total cost of items Monocarp can have after some sequence of trades, assuming that he can trade an item of cost
+x
+for an item of cost not greater than
+x+k
+during each trade. Note that the queries are independent: the trades do not actually occur, Monocarp only wants to calculate the maximum total cost he can get.
 Input
-The first line contains one integer
-t
-(1≤t≤
+The first line contains three integers
+n
+,
+m
+and
+q
+(
+1≤n,m,q≤2⋅
 10
-3
-) — the number of test cases. Then the test cases follow.
-Each test case consists of two lines. The first line contains a single integer
+5
+).
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
 (
-1≤n≤4⋅
+1≤
+a
+i
+≤
 10
-4
-) — the number of cities. The second line contains
-n
+9
+) — the prices of the items Monocarp has.
+The third line contains
+m
 integers
 b
 1
@@ -83,7 +74,7 @@ b
 2
 ,…,
 b
-n
+m
 (
 1≤
 b
@@ -91,111 +82,35 @@ i
 ≤
 10
 9
-) — the total duration of concerts in
+) — the prices of the items the other character has.
+The fourth line contains
+q
+integers, where the
 i
--th city.
-The sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-.
-Output
-For each test case, print the answer as follows:
-If there is no suitable sequence
-a
-, print NO. Otherwise, on the first line print YES, on the next line print the sequence
-a
-1
-,
-a
-2
-,…,
-a
-n
-of
-n
-integers, where
-a
+-th integer is the value of
+k
+for the
 i
-(
-1≤
-a
-i
-≤
+-th query (
+0≤k≤
 10
 9
-) is the initial duration of repertoire of the
-i
--th singer. If there are multiple answers, print any of them.
+).
+Output
+For each query, print one integer — the maximum possible total cost of items Monocarp can have after some sequence of trades, given the value of
+k
+from the query.
 Example
 input
 Copy
-4
-3
-12 16 14
-1
-1
-3
-1 2 3
-6
-81 75 75 93 93 87
+3 4 5
+10 30 15
+12 31 14 18
+0 1 2 3 4
 output
 Copy
-YES
-3 1 3 
-YES
-1 
-NO
-YES
-5 5 4 1 4 5 
-Note
-Let's consider the
-1
--st test case of the example:
-the
-1
--st singer in the
-1
--st city will give a concert for
-3
-minutes, in the
-2
--nd — for
-6
-minutes, in the
-3
--rd — for
-9
-minutes;
-the
-2
--nd singer in the
-1
--st city will give a concert for
-3
-minutes, in the
-2
--nd — for
-1
-minute, in the
-3
--rd - for
-2
-minutes;
-the
-3
--rd singer in the
-1
--st city will give a concert for
-6
-minutes, in the
-2
--nd — for
-9
-minutes, in the
-3
--rd — for
-3
-minutes.
+55
+56
+60
+64
+64

@@ -1,182 +1,127 @@
-C. Greedy Shopping
-time limit per test3 seconds
+A. Buy the String
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-1
+You are given four integers
+n
 ,
-a
-2
-,…,
-a
-n
-of integers. This array is non-increasing.
-Let's consider a line with
-n
-shops. The shops are numbered with integers from
+c
+0
+,
+c
 1
-to
+and
+h
+and a binary string
+s
+of length
 n
-from left to right. The cost of a meal in the
-i
--th shop is equal to
-a
-i
 .
-You should process
-q
-queries of two types:
-1 x y: for each shop
-1≤i≤x
-set
-a
-i
-=max(
-a
-i
-,y)
+A binary string is a string consisting of characters
+0
+and
+1
 .
-2 x y: let's consider a hungry man with
-y
-money. He visits the shops from
-x
--th shop to
-n
--th and if he can buy a meal in the current shop he buys one item of it. Find how many meals he will purchase. The man can buy a meal in the shop
-i
-if he has at least
-a
-i
-money, and after it his money decreases by
-a
-i
-.
+You can change any character of the string
+s
+(the string should be still binary after the change). You should pay
+h
+coins for each change.
+After some changes (possibly zero) you want to buy the string. To buy the string you should buy all its characters. To buy the character
+0
+you should pay
+c
+0
+coins, to buy the character
+1
+you should pay
+c
+1
+coins.
+Find the minimum number of coins needed to buy the string.
 Input
-The first line contains two integers
-n
-,
-q
-(
-1≤n,q≤2⋅
-10
-5
-).
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(1≤
-a
-i
-≤
-10
-9
-)
- — the costs of the meals. It is guaranteed, that
-a
-1
-≥
-a
-2
-≥…≥
-a
-n
-.
-Each of the next
-q
-lines contains three integers
+The first line contains a single integer
 t
-,
-x
-,
-y
 (
-1≤t≤2
+1≤t≤10
+) — the number of test cases. Next
+2t
+lines contain descriptions of test cases.
+The first line of the description of each test case contains four integers
+n
 ,
-1≤x≤n
+c
+0
 ,
-1≤y≤
-10
-9
-), each describing the next query.
-It is guaranteed that there exists at least one query of type
-2
+c
+1
+,
+h
+(
+1≤n,
+c
+0
+,
+c
+1
+,h≤1000
+).
+The second line of the description of each test case contains the binary string
+s
+of length
+n
 .
 Output
-For each query of type
-2
-output the answer on the new line.
+For each test case print a single integer — the minimum number of coins needed to buy the string.
 Example
 input
 Copy
-10 6
-10 10 10 6 6 5 5 5 3 1
-2 3 50
-2 4 10
-1 3 10
-2 2 36
-1 4 7
-2 2 17
+6
+3 1 1 1
+100
+5 10 100 1
+01010
+5 10 1 1
+11111
+5 1 10 1
+11111
+12 2 1 10
+101110110101
+2 100 1 10
+00
 output
 Copy
-8
 3
-6
-2
-Note
-In the first query a hungry man will buy meals in all shops from
-3
-to
-10
-.
-In the second query a hungry man will buy meals in shops
-4
-,
-9
-, and
-10
-.
-After the third query the array
-a
-1
-,
-a
-2
-,…,
-a
-n
-of costs won't change and will be
-{10,10,10,6,6,5,5,5,3,1}
-.
-In the fourth query a hungry man will buy meals in shops
-2
-,
-3
-,
-4
-,
+52
 5
-,
-9
-, and
 10
-.
-After the fifth query the array
-a
-of costs will be
-{10,10,10,7,6,5,5,5,3,1}
-.
-In the sixth query a hungry man will buy meals in shops
-2
+16
+22
+Note
+In the first test case, you can buy all characters and pay
+3
+coins, because both characters
+0
 and
+1
+costs
+1
+coin.
+In the second test case, you can firstly change
+2
+-nd and
 4
+-th symbols of the string from
+1
+to
+0
+and pay
+2
+coins for that. Your string will be
+00000
+. After that, you can buy the string and pay
+5⋅10=50
+coins for that. The total number of coins paid will be
+2+50=52
 .

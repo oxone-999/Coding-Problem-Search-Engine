@@ -1,247 +1,206 @@
-E2. Array and Segments (Hard version)
-time limit per test2 seconds
+F. MST Unification
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The only difference between easy and hard versions is a number of elements in the array.
-You are given an array
-a
-consisting of
+You are given an undirected weighted connected graph with
 n
-integers. The value of the
-i
--th element of the array is
-a
-i
-.
-You are also given a set of
+vertices and
 m
-segments. The
-j
--th segment is
-[
-l
-j
-;
-r
-j
-]
-, where
-1≤
-l
-j
-≤
-r
-j
-≤n
-.
-You can choose some subset of the given set of segments and decrease values on each of the chosen segments by one (independently). For example, if the initial array
-a=[0,0,0,0,0]
-and the given segments are
-[1;3]
+edges without loops and multiple edges.
+The
+i
+-th edge is
+e
+i
+=(
+u
+i
+,
+v
+i
+,
+w
+i
+)
+; the distance between vertices
+u
+i
 and
-[2;4]
-then you can choose both of them and the array will become
-b=[−1,−2,−2,−1,0]
-.
-You have to choose some subset of the given segments (each segment can be chosen at most once) in such a way that if you apply this subset of segments to the array
-a
-and obtain the array
-b
-then the value
-max
-i=1
-n
-b
+v
 i
-−
-min
-i=1
-n
-b
+along the edge
+e
 i
-will be maximum possible.
-Note that you can choose the empty set.
-If there are multiple answers, you can print any.
-If you are Python programmer, consider using PyPy instead of Python when you submit your code.
+is
+w
+i
+(
+1≤
+w
+i
+). The graph is connected, i. e. for any pair of vertices, there is at least one path between them consisting only of edges of the given graph.
+A minimum spanning tree (MST) in case of positive weights is a subset of the edges of a connected weighted undirected graph that connects all the vertices together and has minimum total cost among all such subsets (total cost is the sum of costs of chosen edges).
+You can modify the given graph. The only operation you can perform is the following: increase the weight of some edge by
+1
+. You can increase the weight of each edge multiple (possibly, zero) times.
+Suppose that the initial MST cost is
+k
+. Your problem is to increase weights of some edges with minimum possible number of operations in such a way that the cost of MST in the obtained graph remains
+k
+, but MST is unique (it means that there is only one way to choose MST in the obtained graph).
+Your problem is to calculate the minimum number of operations required to do it.
 Input
 The first line of the input contains two integers
 n
 and
 m
 (
-1≤n≤
+1≤n≤2⋅
 10
 5
-,0≤m≤300
-) — the length of the array
-a
-and the number of segments, respectively.
-The second line of the input contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−
+,n−1≤m≤2⋅
 10
-6
-≤
-a
-i
-≤
-10
-6
-), where
-a
-i
-is the value of the
-i
--th element of the array
-a
-.
+5
+) — the number of vertices and the number of edges in the initial graph.
 The next
 m
-lines are contain two integers each. The
-j
--th of them contains two integers
-l
-j
-and
-r
-j
-(
-1≤
-l
-j
-≤
-r
-j
-≤n
-), where
-l
-j
-and
-r
-j
-are the ends of the
-j
--th segment.
-Output
-In the first line of the output print one integer
-d
-— the maximum possible value
-max
-i=1
-n
-b
+lines contain three integers each. The
 i
-−
-min
-i=1
-n
-b
+-th line contains the description of the
 i
-if
-b
-is the array obtained by applying some subset of the given segments to the array
-a
-.
-In the second line of the output print one integer
-q
-(
-0≤q≤m
-) — the number of segments you apply.
-In the third line print
-q
-distinct integers
-c
-1
+-th edge
+e
+i
+. It is denoted by three integers
+u
+i
 ,
-c
-2
-,…,
-c
-q
-in any order (
+v
+i
+and
+w
+i
+(
 1≤
-c
-k
-≤m
-) — indices of segments you apply to the array
-a
-in such a way that the value
-max
-i=1
-n
-b
+u
 i
-−
-min
-i=1
-n
-b
+,
+v
 i
-of the obtained array
-b
-is maximum possible.
-If there are multiple answers, you can print any.
+≤n,
+u
+i
+≠
+v
+i
+,1≤w≤
+10
+9
+), where
+u
+i
+and
+v
+i
+are vertices connected by the
+i
+-th edge and
+w
+i
+is the weight of this edge.
+It is guaranteed that the given graph doesn't contain loops and multiple edges (i.e. for each
+i
+from
+1
+to
+m
+u
+i
+≠
+v
+i
+and for each unordered pair of vertices
+(u,v)
+there is at most one edge connecting this pair of vertices). It is also guaranteed that the given graph is connected.
+Output
+Print one integer — the minimum number of operations to unify MST of the initial graph without changing the cost of MST.
 Examples
 input
 Copy
-5 4
-2 -2 3 1 2
-1 3
-4 5
-2 5
-1 3
+8 10
+1 2 1
+2 3 2
+2 4 5
+1 4 2
+6 3 3
+6 1 3
+3 5 2
+3 7 1
+4 8 1
+6 2 4
 output
 Copy
-6
-2
-4 1 
+1
 input
 Copy
-5 4
-2 -2 3 1 4
-3 5
-3 4
-2 4
-2 5
+4 3
+2 1 3
+4 3 4
+2 4 1
 output
 Copy
-7
-2
-3 2 
+0
+input
+Copy
+3 3
+1 2 1
+2 3 2
+1 3 3
+output
+Copy
+0
+input
+Copy
+3 3
+1 2 1
+2 3 3
+1 3 3
+output
+Copy
+1
 input
 Copy
 1 0
-1000000
 output
 Copy
 0
-0
+input
+Copy
+5 6
+1 2 2
+2 3 1
+4 5 3
+2 4 2
+1 4 2
+1 5 3
+output
+Copy
+2
 Note
-In the first example the obtained array
-b
-will be
-[0,−4,1,1,2]
-so the answer is
-6
-.
-In the second example the obtained array
-b
-will be
-[2,−3,1,−1,4]
-so the answer is
-7
-.
-In the third example you cannot do anything so the answer is
-0
-.
+The picture corresponding to the first example:
+You can, for example, increase weight of the edge
+(1,6)
+or
+(6,3)
+by
+1
+to unify MST.
+The picture corresponding to the last example:
+You can, for example, increase weights of edges
+(1,5)
+and
+(2,4)
+by
+1
+to unify MST.

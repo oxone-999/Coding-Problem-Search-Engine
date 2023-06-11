@@ -1,140 +1,156 @@
-B. Edge Weight Assignment
-time limit per test1 second
-memory limit per test256 megabytes
+E. JYPnation
+time limit per test2 seconds
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-You have unweighted tree of
+Due to the success of TWICE, JYP Entertainment has earned countless money and emerged as the biggest entertainment firm by market capitalization. Therefore, the boss, JYP, has decided to create a new nation and has appointed you to provide a design diagram.
+The new nation consists of
 n
-vertices. You have to assign a positive weight to each edge so that the following condition would hold:
-For every two different leaves
-v
-1
+cities and some roads between them. JYP has given some restrictions:
+To guarantee efficiency while avoiding chaos, for any
+2
+different cities
+A
 and
-v
-2
-of this tree, bitwise XOR of weights of all edges on the simple path between
-v
-1
-and
-v
-2
-has to be equal to
-0
-.
-Note that you can put very large positive integers (like
-10
-(
-10
-10
-)
-).
-It's guaranteed that such assignment always exists under given constraints. Now let's define
-f
-as the number of distinct weights in assignment.
-In this example, assignment is valid, because bitwise XOR of all edge weights between every pair of leaves is
-0
-.
-f
-value is
-2
-here, because there are
-2
-distinct edge weights(
+B
+, there is exactly one road between them, and it is one-directional. There are no roads connecting a city to itself.
+The logo of rivaling companies should not appear in the plan, that is, there does not exist
 4
-and
-5
-).
-In this example, assignment is invalid, because bitwise XOR of all edge weights between vertex
-1
-and vertex
-6
-(
-3,4,5,4
-) is not
-0
+distinct cities
+A
+,
+B
+,
+C
+,
+D
+, such that the following configuration occurs.
+JYP has given criteria for your diagram. For two cities
+A
+,
+B
+, let
+dis(A,B)
+be the smallest number of roads you have to go through to get from
+A
+to
+B
+. If it is not possible to walk from
+A
+to
+B
+,
+dis(A,B)=614n
+. Then, the efficiency value is defined to be the sum of
+dis(A,B)
+for all ordered pairs of distinct cities
+(A,B)
 .
-What are the minimum and the maximum possible values of
-f
-for the given tree? Find and print both.
+Note that
+dis(A,B)
+doesn't have to be equal to
+dis(B,A)
+.
+You have drawn a design diagram that satisfies JYP's restrictions. Find the sum of
+dis(A,B)
+over all ordered pairs of cities
+(A,B)
+with
+A≠B
+.
+Note that the input is given in compressed form. But even though it is compressed, you'd better use fast input.
 Input
-The first line contains integer
+The first line contains a single integer
 n
 (
-3≤n≤
-10
+4≤n≤8000
+,
+n≡0(mod4)
+) — the number of cities.
+A binary matrix is encrypted in the following format. Each of
+n
+next lines contains
+n
+4
+one-digit hexadecimal numbers (that is, these numbers can be represented either as digits from
+0
+to
+9
+or as uppercase Latin letters from
+A
+to
+F
+). Binary representation of each of these numbers denotes next
+4
+elements of the matrix in the corresponding row. For example, if the number
+B
+is given, then the corresponding elements are
+1011
+, and if the number is
 5
-) — the number of vertices in given tree.
-The
+, then the corresponding elements are
+0101
+.
+After you obtain the decrypted binary matrix, the
+j
+-th character of the
 i
--th of the next
-n−1
-lines contains two integers
-a
-i
-and
-b
-i
-(
-1≤
-a
-i
-<
-b
-i
-≤n
-) — it means there is an edge between
-a
+-th row is
+1
+if the one-directional road between cities
 i
 and
-b
+j
+is directed from
 i
-. It is guaranteed that given graph forms tree of
-n
-vertices.
+to
+j
+, and
+0
+otherwise. It is guaranteed that the graph satisfies the restrictions mentioned above.
 Output
-Print two integers — the minimum and maximum possible value of
-f
-can be made from valid assignment of given tree. Note that it's always possible to make an assignment under given constraints.
+Output one integer, representing the sum of
+dis(A,B)
+over all ordered pairs of cities
+(A,B)
+with
+A≠B
+.
 Examples
 input
 Copy
-6
-1 3
-2 3
-3 4
-4 5
-5 6
-output
-Copy
-1 4
-input
-Copy
-6
-1 3
-2 3
-3 4
-4 5
-4 6
-output
-Copy
-3 3
-input
-Copy
+4
 7
-1 2
-2 7
-3 4
-4 7
-5 6
-6 7
+2
+1
+4
 output
 Copy
-1 6
+7380
+input
+Copy
+8
+7F
+3F
+1F
+0C
+06
+03
+11
+18
+output
+Copy
+88464
 Note
-In the first example, possible assignments for each minimum and maximum are described in picture below. Of course, there are multiple possible assignments for each minimum and maximum.
-In the second example, possible assignments for each minimum and maximum are described in picture below. The
-f
-value of valid assignment of this tree is always
-3
+The first example corresponds to the matrix:
+0111
+0010
+0001
+0100
+Which corresponds to this graph:
+dis(1,2)=dis(1,3)=dis(1,4)=dis(2,3)=dis(3,4)=dis(4,2)=1
+dis(2,4)=dis(4,3)=dis(3,2)=2
+dis(2,1)=dis(3,1)=dis(4,1)=2456
+Therefore the answer for the diagram is
+7380
 .
-In the third example, possible assignments for each minimum and maximum are described in picture below. Of course, there are multiple possible assignments for each minimum and maximum.

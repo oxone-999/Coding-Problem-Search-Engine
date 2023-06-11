@@ -1,203 +1,169 @@
-A. Tokitsukaze and Strange Inequality
-time limit per test1.5 seconds
+C. Tokitsukaze and Two Colorful Tapes
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Tokitsukaze has a permutation
-p
-of length
+Tokitsukaze has two colorful tapes. There are
 n
-. Recall that a permutation
-p
-of length
-n
-is a sequence
-p
+distinct colors, numbered
 1
-,
-p
-2
-,…,
-p
+through
 n
-consisting of
-n
-distinct integers, each of which from
+, and each color appears exactly once on each of the two tapes. Denote the color of the
+i
+-th position of the first tape as
+c
+a
+i
+, and the color of the
+i
+-th position of the second tape as
+c
+b
+i
+.
+Now Tokitsukaze wants to select each color an integer value from
 1
 to
 n
-(
-1≤
-p
+, distinct for all the colors. After that she will put down the color values in each colored position on the tapes. Denote the number of the
 i
-≤n
-).
-She wants to know how many different indices tuples
-[a,b,c,d]
+-th position of the first tape as
+num
+a
+i
+, and the number of the
+i
+-th position of the second tape as
+num
+b
+i
+.
+For example, for the above picture, assuming that the color red has value
+x
 (
-1≤a<b<c<d≤n
-) in this permutation satisfy the following two inequalities:
-p
+1≤x≤n
+), it appears at the
+1
+-st position of the first tape and the
+3
+-rd position of the second tape, so
+num
 a
-<
-p
-c
-and
-p
+1
+=num
 b
->
-p
-d
+3
+=x
 .
-Note that two tuples
-[
+Note that each color
+i
+from
+1
+to
+n
+should have a distinct value, and the same color which appears in both tapes has the same value.
+After labeling each color, the beauty of the two tapes is calculated as
+∑
+i=1
+n
+|num
 a
-1
-,
+i
+−num
 b
-1
-,
-c
-1
-,
-d
-1
-]
-and
-[
-a
-2
-,
-b
-2
-,
-c
-2
-,
-d
-2
-]
-are considered to be different if
-a
-1
-≠
-a
-2
-or
-b
-1
-≠
-b
-2
-or
-c
-1
-≠
-c
-2
-or
-d
-1
-≠
-d
-2
-.
+i
+|.
+n
+Please help Tokitsukaze to find the highest possible beauty.
 Input
-The first line contains one integer
+The first contains a single positive integer
 t
 (
-1≤t≤1000
-) — the number of test cases. Each test case consists of two lines.
-The first line contains a single integer
+1≤t≤
+10
+4
+) — the number of test cases.
+For each test case, the first line contains a single integer
 n
 (
-4≤n≤5000
-) — the length of permutation
-p
-.
+1≤n≤
+10
+5
+) — the number of colors.
 The second line contains
 n
 integers
-p
+c
+a
 1
-,
-p
+,c
+a
 2
-,…,
-p
+,…,c
+a
 n
 (
-1≤
-p
+1≤c
+a
 i
 ≤n
-) — the permutation
-p
-.
+) — the color of each position of the first tape. It is guaranteed that
+ca
+is a permutation.
+The third line contains
+n
+integers
+c
+b
+1
+,c
+b
+2
+,…,c
+b
+n
+(
+1≤c
+b
+i
+≤n
+) — the color of each position of the second tape. It is guaranteed that
+cb
+is a permutation.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
-5000
+2⋅
+10
+5
 .
 Output
-For each test case, print a single integer — the number of different
-[a,b,c,d]
-tuples.
+For each test case, print a single integer — the highest possible beauty.
 Example
 input
 Copy
 3
 6
-5 3 6 1 4 2
-4
-1 2 3 4
-10
-5 1 6 2 8 3 4 10 9 7
+1 5 4 3 2 6
+5 3 1 4 6 2
+6
+3 5 4 6 2 1
+3 6 4 5 2 1
+1
+1
+1
 output
 Copy
-3
+18
+10
 0
-28
 Note
-In the first test case, there are
-3
-different
-[a,b,c,d]
-tuples.
-p
-1
-=5
-,
-p
-2
-=3
-,
-p
-3
-=6
-,
-p
-4
-=1
-, where
-p
-1
-<
-p
-3
-and
-p
-2
->
-p
-4
-satisfies the inequality, so one of
-[a,b,c,d]
-tuples is
-[1,2,3,4]
+An optimal solution for the first test case is shown in the following figure:
+The beauty is
+|4−3|+|3−5|+|2−4|+|5−2|+|1−6|+|6−1|=18
 .
-Similarly, other two tuples are
-[1,2,3,6]
-,
-[2,3,5,6]
+An optimal solution for the second test case is shown in the following figure:
+The beauty is
+|2−2|+|1−6|+|3−3|+|6−1|+|4−4|+|5−5|=10
 .

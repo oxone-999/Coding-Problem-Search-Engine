@@ -1,130 +1,105 @@
-E. String Multiplication
+F. Asya And Kittens
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Roman and Denis are on the trip to the programming competition. Since the trip was long, they soon got bored, and hence decided to came up with something. Roman invented a pizza's recipe, while Denis invented a string multiplication. According to Denis, the result of multiplication (product) of strings
-s
-of length
-m
-and
-t
-is a string
-t+
-s
+Asya loves animals very much. Recently, she purchased
+n
+kittens, enumerated them from
 1
-+t+
-s
-2
-+…+t+
-s
-m
-+t
-, where
-s
+and
+n
+and then put them into the cage. The cage consists of one row of
+n
+cells, enumerated with integers from
+1
+to
+n
+from left to right. Adjacent cells had a partially transparent partition wall between them, hence there were
+n−1
+partitions originally. Initially, each cell contained exactly one kitten with some number.
+Observing the kittens, Asya noticed, that they are very friendly and often a pair of kittens in neighboring cells wants to play together. So Asya started to remove partitions between neighboring cells. In particular, on the day
 i
-denotes the
+, Asya:
+Noticed, that the kittens
+x
 i
--th symbol of the string
-s
-, and "+" denotes string concatenation. For example, the product of strings "abc" and "de" is a string "deadebdecde", while the product of the strings "ab" and "z" is a string "zazbz". Note, that unlike the numbers multiplication, the product of strings
-s
 and
-t
-is not necessarily equal to product of
-t
+y
+i
+, located in neighboring cells want to play together.
+Removed the partition between these two cells, efficiently creating a single cell, having all kittens from two original cells.
+Since Asya has never putted partitions back, after
+n−1
+days the cage contained a single cell, having all kittens.
+For every day, Asya remembers numbers of kittens
+x
+i
 and
-s
-.
-Roman was jealous of Denis, since he invented such a cool operation, and hence decided to invent something string-related too. Since Roman is beauty-lover, he decided to define the beauty of the string as the length of the longest substring, consisting of only one letter. For example, the beauty of the string "xayyaaabca" is equal to
-3
-, since there is a substring "aaa", while the beauty of the string "qwerqwer" is equal to
-1
-, since all neighboring symbols in it are different.
-In order to entertain Roman, Denis wrote down
+y
+i
+, who wanted to play together, however she doesn't remember how she placed kittens in the cage in the beginning. Please help her and find any possible initial arrangement of the kittens into
 n
-strings
-p
-1
-,
-p
-2
-,
-p
-3
-,…,
-p
-n
-on the paper and asked him to calculate the beauty of the string
-(…(((
-p
-1
-⋅
-p
-2
-)⋅
-p
-3
-)⋅…)⋅
-p
-n
-, where
-s⋅t
-denotes a multiplication of strings
-s
-and
-t
-. Roman hasn't fully realized how Denis's multiplication works, so he asked you for a help. Denis knows, that Roman is very impressionable, he guarantees, that the beauty of the resulting string is at most
-10
-9
-.
+cells.
 Input
 The first line contains a single integer
 n
 (
-2≤n≤100000
-) — the number of strings, wroted by Denis.
-Next
-n
-lines contain non-empty strings
-p
-1
-,
-p
-2
-,…,
-p
-n
-, consisting of lowercase english letters.
-It's guaranteed, that the total length of the strings
-p
+2≤n≤150000
+) — the number of kittens.
+Each of the following
+n−1
+lines contains integers
+x
 i
-is at most
-100000
-, and that's the beauty of the resulting product is at most
-10
-9
-.
+and
+y
+i
+(
+1≤
+x
+i
+,
+y
+i
+≤n
+,
+x
+i
+≠
+y
+i
+) — indices of kittens, which got together due to the border removal on the corresponding day.
+It's guaranteed, that the kittens
+x
+i
+and
+y
+i
+were in the different cells before this day.
 Output
-Print exactly one integer — the beauty of the product of the strings.
-Examples
-input
-Copy
-3
-a
-b
-a
-output
-Copy
-3
-input
-Copy
-2
-bnn
-a
-output
-Copy
+For every cell from
 1
+to
+n
+print a single integer — the index of the kitten from
+1
+to
+n
+, who was originally in it.
+All printed integers must be distinct.
+It's guaranteed, that there is at least one answer possible. In case there are multiple possible answers, print any of them.
+Example
+input
+Copy
+5
+1 4
+2 5
+3 1
+4 5
+output
+Copy
+3 1 4 2 5
 Note
-In the first example, the product of strings is equal to "abaaaba".
-In the second example, the product of strings is equal to "abanana".
+The answer for the example contains one of several possible initial arrangements of the kittens.
+The picture below shows how the cells were united for this initial arrangement. Note, that the kittens who wanted to play together on each day were indeed in adjacent cells.

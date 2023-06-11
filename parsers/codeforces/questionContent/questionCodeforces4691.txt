@@ -1,42 +1,39 @@
-F. Divisibility
-time limit per test1 second
+A. Primal Sport
+time limit per test1.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Imp is really pleased that you helped him. But it you solve the last problem, his gladness would raise even more.
-Let's define for some set of integers as the number of pairs a, b in , such that:
-a is strictly less than b;
-a divides b without a remainder.
-You are to find such a set , which is a subset of {1, 2, ..., n} (the set that contains all positive integers not greater than n), that .
+Alice and Bob begin their day with a quick game. They first choose a starting number X0 ≥ 3 and try to reach one million by the process described below.
+Alice goes first and then they take alternating turns. In the i-th turn, the player whose turn it is selects a prime number smaller than the current number, and announces the smallest multiple of this prime number that is not smaller than the current number.
+Formally, he or she selects a prime p < Xi - 1 and then finds the minimum Xi ≥ Xi - 1 such that p divides Xi. Note that if the selected prime p already divides Xi - 1, then the number does not change.
+Eve has witnessed the state of the game after two turns. Given X2, help her determine what is the smallest possible starting number X0. Note that the players don't necessarily play optimally. You should consider all possible game evolutions.
 Input
-The only line contains two integers n and k .
+The input contains a single integer X2 (4 ≤ X2 ≤ 106). It is guaranteed that the integer X2 is composite, that is, is not prime.
 Output
-If there is no answer, print "No".
-Otherwise, in the first line print "Yes", in the second — an integer m that denotes the size of the set you have found, in the second line print m integers — the elements of the set , in any order.
-If there are multiple answers, print any of them.
+Output a single integer — the minimum possible X0.
 Examples
 input
 Copy
-3 3
+14
 output
 Copy
-No
+6
 input
 Copy
-6 6
+20
 output
 Copy
-Yes
-5
-1 2 4 5 6 
+15
 input
 Copy
-8 3
+8192
 output
 Copy
-Yes
-4
-2 4 5 8
+8191
 Note
-In the second sample, the valid pairs in the output set are (1, 2), (1, 4), (1, 5), (1, 6), (2, 4), (2, 6). Thus, .
-In the third example, the valid pairs in the output set are (2, 4), (4, 8), (2, 8). Thus, .
+In the first test, the smallest possible starting number is X0 = 6. One possible course of the game is as follows:
+Alice picks prime 5 and announces X1 = 10
+Bob picks prime 7 and announces X2 = 14.
+In the second case, let X0 = 15.
+Alice picks prime 2 and announces X1 = 16
+Bob picks prime 5 and announces X2 = 20.

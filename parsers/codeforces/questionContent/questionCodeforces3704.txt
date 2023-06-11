@@ -1,139 +1,147 @@
-C. Polycarp Restores Permutation
+D. Colored Boots
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-An array of integers
-p
-1
-,
-p
-2
-,…,
-p
+There are
 n
-is called a permutation if it contains each number from
-1
-to
+left boots and
 n
-exactly once. For example, the following arrays are permutations:
-[3,1,2]
-,
-[1]
-,
-[1,2,3,4,5]
+right boots. Each boot has a color which is denoted as a lowercase Latin letter or a question mark ('?'). Thus, you are given two strings
+l
 and
-[4,3,1,2]
-. The following arrays are not permutations:
-[2]
-,
-[1,1]
-,
-[2,3,4]
-.
-Polycarp invented a really cool permutation
-p
-1
-,
-p
-2
-,…,
-p
+r
+, both of length
 n
-of length
-n
-. It is very disappointing, but he forgot this permutation. He only remembers the array
-q
-1
-,
-q
-2
-,…,
-q
-n−1
-of length
-n−1
-, where
-q
+. The character
+l
 i
-=
-p
-i+1
-−
-p
+stands for the color of the
 i
-.
-Given
-n
-and
-q=
-q
-1
-,
-q
-2
-,…,
-q
-n−1
-, help Polycarp restore the invented permutation.
+-th left boot and the character
+r
+i
+stands for the color of the
+i
+-th right boot.
+A lowercase Latin letter denotes a specific color, but the question mark ('?') denotes an indefinite color. Two specific colors are compatible if they are exactly the same. An indefinite color is compatible with any (specific or indefinite) color.
+For example, the following pairs of colors are compatible: ('f', 'f'), ('?', 'z'), ('a', '?') and ('?', '?'). The following pairs of colors are not compatible: ('f', 'g') and ('a', 'z').
+Compute the maximum number of pairs of boots such that there is one left and one right boot in a pair and their colors are compatible.
+Print the maximum number of such pairs and the pairs themselves. A boot can be part of at most one pair.
 Input
-The first line contains the integer
+The first line contains
 n
 (
-2≤n≤2⋅
-10
-5
-) — the length of the permutation to restore. The second line contains
-n−1
-integers
-q
-1
-,
-q
-2
-,…,
-q
-n−1
-(
-−n<
-q
+1≤n≤150000
+), denoting the number of boots for each leg (i.e. the number of left boots and the number of right boots).
+The second line contains the string
+l
+of length
+n
+. It contains only lowercase Latin letters or question marks. The
 i
-<n
-).
+-th character stands for the color of the
+i
+-th left boot.
+The third line contains the string
+r
+of length
+n
+. It contains only lowercase Latin letters or question marks. The
+i
+-th character stands for the color of the
+i
+-th right boot.
 Output
-Print the integer -1 if there is no such permutation of length
-n
-which corresponds to the given array
-q
-. Otherwise, if it exists, print
-p
-1
+Print
+k
+— the maximum number of compatible left-right pairs of boots, i.e. pairs consisting of one left and one right boot which have compatible colors.
+The following
+k
+lines should contain pairs
+a
+j
 ,
-p
-2
-,…,
-p
-n
-. Print any such permutation if there are many of them.
+b
+j
+(
+1≤
+a
+j
+,
+b
+j
+≤n
+). The
+j
+-th of these lines should contain the index
+a
+j
+of the left boot in the
+j
+-th pair and index
+b
+j
+of the right boot in the
+j
+-th pair. All the numbers
+a
+j
+should be distinct (unique), all the numbers
+b
+j
+should be distinct (unique).
+If there are many optimal answers, print any of them.
 Examples
 input
 Copy
-3
--2 1
+10
+codeforces
+dodivthree
 output
-Copy
-3 1 2 
-input
 Copy
 5
-1 1 1 1
-output
-Copy
-1 2 3 4 5 
+7 8
+4 9
+2 2
+9 10
+3 1
 input
 Copy
-4
--1 2 2
+7
+abaca?b
+zabbbcc
 output
 Copy
--1
+5
+6 5
+2 3
+4 6
+7 4
+1 2
+input
+Copy
+9
+bambarbia
+hellocode
+output
+Copy
+0
+input
+Copy
+10
+code??????
+??????test
+output
+Copy
+10
+6 2
+1 6
+7 3
+3 5
+4 8
+9 7
+5 1
+2 4
+10 9
+8 10

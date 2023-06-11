@@ -1,139 +1,163 @@
-G. Sum of Prefix Sums
-time limit per test6 seconds
-memory limit per test512 megabytes
+C. Air Conditioner
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-We define the sum of prefix sums of an array
-[
-s
-1
-,
-s
-2
-,…,
-s
-k
-]
-as
-s
-1
-+(
-s
-1
-+
-s
-2
-)+(
-s
-1
-+
-s
-2
-+
-s
-3
-)+⋯+(
-s
-1
-+
-s
-2
-+⋯+
-s
-k
-)
-.
-You are given a tree consisting of
-n
-vertices. Each vertex
+Gildong owns a bulgogi restaurant. The restaurant has a lot of customers, so many of them like to make a reservation before visiting it.
+Gildong tries so hard to satisfy the customers that he even memorized all customers' preferred temperature ranges! Looking through the reservation list, he wants to satisfy all customers by controlling the temperature of the restaurant.
+The restaurant has an air conditioner that has 3 states: off, heating, and cooling. When it's off, the restaurant's temperature remains the same. When it's heating, the temperature increases by 1 in one minute. Lastly, when it's cooling, the temperature decreases by 1 in one minute. Gildong can change the state as many times as he wants, at any integer minutes. The air conditioner is off initially.
+Each customer is characterized by three values:
+t
 i
-has an integer
-a
+— the time (in minutes) when the
 i
-written on it. We define the value of the simple path from vertex
-u
-to vertex
-v
-as follows: consider all vertices appearing on the path from
-u
-to
-v
-, write down all the numbers written on these vertices in the order they appear on the path, and compute the sum of prefix sums of the resulting sequence.
-Your task is to calculate the maximum value over all paths in the tree.
+-th customer visits the restaurant,
+l
+i
+— the lower bound of their preferred temperature range, and
+h
+i
+— the upper bound of their preferred temperature range.
+A customer is satisfied if the temperature is within the preferred range at the instant they visit the restaurant. Formally, the
+i
+-th customer is satisfied if and only if the temperature is between
+l
+i
+and
+h
+i
+(inclusive) in the
+t
+i
+-th minute.
+Given the initial temperature, the list of reserved customers' visit times and their preferred temperature ranges, you're going to help him find if it's possible to satisfy all customers.
 Input
-The first line contains one integer
-n
+Each test contains one or more test cases. The first line contains the number of test cases
+q
 (
-2≤n≤150000
-) — the number of vertices in the tree.
-Then
-n−1
-lines follow, representing the edges of the tree. Each line contains two integers
-u
-i
+1≤q≤500
+). Description of the test cases follows.
+The first line of each test case contains two integers
+n
 and
-v
+m
+(
+1≤n≤100
+,
+−
+10
+9
+≤m≤
+10
+9
+), where
+n
+is the number of reserved customers and
+m
+is the initial temperature of the restaurant.
+Next,
+n
+lines follow. The
+i
+-th line of them contains three integers
+t
+i
+,
+l
+i
+, and
+h
 i
 (
 1≤
-u
-i
-,
-v
-i
-≤n
-,
-u
-i
-≠
-v
-i
-), denoting an edge between vertices
-u
-i
-and
-v
-i
-. It is guaranteed that these edges form a tree.
-The last line contains
-n
-integers
-a
-1
-,
-a
-2
-, ...,
-a
-n
-(
-1≤
-a
+t
 i
 ≤
 10
-6
-).
+9
+,
+−
+10
+9
+≤
+l
+i
+≤
+h
+i
+≤
+10
+9
+), where
+t
+i
+is the time when the
+i
+-th customer visits,
+l
+i
+is the lower bound of their preferred temperature range, and
+h
+i
+is the upper bound of their preferred temperature range. The preferred temperature ranges are inclusive.
+The customers are given in non-decreasing order of their visit time, and the current time is
+0
+.
 Output
-Print one integer — the maximum value over all paths in the tree.
+For each test case, print "YES" if it is possible to satisfy all customers. Otherwise, print "NO".
+You can print each letter in any case (upper or lower).
 Example
 input
 Copy
 4
-4 2
-3 2
-4 1
-1 3 3 7
+3 0
+5 1 2
+7 3 5
+10 -1 0
+2 12
+5 7 10
+10 16 20
+3 -100
+100 0 0
+100 -50 50
+200 100 100
+1 100
+99 -100 0
 output
 Copy
-36
+YES
+NO
+YES
+NO
 Note
-The best path in the first example is from vertex
-3
-to vertex
+In the first case, Gildong can control the air conditioner to satisfy all customers in the following way:
+At
+0
+-th minute, change the state to heating (the temperature is 0).
+At
+2
+-nd minute, change the state to off (the temperature is 2).
+At
+5
+-th minute, change the state to heating (the temperature is 2, the
 1
-. It gives the sequence
-[3,3,7,1]
-, and the sum of prefix sums is
-36
-.
+-st customer is satisfied).
+At
+6
+-th minute, change the state to off (the temperature is 3).
+At
+7
+-th minute, change the state to cooling (the temperature is 3, the
+2
+-nd customer is satisfied).
+At
+10
+-th minute, the temperature will be 0, which satisfies the last customer.
+In the third case, Gildong can change the state to heating at
+0
+-th minute and leave it be. Then all customers will be satisfied. Note that the
+1
+-st customer's visit time equals the
+2
+-nd customer's visit time.
+In the second and the fourth case, Gildong has to make at least one customer unsatisfied.

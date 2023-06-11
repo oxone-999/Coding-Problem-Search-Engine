@@ -1,156 +1,49 @@
-In The Green Zone
+Defend the Recipe
 Problem
-There are
-N cans lying on the X-axis at points
-X
-i
-(1≤i≤N). Each of the N cans is associated with two values
-A
-i
-and
-B
-i
-. Also, the segment between the points
-L and
-R
-(L≤R) is considered to be green zone including the points
-L and
-R. There are two types of operations -
-1. Select a can
-i out of the
-N cans and move it one unit in either direction along the axis, i.e. if before the operation can is at
-X
-i
-then after the operation, it moves to either
-X
-i
-+1 or
-X
-i
-−1. This costs
-B
-i
-coins and it can be performed any number of times for each of the cans.
-2. Choose any integer
-k and shift the green zone to the segment between
-L
-′
-and
-R
-′
-, where
-L
-′
-and
-R
-′
-are the mirror images of points
-R and
-L with respect to line
-X=k respectively. This operation should be performed exactly once.
-After all the operations, you get number of coins equal to sum of values of
-A
-i
-of the cans which lie in the final green zone. We define the net coins as:
-Number of coins you get - Number of coins spent
-Find the maximum possible net coins you can earn.
-Input Format
-First line will contain
-T, number of testcases. Then the testcases follow.
-Each of the testcases consists of four lines.
-First lines consists of three integers
-N,
-L and
-R.
-Next line consist of
-N space separated integers
-X
-1
-,X
-2
-,...,X
-N
-.
-Next line consist of
-N space separated integers
-A
-1
-,A
-2
-,...,A
-N
-.
-Next line consist of
-N space separated integers
-B
-1
-,B
-2
-,...,B
-N
-.
-Output Format
-For each testcase, output in a single integer, the maximum number of net coins you can earn.
-Constraints
-1≤T≤1000
-1≤N≤3⋅10
-5
-1≤A
-i
-,B
-i
-≤10
-9
-−10
-9
-≤L≤R≤10
-9
-−10
-9
-≤X
-i
-≤10
-9
-Sum of
-N over all test cases does not exceed
-3⋅10
-5
-Sample 1:
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef holds all his secret recipes inside his house. For this reason, Chef's house is closed off by walls, thus it is very secure. You can think of the walls as a simple polygon in the 2D plane, and you can consider the thickness of the walls to be negligible, i.e., 0.
+Unfortunately, bad guys plan to steal his recipes. To do so, they plan to send a single agent to parachute in a uniformly-chosen random point in the region [-107,107] × [-107,107]. (This point need not be a lattice point.) Once the agent parachutes down that point, he then deploys in his exact location a special weapon called the pulverizer, which is designed to destroy walls. The pulverizer works by firing a laser that rotates 360 degrees clockwise, initially pointing north. This laser beam completely destroys the part of the wall it hits.
+Once the walls are destroyed, the rest of the bad guys can now attack the house more easily.
+Unfortunately, it's not guaranteed that the pulverizer will be able to destroy every bit of the wall. This is because the laser can only hit (and destroy) the first wall it hits, so if there's another part of the wall behind it, that part cannot be destroyed.
+We will call the plan successful if all parts of the wall are destroyed. The following image illustrates it more clearly:
+In this example, only the first image demonstrates a successful plan.
+As head of security of Chef's house, can you determine the probability of a successful plan?
 Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains a single integer N. The next N lines describe the wall. More precisely, the ith line contains two integers xi and yi denoting that (xi, yi) is the ith vertex of the polygon. The points are given in clockwise order around the boundary.
 Output
+For each test case, output a single real number denoting the probability of a successful plan by the bad guys. Your answer is considered correct if it is within an absolute error of 10-6.
+Constraints
+|xi|, |yi| ≤ 107
+The points are given in clockwise order.
+The polygon is simple and has positive area, though some angles may be 180 degrees.
+Subtasks
+Subtask #1: (30 points)
+1 ≤ T ≤ 40000
+3 ≤ N ≤ 12
+The sum of the Ns in a single test file is ≤ 100000
+Subtask #2: (70 points)
+1 ≤ T ≤ 200
+3 ≤ N ≤ 100000
+The sum of the Ns in a single test file is ≤ 520000
+Example
+Input:
 2
-1 7 10
-2
+5
+10000000 -10000000
+-10000000 -10000000
+-10000000 10000000
+10000000 10000000
+0 0
 6
-1
-3 7 10
-2 8 1
-6 20 1
-1 3 2
-6
-22
-Explanation:
-Test case
-1 : Lets choose the axis at
-X=5 and Shift the green zone in the range
-[0,3], such that can lies in green zone. So, there is no need for operation of type
-1 and total number of coins earned is
-A
-1
-, i.e.
-6.
-Test case
-2 : Choose the axis at
-X=8, so the new green zone lies in the region
-[6,9]. Move the can
-1 to
-X=6. Number of coins received is equal to
-A
-1
-+A
-2
-and number of coins spent is
-4⋅B
-1
-. So, the net coins earned is
-20+6−4=22. This is also the maximum possible.
+700000 400000
+300000 0
+700000 -400000
+-700000 -400000
+-300000 0
+-700000 400000
+Output:
+0.25
+0.00045
+Explanation
+The second example is depicted by the image above.

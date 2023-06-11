@@ -1,199 +1,154 @@
-B. Count Subrectangles
-time limit per test1 second
-memory limit per test512 megabytes
+C. Frog Jumps
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of length
+There is a frog staying to the left of the string
+s=
+s
+1
+s
+2
+…
+s
 n
-and array
-b
-of length
-m
-both consisting of only integers
+consisting of
+n
+characters (to be more precise, the frog initially stays at the cell
 0
-and
-1
-. Consider a matrix
-c
-of size
-n×m
-formed by following rule:
-c
-i,j
-=
-a
+). Each character of
+s
+is either 'L' or 'R'. It means that if the frog is staying at the
 i
-⋅
-b
-j
-(i.e.
-a
+-th cell and the
 i
-multiplied by
-b
-j
-). It's easy to see that
-c
-consists of only zeroes and ones too.
-How many subrectangles of size (area)
-k
-consisting only of ones are there in
-c
-?
-A subrectangle is an intersection of a consecutive (subsequent) segment of rows and a consecutive (subsequent) segment of columns. I.e. consider four integers
-x
-1
-,
-x
-2
-,
-y
-1
-,
-y
-2
-(
-1≤
-x
-1
-≤
-x
-2
-≤n
-,
-1≤
-y
-1
-≤
-y
-2
-≤m
-) a subrectangle
-c[
-x
-1
-…
-x
-2
-][
-y
-1
-…
-y
-2
-]
-is an intersection of the rows
-x
-1
-,
-x
-1
-+1,
-x
-1
-+2,…,
-x
-2
-and the columns
-y
-1
-,
-y
-1
-+1,
-y
-1
-+2,…,
-y
-2
+-th character is 'L', the frog can jump only to the left. If the frog is staying at the
+i
+-th cell and the
+i
+-th character is 'R', the frog can jump only to the right. The frog can jump only to the right from the cell
+0
 .
-The size (area) of a subrectangle is the total number of cells in it.
+Note that the frog can jump into the same cell twice and can perform as many jumps as it needs.
+The frog wants to reach the
+n+1
+-th cell. The frog chooses some positive integer value
+d
+before the first jump (and cannot change it later) and jumps by no more than
+d
+cells at once. I.e. if the
+i
+-th character is 'L' then the frog can jump to any cell in a range
+[max(0,i−d);i−1]
+, and if the
+i
+-th character is 'R' then the frog can jump to any cell in a range
+[i+1;min(n+1;i+d)]
+.
+The frog doesn't want to jump far, so your task is to find the minimum possible value of
+d
+such that the frog can reach the cell
+n+1
+from the cell
+0
+if it can jump by no more than
+d
+cells at once. It is guaranteed that it is always possible to reach
+n+1
+from
+0
+.
+You have to answer
+t
+independent test cases.
 Input
-The first line contains three integers
-n
-,
-m
-and
-k
+The first line of the input contains one integer
+t
 (
-1≤n,m≤40000,1≤k≤n⋅m
-), length of array
-a
-, length of array
-b
-and required size of subrectangles.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
+1≤t≤
+10
+4
+) — the number of test cases.
+The next
+t
+lines describe test cases. The
 i
-≤1
-), elements of
-a
-.
-The third line contains
-m
-integers
-b
+-th test case is described as a string
+s
+consisting of at least
 1
-,
-b
-2
-,…,
-b
-m
+and at most
+2⋅
+10
+5
+characters 'L' and 'R'.
+It is guaranteed that the sum of lengths of strings over all test cases does not exceed
+2⋅
+10
+5
 (
-0≤
-b
-i
-≤1
-), elements of
-b
-.
+∑|s|≤2⋅
+10
+5
+).
 Output
-Output single integer — the number of subrectangles of
-c
-with size (area)
-k
-consisting only of ones.
-Examples
+For each test case, print the answer — the minimum possible value of
+d
+such that the frog can reach the cell
+n+1
+from the cell
+0
+if it jumps by no more than
+d
+at once.
+Example
 input
 Copy
-3 3 2
-1 0 1
-1 1 1
+6
+LRLRRLL
+L
+LLR
+RRRR
+LLLLLL
+R
 output
 Copy
-4
-input
-Copy
-3 5 4
-1 1 1
-1 1 1 1 1
-output
-Copy
-14
-Note
-In first example matrix
-c
-is:
-There are
-4
-subrectangles of size
+3
 2
-consisting of only ones in it:
-In second example matrix
-c
-is:
+3
+1
+7
+1
+Note
+The picture describing the first test case of the example and one of the possible answers:
+In the second test case of the example, the frog can only jump directly from
+0
+to
+n+1
+.
+In the third test case of the example, the frog can choose
+d=3
+, jump to the cell
+3
+from the cell
+0
+and then to the cell
+4
+from the cell
+3
+.
+In the fourth test case of the example, the frog can choose
+d=1
+and jump
+5
+times to the right.
+In the fifth test case of the example, the frog can only jump directly from
+0
+to
+n+1
+.
+In the sixth test case of the example, the frog can choose
+d=1
+and jump
+2
+times to the right.

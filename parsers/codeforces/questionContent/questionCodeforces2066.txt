@@ -1,131 +1,95 @@
-E2. Close Tuples (hard version)
-time limit per test4 seconds
+B. Find The Array
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the hard version of this problem. The only difference between the easy and hard versions is the constraints on
-k
-and
-m
-. In this version of the problem, you need to output the answer by modulo
+You are given an array
+[
+a
+1
+,
+a
+2
+,…,
+a
+n
+]
+such that
+1≤
+a
+i
+≤
 10
 9
-+7
-.
-You are given a sequence
+. Let
+S
+be the sum of all elements of the array
 a
-of length
+.
+Let's call an array
+b
+of
 n
-consisting of integers from
+integers beautiful if:
+1≤
+b
+i
+≤
+10
+9
+for each
+i
+from
 1
 to
 n
-. The sequence may contain duplicates (i.e. some elements can be equal).
-Find the number of tuples of
-m
-elements such that the maximum number in the tuple differs from the minimum by no more than
-k
-. Formally, you need to find the number of tuples of
-m
-indices
-i
-1
-<
-i
-2
-<…<
-i
-m
-, such that
-max(
-a
-i
-1
-,
-a
-i
-2
-,…,
-a
-i
-m
-)−min(
-a
-i
-1
-,
-a
-i
-2
-,…,
-a
-i
-m
-)≤k.
+;
+for every pair of adjacent integers from the array
 (
+b
+i
+,
+b
+i+1
 )
-min
-(
-)
-k
-For example, if
-n=4
-,
-m=3
-,
-k=2
-,
-a=[1,2,4,3]
-, then there are two such triples (
-i=1,j=2,z=4
-and
-i=2,j=3,z=4
-). If
-n=4
-,
-m=2
-,
-k=1
-,
-a=[1,1,1,1]
-, then all six possible pairs are suitable.
-As the result can be very large, you should print the value modulo
-10
-9
-+7
-(the remainder when divided by
-10
-9
-+7
-).
-Input
-The first line contains a single integer
-t
-(
-1≤t≤2⋅
-10
-5
-) — the number of test cases. Then
-t
-test cases follow.
-The first line of each test case contains three integers
+, either
+b
+i
+divides
+b
+i+1
+, or
+b
+i+1
+divides
+b
+i
+(or both);
+2
+∑
+i=1
 n
-,
-m
-,
-k
-(
-1≤n≤2⋅
-10
-5
-,
-1≤m≤100
-,
-1≤k≤n
-) — the length of the sequence
+|
 a
-, number of elements in the tuples and the maximum difference of elements in the tuple.
-The next line contains
+i
+−
+b
+i
+|≤S
+.
+Your task is to find any beautiful array. It can be shown that at least one beautiful array always exists.
+Input
+The first line contains one integer
+t
+(
+1≤t≤1000
+) — the number of test cases.
+Each test case consists of two lines. The first line contains one integer
+n
+(
+2≤n≤50
+).
+The second line contains
 n
 integers
 a
@@ -140,44 +104,43 @@ n
 1≤
 a
 i
-≤n
-) — the sequence
-a
-.
-It is guaranteed that the sum of
-n
-for all test cases does not exceed
-2⋅
-10
-5
-.
-Output
-Output
-t
-answers to the given test cases. Each answer is the required number of tuples of
-m
-elements modulo
+≤
 10
 9
-+7
-, such that the maximum value in the tuple differs from the minimum by no more than
-k
-.
+).
+Output
+For each test case, print the beautiful array
+b
+1
+,
+b
+2
+,…,
+b
+n
+(
+1≤
+b
+i
+≤
+10
+9
+) on a separate line. It can be shown that at least one beautiful array exists under these circumstances. If there are multiple answers, print any of them.
 Example
 input
 Copy
 4
-4 3 2
-1 2 4 3
-4 2 1
-1 1 1 1
-1 1 1
-1
-10 4 3
-5 6 1 3 2 9 8 1 2 4
+5
+1 2 3 4 5
+2
+4 6
+2
+1 1000000000
+6
+3 4 8 1 2 3
 output
 Copy
-2
-6
-1
-20
+3 3 3 3 3
+3 6
+1 1000000000
+4 4 8 1 3 3

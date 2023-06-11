@@ -1,236 +1,173 @@
-F. Reverse and Swap
-time limit per test3 seconds
+C. Star Trek
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of length
-2
-n
-. You should process
-q
-queries on it. Each query has one of the following
-4
-types:
-Replace(x,k)
- — change
-a
-x
+The United Federation of Planets is an alliance of
+N
+planets, they are indexed from
+1
 to
-k
-;
-Reverse(k)
- — reverse each subarray
-[(i−1)⋅
-2
-k
-+1,i⋅
-2
-k
-]
-for all
+N
+. Some planets are connected by space tunnels. In a space tunnel, a starship can fly both ways really fast. There are exactly
+N−1
+space tunnels, and we can travel from any planet to any other planet in the Federation using these tunnels.
+It's well known that there are
+D
+additional parallel universes. These are exact copies of our universe, they have the same planets and space tunnels. They are indexed from
+1
+to
+D
+(our universe has index
+0
+). We denote the planet
+x
+in universe
+i
+by
+P
+i
+x
+. We can travel from one universe to another using dimension portals. For every
 i
 (
-i≥1
-);
-Swap(k)
- — swap subarrays
-[(2i−2)⋅
-2
-k
-+1,(2i−1)⋅
-2
-k
-]
+0≤i≤D−1
+), we will place exactly one portal that allows us to fly from
+P
+i
+A
+i
+to
+P
+i+1
+B
+i
+, for some planet indices
+A
+i
 and
-[(2i−1)⋅
-2
-k
-+1,2i⋅
-2
-k
-]
-for all
+B
+i
+(i.e.
+1≤
+A
+i
+,
+B
+i
+≤N
+).
+Once all the portals are placed, Starship Batthyány will embark on its maiden voyage. It is currently orbiting around
+P
+0
+1
+. Captain Ágnes and Lieutenant Gábor have decided to play the following game: they choose alternately a destination (a planet) to fly to. This planet can be in the same universe, if a space tunnel goes there, or it can be in another universe, if a portal goes there. Their aim is to visit places where no one has gone before. That's why, once they have visited a planet
+P
+i
+x
+, they never go back there (but they can visit the planet
+x
+in another universe). Captain Ágnes chooses the first destination (then Gábor, then Ágnes etc.). If somebody can't choose a planet where they have not been before in his/her turn, he/she loses.
+Captain Ágnes and Lieutenant Gábor are both very clever: they know the locations of all tunnels and portals, and they both play optimally. For how many different placements of portals does Captain Ágnes win the game? Two placements are different if there is an index
 i
 (
-i≥1
-);
-Sum(l,r)
- — print the sum of the elements of subarray
-[l,r]
+0≤i≤D−1
+), where the
+i
+th portal connects different pairs of planets in the two placements (i.e
+A
+i
+or
+B
+i
+differs).
+This number can be very big, so we are interested in it modulo
+10
+9
++7
 .
-Write a program that can quickly process given queries.
 Input
-The first line contains two integers
-n
-,
-q
+The first line contains two space-separated integers,
+N
 (
-0≤n≤18
-;
-1≤q≤
+1≤N≤
 10
 5
-) — the length of array
-a
-and the number of queries.
-The second line contains
-2
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-2
-n
+) – the number of planets and
+D
 (
-0≤
-a
-i
-≤
+1≤D≤
 10
-9
+18
+) – the number of additional parallel universes. Each of the next
+N−1
+lines contains two space-separated integers
+u
+and
+v
+(
+1≤u,v≤N
+), denoting that
+P
+i
+u
+and
+P
+i
+v
+are connected by a space tunnel for all
+i
+(
+0≤i≤D
 ).
-Next
-q
-lines contains queries — one per line. Each query has one of
-4
-types:
-"
-1
-x
-k
-" (
-1≤x≤
-2
-n
-;
-0≤k≤
+Output
+You should print a single integer, the number of possible placements of portals where Captain Ágnes wins modulo
 10
 9
-) —
-Replace(x,k)
-;
-"
++7
+.
+Scoring
+Subtask
+1
 2
-k
-" (
-0≤k≤n
-) —
-Reverse(k)
-;
-"
 3
-k
-" (
-0≤k<n
-) —
-Swap(k)
-;
-"
 4
-l
-r
-" (
-1≤l≤r≤
-2
-n
-) —
-Sum(l,r)
-.
-It is guaranteed that there is at least one
-Sum
-query.
-Output
-Print the answer for each
-Sum
-query.
-Examples
+5
+6
+7
+8
+Points
+0
+7
+8
+15
+15
+20
+20
+15
+Constraints
+samples
+N=2
+N≤100andD=1
+N≤1000andD=1
+D=1
+N≤1000andD≤
+10
+5
+D≤
+10
+5
+no additional constraints
+Example
 input
 Copy
-2 3
-7 4 9 9
-1 2 8
 3 1
-4 2 4
-output
-Copy
-24
-input
-Copy
-3 8
-7 0 8 8 7 1 5 2
-4 3 7
-2 1
-3 2
-4 1 6
+1 2
 2 3
-1 5 16
-4 8 8
-3 0
 output
 Copy
-29
-22
-1
+4
 Note
-In the first sample, initially, the array
-a
-is equal to
-{7,4,9,9}
-.
-After processing the first query. the array
-a
-becomes
-{7,8,9,9}
-.
-After processing the second query, the array
-a
-i
-becomes
-{9,9,7,8}
-Therefore, the answer to the third query is
-9+7+8=24
-.
-In the second sample, initially, the array
-a
-is equal to
-{7,0,8,8,7,1,5,2}
-. What happens next is:
-Sum(3,7)
-→
-8+8+7+1+5=29
-;
-Reverse(1)
-→
-{0,7,8,8,1,7,2,5}
-;
-Swap(2)
-→
-{1,7,2,5,0,7,8,8}
-;
-Sum(1,6)
-→
-1+7+2+5+0+7=22
-;
-Reverse(3)
-→
-{8,8,7,0,5,2,7,1}
-;
-Replace(5,16)
-→
-{8,8,7,0,16,2,7,1}
-;
-Sum(8,8)
-→
-1
-;
-Swap(0)
-→
-{8,8,0,7,2,16,1,7}
-.
+There is only 1 portal and
+3⋅3=9
+different placements. The following 4 placements are when the Captain wins.

@@ -1,180 +1,152 @@
-E. Graph Cost
-time limit per test2 seconds
+F. Function Sum
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an initially empty undirected graph with
-n
-nodes, numbered from
+Suppose you have an integer array
+a
 1
-to
+,
+a
+2
+,…,
+a
 n
-(i. e.
-n
-nodes and
-0
-edges). You want to add
-m
-edges to the graph, so the graph won't contain any self-loop or multiple edges.
-If an edge connecting two nodes
-u
-and
-v
-is added, its weight must be equal to the greatest common divisor of
-u
-and
-v
-, i. e.
-gcd(u,v)
 .
-In order to add edges to the graph, you can repeat the following process any number of times (possibly zero):
-choose an integer
-k≥1
-;
-add exactly
-k
-edges to the graph, each having a weight equal to
-k+1
-. Adding these
-k
-edges costs
-k+1
-in total.
-Note that you can't create self-loops or multiple edges. Also, if you can't add
-k
-edges of weight
-k+1
-, you can't choose such
-k
+Let
+lsl(i)
+be the number of indices
+j
+(
+1≤j<i
+) such that
+a
+j
+<
+a
+i
 .
-For example, if you can add
-5
-more edges to the graph of weight
-6
-, you may add them, and it will cost
-6
-for the whole pack of
-5
-edges. But if you can only add
-4
-edges of weight
-6
-to the graph, you can't perform this operation for
-k=5
+Analogically, let
+grr(i)
+be the number of indices
+j
+(
+i<j≤n
+) such that
+a
+j
+>
+a
+i
+.
+Let's name position
+i
+good in the array
+a
+if
+lsl(i)<grr(i)
+.
+Finally, let's define a function
+f
+on array
+a
+f(a)
+as the sum of all
+a
+i
+such that
+i
+is good in
+a
 .
 Given two integers
 n
 and
-m
-, find the minimum total cost to form a graph of
+k
+, find the sum of
+f(a)
+over all arrays
+a
+of size
 n
-vertices and exactly
-m
-edges using the operation above. If such a graph can't be constructed, output
-−1
+such that
+1≤
+a
+i
+≤k
+for all
+1≤i≤n
+modulo
+998244353
 .
-Note that the final graph may consist of several connected components.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤
-10
-4
-). Description of the test cases follows.
-The first line of each test case contains two integers
+The first and only line contains two integers
 n
 and
-m
+k
 (
-2≤n≤
-10
-6
+1≤n≤50
 ;
-1≤m≤
-n(n−1)
-2
+2≤k<998244353
 ).
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-6
-.
 Output
-For each test case, print the minimum cost to build the graph, or
-−1
-if you can't build such a graph.
-Example
+Output a single integer — the sum of
+f
+over all arrays
+a
+of size
+n
+modulo
+998244353
+.
+Examples
 input
 Copy
-4
-4 1
-6 10
-9 4
-10 11
+3 3
 output
 Copy
-2
--1
-7
-21
+28
+input
+Copy
+5 6
+output
+Copy
+34475
+input
+Copy
+12 30
+output
+Copy
+920711694
 Note
-In the first test case, we can add an edge between the vertices
-2
-and
-4
-with
-gcd=2
-. This is the only possible way to add
-1
-edge that will cost
-2
-.
-In the second test case, there is no way to add
-10
-edges, so the answer is
-−1
-.
-In the third test case, we can add the following edges:
-k=1
-: edge of weight
-2
-between vertices
-2
-and
-4
-(
-gcd(2,4)=2
-). Cost:
-2
-;
-k=1
-: edge of weight
-2
-between vertices
-4
-and
-6
-(
-gcd(4,6)=2
-). Cost:
-2
-;
-k=2
-: edges of weight
-3
-:
-(3,6)
-and
-(3,9)
-(
-gcd(3,6)=gcd(3,9)=3
-). Cost:
-3
-.
-As a result, we added
-1+1+2=4
-edges with total cost
-2+2+3=7
-, which is the minimal possible cost.
+In the first test case:
+f([1,1,1])=0
+f([2,2,3])=2+2=4
+f([1,1,2])=1+1=2
+f([2,3,1])=2
+f([1,1,3])=1+1=2
+f([2,3,2])=2
+f([1,2,1])=1
+f([2,3,3])=2
+f([1,2,2])=1
+f([3,1,1])=0
+f([1,2,3])=1
+f([3,1,2])=1
+f([1,3,1])=1
+f([3,1,3])=1
+f([1,3,2])=1
+f([3,2,1])=0
+f([1,3,3])=1
+f([3,2,2])=0
+f([2,1,1])=0
+f([3,2,3])=2
+f([2,1,2])=1
+f([3,3,1])=0
+f([2,1,3])=2+1=3
+f([3,3,2])=0
+f([2,2,1])=0
+f([3,3,3])=0
+f([2,2,2])=0
+Adding up all of these values, we get
+28
+as the answer.

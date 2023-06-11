@@ -1,16 +1,92 @@
-D. X-Sum
-time limit per test2 seconds
+F. Longest Strike
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Timur's grandfather gifted him a chessboard to practice his chess skills. This chessboard is a grid
+Given an array
 a
-with
+of length
 n
-rows and
-m
-columns with each cell having a non-negative integer written on it.
-Timur's challenge is to place a bishop on the board such that the sum of all cells attacked by the bishop is maximal. The bishop attacks in all directions diagonally, and there is no limit to the distance which the bishop can attack. Note that the cell on which the bishop is placed is also considered attacked. Help him find the maximal sum he can get.
+and an integer
+k
+, you are tasked to find any two numbers
+l
+and
+r
+(
+l≤r
+) such that:
+For each
+x
+(l≤x≤r)
+,
+x
+appears in
+a
+at least
+k
+times (i.e.
+k
+or more array elements are equal to
+x
+).
+The value
+r−l
+is maximized.
+If no numbers satisfy the conditions, output -1.
+For example, if
+a=[11,11,12,13,13,14,14]
+and
+k=2
+, then:
+for
+l=12
+,
+r=14
+the first condition fails because
+12
+does not appear at least
+k=2
+times.
+for
+l=13
+,
+r=14
+the first condition holds, because
+13
+occurs at least
+k=2
+times in
+a
+and
+14
+occurs at least
+k=2
+times in
+a
+.
+for
+l=11
+,
+r=11
+the first condition holds, because
+11
+occurs at least
+k=2
+times in
+a
+.
+A pair of
+l
+and
+r
+for which the first condition holds and
+r−l
+is maximal is
+l=13
+,
+r=14
+.
 Input
 The first line of the input contains a single integer
 t
@@ -20,69 +96,61 @@ t
 The first line of each test case contains the integers
 n
 and
-m
+k
 (
-1≤n≤200
+1≤n≤2⋅
+10
+5
 ,
-1≤m≤200
-).
-The following
+1≤k≤n
+) — the length of the array
+a
+and the minimum amount of times each number in the range
+[l,r]
+should appear respectively.
+Then a single line follows, containing
 n
-lines contain
-m
-integers each, the
-j
--th element of the
-i
--th line
+integers describing the array
 a
-ij
-is the number written in the
-j
--th cell of the
-i
--th row
-(0≤
+(
+1≤
 a
-ij
+i
 ≤
 10
-6
-)
+9
+).
 It is guaranteed that the sum of
-n⋅m
+n
 over all test cases does not exceed
-4⋅
+2⋅
 10
-4
+5
 .
 Output
-For each test case output a single integer, the maximum sum over all possible placements of the bishop.
+For each test case output
+2
+numbers,
+l
+and
+r
+that satisfy the conditions, or "-1" if no numbers satisfy the conditions.
+If multiple answers exist, you can output any.
 Example
 input
 Copy
 4
-4 4
-1 2 2 1
-2 4 2 4
-2 2 3 1
-2 4 2 4
-2 1
-1
-0
-3 3
-1 1 1
-1 1 1
-1 1 1
-3 3
-0 1 1
-1 0 1
-1 1 0
+7 2
+11 11 12 13 13 14 14
+5 1
+6 3 5 2 1
+6 4
+4 3 4 3 3 4
+14 2
+1 1 2 2 2 3 3 3 3 4 4 4 4 4
 output
 Copy
-20
-1
-5
-3
-Note
-For the first test case here the best sum is achieved by the bishop being in this position:
+13 14
+1 3
+-1
+1 4

@@ -1,40 +1,36 @@
-B. Masha and geometric depression
+A. Anastasia and pebbles
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Masha really loves algebra. On the last lesson, her strict teacher Dvastan gave she new exercise.
-You are given geometric progression b defined by two integers b1 and q. Remind that a geometric progression is a sequence of integers b1, b2, b3, ..., where for each i > 1 the respective term satisfies the condition bi = bi - 1·q, where q is called the common ratio of the progression. Progressions in Uzhlyandia are unusual: both b1 and q can equal 0. Also, Dvastan gave Masha m "bad" integers a1, a2, ..., am, and an integer l.
-Masha writes all progression terms one by one onto the board (including repetitive) while condition |bi| ≤ l is satisfied (|x| means absolute value of x). There is an exception: if a term equals one of the "bad" integers, Masha skips it (doesn't write onto the board) and moves forward to the next term.
-But the lesson is going to end soon, so Masha has to calculate how many integers will be written on the board. In order not to get into depression, Masha asked you for help: help her calculate how many numbers she will write, or print "inf" in case she needs to write infinitely many integers.
+Anastasia loves going for a walk in Central Uzhlyandian Park. But she became uninterested in simple walking, so she began to collect Uzhlyandian pebbles. At first, she decided to collect all the pebbles she could find in the park.
+She has only two pockets. She can put at most k pebbles in each pocket at the same time. There are n different pebble types in the park, and there are wi pebbles of the i-th type. Anastasia is very responsible, so she never mixes pebbles of different types in same pocket. However, she can put different kinds of pebbles in different pockets at the same time. Unfortunately, she can't spend all her time collecting pebbles, so she can collect pebbles from the park only once a day.
+Help her to find the minimum number of days needed to collect all the pebbles of Uzhlyandian Central Park, taking into consideration that Anastasia can't place pebbles of different types in same pocket.
 Input
-The first line of input contains four integers b1, q, l, m (-109 ≤ b1, q ≤ 109, 1 ≤ l ≤ 109, 1 ≤ m ≤ 105) — the initial term and the common ratio of progression, absolute value of maximal number that can be written on the board and the number of "bad" integers, respectively.
-The second line contains m distinct integers a1, a2, ..., am (-109 ≤ ai ≤ 109) — numbers that will never be written on the board.
+The first line contains two integers n and k (1 ≤ n ≤ 105, 1 ≤ k ≤ 109) — the number of different pebble types and number of pebbles Anastasia can place in one pocket.
+The second line contains n integers w1, w2, ..., wn (1 ≤ wi ≤ 104) — number of pebbles of each type.
 Output
-Print the only integer, meaning the number of progression terms that will be written on the board if it is finite, or "inf" (without quotes) otherwise.
+The only line of output contains one integer — the minimum number of days Anastasia needs to collect all the pebbles.
 Examples
 input
 Copy
-3 2 30 4
-6 14 25 48
+3 2
+2 3 4
 output
 Copy
 3
 input
 Copy
-123 1 2143435 4
-123 11 -5453 141245
+5 4
+3 1 8 9 7
 output
 Copy
-0
-input
-Copy
-123 1 2143435 4
-54343 -13 6 124
-output
-Copy
-inf
+5
 Note
-In the first sample case, Masha will write integers 3, 12, 24. Progression term 6 will be skipped because it is a "bad" integer. Terms bigger than 24 won't be written because they exceed l by absolute value.
-In the second case, Masha won't write any number because all terms are equal 123 and this is a "bad" integer.
-In the third case, Masha will write infinitely integers 123.
+In the first sample case, Anastasia can collect all pebbles of the first type on the first day, of second type — on the second day, and of third type — on the third day.
+Optimal sequence of actions in the second sample case:
+In the first day Anastasia collects 8 pebbles of the third type.
+In the second day she collects 8 pebbles of the fourth type.
+In the third day she collects 3 pebbles of the first type and 1 pebble of the fourth type.
+In the fourth day she collects 7 pebbles of the fifth type.
+In the fifth day she collects 1 pebble of the second type.

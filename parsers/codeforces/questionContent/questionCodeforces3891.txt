@@ -1,104 +1,79 @@
-A. Roman and Browser
+B. Build a Contest
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This morning, Roman woke up and opened the browser with
+Arkady coordinates rounds on some not really famous competitive programming platform. Each round features
 n
-opened tabs numbered from
+problems of distinct difficulty, the difficulties are numbered from
 1
 to
 n
-. There are two kinds of tabs: those with the information required for the test and those with social network sites. Roman decided that there are too many tabs open so he wants to close some of them.
-He decided to accomplish this by closing every
-k
--th (
-2≤k≤n−1
-) tab. Only then he will decide whether he wants to study for the test or to chat on the social networks. Formally, Roman will choose one tab (let its number be
-b
-) and then close all tabs with numbers
-c=b+i⋅k
-that satisfy the following condition:
-1≤c≤n
-and
-i
-is an integer (it may be positive, negative or zero).
-For example, if
-k=3
-,
-n=14
-and Roman chooses
-b=8
-, then he will close tabs with numbers
-2
-,
-5
-,
-8
-,
-11
-and
-14
 .
-After closing the tabs Roman will calculate the amount of remaining tabs with the information for the test (let's denote it
-e
-) and the amount of remaining social network tabs (
-s
-). Help Roman to calculate the maximal absolute value of the difference of those values
-|e−s|
-so that it would be easy to decide what to do next.
+To hold a round Arkady needs
+n
+new (not used previously) problems, one for each difficulty. As for now, Arkady creates all the problems himself, but unfortunately, he can't just create a problem of a desired difficulty. Instead, when he creates a problem, he evaluates its difficulty from
+1
+to
+n
+and puts it into the problems pool.
+At each moment when Arkady can choose a set of
+n
+new problems of distinct difficulties from the pool, he holds a round with these problems and removes them from the pool. Arkady always creates one problem at a time, so if he can hold a round after creating a problem, he immediately does it.
+You are given a sequence of problems' difficulties in the order Arkady created them. For each problem, determine whether Arkady held the round right after creating this problem, or not. Initially the problems pool is empty.
 Input
 The first line contains two integers
 n
 and
-k
+m
 (
-2≤k<n≤100
-) — the amount of tabs opened currently and the distance between the tabs closed.
-The second line consists of
-n
-integers, each of them equal either to
+1≤n,m≤
+10
+5
+) — the number of difficulty levels and the number of problems Arkady created.
+The second line contains
+m
+integers
+a
 1
-or to
-−1
-. The
+,
+a
+2
+,…,
+a
+m
+(
+1≤
+a
 i
--th integer denotes the type of the
-i
--th tab: if it is equal to
-1
-, this tab contains information for the test, and if it is equal to
-−1
-, it's a social network tab.
+≤n
+) — the problems' difficulties in the order Arkady created them.
 Output
-Output a single integer — the maximum absolute difference between the amounts of remaining tabs of different types
-|e−s|
-.
+Print a line containing
+m
+digits. The
+i
+-th digit should be
+1
+if Arkady held the round after creation of the
+i
+-th problem, and
+0
+otherwise.
 Examples
 input
 Copy
-4 2
-1 1 -1 1
+3 11
+2 3 1 2 2 2 3 2 2 3 1
 output
 Copy
-2
+00100000001
 input
 Copy
-14 3
--1 1 -1 -1 1 -1 -1 1 -1 -1 1 -1 -1 1
+4 8
+4 1 3 3 2 3 3 3
 output
 Copy
-9
+00001000
 Note
-In the first example we can choose
-b=1
-or
-b=3
-. We will delete then one tab of each type and the remaining tabs are then all contain test information. Thus,
-e=2
-and
-s=0
-and
-|e−s|=2
-.
-In the second example, on the contrary, we can leave opened only tabs that have social networks opened in them.
+In the first example Arkady held the round after the first three problems, because they are of distinct difficulties, and then only after the last problem.

@@ -1,159 +1,107 @@
-G. Path Queries
-time limit per test3 seconds
-memory limit per test256 megabytes
+A. Optimal Currency Exchange
+time limit per test1.5 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given a weighted tree consisting of
+Andrew was very excited to participate in Olympiad of Metropolises. Days flew by quickly, and Andrew is already at the airport, ready to go home. He has
 n
-vertices. Recall that a tree is a connected graph without cycles. Vertices
-u
-i
-and
-v
-i
-are connected by an edge with weight
-w
-i
-.
-You are given
-m
-queries. The
-i
--th query is given as an integer
-q
-i
-. In this query you need to calculate the number of pairs of vertices
-(u,v)
-(
-u<v
-) such that the maximum weight of an edge on a simple path between
-u
-and
-v
-doesn't exceed
-q
-i
-.
-Input
-The first line of the input contains two integers
-n
-and
-m
-(
-1≤n,m≤2⋅
-10
-5
-) — the number of vertices in the tree and the number of queries.
-Each of the next
-n−1
-lines describes an edge of the tree. Edge
-i
-is denoted by three integers
-u
-i
-,
-v
-i
-and
-w
-i
-— the labels of vertices it connects (
-1≤
-u
-i
-,
-v
-i
-≤n
-,
-u
-i
-≠
-v
-i
-) and the weight of the edge (
-1≤
-w
-i
-≤2⋅
-10
-5
-). It is guaranteed that the given edges form a tree.
-The last line of the input contains
-m
-integers
-q
+rubles left, and would like to exchange them to euro and dollar bills. Andrew can mix dollar bills and euro bills in whatever way he wants. The price of one dollar is
+d
+rubles, and one euro costs
+e
+rubles.
+Recall that there exist the following dollar bills:
 1
 ,
-q
 2
-,…,
-q
-m
-(
-1≤
-q
-i
-≤2⋅
-10
+,
 5
-), where
-q
-i
-is the maximum weight of an edge in the
-i
--th query.
-Output
-Print
-m
-integers — the answers to the queries. The
-i
--th value should be equal to the number of pairs of vertices
-(u,v)
-(
-u<v
-) such that the maximum weight of an edge on a simple path between
-u
+,
+10
+,
+20
+,
+50
+,
+100
+, and the following euro bills —
+5
+,
+10
+,
+20
+,
+50
+,
+100
+,
+200
+(note that, in this problem we do not consider the
+500
+euro bill, it is hard to find such bills in the currency exchange points). Andrew can buy any combination of bills, and his goal is to minimize the total number of rubles he will have after the exchange.
+Help him — write a program that given integers
+n
+,
+e
 and
-v
-doesn't exceed
-q
-i
-.
-Queries are numbered from
-1
-to
-m
-in the order of the input.
+d
+, finds the minimum number of rubles Andrew can get after buying dollar and euro bills.
+Input
+The first line of the input contains one integer
+n
+(
+1≤n≤
+10
+8
+) — the initial sum in rubles Andrew has.
+The second line of the input contains one integer
+d
+(
+30≤d≤100
+) — the price of one dollar in rubles.
+The third line of the input contains integer
+e
+(
+30≤e≤100
+) — the price of one euro in rubles.
+Output
+Output one integer — the minimum number of rubles Andrew can have after buying dollar and euro bills optimally.
 Examples
 input
 Copy
-7 5
-1 2 1
-3 2 3
-2 4 1
-4 5 2
-5 7 4
-3 6 2
-5 2 3 4 1
+100
+60
+70
 output
 Copy
-21 7 15 21 3 
+40
 input
 Copy
-1 2
-1 2
+410
+55
+70
 output
 Copy
-0 0 
+5
 input
 Copy
-3 3
-1 2 1
-2 3 2
-1 3 2
+600
+60
+70
 output
 Copy
-1 3 3 
+0
 Note
-The picture shows the tree from the first example:
+In the first example, we can buy just
+1
+dollar because there is no
+1
+euro bill.
+In the second example, optimal exchange is to buy
+5
+euro and
+1
+dollar.
+In the third example, optimal exchange is to buy
+10
+dollars in one bill.

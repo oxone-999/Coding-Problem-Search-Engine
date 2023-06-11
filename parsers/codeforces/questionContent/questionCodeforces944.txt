@@ -1,61 +1,60 @@
-A. Log Chopping
+C. Unequal Array
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
+You are given an array
+a
+of length
 n
-logs, the
-i
--th log has a length of
+. We define the equality of the array as the number of indices
+1≤i≤n−1
+such that
 a
 i
-meters. Since chopping logs is tiring work, errorgorn and maomao90 have decided to play a game.
-errorgorn and maomao90 will take turns chopping the logs with errorgorn chopping first. On his turn, the player will pick a log and chop it into
-2
-pieces. If the length of the chosen log is
+=
+a
+i+1
+. We are allowed to do the following operation:
+Select two integers
+i
+and
 x
-, and the lengths of the resulting pieces are
-y
+such that
+1≤i≤n−1
 and
-z
-, then
-y
+1≤x≤
+10
+9
+. Then, set
+a
+i
 and
-z
-have to be positive integers, and
-x=y+z
-must hold. For example, you can chop a log of length
-3
-into logs of lengths
-2
-and
-1
-, but not into logs of lengths
-3
-and
-0
-,
-2
-and
-2
-, or
-1.5
-and
-1.5
+a
+i+1
+to be equal to
+x
 .
-The player who is unable to make a chop will be the loser. Assuming that both errorgorn and maomao90 play optimally, who will be the winner?
+Find the minimum number of operations needed such that the equality of the array is less than or equal to
+1
+.
 Input
 Each test contains multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤100
-)  — the number of test cases. The description of the test cases follows.
-The first line of each test case contains a single integer
+1≤t≤
+10
+4
+) — the number of test cases. The description of the test cases follows.
+The first line of each test case contains an integer
 n
 (
-1≤n≤50
-)  — the number of logs.
+2≤n≤2⋅
+10
+5
+) — the length of array
+a
+.
 The second line of each test case contains
 n
 integers
@@ -71,48 +70,54 @@ n
 1≤
 a
 i
-≤50
-)  — the lengths of the logs.
-Note that there is no bound on the sum of
+≤
+10
+9
+) — elements of the array.
+It is guaranteed that the sum of
 n
-over all test cases.
+over all test cases does not exceed
+2⋅
+10
+5
 Output
-For each test case, print "errorgorn" if errorgorn wins or "maomao90" if maomao90 wins. (Output without quotes).
+For each test case, print the minimum number of operations needed.
 Example
 input
 Copy
-2
 4
-2 4 2 1
-1
-1
+5
+1 1 1 1 1
+5
+2 1 1 1 2
+6
+1 1 2 3 3 4
+6
+1 2 1 4 5 4
 output
 Copy
-errorgorn
-maomao90
+2
+1
+2
+0
 Note
-In the first test case, errorgorn will be the winner. An optimal move is to chop the log of length
-4
-into
-2
-logs of length
-2
-. After this there will only be
-4
-logs of length
-2
+In the first test case, we can select
+i=2
 and
-1
-log of length
-1
+x=2
+to form
+[1,2,2,1,1]
+. Then, we can select
+i=3
+and
+x=3
+to form
+[1,2,3,3,1]
 .
-After this, the only move any player can do is to chop any log of length
-2
-into
-2
-logs of length
-1
-. After
-4
-moves, it will be maomao90's turn and he will not be able to make a move. Therefore errorgorn will be the winner.
-In the second test case, errorgorn will not be able to make a move on his first turn and will immediately lose, making maomao90 the winner.
+In the second test case, we can select
+i=3
+and
+x=100
+to form
+[2,1,100,100,2]
+.

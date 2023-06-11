@@ -1,69 +1,92 @@
-Ice Cream Queue
+Maximum Subsequence Sum
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-There are
-N people standing in a queue for Chef's ice cream. They are numbered
-1 through
-N from the front to the back of the queue.
-Chef's customers do not like to wait too long. For each valid
-i, we know that the ice cream ordered by the
-i-th person will take
-P
-i
-seconds to prepare and cost
-V
-i
-units of money, but if this person has to wait strictly more than
-W
-i
-seconds in the queue (until Chef starts preparing their order), they will leave. At any time, it is only allowed to prepare the ice cream of the person standing at the front of the queue.
-Chef wants to maximise his profit (the sum of prices of sold ice creams). In order to do that, he may choose to kick some of the customers (possibly nobody) out of the queue. Find the maximum profit Chef can make.
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+Chef has a machine which he uses to rotate sequences. If he puts a sequence
+S
+1
+,S
+2
+,…,S
+N
+into the machine, it produces the sequence
+S
+2
+,S
+3
+,…,S
+N
+,S
+1
+, i.e. the first element of the sequence is moved to the end.
+Chef is definitely not a newbie ― he knows about trivial things like finding the maximum sum of a contiguous subsequence. Therefore, he now made a difficult problem to challenge himself:
+You are given a sequence
+A
+1
+,A
+2
+,…,A
+N
+. For each
+k (
+0≤k≤N−1), consider the sequence produced by inserting it into the machine repeatedly
+k times (i.e. inserting
+A into the machine and replacing
+A by the sequence it produces,
+k times); find the maximum sum of a non empty contiguous subsequence of this sequence.
+However, to solve this problem, Chef needs the help of a pro. Solve it for him.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
 The first line of each test case contains a single integer
 N.
-N lines follow. For each
-i (
-1≤i≤N), each of these lines contains three space-separated integers
-W
-i
-,
-P
-i
-and
-V
-i
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
 .
 Output
-For each test case, print a single line containing one integer — the maximum possible profit.
+For each test case, print a single line containing
+N space-separated integers. For each valid
+i, the
+i-th of these integers should denote the largest sum of a non empty contiguous subsequence of the sequence produced by the machine after
+i−1 repeated insertions.
 Constraints
-1≤T≤10
-1≤N≤40
-1≤P
+1≤T≤100
+1≤N≤5⋅10
+5
+∣A
 i
-,W
-i
-,V
-i
-≤10
+∣≤10
 9
 for each valid
 i
-Subtasks
-Subtask #1 (50 points):
-1≤N≤20
-Subtask #2 (50 points): original constraints
+the sum of
+N over all test cases does not exceed
+5⋅10
+5
 Sample 1:
 Input
 Output
-2
-2
-3 7 4
-7 10 5
-2
-3 7 4
-6 10 5
-9
-5
+1
+4
+-5 4 1 2
+7 7 4 5
+Explanation:
+Example case 1:
+After zero insertions,
+A=[−5,4,1,2]. The contiguous subsequence with the maximum sum is
+A=[4,1,2].
+After one insertion,
+A=[4,1,2,−5]. The contiguous subsequence with the maximum sum is
+A=[4,1,2].
+After two insertions,
+A=[1,2,−5,4]. The contiguous subsequence with the maximum sum is
+A=[4].
+After three insertions,
+A=[2,−5,4,1]. The contiguous subsequence with the maximum sum is
+A=[4,1].

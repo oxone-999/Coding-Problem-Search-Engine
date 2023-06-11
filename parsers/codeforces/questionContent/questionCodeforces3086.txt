@@ -1,96 +1,86 @@
-C. Dominated Subarray
-time limit per test2 seconds
-memory limit per test256 megabytes
+F. Make Them Similar
+time limit per test4 seconds
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Let's call an array
-t
-dominated by value
-v
-in the next situation.
-At first, array
-t
-should have at least
+Let's call two numbers similar if their binary representations contain the same number of digits equal to
+1
+. For example:
 2
-elements. Now, let's calculate number of occurrences of each number
-num
-in
-t
-and define it as
-occ(num)
-. Then
-t
-is dominated (by
-v
-) if (and only if)
-occ(v)>occ(
-v
-′
-)
-for any other number
-v
-′
-. For example, arrays
-[1,2,3,4,5,2]
-,
-[11,11]
 and
-[3,2,3,2,3]
-are dominated (by
+4
+are similar (binary representations are
+10
+and
+100
+);
+1337
+and
+4213
+are similar (binary representations are
+10100111001
+and
+1000001110101
+);
+3
+and
 2
-,
+are not similar (binary representations are
 11
 and
-3
-respectevitely) but arrays
-[3]
-,
-[1,2]
+10
+);
+42
 and
-[3,3,2,2,1]
-are not.
-Small remark: since any array can be dominated only by one number, we can not specify this number and just say that array is either dominated or not.
-You are given array
+13
+are similar (binary representations are
+101010
+and
+1101
+).
+You are given an array of
+n
+integers
 a
 1
 ,
 a
 2
-,…,
+, ...,
 a
 n
-. Calculate its shortest dominated subarray or say that there are no such subarrays.
-The subarray of
-a
-is a contiguous part of the array
-a
-, i. e. the array
+. You may choose a non-negative integer
+x
+, and then get another array of
+n
+integers
+b
+1
+,
+b
+2
+, ...,
+b
+n
+, where
+b
+i
+=
 a
 i
-,
-a
-i+1
-,…,
-a
-j
-for some
-1≤i≤j≤n
-.
-Input
-The first line contains single integer
-T
+⊕x
 (
-1≤T≤1000
-) — the number of test cases. Each test case consists of two lines.
-The first line contains single integer
+⊕
+denotes bitwise XOR).
+Is it possible to obtain an array
+b
+where all numbers are similar to each other?
+Input
+The first line contains one integer
 n
 (
-1≤n≤2⋅
-10
-5
-) — the length of the array
-a
-.
+2≤n≤100
+).
 The second line contains
 n
 integers
@@ -99,63 +89,57 @@ a
 ,
 a
 2
-,…,
+, ...,
 a
 n
 (
-1≤
+0≤
 a
 i
-≤n
-) — the corresponding values of the array
-a
-.
-It's guaranteed that the total length of all arrays in one test doesn't exceed
-2⋅
-10
-5
-.
-Output
-Print
-T
-integers — one per test case. For each test case print the only integer — the length of the shortest dominated subarray, or
+≤
+2
+30
 −1
-if there are no such subarrays.
-Example
+).
+Output
+If it is impossible to choose
+x
+so that all elements in the resulting array are similar to each other, print one integer
+−1
+.
+Otherwise, print any non-negative integer not exceeding
+2
+30
+−1
+that can be used as
+x
+so that all elements in the resulting array are similar.
+Examples
+input
+Copy
+2
+7 2
+output
+Copy
+1
 input
 Copy
 4
-1
-1
-6
-1 2 3 4 5 1
-9
-4 1 2 4 5 4 3 2 1
-4
-3 3 3 3
+3 17 6 0
+output
+Copy
+5
+input
+Copy
+3
+1 2 3
 output
 Copy
 -1
-6
+input
+Copy
 3
-2
-Note
-In the first test case, there are no subarrays of length at least
-2
-, so the answer is
-−1
-.
-In the second test case, the whole array is dominated (by
-1
-) and it's the only dominated subarray.
-In the third test case, the subarray
-a
-4
-,
-a
-5
-,
-a
-6
-is the shortest dominated subarray.
-In the fourth test case, all subarrays of length more than one are dominated.
+43 12 12
+output
+Copy
+1073709057

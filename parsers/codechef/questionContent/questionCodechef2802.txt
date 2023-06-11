@@ -1,36 +1,119 @@
-Wingardium Leviosa
+Priya and Parity
 Problem
-“It's leviOsa, not levioSA!”
-Hermione did the "swish and flick" to levitate the feather. Ron being annoyed ask her to solve a different task.
-Ron ask her Q queries. In each query he provides her a value N and ask her to find F(N).
-$$F(N) = \sum\limits_{R = 0}^{\lfloor \frac{N}{2} \rfloor} \Biggl( \binom{N}{R} - \binom{N - R}{R} \Biggl)$$, where $$\binom{n}{r} = \frac{n!}{r! * (n - r)!}$$
-As Hermione is busy learning new spells, she seeks for your help.Help her in finding F(N) for each query.As the value of F(N) can be very large, output F(N)%(106 + 3).
-Input
-The first line of the input contains an integer Q denoting the number of queries.
-Each of the next Q lines contains an integer N.
-Output
-Output F(N)%(106 + 3) for each query in a seaparate line.
-Constraints
-1 ≤ Q ≤ 105
-1 ≤ N ≤ 109
-Example
-Input:
-4
+There are
+N cities number from
+1 to
+N each city is having a weight of
+w
+i
+and they are connected through
+M bidirectional roads between them. Let the parity of a city
+c
+i
+be even if the number of set bits in its binary representation of
+w
+i
+is even and odd otherwise.
+You are given
+Q queries, each query can be of two types:
 1
+K - print the size of largest connected group of cities in which parity of each city is odd after XOR with
+K.
 2
-3
+K - print the size of largest connected group of cities in which parity of each city is even after XOR with
+K.
+A group of cities is said to be connected if we can go from one city of the group to any other city of the group without passing through any city that is not in the group. A group with one city is considered as connected.
+###Input:
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line input of each test case contains two space-separated integers
+N and
+M.
+The second line contains
+N space-separated integers denoting
+w
+i
+.
+The next
+M lines contain two space-separated integers
+U
+i
+and
+V
+i
+, each denoting a bidirectional edge between the cities
+U
+i
+and
+V
+i
+.
+The next
+Q lines describe each query in the format given above.
+###Output:
+For each query of type
+1 - print the size of largest connected group of cities in which parity of each city is odd after XOR with
+K.
+For each query of type
+2- print the size of largest connected group of cities in which parity of each city is even after XOR with
+K.
+###Constraints
+1≤T≤5
+1≤N≤2×10
+5
+1≤M≤min(2×10
+5
+,
+2
+N×(N−1)
+)
+1≤w
+i
+,K≤10
+9
+1≤U
+i
+,V
+i
+≤N for each valid i
+1≤Q≤10
+5
+the graph contains no duplicate edges or self-loops
+###Sample Input:
+1
+6 6
+6 4 10 7 5 5
+3 4
+5 1
+5 6
+3 6
+1 4
+5 3
 4
-Output:
-0
+1 6
+1 8
+1 7
+2 6
+###Sample Output:
 1
-1
-6
-Explanation
-Example case 1.
-N = 1, F(1) = C(1, 0) - C(1, 0) = 0
-Example case 2.
-N = 2, F(2) = (C(2, 0) - C(2, 0)) + (C(2, 1) - C(1, 1)) = 0 + 1 = 1
-Example case 3.
-N = 3, F(3) = (C(3, 0) - C(3, 0)) + (C(3, 1) - C(2, 1)) = 0 + 1 = 1
-Example case 4.
-N = 4, F(4) = (C(4, 0) - C(4, 0)) + (C(4, 1) - C(3, 1)) + (C(4, 2) - C(2, 2)) = 0 + 1 + 5 = 6
+4
+4
+4
+###Explanation:
+Query 1 - The size of the largest connected group of cities in which parity of each city is odd after XOR with
+6 is equal to
+1. Since the parity of the city,
+2 and
+4 is odd after XOR with
+6, but
+2 is not connected with
+4. Therefore the answer is equal to
+1.
+Query 2 - The size of the largest connected group of cities in which parity of each city is odd after XOR with
+8 is equal to
+4 because, after XOR with
+8, cities
+1,5,3,6 have odd parity. Therefore the answer is equal to
+4.
+Similarly, you can find the answer for other queries.

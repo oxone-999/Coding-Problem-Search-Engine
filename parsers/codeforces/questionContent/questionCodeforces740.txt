@@ -1,125 +1,216 @@
-F. Mark and the Online Exam
-time limit per test2 seconds
+B. Making Towers
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Mark is administering an online exam consisting of
+You have a sequence of
 n
-true-false questions. However, he has lost all answer keys. He needs a way to retrieve the answers before his client gets infuriated.
-Fortunately, he has access to the grading system. Thus, for each query, you can input the answers to all
+colored blocks. The color of the
+i
+-th block is
+c
+i
+, an integer between
+1
+and
 n
-questions, and the grading system will output how many of them are correct.
-He doesn't have much time, so he can use the grading system at most
-675
-times. Help Mark determine the answer keys.
-Note that answer keys are fixed in advance and will not change depending on your queries.
+.
+You will place the blocks down in sequence on an infinite coordinate grid in the following way.
+Initially, you place block
+1
+at
+(0,0)
+.
+For
+2≤i≤n
+, if the
+(i−1)
+-th block is placed at position
+(x,y)
+, then the
+i
+-th block can be placed at one of positions
+(x+1,y)
+,
+(x−1,y)
+,
+(x,y+1)
+(but not at position
+(x,y−1)
+), as long no previous block was placed at that position.
+A tower is formed by
+s
+blocks such that they are placed at positions
+(x,y),(x,y+1),…,(x,y+s−1)
+for some position
+(x,y)
+and integer
+s
+. The size of the tower is
+s
+, the number of blocks in it. A tower of color
+r
+is a tower such that all blocks in it have the color
+r
+.
+For each color
+r
+from
+1
+to
+n
+, solve the following problem independently:
+Find the maximum size of a tower of color
+r
+that you can form by placing down the blocks according to the rules.
 Input
-The first line of the input consists of an integer
+The first line contains a single integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases.
+The first line of each test case contains a single integer
 n
 (
-1≤n≤1000
-) — the number of questions.
-Interaction
-After reading
+1≤n≤
+10
+5
+).
+The second line of each test case contains
 n
-, you can start making queries to the grading system. For each query, print a line containing a string
-s
-of length
-n
-consisting of only letters 'T' and 'F'.
-s
-i
-=
-'T' means that you answer the
-i
--question true.
-s
-i
-=
-'F' means that you answer the
-i
--question false.
-After a successful query, you should read an integer
-k
-(
-0≤k≤n
-) — the number of correct answers. If you read
-n
-, then you found the answers, and your program should not make any more queries.
-If your program reads
-k=−1
-instead of the number of correct answers, it means that you either made an invalid query or exceeded the query limits. Exit immediately after receiving
-−1
-, and you will see Wrong answer verdict. Otherwise, you can get an arbitrary verdict because your solution will continue to read from a closed stream.
-After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-Hacks
-To hack, use the following format:
-The first line contains an integer
-n
-(
-1≤n≤1000
-) — the number of questions.
-The second line contains a string
-s
-of length
-n
-consisting of only 'T' and 'F' — the answer key.
-Examples
-input
-Copy
-3
-
+integers
+c
 1
-
-3
-output
-Copy
-FTT
-
-TTF
-input
-Copy
-4
-
-0
-
-3
-
-4
-output
-Copy
-FTFF
-
-TTTT
-
-TFTT
-Note
-The empty lines in the example are just for you to better understand the interaction process. You're not required to print them.
-In the first example, there are
-3
-questions, and the answer to each question is 'true', 'true', and 'false', respectively.
-The first query, guessing the answers to be 'false', 'true', and 'true', respectively, guesses only one question — the
+,
+c
 2
--nd question — correctly.
-Then, in the second query, the program correctly guesses the answer key. The interaction ends here.
-In the second example, there are
-4
-questions, and the answer to each question is 'true', 'false', 'true', and 'true', respectively.
-The first query guessed none of the questions correctly, resulting in the answer
+,…,
+c
+n
+(
+1≤
+c
+i
+≤n
+).
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+.
+Output
+For each test case, output
+n
+integers. The
+r
+-th of them should be the maximum size of an tower of color
+r
+you can form by following the given rules. If you cannot form any tower of color
+r
+, the
+r
+-th integer should be
 0
 .
-The second query guessed the
+Example
+input
+Copy
+6
+7
+1 2 3 1 2 3 1
+6
+4 2 2 2 4 4
 1
--st,
+1
+5
+5 4 5 3 5
+6
+3 3 3 1 3 3
+8
+1 2 3 4 4 3 2 1
+output
+Copy
+3 2 2 0 0 0 0 
+0 3 0 2 0 0 
+1 
+0 0 1 1 1 
+1 0 4 0 0 0 
+2 2 2 2 0 0 0 0 
+Note
+In the first test case, one of the possible ways to form a tower of color
+1
+and size
 3
--rd, and
+is:
+place block
+1
+at position
+(0,0)
+;
+place block
+2
+to the right of block
+1
+, at position
+(1,0)
+;
+place block
+3
+above block
+2
+, at position
+(1,1)
+;
+place block
 4
--th question correctly, resulting in the answer
+to the left of block
+3
+, at position
+(0,1)
+;
+place block
+5
+to the left of block
+4
+, at position
+(−1,1)
+;
+place block
+6
+above block
+5
+, at position
+(−1,2)
+;
+place block
+7
+to the right of block
+6
+, at position
+(0,2)
+.
+The blocks at positions
+(0,0)
+,
+(0,1)
+, and
+(0,2)
+all have color
+1
+, forming an tower of size
 3
 .
-In the third query, the program correctly guesses the answer key. Then, the interaction ends.
+In the second test case, note that the following placement is not valid, since you are not allowed to place block
+6
+under block
+5
+:
+It can be shown that it is impossible to form a tower of color
+4
+and size
+3
+.

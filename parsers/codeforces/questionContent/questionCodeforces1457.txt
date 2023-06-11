@@ -1,206 +1,254 @@
-I. Illusions of the Desert
-time limit per test3 seconds
+K. Knitting Batik
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Chanek Jones is back, helping his long-lost relative Indiana Jones, to find a secret treasure in a maze buried below a desert full of illusions.
-The map of the labyrinth forms a tree with
-n
-rooms numbered from
+Mr. Chanek wants to knit a batik, a traditional cloth from Indonesia. The cloth forms a grid
+a
+with size
+n×m
+. There are
+k
+colors, and each cell in the grid can be one of the
+k
+colors.
+Define a sub-rectangle as an ordered pair of two cells
+((
+x
 1
-to
-n
+,
+y
+1
+),(
+x
+2
+,
+y
+2
+))
+, denoting the top-left cell and bottom-right cell (inclusively) of a sub-rectangle in
+a
+. Two sub-rectangles
+((
+x
+1
+,
+y
+1
+),(
+x
+2
+,
+y
+2
+))
 and
-n−1
-tunnels connecting them such that it is possible to travel between each pair of rooms through several tunnels.
-The
-i
--th room (
-1≤i≤n
-) has
-a
-i
-illusion rate. To go from the
+((
 x
--th room to the
+3
+,
 y
--th room, there must exist a tunnel between
+3
+),(
 x
-and
+4
+,
 y
-, and it takes
-max(|
-a
+4
+))
+have the same pattern if and only if the following holds:
+they have the same width (
 x
-+
-a
-y
-|,|
-a
-x
+2
 −
+x
+1
+=
+x
+4
+−
+x
+3
+);
+they have the same height (
+y
+2
+−
+y
+1
+=
+y
+4
+−
+y
+3
+);
+for every pair
+(i,j)
+where
+0≤i≤
+x
+2
+−
+x
+1
+and
+0≤j≤
+y
+2
+−
+y
+1
+, the color of cells
+(
+x
+1
++i,
+y
+1
++j)
+and
+(
+x
+3
++i,
+y
+3
++j)
+are equal.
+Count the number of possible batik color combinations, such that the subrectangles
+((
+a
+x
+,
 a
 y
-|)
-energy.
-|z|
-denotes the absolute value of
-z
-.
-To prevent grave robbers, the maze can change the illusion rate of any room in it. Chanek and Indiana would ask
-q
-queries.
-There are two types of queries to be done:
-1 u c
-— The illusion rate of the
+),(
+a
 x
--th room is changed to
++r−1,
+a
+y
++c−1))
+and
+((
+b
+x
+,
+b
+y
+),(
+b
+x
++r−1,
+b
+y
++c−1))
+have the same pattern.
+Output the answer modulo
+10
+9
++7
+.
+Input
+The first line contains five integers
+n
+,
+m
+,
+k
+,
+r
+, and
 c
 (
-1≤u≤n
-,
-0≤|c|≤
+1≤n,m≤
 10
 9
-).
-2 u v
-— Chanek and Indiana ask you the minimum sum of energy needed to take the secret treasure at room
-v
-if they are initially at room
-u
-(
-1≤u,v≤n
-).
-Help them, so you can get a portion of the treasure!
-Input
-The first line contains two integers
-n
-and
-q
-(
-2≤n≤
-10
-5
 ,
-1≤q≤
-10
-5
-) — the number of rooms in the maze and the number of queries.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤|
-a
-i
-|≤
+1≤k≤
 10
 9
-) — inital illusion rate of each room.
-The
-i
--th of the next
-n−1
-lines contains two integers
-s
-i
-and
-t
-i
+,
+1≤r≤min(
+10
+6
+,n)
+,
+1≤c≤min(
+10
+6
+,m)
+) — the size of the batik, the number of colors, and size of the sub-rectangle.
+The second line contains four integers
+a
+x
+,
+a
+y
+,
+b
+x
+, and
+b
+y
 (
 1≤
-s
-i
+a
+x
 ,
-t
-i
+b
+x
 ≤n
-), meaning there is a tunnel connecting
-s
-i
--th room and
-t
-i
--th room. The given edges form a tree.
-The next
-q
-lines contain the query as described. The given queries are valid.
+,
+1≤
+a
+y
+,
+b
+y
+≤m
+) — the top-left corners of the first and second sub-rectangle. Both of the sub-rectangles given are inside the grid (
+1≤
+a
+x
++r−1
+,
+b
+x
++r−1≤n
+,
+1≤
+a
+y
++c−1
+,
+b
+y
++c−1≤m
+).
 Output
-For each type
-2
-query, output a line containing an integer — the minimum sum of energy needed for Chanek and Indiana to take the secret treasure.
-Example
+Output an integer denoting the number of possible batik color combinations modulo
+10
+9
++7
+.
+Examples
 input
 Copy
-6 4
-10 -9 2 -1 4 -6
-1 5
-5 4
-5 6
-6 2
-6 3
-2 1 2
-1 1 -3
-2 1 2
-2 3 3
+3 3 2 2 2
+1 1 2 2
 output
 Copy
-39
 32
-0
+input
+Copy
+4 5 170845 2 2
+1 4 3 1
+output
+Copy
+756680455
 Note
-In the first query, their movement from the
-1
--st to the
-2
--nd room is as follows.
-1→5
-— takes
-max(|10+4|,|10−4|)=14
-energy.
-5→6
-— takes
-max(|4+(−6)|,|4−(−6)|)=10
-energy.
-6→2
-— takes
-max(|−6+(−9)|,|−6−(−9)|)=15
-energy.
-In total, it takes
-39
-energy.
-In the second query, the illusion rate of the
-1
--st room changes from
-10
-to
-−3
-.
-In the third query, their movement from the
-1
--st to the
-2
--nd room is as follows.
-1→5
-— takes
-max(|−3+4|,|−3−4|)=7
-energy.
-5→6
-— takes
-max(|4+(−6)|,|4−(−6)|)=10
-energy.
-6→2
-— takes
-max(|−6+(−9)|,|−6−(−9)|)=15
-energy.
-Now, it takes
+The following are all
 32
-energy.
+possible color combinations in the first example.

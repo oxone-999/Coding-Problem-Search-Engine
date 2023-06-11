@@ -1,86 +1,127 @@
-Same Parity Swaps in Binary Strings
+Shortest Route
 Problem
-You are given a binary string
-S of length
-N (i.e. every character of
-S is either
-0 or
-1).
-You can perform the following operation on
-S:
-select any two indices
-i,j of the same parity, i.e. either both
-i,j are odd or both
-i,j are even
-swap
-S
+Read problem statements in Vietnamese,
+Bengali, Mandarin Chinese, and Russian as well.
+There are
+N cities in Chefland numbered from
+1 to
+N and every city has a railway station. Some cities have a train and each city has at most one train originating from it. The trains are represented by an array
+A, where
+A
 i
-and
-S
-j
-For example, in the string
-1110, we can swap the second and the fourth characters to get
-1011. However, we can never obtain
-1101 from
-1110 by performing such swaps.
-Find the maximum possible number of occurrences of the string
-01 as a substring of
-S after performing the above operation any number of times (it is also allowed to not perform any operation).
-For example, the string
-1110 has no occurrence of the string
-01 as a substring, whereas we can swap the second and fourth characters to obtain
-1011 which has exactly one occurrence of
-01 (colored red).
-Input Format
-The first line of input contains an integer
-T, denoting the number of testcases. The description of the
-T testcases follow.
-Each testcase consists of two lines.
-The first line contains a single integer
-N, the length of the string
-S.
-The second line contains a binary string of length
-N.
-Output Format
-For each testcase, print in a single line, an integer — the answer as per the problem statement.
-Constraints
-1≤T≤4000
-1≤∣S∣≤10
+=0 means the
+i-th city doesn't have any train originating from it,
+A
+i
+=1 means the train originating from the
+i-th city is moving right (to a higher numbered city), and
+A
+i
+=2 means the train originating from the
+i-th city is moving left (to a lower numbered city).
+Each train keeps on going forever in its direction and takes
+1 minute to travel from the current station to the next one. There is a special station at city
+1 which lets travellers instantaneously teleport to any other station that currently has a train. Teleportation and getting on a train once in the city both take
+0 minutes and all trains start at time
+0.
+There are
+M travellers at city
+1, and the
+i-th traveller has destination city
+B
+i
+. They ask Chef to guide them to teleport to a particular station from which they can catch a train to go to their destination in the least time possible. In case it's not possible for a person to reach his destination, print
+−1.
+Note: The input and output of this problem are large, so prefer using fast input/output methods.
+###Input
+The first line contains an integer
+T, the number of test cases. Then the test cases follow.
+Each test case contains three lines of input.
+The first line contains two integers
+N,
+M.
+The second line contains
+N integers
+A
+1
+,A
+2
+,…,A
+N
+.
+The third line contains
+M integers
+B
+1
+,B
+2
+,…,B
+M
+.
+###Output For each test case, output
+M space-separated integers
+C
+1
+,C
+2
+,…,C
+M
+, where
+C
+i
+is the minimum time required by the
+i-th traveller to reach his destination and if the
+i-th traveller can't reach his destination,
+C
+i
+=−1.
+###Constraints
+1≤N,M≤10
 5
+0≤A
+i
+≤2
+1≤B
+i
+≤N
 The sum of
-∣S∣ over all testcases doesn't exceed
+N over all test cases is at most
 10
-5
-Subtasks
-Subtask #1 (100 points): Original constraints
+6
+.
+The sum of
+M over all test cases is at most
+10
+6
+.
+###Subtasks Subtask #1 (100 points): original constraints
 Sample 1:
 Input
 Output
 3
+5 1
+1 0 0 0 0
 5
-00100
-5
-01010
-5
-10001
+5 1
+1 0 0 0 2
+4
+5 2
+2 0 0 0 1
+3 1
+4
 1
-2
-2
+-1 0
 Explanation:
-Test case
-1: The only strings that can be obtained by performing the given operations are
-{10000,00100,00001}. Of these the two strings
-00100 and
-00001 contain exactly one occurrence of
-01.
-Test case
-2: The given string
-S cannot be changed by performing the given operation and contains
-2 occurrences of the string
-01, i.e.
-01010.
-Test case
-3: The only strings that can be obtained by performing the given operations are
-{00101,10001,10100}. The string
-00101 contains two occurrences of
-01.
+Test Case
+1: The only person takes the train from station
+1 and hence takes
+∣5−1∣=4 minutes to reach his destination.
+Test Case
+2: The only person takes the train from station
+5 and hence takes
+∣5−4∣=1 minute to reach his destination.
+Test Case
+3: Since no train passes station
+3, it's impossible for the first person to reach his destination and since the second person is already at station
+1, it takes him
+0 minutes to reach his destination.

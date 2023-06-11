@@ -1,56 +1,75 @@
-Arranging Cup-cakes
+Yet Another Palindrome Making Problem
 Problem
-Our Chef is catering for a big corporate office party and is busy preparing different mouth watering dishes. The host has insisted that he serves his delicious cupcakes for dessert.
-On the day of the party, the Chef was over-seeing all the food arrangements as well, ensuring that every item was in its designated position. The host was satisfied with everything except the cupcakes. He noticed they were arranged neatly in the shape of a rectangle. He asks the Chef to make it as square-like as possible.
-The Chef is in no mood to waste his cupcakes by transforming it into a perfect square arrangement. Instead, to fool the host, he asks you to arrange the N cupcakes as a rectangle so that the difference between the length and the width is minimized.
-Input
-The first line of the input file contains an integer T, the number of test cases. Each of the following T lines contains a single integer N denoting the number of cupcakes.
-Output
-Output T lines, each indicating the minimum possible difference between the length and the width in a rectangular arrangement of the cupcakes.
+Chef has a string
+A (containing lowercase Latin letters only) of length
+N where
+N is even. He can perform the following operation any number of times:
+Swap
+A
+i
+and
+A
+i+2
+for any
+1≤i≤(N−2)
+Determine if Chef can convert string
+A to a palindromic string.
+Note: A string is called a palindrome if it reads the same backwards and forwards. For example,
+noon and
+level are palindromic strings but
+ebb is not.
+Input Format
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
+The first line of each test case contains an integer
+N — the length of the string
+A.
+The second line of each test case contains a string
+A of length
+N containing lowercase Latin letters only.
+Output Format
+For each test case, output YES if Chef can convert the string
+A to a palindromic string. Otherwise, output NO.
+You may print each character of YES and NO in either uppercase or lowercase (for example, yes, yEs, Yes will be considered identical).
 Constraints
-1 ≤ T ≤ 100
-1 ≤ N ≤ 108
+1≤T≤200
+1≤N≤1000
+S contains lowercase Latin letters only.
+N is even
 Sample 1:
 Input
 Output
+3
+6
+aabbaa
 4
-20
-13
-8
-4
-1
-12
-2
-0
+abcd
+6
+zzxyyx
+YES
+NO
+YES
 Explanation:
 Test case
-1:
-20 cupcakes can be arranged in a rectange in
-6 possible ways -
-1×20,2×10,4×5,5×4,10×2 and
-20×1.
-The corresponding differences between the length and the width for each of these rectangles are
-∣1−20∣=19,∣2−10∣=8,∣4−5∣=1,∣5−4∣=1,∣10−2∣=8 and
-∣20−1∣=19 respectively. Hence,
-1 is the smallest difference between length and width among all possible combinations.
+1: The given string is already a palindrome.
 Test case
-2:
-13 cupcakes can be arranged in
-2 ways only. These are
-13×1 and
-1×13. In both cases, the difference between width and length is
-12.
+2: It can be proven that is it not possible to convert
+A to a palindromic string.
 Test case
-3:
-8 cupcakes can be arranged in
-4 ways. These are:
-8×1,4×2,2×4 and
-1×8. The minimum difference between length and width is
-2 which is in the cases
-4×2 and
-2×4.
-Test case
-4:
-4 cupcakes can be arranged as
-2×2. The difference between the length and the width, in this case, is
-0.
+3: We can perform the following operations:
+Swap
+A
+1
+and
+A
+3
+. (Now
+A becomes xzzyyx)
+Swap
+A
+2
+and
+A
+4
+. (Now
+A becomes xyzzyx)

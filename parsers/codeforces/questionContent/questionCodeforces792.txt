@@ -1,68 +1,143 @@
-B. Rising Sand
+D. Fixed Point Guessing
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
+This is an interactive problem.
+Initially, there is an array
+a=[1,2,…,n]
+, where
 n
-piles of sand where the
-i
--th pile has
-a
-i
-blocks of sand. The
-i
--th pile is called too tall if
-1<i<n
+is an odd positive integer. The jury has selected
+n−1
+2
+disjoint pairs of elements, and then the elements in those pairs are swapped. For example, if
+a=[1,2,3,4,5]
+, and the pairs
+1↔4
 and
-a
-i
->
-a
-i−1
-+
-a
-i+1
-. That is, a pile is too tall if it has more sand than its two neighbours combined. (Note that piles on the ends of the array cannot be too tall.)
-You are given an integer
-k
-. An operation consists of picking
-k
-consecutive piles of sand and adding one unit of sand to them all. Formally, pick
-1≤l,r≤n
-such that
-r−l+1=k
-. Then for all
-l≤i≤r
-, update
-a
-i
-←
-a
-i
-+1
+3↔5
+are swapped, then the resulting array is
+[4,2,5,1,3]
 .
-What is the maximum number of piles that can simultaneously be too tall after some (possibly zero) operations?
+As a result of these swaps, exactly one element will not change position. You need to find this element.
+To do this, you can ask several queries. In each query, you can pick two integers
+l
+and
+r
+(
+1≤l≤r≤n
+). In return, you will be given the elements of the subarray
+[
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+]
+sorted in increasing order.
+Find the element which did not change position. You can make at most
+15
+queries.
+The array
+a
+is fixed before the interaction and does not change after your queries.
+Recall that an array
+b
+is a subarray of the array
+a
+if
+b
+can be obtained from
+a
+by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end.
 Input
-The input consists of multiple test cases. The first line contains an integer
+Each test contains multiple test cases. The first line contains an integer
 t
 (
-1≤t≤1000
+1≤t≤500
 ) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains two integers
+The first line of each test case contains an integer
 n
-and
-k
 (
-3≤n≤2⋅
+3≤n<
 10
-5
+4
 ;
-1≤k≤n
-) — the number of piles of sand and the size of the operation, respectively.
-The second line of each test case contains
 n
-integers
+is odd) — the length of the array
+a
+.
+After reading the first line of each test case, you should begin the interaction.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+4
+.
+Interaction
+For each test case, begin the interaction by reading the integer
+n
+.
+To make a query, output "
+?lr
+" (
+1≤l≤r≤n
+) without quotes. Afterwards, you should read in
+r−l+1
+integers — the integers
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+, in increasing order. You can make at most
+15
+such queries in a single test case.
+If you receive the integer
+−1
+instead of an answer or the integer
+n
+, it means your program has made an invalid query, has exceed the limit of queries, or has given incorrect answer on the previous test case. Your program must terminate immediately to receive a Wrong Answer verdict. Otherwise you can get an arbitrary verdict because your solution will continue to read from a closed stream.
+When you are ready to give the final answer, output "
+!x
+" (
+1≤x≤n
+) without quotes — the element that did not change position. Giving this answer does not count towards the limit of
+15
+queries. Afterwards, your program must continue to solve the remaining test cases, or exit if all test cases have been solved.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+Hacks
+To make a hack, use the following format. The first line must contain an integer
+t
+(
+1≤t≤500
+) — the number of test cases. The description of the test cases follows.
+The first line of each test case must contain an integer
+n
+(
+3≤n<
+10
+4
+;
+n
+is odd) — the length of the array
+a
+.
+The second line of each test case must contain
+n
+space-separated integers
 a
 1
 ,
@@ -75,73 +150,89 @@ n
 1≤
 a
 i
-≤
-10
-9
-) — the sizes of the piles.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
+≤n
+) — the elements of
+a
+. The array
+a
+should be the result of
+n−1
+2
+disjoint swaps on the array
+[1,2,…,n]
 .
-Output
-For each test case, output a single integer — the maximum number of piles that are simultaneously too tall after some (possibly zero) operations.
 Example
 input
 Copy
+2
+5
+
+1 2 4 5
+
+1 3 5
+
 3
-5 2
-2 9 2 4 1
-4 4
-1 3 2 1
-3 1
-1 3 1
+
+1
 output
 Copy
-2
-0
-1
+? 1 4
+
+? 3 5
+
+! 2
+
+? 1 1
+
+! 1
 Note
-In the first test case, we can perform the following three operations:
-Add one unit of sand to piles
-1
-and
+In the first test, the interaction proceeds as follows.
+Solution Jury Explanation
 2
-:
-[3,10,2,4,1]
-.
-Add one unit of sand to piles
-4
-and
+There are 2 test cases.
 5
-:
-[3,10,2,5,2]
+In the first test case, the hidden array is
+[4,2,5,1,3]
+, with length
+5
 .
-Add one unit of sand to piles
+? 1 4
+1 2 4 5
+The solution requests the subarray
+[4,2,5,1]
+in increasing order, and the jury responds with
+[1,2,4,5]
+.
+? 3 5
+1 3 5
+The solution requests the subarray
+[5,1,3]
+in increasing order, and the jury responds with
+[1,3,5]
+.
+! 2
+The solution has somehow determined that
+a
+2
+=2
+, and outputs it. Since the output is correct, the jury continues to the next test case.
 3
-and
-4
-:
-[3,10,3,6,2]
+In the second test case, the hidden array is
+[1,3,2]
+, with length
+3
 .
-Now piles
-2
-and
-4
-are too tall, so in this case the answer is
-2
-. It can be shown that it is impossible to make more than
-2
-piles too tall.
-In the second test case, any operation will increase all piles by
+? 1 1
 1
-unit, so the number of too tall piles will always be
-0
+The solution requests the number
+[1]
+only, and the jury responds with
+[1]
 .
-In the third test case, we can increase any pile by
+! 1
+The solution has determined that
+a
 1
-unit of sand. It can be shown that the maximum number of too tall piles is
-1
-.
+=1
+, and outputs it. Since the output is correct and there are no more test cases, the jury and the solution exit.
+Note that the line breaks in the example input and output are for the sake of clarity, and do not occur in the real interaction.

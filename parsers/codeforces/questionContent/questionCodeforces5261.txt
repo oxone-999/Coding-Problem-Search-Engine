@@ -1,52 +1,54 @@
-F. Leha and security system
+E. Choosing Carrot
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Bankopolis, the city you already know, finally got a new bank opened! Unfortunately, its security system is not yet working fine... Meanwhile hacker Leha arrived in Bankopolis and decided to test the system!
-Bank has n cells for clients' money. A sequence from n numbers a1, a2, ..., an describes the amount of money each client has. Leha wants to make requests to the database of the bank, finding out the total amount of money on some subsegments of the sequence and changing values of the sequence on some subsegments. Using a bug in the system, Leha can requests two types of queries to the database:
-1 l r x y denoting that Leha changes each digit x to digit y in each element of sequence ai, for which l ≤ i ≤ r is holds. For example, if we change in number 11984381 digit 8 to 4, we get 11944341. It's worth noting that Leha, in order to stay in the shadow, never changes digits in the database to 0, i.e. y ≠ 0.
-2 l r denoting that Leha asks to calculate and print the sum of such elements of sequence ai, for which l ≤ i ≤ r holds.
-As Leha is a white-hat hacker, he don't want to test this vulnerability on a real database. You are to write a similar database for Leha to test.
+Oleg the bank client and Igor the analyst are arguing again. This time, they want to pick a gift as a present for their friend, ZS the coder. After a long thought, they decided that their friend loves to eat carrots the most and thus they want to pick the best carrot as their present.
+There are n carrots arranged in a line. The i-th carrot from the left has juiciness ai. Oleg thinks ZS loves juicy carrots whereas Igor thinks that he hates juicy carrots. Thus, Oleg would like to maximize the juiciness of the carrot they choose while Igor would like to minimize the juiciness of the carrot they choose.
+To settle this issue, they decided to play a game again. Oleg and Igor take turns to play the game. In each turn, a player can choose a carrot from either end of the line, and eat it. The game ends when only one carrot remains. Oleg moves first. The last remaining carrot will be the carrot that they will give their friend, ZS.
+Oleg is a sneaky bank client. When Igor goes to a restroom, he performs k moves before the start of the game. Each move is the same as above (eat a carrot from either end of the line). After Igor returns, they start the game with Oleg still going first.
+Oleg wonders: for each k such that 0 ≤ k ≤ n - 1, what is the juiciness of the carrot they will give to ZS if he makes k extra moves beforehand and both players play optimally?
 Input
-The first line of input contains two integers n and q (1 ≤ n ≤ 105, 1 ≤ q ≤ 105) denoting amount of cells in the bank and total amount of queries respectively.
-The following line contains n integers a1, a2, ..., an (1 ≤ ai < 109) denoting the amount of money in each cell initially. These integers do not contain leading zeros.
-Each of the following q lines has one of the formats:
-1 l r x y (1 ≤ l ≤ r ≤ n, 0 ≤ x ≤ 9, 1 ≤ y ≤ 9), denoting Leha asks to change each digit x on digit y for each element ai of the sequence for which l ≤ i ≤ r holds;
-2 l r (1 ≤ l ≤ r ≤ n), denoting you have to calculate and print the sum of elements ai for which l ≤ i ≤ r holds.
+The first line of input contains a single integer n (1 ≤ n ≤ 3·105) — the total number of carrots.
+The next line contains n space-separated integers a1, a2, ..., an (1 ≤ ai ≤ 109). Here ai denotes the juiciness of the i-th carrot from the left of the line.
 Output
-For each second type query print a single number denoting the required sum.
+Output n space-separated integers x0, x1, ..., xn - 1. Here, xi denotes the juiciness of the carrot the friends will present to ZS if k = i.
 Examples
 input
 Copy
-5 5
-38 43 4 12 70
-1 1 3 4 8
-2 2 4
-1 4 5 0 8
-1 2 5 8 7
-2 1 5
+4
+1 2 3 5
 output
 Copy
-103
-207
+3 3 5 5
 input
 Copy
-5 5
-25 36 39 40 899
-1 1 3 2 7
-2 1 2
-1 3 5 9 1
-1 4 4 0 9
-2 1 5
+5
+1000000000 1000000000 1000000000 1000000000 1
 output
 Copy
-111
-1002
+1000000000 1000000000 1000000000 1000000000 1000000000
 Note
-Let's look at the example testcase.
-Initially the sequence is [38, 43, 4, 12, 70].
-After the first change each digit equal to 4 becomes 8 for each element with index in interval [1; 3]. Thus, the new sequence is [38, 83, 8, 12, 70].
-The answer for the first sum's query is the sum in the interval [2; 4], which equal 83 + 8 + 12 = 103, so the answer to this query is 103.
-The sequence becomes [38, 83, 8, 12, 78] after the second change and [38, 73, 7, 12, 77] after the third.
-The answer for the second sum's query is 38 + 73 + 7 + 12 + 77 = 207.
+For the first example,
+When k = 0, one possible optimal game is as follows:
+Oleg eats the carrot with juiciness 1.
+Igor eats the carrot with juiciness 5.
+Oleg eats the carrot with juiciness 2.
+The remaining carrot has juiciness 3.
+When k = 1, one possible optimal play is as follows:
+Oleg eats the carrot with juiciness 1 beforehand.
+Oleg eats the carrot with juiciness 2.
+Igor eats the carrot with juiciness 5.
+The remaining carrot has juiciness 3.
+When k = 2, one possible optimal play is as follows:
+Oleg eats the carrot with juiciness 1 beforehand.
+Oleg eats the carrot with juiciness 2 beforehand.
+Oleg eats the carrot with juiciness 3.
+The remaining carrot has juiciness 5.
+When k = 3, one possible optimal play is as follows:
+Oleg eats the carrot with juiciness 1 beforehand.
+Oleg eats the carrot with juiciness 2 beforehand.
+Oleg eats the carrot with juiciness 3 beforehand.
+The remaining carrot has juiciness 5.
+Thus, the answer is 3, 3, 5, 5.
+For the second sample, Oleg can always eat the carrot with juiciness 1 since he always moves first. So, the remaining carrot will always have juiciness 1000000000.

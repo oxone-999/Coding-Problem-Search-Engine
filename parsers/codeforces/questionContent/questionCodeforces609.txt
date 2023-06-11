@@ -1,39 +1,30 @@
-C. Minimum Notation
+D. Prefixes and Suffixes
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have a string
+You have two strings
 s
-consisting of digits from
-0
-to
-9
-inclusive. You can perform the following operation any (possibly zero) number of times:
-You can choose a position
-i
-and delete a digit
-d
-on the
-i
--th position. Then insert the digit
-min(d+1,9)
-on any position (at the beginning, at the end or in between any two adjacent digits).
-What is the lexicographically smallest string you can get by performing these operations?
-A string
-a
-is lexicographically smaller than a string
-b
-of the same length if and only if the following holds:
-in the first position where
-a
+1
 and
-b
-differ, the string
-a
-has a smaller digit than the corresponding digit in
-b
+s
+2
+of length
+n
+, consisting of lowercase English letters. You can perform the following operation any (possibly zero) number of times:
+Choose a positive integer
+1≤k≤n
 .
+Swap the prefix of the string
+s
+1
+and the suffix of the string
+s
+2
+of length
+k
+.
+Is it possible to make these two strings equal by doing described operations?
 Input
 The first line contains a single integer
 t
@@ -42,54 +33,171 @@ t
 10
 4
 ) — the number of test cases. Then the test cases follow.
-Each test case consists of a single line that contains one string
-s
+Each test case consists of three lines.
+The first line contains a single integer
+n
 (
-1≤|s|≤2⋅
+1≤n≤
 10
 5
-) — the string consisting of digits. Please note that
+) — the length of the strings
 s
-is just a string consisting of digits, so leading zeros are allowed.
-It is guaranteed that the sum of lengths of
+1
+and
 s
-over all test cases does not exceed
+2
+.
+The second line contains the string
+s
+1
+of length
+n
+, consisting of lowercase English letters.
+The third line contains the string
+s
+2
+of length
+n
+, consisting of lowercase English letters.
+It is guaranteed that the sum of
+n
+for all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-Print a single string — the minimum string that is possible to obtain.
+For each test case, print "YES" if it is possible to make the strings equal, and "NO" otherwise.
 Example
 input
 Copy
-4
-04829
-9
-01
-314752277691991
+7
+3
+cbc
+aba
+5
+abcaa
+cbabb
+5
+abcaa
+cbabz
+1
+a
+a
+1
+a
+b
+6
+abadaa
+adaaba
+8
+abcabdaa
+adabcaba
 output
 Copy
-02599
-9
-01
-111334567888999
+YES
+YES
+NO
+YES
+NO
+NO
+YES
 Note
 In the first test case:
-Delete
-8
-and insert
-9
-at the end of the notation. The resulting notation is
-04299
+Initially
+s
+1
+=cbc
+,
+s
+2
+=aba
 .
-Delete
-4
-and insert
-5
-in the
-3
--rd position of the notation. The resulting notation is
-02599
+Operation with
+k=1
+, after the operation
+s
+1
+=abc
+,
+s
+2
+=abc
 .
-Nothing needs to be done in the second and third test cases.
+In the second test case:
+Initially
+s
+1
+=abcaa
+,
+s
+2
+=cbabb
+.
+Operation with
+k=2
+, after the operation
+s
+1
+=bbcaa
+,
+s
+2
+=cbaab
+.
+Operation with
+k=3
+, after the operation
+s
+1
+=aabaa
+,
+s
+2
+=cbbbc
+.
+Operation with
+k=1
+, after the operation
+s
+1
+=cabaa
+,
+s
+2
+=cbbba
+.
+Operation with
+k=2
+, after the operation
+s
+1
+=babaa
+,
+s
+2
+=cbbca
+.
+Operation with
+k=1
+, after the operation
+s
+1
+=aabaa
+,
+s
+2
+=cbbcb
+.
+Operation with
+k=2
+, after the operation
+s
+1
+=cbbaa
+,
+s
+2
+=cbbaa
+.
+In the third test case, it's impossible to make strings equal.

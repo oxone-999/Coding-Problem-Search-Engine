@@ -1,168 +1,135 @@
-E. Four Stones
-time limit per test1 second
-memory limit per test512 megabytes
+B. Make Them Odd
+time limit per test3 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are four stones on an infinite line in integer coordinates
+There are
+n
+positive integers
 a
 1
 ,
 a
 2
-,
-a
-3
-,
-a
-4
-. The goal is to have the stones in coordinates
-b
-1
-,
-b
-2
-,
-b
-3
-,
-b
-4
-. The order of the stones does not matter, that is, a stone from any position
-a
-i
-can end up in at any position
-b
-j
-, provided there is a required number of stones in each position (that is, if a coordinate
-x
-appears
-k
-times among numbers
-b
-1
 ,…,
-b
-4
-, there should be exactly
-k
-stones at
-x
-in the end).
-We are allowed to move stones with the following operation: choose two stones at distinct positions
-x
-and
-y
-with at least one stone each, and move one stone from
-x
-to
-2y−x
-. In other words, the operation moves a stone to a symmetric position relative to some other stone. At any moment it is allowed to have any number of stones at the same position.
-Find any sequence of operations that achieves the goal, or determine that it is impossible. The sequence does not have to be shortest, but it may contain at most
-1000
-operations.
+a
+n
+. For the one move you can choose any even value
+c
+and divide by two all elements that equal
+c
+.
+For example, if
+a=[6,8,12,6,3,12]
+and you choose
+c=6
+, and
+a
+is transformed into
+a=[3,8,12,3,3,12]
+after the move.
+You need to find the minimal number of moves for transforming
+a
+to an array of only odd integers (each element shouldn't be divisible by
+2
+).
 Input
-The first line contains four integers
+The first line of the input contains one integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases in the input. Then
+t
+test cases follow.
+The first line of a test case contains
+n
+(
+1≤n≤2⋅
+10
+5
+) — the number of integers in the sequence
+a
+. The second line contains positive integers
 a
 1
-,…,
+,
 a
-4
-(
-−
-10
-9
-≤
-a
-i
-≤
-10
-9
-) — initial coordinates of the stones. There may be multiple stones sharing the same coordinate.
-The second line contains four integers
-b
-1
-,…,
-b
-4
-(
-−
-10
-9
-≤
-b
-i
-≤
-10
-9
-) — target coordinates of the stones. There may be multiple targets sharing the same coordinate.
-Output
-If there is no sequence of operations that achieves the goal, print a single integer
-−1
-. Otherwise, on the first line print a single integer
-k
-(
-0≤k≤1000
-) — the number of operations in your sequence. On the next
-k
-lines, describe the operations. The
-i
--th of these lines should contain two integers
-x
-i
-and
-y
-i
-(
-x
-i
-≠
-y
-i
-) — coordinates of the moved stone and the center of symmetry stone for the
-i
--th operation.
-For each operation
-i
-, there should at least one stone in each of the coordinates
-x
-i
-and
-y
-i
-, and the resulting coordinate
 2
-y
+,…,
+a
+n
+(
+1≤
+a
 i
-−
-x
-i
-must not exceed
+≤
 10
-18
-by absolute value.
-If there are multiple suitable sequences, print any of them. It is guaranteed that if there is a suitable sequence of operations, then there is also a suitable sequence that satisfies all the additional requirement.
-Examples
+9
+).
+The sum of
+n
+for all test cases in the input doesn't exceed
+2⋅
+10
+5
+.
+Output
+For
+t
+test cases print the answers in the order of test cases in the input. The answer for the test case is the minimal number of moves needed to make all numbers in the test case odd (i.e. not divisible by
+2
+).
+Example
 input
 Copy
-0 1 2 3
-3 5 6 8
-output
-Copy
+4
+6
+40 6 40 3 20 1
+1
+1024
+4
+2 4 8 16
 3
-1 3
-2 5
-0 3
-input
-Copy
-0 0 0 0
-1 1 1 1
+3 1 7
 output
 Copy
--1
-input
-Copy
-0 0 0 1
-0 1 0 1
-output
-Copy
--1
+4
+10
+4
+0
+Note
+In the first test case of the example, the optimal sequence of moves can be as follows:
+before making moves
+a=[40,6,40,3,20,1]
+;
+choose
+c=6
+;
+now
+a=[40,3,40,3,20,1]
+;
+choose
+c=40
+;
+now
+a=[20,3,20,3,20,1]
+;
+choose
+c=20
+;
+now
+a=[10,3,10,3,10,1]
+;
+choose
+c=10
+;
+now
+a=[5,3,5,3,5,1]
+— all numbers are odd.
+Thus, all numbers became odd after
+4
+moves. In
+3
+or fewer moves, you cannot make them all odd.

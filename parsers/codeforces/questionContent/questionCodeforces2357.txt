@@ -1,115 +1,144 @@
-G. Mercenaries
-time limit per test7 seconds
-memory limit per test512 megabytes
+C. Mere Array
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp plays a (yet another!) strategic computer game. In this game, he leads an army of mercenaries.
-Polycarp wants to gather his army for a quest. There are
+You are given an array
+a
+1
+,
+a
+2
+,…,
+a
 n
-mercenaries for hire, and the army should consist of some subset of them.
-The
+where all
+a
 i
--th mercenary can be chosen if the resulting number of chosen mercenaries is not less than
-l
+are integers and greater than
+0
+.
+In one operation, you can choose two different indices
 i
-(otherwise he deems the quest to be doomed) and not greater than
-r
-i
-(he doesn't want to share the trophies with too many other mercenaries). Furthermore,
-m
-pairs of mercenaries hate each other and cannot be chosen for the same quest.
-How many non-empty subsets does Polycarp need to consider? In other words, calculate the number of non-empty subsets of mercenaries such that the size of this subset belongs to
-[
-l
+and
+j
+(
+1≤i,j≤n
+). If
+gcd(
+a
 i
 ,
-r
+a
+j
+)
+is equal to the minimum element of the whole array
+a
+, you can swap
+a
 i
-]
-for each chosen mercenary, and there are no two mercenaries in the subset that hate each other.
-The answer may be large, so calculate it modulo
-998244353
+and
+a
+j
+.
+gcd(x,y)
+denotes the greatest common divisor (GCD) of integers
+x
+and
+y
+.
+Now you'd like to make
+a
+non-decreasing using the operation any number of times (possibly zero). Determine if you can do this.
+An array
+a
+is non-decreasing if and only if
+a
+1
+≤
+a
+2
+≤…≤
+a
+n
 .
 Input
-The first line contains two integers
-n
-and
-m
+The first line contains one integer
+t
 (
-1≤n≤3⋅
+1≤t≤
+10
+4
+) — the number of test cases.
+The first line of each test case contains one integer
+n
+(
+1≤n≤
 10
 5
-,
-0≤m≤min(20,
-n(n−1)
-2
-)
-) — the number of mercenaries and the number of pairs of mercenaries that hate each other.
-Then
+) — the length of array
+a
+.
+The second line of each test case contains
 n
-lines follow, the
-i
--th of them contains two integers
-l
-i
-and
-r
-i
+positive integers
+a
+1
+,
+a
+2
+,…
+a
+n
 (
 1≤
-l
+a
 i
 ≤
-r
-i
-≤n
-).
-Then
-m
-lines follow, the
-i
--th of them contains two integers
-a
-i
-and
-b
-i
-(
-1≤
-a
-i
-<
-b
-i
-≤n
-) denoting that the mercenaries
-a
-i
-and
-b
-i
-hate each other. There are no two equal pairs in this list.
-Output
-Print one integer — the number of non-empty subsets meeting the constraints, taken modulo
-998244353
+10
+9
+) — the array itself.
+It is guaranteed that the sum of
+n
+over all test cases doesn't exceed
+10
+5
 .
-Examples
+Output
+For each test case, output "YES" if it is possible to make the array
+a
+non-decreasing using the described operation, or "NO" if it is impossible to do so.
+Example
 input
 Copy
-3 0
-1 1
-2 3
-1 3
+4
+1
+8
+6
+4 3 6 6 2 9
+4
+4 5 6 7
+5
+7 5 2 2 4
 output
 Copy
+YES
+YES
+YES
+NO
+Note
+In the first and third sample, the array is already non-decreasing.
+In the second sample, we can swap
+a
+1
+and
+a
 3
-input
-Copy
-3 1
-1 1
-2 3
-1 3
-2 3
-output
-Copy
-2
+first, and swap
+a
+1
+and
+a
+5
+second to make the array non-decreasing.
+In the forth sample, we cannot the array non-decreasing using the operation.

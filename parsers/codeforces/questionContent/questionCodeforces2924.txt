@@ -1,175 +1,101 @@
-D. Chaotic V.
-time limit per test2 seconds
-memory limit per test512 megabytes
+A. ConneR and the A.R.C. Markland-N
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Æsir - CHAOS
-Æsir - V.
-"Everything has been planned out. No more hidden concerns. The condition of Cytus is also perfect.
-The time right now...... 00:01:12......
-It's time."
-The emotion samples are now sufficient. After almost 3 years, it's time for Ivy to awake her bonded sister, Vanessa.
-The system inside A.R.C.'s Library core can be considered as an undirected graph with infinite number of processing nodes, numbered with all positive integers (
-1,2,3,…
-). The node with a number
-x
-(
-x>1
-), is directly connected with a node with number
-x
-f(x)
-, with
-f(x)
-being the lowest prime divisor of
-x
-.
-Vanessa's mind is divided into
+Sakuzyo - Imprinting
+A.R.C. Markland-N is a tall building with
 n
-fragments. Due to more than 500 years of coma, the fragments have been scattered: the
-i
--th fragment is now located at the node with a number
+floors numbered from
+1
+to
+n
+. Between each two adjacent floors in the building, there is a staircase connecting them.
+It's lunchtime for our sensei Colin "ConneR" Neumann Jr, and he's planning for a location to enjoy his meal.
+ConneR's office is at floor
+s
+of the building. On each floor (including floor
+s
+, of course), there is a restaurant offering meals. However, due to renovations being in progress,
 k
-i
-!
-(a factorial of
-k
-i
-).
-To maximize the chance of successful awakening, Ivy decides to place the samples in a node
-P
-, so that the total length of paths from each fragment to
-P
-is smallest possible. If there are multiple fragments located at the same node, the path from that node to
-P
-needs to be counted multiple times.
-In the world of zeros and ones, such a requirement is very simple for Ivy. Not longer than a second later, she has already figured out such a node.
-But for a mere human like you, is this still possible?
-For simplicity, please answer the minimal sum of paths' lengths from every fragment to the emotion samples' assembly node
-P
-.
+of the restaurants are currently closed, and as a result, ConneR can't enjoy his lunch there.
+CooneR wants to reach a restaurant as quickly as possible to save time. What is the minimum number of staircases he needs to walk to reach a closest currently open restaurant.
+Please answer him quickly, and you might earn his praise and even enjoy the lunch with him in the elegant Neumanns' way!
 Input
-The first line contains an integer
-n
+The first line contains one integer
+t
 (
-1≤n≤
-10
-6
-) — number of fragments of Vanessa's mind.
-The second line contains
+1≤t≤1000
+) — the number of test cases in the test. Then the descriptions of
+t
+test cases follow.
+The first line of a test case contains three integers
 n
-integers:
+,
+s
+and
 k
+(
+2≤n≤
+10
+9
+,
+1≤s≤n
+,
+1≤k≤min(n−1,1000)
+) — respectively the number of floors of A.R.C. Markland-N, the floor where ConneR is in, and the number of closed restaurants.
+The second line of a test case contains
+k
+distinct integers
+a
 1
 ,
-k
+a
 2
 ,…,
+a
 k
-n
 (
-0≤
+1≤
+a
+i
+≤n
+) — the floor numbers of the currently closed restaurants.
+It is guaranteed that the sum of
 k
-i
-≤5000
-), denoting the nodes where fragments of Vanessa's mind are located: the
-i
--th fragment is at the node with a number
-k
-i
-!
+over all test cases does not exceed
+1000
 .
 Output
-Print a single integer, denoting the minimal sum of path from every fragment to the node with the emotion samples (a.k.a. node
-P
-).
-As a reminder, if there are multiple fragments at the same node, the distance from that node to
-P
-needs to be counted multiple times as well.
-Examples
-input
-Copy
-3
-2 1 4
-output
-Copy
-5
-input
-Copy
-4
-3 1 4 4
-output
-Copy
-6
-input
-Copy
-4
-3 1 4 1
-output
-Copy
-6
+For each test case print a single integer — the minimum number of staircases required for ConneR to walk from the floor
+s
+to a floor with an open restaurant.
+Example
 input
 Copy
 5
-3 1 4 1 5
+5 2 3
+1 2 3
+4 3 3
+4 1 2
+10 2 6
+1 2 3 4 5 7
+2 1 1
+2
+100 76 8
+76 75 36 67 41 74 10 77
 output
 Copy
-11
+2
+0
+4
+0
+2
 Note
-Considering the first
-24
-nodes of the system, the node network will look as follows (the nodes
-1!
-,
-2!
-,
-3!
-,
-4!
-are drawn bold):
-For the first example, Ivy will place the emotion samples at the node
-1
-. From here:
-The distance from Vanessa's first fragment to the node
-1
-is
-1
-.
-The distance from Vanessa's second fragment to the node
-1
-is
-0
-.
-The distance from Vanessa's third fragment to the node
-1
-is
+In the first example test case, the nearest floor with an open restaurant would be the floor
 4
 .
-The total length is
-5
-.
-For the second example, the assembly node will be
+In the second example test case, the floor with ConneR's office still has an open restaurant, so Sensei won't have to go anywhere.
+In the third example test case, the closest open restaurant is on the
 6
-. From here:
-The distance from Vanessa's first fragment to the node
-6
-is
-0
-.
-The distance from Vanessa's second fragment to the node
-6
-is
-2
-.
-The distance from Vanessa's third fragment to the node
-6
-is
-2
-.
-The distance from Vanessa's fourth fragment to the node
-6
-is again
-2
-.
-The total path length is
-6
-.
+-th floor.

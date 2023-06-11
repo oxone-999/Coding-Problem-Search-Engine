@@ -1,72 +1,251 @@
-F. Gifts from Grandfather Ahmed
-time limit per test1 second
+E. Multitest Generator
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Grandfather Ahmed's School has
-n+1
-students. The students are divided into
-k
-classes, and
-s
-i
-students study in the
-i
--th class. So,
-s
+Let's call an array
+b
 1
-+
-s
+,
+b
 2
-+…+
-s
-k
-=n+1
+,…,
+b
+m
+a test if
+b
+1
+=m−1
 .
-Due to the upcoming April Fools' Day, all students will receive gifts!
-Grandfather Ahmed planned to order
-n+1
-boxes of gifts. Each box can contain one or more gifts. He plans to distribute the boxes between classes so that the following conditions are satisfied:
-Class number
+Let's call an array
+b
+1
+,
+b
+2
+,…,
+b
+m
+a multitest if the array
+b
+2
+,
+b
+3
+,…,
+b
+m
+can be split into
+b
+1
+non-empty subarrays so that each of these subarrays is a test. Note that each element of the array must be included in exactly one subarray, and the subarrays must consist of consecutive elements.
+Let's define the function
+f
+from the array
+b
+1
+,
+b
+2
+,…,
+b
+m
+as the minimum number of operations of the form "Replace any
+b
 i
-receives exactly
-s
-i
-boxes (so that each student can open exactly one box).
-The total number of gifts in the boxes received by the
-i
--th class should be a multiple of
-s
-i
-(it should be possible to equally distribute the gifts among the
-s
-i
-students of this class).
-Unfortunately, Grandfather Ahmed ordered only
+with any non-negative integer
+x
+", which needs to be done so that the array
+b
+1
+,
+b
+2
+,…,
+b
+m
+becomes a multitest.
+You are given an array of positive integers
+a
+1
+,
+a
+2
+,…,
+a
 n
-boxes with gifts, the
+. For each
 i
--th of which contains
+from
+1
+to
+n−1
+, find
+f([
 a
 i
-gifts.
-Ahmed has to buy the missing gift box, and the number of gifts in the box should be an integer between
+,
+a
+i+1
+,…,
+a
+n
+])
+.
+Below are some examples of tests and multitests.
+Tests:
+[
 1
-and
-10
-6
-. Help Ahmed to determine, how many gifts should the missing box contain, and build a suitable distribution of boxes to classes, or report that this is impossible.
+–
+,5]
+,
+[
+2
+–
+,2,2]
+,
+[
+3
+–
+,4,1,1]
+,
+[
+5
+–
+,0,0,0,0,0]
+,
+[
+7
+–
+,1,2,3,4,5,6,7]
+,
+[
+0
+–
+]
+. These arrays are tests since their first element (underlined) is equal to the length of the array minus one.
+Multitests:
+[1,
+1
+–
+,1
+–
+–
+–
+–
+]
+,
+[2,
+3
+–
+,0,0,1
+–
+–
+–
+–
+–
+–
+–
+–
+,
+1
+–
+,12
+–
+–
+–
+–
+–
+]
+,
+[3,
+2
+–
+,2,7
+–
+–
+–
+–
+–
+–
+,
+1
+–
+,1
+–
+–
+–
+–
+,
+3
+–
+,4,4,4
+–
+–
+–
+–
+–
+–
+–
+–
+]
+,
+[4,
+0
+–
+–
+,
+3
+–
+,1,7,9
+–
+–
+–
+–
+–
+–
+–
+–
+,
+4
+–
+,2,0,0,9
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+,
+1
+–
+,777
+–
+–
+–
+–
+–
+–
+]
+. Underlined are the subarrays after the split, and double underlined are the first elements of each subarray.
 Input
-The first line of the input contains two integers
-n
-and
-k
+Each test contains multiple test cases. The first line contains the number of test cases
+t
 (
-1≤n,k≤200
-,
-k≤n+1
-).
-The second line contains
+1≤t≤300000
+). The description of the test cases follows.
+The first line of each test case contains a single integer
+n
+(
+2≤n≤300000
+) — the length of the array
+a
+.
+The second line of each test case contains
 n
 integers
 a
@@ -81,161 +260,120 @@ n
 1≤
 a
 i
-≤
-10
-6
-) — the number of gifts in the available boxes.
-The third line contains
-k
-integers
-s
-1
-,
-s
-2
-,…,
-s
-k
-(
-1≤
-s
-i
-≤n+1
-) — the number of students in classes. It is guaranteed that
-∑
-s
-i
-=n+1
+≤300000
+) — elements of the array
+a
+.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+300000
 .
 Output
-If there is no way to buy the remaining box, output the integer
-−1
-in a single line.
-Otherwise, in the first line, output a single integer
-s
- — the number of gifts in the box that Grandfather Ahmed should buy (
-1≤s≤
-10
-6
-).
-Next, in
-k
-lines, print the distribution of boxes to classes. In the
+For each test case print
+n−1
+numbers —
+f([
+a
 i
--th line print
-s
+,
+a
+i+1
+,…,
+a
+n
+])
+for each
 i
-integers — the sizes of the boxes that should be sent to the
-i
--th class.
-If there are multiple solutions, print any of them.
+from
+1
+to
+n−1
+.
 Examples
 input
 Copy
-4 2
-7 7 7 127
-2 3
+3
+4
+1 2 1 7
+7
+3 1 3 1 2 1 1
+4
+2 7 1 1
 output
 Copy
-1
-7 7 
-7 127 1 
+0 1 1 
+0 1 1 0 1 1 
+1 1 1 
 input
 Copy
-18 4
-1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9
-6 1 9 3
+1
+19
+3 4 1 2 1 7 7 3 1 3 1 2 1 1 4 2 7 1 1
 output
 Copy
-9
-7 1 7 6 5 4 
-9 
-1 2 3 8 3 2 9 8 9 
-6 5 4 
+0 0 1 1 1 1 1 1 1 0 1 0 1 0 2 1 1 1 
 Note
-In the first test, Grandfather Ahmed can buy a box with just
+In the first test case of the first test the array
+[1,2,1,7]
+is a multitest since the array
+[2,1,7]
+is a test. The array
+[2,1,7]
+is not a multitest, but after replacing the first number with
 1
-gift. After that, two boxes with
-7
-gifts are sent to the first class.
-7+7=14
-is divisible by
-2
-. And the second class gets boxes with
-1,7,127
-gifts.
-1+7+127=135
-is evenly divisible by
-3
+, an array
+[1,1,7]
+is obtained, which is a multitest. The array
+[1,7]
+is also not a multitest, but the array
+[1,0]
+is, so
+f([1,7])=1
 .
-In the second test, the classes have sizes
-6
+In the second test case of first test, for
+i=2
 ,
-1
+f([
+a
+i
 ,
-9
-, and
-3
-. We show that the available boxes are enough to distribute into classes with sizes
-6
-,
-9
-,
-3
-, and in the class with size
-1
-, you can buy a box of any size. In class with size
-6
-we send boxes with sizes
-7
-,
-1
-,
-7
-,
-6
-,
-5
-,
+a
+i+1
+,…,
+a
+n
+])=f([1,3,1,2,1,1])=1
+, since the array itself is not a multitest, but after replacing the second element with
 4
-.
-7+1+7+6+5+4=30
-is divisible by
-6
-. In class with size
-9
-we send boxes with sizes
+you get multitest.
+In the third test case of first test, for
+i=1
+,
+f([
+a
+i
+,
+a
+i+1
+,…,
+a
+n
+])=f([2,7,1,1])=1
+, since the array itself is not a multitest, but after replacing the second element with
+0
+you get multitest.
+The second test is an array composed of all the numbers of the first test. Therefore
+f([
+a
 1
 ,
+a
 2
-,
-3
-,
-8
-,
-3
-,
-2
-,
-9
-,
-8
-,
-9
-.
-1+2+3+8+3+2+9+8+9=45
-is divisible by
-9
-. The remaining boxes (
-6
-,
-5
-,
-4
-) are sent to the class with size
-3
-.
-6+5+4=15
-is divisible by
-3
+,…,
+a
+n
+])
+naturally equals to
+0
 .

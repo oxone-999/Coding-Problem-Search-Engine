@@ -1,264 +1,244 @@
-A. Cut and Paste
-time limit per test2 seconds
-memory limit per test256 megabytes
+D. Miss Punyverse
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-We start with a string
-s
-consisting only of the digits
-1
-,
-2
-, or
-3
-. The length of
-s
-is denoted by
-|s|
-. For each
-i
-from
+The Oak has
+n
+nesting places, numbered with integers from
 1
 to
-|s|
-, the
+n
+. Nesting place
 i
--th character of
-s
-is denoted by
-s
+is home to
+b
 i
-.
-There is one cursor. The cursor's location
-ℓ
-is denoted by an integer in
-{0,…,|s|}
-, with the following meaning:
-If
-ℓ=0
-, then the cursor is located before the first character of
+bees and
+w
+i
+wasps.
+Some nesting places are connected by branches. We call two nesting places adjacent if there exists a branch between them. A simple path from nesting place
+x
+to
+y
+is given by a sequence
 s
-.
-If
-ℓ=|s|
-, then the cursor is located right after the last character of
+0
+,…,
 s
-.
-If
-0<ℓ<|s|
-, then the cursor is located between
+p
+of distinct nesting places, where
+p
+is a non-negative integer,
 s
-ℓ
+0
+=x
+,
+s
+p
+=y
+, and
+s
+i−1
 and
 s
-ℓ+1
-.
-We denote by
-s
-left
-the string to the left of the cursor and
-s
-right
-the string to the right of the cursor.
-We also have a string
-c
-, which we call our clipboard, which starts out as empty. There are three types of actions:
-The Move action. Move the cursor one step to the right. This increments
-ℓ
-once.
-The Cut action. Set
-c←
-s
-right
-, then set
-s←
-s
-left
-.
-The Paste action. Append the value of
-c
-to the end of the string
-s
-. Note that this doesn't modify
-c
-.
-The cursor initially starts at
-ℓ=0
-. Then, we perform the following procedure:
-Perform the Move action once.
-Perform the Cut action once.
-Perform the Paste action
-s
-ℓ
-times.
-If
-ℓ=x
-, stop. Otherwise, return to step 1.
-You're given the initial string
-s
-and the integer
+i
+are adjacent for each
+i=1,…,p
+. The branches of The Oak are set up in such a way that for any two pairs of nesting places
 x
-. What is the length of
-s
-when the procedure stops? Since this value may be very large, only find it modulo
-10
-9
-+7
+and
+y
+, there exists a unique simple path from
+x
+to
+y
+. Because of this, biologists and computer scientists agree that The Oak is in fact, a tree.
+A village is a nonempty set
+V
+of nesting places such that for any two
+x
+and
+y
+in
+V
+, there exists a simple path from
+x
+to
+y
+whose intermediate nesting places all lie in
+V
 .
-It is guaranteed that
-ℓ≤|s|
-at any time.
+A set of villages
+P
+is called a partition if each of the
+n
+nesting places is contained in exactly one of the villages in
+P
+. In other words, no two villages in
+P
+share any common nesting place, and altogether, they contain all
+n
+nesting places.
+The Oak holds its annual Miss Punyverse beauty pageant. The two contestants this year are Ugly Wasp and Pretty Bee. The winner of the beauty pageant is determined by voting, which we will now explain. Suppose
+P
+is a partition of the nesting places into
+m
+villages
+V
+1
+,…,
+V
+m
+. There is a local election in each village. Each of the insects in this village vote for their favorite contestant. If there are strictly more votes for Ugly Wasp than Pretty Bee, then Ugly Wasp is said to win in that village. Otherwise, Pretty Bee wins. Whoever wins in the most number of villages wins.
+As it always goes with these pageants, bees always vote for the bee (which is Pretty Bee this year) and wasps always vote for the wasp (which is Ugly Wasp this year). Unlike their general elections, no one abstains from voting for Miss Punyverse as everyone takes it very seriously.
+Mayor Waspacito, and his assistant Alexwasp, wants Ugly Wasp to win. He has the power to choose how to partition The Oak into exactly
+m
+villages. If he chooses the partition optimally, determine the maximum number of villages in which Ugly Wasp wins.
 Input
 The first line of input contains a single integer
 t
 (
-1≤t≤1000
+1≤t≤100
 ) denoting the number of test cases. The next lines contain descriptions of the test cases.
-The first line of each test case contains a single integer
-x
+The first line of each test case contains two space-separated integers
+n
+and
+m
 (
-1≤x≤
-10
-6
-). The second line of each test case consists of the initial string
-s
+1≤m≤n≤3000
+). The second line contains
+n
+space-separated integers
+b
+1
+,
+b
+2
+,…,
+b
+n
 (
-1≤|s|≤500
-). It is guaranteed, that
-s
-consists of the characters "1", "2", "3".
-It is guaranteed that the sum of
-x
-in a single file is at most
-10
-6
-. It is guaranteed that in each test case before the procedure will stop it will be true that
-ℓ≤|s|
-at any time.
-Output
-For each test case, output a single line containing a single integer denoting the answer for that test case modulo
+0≤
+b
+i
+≤
 10
 9
-+7
+). The third line contains
+n
+space-separated integers
+w
+1
+,
+w
+2
+,…,
+w
+n
+(
+0≤
+w
+i
+≤
+10
+9
+). The next
+n−1
+lines describe the pairs of adjacent nesting places. In particular, the
+i
+-th of them contains two space-separated integers
+x
+i
+and
+y
+i
+(
+1≤
+x
+i
+,
+y
+i
+≤n
+,
+x
+i
+≠
+y
+i
+) denoting the numbers of two adjacent nesting places. It is guaranteed that these pairs form a tree.
+It is guaranteed that the sum of
+n
+in a single file is at most
+10
+5
 .
+Output
+For each test case, output a single line containing a single integer denoting the maximum number of villages in which Ugly Wasp wins, among all partitions of The Oak into
+m
+villages.
 Example
 input
 Copy
-4
-5
-231
-7
-2323
-6
-333
-24
-133321333
+2
+4 3
+10 160 70 50
+70 111 111 0
+1 2
+2 3
+3 4
+2 1
+143 420
+214 349
+2 1
 output
 Copy
-25
-1438
-1101
-686531475
+2
+0
 Note
-Let's illustrate what happens with the first test case. Initially, we have
-s=
-231. Initially,
-ℓ=0
-and
-c=ε
-(the empty string). The following things happen if we follow the procedure above:
-Step 1, Move once: we get
-ℓ=1
+In the first test case, we need to partition the
+n=4
+nesting places into
+m=3
+villages. We can make Ugly Wasp win in
+2
+villages via the following partition:
+{{1,2},{3},{4}}
+. In this partition,
+Ugly Wasp wins in village
+{1,2}
+, garnering
+181
+votes as opposed to Pretty Bee's
+170
+;
+Ugly Wasp also wins in village
+{3}
+, garnering
+111
+votes as opposed to Pretty Bee's
+70
+;
+Ugly Wasp loses in the village
+{4}
+, garnering
+0
+votes as opposed to Pretty Bee's
+50
 .
-Step 2, Cut once: we get
-s=
-2 and
-c=
-31.
-Step 3, Paste
-s
-ℓ
-=
-2 times: we get
-s=
-23131.
-Step 4:
-ℓ=1≠x=5
-, so we return to step 1.
-Step 1, Move once: we get
-ℓ=2
-.
-Step 2, Cut once: we get
-s=
-23 and
-c=
-131.
-Step 3, Paste
-s
-ℓ
-=
-3 times: we get
-s=
-23131131131.
-Step 4:
-ℓ=2≠x=5
-, so we return to step 1.
-Step 1, Move once: we get
-ℓ=3
-.
-Step 2, Cut once: we get
-s=
-231 and
-c=
-31131131.
-Step 3, Paste
-s
-ℓ
-=
-1 time: we get
-s=
-23131131131.
-Step 4:
-ℓ=3≠x=5
-, so we return to step 1.
-Step 1, Move once: we get
-ℓ=4
-.
-Step 2, Cut once: we get
-s=
-2313 and
-c=
-1131131.
-Step 3, Paste
-s
-ℓ
-=
-3 times: we get
-s=
-2313113113111311311131131.
-Step 4:
-ℓ=4≠x=5
-, so we return to step 1.
-Step 1, Move once: we get
-ℓ=5
-.
-Step 2, Cut once: we get
-s=
-23131 and
-c=
-13113111311311131131.
-Step 3, Paste
-s
-ℓ
-=
-1 times: we get
-s=
-2313113113111311311131131.
-Step 4:
-ℓ=5=x
-, so we stop.
-At the end of the procedure,
-s
-has length
-25
-.
+Thus, Ugly Wasp wins in
+2
+villages, and it can be shown that this is the maximum possible number.
+In the second test case, we need to partition the
+n=2
+nesting places into
+m=1
+village. There is only one way to do this:
+{{1,2}}
+. In this partition's sole village, Ugly Wasp gets
+563
+votes, and Pretty Bee also gets
+563
+votes. Ugly Wasp needs strictly more votes in order to win. Therefore, Ugly Wasp doesn't win in any village.

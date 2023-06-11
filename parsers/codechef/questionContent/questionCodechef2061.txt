@@ -1,50 +1,135 @@
-A Story with Strings
+Different Subarrays Rearrange
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Lira and her best friend are now ending highschool and soon they both will head separate ways...
-Lira will obviously study Computer Science while her best friend will study Arts... (apparentely, opposites attract, alikes repel right?)
-However, as Lira didn't want to lose contact with her, she decided to mix Art and Computer Science one last time and amaze her friend with Computer Science, so she could have a geek coding partner.
-To amaze her, she encoded a message in two strings, which she presented to her friend:
-Lira: "So, Mary, as you can see, we have two strings here, yes? We have a first longer string, S1, which encodes our common path together, and is represented by some letters which represent our lives so far as well all the events we lived together.
-The second string, S2, will be as long as the first one, or possibly shorter and it is here to represent what the future might bring to both of us :) It is also only composed of letters, which represent some life events we might still experience together in the future.
-What I would like you to do, is to find out if the future will be just like now, and, for that,you need to find a contiguous sequence of letters in both of these two strings.
-Obviously, as I want our friendship to last very, very much, I ask you to find the longest sequence of life events we might still experience together and tell me which sequence is it and how long is it :D
-However, if fate doesn't want us to be together, simply tell me the number 0 and we shall both head separate ways forever.
-Turns out, that after Mary solved the problem, she became so interested in CS herself, that both she and Lira are now working together at a very reputable software company. :)
-  Input
-The input will consist of two strings composed only of the letters a..z, both of which are at most 250.000 characters in length.
-Output
-The output should be as stated.
-If there is a common life event in Mary and Lira's lives, you should output it on a single line and, on another line, you should output the length of the event.
-Otherwise, simply output 0.
-On the case where there are multiple answers, the first common event to be found on the second string, should be written to output, followed by its length. See example 3 for details.
+You are given an array
+A of
+N integers
+A
+1
+,A
+2
+,…,A
+N
+. Determine if there are two permutations
+B and
+C of this array, for which the following condition is satisfied:
+There doesn't exist a pair of integers
+(i,j) such that
+1≤i≤j≤N and
+(i,j)
+
+=(1,N), for which the subarray
+B[i:j] is a permutation of subarray
+C[i:j].
+If there exist such permutations, find any of them.
+As a reminder,
+B[i:j] refers to the subarray
+[B
+i
+,B
+i+1
+,…,B
+j
+]
+Input Format
+The first line of the input contains a single integer
+T, the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single integer
+N — the number of integers.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+Output Format
+For each test case, if there are no such permutations
+B and
+C, output NO.
+Otherwise, on the first line output YES. In the next line, output
+N integers
+B
+1
+,B
+2
+,…,B
+N
+. In the next line, output
+N integers
+C
+1
+,C
+2
+,…,C
+N
+.
+You may print each character of YES/NO in either uppercase or lowercase (for example, the strings YES, yeS, YeS, and yEs will all be treated as identical).
 Constraints
-1 ≤ |S1| ≤ 250000
-1 ≤ |S2| ≤ 250000
-1 ≤ |S2| ≤ |S1|
-The last constraint simply means that S2 will never be larger than S1
-  Note: The Mary in this problem, is actually a small tribute to my coder friend Mary Kuchumova, which, hopefully will return to Codechef and get back in touch again. :D Mary, you're missed!
+1≤T≤100
+3≤N≤1000
+0≤A
+i
+≤10
+9
+The sum of
+N over all test cases doesn't exceed
+2000.
 Sample 1:
 Input
 Output
-adsyufsfdsfdsf
-fdyusgfdfyu
-fd
-2
-Sample 2:
-Input
-Output
-adsyufsfdsfdsf
-bbbbbbbbb
-0
-Sample 3:
-Input
-Output
-abcdef
-defabc
-def
 3
+3
+1 1 2
+4
+19 39 19 84
+6
+1 2 3 1 2 3
+NO
+YES
+19 19 39 84 
+39 84 19 19 
+YES
+1 1 2 2 3 3 
+2 3 3 1 1 2
 Explanation:
-Example case 1.The longest life event is "fd" whose length is 2.
-Example case 2.The girls will follow separate lives.
-Example case 3.On the case where multiple events can happen, Mary will choose the event which is closer to happen in the future, and, as such, answer is "def".
+Test case
+1: There are
+3×3=9 pairs of permutations of the given array. Here's why they're all bad:
+If
+B=[1,1,2] and
+C=[1,1,2],
+B[1:1]=C[1:1]
+If
+B=[1,1,2] and
+C=[1,2,1],
+B[1:1]=C[1:1]
+If
+B=[1,1,2] and
+C=[2,1,1],
+B[2:2]=C[2:2]
+If
+B=[1,2,1] and
+C=[1,1,2],
+B[1:1]=C[1:1]
+If
+B=[1,2,1] and
+C=[1,2,1],
+B[1:1]=C[1:1]
+If
+B=[1,2,1] and
+C=[2,1,1],
+B[3:3]=C[3:3]
+If
+B=[2,1,1] and
+C=[1,1,2],
+B[2:2]=C[2:2]
+If
+B=[2,1,1] and
+C=[1,2,1],
+B[3:3]=C[3:3]
+If
+B=[2,1,1] and
+C=[2,1,1],
+B[1:1]=C[1:1]

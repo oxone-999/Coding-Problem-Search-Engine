@@ -1,134 +1,143 @@
-G. Gastronomic Event
+I. Ice Cream Shop
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-SWERC organizers want to hold a gastronomic event.
-The location of the event is a building with
+On a beach there are
 n
-rooms connected by
-n−1
-corridors (each corridor connects two rooms) so that it is possible to go from any room to any other room.
-In each room you have to set up the tasting of a typical Italian dish. You can choose from
-n
-typical Italian dishes rated from
+huts in a perfect line, hut
 1
-to
-n
-depending on how good they are (
-n
-is the best possible rating). The
-n
-dishes have distinct ratings.
-You want to assign the
-n
-dishes to the
-n
-rooms so that the number of pleasing tours is maximal. A pleasing tour is a nonempty sequence of rooms so that:
-Each room in the sequence is connected to the next one in the sequence by a corridor.
-The ratings of the dishes in the rooms (in the order given by the sequence) are increasing.
-If you assign the
-n
-dishes optimally, what is the maximum number of pleasing tours?
+being at the left and hut
+i+1
+being
+100
+meters to the right of hut
+i
+, for all
+1≤i≤n−1
+. In hut
+i
+there are
+p
+i
+people.
+There are
+m
+ice cream sellers, also aligned in a perfect line with all the huts. The
+i
+-th ice cream seller has their shop
+x
+i
+meters to the right of the first hut. All ice cream shops are at distinct locations, but they may be at the same location as a hut.
+You want to open a new ice cream shop and you wonder what the best location for your shop is. You can place your ice cream shop anywhere on the beach (not necessarily at an integer distance from the first hut) as long as it is aligned with the huts and the other ice cream shops, even if there is already another ice cream shop or a hut at that location. You know that people would come to your shop only if it is strictly closer to their hut than any other ice cream shop.
+If every person living in the huts wants to buy exactly one ice cream, what is the maximum number of ice creams that you can sell if you place the shop optimally?
 Input
-The first line contains an integer
+The first line contains two integers
 n
+and
+m
 (
-2≤n≤1000000
-) — the number of rooms.
+2≤n≤200000
+,
+1≤m≤200000
+) — the number of huts and the number of ice cream sellers.
 The second line contains
-n−1
+n
 integers
 p
-2
+1
 ,
 p
-3
-,⋯,
+2
+,…,
 p
 n
 (
 1≤
 p
 i
-<i
-). Each
-p
+≤
+10
+9
+) — the number of people in each hut.
+The third line contains
+m
+integers
+x
+1
+,
+x
+2
+,…,
+x
+m
+(
+0≤
+x
 i
-indicates that there is a corridor between room
+≤
+10
+9
+,
+x
 i
-and room
-p
-i
-. It is guaranteed that the building has the property that it is possible to go from any room to any other room.
+≠
+x
+j
+for
+i≠j
+) — the location of each ice cream shop.
 Output
-Print the maximum number of pleasing tours.
+Print the maximum number of ice creams that can be sold by choosing optimally the location of the new shop.
 Examples
 input
 Copy
-5
-1 2 2 2
+3 1
+2 5 6
+169
 output
 Copy
-13
+7
 input
 Copy
-10
-1 2 3 4 3 2 7 8 7
+4 2
+1 2 7 8
+35 157
 output
 Copy
-47
+15
+input
+Copy
+4 1
+272203905 348354708 848256926 939404176
+20
+output
+Copy
+2136015810
+input
+Copy
+3 2
+1 1 1
+300 99
+output
+Copy
+2
 Note
-In the first sample, it is optimal to place the dish with rating
-1
-in room
-1
-, the dish with rating
+In the first sample, you can place the shop (coloured orange in the picture below)
+150
+meters to the right of the first hut (for example) so that it is the closest shop to the first two huts, which have
 2
-in room
-3
-, the dish with rating
-3
-in room
-2
-, the dish with rating
-4
-in room
+and
 5
-and the dish with rating
-5
-in room
-4
-.
-All the
-13
-possible pleasing tours are:
-(1)
-,
-(2)
-,
-(3)
-,
-(4)
-,
-(5)
-,
-(1,2)
-,
-(3,2)
-,
-(2,4)
-,
-(2,5)
-,
-(1,2,4)
-,
-(1,2,5)
-,
-(3,2,4)
-,
-(3,2,5)
-.
-There are also other ways to assign the dishes to the rooms so that there are
-13
-pleasing tours.
+people, for a total of
+7
+sold ice creams.
+In the second sample, you can place the shop
+170
+meters to the right of the first hut (for example) so that it is the closest shop to the last two huts, which have
+7
+and
+8
+people, for a total of
+15
+sold ice creams.

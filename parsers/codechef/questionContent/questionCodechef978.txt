@@ -1,125 +1,32 @@
-Good Pairs
+Little Elephant and Subarrays
 Problem
-You are given arrays
-A and
-B of length
-N each. Determine the number of good pairs.
-A pair
-(i,j)
-(1≤i,j≤N) is said to be good if all of the following conditions are satisfied:
-i<j;
-A
-i
-=B
-j
-;
-A
-j
-=B
-i
-;
-Input Format
-First line will contain
-T, the number of test cases. Then the test cases follow.
-Description of each test case:
-First line contains an integer
-N - denoting the length of the arrays.
-Second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…A
-N
-- denoting the array
-A.
-Third line contains
-N space-separated integers
-B
-1
-,B
-2
-,…B
-N
-- denoting the array
-B.
-Output Format
-For each test case, output the number of good pairs.
+Read problems statements in Mandarin Chinese and Russian.
+Little Elephant is playing a game with arrays. He is given an array A0, A1, ..., AN−1 of N integers. And then Q queries are given, each containing an integer K. He has to tell how many subarrays satisfy the condition: the function foo returns K when it is applied to the subarray. In this problem, a subarray is defined as a sequence of continuous elements Ai, Ai+1, ..., Aj where 0 ≤ i ≤ j ≤ N−1. The function foo, when applied to an array, returns the minimum of all the elements in the array. For example, foo returns 5 when it is applied to the array [7, 5, 10, 7, 5, 8]. Please note that the subarrays Ai, Ai+1, ..., Aj and Ak, Ak+1, ..., Al are different if and only if i ≠ k or j ≠ l in this problem.
+Input
+The first line of input contains N, denoting the size of the array. The next line contains N space separated integers A0, A1, ..., AN−1, denoting the array. Then the next line contains Q, denoting the number of queries. Each query consists of one integer per line, denoting K.
+Output
+For each query, print the required number of subarrays.
 Constraints
-1≤T≤1000
-2≤N≤10
-5
-1≤A
-i
-,B
-i
-≤10
-9
-Sum of
-N over all test cases does not exceed
-2⋅10
-5
-.
+1 ≤ N ≤ 50
+1 ≤ Ai ≤ 1000000 (106)
+1 ≤ Q ≤ 10
+1 ≤ K ≤ 1000000 (106)
 Sample 1:
 Input
 Output
+5
+4 1 2 3 4
 4
 3
-1 2 3
-3 2 1
 4
-1 2 3 4
-5 6 6 7
-3
-10 10 10
-10 10 10
-4
-4 8 1 1
-8 4 1 1
+6
 1
-0
-3
 2
+2
+0
+8
 Explanation:
-Test Case
-1: The only good pair
-(i,j) is
-(1,3). Here,
-1<3
-A
-1
-=1 and
-B
-3
-=1. Thus,
-A
-1
-=B
-3
-.
-A
-3
-=3 and
-B
-1
-=3. Thus,
-A
-3
-=B
-1
-.
-Test Case
-2: There are no good pairs.
-Test Case
-3: There are
-3 good pairs
-(i,j). These are
-(1,2),(1,3), and
-(2,3).
-Test Case
-4: There are
-2 good pairs
-(i,j). These are
-(1,2) and
-(3,4).
+Query 1. Only the two subarrays [3, 4] and [3] satisfy.
+Query 2. Again only the two subarrays [4] and [4] satisfy. Please note that these subarrays (A0 and A4) are considered different.
+Query 3. No subarray satisfies.
+Query 4. The eight subarrays [4, 1], [4, 1, 2], [4, 1, 2, 3], [4, 1, 2, 3, 4], [1], [1, 2], [1, 2, 3] and [1, 2, 3, 4] satisfy.

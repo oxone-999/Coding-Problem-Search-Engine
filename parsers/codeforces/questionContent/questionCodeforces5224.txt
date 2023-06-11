@@ -1,53 +1,28 @@
-J. Send the Fool Further! (easy)
-time limit per test1 second
+I. Fake News (hard)
+time limit per test5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Heidi's friend Jenny is asking Heidi to deliver an important letter to one of their common friends. Since Jenny is Irish, Heidi thinks that this might be a prank. More precisely, she suspects that the message she is asked to deliver states: "Send the fool further!", and upon reading it the recipient will ask Heidi to deliver the same message to yet another friend (that the recipient has in common with Heidi), and so on.
-Heidi believes that her friends want to avoid awkward situations, so she will not be made to visit the same person (including Jenny) twice. She also knows how much it costs to travel between any two of her friends who know each other. She wants to know: what is the maximal amount of money she will waste on travel if it really is a prank?
-Heidi's n friends are labeled 0 through n - 1, and their network of connections forms a tree. In other words, every two of her friends a, b know each other, possibly indirectly (there is a sequence of friends starting from a and ending on b and such that each two consecutive friends in the sequence know each other directly), and there are exactly n - 1 pairs of friends who know each other directly.
-Jenny is given the number 0.
+Now that you have proposed a fake post for the HC2 Facebook page, Heidi wants to measure the quality of the post before actually posting it. She recently came across a (possibly fake) article about the impact of fractal structure on multimedia messages and she is now trying to measure the self-similarity of the message, which is defined as
+where the sum is over all nonempty strings p and is the number of occurences of p in s as a substring. (Note that the sum is infinite, but it only has a finite number of nonzero summands.)
+Heidi refuses to do anything else until she knows how to calculate this self-similarity. Could you please help her? (If you would like to instead convince Heidi that a finite string cannot be a fractal anyway – do not bother, we have already tried.)
 Input
-The first line of the input contains the number of friends n (3 ≤ n ≤ 100). The next n - 1 lines each contain three space-separated integers u, v and c (0 ≤ u, v ≤ n - 1, 1 ≤ c ≤ 104), meaning that u and v are friends (know each other directly) and the cost for travelling between u and v is c.
-It is guaranteed that the social network of the input forms a tree.
+The input starts with a line indicating the number of test cases T (1 ≤ T ≤ 10). After that, T test cases follow, each of which consists of one line containing a string s (1 ≤ |s| ≤ 100 000) composed of lowercase letters (a-z).
 Output
-Output a single integer – the maximum sum of costs.
-Examples
+Output T lines, every line containing one number – the answer to the corresponding test case.
+Example
 input
 Copy
 4
-0 1 4
-0 2 2
-2 3 3
+aa
+abcd
+ccc
+abcc
 output
 Copy
 5
-input
-Copy
-6
-1 2 3
-0 2 100
-1 4 2
-0 3 7
-3 5 10
-output
-Copy
-105
-input
-Copy
-11
-1 0 1664
-2 0 881
-3 2 4670
-4 2 1555
-5 1 1870
-6 2 1265
-7 2 288
-8 7 2266
-9 2 1536
-10 6 3378
-output
-Copy
-5551
+10
+14
+12
 Note
-In the second example, the worst-case scenario goes like this: Jenny sends Heidi to the friend labeled by number 2 (incurring a cost of 100), then friend 2 sends her to friend 1 (costing Heidi 3), and finally friend 1 relays her to friend 4 (incurring an additional cost of 2).
+A string s contains another string p as a substring if p is a contiguous subsequence of s. For example, ab is a substring of cab but not of acb.

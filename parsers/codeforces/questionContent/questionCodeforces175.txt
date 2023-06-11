@@ -1,73 +1,128 @@
-D. Remove Two Letters
+C2. Powering the Hero (hard version)
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Dmitry has a string
-s
-, consisting of lowercase Latin letters.
-Dmitry decided to remove two consecutive characters from the string
-s
-and you are wondering how many different strings can be obtained after such an operation.
-For example, Dmitry has a string "aaabcc". You can get the following different strings: "abcc"(by deleting the first two or second and third characters), "aacc"(by deleting the third and fourth characters),"aaac"(by deleting the fourth and the fifth character) and "aaab" (by deleting the last two).
+This is a hard version of the problem. It differs from the easy one only by constraints on
+n
+and
+t
+.
+There is a deck of
+n
+cards, each of which is characterized by its power. There are two types of cards:
+a hero card, the power of such a card is always equal to
+0
+;
+a bonus card, the power of such a card is always positive.
+You can do the following with the deck:
+take a card from the top of the deck;
+if this card is a bonus card, you can put it on top of your bonus deck or discard;
+if this card is a hero card, then the power of the top card from your bonus deck is added to his power (if it is not empty), after that the hero is added to your army, and the used bonus discards.
+Your task is to use such actions to gather an army with the maximum possible total power.
 Input
-The first line of input data contains a single integer
+The first line of input data contains single integer
 t
 (
 1≤t≤
 10
 4
-) — number of test cases.
-The descriptions of the test cases follow.
-The first line of the description of each test case contains an integer
+) — the number of test cases in the test.
+The first line of each test case contains one integer
 n
 (
-3≤n≤2⋅
+1≤n≤2⋅
 10
 5
-).
-The second line of the description of each test case contains a string
-s
-of length
+) — the number of cards in the deck.
+The second line of each test case contains
 n
-consisting of lowercase Latin letters.
+integers
+s
+1
+,
+s
+2
+,…,
+s
+n
+(
+0≤
+s
+i
+≤
+10
+9
+) — card powers in top-down order.
 It is guaranteed that the sum of
 n
-for all test cases does not exceed
+over all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case print one integer — the number of distinct strings that can be obtained by removing two consecutive letters.
+Output
+t
+numbers, each of which is the answer to the corresponding test case — the maximum possible total power of the army that can be achieved.
 Example
 input
 Copy
-7
-6
-aaabcc
-10
-aaaaaaaaaa
-6
-abcdef
-7
-abacaba
-6
-cccfff
-4
-abba
 5
-ababa
+5
+3 3 3 0 0
+6
+0 3 3 0 0 3
+7
+1 2 3 0 4 5 0
+7
+1 2 5 0 4 3 0
+5
+3 1 0 0 4
 output
 Copy
+6
+6
+8
+9
 4
-1
-5
-3
-3
-3
-1
 Note
-The first example is explained in the statement.
-In the third example, the following strings are obtained: "cdef", "adef", "abef", "abcf", "abcd".
-In the seventh example, any deletion will result in the string "aba".
+In the first sample, you can take bonuses
+1
+and
+2
+. Both hero cards will receive
+3
+power. If you take all the bonuses, one of them will remain unused.
+In the second sample, the hero's card on top of the deck cannot be powered up, and the rest can be powered up with
+2
+and
+3
+bonuses and get
+6
+total power.
+In the fourth sample, you can take bonuses
+1
+,
+2
+,
+3
+,
+5
+and skip the bonus
+6
+, then the hero
+4
+will be enhanced with a bonus
+3
+by
+5
+, and the hero
+7
+with a bonus
+5
+by
+4
+.
+4+5=9
+.

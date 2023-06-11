@@ -1,187 +1,61 @@
-Chefland Army
+Chef and Number Guessing
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-This is not intended to be the tie-break problem.
-In the Chefland army, there are
-M generals (numbered
-1 through
-M) and
-N soldiers (numbered
-1 through
-N).
-The Army has a vertical hierarchy ― a soldier may command many other soldiers (including zero), but each soldier has at most one commander. A soldier
-y is a subordinate of a soldier
-x if soldier
-x is the commander of soldier
-y or there is a soldier
-z commanded by soldier
-x such that soldier
-y is a subordinate of soldier
-z. No soldier is commanded by one of their subordinates because every soldier is feared by all of his subordinates. Moreover, all soldiers are subordinates of soldier
-1. Let's denote the commander of soldier
-i by
-p
-i
-(
-p
-1
-=0 since soldier
-1 cannot have a commander).
-As in any organisation, the generals have some soldiers they hate. If a general meets a soldier whom he hates, this general becomes angry for the rest of the day.
-The soldiers should be paid some wages over one or more days. For each valid
-i, soldier
-i should be paid
-S
-i
-chefcoins. Shyam is in charge of this; he should choose an integer
-D (
-0≤D≤N
-2
-) and during each of the next
-D days, perform the following process:
-Choose an integer
-K and
-K soldiers, then call these soldiers to report their feats to the generals. Shyam is very careful ― on each day, he chooses these soldiers in such a way that there are no two called soldiers where one is afraid of the other (in other words, no called soldier is a subordinate of another called soldier).
-Choose a positive real number
-R and give each of the called soldiers
-R chefcoins.
-For each soldier
-v and general
-u, if soldier
-v was called and is hated by general
-u, then general
-u becomes angry. Let
-G be the total number of angry generals on this day. Then, the total angriness of the generals increases by
-G⋅R.
-Before the start of the next day, the generals that were angry calm down and are not angry anymore (so they can become angry again).
-Help Shyam pay the soldiers while minimising the total angriness of the generals over all
-D days.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef has a rectangular matrix A of nxm integers. Rows are numbered by integers from 1 to n from top to bottom, columns - from 1 to m from left to right. Ai, j denotes the j-th integer of the i-th row.
+Chef wants you to guess his matrix. To guess integers, you can ask Chef questions of next type: "How many integers from submatrix iL, iR, jL, jR are grater than or equal to x and less than or equal to y?". By submatrix iL, iR, jL, jR we mean all elements Ai, j for all iL ≤ i ≤ iR and jL ≤ j ≤ jR.
+Also Chef can answer not more than C questions of next type: "What is the sum of integers from submatrix iL, iR, jL, jR?"
+As soon as you think you know the Chefs matrix, you can stop asking questions and tell to the Chef your variant of the matrix. Please see "Scoring" part to understand how your solution will be evaluated.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-M and
-N.
-Each of the next
-M lines contains a binary string
-B with length
-N. For each valid
-i and
-j, the
-j-th character in the
-i-th of these strings is '1' if general
-i hates soldier
-j or '0' otherwise.
-The next line contains
-N space-separated integers
-S
-1
-,S
-2
-,…,S
-N
-.
-The last line contains
-N space-separated integers
-p
-1
-,p
-2
-,…,p
-N
-.
-Output
-For each test case:
-First, print a line containing a single integer
-D (
-0≤D≤N
-2
-) ― the number of days during which the soldiers are paid.
-Then, print
-D lines. In each of these lines, print an integer
-K, a space, a real number
-R, a space and
-K space-separated integers
-x
-1
-,x
-2
-,…,x
-K
-― the numbers of the called soldiers.
-For each valid
-i, let the total amount of money received by soldier
-i be
-W
-i
-; your answer will be considered correct if
-∣W
-i
-−S
-i
-∣≤10
-−6
-.
+The first line of the input contains three space-separated integers n, m and C denoting the sizes of the matrix and the maximum number of the second-type questions. After that the judge will answer your questions and evaluate the resuts. Read more about that in the "Interaction with the judge" part of the statement.
+Interaction with the judge
+To ask a first-type question you should print to the standard output one line containing seven space-separated integers 1 iL iR jL jR x y. To ask a second-type question you should print one line containing five space-separated integers 2 iL iR jL jR. After that you should read from the standard input one integer - answer to the question. To end the game you should print 3 and starting from next line print n lines, each of them contains m space-separated integers - your variant of the matrix A. After that your program must stop. Remember to flush the output after every line you print.
 Constraints
-T=50
-M=16
-N=128
-0≤p
-i
-≤N for each valid
-i
-1≤S
-i
-≤100 for each valid
-i
-Test generation
-For each test case:
-S
-1
-,S
-2
-,…,S
-N
-are chosen uniformly randomly and independently between
-1 and
-100.
-For each valid
-i,
-p
-i
-is chosen uniformly randomly between
-1 and
-i−1.
-For each test case, a real number
-p is chosen manually. There are
-10 test cases for each
-p∈{0.1,0.2,0.5,0.7,0.8}.
-For each valid
-i and
-j,
-B
-i,j
-is chosen to be '1' with probability
-p or '0' with probability
-1−p.
+1 ≤ n, m ≤ 2.5 * 105
+1 ≤ n * m ≤ 2.5 * 105
+103 ≤ C ≤ 104
+1 ≤ Ai, j ≤ 50
+1 ≤ iL ≤ iR ≤ n
+1 ≤ jL ≤ jR ≤ m
+1 ≤ x ≤ y ≤ 50
+0 ≤ number of asked questions ≤ 5 * 105
+1 ≤ Bi, j ≤ 50
+1 ≤ a1, a2, a3 ≤ 10
 Scoring
-The score of each test case is the sum of
-R⋅G over all
-D days. The score of a submission is equal to the sum of its scores over all test cases.
-The goal is to minimise the score of your submission. However, this problem is solvable optimally ― there is a solution which is guaranteed to score 100 points.
-Example Input
+Let B will be the matrix you output and diff = ∑ |Ai, j - Bi, j| for all 1 ≤ i ≤ n, 1 ≤ j ≤ m. The number of questions you asked is questions. The number of integers, you correctly guessed is correct(i. e. the number of elements i, j such that Ai, j = Bi, j).
+The score for each test case will be: score = a1 * questions + a2 * diff + a3 * (n * m - correct).
+Your goal is to minimize this score.
+Your total score for the problem will be the sum of scores on all the test cases.
+Example
+Input:
+3 3 10
+4
+0
+3
 1
-3 4
-0000
-1111
-0101
-1 2 3 4
-0 1 1 3
-Example Output
-5
-2 1 2 4
-2 1 2 3
-1 2 3
-1 3 4
-1 1 1
+6
+Output:
+1 1 2 1 2 1 3
+1 3 3 1 3 1 1
+1 3 3 1 3 2 2
+1 1 2 3 3 1 1
+2 3 3 1 3
+3
+2 2 1
+2 2 1
+2 2 2
+Explanation
+       [1, 2, 3]
+A = [3, 2, 1]
+       [2, 2, 2]
+For this test case a1 = 1, a2 = 1 and a3 = 1.
+The score for this test case will be 1 * 5 + 1 * 4 + 1 * (9 - 6) = 12.
+Test data generation
+There will be four types of the test files.
+Type #1: n = 10, m = 25000
+Type #2: n = 100, m = 2500
+Type #3: n = 250, m = 1000
+Type #4: n = 500, m = 500
+There will be 5 test files of each type. During the contest, you will be shown the score for only one test file of each type.
+All elements of matrix A are randomly chosen.
+For each test case C is randomly chosen from interval [103 .. 104].
+For each test case values a1, a2 and a3 are manually chosen.

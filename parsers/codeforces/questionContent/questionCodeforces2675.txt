@@ -1,380 +1,112 @@
-C. Quantifier Question
-time limit per test1 second
+F. Piet's Palette
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Logical quantifiers are very useful tools for expressing claims about a set. For this problem, let's focus on the set of real numbers specifically. The set of real numbers includes zero and negatives. There are two kinds of quantifiers: universal (
-∀
-) and existential (
-∃
-). You can read more about them here.
-The universal quantifier is used to make a claim that a statement holds for all real numbers. For example:
-∀x,x<100
-is read as: for all real numbers
-x
-,
-x
-is less than
-100
-. This statement is false.
-∀x,x>x−1
-is read as: for all real numbers
-x
-,
-x
-is greater than
-x−1
-. This statement is true.
-The existential quantifier is used to make a claim that there exists some real number for which the statement holds. For example:
-∃x,x<100
-is read as: there exists a real number
-x
-such that
-x
-is less than
-100
-. This statement is true.
-∃x,x>x−1
-is read as: there exists a real number
-x
-such that
-x
-is greater than
-x−1
-. This statement is true.
-Moreover, these quantifiers can be nested. For example:
-∀x,∃y,x<y
-is read as: for all real numbers
-x
-, there exists a real number
-y
-such that
-x
-is less than
-y
-. This statement is true since for every
-x
-, there exists
-y=x+1
-.
-∃y,∀x,x<y
-is read as: there exists a real number
-y
-such that for all real numbers
-x
-,
-x
-is less than
-y
-. This statement is false because it claims that there is a maximum real number: a number
-y
-larger than every
-x
-.
-Note that the order of variables and quantifiers is important for the meaning and veracity of a statement.
-There are
-n
-variables
-x
+Piet Mondrian is an artist most famous for his minimalist works, consisting only of the four colors red, yellow, blue, and white. Most people attribute this to his style, but the truth is that his paint behaves in a very strange way where mixing two primary colors only produces another primary color!
+A lesser known piece, entitled "Pretentious rectangles"
+A sequence of primary colors (red, yellow, blue) is mixed as follows. While there are at least two colors, look at the first two. If they are distinct, replace them with the missing color. If they are the same, remove them from the sequence. In the end, if there is one color, that is the resulting color. Otherwise, if the sequence is empty, we say the resulting color is white. Here are two example mixings:
+  Piet has a color palette with cells numbered from
 1
-,
-x
-2
-,…,
-x
+to
 n
-, and you are given some formula of the form
-f(
-x
-1
-,…,
-x
-n
-):=(
-x
-j
-1
-<
-x
+. Each cell contains a primary color or is empty. Piet is very secretive, and will not share his palette with you, so you do not know what colors belong to each cell.
+However, he did perform
 k
-1
-)∧(
-x
-j
-2
-<
-x
-k
-2
-)∧⋯∧(
-x
-j
-m
-<
-x
-k
-m
-),
-f
-(
-)
-(
-)
-(
-)
-(
-)
-where
-∧
-denotes logical AND. That is,
-f(
-x
-1
-,…,
-x
-n
-)
-is true if every inequality
-x
-j
-i
-<
-x
-k
-i
-holds. Otherwise, if at least one inequality does not hold, then
-f(
-x
-1
-,…,
-x
-n
-)
-is false.
-Your task is to assign quantifiers
-Q
-1
-,…,
-Q
-n
-to either universal (
-∀
-) or existential (
-∃
-) so that the statement
-Q
-1
-x
-1
-,
-Q
-2
-x
-2
-,…,
-Q
-n
-x
-n
-,f(
-x
-1
-,…,
-x
-n
-)
-Q
-Q
-Q
-f
-(
-)
-is true, and the number of universal quantifiers is maximized, or determine that the statement is false for every possible assignment of quantifiers.
-Note that the order the variables appear in the statement is fixed. For example, if
-f(
-x
-1
-,
-x
-2
-):=(
-x
-1
-<
-x
-2
-)
-then you are not allowed to make
-x
-2
-appear first and use the statement
-∀
-x
-2
-,∃
-x
-1
-,
-x
-1
-<
-x
-2
-. If you assign
-Q
-1
-=∃
-and
-Q
-2
-=∀
-, it will only be interpreted as
-∃
-x
-1
-,∀
-x
-2
-,
-x
-1
-<
-x
-2
-.
+operations. There are four kinds of operations:
+In a mix operation, Piet chooses a subset of cells and mixes their colors together in some order. The order is not necessarily by increasing indexes. He records the resulting color. Empty cells are skipped over, having no effect on the mixing process. The mixing does not change the color values stored in the cells.
+In a RY operation, Piet chooses a subset of cells. Any red cells in this subset become yellow, and any yellow cells in this subset become red. Blue and empty cells remain unchanged.
+In a RB operation, Piet chooses a subset of cells. Any red cells in this subset become blue, and any blue cells in this subset become red. Yellow and empty cells remain unchanged.
+In a YB operation, Piet chooses a subset of cells. Any yellow cells in this subset become blue, and any blue cells in this subset become yellow. Red and empty cells remain unchanged.
+Piet only tells you the list of operations he performs in chronological order, the indexes involved, and the resulting color of each mix operation. For each mix operation, you also know the order in which the cells are mixed. Given this information, determine the color of each cell in the initial palette. That is, you should find one possible state of the palette (before any operations were performed), or say that the described situation is impossible.
 Input
 The first line contains two integers
 n
 and
+k
+(
+1≤n,k≤1000
+) — the number of cells in the palette and the number of operations, respectively.
+The next
+k
+lines describe the operations. The
+i
+-th line begins with the name of the
+i
+-th operation and an integer
 m
 (
-2≤n≤2⋅
-10
-5
-;
-1≤m≤2⋅
-10
-5
-) — the number of variables and the number of inequalities in the formula, respectively.
-The next
+1≤m≤n
+) — the number of indexes involved. Then follow
 m
-lines describe the formula. The
-i
--th of these lines contains two integers
+integers
 j
-i
-,
-k
-i
+1
+,…,
+j
+m
 (
 1≤
 j
 i
-,
-k
-i
 ≤n
-,
+) — the indexes of the operation. It is guaranteed that all
 j
 i
-≠
-k
-i
-).
+are distinct within an operation. If it is a mix operation, the indexes are listed in the order the colors are mixed, and the line also ends with a character representing the resulting color: "R" for red, "Y" for yellow, "B" for blue, and "W" for white.
 Output
-If there is no assignment of quantifiers for which the statement is true, output a single integer
-−1
-.
-Otherwise, on the first line output an integer, the maximum possible number of universal quantifiers.
-On the next line, output a string of length
+Output "YES" if a solution exists, or "NO" otherwise. You can print each character in any case (upper or lower).
+If the answer is "YES", on the next line output a string of length
 n
-, where the
-i
--th character is "A" if
-Q
-i
-should be a universal quantifier (
-∀
-), or "E" if
-Q
-i
-should be an existential quantifier (
-∃
-). All letters should be upper-case. If there are multiple solutions where the number of universal quantifiers is maximum, print any.
+, consisting of characters "R", "Y", "B", and ".", representing the paint colors in the
+n
+cells of the initial palette (red, yellow, blue, and empty, respectively). If there are multiple solutions, print any. You can print each character in any case (upper or lower).
 Examples
 input
 Copy
-2 1
-1 2
-output
-Copy
-1
-AE
-input
-Copy
-4 3
-1 2
-2 3
-3 1
-output
-Copy
--1
-input
-Copy
 3 2
-1 3
-2 3
+mix 2 2 1 R
+mix 2 1 3 Y
 output
 Copy
-2
-AAE
+YES
+YB.
+input
+Copy
+2 3
+mix 1 2 Y
+RB 1 2
+mix 1 2 W
+output
+Copy
+NO
+input
+Copy
+1 3
+RY 1 1
+YB 1 1
+mix 1 1 B
+output
+Copy
+YES
+R
+input
+Copy
+3 8
+mix 2 1 2 R
+mix 2 1 3 Y
+RY 2 2 3
+RB 3 1 2 3
+YB 3 1 2 3
+mix 1 1 W
+mix 1 2 B
+mix 1 3 Y
+output
+Copy
+YES
+.RY
 Note
-For the first test, the statement
-∀
-x
-1
-,∃
-x
-2
-,
-x
-1
-<
-x
-2
-is true. Answers of "EA" and "AA" give false statements. The answer "EE" gives a true statement, but the number of universal quantifiers in this string is less than in our answer.
-For the second test, we can show that no assignment of quantifiers, for which the statement is true exists.
-For the third test, the statement
-∀
-x
-1
-,∀
-x
-2
-,∃
-x
-3
-,(
-x
-1
-<
-x
-3
-)∧(
-x
-2
-<
-x
-3
-)
-is true: We can set
-x
-3
-=max{
-x
-1
-,
-x
-2
-}+1
-.
+For the first test case, the answer "YB." is consistent with both mixings. The first mixing "BY" results in red, while the second mixing "Y" results in yellow (the empty cell is ignored). Other valid solutions include "BYR" and ".RY".
+For the second test case, we can show that no solution exists.
+For the third test case, the answer "R" is consistent with all operations. In the first two operations it changes to "Y", then "B". In the final operation, the mixing "B" results in blue.
+For the fourth test case, the answer ".RY" is consistent with all operations. The first two mixings are "R" and "Y", resulting in red and yellow, respectively. During the next three operations, the palette changes to ".YR", then ".YB", then ".BY". The final three mixings agree with this palette.

@@ -1,77 +1,58 @@
-Substring Probability
+Graph Construction
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given two strings
-P and
-Q. Consider some uniformly randomly and independently chosen non-empty prefix
-X and non-empty suffix
-Y of
-P. A string
-Z is formed by concatenating
-X and
-Y in this order. Find the probability that
-Z is a substring of
-Q.
-It can be shown that the answer can be represented as a fraction
-U/V, where
-U and
-V are non-negative integers and
-V is coprime with
-998,244,353. You should compute
-U⋅V
-−1
-modulo
-998,244,353, where
-V
-−1
-denotes the multiplicative inverse of
-V modulo
-998,244,353.
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+You are given integers
+N and
+K. Construct a connected undirected unweighted graph with
+N nodes (numbered
+1 through
+N) such that there are exactly
+K unordered pairs of nodes which have distance equal to the diameter of the graph (the largest distance between two nodes), or determine that no such graph exists.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains a single string
-P.
-The second line contains a single string
-Q.
+The first and only line of each test case contains two space-separated integers
+N and
+K.
 Output
-For each test case, print a single line containing one integer
-U⋅V
-−1
-modulo
-998,244,353.
+For each test case:
+If no valid graph exists, print a single line containing the integer
+−1.
+Otherwise, first, print a line containing a single integer
+M — the number of edges in your graph.
+Then, print
+M lines. Each of these lines must contain two space-separated integers
+u and
+v (
+1≤u,v≤N;
+u
+
+=v) denoting the endpoints of one edge. All edges must be different, i.e. parallel edges are not allowed.
 Constraints
-1≤T≤10
-1≤∣P∣,∣Q∣≤100,000
-P and
-Q contain only lowercase English letters
-Subtasks
-Subtask #1 (25 points):
-∣P∣,∣Q∣≤2,000
-Subtask #2 (75 points): original constraints
-Sample 1:
-Input
-Output
+1≤T≤100
+2≤N≤100
+1≤K≤
+2
+N(N−1)
+Example Input
 1
-abac
-aacabc
-811073537
-Explanation:
-Example case 1: There are
-4 possible prefixes
-X and
-4 suffixes
-Y. The only combinations that result in a string
-Z that is a substring of
-Q are:
-X = "a",
-Y = "ac"
-X = "a",
-Y = "c"
-X = "ab",
-Y = "c"
-The probability that
-Z is a substring of
-Q is
-3/16.
+6 4
+Example Output
+7
+1 2
+2 3
+3 1
+3 4
+4 5
+5 6
+6 4
+Explanation
+Example case 1: The diameter of the graph is
+3. There are exactly
+4 unordered pairs of nodes at distance
+3:
+(1,5),
+(1,6),
+(2,5) and
+(2,6).

@@ -1,204 +1,186 @@
-Covaxin vs Covishield
+ATM Queue
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-There are two types of vaccines available: Covaxin and Covishield.
-A black marketeer has
-X coins and wants to buy as many vaccines as possible. Due to the black marketing concerns, government has enforced the following policy:
+There are
+N people waiting in a queue at ATM. The
 i
 th
-dose of Covaxin costs
-a+(i−1)⋅b coins for every
-i≥1.
-i
-th
-dose of Covishield costs
-c+(i−1)⋅d coins for every
-i≥1.
-The values of the four parameters
-a,b,c and
-d, however isn't constant and might vary from query to query. In general the value of these four parameters for
-i
-th
-query will be
+person in the queue has a power level equal to
 A
 i
-,B
+(
+1≤A
 i
-,C
-i
-and
-D
-i
-respectively. Let
-ans
-i
-be the maximum total quantity of vaccines the black marketeer can buy corresponding to the
-i
-th
-query. For each query, you have to find the value of
-ans
-i
-.
-You will be given integers
-A
-1
-,B
-1
-,C
-1
-,D
-1
-,P,Q,R,S,T and
-M which will define the queries to be followed.
-For
-i≥1 and
-i≤I−1:
-A
-i+1
-=(A
-i
-+ans
-i
-⋅T)modM+P
-B
-i+1
-=(B
-i
-+ans
-i
-⋅T)modM+Q
-C
-i+1
-=(C
-i
-+ans
-i
-⋅T)modM+R
-D
-i+1
-=(D
-i
-+ans
-i
-⋅T)modM+S .
-Note: Since the output is large, prefer using fast input-output methods.
+≤N). The following process happens every second till the queue is not empty.
+The person in front of the queue uses the ATM and then leaves the queue.
+After the first step, if the queue is empty, the process stops. Otherwise, for each person from left to right (except for the first person in the queue), if the person has a
+strictly greater power level than the person in front of him, he will overtake the person in front, i.e. their positions get swapped. Note that the overtaking happens one after the other from left to right, i.e. state of the queue changes after every overtake.
+For each person, find the time at which they will use the ATM.
+Note: Please refer to the explanation section for a simulation of one such scenario.
 Input Format
-First line contains of input contains an integer
-I denoting the number of queries.
-Second line of input contains five integers
-X,A
-1
-,B
-1
-,C
-1
-,D
-1
-.
-Third line of input contains six integers
-P,Q,R,S,T,M.
+First line of input contains
+T, the number of test cases. Then
+T test cases follow.
+Each test case consists of two lines of input.
+First line of each test case contains
+N, the number of people in the queue.
+Second line of each test case contains
+N positive integers
+A
+i
+, the power level of
+i
+th
+person.
 Output Format
-For each query output the maximum quantity of vaccines the black marketeer can buy.
+For each test case, print a line containing
+N numbers where
+i
+th
+number is equal to the time at which
+i
+th
+person uses the ATM.
 Constraints
-1≤I≤5⋅10
+1≤T≤2⋅10
+4
+1≤N≤2⋅10
 5
-1≤X,A
-1
-,B
-1
-,C
-1
-,D
-1
-≤10
-18
-1≤P,Q,R,S,M≤10
-18
-1≤T≤10
-9
-Subtasks
-Subtask #1 (10 points):
-1≤I≤10
-3
-1≤X≤10
-9
-Time limit:
-1 sec
-Subtask #2 (30 points):
-1≤I≤10
-3
-1≤X≤10
-15
-10
-9
-≤A
-1
-≤10
-18
-10
-9
-≤B
-1
-≤10
-18
-10
-9
-≤P≤10
-18
-10
-9
-≤Q≤10
-18
-Time limit:
-1 sec
-Subtask #3 (60 points):
-Original constraints
-Time limit:
-3 sec
+1≤A
+i
+≤N
+Sum of
+N over all test cases doesn't exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
 3
-20 2 3 4 1
-3 7 8 4 11 20
+5
+2 3 4 1 5
 4
-1
-2
+1 2 4 2
+10
+5 1 3 7 6 9 8 9 2 10
+1 4 2 5 3
+1 3 2 4
+1 10 2 3 8 4 7 5 9 6
 Explanation:
-Test case
-1:
-For the first query,
-[a,b,c,d]=[A
+Test Case
+1: Initially, let the order of people in the queue is
+[1,2,3,4,5], and their power levels are
+2,3,4,1 and
+5 respectively.
+During the
 1
-,B
-1
-,C
-1
-,D
-1
-]=[2,3,4,1]. It is optimal to buy
-2 doses of Covaxin
-(2+5=7) and
-2 doses of Covishield
-(4+5=9). So the total money spent is
-7+9=16 and now the black marketeer cannot buy any more doses. So the answer is 4.
-For the second query,
-[a,b,c,d]=[A
+st
+second,
+1 uses the ATM and leaves. The order of the people in the queue will be
+[2,3,4,5] after
+1 leaves. Now people start overtaking (
 2
-,B
+nd
+step of the process). Since
+3 is the
 2
-,C
+nd
+person in the queue and
+2 is in front of him and
+A
 2
-,D
+<
+A
+3
+,
+3 will overtake
+2. The order of the people in the queue will become
+[3,2,4,5]. Now
+4 is the
+3
+rd
+person in the queue and
+2 is in front of him. But
+A
 2
-]=[(2+11⋅4)mod20+3,(3+11⋅4)mod20+7,(4+11⋅4)mod20+8,(1+11⋅4)mod20+4]=[9,14,16,9].
-For the third and the last query,
-[a,b,c,d]=[A
+>
+A
+4
+, so there will be no overtaking here. Finally,
+5 is the
+4
+th
+person and
+4 is in front of him. And since
+A
+4
+<
+A
+5
+,
+5 will overtake
+4 and The order of the people in the queue will be
+[3,2,5,4] after the
+1st second.
+During the
+2
+nd
+second,
+3 is in front of the queue. He will use the ATM and leave. The order of the people in the queue will become
+[2,5,4]. Since
+5 is the
+2
+nd
+person in the queue with
+2 in front of him and
+A
+2
+<
+A
+5
+,
+5 will overtake
+2 and the order of the people in the queue becomes
+[5,2,4]. Now
+4 is the
 3
-,B
+rd
+person in the queue. But
+A
+2
+>
+A
+4
+, so
+4 can't overtake
+2. By the end of
+2
+nd
+second, the order of people in the queue is
+[5,2,4].
+During the
 3
-,C
-3
-,D
-3
-]=[3,12,15,4].
+rd
+second,
+5 is in front of the queue. He will use the ATM and leave. After this, the queue will be
+2,4. And since
+A
+2
+>
+A
+4
+, there will be no overtaking.
+During the
+4
+th
+second,
+2 uses the ATM and leaves.
+During the
+5
+th
+second,
+4 uses the ATM and leaves.
+Hence,
+1,2,3,4 and
+5 use the ATM at
+1,4,2,5,3 second, respectively.

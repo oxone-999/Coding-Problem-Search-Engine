@@ -1,49 +1,47 @@
-B. Blown Garland
-time limit per test1 second
-memory limit per test256 megabytes
+F. Team Rocket Rises Again
+time limit per test2.5 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Nothing is eternal in the world, Kostya understood it on the 7-th of January when he saw partially dead four-color garland.
-Now he has a goal to replace dead light bulbs, however he doesn't know how many light bulbs for each color are required. It is guaranteed that for each of four colors at least one light is working.
-It is known that the garland contains light bulbs of four colors: red, blue, yellow and green. The garland is made as follows: if you take any four consecutive light bulbs then there will not be light bulbs with the same color among them. For example, the garland can look like "RYBGRYBGRY", "YBGRYBGRYBG", "BGRYB", but can not look like "BGRYG", "YBGRYBYGR" or "BGYBGY". Letters denote colors: 'R' — red, 'B' — blue, 'Y' — yellow, 'G' — green.
-Using the information that for each color at least one light bulb still works count the number of dead light bulbs of each four colors.
+It's the turn of the year, so Bash wants to send presents to his friends. There are n cities in the Himalayan region and they are connected by m bidirectional roads. Bash is living in city s. Bash has exactly one friend in each of the other cities. Since Bash wants to surprise his friends, he decides to send a Pikachu to each of them. Since there may be some cities which are not reachable from Bash's city, he only sends a Pikachu to those friends who live in a city reachable from his own city. He also wants to send it to them as soon as possible.
+He finds out the minimum time for each of his Pikachus to reach its destination city. Since he is a perfectionist, he informs all his friends with the time their gift will reach them. A Pikachu travels at a speed of 1 meters per second. His friends were excited to hear this and would be unhappy if their presents got delayed. Unfortunately Team Rocket is on the loose and they came to know of Bash's plan. They want to maximize the number of friends who are unhappy with Bash.
+They do this by destroying exactly one of the other n - 1 cities. This implies that the friend residing in that city dies, so he is unhappy as well.
+Note that if a city is destroyed, all the roads directly connected to the city are also destroyed and the Pikachu may be forced to take a longer alternate route.
+Please also note that only friends that are waiting for a gift count as unhappy, even if they die.
+Since Bash is already a legend, can you help Team Rocket this time and find out the maximum number of Bash's friends who can be made unhappy by destroying exactly one city.
 Input
-The first and the only line contains the string s (4 ≤ |s| ≤ 100), which describes the garland, the i-th symbol of which describes the color of the i-th light bulb in the order from the beginning of garland:
-'R' — the light bulb is red,
-'B' — the light bulb is blue,
-'Y' — the light bulb is yellow,
-'G' — the light bulb is green,
-'!' — the light bulb is dead.
-The string s can not contain other symbols except those five which were described.
-It is guaranteed that in the given string at least once there is each of four letters 'R', 'B', 'Y' and 'G'.
-It is guaranteed that the string s is correct garland with some blown light bulbs, it means that for example the line "GRBY!!!B" can not be in the input data.
+The first line contains three space separated integers n, m and s (2 ≤ n ≤ 2·105, , 1 ≤ s ≤ n) — the number of cities and the number of roads in the Himalayan region and the city Bash lives in.
+Each of the next m lines contain three space-separated integers u, v and w (1 ≤ u, v ≤ n, u ≠ v, 1 ≤ w ≤ 109) denoting that there exists a road between city u and city v of length w meters.
+It is guaranteed that no road connects a city to itself and there are no two roads that connect the same pair of cities.
 Output
-In the only line print four integers kr, kb, ky, kg — the number of dead light bulbs of red, blue, yellow and green colors accordingly.
+Print a single integer, the answer to the problem.
 Examples
 input
 Copy
-RYBGRYBGR
+4 4 3
+1 2 1
+2 3 1
+2 4 1
+3 1 1
 output
 Copy
-0 0 0 0
+2
 input
 Copy
-!RGYB
+7 11 2
+1 2 5
+1 3 5
+2 4 2
+2 5 2
+3 6 3
+3 7 3
+4 6 2
+3 4 2
+6 7 3
+4 5 7
+4 7 7
 output
 Copy
-0 1 0 0
-input
-Copy
-!!!!YGRB
-output
-Copy
-1 1 1 1
-input
-Copy
-!GB!RG!Y!
-output
-Copy
-2 1 1 0
+4
 Note
-In the first example there are no dead light bulbs.
-In the second example it is obvious that one blue bulb is blown, because it could not be light bulbs of other colors on its place according to the statements.
+In the first sample, on destroying the city 2, the length of shortest distance between pairs of cities (3, 2) and (3, 4) will change. Hence the answer is 2.

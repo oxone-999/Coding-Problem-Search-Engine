@@ -1,161 +1,158 @@
-A. Division
-time limit per test1 second
+D. Rectangular Polyline
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Oleg's favorite subjects are History and Math, and his favorite branch of mathematics is division.
-To improve his division skills, Oleg came up with
-t
-pairs of integers
-p
-i
-and
-q
-i
-and for each pair decided to find the greatest integer
-x
-i
-, such that:
-p
-i
-is divisible by
-x
-i
-;
-x
-i
-is not divisible by
-q
-i
-.
-Oleg is really good at division and managed to find all the answers quickly, how about you?
+One drew a closed polyline on a plane, that consisted only of vertical and horizontal segments (parallel to the coordinate axes). The segments alternated between horizontal and vertical ones (a horizontal segment was always followed by a vertical one, and vice versa). The polyline did not contain strict self-intersections, which means that in case any two segments shared a common point, that point was an endpoint for both of them (please consult the examples in the notes section).
+Unfortunately, the polyline was erased, and you only know the lengths of the horizonal and vertical segments. Please construct any polyline matching the description with such segments, or determine that it does not exist.
 Input
-The first line contains an integer
+The first line contains one integer
 t
 (
-1≤t≤50
-) — the number of pairs.
-Each of the following
-t
-lines contains two integers
+1≤t≤200
+) —the number of test cases.
+The first line of each test case contains one integer
+h
+(
+1≤h≤1000
+) — the number of horizontal segments. The following line contains
+h
+integers
+l
+1
+,
+l
+2
+,…,
+l
+h
+(
+1≤
+l
+i
+≤1000
+) — lengths of the horizontal segments of the polyline, in arbitrary order.
+The following line contains an integer
+v
+(
+1≤v≤1000
+) — the number of vertical segments, which is followed by a line containing
+v
+integers
 p
-i
-and
-q
-i
+1
+,
+p
+2
+,…,
+p
+v
 (
 1≤
 p
 i
-≤
-10
-18
-;
-2≤
-q
+≤1000
+) — lengths of the vertical segments of the polyline, in arbitrary order.
+Test cases are separated by a blank line, and the sum of values
+h+v
+over all test cases does not exceed
+1000
+.
+Output
+For each test case output Yes, if there exists at least one polyline satisfying the requirements, or No otherwise. If it does exist, in the following
+n
+lines print the coordinates of the polyline vertices, in order of the polyline traversal: the
 i
-≤
+-th line should contain two integers
+x
+i
+and
+y
+i
+ — coordinates of the
+i
+-th vertex.
+Note that, each polyline segment must be either horizontal or vertical, and the segments should alternate between horizontal and vertical. The coordinates should not exceed
 10
 9
-) — the
-i
--th pair of integers.
-Output
-Print
-t
-integers: the
-i
--th integer is the largest
-x
-i
-such that
-p
-i
-is divisible by
-x
-i
-, but
-x
-i
-is not divisible by
-q
-i
-.
-One can show that there is always at least one value of
-x
-i
-satisfying the divisibility conditions for the given constraints.
-Example
+by their absolute value.
+Examples
 input
 Copy
-3
-10 4
-12 6
-179 822
+2
+2
+1 1
+2
+1 1
+
+2
+1 2
+2
+3 3
 output
 Copy
-10
+Yes
+1 0
+1 1
+0 1
+0 0
+No
+input
+Copy
+2
 4
-179
+1 1 1 1
+4
+1 1 1 1
+
+3
+2 1 1
+3
+2 1 1
+output
+Copy
+Yes
+1 0
+1 1
+2 1
+2 2
+1 2
+1 1
+0 1
+0 0
+Yes
+0 -2
+2 -2
+2 -1
+1 -1
+1 0
+0 0
+input
+Copy
+2
+4
+1 4 1 2
+4
+3 4 5 12
+
+4
+1 2 3 6
+2
+1 3
+output
+Copy
+Yes
+2 0
+2 3
+3 3
+3 7
+4 7
+4 12
+0 12
+0 0
+No
 Note
-For the first pair, where
-p
-1
-=10
-and
-q
-1
-=4
-, the answer is
-x
-1
-=10
-, since it is the greatest divisor of
-10
-and
-10
-is not divisible by
-4
-.
-For the second pair, where
-p
-2
-=12
-and
-q
-2
-=6
-, note that
-12
-is not a valid
-x
-2
-, since
-12
-is divisible by
-q
-2
-=6
-;
-6
-is not valid
-x
-2
-as well:
-6
-is also divisible by
-q
-2
-=6
-.
-The next available divisor of
-p
-2
-=12
-is
-4
-, which is the answer, since
-4
-is not divisible by
-6
-.
+In the first test case of the first example, the answer is Yes — for example, the following picture illustrates a square that satisfies the requirements:
+In the first test case of the second example, the desired polyline also exists. Note that, the polyline contains self-intersections, but only in the endpoints:
+In the second test case of the second example, the desired polyline could be like the one below:
+Note that the following polyline is not a valid one, since it contains self-intersections that are not endpoints for some of the segments:

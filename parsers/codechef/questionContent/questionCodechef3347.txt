@@ -1,115 +1,46 @@
-Closest Power
+Team Sigma and Fibonacci
 Problem
-Read problem statements in Russian, Mandarin Chinese, Bengali, and Vietnamese as well.
-An integer
-x is said to be a Perfect Power if there exists positive integers
-a and
-b (i.e
-a, and
-b should be
-≥1) such that
-x=a
-b+1
-.
-Given an integer
-n, find the closest Perfect Power to
-n. If there are multiple Perfect Powers equidistant from
-n and as close as possible to
-n, find the smallest one.
-More formally, find the smallest integer
-x such that
-x is a Perfect Power and
-∣n−x∣≤∣n−y∣ over all Perfect Powers
-y.
-Input Format
-The first line of input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains a single integer
-n.
-Output Format
-For each test case, print in a separate line, the smallest
-x such that
-x is a perfect power and
-∣n−x∣ is minimum.
-Constraints
-1≤T≤10
-5
-1≤n≤10
-18
-Sample 1:
+Read problems statements in Mandarin Chinese and Russian.
+Sigma and Fibonacci were two geeky friends. As ACM ICPC is near, they have started forming teams. Sigma loved summing series and Fibonacci loved playing with fibonacci numbers. They made Gopu as their ACM ICPC Coach. To train them up, Gopu gave them a challenge which will require both of their coordination to solve it. The challenge given by Gopu is described below:
+Gopu gave them two numbers M and N and asked them to solve :
+( ∑ ( 6 * x * y * z * Fibo[x] * Fibo[y] * Fibo[z] ) ) % M , where x + y + z = N.
+Here x, y, z ≥ 0 and are integers.
+Fibo is the Fibonacci number define as follows.
+Fibo[0] = 0
+Fibo[1] = 1
+Fibo[i] = Fibo[i-1] + Fibo[i-2] ∀ i ≥ 2 .
+Now Gopu is wondering whether he will be able to determine whether they have calculated the solution of the problem correctly or not ! Help Gopu to find the correct answers , so that he can judge the solution for the team.
 Input
+
+First line of input contains an integer T denoting the number of test cases. Each test case begins in a new line, containing two space separated numbers representing M and N respectively.
 Output
-7
-7
-10
-26
-242
-129
-394857629456789876
-353872815358409997
-8
-9
-25
-243
-128
-394857628993920400
-353872815358410000
-Explanation:
-Test case
-1:
-n=7,
-8=2
-3
-is a perfect power, but
-6 is not, so the minimum difference obtainable is
-1 when
-x=8.
-Test case
-2:
-n=10,
-9=3
-2
-is a perfect power, but
-11 is not, so the minimum difference obtainable is
-1 when
-x=9.
-Test case
-3:
-n=26,
-25=5
-2
-is a perfect power,
-27=3
-3
-is also a perfect power. Both
-x=25 and
-x=27 give the minimum difference obtainable which is
-1. The smallest of them is
-25.
-Test case
-4:
-n=242,
-243=3
-5
-is a perfect power but
-241 is not, so the answer is
-243.
-Test case
-5:
-128=2
-7
-is closest to
-129.
-Test case
-6:
-394857628993920400=628376980
-2
-is the closest to
-394857629456789876.
-Test case
-7:
-353872815358410000=24390
+For each test case, output answer as stated above in a new line.
+Constraints
+Sum of M over all test cases will be ≤ 106.
+0 ≤ N ≤ 1018
+1 ≤ M ≤ 105
+Example
+Input:
 4
-is the closest to
-353872815358409997.
+100 3
+100 4
+100 9
+100 10
+Output:
+6
+36
+66
+60
+Explanation for first test case:
+In the first case, we have the following 10 terms for N = 3:
+6 * 0*0*3*Fibo[0] * Fibo[0] * Fibo[3]
+6 * 0*1*2*Fibo[0] * Fibo[1] * Fibo[2]
+6 * 0*2*1*Fibo[0] * Fibo[2] * Fibo[1]
+6 * 0*3*0*Fibo[0] * Fibo[3] * Fibo[0]
+6 * 1*0*2*Fibo[1] * Fibo[0] * Fibo[2]
+6 * 1*1*1*Fibo[1] * Fibo[1] * Fibo[1]
+6 * 1*2*0*Fibo[1] * Fibo[2] * Fibo[0]
+6 * 2*0*1*Fibo[2] * Fibo[0] * Fibo[1]
+6 * 2*1*0*Fibo[2] * Fibo[1] * Fibo[0]
+6 * 3*0*0*Fibo[3] * Fibo[0] * Fibo[0]
+Here 6*1*1*1* Fibo[1] * Fibo[1] * Fibo[1] = 6 is only the non-zero term, the answer is 6.

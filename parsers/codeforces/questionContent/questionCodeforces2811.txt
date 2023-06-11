@@ -1,106 +1,219 @@
-A. Grade Allocation
-time limit per test1 second
+D. Nash Matrix
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-n
-students are taking an exam. The highest possible score at this exam is
-m
-. Let
-a
-i
-be the score of the
-i
--th student. You have access to the school database which stores the results of all students.
-You can change each student's score as long as the following conditions are satisfied:
-All scores are integers
-0≤
-a
-i
-≤m
-The average score of the class doesn't change.
-You are student
+Nash designed an interesting yet simple board game where a player is simply required to follow instructions written on the cell where the player currently stands.
+This board game is played on the
+n×n
+board. Rows and columns of this board are numbered from
 1
-and you would like to maximize your own score.
-Find the highest possible score you can assign to yourself such that all conditions are satisfied.
-Input
-Each test contains multiple test cases.
-The first line contains the number of test cases
-t
-(
-1≤t≤200
-). The description of the test cases follows.
-The first line of each test case contains two integers
+to
 n
-and
-m
+. The cell on the intersection of the
+r
+-th row and
+c
+-th column is denoted by
+(r,c)
+.
+Some cells on the board are called blocked zones. On each cell of the board, there is written one of the following
+5
+characters  —
+U
+,
+D
+,
+L
+,
+R
+or
+X
+ — instructions for the player. Suppose that the current cell is
+(r,c)
+. If the character is
+R
+, the player should move to the right cell
+(r,c+1)
+, for
+L
+the player should move to the left cell
+(r,c−1)
+, for
+U
+the player should move to the top cell
+(r−1,c)
+, for
+D
+the player should move to the bottom cell
+(r+1,c)
+. Finally, if the character in the cell is
+X
+, then this cell is the blocked zone. The player should remain in this cell (the game for him isn't very interesting from now on).
+It is guaranteed that the characters are written in a way that the player will never have to step outside of the board, no matter at which cell he starts.
+As a player starts from a cell, he moves according to the character in the current cell. The player keeps moving until he lands in a blocked zone. It is also possible that the player will keep moving infinitely long.
+For every of the
+n
+2
+cells of the board Alice, your friend, wants to know, how will the game go, if the player starts in this cell. For each starting cell of the board, she writes down the cell that the player stops at, or that the player never stops at all. She gives you the information she has written: for each cell
+(r,c)
+she wrote:
+a pair (
+x
+,
+y
+), meaning if a player had started at
+(r,c)
+, he would end up at cell (
+x
+,
+y
+).
+or a pair (
+−1
+,
+−1
+), meaning if a player had started at
+(r,c)
+, he would keep moving infinitely long and would never enter the blocked zone.
+It might be possible that Alice is trying to fool you and there's no possible grid that satisfies all the constraints Alice gave you. For the given information Alice provided you, you are required to decipher a possible board, or to determine that such a board doesn't exist. If there exist several different boards that satisfy the provided information, you can find any of them.
+Input
+The first line of the input contains a single integer
+n
 (
 1≤n≤
 10
 3
-,
-1≤m≤
-10
-5
-)  — the number of students and the highest possible score respectively.
-The second line of each testcase contains
+)  — the side of the board.
+The
+i
+-th of the next
 n
+lines of the input contains
+2n
 integers
-a
+x
 1
 ,
-a
+y
+1
+,
+x
+2
+,
+y
 2
 ,…,
-a
+x
 n
+,
+y
+n
+, where
 (
-0≤
-a
-i
-≤m
-)  — scores of the students.
+x
+j
+,
+y
+j
+)
+(
+1≤
+x
+j
+≤n,1≤
+y
+j
+≤n
+, or
+(
+x
+j
+,
+y
+j
+)=(−1,−1)
+) is the pair written by Alice for the cell
+(i,j)
+.
 Output
-For each testcase, output one integer  — the highest possible score you can assign to yourself such that both conditions are satisfied._
-Example
+If there doesn't exist a board satisfying the information that Alice gave you, print a single line containing INVALID.
+Otherwise, in the first line print VALID. In the
+i
+-th of the next
+n
+lines, print the string of
+n
+characters, corresponding to the characters in the
+i
+-th row of the suitable board you found. Each character of a string can either be
+U
+,
+D
+,
+L
+,
+R
+or
+X
+. If there exist several different boards that satisfy the provided information, you can find any of them.
+Examples
 input
 Copy
 2
-4 10
-1 2 3 4
-4 5
-1 2 3 4
+1 1 1 1
+2 2 2 2
 output
 Copy
-10
-5
+VALID
+XL
+RX
+input
+Copy
+3
+-1 -1 -1 -1 -1 -1
+-1 -1 2 2 -1 -1
+-1 -1 -1 -1 -1 -1
+output
+Copy
+VALID
+RRD
+UXD
+ULL
 Note
-In the first case,
-a=[1,2,3,4]
-, with average of
-2.5
-. You can change array
-a
-to
-[10,0,0,0]
-. Average remains
-2.5
-, and all conditions are satisfied.
-In the second case,
-0≤
-a
-i
-≤5
-. You can change
-a
-to
-[5,1,1,3]
-. You cannot increase
-a
-1
-further as it will violate condition
-0≤
-a
-i
-≤m
+For the sample test 1 :
+The given grid in output is a valid one.
+If the player starts at
+(1,1)
+, he doesn't move any further following
+X
+and stops there.
+If the player starts at
+(1,2)
+, he moves to left following
+L
+and stops at
+(1,1)
 .
+If the player starts at
+(2,1)
+, he moves to right following
+R
+and stops at
+(2,2)
+.
+If the player starts at
+(2,2)
+, he doesn't move any further following
+X
+and stops there.
+The simulation can be seen below :
+For the sample test 2 :
+The given grid in output is a valid one, as a player starting at any cell other than the one at center
+(2,2)
+, keeps moving in an infinitely long cycle and never stops. Had he started at
+(2,2)
+, he wouldn't have moved further following instruction
+X
+.
+The simulation can be seen below :

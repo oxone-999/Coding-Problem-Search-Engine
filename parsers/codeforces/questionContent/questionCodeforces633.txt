@@ -1,178 +1,210 @@
-M. Moving Both Hands
+B. Mainak and Interesting Sequence
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Pak Chanek is playing one of his favourite board games. In the game, there is a directed graph with
-N
-vertices and
-M
-edges. In the graph, edge
-i
-connects two different vertices
-U
-i
+Mainak has two positive integers
+n
 and
-V
-i
-with a length of
-W
-i
-. By using the
-i
--th edge, something can move from
-U
-i
-to
-V
-i
-, but not from
-V
-i
-to
-U
-i
+m
 .
-To play this game, initially Pak Chanek must place both of his hands onto two different vertices. In one move, he can move one of his hands to another vertex using an edge. To move a hand from vertex
-U
-i
-to vertex
-V
-i
-, Pak Chanek needs a time of
-W
-i
-seconds. Note that Pak Chanek can only move one hand at a time. This game ends when both of Pak Chanek's hands are on the same vertex.
-Pak Chanek has several questions. For each
-p
-satisfying
-2≤p≤N
-, you need to find the minimum time in seconds needed for Pak Chanek to end the game if initially Pak Chanek's left hand and right hand are placed on vertex
+Mainak finds a sequence
+a
 1
-and vertex
+,
+a
+2
+,…,
+a
+n
+of
+n
+positive integers interesting, if for all integers
+i
+(
+1≤i≤n
+), the bitwise XOR of all elements in
+a
+which are strictly less than
+a
+i
+is
+0
+. Formally if
 p
-, or report if it is impossible.
-Input
-The first line contains two integers
-N
+i
+is the bitwise XOR of all elements in
+a
+which are strictly less than
+a
+i
+, then
+a
+is an interesting sequence if
+p
+1
+=
+p
+2
+=…=
+p
+n
+=0
+.
+For example, sequences
+[1,3,2,3,1,2,3]
+,
+[4,4,4,4]
+,
+[25]
+are interesting, whereas
+[1,2,3,4]
+(
+p
+2
+=1≠0
+),
+[4,1,1,2,4]
+(
+p
+1
+=1⊕1⊕2=2≠0
+),
+[29,30,30]
+(
+p
+2
+=29≠0
+) aren't interesting.
+Here
+a⊕b
+denotes bitwise XOR of integers
+a
 and
-M
+b
+.
+Find any interesting sequence
+a
+1
+,
+a
+2
+,…,
+a
+n
+(or report that there exists no such sequence) such that the sum of the elements in the sequence
+a
+is equal to
+m
+, i.e.
+a
+1
++
+a
+2
+…+
+a
+n
+=m
+.
+As a reminder, the bitwise XOR of an empty sequence is considered to be
+0
+.
+Input
+Each test contains multiple test cases. The first line contains a single integer
+t
 (
-2≤N≤
+1≤t≤
+10
+5
+) — the number of test cases. Description of the test cases follows.
+The first line and the only line of each test case contains two integers
+n
+and
+m
+(
+1≤n≤
 10
 5
 ,
-0≤M≤2⋅
-10
-5
-) — the number of vertices and edges in the graph.
-The
-i
--th of the next
-M
-lines contains three integers
-U
-i
-,
-V
-i
-, and
-W
-i
-(
-1≤
-U
-i
-,
-V
-i
-≤N
-,
-U
-i
-≠
-V
-i
-,
-1≤
-W
-i
-≤
+1≤m≤
 10
 9
-) — a directed edge that connects two different vertices
-U
-i
-and
-V
-i
-with a length of
-W
-i
-. There is no pair of different edges
-i
-and
-j
-such that
-U
-i
-=
-U
-j
-and
-V
-i
-=
-V
-j
+) — the length of the sequence and the sum of the elements.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+5
 .
 Output
-Output a line containing
-N−1
-integers. The
-j
--th integer represents the minimum time in seconds needed by Pak Chanek to end the game if initially Pak Chanek's left hand and right hand are placed on vertex
+For each test case, if there exists some interesting sequence, output "Yes" on the first line, otherwise output "No". You may print each letter in any case (for example, "YES", "Yes", "yes", "yEs" will all be recognized as positive answer).
+If the answer is "Yes", output
+n
+positive integers
+a
 1
-and vertex
-j+1
-, or
-−1
-if it is impossible.
+,
+a
+2
+,…,
+a
+n
+(
+a
+i
+≥1
+), forming an interesting sequence such that
+a
+1
++
+a
+2
+…+
+a
+n
+=m
+. If there are multiple solutions, output any.
 Example
 input
 Copy
-5 7
-1 2 2
-2 4 1
-4 1 4
-2 5 3
-5 4 1
-5 2 4
-2 1 1
+4
+1 3
+6 12
+2 1
+3 6
 output
 Copy
-1 -1 3 4
+Yes
+3
+Yes
+1 3 2 2 3 1
+No
+Yes
+2 2 2
 Note
-If initially Pak Chanek's left hand is on vertex
+In the first test case,
+[3]
+is the only interesting sequence of length
 1
-and his right hand is on vertex
-5
-, Pak Chanek can do the following moves:
-Move his right hand to vertex
-4
-in
-1
-second.
-Move his left hand to vertex
+having sum
+3
+.
+In the third test case, there is no sequence of length
 2
-in
-2
-seconds.
-Move his left hand to vertex
-4
-in
+having sum of elements equal to
 1
-second.
-In total it needs
-1+2+1=4
-seconds. It can be proven that there is no other way that is faster.
+, so there is no such interesting sequence.
+In the fourth test case,
+p
+1
+=
+p
+2
+=
+p
+3
+=0
+, because bitwise XOR of an empty sequence is
+0
+.

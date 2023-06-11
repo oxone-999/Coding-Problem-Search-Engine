@@ -1,146 +1,109 @@
-B. Optimal Partition
-time limit per test4 seconds
+D. Edge Elimination
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-consisting of
+You are given a tree (connected, undirected, acyclic graph) with
 n
-integers. You should divide
-a
-into continuous non-empty subarrays (there are
-2
-n−1
-ways to do that).
-Let
-s=
-a
-l
-+
-a
-l+1
-+…+
-a
-r
-. The value of a subarray
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-is:
-(r−l+1)
-if
-s>0
-,
-0
-if
-s=0
-,
-−(r−l+1)
-if
-s<0
-.
-What is the maximum sum of values you can get with a partition?
+vertices. Two edges are adjacent if they share exactly one endpoint. In one move you can remove an arbitrary edge, if that edge is adjacent to an even number of remaining edges.
+Remove all of the edges, or determine that it is impossible. If there are multiple solutions, print any.
 Input
 The input consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤5⋅
+1≤t≤
 10
 5
 ) — the number of test cases. The description of the test cases follows.
 The first line of each test case contains a single integer
 n
 (
-1≤n≤5⋅
+2≤n≤2⋅
 10
 5
-).
-The second line of each test case contains
-n
-integers
-a
-1
-,
-a
-2
-, ...,
-a
-n
-(
-−
-10
-9
-≤
-a
+) — the number of vertices in the tree.
+Then
+n−1
+lines follow. The
 i
-≤
-10
-9
-).
+-th of them contains two integers
+u
+i
+,
+v
+i
+(
+1≤
+u
+i
+,
+v
+i
+≤n
+) the endpoints of the
+i
+-th edge. It is guaranteed that the given graph is a tree.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
-5⋅
+2⋅
 10
 5
 .
 Output
-For each test case print a single integer — the maximum sum of values you can get with an optimal parition.
+For each test case print "NO" if it is impossible to remove all the edges.
+Otherwise print "YES", and in the next
+n−1
+lines print a possible order of the removed edges. For each edge, print its endpoints in any order.
 Example
 input
 Copy
 5
+2
+1 2
 3
-1 2 -3
+1 2
+2 3
 4
-0 -2 3 -4
+1 2
+2 3
+3 4
 5
--1 -2 3 -1 -1
-6
--1 2 -3 4 -5 6
+1 2
+2 3
+3 4
+3 5
 7
-1 -1 -1 1 -1 -1 1
+1 2
+1 3
+2 4
+2 5
+3 6
+3 7
 output
 Copy
-1
-2
-1
-6
--1
+YES
+2 1
+NO
+YES
+2 3
+3 4
+2 1
+YES
+3 5
+2 3
+2 1
+4 3
+NO
 Note
 Test case
 1
-: one optimal partition is
-[1,2]
-,
-[−3]
-.
-1+2>0
-so the value of
-[1,2]
-is
-2
-.
-−3<0
-, so the value of
-[−3]
-is
-−1
-.
-2+(−1)=1
-.
+: it is possible to remove the edge, because it is not adjacent to any other edge.
 Test case
 2
-: the optimal partition is
-[0,−2,3]
-,
-[−4]
-, and the sum of values is
-3+(−1)=2
-.
+: both edges are adjacent to exactly one edge, so it is impossible to remove any of them. So the answer is "NO".
+Test case
+3
+: the edge
+2−3
+is adjacent to two other edges. So it is possible to remove it. After that removal it is possible to remove the remaining edges too.

@@ -1,103 +1,141 @@
-Minimum Operation
+Cherry and Bits
 Problem
-You are given positive integers
-N and
-M
-(M≥2).
-You are also given an array
-A of size
-N, such that
-2≤A
-i
-≤M.
-In one operation on the array, you can:
-Select an integer
-X
-(2≤X≤M) and change
+Cherry has a binary matrix
+A consisting of
+N rows and
+M columns. The rows are numbered from
+1 to
+N, columns are numbered from
+1 to
+M. Element at row
+i (
+1 ≤
+i ≤
+N) and column
+j (
+1 ≤
+j ≤
+M) is denoted as
 A
-i
-to
-gcd(A
-i
-,X) for all
-1≤i≤N.
-Note that
-gcd denotes the greatest common divisor.
-Your task is to make all the elements of
-A equal.
-Find the minimum number of operations required to do so and also print the selected integer
-X for each operation.
-If there are multiple ways to do so, you may print any.
-It can be proven that it is always possible to make all the elements of
-A equal in finite number of operations.
-Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases.
-Each test case consists of two lines of input.
-The first line of each test case contains two integers
-N and
-M — the length of the array
-A and maximum value of
-X allowed.
-The second line of each test case contains
-N space-separated integers
-A
+ij
+. All elements of
+A are either
+0 or
+1.
+He performs
+Q queries on matrix. Each query is provided by four integers
+x
 1
-,A
+,
+y
+1
+,
+x
 2
-,…,A
-N
-, representing the array
-A.
-Output Format
-For each test case, in the first line, print an integer
-Z, denoting the number of operations required.
-In case
-Z>0, print another line with
-Z space-separated integers where the
+,
+y
+2
+which define the rectangle, where (
+x
+1
+,
+y
+1
+) stands for the coordinates of the top left cell of the rectangle, while (
+x
+2
+,
+y
+2
+) stands for the coordinates of the bottom right cell. You need to flip all the bits i.e. (
+0 to
+1,
+1 to
+0) that are located fully inside the query rectangle.
+Finally, print the matrix after performing all the queries.
+Note:
+x
+1
+represents the row number while
+y
+1
+represents the column number.
+###Input:
+The first line of the input contains two integers
+N and
+M — the number of rows and the number of columns in the matrix.
+Each of the next
+N lines contains a string of length
+M, where the
+j
+th
+character of
 i
 th
-integer represents the selected integer
-X selected in the
-i
-th
-operation in order.
-If there are multiple ways to do so, you may print any.
-Constraints
-1≤T≤10
-5
-1≤N≤10
-5
-2≤M≤10
-6
-2≤A
-i
-≤M
-The sum of
-N over all test cases won't exceed
-3⋅10
-5
+line denotes the value of
+A
+i,j
 .
-Note that sum of
-M over all test case isn't bounded.
+Next line contains an integer
+Q — the number of queries.
+Then follow
+Q lines with queries descriptions. Each of them contains four space-seperated integers
+x
+1
+,
+y
+1
+,
+x
+2
+,
+y
+2
+— coordinates of the up left and bottom right cells of the query rectangle.
+###Output:
+Print the matrix, in the form of
+N strings, after performing all the queries.
+###Constraints
+1≤N,M≤1000
+0≤A
+ij
+≤1
+1≤Q≤10
+6
+1≤x
+1
+≤x
+2
+≤N
+1≤y
+1
+≤y
+2
+≤M
 Sample 1:
 Input
 Output
-2
-3 343
-343 343 343
-5 100
-4 8 12 16 20
-0
-1
-4
+2 2
+00
+00
+3
+1 1 1 1
+2 2 2 2
+1 1 2 2
+01
+10
 Explanation:
-Test case
-1: Since all elements of the array are already equal, we require
-0 operations.
-Test case
-2: We require only one operation:
-Select
-X=4: Thus, the array becomes
-[gcd(4,4),gcd(4,8),gcd(4,12),gcd(4,16),gcd(4,20)]=[4,4,4,4,4], where all elements are equal.
-Note that this is the minimum number of operations required.
+Example case 1:
+After processing the 1st query 1 1 1 1, matrix becomes:
+[
+10
+00
+] After processing the 2nd query 2 2 2 2, the matrix becomes:
+[
+10
+01
+] After processing the 3rd query 1 1 2 2, matrix becomes:
+[
+01
+10
+] We need to output the matrix after processing all queries.

@@ -1,41 +1,31 @@
-D. Artsem and Saunders
+B. Code obfuscation
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Artsem has a friend Saunders from University of Chicago. Saunders presented him with the following problem.
-Let [n] denote the set {1, ..., n}. We will also write f: [x] → [y] when a function f is defined in integer points 1, ..., x, and all its values are integers from 1 to y.
-Now then, you are given a function f: [n] → [n]. Your task is to find a positive integer m, and two functions g: [n] → [m], h: [m] → [n], such that g(h(x)) = x for all , and h(g(x)) = f(x) for all , or determine that finding these is impossible.
+Kostya likes Codeforces contests very much. However, he is very disappointed that his solutions are frequently hacked. That's why he decided to obfuscate (intentionally make less readable) his code before upcoming contest.
+To obfuscate the code, Kostya first looks at the first variable name used in his program and replaces all its occurrences with a single symbol a, then he looks at the second variable name that has not been replaced yet, and replaces all its occurrences with b, and so on. Kostya is well-mannered, so he doesn't use any one-letter names before obfuscation. Moreover, there are at most 26 unique identifiers in his programs.
+You are given a list of identifiers of some program with removed spaces and line breaks. Check if this program can be a result of Kostya's obfuscation.
 Input
-The first line contains an integer n (1 ≤ n ≤ 105).
-The second line contains n space-separated integers — values f(1), ..., f(n) (1 ≤ f(i) ≤ n).
+In the only line of input there is a string S of lowercase English letters (1 ≤ |S| ≤ 500) — the identifiers of a program with removed whitespace characters.
 Output
-If there is no answer, print one integer -1.
-Otherwise, on the first line print the number m (1 ≤ m ≤ 106). On the second line print n numbers g(1), ..., g(n). On the third line print m numbers h(1), ..., h(m).
-If there are several correct answers, you may output any of them. It is guaranteed that if a valid answer exists, then there is an answer satisfying the above restrictions.
+If this program can be a result of Kostya's obfuscation, print "YES" (without quotes), otherwise print "NO".
 Examples
 input
 Copy
-3
-1 2 3
+abacaba
 output
 Copy
-3
-1 2 3
-1 2 3
+YES
 input
 Copy
-3
-2 2 2
+jinotega
 output
 Copy
-1
-1 1 1
-2
-input
-Copy
-2
-2 1
-output
-Copy
--1
+NO
+Note
+In the first sample case, one possible list of identifiers would be "number string number character number string number". Here how Kostya would obfuscate the program:
+replace all occurences of number with a, the result would be "a string a character a string a",
+replace all occurences of string with b, the result would be "a b a character a b a",
+replace all occurences of character with c, the result would be "a b a c a b a",
+all identifiers have been replaced, thus the obfuscation is finished.

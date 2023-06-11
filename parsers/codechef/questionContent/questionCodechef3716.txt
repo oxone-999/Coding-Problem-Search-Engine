@@ -1,121 +1,131 @@
-Nearest Color
+Xor X,Get MAX
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-You have to process
-Q queries on a rooted tree. Each node of the tree has a label and a color. Initially, the tree consists of a single node (the root) with label
-1 and color
-c
-0
-. There are two types of queries:
-You are given an existing node
-u and a color
-c. Let's denote the number of nodes in the tree before this query by
-k. Create a node with label
-k+1 and color
-c, and add it to the tree as a child of node
-u.
-You are given a node
-u and a color
-c. For each node with color
-c (possibly including
-u), find its distance from node
-u. The answer to this query is the minimum of these distances, or
-−1 if there are no nodes with color
-c in the tree.
-The input is encoded so that you have to process these queries online.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-Q and
-c
-0
-.
-Each of the following
-Q lines contains a character
-t followed by a space and two space-separated integers
-u
-′
-and
-c
-′
-describing a query.
-The character
-t is '+' for a query of the first type or '?' for a query of the second type.
-Let's denote the answer to the last query of the second type by
-a (
-a=−1 if there have been no queries of the second type so far). The parameters
-u and
-c of the current query can be computed as
-u=u
-′
-⊕(a+1) and
-c=c
-′
-⊕(a+1).
-Output
-For each query of the second type, print a single line containing one integer — the answer to this query.
+This is an interactive problem.
+There’s a hidden array
+A consisting of
+N distinct non-negative integers.
+You are allowed to interact with the judge using queries. Each query is of the form:
+X
+Y: Given two non-negative integers
+X and
+Y
+(1≤X≤N,0≤Y<2
+30
+) as the query, the hidden array
+A is updated by setting
+A
+X
+:=A
+X
+⊕Y, where
+⊕ denotes the bitwise XOR operation.
+After each query, the judge will return the maximum value of the updated array.
+Your task is to make all the elements of the array equal to
+0 using at most
+10
+5
+operations.
+Interaction
+The first line of input will contain a single integer
+N, the size of the array
+A.
+To make a query, you should print a line containing two space-separated integers
+X and
+Y
+(1≤X≤N,0≤Y<2
+30
+). Then, you must read a line containing a single non-negative integer, denoting the maximum element of the updated array. In case the query is invalid or you asked more than
+10
+5
+queries, the judge will return
+−1.
+To end the interaction, once all the elements of the array are
+0, you should print a single line containing an integer
+0. Then, you must read a line containing a single integer:
+1, if your output is correct, or
+−1 otherwise.
+Note
+After printing a query do not forget to output end of line and flush the output. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python.
+After you print
+0, do not forget to read a line containing a single integer:
+1, if your output is correct, or
+−1 otherwise.
+If the test status is Wrong Answer, either your answer is incorrect or you asked more than
+10
+5
+queries.
+If the test status is Judge Error, either you have't flushed the output, or your I/O is invalid.
 Constraints
-1≤Q≤2⋅10
-5
-the sum of
-Q over all test cases does not exceed
-4⋅10
-5
-t is '+' or '?'
-u is a valid label of a node in the tree
-1≤c
+1≤N≤3000
+0≤A
+i
+<2
+30
+Elements of array A are distinct initially.
+Example
+You                 Grader
+                    3
+1 0
+                    3
+3 7 
+                    4
+2 2
+                    4
+3 4
+                    1
+1 1 
+                    0
 0
-,c≤2⋅10
-5
-Sample 1:
-Input
-Output
-2
-6 1
-+ 1 2
-+ 2 3
-+ 3 1
-? 1 3
-? 7 2
-? 3 0
-10 1
-+ 1 2
-? 1 1
-? 3 0
-? 0 6
-+ 2 3
-+ 2 4
-? 3 4
-+ 0 7
-? 0 7
-? 3 6
-2
-0
+                    1
+Explanation
+Here,
+A=[1,2,3] initially.
+Operation
+1:
+A
 1
-0
+:=A
 1
--1
+⊕0,
+A=[1,2,3]. The maximum value of updated array is
+3.
+Operation
+2:
+A
+3
+:=A
+3
+⊕7,
+A=[1,2,4]. The maximum value of updated array is
+4.
+Operation
+3:
+A
 2
+:=A
+2
+⊕2,
+A=[1,0,4]. The maximum value of updated array is
+4.
+Operation
+4:
+A
+3
+:=A
+3
+⊕4,
+A=[1,0,0]. The maximum value of updated array is
+1.
+Operation
+5:
+A
 1
-2
-Explanation:
-Example case 1: The decoded queries are
-+ 1 2
-+ 2 3
-+ 3 1
-? 1 3
-? 4 1
-? 2 1
-Example case 2: The decoded queries are
-+ 1 2
-? 1 1
-? 2 1
-? 2 4
-+ 2 3
-+ 2 4
-? 3 4
-+ 3 4
-? 3 4
-? 1 4
+:=A
+1
+⊕1,
+A=[0,0,0]. The maximum value of updated array is
+0.

@@ -1,110 +1,43 @@
-C. Polycarp Recovers the Permutation
+E1. Escape The Maze (easy version)
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp wrote on a whiteboard an array
-p
-of length
+The only difference with E2 is the question of the problem..
+Vlad built a maze out of
 n
-, which is a permutation of numbers from
+rooms and
+n−1
+bidirectional corridors. From any room
+u
+any other room
+v
+can be reached through a sequence of corridors. Thus, the room system forms an undirected tree.
+Vlad invited
+k
+friends to play a game with them.
+Vlad starts the game in the room
 1
-to
-n
-. In other words, in
-p
-each number from
+and wins if he reaches a room other than
 1
-to
-n
-occurs exactly once.
-He also prepared a resulting array
-a
-, which is initially empty (that is, it has a length of
-0
-).
-After that, he did exactly
-n
-steps. Each step looked like this:
-Look at the leftmost and rightmost elements of
-p
-, and pick the smaller of the two.
-If you picked the leftmost element of
-p
-, append it to the left of
-a
-; otherwise, if you picked the rightmost element of
-p
-, append it to the right of
-a
-.
-The picked element is erased from
-p
-.
-Note that on the last step,
-p
-has a length of
-1
-and its minimum element is both leftmost and rightmost. In this case, Polycarp can choose what role the minimum element plays. In other words, this element can be added to
-a
-both on the left and on the right (at the discretion of Polycarp).
-Let's look at an example. Let
-n=4
-,
-p=[3,1,4,2]
-. Initially
-a=[]
-. Then:
-During the first step, the minimum is on the right (with a value of
-2
-), so after this step,
-p=[3,1,4]
-and
-a=[2]
-(he added the value
-2
-to the right).
-During the second step, the minimum is on the left (with a value of
-3
-), so after this step,
-p=[1,4]
-and
-a=[3,2]
-(he added the value
-3
-to the left).
-During the third step, the minimum is on the left (with a value of
-1
-), so after this step,
-p=[4]
-and
-a=[1,3,2]
-(he added the value
-1
-to the left).
-During the fourth step, the minimum is both left and right (this value is
-4
-). Let's say Polycarp chose the right option. After this step,
-p=[]
-and
-a=[1,3,2,4]
-(he added the value
-4
-to the right).
-Thus, a possible value of
-a
-after
-n
-steps could be
-a=[1,3,2,4]
-.
-You are given the final value of the resulting array
-a
-. Find any possible initial value for
-p
-that can result the given
-a
-, or determine that there is no solution.
+, into which exactly one corridor leads.
+Friends are placed in the maze: the friend with number
+i
+is in the room
+x
+i
+, and no two friends are in the same room (that is,
+x
+i
+≠
+x
+j
+for all
+i≠j
+). Friends win if one of them meets Vlad in any room or corridor before he wins.
+For one unit of time, each participant of the game can go through one corridor. All participants move at the same time. Participants may not move. Each room can fit all participants at the same time.
+Friends know the plan of a maze and intend to win. Vlad is a bit afraid of their ardor. Determine if he can guarantee victory (i.e. can he win in any way friends play).
+In other words, determine if there is such a sequence of Vlad's moves that lets Vlad win in any way friends play.
 Input
 The first line of the input contains an integer
 t
@@ -112,39 +45,58 @@ t
 1≤t≤
 10
 4
-) — the number of test cases in the test.
-Each test case consists of two lines. The first of them contains an integer
+) — the number of test cases in the input. The input contains an empty string before each test case.
+The first line of the test case contains two numbers
 n
+and
+k
 (
-1≤n≤2⋅
+1≤k<n≤2⋅
 10
 5
-) — the length of the array
-a
-. The second line contains
-n
+) — the number of rooms and friends, respectively.
+The next line of the test case contains
+k
 integers
-a
+x
 1
 ,
-a
+x
 2
 ,…,
-a
-n
+x
+k
 (
-1≤
-a
+2≤
+x
 i
 ≤n
-) — the elements of the array
-a
-. All elements of the
-a
-array are distinct numbers.
+) — numbers of rooms with friends. All
+x
+i
+are different.
+The next
+n−1
+lines contain descriptions of the corridors, two numbers per line
+v
+j
+and
+u
+j
+(
+1≤
+u
+j
+,
+v
+j
+≤n
+) — numbers of rooms that connect the
+j
+corridor. All corridors are bidirectional. From any room, you can go to any other by moving along the corridors.
 It is guaranteed that the sum of the values
 n
-over all test cases in the test does not exceed
+over all test cases in the test is not greater than
 2⋅
 10
 5
@@ -152,55 +104,52 @@ over all test cases in the test does not exceed
 Output
 Print
 t
-lines, each of the lines must contain the answer to the corresponding set of input data: numbers
-p
-1
-,
-p
-2
-,…,
-p
-n
- — any of the possible initial values of the array
-p
-, which will lead to the given array
-a
-. All elements of
-p
-are distinct integers from
-1
-to
-n
-. Thus, if there are several solutions, print any. If there is no solution, then print -1 on the line.
+lines, each line containing the answer to the corresponding test case. The answer to a test case should be "YES" if Vlad can guarantee himself a victory and "NO" otherwise.
+You may print every letter in any case you want (so, for example, the strings "yEs", "yes", "Yes" and "YES" will all be recognized as positive answers).
 Example
 input
 Copy
 4
-4
-1 3 2 4
-1
-1
-5
-1 3 5 4 2
-3
-3 2 1
+
+8 2
+5 3
+4 7
+2 5
+1 6
+3 6
+7 2
+1 7
+6 8
+
+3 1
+2
+1 2
+2 3
+
+3 1
+2
+1 2
+1 3
+
+3 2
+2 3
+3 1
+1 2
 output
 Copy
-3 1 4 2
-1
--1
-2 3 1
+YES
+NO
+YES
+NO
 Note
-The first test case in the example is clarified in the main section of the problem statement. There may be other correct answers for this test set.
-In the second test case,
-n=1
-. Thus, there is only one permutation that can be the answer:
-p=[1]
-. Indeed, this is the answer to this test case.
-In the third test case of the example, no matter what permutation you take as
-p
-, after applying the
-n
-steps, the result will differ from
-a=[1,3,5,4,2]
-.
+In the first test case, regardless of the strategy of his friends, Vlad can win by going to room
+4
+. The game may look like this:
+The original locations of Vlad and friends. Vlad is marked in green, friends — in red.
+Locations after one unit of time.
+End of the game.
+Note that if Vlad tries to reach the exit at the room
+8
+, then a friend from the
+3
+room will be able to catch him.

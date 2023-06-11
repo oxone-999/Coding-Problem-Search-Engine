@@ -1,46 +1,134 @@
-Devu, his friends and birthday gifts
+Tom and Jerry
 Problem
-Read problems statements in Mandarin Chinese and Russian as well.
-You might have realized up to now that some of the Devu's friend are really weird. It is Devu's 22nd birthday today. His friends are coming to his home for his birthday party. Some of his friends are so shameless that instead of giving him a gift, they even ask gifts from him.
-Devu has n friends. He wants to invite some of his friends in the party. Devu knows beforehand that ith friend will give a gift of ri rupees. If ri is positive, then it means that they will give a gift of |ri| rupees to Devu, otherwise it means that they want to receive a gift of|ri| rupees from Devu.
-Devu's friend are really weird and they keep conditions before Devu like this : "If you invite me, you should also invite my best friend too". For ith person, you are given an integer fi denoting his best friend. It means that if Devu invites ith person, then he has to invite person fi too. Please note that best friend relationship is not bi-directional i.e. it is not necessary that if A is best friend of B, then B should be best friend of A.
-You have to help Devu in choosing an optimal set of friends to invite so that the total amount of money he receives in gifts is maximum. Devu can also choose to not to invite anyone at all. Find out the maximum total amount of money Devu can have.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+As usual, Tom is trying to catch Jerry. To accomplish this task, Tom hired
+K other cats (Tom does not take part in the chase). Formally, they are in a graph
+G with
+N vertices and
+M edges. Let's denote the set of vertices of
+G by
+V. The graph has a special property: for each simple cycle containing at least four vertices, there is an edge which is not part of this cycle, but connects two distinct vertices on the cycle.
+Jerry can only move along the edges of the graph, but arbitrarily fast. The cats don't have to follow the edges — they can use a helicopter to go to any vertices they want.
+The process of catching Jerry happens in several rounds as follows:
+In round
+0, the cats choose a set of vertices
+X
+0
+⊆V with
+∣X
+0
+∣≤K; Jerry chooses a vertex
+v
+0
+∈V∖X
+0
+.
+For each
+i≥0, let's denote the set of vertices containing cats in round
+i by
+X
+i
+and the vertex containing Jerry by
+v
+i
+. In round
+i+1, the cats choose a subset
+X
+i+1
+⊆V with
+∣X
+i+1
+∣≤K.
+Afterwards in round
+i+1, Jerry must choose a vertex
+v
+i+1
+∈V∖X
+i+1
+such that there is a path from
+v
+i
+to
+v
+i+1
+which doesn't pass through any vertex in
+X
+i
+∩X
+i+1
+. If Jerry cannot choose such a vertex, the cats win.
+If this process can last forever (
+K cats are not enough to catch Jerry), then Jerry wins.
+Your task is to calculate the minimum number of cats
+K which Tom has to call in order to guarantee that Jerry will be caught (there is no winning strategy for Jerry).
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-First line of each test case will contain a single integer n denoting total number of friends of Devu.
-Second line contains n space separated integers denoting array f which describes best friend of ith person.
-Third line contains n space separated integers denoting array r as stated in the problem.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+M.
+M lines follow. Each of these lines contains two space-separated integers
+u and
+v denoting an edge between vertices
+u and
+v.
 Output
-For each test case, print a single line containing maximum amount of rupees he can have in the end.
+For each test case, print a single line containing one integer — the minimum number of cats needed to catch Jerry.
 Constraints
-1 ≤ T ≤ 105
-2 ≤ n ≤ 105
--109 ≤ ri ≤ 109
-1 ≤ fi ≤ n
-fi != i
-Sum of n over all the test cases will be less than or equal to 106
+1≤T≤10
+3≤N≤10
+5
+1≤M≤2⋅10
+5
+1≤u,v≤N
+u
+
+=v
+there is at most one edge between each pair of vertices
+Subtasks
+Subtask #1 (10 points):
+3≤N≤30
+Subtask #2 (30 points):
+3≤N≤100
+Subtask #3 (60 points):
+T≤5
 Sample 1:
 Input
 Output
-4
 2
-2 1
-3 5
-2 
-2 1 
--3 5
-3
-2 3 2
--2 2 4
-3
-2 3 2
--1 -2 -3
-8
-2 
-6
-0
+7 6
+1 2
+1 3
+2 4
+2 5
+3 6
+3 7
+4 6
+1 2
+1 3
+1 4
+2 3
+2 4
+3 4
+2
+4
 Explanation:
-Example case 1. Both his friends are giving him gifts. So he will invite both of them to the party and will collect 8 rupees from the gifts received.
-Example case 2. He invites both of the friends and total rupees collected will be 2 rupees. He can not invite 2nd friend only, because 1st person is a best friend of 2nd person and he must be invited too if 2nd friend is invited.
-Example case 3. He will invite second and third of his friends. So total rupees collected will be 6 rupees.
-Example case 4. In this case, all of his friends want to receive gifts from Devu. It is better for him to invite none. So he will receive total 0 rupees.
+Example case 2: Since
+G is a complete graph, you need enough cats to cover all vertices, so the answer is
+K=4.
+Invalid Example
+Input
+1
+4 4
+1 2
+2 3
+3 4
+4 1
+Output
+3
+Explanation
+Note that this example is not valid, since the graph is a cycle with length
+4 and no additional edge. It was added just for further clarification of the chase.
+Example case 1: The answer is
+K=3, since three cats can easily corner a mouse by confining it to one vertex, while 2 cats are not enough, because when one cat moves, the mouse can go anywhere without coming into contact with the only stationary cat.

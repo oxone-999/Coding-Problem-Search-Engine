@@ -1,126 +1,133 @@
-D. Almost Triple Deletions
+A. Optimal Path
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer
-n
-and an array
+You are given a table
 a
+of size
+n×m
+. We will consider the table rows numbered from top to bottom from
 1
-,
-a
-2
-,…,
-a
+to
 n
+, and the columns numbered from left to right from
+1
+to
+m
+. We will denote a cell that is in the
+i
+-th row and in the
+j
+-th column as
+(i,j)
+. In the cell
+(i,j)
+there is written a number
+(i−1)⋅m+j
+, that is
+a
+ij
+=(i−1)⋅m+j
 .
-In one operation, you can choose an index
-i
-(
-1≤i<n
-) for which
-a
-i
-≠
-a
-i+1
-and delete both
-a
-i
+A turtle initially stands in the cell
+(1,1)
+and it wants to come to the cell
+(n,m)
+. From the cell
+(i,j)
+it can in one step go to one of the cells
+(i+1,j)
+or
+(i,j+1)
+, if it exists. A path is a sequence of cells in which for every two adjacent in the sequence cells the following satisfies: the turtle can reach from the first cell to the second cell in one step. A cost of a path is the sum of numbers that are written in the cells of the path.
+For example, with
+n=2
 and
+m=3
+the table will look as shown above. The turtle can take the following path:
+(1,1)→(1,2)→(1,3)→(2,3)
+. The cost of such way is equal to
 a
-i+1
-from the array. After deleting
+11
++
 a
-i
+12
++
+a
+13
++
+a
+23
+=12
+. On the other hand, the paths
+(1,1)→(1,2)→(2,2)→(2,1)
 and
-a
-i+1
-, the remaining parts of the array are concatenated.
-For example, if
-a=[1,4,3,3,6,2]
-, then after performing an operation with
-i=2
-, the resulting array will be
-[1,3,6,2]
+(1,1)→(1,3)
+are incorrect, because in the first path the turtle can't make a step
+(2,2)→(2,1)
+, and in the second path it can't make a step
+(1,1)→(1,3)
 .
-What is the maximum possible length of an array of equal elements obtainable from
-a
-by performing several (perhaps none) of the aforementioned operations?
+You are asked to tell the turtle a minimal possible cost of a path from the cell
+(1,1)
+to the cell
+(n,m)
+. Please note that the cells
+(1,1)
+and
+(n,m)
+are a part of the way.
 Input
-Each test contains multiple test cases. The first line of input contains one integer
+The first line contains a single integer
 t
 (
 1≤t≤1000
-) — the number of test cases. The following lines contain the descriptions of the test cases.
-The first line of each test case contains a single integer
+) — the number of test cases. The description of test cases follows.
+A single line of each test case contains two integers
 n
+and
+m
 (
-1≤n≤5000
-) — the length of array
+1≤n,m≤
+10
+4
+) — the number of rows and columns of the table
 a
-.
-The second line of each test case contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤n
-) — the elements of array
-a
-.
-It is guaranteed that the sum of
-n
-across all test cases does not exceed
-10000
-.
+respectively.
 Output
-For each testcase, print a single integer, the maximum possible length of an array of equal elements obtainable from
-a
-by performing a sequence of operations.
+For each test case output a single integer — a minimal possible cost of a path from the cell
+(1,1)
+to the cell
+(n,m)
+.
 Example
 input
 Copy
-5
 7
-1 2 3 2 1 3 3
-1
-1
-6
-1 1 1 2 2 2
-8
-1 1 2 2 3 3 1 1
-12
-1 5 2 3 3 3 4 4 4 4 3 3
+1 1
+2 3
+3 2
+7 1
+1 10
+5 5
+10000 10000
 output
 Copy
-3
 1
-0
-4
-2
+12
+13
+28
+55
+85
+500099995000
 Note
-For the first testcase, an optimal sequence of operations would be:
-[1,2,3,2,1,3,3]→[3,2,1,3,3]→[3,3,3]
+In the first test case the only possible path consists of a single cell
+(1,1)
 .
-For the second testcase, all elements in the array are already equal.
-For the third testcase, the only possible sequence of operations is:
-[1,1,1,2,2,2]→[1,1,2,2]→[1,2]→[]
-. Note that, according to the statement, the elements deleted at each step must be different.
-For the fourth testcase, the optimal sequence of operations is:
-[1,1,2,2,3,3,1,1]→[1,1,2,3,1,1]→[1,1,1,1]
-.
-For the fifth testcase, one possible reachable array of two equal elements is
-[4,4]
-.
+The path with the minimal cost in the second test case is shown in the statement.
+In the fourth and the fifth test cases there is only one path from
+(1,1)
+to
+(n,m)
+. Both paths visit every cell in the table.

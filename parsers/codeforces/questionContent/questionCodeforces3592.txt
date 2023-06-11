@@ -1,176 +1,149 @@
-A. Zoning Restrictions Again
+B. Double Matrix
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are planning to build housing on a street. There are
-n
-spots available on the street on which you can build a house. The spots are labeled from
+You are given two
+n×m
+matrices containing integers. A sequence of integers is strictly increasing if each next number is greater than the previous one. A row is strictly increasing if all numbers from left to right are strictly increasing. A column is strictly increasing if all numbers from top to bottom are strictly increasing. A matrix is increasing if all rows are strictly increasing and all columns are strictly increasing.
+For example, the matrix
+[
+9
+11
+10
+12
+11
+14
+]
+is increasing because each individual row and column is strictly increasing. On the other hand, the matrix
+[
 1
-to
-n
-from left to right. In each spot, you can build a house with an integer height between
-0
-and
-h
-.
-In each spot, if a house has height
-a
-, you will gain
-a
 2
-dollars from it.
-The city has
-m
-zoning restrictions. The
+1
+3
+]
+is not increasing because the first row is not strictly increasing.
+Let a position in the
 i
--th restriction says that the tallest house from spots
-l
-i
-to
-r
-i
-(inclusive) must be at most
-x
-i
+-th row (from top) and
+j
+-th column (from left) in a matrix be denoted as
+(i,j)
 .
-You would like to build houses to maximize your profit. Determine the maximum profit possible.
+In one operation, you can choose any two numbers
+i
+and
+j
+and swap the number located in
+(i,j)
+in the first matrix with the number in
+(i,j)
+in the second matrix. In other words, you can swap two numbers in different matrices if they are located in the corresponding positions.
+You would like to make both matrices increasing by performing some number of operations (possibly none). Determine if it is possible to do this. If it is, print "Possible", otherwise, print "Impossible".
 Input
-The first line contains three integers
+The first line contains two integers
 n
-,
-h
-, and
+and
 m
 (
-1≤n,h,m≤50
-) — the number of spots, the maximum height, and the number of restrictions.
+1≤n,m≤50
+) — the dimensions of each matrix.
 Each of the next
+n
+lines contains
 m
-lines contains three integers
-l
-i
+integers
+a
+i1
 ,
-r
-i
-, and
-x
-i
+a
+i2
+,…,
+a
+im
 (
 1≤
-l
-i
+a
+ij
 ≤
-r
-i
-≤n
+10
+9
+) — the number located in position
+(i,j)
+in the first matrix.
+Each of the next
+n
+lines contains
+m
+integers
+b
+i1
 ,
-0≤
-x
-i
-≤h
-) — left and right limits (inclusive) of the
-i
--th restriction and the maximum possible height in that range.
+b
+i2
+,…,
+b
+im
+(
+1≤
+b
+ij
+≤
+10
+9
+) — the number located in position
+(i,j)
+in the second matrix.
 Output
-Print a single integer, the maximum profit you can make.
+Print a string "Impossible" or "Possible".
 Examples
 input
 Copy
-3 3 3
-1 1 1
-2 2 3
-3 3 2
+2 2
+2 10
+11 5
+9 4
+3 12
 output
 Copy
-14
+Possible
 input
 Copy
-4 10 2
-2 3 8
-3 4 7
+2 3
+2 4 5
+4 5 6
+3 6 7
+8 10 11
 output
 Copy
-262
+Possible
+input
+Copy
+3 2
+1 3
+2 4
+5 10
+3 1
+3 6
+4 8
+output
+Copy
+Impossible
 Note
-In the first example, there are
-3
-houses, the maximum height of a house is
-3
-, and there are
-3
-restrictions. The first restriction says the tallest house between
-1
+The first example, we can do an operation on the top left and bottom right cells of the matrices. The resulting matrices will be
+[
+9
+11
+10
+12
+]
 and
-1
-must be at most
-1
-. The second restriction says the tallest house between
+[
 2
-and
-2
-must be at most
 3
-. The third restriction says the tallest house between
-3
-and
-3
-must be at most
-2
-.
-In this case, it is optimal to build houses with heights
-[1,3,2]
-. This fits within all the restrictions. The total profit in this case is
-1
-2
-+
-3
-2
-+
-2
-2
-=14
-.
-In the second example, there are
 4
-houses, the maximum height of a house is
-10
-, and there are
-2
-restrictions. The first restriction says the tallest house from
-2
-to
-3
-must be at most
-8
-. The second restriction says the tallest house from
-3
-to
-4
-must be at most
-7
+5
+]
 .
-In this case, it's optimal to build houses with heights
-[10,8,7,7]
-. We get a profit of
-10
-2
-+
-8
-2
-+
-7
-2
-+
-7
-2
-=262
-. Note that there are two restrictions on house
-3
-and both of them must be satisfied. Also, note that even though there isn't any explicit restrictions on house
-1
-, we must still limit its height to be at most
-10
-(
-h=10
-).
+In the second example, we don't need to do any operations.
+In the third example, no matter what we swap, we can't fix the first row to be strictly increasing in both matrices.

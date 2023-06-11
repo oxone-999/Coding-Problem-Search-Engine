@@ -1,123 +1,218 @@
-C. Unequal Array
+E. notepad.exe
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of length
+This is an interactive problem.
+There are
 n
-. We define the equality of the array as the number of indices
-1≤i≤n−1
-such that
-a
+words in a text editor. The
 i
-=
-a
-i+1
-. We are allowed to do the following operation:
-Select two integers
+-th word has length
+l
 i
-and
-x
-such that
-1≤i≤n−1
-and
-1≤x≤
-10
-9
-. Then, set
-a
-i
-and
-a
-i+1
-to be equal to
-x
-.
-Find the minimum number of operations needed such that the equality of the array is less than or equal to
-1
-.
-Input
-Each test contains multiple test cases. The first line contains a single integer
-t
 (
-1≤t≤
-10
-4
-) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains an integer
-n
-(
-2≤n≤2⋅
-10
-5
-) — the length of array
+1≤
+l
+i
+≤2000
+). The array
+l
+is hidden and only known by the grader.
+The text editor displays words in lines, splitting each two words in a line with at least one space. Note that a line does not have to end with a space. Let the height of the text editor refer to the number of lines used. For the given width, the text editor will display words in such a way that the height is minimized.
+More formally, suppose that the text editor has width
+w
+. Let
 a
-.
-The second line of each test case contains
-n
-integers
+be an array of length
+k+1
+where
+1=
 a
 1
-,
+<
 a
 2
-,…,
+<…<
 a
+k+1
+=n+1
+.
+a
+is a valid array if for all
+1≤i≤k
+,
+l
+a
+i
++1+
+l
+a
+i
++1
++1+…+1+
+l
+a
+i+1
+−1
+≤w
+. Then the height of the text editor is the minimum
+k
+over all valid arrays.
+Note that if
+w<max(
+l
+i
+)
+, the text editor cannot display all the words properly and will crash, and the height of the text editor will be
+0
+instead.
+You can ask
+n+30
+queries. In one query, you provide a width
+w
+. Then, the grader will return the height
+h
+w
+of the text editor when its width is
+w
+.
+Find the minimum area of the text editor, which is the minimum value of
+w⋅
+h
+w
+over all
+w
+for which
+h
+w
+≠0
+.
+The lengths are fixed in advance. In other words, the interactor is not adaptive.
+Input
+The first and only line of input contains a single integer
+n
+(
+1≤n≤2000
+)  — the number of words on the text editor.
+It is guaranteed that the hidden lengths
+l
+i
+satisfy
+1≤
+l
+i
+≤2000
+.
+Interaction
+Begin the interaction by reading
+n
+.
+To make a query, print "?
+w
+" (without quotes,
+1≤w≤
+10
+9
+). Then you should read our response from standard input, that is,
+h
+w
+.
+If your program has made an invalid query or has run out of tries, the interactor will terminate immediately and your program will get a verdict Wrong answer.
+To give the final answer, print "!
+area
+" (without the quotes). Note that giving this answer is not counted towards the limit of
+n+30
+queries.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+Hacks
+The first line of input must contain a single integer
+n
+(
+1≤n≤2000
+) — the number of words in the text editor.
+The second line of input must contain exactly
+n
+space-separated integers
+l
+1
+,
+l
+2
+,…,
+l
 n
 (
 1≤
-a
+l
 i
-≤
-10
-9
-) — elements of the array.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-Output
-For each test case, print the minimum number of operations needed.
+≤2000
+).
 Example
 input
 Copy
+6
+
+0
+
 4
-5
-1 1 1 1 1
-5
-2 1 1 1 2
-6
-1 1 2 3 3 4
-6
-1 2 1 4 5 4
+
+2
 output
 Copy
-2
-1
-2
-0
+? 1
+
+? 9
+
+? 16
+
+! 32
 Note
-In the first test case, we can select
-i=2
-and
-x=2
-to form
-[1,2,2,1,1]
-. Then, we can select
-i=3
-and
-x=3
-to form
-[1,2,3,3,1]
+In the first test case, the words are
+{glory,to,ukraine,and,anton,trygub}
+, so
+l={5,2,7,3,5,6}
 .
-In the second test case, we can select
-i=3
-and
-x=100
-to form
-[2,1,100,100,2]
+If
+w=1
+, then the text editor is not able to display all words properly and will crash. The height of the text editor is
+h
+1
+=0
+, so the grader will return
+0
 .
+If
+w=9
+, then a possible way that the words will be displayed on the text editor is:
+glory__to
+ukraine__
+and_anton
+__trygub_
+The height of the text editor is
+h
+9
+=4
+, so the grader will return
+4
+.
+If
+w=16
+, then a possible way that the words will be displayed on the text editor is:
+glory_to_ukraine
+and_anton_trygub
+The height of the text editor is
+h
+16
+=2
+, so the grader will return
+2
+.
+We have somehow figured out that the minimum area of the text editor is
+32
+, so we answer it.

@@ -1,161 +1,187 @@
-A. New Year and Naming
-time limit per test1 second
+D. New Year and Conference
+time limit per test2 seconds
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Happy new year! The year 2020 is also known as Year Gyeongja (경자년, gyeongja-nyeon) in Korea. Where did the name come from? Let's briefly look at the Gapja system, which is traditionally used in Korea to name the years.
-There are two sequences of
+Filled with optimism, Hyunuk will host a conference about how great this new year will be!
+The conference will have
 n
-strings
-s
-1
-,
-s
-2
-,
-s
-3
-,…,
-s
+lectures. Hyunuk has two candidate venues
+a
+and
+b
+. For each of the
 n
-and
-m
-strings
-t
-1
-,
-t
-2
-,
-t
-3
-,…,
-t
-m
-. These strings contain only lowercase letters. There might be duplicates among these strings.
-Let's call a concatenation of strings
-x
-and
-y
-as the string that is obtained by writing down strings
-x
-and
-y
-one right after another without changing the order. For example, the concatenation of the strings "code" and "forces" is the string "codeforces".
-The year 1 has a name which is the concatenation of the two strings
+lectures, the speaker specified two time intervals
+[s
+a
+i
+,e
+a
+i
+]
+(
 s
-1
-and
-t
-1
-. When the year increases by one, we concatenate the next two strings in order from each of the respective sequences. If the string that is currently being used is at the end of its sequence, we go back to the first string in that sequence.
-For example, if
-n=3,m=4,s=
-{"a", "b", "c"},
-t=
-{"d", "e", "f", "g"}, the following table denotes the resulting year names. Note that the names of the years may repeat.
-You are given two sequences of strings of size
-n
-and
-m
-and also
-q
-queries. For each query, you will be given the current year. Could you find the name corresponding to the given year, according to the Gapja system?
+a
+i
+≤e
+a
+i
+) and
+[s
+b
+i
+,e
+b
+i
+]
+(
+s
+b
+i
+≤e
+b
+i
+). If the conference is situated in venue
+a
+, the lecture will be held from
+s
+a
+i
+to
+e
+a
+i
+, and if the conference is situated in venue
+b
+, the lecture will be held from
+s
+b
+i
+to
+e
+b
+i
+. Hyunuk will choose one of these venues and all lectures will be held at that venue.
+Two lectures are said to overlap if they share any point in time in common. Formally, a lecture held in interval
+[x,y]
+overlaps with a lecture held in interval
+[u,v]
+if and only if
+max(x,u)≤min(y,v)
+.
+We say that a participant can attend a subset
+s
+of the lectures if the lectures in
+s
+do not pairwise overlap (i.e. no two lectures overlap). Note that the possibility of attending may depend on whether Hyunuk selected venue
+a
+or venue
+b
+to hold the conference.
+A subset of lectures
+s
+is said to be venue-sensitive if, for one of the venues, the participant can attend
+s
+, but for the other venue, the participant cannot attend
+s
+.
+A venue-sensitive set is problematic for a participant who is interested in attending the lectures in
+s
+because the participant cannot be sure whether the lecture times will overlap. Hyunuk will be happy if and only if there are no venue-sensitive sets. Determine whether Hyunuk will be happy.
 Input
-The first line contains two integers
-n,m
-(
-1≤n,m≤20
-).
-The next line contains
+The first line contains an integer
 n
-strings
+(
+1≤n≤100000
+), the number of lectures held in the conference.
+Each of the next
+n
+lines contains four integers
 s
-1
+a
+i
+,
+e
+a
+i
 ,
 s
-2
-,…,
-s
-n
-. Each string contains only lowercase letters, and they are separated by spaces. The length of each string is at least
-1
-and at most
-10
-.
-The next line contains
-m
-strings
-t
-1
+b
+i
 ,
-t
-2
-,…,
-t
-m
-. Each string contains only lowercase letters, and they are separated by spaces. The length of each string is at least
-1
-and at most
-10
-.
-Among the given
-n+m
-strings may be duplicates (that is, they are not necessarily all different).
-The next line contains a single integer
-q
+e
+b
+i
 (
-1≤q≤2020
-).
-In the next
-q
-lines, an integer
-y
-(
-1≤y≤
+1≤s
+a
+i
+,e
+a
+i
+,s
+b
+i
+,e
+b
+i
+≤
 10
 9
-) is given, denoting the year we want to know the name for.
+,
+s
+a
+i
+≤e
+a
+i
+,s
+b
+i
+≤e
+b
+i
+).
 Output
-Print
-q
-lines. For each line, print the name of the year as per the rule described above.
-Example
+Print "YES" if Hyunuk will be happy. Print "NO" otherwise.
+You can print each letter in any case (upper or lower).
+Examples
 input
 Copy
-10 12
-sin im gye gap eul byeong jeong mu gi gyeong
-yu sul hae ja chuk in myo jin sa o mi sin
-14
-1
 2
-3
-4
-10
-11
-12
-13
-73
-2016
-2017
-2018
-2019
-2020
+1 2 3 6
+3 4 7 8
 output
 Copy
-sinyu
-imsul
-gyehae
-gapja
-gyeongo
-sinmi
-imsin
-gyeyu
-gyeyu
-byeongsin
-jeongyu
-musul
-gihae
-gyeongja
+YES
+input
+Copy
+3
+1 3 2 4
+4 5 6 7
+3 4 5 5
+output
+Copy
+NO
+input
+Copy
+6
+1 5 2 9
+2 4 5 8
+3 6 7 11
+7 10 12 16
+8 11 13 17
+9 12 14 18
+output
+Copy
+YES
 Note
-The first example denotes the actual names used in the Gapja system. These strings usually are either a number or the name of some animal.
+In second example, lecture set
+{1,3}
+is venue-sensitive. Because participant can't attend this lectures in venue
+a
+, but can attend in venue
+b
+.
+In first and third example, venue-sensitive set does not exist.

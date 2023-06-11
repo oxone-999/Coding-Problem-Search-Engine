@@ -1,101 +1,52 @@
-D. Counting Factorizations
-time limit per test4 seconds
+C. Scoring Subsequences
+time limit per test2.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The prime factorization of a positive integer
-m
-is the unique way to write it as
-m=
-p
-e
+The score of a sequence
+[
+s
 1
+,
+s
+2
+,…,
+s
+d
+]
+is defined as
+s
 1
 ⋅
-p
-e
-2
+s
 2
 ⋅…⋅
-p
-e
-k
-k
+s
+d
+d!
 , where
-p
+d!=1⋅2⋅…⋅d
+. In particular, the score of an empty sequence is
+1
+.
+For a sequence
+[
+s
 1
 ,
-p
+s
 2
 ,…,
-p
-k
-are prime numbers,
-p
-1
-<
-p
-2
-<…<
-p
-k
-and
-e
-1
-,
-e
-2
-,…,
-e
-k
-are positive integers.
-For each positive integer
+s
+d
+]
+, let
 m
-,
-f(m)
-is defined as the multiset of all numbers in its prime factorization, that is
-f(m)={
-p
-1
-,
-e
-1
-,
-p
-2
-,
-e
-2
-,…,
-p
-k
-,
-e
-k
-}
-.
-For example,
-f(24)={2,3,3,1}
-,
-f(5)={1,5}
-and
-f(1)={}
-.
-You are given a list consisting of
-2n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-2n
-. Count how many positive integers
+be the maximum score among all its subsequences. Its cost is defined as the maximum length of a subsequence with a score of
 m
-satisfy that
-f(m)={
+.
+You are given a non-decreasing sequence
+[
 a
 1
 ,
@@ -103,19 +54,59 @@ a
 2
 ,…,
 a
-2n
-}
-. Since this value may be large, print it modulo
-998244353
+n
+]
+of integers of length
+n
+. In other words, the condition
+a
+1
+≤
+a
+2
+≤…≤
+a
+n
+is satisfied. For each
+k=1,2,…,n
+, find the cost of the sequence
+[
+a
+1
+,
+a
+2
+,…,
+a
+k
+]
 .
+A sequence
+x
+is a subsequence of a sequence
+y
+if
+x
+can be obtained from
+y
+by deletion of several (possibly, zero or all) elements.
 Input
-The first line contains one integer
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤
+10
+4
+). The description of the test cases follows.
+The first line of each test case contains an integer
 n
 (
-1≤n≤2022
-).
-The second line contains
-2n
+1≤n≤
+10
+5
+) — the length of the given sequence.
+The second line of each test case contains
+n
 integers
 a
 1
@@ -124,20 +115,25 @@ a
 2
 ,…,
 a
-2n
+n
 (
 1≤
 a
 i
-≤
+≤n
+) — the given sequence. It is guaranteed that its elements are in non-decreasing order.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+5⋅
 10
-6
-)  — the given list.
+5
+.
 Output
-Print one integer, the number of positive integers
-m
-satisfying
-f(m)={
+For each test case, output
+n
+integers — the costs of sequences
+[
 a
 1
 ,
@@ -145,78 +141,69 @@ a
 2
 ,…,
 a
-2n
-}
-modulo
-998244353
+k
+]
+in ascending order of
+k
 .
-Examples
+Example
 input
 Copy
+3
+3
+1 2 3
 2
-1 3 2 3
-output
-Copy
-2
-input
-Copy
-2
-2 2 3 5
-output
-Copy
+1 1
 5
-input
-Copy
-1
-1 4
+5 5 5 5 5
 output
 Copy
-0
+1 1 2 
+1 1 
+1 2 3 4 5 
 Note
-In the first sample, the two values of
-m
-such that
-f(m)={1,2,3,3}
-are
-m=24
-and
-m=54
-. Their prime factorizations are
-24=
-2
-3
-⋅
-3
+In the first test case:
+The maximum score among the subsequences of
+[1]
+is
 1
+. The subsequences
+[1]
 and
-54=
-2
+[]
+(the empty sequence) are the only ones with this score. Thus, the cost of
+[1]
+is
 1
-⋅
-3
-3
 .
-In the second sample, the five values of
-m
-such that
-f(m)={2,2,3,5}
-are
-200,225,288,500
-and
-972
+The maximum score among the subsequences of
+[1,2]
+is
+2
+. The only subsequence with this score is
+[2]
+. Thus, the cost of
+[1,2]
+is
+1
 .
-In the third sample, there is no value of
-m
-such that
-f(m)={1,4}
-. Neither
-1
-4
-nor
-4
-1
-are prime factorizations because
-1
+The maximum score among the subsequences of
+[1,2,3]
+is
+3
+. The subsequences
+[2,3]
 and
-4
-are not primes.
+[3]
+are the only ones with this score. Thus, the cost of
+[1,2,3]
+is
+2
+.
+Therefore, the answer to this case is
+112
+, which are the costs of
+[1],[1,2]
+and
+[1,2,3]
+in this order.

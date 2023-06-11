@@ -1,51 +1,50 @@
-F. Ann and Books
+E. Danil and a Part-time Job
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-In Ann's favorite book shop are as many as n books on math and economics. Books are numbered from 1 to n. Each of them contains non-negative number of problems.
-Today there is a sale: any subsegment of a segment from l to r can be bought at a fixed price.
-Ann decided that she wants to buy such non-empty subsegment that the sale operates on it and the number of math problems is greater than the number of economics problems exactly by k. Note that k may be positive, negative or zero.
-Unfortunately, Ann is not sure on which segment the sale operates, but she has q assumptions. For each of them she wants to know the number of options to buy a subsegment satisfying the condition (because the time she spends on choosing depends on that).
-Currently Ann is too busy solving other problems, she asks you for help. For each her assumption determine the number of subsegments of the given segment such that the number of math problems is greaten than the number of economics problems on that subsegment exactly by k.
+Danil decided to earn some money, so he had found a part-time job. The interview have went well, so now he is a light switcher.
+Danil works in a rooted tree (undirected connected acyclic graph) with n vertices, vertex 1 is the root of the tree. There is a room in each vertex, light can be switched on or off in each room. Danil's duties include switching light in all rooms of the subtree of the vertex. It means that if light is switched on in some room of the subtree, he should switch it off. Otherwise, he should switch it on.
+Unfortunately (or fortunately), Danil is very lazy. He knows that his boss is not going to personally check the work. Instead, he will send Danil tasks using Workforces personal messages.
+There are two types of tasks:
+pow v describes a task to switch lights in the subtree of vertex v.
+get v describes a task to count the number of rooms in the subtree of v, in which the light is turned on. Danil should send the answer to his boss using Workforces messages.
+A subtree of vertex v is a set of vertices for which the shortest path from them to the root passes through v. In particular, the vertex v is in the subtree of v.
+Danil is not going to perform his duties. He asks you to write a program, which answers the boss instead of him.
 Input
-The first line contains two integers n and k (1 ≤ n ≤ 100 000,  - 109 ≤ k ≤ 109) — the number of books and the needed difference between the number of math problems and the number of economics problems.
-The second line contains n integers t1, t2, ..., tn (1 ≤ ti ≤ 2), where ti is 1 if the i-th book is on math or 2 if the i-th is on economics.
-The third line contains n integers a1, a2, ..., an (0 ≤ ai ≤ 109), where ai is the number of problems in the i-th book.
-The fourth line contains a single integer q (1 ≤ q ≤ 100 000) — the number of assumptions.
-Each of the next q lines contains two integers li and ri (1 ≤ li ≤ ri ≤ n) describing the i-th Ann's assumption.
+The first line contains a single integer n (1 ≤ n ≤ 200 000) — the number of vertices in the tree.
+The second line contains n - 1 space-separated integers p2, p3, ..., pn (1 ≤ pi < i), where pi is the ancestor of vertex i.
+The third line contains n space-separated integers t1, t2, ..., tn (0 ≤ ti ≤ 1), where ti is 1, if the light is turned on in vertex i and 0 otherwise.
+The fourth line contains a single integer q (1 ≤ q ≤ 200 000) — the number of tasks.
+The next q lines are get v or pow v (1 ≤ v ≤ n) — the tasks described above.
 Output
-Print q lines, in the i-th of them print the number of subsegments for the i-th Ann's assumption.
-Examples
+For each task get v print the number of rooms in the subtree of v, in which the light is turned on.
+Example
 input
 Copy
-4 1
-1 1 1 2
-1 1 1 1
 4
-1 2
-1 3
-1 4
-3 4
+1 1 1
+1 0 0 1
+9
+get 1
+get 2
+get 3
+get 4
+pow 1
+get 1
+get 2
+get 3
+get 4
 output
 Copy
 2
-3
-4
+0
+0
 1
-input
-Copy
-4 0
-1 2 1 2
-0 0 0 0
+2
 1
-1 4
-output
-Copy
-10
+1
+0
 Note
-In the first sample Ann can buy subsegments [1;1], [2;2], [3;3], [2;4] if they fall into the sales segment, because the number of math problems is greater by 1 on them that the number of economics problems. So we should count for each assumption the number of these subsegments that are subsegments of the given segment.
-Segments [1;1] and [2;2] are subsegments of [1;2].
-Segments [1;1], [2;2] and [3;3] are subsegments of [1;3].
-Segments [1;1], [2;2], [3;3], [2;4] are subsegments of [1;4].
-Segment [3;3] is subsegment of [3;4].
+The tree before the task pow 1.
+The tree after the task pow 1.

@@ -1,42 +1,181 @@
-Lucy and Question Marks
+Tree Master
 Problem
-Read problems statements in Russian here
-Long ago Lucy had written some sentences in her textbook. She had recently found those her notes. But because of the large amount of time that had passed, some letters became difficult to read. Her notes are given to you as a string with question marks in places of letters that are impossible to read.
-Lucy remembers that those sentences definitely made some sense. So now she wants to restore them. She thinks that the best way to restore is to replace all the question marks by latin letters in such a way that the total sum of occurrences of all the strings from her dictionary in it is maximal. And it is normal if some word occurs in her dictionary two or more times. In this case you just have to count every word as much times as it occurs in the dictionary.
-You will be given the string itself and the dictionary. Please output the maximal possible number of occurrences of dictionary words and lexicographically minimal string with this number of occurrences.
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of every test case consists of two integers N and M - the length of the string, written by Lucy and the number of words in the dictionary. The second line of the test case consists of the string itself - N characters, each is either a question mark or a small latin letter.
-Then, M lines follow. Each line consist of a single string of small latin letters - the word from the dictionary.
-Output
-For each test case, output a two lines. The first line should contain the maximal number of occurrences. The second line should contain lexicographically minimal string with the maximal number of occurrences of the words from the dictionary.
-Example
-Input:
-3
-7 4
-???????
-ab
-ba
-aba
+Given is a tree with
+N weighted vertices and
+N−1 weighted edges. The
+i-th vertex has a weight of
+A
+i
+. The
+i-th edge has a weight of
+W
+i
+and connects vertices
+u
+i
+and
+v
+i
+.
+Let
+dist(x,y) be the sum of weights of the edges in the unique simple path connecting vertices
+x and
+y.
+Let
+V(x,y) be the set of vertices appearing in the unique simple path connecting vertices
+x and
+y (including
+x and
+y).
+You are asked
+Q queries. In the
+i-th query, you are given two integers
 x
-5 3
-?ac??
-bacd
-cde
-xa
-8 2
-?a?b?c?d
-ecxd
-zzz
-Output:
-9
-abababa
-2
-bacde
+i
+and
+y
+i
+and you need to compute:
+k∈V(x
+i
+,y
+i
+)
+∑
+(dist(x
+i
+,k)−dist(k,y
+i
+))⋅A
+k
+Input Format
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+The first line contains two integers
+N and
+Q.
+The second line contains
+N integers
+A
 1
-aaabecxd
-Scoring
-Subtask 1 (16 points): T = 50, 1 <= N <= 8, 1 <= M <= 10. Only the characters a, b and c and question marks occur in the string. Only the characters a, b, and c occur in the dictionary words. All the words in the dictionary consist of no more than 10 letters.
-Subtask 2 (32 points): T = 50, 1 <= N <= 100, 1 <= M <= 100. Only the characters a, b and question marks occur in the string. Only the characters a and b occur in the dictionary words. All the words in the dictionary consist of no more than 10 letters.
-Subtask 3 (52 points): T = 10, 1 <= N <= 1000, 1 <= M <= 1000. Total length of all the dictionary strings will not exceed 1000.
-Time limit for the last subtask equals to 2 sec. For the first two subtasks it is 1 sec.
+,A
+2
+,…,A
+N
+.
+Each of the next
+N−1 lines contains three integers
+u
+i
+,
+v
+i
+and
+W
+i
+.
+Each of the next
+Q lines contains two integers
+x
+i
+and
+y
+i
+.
+Output Format
+For each query, print the answer to it on a new line.
+Constraints
+1≤T≤10
+3
+2≤N≤2⋅10
+5
+1≤Q≤2⋅10
+5
+1≤A
+i
+,W
+i
+≤10
+4
+1≤u
+i
+,v
+i
+,x
+i
+,y
+i
+≤N
+x
+i
+
+=y
+i
+u
+i
+
+=v
+i
+The sum of
+N across all test cases does not exceed
+2⋅10
+5
+.
+The sum of
+Q across all test cases does not exceed
+2⋅10
+5
+.
+Subtasks
+Subtask #1 (20 points):
+u
+i
+=i,v
+i
+=i+1
+Subtask #2 (80 points): Original constraints
+Sample 1:
+Input
+Output
+2
+5 2
+5 3 3 1 2
+1 2 2
+2 3 1
+2 4 1
+1 5 2
+4 5
+5 4
+10 5
+3 6 9 2 3 8 3 7 9 7
+1 2 4
+1 3 6
+1 4 8
+4 5 9
+1 6 2
+5 7 3
+3 8 7
+3 9 2
+7 10 9
+9 2
+2 1
+8 5
+3 2
+3 10
+1
+-1
+-96
+-12
+-252
+-24
+-69
+Explanation:
+Test Case
+1:
+For the first query,
+V(4,5)={4,2,1,5}. The answer is
+1⋅(0−5)+3⋅(1−4)+5⋅(3−2)+2⋅(5−0)=1
+For the second query,
+V(5,4)={5,1,2,4}. The answer is
+2⋅(0−5)+5⋅(2−3)+3⋅(4−1)+1⋅(5−0)=−1

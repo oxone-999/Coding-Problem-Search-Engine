@@ -1,46 +1,100 @@
-A1. Non-alternating Deck (easy version)
-time limit per test1 second
-memory limit per test256 megabytes
+F. Minimums or Medians
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is an easy version of the problem. In this version, all cards have the same color.
-Alice has
-n
-cards, each card is white, and the cards are stacked in a deck. Alice deals the cards to herself and to Bob, dealing at once several cards from the top of the deck in the following order: one card to herself, two cards to Bob, three cards to Bob, four cards to herself, five cards to herself, six cards to Bob, seven cards to Bob, eight cards to herself, and so on. In other words, on the
-i
--th step, Alice deals
-i
-top cards from the deck to one of the players; on the first step, she deals the cards to herself and then alternates the players every two steps. When there aren't enough cards at some step, Alice deals all the remaining cards to the current player, and the process stops.
-First Alice's steps in a deck of many cards.
-How many cards will Alice and Bob have at the end?
+Vika has a set of all consecutive positive integers from
+1
+to
+2n
+, inclusive.
+Exactly
+k
+times Vika will choose and perform one of the following two actions:
+take two smallest integers from her current set and remove them;
+take two median integers from her current set and remove them.
+Recall that medians are the integers located exactly in the middle of the set if you write down its elements in increasing order. Note that Vika's set always has an even size, thus the pair of median integers is uniquely defined. For example, two median integers of the set
+{1,5,6,10,15,16,18,23}
+are
+10
+and
+15
+.
+How many different sets can Vika obtain in the end, after
+k
+actions? Print this number modulo
+998244353
+. Two sets are considered different if some integer belongs to one of them but not to the other.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤200
-). The description of the test cases follows
-The only line of each test case contains a single integer
+The only line contains two integers
 n
+and
+k
 (
-1≤n≤
+1≤k≤n≤
 10
 6
-) — the number of cards.
+).
 Output
-For each test case print two integers — the number of cards in the end for each player — in this order: cards Alice has, cards Bob has.
-Example
+Print a single integer — the number of sets Vika can obtain in the end, modulo
+998244353
+.
+Examples
 input
 Copy
-5
-10
-6
-17
-8
-1000000
+3 1
 output
 Copy
-5 5
-1 5
-10 7
-3 5
-500202 499798
+2
+input
+Copy
+3 2
+output
+Copy
+3
+input
+Copy
+3 3
+output
+Copy
+1
+input
+Copy
+7 4
+output
+Copy
+11
+input
+Copy
+23 8
+output
+Copy
+88
+input
+Copy
+100 77
+output
+Copy
+825430474
+Note
+In the first example, Vika's initial set is
+{1,2,3,4,5,6}
+. She can remove the minimums from it to obtain
+{3,4,5,6}
+, or she can remove the medians from it to obtain
+{1,2,5,6}
+.
+In the second example, Vika can obtain
+{1,6}
+,
+{3,6}
+, or
+{5,6}
+. For instance, Vika can obtain
+{3,6}
+if she removes two smallest integers first (
+{1,2,3,4,5,6}→{3,4,5,6}
+), and then she removes two median integers (
+{3,4,5,6}→{3,6}
+).
+In the third example, regardless of Vika's choices, she'll end up with an empty set.

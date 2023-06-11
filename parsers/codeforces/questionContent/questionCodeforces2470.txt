@@ -1,320 +1,112 @@
-I. Cubic Lattice
-time limit per test4 seconds
-memory limit per test256 megabytes
+C. Choosing flowers
+time limit per test1 second
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-A cubic lattice
-L
-in
-3
--dimensional euclidean space is a set of points defined in the following way:
-L={u⋅
-r
-⃗ 
-1
-+v⋅
-r
-⃗ 
-2
-+w⋅
-r
-⃗ 
-3
-}
-u,v,w∈Z
-→
-→
-→
-Where
-r
-⃗ 
-1
-,
-r
-⃗ 
-2
-,
-r
-⃗ 
-3
-∈
-Z
-3
-are some integer vectors such that:
-r
-⃗ 
-1
-→
-,
-r
-⃗ 
-2
-→
-and
-r
-⃗ 
-3
-→
-are pairwise orthogonal:
-r
-⃗ 
-1
-⋅
-r
-⃗ 
-2
-=
-r
-⃗ 
-1
-⋅
-r
-⃗ 
-3
-=
-r
-⃗ 
-2
-⋅
-r
-⃗ 
-3
-=0
-→
-→
-→
-→
-→
-→
-Where
-a
-⃗ 
-⋅
-b
-⃗ 
-is a dot product of vectors
-a
-⃗ 
-→
-and
-b
-⃗ 
-→
-.
-r
-⃗ 
-1
-→
-,
-r
-⃗ 
-2
-→
-and
-r
-⃗ 
-3
-→
-all have the same length:
-|
-r
-⃗ 
-1
-|=|
-r
-⃗ 
-2
-|=|
-r
-⃗ 
-3
-|=r
-→
-→
-→
-You're given a set
-A={
-a
-⃗ 
-1
-,
-a
-⃗ 
-2
-,…,
-a
-⃗ 
+Vladimir would like to prepare a present for his wife: they have an anniversary! He decided to buy her exactly
 n
-}
-of integer points,
+flowers.
+Vladimir went to a flower shop, and he was amazed to see that there are
+m
+types of flowers being sold there, and there is unlimited supply of flowers of each type. Vladimir wants to choose flowers to maximize the happiness of his wife. He knows that after receiving the first flower of the
 i
--th point has coordinates
+-th type happiness of his wife increases by
 a
 i
-=(
+and after receiving each consecutive flower of this type her happiness increases by
+b
+i
+. That is, if among the chosen flowers there are
 x
 i
-;
-y
+>0
+flowers of type
 i
-;
-z
+, his wife gets
+a
 i
-)
-. Let
-g
-i
-=gcd(
++(
 x
 i
-,
-y
+−1)⋅
+b
 i
-,
-z
+additional happiness (and if there are no flowers of type
 i
-)
-. It is guaranteed that
-gcd(
-g
-1
-,
-g
-2
-,…,
-g
+, she gets nothing for this particular type).
+Please help Vladimir to choose exactly
 n
-)=1
-.
-You have to find a cubic lattice
-L
-such that
-A⊂L
-and
-r
-is the maximum possible.
+flowers to maximize the total happiness of his wife.
 Input
-First line contains single integer
+The first line contains the only integer
+t
+(
+1≤t≤10000
+), the number of test cases. It is followed by
+t
+descriptions of the test cases.
+Each test case description starts with two integers
 n
+and
+m
 (
 1≤n≤
 10
-4
-) — the number of points in
-A
-.
-The
-i
--th of the following
-n
-lines contains integers
-x
-i
+9
 ,
-y
+1≤m≤100000
+), the number of flowers Vladimir needs to choose and the number of types of available flowers.
+The following
+m
+lines describe the types of flowers: each line contains integers
+a
 i
-,
-z
+and
+b
 i
 (
-0<
-x
-2
+0≤
+a
 i
-+
-y
-2
-i
-+
-z
-2
+,
+b
 i
 ≤
 10
-16
-) — coordinates of the
+9
+) for
 i
--th point.
-It is guaranteed that
-gcd(
-g
-1
-,
-g
-2
-,…,
-g
-n
-)=1
-where
-g
-i
-=gcd(
-x
-i
-,
-y
-i
-,
-z
-i
-)
+-th available type of flowers.
+The test cases are separated by a blank line. It is guaranteed that the sum of values
+m
+among all test cases does not exceed
+100000
 .
 Output
-In first line output a single integer
-r
+For each test case output a single integer: the maximum total happiness of Vladimir's wife after choosing exactly
+n
+flowers optimally.
+Example
+input
+Copy
 2
-, the square of maximum possible
-r
+4 3
+5 0
+1 4
+2 2
+
+5 3
+5 2
+4 2
+3 1
+output
+Copy
+14
+16
+Note
+In the first example case Vladimir can pick 1 flower of the first type and 3 flowers of the second type, in this case the total happiness equals
+5+(1+2⋅4)=14
 .
-In following
-3
-lines output coordinates of vectors
-r
-⃗ 
-1
-→
-,
-r
-⃗ 
-2
-→
-and
-r
-⃗ 
-3
-→
-respectively.
-If there are multiple possible answers, output any.
-Examples
-input
-Copy
-2
-1 2 3
-1 2 1
-output
-Copy
-1
-1 0 0
-0 1 0
-0 0 1
-input
-Copy
-1
-1 2 2
-output
-Copy
-9
-2 -2 1
-1 2 2
--2 -1 2
-input
-Copy
-1
-2 5 5
-output
-Copy
-9
--1 2 2
-2 -1 2
-2 2 -1
+In the second example Vladimir can pick 2 flowers of the first type, 2 flowers of the second type, and 1 flower of the third type, in this case the total happiness equals
+(5+1⋅2)+(4+1⋅2)+3=16
+.

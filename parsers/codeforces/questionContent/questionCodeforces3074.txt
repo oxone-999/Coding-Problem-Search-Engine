@@ -1,66 +1,88 @@
-A. Sweet Problem
+D. Secret Passwords
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have three piles of candies: red, green and blue candies:
-the first pile contains only red candies and there are
-r
-candies in it,
-the second pile contains only green candies and there are
-g
-candies in it,
-the third pile contains only blue candies and there are
-b
-candies in it.
-Each day Tanya eats exactly two candies of different colors. She is free to choose the colors of eaten candies: the only restriction that she can't eat two candies of the same color in a day.
-Find the maximal number of days Tanya can eat candies? Each day she needs to eat exactly two candies.
-Input
-The first line contains integer
-t
-(
-1≤t≤1000
-) — the number of test cases in the input. Then
-t
-test cases follow.
-Each test case is given as a separate line of the input. It contains three integers
-r
-,
-g
+One unknown hacker wants to get the admin's password of AtForces testing system, to get problems from the next contest. To achieve that, he sneaked into the administrator's office and stole a piece of paper with a list of
+n
+passwords — strings, consists of small Latin letters.
+Hacker went home and started preparing to hack AtForces. He found that the system contains only passwords from the stolen list and that the system determines the equivalence of the passwords
+a
 and
 b
+as follows:
+two passwords
+a
+and
+b
+are equivalent if there is a letter, that exists in both
+a
+and
+b
+;
+two passwords
+a
+and
+b
+are equivalent if there is a password
+c
+from the list, which is equivalent to both
+a
+and
+b
+.
+If a password is set in the system and an equivalent one is applied to access the system, then the user is accessed into the system.
+For example, if the list contain passwords "a", "b", "ab", "d", then passwords "a", "b", "ab" are equivalent to each other, but the password "d" is not equivalent to any other password from list. In other words, if:
+admin's password is "b", then you can access to system by using any of this passwords: "a", "b", "ab";
+admin's password is "d", then you can access to system by using only "d".
+Only one password from the list is the admin's password from the testing system. Help hacker to calculate the minimal number of passwords, required to guaranteed access to the system. Keep in mind that the hacker does not know which password is set in the system.
+Input
+The first line contain integer
+n
 (
-1≤r,g,b≤
+1≤n≤2⋅
 10
-8
-) — the number of red, green and blue candies, respectively.
+5
+) — number of passwords in the list. Next
+n
+lines contains passwords from the list – non-empty strings
+s
+i
+, with length at most
+50
+letters. Some of the passwords may be equal.
+It is guaranteed that the total length of all passwords does not exceed
+10
+6
+letters. All of them consist only of lowercase Latin letters.
 Output
-Print
-t
-integers: the
-i
--th printed integer is the answer on the
-i
--th test case in the input.
-Example
+In a single line print the minimal number of passwords, the use of which will allow guaranteed to access the system.
+Examples
 input
 Copy
-6
-1 1 1
-1 2 1
-4 1 1
-7 4 10
-8 1 4
-8 2 8
+4
+a
+b
+ab
+d
+output
+Copy
+2
+input
+Copy
+3
+ab
+bc
+abc
 output
 Copy
 1
-2
-2
-10
-5
-9
+input
+Copy
+1
+codeforces
+output
+Copy
+1
 Note
-In the first example, Tanya can eat candies for one day only. She can eat any pair of candies this day because all of them have different colors.
-In the second example, Tanya can eat candies for two days. For example, she can eat red and green candies on the first day, and green and blue candies on the second day.
-In the third example, Tanya can eat candies for two days. For example, she can eat red and green candies on the first day, and red and blue candies on the second day. Note, that two red candies will remain uneaten.
+In the second example hacker need to use any of the passwords to access the system.

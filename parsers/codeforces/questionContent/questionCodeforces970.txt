@@ -1,115 +1,102 @@
-C. Half Queen Cover
-time limit per test1 second
+E. Centroid Probabilities
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a board with
+Consider every tree (connected undirected acyclic graph) with
 n
-rows and
+vertices (
 n
-columns, numbered from
+is odd, vertices numbered from
 1
 to
 n
-. The intersection of the
-a
--th row and
-b
--th column is denoted by
-(a,b)
+), and for each
+2≤i≤n
+the
+i
+-th vertex is adjacent to exactly one vertex with a smaller index.
+For each
+i
+(
+1≤i≤n
+) calculate the number of trees for which the
+i
+-th vertex will be the centroid. The answer can be huge, output it modulo
+998244353
 .
-A half-queen attacks cells in the same row, same column, and on one diagonal. More formally, a half-queen on
-(a,b)
-attacks the cell
-(c,d)
-if
-a=c
-or
-b=d
-or
-a−b=c−d
-.
-The blue cells are under attack.
-What is the minimum number of half-queens that can be placed on that board so as to ensure that each square is attacked by at least one half-queen?
-Construct an optimal solution.
+A vertex is called a centroid if its removal splits the tree into subtrees with at most
+(n−1)/2
+vertices each.
 Input
-The first line contains a single integer
+The first line contains an odd integer
 n
 (
-1≤n≤
+3≤n<2⋅
 10
 5
-) — the size of the board.
+,
+n
+is odd) — the number of the vertices in the tree.
 Output
-In the first line print a single integer
-k
-— the minimum number of half-queens.
-In each of the next
-k
-lines print two integers
-a
+Print
+n
+integers in a single line, the
 i
-,
-b
+-th integer is the answer for the
 i
-(
-1≤
-a
-i
-,
-b
-i
-≤n
-) — the position of the
-i
--th half-queen.
-If there are multiple solutions, print any.
+-th vertex (modulo
+998244353
+).
 Examples
 input
 Copy
-1
-output
-Copy
-1
-1 1
-input
-Copy
-2
-output
-Copy
-1
-1 1
-input
-Copy
 3
 output
 Copy
-2
-1 1
-1 2
+1 1 0 
+input
+Copy
+5
+output
+Copy
+10 10 4 0 0 
+input
+Copy
+7
+output
+Copy
+276 276 132 36 0 0 0 
 Note
 Example
 1
-: one half-queen is enough. Note: a half-queen on
-(1,1)
-attacks
-(1,1)
+: there are two possible trees: with edges
+(1−2)
+, and
+(1−3)
+— here the centroid is
+1
+; and with edges
+(1−2)
+, and
+(2−3)
+— here the centroid is
+2
+. So the answer is
+1,1,0
 .
 Example
 2
-: one half-queen is enough too.
-(1,2)
-or
-(2,1)
-would be wrong solutions, because a half-queen on
-(1,2)
-does not attack the cell
-(2,1)
-and vice versa.
-(2,2)
-is also a valid solution.
-Example
+: there are
+24
+possible trees, for example with edges
+(1−2)
+,
+(2−3)
+,
+(3−4)
+, and
+(4−5)
+. Here the centroid is
 3
-: it is impossible to cover the board with one half queen. There are multiple solutions for
-2
-half-queens; you can print any of them.
+.

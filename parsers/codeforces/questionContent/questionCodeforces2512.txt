@@ -1,143 +1,153 @@
-F. BareLee
+D. Odd-Even Subsequence
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Lee is used to finish his stories in a stylish way, this time he barely failed it, but Ice Bear came and helped him. Lee is so grateful for it, so he decided to show Ice Bear his new game called "Critic"...
-The game is a one versus one game. It has
-t
-rounds, each round has two integers
-s
-i
-and
-e
-i
-(which are determined and are known before the game begins,
-s
-i
-and
-e
-i
-may differ from round to round). The integer
-s
-i
-is written on the board at the beginning of the corresponding round.
-The players will take turns. Each player will erase the number on the board (let's say it was
+Ashish has an array
 a
-) and will choose to write either
-2⋅a
-or
-a+1
-instead. Whoever writes a number strictly greater than
-e
-i
-loses that round and the other one wins that round.
-Now Lee wants to play "Critic" against Ice Bear, for each round he has chosen the round's
+of size
+n
+.
+A subsequence of
+a
+is defined as a sequence that can be obtained from
+a
+by deleting some elements (possibly none), without changing the order of the remaining elements.
+Consider a subsequence
 s
-i
-and
-e
-i
-in advance. Lee will start the first round, the loser of each round will start the next round.
-The winner of the last round is the winner of the game, and the loser of the last round is the loser of the game.
-Determine if Lee can be the winner independent of Ice Bear's moves or not. Also, determine if Lee can be the loser independent of Ice Bear's moves or not.
+of
+a
+. He defines the cost of
+s
+as the minimum between:
+The maximum among all elements at odd indices of
+s
+.
+The maximum among all elements at even indices of
+s
+.
+Note that the index of an element is its index in
+s
+, rather than its index in
+a
+. The positions are numbered from
+1
+. So, the cost of
+s
+is equal to
+min(max(
+s
+1
+,
+s
+3
+,
+s
+5
+,…),max(
+s
+2
+,
+s
+4
+,
+s
+6
+,…))
+.
+For example, the cost of
+{7,5,6}
+is
+min(max(7,6),max(5))=min(7,5)=5
+.
+Help him find the minimum cost of a subsequence of size
+k
+.
 Input
-The first line contains the integer
-t
+The first line contains two integers
+n
+and
+k
 (
-1≤t≤
+2≤k≤n≤2⋅
 10
 5
-) — the number of rounds the game has.
-Then
-t
-lines follow, each contains two integers
-s
-i
-and
-e
-i
+)  — the size of the array
+a
+and the size of the subsequence.
+The next line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
 (
 1≤
-s
-i
-≤
-e
+a
 i
 ≤
 10
-18
-) — the
-i
--th round's information.
-The rounds are played in the same order as given in input,
-s
-i
-and
-e
-i
-for all rounds are known to everyone before the game starts.
+9
+)  — the elements of the array
+a
+.
 Output
-Print two integers.
-The first one should be 1 if Lee can be the winner independent of Ice Bear's moves, and 0 otherwise.
-The second one should be 1 if Lee can be the loser independent of Ice Bear's moves, and 0 otherwise.
+Output a single integer  — the minimum cost of a subsequence of size
+k
+.
 Examples
 input
 Copy
-3
-5 8
-1 4
-3 10
+4 2
+1 2 3 4
 output
-Copy
-1 1
-input
-Copy
-4
-1 2
-2 3
-3 4
-4 5
-output
-Copy
-0 0
-input
 Copy
 1
-1 1
-output
-Copy
-0 1
 input
+Copy
+4 3
+1 2 3 4
+output
 Copy
 2
-1 9
-4 5
-output
-Copy
-0 0
 input
+Copy
+5 3
+5 3 4 2 6
+output
 Copy
 2
-1 2
-2 8
-output
-Copy
-1 0
 input
 Copy
-6
-216986951114298167 235031205335543871
-148302405431848579 455670351549314242
-506251128322958430 575521452907339082
-1 768614336404564650
-189336074809158272 622104412002885672
-588320087414024192 662540324268197150
+6 4
+5 3 50 2 4 5
 output
 Copy
-1 0
+3
 Note
-Remember, whoever writes an integer greater than
-e
-i
-loses.
+In the first test, consider the subsequence
+s
+=
+{1,3}
+. Here the cost is equal to
+min(max(1),max(3))=1
+.
+In the second test, consider the subsequence
+s
+=
+{1,2,4}
+. Here the cost is equal to
+min(max(1,4),max(2))=2
+.
+In the fourth test, consider the subsequence
+s
+=
+{3,50,2,4}
+. Here the cost is equal to
+min(max(3,2),max(50,4))=3
+.

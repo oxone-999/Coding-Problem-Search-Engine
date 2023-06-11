@@ -1,144 +1,130 @@
-E. Phys Ed Online
+A. Two Subsequences
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Students of one unknown college don't have PE courses. That's why
-q
-of them decided to visit a gym nearby by themselves. The gym is open for
-n
-days and has a ticket system. At the
-i
--th day, the cost of one ticket is equal to
+You are given a string
+s
+. You need to find two non-empty strings
 a
-i
-. You are free to buy more than one ticket per day.
-You can activate a ticket purchased at day
-i
-either at day
-i
-or any day later. Each activated ticket is valid only for
-k
-days. In other words, if you activate ticket at day
-t
-, it will be valid only at days
-t,t+1,…,t+k−1
-.
-You know that the
-j
--th student wants to visit the gym at each day from
-l
-j
-to
-r
-j
-inclusive. Each student will use the following strategy of visiting the gym at any day
-i
-(
-l
-j
-≤i≤
-r
-j
-):
-person comes to a desk selling tickets placed near the entrance and buy several tickets with cost
-a
-i
-apiece (possibly, zero tickets);
-if the person has at least one activated and still valid ticket, they just go in. Otherwise, they activate one of tickets purchased today or earlier and go in.
-Note that each student will visit gym only starting
-l
-j
-, so each student has to buy at least one ticket at day
-l
-j
-.
-Help students to calculate the minimum amount of money they have to spend in order to go to the gym.
-Input
-The first line contains three integers
-n
-,
-q
 and
-k
+b
+such that the following conditions are satisfied:
+Strings
+a
+and
+b
+are both subsequences of
+s
+.
+For each index
+i
+, character
+s
+i
+of string
+s
+must belong to exactly one of strings
+a
+or
+b
+.
+String
+a
+is lexicographically minimum possible; string
+b
+may be any possible string.
+Given string
+s
+, print any valid
+a
+and
+b
+.
+Reminder:
+A string
+a
 (
-1≤n,q≤300000
+b
+) is a subsequence of a string
+s
+if
+a
+(
+b
+) can be obtained from
+s
+by deletion of several (possibly, zero) elements. For example, "dores", "cf", and "for" are subsequences of "codeforces", while "decor" and "fork" are not.
+A string
+x
+is lexicographically smaller than a string
+y
+if and only if one of the following holds:
+x
+is a prefix of
+y
+, but
+x≠y
 ;
-1≤k≤n
-) — the number of days, the number of students and the number of days each ticket is still valid.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-9
-) — the cost of one ticket at the corresponding day.
-Each of the next
-q
-lines contains two integers
-l
-i
+in the first position where
+x
 and
-r
-i
+y
+differ, the string
+x
+has a letter that appears earlier in the alphabet than the corresponding letter in
+y
+.
+Input
+Each test contains multiple test cases. The first line contains the number of test cases
+t
 (
-1≤
-l
-i
-≤
-r
-i
-≤n
-) — the segment of days the corresponding student want to visit the gym.
+1≤t≤1000
+). Description of the test cases follows.
+The first and only line of each test case contains one string
+s
+(
+2≤|s|≤100
+where
+|s|
+means the length of
+s
+). String
+s
+consists of lowercase Latin letters.
 Output
-For each student, print the minimum possible amount of money they have to spend in order to go to the gym at desired days.
+For each test case, print the strings
+a
+and
+b
+that satisfy the given conditions. If there are multiple answers, print any.
 Example
 input
 Copy
-7 5 2
-2 15 6 3 7 5 6
-1 2
-3 7
-5 5
-7 7
-3 5
+3
+fc
+aaaa
+thebrightboiler
 output
 Copy
-2
-12
-7
-6
-9
+c f
+a aaa
+b therightboiler
 Note
-Let's see how each student have to spend their money:
-The first student should buy one ticket at day
-1
-.
-The second student should buy one ticket at day
-3
-and two tickets at day
-4
-. Note that student can keep purchased tickets for the next days.
-The third student should buy one ticket at day
-5
-.
-The fourth student should buy one ticket at day
-7
-.
-The fifth student should buy one ticket at day
-3
-and one at day
-4
-.
+In the first test case, there are only two choices: either
+a=
+f and
+b=
+c or
+a=
+c and
+b=
+f. And
+a=
+c is lexicographically smaller than
+a=
+f.
+In the second test case, a is the only character in the string.
+In the third test case, it can be proven that b is the lexicographically smallest subsequence of
+s
+. The second string can be of two variants; one of them is given here.

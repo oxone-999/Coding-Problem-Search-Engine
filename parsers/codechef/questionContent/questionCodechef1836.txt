@@ -1,135 +1,93 @@
-c8kbf and Tree
+Subarray Removal
 Problem
-Chef c8kbf has an unrooted, weighted tree with
-N nodes, where vertices
-u and
-v are connected by an edge with weight
-w.
-The value of the simple path from
-x to
-y is defined as the bitwise XOR of the weights of the edges it consists of.
-Recall that a simple path is a path that does not have repeating vertices.
-Help Chef c8kbf find any four vertices
-a,b,c,d, such that:
-a<b and
-c<d;
-The value of the simple path from
-a to
-b is equal to that of the path from
-c to
-d;
-The pairs
-(a,b) and
-(c,d) are different. In other words,
-a
-
-=c or
-b
-
-=d.
-Note that the four vertices do not have to be all distinct. For example, it is allowed for
-a and
-c to be the same if
-b and
-d are different.
-If no four vertices satisfy such a property, report so. If there are multiple answers, output any one of them.
+Chef has a permutation
+A of length
+N. Chef can perform the following operation on
+A:
+1) Select
+L and
+R such that
+(1≤L≤R≤N) and
+(R−L+1<N)
+2) Remove the subarray
+A
+L…R
+from
+A. (The remaining parts of
+A are concatenated)
+The score of this operation
+= length of the subarray removed
+=R−L+1
+For e.g., if
+A=[3,1,4,6,5,2], and Chef selects
+L=3,R=5, then the score of this operation
+=3 and
+A becomes
+[3,1,2].
+Chef wants to perform this operation exactly once such that, after the operation,
+A still remains a permutation. What is the maximum score that Chef can achieve in doing so?
+As a reminder, a permutation of length
+M is an array where every integer from
+1 to
+M occurs exactly once.
 Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input. For each test case,
-The first line contains an integer
-N, the number of vertices.
-The next
-N−1 lines contain three space-separated integers
-u
-i
-,
-v
-i
-, and
-w
-i
-, denoting an edge between
-u
-i
-and
-v
-i
-with weight
-w
-i
-. It is guaranteed that these edges will form a tree.
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
+The first line of each test case contains an integer
+N — the size of the permutation
+A.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+denoting the permutation
+A.
 Output Format
-For each test case, output four space-separated integers
-a,
-b,
-c, and
-d on a new line, representing the four vertices. If there are multiple answers, output any one of them.
-If no four vertices satisfy the property, output
-−1 on a new line instead.
+For each test case, output the maximum score that Chef can achieve after applying the operation exactly once such that
+A still remains a permutation.
 Constraints
 1≤T≤10
-3≤N≤10
 5
-1≤u
-i
-,v
-i
-≤N
-u
-i
-
-=v
-i
-for each
-1≤i≤N−1.
-0≤w
-i
-≤2
-20
-It is guaranteed that the given edges will form a tree.
-The sum of
-N over all test cases won't exceed
-3⋅10
+2≤N≤10
 5
-.
+A is a permutation
+Sum of
+N over all test cases does not exceed
+5⋅10
+5
 Sample 1:
 Input
 Output
 3
-4
-1 2 1
-2 3 2
-2 4 3
-4
-1 2 2
-2 3 4
-2 4 8
 3
-1 2 5
-2 3 0
-1 4 2 3
--1
-1 2 1 3
+2 1 3
+7
+1 2 3 4 5 6 7
+6
+3 1 4 6 5 2
+1
+6
+3
 Explanation:
-Test case
-1: The value of the path between vertices
-1 and
-4 is
-1⊕3=2. The path between vertices
-3 and
-2 only has one edge, so the value is also
-2. Note that
-2
-3
-1
-4 or
-2
-4
-1
-3 would be other acceptable answers.
-Test case
-2: No four vertices satisfy the property.
-Test case
-3: Note that
-a=c for the output of this case, which is allowed.
+Test Case 1: Chef can remove subarray
+A
+3…3
+after which
+A becomes
+[2,1] which is still a permutation.
+Test Case 2: Chef can remove subarray
+A
+2…7
+after which
+A becomes
+[1] which is still a permutation.
+Test Case 3: Chef can remove subarray
+A
+3…5
+after which
+A becomes
+[3,1,2] which is still a permutation.

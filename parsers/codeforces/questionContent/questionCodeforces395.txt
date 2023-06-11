@@ -1,154 +1,132 @@
-C. Count Binary Strings
+D. Playoff
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer
+2
 n
-. You have to calculate the number of binary (consisting of characters 0 and/or 1) strings
-s
-meeting the following constraints.
-For every pair of integers
-(i,j)
-such that
-1≤i≤j≤n
-, an integer
-a
-i,j
-is given. It imposes the following constraint on the string
-s
-i
-s
-i+1
-s
-i+2
-…
-s
-j
-:
-if
-a
-i,j
-=1
-, all characters in
-s
-i
-s
-i+1
-s
-i+2
-…
-s
-j
-should be the same;
-if
-a
-i,j
-=2
-, there should be at least two different characters in
-s
-i
-s
-i+1
-s
-i+2
-…
-s
-j
-;
-if
-a
-i,j
-=0
-, there are no additional constraints on the string
-s
-i
-s
-i+1
-s
-i+2
-…
-s
-j
-.
-Count the number of binary strings
-s
-of length
+teams participate in a playoff tournament. The tournament consists of
+2
 n
-meeting the aforementioned constraints. Since the answer can be large, print it modulo
-998244353
-.
+−1
+games. They are held as follows: in the first phase of the tournament, the teams are split into pairs: team
+1
+plays against team
+2
+, team
+3
+plays against team
+4
+, and so on (so,
+2
+n−1
+games are played in that phase). When a team loses a game, it is eliminated, and each game results in elimination of one team (there are no ties). After that, only
+2
+n−1
+teams remain. If only one team remains, it is declared the champion; otherwise, the second phase begins, where
+2
+n−2
+games are played: in the first one of them, the winner of the game "
+1
+vs
+2
+" plays against the winner of the game "
+3
+vs
+4
+", then the winner of the game "
+5
+vs
+6
+" plays against the winner of the game "
+7
+vs
+8
+", and so on. This process repeats until only one team remains.
+The skill level of the
+i
+-th team is
+p
+i
+, where
+p
+is a permutation of integers
+1
+,
+2
+, ...,
+2
+n
+(a permutation is an array where each element from
+1
+to
+2
+n
+occurs exactly once).
+You are given a string
+s
+which consists of
+n
+characters. These characters denote the results of games in each phase of the tournament as follows:
+if
+s
+i
+is equal to 0, then during the
+i
+-th phase (the phase with
+2
+n−i
+games), in each match, the team with the lower skill level wins;
+if
+s
+i
+is equal to 1, then during the
+i
+-th phase (the phase with
+2
+n−i
+games), in each match, the team with the higher skill level wins.
+Let's say that an integer
+x
+is winning if it is possible to find a permutation
+p
+such that the team with skill
+x
+wins the tournament. Find all winning integers.
 Input
 The first line contains one integer
 n
 (
-2≤n≤100
+1≤n≤18
 ).
-Then
+The second line contains the string
+s
+of length
 n
-lines follow. The
-i
--th of them contains
-n−i+1
-integers
-a
-i,i
-,
-a
-i,i+1
-,
-a
-i,i+2
-,…,
-a
-i,n
-(
-0≤
-a
-i,j
-≤2
-).
+consisting of the characters 0 and/or 1.
 Output
-Print one integer — the number of strings meeting the constraints, taken modulo
-998244353
-.
+Print all the winning integers
+x
+in ascending order.
 Examples
 input
 Copy
 3
-1 0 2
-1 0
-1
+101
 output
 Copy
-6
+4 5 6 7 
 input
 Copy
-3
-1 1 2
-1 0
+1
 1
 output
+Copy
+2 
+input
 Copy
 2
-input
-Copy
-3
-1 2 1
-1 0
-1
+01
 output
 Copy
-0
-input
-Copy
-3
-2 0 2
-0 1
-1
-output
-Copy
-0
-Note
-In the first example, the strings meeting the constraints are 001, 010, 011, 100, 101, 110.
-In the second example, the strings meeting the constraints are 001, 110.
+2 3 

@@ -1,133 +1,80 @@
-Chef and Ants
+Tri XOR
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef has been researching ant colonies for many years and finally discovered all their secrets.
-An ant colony consists of
-N distinct lines (numbered
-1 through
-N) that pass through a point
-O, which is the queen's home. For each valid
-i, there are
-M
-i
-ants on the
-i-th line.
-For each valid
-i and
-j, the
-j-th ant on the
-i-th line initially has a non-zero coordinate
-X
-i,j
-with the following meaning:
-The distance of this ant from
-O is
-∣X
-i,j
-∣.
-Let's choose a direction along the
-i-th line from
-O. The exact way in which this direction is chosen does not matter here, it only needs to be the same for all ants on the same line.
-If
-X
-i,j
-is positive, this ant is at the distance
-∣X
-i,j
-∣ from
-O in the chosen direction. Otherwise, it is at this distance from
-O in the opposite direction.
-In other words, two ants
-j and
-k on a line
-i are at the same side of
-O if the signs of
-X
-i,j
-and
-X
-i,k
-are the same or on opposite sides if the signs are different.
-All ants move with the same constant speed. Initially, all of them are moving towards
-O. Whenever two or more ants meet (possibly at
-O), all of these ants turn around and start moving in the opposite directions with the same speed. We call this a collision. Even if an ant reaches
-O without meeting an ant there, it keeps moving in the same direction. An ant may change direction multiple times.
-Help Chef find the total number of collisions between ants. Note that even if more than two ants meet, it counts as only one collision.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
+There are
+N numbers written on a blackboard.
+In one operation, Chef can:
+Choose any
+3 integers
+A,B, and
+C written on the blackboard.
+Erase them from the blackboard.
+Write
+A⊕B,B⊕C, and
+C⊕A on the blackboard. Here,
+⊕ denotes the bitwise XOR operation.
+Your task is to make all the numbers written on the blackboard equal to
+0 using at most
+11111 operations.
+It is guaranteed that all the numbers on the blackboard can be made
+0 under the given constraints.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
 The first line of each test case contains a single integer
-N.
-N lines follow. For each valid
-i, the
-i-th of these lines contains an integer
-M
-i
-, followed by a space and
-M
-i
-space-separated integers
-X
-i,1
-,X
-i,2
-,…,X
-i,M
-i
-.
-Output
-For each test case, print a single line containing one integer ― the number of collisions between ants.
-Constraints
-1≤T≤1,000
-1≤N≤2⋅10
-5
-1≤M
-i
-≤5⋅10
-5
-for each valid
-i
-1≤∣X
-i,j
-∣≤10
-9
-for each valid
-i,j
-X
-i,j
-<X
-i,j+1
-for each valid
-i,j
-the sum of
-N over all test cases does not exceed
-2⋅10
-5
-the sum of
-M
+N, the number of integers written on the blackboard.
+Next line contains
+N space separated integers
+A
 1
-+M
+,A
 2
-+…+M
+,…A
 N
-over all test cases does not exceed
-10
-6
-Subtasks
-Subtask #1 (30 points):
-N=1
-Subtask #2 (70 points): original constraints
+, the integers written on the blackboard initially.
+Output Format
+For each test case:
+On the first line, output
+M(0≤M≤11111) - the number of operations you are going to perform.
+Next
+M lines contain
+3 space-separated integers
+A,B, and
+C
+(A,B,C should be present on the blackboard at the time of operation
+) - denoting the integers using which operation is performed.
+Constraints
+1≤T≤10
+6≤N≤1000
+0≤A
+i
+≤10
+9
 Sample 1:
 Input
 Output
 1
+6
+0 1 2 3 2 0
 2
-2 -2 1
-1 2
-2
+2 3 2
+1 1 1
 Explanation:
-Example case 1: First, the ants on the first line collide at the coordinate
-−1/2 and change directions. Finally, ant
-2 on the first line collides with the only ant on the second line; this happens at
-O. No collisions happen afterwards.
+Test case
+1: We can make all the numbers
+0 using
+2 operations:
+Operation
+1: Choose the integers
+2,3, and
+2 and replace them with
+2⊕3=1,3⊕2=1, and
+2⊕2=0. Thus, numbers on the blackboard are now
+[0,1,0,1,1,0].
+Operation
+2: Choose the integers
+1,1, and
+1 and replace them with
+1⊕1=0,1⊕1=0, and
+1⊕1=0. Thus all numbers on the blackboard are now
+0.

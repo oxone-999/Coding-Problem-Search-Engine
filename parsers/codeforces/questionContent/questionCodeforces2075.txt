@@ -1,84 +1,36 @@
-C. Random Events
-time limit per test2 seconds
+F. Mathematical Expression
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ron is a happy owner of a permutation
+Barbara was late for her math class so as a punishment the teacher made her solve the task on a sheet of paper. Barbara looked at the sheet of paper and only saw
+n
+numbers
 a
-of length
-n
-.
-A permutation of length
-n
-is an array consisting of
-n
-distinct integers from
 1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
-2
-appears twice in the array) and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
-Ron's permutation is subjected to
-m
-experiments of the following type: (
-r
-i
 ,
-p
-i
-). This means that elements in range
-[1,
-r
-i
-]
-(in other words, the prefix of length
-r
-i
-) have to be sorted in ascending order with the probability of
-p
-i
-. All experiments are performed in the same order in which they are specified in the input data.
-As an example, let's take a look at a permutation
-[4,2,1,5,3]
-and an experiment (
-3,0.6
-). After such an experiment with the probability of
-60%
-the permutation will assume the form
-[1,2,4,5,3]
-and with a
-40%
-probability it will remain unchanged.
-You have to determine the probability of the permutation becoming completely sorted in ascending order after
-m
-experiments.
-Input
-Each test contains one or more test cases. The first line contains the number of test cases
-t
-(
-1≤t≤100
-).
-The first line of each test case contains two integers
+a
+2
+,…,
+a
 n
-and
-m
-(1≤n,m≤
+without any mathematical symbols. The teacher explained to Barbara that she has to place the available symbols between the numbers in a way that would make the resulting expression's value as large as possible. To find out which symbols were available the teacher has given Barbara a string
+s
+which contained that information.
+It's easy to notice that Barbara has to place
+n−1
+symbols between numbers in total. The expression must start with a number and all symbols must be allowed (i.e. included in
+s
+). Note that multiplication takes precedence over addition or subtraction, addition and subtraction have the same priority and performed from left to right. Help Barbara and create the required expression!
+Input
+The first line of the input contains a single integer
+n
+(
+1≤n≤
 10
 5
-)
- — the length of the permutation and the number of experiments, respectively.
-The second line of each test case contains
+) — the amount of numbers on the paper.
+The second line of the input contains
 n
 integers
 a
@@ -89,89 +41,46 @@ a
 ,…,
 a
 n
-(1≤
-a
-i
-≤n)
- — contents of the permutation.
-The following
-m
-lines of each test case each contain an integer
-r
-i
-and a real number
-p
-i
-(1≤
-r
-i
-≤n,0≤
-p
-i
-≤1)
- — the length of the prefix and the probability of it being sorted. All probabilities are given with at most
-6
-decimal places.
-It is guaranteed that the sum of
-n
-and the sum of
-m
-does not exceed
-10
-5
 (
-∑n,∑m≤
-10
-5
-).
-Output
-For each test case, print a single number — the probability that after all experiments the permutation becomes sorted in ascending order. Your answer will be considered correct if its absolute or relative error does not exceed
-10
-−6
-.
-Formally, let your answer be
+0≤
 a
-, and the jury's answer be
-b
-. Your answer is accepted if and only if
-|a−b|
-max(1,|b|)
-≤
-10
-−6
+i
+≤9
+), where
+a
+i
+is the
+i
+-th element of
+a
 .
-Example
+The third line of the input contains the string
+s
+(
+1≤|s|≤3
+) — symbols allowed in the expression. It is guaranteed that the string may only consist of symbols "-", "+" and "*". It is also guaranteed that all symbols in the string are distinct.
+Output
+Print
+n
+numbers separated by
+n−1
+symbols — a mathematical expression with the greatest result. If there are multiple equally valid results — output any one of them.
+Examples
+input
+Copy
+3
+2 2 0
++-*
+output
+Copy
+2*2-0
 input
 Copy
 4
-4 3
-4 3 2 1
-1 0.3
-3 1
-4 0.6
-5 3
-4 2 1 3 5
-3 0.8
-4 0.6
-5 0.3
-6 5
-1 3 2 4 5 6
-4 0.9
-5 0.3
-2 0.4
-6 0.7
-3 0.5
-4 2
-1 2 3 4
-2 0.5
-4 0.1
+2 1 1 2
++*
 output
 Copy
-0.600000
-0.720000
-0.989500
-1.000000
+2+1+1+2
 Note
-Explanation of the first test case: It can be demonstrated that whether the final permutation is sorted or not depends solely on sorting being performed in the
-(4,0.6)
-experiment.
+The following answers also fit the first example: "2+2+0", "2+2-0", "2*2+0".

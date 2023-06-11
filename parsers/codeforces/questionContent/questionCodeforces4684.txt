@@ -1,52 +1,47 @@
-A. Mystical Mosaic
+B. Three-level Laser
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There is a rectangular grid of n rows of m initially-white cells each.
-Arkady performed a certain number (possibly zero) of operations on it. In the i-th operation, a non-empty subset of rows Ri and a non-empty subset of columns Ci are chosen. For each row r in Ri and each column c in Ci, the intersection of row r and column c is coloured black.
-There's another constraint: a row or a column can only be chosen at most once among all operations. In other words, it means that no pair of (i, j) (i < j) exists such that or , where denotes intersection of sets, and denotes the empty set.
-You are to determine whether a valid sequence of operations exists that produces a given final grid.
+An atom of element X can exist in n distinct states with energies E1 < E2 < ... < En. Arkady wants to build a laser on this element, using a three-level scheme. Here is a simplified description of the scheme.
+Three distinct states i, j and k are selected, where i < j < k. After that the following process happens:
+initially the atom is in the state i,
+we spend Ek - Ei energy to put the atom in the state k,
+the atom emits a photon with useful energy Ek - Ej and changes its state to the state j,
+the atom spontaneously changes its state to the state i, losing energy Ej - Ei,
+the process repeats from step 1.
+Let's define the energy conversion efficiency as , i. e. the ration between the useful energy of the photon and spent energy.
+Due to some limitations, Arkady can only choose such three states that Ek - Ei ≤ U.
+Help Arkady to find such the maximum possible energy conversion efficiency within the above constraints.
 Input
-The first line contains two space-separated integers n and m (1 ≤ n, m ≤ 50) — the number of rows and columns of the grid, respectively.
-Each of the following n lines contains a string of m characters, each being either '.' (denoting a white cell) or '#' (denoting a black cell), representing the desired setup.
+The first line contains two integers n and U (3 ≤ n ≤ 105, 1 ≤ U ≤ 109) — the number of states and the maximum possible difference between Ek and Ei.
+The second line contains a sequence of integers E1, E2, ..., En (1 ≤ E1 < E2... < En ≤ 109). It is guaranteed that all Ei are given in increasing order.
 Output
-If the given grid can be achieved by any valid sequence of operations, output "Yes"; otherwise output "No" (both without quotes).
-You can print each character in any case (upper or lower).
+If it is not possible to choose three states that satisfy all constraints, print -1.
+Otherwise, print one real number η — the maximum possible energy conversion efficiency. Your answer is considered correct its absolute or relative error does not exceed 10 - 9.
+Formally, let your answer be a, and the jury's answer be b. Your answer is considered correct if .
 Examples
 input
 Copy
-5 8
-.#.#..#.
-.....#..
-.#.#..#.
-#.#....#
-.....#..
+4 4
+1 3 5 7
 output
 Copy
-Yes
+0.5
 input
 Copy
-5 5
-..#..
-..#..
-#####
-..#..
-..#..
+10 8
+10 13 15 16 17 19 20 22 24 25
 output
 Copy
-No
+0.875
 input
 Copy
-5 9
-........#
-#........
-..##.#...
-.......#.
-....#.#.#
+3 1
+2 5 10
 output
 Copy
-No
+-1
 Note
-For the first example, the desired setup can be produced by 3 operations, as is shown below.
-For the second example, the desired setup cannot be produced, since in order to colour the center row, the third row and all columns must be selected in one operation, but after that no column can be selected again, hence it won't be possible to colour the other cells in the center column.
+In the first example choose states 1, 2 and 3, so that the energy conversion efficiency becomes equal to .
+In the second example choose states 4, 5 and 9, so that the energy conversion efficiency becomes equal to .

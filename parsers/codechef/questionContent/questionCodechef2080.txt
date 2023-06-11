@@ -1,29 +1,105 @@
-Chefs in Queue
+Musical Rods
 Problem
-Read problems statements in Russian here
-All the chefs (except the Head Chef) are standing in queue to submit their bills. The chefs have different seniority. In all there are N chefs of K different seniority levels. These are given to you in an array, where A1, A2, ..., AN denote the seniority of chefs in the queue. AN denotes front of the queue and A1 denotes end of the queue.
-Head Chef gets an interesting thought past his head. He begins to think what if every chef starting from the end of the queue begins to delegate his job of submitting bills to a chef least ahead of him in the queue but junior to him. The Head Chef's fearfulness of this scenario is f = i2 - i1 + 1, where i1 is the index of chef in queue and i2 is the index of the junior chef. Head Chef's total fearfulness of chaos is the product of all the fearfulness in Head Chef's mind. Note if a chef has no junior ahead of him/her in the queue then Head Chef's fearfulness for this Chef is 1.
-You are required to find the Head Chef's total fearfulness given an arrangement of Chef's in a queue. Since this number can be quite large output it modulo 1000000007.
-Input
-Input description.
-The first line contains two integers N and K denoting the number of chefs and the number of seniority levels. The second line contains N space-separated integers A1, A2, ..., AN denoting the seniority of chefs in the queue. AN denotes front of the queue and A1 denotes end of the queue.
-Output
-Output description.
-Output a single integer denoting the total fearfulness of the Head Chef.
+You have
+N rods with you. The
+i-th rod has a length of
+A
+i
+and a beauty of
+B
+i
+.
+You'd like to arrange these rods side-by-side in some order on the number line, starting from
+0.
+Let
+x
+i
+be the starting position of the
+i-th rod in an arrangement. The beauty of this arrangement is
+i=1
+∑
+N
+x
+i
+⋅B
+i
+What is the maximum beauty you can attain?
+Note that the left endpoint of the first rod you place must be
+0, and you cannot leave any space between rods.
+Input Format
+The first line of input contains an integer
+T, denoting the number of test cases.
+Each test case consists of three lines of input.
+The first line of each test case contains a single integer
+N, the number of rods.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+The third line of each test case contains
+N space-separated integers
+B
+1
+,B
+2
+,…,B
+N
+Output Format
+For each test case print on a new line the answer: the maximum value of
+∑
+i=1
+N
+x
+i
+B
+i
+if the order of rods is chosen optimally.
 Constraints
-1 ≤ N ≤ 1000000
-1 ≤ a_i ≤ 1000000
-2 ≤ K ≤ 100000
-Scoring
-Subtask 1 : N <= 5000 ( 10 points)
-Subtask 2 : K = 2 ( 10 points)
-Subtask 3 : K <= 10 ( 20 points )
-Subtask 4 : See Constraints ( 60 points )
+1≤T≤10
+3
+1≤N≤10
+5
+1≤A
+i
+≤10
+4
+1≤B
+i
+≤10
+4
+The sum of
+N across all testcases won't exceed
+10
+5
+.
 Sample 1:
 Input
 Output
-4 2
-1 2 1 2
 2
+2
+1 2
+4 6
+4
+2 8 9 11
+25 27 100 45
+8
+2960
 Explanation:
-Example case 1. Only the second chef has a junior in front of him and the fearfulness he causes to the head chef is 3 - 2 + 1 = 2. Every other chef causes a fearfulness of 1 for the Head Chef.
+Test case
+1: Place the second rod followed by the first one. This makes
+x
+2
+=0 and
+x
+1
+=2, giving us a beauty of
+2⋅4+0⋅6=8, which is the maximum possible.
+Test case
+2: Place the rods in the order
+[2,4,3,1]. This gives us
+x=[28,0,19,8], and the beauty is
+28⋅25+0⋅27+19⋅100+8⋅45=2960.

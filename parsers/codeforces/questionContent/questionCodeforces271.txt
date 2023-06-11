@@ -1,100 +1,141 @@
-F. Minimums or Medians
-time limit per test4 seconds
+E. Infinite Game
+time limit per test5 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Vika has a set of all consecutive positive integers from
+Alice and Bob are playing an infinite game consisting of sets. Each set consists of rounds. In each round, one of the players wins. The first player to win two rounds in a set wins this set. Thus, a set always ends with the score of
+2:0
+or
+2:1
+in favor of one of the players.
+Let's call a game scenario a finite string
+s
+consisting of characters 'a' and 'b'. Consider an infinite string formed with repetitions of string
+s
+:
+sss…
+Suppose that Alice and Bob play rounds according to this infinite string, left to right. If a character of the string
+sss…
+is 'a', then Alice wins the round; if it's 'b', Bob wins the round. As soon as one of the players wins two rounds, the set ends in their favor, and a new set starts from the next round.
+Let's define
+a
+i
+as the number of sets won by Alice among the first
+i
+sets while playing according to the given scenario. Let's also define
+r
+as the limit of ratio
+a
+i
+i
+as
+i→∞
+. If
+r>
 1
-to
-2n
-, inclusive.
-Exactly
-k
-times Vika will choose and perform one of the following two actions:
-take two smallest integers from her current set and remove them;
-take two median integers from her current set and remove them.
-Recall that medians are the integers located exactly in the middle of the set if you write down its elements in increasing order. Note that Vika's set always has an even size, thus the pair of median integers is uniquely defined. For example, two median integers of the set
-{1,5,6,10,15,16,18,23}
-are
-10
-and
-15
-.
-How many different sets can Vika obtain in the end, after
-k
-actions? Print this number modulo
+2
+, we'll say that scenario
+s
+is winning for Alice. If
+r=
+1
+2
+, we'll say that scenario
+s
+is tied. If
+r<
+1
+2
+, we'll say that scenario
+s
+is winning for Bob.
+You are given a string
+s
+consisting of characters 'a', 'b', and '?'. Consider all possible ways of replacing every '?' with 'a' or 'b' to obtain a string consisting only of characters 'a' and 'b'. Count how many of them result in a scenario winning for Alice, how many result in a tied scenario, and how many result in a scenario winning for Bob. Print these three numbers modulo
 998244353
-. Two sets are considered different if some integer belongs to one of them but not to the other.
+.
 Input
-The only line contains two integers
-n
-and
-k
-(
-1≤k≤n≤
-10
-6
-).
+The only line contains a single string
+s
+ (
+1≤|s|≤200
+), consisting of characters 'a', 'b', and '?'.
 Output
-Print a single integer — the number of sets Vika can obtain in the end, modulo
+Print three integers: how many ways result in a scenario winning for Alice, how many result in a tied scenario, and how many result in a scenario winning for Bob, modulo
 998244353
 .
 Examples
 input
 Copy
-3 1
-output
-Copy
-2
-input
-Copy
-3 2
-output
-Copy
-3
-input
-Copy
-3 3
+??
 output
 Copy
 1
+2
+1
 input
 Copy
-7 4
+?aa?b
 output
 Copy
-11
+1
+3
+0
 input
 Copy
-23 8
+a???ba
 output
 Copy
-88
+4
+3
+1
 input
 Copy
-100 77
+????????
 output
 Copy
-825430474
+121
+14
+121
+input
+Copy
+ba????a?a???abbb?
+output
+Copy
+216
+57
+239
+input
+Copy
+a????a??????b??abbababbbb?a?aaa????bb
+output
+Copy
+97833
+28387
+135924
+input
+Copy
+??????????????a????????????????b?????
+output
+Copy
+484121060
+448940322
+484613337
 Note
-In the first example, Vika's initial set is
-{1,2,3,4,5,6}
-. She can remove the minimums from it to obtain
-{3,4,5,6}
-, or she can remove the medians from it to obtain
-{1,2,5,6}
-.
-In the second example, Vika can obtain
-{1,6}
-,
-{3,6}
-, or
-{5,6}
-. For instance, Vika can obtain
-{3,6}
-if she removes two smallest integers first (
-{1,2,3,4,5,6}→{3,4,5,6}
-), and then she removes two median integers (
-{3,4,5,6}→{3,6}
-).
-In the third example, regardless of Vika's choices, she'll end up with an empty set.
+In the first example, there are four ways to replace the question marks:
+s=aa
+: Alice wins every set
+2:0
+ — the scenario is winning for Alice;
+s=ab
+: Alice and Bob win sets in turns, with the score of
+2:1
+each — the scenario is tied;
+s=ba
+: Bob and Alice win sets in turns, with the score of
+2:1
+each — the scenario is tied;
+s=bb
+: Bob wins every set
+2:0
+ — the scenario is winning for Bob.

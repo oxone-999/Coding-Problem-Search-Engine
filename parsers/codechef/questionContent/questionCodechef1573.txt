@@ -1,39 +1,43 @@
-Way Out
+Reign
 Problem
 Read problems statements in Mandarin Chinese and Russian.
-Oh, no! Chef’s in trouble. He’s got himself stuck in a cave (we don’t know how) and is looking for a way out. The bigger problem is that he needs to get his tractor out of the cave (don't ask why Chef owns a tractor!). He currently faces a large block of height N cells and length N cells, and needs to get his tractor across this block. The block is made up of vertical columns of soil, each of which is one cell long. Each column has a continuous vertical gap, with the ith column having its gap from the lith cell to the hith cell (starting from the bottom, 0-indexing). That is, in the ith column, there is no soil from the lith cell to the hith cell (both inclusive). Chef can build additional gaps by clearing some cells of soil. His tractor has height H, and therefore, he needs to build a horizontal corridor of height H passing through all the columns. That is, some consecutive H rows must have no soil. Please see the figures in the example and explanation sections for more details.
-Chef is able to clear one cell of soil by spending one unit of energy. Chef is smart, and will figure out a way to build the horizontal corridor while spending the minimum possible amount of energy. To estimate how many of his tasty dishes he will still be able to cook for you tonight, find out what is the minimum possible energy he needs to spend.
+The Baratheons have been ruling in the Seven Kingdoms for many years. They have seen a lot: prosperity and hunger, tranquility and rebellions, live and death. But nevertheless, they still hold the throne.
+King Joffrey Baratheon's reign is running now. As a wise man, he honors the history of his family. So, he commanded to build up two monuments, that will remind about some historical periods of the Baratheons.
+Formally, the Baratheons have been ruling for N years. Every year is described by an integer Ai, the level of prosperity in i-th year. If i-th year was a great year, then Ai might be a positive integer. Otherwise, if i-th year was a horrible year, then Ai might be a negative integer.
+Each historical period can be described as two integers S and F, the start and the finish of the period respectively. Of course, S is not greater than F for each period, that we consider in this task.
+You are to pick two historical periods, but there are some rules:
+Two periods shouldn't have common years. I.e. a period [1, 5] has no common years with a period [6, 7];
+The first period should start earlier than the second one. I.e. a period [1, 5] starts earlier than [6, 7];
+Two periods shouldn't be too close to each other. There must be at least K years between the finish of the first period and the start of the second period. I.e. periods [1, 5] and [10, 10] can be chosen in case K equals to 4, while they can't in case K equals to 5.
+The sum of the levels of prosperity in chosen years should be as big as possible.
+Afterwards, you should report the sum of the levels of prosperity in chosen years to your King. Make everything right, otherwise King Joffrey won't be merciful!
 Input
-First line of input contains one integer T - number of test cases. T test cases follow.
-Each test case starts with two integers N and H – size of the cave and height of the tractor, respectively. In each of the next N lines are two integers li and hi, respectively indicating lowest and highest number of cell for the gap in the ith column.
-Output
-One integer – minimum energy required.
-Constraints
-1 ≤ T ≤ 103
-1 ≤ N ≤ 106
-1 ≤ sum of N over all test cases ≤ 106
-1 ≤ H ≤ N
-0 ≤ li ≤ hi < N
-Subtasks
-Subtask 1 (25 points): T ≤ 100, N ≤ 100
-Subtask 2 (75 points): No additional constraints
-Sample 1:
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains two integers N and K denoting the length of the Baratheons' reign and the minimal amount of years between two chosen periods.
+The second line contains N space-separated integers A1, A2, ..., AN denoting the levels of prosperity in corresponding years.
+  Output
+For each test case, output a single line containing the required integer.
+  Constraints
+1 ≤ T ≤ 5;
+2 ≤ N ≤ 105;
+0 ≤ K ≤ 105;
+-109 ≤ Ai ≤ 109 for every 1 ≤ i ≤ N;
+K + 2 ≤ N
+  Sample 1:
 Input
 Output
-2
-4 3
-1 2
-1 2
-1 2
-1 2
-5 2
-2 3
-1 2
-2 3
-1 2
-2 3
-4
-2
+3
+5 3
+-1 1 2 3 -1
+8 3
+5 5 -1 -2 3 -1 2 -2
+6 0
+5 -1 5 0 -1 9
+-2
+12
+18
 Explanation:
-In the second case, the figure describes the initial map, where white cells denote empty cells and brown cells denote soil cells.
-When we removed soil in two cells as the following figure, then we can make a corridor of height 2, adn this is the optimal way to make a corridor.
+There are T = 3 test cases the input.
+The first test case: N equals to 5, K equals to 3, A[] equals to {-1, 1, 2, 3, -1}. There is the only option: we have to choose [1, 1] and [5, 5] periods.
+The second test case: N equals to 8, K equals to 3, A[] equals to {5, 5, -1, -2, 3, -1, 2, -2}. It is optimal to choose [1, 2] and [7, 7] periods. That is the only optimal choice that you can make.
+The second test case: N equals to 6, K equals to 0, A[] equals to {5, -1, 5, 0, -1, 9}. It is optimal to choose [1, 3] and [6, 6] periods. But that is not the only optimal choice that you can make.

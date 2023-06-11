@@ -1,128 +1,189 @@
-A. A Variety of Operations
-time limit per test1 second
+D. Take a Guess
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-William has two numbers
+This is an interactive task
+William has a certain sequence of integers
 a
+1
+,
+a
+2
+,…,
+a
+n
+in his mind, but due to security concerns, he does not want to reveal it to you completely. William is ready to respond to no more than
+2⋅n
+of the following questions:
+What is the result of a bitwise AND of two items with indices
+i
 and
-b
-initially both equal to zero. William mastered performing three different operations with them quickly. Before performing each operation some positive integer
-k
-is picked, which is then used to perform one of the following operations: (note, that for each operation you can choose a new positive integer
-k
+j
+(
+i≠j
 )
-add number
-k
-to both
-a
+What is the result of a bitwise OR of two items with indices
+i
 and
-b
-, or
-add number
+j
+(
+i≠j
+)
+You can ask William these questions and you need to find the
 k
-to
-a
-and subtract
+-th smallest number of the sequence.
+Formally the
 k
-from
-b
-, or
-add number
+-th smallest number is equal to the number at the
 k
-to
-b
-and subtract
-k
-from
-a
-.
-Note that after performing operations, numbers
-a
-and
-b
-may become negative as well.
-William wants to find out the minimal number of operations he would have to perform to make
-a
-equal to his favorite number
-c
-and
-b
-equal to his second favorite number
-d
+-th place in a 1-indexed array sorted in non-decreasing order. For example in array
+[5,3,3,10,1]
+4
+th smallest number is equal to
+5
+, and
+2
+nd and
+3
+rd are
+3
 .
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤
+It is guaranteed that for each element in a sequence the condition
+0≤
+a
+i
+≤
+10
+9
+is satisfied.
+Interaction
+In the first line you will be given two integers
+n
+and
+k
+(3≤n≤
 10
 4
-). Description of the test cases follows.
-The only line of each test case contains two integers
-c
+,1≤k≤n)
+, which are the number of items in the sequence
+a
+and the number
+k
+.
+After that, you can ask no more than
+2⋅n
+questions (not including the "finish" operation).
+Each line of your output may be of one of the following types:
+"or i j"
+(1≤i,j≤n,i≠j)
+, where
+i
 and
-d
-(0≤c,d≤
+j
+are indices of items for which you want to calculate the bitwise OR.
+"and i j"
+(1≤i,j≤n,i≠j)
+, where
+i
+and
+j
+are indices of items for which you want to calculate the bitwise AND.
+"finish res", where
+res
+is the
+k
+th smallest number in the sequence. After outputting this line the program execution must conclude.
+In response to the first two types of queries, you will get an integer
+x
+, the result of the operation for the numbers you have selected.
+After outputting a line do not forget to output a new line character and flush the output buffer. Otherwise you will get the "Idleness limit exceeded". To flush the buffer use:
+fflush(stdout) in C++
+System.out.flush() in Java
+stdout.flush() in Python
+flush(output) in Pascal
+for other languages refer to documentation
+If you perform an incorrect query the response will be
+−1
+. After receiving response
+−1
+you must immediately halt your program in order to receive an "Incorrect answer" verdict.
+Hacking
+To perform a hack you will need to use the following format:
+The first line must contain two integers
+n
+and
+k
+(3≤n≤
+10
+4
+,1≤k≤n)
+, which are the number of items in the sequence
+a
+and the number
+k
+.
+The second line must contain
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(0≤
+a
+i
+≤
 10
 9
 )
-, which are William's favorite numbers and which he wants
+, the sequence
 a
-and
-b
-to be transformed into.
-Output
-For each test case output a single number, which is the minimal number of operations which William would have to perform to make
-a
-equal to
-c
-and
-b
-equal to
-d
-, or
-−1
-if it is impossible to achieve this using the described operations.
+.
 Example
 input
 Copy
-6
-1 2
-3 5
-5 3
-6 6
-8 0
-0 0
+7 6
+
+2
+
+7
 output
 Copy
--1
-2
-2
-1
-2
-0
+and 2 5
+
+or 5 6
+
+finish 5
 Note
-Let us demonstrate one of the suboptimal ways of getting a pair
-(3,5)
-:
-Using an operation of the first type with
-k=1
-, the current pair would be equal to
-(1,1)
+In the example, the hidden sequence is
+[1,6,4,2,3,5,4]
 .
-Using an operation of the third type with
-k=8
-, the current pair would be equal to
-(−7,9)
-.
-Using an operation of the second type with
-k=7
-, the current pair would be equal to
-(0,2)
-.
-Using an operation of the first type with
-k=3
-, the current pair would be equal to
-(3,5)
-.
+Below is the interaction in the example.
+Query (contestant's program) Response (interactor) Notes
+and 2 5 2
+a
+2
+=6
+,
+a
+5
+=3
+. Interactor returns bitwise AND of the given numbers.
+or 5 6 7
+a
+5
+=3
+,
+a
+6
+=5
+. Interactor returns bitwise OR of the given numbers.
+finish 5
+5
+is the correct answer. Note that you must find the value and not the index of the kth smallest number.

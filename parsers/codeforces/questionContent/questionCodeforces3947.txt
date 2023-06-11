@@ -1,91 +1,32 @@
-D. Similar Arrays
+J. Two Prefixes
 time limit per test1 second
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Vasya had an array of
-n
-integers, each element of the array was from
-1
-to
-n
-. He chose
-m
-pairs of different positions and wrote them down to a sheet of paper. Then Vasya compared the elements at these positions, and wrote down the results of the comparisons to another sheet of paper. For each pair he wrote either "greater", "less", or "equal".
-After several years, he has found the first sheet of paper, but he couldn't find the second one. Also he doesn't remember the array he had. In particular, he doesn't remember if the array had equal elements. He has told this sad story to his informatics teacher Dr Helen.
-She told him that it could be the case that even if Vasya finds his second sheet, he would still not be able to find out whether the array had two equal elements.
-Now Vasya wants to find two arrays of integers, each of length
-n
-. All elements of the first array must be distinct, and there must be two equal elements in the second array. For each pair of positions Vasya wrote at the first sheet of paper, the result of the comparison must be the same for the corresponding elements of the first array, and the corresponding elements of the second array.
-Help Vasya find two such arrays of length
-n
-, or find out that there are no such arrays for his sets of pairs.
+Misha didn't do his math homework for today's lesson once again. As a punishment, his teacher Dr. Andrew decided to give him a hard, but very useless task.
+Dr. Andrew has written two strings s and t of lowercase English letters at the blackboard. He reminded Misha that prefix of a string is a string formed by removing several (possibly none) of its last characters, and a concatenation of two strings is a string formed by appending the second string to the right of the first string.
+The teacher asked Misha to write down on the blackboard all strings that are the concatenations of some non-empty prefix of s and some non-empty prefix of t. When Misha did it, Dr. Andrew asked him how many distinct strings are there. Misha spent almost the entire lesson doing that and completed the task.
+Now he asks you to write a program that would do this task automatically.
 Input
-The first line of input contains two integers
-n
-,
-m
- — the number of elements in the array and number of comparisons made by Vasya (
-1≤n≤100000
-,
-0≤m≤100000
-).
-Each of the following
-m
-lines contains two integers
-a
-i
-,
-b
-i
- — the positions of the
-i
--th comparison (
-1≤
-a
-i
-,
-b
-i
-≤n
-;
-a
-i
-≠
-b
-i
-). It's guaranteed that any unordered pair is given in the input at most once.
+The first line contains the string s consisting of lowercase English letters. The second line contains the string t consisting of lowercase English letters.
+The lengths of both string do not exceed 105.
 Output
-The first line of output must contain "YES" if there exist two arrays, such that the results of comparisons would be the same, and all numbers in the first one are distinct, and the second one contains two equal numbers. Otherwise it must contain "NO".
-If the arrays exist, the second line must contain the array of distinct integers, the third line must contain the array, that contains at least one pair of equal elements. Elements of the arrays must be integers from
-1
-to
-n
-.
+Output a single integer — the number of distinct strings that are concatenations of some non-empty prefix of s with some non-empty prefix of t.
 Examples
 input
 Copy
-1 0
+aba
+aa
 output
 Copy
-NO
+5
 input
 Copy
-3 1
-1 2
+aaaaa
+aaaa
 output
 Copy
-YES
-1 3 2 
-1 3 1 
-input
-Copy
-4 3
-1 2
-1 3
-2 4
-output
-Copy
-YES
-1 3 4 2 
-1 3 4 1 
+8
+Note
+In the first example, the string s has three non-empty prefixes: {a, ab, aba}. The string t has two non-empty prefixes: {a, aa}. In total, Misha has written five distinct strings: {aa, aaa, aba, abaa, abaaa}. The string abaa has been written twice.
+In the second example, Misha has written eight distinct strings: {aa, aaa, aaaa, aaaaa, aaaaaa, aaaaaaa, aaaaaaaa, aaaaaaaaa}.

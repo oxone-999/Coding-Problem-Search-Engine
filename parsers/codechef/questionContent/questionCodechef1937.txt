@@ -1,36 +1,32 @@
-ChefGame
+Cell Phone Towers 
 Problem
-Everyone knows that ChefLand is the best country in the world and all of its people are the happiest. However, nobody knows their secret of being happy.
-Suraj is an Indian scientist and his goal is to research the life of ChefLandian people. He has already arrived in ChefTown, the capital of ChefLand, and met Chef. He promised to reveal their secret to Suraj if he gets maximal score in a special ChefLandian game. The game has following rules:
-In D-dimensional Euclidean space, N lattice points are given. Every pair of points are not connected initially. The points are not guaranteed to be distinct.
-Let (A1, A2, ..., AD) and (B1, B2, ..., BD) be the coordinates of the points A and B respectively, then the distance between A and B is defined as ( (A1−B1)2 + (A2−B2)2 + ... + (AD−BD)2 )1/2.
-The initial Suraj's score is 1.
-Suraj is allowed to take as many turns as he wants.
-In every turn, Suraj can connect an unconnected pair of two given points, if this new connection does not form a cycle. That is, Suraj cannot connect the pair of points A and B, if there exist points X1, X2, ..., Xk such that A connected to X1, X1 connected to X2, X2 connected to X3,..., and Xk connected to B.
-In every time Suraj connects some points, his score is multiplied by the square of the distance between them.
-Now Suraj wonders what is the maximal score he can get. Write a program that will find this score. Since this number can be huge you should output it modulo 747474747.
+Byteline is currently the largest mobile phone operator in Byteland. They have N cellphone towers at different places in Byteland.
+Byteland can be viewed as a two dimensional plane, with each tower or skyscraper described by a point in that plane. Of course, no two points have the same coordinates.
+Two towers can only communicate with each other if there is no tower nor skyscraper lying on the straight line segment connecting them.
+As the most skillful programmer in the company, Johnny's job is to write a program to help Byteland compute the number of pairs of towers which can communicate with each other.
+And once again, Johnny has asked for your help!
 Input
-The first line of input contains T, denoting the number of test cases. Then T test cases follow.
-The first line of each test case contains two space-separated-integers N and D. The next N lines contain D space-separated integers, denoting the coordinates of the given lattice points.
+The first line contains a number t (about 15) which is the number of test cases. Then t test cases follow. Each test case has the following form.
+The first line contains two numbers N and M (1 ≤ N, M ≤ 1000), the number of towers and skyscrapers in Byteland.
+Each line in the next N lines contains two integers representing the coordinates of the cellphone towers.
+Finally, each line in the next M lines contains two integers representing the coordinates of the skyscrapers.
+All coordinates have absolute values not larger than 10000.
 Output
-For each test case, output the maximal score modulo 747474747.
-Constrains
-1 ≤ T ≤ 6666
-1 ≤ N ≤ 6666
-1 ≤ D ≤ 5
-The absolute value of any integer given in the input does not exceed 100000000 (108).
-The sum of N in one input file does not exceed 6666.
+For each test case, print a single number, describing the number of pairs of towers which can communicate with each other.
 Sample 1:
 Input
 Output
 1
-3 2
-0 0
+5 4
 -1 -1
 1 -1
-8
+0 -2
+-2 -2
+0 0
+-1 -2
+1 0
+-1 1
+0 -1
+6
 Explanation:
-The distance between the first point and the second point is ((0?(?1))2+(0?(?1))2)1/2 = 21/2.
-The distance between the first point and the third point is ((0?1)2+(0?(?1))2)1/2 = 21/2.
-The distance between the second point and the third point is (((?1)?1)2+((?1)?(?1))2)1/2 = 2.
-One of the optimal ways is that Suraj connects the third and the second points, and then connects the first and the second points. The maximum score is 22 * (21/2)2 = 8.
+In the above figure, the blue points represent the cell towers and the red points represent the skyscrapers as in the example input. The 6 segments AE, BE, BC, AC, AD and BD correspond to the 6 pairs of towers that can communicate with each other.

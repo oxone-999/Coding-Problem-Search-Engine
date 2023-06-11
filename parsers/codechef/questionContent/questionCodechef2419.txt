@@ -1,116 +1,137 @@
-Greedy Grid Moves
+Fitness Exercises 
 Problem
-Anya and Becky found an
-N×M grid that contains distinct integers, and decided to play a game on it. The integer present at the intersection of the
-i-th row and
-j-th column is denoted
+Recently, Chef has noticed that he is becoming fatter than ever. It is not surprising, as Chef is eating a lot of the food he is cooking. Therefore, he has been doing exercises for the last
+N days (numbered
+1 through
+N). For some of these days, Chef remembers for how many minutes he exercised. You are given a sequence
 A
-i,j
-.
-They place a token at the top-left corner (cell
-(1,1)), and then take turns moving the token towards the bottom-right corner (cell
-(N,M)), each time moving the token one step right or down. Becky moves first.
-Suppose the token is at position
-(i,j). Then,
-Becky can choose to move the token to either
-(i+1,j) or
-(i,j+1).
-Anya, in her infinite greed wisdom, will always move the token to whichever cell has the larger value. That is,
-She will move the token to cell
-(i+1,j) if
-A
-i+1,j
->A
-i,j+1
-She will move the token to cell
-(i,j+1) if
-A
-i+1,j
-<A
-i,j+1
-Of course, the token must remain inside the grid at all times, so if
-i=N they cannot move it down and if
-j=M they cannot move it right.
-Let
-K be the maximum value the two encounter on their path from
-(1,1) to
-(N,M). Becky would like to rein in Anya a bit, so please help her: if she makes her moves optimally, what is the minimum possible value of
-K?
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains two space-separated integers
-N and
-M — the number of rows and columns of the grid.
-The next
-N lines describe the grid. The
-i-th of these
-N lines contains
-M space-separated integers
-A
-i,1
+1
 ,A
-i,2
+2
 ,…,A
-i,M
-.
-Output Format
-For each test case, output on a new line the minimum possible value of
-K, if Becky chooses her moves optimally.
-Constraints
-1≤T≤3⋅10
-4
-1≤N,M≤5⋅10
-5
-1≤N×M≤5⋅10
-5
-1≤A
-i,j
-≤N⋅M
-All the
+N
+. For each valid
+i, if
 A
-i,j
-within a single testcase will be distinct.
-The sum of
-N×M across all test cases won't exceed
-5⋅10
-5
+i
+≥0, then Chef exercised for
+A
+i
+minutes on the
+i-th day; otherwise, Chef forgot how long he exercised on the
+i-th day and
+A
+i
+=−1. Note that Chef could only have exercised for an integer non-negative number of minutes on each day, including the days he does not remember.
+Chef can also compare how long he exercised on each two consecutive days. You are given a string
+S with length
+N−1. For each valid
+i, the
+i-th character of
+S is one of the following:
+'>' if Chef exercised for strictly more minutes on the
+i-th day than on the
+(i+1)-th day
+'=' if Chef exercised for an equally long time on the
+i-th day and on the
+(i+1)-th day
+'<' if Chef exercised for strictly more minutes on the
+(i+1)-th day than on the
+i-th day
+Chef is doubting his memory, so he wants you to check if the information is consistent, i.e. if there is a way to determine for how many minutes Chef exercised on each day he does not remember such that the string
+S describes the correct comparison operators.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
 .
+The third line contains a single string
+S.
+Output
+For each test case, if the information on the input is inconsistent, print a single line containing the string "NO", otherwise output "YES"
+Constraints
+1≤T≤1,000
+2≤N≤10
+5
+−1≤A
+i
+≤10
+6
+for each valid
+i
+∣S∣=N−1
+S contains only characters '<', '>' and '='
+for each valid
+i, if
+A
+i
+
+=−1 and
+A
+i+1
+
+=−1, then the
+i-th character of
+S is consistent with
+A
+i
+and
+A
+i+1
+the sum of
+N over all test cases does not exceed
+10
+6
 Sample 1:
 Input
 Output
-3
-2 2
-4 1
-2 3
-2 2
-1 4
-2 3
-3 4
-4 2 11 10
-6 7 1 9
-5 12 3 8
-4
-3
-9
+5
+6
+7 5 -1 -1 -1 10
+>>=>>
+6
+7 5 -1 -1 -1 10
+>>=<>
+2
+0 -1
+>
+5
+5 -1 -1 -1 10
+<<<<
+5
+5 -1 -1 -1 8
+<<<<
+NO
+YES
+NO
+YES
+NO
 Explanation:
-Test case
-1: Since
+Example case 1: The number of minutes Chef spent exercising on day
+5 must be bigger than
+10 and smaller than
+5, which is impossible.
+Example case 3: Chef must have exercised for a negative number of minutes on day
+2, which is not allowed.
+Example case 5: The information is inconsistent because Chef only exercises for an integer number of minutes on each day. Since the number of minutes he spent exercising on each day must be increasing, he must have spent at least
+6 minutes on day
+2, at least
+7 minutes on day
+3, at least
+8 on day
+4 and at least
+9 on day
+5, but
 A
-1,1
-=4 is the largest value in the grid, no matter what path is taken the maximum value is going to be
-4.
-Test case
-2: Becky can move the token down in the first move, which forces Anya to move right on hers. This gives the path
-1→2→3 with a maximum of
-3, which is the best possible.
-Test case
-3: The optimal path is
-4→6→7→1→9→8, with a maximum of
-9.
-Note that if Anya had chosen to move down to
-5 when at
-6, she could have forced the maximum to be
-12. However,
-5<7 so she will never choose to do this.
+5
+=8.

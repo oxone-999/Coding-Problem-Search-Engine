@@ -1,148 +1,192 @@
-E. Gregor and the Two Painters
-time limit per test4 seconds
+A. Find The Array
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Two painters, Amin and Benj, are repainting Gregor's living room ceiling! The ceiling can be modeled as an
-n×m
-grid.
-For each
-i
-between
-1
-and
+Let's call an array
+a
+consisting of
 n
-, inclusive, painter Amin applies
-a
+positive (greater than
+0
+) integers beautiful if the following condition is held for every
 i
-layers of paint to the entire
-i
--th row. For each
-j
-between
+from
 1
+to
+n
+: either
+a
+i
+=1
+, or at least one of the numbers
+a
+i
+−1
 and
-m
-, inclusive, painter Benj applies
-b
-j
-layers of paint to the entire
-j
--th column. Therefore, the cell
-(i,j)
-ends up with
 a
 i
-+
-b
-j
-layers of paint.
-Gregor considers the cell
-(i,j)
-to be badly painted if
+−2
+exists in the array as well.
+For example:
+the array
+[5,3,1]
+is beautiful: for
+a
+1
+, the number
+a
+1
+−2=3
+exists in the array; for
+a
+2
+, the number
+a
+2
+−2=1
+exists in the array; for
+a
+3
+, the condition
+a
+3
+=1
+holds;
+the array
+[1,2,2,2,2]
+is beautiful: for
+a
+1
+, the condition
+a
+1
+=1
+holds; for every other number
 a
 i
-+
-b
-j
-≤x
-. Define a badly painted region to be a maximal connected component of badly painted cells, i. e. a connected component of badly painted cells such that all adjacent to the component cells are not badly painted. Two cells are considered adjacent if they share a side.
-Gregor is appalled by the state of the finished ceiling, and wants to know the number of badly painted regions.
+, the number
+a
+i
+−1=1
+exists in the array;
+the array
+[1,4]
+is not beautiful: for
+a
+2
+, neither
+a
+2
+−2=2
+nor
+a
+2
+−1=3
+exists in the array, and
+a
+2
+≠1
+;
+the array
+[2]
+is not beautiful: for
+a
+1
+, neither
+a
+1
+−1=1
+nor
+a
+1
+−2=0
+exists in the array, and
+a
+1
+≠1
+;
+the array
+[2,1,3]
+is beautiful: for
+a
+1
+, the number
+a
+1
+−1=1
+exists in the array; for
+a
+2
+, the condition
+a
+2
+=1
+holds; for
+a
+3
+, the number
+a
+3
+−2=1
+exists in the array.
+You are given a positive integer
+s
+. Find the minimum possible size of a beautiful array with the sum of elements equal to
+s
+.
 Input
-The first line contains three integers
-n
-,
-m
-and
-x
+The first line contains one integer
+t
 (
-1≤n,m≤2⋅
-10
-5
-,
-1≤x≤2⋅
-10
-5
-) — the dimensions of Gregor's ceiling, and the maximum number of paint layers in a badly painted cell.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
+1≤t≤5000
+) — the number of test cases.
+Then
+t
+lines follow, the
 i
-≤2⋅
-10
-5
-), the number of paint layers Amin applies to each row.
-The third line contains
-m
-integers
-b
-1
-,
-b
-2
-,…,
-b
-m
+-th line contains one integer
+s
 (
-1≤
-b
-j
-≤2⋅
-10
-5
-), the number of paint layers Benj applies to each column.
+1≤s≤5000
+) for the
+i
+-th test case.
 Output
-Print a single integer, the number of badly painted regions.
-Examples
+Print
+t
+integers, the
+i
+-th integer should be the answer for the
+i
+-th testcase: the minimum possible size of a beautiful array with the sum of elements equal to
+s
+.
+Example
 input
-Copy
-3 4 11
-9 8 5
-10 6 7 2
-output
-Copy
-2
-input
-Copy
-3 4 12
-9 8 5
-10 6 7 2
-output
-Copy
-1
-input
-Copy
-3 3 2
-1 2 1
-1 2 1
-output
 Copy
 4
-input
-Copy
-5 23 6
-1 4 3 5 2
-2 3 1 6 1 5 5 6 1 3 2 6 2 3 1 6 1 4 1 6 1 5 5
+1
+8
+7
+42
 output
 Copy
-6
+1
+3
+3
+7
 Note
-The diagram below represents the first example. The numbers to the left of each row represent the list
-a
-, and the numbers above each column represent the list
-b
-. The numbers inside each cell represent the number of paint layers in that cell.
-The colored cells correspond to badly painted cells. The red and blue cells respectively form
-2
-badly painted regions.
+Consider the example test:
+in the first test case, the array
+[1]
+meets all conditions;
+in the second test case, the array
+[3,4,1]
+meets all conditions;
+in the third test case, the array
+[1,2,4]
+meets all conditions;
+in the fourth test case, the array
+[1,4,6,8,10,2,11]
+meets all conditions.

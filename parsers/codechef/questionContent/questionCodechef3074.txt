@@ -1,82 +1,194 @@
-Equal Average
+Equal Subsequences
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given a sequence
+Chef has a sequence
+A of
+2⋅N integers containing all natural numbers from
+1 to
+N exactly twice.
+Let a sequence
+B containing
+K elements be a subsequence of
+A. We define a strictly increasing index sequence
+I(B)=[I
+1
+,I
+2
+,…,I
+K
+] such that,
+B can be written as
+[A
+I
+1
+,A
+I
+2
+,…,A
+I
+K
+].
+A pair of subsequences
+(P,Q) is said to be good if all of the following conditions satisfy:
+Both subsequences have the same length. In other words,
+∣P∣=∣Q∣, where
+∣P∣ and
+∣Q∣ denote the lengths of
+P and
+Q respectively;
+The subsequences
+P and
+Q are disjoint. In other words, there are no common elements between
+I(P) and
+I(Q);
+The subsequences are equal. In other words,
+P
+j
+=Q
+j
+for all
+(1≤j≤∣P∣).
+Find the total number of distinct ordered pairs of subsequences
+(P,Q) that are good.
+Two ordered pairs
+(P
+1
+,Q
+1
+) and
+(P
+2
+,Q
+2
+) are considered different iff
+I(P
+1
+)
+
+=I(P
+2
+) or
+I(Q
+1
+)
+
+=I(Q
+2
+).
+Since the answer can be very large, print it modulo
+998244353.
+Input Format
+First line contains
+T − the number of test cases. The description of the test cases is as follows.
+The first line of each test case contains a single integer
+N − the value of
+N.
+The second line of each test case contains
+2⋅N integers
 A
 1
 ,A
 2
 ,…,A
-N
-and an integer
-K. Determine if it is possible to reorder the elements of the sequence
-A into a sequence
-B
-1
-,B
-2
-,…,B
-N
-and choose a real number
-m in such a way that for each contiguous subsequence of
-B with length
-K, the arithmetic average of the elements of this subsequence is
-m. If it is possible, find one such reordered subsequence
-B.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-K.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
+2⋅N
 .
-Output
-For each test case, print a single line containing the string "YES" if it is possible to reorder the elements of
-A in the required way, or "NO" otherwise.
-If it is possible, print a second line containing
-N space-separated integers
-B
-1
-,B
-2
-,…,B
-N
-. If there are multiple solutions, you may print any one.
+Output Format
+For each test case, output a single integer − the total number of distinct ordered pairs of subsequences
+(P,Q) that are good modulo
+998244353.
 Constraints
-1≤T≤1,000
-1≤K≤N≤10
+1≤T≤2⋅10
+5
+1≤N≤2⋅10
 5
 1≤A
 i
-≤10
-6
-the sum of
+≤N
+Sum of
 N over all test cases does not exceed
-10
-6
-Subtasks
-Subtask #1 (40 points):
-N≤1,000
-the sum of
-N over all test cases does not exceed
-10,000
-Subtask #2 (60 points): original constraints
-Example Input
+6⋅10
+5
+.
+Sample 1:
+Input
+Output
+3
+1
+1 1
 2
-5 3
-1 1 2 2 3
-6 2
-1 1 1 1 1 2
-Example Output
-YES
-1 2 3 1 2
-NO
+1 1 2 2
+2
+1 2 1 2
+2
+8
+6
+Explanation:
+Test case
+1: Possible ordered pairs are:
+([A
+1
+],[A
+2
+]),
+([A
+2
+],[A
+1
+]).
+Test case
+2: Possible ordered pairs are:
+([A
+1
+],[A
+2
+]),
+([A
+2
+],[A
+1
+]),
+([A
+3
+],[A
+4
+]),
+([A
+4
+],[A
+3
+]),
+([A
+1
+,A
+3
+],[A
+2
+,A
+4
+]),
+([A
+2
+,A
+4
+],[A
+1
+,A
+3
+]),
+([A
+1
+,A
+4
+],[A
+2
+,A
+3
+]),
+([A
+2
+,A
+3
+],[A
+1
+,A
+4
+]).

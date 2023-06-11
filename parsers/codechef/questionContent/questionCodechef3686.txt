@@ -1,103 +1,54 @@
-Avoid The Landmines
+Pawn Chess
 Problem
-You are given an integer array
-A of size
-N and a positive integer
-M. This array contains a hidden message which can be decoded by the following algorithm:
-int ox[N+1], oy[N+1];
-for(int i = 1; i ≤ N; i++) {
-    ox[i] = A[i] / M;
-    oy[i] = A[i] % M;
-}
-There are
-N landmines on the xy-plane, such that the
-i
-th
-landmine
-(1≤i≤N) is located at
-(ox
-i
-,oy
-i
-).
-Initially, you are at point
-(0,0) and you must go to point
-(X,Y). At each step, you can either move to the right by
-1 unit or move up by
-1 unit.
-Formally, if you are standing at
-(x,y), then you can either move to
-(x+1,y) or to
-(x,y+1).
-A path is called safe if there aren't any landmines on that path. Count the number of safe paths which you can take to reach the destination. As the answer can be quite large, output it modulo
-10
-9
-+7.
-Input Format
-The first line contains
-4 integers
-N,
-M,
-X, and
-Y where
-(X,Y) are the coordinates of your destination on the xy-plane.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-representing the initial array
-A.
-Output Format
-Output, in a single line, the number of safe paths modulo
-10
-9
-+7.
+Read problem statement in Mandarin chinese and Vietnamese.
+After winning the Candidates Tournament, Suzumo is intensively training for his upcoming match against Magus Cartesian.
+In order to improve his calculation skills, Suzumo invented a new game, which he named PawnChess. PawnChess is a two-player game played on a row of
+N cells. Its rules are as follows:
+Initially, some pawns are placed in some cells; each pawn is either black or white. There may be at most one pawn in each cell at any time. For each white pawn, all the pawns that are to the left of this pawn are also white.
+Let's call the players White and Black. Each player may only move pawns of their colour. The players alternate turns; White moves first.
+In White's turn, White must move one pawn one cell to the right (if the pawn was in cell
+i, it is moved to cell
+i+1). Similarly, in Black's turn, Black must move one pawn one cell to the left (from cell
+i to cell
+i−1). It is not allowed to move a pawn outside of the row of cells or to move a pawn to a cell which already contains a pawn with the same colour.
+If a pawn
+P is moved to an empty cell, nothing happens. If it is moved to a cell containing a pawn
+R with the opposite colour, the pawn
+R is captured — removed from the game, and
+P is placed in the cell which previously contained
+R.
+The winner of the game is the player that captures all the pieces of their opponent. Note that as long as there is at least one black and at least one white pawn, each player can make a move.
+Given the initial configuration of the game board, help Suzumo determine the winner of the game. Assume that both players play optimally.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains a single string
+S with length
+N describing the game board. Each character in
+S is '.', 'W' or 'B' denoting an empty cell, a white pawn and a black pawn respectively.
+Output
+For each test case, print a single line containing the string "W" if White wins the game or "B" if Black wins.
 Constraints
-1≤N≤2⋅10
+2≤N≤128
+there is at least one white pawn and at least one black pawn
+all pawns to the left of a white pawn are always white
+the sum of
+N over all test cases is at most
+5⋅10
 5
-1≤M≤10
-6
-0≤X,Y≤10
-6
-1≤A
-i
-≤10
-6
 Sample 1:
 Input
 Output
-3 4 2 3
-5 6 5
 2
+W..B
+WW.B
+W
+B
 Explanation:
-For the given array
-A=[5,6,5], the location of the landmines are given by
-ox=[
-4
-5
-,
-4
-6
-,
-4
-5
-]=[1,1,1] and
-oy=[5%4,6%4,5%4]=[1,2,1]. Thus, landmines are at
-(1,1) and
-(1,2).
-There are
-2 safe paths to reach the destination. The safe paths are highlighted in the figure bellow:
-Sample 2:
-Input
-Output
-2 3 3 3
-4 8
-4
-Explanation:
-Landmines are located at
-(1,1) and
-(2,2).
+Example case 2: One possible sequence of moves is as follows:
+WW.B
+W.WB
+W.B.
+.WB.
+.B..

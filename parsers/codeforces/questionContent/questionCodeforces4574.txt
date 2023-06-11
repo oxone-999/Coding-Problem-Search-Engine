@@ -1,26 +1,34 @@
-F. Runner's Problem
-time limit per test4 seconds
+G. Castle Defense
+time limit per test1.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are running through a rectangular field. This field can be represented as a matrix with 3 rows and m columns. (i, j) denotes a cell belonging to i-th row and j-th column.
-You start in (2, 1) and have to end your path in (2, m). From the cell (i, j) you may advance to:
-(i - 1, j + 1) — only if i > 1,
-(i, j + 1), or
-(i + 1, j + 1) — only if i < 3.
-However, there are n obstacles blocking your path. k-th obstacle is denoted by three integers ak, lk and rk, and it forbids entering any cell (ak, j) such that lk ≤ j ≤ rk.
-You have to calculate the number of different paths from (2, 1) to (2, m), and print it modulo 109 + 7.
+Today you are going to lead a group of elven archers to defend the castle that is attacked by an army of angry orcs. Three sides of the castle are protected by impassable mountains and the remaining side is occupied by a long wall that is split into n sections. At this moment there are exactly ai archers located at the i-th section of this wall. You know that archer who stands at section i can shoot orcs that attack section located at distance not exceeding r, that is all such sections j that |i - j| ≤ r. In particular, r = 0 means that archers are only capable of shooting at orcs who attack section i.
+Denote as defense level of section i the total number of archers who can shoot at the orcs attacking this section. Reliability of the defense plan is the minimum value of defense level of individual wall section.
+There is a little time left till the attack so you can't redistribute archers that are already located at the wall. However, there is a reserve of k archers that you can distribute among wall sections in arbitrary way. You would like to achieve maximum possible reliability of the defence plan.
 Input
-The first line contains two integers n and m (1 ≤ n ≤ 104, 3 ≤ m ≤ 1018) — the number of obstacles and the number of columns in the matrix, respectively.
-Then n lines follow, each containing three integers ak, lk and rk (1 ≤ ak ≤ 3, 2 ≤ lk ≤ rk ≤ m - 1) denoting an obstacle blocking every cell (ak, j) such that lk ≤ j ≤ rk. Some cells may be blocked by multiple obstacles.
+The first line of the input contains three integers n, r and k (1 ≤ n ≤ 500 000, 0 ≤ r ≤ n, 0 ≤ k ≤ 1018) — the number of sections of the wall, the maximum distance to other section archers can still shoot and the number of archers yet to be distributed along the wall. The second line contains n integers a1, a2, ..., an (0 ≤ ai ≤ 109) — the current number of archers at each section.
 Output
-Print the number of different paths from (2, 1) to (2, m), taken modulo 109 + 7. If it is impossible to get from (2, 1) to (2, m), then the number of paths is 0.
-Example
+Print one integer — the maximum possible value of defense plan reliability, i.e. the maximum possible value of minimum defense level if we distribute k additional archers optimally.
+Examples
 input
 Copy
-2 5
-1 3 4
-2 2 3
+5 0 6
+5 4 3 4 9
 output
 Copy
-2
+5
+input
+Copy
+4 2 0
+1 2 3 4
+output
+Copy
+6
+input
+Copy
+5 1 1
+2 1 2 1 2
+output
+Copy
+3

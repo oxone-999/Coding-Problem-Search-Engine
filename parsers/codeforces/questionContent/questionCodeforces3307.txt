@@ -1,154 +1,125 @@
-I. Unusual Graph
-time limit per test5 seconds
+A. Chips Moving
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ivan on his birthday was presented with array of non-negative integers
-a
-1
-,
-a
-2
-,…,
-a
+You are given
 n
-. He immediately noted that all
-a
+chips on a number line. The
 i
-satisfy the condition
-0≤
-a
+-th chip is placed at the integer coordinate
+x
 i
-≤15
-.
-Ivan likes graph theory very much, so he decided to transform his sequence to the graph.
-There will be
-n
-vertices in his graph, and vertices
-u
-and
-v
-will present in the graph if and only if binary notations of integers
-a
-u
-and
-a
-v
-are differ in exactly one bit (in other words,
-a
-u
-⊕
-a
-v
-=
+. Some chips can have equal coordinates.
+You can perform each of the two following types of moves any (possibly, zero) number of times on any chip:
+Move the chip
+i
+by
 2
-k
-for some integer
-k≥0
-. Where
-⊕
-is Bitwise XOR).
-A terrible thing happened in a couple of days, Ivan forgot his sequence
-a
-, and all that he remembers is constructed graph!
-Can you help him, and find any sequence
-a
+to the left or
+2
+to the right for free (i.e. replace the current coordinate
+x
+i
+with
+x
+i
+−2
+or with
+x
+i
++2
+);
+move the chip
+i
+by
 1
-,
-a
-2
-,…,
-a
+to the left or
+1
+to the right and pay one coin for this move (i.e. replace the current coordinate
+x
+i
+with
+x
+i
+−1
+or with
+x
+i
++1
+).
+Note that it's allowed to move chips to any integer coordinate, including negative and zero.
+Your task is to find the minimum total number of coins required to move all
 n
-, such that graph constructed by the same rules that Ivan used will be the same as his graph?
+chips to the same coordinate (i.e. all
+x
+i
+should be equal after some sequence of moves).
 Input
-The first line of input contain two integers
-n,m
+The first line of the input contains one integer
+n
 (
-1≤n≤500,0≤m≤
-n(n−1)
-2
-): number of vertices and edges in Ivan's graph.
-Next
-m
-lines contain the description of edges:
-i
--th line contain two integers
-u
-i
+1≤n≤100
+) — the number of chips.
+The second line of the input contains
+n
+integers
+x
+1
 ,
-v
-i
+x
+2
+,…,
+x
+n
 (
 1≤
-u
+x
 i
-,
-v
+≤
+10
+9
+), where
+x
 i
-≤n;
-u
+is the coordinate of the
 i
-≠
-v
-i
-), describing undirected edge connecting vertices
-u
-i
-and
-v
-i
-in the graph.
-It is guaranteed that there are no multiple edges in the graph. It is guaranteed that there exists some solution for the given graph.
+-th chip.
 Output
-Output
+Print one integer — the minimum total number of coins required to move all
 n
-space-separated integers,
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤15
-).
-Printed numbers should satisfy the constraints: edge between vertices
-u
-and
-v
-present in the graph if and only if
-a
-u
-⊕
-a
-v
-=
-2
-k
-for some integer
-k≥0
-.
-It is guaranteed that there exists some solution for the given graph. If there are multiple possible solutions, you can output any.
+chips to the same coordinate.
 Examples
 input
 Copy
-4 4
-1 2
-2 3
-3 4
-4 1
+3
+1 2 3
 output
 Copy
-0 1 0 1 
+1
 input
 Copy
-3 0
+5
+2 2 2 3 3
 output
 Copy
-0 0 0 
+2
+Note
+In the first example you need to move the first chip by
+2
+to the right and the second chip by
+1
+to the right or move the third chip by
+2
+to the left and the second chip by
+1
+to the left so the answer is
+1
+.
+In the second example you need to move two chips with coordinate
+3
+by
+1
+to the left so the answer is
+2
+.

@@ -1,132 +1,174 @@
-F. Dasha and Nightmares
-time limit per test4 seconds
-memory limit per test512 megabytes
+E2. Unforgivable Curse (hard version)
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Dasha, an excellent student, is studying at the best mathematical lyceum in the country. Recently, a mysterious stranger brought
-n
-words consisting of small latin letters
-s
-1
-,
-s
-2
-,…,
-s
-n
-to the lyceum. Since that day, Dasha has been tormented by nightmares.
-Consider some pair of integers
-⟨i,j⟩
-(
-1≤i≤j≤n
-). A nightmare is a string for which it is true:
-It is obtained by concatenation
-s
-i
-s
-j
-;
-Its length is odd;
-The number of different letters in it is exactly
-25
-;
-The number of occurrences of each letter that is in the word is odd.
-For example, if
-s
-i
-=
-"abcdefg" and
-s
-j
-=
-"ijklmnopqrstuvwxyz", the pair
-⟨i,j⟩
-creates a nightmare.
-Dasha will stop having nightmares if she counts their number. There are too many nightmares, so Dasha needs your help. Count the number of different nightmares.
-Nightmares are called different if the corresponding pairs
-⟨i,j⟩
-are different. The pairs
-⟨
-i
-1
-,
-j
-1
-⟩
-and
-⟨
-i
-2
-,
-j
-2
-⟩
-are called different if
-i
-1
-≠
-i
-2
-or
-j
-1
-≠
-j
-2
+This is a complex version of the problem. This version has no additional restrictions on the number
+k
 .
-Input
-The first line contains a single integer
+The chief wizard of the Wizengamot once caught the evil wizard Drahyrt, but the evil wizard has returned and wants revenge on the chief wizard. So he stole spell
+s
+from his student Harry.
+The spell — is a
 n
+-length string of lowercase Latin letters.
+Drahyrt wants to replace spell with an unforgivable curse — string
+t
+.
+Dragirt, using ancient magic, can swap letters at a distance
+k
+or
+k+1
+in spell as many times as he wants. In other words, Drahyrt can change letters in positions
+i
+and
+j
+in spell
+s
+if
+|i−j|=k
+or
+|i−j|=k+1
+.
+For example, if
+k=3,s=
+"talant" and
+t=
+"atltna", Drahyrt can act as follows:
+swap the letters at positions
+1
+and
+4
+to get spell "aaltnt".
+swap the letters at positions
+2
+and
+6
+to get spell "atltna".
+You are given spells
+s
+and
+t
+. Can Drahyrt change spell
+s
+to
+t
+?
+Input
+The first line of input gives a single integer
+T
+(
+1≤T≤
+10
+4
+) — the number of test cases in the test.
+Descriptions of the test cases are follow.
+The first line contains two integers
+n,k
 (
 1≤n≤2⋅
 10
 5
-) — the number of words.
-The following
-n
-lines contain the words
-s
-1
 ,
-s
-2
-,…,
-s
-n
-, consisting of small latin letters.
-It is guaranteed that the total length of words does not exceed
-5⋅
+1≤k≤2⋅
 10
-6
+5
+) — the length spells and the number
+k
+such that Drahyrt can change letters in a spell at a distance
+k
+or
+k+1
 .
+The second line gives spell
+s
+ — a string of length
+n
+consisting of lowercase Latin letters.
+The third line gives spell
+t
+ — a string of length
+n
+consisting of lowercase Latin letters.
+It is guaranteed that the sum of
+n
+values over all test cases does not exceed
+2⋅
+10
+5
+. Note that there is no limit on the sum of
+k
+values over all test cases.
 Output
-Print a single integer — the number of different nightmares.
+For each test case, output on a separate line "YES" if Drahyrt can change spell
+s
+to
+t
+and "NO" otherwise.
+You can output the answer in any case (for example, lines "yEs", "yes", "Yes" and "YES" will be recognized as positive answer).
 Example
 input
 Copy
-10
-ftl
-abcdefghijklmnopqrstuvwxy
-abcdeffghijkllmnopqrsttuvwxy
-ffftl
-aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy
-thedevid
-bcdefghhiiiijklmnopqrsuwxyz
-gorillasilverback
-abcdefg
-ijklmnopqrstuvwxyz
+7
+6 3
+talant
+atltna
+7 1
+abacaba
+aaaabbc
+12 6
+abracadabraa
+avadakedavra
+5 3
+accio
+cicao
+5 4
+lumos
+molus
+4 3
+uwjt
+twju
+4 3
+kvpx
+vxpk
 output
 Copy
-5
+YES
+YES
+NO
+YES
+NO
+YES
+NO
 Note
-In the first test, nightmares are created by pairs
-⟨1,3⟩
-,
-⟨2,5⟩
-,
-⟨3,4⟩
-,
-⟨6,7⟩
-,
-⟨9,10⟩
+The first case is explained in the condition.
+In the second case, we can swap adjacent letters, so we can sort the string using bubble sorting, for example.
+In the third case, we can show that from the string
+s
+we cannot get the string
+t
+by swapping letters at a distance of
+6
+or
+7
 .
+In the fourth case, for example, the following sequence of transformations is appropriate:
+"accio"
+→
+"aocic"
+→
+"cocia"
+→
+"iocca"
+→
+"aocci"
+→
+"aicco"
+→
+"cicao"
+In the fifth case, we can show that it is impossible to get the string
+s
+from the string
+t
+.
+In the sixth example, it is enough to swap the two outermost letters.

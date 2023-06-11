@@ -1,126 +1,95 @@
-E. Planar Perimeter
+B1. Character Swap (Easy Version)
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ujan has finally cleaned up his house and now wants to decorate the interior. He decided to place a beautiful carpet that would really tie the guest room together.
-He is interested in carpets that are made up of polygonal patches such that each side of a patch is either a side of another (different) patch, or is an exterior side of the whole carpet. In other words, the carpet can be represented as a planar graph, where each patch corresponds to a face of the graph, each face is a simple polygon. The perimeter of the carpet is the number of the exterior sides.
-Ujan considers a carpet beautiful if it consists of
-f
-patches, where the
-i
--th patch has exactly
-a
-i
-sides, and the perimeter is the smallest possible. Find an example of such a carpet, so that Ujan can order it!
-Input
-The first line of input contains a single integer
-f
-(
-1≤f≤
-10
-5
-), the number of patches in the carpet.
-The next line contains
-f
-integers
-a
-1
-,…,
-a
-f
-(
-3≤
-a
-i
-≤3⋅
-10
-5
-), the number of sides of the patches. The total number of the sides of the patches
-a
-1
-+…+
-a
-f
-does not exceed
-3⋅
-10
-5
-.
-Output
-Output the description of the carpet as a graph.
-First, output a single integer
-n
-(
-3≤n≤3⋅
-10
-5
-), the total number of vertices in your graph (the vertices must be numbered from
-1
-to
-n
-).
-Then output
-f
-lines containing the description of the faces. The
-i
--th line should describe the
-i
--th face and contain
-a
-i
-distinct integers
-v
-i,1
-,…,
-v
-i,
-a
-i
-(
-1≤
-v
-i,j
-≤n
-), which means that the vertices
-v
-i,j
+This problem is different from the hard version. In this version Ujan makes exactly one exchange. You can hack this problem only if you solve both problems.
+After struggling and failing many times, Ujan decided to try to clean up his house again. He decided to get his strings in order first.
+Ujan has two distinct strings
+s
 and
-v
-i,(jmod
-a
+t
+of length
+n
+consisting of only of lowercase English characters. He wants to make them equal. Since Ujan is lazy, he will perform the following operation exactly once: he takes two positions
 i
-)+1
-are connected by an edge for any
-1≤j≤
-a
+and
+j
+(
+1≤i,j≤n
+, the values
 i
+and
+j
+can be equal or different), and swaps the characters
+s
+i
+and
+t
+j
+. Can he succeed?
+Note that he has to perform this operation exactly once. He has to perform this operation.
+Input
+The first line contains a single integer
+k
+(
+1≤k≤10
+), the number of test cases.
+For each of the test cases, the first line contains a single integer
+n
+(
+2≤n≤
+10
+4
+), the length of the strings
+s
+and
+t
 .
-The graph should be planar and satisfy the restrictions described in the problem statement. Its perimeter should be the smallest possible. There should be no double edges or self-loops in the graph. The graph should be connected. Note that a solution always exists; if there are multiple solutions, output any of them.
-Examples
+Each of the next two lines contains the strings
+s
+and
+t
+, each having length exactly
+n
+. The strings consist only of lowercase English letters. It is guaranteed that strings are different.
+Output
+For each test case, output "Yes" if Ujan can make the two strings equal and "No" otherwise.
+You can print each letter in any case (upper or lower).
+Example
 input
 Copy
+4
+5
+souse
+houhe
+3
+cat
+dog
 2
-3 3
-output
-Copy
-4
-2 1 4 
-1 2 3 
-input
-Copy
+aa
+az
 3
-5 3 5
+abc
+bca
 output
 Copy
-6
-1 2 3 4 5
-4 5 6
-1 3 4 6 5
+Yes
+No
+No
+No
 Note
-In the first sample, the two triangular faces are connected by a single edge, which results in the minimum perimeter
+In the first test case, Ujan can swap characters
+s
+1
+and
+t
 4
-.
-The figure shows one possible configuration for the second sample. The minimum perimeter in this case is
-3
+, obtaining the word "house".
+In the second test case, it is not possible to make the strings equal using exactly one swap of
+s
+i
+and
+t
+j
 .

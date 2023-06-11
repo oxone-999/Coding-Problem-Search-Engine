@@ -1,86 +1,42 @@
-C. Division by Two and Permutation
+E. Masha-forgetful
 time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-consisting of
-n
-positive integers. You can perform operations on it.
-In one operation you can replace any element of the array
-a
-i
-with
-⌊
-a
-i
-2
-⌋
-, that is, by an integer part of dividing
-a
-i
-by
-2
-(rounding down).
-See if you can apply the operation some number of times (possible
+Masha meets a new friend and learns his phone number —
+s
+. She wants to remember it as soon as possible. The phone number — is a string of length
+m
+that consists of digits from
 0
-) to make the array
-a
-become a permutation of numbers from
-1
 to
+9
+. The phone number may start with 0.
+Masha already knows
 n
- —that is, so that it contains all numbers from
-1
-to
-n
-, each exactly once.
-For example, if
-a=[1,8,25,2]
-,
+phone numbers (all numbers have the same length
+m
+). It will be easier for her to remember a new number if the
+s
+is represented as segments of numbers she already knows. Each such segment must be of length at least
+2
+, otherwise there will be too many segments and Masha will get confused.
+For example, Masha needs to remember the number:
+s=
+'12345678' and she already knows
 n=4
-, then the answer is yes. You could do the following:
-Replace
-8
-with
-⌊
-8
-2
-⌋=4
-, then
-a=[1,4,25,2]
+numbers: '12340219', '20215601', '56782022', '12300678'. You can represent
+s
+as a
+3
+segment: '1234' of number one, '56' of number two, and '78' of number three. There are other ways to represent
+s
 .
-Replace
-25
-with
-⌊
-25
+Masha asks you for help, she asks you to break the string
+s
+into segments of length
 2
-⌋=12
-, then
-a=[1,4,12,2]
-.
-Replace
-12
-with
-⌊
-12
-2
-⌋=6
-, then
-a=[1,4,6,2]
-.
-Replace
-6
-with
-⌊
-6
-2
-⌋=3
-, then
-a=[1,4,3,2]
-.
+or more of the numbers she already knows. If there are several possible answers, print any of them.
 Input
 The first line of input data contains an integer
 t
@@ -89,62 +45,113 @@ t
 10
 4
 ) —the number of test cases.
-Each test case contains exactly two lines. The first one contains an integer
+Before each test case there is a blank line. Then there is a line containing integers
 n
+and
+m
 (
-1≤n≤50
-), the second one contains integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
+1≤n,m≤
 10
-9
-).
-Output
-For each test case, output on a separate line:
-YES if you can make the array
-a
-become a permutation of numbers from
-1
-to
+3
+) —the number of phone numbers that Masha knows and the number of digits in each phone number. Then follow
 n
-,
-NO otherwise.
-You can output YES and NO in any case (for example, strings yEs, yes, Yes and YES will be recognized as a positive response).
+line,
+i
+-th of which describes the
+i
+-th number that Masha knows. The next line contains the phone number of her new friend
+s
+.
+Among the given
+n+1
+phones, there may be duplicates (identical phones).
+It is guaranteed that the sum of
+n⋅m
+(
+n
+multiplied by
+m
+) values over all input test cases does not exceed
+10
+6
+.
+Output
+You need to print the answers to
+t
+test cases. The first line of the answer should contain one number
+k
+, corresponding to the number of segments into which you split the phone number
+s
+. Print -1 if you cannot get such a split.
+If the answer is yes, then follow
+k
+lines containing triples of numbers
+l,r,i
+. Such triplets mean that the next
+r−l+1
+digits of number
+s
+are equal to a segment (substring) with boundaries
+[l,r]
+of the phone under number
+i
+. Both the phones and the digits in them are numbered from
+1
+. Note that
+r−l+1≥2
+for all
+k
+lines.
 Example
 input
 Copy
-6
-4
-1 8 25 2
-2
-1 1
-9
-9 8 3 4 2 7 1 5 6
-3
-8 2 1
-4
-24 7 16 7
 5
-22 6 22 4 22
+
+4 8
+12340219
+20215601
+56782022
+12300678
+12345678
+
+2 3
+134
+126
+123
+
+1 4
+1210
+1221
+
+4 3
+251
+064
+859
+957
+054
+
+4 7
+7968636
+9486033
+4614224
+5454197
+9482268
 output
 Copy
-YES
-NO
-YES
-NO
-NO
-YES
+3
+1 4 1
+5 6 2
+3 4 3
+-1
+2
+1 2 1
+2 3 1
+-1
+3
+1 3 2
+5 6 3
+3 4 1
 Note
-The first test case is explained in the text of the problem statement.
-In the second test case, it is not possible to get a permutation.
+The example from the statement.
+In the second case, it is impossible to represent by segments of known numbers of length 2 or more.
+In the third case, you can get the segments '12' and '21' from the first phone number.

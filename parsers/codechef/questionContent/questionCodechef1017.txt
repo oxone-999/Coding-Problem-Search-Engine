@@ -1,18 +1,88 @@
-Stone
+Gcd of Subarrays
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Roman has no idea, why this problem is called Stone. He also has no idea on how to solve the followong problem: given array of N integers A and a number K. During a turn the maximal value over all Ai is chosen, let's call it MAX. Then Ai = MAX - Ai is done for every 1 <= i <= N. Help Roman to find out how will the array look like after K turns.
-Input
-The numbers N and K are given in the first line of an input. Then N integers are given in the second line which denote the array A.
-Output
-Output N numbers on a single line. It should be the array A after K turns.
+You are given positive integers
+N and
+K.
+You have to construct an array
+A of length
+N such that :
+1≤A
+i
+≤10
+18
+∑
+i=1
+N
+∑
+j=i
+N
+F(i,j)=K, where
+F(i,j) denotes the gcd of all elements of the subarray
+A[i,j].
+If multiple such arrays exist, print any.
+Report
+−1 if no such array exists.
+Note that
+A[l,r] denotes the subarray
+[A
+l
+,A
+l+1
+,…,A
+r−1
+,A
+r
+].
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of single line of input.
+The only line of each test case contains two space-separated integers
+N and
+K — the number of elements and required sum.
+Output Format
+For each test case, output on a new line
+N space-separated integers, denoting array
+A.
+Report
+−1 if no such array exists.
 Constraints
-1 <= N <= 105
-0 <= K <= 109
-Ai does not exceed 2 * 109 by it's absolute value.
+1≤T≤100
+1≤N≤100
+1≤K≤10
+18
+The sum of
+N over all test cases won't exceed
+1000.
 Sample 1:
 Input
 Output
-4 1
-5 -1 7 0
-2 8 0 7
+3
+1 5
+2 4
+3 1
+5
+1 2
+-1
+Explanation:
+Test case
+1: The only possible array of size
+1 such that the sum of gcd of all subarrays is
+5 is
+A=[5].
+Test case
+2: Consider an array of size
+2 as
+A=[1,2]. The subarrays of the array are:
+[1]: The gcd of this subarray is
+1.
+[1,2]: The gcd of this subarray is
+gcd(1,2)=1.
+[2]: The gcd of this subarray is
+2.
+The sum of gcd of all subarrays is
+1+1+2=4.
+Test case
+3: It can be proven that there exists no subarray of size
+3 such that the sum of gcd of all subarrays of the array is
+1.

@@ -1,74 +1,115 @@
-F. Permutation Counting
-time limit per test4 seconds
-memory limit per test512 megabytes
+B. I love AAAB
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Calculate the number of permutations
-p
-of size
-n
-with exactly
-k
-inversions (pairs of indices
-(i,j)
-such that
-i<j
-and
-p
-i
->
-p
-j
-) and exactly
-x
-indices
-i
-such that
-p
-i
->
-p
-i+1
+Let's call a string good if its length is at least
+2
+and all of its characters are
+A
+except for the last character which is
+B
+. The good strings are
+AB,AAB,AAAB,…
+. Note that
+B
+is not a good string.
+You are given an initially empty string
+s
+1
 .
-Yep, that's the whole problem. Good luck!
+You can perform the following operation any number of times:
+Choose any position of
+s
+1
+and insert some good string in that position.
+Given a string
+s
+2
+, can we turn
+s
+1
+into
+s
+2
+after some number of operations?
 Input
-The first line contains one integer
+Each test contains multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤3⋅
+1≤t≤
 10
 4
-) — the number of test cases.
-Each test case consists of one line which contains three integers
-n
-,
-k
-and
-x
+) — the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single string
+s
+2
 (
-1≤n≤998244352
-;
-1≤k≤11
-;
-1≤x≤11
+1≤|
+s
+2
+|≤2⋅
+10
+5
 ).
-Output
-For each test case, print one integer — the answer to the problem, taken modulo
-998244353
+It is guaranteed that
+s
+2
+consists of only the characters
+A
+and
+B
 .
+It is guaranteed that the sum of
+|
+s
+2
+|
+over all test cases does not exceed
+2⋅
+10
+5
+.
+Output
+For each test case, print "YES" (without quotes) if we can turn
+s
+1
+into
+s
+2
+after some number of operations, and "NO" (without quotes) otherwise.
+You can output "YES" and "NO" in any case (for example, strings "yEs", "yes" and "Yes" will be recognized as a positive response).
 Example
 input
 Copy
-5
-10 6 4
-7 3 1
-163316 11 7
-136373 11 1
-325902 11 11
+4
+AABAB
+ABB
+AAAAAAAAB
+A
 output
 Copy
-465
-12
-986128624
-7636394
-57118194
+YES
+NO
+YES
+NO
+Note
+In the first test case, we transform
+s
+1
+as such:
+∅→AAB→AABAB
+.
+In the third test case, we transform
+s
+1
+as such:
+∅→AAAAAAAAB
+.
+In the second and fourth test case, it can be shown that it is impossible to turn
+s
+1
+into
+s
+2
+.

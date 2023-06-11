@@ -1,75 +1,122 @@
-G. Shortest path
-time limit per test1 second
+I. Desert
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given
+You are given an undirected graph of
 N
-points on an infinite plane with the Cartesian coordinate system on it.
-N−1
-points lay on one line, and one point isn't on that line. You are on point
-K
-at the start, and the goal is to visit every point. You can move between any two points in a straight line, and you can revisit points. What is the minimum length of the path?
+nodes and
+M
+edges,
+E
+1
+,
+E
+2
+,…
+E
+M
+.
+A connected graph is a cactus if each of it's edges belogs to at most one simple cycle. A graph is a desert if each of it's connected components is a cactus.
+Find the number of pairs
+(L,R)
+, (
+1≤L≤R≤M
+) such that, if we delete all the edges except for
+E
+L
+,
+E
+L+1
+,…
+E
+R
+, the graph is a desert.
 Input
-The first line contains two integers:
+The first line contains two integers
 N
+and
+M
 (
-3≤N≤2∗
+2≤N≤2.5×
 10
 5
-) - the number of points, and
-K
-(
-1≤K≤N
-) - the index of the starting point.
-Each of the next
-N
-lines contain two integers,
-A
+,
+1≤M≤5×
+10
+5
+). Each of the next
+M
+lines contains two integers. The
+i
+-th line describes the
+i
+-th edge. It contains integers
+U
+i
+and
+V
+i
+, the nodes connected by the
+i
+-th edge (
+E
+i
+=(
+U
 i
 ,
-B
+V
 i
-(
-−
-10
-6
-≤
-A
+)
+). It is guaranteed that
+1≤
+U
 i
 ,
-B
+V
 i
-≤
-10
-6
-) - coordinates of the
-i−th
-point.
+≤N
+and
+U
+i
+≠
+V
+i
+.
 Output
-The output contains one number - the shortest path to visit all given points starting from point
-K
-. The absolute difference between your solution and the main solution shouldn't exceed
-10
-−
-6
-;
-Example
+The output contains one integer number – the answer.
+Examples
 input
 Copy
-5 2
-0 0
--1 1
-2 -2
-0 1
--2 2
+5 6
+1 2
+2 3
+3 4
+4 5
+5 1
+2 4
 output
 Copy
-7.478709
+20
+input
+Copy
+2 3
+1 2
+1 2
+1 2
+output
+Copy
+5
 Note
-The shortest path consists of these moves:
-2 -> 5
-5 -> 4
-4 -> 1
-1 -> 3
-There isn't any shorter path possible.
+In the second example: Graphs for pairs
+(1,1)
+,
+(2,2)
+and
+(3,3)
+are deserts because they don't have any cycles. Graphs for pairs
+(1,2)
+and
+(2,3)
+have one cycle of length 2 so they are deserts.

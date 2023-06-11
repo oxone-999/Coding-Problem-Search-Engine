@@ -1,128 +1,233 @@
-C. Xenon's Attack on the Gangs
-time limit per test3 seconds
-memory limit per test512 megabytes
+F. Nora's Toy Boxes
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-INSPION FullBand Master - INSPION
-INSPION - IOLITE-SUNSTONE
-On another floor of the A.R.C. Markland-N, the young man Simon "Xenon" Jackson, takes a break after finishing his project early (as always). Having a lot of free time, he decides to put on his legendary hacker "X" instinct and fight against the gangs of the cyber world.
-His target is a network of
+SIHanatsuka - EMber
+SIHanatsuka - ATONEMENT
+Back in time, the seven-year-old Nora used to play lots of games with her creation ROBO_Head-02, both to have fun and enhance his abilities.
+One day, Nora's adoptive father, Phoenix Wyle, brought Nora
 n
-small gangs. This network contains exactly
-n−1
-direct links, each of them connecting two gangs together. The links are placed in such a way that every pair of gangs is connected through a sequence of direct links.
-By mining data, Xenon figured out that the gangs used a form of cross-encryption to avoid being busted: every link was assigned an integer from
-0
-to
-n−2
-such that all assigned integers are distinct and every integer was assigned to some link. If an intruder tries to access the encrypted data, they will have to surpass
-S
-password layers, with
-S
-being defined by the following formula:
-S=
-∑
-1≤u<v≤n
-mex(u,v)
-S
-∑
-(
-)
-Here,
-mex(u,v)
-denotes the smallest non-negative integer that does not appear on any link on the unique simple path from gang
-u
-to gang
-v
+boxes of toys. Before unpacking, Nora decided to make a fun game for ROBO.
+She labelled all
+n
+boxes with
+n
+distinct integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+and asked ROBO to do the following action several (possibly zero) times:
+Pick three distinct indices
+i
+,
+j
+and
+k
+, such that
+a
+i
+∣
+a
+j
+and
+a
+i
+∣
+a
+k
+. In other words,
+a
+i
+divides both
+a
+j
+and
+a
+k
+, that is
+a
+j
+mod
+a
+i
+=0
+,
+a
+k
+mod
+a
+i
+=0
 .
-Xenon doesn't know the way the integers are assigned, but it's not a problem. He decides to let his AI's instances try all the passwords on his behalf, but before that, he needs to know the maximum possible value of
-S
-, so that the AIs can be deployed efficiently.
-Now, Xenon is out to write the AI scripts, and he is expected to finish them in two hours. Can you find the maximum possible
-S
-before he returns?
+After choosing, Nora will give the
+k
+-th box to ROBO, and he will place it on top of the box pile at his side. Initially, the pile is empty.
+After doing so, the box
+k
+becomes unavailable for any further actions.
+Being amused after nine different tries of the game, Nora asked ROBO to calculate the number of possible different piles having the largest amount of boxes in them. Two piles are considered different if there exists a position where those two piles have different boxes.
+Since ROBO was still in his infant stages, and Nora was still too young to concentrate for a long time, both fell asleep before finding the final answer. Can you help them?
+As the number of such piles can be very large, you should print the answer modulo
+10
+9
++7
+.
 Input
 The first line contains an integer
 n
 (
-2≤n≤3000
-), the number of gangs in the network.
-Each of the next
-n−1
-lines contains integers
-u
-i
-and
-v
-i
+3≤n≤60
+), denoting the number of boxes.
+The second line contains
+n
+distinct integers
+a
+1
+,
+a
+2
+,…,
+a
+n
 (
 1≤
-u
+a
 i
-,
-v
+≤60
+), where
+a
 i
-≤n
-;
-u
+is the label of the
 i
-≠
-v
-i
-), indicating there's a direct link between gangs
-u
-i
-and
-v
-i
-.
-It's guaranteed that links are placed in such a way that each pair of gangs will be connected by exactly one simple path.
+-th box.
 Output
-Print the maximum possible value of
-S
- — the number of password layers in the gangs' network.
+Print the number of distinct piles having the maximum number of boxes that ROBO_Head can have, modulo
+10
+9
++7
+.
 Examples
 input
 Copy
 3
-1 2
-2 3
+2 6 8
 output
 Copy
-3
+2
 input
 Copy
 5
-1 2
-1 3
-1 4
-3 5
+2 3 4 9 12
 output
 Copy
-10
+4
+input
+Copy
+4
+5 7 2 9
+output
+Copy
+1
 Note
-In the first example, one can achieve the maximum
-S
-with the following assignment:
-With this assignment,
-mex(1,2)=0
-,
-mex(1,3)=2
-and
-mex(2,3)=1
-. Therefore,
-S=0+2+1=3
-.
-In the second example, one can achieve the maximum
-S
-with the following assignment:
-With this assignment, all non-zero mex value are listed below:
-mex(1,3)=1
-mex(1,5)=2
-mex(2,3)=1
-mex(2,5)=2
-mex(3,4)=1
-mex(4,5)=3
-Therefore,
-S=1+2+1+2+1+3=10
-.
+Let's illustrate the box pile as a sequence
+b
+, with the pile's bottommost box being at the leftmost position.
+In the first example, there are
+2
+distinct piles possible:
+b=[6]
+(
+[2,6,8]
+−
+→
+−
+−
+(1,3,2)
+[2,8]
+)
+b=[8]
+(
+[2,6,8]
+−
+→
+−
+−
+(1,2,3)
+[2,6]
+)
+In the second example, there are
+4
+distinct piles possible:
+b=[9,12]
+(
+[2,3,4,9,12]
+−
+→
+−
+−
+(2,5,4)
+[2,3,4,12]
+−
+→
+−
+−
+(1,3,4)
+[2,3,4]
+)
+b=[4,12]
+(
+[2,3,4,9,12]
+−
+→
+−
+−
+(1,5,3)
+[2,3,9,12]
+−
+→
+−
+−
+(2,3,4)
+[2,3,9]
+)
+b=[4,9]
+(
+[2,3,4,9,12]
+−
+→
+−
+−
+(1,5,3)
+[2,3,9,12]
+−
+→
+−
+−
+(2,4,3)
+[2,3,12]
+)
+b=[9,4]
+(
+[2,3,4,9,12]
+−
+→
+−
+−
+(2,5,4)
+[2,3,4,12]
+−
+→
+−
+−
+(1,4,3)
+[2,3,12]
+)
+In the third sequence, ROBO can do nothing at all. Therefore, there is only
+1
+valid pile, and that pile is empty.

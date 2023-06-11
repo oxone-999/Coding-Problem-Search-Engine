@@ -1,107 +1,148 @@
-Double Delivery
+Sasha and Photos
 Problem
-You are given a
-M x
-M grid representing a city. A cell in this grid is represented as
-(i,j), i.e. the cell at the
+###Read problems statements Hindi ,Bengali , Mandarin chinese , Russian and Vietnamese as well.
+Sasha is a little girl who likes to view and compare photos. In this problem, a photo is a grid of pixels with
+h rows and
+w columns; each cell of this grid is either black or white. We will call the ordered pair of integers
+(h,w) the shape of a photo.
+Let's define the similarity of two photos
+P and
+R with the same shape
+(h,w) as the number of pairs of indices
+i,j (
+1≤i≤h,
+1≤j≤w) such that
+P
+i,j
+=R
+i,j
+.
+Today, Sasha found two photos with possibly different shapes. She cannot directly compute the similarity of these photos; therefore, she decided to upscale both photos to get two photos with identical shapes. Formally, Sasha can choose two positive integers
+a and
+b and transform a photo with shape
+(h,w) into a photo with shape
+(ah,bw), where each pixel from the original photo is replaced by a rectangle of pixels with shape
+(a,b) and the same color as that pixel. Since Sasha does not like huge photos, the upscaled photos should be as small as possible (specifically, if the original photos have the same shapes, they should not be changed at all).
+Since the resulting photos may be very big, Sasha asks you to help her and compute their similarity.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+h
+1
+and
+w
+1
+denoting the shape of the first photo.
+The second line contains a single string with length
+h
+1
+⋅w
+1
+describing the first photo. For each valid
+i,j, the pixel in the
 i-th row and
-j-th column in the grid. You own two trucks
-A and
-B that deliver goods. Truck
-A is located at at
-(Ax,Ay) and Truck
-B is located at
-(Bx,By). Both trucks have an infinite number of goods. The two trucks could initially be at the same location.
-The distance to travel between cells
-(i
+j-th column of the photo is white if the
+(i−1)w
 1
-,j
++j-th character of this string is '1' or black if this character is '0'.
+The third line contains two space-separated integers
+h
+2
+and
+w
+2
+denoting the shape of the second photo.
+The fourth line contains a single string describing the second photo in the same format as the first one.
+Output
+For each test case, print a single line containing one integer — the similarity of the upscaled photos.
+Constraints
+1≤T≤10
+1≤h
 1
-) and
-(i
-2
-,j
-2
-) is the Manhattan Distance, i.e.,
-∣i
+⋅w
 1
-−i
-2
-∣+∣j
-1
-−j
-2
-∣ units.
-Your company has to serve
-N orders, where the
-i-th order is located at position
-(x
-i
-,y
-i
-). An order is said to be served if some truck moves to the location of the
-i-th order. Additionally, the
-i-th order can be served only once all order numbers from 1 to
-i−1 have been served.
-What is the minimum total distance that the trucks must travel to serve all
-N orders?
-###Input:
-First line will contain
-N, the number of orders to serve.
-The next line contains 2 space separated integers,
-Ax,Ay, the co-ordinates of truck A
-The next line contains 2 space separated integers,
-Bx,By, the co-ordinates of truck B
-N lines lines follow,
-i-th of which contains 2 space separated integers,
-(x
-i
-,y
-i
-), the location of the
-i-th order.
-###Output: Print a single integer, denoting the minimum total distance travelled by the trucks.
-###Constraints
-1≤N≤5000
-1≤A
-x
-,A
-y
-,B
-x
-,B
-y
-,x
-i
-,y
-i
 ≤10
-9
-###Subtasks
-30 points :
-1≤N≤100 and
-1≤A
-x
-,A
-y
-,B
-x
-,B
-y
-,x
-i
-,y
-i
-,≤100
-70 points : original constraints
-###Sample Input: 3
-3 2
-4 2
+6
+1≤h
+2
+⋅w
+2
+≤10
+6
+each string contains only characters '0' and '1'
+Subtasks
+Subtask #1 (10 points):
+1≤T≤20
+1≤h
+1
+,w
+1
+,h
+2
+,w
+2
+≤30
+Subtask #2 (40 points):
+1≤h
+1
+,w
+1
+,h
+2
+,w
+2
+≤1,000
+Subtask #3 (50 points): original constraints
+Sample 1:
+Input
+Output
+2
+1 2
+01
 2 1
-2 4
-2 1
-###Sample Output: 6
-###EXPLANATION:
-Truck A serves orders 1 and 3 while truck B serves order number 2. Total distance covered by A is 2 units and by B is 4 units. The total distance covered by both trucks combined is 6 units and this is optimal.
-One should keep in mind that order number 3 is not served instantly when truck A arrives at location
-(2,1). Instead it is served only after both orders 1 and 2 have been served.
+01
+2 2
+0111
+3 3
+000000001
+2
+13
+Explanation:
+Example case 1: The initial photos are
+01
+and
+0
+1
+and the upscaled photos are
+01
+01
+and
+00
+11
+with similarity 2, since there are two pairs of equal pixels — pixels
+(0,0) and pixels
+(1,1).
+Example case 2: The initial photos are
+0 1
+1 1
+and
+0 0 0
+0 0 0
+0 0 1
+and the upscaled photos are
+000111
+000111
+000111
+111111
+111111
+111111
+and
+000000
+000000
+000000
+000000
+000011
+000011
+with similarity 13.

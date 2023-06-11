@@ -1,62 +1,52 @@
-F. Public Service
-time limit per test4 seconds
+A. Mystical Mosaic
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are N cities in Bob's country connected by roads. Some pairs of cities are connected by public transport. There are two competing transport companies — Boblines operating buses and Bobrail running trains. When traveling from A to B, a passenger always first selects the mode of transport (either bus or train), and then embarks on a journey. For every pair of cities, there are exactly two ways of how to travel between them without visiting any city more than once — one using only bus routes, and the second using only train routes. Furthermore, there is no pair of cities that is directly connected by both a bus route and a train route.
-You obtained the plans of each of the networks. Unfortunately, each of the companies uses different names for the same cities. More precisely, the bus company numbers the cities using integers from 1 to N, while the train company uses integers between N + 1 and 2N. Find one possible mapping between those two numbering schemes, such that no pair of cities is connected directly by both a bus route and a train route. Note that this mapping has to map different cities to different cities.
+There is a rectangular grid of n rows of m initially-white cells each.
+Arkady performed a certain number (possibly zero) of operations on it. In the i-th operation, a non-empty subset of rows Ri and a non-empty subset of columns Ci are chosen. For each row r in Ri and each column c in Ci, the intersection of row r and column c is coloured black.
+There's another constraint: a row or a column can only be chosen at most once among all operations. In other words, it means that no pair of (i, j) (i < j) exists such that or , where denotes intersection of sets, and denotes the empty set.
+You are to determine whether a valid sequence of operations exists that produces a given final grid.
 Input
-The first line contains an integer N (2 ≤ N ≤ 10000), the number of cities.
-N - 1 lines follow, representing the network plan of Boblines. Each contains two integers u and v (1 ≤ u, v ≤ N), meaning that there is a bus route between cities u and v.
-N - 1 lines follow, representing the network plan of Bobrail. Each contains two integers u and v (N + 1 ≤ u, v ≤ 2N), meaning that there is a train route between cities u and v.
+The first line contains two space-separated integers n and m (1 ≤ n, m ≤ 50) — the number of rows and columns of the grid, respectively.
+Each of the following n lines contains a string of m characters, each being either '.' (denoting a white cell) or '#' (denoting a black cell), representing the desired setup.
 Output
-If there is no solution, output a single line with the word "No".
-If a solution exists, output two lines. On the first line, there should be the word "Yes". On the second line, there should be N integers P1, P2, ..., PN (N + 1 ≤ Pi ≤ 2N) — the mapping between the two numbering schemes. More precisely, for i ≠ j it should be Pi ≠ Pj, and for every direct bus route (i, j), there is no direct train route between (Pi, Pj).
-If there are multiple solutions, you may print any of them.
+If the given grid can be achieved by any valid sequence of operations, output "Yes"; otherwise output "No" (both without quotes).
+You can print each character in any case (upper or lower).
 Examples
 input
 Copy
-4
-1 2
-2 3
-3 4
-5 6
-6 7
-7 8
+5 8
+.#.#..#.
+.....#..
+.#.#..#.
+#.#....#
+.....#..
 output
 Copy
 Yes
-6 8 5 7
 input
 Copy
-4
-1 2
-2 3
-3 4
-5 6
-5 7
-5 8
+5 5
+..#..
+..#..
+#####
+..#..
+..#..
 output
 Copy
 No
 input
 Copy
-7
-1 2
-1 3
-1 4
-1 5
-5 6
-6 7
-8 9
-9 10
-10 11
-11 12
-12 13
-13 14
+5 9
+........#
+#........
+..##.#...
+.......#.
+....#.#.#
 output
 Copy
-Yes
-9 14 11 12 13 10 8
+No
 Note
-The first sample (bus lines in red and rail lines in blue):
+For the first example, the desired setup can be produced by 3 operations, as is shown below.
+For the second example, the desired setup cannot be produced, since in order to colour the center row, the third row and all columns must be selected in one operation, but after that no column can be selected again, hence it won't be possible to colour the other cells in the center column.

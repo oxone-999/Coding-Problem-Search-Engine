@@ -1,45 +1,44 @@
-D. Dasha and Very Difficult Problem
+B. Dasha and friends
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Dasha logged into the system and began to solve problems. One of them is as follows:
-Given two sequences a and b of length n each you need to write a sequence c of length n, the i-th element of which is calculated as follows: ci = bi - ai.
-About sequences a and b we know that their elements are in the range from l to r. More formally, elements satisfy the following conditions: l ≤ ai ≤ r and l ≤ bi ≤ r. About sequence c we know that all its elements are distinct.
-Dasha wrote a solution to that problem quickly, but checking her work on the standard test was not so easy. Due to an error in the test system only the sequence a and the compressed sequence of the sequence c were known from that test.
-Let's give the definition to a compressed sequence. A compressed sequence of sequence c of length n is a sequence p of length n, so that pi equals to the number of integers which are less than or equal to ci in the sequence c. For example, for the sequence c = [250, 200, 300, 100, 50] the compressed sequence will be p = [4, 3, 5, 2, 1]. Pay attention that in c all integers are distinct. Consequently, the compressed sequence contains all integers from 1 to n inclusively.
-Help Dasha to find any sequence b for which the calculated compressed sequence of sequence c is correct.
+Running with barriers on the circle track is very popular in the country where Dasha lives, so no wonder that on her way to classes she saw the following situation:
+The track is the circle with length L, in distinct points of which there are n barriers. Athlete always run the track in counterclockwise direction if you look on him from above. All barriers are located at integer distance from each other along the track.
+Her friends the parrot Kefa and the leopard Sasha participated in competitions and each of them ran one lap. Each of the friends started from some integral point on the track. Both friends wrote the distance from their start along the track to each of the n barriers. Thus, each of them wrote n integers in the ascending order, each of them was between 0 and L - 1, inclusively.
+Consider an example. Let L = 8, blue points are barriers, and green points are Kefa's start (A) and Sasha's start (B). Then Kefa writes down the sequence [2, 4, 6], and Sasha writes down [1, 5, 7].
+There are several tracks in the country, all of them have same length and same number of barriers, but the positions of the barriers can differ among different tracks. Now Dasha is interested if it is possible that Kefa and Sasha ran the same track or they participated on different tracks.
+Write the program which will check that Kefa's and Sasha's tracks coincide (it means that one can be obtained from the other by changing the start position). Note that they always run the track in one direction — counterclockwise, if you look on a track from above.
 Input
-The first line contains three integers n, l, r (1 ≤ n ≤ 105, 1 ≤ l ≤ r ≤ 109) — the length of the sequence and boundaries of the segment where the elements of sequences a and b are.
-The next line contains n integers a1,  a2,  ...,  an (l ≤ ai ≤ r) — the elements of the sequence a.
-The next line contains n distinct integers p1,  p2,  ...,  pn (1 ≤ pi ≤ n) — the compressed sequence of the sequence c.
+The first line contains two integers n and L (1 ≤ n ≤ 50, n ≤ L ≤ 100) — the number of barriers on a track and its length.
+The second line contains n distinct integers in the ascending order — the distance from Kefa's start to each barrier in the order of its appearance. All integers are in the range from 0 to L - 1 inclusively.
+The second line contains n distinct integers in the ascending order — the distance from Sasha's start to each barrier in the order of its overcoming. All integers are in the range from 0 to L - 1 inclusively.
 Output
-If there is no the suitable sequence b, then in the only line print "-1".
-Otherwise, in the only line print n integers — the elements of any suitable sequence b.
+Print "YES" (without quotes), if Kefa and Sasha ran the coinciding tracks (it means that the position of all barriers coincides, if they start running from the same points on the track). Otherwise print "NO" (without quotes).
 Examples
 input
 Copy
-5 1 5
-1 1 1 1 1
-3 1 5 4 2
+3 8
+2 4 6
+1 5 7
 output
 Copy
-3 1 5 4 2 
+YES
 input
 Copy
-4 2 9
-3 4 8 9
-3 2 1 4
+4 9
+2 3 5 8
+0 1 3 6
 output
 Copy
-2 2 2 9 
+YES
 input
 Copy
-6 1 5
-1 1 1 1 1 1
-2 3 5 4 1 6
+2 4
+1 3
+1 2
 output
 Copy
--1
+NO
 Note
-Sequence b which was found in the second sample is suitable, because calculated sequence c = [2 - 3, 2 - 4, 2 - 8, 9 - 9] = [ - 1,  - 2,  - 6, 0] (note that ci = bi - ai) has compressed sequence equals to p = [3, 2, 1, 4].
+The first test is analyzed in the statement.

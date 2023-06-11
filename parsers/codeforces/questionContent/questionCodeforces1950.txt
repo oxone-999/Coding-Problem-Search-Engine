@@ -1,170 +1,150 @@
-B. Replace and Keep Sorted
+D. Multiples and Power Differences
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Given a positive integer
-k
-, two arrays are called
-k
--similar if:
-they are strictly increasing;
-they have the same length;
-all their elements are positive integers between
-1
-and
-k
-(inclusive);
-they differ in exactly one position.
-You are given an integer
-k
-, a strictly increasing array
+You are given a matrix
 a
-and
-q
-queries. For each query, you are given two integers
-l
-i
+consisting of positive integers. It has
+n
+rows and
+m
+columns.
+Construct a matrix
+b
+consisting of positive integers. It should have the same size as
+a
+, and the following conditions should be met:
+1≤
+b
+i,j
 ≤
-r
-i
-. Your task is to find how many arrays
+10
+6
+;
 b
-exist, such that
+i,j
+is a multiple of
+a
+i,j
+;
+the absolute value of the difference between numbers in any adjacent pair of cells (two cells that share the same side) in
 b
-is
+is equal to
 k
--similar to array
-[
-a
-l
-i
-,
-a
-l
-i
-+1
-…,
-a
-r
-i
-]
-.
+4
+for some integer
+k≥1
+(
+k
+is not necessarily the same for all pairs, it is own for each pair).
+We can show that the answer always exists.
 Input
-The first line contains three integers
+The first line contains two integers
 n
-,
-q
 and
-k
+m
 (
-1≤n,q≤
-10
-5
-,
-n≤k≤
-10
-9
-) — the length of array
-a
-, the number of queries and number
-k
-.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤k
-). This array is strictly increasing  —
-a
-1
-<
-a
-2
-<…<
-a
-n
-.
+2≤n,m≤500
+).
 Each of the following
-q
-lines contains two integers
-l
+n
+lines contains
+m
+integers. The
+j
+-th integer in the
 i
-,
-r
-i
+-th line is
+a
+i,j
 (
 1≤
-l
-i
-≤
-r
-i
-≤n
+a
+i,j
+≤16
 ).
 Output
-Print
-q
-lines. The
+The output should contain
+n
+lines each containing
+m
+integers. The
+j
+-th integer in the
 i
--th of them should contain the answer to the
-i
--th query.
+-th line should be
+b
+i,j
+.
 Examples
 input
 Copy
-4 2 5
-1 2 4 5
+2 2
+1 2
 2 3
-3 4
 output
 Copy
-4
-3
+1 2
+2 3
 input
 Copy
-6 5 10
-2 4 6 7 8 9
-1 4
-1 2
-3 5
-1 6
-5 5
+2 3
+16 16 16
+16 16 16
 output
 Copy
-8
-9
-7
-6
-9
+16 32 48
+32 48 64
+input
+Copy
+2 2
+3 11
+12 8
+output
+Copy
+327 583
+408 664
 Note
-In the first example:
-In the first query there are
+In the first example, the matrix
+a
+can be used as the matrix
+b
+, because the absolute value of the difference between numbers in any adjacent pair of cells is
+1=
+1
 4
-arrays that are
-5
--similar to
-[2,4]
-:
-[1,4],[3,4],[2,3],[2,5]
 .
-In the second query there are
+In the third example:
+327
+is a multiple of
 3
-arrays that are
-5
--similar to
-[4,5]
-:
-[1,5],[2,5],[3,5]
+,
+583
+is a multiple of
+11
+,
+408
+is a multiple of
+12
+,
+664
+is a multiple of
+8
+;
+|408−327|=
+3
+4
+,
+|583−327|=
+4
+4
+,
+|664−408|=
+4
+4
+,
+|664−583|=
+3
+4
 .

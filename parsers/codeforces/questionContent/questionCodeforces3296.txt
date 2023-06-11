@@ -1,82 +1,114 @@
-C. Bad Sequence
+D. Treasure Island
 time limit per test1 second
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Petya's friends made him a birthday present — a bracket sequence. Petya was quite disappointed with his gift, because he dreamed of correct bracket sequence, yet he told his friends nothing about his dreams and decided to fix present himself.
-To make everything right, Petya is going to move at most one bracket from its original place in the sequence to any other position. Reversing the bracket (e.g. turning "(" into ")" or vice versa) isn't allowed.
-We remind that bracket sequence
-s
-is called correct if:
-s
-is empty;
-s
-is equal to "(
-t
-)", where
-t
-is correct bracket sequence;
-s
-is equal to
-t
+All of us love treasures, right? That's why young Vasya is heading for a Treasure Island.
+Treasure Island may be represented as a rectangular table
+n×m
+which is surrounded by the ocean. Let us number rows of the field with consecutive integers from
 1
-t
-2
-, i.e. concatenation of
-t
+to
+n
+from top to bottom and columns with consecutive integers from
 1
+to
+m
+from left to right. Denote the cell in
+r
+-th row and
+c
+-th column as
+(r,c)
+. Some of the island cells contain impassable forests, and some cells are free and passable. Treasure is hidden in cell
+(n,m)
+.
+Vasya got off the ship in cell
+(1,1)
+. Now he wants to reach the treasure. He is hurrying up, so he can move only from cell to the cell in next row (downwards) or next column (rightwards), i.e. from cell
+(x,y)
+he can move only to cells
+(x+1,y)
 and
-t
-2
-, where
-t
-1
-and
-t
-2
-are correct bracket sequences.
-For example, "(()())", "()" are correct, while ")(" and "())" are not. Help Petya to fix his birthday present and understand whether he can move one bracket so that the sequence becomes correct.
+(x,y+1)
+. Of course Vasya can't move through cells with impassable forests.
+Evil Witch is aware of Vasya's journey and she is going to prevent him from reaching the treasure. Before Vasya's first move she is able to grow using her evil magic impassable forests in previously free cells. Witch is able to grow a forest in any number of any free cells except cells
+(1,1)
+where Vasya got off his ship and
+(n,m)
+where the treasure is hidden.
+Help Evil Witch by finding out the minimum number of cells she has to turn into impassable forests so that Vasya is no longer able to reach the treasure.
 Input
-First of line of input contains a single number
+First line of input contains two positive integers
 n
+,
+m
 (
-1≤n≤200000
-) — length of the sequence which Petya received for his birthday.
-Second line of the input contains bracket sequence of length
+3≤n⋅m≤1000000
+), sizes of the island.
+Following
 n
-, containing symbols "(" and ")".
+lines contains strings
+s
+i
+of length
+m
+describing the island,
+j
+-th character of string
+s
+i
+equals "#" if cell
+(i,j)
+contains an impassable forest and "." if the cell is free and passable. Let us remind you that Vasya gets of his ship at the cell
+(1,1)
+, i.e. the first cell of the first row, and he wants to reach cell
+(n,m)
+, i.e. the last cell of the last row.
+It's guaranteed, that cells
+(1,1)
+and
+(n,m)
+are empty.
 Output
-Print "Yes" if Petya can make his sequence correct moving at most one bracket. Otherwise print "No".
+Print the only integer
+k
+, which is the minimum number of cells Evil Witch has to turn into impassable forest in order to prevent Vasya from reaching the treasure.
 Examples
 input
 Copy
-2
-)(
+2 2
+..
+..
 output
-Copy
-Yes
-input
-Copy
-3
-(()
-output
-Copy
-No
-input
 Copy
 2
-()
-output
-Copy
-Yes
 input
 Copy
-10
-)))))(((((
+4 4
+....
+#.#.
+....
+.#..
 output
 Copy
-No
+1
+input
+Copy
+3 4
+....
+.##.
+....
+output
+Copy
+2
 Note
-In the first example, Petya can move first bracket to the end, thus turning the sequence into "()", which is correct bracket sequence.
-In the second example, there is no way to move at most one bracket so that the sequence becomes correct.
-In the third example, the sequence is already correct and there's no need to move brackets.
+The following picture illustrates the island in the third example. Blue arrows show possible paths Vasya may use to go from
+(1,1)
+to
+(n,m)
+. Red illustrates one possible set of cells for the Witch to turn into impassable forest to make Vasya's trip from
+(1,1)
+to
+(n,m)
+impossible.

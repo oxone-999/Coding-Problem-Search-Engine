@@ -1,100 +1,37 @@
-Chef and Edge Flipping
+Art in Digital Age
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef likes tournament graphs, which are directed graphs where each unordered pair of vertices is directly connected by exactly one edge. A directed graph is strongly connected if for each pair of vertices
-(a,b), there is a path from the vertex
-a to the vertex
-b.
-Consider a tournament graph
-G with
-N vertices (numbered
-1 through
-N). Chef takes a sequence of pairs of vertices
-(a
-1
-,b
-1
-),(a
-2
-,b
-2
-),…,(a
-M
-,b
-M
-) and does the following for each
-i from
-1 to
-M in this order:
-Flip the direction of the edge between vertices
-a
-i
-and
-b
-i
-.
-If the graph is strongly connected either before or after flipping this edge, declare
-G a bad tournament.
-If
-G is never declared a bad tournament, Chef calls it a good tournament. Given the sequence of
-M edge flips, find a good tournament.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-M.
-M lines follow. For each valid
-i, the
-i-th of these lines contains two space-separated integers
-a
-i
-and
-b
-i
-.
+Read problems statements in Mandarin Chinese and Russian.
+Being a CS student, Ron really don't understand why he has to take a compulsory course called "Art in Digital Age". The objective of this course from what his school said is to help the CS students release the stress by doing something new other from coding/programming. The problem is Ron really love coding and he doesn't care about other stuff. This course even gives him more stress. However, like it or not Ron still need to try his best not to let this course ruins his great GPA. Can you help him with his first assignment which is described below.
+In this assignment, Ron is given an N×N pixels image called sample image. Ron is required to create a copy of the sample image using an simple graphic painting program called SMPaint. Only two types of operation can be used in SMPaint:
+Init: Make the new image with the specific size, all the pixels of the new image are white.
+Paint: User gives 5 integers C, U, D, L, R and SMPaint will change colour to C at all the pixels (x, y) such that (U ≤ x ≤ D and L ≤ y ≤ R). The pixel (x, y) is the pixel at the xth row (from the top, 1-indexed) and the yth column (from the left side, 1-indexed).
+We can see that the Paint operation actually is painting a specific rectangle in the image by one specific colour. The image in the figure 1 can be drawn using 3 calls of the second function if we paint the red rectangle first and then paint two green rectangles. Notice that if a pixel is changed colour several time, it final colour is corresponding to the last time it is painted. This help us save some calls of the second function. For the image in figure 1 we can paint a large green rectangle first and then paint the red rectangle. Your mission is help Ron finish the assignment with using as least as possible number of calls of the second function.
+  Input
+The first line of the input contains integer N. Each of the next N lines contains N integers. The yth number in the xth line represent the colour of the pixel (x, y) in the sample image.
 Output
-For each test case, print
-N−1 lines. For each valid
-i, the
-i-th of these lines should contain
-N−i space-separated integers; for each valid
-j, the
-j-th of these integers should be
-1 if there is an edge from the vertex
-i to the vertex
-i+j or
-0 if there is an edge from the vertex
-i+j to the vertex
-i.
-It can be proved that a good tournament always exists under the given constraints. If there are multiple solutions, you may print any one of them.
+The first line of the output must contain integer M that is the number of calls of the second function you need. The next M lines represent the calls to the second function in chronological order. Each line must contain 5 integers which are the values (they must be in this order) C, U, D, L, R for the corresponding call. The following conditions must be held:
+0 ≤ C ≤ 100
+1 ≤ U ≤ D ≤ N
+1 ≤ L ≤ R ≤ N
 Constraints
-1≤T≤400
-6≤N≤400
-the sum of
-N over all test cases does not exceed
-4,000
-Subtasks
-Subtask #1 (30 points):
-M=N−2
-Subtask #2 (40 points):
-M=⌈
+1 ≤ N ≤ 1000
+The colours are represented by integers from 0 to 100 where 0 means white colour.
+Example
+Input:
+5
+0 0 0 0 0
+0 1 2 1 0
+0 1 2 1 0
+0 1 2 1 0
+0 0 0 0 0
+Output:
 2
-3N
-⌉−3
-Subtask #3 (30 points):
-M=2N−11
-Example Input
-1
-6 4
-1 3
-3 4
-2 6
-5 6
-Example Output
-1 0 1 1 1
-0 0 0 1
-1 1 1
-1 1
-0
+1 2 4 2 4
+2 2 4 3 3
+  Scoring & the test data generation
+Your solution will not get point if it performs more than N2 Paint operations or the final image is different with the sample one. Your solution will be marked as Wrong Answer for that two cases.
+If the number of Paint operations does not exceed N2 and the final image is the same as the sample one you will get the score which is equal to the number of Paint operations. Smaller score means your solution is better.
+
+The test data is generated randomly by simulating the process of making an image in SMPaint using no more than 500 Paint operations. But please note that, the value of N is picked manually.
+
+We have 25 official test files. You must correctly solve all test files to receive OK. During the contest, your overall score is the sum of the scores on the first 7 test files. After the contest, all solutions will be rescored by the sum of the scores on the rest 18 test files. Note, that public part of the tests can not contain some border cases. For example, we should say that in all public tests 10 ≤ N holds.

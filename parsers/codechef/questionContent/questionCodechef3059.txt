@@ -1,27 +1,116 @@
-The Bytelandian Union
+Square Sort
 Problem
-Byteland is a strange country, with many cities, but with a poorly developed road network (in fact, there is exactly one route from each city to any other city, possibly leading through other cities). Until recently, the cities of Byteland were independently governed by proud Mayors, who chose not to integrate too tightly with their neighbours. However, recent opinion polls among Bytelandian computer programmers have shown a number of disturbing trends, including a sudden drop in pizza consumption. Since this had never before happened in Byteland and seemed quite inexplicable, the Mayors sought guidance of the High Council of Wise Men of Byteland. After a long period of deliberation, the Council ruled that the situation was very serious indeed: the economy was in for a long-term depression! Moreover, they claimed that tighter integration was the only way for the Bytelandian cities to survive. Whether they like it or not, the Mayors must now find a way to unite their cities as quickly as possible. However, this is not as easy as it sounds, as there are a number of important constraints which need to be fulfilled:
-Initially, each city is an independent State. The process of integration is divided into steps.
-At each step, due to the limited number of diplomatic envoys available, a State can only be involved in a unification process with at most one other state. At each step two States can unite to form a new State, but only if there exists a road directly connecting some two cities of the uniting States.
-The unification process is considered to be complete when all the cities belong to the same, global State.
-The Mayors have asked you to arrange a schedule for the diplomatic talks, so that unification can be completed in as few steps as possible. Can you handle this delicate task?a)
+You are given an array
+A of
+N positive integers.
+In one operation, you can do the following:
+Choose an index
+i
+(1≤i≤N), and change the value of
+A
+i
+to either
+(A
+i
+)
+2
+or
+⌊
+A
+i
+⌋.
+Find the minimum number of operations required, such that, for the final array
+A:
+A is sorted in non-decreasing order;
+A
+N
+≤10
+18
+.
+NOTE: The elements of the array might not fit in a 32-bit integer.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of input:
+The first line of each test case contains
+N - the size of the array.
+The next line contains
+N integers,
+A
+1
+,A
+2
+,A
+3
+,…,A
+N
+- the elements of the array.
+Output Format
+For each test case, output on a new line, the minimum number of operations required.
+Constraints
+1≤T≤1000
+1≤N≤10
+5
+1≤A
+i
+≤10
+18
+The sum of
+N over all test cases won't exceed
+10
+5
+.
+Sample 1:
 Input
-The first line contains t, the number of test cases (less than 1000). The descriptions of t test cases follow.
-Each test case contains the description of the cities of Byteland, given in two lines. The first line contains a single integer k, representing the number of cities in Byteland (2 <= k <= 600); we assume that the cities are numbered 0,...,k-1. The second line contains exactly k-1 integers, and the i-th integer having a value of p represents a road connecting cities having numbers i+1 and p in Byteland.
 Output
-For each test case, output a separate line containing one number, equal to the minimum number of steps required to perform the unification.
-Example
-Input:
 3
 4
-0 1 2
-8
-0 1 2 0 0 3 3
-9
-0 1 1 1 1 0 2 2
-
-Output:
-2
+1 3 9 9
 4
-5
-a) Some conspiracy theorists claim that this task has in fact nothing to do with unification, and that it was proposed by pizza parlour lobbyists simply to boost their direct revenue at your expense. But don't worry, in any case, you are helping Byteland out of depression!
+1 9 3 9
+3
+4 2 1
+0
+1
+3
+Explanation:
+Test case
+1: The array is already sorted, no operation is required.
+Test case
+2: Using one operation, we can change
+A
+2
+to
+⌊
+A
+2
+⌋=3. The final array is
+A=[1,3,3,9] which is sorted in non-decreasing order.
+Test case
+3: We make the following operations:
+Change
+A
+2
+to
+⌊
+A
+2
+⌋=1.
+Change
+A
+1
+to
+⌊
+A
+1
+⌋=2.
+Change
+A
+1
+to
+⌊
+A
+1
+⌋=1.
+The final array is
+A=[1,1,1] which is sorted in non-decreasing order.

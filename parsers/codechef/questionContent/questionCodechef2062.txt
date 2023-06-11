@@ -1,136 +1,29 @@
-Firdavs and Planet F
+Chefs in Queue
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Firdavs is living on planet F. There are
-N cities (numbered
-1 through
-N) on this planet; let's denote the value of city
-i by
-v
-i
-. Firdavs can travel directly from each city to any other city. When he travels directly from city
-x to city
-y, he needs to pay
-f(x,y)=∣v
-y
-−v
-x
-∣+y−x coins (this number can be negative, in which case he receives
-−f(x,y) coins).
-Let's define a simple path from city
-x to city
-y with length
-k≥1 as a sequence of cities
-a
-1
-,a
-2
-,…,a
-k
-such that all cities in this sequence are different,
-a
-1
-=x and
-a
-k
-=y. The cost of such a path is
-∑
-i=1
-k−1
-f(a
-i
-,a
-i+1
-).
-You need to answer some queries for Firdavs. In each query, you are given two cities
-x and
-y, and you need to find the minimum cost of a simple path from city
-x to city
-y. Then, you need to find the length of the longest simple path from
-x to
-y with this cost.
+Read problems statements in Russian here
+All the chefs (except the Head Chef) are standing in queue to submit their bills. The chefs have different seniority. In all there are N chefs of K different seniority levels. These are given to you in an array, where A1, A2, ..., AN denote the seniority of chefs in the queue. AN denotes front of the queue and A1 denotes end of the queue.
+Head Chef gets an interesting thought past his head. He begins to think what if every chef starting from the end of the queue begins to delegate his job of submitting bills to a chef least ahead of him in the queue but junior to him. The Head Chef's fearfulness of this scenario is f = i2 - i1 + 1, where i1 is the index of chef in queue and i2 is the index of the junior chef. Head Chef's total fearfulness of chaos is the product of all the fearfulness in Head Chef's mind. Note if a chef has no junior ahead of him/her in the queue then Head Chef's fearfulness for this Chef is 1.
+You are required to find the Head Chef's total fearfulness given an arrangement of Chef's in a queue. Since this number can be quite large output it modulo 1000000007.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-Q.
-The second line contains
-N space-separated integers
-v
-1
-,v
-2
-,…,v
-N
-.
-The following
-Q lines describe queries. Each of these lines contains two space-separated integers
-x and
-y.
+Input description.
+The first line contains two integers N and K denoting the number of chefs and the number of seniority levels. The second line contains N space-separated integers A1, A2, ..., AN denoting the seniority of chefs in the queue. AN denotes front of the queue and A1 denotes end of the queue.
 Output
-For each query, print a single line containing two space-separated integers ― the minimum cost and the maximum length.
+Output description.
+Output a single integer denoting the total fearfulness of the Head Chef.
 Constraints
-1≤T≤100
-1≤N,Q≤2⋅10
-5
-0≤v
-i
-≤10
-9
-for each valid
-i
-1≤x,y≤N
-the sum of
-N in all test cases does not exceed
-5⋅10
-5
-the sum of
-Q in all test cases does not exceed
-5⋅10
-5
-Subtasks
-Subtask #1 (30 points):
-1≤N,Q≤1,000
-v
-1
-<v
-2
-<…<v
-N
-the sum of
-N in all test cases does not exceed
-5,000
-the sum of
-Q in all test cases does not exceed
-5,000
-Subtask #2 (70 points): original constraints
+1 ≤ N ≤ 1000000
+1 ≤ a_i ≤ 1000000
+2 ≤ K ≤ 100000
+Scoring
+Subtask 1 : N <= 5000 ( 10 points)
+Subtask 2 : K = 2 ( 10 points)
+Subtask 3 : K <= 10 ( 20 points )
+Subtask 4 : See Constraints ( 60 points )
 Sample 1:
 Input
 Output
-2
 4 2
-4 2 5 7
-2 3
-3 4
-2 1
-1 1
-2 1
-4 3
-3 2
--1 2
-Explanation:
-Example case 1: For the first query, there are two paths with cost
-4 from city
-2 to city
-3:
-2→1→3: cost
-(∣4−2∣+1−2)+(∣5−4∣+3−1)=4, length
-3
-2→3: cost
-∣5−2∣+3−2=4, length
+1 2 1 2
 2
-All other paths have greater costs, so the minimum cost is
-4. Among these two paths, we want the one with greater length, which is
-3.
+Explanation:
+Example case 1. Only the second chef has a junior in front of him and the fearfulness he causes to the head chef is 3 - 2 + 1 = 2. Every other chef causes a fearfulness of 1 for the Head Chef.

@@ -1,87 +1,58 @@
-Min Max Equality
+Alternating Diameter
 Problem
-Chef found an array
-A of
-N elements. He defines a subarray as bad if the maximum element of the subarray is equal to the minimum element of the subarray.
-More formally, a subarray
-[L,R]
-(1≤L≤R≤N) is bad if
-max(A
-L
-,A
-L+1
-,…,A
-R
-)=min(A
-L
-,A
-L+1
-,...,A
-R
-).
-Chef is allowed to change at most
-K elements of the array.
-Find the minimum number of bad subarrays Chef can obtain after changing at most
-K elements of the array.
+Chef stumbled upon
+B black nodes and
+W white nodes and now wants to construct a tree using them.
+Chef is bamboozled by the total number of trees that can be constructed using these nodes. To reduce this count, Chef considered only those trees which have at least one diameter that has alternating colors i.e. a black node is followed by a white node and a white node is followed by a black node.
+Help Chef in finding out the tree with the minimum possible diameter among all the trees that satisfies the above condition. If no tree satisfies the above conditions, print
+−1. If multiple trees satisfies the above condition, print any.
 Input Format
-First line will contain
-T, the number of test cases. Then the test cases follow.
-Each test case contains two lines of input, the first line contains two space-separated integers
-N and
-K - the number of elements in the array and the maximum number of elements Chef can change respectively.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-- the initial array.
+The first line contains a single integer
+T - the number of test cases. Then the test cases follow.
+The first and only line of each test case contains two space separated integers
+B,W representing the number of black and white nodes respectively.
 Output Format
-For each test case, output the minimum number of bad subarrays Chef can obtain after changing at most
-K elements of the array.
-Constraints
-1≤T≤3⋅10
-4
-1≤N≤10
-5
-1≤K≤N
-1≤A
+If a tree can be constructed that fulfils all the requirements then
+In the first line, output a string of length
+B+W in which the
 i
-≤10
-9
-Sum of
-N over all test cases does not exceed
-3⋅10
-5
-.
+th
+character (1-based indexing) is either W or B denoting the colour of the
+i
+th
+node as black or white respectively.
+In the following
+B+W−1 lines, output two integers
+U and
+V denoting an edge between
+U
+th
+and
+V
+th
+node.
+If no tree fulfils the requirements print -1 in a single line.
+Constraints
+1≤T≤100
+0≤B,W≤1000
+1≤B+W≤1000
 Sample 1:
 Input
 Output
 3
-3 1
-1 2 3
-4 2
-3 3 3 1
-5 1
-1 1 1 1 1
-3
-4
-7
+1 1
+0 2
+1 2
+WB
+2 1
+-1
+WBW
+1 2
+2 3
 Explanation:
 Test case
-1: The minimum number of bad subarrays Chef can obtain is
-3. Chef does not need to perform any operations. The subarrays where the maximum element is equal to the minimum element are
-[1,1],[2,2], and
-[3,3] where
-[L,R] denotes the subarray starting at index
-L and ending at index
-R.
+1: The tree has only one path between the nodes
+1 and
+2 which is the diameter and also alternating in color. The checker will handle multiple possible answers so you can also swap the colors of the node to achieve the same result.
 Test case
-2: The minimum number of bad subarrays Chef can obtain is
-4. Chef can perform
-2 operations and change the array to
-[2,4,3,1]. The subarrays where the maximum element is equal to the minimum element are
-[1,1],[2,2],[3,3], and
-[4,4].
+2: There is only one tree possible and its diameter would consist of all white nodes only. Therefore there is no tree which satisfies the given conditions.

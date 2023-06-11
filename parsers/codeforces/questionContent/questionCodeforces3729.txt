@@ -1,175 +1,220 @@
-D. Nastya Is Buying Lunch
+E. Nastya Hasn't Written a Legend
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-At the big break Nastya came to the school dining room. There are
+In this task, Nastya asked us to write a formal statement.
+An array
+a
+of length
 n
-pupils in the school, numbered from
-1
-to
-n
-. Unfortunately, Nastya came pretty late, so that all pupils had already stood in the queue, i.e. Nastya took the last place in the queue. Of course, it's a little bit sad for Nastya, but she is not going to despond because some pupils in the queue can agree to change places with some other pupils.
-Formally, there are some pairs
-u
+and an array
+k
+of length
+n−1
+are given. Two types of queries should be processed:
+increase
+a
+i
+by
+x
+. Then if
+a
+i+1
+<
+a
+i
++
+k
+i
 ,
-v
-such that if the pupil with number
-u
-stands directly in front of the pupil with number
-v
-, Nastya can ask them and they will change places.
-Nastya asks you to find the maximal number of places in queue she can move forward.
+a
+i+1
+becomes exactly
+a
+i
++
+k
+i
+; again, if
+a
+i+2
+<
+a
+i+1
++
+k
+i+1
+,
+a
+i+2
+becomes exactly
+a
+i+1
++
+k
+i+1
+, and so far for
+a
+i+3
+, ...,
+a
+n
+;
+print the sum of the contiguous subarray from the
+l
+-th element to the
+r
+-th element of the array
+a
+.
+It's guaranteed that initially
+a
+i
++
+k
+i
+≤
+a
+i+1
+for all
+1≤i≤n−1
+.
 Input
-The first line contains two integers
+The first line contains a single integer
 n
-and
-m
 (
-1≤n≤3⋅
+2≤n≤
 10
 5
-,
-0≤m≤5⋅
-10
-5
-) — the number of pupils in the queue and number of pairs of pupils such that the first one agrees to change places with the second one if the first is directly in front of the second.
+) — the number of elements in the array
+a
+.
 The second line contains
 n
 integers
-p
+a
 1
 ,
-p
+a
 2
-, ...,
-p
+,…,
+a
 n
- — the initial arrangement of pupils in the queue, from the queue start to its end (
-1≤
-p
-i
-≤n
-,
-p
-is a permutation of integers from
-1
-to
-n
-). In other words,
-p
-i
-is the number of the pupil who stands on the
-i
--th position in the queue.
-The
-i
--th of the following
-m
-lines contains two integers
-u
-i
-,
-v
-i
 (
-1≤
-u
+−
+10
+9
+≤
+a
 i
-,
-v
-i
-≤n,
-u
-i
-≠
-v
-i
-), denoting that the pupil with number
-u
-i
-agrees to change places with the pupil with number
-v
-i
-if
-u
-i
-is directly in front of
-v
-i
-. It is guaranteed that if
-i≠j
-, than
-v
-i
-≠
-v
-j
-or
-u
-i
-≠
-u
-j
-. Note that it is possible that in some pairs both pupils agree to change places with each other.
-Nastya is the last person in the queue, i.e. the pupil with number
-p
-n
+≤
+10
+9
+) — the elements of the array
+a
 .
+The third line contains
+n−1
+integers
+k
+1
+,
+k
+2
+,…,
+k
+n−1
+(
+−
+10
+6
+≤
+k
+i
+≤
+10
+6
+) — the elements of the array
+k
+.
+The fourth line contains a single integer
+q
+(
+1≤q≤
+10
+5
+) — the number of queries.
+Each of the following
+q
+lines contains a query of one of two types:
+if the query has the first type, the corresponding line contains the character '+' (without quotes), and then there are two integers
+i
+and
+x
+(
+1≤i≤n
+,
+0≤x≤
+10
+6
+), it means that integer
+x
+is added to the
+i
+-th element of the array
+a
+as described in the statement.
+if the query has the second type, the corresponding line contains the character 's' (without quotes) and then there are two integers
+l
+and
+r
+(
+1≤l≤r≤n
+).
 Output
-Print a single integer — the number of places in queue she can move forward.
+For each query of the second type print a single integer in a new line — the sum of the corresponding subarray.
 Examples
 input
 Copy
-2 1
-1 2
-1 2
+3
+1 2 3
+1 -1
+5
+s 2 3
++ 1 2
+s 1 2
++ 3 1
+s 2 3
 output
 Copy
-1
+5
+7
+8
 input
 Copy
-3 3
-3 1 2
-1 2
+3
+3 6 7
 3 1
-3 2
+3
++ 1 3
++ 2 4
+s 1 3
 output
 Copy
-2
-input
-Copy
-5 2
-3 1 5 4 2
-5 2
-5 4
-output
-Copy
-1
+33
 Note
-In the first example Nastya can just change places with the first pupil in the queue.
-Optimal sequence of changes in the second example is
-change places for pupils with numbers
-1
-and
-3
+In the first example:
+after the first change
+a=[3,4,3]
+;
+after the second change
+a=[3,4,4]
 .
-change places for pupils with numbers
-3
-and
-2
+In the second example:
+after the first change
+a=[6,9,10]
+;
+after the second change
+a=[6,13,14]
 .
-change places for pupils with numbers
-1
-and
-2
-.
-The queue looks like
-[3,1,2]
-, then
-[1,3,2]
-, then
-[1,2,3]
-, and finally
-[2,1,3]
-after these operations.

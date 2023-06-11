@@ -1,190 +1,95 @@
-Magnet Sort
+Segmentation Fault
 Problem
-There is an array
-A with
-N elements. Each element of
-A has a fixed polarity: either north or south.
-Chef is allowed to perform some (possibly zero) operations on the array
-A. In one operation, Chef can:
-Pick some subarray of array
-A, such that, the first and last elements of the subarray have different polarities, and, rearrange the elements in this subarray any way he wants.
-Note that the polarity of each element remains unchanged after an operation.
-Find the minimum number of operations required to sort the array in non-decreasing order, or state that it is impossible.
-A subarray of
-A is obtained by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end.
+There are
+N people numbered from
+1 to
+N such that:
+Exactly one of these people is a thief and always lies;
+All the others are honest and always tell the truth.
+If the
+i
+th
+person claims that the thief is one person out of
+L
+i
+,L
+i
++1,L
+i
++2,⋯,R
+i
+, determine how many people could be the thief.
+It is guaranteed that at least one person can be the thief.
 Input Format
-The first line contains an integer
-T, denoting the number of test cases. The
-T test cases then follow.
-The first line of each test case contains a single integer
-N.
-The second line of each test case contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
-The third line of each test case contains a string of length
-N, the
-ith character of which is either
-N or
-S, representing that the
-ith element of
-A has north or south polarity, respectively.
+First line will contain
+T, the number of test cases. Then the test cases follow.
+First line of each test case will contain
+N, the number of people.
+N lines follow.
+The
+i
+th
+line contains two space-separated integers -
+L
+i
+and
+R
+i
+, the range of people amongst which the
+i
+th
+person claims the thief is.
 Output Format
-For each test case, if it impossible to sort the array, output
-−1. Otherwise, output a single integer: the minimum number of operations required to sort the array.
+For each test case, in the first line, output
+K, the number of possible thieves.
+In the next
+K lines, output the list of people that could be the thieves, in ascending order.
 Constraints
 1≤T≤10
 5
-1≤N≤2⋅10
+3≤N≤10
 5
-1≤A
+1≤L
 i
-≤10
-9
-The sum of
-N across all test cases doesn't exceed
-2⋅10
+≤R
+i
+≤N
+Sum of
+N over all test cases does not exceed
+10
 5
 .
-Subtasks
-Subtask #1 (100 points): original constraints
+It is guaranteed that at least one person can be the thief.
 Sample 1:
 Input
 Output
-6
-5
-1 3 2 3 7
-NNSNS
-2
-2 1
-SS
-3
-1 8 12
-SNS
-3
-3 2 1
-NSN
-5
-1 2 3 5 4
-NSNSN
-5
-1 1 2 2 1
-SNSNN
 1
--1
-0
+4
+2 2
+1 1
+1 3
+1 3
 2
 1
-1
+2
 Explanation:
-Let's represent elements with a polarity of north in
-red, and elements with a polarity of south in
-blue. The polarity of each element is also labelled above it.
-In the first test case, we can sort the array in a single operation as follows.
-Rearrange the subarray
-[A
-1
-,A
-2
-,A
-3
-]:
-[
-1
-N
-,
-3
-N
-,
-2
-S
-,
-3
-N
-,
-7
-S
-]→[
-1
-N
-,
-2
-S
-,
-3
-N
-,
-3
-N
-,
-7
-S
-].
-In the second test case, the array
-[
-2
-S
-,
-1
-S
-] cannot be sorted, since no operations can be performed.
-In the third test case, the array is already sorted, so the answer is
-0.
-In the fourth test case, we can sort the array in two operations as follows.
-Rearrange the subarray
-[A
-2
-,A
-3
-]:
-[
-3
-N
-,
-2
-S
-,
-1
-N
-]→[
-3
-N
-,
-1
-N
-,
-2
-S
-].
-Rearrange the subarray
-[A
-1
-,A
-2
-,A
-3
-]:
-[
-3
-N
-,
-1
-N
-,
-2
-S
-]→[
-1
-N
-,
-2
-S
-,
-3
-N
-].
+Test case
+1: Two people (numbered
+1 and
+2) can be thief:
+Person
+1 may be the thief because, the other
+3 people claim that he may be the thief, whereas, he lies and claims that person
+2 is the thief.
+Person
+2 may be the thief because, the other
+3 people claim that he may be the thief, whereas, he lies and claims that person
+1 is the thief.
+Person
+3 cannot be the thief because, he claims that the thief lies in the range
+[1,3]. If he were the thief, then his statement should be false. However, since 3 lies in
+[1,3], his statement would be true, which results in a contradiction. Furthermore, the first
+2 people do not claim that he is the thief. Therefore, he cannot be the thief.
+Person
+4 cannot be the thief because the first
+3 people do not claim that he is the thief.

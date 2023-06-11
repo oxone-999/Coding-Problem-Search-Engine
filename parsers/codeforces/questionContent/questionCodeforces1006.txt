@@ -1,123 +1,134 @@
-E. Round Table
+G. Gastronomic Event
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-There are
+SWERC organizers want to hold a gastronomic event.
+The location of the event is a building with
 n
-people, numbered from
+rooms connected by
+n−1
+corridors (each corridor connects two rooms) so that it is possible to go from any room to any other room.
+In each room you have to set up the tasting of a typical Italian dish. You can choose from
+n
+typical Italian dishes rated from
 1
 to
 n
-, sitting at a round table. Person
-i+1
-is sitting to the right of person
-i
-(with person
-1
-sitting to the right of person
+depending on how good they are (
 n
-).
-You have come up with a better seating arrangement, which is given as a permutation
-p
-1
-,
-p
-2
-,…,
-p
+is the best possible rating). The
 n
-. More specifically, you want to change the seats of the people so that at the end person
-p
-i+1
-is sitting to the right of person
-p
-i
-(with person
-p
-1
-sitting to the right of person
-p
+dishes have distinct ratings.
+You want to assign the
 n
-). Notice that for each seating arrangement there are
+dishes to the
 n
-permutations that describe it (which can be obtained by rotations).
-In order to achieve that, you can swap two people sitting at adjacent places; but there is a catch: for all
-1≤x≤n−1
-you cannot swap person
-x
-and person
-x+1
-(notice that you can swap person
+rooms so that the number of pleasing tours is maximal. A pleasing tour is a nonempty sequence of rooms so that:
+Each room in the sequence is connected to the next one in the sequence by a corridor.
+The ratings of the dishes in the rooms (in the order given by the sequence) are increasing.
+If you assign the
 n
-and person
-1
-). What is the minimum number of swaps necessary? It can be proven that any arrangement can be achieved.
+dishes optimally, what is the maximum number of pleasing tours?
 Input
-Each test contains multiple test cases. The first line contains an integer
-t
-(
-1≤t≤10000
-) — the number of test cases. The descriptions of the
-t
-test cases follow.
-The first line of each test case contains a single integer
+The first line contains an integer
 n
 (
-3≤n≤200000
-) — the number of people sitting at the table.
+2≤n≤1000000
+) — the number of rooms.
 The second line contains
-n
-distinct integers
-p
-1
-,
+n−1
+integers
 p
 2
-,…,
+,
+p
+3
+,⋯,
 p
 n
 (
 1≤
 p
 i
-≤n
-,
+<i
+). Each
 p
 i
-≠
+indicates that there is a corridor between room
+i
+and room
 p
-j
-for
-i≠j
-) — the desired final order of the people around the table.
-The sum of the values of
-n
-over all test cases does not exceed
-200000
-.
+i
+. It is guaranteed that the building has the property that it is possible to go from any room to any other room.
 Output
-For each test case, print the minimum number of swaps necessary to achieve the desired order.
-Example
+Print the maximum number of pleasing tours.
+Examples
 input
 Copy
-3
-4
-2 3 1 4
 5
-5 4 3 2 1
-7
-4 1 6 5 3 7 2
+1 2 2 2
 output
 Copy
-1
+13
+input
+Copy
 10
-22
+1 2 3 4 3 2 7 8 7
+output
+Copy
+47
 Note
-In the first test case, we can swap person
-4
-and person
+In the first sample, it is optimal to place the dish with rating
 1
-(who are adjacent) in the initial configuration and get the order
-[4,2,3,1]
-which is equivalent to the desired one. Hence in this case a single swap is sufficient.
+in room
+1
+, the dish with rating
+2
+in room
+3
+, the dish with rating
+3
+in room
+2
+, the dish with rating
+4
+in room
+5
+and the dish with rating
+5
+in room
+4
+.
+All the
+13
+possible pleasing tours are:
+(1)
+,
+(2)
+,
+(3)
+,
+(4)
+,
+(5)
+,
+(1,2)
+,
+(3,2)
+,
+(2,4)
+,
+(2,5)
+,
+(1,2,4)
+,
+(1,2,5)
+,
+(3,2,4)
+,
+(3,2,5)
+.
+There are also other ways to assign the dishes to the rooms so that there are
+13
+pleasing tours.

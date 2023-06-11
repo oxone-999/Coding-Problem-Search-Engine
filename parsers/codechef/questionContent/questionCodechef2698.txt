@@ -1,197 +1,134 @@
-Sorting Array
+Unusual Queries
 Problem
-Given an array
-A of length
-N.
-You are allowed to perform the following operation on the array
-A atmost
-20 times:
-Select a non-empty subsequence
-S of the array
-[1,2,3,…,N] and an integer
-X
-(0≤X≤10
-6
-);
-Change
-A
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+There are
+N mountains in Chefland, arranged in a line and numbered
+1 through
+N from left to right. For each valid
+i, the
+i-th mountain from the left has a height
+H
 i
-to
-A
-i
-+X for all
-i∈S.
-You have to sort the array
-A in strictly increasing order by performing atmost
-20 operations.
-It is guaranteed that we can always sort the array
-A under given constraints.
-Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of
-T test cases follow.
-The first line of each test case contains an integer
-N - the length of the array.
-The second line of each test case contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-representing the initial array
-A.
-Output Format
-For each test case print
-(2⋅Q+1) lines. Here
-Q denotes the number of operations you performed to sort the array
-A. Note that,
-Q must be less than or equal to
-20. For each test case,
-In the first line, print
-Q, the number of operations you perform.
-Then, print
-2⋅Q lines. The
-(2⋅i−1)
-th
-and
-(2⋅i)
-th
-of these lines denote the
-i
-th
-(1≤i≤Q) operation.
-To describe the
-i
-th
-operation, print two space-separated integers
-K
-i
-(1≤K
-i
-≤N) and
-X
-i
-(0≤X
-i
-≤10
-6
-) on
-(2⋅i−1)
-th
-line and print
-K
-i
-space-separated integers describing subsequence
-S
-i
-on
-(2⋅i)
-th
-line.
-Constraints
-1≤T≤5⋅10
-4
-2≤N≤10
-5
-1≤A
-i
-≤10
-5
-Sum of
-N over all test cases does not exceed
-10
-5
 .
-Sample 1:
+Chef wants to choose a contiguous sequence of mountains
+l,l+1,…,r and visit them in this order. He has a notebook where he writes down some heights of mountains. Initially, the notebook contains only the integer
+0 and each time he visits a new mountain whose height is strictly greater than all the integers written in the notebook so far, he writes its height in the notebook. The satisfaction Chef gets from travelling is the number of positive integers written in the notebook at the end. For example, if the mountains have heights
+(
+1
+,
+5
+,2,5,3,
+7
+,2,
+9
+), Chef's satisfaction is
+4 and the integers written in the notebook at the end are
+0,1,5,7,9.
+Your task is to answer
+Q queries. In each query, Chef gives you two integers
+L and
+R (
+1≤L≤R≤N) and you should find the maximum satisfaction he can get if he can choose to visit any contiguous sequence of mountains from
+l to
+r such that
+L≤l≤r≤R. Note that the queries are encoded in such a way that they have to be processed online.
 Input
+The first line of each test case contains three space-separated integers
+N,
+Q and
+s.
+The second line contains
+N space-separated integers
+H
+1
+,H
+2
+,…,H
+N
+.
+Each of the following
+Q lines contains two space-separated integers
+x and
+y describing a query. The parameters
+L and
+R for this query can be computed as follows:
+Let
+last be the answer to the previous query, or
+0 if this is the first query in this test case.
+Set
+L to
+(x+s⋅last−1)%N+1.
+Set
+R to
+(y+s⋅last−1)%N+1.
+If
+L>R, swap
+L and
+R.
 Output
-3
-3
-4 4 4
+For each query, print a single line containing one integer — the maximum satisfaction Chef can get.
+Constraints
+1≤N,Q≤10
 5
-8 8 5 2 1
-3
-4 8 9
-2
-1 1
-2
-1 2
-3
-4
-1 20
-2
-1 30
-3
-1 40
-4
-1 50
+0≤s≤1
+1≤H
+i
+≤10
 5
-0
-Explanation:
-Test case
-1: We can sort the array using
-2 operations:
-First operation: Choose
-S=[2] and
-X=1. Thus, we perform
-A
-2
-=A
-2
-+1. The array becomes
-[4,5,4].
-Second operation: Choose
-S=[3] and
-X=2. Thus, we perform
-A
+for each valid
+i
+1≤x,y≤N
+Subtasks
+Subtask #1 (15 points):
+N≤1,000
+Subtask #2 (35 points):
+s=0, i.e. the queries do not have to be processed online
+Subtask #2 (50 points): original constraints
+Example Input 1
+6 3 0
+4 2 3 1 5 5
+1 6
+2 4
+3 4
+Example Output 1
 3
-=A
-3
-+2. The final array is
-[4,5,6].
-The array is now sorted in strictly increasing order.
-Test case
-2: We can sort the array using
-4 operations:
-First operation: Choose
-S=[2] and
-X=20. Thus, we perform
-A
 2
-=A
-2
-+20. The array becomes
-[8,28,5,2,1].
-Second operation: Choose
-S=[3] and
-X=30. Thus, we perform
-A
+1
+Explanation
+In the first query, Chef can choose to visit a contiguous subsequence of mountains with heights
+(4,2,3,1,5,5). The subsequence that gives the maximum satisfaction is
+(2,3,1,5). In that case, Chef writes the integers
+0,2,3,5 to his notebook, so the answer is
+3.
+In the second query, Chef can choose to visit a contiguous subsequence of mountains with heights
+(2,3,1). The whole sequence has the maximum satisfaction
+2, since Chef writes the integers
+0,2,3.
+In the third query, the largest (and the only possible) satisfaction is
+1, since Chef writes either
+0,3 or
+0,1.
+Example Input 2
+10 10 1
+7 8 8 9 10 10 2 3 5 10
+9 6
+2 9
+10 6
+4 2
+5 10
+4 5
+8 7
+8 2
+7 7
+9 5
+Example Output 2
 3
-=A
 3
-+30. The array becomes
-[8,28,35,2,1].
-Third operation: Choose
-S=[4] and
-X=40. Thus, we perform
-A
+3
+1
 4
-=A
+2
+2
 4
-+40. The array becomes
-[8,28,35,42,1].
-Fourth operation: Choose
-S=[5] and
-X=50. Thus, we perform
-A
-5
-=A
-5
-+50. The final array is
-[8,28,35,42,51].
-The array is now sorted in strictly increasing order.
-Test case
-3: The array is already sorted. Thus, we require
-0 operation.
+1
+4

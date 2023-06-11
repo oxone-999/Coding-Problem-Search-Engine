@@ -1,47 +1,53 @@
-Dr Geros lab
+Tree Coloring
 Problem
-Gohan has found his way into Dr. Gero's lab. There, he finds a circuit. He starts to toy with it. He finds the inverse transverse function
-(V
-in
-/V
-out
-) i.e (itf) of the circuit.
-Dr. Gero finds out about this. He gives Gohan an
-s-controller, through which he can randomly change the values of
-s. He finds out that each value of itf can be achieved through multiple values of
-s. But for a single particular value of itf, he finds out that this is not true. That is, just for this particular value of itf, there is only a single value of
-s which achieves it.
-To avoid punishment, Gohan must complete a task given to him by Dr.Gero, which is to find this particular value of itf. He needs your help in doing that.
-HINT to solve these type of circuits. In these circuits, the capacitor and the inductor can be treated as normal resistors, with resistances as follows: The resistance of inductor is directly taken as (s * L) and that of capacitor is 1/(s * C).
-###Input:
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains 4 integers
-R,L,C,V
-in
-, separated by single spaces.
-###Output: For each test case, print a single line containing the answer. Your answer will be judged right if it is at most
-10
-−2
-away from the correct answer.
-###Constraints
-1≤T≤2
-1≤R≤10
-5
-1≤L≤10
-5
-1≤C≤10
-5
-1≤V
-in
-≤10
+Given a tree containing
+N nodes.
+Each node can be coloured using exactly one of the
+C colours. Find the number of colourings of the tree such that:
+All nodes in a path of length at most two have distinct colours.
+As the answer can be huge, print it modulo
+(10
 9
++7).
+Note:
+Two colourings of a tree are different if there exists at least one node having different colours in both the colourings.
+A path in a tree is a sequence of (zero or more) connected nodes.
+The path length between two nodes is defined as the total number of edges in the shortest path from one node to other.
+Input Format
+The first line of the input will contain two integers
+N and
+C, the number of nodes in the tree and the number of colours available respectively.
+The next
+(N−1) lines will describe the given tree. Each line contains two integers
+U and
+V meaning that there is an edge between node
+U and node
+V.
+Output Format
+Output the number of ways to colour the tree satisfying the given condition, modulo
+10
+9
++7.
+Constraints
+1≤N≤10
+6
+1≤C≤10
+6
+1≤U,V≤N
 Sample 1:
 Input
 Output
-2
-4 5 78 60
-4 5 6 3
--61.4
--3.8
+3 3
+1 2
+1 3
+6
+Explanation:
+The valid colourings of nodes
+1,2, and
+3 are:
+{1,2,3},{1,3,2},{2,1,3},{2,3,1},{3,1,2}, and
+{3,2,1}.
+Paths having length at most
+2 are:
+1−2,1−3, and
+2−1−3. Note that for any valid colouring, all the nodes in each of these paths have distinct colours.

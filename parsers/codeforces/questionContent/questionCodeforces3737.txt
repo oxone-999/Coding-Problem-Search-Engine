@@ -1,29 +1,45 @@
-C. Balanced Team
+D. Zero Quantity Maximization
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are a coach at your local university. There are
+You are given two arrays
+a
+and
+b
+, each contains
 n
-students under your supervision, the programming skill of the
+integers.
+You want to create a new array
+c
+as follows: choose some real (i.e. not necessarily integer) number
+d
+, and then for every
+i∈[1,n]
+let
+c
 i
--th student is
+:=d⋅
 a
 i
++
+b
+i
 .
-You have to create a team for a new programming competition. As you know, the more students some team has the more probable its victory is! So you have to create a team with the maximum number of students. But you also know that a team should be balanced. It means that the programming skill of each pair of students in a created team should differ by no more than
-5
-.
-Your task is to report the maximum possible number of students in a balanced team.
+Your goal is to maximize the number of zeroes in array
+c
+. What is the largest possible answer, if you choose
+d
+optimally?
 Input
-The first line of the input contains one integer
+The first line contains one integer
 n
 (
 1≤n≤2⋅
 10
 5
-) — the number of students.
-The second line of the input contains
+) — the number of elements in both arrays.
+The second line contains
 n
 integers
 a
@@ -31,49 +47,95 @@ a
 ,
 a
 2
-,…,
+, ...,
 a
 n
 (
-1≤
+−
+10
+9
+≤
 a
 i
 ≤
 10
 9
-), where
-a
+).
+The third line contains
+n
+integers
+b
+1
+,
+b
+2
+, ...,
+b
+n
+(
+−
+10
+9
+≤
+b
 i
-is a programming skill of the
-i
--th student.
+≤
+10
+9
+).
 Output
-Print one integer — the maximum possible number of students in a balanced team.
+Print one integer — the maximum number of zeroes in array
+c
+, if you choose
+d
+optimally.
 Examples
 input
 Copy
-6
-1 10 17 12 15 2
+5
+1 2 3 4 5
+2 4 7 11 3
+output
+Copy
+2
+input
+Copy
+3
+13 37 39
+1 2 3
+output
+Copy
+2
+input
+Copy
+4
+0 0 0 0
+1 2 3 4
+output
+Copy
+0
+input
+Copy
+3
+1 2 -1
+-6 -12 6
 output
 Copy
 3
-input
-Copy
-10
-1337 1337 1337 1337 1337 1337 1337 1337 1337 1337
-output
-Copy
-10
-input
-Copy
-6
-1 1000 10000 10 100 1000000000
-output
-Copy
-1
 Note
-In the first example you can create a team with skills
-[12,17,15]
+In the first example, we may choose
+d=−2
 .
-In the second example you can take all students in a team because their programming skills are equal.
-In the third example you can create a team consisting of a single student (and you cannot create a team consisting of at least two students).
+In the second example, we may choose
+d=−
+1
+13
+.
+In the third example, we cannot obtain any zero in array
+c
+, no matter which
+d
+we choose.
+In the fourth example, we may choose
+d=6
+.

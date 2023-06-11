@@ -1,110 +1,166 @@
-A. Playoff
+C. Fault-tolerant Network
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Consider a playoff tournament where
-2
+There is a classroom with two rows of computers. There are
 n
-athletes compete. The athletes are numbered from
+computers in each row and each computer has its own grade. Computers in the first row has grades
+a
 1
-to
+,
+a
 2
+,…,
+a
+n
+and in the second row —
+b
+1
+,
+b
+2
+,…,
+b
 n
 .
-The tournament is held in
-n
-stages. In each stage, the athletes are split into pairs in such a way that each athlete belongs exactly to one pair. In each pair, the athletes compete against each other, and exactly one of them wins. The winner of each pair advances to the next stage, the athlete who was defeated gets eliminated from the tournament.
-The pairs are formed as follows:
-in the first stage, athlete
-1
-competes against athlete
-2
-;
-3
-competes against
-4
-;
-5
-competes against
-6
-, and so on;
-in the second stage, the winner of the match "
-1
-–
-2
-" competes against the winner of the match "
-3
-–
-4
-"; the winner of the match "
-5
-–
-6
-" competes against the winner of the match "
-7
-–
-8
-", and so on;
-the next stages are held according to the same rules.
-When athletes
-x
-and
-y
-compete, the winner is decided as follows:
-if
-x+y
-is odd, the athlete with the lower index wins (i. e. if
-x<y
-, then
-x
-wins, otherwise
-y
-wins);
-if
-x+y
-is even, the athlete with the higher index wins.
-The following picture describes the way the tournament with
-n=3
-goes.
-Your task is the following one: given the integer
-n
-, determine the index of the athlete who wins the tournament.
+Initially, all pairs of neighboring computers in each row are connected by wire (pairs
+(i,i+1)
+for all
+1≤i<n
+), so two rows form two independent computer networks.
+Your task is to combine them in one common network by connecting one or more pairs of computers from different rows. Connecting the
+i
+-th computer from the first row and the
+j
+-th computer from the second row costs
+|
+a
+i
+−
+b
+j
+|
+.
+You can connect one computer to several other computers, but you need to provide at least a basic fault tolerance: you need to connect computers in such a way that the network stays connected, despite one of its computer failing. In other words, if one computer is broken (no matter which one), the network won't split in two or more parts.
+That is the minimum total cost to make a fault-tolerant network?
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤30
-) — the number of test cases.
-Each test case consists of one line containing one integer
+1≤t≤
+10
+4
+) — the number of test cases. Next
+t
+cases follow.
+The first line of each test case contains the single integer
 n
 (
-1≤n≤30
-).
+3≤n≤2⋅
+10
+5
+) — the number of computers in each row.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
+10
+9
+) — the grades of computers in the first row.
+The third line contains
+n
+integers
+b
+1
+,
+b
+2
+,…,
+b
+n
+(
+1≤
+b
+i
+≤
+10
+9
+) — the grades of computers in the second row.
+It's guaranteed that the total sum of
+n
+doesn't exceed
+2⋅
+10
+5
+.
 Output
-For each test case, print one integer — the index of the winner of the tournament.
+For each test case, print a single integer — the minimum total cost to make a fault-tolerant network.
 Example
 input
 Copy
 2
 3
-1
+1 10 1
+20 4 25
+4
+1 1 1 1
+1000000000 1000000000 1000000000 1000000000
 output
 Copy
-7
-1
+31
+1999999998
 Note
-The case
-n=3
-is shown in the picture from the statement.
-If
-n=1
-, then there's only one match between athletes
+In the first test case, it's optimal to connect four pairs of computers:
+computer
 1
-and
+from the first row with computer
 2
-. Since
-1+2=3
-is an odd number, the athlete with the lower index wins. So, the athlete
+from the second row: cost
+|1−4|=3
+;
+computer
+3
+from the first row with computer
+2
+from the second row: cost
+|1−4|=3
+;
+computer
+2
+from the first row with computer
 1
-is the winner.
+from the second row: cost
+|10−20|=10
+;
+computer
+2
+from the first row with computer
+3
+from the second row: cost
+|10−25|=15
+;
+In total,
+3+3+10+15=31
+.
+In the second test case, it's optimal to connect
+1
+from the first row with
+1
+from the second row, and
+4
+from the first row with
+4
+from the second row.

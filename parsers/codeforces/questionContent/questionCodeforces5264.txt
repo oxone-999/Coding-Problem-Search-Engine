@@ -1,53 +1,29 @@
-C. Naming Company
+B. Cutting Carrot
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Oleg the client and Igor the analyst are good friends. However, sometimes they argue over little things. Recently, they started a new company, but they are having trouble finding a name for the company.
-To settle this problem, they've decided to play a game. The company name will consist of n letters. Oleg and Igor each have a set of n letters (which might contain multiple copies of the same letter, the sets can be different). Initially, the company name is denoted by n question marks. Oleg and Igor takes turns to play the game, Oleg moves first. In each turn, a player can choose one of the letters c in his set and replace any of the question marks with c. Then, a copy of the letter c is removed from his set. The game ends when all the question marks has been replaced by some letter.
-For example, suppose Oleg has the set of letters {i, o, i} and Igor has the set of letters {i, m, o}. One possible game is as follows :
-Initially, the company name is ???.
-Oleg replaces the second question mark with 'i'. The company name becomes ?i?. The set of letters Oleg have now is {i, o}.
-Igor replaces the third question mark with 'o'. The company name becomes ?io. The set of letters Igor have now is {i, m}.
-Finally, Oleg replaces the first question mark with 'o'. The company name becomes oio. The set of letters Oleg have now is {i}.
-In the end, the company name is oio.
-Oleg wants the company name to be as lexicographically small as possible while Igor wants the company name to be as lexicographically large as possible. What will be the company name if Oleg and Igor always play optimally?
-A string s = s1s2...sm is called lexicographically smaller than a string t = t1t2...tm (where s ≠ t) if si < ti where i is the smallest index such that si ≠ ti. (so sj = tj for all j < i)
+Igor the analyst has adopted n little bunnies. As we all know, bunnies love carrots. Thus, Igor has bought a carrot to be shared between his bunnies. Igor wants to treat all the bunnies equally, and thus he wants to cut the carrot into n pieces of equal area.
+Formally, the carrot can be viewed as an isosceles triangle with base length equal to 1 and height equal to h. Igor wants to make n - 1 cuts parallel to the base to cut the carrot into n pieces. He wants to make sure that all n pieces have the same area. Can you help Igor determine where to cut the carrot so that each piece have equal area?
+Illustration to the first example.
 Input
-The first line of input contains a string s of length n (1 ≤ n ≤ 3·105). All characters of the string are lowercase English letters. This string denotes the set of letters Oleg has initially.
-The second line of input contains a string t of length n. All characters of the string are lowercase English letters. This string denotes the set of letters Igor has initially.
+The first and only line of input contains two space-separated integers, n and h (2 ≤ n ≤ 1000, 1 ≤ h ≤ 105).
 Output
-The output should contain a string of n lowercase English letters, denoting the company name if Oleg and Igor plays optimally.
+The output should contain n - 1 real numbers x1, x2, ..., xn - 1. The number xi denotes that the i-th cut must be made xi units away from the apex of the carrot. In addition, 0 < x1 < x2 < ... < xn - 1 < h must hold.
+Your output will be considered correct if absolute or relative error of every number in your output doesn't exceed 10 - 6.
+Formally, let your answer be a, and the jury's answer be b. Your answer is considered correct if .
 Examples
 input
 Copy
-tinkoff
-zscoder
+3 2
 output
 Copy
-fzfsirk
+1.154700538379 1.632993161855
 input
 Copy
-xxxxxx
-xxxxxx
+2 100000
 output
 Copy
-xxxxxx
-input
-Copy
-ioi
-imo
-output
-Copy
-ioi
+70710.678118654752
 Note
-One way to play optimally in the first sample is as follows :
-Initially, the company name is ???????.
-Oleg replaces the first question mark with 'f'. The company name becomes f??????.
-Igor replaces the second question mark with 'z'. The company name becomes fz?????.
-Oleg replaces the third question mark with 'f'. The company name becomes fzf????.
-Igor replaces the fourth question mark with 's'. The company name becomes fzfs???.
-Oleg replaces the fifth question mark with 'i'. The company name becomes fzfsi??.
-Igor replaces the sixth question mark with 'r'. The company name becomes fzfsir?.
-Oleg replaces the seventh question mark with 'k'. The company name becomes fzfsirk.
-For the second sample, no matter how they play, the company name will always be xxxxxx.
+Definition of isosceles triangle: https://en.wikipedia.org/wiki/Isosceles_triangle.

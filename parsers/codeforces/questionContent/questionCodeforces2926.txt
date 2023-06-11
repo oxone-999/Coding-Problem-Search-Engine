@@ -1,231 +1,195 @@
-B. Aroma's Search
-time limit per test1 second
+E. Rin and The Unknown Flower
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-THE SxPLAY & KIVΛ - 漂流
-KIVΛ & Nikki Simmons - Perspectives
-With a new body, our idol Aroma White (or should we call her Kaori Minamiya?) begins to uncover her lost past through the OS space.
-The space can be considered a 2D plane, with an infinite number of data nodes, indexed from
-0
-, with their coordinates defined as follows:
-The coordinates of the
-0
--th node is
-(
-x
-0
-,
-y
-0
-)
-For
-i>0
-, the coordinates of
-i
--th node is
-(
-a
-x
-⋅
-x
-i−1
-+
-b
-x
-,
-a
-y
-⋅
-y
-i−1
-+
-b
-y
-)
-Initially Aroma stands at the point
-(
-x
+MisoilePunch♪ - 彩
+This is an interactive problem!
+On a normal day at the hidden office in A.R.C. Markland-N, Rin received an artifact, given to her by the exploration captain Sagar.
+After much analysis, she now realizes that this artifact contains data about a strange flower, which has existed way before the New Age. However, the information about its chemical structure has been encrypted heavily.
+The chemical structure of this flower can be represented as a string
+p
+. From the unencrypted papers included, Rin already knows the length
+n
+of that string, and she can also conclude that the string contains at most three distinct letters: "C" (as in Carbon), "H" (as in Hydrogen), and "O" (as in Oxygen).
+At each moment, Rin can input a string
 s
-,
-y
+of an arbitrary length into the artifact's terminal, and it will return every starting position of
 s
-)
-. She can stay in OS space for at most
+as a substring of
+p
+.
+However, the artifact has limited energy and cannot be recharged in any way, since the technology is way too ancient and is incompatible with any current A.R.C.'s devices. To be specific:
+The artifact only contains
+7
+5
+units of energy.
+For each time Rin inputs a string
+s
+of length
 t
-seconds, because after this time she has to warp back to the real world. She doesn't need to return to the entry point
-(
-x
-s
-,
-y
-s
-)
-to warp home.
-While within the OS space, Aroma can do the following actions:
-From the point
-(x,y)
-, Aroma can move to one of the following points:
-(x−1,y)
-,
-(x+1,y)
-,
-(x,y−1)
-or
-(x,y+1)
-. This action requires
+, the artifact consumes
 1
-second.
-If there is a data node at where Aroma is staying, she can collect it. We can assume this action costs
-0
-seconds. Of course, each data node can be collected at most once.
-Aroma wants to collect as many data as possible before warping back. Can you help her in calculating the maximum number of data nodes she could collect within
 t
-seconds?
-Input
-The first line contains integers
-x
-0
-,
-y
-0
-,
-a
-x
-,
-a
-y
-,
-b
-x
-,
-b
-y
-(
-1≤
-x
-0
-,
-y
-0
-≤
-10
-16
-,
-2≤
-a
-x
-,
-a
-y
-≤100
-,
-0≤
-b
-x
-,
-b
-y
-≤
-10
-16
-), which define the coordinates of the data nodes.
-The second line contains integers
-x
-s
-,
-y
-s
-,
+2
+units of energy.
+If the amount of energy reaches below zero, the task will be considered failed immediately, as the artifact will go black forever.
+Since the artifact is so precious yet fragile, Rin is very nervous to attempt to crack the final data. Can you give her a helping hand?
+Interaction
+The interaction starts with a single integer
 t
 (
-1≤
-x
+1≤t≤500
+), the number of test cases. The interaction for each testcase is described below:
+First, read an integer
+n
+(
+4≤n≤50
+), the length of the string
+p
+.
+Then you can make queries of type "? s" (
+1≤|s|≤n
+) to find the occurrences of
 s
+as a substring of
+p
+.
+After the query, you need to read its result as a series of integers in a line:
+The first integer
+k
+denotes the number of occurrences of
+s
+as a substring of
+p
+(
+−1≤k≤n
+). If
+k=−1
+, it means you have exceeded the energy limit or printed an invalid query, and you need to terminate immediately, to guarantee a "Wrong answer" verdict, otherwise you might get an arbitrary verdict because your solution will continue to read from a closed stream.
+The following
+k
+integers
+a
+1
 ,
-y
+a
+2
+,…,
+a
+k
+(
+1≤
+a
+1
+<
+a
+2
+<…<
+a
+k
+≤n
+) denote the starting positions of the substrings that match the string
 s
-,t≤
-10
-16
-) – the initial Aroma's coordinates and the amount of time available.
-Output
-Print a single integer — the maximum number of data nodes Aroma can collect within
+.
+When you find out the string
+p
+, print "!
+p
+" to finish a test case. This query doesn't consume any energy. The interactor will return an integer
+1
+or
+0
+. If the interactor returns
+1
+, you can proceed to the next test case, or terminate the program if it was the last testcase.
+If the interactor returns
+0
+, it means that your guess is incorrect, and you should to terminate to guarantee a "Wrong answer" verdict.
+Note that in every test case the string
+p
+is fixed beforehand and will not change during the queries, i.e. the interactor is not adaptive.
+After printing any query do not forget to print end of line and flush the output. Otherwise, you might get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see the documentation for other languages.
+Hacks
+For hack, use the following format. Note that you can only hack with one test case:
+The first line should contain a single integer
 t
-seconds.
+(
+t=1
+).
+The second line should contain an integer
+n
+(
+4≤n≤50
+) — the string's size.
+The third line should contain a string of size
+n
+, consisting of characters "C", "H" and "O" only. This is the string contestants will have to find out.
 Examples
 input
 Copy
-1 1 2 3 1 0
-2 4 20
-output
-Copy
-3
-input
-Copy
-1 1 2 3 1 0
-15 27 26
-output
-Copy
-2
-input
-Copy
-1 1 2 3 1 0
-2 2 1
-output
-Copy
-0
-Note
-In all three examples, the coordinates of the first
-5
-data nodes are
-(1,1)
-,
-(3,3)
-,
-(7,9)
-,
-(15,27)
-and
-(31,81)
-(remember that nodes are numbered from
-0
-).
-In the first example, the optimal route to collect
-3
-nodes is as follows:
-Go to the coordinates
-(3,3)
-and collect the
 1
--st node. This takes
-|3−2|+|3−4|=2
-seconds.
-Go to the coordinates
-(1,1)
-and collect the
+4
+
+2 1 2
+
+1 2
+
 0
--th node. This takes
-|1−3|+|1−3|=4
-seconds.
-Go to the coordinates
-(7,9)
-and collect the
+
+1
+output
+Copy
+? C
+
+? CH
+
+? CCHO
+
+! CCHH
+input
+Copy
 2
--nd node. This takes
-|7−1|+|9−1|=14
-seconds.
-In the second example, the optimal route to collect
-2
-nodes is as follows:
-Collect the
-3
--rd node. This requires no seconds.
-Go to the coordinates
-(7,9)
-and collect the
-2
--th node. This takes
-|15−7|+|27−9|=26
-seconds.
-In the third example, Aroma can't collect any nodes. She should have taken proper rest instead of rushing into the OS space like that.
+5
+
+0
+
+2 2 3
+
+1
+8
+
+1 5
+
+1 5
+
+1 3
+
+2 1 2
+
+1
+output
+Copy
+? O
+
+? HHH
+
+! CHHHH
+
+
+? COO
+
+? COOH
+
+? HCCOO
+
+? HH
+
+! HHHCCOOH
+Note
+Note that the example interaction contains extra empty lines so that it's easier to read. The real interaction doesn't contain any empty lines and you shouldn't print any extra empty lines as well.

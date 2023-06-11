@@ -1,57 +1,36 @@
-Golf
+Little Elephant and Permutations
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-It's a lockdown. You’re bored in your house and are playing golf in the hallway.
-The hallway has
-N+2 tiles numbered from
-0 to
-N+1 from left to right. There is a hole on tile number
-x. You hit the ball standing on tile
-0. When you hit the ball, it bounces at lengths of
-k, i.e. the tiles covered by it are
-0,k,2k,…, and so on until the ball passes tile
-N+1.
-If the ball doesn't enter the hole in the first trial, you try again but this time standing on the tile
-N+1. When you hit the ball, it bounces at lengths of
-k, i.e. the tiles covered by it are
-(N+1),(N+1−k),(N+1−2k),…, and so on until the ball passes tile
-0.
-Find if the ball will enter the hole, either in its forward journey or backward journey.
-Note: The input and output of this problem are large, so prefer using fast input/output methods.
-###Input
-The first line contains an integer
-T, the number of test cases. Then the test cases follow.
-The only line of each test case contains three integers
-N,x,k.
-###Output Output in a single line, the answer, which should be "YES" if the ball enters the hole either in the forward or backward journey and "NO" if not.
-You may print each character of the string in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
-###Constraints
-1≤T≤10
-5
-1≤x,k≤N≤10
-9
-Subtasks
-Subtask #1 (10 points):
-N≤10
-2
-Subtask #2 (90 points): original constraints
+The Little Elephant likes permutations. This time he has a permutation A[1], A[2], ..., A[N] of numbers 1, 2, ..., N.
+He calls a permutation A good, if the number of its inversions is equal to the number of its local inversions. The number of inversions is equal to the number of pairs of integers (i; j) such that 1 ≤ i < j ≤ N and A[i] > A[j], and the number of local inversions is the number of integers i such that 1 ≤ i < N and A[i] > A[i+1].
+The Little Elephant has several such permutations. Help him to find for each permutation whether it is good or not. Print YES for a corresponding test case if it is good and NO otherwise.
+Input
+The first line of the input contains a single integer T, the number of test cases. T test cases follow. The first line of each test case contains a single integer N, the size of a permutation. The next line contains N space separated integers A[1], A[2], ..., A[N].
+Output
+For each test case output a single line containing the answer for the corresponding test case. It should be YES if the corresponding permutation is good and NO otherwise.
+Constraints
+1 ≤ T ≤ 474
+
+1 ≤ N ≤ 100
+
+It is guaranteed that the sequence A[1], A[2], ..., A[N] is a permutation of numbers 1, 2, ..., N.
 Sample 1:
 Input
 Output
+4
+1
+1
+2
+2 1
 3
-5 4 2
-5 3 2
-5 5 2
+3 2 1
+4
+1 3 2 4
+YES
 YES
 NO
-NO
+YES
 Explanation:
-In each test case, the tiles covered by the ball for
-N=5 and
-k=2 are
-{0,2,4,6} in the forward journey and
-{6,4,2,0} in the backward journey.
-Therefore, the answer for the first test case is "YES" since the ball falls in the position of the hole at tile
-4. But the answer for test cases
-2 and
-3 is "NO" since the ball does not fall in the position of the hole.
+Case 1. Here N = 1, so we have no pairs (i; j) with 1 ? i < j ? N. So the number of inversions is equal to zero. The number of local inversion is also equal to zero. Hence this permutation is good.
+Case 2. Here N = 2, and we have one pair (i; j) with 1 ? i < j ? N, the pair (1; 2). Since A[1] = 2 and A[2] = 1 then A[1] > A[2] and the number of inversions is equal to 1. The number of local inversion is also equal to 1 since we have one value of i for which 1 ? i < N (the value i = 1) and A[i] > A[i+1] for this value of i since A[1] > A[2]. Hence this permutation is also good.
+Case 3. Here N = 3, and we have three pairs (i; j) with 1 ? i < j ? N. We have A[1] = 3, A[2] = 2, A[3] = 1. Hence A[1] > A[2], A[1] > A[3] and A[2] > A[3]. So the number of inversions is equal to 3. To count the number of local inversion we should examine inequalities A[1] > A[2] and A[2] > A[3]. They both are satisfied in our case, so we have 2 local inversions. Since 2 ? 3 this permutations is not good.
+Case 4. Here we have only one inversion and it comes from the pair (2; 3) since A[2] = 3 > 2 = A[3]. This pair gives also the only local inversion in this permutation. Hence the number of inversions equals to the number of local inversions and equals to one. So this permutation is good.

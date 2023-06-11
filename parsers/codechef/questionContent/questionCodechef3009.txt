@@ -1,37 +1,55 @@
-Divide the Set
+Guessing Game
 Problem
-Read problems statements in mandarin chinese, russian and vietnamese as well.
-You are given N integers. In each step you can choose some K of the remaining numbers and delete them, if the following condition holds: Let the K numbers you've chosen be a1, a2, a3, ..., aK in sorted order. Then, for each i ≤ K - 1, ai+1 must be greater than or equal to ai * C.
-You are asked to calculate the maximum number of steps you can possibly make.
-Input
-The first line of the input contains an integer T, denoting the number of test cases. The description of each testcase follows.
-The first line of each testcase contains three integers: N, K, and C
-The second line of each testcase contains the N initial numbers
-Output
-For each test case output the answer in a new line.
-Subtasks
-Subtask #1 (40 points):
-1 ≤ N ≤ 103
-1 ≤ Sum of N over all test cases ≤ 103
-Subtask #2 (60 points):
-Original constraints
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+This is an interactive problem. Incase you are new to interactive problems, take a look at this link.
+Alice and Bob are playing a game. Initially, Alice has a hidden integer
+x; Bob only knows an integer
+N such that
+1≤x≤N and he has to find
+x by asking questions. In each question, Bob must choose an integer
+y (
+1≤y≤N), and Alice answers 'G', 'L' or 'E' based on whether
+x>y,
+x<y or
+x=y respectively.
+However, to make things more interesting, they decided that Alice can lie sometimes. In particular, she cannot lie two times in a row and when
+x=y (i.e. Bob found
+x), she has to answer 'E', so lying corresponds to answering 'G' when the correct answer is 'L' or vice versa. Alice can choose to lie at any time as long as she follows these rules.
+As soon as Alice answers 'E' to some question, the game ends and Bob wins. Help Bob and win the game using no more than
+K questions.
+Note: The grader is adaptive ― the answer is not fixed at the start, but the answers to your questions are chosen in such a way that there is always at least one integer
+x which is consistent with all answers (for some valid choice of answers that are lies).
+Interaction
+First, you should read a line containing a single integer
+N.
+Then, you should ask questions. To ask a question, print a line containing a single integer
+y. Then, you must read a line containing a single character: 'G', 'L' or 'E', denoting the answer to your question.
+As soon as the answer to one of your questions is 'E', you must terminate your program.
 Constraints
-1 ≤ T ≤ 100
-1 ≤ N ≤ 3 * 105
-1 ≤ K ≤ 64
-2 ≤ C ≤ 50
-1 ≤ ai ≤ 1018
-1 ≤ Sum of N over all test cases ≤ 3 * 105
-Sample 1:
-Input
-Output
-2
-6 3 2
-4 1 2 2 3 1
-6 3 2
-1 2 2 1 4 4
-1
-2
-Explanation:
-Testcase 1: You can make one step by choosing {1, 2, 4}.
-Testcase 2: You can make one step by choosing {1, 2, 4} and another by choosing {1, 2, 4}.
+1≤N≤10
+9
+Subtasks
+Subtask #1 (15 points):
+K=300
+Alice follows a simpler strategy: she either answers the second, fourth, sixth, etc. question or the first, third, fifth, etc. question truthfully, but she may or may not lie in all other questions
+Subtask #2 (30 points):
+K=300
+N≤100,000
+Subtask #3 (30 points):
+K=300
+Subtask #4 (25 points):
+K=120
+Example
+Grader              You
+5
+                    2
+L
+                    4
+G
+                    4
+G
+                    5
+E
+Explanation
+The hidden number is
+x=5. Alice decides to lie in the first question, so she has to tell the truth in the second question. In the third question, she decides to tell the truth, and in the final question, she answers 'E', since Bob asks about the correct value.

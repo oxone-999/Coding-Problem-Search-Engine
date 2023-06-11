@@ -1,113 +1,98 @@
-The One with Ross Wedding
+Addition
 Problem
-Even before they leave the apartment, Joey drives Chandler crazy by forgetting everything useful, even his passport, but crying every five seconds "London, baby!", and photographing absolutely everything all the time, as if 6 hours on an airplane with Monica weren't bad enough. On reaching, Joey uses a map to visit the famous places nearby.
-Joey is currently at the coordinates
-(0,0) and he wants to reach the coordinates
-(P,Q). Chandler has a set of instructions for Joey to move. He provides Joey a binary string
-S of length
-N. Joey chooses one of the axes : either x-axis or y-axis. Joey then follows the instructions. To follow the
-i
-th
-instruction:
-If
-S
-i
-=
-0, Joey has to change his axis immediately and move in any direction (positive or negative) of the resulting axis by
-1 unit.
-If
-S
-i
-=
-1, Joey can move in any direction (positive or negative) along the current axis by
-1 unit.
-For x-axis, moving in positive direction implies moving from
-(x,y) to
-(x+1,y) and moving in negative direction implies moving from
-(x,y) to
-(x−1,y). Similarly, for y-axis, moving in positive direction implies moving from
-(x,y) to
-(x,y+1) and moving in negative direction implies moving from
-(x,y) to
-(x,y−1).
-Determine if Joey can reach
-(P,Q) at the end.
-Input Format
-First line will contain
-T, number of testcases. Then the testcases follow.
-First line of each testcase contains of three integers
-N,P,Q.
-Second line of each test case contains a binary string
-S.
-Output Format
-For each test case print "YES" if he can reach coordinates
-(P,Q) at the end, else print "NO".
-You may print each character of each string in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Recently, Chef studied the binary numeral system and noticed that it is extremely simple to perform bitwise operations like AND, XOR or bit shift on non-negative integers, while it is much more complicated to perform arithmetic operations (e.g. addition, multiplication or division).
+After playing with binary operations for a while, Chef invented an interesting algorithm for addition of two non-negative integers
+A and
+B:
+function add(A, B):
+    while B is greater than 0:
+        U = A XOR B
+        V = A AND B
+        A = U
+        B = V * 2
+    return A
+Now Chef is wondering how fast this algorithm is. Given the initial values of
+A and
+B (in binary representation), he needs you to help him compute the number of times the while-loop of the algorithm is repeated.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single string
+A.
+The second line contains a single string
+B.
+Output
+For each test case, print a single line containing one integer ― the number of iterations the algorithm will perform during addition of the given numbers
+A and
+B.
 Constraints
 1≤T≤10
-4
-1≤N≤10
 5
-−10
-6
-≤P,Q≤10
-6
-S contains
-0,1 only.
-Sum of
-N over all test cases does not exceed
-2⋅10
+1≤∣A∣,∣B∣≤10
 5
+A and
+B contain only characters '0' and '1'
+the sum of
+∣A∣+∣B∣ over all test cases does not exceed
+10
+6
+Subtasks
+Subtask #1 (20 points):
+∣A∣,∣B∣≤30
+Subtask #2 (30 points):
+∣A∣,∣B∣≤500
+the sum of
+∣A∣+∣B∣ over all test cases does not exceed
+10
+5
+Subtask #3 (50 points): original constraints
 Sample 1:
 Input
 Output
 3
-3 0 -1
-111
-4 2 0
-1101
-2 0 1
-00
-YES
-YES
-NO
-Explanation:
-Test case 1: Joey starts by choosing the y-axis.
-S
+100010
 0
-=1, he chooses to move towards the positive direction of y-axis.
-S
-1
-=1, he chooses to move towards the negative direction of y-axis.
-S
-2
-=1, he moves towards the negative direction of y-axis. Thus, his path is
-(0,0)
-→
-(0,1)
-→
-(0,0)
-→
-(0,−1).
-Test case 2: Joey starts by choosing x-axis.
-S
 0
-=1, he chooses to move towards the positive direction of x-axis.
-S
+100010
+11100
+1010
+0
 1
-=1, he chooses to moves towards the positive direction of x-axis.
-S
-2
-=0, he changes the axis and chooses to move towards the negative direction of y-axis
-S
 3
-=0, he changes the axis and chooses to move towards the positive direction of y-axis. Thus, his path is
-(0,0)
-→
-(1,0)
-→
-(2,0)
-→
-(2,−1)
-→
-(2,0).
+Explanation:
+Example case 1: The initial value of
+B is
+0, so while-loop is not performed at all.
+Example case 2: The initial values of
+A and
+B are
+0
+2
+=0 and
+100010
+2
+=34 respectively. When the while-loop is performed for the first time, we have:
+U=34
+V=0
+A changes to
+34
+B changes to
+2⋅0=0
+The while-loop terminates immediately afterwards, so it is executed only once.
+Example case 3: The initial values of
+A and
+B are
+11100
+2
+=28 and
+1010
+2
+=10 respectively. After the first iteration, their values change to
+22 and
+16 respectively. After the second iteration, they change to
+6 and
+32, and finally, after the third iteration, to
+38 and
+0.

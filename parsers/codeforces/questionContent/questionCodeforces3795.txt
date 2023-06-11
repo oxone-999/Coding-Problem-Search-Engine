@@ -1,45 +1,80 @@
-D6. Hessenberg matrix
-time limit per test2 seconds
-memory limit per test1024 megabytes
+A. Best Subsegment
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Implement a unitary operation on
-N
-qubits which is represented by an upper Hessenberg matrix (a square matrix of size
+You are given array
+a
+1
+,
+a
 2
-N
-which has all zero elements below the first subdiagonal and all non-zero elements on the first subdiagonal and above it).
-For example, for
-N=2
-the matrix of the operation should have the following shape:
-XXXX
-XXXX
-.XXX
-..XX
-Here X denotes a "non-zero" element of the matrix (a complex number which has the square of the absolute value greater than or equal to
-10
-−5
-), and . denotes a "zero" element of the matrix (a complex number which has the square of the absolute value less than
-10
-−5
-).
-The row and column indices of the matrix follow little endian format: the least significant bit of the index is stored first in the qubit array. Thus, the first column of the matrix gives you the coefficients of the basis states you'll get if you apply the unitary to the
-|00..0⟩
-basis state, the second column - to the
-|10..0⟩
-basis state etc. You can use the DumpUnitary tool to get the coefficients of the matrix your unitary implements (up to relative phases between columns) and the corresponding pattern of Xs and .s.
-You have to implement an operation which takes an array of
-N
+,…,
+a
+n
+. Find the subsegment
+a
+l
+,
+a
+l+1
+,…,
+a
+r
 (
-2≤N≤4
-) qubits as an input and applies the unitary transformation with the matrix of the described shape to it. If there are multiple unitaries which satisfy the requirements, you can implement any of them. The "output" of your operation is the pattern of the matrix coefficients implemented by it; you can see the testing harness in the UnitaryPatterns kata.
-Your code should have the following signature:
-namespace Solution {
-    open Microsoft.Quantum.Primitive;
-    open Microsoft.Quantum.Canon;
-
-    operation Solve (qs : Qubit[]) : Unit {
-        // your code here
-    }
-}
-You are not allowed to use measurements in your operation.
+1≤l≤r≤n
+) with maximum arithmetic mean
+1
+r−l+1
+∑
+i=l
+r
+a
+i
+(in floating-point numbers, i.e. without any rounding).
+If there are many such subsegments find the longest one.
+Input
+The first line contains single integer
+n
+(
+1≤n≤
+10
+5
+) — length of the array
+a
+.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤
+10
+9
+) — the array
+a
+.
+Output
+Print the single integer — the length of the longest subsegment with maximum possible arithmetic mean.
+Example
+input
+Copy
+5
+6 1 6 6 0
+output
+Copy
+2
+Note
+The subsegment
+[3,4]
+is the longest among all subsegments with maximum arithmetic mean.

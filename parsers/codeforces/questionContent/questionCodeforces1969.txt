@@ -1,266 +1,83 @@
-D. Odd Mineral Resource
-time limit per test5 seconds
-memory limit per test1024 megabytes
+A. Yet Another String Game
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-In Homer's country, there are
-n
-cities numbered
+Homer has two friends Alice and Bob. Both of them are string fans.
+One day, Alice and Bob decide to play a game on a string
+s=
+s
 1
-to
-n
-and they form a tree. That is, there are
-(n−1)
-undirected roads between these
-n
-cities and every two cities can reach each other through these roads.
-Homer's country is an industrial country, and each of the
-n
-cities in it contains some mineral resource. The mineral resource of city
-i
-is labeled
-a
-i
-.
-Homer is given the plans of the country in the following
-q
-years. The plan of the
-i
--th year is described by four parameters
-u
-i
-,
-v
-i
-,
-l
-i
-and
-r
-i
-, and he is asked to find any mineral resource
-c
-i
-such that the following two conditions hold:
-mineral resource
-c
-i
-appears an odd number of times between city
-u
-i
-and city
-v
-i
-; and
-l
-i
-≤
-c
-i
-≤
-r
-i
-.
-As the best friend of Homer, he asks you for help. For every plan, find any such mineral resource
-c
-i
-, or tell him that there doesn't exist one.
-Input
-The first line contains two integers
-n
-(
-1≤n≤3⋅
-10
-5
-) and
-q
-(
-1≤q≤3⋅
-10
-5
-), indicating the number of cities and the number of plans.
-The second line contains
-n
-integers
-a
-1
-,
-a
+s
 2
-,…,
-a
+…
+s
 n
+of length
+n
+consisting of lowercase English letters. They move in turns alternatively and Alice makes the first move.
+In a move, a player must choose an index
+i
 (
-1≤
+1≤i≤n
+) that has not been chosen before, and change
+s
+i
+to any other lowercase English letter
+c
+that
+c≠
+s
+i
+.
+When all indices have been chosen, the game ends.
+The goal of Alice is to make the final string lexicographically as small as possible, while the goal of Bob is to make the final string lexicographically as large as possible. Both of them are game experts, so they always play games optimally. Homer is not a game expert, so he wonders what the final string will be.
+A string
 a
-i
-≤n
-).
-Then the
-i
--th line of the following
-(n−1)
-lines contains two integers
-x
-i
+is lexicographically smaller than a string
+b
+if and only if one of the following holds:
+a
+is a prefix of
+b
+, but
+a≠b
+;
+in the first position where
+a
 and
-y
-i
+b
+differ, the string
+a
+has a letter that appears earlier in the alphabet than the corresponding letter in
+b
+.
+Input
+Each test contains multiple test cases. The first line contains
+t
 (
-1≤
-x
-i
-,
-y
-i
-≤n
-) with
-x
-i
-≠
-y
-i
-, indicating that there is a bidirectional road between city
-x
-i
-and city
-y
-i
-. It is guaranteed that the given roads form a tree.
-Then the
-i
--th line of the following
-q
-lines contains four integers
-u
-i
-,
-v
-i
-,
-l
-i
-,
-r
-i
+1≤t≤1000
+)  — the number of test cases. Description of the test cases follows.
+The only line of each test case contains a single string
+s
 (
-1≤
-u
-i
-≤n
-,
-1≤
-v
-i
-≤n
-,
-1≤
-l
-i
-≤
-r
-i
-≤n
-), indicating the plan of the
-i
--th year.
+1≤|s|≤50
+) consisting of lowercase English letters.
 Output
-Print
-q
-lines, the
-i
--th of which contains an integer
-c
-i
-such that
-c
-i
-=−1
-if there is no such mineral resource that meets the required condition; or
-c
-i
-is the label of the chosen mineral resource of the
-i
--th year. The chosen mineral resource
-c
-i
-should meet those conditions in the
-i
--th year described above in the problem statement. If there are multiple choices of
-c
-i
-, you can print any of them.
+For each test case, print the final string in a single line.
 Example
 input
 Copy
-6 8
-3 2 1 3 1 3
-1 2
-1 3
-2 4
-2 5
-4 6
-3 5 1 1
-3 5 1 3
-3 5 1 3
-1 1 2 2
-1 1 3 3
-1 4 1 5
-1 6 1 3
-1 6 1 3
+3
+a
+bbbb
+az
 output
 Copy
--1
-2
-3
--1
-3
-2
-2
-3
+b
+azaz
+by
 Note
-In the first three queries, there are four cities between city
-3
-and city
-5
-, which are city
-1
-, city
-2
-, city
-3
-and city
-5
-. The mineral resources appear in them are mineral resources
-1
-(appears in city
-3
-and city
-5
-),
-2
-(appears in city
-2
-) and
-3
-(appears in city
-1
-). It is noted that
-The first query is only to check whether mineral source
-1
-appears an odd number of times between city
-3
-and city
-5
-. The answer is no, because mineral source
-1
-appears twice (an even number of times) between city
-3
-and city
-5
-.
-The second and the third queries are the same but they can choose different mineral resources. Both mineral resources
-2
-and
-3
-are available.
+In the first test case: Alice makes the first move and must change the only letter to a different one, so she changes it to 'b'.
+In the second test case: Alice changes the first letter to 'a', then Bob changes the second letter to 'z', Alice changes the third letter to 'a' and then Bob changes the fourth letter to 'z'.
+In the third test case: Alice changes the first letter to 'b', and then Bob changes the second letter to 'y'.

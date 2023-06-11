@@ -1,247 +1,221 @@
-C. Continuous City
-time limit per test2 seconds
+E. School Clubs
+time limit per test4 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Some time ago Homer lived in a beautiful city. There were
+In Homer's school, there are
 n
-blocks numbered from
-1
-to
-n
-and
+students who love clubs.
+Initially, there are
 m
-directed roads between them. Each road had a positive length, and each road went from the block with the smaller index to the block with the larger index. For every two (different) blocks, there was at most one road between them.
-Homer discovered that for some two numbers
-L
-and
-R
-the city was
-(L,R)
--continuous.
-The city is said to be
-(L,R)
--continuous, if
-all paths from block
-1
-to block
+clubs, and each of the
 n
-are of length between
-L
-and
-R
-(inclusive); and
-for every
-L≤d≤R
-, there is exactly one path from block
-1
-to block
-n
-whose length is
-d
-.
-A path from block
-u
-to block
-v
-is a sequence
-u=
-x
-0
-→
-x
-1
-→
-x
-2
-→⋯→
-x
-k
-=v
-, where there is a road from block
-x
-i−1
-to block
-x
+students is in exactly one club. In other words, there are
+a
 i
-for every
+students in the
+i
+-th club for
+1≤i≤m
+and
+a
+1
++
+a
+2
++⋯+
+a
+m
+=n
+.
+The
+n
+students are so unfriendly that every day one of them (chosen uniformly at random from all of the
+n
+students) gets angry. The student who gets angry will do one of the following things.
+With probability
+1
+2
+, he leaves his current club, then creates a new club himself and joins it. There is only one student (himself) in the new club he creates.
+With probability
+1
+2
+, he does not create new clubs. In this case, he changes his club to a new one (possibly the same club he is in currently) with probability proportional to the number of students in it. Formally, suppose there are
+k
+clubs and there are
+b
+i
+students in the
+i
+-th club for
 1≤i≤k
-. The length of a path is the sum of lengths over all roads in the path. Two paths
-x
-0
-→
-x
-1
-→⋯→
-x
-k
-and
-y
-0
-→
-y
-1
-→⋯→
-y
-l
-are different, if
-k≠l
-or
-x
+(before the student gets angry). He leaves his current club, and then joins the
 i
-≠
-y
+-th club with probability
+b
 i
-for some
-0≤i≤min{k,l}
-.
-After moving to another city, Homer only remembers the two special numbers
-L
-and
-R
-but forgets the numbers
 n
-and
-m
-of blocks and roads, respectively, and how blocks are connected by roads. However, he believes the number of blocks should be no larger than
-32
-(because the city was small).
-As the best friend of Homer, please tell him whether it is possible to find a
-(L,R)
--continuous city or not.
+.
+We note that when a club becomes empty, students will never join it because any student who gets angry will join an empty club with probability
+0
+according to the above statement.
+Homer wonders the expected number of days until every student is in the same club for the first time.
+We can prove that the answer can be represented as a rational number
+p
+q
+with
+gcd(p,q)=1
+. Therefore, you are asked to find the value of
+p
+q
+−1
+mod998244353
+. It can be shown that
+qmod998244353≠0
+under the given constraints of the problem.
 Input
-The single line contains two integers
-L
-and
-R
-(
-1≤L≤R≤
-10
-6
-).
-Output
-If it is impossible to find a
-(L,R)
--continuous city within
-32
-blocks, print "NO" in a single line.
-Otherwise, print "YES" in the first line followed by a description of a
-(L,R)
--continuous city.
-The second line should contain two integers
-n
-(
-2≤n≤32
-) and
+The first line contains an integer
 m
 (
-1≤m≤
-n(n−1)
-2
-), where
-n
-denotes the number of blocks and
+1≤m≤1000
+) — the number of clubs initially.
+The second line contains
 m
-denotes the number of roads.
-Then
-m
-lines follow. The
-i
--th of the
-m
-lines should contain three integers
+integers
 a
-i
+1
 ,
-b
-i
+a
+2
+,…,
+a
+m
 (
 1≤
 a
 i
-<
-b
-i
-≤n
-) and
-c
-i
-(
-1≤
-c
-i
-≤
+≤4⋅
 10
-6
-) indicating that there is a directed road from block
+8
+) with
+1≤
+a
+1
++
+a
+2
++⋯+
+a
+m
+≤4⋅
+10
+8
+, where
 a
 i
-to block
-b
+denotes the number of students in the
 i
-of length
-c
-i
-.
-It is required that for every two blocks, there should be no more than 1 road connecting them. That is, for every
-1≤i<j≤m
-, either
-a
-i
-≠
-a
-j
-or
-b
-i
-≠
-b
-j
+-th club initially.
+Output
+Print one integer — the expected number of days until every student is in the same club for the first time, modulo
+998244353
 .
 Examples
 input
 Copy
+2
 1 1
 output
 Copy
-YES
-2 1
-1 2 1
+4
 input
 Copy
-4 6
+2
+1 2
 output
 Copy
-YES
-5 6
-1 2 3
-1 3 4
-1 4 5
-2 5 1
-3 5 1
-4 5 1
+18
+input
+Copy
+3
+1 1 1
+output
+Copy
+21
+input
+Copy
+1
+400000000
+output
+Copy
+0
+input
+Copy
+10
+1 2 3 4 5 6 7 8 9 10
+output
+Copy
+737609878
 Note
-In the first example there is only one path from block
+In the first example, no matter which student gets angry, the two students will become in the same club with probability
 1
-to block
-n=2
-, and its length is
-1
-.
-In the second example there are three paths from block
-1
-to block
-n=5
-, which are
-1→2→5
-of length
 4
-,
-1→3→5
-of length
-5
-and
-1→4→5
-of length
+. So the expected number of days until every student is in the same club should be
+4
+.
+In the second example, we note that in the first day:
+The only student in the first club will get angry with probability
+1
+3
+. If he gets angry, then he will create a new club and join it with probability
+1
+2
+(In this case, there will be three clubs which have
+0,1,2
+students in it, respectively), leave his current club and join the second club with probability
+1
+2
+⋅
+2
+3
+=
+1
+3
+, or stay still with probability
+1
+2
+⋅
+1
+3
+=
+1
 6
+;
+Each of the two students in the second club will get angry with probability
+1
+3
+. If one of them gets angry, then he will create a new club and join it with probability
+1
+2
+, leave his current club and join the second club with probability
+1
+2
+⋅
+1
+3
+=
+1
+6
+, or stay still with probability
+1
+2
+⋅
+2
+3
+=
+1
+3
+.
+In the fourth example, there is only one club initially. That is, every student has already been in the same club. So the answer is
+0
 .

@@ -1,156 +1,132 @@
-D. Tournament Countdown
-time limit per test2 seconds
+F. Lost Array
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem.
-There was a tournament consisting of
-2
+My orzlers, we can optimize this problem from
+O(S3)
+to
+O(T
+5
+9
+)
+!
+— Spyofgame, founder of Orzlim religion
+A long time ago, Spyofgame invented the famous array
+a
+(
+1
+-indexed) of length
 n
-contestants. The
-1
--st contestant competed with the
-2
--nd, the
-3
--rd competed with the
-4
--th, and so on. After that, the winner of the first match competed with the winner of second match, etc. The tournament ended when there was only one contestant left, who was declared the winner of the tournament. Such a tournament scheme is known as the single-elimination tournament.
-You don't know the results, but you want to find the winner of the tournament. In one query, you select two integers
-a
-and
+that contains information about the world and life. After that, he decided to convert it into the matrix
 b
-, which are the indices of two contestants. The jury will return
-1
-if
-a
-won more matches than
-b
-,
-2
-if
-b
-won more matches than
-a
-, or
+(
 0
-if their number of wins was equal.
-Find the winner in no more than
-⌈
-1
-3
-⋅
-2
-n+1
-⌉
-queries. Here
-⌈x⌉
-denotes the value of
-x
-rounded up to the nearest integer.
-Note that the tournament is long over, meaning that the results are fixed and do not depend on your queries.
+-indexed) of size
+(n+1)×(n+1)
+which contains information about the world, life and beyond.
+Spyofgame converted
+a
+into
+b
+with the following rules.
+bi,0=0
+if
+0≤i≤n
+;
+b0,i=ai
+if
+1≤i≤n
+;
+bi,j=bi,j−1⊕bi−1,j
+if
+1≤i,j≤n
+.
+Here
+⊕
+denotes the bitwise XOR operation.
+Today, archaeologists have discovered the famous matrix
+b
+. However, many elements of the matrix has been lost. They only know the values of
+bi,n
+for
+1≤i≤n
+(note that these are some elements of the last column, not the last row).
+The archaeologists want to know what a possible array of
+a
+is. Can you help them reconstruct any array that could be
+a
+?
 Input
 The first line contains a single integer
-t
-(
-1≤t≤
-2
-14
-) — the number of test cases.
-The only line of input contains a single integer
 n
 (
-1≤n≤17
+1≤n≤5⋅105
 ).
-It is guaranteed that the sum of
-2
+The second line contains
 n
-over all test cases does not exceed
-2
-17
-.
-Interaction
-The interaction for each test case begins by reading the integer
+integers
+b1,n,b2,n,…,bn,n
+(
+0≤bi,n<230
+).
+Output
+If some array
+a
+is consistent with the information, print a line containing
 n
-.
-To make a query, output "? a b" (
-1≤a,b≤
-2
-n
-) without quotes. Afterwards, you should read one single integer — the answer for your query. You can make at most
-⌈
-1
-3
-⋅
-2
-n+1
-⌉
-such queries in each test case.
-If you receive the integer
+integers
+a1,a2,…,an
+. If there are multiple solutions, output any.
+If such an array does not exist, output
 −1
-instead of an answer or a valid value of
-n
-, it means your program has made an invalid query, has exceed the limit of queries, or has given incorrect answer on the previous test case. Your program must terminate immediately to receive a Wrong Answer verdict. Otherwise you can get an arbitrary verdict because your solution will continue to read from a closed stream.
-When you are ready to give the final answer, output "! x" (
-1≤x≤
-2
-n
-) without quotes — the winner of the tournament. Giving this answer does not count towards the limit of queries. After solving a test case, your program should move to the next one immediately. After solving all test cases, your program should be terminated immediately.
-After printing a query or the answer do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-Hacks
-To hack, use the following format.
-The first line contains an integer
-t
-(
-1≤t≤
-2
-14
-) — the number of test cases.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤17
-).
-The second line of each test case contains
-2
-n
-numbers on a line — the number of wins of each participant. There should be a sequence of matches that is consistent with the number of wins.
-The sum of
-2
-n
-should not exceed
-2
-17
-.
-Example
+instead.
+Examples
+input
+Copy
+3
+0 2 1
+output
+Copy
+1 2 3 
 input
 Copy
 1
-3
-
-2
-
-0
-
-2
+199633
 output
 Copy
-? 1 4
-
-? 1 6
-
-? 5 7
-
-! 7
+199633 
+input
+Copy
+10
+346484077 532933626 858787727 369947090 299437981 416813461 865836801 141384800 157794568 691345607
+output
+Copy
+725081944 922153789 481174947 427448285 516570428 509717938 855104873 280317429 281091129 1050390365 
 Note
-The tournament in the first test case is shown below. The number of wins is
-[1,0,0,2,0,1,3,0]
-.
-In this example, the winner is the
-7
--th contestant.
+If we let
+a=[1,2,3]
+, then
+b
+will be:
+0
+1
+2
+3
+0
+1
+3
+0
+0
+1
+2
+2
+0
+1
+3
+1
+The values of
+b1,n,b2,n,…,bn,n
+generated are
+[0,2,1]
+which is consistent with what the archaeologists have discovered.

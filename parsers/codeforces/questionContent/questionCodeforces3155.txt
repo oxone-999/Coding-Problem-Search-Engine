@@ -1,87 +1,129 @@
-F. Cursor Distance
-time limit per test2 seconds
+D1. The World Is Just a Programming Task (Easy Version)
+time limit per test1 second
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-There is a string
+This is an easier version of the problem. In this version,
+n≤500
+.
+Vasya is an experienced developer of programming competitions' problems. As all great minds at some time, Vasya faced a creative crisis. To improve the situation, Petya gifted him a string consisting of opening and closing brackets only. Petya believes, that the beauty of the bracket string is a number of its cyclical shifts, which form a correct bracket sequence.
+To digress from his problems, Vasya decided to select two positions of the string (not necessarily distinct) and swap characters located at this positions with each other. Vasya will apply this operation exactly once. He is curious what is the maximum possible beauty he can achieve this way. Please help him.
+We remind that bracket sequence
 s
-of lowercase English letters. A cursor is positioned on one of the characters. The cursor can be moved with the following operation: choose a letter
-c
-and a direction (left or right). The cursor is then moved to the closest occurence of
-c
-in the chosen direction. If there is no letter
-c
-in that direction, the cursor stays in place. For example, if
-s=abaab
-with the cursor on the second character (
-a[b]aab
-), then:
-moving to the closest letter
-a
-to the left places the cursor on the first character (
-[a]baab
-);
-moving to the closest letter
-a
-to the right places the cursor the third character (
-ab[a]ab
-);
-moving to the closest letter
-b
-to the right places the cursor on the fifth character (
-abaa[b]
-);
-any other operation leaves the cursor in place.
-Let
-dist(i,j)
-be the smallest number of operations needed to move the cursor from the
+is called correct if:
+s
+is empty;
+s
+is equal to "(
+t
+)", where
+t
+is correct bracket sequence;
+s
+is equal to
+t
+1
+t
+2
+, i.e. concatenation of
+t
+1
+and
+t
+2
+, where
+t
+1
+and
+t
+2
+are correct bracket sequences.
+For example, "(()())", "()" are correct, while ")(" and "())" are not.
+The cyclical shift of the string
+s
+of length
+n
+by
+k
+(
+0≤k<n
+) is a string formed by a concatenation of the last
+k
+symbols of the string
+s
+with the first
+n−k
+symbols of string
+s
+. For example, the cyclical shift of string "(())()" by
+2
+equals "()(())".
+Cyclical shifts
 i
--th character to the
+and
 j
--th character. Compute
-∑
-i=1
-n
-∑
-j=1
-n
-dist(i,j)
+are considered different, if
+i≠j
 .
 Input
-The only line contains a non-empty string
-s
-of at most
-10
-5
-lowercase English letters.
+The first line contains an integer
+n
+(
+1≤n≤500
+), the length of the string.
+The second line contains a string, consisting of exactly
+n
+characters, where each of the characters is either "(" or ")".
 Output
-Print a single integer
-∑
-i=1
-n
-∑
-j=1
-n
-dist(i,j)
-.
+The first line should contain a single integer — the largest beauty of the string, which can be achieved by swapping some two characters.
+The second line should contain integers
+l
+and
+r
+(
+1≤l,r≤n
+) — the indices of two characters, which should be swapped in order to maximize the string's beauty.
+In case there are several possible swaps, print any of them.
 Examples
 input
 Copy
-abcde
+10
+()()())(()
 output
 Copy
-20
+5
+8 7
 input
 Copy
-abacaba
+12
+)(()(()())()
 output
 Copy
-58
+4
+5 10
+input
+Copy
+6
+)))(()
+output
+Copy
+0
+1 1
 Note
-In the first sample case,
-dist(i,j)=0
-for any pair
-i=j
-, and
-1
-for all other pairs.
+In the first example, we can swap
+7
+-th and
+8
+-th character, obtaining a string "()()()()()". The cyclical shifts by
+0,2,4,6,8
+of this string form a correct bracket sequence.
+In the second example, after swapping
+5
+-th and
+10
+-th character, we obtain a string ")(())()()(()". The cyclical shifts by
+11,7,5,3
+of this string form a correct bracket sequence.
+In the third example, swap of any two brackets results in
+0
+cyclical shifts being correct bracket sequences.

@@ -1,78 +1,70 @@
-G. Prediction
-time limit per test4 seconds
-memory limit per test512 megabytes
+F. Traveling in Berland
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Consider a tournament with
+There are
 n
-participants. The rating of the
-i
--th participant is
-a
-i
-.
-The tournament will be organized as follows. First of all, organizers will assign each participant an index from
+cities in Berland, arranged in a circle and numbered from
 1
 to
 n
-. All indices will be unique. Let
-p
-i
-be the participant who gets the index
-i
-.
-Then,
-n−1
-games will be held. In the first game, participants
-p
-1
-and
-p
-2
-will play. In the second game, the winner of the first game will play against
-p
-3
-. In the third game, the winner of the second game will play against
-p
-4
-, and so on — in the last game, the winner of the
-(n−2)
--th game will play against
-p
+in clockwise order.
+You want to travel all over Berland, starting in some city, visiting all the other cities and returning to the starting city. Unfortunately, you can only drive along the Berland Ring Highway, which connects all
 n
-.
-Monocarp wants to predict the results of all
-n−1
-games (of course, he will do the prediction only after the indices of the participants are assigned). He knows for sure that, when two participants with ratings
-x
-and
-y
-play, and
-|x−y|>k
-, the participant with the higher rating wins. But if
-|x−y|≤k
-, any of the two participants may win.
-Among all
-n!
-ways to assign the indices to participants, calculate the number of ways to do this so that Monocarp can predict the results of all
-n−1
-games. Since the answer can be large, print it modulo
-998244353
-.
+cities. The road was designed by a very titled and respectable minister, so it is one-directional — it can only be traversed clockwise, only from the city
+i
+to the city
+(imodn)+1
+(i.e. from
+1
+to
+2
+, from
+2
+in
+3
+, ..., from
+n
+to
+1
+).
+The fuel tank of your car holds up to
+k
+liters of fuel. To drive from the
+i
+-th city to the next one,
+a
+i
+liters of fuel are needed (and are consumed in the process).
+Every city has a fuel station; a liter of fuel in the
+i
+-th city costs
+b
+i
+burles. Refueling between cities is not allowed; if fuel has run out between cities, then your journey is considered incomplete.
+For each city, calculate the minimum cost of the journey if you start and finish it in that city.
 Input
-The first line contains two integers
+The first line contains a single integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases.
+The first line of each test case contains two integers
 n
 and
 k
 (
-2≤n≤
+3≤n≤2⋅
 10
-6
+5
 ;
-0≤k≤
+1≤k≤
 10
 9
-).
+) — the number of cities and the volume of fuel tank, respectively.
 The second line contains
 n
 integers
@@ -85,69 +77,62 @@ a
 a
 n
 (
-0≤
+1≤
 a
-1
-≤
-a
-2
-≤⋯≤
-a
-n
-≤
-10
-9
+i
+≤k
 ).
+The third line contains
+n
+integers
+b
+1
+,
+b
+2
+,…,
+b
+n
+(
+1≤
+b
+i
+≤2
+).
+The sum of
+n
+over all test cases doesn't exceed
+2⋅
+10
+5
+.
 Output
-Print one integer — the number of ways to assign the indices to the participants so that Monocarp can predict the results of all
-n−1
-games.
-Examples
+For each test case, print
+n
+integers, where the
+i
+-th of them is equal to the minimum cost of the journey if you start and finish in the
+i
+-th city.
+Example
 input
-Copy
-4 3
-7 12 17 21
-output
-Copy
-24
-input
-Copy
-3 7
-4 9 28
-output
 Copy
 4
-input
-Copy
-4 1
-1 2 3 4
+3 5
+3 4 4
+1 2 2
+5 7
+1 3 2 5 1
+2 1 1 1 2
+4 3
+1 2 1 3
+2 2 2 2
+3 2
+2 2 2
+1 2 1
 output
 Copy
-0
-input
-Copy
-4 1
-1 2 2 4
-output
-Copy
-12
-input
-Copy
-16 30
-8 12 15 27 39 44 49 50 51 53 58 58 59 67 68 100
-output
-Copy
-527461297
-Note
-In the first example, a match with any pair of players can be predicted by Monocarp, so all
-24
-ways to assign indices should be counted.
-In the second example, suitable ways are
-[1,3,2]
-,
-[2,3,1]
-,
-[3,1,2
-] and
-[3,2,1]
-.
+17 19 17 
+13 12 12 12 14 
+14 14 14 14 
+8 8 8 

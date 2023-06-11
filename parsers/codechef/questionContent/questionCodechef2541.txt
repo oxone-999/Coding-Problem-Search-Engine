@@ -1,40 +1,34 @@
-Parenthesis with Maximum Sum Subarray
+Chef and Digits
 Problem
-Read problems statements in Mandarin Chinese and Russian as well.
-You are given a character parenthesis array and an integer array.
-You need to find the maximum sum sub-array in the integer array such that the corresponding sub-array in the character array has balanced parenthesis.
-Formally, a balanced parentheses is subset of { [,],{,},<,>,(,) }∗ defined recursively as follows:
-The empty string is balanced parentheses.
-If A is balanced parentheses, then so are the strings [A], {A} , , (A).
-If A and B are balanced parenthesis, then so is the string AB.
-Input Format
-First line contains T, the number of test cases.
-First line of each test case contains integer N.
-Next two lines contain the character array and the integer array respectively, each having N elements.
-Output Format
-For each test case, output the maximum sum obtained using the constraints above. If the maximum sum obtained is less than 0, output 0 instead.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef loves integers, but of course not all of them. For some personal reason, he considers the integers a0, a1, ..., and a9 unlucky. If for an integer x, suppose there exists some digit i (0 ≤ i ≤ 9) which appears exactly ai times in the decimal presentation of x (without leading zeros), then Chef dislikes x. Otherwise Chef loves it.
+Chef wants to count the number of the integers between L and R, both inclusive, which he loves. Can you please help him in this?
+Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follow.
+The first line of each test case contains two space separated integers L, R.
+The second line will contain exactly 10 space separated integers, the i-th integer denotes ai-1.
+Output
+For each test case, output an integer corresponding to the answer, in a new line.
 Constraints
-1 ≤ Sum of N over all test cases ≤ 106
-1 ≤ N ≤ 105
-1 ≤ T ≤ 105
-1 ≤ Abs(value of the integer array) ≤ 109
-Character array contains chars from this set: [,],{,},<,>,(,)
-Sample Input
-3
-4
-()()
--1 -2 3 4
-4
-(()]
--1 -2 3 4
-4
-[{]{
-1 2 3 4
-Sample Output
-7
-1
-0
-Explanation
-For first test case take last 2 elements: 3 + 4 = 7.
-For second test case take the middle 2 elements: -2 + 3 = 1
-Warning : Large Input - Output, Use fast IO.
+1 ≤ T ≤ 20
+1 ≤ L ≤ R ≤ 1018
+0 ≤ ai ≤ 18
+Subtasks
+Subtask #1 (25 points)
+1 ≤ L ≤ R ≤ 105
+Subtask #2 (15 points)
+ai = 0, for all i
+Subtask #3 (60 points)
+1 ≤ L ≤ R ≤ 1018
+Sample 1:
+Input
+Output
+2
+21 28
+5 4 3 2 1 1 2 3 4 5
+233 23333
+2 3 3 3 3 2 3 3 3 3
+6
+19627
+Explanation:
+In example 1. Chef dislikes the integers 24 because the digit 4 appears exactly 1 time in 24, and a4 = 1. Similarly, he also dislikes the integer 25 because the digit 5 appears exactly 1 time in 25 and a5 = 1. These are the only two integers which Chef dislikes in the range [21,28]. Thus Chef loves the integers 21, 22, 23, 26, 27, and 28. Therefore the answer is 6.

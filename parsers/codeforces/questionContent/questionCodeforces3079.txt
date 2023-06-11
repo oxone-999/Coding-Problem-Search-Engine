@@ -1,81 +1,141 @@
-C. Infinite Fence
-time limit per test2 seconds
+F. Colored Tree
+time limit per test2.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are a rebel leader and you are planning to start a revolution in your country. But the evil Government found out about your plans and set your punishment in the form of correctional labor.
-You must paint a fence which consists of
-10
-100
-planks in two colors in the following way (suppose planks are numbered from left to right from
-0
-):
-if the index of the plank is divisible by
-r
-(such planks have indices
-0
-,
-r
-,
-2r
-and so on) then you must paint it red;
-if the index of the plank is divisible by
-b
-(such planks have indices
-0
-,
-b
-,
-2b
-and so on) then you must paint it blue;
-if the index is divisible both by
-r
+You're given a tree with
+n
+vertices. The color of the
+i
+-th vertex is
+h
+i
+.
+The value of the tree is defined as
+∑
+h
+i
+=
+h
+j
+,1≤i<j≤n
+dis(i,j)
+, where
+dis(i,j)
+is the number of edges on the shortest path between
+i
 and
-b
-you can choose the color to paint the plank;
-otherwise, you don't need to paint the plank at all (and it is forbidden to spent paint on it).
-Furthermore, the Government added one additional restriction to make your punishment worse. Let's list all painted planks of the fence in ascending order: if there are
-k
-consecutive planks with the same color in this list, then the Government will state that you failed the labor and execute you immediately. If you don't paint the fence according to the four aforementioned conditions, you will also be executed.
-The question is: will you be able to accomplish the labor (the time is not important) or the execution is unavoidable and you need to escape at all costs.
-Input
-The first line contains single integer
-T
-(
-1≤T≤1000
-) — the number of test cases.
-The next
-T
-lines contain descriptions of test cases — one per line. Each test case contains three integers
+j
+.
+The color of each vertex is lost, you only remember that
+h
+i
+can be any integer from
+[
+l
+i
+,
 r
-,
-b
-,
-k
+i
+]
+(inclusive). You want to calculate the sum of values of all trees meeting these conditions modulo
+10
+9
++7
+(the set of edges is fixed, but each color is unknown, so there are
+∏
+i=1
+n
 (
-1≤r,b≤
+r
+i
+−
+l
+i
++1)
+different trees).
+Input
+The first line contains one integer
+n
+(
+2≤n≤
 10
-9
+5
+) — the number of vertices.
+Then
+n
+lines follow, each line contains two integers
+l
+i
+and
+r
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤
+10
+5
+) denoting the range of possible colors of vertex
+i
+.
+Then
+n−1
+lines follow, each containing two integers
+u
+and
+v
+(
+1≤u,v≤n
 ,
-2≤k≤
+u≠v
+) denoting an edge of the tree. It is guaranteed that these edges form a tree.
+Output
+Print one integer — the sum of values of all possible trees, taken modulo
 10
 9
-) — the corresponding coefficients.
-Output
-Print
-T
-words — one per line. For each test case print REBEL (case insensitive) if the execution is unavoidable or OBEY (case insensitive) otherwise.
++7
+.
 Example
 input
 Copy
 4
-1 1 2
-2 10 4
-5 2 3
-3 2 2
+1 1
+1 2
+1 1
+1 2
+1 2
+1 3
+3 4
 output
 Copy
-OBEY
-REBEL
-OBEY
-OBEY
+22
+Note
+In the first example there are four different ways to color the tree (so, there are four different trees):
+a tree with vertices colored as follows:
+{1,1,1,1}
+. The value of this tree is
+dis(1,2)+dis(1,3)+dis(1,4)+dis(2,3)+dis(2,4)+dis(3,4)=10
+;
+a tree with vertices colored as follows:
+{1,2,1,1}
+. The value of this tree is
+dis(1,3)+dis(1,4)+dis(3,4)=4
+;
+a tree with vertices colored as follows:
+{1,1,1,2}
+. The value of this tree is
+dis(1,2)+dis(1,3)+dis(2,3)=4
+;
+a tree with vertices colored as follows:
+{1,2,1,2}
+. The value of this tree is
+dis(1,3)+dis(2,4)=4
+.
+Overall the sum of all values is
+10+4+4+4=22
+.

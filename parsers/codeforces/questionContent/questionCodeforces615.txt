@@ -1,172 +1,128 @@
-D. Friends and the Restaurant
-time limit per test2 seconds
+E. Guess the Cycle Size
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A group of
+This is an interactive problem.
+I want to play a game with you...
+We hid from you a cyclic graph of
 n
-friends decide to go to a restaurant. Each of the friends plans to order meals for
-x
-i
-burles and has a total of
-y
-i
-burles (
-1≤i≤n
-).
-The friends decide to split their visit to the restaurant into several days. Each day, some group of at least two friends goes to the restaurant. Each of the friends visits the restaurant no more than once (that is, these groups do not intersect). These groups must satisfy the condition that the total budget of each group must be not less than the amount of burles that the friends in the group are going to spend at the restaurant. In other words, the sum of all
-x
-i
-values in the group must not exceed the sum of
-y
-i
-values in the group.
-What is the maximum number of days friends can visit the restaurant?
-For example, let there be
-n=6
-friends for whom
-x
-= [
-8,3,9,2,4,5
-] and
-y
-= [
-5,3,1,4,5,10
-]. Then:
-first and sixth friends can go to the restaurant on the first day. They will spend
-8+5=13
-burles at the restaurant, and their total budget is
-5+10=15
-burles. Since
-15≥13
-, they can actually form a group.
-friends with indices
-2,4,5
-can form a second group. They will spend
-3+2+4=9
-burles at the restaurant, and their total budget will be
-3+4+5=12
-burles (
-12≥9
-).
-It can be shown that they will not be able to form more groups so that each group has at least two friends and each group can pay the bill.
-So, the maximum number of groups the friends can split into is
-2
-. Friends will visit the restaurant for a maximum of two days. Note that the
-3
--rd friend will not visit the restaurant at all.
-Output the maximum number of days the friends can visit the restaurant for given
+vertices (
+3≤n≤
+10
+18
+). A cyclic graph is an undirected graph of
 n
-,
-x
+vertices that form one cycle. Each vertex belongs to the cycle, i.e. the length of the cycle (the number of edges in it) is exactly
+n
+. The order of the vertices in the cycle is arbitrary.
+You can make queries in the following way:
+"? a b" where
+1≤a,b≤
+10
+18
 and
-y
+a≠b
+. In response to the query, the interactor outputs on a separate line the length of random of two paths from vertex
+a
+to vertex
+b
+, or -1 if
+max(a,b)>n
+. The interactor chooses one of the two paths with equal probability. The length of the path —is the number of edges in it.
+You win if you guess the number of vertices in the hidden graph (number
+n
+) by making no more than
+50
+queries.
+Note that the interactor is implemented in such a way that for any ordered pair
+(a,b)
+, it always returns the same value for query "? a b", no matter how many such queries. Note that the "? b a" query may be answered differently by the interactor.
+The vertices in the graph are randomly placed, and their positions are fixed in advance.
+Hacks are forbidden in this problem. The number of tests the jury has is
+50
 .
-Input
-The first line of the input contains an integer
-t
-(
-1≤t≤
+Interaction
+You can make no more than
+50
+of queries. To make a query, output on a separate line:
+"? a b", where
+1≤a,b≤
 10
-4
-) — the number of test cases in the test.
-The descriptions of the test cases follow.
-The first line of each test case contains a single integer
-n
-(
-2≤n≤
+18
+and
+a≠b
+. In response to the query, the interactor will output on a separate line the length of a random simple path from vertex
+a
+to vertex
+b
+(not to be confused with the path from
+b
+to
+a
+), or
+−1
+if
+max(a,b)>n
+. The interactor chooses one of the two paths with equal probability.
+If your program gets a number 0 as a result of a query, it means that the verdict for your solution is already defined as "wrong answer" (for example, you made more than
+50
+queries or made an invalid query). In this case, your program should terminate immediately. Otherwise, in this scenario you may get a random verdict "Execution error", "Exceeded time limit" or some other verdict instead of "Wrong answer".
+The answer, like queries, print on a separate line. The output of the answer is not counted as a query when counting them. To print it, use the following format:
+"! n": the expected size of the hidden graph (
+3≤n≤
 10
-5
-) — the number of friends.
-The second line of each test case contains exactly
-n
-integers
-x
-1
-,
-x
-2
-,…,
-x
-n
-(
-1≤
-x
-i
-≤
-10
-9
-). The value of
-x
-i
-corresponds to the number of burles that the friend numbered
-i
-plans to spend at the restaurant.
-The third line of each test case contains exactly
-n
-integers
-y
-1
-,
-y
-2
-,…,
-y
-n
-(
-1≤
-y
-i
-≤
-10
-9
-). The value
-y
-i
-corresponds to the number of burles that the friend numbered
-i
-has.
-It is guaranteed that the sum of
-n
-values over all test cases does not exceed
-10
-5
+18
+).
+After that, your program should terminate.
+After the output of the next query, be sure to use stream cleaning functions so that some of your output is not left in some buffer. For example, in C++ you should use function flush(stdout), in Java call System.out.flush(), in Pascal flush(output) and stdout.flush() for Python.
+Note that the interactor is implemented in such a way that for any ordered pair
+(a,b)
+, it always returns the same value for query "? a b", no matter how many such queries. Note that the "? b a" query may be answered differently by the interactor.
+The vertices in the graph are randomly placed, and their positions are fixed in advance.
+Hacks are forbidden in this problem. The number of tests the jury has is
+50
 .
-Output
-For each test case, print the maximum number of days to visit the restaurant. If friends cannot form even one group to visit the restaurant, print 0.
 Example
 input
 Copy
-6
-6
-8 3 9 2 4 5
-5 3 1 4 5 10
-4
-1 2 3 4
-1 1 2 2
-3
-2 3 7
-1 3 10
-6
-2 3 6 9 5 7
-3 2 7 10 6 10
-6
-5 4 2 1 8 100
-1 1 1 1 1 200
-6
-1 4 1 2 4 2
-1 3 3 2 3 4
+1
+
+2
+
+-1
 output
 Copy
-2
-0
-1
-3
-1
-3
+? 1 2
+
+? 1 3
+
+? 1 4
+
+! 3
 Note
-The first test case in explained in the problem statement.
-In the second test case, friends cannot form at least one group of two or more people.
-In the third test case, one way to visit the restaurant in one day is to go in a group of all three friends (
-1+3+10≥2+3+7
-). Note that they do not have the option of splitting into two groups.
+In the first example, the graph could look like this
+The lengths of the simple paths between all pairs of vertices in this case are
+1
+or
+2
+.
+The first query finds out that one of the simple paths from vertex
+1
+to vertex
+2
+has a length of
+1
+.
+With the second query, we find out that one of the simple paths from vertex
+1
+to vertex
+3
+has length
+2
+.
+In the third query, we find out that vertex
+4
+is not in the graph. Consequently, the size of the graph is
+3
+.

@@ -1,184 +1,155 @@
-Hidden Points
+Alternating LG Queries
 Problem
 Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-This is an interactive task
-There is an array
-P of size
-N consisting of distinct integer points on a 2D plane.
-P are initially hidden from you, but you can ask queries to find out information about points in
-P.
-To be specific, you can ask queries in the form:
-? i j
-where
-1≤i<j≤N, and you will be provided with the square of the Euclidean distance between
-P
-i
-and
-P
-j
-.
-More formally, define
-f(i,j)=(P
-i
-.x−P
-j
-.x)
+You are given an array
+A consisting of
+N integers. You have to answer
+Q queries of the following two types:
+1
+L
+R
+(R>L) which asks you to find
+gcd(A
+L
+,lcm(A
+L+1
+,gcd(A
+L+2
+,...,((R−L)mod2==1?
+gcd(A
+R−1
+,A
+R
+):lcm(A
+R−1
+,A
+R
+))…))).
 2
-+(P
-i
-.y−P
-j
-.y)
+L
+R
+(R>L) which asks you to find the same as above but
+lcm swapped with
+gcd and vice-versa.
+Here
+lcm(a,b) and
+gcd(a,b) denotes the least common multiple and greatest common divisor of two integers
+a and
+b respectively.
+Example: Consider the array
+A =
+[2,4,8,16,32,64].
+Suppose a query is of the form
+1
+1
+6, so it asks you to find:
+gcd(2,lcm(4,gcd(8,lcm(16,gcd(32,64))))).
+Suppose a query is of the form
 2
-, then the output of the query ? i j is the value of
-f(i,j).
-You can ask at most
-3N−6 queries. Find the minimum value among all possible
-f(i,j) where
-1≤i<j≤N.
-Interaction
-Begin the interaction by reading a single integer
-T denoting the number of test cases. The test cases follow.
-For each test case, first read a single integer
-N denoting the number of points in
-P. After this, you can start making queries.
-To ask a query, output ? i j (
-1≤i<j≤N), then read a single integer
-f(i,j).
-To output the answer, output ! X, where
-X is the minimum value among all possible
-f(i,j) (not just the ones you made a query on). This is not considered a query. Suppose the true exact answer is
-Y, then your answer will be considered correct if and only if
-Y
-∣X−Y∣
-≤10
-−6
+1
+5, so it asks you to find:
+lcm(2,gcd(4,lcm(8,gcd(16,32)))).
+Note: Since input-output is large, prefer using fast input-output methods.
+Input Format
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+Each testcase contains
+Q+2 lines of input.
+The first line of each test case contains two space-separated integers,
+N and
+Q.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
 .
-If at any time you make an invalid query or exceed the query limit, the interaction is terminated and you will receive a Wrong Answer verdict.
-Don't forget to flush the output after printing each line!
+Q lines follow. For each valid
+i, the
+i
+th
+of these lines contains three space-separated integers
+Type
+i
+,L
+i
+,R
+i
+, denoting the type and parameters of the
+i
+th
+query.
+Output Format
+For each query, output in a single line answer to the problem.
 Constraints
-1≤T≤10
-4
-3≤N≤10
+1≤T≤3
+2≤N≤2⋅10
 5
-−10
+1≤Q≤2⋅10
+5
+1≤A
+i
+≤10
 9
-≤P
+1≤Type
 i
-.x,P
+≤2
+1≤L
 i
-.y≤10
-9
-No two points are similar, that is
-P
+<R
 i
-
-=P
-j
-for all
-i
-
-=j
-Sum of
+≤N
+The sum of
 N over all test cases does not exceed
-10
+2⋅10
 5
+.
+The sum of
+Q over all test cases does not exceed
+2⋅10
+5
+.
 Subtasks
-Subtask 1 (30 points):
-1≤T≤200
-3≤N≤1000
-Sum of
+Subtask #1 (10 points):
+2≤N≤630
+The sum of
 N over all test cases does not exceed
-1000.
+630.
 Time limit:
-1 second
-Subtask 2 (70 points):
+1 sec
+Subtask #2 (90 points):
 Original constraints
 Time limit:
-2 seconds
-Sample Interaction
-Grader                You
-2
-3
-                      ? 1 2
+1.5 sec
+Sample 1:
+Input
+Output
 1
-                      ! 1
+6 3
+2 4 8 16 32 64
+1 1 6
+2 1 5
+1 5 6
+2
 4
-                      ? 1 4
-8000000000000000000          
-                      ? 2 3
-8000000000000000000
-                      ! 4000000000000000000
-Explanation
+32
+Explanation:
 Test case
-1:
-P =
-[(0,0),(0,1),(2,0)].
-The query ? 1 2 gives
-f(1,2)=(0−0)
-2
-+(0−1)
-2
-=1
-The minimum value of all
-f(i,j)=1. So we output ! 1
-Test case
-2:
-P =
-[(−10
-9
-,−10
-9
-),(−10
-9
-,10
-9
-),(10
-9
-,−10
-9
-),(10
-9
-,10
-9
-)].
-The query ? 1 4 gives
-f(1,4)=(−2⋅10
-9
-)
-2
-+(−2⋅10
-9
-)
-2
-=8⋅10
-18
-The query ? 2 3 gives
-f(2,3)=(−2⋅10
-9
-)
-2
-+(2⋅10
-9
-)
-2
-=8⋅10
-18
-The minimum of all
-f(i,j)=4⋅10
-18
-. So we output ! 4000000000000000000
-Since maximum relative error is
-10
-−6
-, any integer in the range
-[4⋅10
-18
-−4⋅10
-12
-,4⋅10
-18
-+4⋅10
-12
-] will be considered correct.
-NOTE: The above queries are just to demonstrate the interaction. They may or may not be sufficient to deduce the final answer.
+1: The answer for the first query is
+=gcd(2,lcm(4,gcd(8,lcm(16,gcd(32,64)))))
+=
+gcd(2,lcm(4,gcd(8,lcm(16,32)))) =
+gcd(2,lcm(4,gcd(8,32))) =
+gcd(2,lcm(4,8)) =
+gcd(2,8) =
+2.
+The answer for the second query is
+=lcm(2,gcd(4,lcm(8,gcd(16,32)))) =
+lcm(2,gcd(4,lcm(8,16))) =
+lcm(2,gcd(4,16)) =
+lcm(2,4) =
+4.

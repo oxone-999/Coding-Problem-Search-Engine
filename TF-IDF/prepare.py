@@ -2,9 +2,19 @@ import os
 import re
 import string
 import math
+import json
 
-targetDirectory = "../parsers/leetcode/QData/"
-length = len(os.listdir(targetDirectory))
+def preprocess_name(name):
+    #remove number. from the name
+    #removing the digits
+    pattern = r'\d+'
+    name = re.sub(pattern, '', name)
+    
+    #remove dots and starting and ending spaces
+    name = name.replace('.', '')
+    name = name.strip()
+    
+    return name
 
 def writeToVacab(vocab):
     with open("document.txt", "w" , encoding="utf-8") as f:
@@ -57,14 +67,16 @@ def cleaningData(data):
 def main():
     document = []
     
-    for i in range(1, length+1):
-        folder_path = '../parsers/leetcode/QData/' + str(i)
-        for filename in os.listdir(folder_path):
-            with open(folder_path + '/' + filename, 'r', encoding="utf-8") as f:
+    folder_path = f'../parsers/leetcode/questionContent/'
+    for filename in range(1,2044):
+        try:    
+            with open(folder_path + '/questionContentLeetcode' + str(filename) + ".txt", 'r', encoding="utf-8") as f:
                 data = f.read()
                 data = cleaningData(data)
                 document.append(data)
                 f.close()
+        except:
+            print(filename)
                 
     var = IDF(document)
     inverse_vocab_map = var[0]
@@ -75,7 +87,42 @@ def main():
     #import questionLink List from parsers -> leetcode -> 
     
     TF_IDF_map = TF_IDF(TF_map, IDF_map)
-    return TF_IDF_map,document
+    
+    with open('output.json', 'w') as file:
+        json.dump(TF_IDF_map, file)
+        
+    with open('doc.json', 'w') as file:
+        json.dump(document, file)
+        
+    document_links = []
+    document_names = []
+
+    #open the questions Link folder and read all the files and save all the content in a list
+    targetDirectory = "../parsers/leetcode/questionLinks/"
+    length = len(os.listdir(targetDirectory))
+
+    for i in range(1,length+1):
+        with open(targetDirectory + f'questionsLink_{i}.txt') as f:
+            data = f.read()
+            document_links.append(data)
+            f.close()
+            
+    targetDirectory = "../parsers/leetcode/questionHeadings/"
+    length = len(os.listdir(targetDirectory))         
+            
+    for i in range(1,length+1):
+        with open(targetDirectory + f'questionsName_{i}.txt') as f:
+            data = f.read()
+            data = preprocess_name(data)
+            document_names.append(data)
+            f.close()
+            
+    with open('links.json', 'w') as file:
+        json.dump(document_links, file)
+        
+    with open('names.json', 'w') as file:
+        json.dump(document_names, file)
+
 
 def TF_IDF(TF_map, IDF_map):
     TF_IDF_map = {}

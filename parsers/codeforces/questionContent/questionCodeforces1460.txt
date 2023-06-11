@@ -1,203 +1,122 @@
-F. Finding Expected Value
+H. Holiday Wall Ornaments
 time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Mr. Chanek opened a letter from his fellow, who is currently studying at Singanesia. Here is what it says.
-Define an array
+The Winter holiday will be here soon. Mr. Chanek wants to decorate his house's wall with ornaments. The wall can be represented as a binary string
+a
+of length
+n
+. His favorite nephew has another binary string
 b
+of length
+m
 (
-0≤
-b
-i
-<k
-) with
-n
-integers. While there exists a pair
-(i,j)
-such that
-b
-i
-≠
-b
-j
-, do the following operation:
-Randomly pick a number
-i
-satisfying
-0≤i<n
-. Note that each number
-i
-has a probability of
-1
-n
-to be picked.
-Randomly Pick a number
-j
-satisfying
-0≤j<k
-.
-Change the value of
-b
-i
-to
-j
-. It is possible for
-b
-i
-to be changed to the same value.
-Denote
-f(b)
-as the expected number of operations done to
-b
-until all elements of
-b
-are equal.
-You are given two integers
-n
-and
+m≤n
+).
+Mr. Chanek's nephew loves the non-negative integer
 k
-, and an array
+. His nephew wants exactly
+k
+occurrences of
+b
+as substrings in
 a
+.
+However, Mr. Chanek does not know the value of
+k
+. So, for each
+k
 (
-−1≤
+0≤k≤n−m+1
+), find the minimum number of elements in
 a
-i
-<k
-) of
-n
-integers.
-For every index
-i
-with
-a
-i
-=−1
-, replace
-a
-i
-with a random number
-j
-satisfying
-0≤j<k
-. Let
-c
-be the number of occurrences of
-−1
+that have to be changed such that there are exactly
+k
+occurrences of
+b
 in
 a
-. There are
+.
+A string
+s
+occurs exactly
 k
-c
-possibilites of
-a
-after the replacement, each with equal probability of being the final array.
-Find the expected value of
-f(a)
-modulo
-10
-9
-+7
-.
-Formally, let
-M=
-10
-9
-+7
-. It can be shown that the answer can be expressed as an irreducible fraction
+times in
+t
+if there are exactly
+k
+different pairs
+(p,q)
+such that we can obtain
+s
+by deleting
 p
+characters from the beginning and
 q
-, where
-p
-and
-q
-are integers and
-q≢0(modM)
-. Output the integer equal to
-p⋅
-q
-−1
-modM
-. In other words, output such an integer
-x
-that
-0≤x<M
-and
-x⋅q≡p(modM)
+characters from the end of
+t
 .
-After reading the letter, Mr. Chanek gave the task to you. Solve it for the sake of their friendship!
 Input
 The first line contains two integers
 n
 and
-k
+m
 (
-2≤n≤
-10
-5
-,
-2≤k≤
-10
-9
-).
-The second line contains
+1≤m≤n≤500
+) — size of the binary string
+a
+and
+b
+respectively.
+The second line contains a binary string
+a
+of length
 n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−1≤
-a
-i
-<k
-).
-Output
-Output an integer denoting the expected value of
-f(a)
-modulo
-10
-9
-+7
 .
-Examples
+The third line contains a binary string
+b
+of length
+m
+.
+Output
+Output
+n−m+2
+integers — the
+(k+1)
+-th integer denotes the minimal number of elements in
+a
+that have to be changed so there are exactly
+k
+occurrences of
+b
+as a substring in
+a
+.
+Example
 input
 Copy
-2 2
-0 1
+9 3
+100101011
+101
 output
 Copy
-2
-input
-Copy
-2 2
-0 -1
-output
-Copy
-1
-input
-Copy
-3 3
-0 1 1
-output
-Copy
-12
-input
-Copy
-3 3
--1 -1 -1
-output
-Copy
-11
-input
-Copy
-10 9
--1 0 -1 1 1 2 2 3 3 3
-output
-Copy
-652419213
+1 1 0 1 6 -1 -1 -1
+Note
+For
+k=0
+, to make the string
+a
+have no occurrence of 101, you can do one character change as follows.
+100101011
+→
+100100011
+For
+k=1
+, you can also change a single character.
+100101011
+→
+100001011
+For
+k=2
+, no changes are needed.

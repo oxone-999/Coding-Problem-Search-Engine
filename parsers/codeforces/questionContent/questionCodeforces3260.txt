@@ -1,39 +1,122 @@
-A. Cards
+C. Substring Game in the Lesson
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test256 mebibytes
 inputstandard input
 outputstandard output
-When Serezha was three years old, he was given a set of cards with letters for his birthday. They were arranged into words in the way which formed the boy's mother favorite number in binary notation. Serezha started playing with them immediately and shuffled them because he wasn't yet able to read. His father decided to rearrange them. Help him restore the original number, on condition that it was the maximum possible one.
-Input
-The first line contains a single integer
-n
+Mike and Ann are sitting in the classroom. The lesson is boring, so they decided to play an interesting game. Fortunately, all they need to play this game is a string
+s
+and a number
+k
 (
-1⩽n⩽
+0≤k<|s|
+).
+At the beginning of the game, players are given a substring of
+s
+with left border
+l
+and right border
+r
+, both equal to
+k
+(i.e. initially
+l=r=k
+). Then players start to make moves one by one, according to the following rules:
+A player chooses
+l
+′
+and
+r
+′
+so that
+l
+′
+≤l
+,
+r
+′
+≥r
+and
+s[
+l
+′
+,
+r
+′
+]
+is lexicographically less than
+s[l,r]
+. Then the player changes
+l
+and
+r
+in this way:
+l:=
+l
+′
+,
+r:=
+r
+′
+.
+Ann moves first.
+The player, that can't make a move loses.
+Recall that a substring
+s[l,r]
+(
+l≤r
+) of a string
+s
+is a continuous segment of letters from s that starts at position
+l
+and ends at position
+r
+. For example, "ehn" is a substring (
+s[3,5]
+) of "aaaehnsvz" and "ahz" is not.
+Mike and Ann were playing so enthusiastically that they did not notice the teacher approached them. Surprisingly, the teacher didn't scold them, instead of that he said, that he can figure out the winner of the game before it starts, even if he knows only
+s
+and
+k
+.
+Unfortunately, Mike and Ann are not so keen in the game theory, so they ask you to write a program, that takes
+s
+and determines the winner for all possible
+k
+.
+Input
+The first line of the input contains a single string
+s
+(
+1≤|s|≤5⋅
 10
 5
-) — the length of the string. The second line contains a string consisting of English lowercase letters: 'z', 'e', 'r', 'o' and 'n'.
-It is guaranteed that it is possible to rearrange the letters in such a way that they form a sequence of words, each being either "zero" which corresponds to the digit
-0
-or "one" which corresponds to the digit
-1
-.
+) consisting of lowercase English letters.
 Output
-Print the maximum possible number in binary notation. Print binary digits separated by a space. The leading zeroes are allowed.
+Print
+|s|
+lines.
+In the line
+i
+write the name of the winner (print Mike or Ann) in the game with string
+s
+and
+k=i
+, if both play optimally
 Examples
 input
 Copy
-4
-ezor
+abba
 output
 Copy
-0 
+Mike
+Ann
+Ann
+Mike
 input
 Copy
-10
-nznooeeoer
+cba
 output
 Copy
-1 1 0 
-Note
-In the first example, the correct initial ordering is "zero".
-In the second example, the correct initial ordering is "oneonezero".
+Mike
+Mike
+Mike

@@ -1,57 +1,92 @@
-M. Ancient Language
+C. Captain of Knights
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-While exploring the old caves, researchers found a book, or more precisely, a stash of mixed pages from a book. Luckily, all of the original pages are present and each page contains its number. Therefore, the researchers can reconstruct the book.
-After taking a deeper look into the contents of these pages, linguists think that this may be some kind of dictionary. What's interesting is that this ancient civilization used an alphabet which is a subset of the English alphabet, however, the order of these letters in the alphabet is not like the one in the English language.
-Given the contents of pages that researchers have found, your task is to reconstruct the alphabet of this ancient civilization using the provided pages from the dictionary.
+Mr. Chanek just won the national chess tournament and got a huge chessboard of size
+N×M
+. Bored with playing conventional chess, Mr. Chanek now defines a function
+F(X,Y)
+, which denotes the minimum number of moves to move a knight from square
+(1,1)
+to square
+(X,Y)
+. It turns out finding
+F(X,Y)
+is too simple, so Mr. Chanek defines:
+G(X,Y)=
+∑
+N
+i=X
+∑
+M
+j=Y
+F(i,j)
+Given X and Y, you are tasked to find
+G(X,Y)
+.
+A knight can move from square
+(a,b)
+to square
+(
+a
+′
+,
+b
+′
+)
+if and only if
+|a−
+a
+′
+|>0
+,
+|b−
+b
+′
+|>0
+, and
+|a−
+a
+′
+|+|b−
+b
+′
+|=3
+. Of course, the knight cannot leave the chessboard.
 Input
-First-line contains two integers:
-n
-and
-k
-(
-1≤n,k≤
+The first line contains an integer
+T
+(1≤T≤100)
+, the number of test cases.
+Each test case contains a line with four integers
+X
+Y
+N
+M
+(3≤X≤N≤
 10
-3
-) — the number of pages that scientists have found and the number of words present at each page. Following
-n
-groups contain a line with a single integer
-p
-i
-(
-0≤n<
+9
+,3≤Y≤M≤
 10
-3
-) — the number of
-i
--th page, as well as
-k
-lines, each line containing one of the strings (up to
-100
-characters) written on the page numbered
-p
-i
+9
+)
 .
 Output
-Output a string representing the reconstructed alphabet of this ancient civilization. If the book found is not a dictionary, output "IMPOSSIBLE" without quotes. In case there are multiple solutions, output any of them.
+For each test case, print a line with the value of
+G(X,Y)
+modulo
+10
+9
++7
+.
 Example
 input
 Copy
-3 3
 2
-b
-b
-bbac
-0
-a
-aca
-acba
-1
-ab
-c
-ccb
+3 4 5 6
+5 5 8 8
 output
 Copy
-acb
+27
+70

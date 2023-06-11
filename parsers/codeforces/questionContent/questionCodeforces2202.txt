@@ -1,199 +1,44 @@
-F. Realistic Gameplay
-time limit per test1 second
+B. Polycarp and the Language of Gods
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Recently you've discovered a new shooter. They say it has realistic game mechanics.
-Your character has a gun with magazine size equal to
-k
-and should exterminate
-n
-waves of monsters. The
-i
--th wave consists of
-a
-i
-monsters and happens from the
-l
-i
--th moment of time up to the
-r
-i
--th moments of time. All
-a
-i
-monsters spawn at moment
-l
-i
-and you have to exterminate all of them before the moment
-r
-i
-ends (you can kill monsters right at moment
-r
-i
-). For every two consecutive waves, the second wave starts not earlier than the first wave ends (though the second wave can start at the same moment when the first wave ends) — formally, the condition
-r
-i
-≤
-l
-i+1
-holds. Take a look at the notes for the examples to understand the process better.
-You are confident in yours and your character's skills so you can assume that aiming and shooting are instant and you need exactly one bullet to kill one monster. But reloading takes exactly
-1
-unit of time.
-One of the realistic mechanics is a mechanic of reloading: when you reload you throw away the old magazine with all remaining bullets in it. That's why constant reloads may cost you excessive amounts of spent bullets.
-You've taken a liking to this mechanic so now you are wondering: what is the minimum possible number of bullets you need to spend (both used and thrown) to exterminate all waves.
-Note that you don't throw the remaining bullets away after eradicating all monsters, and you start with a full magazine.
+Polycarp has just finished writing down the lecture on elvish languages. The language this week was "VwV" (pronounced as "uwu"). The writing system of this language consists of only two lowercase Latin letters: 'v' and 'w'.
+Unfortunately, Polycarp has written all the lecture in cursive and without any spaces, so the notes look like a neverending sequence of squiggles. To be exact, Polycarp can't tell 'w' apart from 'vv' in his notes as both of them consist of the same two squiggles.
+Luckily, his brother Monocarp has better writing habits, so Polycarp managed to take his notes and now wants to make his own notes more readable. To do that he can follow the notes of Monocarp and underline some letters in his own notes in such a way that there is no more ambiguity. If he underlines a 'v', then it can't be mistaken for a part of some 'w', and if the underlines a 'w', then it can't be mistaken for two adjacent letters 'v'.
+What is the minimum number of letters Polycarp should underline to make his notes unambiguous?
 Input
-The first line contains two integers
-n
-and
-k
+The first line contains a single integer
+t
 (
-1≤n≤2000
-;
-1≤k≤
-10
-9
-) — the number of waves and magazine size.
-The next
-n
-lines contain descriptions of waves. The
-i
--th line contains three integers
-l
-i
-,
-r
-i
-and
-a
-i
-(
-1≤
-l
-i
-≤
-r
-i
-≤
-10
-9
-;
-1≤
-a
-i
-≤
-10
-9
-) — the period of time when the
-i
--th wave happens and the number of monsters in it.
-It's guaranteed that waves don't overlap (but may touch) and are given in the order they occur, i. e.
-r
-i
-≤
-l
-i+1
+1≤t≤100
+) — the number of testcases.
+Each of the next
+t
+lines contains a non-empty string in VwV language, which consists only of lowercase Latin letters 'v' and 'w'. The length of the string does not exceed
+100
 .
 Output
-If there is no way to clear all waves, print
-−1
-. Otherwise, print the minimum possible number of bullets you need to spend (both used and thrown) to clear all waves.
-Examples
+For each testcase print a single integer: the minimum number of letters Polycarp should underline so that there is no ambiguity in his notes.
+Example
 input
 Copy
-2 3
-2 3 6
-3 4 3
-output
-Copy
-9
-input
-Copy
-2 5
-3 7 11
-10 12 15
-output
-Copy
-30
-input
-Copy
-5 42
-42 42 42
-42 43 42
-43 44 42
-44 45 42
-45 45 1
-output
-Copy
--1
-input
-Copy
-1 10
-100 111 1
+5
+vv
+v
+w
+vwv
+vwvvwv
 output
 Copy
 1
+0
+1
+1
+3
 Note
-In the first example:
-At the moment
-2
-, the first wave occurs and
-6
-monsters spawn. You kill
-3
-monsters and start reloading.
-At the moment
-3
-, the second wave occurs and
-3
-more monsters spawn. You kill remaining
-3
-monsters from the first wave and start reloading.
-At the moment
-4
-, you kill remaining
-3
-monsters from the second wave.
-In total, you'll spend
-9
-bullets.
-In the second example:
-At moment
-3
-, the first wave occurs and
-11
-monsters spawn. You kill
-5
-monsters and start reloading.
-At moment
-4
-, you kill
-5
-more monsters and start reloading.
-At moment
-5
-, you kill the last monster and start reloading throwing away old magazine with
-4
-bullets.
-At moment
-10
-, the second wave occurs and
-15
-monsters spawn. You kill
-5
-monsters and start reloading.
-At moment
-11
-, you kill
-5
-more monsters and start reloading.
-At moment
-12
-, you kill last
-5
-monsters.
-In total, you'll spend
-30
-bullets.
+In the first testcase it's enough to underline any of the two letters 'v'.
+In the second testcase the letter 'v' is not ambiguous by itself already, so you don't have to underline anything.
+In the third testcase you have to underline 'w', so that you don't mix it up with two letters 'v'.
+In the fourth testcase you can underline 'w' to avoid all the ambiguity.
+In the fifth testcase you can underline both letters 'w' and any of the two letters 'v' between them.

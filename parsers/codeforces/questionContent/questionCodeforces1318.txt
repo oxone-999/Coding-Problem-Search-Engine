@@ -1,45 +1,45 @@
-C. Minimum Extraction
-time limit per test1 second
+E. Robot on the Board 1
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Yelisey has an array
-a
-of
+The robot is located on a checkered rectangular board of size
+n×m
+(
 n
-integers.
-If
-a
-has length strictly greater than
-1
-, then Yelisei can apply an operation called minimum extraction to it:
-First, Yelisei finds the minimal number
+rows,
 m
-in the array. If there are several identical minima, Yelisey can choose any of them.
-Then the selected minimal element is removed from the array. After that,
+columns). The rows in the board are numbered from
+1
+to
+n
+from top to bottom, and the columns — from
+1
+to
 m
-is subtracted from each remaining element.
-Thus, after each operation, the length of the array is reduced by
-1
-.
-For example, if
-a=[1,6,−4,−2,−4]
-, then the minimum element in it is
-a
-3
-=−4
-, which means that after this operation the array will be equal to
-a=[1−(−4),6−(−4),−2−(−4),−4−(−4)]=[5,10,2,0]
-.
-Since Yelisey likes big numbers, he wants the numbers in the array
-a
-to be as big as possible.
-Formally speaking, he wants to make the minimum of the numbers in array
-a
-to be maximal possible (i.e. he want to maximize a minimum). To do this, Yelisey can apply the minimum extraction operation to the array as many times as he wants (possibly, zero). Note that the operation cannot be applied to an array of length
-1
-.
-Help him find what maximal value can the minimal element of the array have after applying several (possibly, zero) minimum extraction operations to the array.
+from left to right.
+The robot is able to move from the current cell to one of the four cells adjacent by side.
+The sequence of commands
+s
+executed by the robot is given. Each command is denoted by one of the symbols 'L', 'R', 'D' or 'U', and triggers the movement to left, right, down or up, respectively.
+The robot can start its movement in any cell. The robot executes the commands starting from the first one, strictly in the order in which they are listed in
+s
+. If the robot moves beyond the edge of the board, it falls and breaks. A command that causes the robot to break is not considered successfully executed.
+The robot's task is to execute as many commands as possible without falling off the board. For example, on board
+3×3
+, if the robot starts a sequence of actions
+s=
+"RRDLUU" ("right", "right", "down", "left", "up", "up") from the central cell, the robot will perform one command, then the next command will force him to cross the edge. If the robot starts moving from the cell
+(2,1)
+(second row, first column) then all commands will be executed successfully and the robot will stop at the cell
+(1,2)
+(first row, second column).
+The robot starts from cell
+(2,1)
+(second row, first column). It moves right, right, down, left, up, and up. In this case it ends in the cell
+(1,2)
+(first row, second column).
+Determine the cell from which the robot should start its movement in order to execute as many commands as possible.
 Input
 The first line contains an integer
 t
@@ -51,93 +51,56 @@ t
 The next
 2t
 lines contain descriptions of the test cases.
-In the description of each test case, the first line contains an integer
+In the description of each test case, the first line contains two integers
 n
+and
+m
 (
-1≤n≤2⋅
+1≤n,m≤
 10
-5
-) — the original length of the array
-a
-. The second line of the description lists
-n
-space-separated integers
-a
-i
-(
-−
+6
+) — the height and width of the field that the robot is located on. The second line of the description is a string
+s
+consisting solely of characters 'L', 'R', 'D' and 'U' — the sequence of commands the robot executes. The string has a length from
+1
+to
 10
-9
-≤
-a
-i
-≤
-10
-9
-) — elements of the array
-a
-.
-It is guaranteed that the sum of
-n
+6
+commands.
+It is guaranteed that the total length of
+s
 over all test cases does not exceed
-2⋅
 10
-5
+6
 .
 Output
 Print
 t
-lines, each of them containing the answer to the corresponding test case. The answer to the test case is a single integer — the maximal possible minimum in
-a
-, which can be obtained by several applications of the described operation to it.
+lines, each of which contains the answer to the corresponding test case. The answer to the test case are two integers
+r
+(
+1≤r≤n
+) and
+c
+(
+1≤c≤m
+), separated by a space — the coordinates of the cell (row number and column number) from which the robot should start moving to perform as many commands as possible.
+If there are several such cells, you may output any of them.
 Example
 input
 Copy
-8
-1
-10
-2
-0 0
-3
--1 2 0
 4
-2 10 1 7
-2
-2 3
-5
-3 2 -4 -2 0
-2
--1 1
-1
--2
+1 1
+L
+1 2
+L
+3 3
+RRDLUU
+4 3
+LUURRDDLLLUU
 output
 Copy
-10
-0
-2
-5
-2
-2
-2
--2
-Note
-In the first example test case, the original length of the array
-n=1
-. Therefore minimum extraction cannot be applied to it. Thus, the array remains unchanged and the answer is
-a
-1
-=10
-.
-In the second set of input data, the array will always consist only of zeros.
-In the third set, the array will be changing as follows:
-[−1,2,0]→[3,1]→[2]
-. The minimum elements are highlighted with
-blue
-. The maximal one is
-2
-.
-In the fourth set, the array will be modified as
-[2,10,1,7]→[1,9,6]→[8,5]→[3]
-. Similarly, the maximum of the minimum elements is
-5
-.
+1 1
+1 2
+2 1
+3 2

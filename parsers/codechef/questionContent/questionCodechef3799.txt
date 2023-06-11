@@ -1,106 +1,189 @@
-Optimal Memory Address
+Our Enemy does not Tire
 Problem
-Kim has successfully broken into the vault. He finds the main computer, a hideous creation with a wormhole to some extradimensional space.
-As we all know, Kim is a very powerful hacker. However, it seems that he has finally met his match: Jishnu's computer network is too difficult for him to hack into, even though it is right in front of him! He needs your help to recover the files related to the JSA's world domination plans so he can expose them to the world and win the Pulitzer Prize.
-Using some tricks, Jishnu has created a computer system with infinite memory! Each memory address is numbered from
-1 to
-∞.
-Kim knows that all of the data related to Jishnu's world domination plans is stored in
-N memory addresses. The
-ith memory address is
-A[i]. These memory addresses may be very large, so we can express an integer
-X as the product of
-K(X) prime factors raised to some power. The prime factors are given in increasing order. Formally, for an integer
-X, there are two
-K(X)-length arrays
-P(X) and
-Q(X) where
-P(X)[i]<P(X)[i+1] for all
-i, and
-X=∏
-i=1
-K(X)
-P(X)[i]
-Q(X)[i]
-. This is the format that the input will be given in. Note that they may not be distinct.
-Of course, it takes time to move between memory addresses. Kim has found an odd rule for finding the time needed to move between two memory addressees numbered
-X and
-Y,
-dist(X,Y). Let each integer
-X be associated with an infinite-length sequence
-S(X). Below is the pseudocode for creating the sequence given
-X:
-S(X) = []
-for i=1 to K(X) do:
-    for j=1 to Q(X)[i] do:
-        append P(X)[i] to S(X)
-while (true):
-    append -1 to S(X)
-Let
-V be the first index (0-indexed) where
-S(X)[V]
-
-=S(Y)[V]. Furthermore, let
-size(X) be
-∑
-i=1
-K(X)
-Q(X)[i]. Then,
-dist(X,Y)=size(X)+size(Y)−2∗V. Please note,
-dist(X,X)=0 because Kim is not moving memory address.
-Kim's hacking works as follows: he chooses a starting memory address as his incision point, and then he goes directly to each of the memory addresses which contains the world domination plans separately, one after another. So, the total amount of time it takes for Kim to get all the information is
-∑
-i=1
-N
-dist(C,A[i]), where
-C was his starting memory address. Kim is interested in what the minimum possible value of this could be if he chooses an optimal value of
-C. Since
-C must be a valid memory address,
-C must be an integer greater than or equal to
-1.
-###Input:
-The first will contain one integer,
-N.
-For the next
-N lines, the
-(i+1)th line will have their first integer as
-K(A[i]). Following that is
-2∗K(A[i]) integers,
-P(A[i])[1]Q(A[i])[1]...P(A[i])[K(A[i])]Q(A[i])[K(A[i])].
-###Output: For each testcase, output one integer: the minimum possible value of
-∑
-i=1
-N
-dist(C,A[i]).
-###Constraints
-∑
-i=1
-N
-K(A[i])≤10
-6
-1≤N≤10
-6
-A[i]>1 for all
-i
-P[i],Q[i]≤10
+Jon Snow has to defeat the army of the Night King.
+For that he needs to increase the power of the Dragon Glass.
+Dragon Glass's power depends on certain numbers, described as follows.
+Dragon Glass follows its own number system, which comprises
+Y integers ranging in
+[0,Y−1].
+Normally, there are bases like base 2 (binary) , 8 (octal) , 10 (decimal) , etc.
+In this new number system, there are total
+(X+1) bases, ranging from base
+2 to base
+X+2 in which these
+Y numbers can be represented.
+Jon Snow initially has exactly
+M distinct numbers in base
+2.
+(1<=M<=Y)
+If a number
+b is in base
+a, it can be transformed into 3 of the following -
+Number
+b+1 in base
+a+1, if
+0≤b+1≤Y−1
+Number
+b in base
+a+1
+Number
+b−1 in base
+a+1, if
+0≤b−1≤Y−1
+These transformations have some restrictions, which are detailed below.
+So, let’s say
+Y = 10 (numbers range from [0-9]). And
+M be 3.
+Let those
+M numbers we initially have in base
+2 be 4, 7 and 9.
+So, 4 in base 2 can be transformed into 3, 4 and 5 in base 3.
+Similarly, 7 in base 2 can be transformed into 6,7 and 8 in base 3.
+Similarly, 9 in base 2 can be transformed into 8 and 9 in base 3.
+3 in base 3 can be transformed into 2, 3 and 4 in base 4.
+And, so on....... .... .....
+But, the dragon glass is not perfect.
+Some of the combinations of bases and numbers are blocked i.e can't be obtained. In other words, you cannot transform into any of these combinations.
+There are
+N total such combinations which can't be obtained.
+These combinations are of the following form -
+a
+b It denotes that number
+b in base
+a is blocked i.e can't be obtained. There are at most 200 distinct bases in which numbers can’t be obtained. That is, among the
+N blocked combinations, there are at most 200 distinct bases.
+Suppose that currently we have number
+b in base
+a.
+If the number
+b and
+b+1 are blocked to be obtained in base
+a+1, then number
+b in base
+a can be transformed into
+b+1 in base
+a (provided it is not blocked).
+If the number
+b and
+b−1 are blocked to be obtained in base
+a+1, then number
+b in base
+a can be transformed into
+b−1 in base
+a (provided it is not blocked).
+Also, one can never go back to a combination/pair which was obtained in the past.
+In other words, let’s say we have
+(a,b) - ( number
+b in base
+a ), and we apply some sequence of transformations to it and obtain
+(c,d) - ( number
+d in base
+c),
+(a,b)→…......→(c,d)
+Then
+(a,b)…..→(c,d)→…..→(a,b) is not allowed.
+You need to help Jon Snow find the number of ways to obtain numbers in base
+(X+2) i.e the last base as stated above. In other words, you have to find the number of different sequences of transformations, which start out with one of the
+M numbers in base 2, and end with some number in base
+X+2.
+As the value can be very high, print it mod
+10
 9
-for all
-i
-P(X)[i] is always prime
-P(X)[i]<P(X)[i+1] for all
-i
-All
-P(X)[i] are distinct for a given
-X.
-###Subtasks
-50 points :
-Q(A[i])[j]=1 for all
-(i,j).
-50 points : No additional constraints.
-###Sample Input: 5 1 3 1 2 2 1 3 1 1 3 2 2 3 1 5 1 1 2 1
-###Sample Output: 7
-###EXPLANATION: The array
-A is
-[3,6,9,15,2]. It can be verified that the minimum possible time is
-7, which is achieved when
-C=3.
++7.
+Please refer sample examples for more explanation.
+###Input:
+First line will contain 4 space separated integers -
+Y,X,M,N .
+Second line comprises
+M distinct space separated integers denoting the numbers in the range
+[0,Y−1] initially in base 2.
+N lines follow. Each line comprises 2 space separated integers
+a
+b denoting the number
+b in base
+a is blocked i.e can't be obtained.
+###Output: Output in a single line number of ways to obtain numbers in base
+X+2 modulo
+10
+9
++7.
+###Constraints
+1≤Y≤200
+1≤X≤10
+9
+1≤M≤Y (These
+M elements range in
+[0,Y−1])
+0≤N≤200∗Y (as only 200 distinct bases will have numbers that can't be obtained)
+3≤a≤X+1
+0≤b≤Y−1
+###Sample Input 1:
+3 3 1 3
+0
+3 0
+3 1
+4 2
+###Sample Output 1: 3
+###EXPLANATION 1:
+Y = 3 (The Number system has integers only in range [0,2]).
+X = 3 ( The bases range from base 2 to base 5).
+M = 1 ( At base 2, only 1 number is present).
+Array of
+M integers = {0} ( Only number 0 is present initially at base 2).
+N = 3 ( There are 3 combinations that are blocked/can't be obtained )
+Array of length
+N = { ( 3, 0), (3, 1), (4,2) } (Number 0 and 1 in base 3 can never be obtained, and number 2 in base 4 can never be obtained).
+The answer is 3. The possible ways are obtained as follows -
+Number 0 in base 2 can transform into number 0 and number 1 in base 3.
+But, both these numbers can’t be obtained. So, number 0 in base 2 can be transformed to number 1 in base 2.
+This number 1 in base 2 can be transformed into number 2 in base 3.
+This number 2 in base 3 can be transformed into number 1 in base 4.
+This number 1 in base 4 can be transformed into number 0 in base 5, number 1 in base 5 or number 2 in base 5.
+Thus at base (X+2) i.e base 5, there are 3 ways of obtaining numbers.
+###Sample Input 2:
+3 3 1 2
+0
+3 0
+3 1
+###Sample Output 2: 5
+###EXPLANATION 2:
+Y = 3 (The Number system has integers only in range [0,2]).
+X = 3 ( The bases range from base 2 to base 5).
+M = 1 ( At base 2, only 1 number is present).
+Array of
+M integers = {0} ( Only number 0 is present initially at base 2).
+N = 2 ( There are 2 combinations that are blocked/can't be obtained )
+Array of length
+N = { ( 3, 0), (3, 1) } (Number 0 and 1 in base 3 can never be obtained).
+The answer is 5.
+The possible ways are obtained as follows -
+Number 0 in base 2 can transform into number 0 and number 1 in base 3.
+But, both these numbers can’t be obtained. So, number 0 in base 2 can be transformed to number 1 in base 2.
+This number 1 in base 2 can be transformed into number 2 in base 3.
+This number 2 in base 3 can be transformed into number 1 in base 4, and number 2 in base 4.
+This number 1 in base 4 can be transformed into number 0 in base 5, number 1 in base 5 or number 2 in base 5.
+The number 2 in base 4 can be transformed into number 1 in base 5 or number 2 in base 5.
+Thus at base (X+2) i.e base 5, there are 5 ways of obtaining numbers.
+###Sample Input 3:
+4 2 2 2
+1 2
+3 1
+3 2
+###Sample Output 3:
+8
+###EXPLANATION 3:
+Y = 4 (The Number system has integers only in range [0,3]).
+X = 2 ( The bases range from base 2 to base 4).
+M = 2 ( At base 2, only 2 numbers are present).
+Array of
+M integers = {1,2} ( Only numbers 1 and 2 are present initially at base 2).
+N = 2 ( There are 2 combinations that are blocked/can't be obtained )
+Array of length
+N = { ( 3, 1), (3, 2) } (Number 1 and 2 in base 3 can never be obtained).
+The number 1 in base 2 can transform into numbers 0,1 and 2 in base 3.
+But numbers 1 and 2 in base 3 can't be obtained. So, number 1 in base 2 can be transformed into number 2 in base 2.
+The number 2 in base 2 can be transformed into number 3 in base 3.
+The number 3 in base 3 can be transformed into numbers 2 and 3 in base 4.
+The number 0 in base 3 can be transformed into numbers 0 and 1 in base 4 .
+Similarly, one can find 4 other ways.
+Total number of ways to obtain numbers at base (X+2) i.e base 4 are 8.

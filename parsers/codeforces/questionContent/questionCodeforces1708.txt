@@ -1,152 +1,136 @@
-D. Secret Santa
-time limit per test2 seconds
+F. Bingo
+time limit per test7 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Every December, VK traditionally holds an event for its employees named "Secret Santa". Here's how it happens.
+Getting ready for VK Fest 2021, you prepared a table with
 n
-employees numbered from
-1
-to
+rows and
 n
-take part in the event. Each employee
+columns, and filled each cell of this table with some event related with the festival that could either happen or not: for example, whether you will win a prize on the festival, or whether it will rain.
+Forecasting algorithms used in VK have already estimated the probability for each event to happen. Event in row
 i
-is assigned a different employee
-b
-i
-, to which employee
-i
-has to make a new year gift. Each employee is assigned to exactly one other employee, and nobody is assigned to themselves (but two employees may be assigned to each other). Formally, all
-b
-i
-must be distinct integers between
-1
-and
-n
-, and for any
-i
-,
-b
-i
-≠i
-must hold.
-The assignment is usually generated randomly. This year, as an experiment, all event participants have been asked who they wish to make a gift to. Each employee
-i
-has said that they wish to make a gift to employee
+and column
+j
+will happen with probability
 a
-i
-.
-Find a valid assignment
-b
-that maximizes the number of fulfilled wishes of the employees.
-Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤
+i,j
+⋅
 10
-5
-). Description of the test cases follows.
-Each test case consists of two lines. The first line contains a single integer
+−4
+. All of the events are mutually independent.
+Let's call the table winning if there exists a line such that all
+n
+events on it happen. The line could be any horizontal line (cells
+(i,1),(i,2),…,(i,n)
+for some
+i
+), any vertical line (cells
+(1,j),(2,j),…,(n,j)
+for some
+j
+), the main diagonal (cells
+(1,1),(2,2),…,(n,n)
+), or the antidiagonal (cells
+(1,n),(2,n−1),…,(n,1)
+).
+Find the probability of your table to be winning, and output it modulo
+31607
+(see Output section).
+Input
+The first line contains a single integer
 n
  (
-2≤n≤2⋅
-10
-5
-) — the number of participants of the event.
-The second line contains
+2≤n≤21
+) — the dimensions of the table.
+The
+i
+-th of the next
+n
+lines contains
 n
 integers
 a
-1
+i,1
 ,
 a
-2
+i,2
 ,…,
 a
-n
- (
-1≤
+i,n
+(
+0<
 a
-i
-≤n
-;
-a
-i
-≠i
-) — wishes of the employees in order from
-1
-to
-n
-.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
+i,j
+<
 10
-5
+4
+). The probability of event in cell
+(i,j)
+to happen is
+a
+i,j
+⋅
+10
+−4
 .
 Output
-For each test case, print two lines.
-In the first line, print a single integer
-k
- (
-0≤k≤n
-) — the number of fulfilled wishes in your assignment.
-In the second line, print
-n
-distinct integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-1≤
-b
-i
-≤n
-;
-b
-i
-≠i
-) — the numbers of employees assigned to employees
-1,2,…,n
+Print the probability that your table will be winning, modulo
+31607
 .
-k
-must be equal to the number of values of
-i
-such that
-a
-i
-=
-b
-i
-, and must be as large as possible. If there are multiple answers, print any.
-Example
+Formally, let
+M=31607
+. It can be shown that the answer can be expressed as an irreducible fraction
+p
+q
+, where
+p
+and
+q
+are integers and
+q≢0(modM)
+. Output the integer equal to
+p⋅
+q
+−1
+modM
+. In other words, output such an integer
+x
+that
+0≤x<M
+and
+x⋅q≡p(modM)
+.
+Examples
 input
 Copy
 2
-3
-2 1 2
-7
-6 4 6 2 4 5 6
+5000 5000
+5000 5000
 output
 Copy
+5927
+input
+Copy
 2
-3 1 2
-4
-6 4 7 2 3 5 1
+2500 6000
+3000 4000
+output
+Copy
+24812
+input
+Copy
+3
+1000 2000 3000
+4000 5000 6000
+7000 8000 9000
+output
+Copy
+25267
 Note
-In the first test case, two valid assignments exist:
-[3,1,2]
-and
-[2,3,1]
-. The former assignment fulfills two wishes, while the latter assignment fulfills only one. Therefore,
-k=2
-, and the only correct answer is
-[3,1,2]
+In the first example, any two events form a line, and the table will be winning if any two events happen. The probability of this is
+11
+16
+, and
+5927⋅16≡11(mod31607)
 .

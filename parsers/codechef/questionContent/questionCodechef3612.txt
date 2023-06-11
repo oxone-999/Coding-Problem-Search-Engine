@@ -1,46 +1,57 @@
-The Amazing All-In-One Cooking Machine - Challenge
+Harry Potter and the Deathly Hallows - 2
 Problem
-The Chef has recently sold a number of his amazing all-in-one cooking machines! These machines can be used to prepare virtually any recipe you want. Unfortunately, there seems to be a major flaw in many of these devices.
-The problem can be fixed very quickly with the right replacement part (it takes essentially 0 time). Since the Chef endorsed these devices so much, he takes it upon himself to perform all of the repairs. He has a list of clients that need their devices repaired as well as a map of the city so he can find the most efficient route between any two clients.
-The Chef wants to repair these devices as fast as possible. However, since customer satisfaction is very important, his goal is to visit the clients in some order that minimizes the average time each client waits to be served. Specifically, we let T(i) denote the amount of time it takes for the Chef to reach client i from the moment he starts traveling given that he visits all clients that appear before client i on the list in the given order. Then the Chef's goal is to minimize the average of the waiting times, which is (T(1) + T(2) + ... + T(k))/k if there are k clients.
+"Give me Harry Potter. Do this and none shall be harmed. Give me Harry Potter, and I shall leave Hogwarts untouched. Give me Harry Potter, and you will be rewarded."
+Harry has only few people left to support him. In this crucial time, he needs to find people with greater strength. Given some information about people, Harry has to find strength of each individual.
+Every person has a skill Si, age Ai, lower limit Li and upper limit Ui. A person i can combine his skill with another person j if and only if age of another person Aj lies in range[Li, Ui], i.e., Aj ≥ Li and Aj ≤ Ri . Let's say that the set of id's of people with whom ith individual can combine his skill is P, then STRENGTH(i) is defined as:
+where T denotes a non empty subset of P.
+G(T) denotes sum of skills of all index in T.
+F(0) = 1, F(1) = 8, F(2) = 10.
+Since answer can be large, find STRENGTH(i)%(106 + 3) for every i from 1 to N.
 Input
-The first line contains a single positive integer T ≤ 30 indicating the number of test cases to follow. Each test case begins with three integers N, M and K written on a single line. Here, N is the number of intersections in the city, K is the number of clients and M is the number of streets to follow. The intersections are numbered from 0 to N-1 and the Chef begins at intersection 0.
-Following this is a single line containing K integers describing the locations of the clients. The i'th such integer (between 1 and N-1) indicates the intersection where the i'th client resides. Note that any particular intersection may contain more than one client. Note also that no clients are located at intersection 0.
-Then M lines follow, each describing a street. A street is given by three integers U,V, and D where U,V are distinct integers between 0 and N-1 describing the endpoints of the street and D is a positive integer that indicates how long it takes to travel from U to V along this road. No two intersections will be the endpoint of more than one road. Furthermore, it will always be possible reach all clients from intersection 0.
-Bounds: 2 ≤ N ≤ 300, 1 ≤ K ≤ 10000, and 1 ≤ M ≤ 2000. Furthermore, each street distance D is between 1 and 1000.
+The first line of input contains a single integer N denoting the number of people.
+Each of the next N lines contains 4 space-separated integers Si, Ai, Li, Ui denoting the skill, age, lower limit and upper limit of ith person.
 Output
-For each test case you are to output a permutation of the integers from 1 to K on a single line. This is the order in which the Chef will visit the clients. It does not need to be optimal, any permutation from 1 to K will be accepted. However, your goal should be to try and make the average waiting times of the clients as small as you possibly can in your solution. Your solution will be scored according to the following scoring mechanism.
-Scoring
-Starting from intersection 0, the Chef will visit these clients in the order they appear in the output. If we define T(0) = 0, then the time it takes to reach client i ≥ 1, say T(i), is precisely T(i-1) plus the shortest time that the Chef can reach the intersection containing client i in this list from the intersection containing client i-1 in this list. The score for a particular test case is then (T(1) + T(2) + ... + T(K))/K. The overall score over all test cases in a test file is simply the sum of the scores of each individual test case.
+Output strength of each individual separated by space.
+Constraints
+1 ≤ N ≤ 105
+1 ≤ Ai, Li,Ui ≤ 109
+1 ≤ Si ≤ 1018
 Example
 Input:
-3
-4 3 3
-1 2 3
-0 1 1
-0 2 10
-1 3 100
-5 6 10
-1 2 3 2 3 4 3 2 3 2
-0 1 2
-0 2 4
-0 3 3
-3 4 2
-4 2 1
-2 1 1
-3 2 10
-1 1 1 1 1 1 1 1 1 2
-0 1 5
-0 2 1
-
+4
+1 1 1 3
+3 2 5 8
+1 3 1 1
+3 4 4 4
 
 Output:
-1 3 2
-2 4 8 10 3 5 7 9 1 6
-1 2 3 4 5 6 7 8 9 10
-Explanation of Sample Data
-The optimal solution for the first test case is actually 1 2 3, but 1 3 2 is a valid ordering according to the problem description so it is accepted. Client 1 only waits 1 unit of time to be served. The time to travel from client 1 to client 3 is 100 units of time so client 3 must wait a total of 101 units of time to be served. Then, traveling from client 3 to client 2 takes 111 units of time so client 2 waits a total of 212 units of time to be served. Thus, the average amount of time it takes for a client to be served is then (1 + 101 + 212)/3 = 314/3 and that will be the score for the output on this test case.
-The other two test cases are analyzed similarly. In the third test case, all of the clients at location 1 are visited first. It takes 5 units of time to travel to location 1 and serve the first client. However, since we assume it takes 0 time to serve a client we can take care of the rest of the clients at location 1 immediately. So, each client at location 1 waited only 5 units of time to be served meaning the total time waited by all clients at this location is 45 units. Finally, it takes 6 units of time to travel to the sole client at location 2 so the average time waited by the clients is then 56/10.
-Overall, the score for the entire set of data (being the sum of the scores of individual test cases) is 116.066667.
-Test Data
-Some test data has been hand crafted to make certain heuristics perform poorly and some has been generated randomly from a variety of distributions.
+31417 0 10 0 
+Explanation
+i = 1 :
+S1 = 1
+P = {2, 3}
+All non empty subsets of P = {{2}, {3}, {2, 3}}
+for T = {2}, G(T) = S2 = 3, F(3 + 1) = F(4) =2915885705
+for T = {3}, G(T) = S3 = 1, F(1 + 1) = F(2) = 10
+for T = {2, 3}, G(T) = S2 + S3 = 4, F(4 + 1) = F(5) = 5730276345227
+Strength(1) = F(4) + F(2) + F(5) = 5733192230942
+Strength(1)%(106 + 3) = 31417
+i = 2 :
+S2 = 3
+P = {}
+There are no empty subsets of P.
+Strength(2) = 0
+Strength(2)%(106 + 3) = 0
+i = 3 :
+S3 = 1
+P = {1}
+All non empty subsets of P = {{1}}
+for T = {1}, G(T) = S1 = 1, F(1 + 1) = F(2) =10
+Strength(3) = F(2)= 10
+Strength(1)%(106 + 3) = 10
+i = 4 :
+S4 = 3
+P = {}
+There are no empty subsets of P.
+Strength(4) = 0
+Strength(4)%(106 + 3) = 0

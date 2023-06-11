@@ -1,42 +1,19 @@
-Devu and Manhattan Distance
+Counting Hexagons
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Devu has taken the course of computational geometry in the university of Coderpur. He liked this course very much. Today, he got to know about the Manhattan distance and got an assignment for the same topic. Manhattan distance between two points (x1,y1) and (x2,y2) can be defined as:
-Manhattan Distance = abs(x1-x2) + abs(y1-y2)
-Devu has N points in the Co-ordinate plane. Co-ordinate of ith point is (xi,yi). Points are indexed from 0 to (N-1)(both inclusive).
-He has Q updates or queries, for each update U[i, x,y], change the co-ordinate of ith point to (x,y).
-For each query [L,R], find pair of points whose indices are between L and R(both inclusive) , such that Manhattan distance between them is maximized. Report the maximum Manhattan distance for each of the query.
-Devu has to submit the assignment on the Monday, so help him in solving the problem.
+Dexter wants to make a hexagon by using six sticks for sides from a collection of sticks of lengths 1, 2, 3, ... N. Dexter will only make valid hexagons whose area is strictly positive.
+
+He considers a hexagon "good" if the biggest stick has length at least L and lengths of all the other sticks are not more than X. A "good" hexagon does not have sticks of the same length more than K times.
+How many ways he can make a "good" hexagon?
+
+For example, when N=8, L=7, X=5, K=3: { 1,2,2,5,5,7 } is a good hexagon but {1,2,2,2,2,7}, { 1,2,3,4,5,6},{1,2,3,4,6,7} are not .
+
+Two hexagons are considered different if their side length sets are different. For example {1,2,3,4,5,6} , {1,1,1,2,2,3} and {1,1,2,2,2,3} are all different
+hexagons. But {1,2,3,4,5,6} and { 2,4,6,1,3,5} are not different.
 Input
-First line of the input will contain an integer N denoting the number of the points in Cartesian plane.
-Next N lines will be containing the co-ordinates of the N points.
-Next line will contain an integer Q denoting the number of the queries.
-Next Q lines will be containing character 'Q' followed by pair of indices for each of the query or 'U' followed by value of i,x and y for the update.
+Input contains four integers N( 2 <= N <= 10^9) , L ( 2 <= L <= N and N-L<=100) , X( 1<=X< L ) and K ( 1 <= K <= 5) .
 Output
-For each query, print a single integer representing the answer of that query.
-Constraints
-0 ≤ L ≤ R ≤ N-1
--109 ≤ x,y ≤ 109
-Subtask #1: 20 points
-1 ≤ N,Q ≤1000.
-Subtask #3: 80 points
-1 ≤ N,Q ≤ 105
-Sample 1:
-Input
-Output
-4
-10 10
-10 20
-20 20
-20 10
-2
-U 1 20 20
-Q 0 3
-20
-Explanation:
-After first updates points will be:
-10 10
-20 20
-20 20
-20 10
-So, maximum Manhattan distance will be between points (10,10) and (20,20), which will be 20.
+Output the number of different ways to make a "good" hexagon % 1000000007.
+Sample Input
+10 8 6 2
+Sample Output
+374

@@ -1,33 +1,54 @@
-Closest Ranking
+Queen Blocks
 Problem
-You have just begun his job with Educated Guessing Pollsters. An election is only weeks away and the company would like to get a general idea of how the voters feel about the candidates. They asked a (probably not) random subset of N voters to submit a ranking of the M candidates. Say the candidates are numbered from 1 to M. A ranking is then a permutation of the set {1,2,...,M} listed as:
-c_1 c_2 ... c_M
-The list is such that the voter prefers candidate c_i to candidate c_j if i > j. Your task is to determine a ranking R = r_1, r_2, ..., r_M such that the total number of disagreements with all voters who were polled is minimized.
-More precisely, for a voter V we say the distance d(V,R) between voter V and ranking R is precisely the number of pairs (i,j) with 1 <= i < j <= M such that V actually prefers candidate r_i over candidate r_j. Say there are N voters labeled V_1, V_2, ..., V_n. The task is then to find a ranking R such that the sum
-d(V_1, R) + d(V_2, R) + ... + d(V_n, R)
-is minimized.
-Input:
-The first line of input consists of a single integer T ≤ 25 indicating the number of test cases to follow.
-Each test case begins with two integers N and M on a single line where N represents the number of voters and M represents the number of candidates. The following N lines contain th e rankings of the voters, one per line.
-Each ranking is given as a permutation c_1, c_2, ..., c_M of the numbers 1,2,...,M where consecutive numbers are separated by a space. In this ranking, c_i is preferred over c_j by precisely when i > j.
-A blank line appears between test cases (including a blank line just before the first test case).
-The bounds are 1 <= N <= 1000 and 1 <= M <= 15.
-Output:
-Each test case has a single line of output of the following form:
-D: r_1 r_2 ... r_M
-Where D is the sum of the distances between the optimum ranking and the input rankings and r_1, r_2, ..., r_M is a ranking of the same form as the input rankings that achieves this minimum distance. If there are multiple such orderings, then output the one that minimizes r_M. Among those that minimize r_M, you should output the one that minimizes r_{M-1} and so on.
-(note that in the second case that the ranking 1 2 3 also has total distance 4, but 2 1 3 is output based on the rules outlined in the output specification)
+You are given an
+8×8 chessboard. Your enemy king is at point
+(X,Y)
+(1≤X,Y≤8).
+You need to place some number of queen pieces on the chessboard such that the following conditions are satisfied:
+The king should not be under attack by any of the queens that you have placed.
+The king should not be able to make any move.
+Note that a king can move one unit in any of the
+8 direction while a queen can attack horizontally, vertically as well as diagonally.
+Find the minimum number of queens required to satisfy the given conditions. Print the chessboard where
+0 denotes empty cells,
+1 denotes the king, and
+2 denotes the queen(s) placed by you in some position(s).
+In case of multiple answers, print any.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The only line of each test case contains two space-separated integers
+A and
+B — the coordinates of the king.
+Output Format
+For each test case, output a
+8×8 grid consisting of King, Queen(s) and blank cells.
+Print the chessboard in
+8 lines where each line has
+8 space-separated integers where
+0 denotes empty cells,
+1 denotes the king, and
+2 denotes the queen(s) placed by you in some position(s).
+Constraints
+1≤T≤64
+1≤A,B≤8
 Sample 1:
 Input
 Output
-2
-2 3
-1 2 3
-1 2 3
-4 3
-1 2 3
-2 1 3
-1 2 3
-3 2 1
-0: 1 2 3
-4: 2 1 3
+1
+2 1
+0 0 2 0 0 0 0 0
+1 0 0 0 0 0 0 0
+0 0 2 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+Explanation:
+Test case
+1: We can place
+2 queens at
+(1,3) and
+(3,3) respectively. Thus, the king at
+(2,1) has no safe squares to go to and is not under attack.

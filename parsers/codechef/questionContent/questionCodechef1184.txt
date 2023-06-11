@@ -1,106 +1,23 @@
-Chef And Adjacent Sums
+Sums in a cuboid
 Problem
-You are given an array
-A of size
-N.
-Consider an array
-B of size
-N formed by sorting
-A in non-decreasing order.
-Let
-Z=(B
-N
-+B
-(N−1)
-).
-Find whether there exists any rearrangement of the array
-A, such that, for all
-(1≤i<N),
-(A
-i
-+A
-(i+1)
-)<Z.
-If such a rearrangement exists, print YES, otherwise print NO.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains a integer
-N — the number of elements in the array.
-The next line contains
-N space-separated integers, denoting the elements of the array.
-Output Format
-For each test case, output YES, if a rearrangement exists that satisfies the conditions. Otherwise, output NO.
-You may print each character in uppercase or lowercase. For example, NO, no, No, and nO are all considered the same.
-Constraints
-1≤T≤1000
-2≤N≤10
-5
-1≤A
-i
-≤10
-5
-The sum of
-N over all test cases won't exceed
-10
-5
-.
+Suppose there is a X x Y x Z 3D matrix A of numbers having coordinates (i, j, k) where 0 ≤ i < X, 0 ≤ j < Y, 0 ≤ k < Z. Now another X x Y x Z matrix B is defined from A such that the (i, j, k) element of B is the sum of all the the numbers in A in the cuboid defined by the (0, 0, 0) and (i, j, k) elements as the diagonally opposite vertices. In other word (i, j, k) in B is the sum of numbers of A having coordinates (a, b, c) such that 0 ≤ a ≤ i, 0 ≤ b ≤ j, 0 ≤ c ≤ k. The problem is that given B, you have to find out A.
+Input
+The first line of input will contain the number of test cases ( ≤ 10). That many test cases will follow in subsequent lines. The first line of each test case will contain the numbers X Y Z (0 ≤ X, Y, Z ≤ 100). After that there will be X x Y lines each containing Z numbers of B. The first line contains the numbers (0, 0, 0), (0, 0, 1)..., (0, 0, Z-1). The second line has the numbers (0, 1, 0), (0, 1, 1)..., (0, 1, Z-1) and so on. The (Y+1)th line will have the numbers (1, 0, 0), (1, 0, 1)..., (1, 0, Z-1) and so on.
+Output
+For each test case print the numbers of A in exactly the same fashion as the input.
 Sample 1:
 Input
 Output
-4
-3
-3 4 4
-4
-1 2 3 4
 2
-2 2
-2
-1 2
-YES
-YES
-NO
-NO
-Explanation:
-Test case
-1: Here
-B=[3,4,4] and
-Z=(4+4)=8.
-We can rearrange the array to
-[4,3,4] such that
-(A
-1
-+A
-2
-)=7<8 and
-(A
-2
-+A
-3
-)=7<8. Thus, the rearrangement is valid.
-Test case
-2: Here
-B=[1,2,3,4] and
-Z=(4+3)=7.
-We can rearrange the array to
-[4,2,3,1] such that
-(A
-1
-+A
-2
-)=6<7,
-(A
-2
-+A
-3
-)=5<7, and
-(A
-3
-+A
-4
-)=4<7. Thus, the rearrangement is valid.
-Test case
-3: The exists no possible rearrangement that satisfies the conditions.
-Test case
-4: The exists no possible rearrangement that satisfies the conditions.
+3 1 1
+1 
+8 
+22 
+1 2 3
+0 9 13 
+18 45 51
+1 
+7 
+14 
+0 9 4 
+18 18 2

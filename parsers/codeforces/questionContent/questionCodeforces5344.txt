@@ -1,45 +1,54 @@
-D. Lie or Truth
-time limit per test2 seconds
+B. Significant Cups
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Vasya has a sequence of cubes and exactly one integer is written on each cube. Vasya exhibited all his cubes in a row. So the sequence of numbers written on the cubes in the order from the left to the right equals to a1, a2, ..., an.
-While Vasya was walking, his little brother Stepan played with Vasya's cubes and changed their order, so now the sequence of numbers written on the cubes became equal to b1, b2, ..., bn.
-Stepan said that he swapped only cubes which where on the positions between l and r, inclusive, and did not remove or add any other cubes (i. e. he said that he reordered cubes between positions l and r, inclusive, in some way).
-Your task is to determine if it is possible that Stepan said the truth, or it is guaranteed that Stepan deceived his brother.
+Stepan is a very experienced olympiad participant. He has n cups for Physics olympiads and m cups for Informatics olympiads. Each cup is characterized by two parameters — its significance ci and width wi.
+Stepan decided to expose some of his cups on a shelf with width d in such a way, that:
+there is at least one Physics cup and at least one Informatics cup on the shelf,
+the total width of the exposed cups does not exceed d,
+from each subjects (Physics and Informatics) some of the most significant cups are exposed (i. e. if a cup for some subject with significance x is exposed, then all the cups for this subject with significance greater than x must be exposed too).
+Your task is to determine the maximum possible total significance, which Stepan can get when he exposes cups on the shelf with width d, considering all the rules described above. The total significance is the sum of significances of all the exposed cups.
 Input
-The first line contains three integers n, l, r (1 ≤ n ≤ 105, 1 ≤ l ≤ r ≤ n) — the number of Vasya's cubes and the positions told by Stepan.
-The second line contains the sequence a1, a2, ..., an (1 ≤ ai ≤ n) — the sequence of integers written on cubes in the Vasya's order.
-The third line contains the sequence b1, b2, ..., bn (1 ≤ bi ≤ n) — the sequence of integers written on cubes after Stepan rearranged their order.
-It is guaranteed that Stepan did not remove or add other cubes, he only rearranged Vasya's cubes.
+The first line contains three integers n, m and d (1 ≤ n, m ≤ 100 000, 1 ≤ d ≤ 109) — the number of cups for Physics olympiads, the number of cups for Informatics olympiads and the width of the shelf.
+Each of the following n lines contains two integers ci and wi (1 ≤ ci, wi ≤ 109) — significance and width of the i-th cup for Physics olympiads.
+Each of the following m lines contains two integers cj and wj (1 ≤ cj, wj ≤ 109) — significance and width of the j-th cup for Informatics olympiads.
 Output
-Print "LIE" (without quotes) if it is guaranteed that Stepan deceived his brother. In the other case, print "TRUTH" (without quotes).
+Print the maximum possible total significance, which Stepan can get exposing cups on the shelf with width d, considering all the rules described in the statement.
+If there is no way to expose cups on the shelf, then print 0.
 Examples
 input
 Copy
-5 2 4
-3 4 2 3 1
-3 2 3 4 1
+3 1 8
+4 2
+5 5
+4 2
+3 2
 output
 Copy
-TRUTH
+8
 input
 Copy
-3 1 2
-1 2 3
-3 1 2
+4 3 12
+3 4
+2 4
+3 5
+3 4
+3 5
+5 2
+3 4
 output
 Copy
-LIE
+11
 input
 Copy
-4 2 4
-1 1 1 1
-1 1 1 1
+2 2 2
+5 3
+6 3
+4 2
+8 1
 output
 Copy
-TRUTH
+0
 Note
-In the first example there is a situation when Stepan said the truth. Initially the sequence of integers on the cubes was equal to [3, 4, 2, 3, 1]. Stepan could at first swap cubes on positions 2 and 3 (after that the sequence of integers on cubes became equal to [3, 2, 4, 3, 1]), and then swap cubes in positions 3 and 4 (after that the sequence of integers on cubes became equal to [3, 2, 3, 4, 1]).
-In the second example it is not possible that Stepan said truth because he said that he swapped cubes only between positions 1 and 2, but we can see that it is guaranteed that he changed the position of the cube which was on the position 3 at first. So it is guaranteed that Stepan deceived his brother.
-In the third example for any values l and r there is a situation when Stepan said the truth.
+In the first example Stepan has only one Informatics cup which must be exposed on the shelf. Its significance equals 3 and width equals 2, so after Stepan exposes it, the width of free space on the shelf becomes equal to 6. Also, Stepan must expose the second Physics cup (which has width 5), because it is the most significant cup for Physics (its significance equals 5). After that Stepan can not expose more cups on the shelf, because there is no enough free space. Thus, the maximum total significance of exposed cups equals to 8.

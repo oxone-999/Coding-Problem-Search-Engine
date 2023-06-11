@@ -1,163 +1,162 @@
-Restore Communication
+Functional Array
 Problem
-There are
-N people lost in a forest, and each person has a radio. The
-i-th person's radio can transmit
-K
+Read problem statements in Bengali, Russian, Mandarin and Vietnamese as well.
+The functional array of an array
+A=[A
+1
+,A
+2
+,…,A
+N
+] is the array
+fA of size
+N−1, where
+fA
 i
-frequencies. Let the list of frequencies that the
-i-th person can transmit be
-F
+=A
+i+1
+−A
 i
-=[f
-(i,1)
-,f
-(i,2)
-,…,f
-(i,K
-i
-)
-].
-The
-i-th person and
-j-th person can communicate with each other if at least one of the following holds true:
-They can both transmit a common frequency i.e. (
-f
-(i,a)
-=f
-(j,b)
-for some
-a,b).
-There exists a person
-k who can communicate with both
-i-th person and
-j-th person.
-You want to ensure that every pair of people can communicate with each other. To do so, you can perform the following operation:
-You can transfer a frequency from one person's radio to another, i.e. select
-i and
-j
-(1≤i,j≤N), delete a frequency
-x (present in
-F
-i
-) from
-F
-i
-, and append it to
-F
-j
-.
-Determine the minimum number of operations to ensure that every pair of people can communicate with each other. If it is not possible, print
-−1.
+for
+1≤i<N. For example, if
+A=[2,3,9,11] then
+fA=[1,6,2].
+You are given two arrays
+B=[B
+1
+,B
+2
+,…,B
+N
+] and
+Z=[Z
+1
+,Z
+2
+,…,Z
+M
+] of length
+N and
+M respectively. Find out whether there exists an array
+A such that:
+B is a subsequence of
+A, and
+fA is a subsequence of
+Z
+Print "YES" (without quotes) if such an array
+A exists, and "NO" otherwise.
 Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains a single integer
-N — the number of people
-The next
-N lines describe the list of frequencies for each person.
-The
-i-th of these
-N lines contains an integer
-K
-i
-, the number of frequencies the radio of the
-i-th person can transmit. This is followed by
-K
-i
-unique integers:
-f
-(i,1)
-,f
-(i,2)
-,…,f
-(i,K
-i
-)
-, describing the list of frequencies for the
-i-th person.
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+Each test case contains three lines of input.
+The first line contains two integers
+N and
+M - the lengths of
+B and
+Z respectively.
+The second line contains
+N space-separated integers
+B
+1
+,B
+2
+,…,B
+N
+; the elements of
+B.
+The third line contains
+M space-separated integers
+Z
+1
+,Z
+2
+,…,Z
+M
+; the elements of
+Z.
 Output Format
-For each test case, output on a new line the minimum number of operations to ensure that every pair of people can communicate with each other.
+For each test case, output a single line containing one word - either "YES" or "NO". You may print each character of the string in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
 Constraints
 1≤T≤10
-4
-1≤N≤3⋅10
 5
-0≤K
+1≤N≤10
+5
+1≤M≤10
+5
+0≤B
 i
-≤3⋅10
-5
-1≤f
-(i,j)
 ≤10
-9
-Sum of
-N over all testcases does not exceed
-3⋅10
 5
-Sum of
-∑
-i=1
-N
-K
+0≤Z
 i
-over all testcases does not exceed
-3⋅10
+≤10
 5
+The sum of
+N over all test cases does not exceed
+10
+5
+The sum of
+M over all test cases does not exceed
+10
+5
+Subtasks
+Subtask #1 (5 points):
+1≤M≤10
+1≤N≤10
+3
+0≤B
+i
+≤10
+3
+0≤Z
+i
+≤10
+3
+The sum of
+M over all test cases does not exceed
+100
+Subtask #2 (40 points):
+1≤M≤10
+3
+1≤N≤10
+3
+0≤B
+i
+≤10
+3
+0≤Z
+i
+≤10
+3
+The sum of
+M over all test cases does not exceed
+10
+3
+Subtask #3 (55 points):
+Original constraints
 Sample 1:
 Input
 Output
-5
-3
-2 3 4
-2 5 6
-2 5 6
-7
-2 3 4
-2 5 6
-2 5 6
-2 7 8
-2 7 8
-2 13 14
-2 14 13
-8
-1 7
-1 8
-1 11
-1 12
-2 9 10
-2 9 10
-2 9 10
-2 9 10
-1
-1 1000000000
-1
-1 11221
-1
-3
--1
-0
-0
+2
+2 2
+2 3
+1 1
+2 2
+2 4
+1 3
+YES
+NO
 Explanation:
-Test Case 1: We can transfer frequency
-5 from person
-3 to person
-1. We need only
-1 operation in this case.
-Test Case 2: We need a minimum of
-3 operations. One possible sequence of operations is:
-Transfer frequency
-5 from person
-2 to person
-1
-Transfer frequency
-7 from person
-4 to person
-3
-Transfer frequency
-13 from person
-6 to person
-5
-Test Case 3: It can be shown that it's impossible to ensure that every pair of people can communicate with each other, using any number of operations. So the answer for this case is
-−1.
+Test case 1:
+A=[1,2,3] is one possible array.
+B=[2,3] is a subsequence of
+A
+fA=[1,1] is a subsequence of
+Z=[1,1].
+Test case 2:
+It can be shown that no array
+A can both contain
+B=[2,4] as a subsequence and also have
+fA be a subsequence of
+Z=[1,3]

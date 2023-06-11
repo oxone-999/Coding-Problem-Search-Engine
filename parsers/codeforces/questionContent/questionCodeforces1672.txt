@@ -1,136 +1,104 @@
-G. A New Beginning
-time limit per test5 seconds
+A. Fair Playoff
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Annie has gotten bored of winning every coding contest and farming unlimited rating. Today, she is going to farm potatoes instead.
-Annie's garden is an infinite 2D plane. She has
-n
-potatoes to plant, and the
+Four players participate in the playoff tournament. The tournament is held according to the following scheme: the first player will play with the second, and the third player with the fourth, then the winners of the pairs will play in the finals of the tournament.
+It is known that in a match between two players, the one whose skill is greater will win. The skill of the
 i
--th potato must be planted at
-(
-x
+-th player is equal to
+s
 i
-,
-y
-i
-)
-. Starting at the point
-(0,0)
-, Annie begins walking, in one step she can travel one unit right or up (increasing her
-x
-or
-y
-coordinate by
-1
-respectively). At any point
-(X,Y)
-during her walk she can plant some potatoes at arbitrary points using her potato gun, consuming
-max(|X−x|,|Y−y|)
-units of energy in order to plant a potato at
-(x,y)
-. Find the minimum total energy required to plant every potato.
-Note that Annie may plant any number of potatoes from any point.
-Input
-The first line contains the integer
-n
-(
-1≤n≤800000
+and all skill levels are pairwise different (i. e. there are no two identical values in the array
+s
 ).
-The next
-n
-lines contain two integers
-x
-i
-and
-y
-i
+The tournament is called fair if the two players with the highest skills meet in the finals.
+Determine whether the given tournament is fair.
+Input
+The first line contains a single integer
+t
 (
-0≤
-x
-i
+1≤t≤
+10
+4
+) — the number of test cases.
+A single line of test case contains four integers
+s
+1
 ,
-y
-i
-≤
-10
-9
-), representing the location of the
-i
--th potato. It is possible that some potatoes should be planted in the same location.
-Output
-Print the minimum total energy to plant all potatoes.
-Examples
-input
-Copy
+s
 2
-1 1
-2 2
-output
-Copy
-0
-input
-Copy
-2
-1 1
-2 0
-output
-Copy
-1
-input
-Copy
+,
+s
 3
-5 5
-7 7
-4 9
-output
-Copy
-2
+,
+s
+4
+(
+1≤
+s
+i
+≤100
+) — skill of the players. It is guaranteed that all the numbers in the array are different.
+Output
+For each testcase, output YES if the tournament is fair, or NO otherwise.
+Example
 input
 Copy
-10
-5 1
-4 0
-9 6
-0 2
-10 1
-9 10
-3 10
-0 10
-8 9
-1 5
+4
+3 7 9 5
+4 5 6 9
+5 3 8 1
+6 5 3 2
 output
 Copy
-19
-input
-Copy
-10
-1 1
-2 2
-2 0
-4 2
-4 0
-2 0
-0 2
-4 0
-4 2
-5 1
-output
-Copy
-6
+YES
+NO
+YES
+NO
 Note
-In example
-1
-, Annie can travel to each spot directly and plant a potato with no energy required.
-In example
+Consider the example:
+in the first test case, players
 2
-, moving to
-(1,0)
-, Annie plants the second potato using
+and
+3
+with skills
+7
+and
+9
+advance to the finals;
+in the second test case, players
+2
+and
+4
+with skills
+5
+and
+9
+advance to the finals. The player with skill
+6
+does not advance, but the player with skill
+5
+advances to the finals, so the tournament is not fair;
+in the third test case, players
 1
-energy. Next, she travels to
-(1,1)
-and plants the first potato with
-0
-energy.
+and
+3
+with skills
+5
+and
+8
+advance to the finals;
+in the fourth test case, players
+1
+and
+3
+with skills
+6
+and
+3
+advance to the finals. The player with skill
+5
+does not advance, but the player with skill
+3
+advances to the finals, so the tournament is not fair.

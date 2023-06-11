@@ -1,153 +1,90 @@
-A. K-th Largest Value
-time limit per test1 second
+D. Zookeeper and The Infinite Zoo
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-consisting of
-n
-integers. Initially all elements of
-a
-are either
-0
-or
-1
-. You need to process
+There is a new attraction in Singapore Zoo: The Infinite Zoo.
+The Infinite Zoo can be represented by a graph with an infinite number of vertices labeled
+1,2,3,…
+. There is a directed edge from vertex
+u
+to vertex
+u+v
+if and only if
+u&v=v
+, where
+&
+denotes the bitwise AND operation. There are no other edges in the graph.
+Zookeeper has
 q
-queries of two kinds:
-1 x : Assign to
-a
-x
-the value
-1−
-a
-x
-.
-2 k : Print the
-k
--th largest value of the array.
-As a reminder,
-k
--th largest value of the array
-b
-is defined as following:
-Sort the array in the non-increasing order, return
-k
--th element from it.
-For example, the second largest element in array
-[0,1,0,1]
-is
-1
-, as after sorting in non-increasing order it becomes
-[1,1,0,0]
-, and the second element in this array is equal to
-1
-.
+queries. In the
+i
+-th query she will ask you if she can travel from vertex
+u
+i
+to vertex
+v
+i
+by going through directed edges.
 Input
-The first line contains two integers
-n
-and
+The first line contains an integer
 q
 (
-1≤n,q≤
+1≤q≤
 10
 5
-) — the length of the given array and the number of queries.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,
-a
-3
-,…,
-a
-n
-(
-0≤
-a
+) — the number of queries.
+The
 i
-≤1
-) — elements of the initial array.
-Each of the following
+-th of the next
 q
-lines contains two integers. The first integer is
-t
+lines will contain two integers
+u
+i
+,
+v
+i
 (
-1≤t≤2
-) — the type of query.
-If
-t=1
-the second integer is
-x
-(
-1≤x≤n
-) — the position of the modified number. You have to assign to
-a
-x
-the value
-1−
-a
-x
-.
-If
-t=2
-the second integer is
-k
-(
-1≤k≤n
-) — you need to print the
-k
--th largest value of the array.
-It's guaranteed that there will be at least one query of the second type (satisfying
-t=2
-).
+1≤
+u
+i
+,
+v
+i
+<
+2
+30
+) — a query made by Zookeeper.
 Output
-For each query of the second type, print a single integer — the answer to the query.
+For the
+i
+-th of the
+q
+queries, output "YES" in a single line if Zookeeper can travel from vertex
+u
+i
+to vertex
+v
+i
+. Otherwise, output "NO".
+You can print your answer in any case. For example, if the answer is "YES", then the output "Yes" or "yeS" will also be considered as correct answer.
 Example
 input
 Copy
+5
+1 4
+3 6
+1 6
+6 2
 5 5
-1 1 0 1 0
-2 3
-1 2
-2 3
-2 1
-2 5
 output
 Copy
-1
-0
-1
-0
+YES
+YES
+NO
+NO
+YES
 Note
-Initially
-a=[1,1,0,1,0]
-.
-The first operation is printing the third largest value, which is
-1
-.
-The second operation is assigning
-a
-2
-the value
-0
-,
-a
-becomes
-[1,0,0,1,0]
-.
-The third operation is printing the third largest value, it is
-0
-.
-The fourth operation is printing the first largest value, it is
-1
-.
-The last operation is printing the fifth largest value, it is
-0
-.
+The subgraph on vertices
+1,2,3,4,5,6
+is shown below.

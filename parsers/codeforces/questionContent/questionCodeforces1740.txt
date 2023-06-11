@@ -1,140 +1,69 @@
-G. Try Booking
-time limit per test2 seconds
-memory limit per test512 megabytes
+A. Potion-making
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-William owns a flat in central London. He decided to rent his flat out for the next
-n
-days to earn some money.
-Since his flat is in the center of the city, he instantly got
-m
-offers in the form
-(
-l
-i
-,
-r
-i
-)
-, which means that someone wants to book the flat from day
-l
-i
-until day
-r
-i
-inclusive. To avoid spending a lot of time figuring out whether it's profitable for him to accept an offer, William decided to develop an algorithm. The algorithm processes all offers as they arrive and will only accept offer
-i
-if the following two conditions are satisfied:
-r
-i
-−
-l
-i
-+1≥x
-.
-None of the days between
-l
-i
-and
-r
-i
-are occupied by a previously accepted offer
-William isn't sure what value
-x
-should have and he asks you for help. For all
-x
-from
-1
-to
-n
-he wants you to calculate the total number of days for which the flat would be occupied if the corresponding value will be assigned to
-x
-.
+You have an initially empty cauldron, and you want to brew a potion in it. The potion consists of two ingredients: magic essence and water. The potion you want to brew should contain exactly
+k %
+magic essence and
+(100−k) %
+water.
+In one step, you can pour either one liter of magic essence or one liter of water into the cauldron. What is the minimum number of steps to brew a potion? You don't care about the total volume of the potion, only about the ratio between magic essence and water in it.
+A small reminder: if you pour
+e
+liters of essence and
+w
+liters of water (
+e+w>0
+) into the cauldron, then it contains
+e
+e+w
+⋅100 %
+(without rounding) magic essence and
+w
+e+w
+⋅100 %
+water.
 Input
-The first line contains two integers
-n
-and
-m
-(1≤n≤5⋅
-10
-4
-,1≤m≤
-10
-5
-)
-, which are the number of days and the number of offers, respectively.
-Each of the next
-m
-lines contains two integers
-l
-i
-and
-r
-i
-(1≤
-l
-i
-≤
-r
-i
-≤n)
-, which describe the
-i
--th renting offer. All offers are given in chronological order.
+The first line contains the single
+t
+(
+1≤t≤100
+) — the number of test cases.
+The first and only line of each test case contains a single integer
+k
+(
+1≤k≤100
+) — the percentage of essence in a good potion.
 Output
-Print
-n
-integers. The number in
-i
--th line must be equal to the number of days the flat would be occupied if the algorithm will use the value of
-x
-equal to
-i
-.
+For each test case, print the minimum number of steps to brew a good potion. It can be proved that it's always possible to achieve it in a finite number of steps.
 Example
 input
 Copy
-6 5
-2 3
-3 5
-1 1
-1 5
-1 6
+3
+3
+100
+25
 output
 Copy
-3
-2
-3
-5
-5
-6
+100
+1
+4
 Note
-The description of segments from the first sample test for each
-x
-:
-x=1
- — algorithm will approve offers:
-1
-(2..3),
+In the first test case, you should pour
 3
-(1..1). The total number of days for which William's flat will be rented out is 3
-x=2
- — algorithm will approve offers:
+liters of magic essence and
+97
+liters of water into the cauldron to get a potion with
+3 %
+of magic essence.
+In the second test case, you can pour only
 1
-(2..3). The total number of days for which William's flat will be rented out is 2
-x=3
- — algorithm will approve offers:
-2
-(3..5). The total number of days for which William's flat will be rented out is 3
-x=4
- — algorithm will approve offers:
-4
-(1..5). The total number of days for which William's flat will be rented out is 5
-x=5
- — algorithm will approve offers:
-4
-(1..5). The total number of days for which William's flat will be rented out is 5
-x=6
- — algorithm will approve offers:
-5
-(1..6). The total number of days for which William's flat will be rented out is 6
+liter of essence to get a potion with
+100 %
+of magic essence.
+In the third test case, you can pour
+1
+liter of magic essence and
+3
+liters of water.

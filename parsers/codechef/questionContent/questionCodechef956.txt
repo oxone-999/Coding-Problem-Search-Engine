@@ -1,153 +1,77 @@
-Total Score
+Polygon Relationship
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Vietnamese, and Bengali as well.
-There are
-K problems in a contest with
-N participants. All the problems don't necessarily have the same points assigned to them - you are given an array
-A of integers, where
-A
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+You are given a strictly convex polygon with
+N vertices (numbered
+1 through
+N). For each valid
+i, the coordinates of the
+i-th vertex are
+(X
 i
-denotes the points assigned to the
+,Y
 i
-th
-problem. If a participant solves the
+). You may perform the following operation any number of times (including zero):
+Consider a parent polygon. Initially, this is the polygon you are given.
+Draw one of its child polygons ― a simple non-degenerate polygon such that each of its sides is a chord of the parent polygon (it cannot be a side of the parent polygon). The operation cannot be performed if the parent polygon does not have any child polygons.
+The child polygon which you drew becomes the new parent polygon.
+Your goal is to draw as many sides of polygons in total as possible (including the polygon given at the start). Find this maximum total number of sides.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+N lines follow. For each valid
+i, the
+i-th of these lines contains two space-separated integers
+X
 i
-th
-problem, they will get
-A
+and
+Y
 i
-points added to their total score. Note that there are no partial points - they can get only
-0 or
-A
-i
-points on the
-i
-th
-problem. For each participant
-i, you are also given their final verdict in each problem in the form of a binary string
-S
-i
-- a
-1 denotes that they solved that problem, and a
-0 denotes that they did not.
-Your job is to find the total score of each participant.
-###Input:
-The first line of input contains a single integer
-T, denoting the number of testcases. Then the testcases follow.
-First line of each testcase contains
-2 space separated integers,
-N and
-K, denoting the number of participants and the number of problems in the contest respectively.
-The second line contains
-K space separated integers -
-A
-1
-,A
-2
-,…,A
-K
-, where
-A
-i
-denotes the points assigned to the
-i
-th
-problem.
-The
-i
-th
-of the next
-N lines contains a binary string
-S
-i
-of length
-K, where
-S
-ij
-represents the verdict of the
-j
-th
-problem for
-i
-th
-participant.
-S
-ij
-=1 if they solved that problem, and
-S
-ij
-=0 otherwise.
-###Output: For each testcase, output
-N lines, with the
-i
-th
-line containing a single integer denoting the total score of the
-i
-th
-participant.
-###Constraints
-1≤T≤5
-1≤A
-i
-≤10
+.
+Output
+Print a single line containing one integer ― the maximum possible number of sides of polygons.
+Constraints
+1≤T≤1,000
+3≤N≤10
 5
-0≤S
-ij
-≤1
-Sum of
-N∗K over all tests is atmost
-10
+∣X
+i
+∣,∣Y
+i
+∣≤10
+9
+for each valid
+i
+the sum of
+N over all test cases does not exceed
+2⋅10
 6
-1≤N,K
 Sample 1:
 Input
 Output
-3
-2 2
-1 2
-01
-10
-2 2
-1 2
-11
-00
-2 1
-100
-0
-1
 2
-1
-3
-0
-0
-100
+4
+-100 1
+0 2
+0 0
+100 1
+7
+-4 0
+-3 -2
+-3 2
+0 -4
+2 -3
+2 3
+3 2
+4
+10
 Explanation:
-Case 1: The first participant's binary string is "
-01", which means that they did not solve the first problem, but they solved the second problem. And as the points assigned to the two problems are
-1 and
-2, the total score of the first participant is
-2. Hence the first output is
-2.
-Similarly, the second participant's binary string is "
-10", which means that they solved the first problem, but did not solve the second problem. So their total score is
-1. Hence the second output is
-1.
-Case 2: The first participant's binary string is "
-11", which means that they solved both the first and second problems. And as the points assigned to the two problems are
-1 and
-2, the total score of the first participant is
-1+2=3. Hence the third output is
-3.
-Similarly, the second participant's binary string is "
-00", which means that they did not solve any problem. So their total score is
-0. And hence the fourth output is
-0.
-Case 3: The first participant's binary string is "
-0", which means that they did not solve the only problem of the contest. Hence the total score of the first participant is
-0. Hence the fifth output is
-0.
-Similarly, the second participant's binary string is "
-1", which means that they solved the only problem in the contest. And as the points assigned to that problem is
-100, the total score of the second participant is
-100. Hence the last output is
-100.
+Example case 1: It is not possible to draw a child polygon.
+Example case 2: We can draw a child polygon once, e.g. with vertices
+(−3,−2),
+(−3,2) and
+(3,2). Even though there are several other ways to draw a child polygon, it can only be a triangle, so the total number of sides cannot exceed
+7+3=10.

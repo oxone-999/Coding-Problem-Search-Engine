@@ -1,175 +1,157 @@
-F2. Checker for Array Shuffling
+H. Zigu Zagu
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-oolimry has an array
+You have a binary string
 a
 of length
 n
-which he really likes. Today, you have changed his array to
-b
-, a permutation of
-a
-, to make him sad.
-Because oolimry is only a duck, he can only perform the following operation to restore his array:
-Choose two integers
-i,j
-such that
-1≤i,j≤n
+consisting only of digits
+0
+and
+1
 .
-Swap
-b
+You are given
+q
+queries. In the
 i
+-th query, you are given two indices
+l
 and
-b
-j
+r
+such that
+1≤l≤r≤n
 .
-The sadness of the array
-b
-is the minimum number of operations needed to transform
-b
-into
-a
-.
-Given the arrays
-a
+Let
+s=a[l,r]
+. You are allowed to do the following operation on
+s
+:
+Choose two indices
+x
 and
-b
-, where
-b
-is a permutation of
-a
-, determine if
-b
-has the maximum sadness over all permutations of
-a
+y
+such that
+1≤x≤y≤|s|
+. Let
+t
+be the substring
+t=s[x,y]
+. Then for all
+1≤i≤|t|−1
+, the condition
+t
+i
+≠
+t
+i+1
+has to hold. Note that
+x=y
+is always a valid substring.
+Delete the substring
+s[x,y]
+from
+s
+.
+For each of the
+q
+queries, find the minimum number of operations needed to make
+s
+an empty string.
+Note that for a string
+s
+,
+s[l,r]
+denotes the subsegment
+s
+l
+,
+s
+l+1
+,…,
+s
+r
 .
 Input
-Each test contains multiple test cases. The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-)  — the number of test cases. The description of the test cases follows.
-The first line of each test case contains a single integer
+The first line contains two integers
 n
+and
+q
 (
-1≤n≤2⋅
+1≤n,q≤2⋅
 10
 5
-)  — the length of the array.
-The second line of each test case contains
-n
-integers
+)  — the length of the binary string
 a
-1
-,
+and the number of queries respectively.
+The second line contains a binary string
 a
-2
-,…,
-a
+of length
 n
 (
-1≤
 a
 i
-≤n
-)  — the elements of the array
-a
-.
-The third line of each test case contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
+∈{0,1}
+).
+Each of the next
+q
+lines contains two integers
+l
+and
+r
 (
-1≤
-b
-i
-≤n
-)  — the elements of the array
-b
-.
-It is guaranteed that
-b
-is a permutation of
-a
-.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-.
+1≤l≤r≤n
+)  — representing the substring of each query.
 Output
-For each test case, print "AC" (without quotes) if
-b
-has the maximum sadness over all permutations of
-a
-, and "WA" (without quotes) otherwise.
-Example
+Print
+q
+lines, the
+i
+-th line representing the minimum number of operations needed for the
+i
+-th query.
+Examples
 input
 Copy
-4
-2
-2 1
-1 2
-4
-1 2 3 3
-3 3 2 1
-2
-2 1
-2 1
-4
-1 2 3 3
-3 2 3 1
+5 3
+11011
+2 4
+1 5
+3 5
 output
 Copy
-AC
-AC
-WA
-WA
-Note
-In the first test case, the array
-[1,2]
-has sadness
 1
-. We can transform
-[1,2]
-into
-[2,1]
-using one operation with
-(i,j)=(1,2)
-.
-In the second test case, the array
-[3,3,2,1]
-has sadness
+3
 2
-. We can transform
-[3,3,2,1]
-into
-[1,2,3,3]
-with two operations with
-(i,j)=(1,4)
-and
-(i,j)=(2,3)
-respectively.
-In the third test case, the array
-[2,1]
-has sadness
-0
-.
-In the fourth test case, the array
-[3,2,3,1]
-has sadness
+input
+Copy
+10 3
+1001110110
+1 10
+2 5
+5 10
+output
+Copy
+4
+2
+3
+Note
+In the first test case,
+The substring is
+101
+, so we can do one operation to make the substring empty.
+The substring is
+11011
+, so we can do one operation on
+s[2,4]
+to make
+11
+, then use two more operations to make the substring empty.
+The substring is
+011
+, so we can do one operation on
+s[1,2]
+to make
 1
-.
+, then use one more operation to make the substring empty.

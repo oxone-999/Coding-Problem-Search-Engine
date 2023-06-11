@@ -1,32 +1,65 @@
-Sereja and Two Strings 2
+Find the Modulus
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Sereja has a string A consisting of n lower case English letters.
-Sereja calls two strings X and Y each of length n similar if they can be made equal by applying the following operation at most once in each of them.
-Chose any two position i, j in the string (i can be equal to j too). Swap the characters at position i with character at position j.
-For example strings "abcd" and "acbd" are similar, strings "ab" and "ab" are similar, but strings "abcde" and "bcdea" are not similar. Note that strings "abc" and "cab" are also similar, as you can swap 'a' and 'c' in the first string to get "cba" and 'a' and 'b' in the second string to get "cba".
-Now Sereja is interested in finding number of ordered pairs of non similar strings X and Y such that they can be constructed from a given string A by permutation of its characters. As answer could be large, please output your answer modulo (109 + 7).
-Note
-A string s (of size n) is said to be constructed from string t (also of size n) by permutation of its characters if there exists a permutation P (of length n), such that s[i] = t[P[i]] for each i from 1 to n.
+Read problem statements in Mandarin, Bengali, and Russian as well.
+The jury has a secret number
+N, where
+1≤N≤10
+18
+. You want to know this number, and you are allowed to ask the jury some queries. In each query, you give the jury a number
+X where
+0≤X≤2⋅10
+18
+, and the jury tells you
+XmodN.
+Please find
+N using at most two queries per test case.
+Interaction Format
+The first line of contains
+T - the number of test cases.
+For each test case, you are allowed to allowed to ask the jury at most two queries. To make a query, output ? X on one line; the jury will return the value of
+xmodN to the input for you to read.
+In the case you exceed the number of queries, the judge will exit with the Wrong Answer verdict.
+Once you have found the answer, output ! N on one line. This does not count as a query.
+If you output the wrong value for
+N, the judge will exit with the Wrong Answer verdict; if you output the correct value for
+N, the judge will silently continues. This means you should start asking queries for the next test case right after outputting the value of
+N for the previous test case.
+Constraints
+1≤T≤100
+1≤N≤10
+18
+0≤X≤2⋅10
+18
+Sample 1:
 Input
-First line contain integer T - number of test cases.
-For each of the next T lines:
-Each line contains a string A as defined in the problem.
 Output
-For each test case, output answer modulo 1000000007 (109 + 7) in separate line.
-Constraints
-1 ≤ T ≤ 10
-1 ≤ n ≤ 10^5
-Constraints
-Subtask #1: 1 ≤ n ≤ 10 (25 points)
-Subtask #2: 1 ≤ n ≤ 100 (25 points)
-Subtask #3: 1 ≤ n ≤ 1000 (25 points)
-Subtask #4: original constraints (25 points)
-Example
-Input:
 2
-z
-abcd
-Output:
+5
 0
-144
+4
+5
+? 5
+? 6
+! 6
+? 4
+? 5
+! 39
+Explanation:
+Test case
+1: Jury's secret number is
+N=6. Your first query is
+X=5, so the jury returns
+5mod6=5. Your second query is
+X=6, so the jury returns
+6mod6=0. Finally, you output
+6 as the final answer, which is the correct answer.
+Test case
+2: Jury's secret number is
+N=39. Your first query is
+X=4, so the jury returns
+4mod39=4. Your second query is
+X=5, so the jury returns
+5mod39=5. Finally, you output
+39 as the final answer, which is the correct answer (but a completely wild guess).
+Note that the jury does not output anything other than the answers to the queries, so please start asking queries for the next test case after outputting
+N for the previous test case.

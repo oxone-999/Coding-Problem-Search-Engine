@@ -1,70 +1,115 @@
-Roads in Stars
+Closest Power
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-In light of these events, Chef, the leader of the rebel alliance, wants to build safe connections in galaxy with N stars. There are M bidirectional space roads in space that connect pairs of stars together. Travelling through one space road takes 1 day.
-To avoid detection by the Empire, Chef decided that rebels must never travel alone. Instead, they must travel using armored rebel spaceships. Each spaceship is designated two stars, and a fixed route between these stars. A route is just a path composed of roads that connects two stars, but to increase security, Chef added the following restrictions on routes:
-Each route must be traversable within at most K days.
-Roads may be traversed any number times in a single route, in both directions.
-
-After some time has passed, Chef and his engineers were able to build a spaceship for every possible route between stars.
-Unfortunately, the powerful Empire discovered this and plans to destroy these spaceships to maintain control of the galaxy. Specifically, they deployed a new superweapon called the Death Starkiller Base, which is able to destroy X spaceships at once! It works by analyzing all spaceships that pass through Empire-controlled star systems.
-Unfortunately, since the destruction of the Empire's two previous superweapons, the budget for the new superweapon is crippled, so the Death Starkiller Base has some severe restrictions:
-It can only destroy exactly X spaceships per usage. Not more, not less.
-It can only destroy a group of spaceships if they travel between the same pair of stars.
-
-Despite these flaws, the Empire still used the superweapon as many times as possible, until there aren't enough groups of spaceships any more to destroy.
-To avoid more casualties, Chef decided to retire most of the surviving spaceships. Chef wants to retire as many spaceships as possible, but in order to stay connected, Chef wants to do this such that there is still a way to get from any star to another using spaceships. How many ways are there for Chef to retire spaceships so that this is satisfied?
-Note that a spaceship can only pick up or drop off people at the start or end of its journey, so a single spaceship that happens to pass through all stars isn't enough (unless there are only two stars).
-Input
-The first line of input contains four positive integers - N, M, X, K. The next M lines each contains two integers U, V stars which connect by space road. All space roads are pairwise distinct.
-Output
-Output a single line containing a single integer — the solution of Chef's problem.
+Read problem statements in Russian, Mandarin Chinese, Bengali, and Vietnamese as well.
+An integer
+x is said to be a Perfect Power if there exists positive integers
+a and
+b (i.e
+a, and
+b should be
+≥1) such that
+x=a
+b+1
+.
+Given an integer
+n, find the closest Perfect Power to
+n. If there are multiple Perfect Powers equidistant from
+n and as close as possible to
+n, find the smallest one.
+More formally, find the smallest integer
+x such that
+x is a Perfect Power and
+∣n−x∣≤∣n−y∣ over all Perfect Powers
+y.
+Input Format
+The first line of input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains a single integer
+n.
+Output Format
+For each test case, print in a separate line, the smallest
+x such that
+x is a perfect power and
+∣n−x∣ is minimum.
 Constraints
-1 ≤ N ≤ 100
-0 ≤ M ≤ Nx(N-1)/2
-1 ≤ K ≤ 1018
-1 ≤ X ≤ 7777777
-1 ≤ U < V ≤ N
-Each space road (U, V) will be in input at most once.
-Subtasks
-Subtask 1: (10 pts) N ≤ 5.
-Subtask 2: (25 pts) N ≤ 30.
-Subtask 3: (65 pts) Original constraints.
-Example
-Input:
-3 3 100 3
-1 2
-2 3
-3 1
-
-Output:
-75
-Input:
-3 3 2 3
-1 2
-2 3
-3 1
-
-Output:
-3
-Input:
-5 8 10000 1000000000
-4 5
-3 5
-1 4
-1 3
-2 3
-2 4
-1 2
-1 5
-
-Output:
-2220611572265625
+1≤T≤10
+5
+1≤n≤10
+18
+Sample 1:
+Input
+Output
+7
+7
+10
+26
+242
+129
+394857629456789876
+353872815358409997
+8
+9
+25
+243
+128
+394857628993920400
+353872815358410000
 Explanation:
-Example case 1. There are five possible routes between stars 1 and 2 traversable in not more than 3 days: {1-2, 1-3-2, 1-2-1-2, 1-2-3-2, 1-3-1-2}. There are also five routes between stars 2 and 3, and also between stars 1 and 3. There are three possible plans for the remaining routes:
-A route remains between 1 and 2, and between 2 and 3. There are 5 x 5 = 25 ways to do this.
-A route remains between 2 and 3, and between 3 and 1. There are 5 x 5 = 25 ways to do this.
-A route remains between 3 and 1, and between 1 and 2. There are 5 x 5 = 25 ways to do this.
-
-All in all, there are 25 + 25 + 25 = 75 plans.
+Test case
+1:
+n=7,
+8=2
+3
+is a perfect power, but
+6 is not, so the minimum difference obtainable is
+1 when
+x=8.
+Test case
+2:
+n=10,
+9=3
+2
+is a perfect power, but
+11 is not, so the minimum difference obtainable is
+1 when
+x=9.
+Test case
+3:
+n=26,
+25=5
+2
+is a perfect power,
+27=3
+3
+is also a perfect power. Both
+x=25 and
+x=27 give the minimum difference obtainable which is
+1. The smallest of them is
+25.
+Test case
+4:
+n=242,
+243=3
+5
+is a perfect power but
+241 is not, so the answer is
+243.
+Test case
+5:
+128=2
+7
+is closest to
+129.
+Test case
+6:
+394857628993920400=628376980
+2
+is the closest to
+394857629456789876.
+Test case
+7:
+353872815358410000=24390
+4
+is the closest to
+353872815358409997.

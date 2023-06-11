@@ -1,59 +1,47 @@
-String Operations
+Chef and String
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Two strings
-A and
-B are equivalent (denoted by
-A∼B) if they have the same lengths and
-A can be transformed into
-B by performing the following operation zero or more times: choose a substring of
-A which contains '1' an even number of times and reverse this substring.
-You are given a binary string
-S. Find the number of different equivalence classes of the substrings of this string. In other words, find the smallest possible size of a set
-C of binary strings with the following property: for each non-empty string
-R which is a substring of
-S (including
-S itself), there is a string
-X∈C such that
-R∼X.
+Read problems statements in Mandarin Chinese and Russian.
+Chef has a string S consisting of N lowercase English alphabets. He has prepared a list L consisting of all non empty substrings of the string S.
+Now he asks you Q questions. To ith question, you need to count the number of ways to choose exactly Ki equal strings from the list L. As answer could be large you need to find it modulo 109+7.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains a single string
-S with length
-N.
+The first line of the input contains an integer T denoting the number of test cases. First line of each test case contains two space-separated integers N and Q denoting the length of the string S and amount of questions. The next line of each test case contains a single string S. Each of the next Q lines contains a single integer Ki.
 Output
-For each test case, print a single line containing one integer ― the number of equivalence classes among the substrings of the given string.
+For each test case, output Q lines, each line should contain one integer - amount of ways to choose exactly Ki equal strings from the list L.
 Constraints
-1≤T≤10
-1≤N≤1,000
-S contains only characters '0' and '1'
-Subtasks
-Subtask #1 (10 points):
-N≤10
-Subtask #2 (90 points): original constraints
+Subtask 1: (10 points)
+1 ≤ T ≤ 100
+1 ≤ N ≤ 5
+1 ≤ Q ≤ 5
+1 ≤ Ki ≤ 5
+
+Subtask 2: (20 points)
+T = 1
+1 ≤ N ≤ 500
+1 ≤ Q ≤ 105
+1 ≤ Ki ≤ 109
+
+Subtask 3: (70 points)
+T = 1
+1 ≤ N ≤ 5000
+1 ≤ Q ≤ 105
+1 ≤ Ki ≤ 109
 Sample 1:
 Input
 Output
-10
-00000
-10001
-10101
-01111
-11001
-01101
-10110
-10010
-10111
-11001
-5
-11
-8
-9
-12
-10
-10
-11
-11
-12
+1
+5 4
+ababa
+2
+1
+3
+4
+7
+15
+1
+0
+Explanation:
+L = {"a", "b", "a", "b", "a", "ab", "ba", "ab", "ba", "aba", "bab", "aba", "abab", "baba", "ababa"}.
+k1 = 2: There are seven ways to choose two equal strings ("a", "a"), ("a", "a"), ("a", "a"), ("b", "b"), ("ab", "ab"), ("ba", "ba"), ("aba", "aba").
+k2 = 1: We can choose any string from L (15 ways).
+k3 = 3: There is one way to choose three equal strings - ("a", "a", "a").
+k4 = 4: There are no four equal strings in L .

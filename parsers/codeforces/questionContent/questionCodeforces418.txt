@@ -1,149 +1,176 @@
-H. Doremy's Paint 2
-time limit per test4 seconds
-memory limit per test256 megabytes
+A. Access Levels
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Doremy has
+BerSoft is the biggest IT corporation in Berland, and Monocarp is the head of its security department. This time, he faced the most difficult task ever.
+Basically, there are
 n
-buckets of paint which is represented by an array
-a
-of length
-n
-. Bucket
-i
-contains paint with color
-a
-i
-. Initially,
-a
-i
-=i
-.
-Doremy has
-m
-segments
-[
-l
-i
-,
-r
-i
-]
-(
-1≤
-l
-i
-≤
-r
-i
-≤n
-). Each segment describes an operation. Operation
-i
-is performed as follows:
-For each
-j
-such that
-l
-i
-<j≤
-r
-i
-, set
-a
-j
-:=
-a
-l
-i
-.
-Doremy also selects an integer
-k
-. She wants to know for each integer
-x
-from
-0
+developers working at BerSoft, numbered from
+1
 to
-m−1
-, the number of distinct colors in the array after performing operations
-xmodm+1,(x+1)modm+1,…,(x+k−1)modm+1
-. Can you help her calculate these values? Note that for each
-x
-individually we start from the initial array and perform only the given
-k
-operations in the given order.
-Input
-The first line of input contains three integers
 n
-,
+. There are
 m
-, and
-k
-(
-1≤n,m≤2⋅
-10
-5
-,
-1≤k≤m
-) — the length of the array
+documents shared on the internal network, numbered from
+1
+to
+m
+. There is a table of access requirements
 a
-, the total number of operations, and the integer that Doremy selects.
+such that
+a
+i,j
+(the
+j
+-th element of the
+i
+-th row) is
+1
+if the
+i
+-th developer should have access to the
+j
+-th document, and
+0
+if they should have no access to it.
+In order to restrict the access, Monocarp is going to perform the following actions:
+choose the number of access groups
+k≥1
+;
+assign each document an access group (an integer from
+1
+to
+k
+) and the required access level (an integer from
+1
+to
+10
+9
+);
+assign each developer
+k
+integer values (from
+1
+to
+10
+9
+) — their access levels for each of the access groups.
+The developer
+i
+has access to the document
+j
+if their access level for the access group of the document is greater than or equal to the required access level of the document.
+What's the smallest number of access groups Monocarp can choose so that it's possible to assign access groups and access levels in order to satisfy the table of access requirements?
+Input
+The first line contains two integers
+n
+and
+m
+(
+1≤n,m≤500
+) — the number of developers and the number of documents.
+Each of the next
+n
+lines contains a binary string of length
+m
+ — the table of access requirements. The
+j
+-th element of the
+i
+-th row is
+1
+if the
+i
+-th developer should have access to the
+j
+-th document, and
+0
+if they should have no access to it.
+Output
+The first line should contain a single integer
+k
+ — the smallest number of access groups Monocarp can choose so that it's possible to assign access groups and access levels in order to satisfy the table of access requirements.
+The second line should contain
+m
+integers from
+1
+to
+k
+ — the access groups of the documents.
+The third line should contain
+m
+integers from
+1
+to
+10
+9
+ — the required access levels of the documents.
 The
 i
--th line of the following
-m
-lines contains two integers
-l
+-th of the next
+n
+lines should contain
+k
+integers from
+1
+to
+10
+9
+ — the access level of the
 i
-,
-r
-i
-(
-1≤
-l
-i
-≤
-r
-i
-≤n
-) — the bounds of the
-i
--th segment.
-Output
-Output
-m
-integers. The
-(x+1)
--th integer should be the number of distinct colors in the array if we start from the initial array and perform operations
-xmodm+1,(x+1)modm+1,…,(x+k−1)modm+1
-.
+-th developer on each of the access groups.
+If there are multiple solutions, print any of them.
 Examples
 input
 Copy
-7 5 5
-3 5
-2 3
-4 6
-5 7
-1 2
+3 2
+01
+11
+10
 output
 Copy
-3 3 3 3 2 
+2
+1 2 
+2 2 
+1 2 
+2 2 
+2 1 
 input
 Copy
-10 9 4
-1 1
 2 3
-3 4
-7 9
-6 8
-5 7
-2 4
-9 10
-1 3
+101
+100
 output
 Copy
-6 6 7 6 5 5 7 7 7 
+1
+1 1 1
+1 10 5
+8
+3
 Note
-In the first test case, the picture below shows the resulting array for the values of
-x=0,1,2
-respectively.
+In the first example, we assign the documents to different access groups. Both documents have level
+2
+in their access group. This way, we can assign the developers, who need the access, level
+2
+, and the developers, who have to have no access, level
+1
+.
+If they had the same access group, it would be impossible to assign access levels to developers
+1
+and
+3
+. Developer
+1
+should've had a lower level than developer
+3
+in this group to not be able to access document
+1
+. At the same time, developer
+3
+should've had a lower level than developer
+1
+in this group to not be able to access document
+2
+. Since they can't both have lower level than each other, it's impossible to have only one access group.
+In the second example, it's possible to assign all documents to the same access group.

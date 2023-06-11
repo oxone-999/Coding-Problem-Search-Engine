@@ -1,27 +1,65 @@
-Authentication Failed
+Bear and Oveflow Points
 Problem
-Several days ago Chef decided to register at one of the programming sites. For registering he was asked to choose a nickname and a password. There was no problem with choosing a nickname ("Chef" is his favorite nickname), but choosing a password in a secure way seemed to be a real problem for Chef. Therefore, he decided to write a program which would generate the password of length N consisting of small Latin letters a..z. Then Chef successfully registered at the site and saved the password in a file (as it was too hard to remember).
-Today Chef decided to visit the site once again. He entered his nickname, copied the password from the file... "Authentication failed!" was the answer. Trying to understand the reason of this, he noticed that the password in his file had length N+K instead of N! Sure enough of the source of the problem, Chef went straight to his young brother.
-And Chef was right, it was his brother who had inserted K random small Latin letters at some random positions (possibly at the beginning or at the end) of the password. Chef's brother didn't remember what exactly changes he had made at all, but he promised that he had done nothing besides inserting letters.
-As there is no other way to recover the password, Chef is now starting to remove every possible combination of K letters from the password trying to enter (when Chef obtains the same password as one of the previously entered passwords, he doesn't try to enter using this password again). Now the question is: what is the number of times Chef will receive "Authentication failed!" as the answer before successful entering in the worst case? As the answer might be quite large, output its remainder of division by 1009419529.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+In competitive programming, one of the common mistakes is using a variable type that stores too few bits, which leads to overflows and underflows. We will focus on the "unsigned int" type, which makes all calculations modulo 232, always giving a non-negative result between 0 and 232 - 1, inclusive. Sample calculations on type "unsigned int" are:
+7 - 5 = 2,        5 - 7 = 4294967294,        5 * 1,000,000,000 = 705032704
+
+Limak wants to become a great coder. Right now he learns the computional geometry. He already knows that three points (ax, ay), (bx, by), (cx, cy) are collinear if and only if:
+(bx - ax) * (cy - ay) = (by - ay) * (cx - ax)
+Without thinking which type to use, Limak wrote the following C++ function:
+ typedef unsigned int UI;
+ bool areCollinear(UI ax, UI ay, UI bx, UI by, UI cx, UI cy) {
+  return (bx - ax) * (cy - ay) == (by - ay) * (cx - ax);
+ }
+
+If you are more familiar with Python, you can assume that he wrote:
+    M = 2 ** 32
+    def subtract(a, b):
+        ans = a - b
+        if ans < 0:
+            ans += M
+        return ans
+    def mul(a, b):
+        return a * b % M
+    def areCollinear(ax, ay, bx, by, cx, cy):
+        return mul(sub(bx, ax), sub(cy, ay)) == mul(sub(by, ay), sub(cx, ax))
+
+To show Limak how important it is to watch for overflows, you must find any set of N distinct points that:
+Any three distinct points in any order would be treated as collinear by Limak's function.
+None three points are collinear (what implies that points are distinct).
+Coordinates are non-negative integers not exceeding 106.
+
+If there are many solutions (valid sets of points), you can print any of them. There exists at least one solution for every N allowed by the constraints.
 Input
-The first line of the input file contains one integer T -- the number of test cases (no more than 10). Each test case is described by a line containing two integers N and K (1 ≤ N ≤ 10000, 1 ≤ K ≤ 100) separated by a single space, followed by a line containing a string of length N+K consisting of small Latin letters a..z.
+The only line of the input contains an integer N denoting the required number of points.
 Output
-For each test case output just one line containing the required number modulo 1009419529.
+Print N lines. The i-th of them should contain two space-separated integers xi and yi, denoting coordinates of the i-th point. If there are many solutions, you can print any of them.
+Remember that one of requirements is 0 ≤ xi, yi ≤ 106.
+Constraints
+3 ≤ N ≤ 10
+Subtasks
+Subtask #1 (50 points) 3 ≤ N ≤ 5
+Subtask #2 (50 points) original constraints
 Example
-Input:
+Input1:
 3
-2 1
-aaa
-3 1
-abcd
-4 2
-ababab
 
-Output:
-0
-3
-10
+Output2:
+106732 139820
+210379 490375
+42 483426
 
-Explanation:
-In the first test case, the password is definitely "aa". In the second test case, it can be "abc", "abd", "acd" or "bcd", so in the worst case Chef will guess the correct option from the fourth attempt, thus making 3 unsuccessful attempts.
+Input2:
+4
+
+Output2:
+580981 431795
+914958 554338
+518360 23016
+441824 483616
+Explanation
+Test case 1. The provided function areCollinear() should return True for the found three points given in any order (there are 3! = 6 possible orders of 3 points). Let's analyze the evaluation of areCollinear(42, 483426, 106732, 139820, 210379, 490375):
+Without any overflow errors, the calculations would be:
+(bx - ax) * (cy - ay) = (106732 - 42) * (490375 - 483426) = 741388810
+(by - ay) * (cx - ax) = (139820 - 483426) * (210379 - 42) = -72273055222
+And indeed numbers 741388810 and -72273055222 are equal modulo 232. Hence areCollinear would think that they are collinear.

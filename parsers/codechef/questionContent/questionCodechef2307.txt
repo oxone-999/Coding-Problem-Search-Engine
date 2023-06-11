@@ -1,71 +1,93 @@
-Destroy Cells
+K-Subarrays
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Anas is playing an amazing game on a grid with
-N rows and
-M columns. The rows are numbered
-1 through
-N from top to bottom and the columns are numbered
-1 through
-M from left to right.
-Anas wants to destroy this grid. To do that, he wants to send two heroes from the top left cell to the bottom right cell:
-The first hero visits cells in row-major order:
-(1,1)→(1,2)→…→(1,M)→(2,1)→(2,2)→…→(2,M)→…→(N,M).
-The second hero visits cells in column-major order:
-(1,1)→(2,1)→…→(N,1)→(1,2)→(2,2)→…→(N,2)→…→(N,M).
-We know that each hero destroys the first cell he visits, rests in the next
-K cells he visits without destroying them, then destroys the next cell he visits, rests in the next
-K cells, destroys the next cell, and so on until he reaches (and rests in or destroys) the last cell he visits.
-Anas does not know the value of
-K. Therefore, for each value of
-K between
-0 and
-N⋅M−1 inclusive, he wants to calculate the number of cells that will be destroyed by at least one hero. Can you help him?
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given two integers
+N and
+K, and an array
+A of
+N integers. You have to choose
+K disjoint non-empty subarrays such that the score is maximized.
+The score is calculated as follows:
+Score=
+i=1
+∑
+K
+Sum[i]⋅i,
+where
+Sum[i] denotes sum of elements of
+i-th subarray. By the
+i-th subarray, we mean the
+i-th one in the order from left to right.
+Find the maximum score that can be achieved.
+Note: The subarrays are not required to cover the whole array. It is allowed for some elements of
+A to belong to none of the subarrays.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first and only line of each test case contains two space-separated integers
+The first line of each test case contains two space-separated integers
 N and
-M.
+K.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
 Output
-For each test case, print a single line containing
-N⋅M space-separated integers as described above.
+For each test case, print a single line containing one integer ― the maximum score.
 Constraints
-1≤T≤100
-2≤N,M≤1,000
-the sum of
-N⋅M over all test cases does not exceed
-2⋅10
+1≤T≤1000
+1≤N≤10
+5
+1≤K≤min(100,N)
+−10
 6
+≤A
+i
+≤10
+6
+The sum of
+N over all test cases does not exceed
+10
+5
 Subtasks
-Subtask #1 (30 points):
-2≤N,M≤50
-the sum of
-N⋅M over all test cases does not exceed
-5,000
-Subtask #2 (70 points): original constraints
+Subtask #1 (15 points):
+K=1
+Subtask #2 (35 points):
+K=2
+Subtask #3 (50 points): Original constraints
 Sample 1:
 Input
 Output
-1
-2 3
-6 4 3 3 2 1
+2
+5 2
+1 2 -1 3 1
+5 2
+-1 2 11 -23 12
+11
+37
 Explanation:
-Example case 1:
-K=0: All cells will be destroyed by the heroes.
-K=1: The first hero will destroy the cells
-[(1,1),(1,3),(2,2)], while the second one will destroy the cells
-[(1,1),(1,2),(1,3)].
-K=2: The first hero will destroy the cells
-[(1,1),(2,1)], while the second one will destroy the cells
-[(1,1),(2,2)].
-K=3: The first hero will destroy the cells
-[(1,1),(2,2)], while the second one will destroy the cells
-[(1,1),(1,3)].
-K=4: The first hero will destroy the cells
-[(1,1),(2,3)] and the second one will also destroy the cells
-[(1,1),(2,3)].
-K=5 : The first hero will destroy the cell
-(1,1) and the second one will also destroy the cell
-(1,1).
+Test Case 1: One way to choose
+2 disjoint non-empty subarrays is:
+S
+1
+=[1,2] and
+S
+2
+=[3,1]
+The score is
+3⋅1+4⋅2=11, which is the maximum possible.
+Test Case 2: One way to choose
+2 disjoint non-empty subarrays is:
+S
+1
+=[2,11] and
+S
+2
+=[12]
+The score is
+13⋅1+12⋅2=37, which is the maximum possible.

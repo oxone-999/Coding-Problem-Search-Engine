@@ -1,237 +1,468 @@
-A. String Transformation 1
+D. Rearrange
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Note that the only difference between String Transformation 1 and String Transformation 2 is in the move Koa does. In this version the letter
-y
-Koa selects must be strictly greater alphabetically than
-x
-(read statement for better understanding). You can make hacks in these problems independently.
-Koa the Koala has two strings
+Koa the Koala has a matrix
+A
+of
+n
+rows and
+m
+columns. Elements of this matrix are distinct integers from
+1
+to
+n⋅m
+(each number from
+1
+to
+n⋅m
+appears exactly once in the matrix).
+For any matrix
+M
+of
+n
+rows and
+m
+columns let's define the following:
+The
+i
+-th row of
+M
+is defined as
+R
+i
+(M)=[
+M
+i1
+,
+M
+i2
+,…,
+M
+im
+]
+for all
+i
+(
+1≤i≤n
+).
+The
+j
+-th column of
+M
+is defined as
+C
+j
+(M)=[
+M
+1j
+,
+M
+2j
+,…,
+M
+nj
+]
+for all
+j
+(
+1≤j≤m
+).
+Koa defines
+S(A)=(X,Y)
+as the spectrum of
+A
+, where
+X
+is the set of the maximum values in rows of
 A
 and
-B
-of the same length
+Y
+is the set of the maximum values in columns of
+A
+.
+More formally:
+X={max(
+R
+1
+(A)),max(
+R
+2
+(A)),…,max(
+R
 n
-(
-|A|=|B|=n
-) consisting of the first
-20
-lowercase English alphabet letters (ie. from a to t).
-In one move Koa:
-selects some subset of positions
-p
+(A))}
+Y={max(
+C
 1
-,
-p
+(A)),max(
+C
 2
-,…,
-p
-k
+(A)),…,max(
+C
+m
+(A))}
+Koa asks you to find some matrix
+A
+′
+of
+n
+rows and
+m
+columns, such that each number from
+1
+to
+n⋅m
+appears exactly once in the matrix, and the following conditions hold:
+S(
+A
+′
+)=S(A)
+R
+i
 (
-k≥1;1≤
-p
+A
+′
+)
+is bitonic for all
 i
-≤n;
-p
-i
-≠
-p
+(
+1≤i≤n
+)
+C
 j
-if
-i≠j
-) of
-A
-such that
-A
-p
-1
-=
-A
-p
-2
-=…=
-A
-p
-k
-=x
-(ie. all letters on this positions are equal to some letter
-x
-).
-selects a letter
-y
-(from the first
-20
-lowercase letters in English alphabet) such that
-y>x
-(ie. letter
-y
-is strictly greater alphabetically than
-x
-).
-sets each letter in positions
-p
-1
-,
-p
-2
-,…,
-p
-k
-to letter
-y
-. More formally: for each
-i
 (
-1≤i≤k
-) Koa sets
 A
-p
-i
-=y
-.
-Note that you can only modify letters in string
-A
-.
-Koa wants to know the smallest number of moves she has to do to make strings equal to each other (
-A=B
-) or to determine that there is no way to make them equal. Help her!
-Input
-Each test contains multiple test cases. The first line contains
+′
+)
+is bitonic for all
+j
+(
+1≤j≤m
+)
+An array
 t
 (
-1≤t≤10
-) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains one integer
-n
+t
+1
+,
+t
+2
+,…,
+t
+k
+) is called bitonic if it first increases and then decreases.
+More formally:
+t
+is bitonic if there exists some position
+p
 (
-1≤n≤
-10
-5
-) — the length of strings
-A
+1≤p≤k
+) such that:
+t
+1
+<
+t
+2
+<…<
+t
+p
+>
+t
+p+1
+>…>
+t
+k
+.
+Help Koa to find such matrix or to determine that it doesn't exist.
+Input
+The first line of the input contains two integers
+n
 and
-B
-.
-The second line of each test case contains string
+m
+(
+1≤n,m≤250
+)  — the number of rows and columns of
 A
-(
-|A|=n
-).
-The third line of each test case contains string
-B
-(
-|B|=n
-).
-Both strings consists of the first
-20
-lowercase English alphabet letters (ie. from a to t).
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-5
 .
+Each of the ollowing
+n
+lines contains
+m
+integers. The
+j
+-th integer in the
+i
+-th line denotes element
+A
+ij
+(
+1≤
+A
+ij
+≤n⋅m
+) of matrix
+A
+. It is guaranteed that every number from
+1
+to
+n⋅m
+appears exactly once among elements of the matrix.
 Output
-For each test case:
-Print on a single line the smallest number of moves she has to do to make strings equal to each other (
-A=B
-) or
+If such matrix doesn't exist, print
 −1
-if there is no way to make them equal.
-Example
+on a single line.
+Otherwise, the output must consist of
+n
+lines, each one consisting of
+m
+space separated integers  — a description of
+A
+′
+.
+The
+j
+-th number in the
+i
+-th line represents the element
+A
+′
+ij
+.
+Every integer from
+1
+to
+n⋅m
+should appear exactly once in
+A
+′
+, every row and column in
+A
+′
+must be bitonic and
+S(A)=S(
+A
+′
+)
+must hold.
+If there are many answers print any.
+Examples
 input
 Copy
-5
-3
-aab
-bcc
-4
-cabc
-abcb
-3
-abc
-tsr
-4
-aabd
-cccd
-5
-abcbd
-bcdda
+3 3
+3 5 6
+1 7 9
+4 8 2
 output
 Copy
-2
--1
-3
-2
--1
+9 5 1
+7 8 2
+3 6 4
+input
+Copy
+2 2
+4 1
+3 2
+output
+Copy
+4 1
+3 2
+input
+Copy
+3 4
+12 10 8 6
+3 4 5 7
+2 11 9 1
+output
+Copy
+12 8 6 1
+10 11 9 2
+3 4 5 7
 Note
-In the
+Let's analyze the first sample:
+For matrix
+A
+we have:
+Rows:
+R
 1
--st test case Koa:
-selects positions
+(A)=[3,5,6];max(
+R
 1
-and
+(A))=6
+R
 2
-and sets
-A
+(A)=[1,7,9];max(
+R
+2
+(A))=9
+R
+3
+(A)=[4,8,2];max(
+R
+3
+(A))=8
+Columns:
+C
 1
-=
-A
-2
-=
-b (
-aab→bbb
-).
-selects positions
-2
-and
-3
-and sets
-A
-2
-=
-A
-3
-=
-c (
-bbb→bcc
-).
-In the
-2
--nd test case Koa has no way to make string
-A
-equal
-B
-.
-In the
-3
--rd test case Koa:
-selects position
+(A)=[3,1,4];max(
+C
 1
-and sets
-A
+(A))=4
+C
+2
+(A)=[5,7,8];max(
+C
+2
+(A))=8
+C
+3
+(A)=[6,9,2];max(
+C
+3
+(A))=9
+X={max(
+R
 1
-=
-t (
-abc→tbc
-).
-selects position
+(A)),max(
+R
 2
-and sets
-A
+(A)),max(
+R
+3
+(A))}={6,9,8}
+Y={max(
+C
+1
+(A)),max(
+C
 2
-=
-s (
-tbc→tsc
-).
-selects position
+(A)),max(
+C
 3
-and sets
+(A))}={4,8,9}
+So
+S(A)=(X,Y)=({6,9,8},{4,8,9})
+For matrix
 A
+′
+we have:
+Rows:
+R
+1
+(
+A
+′
+)=[9,5,1];max(
+R
+1
+(
+A
+′
+))=9
+R
+2
+(
+A
+′
+)=[7,8,2];max(
+R
+2
+(
+A
+′
+))=8
+R
 3
-=
-r (
-tsc→tsr
-).
+(
+A
+′
+)=[3,6,4];max(
+R
+3
+(
+A
+′
+))=6
+Columns:
+C
+1
+(
+A
+′
+)=[9,7,3];max(
+C
+1
+(
+A
+′
+))=9
+C
+2
+(
+A
+′
+)=[5,8,6];max(
+C
+2
+(
+A
+′
+))=8
+C
+3
+(
+A
+′
+)=[1,2,4];max(
+C
+3
+(
+A
+′
+))=4
+Note that each of this arrays are bitonic.
+X={max(
+R
+1
+(
+A
+′
+)),max(
+R
+2
+(
+A
+′
+)),max(
+R
+3
+(
+A
+′
+))}={9,8,6}
+Y={max(
+C
+1
+(
+A
+′
+)),max(
+C
+2
+(
+A
+′
+)),max(
+C
+3
+(
+A
+′
+))}={9,8,4}
+So
+S(
+A
+′
+)=(X,Y)=({9,8,6},{9,8,4})

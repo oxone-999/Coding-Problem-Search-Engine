@@ -1,95 +1,130 @@
-A. Deadline
-time limit per test2 seconds
-memory limit per test256 megabytes
+D. Minimax Problem
+time limit per test5 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Adilbek was assigned to a special project. For Adilbek it means that he has
+You are given
 n
-days to run a special program and provide its results. But there is a problem: the program needs to run for
-d
-days to calculate the results.
-Fortunately, Adilbek can optimize the program. If he spends
-x
-(
-x
-is a non-negative integer) days optimizing the program, he will make the program run in
-⌈
-d
-x+1
-⌉
-days (
-⌈a⌉
-is the ceiling function:
-⌈2.4⌉=3
+arrays
+a
+1
 ,
-⌈2⌉=2
-). The program cannot be run and optimized simultaneously, so the total number of days he will spend is equal to
-x+⌈
-d
-x+1
-⌉
-.
-Will Adilbek be able to provide the generated results in no more than
+a
+2
+, ...,
+a
 n
-days?
-Input
-The first line contains a single integer
-T
+; each array consists of exactly
+m
+integers. We denote the
+y
+-th element of the
+x
+-th array as
+a
+x,y
+.
+You have to choose two arrays
+a
+i
+and
+a
+j
 (
-1≤T≤50
-) — the number of test cases.
-The next
-T
-lines contain test cases – one per line. Each line contains two integers
+1≤i,j≤n
+, it is possible that
+i=j
+). After that, you will obtain a new array
+b
+consisting of
+m
+integers, such that for every
+k∈[1,m]
+b
+k
+=max(
+a
+i,k
+,
+a
+j,k
+)
+.
+Your goal is to choose
+i
+and
+j
+so that the value of
+min
+k=1
+m
+b
+k
+is maximum possible.
+Input
+The first line contains two integers
 n
 and
-d
+m
 (
-1≤n≤
+1≤n≤3⋅
 10
-9
+5
 ,
-1≤d≤
+1≤m≤8
+) — the number of arrays and the number of elements in each array, respectively.
+Then
+n
+lines follow, the
+x
+-th line contains the array
+a
+x
+represented by
+m
+integers
+a
+x,1
+,
+a
+x,2
+, ...,
+a
+x,m
+(
+0≤
+a
+x,y
+≤
 10
 9
-) — the number of days before the deadline and the number of days the program runs.
+).
 Output
-Print
-T
-answers — one per test case. For each test case print YES (case insensitive) if Adilbek can fit in
-n
-days or NO (case insensitive) otherwise.
+Print two integers
+i
+and
+j
+(
+1≤i,j≤n
+, it is possible that
+i=j
+) — the indices of the two arrays you have to choose so that the value of
+min
+k=1
+m
+b
+k
+is maximum possible. If there are multiple answers, print any of them.
 Example
 input
 Copy
-3
-1 1
-4 5
-5 11
+6 5
+5 0 3 1 2
+1 8 9 1 3
+1 2 3 4 5
+9 1 0 3 7
+2 3 0 6 3
+6 4 1 7 0
 output
 Copy
-YES
-YES
-NO
-Note
-In the first test case, Adilbek decides not to optimize the program at all, since
-d≤n
-.
-In the second test case, Adilbek can spend
-1
-day optimizing the program and it will run
-⌈
-5
-2
-⌉=3
-days. In total, he will spend
-4
-days and will fit in the limit.
-In the third test case, it's impossible to fit in the limit. For example, if Adilbek will optimize the program
-2
-days, it'll still work
-⌈
-11
-2+1
-⌉=4
-days.
+1 5

@@ -1,114 +1,124 @@
-A. Anadi and Domino
-time limit per test2 seconds
+B. Marcin and Training Camp
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Anadi has a set of dominoes. Every domino has two parts, and each part contains some dots. For every
-a
-and
-b
-such that
-1≤a≤b≤6
-, there is exactly one domino with
-a
-dots on one half and
-b
-dots on the other half. The set contains exactly
-21
-dominoes. Here is an exact illustration of his set:
-Also, Anadi has an undirected graph without self-loops and multiple edges. He wants to choose some dominoes and place them on the edges of this graph. He can use at most one domino of each type. Each edge can fit at most one domino. It's not necessary to place a domino on each edge of the graph.
-When placing a domino on an edge, he also chooses its direction. In other words, one half of any placed domino must be directed toward one of the endpoints of the edge and the other half must be directed toward the other endpoint. There's a catch: if there are multiple halves of dominoes directed toward the same vertex, each of these halves must contain the same number of dots.
-How many dominoes at most can Anadi place on the edges of his graph?
-Input
-The first line contains two integers
+Marcin is a coach in his university. There are
 n
+students who want to attend a training camp. Marcin is a smart coach, so he wants to send only the students that can work calmly with each other.
+Let's focus on the students. They are indexed with integers from
+1
+to
+n
+. Each of them can be described with two integers
+a
+i
 and
-m
-(
-1≤n≤7
-,
-0≤m≤
-n⋅(n−1)
+b
+i
+;
+b
+i
+is equal to the skill level of the
+i
+-th student (the higher, the better). Also, there are
+60
+known algorithms, which are numbered with integers from
+0
+to
+59
+. If the
+i
+-th student knows the
+j
+-th algorithm, then the
+j
+-th bit (
 2
-) — the number of vertices and the number of edges in the graph.
-The next
-m
-lines contain two integers each. Integers in the
-i
--th line are
+j
+) is set in the binary representation of
 a
 i
-and
+. Otherwise, this bit is not set.
+Student
+x
+thinks that he is better than student
+y
+if and only if
+x
+knows some algorithm which
+y
+doesn't know. Note that two students can think that they are better than each other. A group of students can work together calmly if no student in this group thinks that he is better than everyone else in this group.
+Marcin wants to send a group of at least two students which will work together calmly and will have the maximum possible sum of the skill levels. What is this sum?
+Input
+The first line contains one integer
+n
+(
+1≤n≤7000
+) — the number of students interested in the camp.
+The second line contains
+n
+integers. The
+i
+-th of them is
+a
+i
+(
+0≤
+a
+i
+<
+2
+60
+).
+The third line contains
+n
+integers. The
+i
+-th of them is
 b
 i
 (
-1≤a,b≤n
-,
-a≠b
-) and denote that there is an edge which connects vertices
-a
-i
-and
+1≤
 b
 i
-.
-The graph might be disconnected. It's however guaranteed that the graph doesn't contain any self-loops, and that there is at most one edge between any pair of vertices.
+≤
+10
+9
+).
 Output
-Output one integer which denotes the maximum number of dominoes which Anadi can place on the edges of the graph.
+Output one integer which denotes the maximum sum of
+b
+i
+over the students in a group of students which can work together calmly. If no group of at least two students can work together calmly, print 0.
 Examples
 input
 Copy
-4 4
-1 2
-2 3
-3 4
-4 1
+4
+3 2 3 6
+2 8 5 10
 output
 Copy
-4
+15
 input
 Copy
-7 0
+3
+1 2 3
+1 2 3
 output
 Copy
 0
 input
 Copy
-3 1
-1 3
-output
-Copy
 1
-input
-Copy
-7 21
-1 2
-1 3
-1 4
-1 5
-1 6
-1 7
-2 3
-2 4
-2 5
-2 6
-2 7
-3 4
-3 5
-3 6
-3 7
-4 5
-4 6
-4 7
-5 6
-5 7
-6 7
+0
+1
 output
 Copy
-16
+0
 Note
-Here is an illustration of Anadi's graph from the first sample test:
-And here is one of the ways to place a domino on each of its edges:
-Note that each vertex is faced by the halves of dominoes with the same number of dots. For instance, all halves directed toward vertex
-1
-have three dots.
+In the first sample test, it's optimal to send the first, the second and the third student to the camp. It's also possible to send only the first and the third student, but they'd have a lower sum of
+b
+i
+.
+In the second test, in each group of at least two students someone will always think that he is better than everyone else in the subset.

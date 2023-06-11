@@ -1,64 +1,61 @@
-B2. Send Boxes to Alice (Hard Version)
-time limit per test1 second
-memory limit per test256 megabytes
+E. Send Tree to Charlie
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is the harder version of the problem. In this version,
-1≤n≤
-10
-6
-and
-0≤
-a
-i
-≤
-10
-6
-. You can hack this problem if you locked it. But you can hack the previous problem only if you locked both problems
-Christmas is coming, and our protagonist, Bob, is preparing a spectacular present for his long-time best friend Alice. This year, he decides to prepare
+Christmas was knocking on the door, and our protagonist, Bob, was preparing a spectacular present for his long-time second best friend Charlie. As chocolate boxes are lame, he decided to decorate a tree instead. Bob's tree can be represented as an undirected connected graph with
 n
-boxes of chocolate, numbered from
+nodes (numbered
 1
 to
 n
-. Initially, the
+) and
+n−1
+edges. Initially, Bob placed a decoration with label
 i
--th box contains
-a
+on node
 i
-chocolate pieces.
-Since Bob is a typical nice guy, he will not send Alice
-n
-empty boxes. In other words, at least one of
-a
-1
-,
-a
-2
-,…,
-a
-n
-is positive. Since Alice dislikes coprime sets, she will be happy only if there exists some integer
-k>1
-such that the number of pieces in each box is divisible by
-k
-. Note that Alice won't mind if there exists some empty boxes.
-Charlie, Alice's boyfriend, also is Bob's second best friend, so he decides to help Bob by rearranging the chocolate pieces. In one second, Charlie can pick up a piece in box
-i
-and put it into either box
-i−1
-or box
-i+1
-(if such boxes exist). Of course, he wants to help his friend as quickly as possible. Therefore, he asks you to calculate the minimum number of seconds he would need to make Alice happy.
+, for each
+1≤i≤n
+. However, as such a simple arrangement is lame, he decided to shuffle the decorations a bit. Formally, Bob did the following steps:
+First, he listed the
+n−1
+edges in some order.
+Then, he considered the edges one by one in that order. For each edge
+(u,v)
+, he swapped the decorations of node
+u
+with the one of node
+v
+.
+After finishing, Bob seemed satisfied with the arrangement, so he went to sleep.
+The next morning, Bob wakes up only to find out that his beautiful arrangement has been ruined! Last night, Bob's younger brother Bobo dropped some of the decorations on the floor while he was playing with the tree. Fortunately, no decorations were lost, so Bob can repair the tree in no time. However, he completely forgets how the tree looked like yesterday. Therefore, given the labels of the decorations still on the tree, Bob wants to know the number of possible configurations of the tree. As the result can be quite large, Bob will be happy if you can output the result modulo
+1000000007
+(
+10
+9
++7
+). Note that, it is possible that there exists no possible configurations.
 Input
 The first line contains a single integer
 n
 (
-1≤n≤
-10
-6
-) — the number of chocolate boxes.
-The second line contains
+2≤n≤500000
+) — the number of nodes.
+Each of the next
+n−1
+lines contains two integers
+u
+and
+v
+(
+1≤u,v≤n
+), denoting that there is an edge connecting two nodes
+u
+and
+v
+. It is guaranteed that the given edges form a tree.
+The last line contains
 n
 integers
 a
@@ -73,74 +70,73 @@ n
 0≤
 a
 i
-≤
-10
-6
-) — the number of chocolate pieces in the
+≤n
+). For each
 i
--th box.
-It is guaranteed that at least one of
-a
-1
 ,
 a
-2
-,…,
+i
+=0
+means that the decoration of node
+i
+has been dropped on the floor. Otherwise,
 a
-n
-is positive.
+i
+is the label of the decoration of node
+i
+. It is guaranteed that no label appears more than once.
 Output
-If there is no way for Charlie to make Alice happy, print
-−1
-.
-Otherwise, print a single integer
-x
- — the minimum number of seconds for Charlie to help Bob make Alice happy.
+Output the number of possible configurations modulo
+1000000007
+(
+10
+9
++7
+).
 Examples
 input
 Copy
-3
-4 8 5
-output
-Copy
-9
-input
-Copy
-5
-3 10 2 1 5
+4
+3 4
+2 4
+4 1
+0 4 0 0
 output
 Copy
 2
 input
 Copy
-4
-0 5 15 10
+5
+1 2
+2 4
+3 4
+5 4
+0 0 0 0 0
+output
+Copy
+12
+input
+Copy
+3
+1 2
+1 3
+1 0 0
 output
 Copy
 0
-input
-Copy
-1
-1
-output
-Copy
--1
 Note
-In the first example, Charlie can move all chocolate pieces to the second box. Each box will be divisible by
-17
+In the first example, the possible configurations of the tree are
+[2,4,1,3]
+and
+[3,4,2,1]
 .
-In the second example, Charlie can move a piece from box
-2
-to box
-3
-and a piece from box
-4
-to box
-5
-. Each box will be divisible by
-3
-.
-In the third example, each box is already divisible by
-5
-.
-In the fourth example, since Charlie has no available move, he cannot help Bob make Alice happy.
+In the second example, note that while there are
+4!=24
+possible permutations of the edges, each of them results in a possible configuration, there are only
+12
+different configurations.
+In the third example, it is easy to see that the decoration
+1
+cannot stay at node
+1
+after the swaps.

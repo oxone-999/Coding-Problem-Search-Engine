@@ -1,101 +1,179 @@
-A. Red and Blue Beans
-time limit per test1 second
+C. Berland Regional
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have
-r
-red and
-b
-blue beans. You'd like to distribute them among several (maybe, one) packets in such a way that each packet:
-has at least one red bean (or the number of red beans
-r
+Polycarp is an organizer of a Berland ICPC regional event. There are
+n
+universities in Berland numbered from
+1
+to
+n
+. Polycarp knows all competitive programmers in the region. There are
+n
+students: the
 i
-≥1
-);
-has at least one blue bean (or the number of blue beans
-b
+-th student is enrolled at a university
+u
 i
-≥1
-);
-the number of red and blue beans should differ in no more than
-d
-(or
-|
-r
+and has a programming skill
+s
 i
-−
-b
-i
-|≤d
-)
-Can you distribute all beans?
+.
+Polycarp has to decide on the rules now. In particular, the number of members in the team.
+Polycarp knows that if he chooses the size of the team to be some integer
+k
+, each university will send their
+k
+strongest (with the highest programming skill
+s
+) students in the first team, the next
+k
+strongest students in the second team and so on. If there are fewer than
+k
+students left, then the team can't be formed. Note that there might be universities that send zero teams.
+The strength of the region is the total skill of the members of all present teams. If there are no teams present, then the strength is
+0
+.
+Help Polycarp to find the strength of the region for each choice of
+k
+from
+1
+to
+n
+.
 Input
-The first line contains the single integer
+The first line contains a single integer
 t
 (
 1≤t≤1000
-) — the number of test cases.
-The first and only line of each test case contains three integers
-r
-,
-b
-, and
-d
+) — the number of testcases.
+The first line of each testcase contains a single integer
+n
 (
-1≤r,b≤
+1≤n≤2⋅
+10
+5
+) — the number of universities and the number of students.
+The second line of each testcase contains
+n
+integers
+u
+1
+,
+u
+2
+,…,
+u
+n
+(
+1≤
+u
+i
+≤n
+) — the university the
+i
+-th student is enrolled at.
+The third line of each testcase contains
+n
+integers
+s
+1
+,
+s
+2
+,…,
+s
+n
+(
+1≤
+s
+i
+≤
 10
 9
-;
-0≤d≤
+) — the programming skill of the
+i
+-th student.
+The sum of
+n
+over all testcases doesn't exceed
+2⋅
 10
-9
-) — the number of red and blue beans and the maximum absolute difference in each packet.
+5
+.
 Output
-For each test case, if you can distribute all beans, print YES. Otherwise, print NO.
-You may print every letter in any case you want (so, for example, the strings yEs, yes, Yes and YES are all recognized as positive answer).
+For each testcase print
+n
+integers: the strength of the region — the total skill of the members of the present teams — for each choice of team size
+k
+.
 Example
 input
 Copy
 4
-1 1 0
-2 7 3
-6 1 4
-5 4 0
+7
+1 2 1 2 1 2 1
+6 8 3 1 5 1 5
+10
+1 1 1 2 2 2 2 3 3 3
+3435 3014 2241 2233 2893 2102 2286 2175 1961 2567
+6
+3 3 3 3 3 3
+5 9 6 7 9 7
+1
+1
+3083
 output
 Copy
-YES
-YES
-NO
-NO
+29 28 26 19 0 0 0 
+24907 20705 22805 9514 0 0 0 0 0 0 
+43 43 43 32 38 43 
+3083 
 Note
-In the first test case, you can form one packet with
+In the first testcase the teams from each university for each
+k
+are:
+k=1
+:
+university
 1
-red and
+:
+[6],[5],[5],[3]
+;
+university
+2
+:
+[8],[1],[1]
+;
+k=2
+:
+university
 1
-blue bean. The absolute difference
-|1−1|=0≤d
-.
-In the second test case, you can form two packets:
+:
+[6,5],[5,3]
+;
+university
+2
+:
+[8,1]
+;
+k=3
+:
+university
 1
-red and
-4
-blue beans in the first packet and
+:
+[6,5,5]
+;
+university
+2
+:
+[8,1,1]
+;
+k=4
+:
+university
 1
-red and
-3
-blue beans in the second one.
-In the third test case, since
-b=1
-, you can form only one packet with
-6
-red and
-1
-blue beans. The absolute difference
-|6−1|=5>d
-.
-In the fourth test case, since
-d=0
-so each packet should contain the same number of red and blue beans, but
-r≠b
-.
+:
+[6,5,5,3]
+;

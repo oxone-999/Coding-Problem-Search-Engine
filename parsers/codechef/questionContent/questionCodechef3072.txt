@@ -1,36 +1,131 @@
-Game on Stick
+Alice Potter and OWL
 Problem
-Read problems statements in mandarin chinese, russian and vietnamese as well.
-  One free afternoon, Chef found an old board game in his kitchen. He decided to invite his friends Miron and Slava to come play it with him.
-The board is a rectangular grid of size 2 × N. Initially, Miron and Slava each put their chips at a location (x1,y1 ) and (x2,y2 ) respectively. The game then proceeds as follows :
-Each player moves their chip in turns.
-In each turn, a player can move his chip to an adjacent cell that has not been visited by the other player before.
-Two cells are adjacent if they share a side
-A player can also skip his turn
-The cell that is initially occupied by a particular player's chip is considered visited by him
-The outcome of the game is decided as follows :
-If a player manages to visit strictly more than half the total number of cells (i.e. visited at least N+1 cells), he immediately wins and the other player loses.
-if the game continued for more than 10100 turns without any player declared a winner yet then it becomes a draw.
-Given that both players move optimally and Miron starts first, can you help Chef predict the winner of the game?
-Input
-The first line contains a single integer T, the number of test cases. Each test case is described by a single line containing five space-separated integers N, x1, y1, x2, y2.
-Output
-For each test case, output a single line with string Miron, Slava or Draw, denoting the answer to the problem.
+Alice Potter's fifth year at Hogwarts is coming to an end, which means it's time for the important OWL exam. Help Alice pass the OWL in numerology, the science of numbers, and operations on them.
+The exam paper contains a sequence
+A of
+N integers.
+There are two types of tasks:
+Given
+i and
+X, set
+A
+i
+equal to
+X.
+Given integers
+L and
+R
+(1≤L≤R≤N), find
+X and
+Y
+(L≤X≤Y≤R) such that the value of
+∣sin(A
+X
++A
+X+1
++⋯+A
+Y
+)°∣ is minimum possible.
+Note that
+∣sin(x)°∣ denotes the absolute value of sine of
+x°.
+Input Format
+The first line of the input contains two space-separated integers
+N and
+Q — the number of elements in the sequence and the number of tasks in the exam.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+— the elements of the sequence.
+Each of the next
+Q lines contains three integers — descriptions of the tasks:
+1
+i
+X, or
+2
+L
+R, where the first number indicates the type of task, and the next two indicate contents of the task.
+Output Format
+For each task of the second type, output two space-separated integers
+X and
+Y
+(L≤X≤Y≤R) — the answer to the task.
+If there are several answers, print any one of them.
 Constraints
-1 ≤ T ≤ 105
-1 ≤ N ≤ 1018
-1 ≤ x1, x2 ≤ 2
-1 ≤ y1, y2 ≤ N
-Cells (x1, y1) and (x2, y2) are different.
-  Sample 1:
+1≤N,Q≤10
+6
+−10
+9
+≤A
+i
+≤10
+9
+For the task of the first type,
+1≤i≤N and
+−10
+9
+≤X≤10
+9
+For the task of the second type,
+1≤L≤R≤N
+Sample 1:
 Input
 Output
-4
-5 1 1 2 3
-1 1 1 2 1
-3 1 1 2 3
-4 1 2 1 4
-Slava
-Draw
-Draw
-Miron
+4 6
+12 -15 361 5
+2 1 4
+2 1 2
+1 2 11
+2 1 2
+1 3 47
+2 1 4
+3 3
+1 2
+2 2
+4 4
+Explanation:
+Query
+1: We need to perform task of type
+2. Here,
+L=1 and
+R=4.
+Consider
+X=Y=3. Thus,
+∣sin(A
+X
++A
+X+1
++⋯+A
+Y
+)°∣=∣sin(361)°∣≈0.017. Note that this is the minimum value we can achieve for any
+(L≤X≤Y≤R).
+Query
+2: We need to perform task of type
+2. Let
+L=1 and
+R=2.
+Consider
+X=Y=1. Thus,
+∣sin(12)°∣≈0.208.
+Consider
+X=Y=2. Thus,
+∣sin(−15)°∣≈0.259.
+Consider
+X=1 and
+Y=2. Thus,
+∣sin(12+(−15))°∣=∣sin(−3)°∣≈0.052.
+Thus,
+X=1 and
+Y=2 gives the minimum value.
+Query
+3: We need to perform task of type
+1. Set
+A
+2
+=11. Thus, the sequence becomes
+[12,11,361,5].

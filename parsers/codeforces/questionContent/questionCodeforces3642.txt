@@ -1,117 +1,152 @@
-A. Neko Finds Grapes
-time limit per test2 seconds
+B. Neko Performs Cat Furrier Transform
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-On a random day, Neko found
-n
-treasure chests and
+Cat Furrier Transform is a popular algorithm among cat programmers to create longcats. As one of the greatest cat programmers ever exist, Neko wants to utilize this algorithm to create the perfect longcat.
+Assume that we have a cat with a number
+x
+. A perfect longcat is a cat with a number equal
+2
 m
-keys. The
-i
--th chest has an integer
-a
-i
-written on it and the
-j
--th key has an integer
-b
-j
-on it. Neko knows those chests contain the powerful mysterious green Grapes, thus Neko wants to open as many treasure chests as possible.
-The
-j
--th key can be used to unlock the
-i
--th chest if and only if the sum of the key number and the chest number is an odd number. Formally,
-a
-i
-+
-b
-j
-≡1(mod2)
-. One key can be used to open at most one chest, and one chest can be opened at most once.
-Find the maximum number of chests Neko can open.
+−1
+for some non-negative integer
+m
+. For example, the numbers
+0
+,
+1
+,
+3
+,
+7
+,
+15
+and so on are suitable for the perfect longcats.
+In the Cat Furrier Transform, the following operations can be performed on
+x
+:
+(Operation A): you select any non-negative integer
+n
+and replace
+x
+with
+x⊕(
+2
+n
+−1)
+, with
+⊕
+being a bitwise XOR operator.
+(Operation B): replace
+x
+with
+x+1
+.
+The first applied operation must be of type A, the second of type B, the third of type A again, and so on. Formally, if we number operations from one in the order they are executed, then odd-numbered operations must be of type A and the even-numbered operations must be of type B.
+Neko wants to produce perfect longcats at industrial scale, thus for each cat Neko only wants to perform at most
+40
+operations. Can you help Neko writing a transformation plan?
+Note that it is not required to minimize the number of operations. You just need to use no more than
+40
+operations.
 Input
-The first line contains integers
-n
-and
-m
+The only line contains a single integer
+x
 (
-1≤n,m≤
+1≤x≤
 10
-5
-) — the number of chests and the number of keys.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-9
-) — the numbers written on the treasure chests.
-The third line contains
-m
-integers
-b
-1
-,
-b
-2
-,…,
-b
-m
-(
-1≤
-b
-i
-≤
-10
-9
-) — the numbers written on the keys.
+6
+).
 Output
-Print the maximum number of chests you can open.
+The first line should contain a single integer
+t
+(
+0≤t≤40
+) — the number of operations to apply.
+Then for each odd-numbered operation print the corresponding number
+n
+i
+in it. That is, print
+⌈
+t
+2
+⌉
+integers
+n
+i
+(
+0≤
+n
+i
+≤30
+), denoting the replacement
+x
+with
+x⊕(
+2
+n
+i
+−1)
+in the corresponding step.
+If there are multiple possible answers, you can print any of them. It is possible to show, that there is at least one answer in the constraints of this problem.
 Examples
 input
 Copy
-5 4
-9 14 6 2 11
-8 4 7 20
+39
 output
 Copy
-3
+4
+5 3 
 input
-Copy
-5 1
-2 4 6 8 10
-5
-output
 Copy
 1
+output
+Copy
+0
 input
 Copy
-1 4
-10
-20 30 40 50
+7
 output
 Copy
 0
 Note
-In the first example, one possible way to unlock
-3
-chests is as follows:
-Use first key to unlock the fifth chest,
-Use third key to unlock the second chest,
-Use fourth key to unlock the first chest.
-In the second example, you can use the only key to unlock any single chest (note that one key can't be used twice).
-In the third example, no key can unlock the given chest.
+In the first test, one of the transforms might be as follows:
+39→56→57→62→63
+. Or more precisely:
+Pick
+n=5
+.
+x
+is transformed into
+39⊕31
+, or
+56
+.
+Increase
+x
+by
+1
+, changing its value to
+57
+.
+Pick
+n=3
+.
+x
+is transformed into
+57⊕7
+, or
+62
+.
+Increase
+x
+by
+1
+, changing its value to
+63=
+2
+6
+−1
+.
+In the second and third test, the number already satisfies the goal requirement.

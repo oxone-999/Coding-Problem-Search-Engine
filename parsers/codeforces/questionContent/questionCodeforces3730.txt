@@ -1,218 +1,175 @@
-C. Nastya Is Transposing Matrices
-time limit per test1 second
+D. Nastya Is Buying Lunch
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Nastya came to her informatics lesson, and her teacher who is, by the way, a little bit famous here gave her the following task.
-Two matrices
-A
-and
-B
-are given, each of them has size
-n×m
-. Nastya can perform the following operation to matrix
-A
-unlimited number of times:
-take any square square submatrix of
-A
-and transpose it (i.e. the element of the submatrix which was in the
-i
--th row and
-j
--th column of the submatrix will be in the
-j
--th row and
-i
--th column after transposing, and the transposed submatrix itself will keep its place in the matrix
-A
-).
-Nastya's task is to check whether it is possible to transform the matrix
-A
-to the matrix
-B
-.
-Example of the operation
-As it may require a lot of operations, you are asked to answer this question for Nastya.
-A square submatrix of matrix
-M
-is a matrix which consist of all elements which comes from one of the rows with indeces
-x,x+1,…,x+k−1
-of matrix
-M
-and comes from one of the columns with indeces
-y,y+1,…,y+k−1
-of matrix
-M
-.
-k
-is the size of square submatrix. In other words, square submatrix is the set of elements of source matrix which form a solid square (i.e. without holes).
+At the big break Nastya came to the school dining room. There are
+n
+pupils in the school, numbered from
+1
+to
+n
+. Unfortunately, Nastya came pretty late, so that all pupils had already stood in the queue, i.e. Nastya took the last place in the queue. Of course, it's a little bit sad for Nastya, but she is not going to despond because some pupils in the queue can agree to change places with some other pupils.
+Formally, there are some pairs
+u
+,
+v
+such that if the pupil with number
+u
+stands directly in front of the pupil with number
+v
+, Nastya can ask them and they will change places.
+Nastya asks you to find the maximal number of places in queue she can move forward.
 Input
 The first line contains two integers
 n
 and
 m
-separated by space (
-1≤n,m≤500
-) — the numbers of rows and columns in
-A
-and
-B
-respectively.
-Each of the next
-n
-lines contains
-m
-integers, the
-j
--th number in the
-i
--th of these lines denotes the
-j
--th element of the
-i
--th row of the matrix
-A
 (
-1≤
-A
-ij
-≤
+1≤n≤3⋅
 10
-9
-).
-Each of the next
+5
+,
+0≤m≤5⋅
+10
+5
+) — the number of pupils in the queue and number of pairs of pupils such that the first one agrees to change places with the second one if the first is directly in front of the second.
+The second line contains
 n
-lines contains
-m
-integers, the
-j
--th number in the
-i
--th of these lines denotes the
-j
--th element of the
-i
--th row of the matrix
-B
-(
+integers
+p
+1
+,
+p
+2
+, ...,
+p
+n
+ — the initial arrangement of pupils in the queue, from the queue start to its end (
 1≤
-B
-ij
-≤
-10
-9
-).
-Output
-Print "YES" (without quotes) if it is possible to transform
-A
+p
+i
+≤n
+,
+p
+is a permutation of integers from
+1
 to
-B
-and "NO" (without quotes) otherwise.
-You can print each letter in any case (upper or lower).
+n
+). In other words,
+p
+i
+is the number of the pupil who stands on the
+i
+-th position in the queue.
+The
+i
+-th of the following
+m
+lines contains two integers
+u
+i
+,
+v
+i
+(
+1≤
+u
+i
+,
+v
+i
+≤n,
+u
+i
+≠
+v
+i
+), denoting that the pupil with number
+u
+i
+agrees to change places with the pupil with number
+v
+i
+if
+u
+i
+is directly in front of
+v
+i
+. It is guaranteed that if
+i≠j
+, than
+v
+i
+≠
+v
+j
+or
+u
+i
+≠
+u
+j
+. Note that it is possible that in some pairs both pupils agree to change places with each other.
+Nastya is the last person in the queue, i.e. the pupil with number
+p
+n
+.
+Output
+Print a single integer — the number of places in queue she can move forward.
 Examples
 input
 Copy
-2 2
-1 1
-6 1
-1 6
-1 1
+2 1
+1 2
+1 2
 output
 Copy
-YES
-input
-Copy
-2 2
-4 4
-4 5
-5 4
-4 4
-output
-Copy
-NO
+1
 input
 Copy
 3 3
-1 2 3
-4 5 6
-7 8 9
-1 4 7
-2 5 6
-3 8 9
+3 1 2
+1 2
+3 1
+3 2
 output
 Copy
-YES
+2
+input
+Copy
+5 2
+3 1 5 4 2
+5 2
+5 4
+output
+Copy
+1
 Note
-Consider the third example. The matrix
-A
-initially looks as follows.
-⎡
-⎣
-⎢
+In the first example Nastya can just change places with the first pupil in the queue.
+Optimal sequence of changes in the second example is
+change places for pupils with numbers
 1
-4
-7
-2
-5
-8
-3
-6
-9
-⎤
-⎦
-⎥
-Then we choose the whole matrix as transposed submatrix and it becomes
-⎡
-⎣
-⎢
-1
-2
-3
-4
-5
-6
-7
-8
-9
-⎤
-⎦
-⎥
-Then we transpose the submatrix with corners in cells
-(2,2)
 and
-(3,3)
-.
-⎡
-⎣
-⎢
-1
-2
 3
-4
-5
-6
-7
-8
-9
-⎤
-⎦
-⎥
-So matrix becomes
-⎡
-⎣
-⎢
-1
-2
-3
-4
-5
-8
-7
-6
-9
-⎤
-⎦
-⎥
-and it is
-B
 .
+change places for pupils with numbers
+3
+and
+2
+.
+change places for pupils with numbers
+1
+and
+2
+.
+The queue looks like
+[3,1,2]
+, then
+[1,3,2]
+, then
+[1,2,3]
+, and finally
+[2,1,3]
+after these operations.

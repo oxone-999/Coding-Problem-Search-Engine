@@ -1,180 +1,139 @@
-C. Dolce Vita
+E. Preorder
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Turbulent times are coming, so you decided to buy sugar in advance. There are
+You are given a rooted tree of
+2
 n
-shops around that sell sugar: the
-i
--th shop sells one pack of sugar for
-a
-i
-coins, but only one pack to one customer each day. So in order to buy several packs, you need to visit several shops.
-Another problem is that prices are increasing each day: during the first day the cost is
-a
-i
-, during the second day cost is
-a
-i
-+1
-, during the third day —
-a
-i
-+2
-and so on for each shop
-i
-.
-On the contrary, your everyday budget is only
-x
-coins. In other words, each day you go and buy as many packs as possible with total cost not exceeding
-x
-. Note that if you don't spend some amount of coins during a day, you can't use these coins during the next days.
-Eventually, the cost for each pack will exceed
-x
-, and you won't be able to buy even a single pack. So, how many packs will you be able to buy till that moment in total?
-Input
-The first line contains a single integer
-t
-(
-1≤t≤1000
-) — the number of test cases. Next
-t
-cases follow.
-The first line of each test case contains two integers
-n
-and
-x
-(
-1≤n≤2⋅
-10
-5
+−1
+vertices. Every vertex of this tree has either
+0
+children, or
+2
+children. All leaves of this tree have the same distance from the root, and for every non-leaf vertex, one of its children is the left one, and the other child is the right one. Formally, you are given a perfect binary tree.
+The vertices of the tree are numbered in the following order:
+the root has index
+1
 ;
-1≤x≤
-10
-9
-) — the number of shops and your everyday budget.
-The second line of each test case contains
+if a vertex has index
+x
+, then its left child has index
+2x
+, and its right child has index
+2x+1
+.
+Every vertex of the tree has a letter written on it, either A or B. Let's define the character on the vertex
+x
+as
+s
+x
+.
+Let the preorder string of some vertex
+x
+be defined in the following way:
+if the vertex
+x
+is a leaf, then the preorder string of
+x
+be consisting of only one character
+s
+x
+;
+otherwise, the preorder string of
+x
+is
+s
+x
++f(
+l
+x
+)+f(
+r
+x
+)
+, where
++
+operator defines concatenation of strings,
+f(
+l
+x
+)
+is the preorder string of the left child of
+x
+, and
+f(
+r
+x
+)
+is the preorder string of the right child of
+x
+.
+The preorder string of the tree is the preorder string of its root.
+Now, for the problem itself...
+You have to calculate the number of different strings that can be obtained as the preorder string of the given tree, if you are allowed to perform the following operation any number of times before constructing the preorder string of the tree:
+choose any non-leaf vertex
+x
+, and swap its children (so, the left child becomes the right one, and vice versa).
+Input
+The first line contains one integer
 n
-integers
-a
+(
+2≤n≤18
+).
+The second line contains a sequence of
+2
+n
+−1
+characters
+s
 1
 ,
-a
+s
 2
 ,…,
-a
+s
+2
 n
-(
-1≤
-a
-i
-≤
-10
-9
-) — the initial cost of one pack in each shop.
-It's guaranteed that the total sum of
-n
-doesn't exceed
-2⋅
-10
-5
-.
+−1
+. Each character is either A or B. The characters are not separated by spaces or anything else.
 Output
-For each test case, print one integer — the total number of packs you will be able to buy until prices exceed your everyday budget.
-Example
+Print one integer — the number of different strings that can be obtained as the preorder string of the given tree, if you can apply any number of operations described in the statement. Since it can be very large, print it modulo
+998244353
+.
+Examples
 input
 Copy
 4
-3 7
-2 1 2
-5 9
-10 20 30 40 50
-1 1
-1
-2 1000
-1 1
+BAAAAAAAABBABAB
 output
 Copy
-11
-0
-1
-1500
-Note
-In the first test case,
-Day 1: prices are
-[2,1,2]
-. You can buy all
-3
-packs, since
-2+1+2≤7
-.
-Day 2: prices are
-[3,2,3]
-. You can't buy all
-3
-packs, since
-3+2+3>7
-, so you buy only
+16
+input
+Copy
 2
-packs.
-Day 3: prices are
-[4,3,4]
-. You can buy
+BAA
+output
+Copy
+1
+input
+Copy
 2
-packs with prices
-4
-and
-3
-.
-Day 4: prices are
-[5,4,5]
-. You can't buy
+ABA
+output
+Copy
 2
-packs anymore, so you buy only
-1
-pack.
-Day 5: prices are
-[6,5,6]
-. You can buy
-1
-pack.
-Day 6: prices are
-[7,6,7]
-. You can buy
-1
-pack.
-Day 7: prices are
-[8,7,8]
-. You still can buy
-1
-pack of cost
-7
-.
-Day 8: prices are
-[9,8,9]
-. Prices are too high, so you can't buy anything.
-In total, you bought
-3+2+2+1+1+1+1=11
-packs.
-In the second test case, prices are too high even at the first day, so you can't buy anything.
-In the third test case, you can buy only one pack at day one.
-In the fourth test case, you can buy
+input
+Copy
 2
-packs first
-500
-days. At day
-501
-prices are
-[501,501]
-, so you can buy only
+AAB
+output
+Copy
+2
+input
+Copy
+2
+AAA
+output
+Copy
 1
-pack the next
-500
-days. At day
-1001
-prices are
-[1001,1001]
-so can't buy anymore. In total, you bought
-500⋅2+500⋅1=1500
-packs.

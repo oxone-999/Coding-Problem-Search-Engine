@@ -1,79 +1,71 @@
-C. Boats Competition
-time limit per test2 seconds
+E2. Weights Division (hard version)
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-people who want to participate in a boat competition. The weight of the
+Easy and hard versions are actually different problems, so we advise you to read both statements carefully.
+You are given a weighted rooted tree, vertex
+1
+is the root of this tree. Also, each edge has its own cost.
+A tree is a connected graph without cycles. A rooted tree has a special vertex called the root. A parent of a vertex
+v
+is the last different from
+v
+vertex on the path from the root to the vertex
+v
+. Children of vertex
+v
+are all vertices for which
+v
+is the parent. A vertex is a leaf if it has no children. The weighted tree is such a tree that each edge of this tree has some weight.
+The weight of the path is the sum of edges weights on this path. The weight of the path from the vertex to itself is
+0
+.
+You can make a sequence of zero or more moves. On each move, you select an edge and divide its weight by
+2
+rounding down. More formally, during one move, you choose some edge
 i
--th participant is
+and divide its weight by
+2
+rounding down (
 w
 i
-. Only teams consisting of two people can participate in this competition. As an organizer, you think that it's fair to allow only teams with the same total weight.
-So, if there are
-k
-teams
-(
-a
-1
-,
-b
-1
-)
-,
-(
-a
+:=⌊
+w
+i
 2
-,
-b
+⌋
+).
+Each edge
+i
+has an associated cost
+c
+i
+which is either
+1
+or
 2
-)
-,
-…
-,
-(
-a
-k
-,
-b
-k
-)
+coins. Each move with edge
+i
+costs
+c
+i
+coins.
+Your task is to find the minimum total cost to make the sum of weights of paths from the root to each leaf at most
+S
+. In other words, if
+w(i,j)
+is the weight of the path from the vertex
+i
+to the vertex
+j
+, then you have to make
+∑
+v∈leaves
+w(root,v)≤S
 , where
-a
-i
-is the weight of the first participant of the
-i
--th team and
-b
-i
-is the weight of the second participant of the
-i
--th team, then the condition
-a
-1
-+
-b
-1
-=
-a
-2
-+
-b
-2
-=⋯=
-a
-k
-+
-b
-k
-=s
-, where
-s
-is the total weight of each team, should be satisfied.
-Your task is to choose such
-s
-that the number of teams people can create is the maximum possible. Note that each participant can be in no more than one team.
+leaves
+is the list of all leaves.
 You have to answer
 t
 independent test cases.
@@ -81,104 +73,106 @@ Input
 The first line of the input contains one integer
 t
 (
-1≤t≤1000
+1≤t≤2⋅
+10
+4
 ) — the number of test cases. Then
 t
 test cases follow.
-The first line of the test case contains one integer
+The first line of the test case contains two integers
 n
+and
+S
 (
-1≤n≤50
-) — the number of participants. The second line of the test case contains
-n
-integers
-w
-1
+2≤n≤
+10
+5
+;1≤S≤
+10
+16
+) — the number of vertices in the tree and the maximum possible sum of weights you have to obtain. The next
+n−1
+lines describe edges of the tree. The edge
+i
+is described as four integers
+v
+i
+,
+u
+i
 ,
 w
-2
-,…,
-w
-n
+i
+and
+c
+i
 (
 1≤
+v
+i
+,
+u
+i
+≤n;1≤
 w
 i
-≤n
+≤
+10
+6
+;1≤
+c
+i
+≤2
 ), where
+v
+i
+and
+u
+i
+are vertices the edge
+i
+connects,
 w
 i
-is the weight of the
+is the weight of this edge and
+c
 i
--th participant.
+is the cost of this edge.
+It is guaranteed that the sum of
+n
+does not exceed
+10
+5
+(
+∑n≤
+10
+5
+).
 Output
-For each test case, print one integer
-k
-: the maximum number of teams people can compose with the total weight
-s
-, if you choose
-s
-optimally.
+For each test case, print the answer: the minimum total cost required to make the sum of weights paths from the root to each leaf at most
+S
+.
 Example
 input
 Copy
-5
-5
-1 2 3 4 5
-8
-6 6 6 6 6 6 8 8
-8
-1 2 2 1 2 1 1 2
-3
-1 3 3
-6
-1 1 3 4 2 2
+4
+4 18
+2 1 9 2
+3 2 4 1
+4 1 1 2
+3 20
+2 1 8 1
+3 1 7 2
+5 50
+1 3 100 1
+1 5 10 2
+2 3 123 2
+5 4 55 1
+2 100
+1 2 409 2
 output
 Copy
-2
-3
-4
-1
-2
-Note
-In the first test case of the example, we can reach the optimal answer for
-s=6
-. Then the first boat is used by participants
-1
-and
-5
-and the second boat is used by participants
-2
-and
-4
-(indices are the same as weights).
-In the second test case of the example, we can reach the optimal answer for
-s=12
-. Then first
+0
+0
+11
 6
-participants can form
-3
-pairs.
-In the third test case of the example, we can reach the optimal answer for
-s=3
-. The answer is
-4
-because we have
-4
-participants with weight
-1
-and
-4
-participants with weight
-2
-.
-In the fourth test case of the example, we can reach the optimal answer for
-s=4
-or
-s=6
-.
-In the fifth test case of the example, we can reach the optimal answer for
-s=3
-. Note that participant with weight
-3
-can't use the boat because there is no suitable pair for him in the list.

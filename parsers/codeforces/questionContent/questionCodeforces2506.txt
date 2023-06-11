@@ -1,161 +1,116 @@
-F1. The Hidden Pair (Easy Version)
-time limit per test2 seconds
+C. A Cookie for You
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Note that the only difference between the easy and hard version is the constraint on the number of queries. You can make hacks only if all versions of the problem are solved.
-This is an interactive problem.
-You are given a tree consisting of
+Anna is a girl so brave that she is loved by everyone in the city and citizens love her cookies. She is planning to hold a party with cookies. Now she has
+a
+vanilla cookies and
+b
+chocolate cookies for the party.
+She invited
 n
-nodes numbered with integers from
-1
-to
-n
-. Ayush and Ashish chose two secret distinct nodes in the tree. You need to find out both the nodes. You can make the following query:
-Provide a list of nodes and you will receive a node from that list whose sum of distances to both the hidden nodes is minimal (if there are multiple such nodes in the list, you will receive any one of them). You will also get the sum of distances of that node to the hidden nodes.
-Recall that a tree is a connected graph without cycles. The distance between two nodes is defined as the number of edges in the simple path between them.
-More formally, let's define two hidden nodes as
-s
-and
-f
-. In one query you can provide the set of nodes
-{
-a
-1
-,
-a
-2
-,…,
-a
+guests of the first type and
+m
+guests of the second type to the party. They will come to the party in some order. After coming to the party, each guest will choose the type of cookie (vanilla or chocolate) to eat. There is a difference in the way how they choose that type:
+If there are
+v
+vanilla cookies and
 c
-}
-of the tree. As a result, you will get two numbers
-a
-i
-and
-dist(
-a
-i
-,s)+dist(
-a
-i
-,f)
-. The node
-a
-i
-is any node from the provided set, for which the number
-dist(
-a
-i
-,s)+dist(
-a
-i
-,f)
-is minimal.
-You can ask no more than
-14
-queries.
+chocolate cookies at the moment, when the guest comes, then
+if the guest of the first type: if
+v>c
+the guest selects a vanilla cookie. Otherwise, the guest selects a chocolate cookie.
+if the guest of the second type: if
+v>c
+the guest selects a chocolate cookie. Otherwise, the guest selects a vanilla cookie.
+After that:
+If there is at least one cookie of the selected type, the guest eats one.
+Otherwise (there are no cookies of the selected type), the guest gets angry and returns to home.
+Anna wants to know if there exists some order of guests, such that no one guest gets angry. Your task is to answer her question.
 Input
-The first line contains a single integer
+The input consists of multiple test cases. The first line contains a single integer
 t
-(1≤t≤10)
- — the number of test cases. Please note, how the interaction process is organized.
-The first line of each test case consists of a single integer
-n
-(2≤n≤1000)
- — the number of nodes in the tree.
-The next
-n−1
-lines consist of two integers
-u
-,
-v
-(1≤u,v≤n,u≠v)
- — the edges of the tree.
-Interaction
-To ask a query print a single line:
-In the beginning print "? c " (without quotes) where
-c
-(1≤c≤n)
-denotes the number of nodes being queried, followed by
-c
-distinct integers in the range
-[1,n]
- — the indices of nodes from the list.
-For each query, you will receive two integers
-x
-,
-d
- — the node (among the queried nodes) with the minimum sum of distances to the hidden nodes and the sum of distances from that node to the hidden nodes. If the subset of nodes queried is invalid or you exceeded the number of queries then you will get
-x=d=−1
-. In this case, you should terminate the program immediately.
-When you have guessed the hidden nodes, print a single line "! " (without quotes), followed by two integers in the range
-[1,n]
- — the hidden nodes. You can output the hidden nodes in any order.
-After this, you should read a string. If you guess the nodes correctly, you will receive the string "Correct". In this case, you should continue solving the remaining test cases or terminate the program, if all test cases were solved. Otherwise, you will receive the string "Incorrect". In this case, you should terminate the program immediately.
-Guessing the hidden nodes does not count towards the number of queries asked.
-The interactor is not adaptive. The hidden nodes do not change with queries.
-Do not forget to read the string "Correct" / "Incorrect" after guessing the hidden nodes.
-You need to solve each test case before receiving the input for the next test case.
-The limit of
-14
-queries applies to each test case and not to the entire input.
-After printing a query do not forget to output the end of the line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see the documentation for other languages.
-Hacks
-To hack the solution, use the following test format:
-The first line should contain a single integer
+(
+1≤t≤1000
+) — the number of test cases. Next
 t
-(1≤t≤10)
- — the number of test cases. The description of the test cases follows.
-The first line of each test case should contain a single integer
-n
-(2≤n≤1000)
- — the number of nodes in the tree. The second line should contain two distinct integers in the range
-[1,n]
- — the hidden nodes. The next
-n−1
-lines should contain two integers
-u
+lines contain descriptions of test cases.
+For each test case, the only line contains four integers
+a
 ,
-v
-(1≤u,v≤n,u≠v)
- — the edges of the tree.
+b
+,
+n
+,
+m
+(
+0≤a,b,n,m≤
+10
+18
+,n+m≠0
+).
+Output
+For each test case, print the answer in one line. If there exists at least one valid order, print "Yes". Otherwise, print "No".
+You can print each letter in any case (upper or lower).
 Example
 input
 Copy
-1
-3
-1 2
-1 3
-
-1 1
-
-2 3
-
-3 1
-
-3 1
-
-Correct
+6
+2 2 1 2
+0 100 0 1
+12 13 25 1
+27 83 14 25
+0 0 1 0
+1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000
 output
 Copy
-? 1 1
-
-? 1 2
-
-? 1 3
-
-? 2 2 3
-
-! 1 3
+Yes
+No
+No
+Yes
+No
+Yes
 Note
-The tree from the first test is shown below, and the hidden nodes are
+In the first test case, let's consider the order
+{1,2,2}
+of types of guests. Then:
+The first guest eats a chocolate cookie. After that, there are
+2
+vanilla cookies and
 1
-and
-3
-.
+chocolate cookie.
+The second guest eats a chocolate cookie. After that, there are
+2
+vanilla cookies and
+0
+chocolate cookies.
+The last guest selects a chocolate cookie, but there are no chocolate cookies. So, the guest gets angry.
+So, this order can't be chosen by Anna.
+Let's consider the order
+{2,2,1}
+of types of guests. Then:
+The first guest eats a vanilla cookie. After that, there is
+1
+vanilla cookie and
+2
+chocolate cookies.
+The second guest eats a vanilla cookie. After that, there are
+0
+vanilla cookies and
+2
+chocolate cookies.
+The last guest eats a chocolate cookie. After that, there are
+0
+vanilla cookies and
+1
+chocolate cookie.
+So, the answer to this test case is "Yes".
+In the fifth test case, it is illustrated, that the number of cookies (
+a+b
+) can be equal to zero, but the number of guests (
+n+m
+) can't be equal to zero.
+In the sixth test case, be careful about the overflow of
+32
+-bit integer type.

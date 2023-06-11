@@ -1,92 +1,212 @@
-A. The Third Three Number Problem
+C. The Third Problem
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a positive integer
-n
-. Your task is to find any three integers
+You are given a permutation
 a
+1
+,
+a
+2
+,…,
+a
+n
+of integers from
+0
+to
+n−1
+. Your task is to find how many permutations
+b
+1
 ,
 b
-and
-c
-(
-0≤a,b,c≤
-10
-9
-) for which
-(a⊕b)+(b⊕c)+(a⊕c)=n
-, or determine that there are no such integers.
-Here
-a⊕b
-denotes the bitwise XOR of
+2
+,…,
+b
+n
+are similar to permutation
+a
+.
+Two permutations
 a
 and
 b
+of size
+n
+are considered similar if for all intervals
+[l,r]
+(
+1≤l≤r≤n
+), the following condition is satisfied:
+MEX([
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+])=MEX([
+b
+l
+,
+b
+l+1
+,…,
+b
+r
+]),
+MEX
+(
+[
+]
+)
+MEX
+(
+[
+b
+b
+b
+]
+)
+where the
+MEX
+of a collection of integers
+c
+1
+,
+c
+2
+,…,
+c
+k
+is defined as the smallest non-negative integer
+x
+which does not occur in collection
+c
 . For example,
-2⊕4=6
-and
-3⊕1=2
+MEX([1,2,3,4,5])=0
+, and
+MEX([0,1,2,4,5])=3
 .
+Since the total number of such permutations can be very large, you will have to print its remainder modulo
+10
+9
++7
+.
+In this problem, a permutation of size
+n
+is an array consisting of
+n
+distinct integers from
+0
+to
+n−1
+in arbitrary order. For example,
+[1,0,2,4,3]
+is a permutation, while
+[0,1,1]
+is not, since
+1
+appears twice in the array.
+[0,1,3]
+is also not a permutation, since
+n=3
+and there is a
+3
+in the array.
 Input
-Each test contains multiple test cases. The first line contains a single integer
+Each test contains multiple test cases. The first line of input contains one integer
 t
 (
 1≤t≤
 10
 4
 ) — the number of test cases. The following lines contain the descriptions of the test cases.
-The only line of each test case contains a single integer
+The first line of each test case contains a single integer
 n
 (
 1≤n≤
 10
-9
-).
-Output
-For each test case, print any three integers
+5
+) — the size of permutation
 a
+.
+The second line of each test case contains
+n
+distinct integers
+a
+1
 ,
-b
-and
-c
+a
+2
+,…,
+a
+n
 (
-0≤a,b,c≤
+0≤
+a
+i
+<n
+) — the elements of permutation
+a
+.
+It is guaranteed that the sum of
+n
+across all test cases does not exceed
+10
+5
+.
+Output
+For each test case, print a single integer, the number of permutations similar to permutation
+a
+, taken modulo
 10
 9
-) for which
-(a⊕b)+(b⊕c)+(a⊕c)=n
-. If no such integers exist, print
-−1
++7
 .
 Example
 input
 Copy
 5
-4
+5
+4 0 3 2 1
 1
-12
-2046
-194723326
+0
+4
+0 1 2 3
+6
+1 2 4 0 5 3
+8
+1 3 7 2 5 0 6 4
 output
 Copy
-3 3 1
--1
-2 4 6
-69 420 666
-12345678 87654321 100000000
+2
+1
+1
+4
+72
 Note
-In the first test case,
-a=3
-,
-b=3
-,
-c=1
-, so
-(3⊕3)+(3⊕1)+(3⊕1)=0+2+2=4
+For the first test case, the only permutations similar to
+a=[4,0,3,2,1]
+are
+[4,0,3,2,1]
+and
+[4,0,2,3,1]
 .
-In the second test case, there are no solutions.
-In the third test case,
-(2⊕4)+(4⊕6)+(2⊕6)=6+2+4=12
+For the second and third test cases, the given permutations are only similar to themselves.
+For the fourth test case, there are
+4
+permutations similar to
+a=[1,2,4,0,5,3]
+:
+[1,2,4,0,5,3]
+;
+[1,2,5,0,4,3]
+;
+[1,4,2,0,5,3]
+;
+[1,5,2,0,4,3]
 .

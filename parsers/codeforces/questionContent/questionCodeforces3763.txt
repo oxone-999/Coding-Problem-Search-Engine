@@ -1,147 +1,170 @@
-C. System Testing
-time limit per test1 second
+A1. Toy Train (Simplified)
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Vasya likes taking part in Codeforces contests. When a round is over, Vasya follows all submissions in the system testing tab.
-There are
+This is a simplified version of the task Toy Train. These two versions differ only in the constraints. Hacks for this version are disabled.
+Alice received a set of Toy Train™ from Bob. It consists of one train and a connected railway network of
 n
-solutions, the
+stations, enumerated from
+1
+through
+n
+. The train occupies one station at a time and travels around the network of stations in a circular manner. More precisely, the immediate station that the train will visit after station
 i
--th of them should be tested on
+is station
+i+1
+if
+1≤i<n
+or station
+1
+if
+i=n
+. It takes the train
+1
+second to travel to its next station as described.
+Bob gave Alice a fun task before he left: to deliver
+m
+candies that are initially at some stations to their independent destinations using the train. The candies are enumerated from
+1
+through
+m
+. Candy
+i
+(
+1≤i≤m
+), now at station
 a
 i
-tests, testing one solution on one test takes
-1
-second. The solutions are judged in the order from
-1
-to
-n
-. There are
-k
-testing processes which test solutions simultaneously. Each of them can test at most one solution at a time.
-At any time moment
-t
-when some testing process is not judging any solution, it takes the first solution from the queue and tests it on each test in increasing order of the test ids. Let this solution have id
+, should be delivered to station
+b
 i
-, then it is being tested on the first test from time moment
-t
-till time moment
-t+1
-, then on the second test till time moment
-t+2
-and so on. This solution is fully tested at time moment
-t+
+(
 a
 i
-, and after that the testing process immediately starts testing another solution.
-Consider some time moment, let there be exactly
-m
-fully tested solutions by this moment. There is a caption "System testing:
-d
-%" on the page with solutions, where
-d
-is calculated as
-d=round(100⋅
-m
-n
-),
-m
-where
-round(x)=⌊x+0.5⌋
-is a function which maps every real to the nearest integer.
-Vasya calls a submission interesting if there is a time moment (possibly, non-integer) when the solution is being tested on some test
-q
-, and the caption says "System testing:
-q
-%". Find the number of interesting solutions.
-Please note that in case when multiple processes attempt to take the first submission from the queue at the same moment (for instance, at the initial moment), the order they take the solutions does not matter.
+≠
+b
+i
+).
+The blue numbers on the candies correspond to
+b
+i
+values. The image corresponds to the
+1
+-st example.
+The train has infinite capacity, and it is possible to load off any number of candies at a station. However, only at most one candy can be loaded from a station onto the train before it leaves the station. You can choose any candy at this station. The time it takes to move the candies is negligible.
+Now, Alice wonders how much time is needed for the train to deliver all candies. Your task is to find, for each station, the minimum time the train would need to deliver all the candies were it to start from there.
 Input
-The first line contains two positive integers
+The first line contains two space-separated integers
 n
 and
-k
+m
 (
-1≤n≤1000
-,
-1≤k≤100
-) standing for the number of submissions and the number of testing processes respectively.
-The second line contains
-n
-positive integers
+2≤n≤100
+;
+1≤m≤200
+) — the number of stations and the number of candies, respectively.
+The
+i
+-th of the following
+m
+lines contains two space-separated integers
 a
-1
-,
-a
-2
-,…,
-a
-n
+i
+and
+b
+i
 (
 1≤
 a
 i
-≤150
-), where
+,
+b
+i
+≤n
+;
 a
 i
-is equal to the number of tests the
+≠
+b
 i
--th submission is to be run on.
+) — the station that initially contains candy
+i
+and the destination station of the candy, respectively.
 Output
-Output the only integer — the number of interesting submissions.
+In the first and only line, print
+n
+space-separated integers, the
+i
+-th of which is the minimum time, in seconds, the train would need to deliver all the candies were it to start from station
+i
+.
 Examples
 input
 Copy
-2 2
-49 100
+5 7
+2 4
+5 1
+2 3
+3 4
+4 1
+5 3
+3 5
 output
 Copy
-1
+10 9 10 10 9 
 input
 Copy
-4 2
-32 100 33 1
+2 3
+1 2
+1 2
+1 2
 output
 Copy
-2
-input
-Copy
-14 5
-48 19 6 9 50 20 3 42 38 43 36 21 44 6
-output
-Copy
-5
+5 6 
 Note
-Consider the first example. At time moment
-0
-both solutions start testing. At time moment
-49
-the first solution is fully tested, so at time moment
-49.5
-the second solution is being tested on the test
-50
-, and the caption says "System testing:
-50
-%" (because there is one fully tested solution out of two). So, the second solution is interesting.
-Consider the second example. At time moment
-0
-the first and the second solutions start testing. At time moment
-32
-the first solution is fully tested, the third solution starts testing, the caption says "System testing:
-25
-%". At time moment
-32+24.5=56.5
-the third solutions is being tested on test
-25
-, the caption is still the same, thus this solution is interesting. After that the third solution is fully tested at time moment
-32+33=65
-, the fourth solution is fully tested at time moment
-65+1=66
-. The captions becomes "System testing:
-75
-%", and at time moment
-74.5
-the second solution is being tested on test
-75
-. So, this solution is also interesting. Overall, there are two interesting solutions.
+Consider the second sample.
+If the train started at station
+1
+, the optimal strategy is as follows.
+Load the first candy onto the train.
+Proceed to station
+2
+. This step takes
+1
+second.
+Deliver the first candy.
+Proceed to station
+1
+. This step takes
+1
+second.
+Load the second candy onto the train.
+Proceed to station
+2
+. This step takes
+1
+second.
+Deliver the second candy.
+Proceed to station
+1
+. This step takes
+1
+second.
+Load the third candy onto the train.
+Proceed to station
+2
+. This step takes
+1
+second.
+Deliver the third candy.
+Hence, the train needs
+5
+seconds to complete the tasks.
+If the train were to start at station
+2
+, however, it would need to move to station
+1
+before it could load the first candy, which would take one additional second. Thus, the answer in this scenario is
+5+1=6
+seconds.

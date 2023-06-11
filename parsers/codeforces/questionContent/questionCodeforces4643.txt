@@ -1,28 +1,35 @@
-C. Permutation Cycle
+E. Team Work
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-For a permutation P[1... N] of integers from 1 to N, function f is defined as follows:
-Let g(i) be the minimum positive integer j such that f(i, j) = i. We can show such j always exists.
-For given N, A, B, find a permutation P of integers from 1 to N such that for 1 ≤ i ≤ N, g(i) equals either A or B.
+You have a team of N people. For a particular task, you can pick any non-empty subset of people. The cost of having x people for the task is xk.
+Output the sum of costs over all non-empty subsets of people.
 Input
-The only line contains three integers N, A, B (1 ≤ N ≤ 106, 1 ≤ A, B ≤ N).
+Only line of input contains two integers N (1 ≤ N ≤ 109) representing total number of people and k (1 ≤ k ≤ 5000).
 Output
-If no such permutation exists, output -1. Otherwise, output a permutation of integers from 1 to N.
+Output the sum of costs for all non empty subsets modulo 109 + 7.
 Examples
 input
 Copy
-9 2 5
+1 1
 output
 Copy
-6 5 8 3 4 1 9 2 7
+1
 input
 Copy
-3 2 1
+3 2
 output
 Copy
-1 2 3 
+24
 Note
-In the first example, g(1) = g(6) = g(7) = g(9) = 2 and g(2) = g(3) = g(4) = g(5) = g(8) = 5
-In the second example, g(1) = g(2) = g(3) = 1
+In the first example, there is only one non-empty subset {1} with cost 11 = 1.
+In the second example, there are seven non-empty subsets.
+- {1} with cost 12 = 1
+- {2} with cost 12 = 1
+- {1, 2} with cost 22 = 4
+- {3} with cost 12 = 1
+- {1, 3} with cost 22 = 4
+- {2, 3} with cost 22 = 4
+- {1, 2, 3} with cost 32 = 9
+The total cost is 1 + 1 + 4 + 1 + 4 + 4 + 9 = 24.

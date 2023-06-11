@@ -1,44 +1,18 @@
-Fun with Rotation
+Money Transformation
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-You are given an array A of N integers. You are to fulfill M queries. Each query has one of the following three types:
-C d : Rotate the array A clockwise by d units.
-A d : Rotate the array A anticlockwise by d units.
-R d : Query for the value of the element, currently being the d-th in the array A.
+You are standing near a very strange machine. If you put C cents in the machine, the remaining money in your purse will transform in an unusual way. If you have A dollars and B cents remaining in your purse after depositing the C cents, then after the transformation you will have B dollars and A cents. You can repeat this procedure as many times as you want unless you don't have enough money for the machine. If at any point C > B and A > 0, then the machine will allow you to break one of the A dollars into 100 cents so you can place C cents in the machine. The machine will not allow you to exchange a dollar for 100 cents if B >= C.
+Of course, you want to do this to maximize your profit. For example if C=69 and you have 9 dollars and 77 cents then after you put 69 cents in the machine you will have 8 dollars and 9 cents (9.77 --> 9.08 --> 8.09). But I should warn you that you can't cheat. If you try to throw away 9 cents before the transformation (in order to obtain 99 dollars and 8 cents after), the machine will sense you are cheating and take away all of your money. You need to know how many times you should do this transformation in order to make a maximum profit. Since you are very busy man, you want to obtain the maximum possible profit in the minimum amount of time.
 Input
-The first line contains two numbers - N and M respectively.
-The next line contains N space separated Integers, denoting the array A.
-Each of the following M lines contains a query in the one of the forms described above.
+The first line contains a single integer T <= 40, the number of test cases. T test cases follow. The only line of each test case contains three nonnegative integers A, B and C where A, B, C < 100. It means that you have A dollars and B cents in your purse and you need to put C cents in the machine to make the transformation.
 Output
-For each query of type R output the answer on a separate line.
-Constraints
-1 ≤ N ≤ 100000
-1 ≤ M ≤ 100000
-1 ≤ d ≤ N, in all the queries
-1 ≤ elements of A ≤ 1000000
-The array A and the queries of the type R are 1-based.
-  Sample 1:
+For each test case, output a single line containing the minimal number of times you should do this transformation in order to make a maximal profit. It is guaranteed that the answer is less than 10000.
+Sample 1:
 Input
 Output
-5 5
-5 4 3 3 9
-R 1
-C 4
-R 5
-A 3
-R 2
-5
-3
-3
+2
+9 77 69
+98 99 69
+4
+0
 Explanation:
-The initial array : 5 4 3 3 9
-
-The answer for R 1 : 5
-
-The array after C 4 : 9 5 4 3 3
-
-The answer for R 5 : 3
-
-The array after A 3 : 4 3 3 9 5
-
-The answer for R 2 : 3
+In the first test we have the following sequence: 9.77, 8.09, 40.07, 38.39, 70.37, 68.69, 0.68. After last step we have not enough money for further transformations. The maximal profit will be after 4 transformations.

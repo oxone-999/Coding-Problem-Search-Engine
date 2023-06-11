@@ -1,140 +1,154 @@
-B. Block Towers
+C. Count Binary Strings
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-There are
+You are given an integer
 n
-block towers, numbered from
-1
-to
+. You have to calculate the number of binary (consisting of characters 0 and/or 1) strings
+s
+meeting the following constraints.
+For every pair of integers
+(i,j)
+such that
+1≤i≤j≤n
+, an integer
+a
+i,j
+is given. It imposes the following constraint on the string
+s
+i
+s
+i+1
+s
+i+2
+…
+s
+j
+:
+if
+a
+i,j
+=1
+, all characters in
+s
+i
+s
+i+1
+s
+i+2
+…
+s
+j
+should be the same;
+if
+a
+i,j
+=2
+, there should be at least two different characters in
+s
+i
+s
+i+1
+s
+i+2
+…
+s
+j
+;
+if
+a
+i,j
+=0
+, there are no additional constraints on the string
+s
+i
+s
+i+1
+s
+i+2
+…
+s
+j
+.
+Count the number of binary strings
+s
+of length
 n
-. The
-i
--th tower consists of
-a
-i
-blocks.
-In one move, you can move one block from tower
-i
-to tower
-j
-, but only if
-a
-i
->
-a
-j
-. That move increases
-a
-j
-by
-1
-and decreases
-a
-i
-by
-1
-. You can perform as many moves as you would like (possibly, zero).
-What's the largest amount of blocks you can have on the tower
-1
-after the moves?
+meeting the aforementioned constraints. Since the answer can be large, print it modulo
+998244353
+.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of testcases.
-The first line of each testcase contains a single integer
+The first line contains one integer
 n
 (
-2≤n≤2⋅
-10
-5
-) — the number of towers.
-The second line contains
+2≤n≤100
+).
+Then
 n
+lines follow. The
+i
+-th of them contains
+n−i+1
 integers
 a
-1
+i,i
 ,
 a
-2
+i,i+1
+,
+a
+i,i+2
 ,…,
 a
-n
+i,n
 (
-1≤
+0≤
 a
-i
-≤
-10
-9
-) — the number of blocks on each tower.
-The sum of
-n
-over all testcases doesn't exceed
-2⋅
-10
-5
-.
+i,j
+≤2
+).
 Output
-For each testcase, print the largest amount of blocks you can have on the tower
-1
-after you make any number of moves (possibly, zero).
-Example
+Print one integer — the number of strings meeting the constraints, taken modulo
+998244353
+.
+Examples
 input
 Copy
-4
 3
-1 2 3
-3
-1 2 2
-2
-1 1000000000
-10
-3 8 6 7 4 1 2 4 10 1
+1 0 2
+1 0
+1
 output
 Copy
+6
+input
+Copy
 3
+1 1 2
+1 0
+1
+output
+Copy
 2
-500000001
-9
+input
+Copy
+3
+1 2 1
+1 0
+1
+output
+Copy
+0
+input
+Copy
+3
+2 0 2
+0 1
+1
+output
+Copy
+0
 Note
-In the first testcase, you can move a block from tower
-2
-to tower
-1
-, making the block counts
-[2,1,3]
-. Then move a block from tower
-3
-to tower
-1
-, making the block counts
-[3,1,2]
-. Tower
-1
-has
-3
-blocks in it, and you can't obtain a larger amount.
-In the second testcase, you can move a block from any of towers
-2
-or
-3
-to tower
-1
-, so that it has
-2
-blocks in it.
-In the third testcase, you can
-500000000
-times move a block from tower
-2
-to tower
-1
-. After that the block countes will be
-[500000001,500000000]
-.
+In the first example, the strings meeting the constraints are 001, 010, 011, 100, 101, 110.
+In the second example, the strings meeting the constraints are 001, 110.

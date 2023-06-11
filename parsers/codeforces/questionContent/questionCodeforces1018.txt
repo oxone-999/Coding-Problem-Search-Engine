@@ -1,86 +1,224 @@
-F1. Promising String (easy version)
-time limit per test3 seconds
+A. Array Balancing
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the easy version of Problem F. The only difference between the easy version and the hard version is the constraints.
-We will call a non-empty string balanced if it contains the same number of plus and minus signs. For example: strings "+--+" and "++-+--" are balanced, and strings "+--", "--" and "" are not balanced.
-We will call a string promising if the string can be made balanced by several (possibly zero) uses of the following operation:
-replace two adjacent minus signs with one plus sign.
-In particular, every balanced string is promising. However, the converse is not true: not every promising string is balanced.
-For example, the string "-+---" is promising, because you can replace two adjacent minuses with plus and get a balanced string "-++-", or get another balanced string "-+-+".
-How many non-empty substrings of the given string
-s
-are promising? Each non-empty promising substring must be counted in the answer as many times as it occurs in string
-s
+You are given two arrays of length
+n
+:
+a
+1
+,
+a
+2
+,…,
+a
+n
+and
+b
+1
+,
+b
+2
+,…,
+b
+n
 .
-Recall that a substring is a sequence of consecutive characters of the string. For example, for string "+-+" its substring are: "+-", "-+", "+", "+-+" (the string is a substring of itself) and some others. But the following strings are not its substring: "--", "++", "-++".
+You can perform the following operation any number of times:
+Choose integer index
+i
+(
+1≤i≤n
+);
+Swap
+a
+i
+and
+b
+i
+.
+What is the minimum possible sum
+|
+a
+1
+−
+a
+2
+|+|
+a
+2
+−
+a
+3
+|+⋯+|
+a
+n−1
+−
+a
+n
+|
++
+|
+b
+1
+−
+b
+2
+|+|
+b
+2
+−
+b
+3
+|+⋯+|
+b
+n−1
+−
+b
+n
+|
+(in other words,
+∑
+i=1
+n−1
+(|
+a
+i
+−
+a
+i+1
+|+|
+b
+i
+−
+b
+i+1
+|)
+) you can achieve after performing several (possibly, zero) operations?
 Input
-The first line of the input contains an integer
+The first line contains a single integer
 t
 (
-1≤t≤500
-) —the number of test cases in the test.
-Then the descriptions of test cases follow.
-Each test case of input data consists of two lines. The first line consists of the number
+1≤t≤4000
+) — the number of test cases. Then,
+t
+test cases follow.
+The first line of each test case contains the single integer
 n
 (
-1≤n≤3000
-): the length of
-s
+2≤n≤25
+) — the length of arrays
+a
+and
+b
 .
-The second line of the test case contains the string
-s
-of length
+The second line of each test case contains
 n
-, consisting only of characters "+" and "-".
-It is guaranteed that the sum of values
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
-over all test cases does not exceed
-3000
+(
+1≤
+a
+i
+≤
+10
+9
+) — the array
+a
+.
+The third line of each test case contains
+n
+integers
+b
+1
+,
+b
+2
+,…,
+b
+n
+(
+1≤
+b
+i
+≤
+10
+9
+) — the array
+b
 .
 Output
-For each test case, print a single number: the number of the promising non-empty substrings of string
-s
-. Each non-empty promising substring must be counted in the answer as many times as it occurs in string
-s
+For each test case, print one integer — the minimum possible sum
+∑
+i=1
+n−1
+(|
+a
+i
+−
+a
+i+1
+|+|
+b
+i
+−
+b
+i+1
+|)
 .
 Example
 input
 Copy
-5
 3
-+-+
-5
--+---
 4
-----
-7
---+---+
+3 3 10 10
+10 10 3 3
+5
+1 2 3 4 5
+6 7 8 9 10
 6
-+++---
+72 101 108 108 111 44
+10 87 111 114 108 100
 output
 Copy
-2
-4
-2
-7
-4
+0
+8
+218
 Note
-The following are the promising substrings for the first three test cases in the example:
-s[1…2]
-="+-",
-s[2…3]
-="-+";
-s[1…2]
-="-+",
-s[2…3]
-="+-",
-s[1…5]
-="-+---",
-s[3…5]
-="---";
-s[1…3]
-="---",
-s[2…4]
-="---".
+In the first test case, we can, for example, swap
+a
+3
+with
+b
+3
+and
+a
+4
+with
+b
+4
+. We'll get arrays
+a=[3,3,3,3]
+and
+b=[10,10,10,10]
+with sum
+3⋅|3−3|+3⋅|10−10|=0
+.
+In the second test case, arrays already have minimum sum (described above) equal to
+|1−2|+⋯+|4−5|+|6−7|+⋯+|9−10|
+=4+4=8
+.
+In the third test case, we can, for example, swap
+a
+5
+and
+b
+5
+.

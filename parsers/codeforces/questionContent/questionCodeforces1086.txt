@@ -1,93 +1,99 @@
-A. Madoka and Math Dad
+C. Madoka and Childish Pranks
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Madoka finally found the administrator password for her computer. Her father is a well-known popularizer of mathematics, so the password is the answer to the following problem.
-Find the maximum decimal number without zeroes and with no equal digits in a row, such that the sum of its digits is
+Madoka as a child was an extremely capricious girl, and one of her favorite pranks was drawing on her wall. According to Madoka's memories, the wall was a table of
 n
+rows and
+m
+columns, consisting only of zeroes and ones. The coordinate of the cell in the
+i
+-th row and the
+j
+-th column (
+1≤i≤n
+,
+1≤j≤m
+) is
+(i,j)
 .
-Madoka is too tired of math to solve it herself, so help her to solve this problem!
+One day she saw a picture "Mahou Shoujo Madoka Magica" and decided to draw it on her wall. Initially, the Madoka's table is a table of size
+n×m
+filled with zeroes. Then she applies the following operation any number of times:
+Madoka selects any rectangular subtable of the table and paints it in a chess coloring (the upper left corner of the subtable always has the color
+0
+). Note that some cells may be colored several times. In this case, the final color of the cell is equal to the color obtained during the last repainting.
+White color means
+0
+, black means
+1
+. So, for example, the table in the first picture is painted in a chess coloring, and the others are not.
+For better understanding of the statement, we recommend you to read the explanation of the first test.
+Help Madoka and find some sequence of no more than
+n⋅m
+operations that allows you to obtain the picture she wants, or determine that this is impossible.
 Input
 Each test contains multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤1000
+1≤t≤10
 ) — the number of test cases. Description of the test cases follows.
-The only line of each test case contains an integer
+The first line of each test case contains two integers
 n
+and
+m
 (
-1≤n≤1000
-) — the required sum of the digits.
+1≤n,m≤100
+) — the size of the table. Each of the following
+n
+lines contains a string of length
+m
+consisting only of
+1
+and
+0
+ — description of the picture that Madoka wants to obtain.
 Output
-For each test case print the maximum number you can obtain.
+If it is impossible to obtain the given picture, print
+−1
+.
+Otherwise, print in the first line a single integer
+q
+(
+0≤q≤n⋅m
+) — the number of operations you need to obtain the picture. Note that you do not need to minimize the number of operations.
+Then for each operation (in the order of execution) print a single line containing four numbers — the coordinates of the upper-left corner and the lower-right corner of the rectangle.
 Example
 input
 Copy
-5
-1
-2
-3
 4
-5
+4 5
+01000
+10100
+01010
+00110
+2 3
+001
+010
+3 3
+110
+101
+000
+1 1
+0
 output
 Copy
+4
+1 1 3 3
+3 3 4 4
+4 3 4 4
+4 2 4 3
 1
-2
-21
-121
-212
+1 2 2 3
+-1
+0
 Note
-The only numbers with the sum of digits equal to
-2
-without zeros are
-2
-and
-11
-. But the last one has two ones in a row, so it's not valid. That's why the answer is
-2
-.
-The only numbers with the sum of digits equal to
-3
-without zeros are
-111
-,
-12
-,
-21
-, and
-3
-. The first one has
-2
-ones in a row, so it's not valid. So the maximum valid number is
-21
-.
-The only numbers with the sum of digits equals to
-4
-without zeros are
-1111
-,
-211
-,
-121
-,
-112
-,
-13
-,
-31
-,
-22
-, and
-4
-. Numbers
-1111
-,
-211
-,
-112
-,
-22
-aren't valid, because they have some identical digits in a row. So the maximum valid number is
-121
-.
+The description of the first test case is below.
+In the third test case, it is impossible to paint the desired picture.
+In the fourth test case, the initial table is already the desired picture.

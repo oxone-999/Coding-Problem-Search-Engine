@@ -1,109 +1,213 @@
-Servers
+Fat Hut
 Problem
-Read problem statements in Mandarin and Russian.
-Roger wants to start a cloud computing company. First, he went to some companies to promote his cloud computing system and
-N of them (numbered
-1 through
-N) showed interest. Each of these
-N clients has one task, which consists of a number of processes that needs to be executed every second. Let's denote the number of processes for the
-i-th client by
-D
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+There are
+N breakfasts in the restaurant “Fat Hut” where the Chef works. The
 i
-.
-Roger, happy to have a bunch of clients, went to buy a server for his system. Unfortunately, there are
-Q different servers on sale (numbered
-1 through
-Q), but Roger can only afford one. For each valid
-i, Roger knows that the
-i-th server's performance is described by two integers
+th
+breakfast has an attractiveness
+A
+i
+and cost
 C
 i
+.
+The Chef has noticed that nobody takes the
+j
+th
+breakfast if there exists at least one breakfast
+i such that
+A
+i
+≥A
+j
 and
-P
-i
-with the following meaning:
-Let's split a second into
-P
-i
-equal time segments.
-The server has
 C
 i
-cores. During each time segment, each core may execute a process or do nothing.
-During each second, each process must be executed exactly once ― by exactly one core during exactly one time segment.
-If two processes belong to the same task, they may not be executed by different cores during the same time segment due to synchronisation issues.
-Processes that belong to the same task do not have to be executed by the same core or in any particular order. They also do not have to be executed during contiguous time segments.
-Since tasks can be extreme sometimes, all the servers are equipped with a new technology named Exclusive Processing. Initially, we may choose one task which should run in exclusive processing mode (since it demands a lot of power). Then, instead of executing one process, each core may execute two processes belonging to this task during any time segment. Executing just one process belonging to this task during one time segment is also allowed. However, it is still not allowed for different cores to execute processes belonging to the same task during the same time segment.
-Now Roger needs your help. For each server, he wants to know the number of subsets of the
-N clients that can be served by this server. Since these numbers can be very large, compute them modulo
-987,654,319.
-Input
-The first line of the input contains two space-separated integers
-N and
-Q.
-The second line contains
-N space-separated integers
-D
-1
-,D
-2
-,…,D
-N
+<C
+j
 .
-Q lines follow. For each
-i (
-1≤i≤Q), the
-i-th of these lines contains two space-separated integers
+In other words, if a breakfast is less attractive and more expensive than any of the other dishes, then nobody is interested in that breakfast.
+The Chef will be happy if all the
+N breakfasts have a chance to be taken. Unfortunately, the Chef has no power over prices. On the other hand, he can change the attractiveness of some breakfasts by some real number. However, after the changes, the attractiveness of the
+i
+th
+breakfast must lie in the interval
+[L
+i
+,R
+i
+].
+He would also like to change the attractiveness of the minimum number of breakfasts. Help the Chef do it.
+Input Format
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+Each testcase contains
+N+1 lines of input.
+The first line of each test case contains a single integer
+N - number of breakfasts.
+N lines follow. For each valid
+i, the
+i
+th
+of these lines contains four space-separated integers
+A
+i
+,
 C
 i
-and
-P
+,
+L
 i
-.
-Output
-For each server, print a single line containing one integer ― the number of subsets it can serve modulo
-987,654,319.
+,
+R
+i
+- current attractiveness, cost, the minimal and maximal allowed attractiveness after change of
+i-th breakfast.
+Output Format
+For each test case, print in a single line containing one integer - minimum number of breakfasts the Chef should change so that all the
+N breakfasts have a chance to be taken. Print "-1"(without quotes) if it is impossible to achieve the goal.
 Constraints
-1≤N≤600
-1≤Q≤360,000
-1≤D
-i
-≤600 for each valid
-i
+1≤T≤100
+1≤N≤10
+5
 1≤C
 i
-≤600 for each valid
+≤10
+9
+for each valid
 i
-1≤P
+1≤L
 i
-≤360,000 for each valid
+≤A
 i
-Subtasks
-Subtask #1 (50 points):
-N,Q≤50
-D
+≤R
 i
-≤50 for each valid
+≤10
+9
+for each valid
 i
+The sum of
+N over all test cases does not exceed
+10
+5
+The initial
+A
+i
+-s are pairwise distinct
+The initial
 C
 i
-,P
+-s are pairwise distinct
+Subtasks
+Subtask 1 (5 points):
+1≤N≤10
+3
+L
 i
-≤50 for each valid
+=1 for each valid
 i
-Subtask #2 (50 points): original constraints
+R
+i
+=10
+9
+for each valid
+i
+1<A
+i
+<10
+9
+for each valid
+i
+Subtask 2 (10 points):
+L
+i
+=1 for each valid
+i
+R
+i
+=10
+9
+for each valid
+i
+1<A
+i
+<10
+9
+for each valid
+i
+Subtask 3 (10 points):
+1≤N≤10
+3
+R
+i
+=10
+9
+for each valid
+i
+A
+i
+<10
+9
+for each valid
+i
+Subtask 4 (20 points):
+R
+i
+=10
+9
+for each valid
+i
+A
+i
+<10
+9
+for each valid
+i
+Subtask 5 (20 points):
+1≤N≤10
+3
+Subtask 6 (35 points):
+Original constraints
 Sample 1:
 Input
 Output
-6 5
-8 2 5 3 6 2
-1 6
-2 4
-2 3
-4 1
-4 2
-19
-27
-16
-3
-8
+2
+4
+5 1 1 5
+4 4 2 5
+2 2 2 5
+3 3 2 5
+4
+5 1 2 5
+4 4 2 5
+2 2 2 5
+3 3 2 5
+1
+2
+Explanation:
+Test case
+1: Chef can change first breakfast's attractiveness to
+1. After that, all the
+3 breakfasts have a chance to be taken. So the answer is
+1.
+Test case
+2: Chef can change first breakfast's attractiveness to
+2 and third breakfast's attractiveness to
+2.5. There is no possible way to change the attractiveness of only one breakfast so that the condition is fulfilled. So the answer is
+2.
+Sample 2:
+Input
+Output
+1
+4
+1 1 1 1
+2 2 2 2
+3 3 3 3
+4 4 4 4
+0
+Explanation:
+Test case
+1: Everything is fine already, so Chef has no need to change anything, and the answer is
+0.

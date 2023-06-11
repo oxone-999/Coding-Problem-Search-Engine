@@ -1,128 +1,118 @@
-A. Reverse and Concatenate
+C. OKEA
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Real stupidity beats artificial intelligence every time.
-— Terry Pratchett, Hogfather, Discworld
-You are given a string
-s
-of length
-n
-and a number
-k
-. Let's denote by
-rev(s)
-the reversed string
-s
-(i.e.
-rev(s)=
-s
-n
-s
-n−1
-...
-s
+People worry that computers will get too smart and take over the world, but the real problem is that they're too stupid and they've already taken over the world.
+— Pedro Domingos
+You work for a well-known department store that uses leading technologies and employs mechanistic work — that is, robots!
+The department you work in sells
+n⋅k
+items. The first item costs
 1
-). You can apply one of the two kinds of operations to the string:
-replace the string
-s
-with
-s+rev(s)
-replace the string
-s
-with
-rev(s)+s
-How many different strings can you get as a result of performing exactly
-k
-operations (possibly of different kinds) on the original string
-s
-?
-In this statement we denoted the concatenation of strings
-s
-and
-t
-as
-s+t
-. In other words,
-s+t=
-s
-1
-s
+dollar, the second item costs
 2
-...
-s
+dollars, and so on:
+i
+-th item costs
+i
+dollars. The items are situated on shelves. The items form a rectangular grid: there are
 n
-t
-1
-t
-2
-...
-t
-m
-, where
-n
-and
-m
-are the lengths of strings
-s
-and
-t
-respectively.
-Input
-The first line contains one integer
-t
-(
-1≤t≤100
-) — number of test cases. Next
-2⋅t
-lines contain
-t
-test cases:
-The first line of a test case contains two integers
-n
-and
+shelves in total, and each shelf contains exactly
 k
-(
-1≤n≤100
+items. We will denote by
+a
+i,j
+the price of
+j
+-th item (counting from the left) on the
+i
+-th shelf,
+1≤i≤n,1≤j≤k
+.
+Occasionally robots get curious and ponder on the following question: what is the mean price (arithmetic average) of items
+a
+i,l
 ,
-0≤k≤1000
-) — the length of the string and the number of operations respectively.
-The second string of a test case contains one string
-s
-of length
+a
+i,l+1
+,…,
+a
+i,r
+for some shelf
+i
+and indices
+l≤r
+? Unfortunately, the old robots can only work with whole numbers. If the mean price turns out not to be an integer, they break down.
+You care about robots' welfare. You want to arrange the items in such a way that the robots cannot theoretically break. Formally, you want to choose such a two-dimensional array
+a
+that:
+Every number from
+1
+to
+n⋅k
+(inclusively) occurs exactly once.
+For each
+i,l,r
+, the mean price of items from
+l
+to
+r
+on
+i
+-th shelf is an integer.
+Find out if such an arrangement is possible, and if it is, give any example of such arrangement.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤500
+) — the number of test cases.
+The first and only line of each test case contains two integers
 n
-consisting of lowercase Latin letters.
-Output
-For each test case, print the answer (that is, the number of different strings that you can get after exactly
+and
 k
-operations) on a separate line.
-It can be shown that the answer does not exceed
-10
-9
-under the given constraints.
+(
+1≤n,k≤500
+) — the number of shelves and length of each shelf, respectively.
+It is guaranteed that the sum
+n
+over all test cases does not exceed
+500
+and the sum
+k
+over all test cases does not exceed
+500
+.
+Output
+Print the answer for each test case.
+If such an arrangement exists, print "YES" on a single line. After that, print any example on
+n
+lines of
+k
+numbers each, one line per shelf. Each number from
+1
+to
+n⋅k
+must occur exactly once in the output.
+If no good arrangement exists, print a single word "NO" on its own line.
 Example
 input
 Copy
 4
-3 2
-aab
+1 1
+2 2
 3 3
-aab
-7 1
-abacaba
-2 0
-ab
+3 1
 output
 Copy
-2
-2
-1
-1
-Note
-In the first test case of the example:
-After the first operation the string
-s
-can become either aabbaa or baaaab. After the second operation there are 2 possibilities for
-s
-: aabbaaaabbaa and baaaabbaaaab.
+YES
+1 
+YES
+1 3 
+2 4 
+NO
+YES
+1 
+2 
+3 

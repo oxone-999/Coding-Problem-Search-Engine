@@ -1,45 +1,106 @@
-B. Game with string
+A. Salem and Sticks
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Two people are playing a game with a string
-s
-, consisting of lowercase latin letters.
-On a player's turn, he should choose two consecutive equal letters in the string and delete them.
-For example, if the string is equal to "xaax" than there is only one possible turn: delete "aa", so the string will become "xx". A player not able to make a turn loses.
-Your task is to determine which player will win if both play optimally.
-Input
-The only line contains the string
-s
-, consisting of lowercase latin letters (
-1≤|s|≤100000
-), where
-|s|
-means the length of a string
-s
+Salem gave you
+n
+sticks with integer positive lengths
+a
+1
+,
+a
+2
+,…,
+a
+n
 .
+For every stick, you can change its length to any other positive integer length (that is, either shrink or stretch it). The cost of changing the stick's length from
+a
+to
+b
+is
+|a−b|
+, where
+|x|
+means the absolute value of
+x
+.
+A stick length
+a
+i
+is called almost good for some integer
+t
+if
+|
+a
+i
+−t|≤1
+.
+Salem asks you to change the lengths of some sticks (possibly all or none), such that all sticks' lengths are almost good for some positive integer
+t
+and the total cost of changing is minimum possible. The value of
+t
+is not fixed in advance and you can choose it as any positive integer.
+As an answer, print the value of
+t
+and the minimum cost. If there are multiple optimal choices for
+t
+, print any of them.
+Input
+The first line contains a single integer
+n
+(
+1≤n≤1000
+) — the number of sticks.
+The second line contains
+n
+integers
+a
+i
+(
+1≤
+a
+i
+≤100
+) — the lengths of the sticks.
 Output
-If the first player wins, print "Yes". If the second player wins, print "No".
+Print the value of
+t
+and the minimum possible cost. If there are multiple optimal choices for
+t
+, print any of them.
 Examples
 input
 Copy
-abacaba
+3
+10 1 4
 output
 Copy
-No
+3 7
 input
 Copy
-iiq
+5
+1 1 2 2 3
 output
 Copy
-Yes
-input
-Copy
-abba
-output
-Copy
-No
+2 0
 Note
-In the first example the first player is unable to make a turn, so he loses.
-In the second example first player turns the string into "q", then second player is unable to move, so he loses.
+In the first example, we can change
+1
+into
+2
+and
+10
+into
+4
+with cost
+|1−2|+|10−4|=1+6=7
+and the resulting lengths
+[2,4,4]
+are almost good for
+t=3
+.
+In the second example, the sticks lengths are already almost good for
+t=2
+, so we don't have to do anything.

@@ -1,118 +1,175 @@
-A. NEKO's Maze Game
-time limit per test1.5 seconds
-memory limit per test256 megabytes
+D. Chaotic V.
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-3R2 as DJ Mashiro - Happiness Breeze
-Ice - DJ Mashiro is dead or alive
-NEKO#ΦωΦ has just got a new maze game on her PC!
-The game's main puzzle is a maze, in the forms of a
-2×n
-rectangle grid. NEKO's task is to lead a Nekomimi girl from cell
-(1,1)
-to the gate at
-(2,n)
-and escape the maze. The girl can only move between cells sharing a common side.
-However, at some moments during the game, some cells may change their state: either from normal ground to lava (which forbids movement into that cell), or vice versa (which makes that cell passable again). Initially all cells are of the ground type.
-After hours of streaming, NEKO finally figured out there are only
-q
-such moments: the
-i
--th moment toggles the state of cell
+Æsir - CHAOS
+Æsir - V.
+"Everything has been planned out. No more hidden concerns. The condition of Cytus is also perfect.
+The time right now...... 00:01:12......
+It's time."
+The emotion samples are now sufficient. After almost 3 years, it's time for Ivy to awake her bonded sister, Vanessa.
+The system inside A.R.C.'s Library core can be considered as an undirected graph with infinite number of processing nodes, numbered with all positive integers (
+1,2,3,…
+). The node with a number
+x
 (
-r
-i
-,
-c
-i
-)
-(either from ground to lava or vice versa).
-Knowing this, NEKO wonders, after each of the
-q
-moments, whether it is still possible to move from cell
-(1,1)
-to cell
-(2,n)
-without going through any lava cells.
-Although NEKO is a great streamer and gamer, she still can't get through quizzes and problems requiring large amount of Brain Power. Can you help her?
-Input
-The first line contains integers
+x>1
+), is directly connected with a node with number
+x
+f(x)
+, with
+f(x)
+being the lowest prime divisor of
+x
+.
+Vanessa's mind is divided into
 n
-,
-q
-(
-2≤n≤
-10
-5
-,
-1≤q≤
-10
-5
+fragments. Due to more than 500 years of coma, the fragments have been scattered: the
+i
+-th fragment is now located at the node with a number
+k
+i
+!
+(a factorial of
+k
+i
 ).
-The
-i
--th of
-q
-following lines contains two integers
-r
-i
-,
-c
-i
+To maximize the chance of successful awakening, Ivy decides to place the samples in a node
+P
+, so that the total length of paths from each fragment to
+P
+is smallest possible. If there are multiple fragments located at the same node, the path from that node to
+P
+needs to be counted multiple times.
+In the world of zeros and ones, such a requirement is very simple for Ivy. Not longer than a second later, she has already figured out such a node.
+But for a mere human like you, is this still possible?
+For simplicity, please answer the minimal sum of paths' lengths from every fragment to the emotion samples' assembly node
+P
+.
+Input
+The first line contains an integer
+n
 (
-1≤
-r
-i
-≤2
+1≤n≤
+10
+6
+) — number of fragments of Vanessa's mind.
+The second line contains
+n
+integers:
+k
+1
 ,
-1≤
-c
+k
+2
+,…,
+k
+n
+(
+0≤
+k
 i
-≤n
-), denoting the coordinates of the cell to be flipped at the
+≤5000
+), denoting the nodes where fragments of Vanessa's mind are located: the
 i
--th moment.
-It is guaranteed that cells
-(1,1)
-and
-(2,n)
-never appear in the query list.
+-th fragment is at the node with a number
+k
+i
+!
+.
 Output
-For each moment, if it is possible to travel from cell
-(1,1)
-to cell
-(2,n)
-, print "Yes", otherwise print "No". There should be exactly
-q
-answers, one after every update.
-You can print the words in any case (either lowercase, uppercase or mixed).
-Example
+Print a single integer, denoting the minimal sum of path from every fragment to the node with the emotion samples (a.k.a. node
+P
+).
+As a reminder, if there are multiple fragments at the same node, the distance from that node to
+P
+needs to be counted multiple times as well.
+Examples
 input
 Copy
-5 5
-2 3
-1 4
-2 4
-2 3
-1 4
+3
+2 1 4
 output
 Copy
-Yes
-No
-No
-No
-Yes
-Note
-We'll crack down the example test here:
-After the first query, the girl still able to reach the goal. One of the shortest path ways should be:
-(1,1)→(1,2)→(1,3)→(1,4)→(1,5)→(2,5)
-.
-After the second query, it's impossible to move to the goal, since the farthest cell she could reach is
-(1,3)
-.
-After the fourth query, the
-(2,3)
-is not blocked, but now all the
+5
+input
+Copy
 4
--th column is blocked, so she still can't reach the goal.
-After the fifth query, the column barrier has been lifted, thus she can go to the final goal again.
+3 1 4 4
+output
+Copy
+6
+input
+Copy
+4
+3 1 4 1
+output
+Copy
+6
+input
+Copy
+5
+3 1 4 1 5
+output
+Copy
+11
+Note
+Considering the first
+24
+nodes of the system, the node network will look as follows (the nodes
+1!
+,
+2!
+,
+3!
+,
+4!
+are drawn bold):
+For the first example, Ivy will place the emotion samples at the node
+1
+. From here:
+The distance from Vanessa's first fragment to the node
+1
+is
+1
+.
+The distance from Vanessa's second fragment to the node
+1
+is
+0
+.
+The distance from Vanessa's third fragment to the node
+1
+is
+4
+.
+The total length is
+5
+.
+For the second example, the assembly node will be
+6
+. From here:
+The distance from Vanessa's first fragment to the node
+6
+is
+0
+.
+The distance from Vanessa's second fragment to the node
+6
+is
+2
+.
+The distance from Vanessa's third fragment to the node
+6
+is
+2
+.
+The distance from Vanessa's fourth fragment to the node
+6
+is again
+2
+.
+The total path length is
+6
+.

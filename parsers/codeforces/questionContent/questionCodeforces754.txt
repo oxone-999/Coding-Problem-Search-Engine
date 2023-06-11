@@ -1,200 +1,155 @@
-A. Two 0-1 Sequences
+C. Virus
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-AquaMoon has two binary sequences
-a
-and
-b
-, which contain only
-0
-and
+There are
+n
+houses numbered from
 1
-. AquaMoon can perform the following two operations any number of times (
-a
-1
-is the first element of
-a
-,
-a
-2
-is the second element of
-a
-, and so on):
-Operation 1: if
-a
-contains at least two elements, change
-a
-2
 to
-min(
-a
+n
+on a circle. For each
+1≤i≤n−1
+, house
+i
+and house
+i+1
+are neighbours; additionally, house
+n
+and house
 1
-,
-a
-2
-)
-, and remove the first element of
-a
-.
-Operation 2: if
-a
-contains at least two elements, change
-a
-2
-to
-max(
-a
-1
-,
-a
-2
-)
-, and remove the first element of
-a
-.
-Note that after a removal of the first element of
-a
-, the former
-a
-2
-becomes the first element of
-a
-, the former
-a
-3
-becomes the second element of
-a
-and so on, and the length of
-a
-reduces by one.
-Determine if AquaMoon can make
-a
-equal to
-b
-by using these operations.
+are also neighbours.
+Initially,
+m
+of these
+n
+houses are infected by a deadly virus. Each morning, Cirno can choose a house which is uninfected and protect the house from being infected permanently.
+Every day, the following things happen in order:
+Cirno chooses an uninfected house, and protect it permanently.
+All uninfected, unprotected houses which have at least one infected neighbor become infected.
+Cirno wants to stop the virus from spreading. Find the minimum number of houses that will be infected in the end, if she optimally choose the houses to protect.
+Note that every day Cirno always chooses a house to protect before the virus spreads. Also, a protected house will not be infected forever.
 Input
-The first line contains a single integer
+The input consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤2000
+1≤t≤
+10
+4
 ) — the number of test cases. Description of test cases follows.
-The first line of each test case contains two integers
-n
+The first line of each test case consists of two positive integers
+n,m
+(
+5≤n≤
+10
+9
 ,
+1≤m≤min(n,
+10
+5
+)
+) — the number of houses on the circle, and the number of houses that are initially infected.
+The second line of each test case consists of
+m
+distinct positive integers
+a
+1
+,
+a
+2
+,⋯,
+a
 m
 (
-1≤n,m≤50
-,
-m≤n
-) — the lengths of
+1≤
 a
-and
-b
-respectively.
-The second line of each test case contains a string
-a
-of length
-n
-, consisting only
-0
-and
-1
-.
-The third line of each test case contains a string
-b
-of length
+i
+≤n
+) — the indices of the houses infected initially.
+It is guaranteed that the sum of
 m
-, consisting only
-0
-and
-1
+over all test cases does not exceed
+10
+5
 .
 Output
-For each test case, output "YES" if AquaMoon can change
-a
-to
-b
-by using these options; otherwise, output "NO".
-You may print each letter in any case (for example, "YES", "Yes", "yes", "yEs" will all be recognized as a positive answer).
+For each test case, output an integer on a separate line, which is the minimum number of infected houses in the end.
 Example
 input
 Copy
-10
+8
+10 3
+3 6 8
 6 2
-001001
-11
-6 2
-110111
-01
-6 2
-000001
-11
-6 2
-111111
-01
-8 5
-10000101
-11010
-7 4
-1010001
-1001
-8 6
-01010010
-010010
-8 4
-01010101
-1001
-8 4
-10101010
-0110
-7 5
-1011100
-11100
+2 5
+20 3
+3 7 12
+41 5
+1 11 21 31 41
+10 5
+2 4 6 8 10
+5 5
+3 2 5 4 1
+1000000000 1
+1
+1000000000 4
+1 1000000000 10 16
 output
 Copy
-YES
-YES
-NO
-NO
-NO
-YES
-YES
-NO
-NO
-YES
+7
+5
+11
+28
+9
+5
+2
+15
 Note
-In the first test case, you can use Operation 2 four times to make
-a
-equals to
-b
-.
-In the second test case, you can use Operation 1 four times to make
-a
-equals to
-b
-.
-In the third test case, it can be proved that no matter how we use the operations, it is impossible to make
-a
-equal to
-b
-.
-In the fourth test case, it can be proved that no matter how we use the operations, it is impossible to make
-a
-equal to
-b
-.
-In the fifth test case, you can use Operation 2 three times to make
-a
-become
-10101
-, so the first element of
-a
-equals to the first element of
-b
-, but it can be proved that no matter how to operate, the second to the fifth elements of
-a
-can't be the same as
-b
-.
+In the first test case:
+At the start of the first day, house
+3
+,
+6
+,
+8
+are infected. Choose house
+2
+to protect.
+At the start of the second day, house
+3
+,
+4
+,
+5
+,
+6
+,
+7
+,
+8
+,
+9
+are infected. Choose house
+10
+to protect.
+At the start of the third day, no more houses are infected.
+In the second test case:
+At the start of the first day, house
+2
+,
+5
+are infected. Choose house
+1
+to protect.
+At the start of the second day, house
+2
+,
+3
+,
+4
+,
+5
+,
+6
+are infected. No more available houses can be protected.

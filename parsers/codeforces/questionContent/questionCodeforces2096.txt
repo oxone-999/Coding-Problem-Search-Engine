@@ -1,123 +1,121 @@
-D. Number into Sequence
-time limit per test3 seconds
+A. Strange Functions
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer
-n
+Let's define a function
+f(x)
 (
-n>1
-).
-Your task is to find a sequence of integers
-a
-1
+x
+is a positive integer) as follows: write all digits of the decimal representation of
+x
+backwards, then get rid of the leading zeroes. For example,
+f(321)=123
 ,
-a
-2
-,…,
-a
-k
-such that:
-each
-a
-i
-is strictly greater than
-1
-;
-a
-1
-⋅
-a
-2
-⋅…⋅
-a
-k
-=n
-(i. e. the product of this sequence is
-n
-);
-a
-i+1
-is divisible by
-a
-i
-for each
-i
-from
-1
-to
-k−1
-;
-k
-is the maximum possible (i. e. the length of this sequence is the maximum possible).
-If there are several such sequences, any of them is acceptable. It can be proven that at least one valid sequence always exists for any integer
-n>1
+f(120)=21
+,
+f(1000000)=1
+,
+f(111)=111
 .
-You have to answer
-t
-independent test cases.
+Let's define another function
+g(x)=
+x
+f(f(x))
+(
+x
+is a positive integer as well).
+Your task is the following: for the given positive integer
+n
+, calculate the number of different values of
+g(x)
+among all numbers
+x
+such that
+1≤x≤n
+.
 Input
-The first line of the input contains one integer
+The first line contains one integer
 t
 (
-1≤t≤5000
-) — the number of test cases. Then
-t
-test cases follow.
-The only line of the test case contains one integer
+1≤t≤100
+) — the number of test cases.
+Each test case consists of one line containing one integer
 n
 (
-2≤n≤
+1≤n<
 10
-10
-).
-It is guaranteed that the sum of
-n
-does not exceed
-10
-10
-(
-∑n≤
-10
-10
-).
+100
+). This integer is given without leading zeroes.
 Output
-For each test case, print the answer: in the first line, print one positive integer
-k
-— the maximum possible length of
-a
-. In the second line, print
-k
-integers
-a
-1
-,
-a
-2
-,…,
-a
-k
-— the sequence of length
-k
-satisfying the conditions from the problem statement.
-If there are several answers, you can print any. It can be proven that at least one valid sequence always exists for any integer
-n>1
+For each test case, print one integer — the number of different values of the function
+g(x)
+, if
+x
+can be any integer from
+[1,n]
 .
 Example
 input
 Copy
+5
 4
-2
-360
-4999999937
-4998207083
+37
+998244353
+1000000007
+12345678901337426966631415
 output
 Copy
 1
-2 
-3
-2 2 90 
-1
-4999999937 
-1
-4998207083 
+2
+9
+10
+26
+Note
+Explanations for the two first test cases of the example:
+if
+n=4
+, then for every integer
+x
+such that
+1≤x≤n
+,
+x
+f(f(x))
+=1
+;
+if
+n=37
+, then for some integers
+x
+such that
+1≤x≤n
+,
+x
+f(f(x))
+=1
+(for example, if
+x=23
+,
+f(f(x))=23
+,
+x
+f(f(x))
+=1
+); and for other values of
+x
+,
+x
+f(f(x))
+=10
+(for example, if
+x=30
+,
+f(f(x))=3
+,
+x
+f(f(x))
+=10
+). So, there are two different values of
+g(x)
+.

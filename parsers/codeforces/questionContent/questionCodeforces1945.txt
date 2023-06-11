@@ -1,104 +1,117 @@
-A. Shifting Stacks
+C1. Guessing the Greatest (easy version)
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have
+The only difference between the easy and the hard version is the limit to the number of queries.
+This is an interactive problem.
+There is an array
+a
+of
 n
-stacks of blocks. The
-i
--th stack contains
-h
-i
-blocks and it's height is the number of blocks in it. In one move you can take a block from the
-i
--th stack (if there is at least one block) and put it to the
-i+1
--th stack. Can you make the sequence of heights strictly increasing?
-Note that the number of stacks always remains
-n
-: stacks don't disappear when they have
-0
-blocks.
+different numbers. In one query you can ask the position of the second maximum element in a subsegment
+a[l..r]
+. Find the position of the maximum element in the array in no more than 40 queries.
+A subsegment
+a[l..r]
+is all the elements
+a
+l
+,
+a
+l+1
+,...,
+a
+r
+. After asking this subsegment you will be given the position of the second maximum from this subsegment in the whole array.
 Input
-First line contains a single integer
-t
-(1≤t≤
-10
-4
-)
-— the number of test cases.
-The first line of each test case contains a single integer
+The first line contains a single integer
 n
-(1≤n≤100)
-. The second line of each test case contains
+(2≤n≤
+10
+5
+)
+— the number of elements in the array.
+Interaction
+You can ask queries by printing "?
+l
+r
+"
+(1≤l<r≤n)
+. The answer is the index of the second maximum of all elements
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+. Array
+a
+is fixed beforehand and can't be changed in time of interaction.
+You can output the answer by printing "!
+p
+", where
+p
+is the index of the maximum element in the array.
+You can ask no more than 40 queries. Printing the answer doesn't count as a query.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages
+Hacks
+To make a hack, use the following test format.
+In the first line output a single integer
+n
+(2≤n≤
+10
+5
+)
+. In the second line output a permutation of
 n
 integers
-h
-i
-(0≤
-h
-i
-≤
-10
-9
-)
-— starting heights of the stacks.
-It's guaranteed that the sum of all
+1
+to
 n
-does not exceed
-10
-4
-.
-Output
-For each test case output YES if you can make the sequence of heights strictly increasing and NO otherwise.
-You may print each letter in any case (for example, YES, Yes, yes, yEs will all be recognized as positive answer).
+. The position of
+n
+in the permutation is the position of the maximum
 Example
 input
 Copy
-6
-2
-1 2
-2
-1 0
+5
+
 3
-4 4 4
-2
-0 0
-3
-0 1 0
+
 4
-1000000000 1000000000 1000000000 1000000000
 output
 Copy
-YES
-YES
-YES
-NO
-NO
-YES
+? 1 5
+
+? 4 5
+
+! 1
 Note
-In the first test case there is no need to make any moves, the sequence of heights is already increasing.
-In the second test case we need to move one block from the first stack to the second. Then the heights become
-0
-1
-.
-In the third test case we could move one block from the first stack to the second and then from the second to the third, which would make the heights
-3
+In the sample suppose
+a
+is
+[5,1,4,2,3]
+. So after asking the
+[1..5]
+subsegment
 4
-5
+is second to max value, and it's position is
+3
+. After asking the
+[4..5]
+subsegment
+2
+is second to max value and it's position in the whole array is
+4
 .
-In the fourth test case we can't make a move, but the sequence is not increasing, so the answer is NO.
-In the fifth test case we can only make one move (from the second to the third stack), which would make the heights
-0
-0
-1
-. Both
-0
-1
-0
-and
-0
-0
-1
-are not increasing sequences, so the answer is NO.
+Note that there are other arrays
+a
+that would produce the same interaction, and the answer for them might be different. Example output is given in purpose of understanding the interaction.

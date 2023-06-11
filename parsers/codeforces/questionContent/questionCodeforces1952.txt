@@ -1,99 +1,170 @@
-H. Exam
+B. Replace and Keep Sorted
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This year a Chunin Selection Exam is held again in Konoha, and taking part in it are
+Given a positive integer
+k
+, two arrays are called
+k
+-similar if:
+they are strictly increasing;
+they have the same length;
+all their elements are positive integers between
+1
+and
+k
+(inclusive);
+they differ in exactly one position.
+You are given an integer
+k
+, a strictly increasing array
+a
+and
+q
+queries. For each query, you are given two integers
+l
+i
+≤
+r
+i
+. Your task is to find how many arrays
+b
+exist, such that
+b
+is
+k
+-similar to array
+[
+a
+l
+i
+,
+a
+l
+i
++1
+…,
+a
+r
+i
+]
+.
+Input
+The first line contains three integers
 n
-ninjas named
-s
+,
+q
+and
+k
+(
+1≤n,q≤
+10
+5
+,
+n≤k≤
+10
+9
+) — the length of array
+a
+, the number of queries and number
+k
+.
+The second line contains
+n
+integers
+a
 1
 ,
-s
+a
 2
-, ...,
-s
-n
-. All names are distinct. One of the exam stages consists of fights between the participants. This year the rules determining the ninjas for each fight are the following: ninjas
-i
-and
-j
-fight against each other if the following conditions are held:
-i≠j
-;
-s
-j
-is a substring of
-s
-i
-;
-there is no
-k
-except
-i
-and
-j
-that
-s
-j
-is a substring of
-s
-k
-, and
-s
-k
-is a substring of
-s
-i
-.
-A string
+,…,
 a
-is a substring of a string
-b
-if
-a
-can be obtained from
-b
-by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
-Your task is to find out how many fights are going to take place this year.
-Input
-The first line consists of the only integer
 n
 (
-1≤n≤
-10
-6
-) standing for the number of examinees.
-The following
+1≤
+a
+i
+≤k
+). This array is strictly increasing  —
+a
+1
+<
+a
+2
+<…<
+a
 n
-lines contain their names. No two names coincide, all names are non-empty and consist of lowercase English letters. The total length of all names doesn't exceed
-10
-6
 .
+Each of the following
+q
+lines contains two integers
+l
+i
+,
+r
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤n
+).
 Output
-Print the only integer standing for the number of fights.
+Print
+q
+lines. The
+i
+-th of them should contain the answer to the
+i
+-th query.
 Examples
 input
 Copy
-5
-hidan
-dan
-hanabi
-bi
-nabi
+4 2 5
+1 2 4 5
+2 3
+3 4
 output
 Copy
+4
 3
 input
 Copy
-4
-abacaba
-abaca
-acaba
-aca
+6 5 10
+2 4 6 7 8 9
+1 4
+1 2
+3 5
+1 6
+5 5
 output
 Copy
-4
+8
+9
+7
+6
+9
 Note
-In the first example hidan fights against dan, and hanabi fights against nabi, who also fights bi. Ninjas named hanabi and bi don't fight each other since there is the ninja called nabi who breaks the third condition for them.
-In the second example the fights are held between abacaba and acaba, abacaba and abaca, acaba and aca, abaca and aca.
+In the first example:
+In the first query there are
+4
+arrays that are
+5
+-similar to
+[2,4]
+:
+[1,4],[3,4],[2,3],[2,5]
+.
+In the second query there are
+3
+arrays that are
+5
+-similar to
+[4,5]
+:
+[1,5],[2,5],[3,5]
+.

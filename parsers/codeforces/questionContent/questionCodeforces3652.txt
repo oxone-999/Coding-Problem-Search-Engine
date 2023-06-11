@@ -1,109 +1,153 @@
-D. Abandoning Roads
-time limit per test5 seconds
-memory limit per test512 megabytes
+E. Election Promises
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Codefortia is a small island country located somewhere in the West Pacific. It consists of
+In Byteland, there are two political parties fighting for seats in the Parliament in the upcoming elections: Wrong Answer Party and Time Limit Exceeded Party. As they want to convince as many citizens as possible to cast their votes on them, they keep promising lower and lower taxes.
+There are
 n
-settlements connected by
+cities in Byteland, connected by
 m
-bidirectional gravel roads. Curiously enough, the beliefs of the inhabitants require the time needed to pass each road to be equal either to
-a
-or
-b
-seconds. It's guaranteed that one can go between any pair of settlements by following a sequence of roads.
-Codefortia was recently struck by the financial crisis. Therefore, the king decided to abandon some of the roads so that:
-it will be possible to travel between each pair of cities using the remaining roads only,
-the sum of times required to pass each remaining road will be minimum possible (in other words, remaining roads must form minimum spanning tree, using the time to pass the road as its weight),
-among all the plans minimizing the sum of times above, the time required to travel between the king's residence (in settlement
-1
-) and the parliament house (in settlement
-p
-) using the remaining roads only will be minimum possible.
-The king, however, forgot where the parliament house was. For each settlement
-p=1,2,…,n
-, can you tell what is the minimum time required to travel between the king's residence and the parliament house (located in settlement
-p
-) after some roads are abandoned?
+one-way roads. Interestingly enough, the road network has no cycles — it's impossible to start in any city, follow a number of roads, and return to that city. Last year, citizens of the
+i
+-th city had to pay
+h
+i
+bourles of tax.
+Parties will now alternately hold the election conventions in various cities. If a party holds a convention in city
+v
+, the party needs to decrease the taxes in this city to a non-negative integer amount of bourles. However, at the same time they can arbitrarily modify the taxes in each of the cities that can be reached from
+v
+using a single road. The only condition that must be fulfilled that the tax in each city has to remain a non-negative integer amount of bourles.
+The first party to hold the convention is Wrong Answer Party. It's predicted that the party to hold the last convention will win the election. Can Wrong Answer Party win regardless of Time Limit Exceeded Party's moves?
 Input
-The first line of the input contains four integers
+The first line of the input contains two integers
 n
 ,
 m
-,
-a
-and
-b
 (
-2≤n≤70
+1≤n≤200000
 ,
-n−1≤m≤200
+0≤m≤200000
+) — the number of cities and roads in Byteland.
+The next line contains
+n
+space-separated integers
+h
+1
 ,
-1≤a<b≤
+h
+2
+,…,
+h
+n
+(
+0≤
+h
+i
+≤
 10
-7
-) — the number of settlements and gravel roads in Codefortia, and two possible travel times. Each of the following lines contains three integers
-u,v,c
-(
+9
+);
+h
+i
+denotes the amount of taxes paid in the
+i
+-th city.
+Each of the following
+m
+lines contains two integers (
 1≤u,v≤n
 ,
 u≠v
-,
-c∈{a,b}
-) denoting a single gravel road between the settlements
+), and describes a one-way road leading from the city
 u
-and
+to the city
 v
-, which requires
-c
-minutes to travel.
-You can assume that the road network is connected and has no loops or multiedges.
+. There will be no cycles in the road network. No two roads will connect the same pair of cities.
+We can show that the conventions cannot be held indefinitely for any correct test case.
 Output
-Output a single line containing
+If Wrong Answer Party can win the election, output WIN in the first line of your output. In this case, you're additionally asked to produce any convention allowing the party to win regardless of the opponent's actions. The second line should contain
 n
-integers. The
-p
--th of them should denote the minimum possible time required to travel from
+non-negative integers
+h
+′
 1
-to
-p
-after the selected roads are abandoned. Note that for each
-p
-you can abandon a different set of roads.
+,
+h
+′
+2
+,…,
+h
+′
+n
+(
+0≤
+h
+′
+i
+≤2⋅
+10
+18
+) describing the amount of taxes paid in consecutive cities after the convention. If there are multiple answers, output any. We guarantee that if the party has any winning move, there exists a move after which no city has to pay more than
+2⋅
+10
+18
+bourles.
+If the party cannot assure their victory, output LOSE in the first and only line of the output.
 Examples
 input
 Copy
-5 5 20 25
-1 2 25
-2 3 25
-3 4 20
-4 5 20
-5 1 20
+4 2
+2 1 1 5
+1 2
+3 4
 output
 Copy
-0 25 60 40 20
+WIN
+1 5 1 5 
 input
 Copy
-6 7 13 22
-1 2 13
-2 3 13
-1 4 22
-3 4 13
-4 5 13
-5 6 13
-6 1 13
+4 2
+1 5 1 5
+1 2
+3 4
 output
 Copy
-0 13 26 39 26 13
+LOSE
+input
+Copy
+3 3
+314 159 265
+1 2
+1 3
+3 2
+output
+Copy
+WIN
+0 0 0 
+input
+Copy
+6 4
+2 2 5 5 6 6
+1 3
+2 4
+3 5
+4 6
+output
+Copy
+LOSE
 Note
-The minimum possible sum of times required to pass each road in the first example is
-85
-— exactly one of the roads with passing time
-25
-must be abandoned. Note that after one of these roads is abandoned, it's now impossible to travel between settlements
+In the first example, Wrong Answer Party should hold the convention in the city
 1
-and
-3
-in time
-50
-.
+. The party will decrease the taxes in this city to
+1
+bourle. As the city
+2
+is directly reachable from
+1
+, we can arbitrarily modify the taxes in this city. The party should change the tax to
+5
+bourles. It can be easily proved that Time Limit Exceeded cannot win the election after this move if Wrong Answer Party plays optimally.
+The second example test presents the situation we created after a single move in the previous test; as it's Wrong Answer Party's move now, the party cannot win.
+In the third test, we should hold the convention in the first city. This allows us to change the taxes in any city to any desired value; we can for instance decide to set all the taxes to zero, which allows the Wrong Answer Party to win the election immediately.

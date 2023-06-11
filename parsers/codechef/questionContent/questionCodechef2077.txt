@@ -1,97 +1,85 @@
-B - Candy Love
+Chefina and Ranges
 Problem
-Chef has
-N boxes arranged in a line.Each box has some candies in it,say
-C[i]. Chef wants to distribute all the candies between of his friends:
-A and
-B, in the following way:
-A starts eating candies kept in the leftmost box(box at
-1st place) and
-B starts eating candies kept in the rightmost box(box at
-Nth place).
-A eats candies
-X times faster than
-B i.e.
-A eats
-X candies when
-B eats only
-1. Candies in each box can be eaten by only the person who reaches that box first. If both reach a box at the same time, then the one who has eaten from more number of BOXES till now will eat the candies in that box. If both have eaten from the same number of boxes till now ,then
-A will eat the candies in that box. Find the number of boxes finished by both
-A and
-B.
-NOTE:- We assume that it does not take any time to switch from one box to another.
-###Input:
-First line will contain
-T, number of testcases. Then the testcases follow.
-Each testcase contains three lines of input. The first line of each test case contains
-N, the number of boxes.
-The second line of each test case contains a sequence,
-C
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chefina is playing with ranges. There are
+N ranges
+[l
 1
-,
-C
+,r
+1
+],[l
 2
-,
-C
-3
-. . .
-C
+,r
+2
+],…,[l
 N
-where
-C
+,r
+N
+]. Chefina wants to divide the ranges into two non-empty subsets in such a way that each range is in exactly one subset and whenever two ranges have a common point, they are in the same subset.
+Since this could be difficult to achieve, Chefina can delete any number of ranges (possibly zero) and then divide the remaining ranges into such non-empty subsets. She wants to know whether it is possible to achieve her task after deleting some ranges and if it is possible, she also wants to know the minimum number of ranges she needs to delete to achieve it.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+N lines follow. For each
+i (
+1≤i≤N), the
+i-th of these lines contains two space-separated integers
+l
 i
-denotes the number of candies in the i-th box.
-The third line of each test case contains an integer
-X .
-###Output: For each testcase, print two space separated integers in a new line - the number of boxes eaten by
-A and
-B respectively.
-###Constraints
-1≤T≤100
-1≤N≤200000
-1≤C
+and
+r
 i
-≤1000000
-1≤X≤10
-Sum of
-N over all test cases does not exceed
-300000
-###Subtasks Subtask 1(24 points):
+.
+Output
+For each test case, print a single line containing one integer ― the minimum number of ranges to delete, or
+−1 if it is impossible to delete some ranges and divide the remaining ranges into two non-empty subsets.
+Constraints
 1≤T≤10
-1≤N≤1000
-1≤C
+1≤N≤10
+5
+1≤l
 i
-≤1000
-1≤X≤10
-Subtask 2(51 points): original constraints
+≤r
+i
+≤10
+9
+for each valid
+i
+Subtasks
+Subtask #1 (10 points):
+N=16
+Subtask #2 (15 points):
+N=1,000
+Subtask #3 (15 points):
+r
+i
+≤10
+6
+for each valid
+i
+Subtask #4 (60 points): original constraints
 Sample 1:
 Input
 Output
+3
+3
+1 4
+2 6
+5 7
+2
+1 4
+4 6
+2
+3 7
+8 9
 1
- 5
- 2 8 8 2 9
- 2
-4 1
+-1
+0
 Explanation:
-A will start eating candies in the 1st box(leftmost box having 2 candies) .
-B will start eating candies in the 5th box(rightmost box having 9 candies) .As
-A
-′
-s speed is 2 times as that of
-B
-′
-s,
-A will start eating candies in the 2nd box while
-B would still be eating candies in the 5th box.
-A will now start eating candies from the 3rd box while
-B would still be eating candies in the 5th box.Now both
-A and
-B will finish candies in their respective boxes at the same time(
-A from the 3rd box and
-B from 5th box). Since
-A has eaten more number of boxes(
-A has eaten 3 boxes while
-B has eaten 1 box) till now,so
-A will be eating candies in the 4th box. Hence
-A has eaten 4 boxes and
-B has eaten 1 box.
+Example case 1: It is enough to delete the range
+[2,6].
+Example case 2: There is no way to divide these two ranges into two suitable non-empty subsets and deleting any range obviously makes it impossible too.
+Example case 3: There is no need to delete any ranges, we can just put one range into one subset and the other range into the other subset.

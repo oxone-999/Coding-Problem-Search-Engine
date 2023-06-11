@@ -1,105 +1,202 @@
-E2. Divisible Numbers (hard version)
-time limit per test4 seconds
+F. MEX vs MED
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an hard version of the problem. The only difference between an easy and a hard version is the constraints on
-a
+You are given a permutation
+p
+1
 ,
-b
+p
+2
+,…,
+p
+n
+of length
+n
+of numbers
+0,…,n−1
+. Count the number of subsegments
+1≤l≤r≤n
+of this permutation such that
+mex(
+p
+l
 ,
-c
-and
-d
+p
+l+1
+,…,
+p
+r
+)>med(
+p
+l
+,
+p
+l+1
+,…,
+p
+r
+)
 .
-You are given
-4
-positive integers
-a
-,
-b
-,
-c
-,
-d
-with
-a<c
-and
-b<d
-. Find any pair of numbers
-x
-and
-y
-that satisfies the following conditions:
-a<x≤c
-,
-b<y≤d
-,
-x⋅y
-is divisible by
-a⋅b
-.
-Note that required
-x
-and
-y
-may not exist.
+mex
+of
+S
+is the smallest non-negative integer that does not occur in
+S
+. For example:
+mex(0,1,2,3)=4
+mex(0,4,1,3)=2
+mex(5,4,0,1,2)=3
+med
+of the set
+S
+is the median of the set, i.e. the element that, after sorting the elements in non-decreasing order, will be at position number
+⌊
+|S|+1
+2
+⌋
+(array elements are numbered starting from
+1
+and here
+⌊v⌋
+denotes rounding
+v
+down.). For example:
+med(0,1,2,3)=1
+med(0,4,1,3)=1
+med(5,4,0,1,2)=2
+A sequence of
+n
+numbers is called a permutation if it contains all the numbers from
+0
+to
+n−1
+exactly once.
 Input
 The first line of the input contains a single integer
 t
-(1≤t≤10
+(1≤t≤
+10
+4
 ), the number of test cases.
 The descriptions of the test cases follow.
-The only line of each test case contains four integers
-a
-,
-b
-,
-c
-and
-d
+The first line of each test case contains a single integer
+n
 (
-1≤a<c≤
+1≤n≤2⋅
 10
-9
+5
+), the length of the permutation
+p
+.
+The second line of each test case contains exactly
+n
+integers:
+p
+1
 ,
-1≤b<d≤
+p
+2
+,…,
+p
+n
+(
+0≤
+p
+i
+≤n−1
+), elements of permutation
+p
+.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
 10
-9
-).
+5
+.
 Output
-For each test case print a pair of numbers
-a<x≤c
-and
-b<y≤d
-such that
-x⋅y
-is divisible by
-a⋅b
-. If there are multiple answers, print any of them. If there is no such pair of numbers, then print -1 -1.
+For each test case print the answer in a single line: the number of subsegments
+1≤l≤r≤n
+of this permutation such that
+mex(
+p
+l
+,
+p
+l+1
+,…,
+p
+r
+)>med(
+p
+l
+,
+p
+l+1
+,…,
+p
+r
+)
+.
 Example
 input
 Copy
-10
-1 1 2 2
-3 4 5 7
-8 9 15 18
-12 21 14 24
-36 60 48 66
-1024 729 373248 730
-1024 729 373247 730
-5040 40320 40319 1000000000
-999999999 999999999 1000000000 1000000000
-268435456 268435456 1000000000 1000000000
+8
+1
+0
+2
+1 0
+3
+1 0 2
+4
+0 2 1 3
+5
+3 1 0 2 4
+6
+2 0 4 1 3 5
+8
+3 7 2 6 0 1 5 4
+4
+2 0 1 3
 output
 Copy
-2 2
-4 6
-12 12
--1 -1
--1 -1
-373248 730
--1 -1
-15120 53760
--1 -1
-536870912 536870912
+1
+2
+4
+4
+8
+8
+15
+6
+Note
+The first test case contains exactly one subsegment and
+mex(0)=1>med(0)=0
+on it.
+In the third test case, on the following subsegments:
+[1,0]
+,
+[0]
+,
+[1,0,2]
+and
+[0,2]
+,
+mex
+is greater than
+med
+.
+In the fourth test case, on the following subsegments:
+[0,2]
+,
+[0]
+,
+[0,2,1]
+and
+[0,2,1,3]
+,
+mex
+greater than
+med
+.

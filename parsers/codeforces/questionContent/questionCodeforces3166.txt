@@ -1,106 +1,88 @@
-C. The Football Season
-time limit per test1 second
+E. Minimizing Difference
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The football season has just ended in Berland. According to the rules of Berland football, each match is played between two teams. The result of each match is either a draw, or a victory of one of the playing teams. If a team wins the match, it gets
-w
-points, and the opposing team gets
-0
-points. If the game results in a draw, both teams get
-d
-points.
-The manager of the Berland capital team wants to summarize the results of the season, but, unfortunately, all information about the results of each match is lost. The manager only knows that the team has played
-n
-games and got
-p
-points for them.
-You have to determine three integers
-x
+You are given a sequence
+a
+1
 ,
-y
-and
-z
-— the number of wins, draws and loses of the team. If there are multiple answers, print any of them. If there is no suitable triple
-(x,y,z)
-, report about it.
+a
+2
+,…,
+a
+n
+consisting of
+n
+integers.
+You may perform the following operation on this sequence: choose any element and either increase or decrease it by one.
+Calculate the minimum possible difference between the maximum element and the minimum element in the sequence, if you can perform the aforementioned operation no more than
+k
+times.
 Input
-The first line contains four integers
+The first line contains two integers
 n
-,
-p
-,
-w
 and
-d
-(1≤n≤
-10
-12
-,0≤p≤
-10
-17
-,1≤d<w≤
+k
+(2≤n≤
 10
 5
+,1≤k≤
+10
+14
 )
-— the number of games, the number of points the team got, the number of points awarded for winning a match, and the number of points awarded for a draw, respectively. Note that
-w>d
-, so the number of points awarded for winning is strictly greater than the number of points awarded for draw.
+— the number of elements in the sequence and the maximum number of times you can perform the operation, respectively.
+The second line contains a sequence of integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(1≤
+a
+i
+≤
+10
+9
+)
+.
 Output
-If there is no answer, print
-−1
-.
-Otherwise print three non-negative integers
-x
-,
-y
-and
-z
-— the number of wins, draws and losses of the team. If there are multiple possible triples
-(x,y,z)
-, print any of them. The numbers should meet the following conditions:
-x⋅w+y⋅d=p
-,
-x+y+z=n
-.
+Print the minimum possible difference between the maximum element and the minimum element in the sequence, if you can perform the aforementioned operation no more than
+k
+times.
 Examples
 input
 Copy
-30 60 3 1
+4 5
+3 1 7 5
 output
 Copy
-17 9 4
+2
 input
 Copy
-10 51 5 4
+3 10
+100 100 100
 output
 Copy
--1
-input
-Copy
-20 0 15 5
-output
-Copy
-0 0 20
-Note
-One of the possible answers in the first example —
-17
-wins,
-9
-draws and
-4
-losses. Then the team got
-17⋅3+9⋅1=60
-points in
-17+9+4=30
-games.
-In the second example the maximum possible score is
-10⋅5=50
-. Since
-p=51
-, there is no answer.
-In the third example the team got
 0
-points, so all
-20
-games were lost.
+input
+Copy
+10 9
+4 5 5 7 5 4 5 2 4 3
+output
+Copy
+1
+Note
+In the first example you can increase the first element twice and decrease the third element twice, so the sequence becomes
+[3,3,5,5]
+, and the difference between maximum and minimum is
+2
+. You still can perform one operation after that, but it's useless since you can't make the answer less than
+2
+.
+In the second example all elements are already equal, so you may get
+0
+as the answer even without applying any operations.

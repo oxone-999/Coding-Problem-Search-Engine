@@ -1,99 +1,138 @@
-D. Madoka and the Best School in Russia
+F. Madoka and Laziness
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Madoka is going to enroll in "TSUNS PTU". But she stumbled upon a difficult task during the entrance computer science exam:
-A number is called good if it is a multiple of
-d
+Madoka has become too lazy to write a legend, so let's go straight to the formal description of the problem.
+An array of integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+is called a hill if it is not empty and there is an index
+i
+in it, for which the following is true:
+a
+1
+<
+a
+2
+<…<
+a
+i
+>
+a
+i+1
+>
+a
+i+2
+>…>
+a
+n
 .
-A number is called beatiful if it is good and it cannot be represented as a product of two good numbers.
-Notice that a beautiful number must be good.
-Given a good number
+A sequence
 x
-, determine whether it can be represented in at least two different ways as a product of several (possibly, one) beautiful numbers. Two ways are different if the sets of numbers used are different.
-Solve this problem for Madoka and help her to enroll in the best school in Russia!
-Input
-The first line contains a single integer
-t
-(
-1≤t≤100
-) — number of test cases. Below comes their description.
-Each test case consists of two integers
+is a subsequence of a sequence
+y
+if
 x
+can be obtained from
+y
+by deletion of several (possibly, zero or all) elements keeping the order of the other elements. For example, for an array
+[69,1000,228,−7]
+the array
+[1000,−7]
+is a subsequence, while
+[1]
 and
-d
-, separated by a space (
-2≤x,d≤
+[−7,1000]
+are not.
+Splitting an array into two subsequences is called good if each element belongs to exactly one subsequence, and also each of these subsequences is a hill.
+You are given an array of distinct positive integers
+a
+1
+,
+a
+2
+,…
+a
+n
+. It is required to find the number of different pairs of maxima of the first and second subsequences among all good splits. Two pairs that only differ in the order of elements are considered same.
+Input
+The first line of input contains a single integer
+n
+(
+2≤n≤5⋅
+10
+5
+) — array size.
+The second line of input contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
 10
 9
-). It is guaranteed that
-x
-is a multiple of
-d
-.
+) — the elements of the array. It is guaranteed that all
+a
+i
+are pairwise distinct.
 Output
-For each set of input data, output "NO" if the number cannot be represented in at least two ways. Otherwise, output "YES".
-You can output each letter in any case (for example, "YES", "Yes", "yes", "yEs", "yEs" will be recognized as a positive answer).
-Example
+In a single line, print exactly one number — the number of different pairs of maxima of the first and second subsequences among all good splits.
+Examples
+input
+Copy
+4
+1 2 4 3
+output
+Copy
+3
 input
 Copy
 8
-6 2
-12 2
-36 2
-8 2
-1000 10
-2376 6
-128 4
-16384 4
+2 12 13 7 14 6 11 8
 output
 Copy
-NO
-NO
-YES
-NO
-YES
-YES
-NO
-YES
+4
+input
+Copy
+7
+9 5 3 10 2 6 8
+output
+Copy
+0
+input
+Copy
+8
+8 6 10 9 1 5 2 14
+output
+Copy
+0
 Note
-In the first example,
-6
-can be represented as
-6
+In the first test case there are 3 possible pairs:
+(3,4)
 ,
-1⋅6
+(2,4)
 ,
-2⋅3
-. But
-3
-and
-1
-are not a good numbers because they are not divisible by
-2
-, so there is only one way.
-In the second example,
-12
-can be represented as
-6⋅2
-,
-12
-,
-3⋅4
-, or
-3⋅2⋅2
-. The first option is suitable. The second is— no, because
-12
-is not beautiful number (
-12=6⋅2
-). The third and fourth are also not suitable, because
-3
-is not good number.
-In the third example,
-36
-can be represented as
-18⋅2
-and
-6⋅6
-. Therefore it can be decomposed in at least two ways.
+(1,4)
+. And they are achieved with the following partitions:
+[1,2,3],[4]
+;
+[4,3],[1,2]
+;
+[1],[2,4,3]

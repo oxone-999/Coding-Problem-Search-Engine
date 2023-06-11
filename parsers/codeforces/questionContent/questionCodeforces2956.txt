@@ -1,128 +1,239 @@
-B. Just Eat It!
-time limit per test1 second
+E. Delete a Segment
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Today, Yasser and Adel are at the shop buying cupcakes. There are
+There are
 n
-cupcake types, arranged from
+segments on a
+Ox
+axis
+[
+l
 1
-to
+,
+r
+1
+]
+,
+[
+l
+2
+,
+r
+2
+]
+, ...,
+[
+l
 n
-on the shelf, and there are infinitely many of each type. The tastiness of a cupcake of type
-i
-is an integer
-a
-i
-. There are both tasty and nasty cupcakes, so the tastiness can be positive, zero or negative.
-Yasser, of course, wants to try them all, so he will buy exactly one cupcake of each type.
-On the other hand, Adel will choose some segment
+,
+r
+n
+]
+. Segment
 [l,r]
-(1≤l≤r≤n)
-that does not include all of cupcakes (he can't choose
-[l,r]=[1,n]
-) and buy exactly one cupcake of each of types
-l,l+1,…,r
+covers all points from
+l
+to
+r
+inclusive, so all
+x
+such that
+l≤x≤r
 .
-After that they will compare the total tastiness of the cupcakes each of them have bought. Yasser will be happy if the total tastiness of cupcakes he buys is strictly greater than the total tastiness of cupcakes Adel buys regardless of Adel's choice.
-For example, let the tastinesses of the cupcakes be
-[7,4,−1]
-. Yasser will buy all of them, the total tastiness will be
-7+4−1=10
-. Adel can choose segments
-[7],[4],[−1],[7,4]
-or
-[4,−1]
-, their total tastinesses are
-7,4,−1,11
+Segments can be placed arbitrarily  — be inside each other, coincide and so on. Segments can degenerate into points, that is
+l
+i
+=
+r
+i
+is possible.
+Union of the set of segments is such a set of segments which covers exactly the same set of points as the original set. For example:
+if
+n=3
+and there are segments
+[3,6]
+,
+[100,100]
+,
+[5,8]
+then their union is
+2
+segments:
+[3,8]
 and
-3
-, respectively. Adel can choose segment with tastiness
-11
-, and as
-10
-is not strictly greater than
-11
-, Yasser won't be happy :(
-Find out if Yasser will be happy after visiting the shop.
+[100,100]
+;
+if
+n=5
+and there are segments
+[1,2]
+,
+[2,3]
+,
+[4,5]
+,
+[4,6]
+,
+[6,6]
+then their union is
+2
+segments:
+[1,3]
+and
+[4,6]
+.
+Obviously, a union is a set of pairwise non-intersecting segments.
+You are asked to erase exactly one segment of the given
+n
+so that the number of segments in the union of the rest
+n−1
+segments is maximum possible.
+For example, if
+n=4
+and there are segments
+[1,4]
+,
+[2,3]
+,
+[3,6]
+,
+[5,7]
+, then:
+erasing the first segment will lead to
+[2,3]
+,
+[3,6]
+,
+[5,7]
+remaining, which have
+1
+segment in their union;
+erasing the second segment will lead to
+[1,4]
+,
+[3,6]
+,
+[5,7]
+remaining, which have
+1
+segment in their union;
+erasing the third segment will lead to
+[1,4]
+,
+[2,3]
+,
+[5,7]
+remaining, which have
+2
+segments in their union;
+erasing the fourth segment will lead to
+[1,4]
+,
+[2,3]
+,
+[3,6]
+remaining, which have
+1
+segment in their union.
+Thus, you are required to erase the third segment to get answer
+2
+.
+Write a program that will find the maximum number of segments in the union of
+n−1
+segments if you erase any of the given
+n
+segments.
+Note that if there are multiple equal segments in the given set, then you can erase only one of them anyway. So the set after erasing will have exactly
+n−1
+segments.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
+The first line contains one integer
 t
 (
 1≤t≤
 10
 4
-). The description of the test cases follows.
-The first line of each test case contains
+) — the number of test cases in the test. Then the descriptions of
+t
+test cases follow.
+The first of each test case contains a single integer
 n
 (
-2≤n≤
+2≤n≤2⋅
 10
 5
-).
-The second line of each test case contains
+) — the number of segments in the given set. Then
 n
-integers
-a
-1
+lines follow, each contains a description of a segment — a pair of integers
+l
+i
 ,
-a
-2
-,…,
-a
-n
+r
+i
 (
 −
 10
 9
 ≤
-a
+l
+i
+≤
+r
 i
 ≤
 10
 9
 ), where
-a
+l
 i
-represents the tastiness of the
+and
+r
 i
--th type of cupcake.
+are the coordinates of the left and right borders of the
+i
+-th segment, respectively.
+The segments are given in an arbitrary order.
 It is guaranteed that the sum of
 n
-over all test cases doesn't exceed
+over all test cases does not exceed
+2⋅
 10
 5
 .
 Output
-For each test case, print "YES", if the total tastiness of cupcakes Yasser buys will always be strictly greater than the total tastiness of cupcakes Adel buys regardless of Adel's choice. Otherwise, print "NO".
+Print
+t
+integers — the answers to the
+t
+given test cases in the order of input. The answer is the maximum number of segments in the union of
+n−1
+segments if you erase any of the given
+n
+segments.
 Example
 input
 Copy
 3
 4
-1 2 3 4
+1 4
+2 3
+3 6
+5 7
 3
-7 4 -1
-3
-5 -5 5
+5 5
+5 5
+5 5
+6
+3 3
+1 1
+5 5
+1 5
+2 2
+4 4
 output
 Copy
-YES
-NO
-NO
-Note
-In the first example, the total tastiness of any segment Adel can choose is less than the total tastiness of all cupcakes.
-In the second example, Adel will choose the segment
-[1,2]
-with total tastiness
-11
-, which is not less than the total tastiness of all cupcakes, which is
-10
-.
-In the third example, Adel can choose the segment
-[3,3]
-with total tastiness of
+2
+1
 5
-. Note that Yasser's cupcakes' total tastiness is also
-5
-, so in that case, the total tastiness of Yasser's cupcakes isn't strictly greater than the total tastiness of Adel's cupcakes.

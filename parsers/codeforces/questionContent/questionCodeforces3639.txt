@@ -1,63 +1,257 @@
-D. Neko and Aki's Prank
-time limit per test1 second
+E. Neko and Flashback
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Neko is playing with his toys on the backyard of Aki's house. Aki decided to play a prank on him, by secretly putting catnip into Neko's toys. Unfortunately, he went overboard and put an entire bag of catnip into the toys...
-It took Neko an entire day to turn back to normal. Neko reported to Aki that he saw a lot of weird things, including a trie of all correct bracket sequences of length
-2n
+A permutation of length
+k
+is a sequence of
+k
+integers from
+1
+to
+k
+containing each integer exactly once. For example, the sequence
+[3,1,2]
+is a permutation of length
+3
 .
-The definition of correct bracket sequence is as follows:
-The empty sequence is a correct bracket sequence,
-If
-s
-is a correct bracket sequence, then
-(s)
-is a correct bracket sequence,
-If
-s
+When Neko was five, he thought of an array
+a
+of
+n
+positive integers and a permutation
+p
+of length
+n−1
+. Then, he performed the following:
+Constructed an array
+b
+of length
+n−1
+, where
+b
+i
+=min(
+a
+i
+,
+a
+i+1
+)
+.
+Constructed an array
+c
+of length
+n−1
+, where
+c
+i
+=max(
+a
+i
+,
+a
+i+1
+)
+.
+Constructed an array
+b
+′
+of length
+n−1
+, where
+b
+′
+i
+=
+b
+p
+i
+.
+Constructed an array
+c
+′
+of length
+n−1
+, where
+c
+′
+i
+=
+c
+p
+i
+.
+For example, if the array
+a
+was
+[3,4,6,5,7]
+and permutation
+p
+was
+[2,4,1,3]
+, then Neko would have constructed the following arrays:
+b=[3,4,5,5]
+c=[4,6,6,7]
+b
+′
+=[4,5,3,5]
+c
+′
+=[6,7,4,6]
+Then, he wrote two arrays
+b
+′
 and
-t
-are a correct bracket sequence, then
-st
-is also a correct bracket sequence.
-For example, the strings "(())", "()()" form a correct bracket sequence, while ")(" and "((" not.
-Aki then came up with an interesting problem: What is the size of the maximum matching (the largest set of edges such that there are no two edges with a common vertex) in this trie? Since the answer can be quite large, print it modulo
-10
-9
-+7
+c
+′
+on a piece of paper and forgot about it. 14 years later, when he was cleaning up his room, he discovered this old piece of paper with two arrays
+b
+′
+and
+c
+′
+written on it. However he can't remember the array
+a
+and permutation
+p
+he used.
+In case Neko made a mistake and there is no array
+a
+and permutation
+p
+resulting in such
+b
+′
+and
+c
+′
+, print -1. Otherwise, help him recover any possible array
+a
 .
 Input
-The only line contains a single integer
+The first line contains an integer
 n
 (
-1≤n≤1000
-).
-Output
-Print exactly one integer — the size of the maximum matching in the trie. Since the answer can be quite large, print it modulo
+2≤n≤
+10
+5
+) — the number of elements in array
+a
+.
+The second line contains
+n−1
+integers
+b
+′
+1
+,
+b
+′
+2
+,…,
+b
+′
+n−1
+(
+1≤
+b
+′
+i
+≤
 10
 9
-+7
+).
+The third line contains
+n−1
+integers
+c
+′
+1
+,
+c
+′
+2
+,…,
+c
+′
+n−1
+(
+1≤
+c
+′
+i
+≤
+10
+9
+).
+Output
+If Neko made a mistake and there is no array
+a
+and a permutation
+p
+leading to the
+b
+′
+and
+c
+′
+, print -1. Otherwise, print
+n
+positive integers
+a
+i
+(
+1≤
+a
+i
+≤
+10
+9
+), denoting the elements of the array
+a
 .
+If there are multiple possible solutions, print any of them.
 Examples
 input
 Copy
-1
+5
+4 5 3 5
+6 7 4 6
 output
 Copy
-1
-input
-Copy
-2
-output
-Copy
-3
+3 4 6 5 7 
 input
 Copy
 3
+2 4
+3 2
 output
 Copy
-9
+-1
+input
+Copy
+8
+2 3 1 1 2 4 3
+3 4 4 2 5 5 4
+output
+Copy
+3 4 5 2 1 4 3 2 
 Note
-The pictures below illustrate tries in the first two examples (for clarity, the round brackets are replaced with angle brackets). The maximum matching is highlighted with blue.
- 
+The first example is explained is the problem statement.
+In the third example, for
+a=[3,4,5,2,1,4,3,2]
+, a possible permutation
+p
+is
+[7,1,5,4,3,2,6]
+. In that case, Neko would have constructed the following arrays:
+b=[3,4,2,1,1,3,2]
+c=[4,5,5,2,4,4,3]
+b
+′
+=[2,3,1,1,2,4,3]
+c
+′
+=[3,4,4,2,5,5,4]

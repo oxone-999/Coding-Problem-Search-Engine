@@ -1,111 +1,95 @@
-F. Harry The Potter
-time limit per test9 seconds
-memory limit per test1024 megabytes
+A. Deadline
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-To defeat Lord Voldemort, Harry needs to destroy all horcruxes first. The last horcrux is an array
-a
-of
+Adilbek was assigned to a special project. For Adilbek it means that he has
 n
-integers, which also needs to be destroyed. The array is considered destroyed if all its elements are zeroes. To destroy the array, Harry can perform two types of operations:
-choose an index
-i
+days to run a special program and provide its results. But there is a problem: the program needs to run for
+d
+days to calculate the results.
+Fortunately, Adilbek can optimize the program. If he spends
+x
 (
-1≤i≤n
-), an integer
 x
-, and subtract
-x
-from
-a
-i
-.
-choose two indices
-i
-and
-j
-(
-1≤i,j≤n;i≠j
-), an integer
-x
-, and subtract
-x
-from
-a
-i
-and
+is a non-negative integer) days optimizing the program, he will make the program run in
+⌈
+d
 x+1
-from
-a
-j
+⌉
+days (
+⌈a⌉
+is the ceiling function:
+⌈2.4⌉=3
+,
+⌈2⌉=2
+). The program cannot be run and optimized simultaneously, so the total number of days he will spend is equal to
+x+⌈
+d
+x+1
+⌉
 .
-Note that
-x
-does not have to be positive.
-Harry is in a hurry, please help him to find the minimum number of operations required to destroy the array and exterminate Lord Voldemort.
+Will Adilbek be able to provide the generated results in no more than
+n
+days?
 Input
 The first line contains a single integer
-n
- — the size of the array
-a
+T
 (
-1≤n≤20
-).
-The following line contains
+1≤T≤50
+) — the number of test cases.
+The next
+T
+lines contain test cases – one per line. Each line contains two integers
 n
-integers
-a
-1
+and
+d
+(
+1≤n≤
+10
+9
 ,
-a
-2
-,…,
-a
-n
- — array elements (
-−
+1≤d≤
 10
-15
-≤
-a
-i
-≤
-10
-15
-).
+9
+) — the number of days before the deadline and the number of days the program runs.
 Output
-Output a single integer — the minimum number of operations required to destroy the array
-a
-.
-Examples
+Print
+T
+answers — one per test case. For each test case print YES (case insensitive) if Adilbek can fit in
+n
+days or NO (case insensitive) otherwise.
+Example
 input
 Copy
 3
-1 10 100
+1 1
+4 5
+5 11
 output
 Copy
-3
-input
-Copy
-3
-5 3 -2
-output
-Copy
-2
-input
-Copy
-1
-0
-output
-Copy
-0
+YES
+YES
+NO
 Note
-In the first example one can just apply the operation of the first kind three times.
-In the second example, one can apply the operation of the second kind two times: first, choose
-i=2,j=1,x=4
-, it transforms the array into
-(0,−1,−2)
-, and then choose
-i=3,j=2,x=−2
-to destroy the array.
-In the third example, there is nothing to be done, since the array is already destroyed.
+In the first test case, Adilbek decides not to optimize the program at all, since
+d≤n
+.
+In the second test case, Adilbek can spend
+1
+day optimizing the program and it will run
+⌈
+5
+2
+⌉=3
+days. In total, he will spend
+4
+days and will fit in the limit.
+In the third test case, it's impossible to fit in the limit. For example, if Adilbek will optimize the program
+2
+days, it'll still work
+⌈
+11
+2+1
+⌉=4
+days.

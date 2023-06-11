@@ -1,69 +1,65 @@
-Seven-Segment Factoring
+Sticks
 Problem
-You have an infinitely long digital panel. Using various combinations of
-7 segments, we can represent each digit. The picture shows how all
-10 decimal digits are displayed.
-Initially, all segments in the panel are off. You are given seven integers
-A,B,C,D,E,F and
-G representing the number of coins required to turn on the respective segment, as shown above.
-Given an integer
-N, find the minimum number of coins you need to spend to display some factor of
-N on the panel.
-Input Format
-The first line contains an integer
-T denoting the number of test cases. The
-T test cases then follow.
-The only line of each test case contains eight space-separated integers
-N,A,B,C,D,E,F and
-G, denoting the integer
-N and the number of coins required to turn on each of the seven segments.
-Output Format
-For each test case, output a single integer - the minimum number of coins you need to spend to display some factor of
-N on the panel.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+Chef and his little brother are playing with sticks. Initially, Chef has
+N sticks with lengths
+A
+1
+,A
+2
+,…,A
+N
+. He should give his little brother at least
+K of these sticks. Afterwards, Chef's brother should choose four sticks and use them to form a rectangle (a square is also a rectangle). Chef does not want his brother to break any of the sticks, so each of the chosen sticks should be one side of the rectangle.
+Chef's little brother wants the rectangle he makes to have the maximum possible area, while Chef wants it to have the minimum possible area. Therefore, Chef wants to choose the sticks to give his brother in such a way that they cannot be used to form a rectangle; if it's impossible, then he wants to choose the sticks in such a way that the maximum area of a rectangle his little brother can form is minimum possible.
+Can you find the area of the resulting rectangle (or determine that it won't be possible to form any) if both Chef and his little brother play optimally?
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+K.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+Output
+For each test case, print a single line containing one integer — the area of the resulting rectangle or
+−1 if Chef can give his brother sticks that cannot be used to form any rectangle.
 Constraints
-1≤T≤1000
-1≤N<10
-100
-1≤A,B,C,D,E,F,G≤50
+1≤T≤100
+1≤N≤10
+5
+0≤K≤N
+the sum of
+N over all test cases does not exceed
+10
+5
+1≤A
+i
+≤10
+9
+for each valid
+i
 Sample 1:
 Input
 Output
-3
-10 1 31 21 5 3 12 9
-69697 1 2 3 4 5 6 7
-3964083074239146524786 1 41 31 21 11 1 41
-48
-5
-72
+2
+7 6
+1 2 3 1 2 2 1
+5 4
+1 2 1 2 3
+2
+-1
 Explanation:
-Test case
-1:
-10 has four factors:
-1,
-2,
-5, and
-10. Their costs are:
-Display
-1:
-31+21=52.
-Display
-2:
-1+31+5+3+9=49.
-Display
-5:
-1+21+5+12+9=48.
-Display
-10:
-31+21+1+31+21+5+3+12=125.
-The minimum number of coins are required to display
-5, which costs
-48 coins.
-Test case
-2:
-69697 has two factors:
-1 and
-69697. The cost to display
-1 is only
-5 coins, while the cost to display
-69697 is much larger, so the answer is
-5.
+Example case 1: Chef should give his brother all sticks except one. Regardless of the length of that one stick, Chef's brother can choose sticks with lengths
+1,2,1,2 to create a rectangle with area
+1⋅2=2.
+Example case 2: If Chef gives his brother sticks with lengths
+2,1,2,3, then there is no way to form a rectangle.

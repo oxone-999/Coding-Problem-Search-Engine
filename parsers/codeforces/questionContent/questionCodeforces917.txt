@@ -1,124 +1,159 @@
-E. Replace With the Previous, Minimize
+G. Sorting Pancakes
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string
-s
-of lowercase Latin letters.
-The following operation can be used:
-select one character (from 'a' to 'z') that occurs at least once in the string. And replace all such characters in the string with the previous one in alphabetical order on the loop. For example, replace all 'c' with 'b' or replace all 'a' with 'z'.
-And you are given the integer
-k
- — the maximum number of operations that can be performed. Find the minimum lexicographically possible string that can be obtained by performing no more than
-k
-operations.
-The string
-a=
-a
-1
-a
-2
-…
-a
+Nastya baked
+m
+pancakes and spread them on
 n
-is lexicographically smaller than the string
-b=
-b
-1
-b
-2
-…
-b
-n
-if there exists an index
-k
+dishes. The dishes are in a row and numbered from left to right. She put
+a
+i
+pancakes on the dish with the index
+i
+.
+Seeing the dishes, Vlad decided to bring order to the stacks and move some pancakes. In one move, he can shift one pancake from any dish to the closest one, that is, select the dish
+i
 (
-1≤k≤n
-) such that
 a
-1
+i
+>0
+) and do one of the following:
+if
+i>1
+, put the pancake on a dish with the previous index, after this move
+a
+i
 =
-b
+a
+i
+−1
+and
+a
+i−1
+=
+a
+i−1
++1
+;
+if
+i<n
+, put the pancake on a dish with the following index, after this move
+a
+i
+=
+a
+i
+−1
+and
+a
+i+1
+=
+a
+i+1
++1
+.
+Vlad wants to make the array
+a
+non-increasing, after moving as few pancakes as possible. Help him find the minimum number of moves needed for this.
+The array
+a=[
+a
 1
 ,
 a
 2
-=
-b
-2
-, ...,
+,…,
 a
-k−1
-=
-b
-k−1
-, but
+n
+]
+is called non-increasing if
 a
-k
-<
-b
-k
+i
+≥
+a
+i+1
+for all
+i
+from
+1
+to
+n−1
 .
 Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) —the number of test cases in the test.
-This is followed by descriptions of the test cases.
-The first line of each test case contains two integers
+The first line of the input contains two numbers
 n
 and
-k
+m
 (
-1≤n≤2⋅
-10
-5
-,
-1≤k≤
-10
-9
-) — the size of the string
-s
-and the maximum number of operations that can be performed on the string
-s
-.
-The second line of each test case contains a string
-s
-of length
+1≤n,m≤250
+) — the number of dishes and the number of pancakes, respectively.
+The second line contains
 n
-consisting of lowercase Latin letters.
-It is guaranteed that the sum
-n
-over all test cases does not exceed
-2⋅
-10
-5
+numbers
+a
+i
+(
+0≤
+a
+i
+≤m
+), the sum of all
+a
+i
+is equal to
+m
 .
 Output
-For each test case, output the lexicographically minimal string that can be obtained from the string
-s
-by performing no more than
-k
-operations.
-Example
+Print a single number: the minimum number of moves required to make the array
+a
+non-increasing.
+Examples
 input
 Copy
-4
-3 2
-cba
-4 5
-fgde
-7 5
-gndcafb
-4 19
-ekyv
+6 19
+5 3 2 3 3 3
 output
 Copy
-aaa
-agaa
-bnbbabb
-aapp
+2
+input
+Copy
+3 6
+3 2 1
+output
+Copy
+0
+input
+Copy
+3 6
+2 1 3
+output
+Copy
+1
+input
+Copy
+6 19
+3 4 3 3 5 1
+output
+Copy
+3
+input
+Copy
+10 1
+0 0 0 0 0 0 0 0 0 1
+output
+Copy
+9
+Note
+In the first example, you first need to move the pancake from the dish
+1
+, after which
+a=[4,4,2,3,3,3]
+. After that, you need to move the pancake from the dish
+2
+to the dish
+3
+and the array will become non-growing
+a=[4,3,3,3,3,3]
+.

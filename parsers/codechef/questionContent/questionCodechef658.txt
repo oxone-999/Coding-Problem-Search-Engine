@@ -1,30 +1,45 @@
-Good Pairs
+Avoid Fixed Points
 Problem
-You are given an array
-A of length
-N.
-A pair
-(i,j)
-(1≤i<j≤N) is said to be good if
-gcd(A
-i
+Chef has a sequence of
+N integers
+A=[A
+1
 ,A
-j
-)=lcm(A
+2
+,…,A
+N
+]. He can perform the following operation any number of times (possibly, zero):
+Choose any positive integer
+K and insert it at any position of the sequence (possibly the beginning or end of the sequence, or in between any two elements).
+For example, if
+A=[5,3,4] and Chef selects
+K=2, then after the operation he can obtain one of the sequences
+[
+2
+,5,3,4],[5,
+2
+,3,4],[5,3,
+2
+,4], or
+[5,3,4,
+2
+].
+Chef wants this sequence to satisfy the following condition: for each
+1≤i≤∣A∣,
+A
 i
-,A
-j
-). Here
-gcd denotes the greatest common divisor and
-lcm denotes least common multiple.
-Find the total number of good pairs present in the given array.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-The first line of each test case contains an integer
-N - the length of the array
+
+=i. Here,
+∣A∣ denotes the length of
 A.
-The second line of each test case contains
+Help Chef to find the minimum number of operations that he has to perform to achieve this goal. It can be proved that under the constraints of the problem, it's always possible to achieve this goal in a finite number of operations.
+Input Format
+The first line of input contains an integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains an integer
+N.
+The second line contains
 N space-separated integers
 A
 1
@@ -34,83 +49,76 @@ A
 N
 .
 Output Format
-For each test case, output on a new line the total number of such good pairs possible in the given array.
+For each test case, print a single line containing one integer — the minimum number of operations that Chef has to perform to achieve the given condition.
 Constraints
-1≤T≤100
+1≤T≤10
+4
 1≤N≤10
 5
 1≤A
 i
 ≤10
 9
-The sum of
-N over all test cases won't exceed
-3⋅10
+Sum of
+N over all test caes does not exceed
+2⋅10
 5
 .
+Subtasks
+Subtask #1 (100 points): Original constraints
 Sample 1:
 Input
 Output
-5
-2
-5 9
-5
-1 5 5 5 9
-8
-2 5 5 2 9 9 9 12
-4
-12 12 18 18
-5
-12 15 10 5 9
-0
 3
-5
-2
+3
+2 4 5
+3
+4 1 3
+4
+3 2 4 2
 0
+1
+2
 Explanation:
 Test case
-1: No good pair is present.
+1: The given sequence does not contain any index
+i such that
+A
+i
+=i. Hence Chef does not have to perform any operation.
 Test case
-2: The good pairs
-(i,j) are:
-(2,3),(3,4), and
-(2,4). To elaborate,
-gcd(A
+2: In the given sequence,
+A
+3
+=3. Chef can choose
+K=2 and insert it before the first element, making the sequence
+A=[
 2
-,A
-3
-)=lcm(A
+,4,1,3], which does not contain any index
+i for which
+A
+i
+=i.
+Test case
+3: In the given sequence,
+A
 2
-,A
+=2. Chef can perform the following sequence of operations:
+Choose
+K=5 and insert it before the first element. The sequence becomes
+A=[
+5
+,3,2,4,2], and now
+A
+4
+=4.
+Choose
+K=3 and insert it between the third and fourth element. The sequence becomes
+A=[5,3,2,
 3
-)=5.
-Test case
-3: The good pairs
-(i,j) are:
-(1,4),(2,3),(5,6),(6,7), and
-(5,7). To elaborate,
-gcd(A
-1
-,A
-4
-)=lcm(A
-1
-,A
-4
-)=2.
-Test case
-4: The good pair
-(i,j) are:
-(1,2), and
-(3,4). To elaborate,
-gcd(A
-3
-,A
-4
-)=lcm(A
-3
-,A
-4
-)=18.
-Test case
-5: No good pair is present.
+,4,2], which does not contain any index
+i for which
+A
+i
+=i.
+It can be verified that there is no way to satisfy the given condition in less than two operations.

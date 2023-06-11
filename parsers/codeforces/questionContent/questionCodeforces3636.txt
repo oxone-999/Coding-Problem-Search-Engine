@@ -1,126 +1,118 @@
-F2. Neko Rules the Catniverse (Large Version)
-time limit per test7 seconds
+A. Serval and Bus
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This problem is same as the previous one, but has larger constraints.
-Aki is playing a new video game. In the video game, he will control Neko, the giant cat, to fly between planets in the Catniverse.
-There are
+It is raining heavily. But this is the first day for Serval, who just became 3 years old, to go to the kindergarten. Unfortunately, he lives far from kindergarten, and his father is too busy to drive him there. The only choice for this poor little boy is to wait for a bus on this rainy day. Under such circumstances, the poor boy will use the first bus he sees no matter where it goes. If several buses come at the same time, he will choose one randomly.
+Serval will go to the bus station at time
+t
+, and there are
 n
-planets in the Catniverse, numbered from
-1
-to
-n
-. At the beginning of the game, Aki chooses the planet where Neko is initially located. Then Aki performs
-k−1
-moves, where in each move Neko is moved from the current planet
-x
-to some other planet
-y
-such that:
-Planet
-y
-is not visited yet.
-1≤y≤x+m
-(where
-m
-is a fixed constant given in the input)
-This way, Neko will visit exactly
-k
-different planets. Two ways of visiting planets are called different if there is some index
+bus routes which stop at this station. For the
 i
-such that, the
+-th bus route, the first bus arrives at time
+s
 i
--th planet visited in the first way is different from the
+minutes, and each bus of this route comes
+d
 i
--th planet visited in the second way.
-What is the total number of ways to visit
-k
-planets this way? Since the answer can be quite large, print it modulo
-10
-9
-+7
-.
+minutes later than the previous one.
+As Serval's best friend, you wonder which bus route will he get on. If several buses arrive at the same time, you can print any of them.
 Input
-The only line contains three integers
+The first line contains two space-separated integers
 n
-,
-k
 and
-m
+t
 (
-1≤n≤
+1≤n≤100
+,
+1≤t≤
 10
-9
+5
+) — the number of bus routes and the time Serval goes to the station.
+Each of the next
+n
+lines contains two space-separated integers
+s
+i
+and
+d
+i
+(
+1≤
+s
+i
 ,
-1≤k≤min(n,12)
-,
-1≤m≤4
-) — the number of planets in the Catniverse, the number of planets Neko needs to visit and the said constant
-m
-.
+d
+i
+≤
+10
+5
+) — the time when the first bus of this route arrives and the interval between two buses of this route.
 Output
-Print exactly one integer — the number of different ways Neko can visit exactly
-k
-planets. Since the answer can be quite large, print it modulo
-10
-9
-+7
-.
+Print one number — what bus route Serval will use. If there are several possible answers, you can print any of them.
 Examples
 input
 Copy
-3 3 1
+2 2
+6 4
+9 5
 output
 Copy
-4
-input
-Copy
-4 2 1
-output
-Copy
-9
-input
-Copy
-5 5 4
-output
-Copy
-120
-input
-Copy
-100 1 2
-output
-Copy
-100
-Note
-In the first example, there are
-4
-ways Neko can visit all the planets:
-1→2→3
-2→3→1
-3→1→2
-3→2→1
-In the second example, there are
-9
-ways Neko can visit exactly
-2
-planets:
-1→2
-2→1
-2→3
-3→1
-3→2
-3→4
-4→1
-4→2
-4→3
-In the third example, with
-m=4
-, Neko can visit all the planets in any order, so there are
-5!=120
-ways Neko can visit all the planets.
-In the fourth example, Neko only visit exactly
 1
-planet (which is also the planet he initially located), and there are
-100
-ways to choose the starting planet for Neko.
+input
+Copy
+5 5
+3 3
+2 5
+5 6
+4 9
+6 1
+output
+Copy
+3
+input
+Copy
+3 7
+2 2
+2 3
+2 4
+output
+Copy
+1
+Note
+In the first example, the first bus of the first route arrives at time
+6
+, and the first bus of the second route arrives at time
+9
+, so the first route is the answer.
+In the second example, a bus of the third route arrives at time
+5
+, so it is the answer.
+In the third example, buses of the first route come at times
+2
+,
+4
+,
+6
+,
+8
+, and so fourth, buses of the second route come at times
+2
+,
+5
+,
+8
+, and so fourth and buses of the third route come at times
+2
+,
+6
+,
+10
+, and so on, so
+1
+and
+2
+are both acceptable answers while
+3
+is not.

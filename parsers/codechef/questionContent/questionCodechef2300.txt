@@ -1,44 +1,33 @@
-Optimal Trip
+The Reversed World
 Problem
-Chef has decided to take a break, and go for a ride. He is currently in city 0, and he wants to get to city N. The cities along the road from 0 to N are numbered 0, 1, 2, 3, ... N-1, N in increasing order of distance from city 0. The distance between cities i and i-1 is denoted by di.
-However, as is always the case, it is unsafe to travel at night, so he will have to break his journey over multiple days. Chef may travel at most D distance in any day, so he will have to book hotel for overnight stay in some of the cities. On any day, Chef will begin his journey from some city and end his journey at some other city. Chef wants to reach city N in as few days as possible, so he has to plan his trip accordingly. Let L be the minimum number of days in which he can reach city N.
-Chef knows the cost of overnight stay in each city. The cost of overnight stay in city i is ci. Chef will need to get all his hotel bills re-embersed, and his boss might get suspicious if cost for any single day exceeds a threshold.
-Chef knows that his boss wants him to reach as soon as possible. Thus, if it is possible for Chef to go from 0 to N in L days with no restriction on where Chef stays, then his boss will want him to reach in exactly L days. However, if the boss puts a threshold value i then we know that the Chef may not be able to reach in L days (since he may not be allowed to stay at some hotels). Help him him find the minimum threshold value C such that if he only stays in hotels of cost <= C, it is possible for him to reach the destination N in exactly L days (remember, here L is the minimum number of days needed by Chef if there were absolutely no restrictions on where he stays).
-Formally, let L be the minimal number of days it takes Chef to get from city 0 to city N. Let F(i) be the minimal number of days it takes Chef to get from city 0 to city N if it's not allowed to pay more than i for a single stay in hotel. Find the smallest C that will still allow Chef to get to city N without losing time. In other words F(C)=L. Find and output L as well.
+Given three numbers A, B and C all having N digits, little Johnny needs to write a program to permute the digits of the number C so that the new number is greater than both A and B.
+This problem would be so easy if Johnny's teacher didn't require that Johnny's program must be correct in both the real world and the reversed world. What happens once the world is reversed? One thing Johnny knows for sure is that all the numbers are also reversed. The second thing, the "greater than" relation becomes the "smaller than" relation.
+For the sake of clarity, we will use aR to denote the number a in the reversed world (for instance, 113R = 311).
+Thus Johnny task is now permute the digits of C so that the new number is greater than both A and B. In additional, the reverse of the new number should be smaller than both AR and BR. If there are multiple possible solutions, Johnny needs to find the smallest one.
+As usual, please help Little Johnny with his task!
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. The first line of each test case has two space separated integers N and D. N lines follow, each having two space separated integers, di and ci.
+The first line contains a number T (about 10) which is the number of the test cases. Each test case has the following form.
+The first line contains N (1 <= N <= 1000000).
+The second line contains the number A.
+The third line contains the number B.
+The fourth line contains the number C.
+Each test case's input is separated by a blank line.
 Output
-For each test case, output a separate line containing the values of L and C.
-Constraints
-1 ≤ T ≤ 15
-2 ≤ N ≤ 105
-1 ≤ D ≤ 109
-1 ≤ di ≤ D
-1 ≤ ci ≤ N
-The sum of N over all test cases in any file is at most 4*105.
-Subtack 1 (30 points)
-N ≤ 103
-Subtack 2 (30 points)
-di = 1, D = 9
-Subtask 3 (40 points):
-No special constraints
-Example:
-Sample Input
+For each test case, print the solution in a single line. If there is no solution, print the number -1.
+Example
+Input:
 2
-4 5
-2 4
-1 2
-3 3
-1 1
-5 6
-2 1
-4 4
-2 2
-2 3
-4 5
-Sample output
-2 2
-3 2
-Explanation
-For test case# 1, the optimal trip is 0 → 2 → 4
-For test case# 2, the optimal trip is 0 → 1 → 3 → 5
+
+2
+12
+23
+32
+
+3
+124
+324
+335
+
+Output:
+-1
+353

@@ -1,94 +1,117 @@
-Permutation And Median
+Cache Hits
 Problem
-Given a sequence of
-N elements, Chef defines a function
-F(i)
-(1≤i≤N) as the median of the first
-i elements of the sequence.
-Chef wants to get a permutation
-P of length
-N such that
-P
-i
-=F(i)
-∀
-1≤i≤N. Can you help Chef in achieving this?
-Note that:
-The median of a sequence is the middle element in the sorted order of the sequence. If
-N is even, choose the element at
-2
-N
-position in the sorted order. If
-N is odd, choose the middle element.
-A permutation of length
-N is an array of
-N integers
-P=[P
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+Chef has a memory machine. It has one layer for data storage and another layer for cache. Chef has stored an array with length
+N in the first layer; let's denote its elements by
+A
+0
+,A
 1
-,P
+,…,A
+N−1
+. Now he wants to load some elements of this array into the cache.
+The machine loads the array in blocks with size
+B:
+A
+0
+,A
+1
+,…,A
+B−1
+form a block,
+A
+B
+,A
+B+1
+,…,A
+2B−1
+form another block, and so on. The last block may contain less than
+B elements of Chef's array. The cache may only contain at most one block at a time. Whenever Chef tries to access an element
+A
+i
+, the machine checks if the block where
+A
+i
+is located is already in the cache, and if it is not, loads this block into the cache layer, so that it can quickly access any data in it. However, as soon as Chef tries to access any element that is outside the block currently loaded in the cache, the block that was previously loaded into the cache is removed from the cache, since the machine loads a new block containing the element that is being accessed.
+Chef has a sequence of elements
+A
+x
+1
+,A
+x
 2
-,…,P
-N
-] such that every integer from
-1 to
-N (inclusive) appears in it exactly once. For example,
-[2,5,4,1,3] is a permutation of length
-5 while
-[2,5,2,1,3] is not.
-Input Format
-First line will contain
-T, number of test cases. Then the test cases follows.
-Each test case consists of a single line of input, an integer
-N, the length of the required permutation.
-Output Format
-For each test case, output in a new line,
-N space-separated integers, denoting a permutation satisfying the condition.
-Constraints
-1≤T≤700
-1≤N≤10
-5
-Sum of
-N over all test cases does not exceed
-2⋅10
-5
+,…,A
+x
+M
+which he wants to access, in this order. Initially, the cache is empty. Chef is wondering how many times the machine will need to load a block into the cache layer. Can you help him calculate this number?
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains three space-separated integers
+N,
+B and
+M.
+The second line contains
+M space-separated integers
+x
+1
+,x
+2
+,…,x
+M
 .
+Output
+For each test case, print a single line containing one integer ― the number of times the machine loads a block into the cache.
+Constraints
+1≤T≤100
+1≤N,B,M≤5,000
+0≤x
+i
+<N for each valid
+i
 Sample 1:
 Input
 Output
-3
 1
+5 3 3
+0 3 4
 2
-3
-1
-2 1 
-3 1 2
 Explanation:
-Test Case
-1:
-[1] is the only permutation and it satisfies the condition as the median of the sequence
-[1] is
-1.
-Test Case
-2: The possible permutations of length
-2 are
-[1,2] and
-[2,1]. The only permutation that satisfies the condition is
-[2,1]. Here,
-P
+Example case 1: The machine stores elements
+[A
+0
+,A
 1
-=2=median([2]) and
-P
+,A
 2
-=1=median([2,1]).
-Test Case
-3: There are
-6 possible permutations out of which only
-[3,1,2] satisfies the above condition. Here,
-P
-1
-=3=median([3]),P
-2
-=1=median([3,1]), and
-P
+] in one block and
+[A
 3
-=2=median([3,1,2]).
+,A
+4
+] in another block. When accessing
+A
+0
+, the block
+[A
+0
+,A
+1
+,A
+2
+] is loaded. Then, accessing
+A
+3
+removes the previous block from the cache and loads the block
+[A
+3
+,A
+4
+]. Finally, when Chef accesses
+A
+4
+, a new block is not loaded, since the block containing
+A
+4
+is currently loaded in the cache.

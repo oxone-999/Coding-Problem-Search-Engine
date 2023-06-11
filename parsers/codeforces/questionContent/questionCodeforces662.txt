@@ -1,139 +1,174 @@
-C. Corners
-time limit per test1 second
-memory limit per test256 megabytes
+D2. Xor-Subsequence (hard version)
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given a matrix consisting of
-n
-rows and
-m
-columns. Each cell of this matrix contains
-0
-or
-1
+It is the hard version of the problem. The only difference is that in this version
+a
+i
+≤
+10
+9
 .
-Let's call a square of size
-2×2
-without one corner cell an L-shape figure. In one operation you can take one L-shape figure, with at least one cell containing
+You are given an array of
+n
+integers
+a
+0
+,
+a
 1
-and replace all numbers in it with zeroes.
-Find the maximum number of operations that you can do with the given matrix.
+,
+a
+2
+,…
+a
+n−1
+. Bryap wants to find the longest beautiful subsequence in the array.
+An array
+b=[
+b
+0
+,
+b
+1
+,…,
+b
+m−1
+]
+, where
+0≤
+b
+0
+<
+b
+1
+<…<
+b
+m−1
+<n
+, is a subsequence of length
+m
+of the array
+a
+.
+Subsequence
+b=[
+b
+0
+,
+b
+1
+,…,
+b
+m−1
+]
+of length
+m
+is called beautiful, if the following condition holds:
+For any
+p
+(
+0≤p<m−1
+) holds:
+a
+b
+p
+⊕
+b
+p+1
+<
+a
+b
+p+1
+⊕
+b
+p
+.
+Here
+a⊕b
+denotes the bitwise XOR of
+a
+and
+b
+. For example,
+2⊕4=6
+and
+3⊕1=2
+.
+Bryap is a simple person so he only wants to know the length of the longest such subsequence. Help Bryap and find the answer to his question.
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤500
-) — the number of test cases. Then follow the descriptions of each test case.
-The first line of each test case contains two integers
+1≤t≤
+10
+5
+)  — the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single integer
 n
-and
-m
 (
-2≤n,m≤500
-) — the size of the matrix.
-Each of the following
+2≤n≤3⋅
+10
+5
+) — the length of the array.
+The second line of each test case contains
 n
-lines contains a binary string of length
-m
-— the description of the matrix.
+integers
+a
+0
+,
+a
+1
+,...,
+a
+n−1
+(
+0≤
+a
+i
+≤
+10
+9
+) — the elements of the array.
 It is guaranteed that the sum of
 n
-and the sum of
-m
 over all test cases does not exceed
-1000
+3⋅
+10
+5
 .
 Output
-For each test case output the maximum number of operations you can do with the given matrix.
+For each test case print a single integer — the length of the longest beautiful subsequence.
 Example
 input
 Copy
-4
-4 3
-101
-111
-011
-110
-3 4
-1110
-0111
-0111
-2 2
-00
-00
-2 2
-11
-11
+3
+2
+1 2
+5
+5 2 4 3 1
+10
+3 8 8 2 9 1 6 2 8 3
 output
 Copy
-8
-9
-0
 2
-Note
-In the first testcase one of the optimal sequences of operations is the following (bold font shows l-shape figure on which operation was performed):
-Matrix before any operation was performed:
-1 0 1
-1 1 1
-0 1 1
-1 1 0
-Matrix after
-1
-operation was performed:
-1 0 0
-1 0 1
-0 1 1
-1 1 0
-Matrix after
-2
-operations were performed:
-1 0 0
-1 0 0
-0 1 1
-1 1 0
-Matrix after
 3
-operations were performed:
-1 0 0
-1 0 0
-0 1 0
-1 1 0
-Matrix after
-4
-operations were performed:
-1 0 0
-0 0 0
-0 1 0
-1 1 0
-Matrix after
-5
-operations were performed:
-1 0 0
-0 0 0
-0 1 0
-1 0 0
-Matrix after
 6
-operations were performed:
-1 0 0
-0 0 0
-0 0 0
-1 0 0
-Matrix after
-7
-operations were performed:
-0 0 0
-0 0 0
-0 0 0
-1 0 0
-Matrix after
-8
-operations were performed:
-0 0 0
-0 0 0
-0 0 0
-0 0 0
-In the third testcase from the sample we can not perform any operation because the matrix doesn't contain any ones.
-In the fourth testcase it does not matter which L-shape figure we pick in our first operation. We will always be left with single one. So we will perform
+Note
+In the first test case, we can pick the whole array as a beautiful subsequence because
+1⊕1<2⊕0
+.
+In the second test case, we can pick elements with indexes
+1
+,
 2
-operations.
+and
+4
+(in
+0
+indexation). For this elements holds:
+2⊕2<4⊕1
+and
+4⊕4<1⊕2
+.

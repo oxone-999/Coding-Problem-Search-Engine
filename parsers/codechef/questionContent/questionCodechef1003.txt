@@ -1,27 +1,90 @@
-emitL
+Weird Palindrome Making
 Problem
-Read problems statements in Mandarin Chinese and Russian
-You are given a string S constisting of uppercase Latin letters. Is it possible to reorder the characters in this string to get a string with prefix "LTIME" and suffix "EMITL"?
-We remind you that a prefix of a string is any substring which contains its first character, while a suffix of a string is substring containing its last character.
-Input
-The first line contains a single integer T, denoting the number of testcases. The descriptions of T test cases follow.
-The first and only line of the test case description has one non-empty string S consisting of uppercase Latin letters only.
-Output
-For each testcase output a single line containing the string "YES" (without quotes) if it's possible to reorder the characters to get the required prefix and suffix, or "NO" (without quotes) otherwise.
+Read problem statements in Bengali, Russian, Mandarin and Vietnamese as well.
+Naveej is from a tribe that speaks some weird language - their alphabet consists of
+N distinct characters. He has an array
+A=[A
+1
+,A
+2
+,…,A
+N
+], where
+A
+i
+denotes the number of occurrences of the
+i-th character with him.
+He wants to make a palindromic string using all the characters he has (every character he has must be used in this string).
+In order to make this possible, he can perform the following operation:
+Select an
+i
+(1≤i≤N) and convert all occurrences of
+i-th alphabet to any other alphabet of his choice.
+Note that Naveej just wants to be able to make any palindrome, as long as every character is used. For example, if
+N=2 and
+A=[2,2] and we consider the characters to be
+a and
+b, he can make both
+abba and
+baab, but
+aba is not allowed because it uses only
+3 characters.
+Find the minimum number of operations required such that Naveej can make a palindromic string using all the characters he has. It can be proven that there always exists at least one sequence of operations allowing for the formation of a palindrome.
+Input Format
+The first line of input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N - the size of the alphabet.
+The second line contains
+N space-separated integers:
+A
+1
+,A
+2
+,...,A
+N
+, where
+A
+i
+is the number of occurrences of the
+i-th character with Naveej.
+Output Format
+For each test case, output a single line containing one integer - the minimum number of operations required so that Naveej can make a palindromic string using all the characters he has.
 Constraints
-Subtask 1 (23 points) : 1 ≤ T ≤ 100, 1 ≤ |S| ≤ 9
-Subtask 2 (77 points) : 1 ≤ T ≤ 1000, 1 ≤ |S| ≤ 100
+1≤T≤1000
+1≤N≤2⋅10
+5
+1≤A
+i
+≤10
+9
+It is guaranteed that the sum of
+N over all test cases does not exceed
+2⋅10
+5
+Subtasks
+Subtask 1 (100 points): Original constraints
 Sample 1:
 Input
 Output
+2
+1
+4
 3
-LTIMEAZAZAITLME
-LLLTTTIIIMMMEEEAHA
-LTIMEM
-YES
-YES
-NO
+4 3 1
+0
+1
 Explanation:
-Test case 1: we can permute the last 5 letters and get LTIMEAZAZAEMITL
-Test case 2: we have 3 copies of each of the letters 'L', 'T', 'I', 'M', 'E' so we can leave 5 of them in the beginning and move 5 of them to the end.
-Test case 3: we have only one letter 'L' so we can't make necessary prefix and suffix at the same time.
+In the first test case,
+N=1. Let the character be
+a. We can make the following palindromic string:
+aaaa.
+In the second test case,
+N=3. Let the characters be
+a,
+b,
+c. It is initially not possible to make a palindrome with the given occurrences of the characters. We perform 1 operation: Convert all the occurrences of
+b to
+c. Then, we can make the following palindromic string:
+acaccaca.

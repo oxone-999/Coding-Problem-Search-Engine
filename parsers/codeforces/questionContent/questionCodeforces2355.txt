@@ -1,235 +1,160 @@
-B. Ternary Sequence
+E. Divide Square
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test384 megabytes
 inputstandard input
 outputstandard output
-You are given two sequences
-a
-1
+There is a square of size
+10
+6
+×
+10
+6
+on the coordinate plane with four points
+(0,0)
 ,
-a
-2
-,…,
-a
+(0,
+10
+6
+)
+,
+(
+10
+6
+,0)
+, and
+(
+10
+6
+,
+10
+6
+)
+as its vertices.
+You are going to draw segments on the plane. All segments are either horizontal or vertical and intersect with at least one side of the square.
+Now you are wondering how many pieces this square divides into after drawing all segments. Write a program calculating the number of pieces of the square.
+Input
+The first line contains two integers
 n
 and
-b
-1
-,
-b
-2
-,…,
-b
+m
+(
+0≤n,m≤
+10
+5
+) — the number of horizontal segments and the number of vertical segments.
+The next
 n
-. Each element of both sequences is either
-0
-,
-1
-or
-2
-. The number of elements
-0
-,
-1
-,
-2
-in the sequence
-a
-is
-x
-1
-,
+lines contain descriptions of the horizontal segments. The
+i
+-th line contains three integers
 y
-1
+i
 ,
-z
-1
-respectively, and the number of elements
-0
-,
-1
-,
-2
-in the sequence
-b
-is
+l
 x
-2
-,
-y
-2
-,
-z
-2
-respectively.
-You can rearrange the elements in both sequences
-a
+i
 and
-b
-however you like. After that, let's define a sequence
-c
-as follows:
-c
+r
+x
 i
-=
-⎧
-⎩
-⎨
-a
-i
-b
-i
-0
-−
-a
-i
-b
-i
-if 
-a
-i
->
-b
-i
-if 
-a
-i
-=
-b
-i
-if 
-a
+(
+0<
+y
 i
 <
-b
-i
-You'd like to make
-∑
-n
-i=1
-c
-i
-(the sum of all elements of the sequence
-c
-) as large as possible. What is the maximum possible sum?
-Input
-The first line contains one integer
-t
-(
-1≤t≤
 10
-4
-) — the number of test cases.
-Each test case consists of two lines. The first line of each test case contains three integers
-x
-1
-,
-y
-1
-,
-z
-1
-(
-0≤
-x
-1
-,
-y
-1
-,
-z
-1
-≤
-10
-8
-) — the number of
-0
--s,
-1
--s and
-2
--s in the sequence
-a
-.
-The second line of each test case also contains three integers
-x
-2
-,
-y
-2
-,
-z
-2
-(
-0≤
-x
-2
-,
-y
-2
-,
-z
-2
-≤
-10
-8
+6
 ;
+0≤l
 x
-1
-+
-y
-1
-+
-z
-1
-=
+i
+<r
 x
-2
-+
+i
+≤
+10
+6
+), which means the segment connects
+(l
+x
+i
+,
 y
-2
-+
-z
-2
->0
-) — the number of
-0
--s,
-1
--s and
-2
--s in the sequence
-b
+i
+)
+and
+(r
+x
+i
+,
+y
+i
+)
 .
+The next
+m
+lines contain descriptions of the vertical segments. The
+i
+-th line contains three integers
+x
+i
+,
+l
+y
+i
+and
+r
+y
+i
+(
+0<
+x
+i
+<
+10
+6
+;
+0≤l
+y
+i
+<r
+y
+i
+≤
+10
+6
+), which means the segment connects
+(
+x
+i
+,l
+y
+i
+)
+and
+(
+x
+i
+,r
+y
+i
+)
+.
+It's guaranteed that there are no two segments on the same line, and each segment intersects with at least one of square's sides.
 Output
-For each test case, print the maximum possible sum of the sequence
-c
-.
+Print the number of pieces the square is divided into after drawing all the segments.
 Example
 input
 Copy
-3
-2 3 2
-3 3 1
+3 3
+2 3 1000000
+4 0 4
+3 0 1000000
 4 0 1
-2 3 0
-0 0 1
-0 0 1
+2 0 5
+3 1 1000000
 output
 Copy
-4
-2
-0
+7
 Note
-In the first sample, one of the optimal solutions is:
-a={2,0,1,1,0,2,1}
-b={1,0,1,0,2,1,0}
-c={2,0,0,0,0,2,0}
-In the second sample, one of the optimal solutions is:
-a={0,2,0,0,0}
-b={1,1,0,1,0}
-c={0,2,0,0,0}
-In the third sample, the only possible solution is:
-a={2}
-b={2}
-c={0}
+The sample is like this:

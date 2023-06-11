@@ -1,113 +1,84 @@
-E. Gojou and Matrix Game
-time limit per test4 seconds
+A. Red Versus Blue
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Marin feels exhausted after a long day of cosplay, so Gojou invites her to play a game!
-Marin and Gojou take turns to place one of their tokens on an
-n×n
-grid with Marin starting first. There are some restrictions and allowances on where to place tokens:
-Apart from the first move, the token placed by a player must be more than Manhattan distance
-k
-away from the previous token placed on the matrix. In other words, if a player places a token at
-(
-x
-1
-,
-y
-1
-)
-, then the token placed by the other player in the next move must be in a cell
-(
-x
-2
-,
-y
-2
-)
-satisfying
-|
-x
-2
-−
-x
-1
-|+|
-y
-2
-−
-y
-1
-|>k
+Team Red and Team Blue competed in a competitive FPS. Their match was streamed around the world. They played a series of
+n
+matches.
+In the end, it turned out Team Red won
+r
+times and Team Blue won
+b
+times. Team Blue was less skilled than Team Red, so
+b
+was strictly less than
+r
 .
-Apart from the previous restriction, a token can be placed anywhere on the matrix, including cells where tokens were previously placed by any player.
-Whenever a player places a token on cell
-(x,y)
-, that player gets
-v
-x, y
-points. All values of
-v
-on the grid are distinct. You still get points from a cell even if tokens were already placed onto the cell. The game finishes when each player makes
-10
-100
-moves.
-Marin and Gojou will play
+You missed the stream since you overslept, but you think that the match must have been neck and neck since so many people watched it. So you imagine a string of length
 n
-2
-games. For each cell of the grid, there will be exactly one game where Marin places a token on that cell on her first move. Please answer for each game, if Marin and Gojou play optimally (after Marin's first move), who will have more points at the end? Or will the game end in a draw (both players have the same points at the end)?
+where the
+i
+-th character denotes who won the
+i
+-th match  — it is R if Team Red won or B if Team Blue won. You imagine the string was such that the maximum number of times a team won in a row was as small as possible. For example, in the series of matches RBBRRRB, Team Red won
+3
+times in a row, which is the maximum.
+You must find a string satisfying the above conditions. If there are multiple answers, print any.
 Input
-The first line contains two integers
+The first line contains a single integer
+t
+(
+1≤t≤1000
+)  — the number of test cases.
+Each test case has a single line containing three integers
 n
 ,
-k
+r
+, and
+b
 (
-3≤n≤2000
+3≤n≤100
+;
+1≤b<r≤n
 ,
-1≤k≤n−2
-). Note that under these constraints it is always possible to make a move.
-The following
-n
-lines contains
-n
-integers each. The
-j
--th integer in the
-i
--th line is
-v
-i,j
-(
-1≤
-v
-i,j
-≤
-n
-2
-). All elements in
-v
-are distinct.
+r+b=n
+).
 Output
-You should print
-n
-lines. In the
-i
--th line, print
-n
-characters, where the
-j
--th character is the result of the game in which Marin places her first token in the cell
-(i,j)
-. Print 'M' if Marin wins, 'G' if Gojou wins, and 'D' if the game ends in a draw. Do not print spaces between the characters in one line.
-Example
+For each test case, output a single line containing a string satisfying the given conditions. If there are multiple answers, print any.
+Examples
 input
 Copy
-3 1
-1 2 4
-6 8 3
-9 5 7
+3
+7 4 3
+6 5 1
+19 13 6
 output
 Copy
-GGG
-MGG
-MGG
+RBRBRBR
+RRRBRR
+RRBRRBRRBRRBRRBRRBR
+input
+Copy
+6
+3 2 1
+10 6 4
+11 6 5
+10 9 1
+10 8 2
+11 9 2
+output
+Copy
+RBR
+RRBRBRBRBR
+RBRBRBRBRBR
+RRRRRBRRRR
+RRRBRRRBRR
+RRRBRRRBRRR
+Note
+The first test case of the first example gives the optimal answer for the example in the statement. The maximum number of times a team wins in a row in RBRBRBR is
+1
+. We cannot minimize it any further.
+The answer for the second test case of the second example is RRBRBRBRBR. The maximum number of times a team wins in a row is
+2
+, given by RR at the beginning. We cannot minimize the answer any further.

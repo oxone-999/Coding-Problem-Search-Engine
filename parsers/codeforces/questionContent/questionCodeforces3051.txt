@@ -1,171 +1,86 @@
-H. Red-Blue Graph
-time limit per test4 seconds
+E. Elections
+time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-There is a directed graph on
+Byteburg Senate elections are coming. Usually "United Byteland", the ruling Byteland party, takes all the seats in the Senate to ensure stability and sustainable development. But this year there is one opposition candidate in one of the constituencies. Even one opposition member can disturb the stability in the Senate, so the head of the Party asks you to ensure that the opposition candidate will not be elected.
+There are
 n
-vertices numbered
-1
-through
+candidates, numbered from 1 to
 n
-where each vertex (except
+. Candidate
 n
-) has two outgoing arcs, red and blue. At any point in time, exactly one of the arcs is active for each vertex. Initially, all blue arcs are active and there is a token located at vertex
-1
-. In one second, the vertex with token first switches its active arcs — the inactive arc becomes active and vice versa. Then, the token is moved along the active arc. When the token reaches the vertex
-n
-, it stops. It is guaranteed that
-n
-is reachable via arcs from every vertex.
-You are given
-q
-queries. Each query contains a state of the graph — a pair
-(v,s)
-of the following form:
-v
-is the vertex where the token is currently located;
-s
-is a string consisting of
-n−1
-characters. The
-i
--th character corresponds to the color of the active edge leading from the
-i
--th vertex (the character is 'R' if red arc is active, otherwise the character is 'B').
-For each query, determine whether the given state is reachable from the initial state and the first time this configuration appears. Note that the two operations (change active arc and traverse it) are atomic — a state is not considered reached if it appears after changing the active arc but before traversing it.
+is the opposition candidate. There are
+m
+ polling stations in the constituency, numbered from 1 to
+m
+. You know the number of votes cast for each candidate at each polling station. The only thing you can do to prevent the election of the opposition candidate is to cancel the election results at some polling stations. The opposition candidate will be elected if the sum of the votes cast in their favor at all non-canceled stations will be strictly greater than the analogous sum for every other candidate.
+Your task is to prevent the election of the opposition candidate by canceling the election results at the minimal possible number of polling stations. Notice that solution always exists, because if you cancel the elections at all polling stations, the number of votes for each candidate will be 0, and the opposition candidate will not be elected.
 Input
-The first line contains a single integer
+The first line of the input contains two integers
 n
-(
-2≤n≤58
-) — the number of vertices.
-n−1
-lines follow,
-i
--th of contains two space separated integers
-b
-i
 and
-r
-i
+m
 (
-1≤
-b
-i
-,
-r
-i
-≤n
-) representing a blue arc
-(i,
-b
-i
-)
-and red arc
-(i,
-r
-i
-)
-, respectively. It is guaranteed that vertex
+2≤n≤100
+;
+1≤m≤100
+) — the number of candidates and the number of polling stations. The next
+m
+lines contain the election results at each polling station with
 n
-is reachable from every vertex.
-The next line contains a single integer
-q
-(
-1≤q≤5000
-) — the number of queries.
-Then
-q
-lines with queries follow. The
+numbers on each line. In the
+i
+-th line the
 j
--th of these lines contains an integer
-v
+-th number is
+a
+i,j
+ — the number of votes cast for the candidate
+j
+at the station
+i
 (
-1≤v<n
-) and a string
-s
-of length
-n−1
-consiting only of characters 'R' and 'B'. The
-i
--th of these characters is 'R' if the red arc going from
-i
-is active and 'B' otherwise.
-Output
-Output
-q
-lines, each containing answer to a single query.
-If the state in the
-i
--th query is unreachable, output the integer
-−1
-. Otherwise, output
-t
-i
-— the first time when the state appears (measured in seconds, starting from the initial state of the graph which appears in time
-0
+0≤
+a
+i,j
+≤1000
 ).
-Example
+Output
+In the first line output integer
+k
+ — the minimal number of the polling stations in which you need to cancel the election results. In the second line output
+k
+integers — the indices of canceled polling stations, in any order. If there are multiple ways to cancel results at
+k
+stations, output any one of them.
+Examples
 input
 Copy
-6
+5 3
+6 3 4 2 8
+3 7 5 6 7
+5 2 4 7 9
+output
+Copy
+2
+3 1 
+input
+Copy
 2 1
-5 5
-2 1
-6 3
-4 3
-21
-1 BBBBB
-1 RBBBB
-2 BBBBB
-5 BRBBB
-3 BRBBR
-1 BRRBR
-1 RRRBR
-2 BRRBR
-5 BBRBR
-4 BBRBB
-3 BBRRB
-2 BBBRB
-5 BRBRB
-3 BRBRR
-1 BRRRR
-1 RRRRR
-2 BRRRR
-5 BBRRR
-4 BBRRB
-2 BRBBB
-4 BRBBR
+1 1
 output
 Copy
 0
-1
-2
+input
+Copy
+3 3
+2 3 8
+4 2 9
+3 1 7
+output
+Copy
 3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
--1
--1
+1 2 3 
 Note
-The graph in the first example is depticed in the figure below.
-The first
-19
-queries denote the journey of the token. On the
-19
--th move the token would reach the vertex
-6
-. The last two queries show states that are unreachable.
+In the first example, the candidates from 1 to 5 received 14, 12, 13, 15, and 24 votes correspondingly. The opposition candidate has the most votes. However, if you cancel the election results at the first and the third polling stations, then only the result from the second polling station remains and the vote sums become 3, 7, 5, 6, and 7, without the opposition candidate being in the lead anymore.

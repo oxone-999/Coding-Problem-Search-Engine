@@ -1,130 +1,106 @@
-I. Omkar and Mosaic
-time limit per test2 seconds
+A. Gamer Hemose
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Omkar is creating a mosaic using colored square tiles, which he places in an
-n×n
-grid. When the mosaic is complete, each cell in the grid will have either a glaucous or sinoper tile. However, currently he has only placed tiles in some cells.
-A completed mosaic will be a mastapeece if and only if each tile is adjacent to exactly
-2
-tiles of the same color (
-2
-tiles are adjacent if they share a side.) Omkar wants to fill the rest of the tiles so that the mosaic becomes a mastapeece. Now he is wondering, is the way to do this unique, and if it is, what is it?
-Input
-The first line contains a single integer
+One day, Ahmed_Hossam went to Hemose and said "Let's solve a gym contest!". Hemose didn't want to do that, as he was playing Valorant, so he came up with a problem and told it to Ahmed to distract him. Sadly, Ahmed can't solve it... Could you help him?
+There is an Agent in Valorant, and he has
 n
-(
-1≤n≤2000
-).
-Then follow
-n
-lines with
-n
-characters in each line. The
+weapons. The
 i
--th character in the
-j
--th line corresponds to the cell in row
+-th weapon has a damage value
+a
 i
-and column
-j
-of the grid, and will be
-S
-if Omkar has placed a sinoper tile in this cell,
-G
-if Omkar has placed a glaucous tile,
+, and the Agent will face an enemy whose health value is
+H
 .
-if it's empty.
-Output
-On the first line, print UNIQUE if there is a unique way to get a mastapeece, NONE if Omkar cannot create any, and MULTIPLE if there is more than one way to do so. All letters must be uppercase.
-If you print UNIQUE, then print
-n
-additional lines with
-n
-characters in each line, such that the
-i
--th character in the
-j
-th
-line is
-S
-if the tile in row
-i
-and column
-j
-of the mastapeece is sinoper, and
-G
-if it is glaucous.
-Examples
-input
-Copy
-4
-S...
-..G.
-....
-...S
-output
-Copy
-MULTIPLE
-input
-Copy
-6
-S.....
-....G.
-..S...
-.....S
-....G.
-G.....
-output
-Copy
-NONE
-input
-Copy
+The Agent will perform one or more moves until the enemy dies.
+In one move, he will choose a weapon and decrease the enemy's health by its damage value. The enemy will die when his health will become less than or equal to
+0
+. However, not everything is so easy: the Agent can't choose the same weapon for
+2
+times in a row.
+What is the minimum number of times that the Agent will need to use the weapons to kill the enemy?
+Input
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(1≤t≤
 10
-.S....S...
-..........
-...SSS....
-..........
-..........
-...GS.....
-....G...G.
-..........
-......G...
-..........
-output
-Copy
-UNIQUE
-SSSSSSSSSS
-SGGGGGGGGS
-SGSSSSSSGS
-SGSGGGGSGS
-SGSGSSGSGS
-SGSGSSGSGS
-SGSGGGGSGS
-SGSSSSSSGS
-SGGGGGGGGS
-SSSSSSSSSS
+5
+)
+. Description of the test cases follows.
+The first line of each test case contains two integers
+n
+and
+H
+(2≤n≤
+10
+3
+,1≤H≤
+10
+9
+)
+— the number of available weapons and the initial health value of the enemy.
+The second line of each test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(1≤
+a
+i
+≤
+10
+9
+)
+— the damage values of the weapons.
+It's guaranteed that the sum of
+n
+over all test cases doesn't exceed
+2⋅
+10
+5
+.
+Output
+For each test case, print a single integer — the minimum number of times that the Agent will have to use the weapons to kill the enemy.
+Example
 input
+Copy
+3
+2 4
+3 7
+2 6
+4 2
+3 11
+2 1 7
+output
 Copy
 1
-.
-output
-Copy
-NONE
+2
+3
 Note
-For the first test case, Omkar can make the mastapeeces
-SSSS
-SGGS
-SGGS
-SSSS
-and
-SSGG
-SSGG
-GGSS
-GGSS.
-For the second test case, it can be proven that it is impossible for Omkar to add tiles to create a mastapeece.
-For the third case, it can be proven that the given mastapeece is the only mastapeece Omkar can create by adding tiles.
-For the fourth test case, it's clearly impossible for the only tile in any mosaic Omkar creates to be adjacent to two tiles of the same color, as it will be adjacent to
-0
-tiles total.
+In the first test case, the Agent can use the second weapon, making health value of the enemy equal to
+4−7=−3
+.
+−3≤0
+, so the enemy is dead, and using weapon
+1
+time was enough.
+In the second test case, the Agent can use the first weapon first, and then the second one. After this, the health of enemy will drop to
+6−4−2=0
+, meaning he would be killed after using weapons
+2
+times.
+In the third test case, the Agent can use the weapons in order (third, first, third), decreasing the health value of enemy to
+11−7−2−7=−5
+after using the weapons
+3
+times. Note that we can't kill the enemy by using the third weapon twice, as even though
+11−7−7<0
+, it's not allowed to use the same weapon twice in a row.

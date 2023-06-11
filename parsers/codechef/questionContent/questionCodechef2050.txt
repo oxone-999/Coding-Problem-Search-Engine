@@ -1,36 +1,92 @@
-Sherlock and the Ugly Flower
+Retrieve back the Array
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Watson gives to Sherlock two strings S1 and S2 consisting of uppercase English alphabets. Next he wants Sherlock to build a flower in the following way:
-He puts both strings perpendicular to each other in such a way that they overlap at the same character. For example, if he has two strings "ABCDEF" and "XXBCZQ", one possible way to make a flower is:
-Length of petals in the above flower are 2, 2, 3 and 3.
-A flower's ugliness is sum of absolute difference of adjacent petal lengths i.e. i.e. if adjacent petal lengths are L1, L2, L3, L4, then ugliness of flower is |L1 - L2| + |L2 - L3| + |L3 - L4| + |L4 - L1|.
-Sherlock wants to find minimum value of ugliness if we consider all possible flower configurations. Note that a configuration is valid even if any of the petal length is 0.
-Input
-First line contains T, number of test cases. Each test case consists of string S1 in one line followed by string S2 in the next line. It is guaranteed that there exists at least one possible way to make a flower.
-Output
-For each test case, output in one line the required answer.
+Dazzler had an array of
+N distinct non-negative integers. Somehow he lost the array, but he knows the bitwise XOR of all the elements in the array. You have to help him to retrieve the array.
+You are given two positive integers
+N and
+X. Construct an array
+A of
+N elements with the following conditions:
+For each
+i (
+1≤i≤N),
+0≤A
+i
+≤5⋅10
+5
+.
+All the elements in the array
+A should be pairwise distinct, i.e,
+A
+i
+
+=A
+j
+if
+i
+
+=j
+The bitwise XOR of all the
+N elements in the array should be equal to
+X, i.e,
+A
+1
+⊕A
+2
+⊕…⊕A
+N
+=X, where
+⊕ denotes the bitwise XOR operation.
+If there are multiple possible solutions, you may print any of them.
+Input Format
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains two space-separated integers
+N and
+X — the size of the array and the bitwise XOR of the entire array.
+Output Format
+For each test case, output the
+N distinct non-negative integers satisfying the constraints above.
 Constraints
-1 ≤ T ≤ 10
-1 ≤ length(S1), length(S2) ≤ 105
+1≤T≤2⋅10
+5
+1≤N≤10
+5
+1≤X≤5⋅10
+5
+0≤A
+i
+≤5⋅10
+5
+The sum of
+N over all test cases does not exceed
+3⋅10
+5
+Subtasks
+Subtask 1 (30 points):
+1≤X≤10
+5
+Subtask 2 (70 points):
+1≤X≤5⋅10
+5
 Sample 1:
 Input
 Output
-2
-ABCDE
-XXBCZQ
-BBB
-BBBBBB
-2
-6
+3
+1 10
+2 4
+3 1
+10
+7 3
+5 6 2
 Explanation:
-Test case 1:
-If we keep the configuration shown in statement, the ugliness is 2, which is minimum possible.
-
-Test case 2:
-One of the best configurations is
-       B 
-B B B  B  B B
-       B
-
-where petal lengths are 1, 3, 1, 2.
+Test case
+2:
+[7,3] is one possible array, because
+7⊕3=4
+Test case
+3:
+[5,6,2] is one possible array, because
+5⊕6⊕2=1. Another valid array is
+[8,20,29].

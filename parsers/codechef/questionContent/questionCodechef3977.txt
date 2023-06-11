@@ -1,29 +1,47 @@
-Chef and the Cake II
+Outside of Brackets
 Problem
-Read problems statements in Mandarin Chinese and Russian as well.
-Your friend Chef has made a cake for you on your birthday. Before having the cake you two have made some cuts on the cake. If you consider the cake as a rectangular grid with co-ordinates from (0,0) to (n,n), then each of the cut can be considered as a rectilinear polygon (a polygon with sides parallel to the axis and possibly self-intersecting). These cuts turn the cake into several pieces. Now you two want to distribute the pieces among yourself. Since it is your birthday, your friend has given you a choice of choosing some pieces for yourself. You are hungry and you want to have the whole cake. But you don't want to make your friend suspicious. So instead of having all the pieces you want to select the set of pieces such that no pair of pieces have a common side. You want to maximize the total amount of cakes you can have. This amount can be measured as the sum of the areas of the top surface for each piece (or the amount of cake in each piece is the area of the polygon that define that piece).
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. Each test case starts with 2 integers n and m (the number of cuts). Each of the next m lines contains the description of a cuts. Each cut starts with an integer p denoting the number of points in the polygon, followed by p pairs of integers denoting the co-ordinates of the polygon.
-Output
-For each test case, output a single line containing an integer denoting the maximum amount of cake you can have.
+Marichka has a sequence
+S containing brackets ( and ) and character x, such that the bracketed sequence is valid.
+A valid bracket sequence is a bracket sequence which can be transformed into a correct arithmetic expression by inserting characters 1 and + between the original characters of the sequence.
+For example, the given sequence
+S could be equal to (x)((x))x, because ()(()) is valid. On the other hand, it cannot be equal to )(x) because )() is not valid.
+Zenyk decided that in one step, he will:
+Select any pair of adjacent elements of the sequence and swap them.
+He wondered what is the minimum number of steps he needs to take, to get a valid bracket sequence with all x outside the brackets.
+You can notice that in valid bracket sequence, each opening bracket will have corresponding closing one and vice versa.
+Element x is outside all brackets if there is no such pair of corresponding opening and closing brackets such that x lies inside it. For instance, in sequence (()())x(())xx() all x are outside, but in sequence ((x))x(), the first x is inside and second x is outside.
+Note that the intermediate sequences do not have to be valid.
+Input Format
+The first and only line contains the string
+S, a sequence of characters (, ), and x, such that the bracket sequence is valid.
+Output Format
+Print one integer — the minimum number of steps Zenyk needs to take, to get a valid bracket sequence with all x outside the brackets.
 Constraints
-1 ≤ T ≤ 50
-1 ≤ n ≤ 10000
-1 ≤ m ≤ 20
-The polygons described by each cut will be rectilinear and will possibly be self intersecting. Each non-empty segment on the plane belongs to the border of at most one polygon. Also, a single polygon cannot go through a single segment more than once. If any pair of polygons intersect, they will intersect only at a point (not a segment). It may happen that same pair of polygons intersect at multiple points.
-The points describing the polygonal cuts will be between 1 to n-1 inclusive.
-For each of T test cases the sum of number of points in the polygons defined by each cut will be at most 80.
-Example
-Input:
+1≤|S|
+≤10
+4
+The bracket sequence of string
+S is valid.
+Sample 1:
+Input
+Output
+x
+0
+Explanation:
+x is already outside of brackets, as there are no brackets.
+Sample 2:
+Input
+Output
+(x)
+1
+Explanation:
+Zenyk can swap the first two characters, getting string x(), where x is outside of brackets.
+Sample 3:
+Input
+Output
+(()x())
 2
-5 1
-4 1 1 1 4 4 4 4 1
-5 2
-4 1 1 1 3 3 3 3 1
-4 2 2 2 4 4 4 4 2
-Output:
-16
-19
-  Explanation
-Example 1: You have only a single cut and the cake now have two pieces(as seen by the figure in the left). The amount of cake in piece 1 is 9 and the amount of cake in piece 2 is 16. So you will take the piece 2 and leave piece 1 for your friend.
-Example 2: You have two cuts and the cake now have four pieces(as seen by the figure in the left). The amount of cake in piece 1 is 18, the amount of cake in piece 2 is 3, the amount of cake in piece 3 is 1 and the amount of cake in piece 4 is 3. So you will take piece 1 and piece 3 for yourself and leave the piece 2 and piece 4 for your friend.
+Explanation:
+Zenyk can swap the second and third characters, getting the string ()(x()), and then the third and fourth, getting the string ()x(()), where x is outside of brackets.
+It can be shown that we cannot move x outside brackets in less than
+2 operations.

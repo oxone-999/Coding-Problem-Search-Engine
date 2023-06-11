@@ -1,175 +1,89 @@
-C. p-binary
+E. Rock Is Push
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Vasya will fancy any number as long as it is an integer power of two. Petya, on the other hand, is very conservative and only likes a single integer
-p
-(which may be positive, negative, or zero). To combine their tastes, they invented
-p
--binary numbers of the form
-2
-x
-+p
-, where
-x
-is a non-negative integer.
-For example, some
-−9
--binary ("minus nine" binary) numbers are:
-−8
-(minus eight),
-7
-and
-1015
-(
-−8=
-2
-0
-−9
-,
-7=
-2
-4
-−9
-,
-1015=
-2
-10
-−9
-).
-The boys now use
-p
--binary numbers to represent everything. They now face a problem: given a positive integer
-n
-, what's the smallest number of
-p
--binary numbers (not necessarily distinct) they need to represent
-n
-as their sum? It may be possible that representation is impossible altogether. Help them solve this problem.
-For example, if
-p=0
-we can represent
-7
-as
-2
-0
-+
-2
-1
-+
-2
-2
+You are at the top left cell
+(1,1)
+of an
+n×m
+labyrinth. Your goal is to get to the bottom right cell
+(n,m)
+. You can only move right or down, one cell per step. Moving right from a cell
+(x,y)
+takes you to the cell
+(x,y+1)
+, while moving down takes you to the cell
+(x+1,y)
 .
-And if
-p=−9
-we can represent
-7
-as one number
-(
-2
-4
-−9)
-.
-Note that negative
-p
--binary numbers are allowed to be in the sum (see the Notes section for an example).
-Input
-The only line contains two integers
-n
-and
-p
-(
-1≤n≤
+Some cells of the labyrinth contain rocks. When you move to a cell with rock, the rock is pushed to the next cell in the direction you're moving. If the next cell contains a rock, it gets pushed further, and so on.
+The labyrinth is surrounded by impenetrable walls, thus any move that would put you or any rock outside of the labyrinth is illegal.
+Count the number of different legal paths you can take from the start to the goal modulo
 10
 9
-,
-−1000≤p≤1000
++7
+. Two paths are considered different if there is at least one cell that is visited in one path, but not visited in the other.
+Input
+The first line contains two integers
+n,m
+ — dimensions of the labyrinth (
+1≤n,m≤2000
 ).
-Output
-If it is impossible to represent
+Next
 n
-as the sum of any number of
-p
--binary numbers, print a single integer
-−1
-. Otherwise, print the smallest possible number of summands.
+lines describe the labyrinth. Each of these lines contains
+m
+characters. The
+j
+-th character of the
+i
+-th of these lines is equal to "R" if the cell
+(i,j)
+contains a rock, or "." if the cell
+(i,j)
+is empty.
+It is guaranteed that the starting cell
+(1,1)
+is empty.
+Output
+Print a single integer — the number of different legal paths from
+(1,1)
+to
+(n,m)
+modulo
+10
+9
++7
+.
 Examples
 input
 Copy
-24 0
-output
-Copy
-2
-input
-Copy
-24 1
-output
-Copy
-3
-input
-Copy
-24 -1
-output
-Copy
-4
-input
-Copy
-4 -7
-output
-Copy
-2
-input
-Copy
 1 1
+.
 output
 Copy
--1
-Note
-0
--binary numbers are just regular binary powers, thus in the first sample case we can represent
-24=(
-2
-4
-+0)+(
-2
-3
-+0)
-.
-In the second sample case, we can represent
-24=(
-2
-4
-+1)+(
-2
-2
-+1)+(
-2
-0
-+1)
-.
-In the third sample case, we can represent
-24=(
-2
-4
-−1)+(
-2
-2
-−1)+(
-2
-2
-−1)+(
-2
-2
-−1)
-. Note that repeated summands are allowed.
-In the fourth sample case, we can represent
-4=(
-2
-4
-−7)+(
-2
 1
-−7)
-. Note that the second summand is negative, which is allowed.
-In the fifth sample case, no representation is possible.
+input
+Copy
+2 3
+...
+..R
+output
+Copy
+0
+input
+Copy
+4 4
+...R
+.RR.
+.RR.
+R...
+output
+Copy
+4
+Note
+In the first sample case we can't (and don't have to) move, hence the only path consists of a single cell
+(1,1)
+.
+In the second sample case the goal is blocked and is unreachable.
+Illustrations for the third sample case can be found here: https://assets.codeforces.com/rounds/1225/index.html

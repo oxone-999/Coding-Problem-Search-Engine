@@ -1,138 +1,141 @@
-F. Yin Yang
-time limit per test3 seconds
+B. Social Distance
+time limit per test1.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a rectangular grid with
-n
-rows and
 m
-columns.
+chairs are arranged in a circle sequentially. The chairs are numbered from
+0
+to
+m−1
+.
 n
-and
-m
-are divisible by
-4
-. Some of the cells are already colored black or white. It is guaranteed that no two colored cells share a corner or an edge.
-Color the remaining cells in a way that both the black and the white cells becomes orthogonally connected or determine that it is impossible.
-Consider a graph, where the black cells are the nodes. Two nodes are adjacent if the corresponding cells share an edge. If the described graph is connected, the black cells are orthogonally connected. Same for white cells.
+people want to sit in these chairs. The
+i
+-th of them wants at least
+a[i]
+empty chairs both on his right and left side.
+More formally, if the
+i
+-th person sits in the
+j
+-th chair, then no one else should sit in the following chairs:
+(j−a[i])modm
+,
+(j−a[i]+1)modm
+, ...
+(j+a[i]−1)modm
+,
+(j+a[i])modm
+.
+Decide if it is possible to sit down for all of them, under the given limitations.
 Input
-The input consists of multiple test cases. The first line of the input contains a single integer
+The input consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤4000
+1≤t≤5⋅
+10
+4
 ) — the number of test cases. The description of the test cases follows.
 The first line of each test case contains two integers
 n
-,
-m
-(
-8≤n,m≤500
-,
-n
 and
 m
-are divisible by
-4
-) — the number of rows and columns.
-Each of the next
+(
+2≤n≤
+10
+5
+,
+1≤m≤
+10
+9
+) — the number of people and the number of chairs.
+The next line contains
 n
-lines contains
-m
-characters. Each character is either 'B', 'W' or '.', representing black, white or empty cell respectively. Two colored (black or white) cell does not share a corner or an edge.
+integers,
+a
+1
+,
+a
+2
+, ...
+a
+n
+(
+1≤
+a
+i
+≤
+10
+9
+) — the minimum number of empty chairs, on both sides of the
+i
+-th person.
 It is guaranteed that the sum of
-n⋅m
-over all test cases does not exceed
-250000
+n
+over all test cases will not exceed
+10
+5
 .
 Output
-For each testcase print "NO" if there is no solution, otherwise print "YES" and a grid with the same format. If there are multiple solutions, you can print any.
+For each test case print "YES" (without quotes) if it is possible for everyone to sit down and fulfil the restrictions, and "NO" (without quotes) otherwise.
+You may print every letter in any case you want (so, for example, the strings "yEs", "yes", "Yes" and "YES" will all be recognized as positive answers).
 Example
 input
 Copy
-4
-8 8
-.W.W....
-.....B.W
-.W.W....
-.....W.W
-B.B.....
-....B.B.
-B.W.....
-....B.B.
-8 8
-B.W..B.W
-........
-W.B..W.B
-........
-........
-B.W..B.W
-........
-W.B..W.B
-8 12
-W.B.........
-....B...B.W.
-B.B.........
-....B...B.B.
-.B..........
-........B...
-.W..B.B...W.
-............
-16 16
-.W............W.
-...W..W..W.W....
-.B...........B.W
-....W....W......
-W......B....W.W.
-..W.......B.....
-....W...W....B.W
-.W....W....W....
-...B...........W
-W.....W...W..B..
-..W.W...W......B
-............W...
-.W.B...B.B....B.
-.....W.....W....
-..W......W...W..
-W...W..W...W...W
+6
+3 2
+1 1 1
+2 4
+1 1
+2 5
+2 1
+3 8
+1 2 1
+4 12
+1 2 1 3
+4 19
+1 2 1 3
 output
 Copy
-YES
-BWWWWWWW
-BWBBBBBW
-BWBWWWBW
-BWBWBWBW
-BWBWBWBW
-BWBBBWBW
-BWWWWWBW
-BBBBBBBW
 NO
 YES
-WWBBBBBBBBBB
-BWWWBBBBBBWB
-BBBWBBBWWWWB
-BBBWBBBWBBBB
-BBBWBBBWBBBB
-BBBWWWWWBBBB
-BWWWBBBWWWWB
-BBBBBBBBBBBB
+NO
 YES
-WWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWW
-WBBBBBBBBBBBBBWW
-WBBBWBWWWWBWWBWW
-WBBWWBBBWWBWWBWW
-WBWWWBWWWWBWWBWW
-WBBWWBBBWWBWWBWW
-WWBWWWWWWWWWWWWW
-WWBBBBBBBBBBBBWW
-WBBBWWWBWWWBWBWW
-WWWBWBBBWBBBWBBB
-WWWBWBWWWWWBWWBW
-WWWBWBBBWBBBWWBW
-WWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWW
+NO
+YES
 Note
-Solution for test case 1:
-Test case 2: one can see that the black and the white part can't be connected in the same time. So the answer is "NO".
+Test case
+1
+:
+n>m
+, so they can not sit down.
+Test case
+2
+: the first person can sit
+2
+-nd and the second person can sit in the
+0
+-th chair. Both of them want at least
+1
+empty chair on both sides, chairs
+1
+and
+3
+are free, so this is a good solution.
+Test case
+3
+: if the second person sits down somewhere, he needs
+2
+empty chairs, both on his right and on his left side, so it is impossible to find a place for the first person, because there are only
+5
+chairs.
+Test case
+4
+: they can sit in the
+1
+-st,
+4
+-th,
+7
+-th chairs respectively.

@@ -1,164 +1,193 @@
-B. Filling the Grid
-time limit per test1 second
+D. Complete Tripartite
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Suppose there is a
-h×w
-grid consisting of empty or full cells. Let's make some definitions:
-r
-i
-is the number of consecutive full cells connected to the left side in the
-i
--th row (
-1≤i≤h
-). In particular,
-r
-i
-=0
-if the leftmost cell of the
-i
--th row is empty.
-c
-j
-is the number of consecutive full cells connected to the top end in the
-j
--th column (
-1≤j≤w
-). In particular,
-c
-j
-=0
-if the topmost cell of the
-j
--th column is empty.
-In other words, the
-i
--th row starts exactly with
-r
-i
-full cells. Similarly, the
-j
--th column starts exactly with
-c
-j
-full cells.
-These are the
-r
+You have a simple undirected graph consisting of
+n
+vertices and
+m
+edges. The graph doesn't contain self-loops, there is at most one edge between a pair of vertices. The given graph can be disconnected.
+Let's make a definition.
+Let
+v
+1
 and
-c
-values of some
-3×4
-grid. Black cells are full and white cells are empty.
-You have values of
-r
-and
-c
-. Initially, all cells are empty. Find the number of ways to fill grid cells to satisfy values of
-r
-and
-c
-. Since the answer can be very large, find the answer modulo
-1000000007(
-10
-9
-+7)
-. In other words, find the remainder after division of the answer by
-1000000007(
-10
-9
-+7)
+v
+2
+be two some nonempty subsets of vertices that do not intersect. Let
+f(
+v
+1
+,
+v
+2
+)
+be true if and only if all the conditions are satisfied:
+There are no edges with both endpoints in vertex set
+v
+1
 .
+There are no edges with both endpoints in vertex set
+v
+2
+.
+For every two vertices
+x
+and
+y
+such that
+x
+is in
+v
+1
+and
+y
+is in
+v
+2
+, there is an edge between
+x
+and
+y
+.
+Create three vertex sets (
+v
+1
+,
+v
+2
+,
+v
+3
+) which satisfy the conditions below;
+All vertex sets should not be empty.
+Each vertex should be assigned to only one vertex set.
+f(
+v
+1
+,
+v
+2
+)
+,
+f(
+v
+2
+,
+v
+3
+)
+,
+f(
+v
+3
+,
+v
+1
+)
+are all true.
+Is it possible to create such three vertex sets? If it's possible, print matching vertex set for each vertex.
 Input
 The first line contains two integers
-h
+n
 and
-w
+m
 (
-1≤h,w≤
+3≤n≤
 10
-3
-) — the height and width of the grid.
-The second line contains
-h
-integers
-r
-1
+5
 ,
-r
+0≤m≤min(3⋅
+10
+5
+,
+n(n−1)
 2
-,…,
-r
-h
-(
-0≤
-r
+)
+) — the number of vertices and edges in the graph.
+The
 i
-≤w
-) — the values of
-r
-.
-The third line contains
-w
-integers
-c
-1
-,
-c
-2
-,…,
-c
-w
+-th of the next
+m
+lines contains two integers
+a
+i
+and
+b
+i
 (
-0≤
-c
-j
-≤h
-) — the values of
-c
-.
+1≤
+a
+i
+<
+b
+i
+≤n
+) — it means there is an edge between
+a
+i
+and
+b
+i
+. The graph doesn't contain self-loops, there is at most one edge between a pair of vertices. The given graph can be disconnected.
 Output
-Print the answer modulo
-1000000007(
-10
-9
-+7)
+If the answer exists, print
+n
+integers.
+i
+-th integer means the vertex set number (from
+1
+to
+3
+) of
+i
+-th vertex. Otherwise, print
+−1
 .
+If there are multiple answers, print any.
 Examples
 input
 Copy
+6 11
+1 2
+1 3
+1 4
+1 5
+1 6
+2 4
+2 5
+2 6
 3 4
-0 3 1
-0 2 3 0
+3 5
+3 6
 output
 Copy
-2
+1 2 2 3 3 3 
 input
 Copy
-1 1
-0
-1
+4 6
+1 2
+1 3
+1 4
+2 3
+2 4
+3 4
 output
 Copy
-0
-input
-Copy
-19 16
-16 16 16 16 15 15 0 5 0 4 9 9 1 4 4 0 8 16 12
-6 12 19 15 8 6 19 19 14 6 9 16 10 11 15 4
-output
-Copy
-797922655
+-1
 Note
-In the first example, this is the other possible case.
-In the second example, it's impossible to make a grid to satisfy such
-r
+In the first example, if
+v
+1
+={1}
 ,
-c
-values.
-In the third example, make sure to print answer modulo
-(
-10
-9
-+7)
-.
+v
+2
+={2,3}
+, and
+v
+3
+={4,5,6}
+then vertex sets will satisfy all conditions. But you can assign vertices to vertex sets in a different way; Other answers like "2 3 3 1 1 1" will be accepted as well.
+In the second example, it's impossible to make such vertex sets.

@@ -1,79 +1,44 @@
-Chef got Recipes
+Robot Game
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef has
-N dishes, numbered
-1 through
-N. For each valid
-i, dish
-i is described by a string
-D
-i
-containing only lowercase vowels, i.e. characters 'a', 'e', 'i', 'o', 'u'.
-A meal consists of exactly two dishes. Preparing a meal from dishes
-i and
-j (
-i
-
-=j) means concatenating the strings
-D
-i
-and
-D
-j
-in an arbitrary order into a string
-M describing the meal. Chef likes this meal if the string
-M contains each lowercase vowel at least once.
-Now, Chef is wondering - what is the total number of (unordered) pairs of dishes such that he likes the meal prepared from these dishes?
+Byteland is a kingdom of islands. Alice has N maps of the different islands constituting Byteland. Map of each island consists of cities, connected by roads. Being Byteland, the road layout of each island has a binary tree structure. Each island has a capital, which is the root of the binary tree of its map.
+Alice is bored and plays the following game:
+She chooses k out of these N maps and places a robot on the capital city of each map. Every robot is controlled by a common control string. If the present character of the control string is L(R), then all the robots move to the left(right) subtree on their map. All the robots follow the same control string and move on their respective maps.
+A control string is valid with respect to a given map if it corresponds to a valid path on that map. A control string is considered valid for a given set of k maps if it is valid for each of the k chosen maps.
+For example in a complete binary tree of 3 nodes, control strings "L" and "R" are valid and "LL" is an example of an invalid control string.
+Alice is interested in knowing the longest control string which is valid for at least k maps, for each value of k. Can you find this for her?
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-N lines follow. For each valid
-i, the
-i-th of these lines contains a single string
-D
-i
-.
+First line of input contains an integer t (t<=5), the number of test cases. Each test case starts with an integer M (1<=M<=100), the number of maps. Then M maps description follow.
+The ith map description starts with an integer N (2<=N<=1000), the number of cities on the island. Each of the following N-1 lines contain two space separated integers u c v (1<=u,v<=N , c=L or R) which means a road between city u and city v on the ith island and if c is L(R) then v is in the left(right) subtree of u. The capital city of each island is the city with number 1.
 Output
-For each test case, print a single line containing one integer - the number of ways to prepare a meal Chef likes.
-Constraints
-1≤T≤1,000
-1≤N≤10
-5
-1≤∣D
-i
-∣≤1,000 for each valid
-i
-the sum of all |D_i| over all test cases does not exceed
-3⋅10
-7
-Subtasks
-Subtask #1 (20 points):
-1≤T≤100
-1≤N≤100
-the sum of all |D_i| over all test cases does not exceed
-20000
-Subtask #2 (80 points): original constraints
+For each test case output M space separated integers, where the ith integer denotes the length of the longest valid control string she can obtain assuming she can choose i maps.
 Sample 1:
 Input
 Output
-1
-3
-aaooaoaooa
-uiieieiieieuuu
-aeioooeeiiaiei
 2
-Explanation:
-Example case 1: There are three possible meals:
-A meal prepared from dishes
-1 and
-2 (for example "aaooaoaooauiieieiieieuuu") contains all vowels.
-A meal prepared from dishes
-1 and
-3 (for example "aaooaoaooaaeioooeeiiaiei") does not contain 'u'.
-A meal prepared from dishes
-2 and
-3 (for example "uiieieiieieuuuaeioooeeiiaiei") contains all vowels.
+3
+5
+1 L 2
+1 R 3
+3 L 4
+3 R 5
+4
+1 R 2
+1 L 3
+2 L 4
+3
+1 L 2
+1 R 3
+2
+5
+1 L 2
+2 L 3
+3 L 4
+4 L 5
+6
+1 L 2
+2 R 3
+3 L 4
+4 R 5
+5 L 6
+2 2 1
+5 1

@@ -1,84 +1,113 @@
-E. Easy Scheduling
-time limit per test2 seconds
+G. Game of Chance
+time limit per test6 seconds
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Eonathan Eostar decided to learn the magic of multiprocessor systems. He has a full binary tree of tasks with height
-h
-. In the beginning, there is only one ready task in the tree — the task in the root. At each moment of time,
-p
-processes choose at most
-p
-ready tasks and perform them. After that, tasks whose parents were performed become ready for the next moment of time. Once the task becomes ready, it stays ready until it is performed.
-You shall calculate the smallest number of time moments the system needs to perform all the tasks.
-Input
-The first line of the input contains the number of tests
-t
+The King wants to marry off his daughter, and he wants her husband to have the greatest innate luckiness possible. To find such a person he decided to hold a heads-or-tails tournament.
+If person
+A
+with luckiness
+x
+and person
+B
+with luckiness
+y
+play heads-or-tails against each other, person
+A
+wins with probability
+x/(x+y)
+.
+The tournament has several rounds. Each round some participants are split into pairs. Each pair plays against each other, and the loser leaves the tournament.
+The participants are numbered from
+1
+to
+n
+. During the first round, a number
+k
 (
-1≤t≤5⋅
+1≤k≤n
+) is selected such that
+n−k/2
+is a power of
+2
+(such
+k
+always exists and is unique). Only participants numbered from
+1
+to
+k
+take part in the first round. It ensures that in all other rounds the number of participants is the power of
+2
+.
+During other rounds, all the participants who still have not left the tournament take part. If during some round, participants numbered
+p
+1
+<…<
+p
+2m
+take part, then they are split into pairs in the following manner: participant
+p
+2i−1
+plays against participant
+p
+2i
+for each
+i
+from
+1
+to
+m
+.
+The rounds are held until only one participant is left. He is declared the winner of the tournament and he will marry the King's daughter. The princess can't wait to find out who is her future husband. She asked every participant to tell her his luckiness. Assuming they did not lie, she wants to know the probability of each participant winning the tournament. As you are the best friend of the princess, she asks you to help her.
+Input
+The first line of the input contains the number of participants,
+n
+(
+2≤n≤3⋅
 10
 5
-). Each of the next
-t
-lines contains the description of a test. A test is described by two integers
-h
+). The second line of the input contains
+n
+integer numbers,
+a
+1
+,…,
+a
+n
 (
-1≤h≤50
-) and
-p
-(
-1≤p≤
+1≤
+a
+i
+≤
 10
-4
-) — the height of the full binary tree and the number of processes. It is guaranteed that all the tests are different.
+9
+). The luckiness of the
+i
+-th participant equals to
+a
+i
+.
 Output
-For each test output one integer on a separate line — the smallest number of time moments the system needs to perform all the tasks.
+Print
+n
+numbers
+p
+i
+. The
+i
+-th number should be the probability of the
+i
+-th participant winning the tournament. The absolute error of your answer must not exceed
+10
+−9
+.
 Example
 input
 Copy
-3
-3 1
-3 2
-10 6
+5
+1 4 1 1 4
 output
 Copy
-7
-4
-173
+0.026 0.3584 0.0676 0.0616 0.4864
 Note
-Let us consider the second test from the sample input. There is a full binary tree of height
-3
-and there are two processes. At the first moment of time, there is only one ready task,
-1
-, and
-p
-1
-performs it. At the second moment of time, there are two ready tasks,
-2
-and
-3
-, and the processes perform them. At the third moment of time, there are four ready tasks,
-4
-,
-5
-,
-6
-, and
-7
-, and
-p
-1
-performs
-6
-and
-p
-2
-performs
-5
-. At the fourth moment of time, there are two ready tasks,
-4
-and
-7
-, and the processes perform them. Thus, the system spends
-4
-moments of time to perform all the tasks.
+Here is an example of a tournament bracket, showing the winning probability in each pair.

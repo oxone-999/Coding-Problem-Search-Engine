@@ -1,121 +1,27 @@
-C. Long Jumps
+F. New Year's Puzzle
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp found under the Christmas tree an array
-a
-of
-n
-elements and instructions for playing with it:
-At first, choose index
-i
-(
-1≤i≤n
-) — starting position in the array. Put the chip at the index
-i
-(on the value
-a
-i
-).
-While
-i≤n
-, add
-a
-i
-to your score and move the chip
-a
-i
-positions to the right (i.e. replace
-i
-with
-i+
-a
-i
-).
-If
-i>n
-, then Polycarp ends the game.
+Every year Santa Claus gives gifts to all children. However, each country has its own traditions, and this process takes place in different ways. For example, in Berland you need to solve the New Year's puzzle.
+Polycarp got the following problem: given a grid strip of size
+2×n
+, some cells of it are blocked. You need to check if it is possible to tile all free cells using the
+2×1
+and
+1×2
+tiles (dominoes).
 For example, if
 n=5
-and
-a=[7,3,1,2,3]
-, then the following game options are possible:
-Polycarp chooses
-i=1
-. Game process:
-i=1
-⟶
-+7
-8
-. The score of the game is:
-a
-1
-=7
-.
-Polycarp chooses
-i=2
-. Game process:
-i=2
-⟶
-+3
-5
-⟶
-+3
-8
-. The score of the game is:
-a
-2
-+
-a
-5
-=6
-.
-Polycarp chooses
-i=3
-. Game process:
-i=3
-⟶
-+1
-4
-⟶
-+2
-6
-. The score of the game is:
-a
-3
-+
-a
-4
-=3
-.
-Polycarp chooses
-i=4
-. Game process:
-i=4
-⟶
-+2
-6
-. The score of the game is:
-a
-4
-=2
-.
-Polycarp chooses
-i=5
-. Game process:
-i=5
-⟶
-+3
-8
-. The score of the game is:
-a
-5
-=3
-.
-Help Polycarp to find out the maximum score he can get if he chooses the starting index in an optimal way.
+and the strip looks like this (black cells are blocked):
+Then it can be tiled, for example, using two vertical and two horizontal tiles, as in the picture below (different tiles are marked by different colors).
+And if
+n=3
+and the strip looks like this:
+It is impossible to tile free cells.
+Polycarp easily solved this task and received his New Year's gift. Can you solve it?
 Input
-The first line contains one integer
+The first line contains an integer
 t
 (
 1≤t≤
@@ -124,75 +30,91 @@ t
 ) — the number of test cases. Then
 t
 test cases follow.
-The first line of each test case contains one integer
+Each test case is preceded by an empty line.
+The first line of each test case contains two integers
 n
+and
+m
 (
-1≤n≤2⋅
-10
-5
-) — the length of the array
-a
-.
-The next line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
+1≤n≤
 10
 9
-) — elements of the array
-a
+,
+1≤m≤2⋅
+10
+5
+) — the length of the strip and the number of blocked cells on it.
+Each of the next
+m
+lines contains two integers
+r
+i
+,
+c
+i
+(
+1≤
+r
+i
+≤2,1≤
+c
+i
+≤n
+) — numbers of rows and columns of blocked cells. It is guaranteed that all blocked cells are different, i.e.
+(
+r
+i
+,
+c
+i
+)≠(
+r
+j
+,
+c
+j
+),i≠j
 .
 It is guaranteed that the sum of
-n
+m
 over all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case, output on a separate line one number — the maximum score that Polycarp can get by playing the game on the corresponding array according to the instruction from the statement. Note that Polycarp chooses any starting position from
-1
-to
-n
-in such a way as to maximize his result.
+For each test case, print on a separate line:
+"YES", if it is possible to tile all unblocked squares with the
+2×1
+and
+1×2
+tiles;
+"NO" otherwise.
+You can output "YES" and "NO" in any case (for example, the strings yEs, yes, Yes and YES will be recognized as positive).
 Example
 input
 Copy
-4
-5
-7 3 1 2 3
 3
-2 1 4
-6
-2 1000 2 3 995 1
-5
-1 1 1 1 1
+
+5 2
+2 2
+1 4
+
+3 2
+2 1
+2 3
+
+6 4
+2 1
+2 3
+2 4
+2 6
 output
 Copy
-7
-6
-1000
-5
+YES
+NO
+NO
 Note
-The first test case is explained in the statement.
-In the second test case, the maximum score can be achieved by choosing
-i=1
-.
-In the third test case, the maximum score can be achieved by choosing
-i=2
-.
-In the fourth test case, the maximum score can be achieved by choosing
-i=1
-.
+The first two test cases are explained in the statement.
+In the third test case the strip looks like this:
+It is easy to check that the unblocked squares on it can not be tiled.

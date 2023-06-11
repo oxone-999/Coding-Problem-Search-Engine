@@ -1,32 +1,96 @@
-Chef and Segment Game
+Valleys and Hills
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-  Chef loves to play games. Now he plays very interesting game called "Segment". At the beginning Chef has segment [0, X] and no points on it. On each step Chef chooses the subsegment of maximal length possible such as it contains no points on it. If there are more than one such subsegment Chef chooses the one with the minimal left coordinate. Once Chef chosed the subsegment he put the point in it's middle and the step is over.
-Help Chef to define the coordinate of the point he will put on the K-th step.
-  Input
-The first line contains integer T - number of test cases.
-Each of next T lines contains two integers X and K.
-  Output
-For each test case in a single line print single double number - the coordinate of the K-th point Chef will put. Answer will be considered as correct if absolute difference between the answer and correct answer is less or equal 10^(-6).
-  Constraints
-1 ≤ T ≤ 10^5
-1 ≤ X ≤ 10^9
-1 ≤ K ≤ 10^12
+Chef built a binary string
+S that has exactly
+N hills and
+M valleys.
+A hill is any index
+1<i<∣S∣ such that both its neighbors are strictly smaller than it, i.e,
+S
+i−1
+<S
+i
+and
+S
+i+1
+<S
+i
+.
+A valley is any index
+1<i<∣S∣ such that both its neighbors are strictly larger than it, i.e,
+S
+i−1
+>S
+i
+and
+S
+i+1
+>S
+i
+.
+Chef thinks that his string
+S is the shortest among all binary strings with
+N hills and
+M valleys. You don't quite trust his words, so to verify his claim you would like to find the shortest binary string with exactly
+N hills and
+M valleys.
+If there are multiple possible binary strings of the least length satisfying the given condition, you may print any of them.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains two space-separated integers
+N and
+M, the required number of hills and valleys respectively.
+Output Format
+For each test case, output two lines.
+The first line contains the length of the binary string you constructed to satisfy the given conditions.
+The second line contains the string itself.
+Constraints
+1≤T≤2500
+1≤N≤500
+1≤M≤500
+The sum of lengths of the answer strings across all test cases does not exceed
+2⋅10
+5
 Subtasks
-Subtask 1: T ≤ 10; X, K ≤ 20. Points: 15
-Subtask 2: T ≤ 10; X ≤ 10^6, K ≤ 2*10^5. Points: 25
-Subtask 3: T ≤ 10^5; X ≤ 10^9, K ≤ 10^12. Points: 60
+Subtask 1 (10 points):
+1≤N≤50
+1≤M≤50
+You may output any string of length not exceeding
+320 containing exactly
+N hills and
+M valleys: it need not be shortest by length. It is guaranteed that at least one such string with length
+≤320 exists.
+Subtask 2 (90 points):
+Original constraints
+The binary string you construct must be shortest by length.
 Sample 1:
 Input
 Output
-4
-10 1
-10 2
-10 3
-1000000000 1234567
-5.0000
-2.5000
-7.5000
-177375316.6198730500000000
+3
+3 2
+2 3
+3 3
+7
+0101010
+7
+1010101
+8
+01010101
 Explanation:
-You can see the points coordinates for the third sample from first two samples.
+Test case
+1: The given string has hills at indices
+2,4,6 and valleys at indices
+3,5. It can be verified that there is no string of length
+6 or less with
+3 hills and
+2 valleys. Note that for subtask
+1, a binary string like
+001010100 will also be accepted as a valid output, even though it is not shortest by length.
+Test case
+3: Apart from the given string, another possible string of length
+8 that has
+3 hills and
+3 valleys is
+10101010. You may print any of them.

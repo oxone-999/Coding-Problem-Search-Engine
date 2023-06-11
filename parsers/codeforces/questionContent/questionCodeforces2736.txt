@@ -1,102 +1,75 @@
-E. Height All the Same
-time limit per test2 seconds
-memory limit per test512 megabytes
+A. Little Artem
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alice has got addicted to a game called Sirtet recently.
-In Sirtet, player is given an
+Young boy Artem tries to paint a picture, and he asks his mother Medina to help him. Medina is very busy, that's why she asked for your help.
+Artem wants to paint an
 n×m
-grid. Initially
-a
-i,j
-cubes are stacked up in the cell
-(i,j)
-. Two cells are called adjacent if they share a side. Player can perform the following operations:
-stack up one cube in two adjacent cells;
-stack up two cubes in one cell.
-Cubes mentioned above are identical in height.
-Here is an illustration of the game. States on the right are obtained by performing one of the above operations on the state on the left, and grey cubes are added due to the operation.
-Player's goal is to make the height of all cells the same (i.e. so that each cell has the same number of cubes in it) using above operations.
-Alice, however, has found out that on some starting grids she may never reach the goal no matter what strategy she uses. Thus, she is wondering the number of initial grids such that
-L≤
-a
-i,j
-≤R
-for all
-1≤i≤n
-,
-1≤j≤m
-;
-player can reach the goal using above operations.
-Please help Alice with it. Notice that the answer might be large, please output the desired value modulo
-998,244,353
+board. Each cell of the board should be colored in white or black.
+Lets
+B
+be the number of black cells that have at least one white neighbor adjacent by the side. Let
+W
+be the number of white cells that have at least one black neighbor adjacent by the side. A coloring is called good if
+B=W+1
 .
+The first coloring shown below has
+B=5
+and
+W=4
+(all cells have at least one neighbor with the opposite color). However, the second coloring is not good as it has
+B=4
+,
+W=4
+(only the bottom right cell doesn't have a neighbor with the opposite color).
+Please, help Medina to find any good coloring. It's guaranteed that under given constraints the solution always exists. If there are several solutions, output any of them.
 Input
-The only line contains four integers
-n
-,
-m
-,
-L
-and
-R
+Each test contains multiple test cases.
+The first line contains the number of test cases
+t
 (
-1≤n,m,L,R≤
-10
-9
-,
-L≤R
-,
-n⋅m≥2
-).
+1≤t≤20
+). Each of the next
+t
+lines contains two integers
+n,m
+(
+2≤n,m≤100
+) — the number of rows and the number of columns in the grid.
 Output
-Output one integer, representing the desired answer modulo
-998,244,353
-.
-Examples
+For each test case print
+n
+lines, each of length
+m
+, where
+i
+-th line is the
+i
+-th row of your colored matrix (cell labeled with 'B' means that the cell is black, and 'W' means white). Do not use quotes.
+It's guaranteed that under given constraints the solution always exists.
+Example
 input
-Copy
-2 2 1 1
-output
-Copy
-1
-input
-Copy
-1 2 1 2
-output
 Copy
 2
+3 2
+3 3
+output
+Copy
+BW
+WB
+BB
+BWB
+BWW
+BWB
 Note
-In the first sample, the only initial grid that satisfies the requirements is
-a
-1,1
-=
-a
-2,1
-=
-a
-1,2
-=
-a
-2,2
-=1
-. Thus the answer should be
-1
+In the first testcase,
+B=3
+,
+W=2
 .
-In the second sample, initial grids that satisfy the requirements are
-a
-1,1
-=
-a
-1,2
-=1
-and
-a
-1,1
-=
-a
-1,2
-=2
-. Thus the answer should be
-2
-.
+In the second testcase,
+B=5
+,
+W=4
+. You can see the coloring in the statement.

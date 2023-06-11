@@ -1,36 +1,133 @@
-The N Queens Puzzle Revisited
+Appy Loves One
 Problem
-Johnny, a computer science student from the Bytelandian Technological University (BTU), has finally managed to write a program to solve the N queens problem. However, his version of the N queens problem is not really all that similar to the classical one.
-Recall that in the N queens problem, there is a square chessboard of size NxN. The goal is to put N queens on the chessboard so that no two queens would be able to attack each other.
-In Johnny's version of the problem (which he states to be "much harder" than the original one), there are K "blocked" squares given on the chessboard. The goal is still the same: to put N queens on the chessboard such that no two queens would be able to attack each other. However, there are some differences due to the existence of blocked squares. First, a queen cannot be put on a blocked square. Secondly, two queens are considered to be able to attack each other only if there is no blocked square between them. Finally, there must be exactly one queen on every column of the board.
-Johnny claims that his program solves the above problem very effectively. He generates some test cases (which his program can solve within minutes) to challenge you. You know the method Johnny used to generate the test case. For a given N, Johnny randomly picks a number K between 1 and N2/2 with equal probability. After that, Johnny picks K blocked squares on the chess board. Any combinations of K squares can be picked with equal probability.
-Write a program that can solve Johnny's test cases within seconds.
+###Read problems statements Hindi , Vietnamese , Mandarin Chinese , Russian and Bengali as well.
+Chef has a sequence
+A
+1
+,A
+2
+,…,A
+N
+; each element of this sequence is either
+0 or
+1. Appy gave him a string
+S with length
+Q describing a sequence of queries. There are two types of queries:
+'!': right-shift the sequence
+A, i.e. replace
+A by another sequence
+B
+1
+,B
+2
+,…,B
+N
+satisfying
+B
+i+1
+=A
+i
+for each valid
+i and
+B
+1
+=A
+N
+'?': find the length of the longest contiguous subsequence of
+A with length
+≤K such that each element of this subsequence is equal to
+1
+Answer all queries of the second type.
 Input
-The first line contains t, the number of test cases (about 5). Then t test cases follow. Each test case has the following form:
-The first line contains two integers N and K (8 <= N <= 500, 1 <= K <= N2/2)
-Each line in the next K lines contains two integers i, j which are the row and the column number of a blocked square (1 <= i, j <= N)
-Each test case's input is separated by a blank line. The rows and the columns of the chessboard are numbered from 1 to N. There is always a solution for each test case.
+The first line of the input contains three space-separated integers
+N,
+Q and
+K.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+The third line contains a string with length
+Q describing queries. Each character of this string is either '?', denoting a query of the second type, or '!', denoting a query of the first type.
 Output
-For each test case, print a single line containing N integers a1, a2, ..., aN in which ai is the row number of the queen in column i. Any correct solution will be accepted.
+For each query of the second type, print a single line containing one integer — the length of the longest required subsequence.
+Constraints
+1≤K≤N≤10
+5
+1≤Q≤3⋅10
+5
+0≤A
+i
+≤1 for each valid
+i
+S contains only characters '?' and '!'
+Subtasks
+Subtask #1 (30 points):
+1≤N≤10
+3
+1≤Q≤3⋅10
+3
+Subtask #2 (70 points): original constraints
 Sample 1:
 Input
 Output
-1
-8 15
-7 7
-3 1
-7 1
-4 8
-8 3
-6 5
-4 4
-2 1
-8 2
-6 3
-3 7
-7 6
-2 3
-1 2
-6 4
-4 2 7 5 2 4 6 8
+5 5 3
+1 1 0 1 1
+?!?!?
+2
+3
+3
 Explanation:
+In the first query, there are two longest contiguous subsequences containing only
+1-s:
+A
+1
+,A
+2
+and
+A
+4
+,A
+5
+. Each has length
+2.
+After the second query, the sequence
+A is
+[1,1,1,0,1].
+In the third query, the longest contiguous subsequence containing only
+1-s is
+A
+1
+,A
+2
+,A
+3
+.
+After the fourth query,
+A=[1,1,1,1,0].
+In the fifth query, the longest contiguous subsequence containing only
+1-s is
+A
+1
+,A
+2
+,A
+3
+,A
+4
+with length
+4. However, we only want subsequences with lengths
+≤K. One of the longest such subsequences is
+A
+2
+,A
+3
+,A
+4
+, with length
+3.

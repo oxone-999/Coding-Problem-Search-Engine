@@ -1,179 +1,181 @@
-D. Explorer Space
-time limit per test2 seconds
+F. Reunion
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are wandering in the explorer space of the 2050 Conference.
-The explorer space can be viewed as an undirected weighted grid graph with size
-n×m
-. The set of vertices is
-{(i,j)|1≤i≤n,1≤j≤m}
-. Two vertices
-(
-i
-1
-,
-j
-1
-)
-and
-(
-i
-2
-,
-j
-2
-)
-are connected by an edge if and only if
-|
-i
-1
-−
-i
-2
-|+|
-j
-1
-−
-j
-2
-|=1
-.
-At each step, you can walk to any vertex connected by an edge with your current vertex. On each edge, there are some number of exhibits. Since you already know all the exhibits, whenever you go through an edge containing
-x
-exhibits, your boredness increases by
-x
-.
-For each starting vertex
-(i,j)
-, please answer the following question: What is the minimum possible boredness if you walk from
-(i,j)
-and go back to it after exactly
-k
-steps?
-You can use any edge for multiple times but the boredness on those edges are also counted for multiple times. At each step, you cannot stay on your current vertex. You also cannot change direction while going through an edge. Before going back to your starting vertex
-(i,j)
-after
-k
-steps, you can visit
-(i,j)
-(or not) freely.
-Input
-The first line contains three integers
+It is reported that the 2050 Conference will be held in Yunqi Town in Hangzhou from April 23 to 25, including theme forums, morning jogging, camping and so on.
+The relationship between the
 n
-,
-m
-and
-k
-(
-2≤n,m≤500,1≤k≤20
-).
-The
-j
--th number (
-1≤j≤m−1
-) in the
-i
--th line of the following
+volunteers of the 2050 Conference can be represented by a tree (a connected undirected graph with
 n
-lines is the number of exibits on the edge between vertex
-(i,j)
-and vertex
-(i,j+1)
-.
-The
-j
--th number (
-1≤j≤m
-) in the
-i
--th line of the following
+vertices and
 n−1
-lines is the number of exibits on the edge between vertex
-(i,j)
-and vertex
-(i+1,j)
-.
-The number of exhibits on each edge is an integer between
-1
-and
-10
-6
-.
-Output
-Output
+edges). The
 n
-lines with
-m
-numbers each. The
-j
--th number in the
+vertices of the tree corresponds to the
+n
+volunteers and are numbered by
+1,2,…,n
+.
+We define the distance between two volunteers
 i
--th line,
-answe
-r
-ij
-, should be the minimum possible boredness if you walk from
+and
+j
+, dis
 (i,j)
-and go back to it after exactly
-k
-steps.
-If you cannot go back to vertex
-(i,j)
-after exactly
-k
-steps,
-answe
+as the number of edges on the shortest path from vertex
+i
+to vertex
+j
+on the tree. dis
+(i,j)=0
+whenever
+i=j
+.
+Some of the volunteers can attend the on-site reunion while others cannot. If for some volunteer
+x
+and nonnegative integer
 r
-ij
-should be
+, all volunteers whose distance to
+x
+is no more than
+r
+can attend the on-site reunion, a forum with radius
+r
+can take place. The level of the on-site reunion is defined as the maximum possible radius of any forum that can take place.
+Assume that each volunteer can attend the on-site reunion with probability
+1
+2
+and these events are independent. Output the expected level of the on-site reunion. When no volunteer can attend, the level is defined as
 −1
+. When all volunteers can attend, the level is defined as
+n
+.
+Input
+The first line contains a single integer
+n
+(
+2≤n≤300
+) denoting the number of volunteers.
+Each of the next
+n−1
+lines contains two integers
+a
+and
+b
+denoting an edge between vertex
+a
+and vertex
+b
+.
+Output
+Output the expected level modulo
+998244353
+.
+Formally, let
+M=998244353
+. It can be shown that the answer can be expressed as an irreducible fraction
+p
+q
+, where
+p
+and
+q
+are integers and
+q≢0(modM)
+. Output the integer equal to
+p⋅
+q
+−1
+modM
+. In other words, output such an integer
+x
+that
+0≤x<M
+and
+x⋅q≡p(modM)
 .
 Examples
 input
 Copy
-3 3 10
-1 1
-1 1
-1 1
-1 1 1
-1 1 1
-output
-Copy
-10 10 10
-10 10 10
-10 10 10
-input
-Copy
-2 2 4
-1
 3
-4 2
+1 2
+2 3
 output
 Copy
-4 4
-10 6
+499122177
 input
 Copy
-2 2 3
+5
+1 2
+2 3
+3 4
+3 5
+output
+Copy
+249561089
+input
+Copy
+10
+1 2
+2 3
+3 4
+4 5
+5 6
+6 7
+7 8
+8 9
+9 10
+output
+Copy
+821796866
+Note
+For the first example, the following table shows all possible outcomes.
+yes
+means the volunteer can attend the on-site reunion and
+no
+means he cannot attend.
+1
+yes
+yes
+yes
+yes
+no
+no
+no
+no
+2
+yes
+yes
+no
+no
+yes
+yes
+no
+no
+3
+yes
+no
+yes
+no
+yes
+no
+yes
+no
+level
+3
+1
+0
+0
+1
+0
+0
+−1
+The expected level is
+3+1+1+(−1)
+2
+3
+=
 1
 2
-3 4
-output
-Copy
--1 -1
--1 -1
-Note
-In the first example, the answer is always
-10
-no matter how you walk.
-In the second example,
-answe
-r
-21
-=10
-, the path is
-(2,1)→(1,1)→(1,2)→(2,2)→(2,1)
-, the boredness is
-4+1+2+3=10
 .

@@ -1,59 +1,133 @@
-Earning A Profit
+Chef and Ants
 Problem
-There are
-N planets numbered
-1 to
-N. You are a space merchant who earns by selling goods on these planets. Traveling to each planet requires you to pay for the fuel. The difficulty of traveling to
-i-th planet is
-D
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef has been researching ant colonies for many years and finally discovered all their secrets.
+An ant colony consists of
+N distinct lines (numbered
+1 through
+N) that pass through a point
+O, which is the queen's home. For each valid
+i, there are
+M
 i
-. You need to plan your trip by choosing a consecutive sub segment of planets.
-Your earning of the trip is calculated as follows -
-You earn
-A coins for every planet you visit.
-For each planet
-i you visit, you have to pay
-C
+ants on the
+i-th line.
+For each valid
+i and
+j, the
+j-th ant on the
+i-th line initially has a non-zero coordinate
+X
+i,j
+with the following meaning:
+The distance of this ant from
+O is
+∣X
+i,j
+∣.
+Let's choose a direction along the
+i-th line from
+O. The exact way in which this direction is chosen does not matter here, it only needs to be the same for all ants on the same line.
+If
+X
+i,j
+is positive, this ant is at the distance
+∣X
+i,j
+∣ from
+O in the chosen direction. Otherwise, it is at this distance from
+O in the opposite direction.
+In other words, two ants
+j and
+k on a line
+i are at the same side of
+O if the signs of
+X
+i,j
+and
+X
+i,k
+are the same or on opposite sides if the signs are different.
+All ants move with the same constant speed. Initially, all of them are moving towards
+O. Whenever two or more ants meet (possibly at
+O), all of these ants turn around and start moving in the opposite directions with the same speed. We call this a collision. Even if an ant reaches
+O without meeting an ant there, it keeps moving in the same direction. An ant may change direction multiple times.
+Help Chef find the total number of collisions between ants. Note that even if more than two ants meet, it counts as only one collision.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+N lines follow. For each valid
+i, the
+i-th of these lines contains an integer
+M
 i
-coins for the fuel.
-If you visit every planet with indices
-L to
-R, you also have to pay
-gap(L,R) coins where
-gap(L,R)=max[(D
-r
-−D
-l
-)
+, followed by a space and
+M
+i
+space-separated integers
+X
+i,1
+,X
+i,2
+,…,X
+i,M
+i
+.
+Output
+For each test case, print a single line containing one integer ― the number of collisions between ants.
+Constraints
+1≤T≤1,000
+1≤N≤2⋅10
+5
+1≤M
+i
+≤5⋅10
+5
+for each valid
+i
+1≤∣X
+i,j
+∣≤10
+9
+for each valid
+i,j
+X
+i,j
+<X
+i,j+1
+for each valid
+i,j
+the sum of
+N over all test cases does not exceed
+2⋅10
+5
+the sum of
+M
+1
++M
 2
-]
-forL<=l<=r<=R
-Calculate the maximum profit you can earn by traveling to a consecutive segment of planets. Note that if you travel to no planet at all, your net profit will be zero.
-###Input:
-First line will contain
-T, number of testcases. Then the testcases follow.
-For each testcase, the first line contains two integers
-N and
-A
-The next
-N lines contains two integers
-C
-i
-,D
-i
-###Output: For each testcase, output a single integer denoting the maximum profit you can earn.
-###Constraints
-1≤T≤10
-1≤N≤3000
-1≤A≤10
++…+M
+N
+over all test cases does not exceed
+10
 6
-1≤D
-i
-,C
-i
-≤10
-6
-###Sample Input:
-1 3 10 1 3 3 1 2 2
-###Sample Output: 20
-###EXPLANATION: For L = 1 and R = 3, we have profit = (3 - 1 + 1) * 10 - (1 + 3 + 2) - (3 - 1)*(3 - 1) = 20. This is the maximum possible profit for any sub-segment.
+Subtasks
+Subtask #1 (30 points):
+N=1
+Subtask #2 (70 points): original constraints
+Sample 1:
+Input
+Output
+1
+2
+2 -2 1
+1 2
+2
+Explanation:
+Example case 1: First, the ants on the first line collide at the coordinate
+−1/2 and change directions. Finally, ant
+2 on the first line collides with the only ant on the second line; this happens at
+O. No collisions happen afterwards.

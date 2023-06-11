@@ -1,35 +1,72 @@
-Password Cracking Challenge
+Chef, Primes and Trees (Challenge)
 Problem
-Chef has recently discovered a weakness in the password verification system on a network of servers, and has enlisted your help in determining the practicality of an attack. Chef discovered that if he simultaneously sends password guesses to all servers, he can measure the response time to determine how accurately the guesses were. Some of the servers in the network are "honeypot" servers that accept password guesses but cannot be accessed. Chef does not know which servers are honeypots, but he knows how many there are.
-Each server has a password consisting of between 8 and 12 lowercase alphabetic characters. There is also a "salt" string which is 8 characters long. When a password guess comes to a server, the password guess is appended with the salt string, and then hashed with the SHA1 hashing algorithm. (Most of the details of the SHA1 hashing algorithm are not relevant to this problem, other than the fact that it has an output size of 160 bits, each of which equally likely to be 0 or 1.) The result is compared to the SHA1 hash of the actual password appended with the salt string. Chef is able to calculate the sum of the squares of the number of matching bits on each non-honeypot server (after all, the honeypot servers don't give any feedback). This sum is denoted the "score" of a guess.
-There is a limit on the number of password guesses Chef can make. Chef would like you to make password guesses, and try to attain a high guess score.
-Input + Output
-Input will begin with a line containing three integers: T, the number of password guesses to perform, N, the total number of servers, and H, the number of honeypot servers. After reading T, N, and H, repeat the following procedure T times.
-Print a password guess, consisting of N lowercase alphabetic strings of length between 8 and 12. Make sure to print a newline and flush the output buffer after printing the last string. Then read a line containing a single integer S, the score of the guess.
-Attention: the program should clear the output buffer after printing each guess. It can be done using fflush(stdout) command or by setting the proper type of buffering at the beginning of the execution - setlinebuf(stdout). Failure to flush the output buffer will result in Time Limit Exceeded verdict.
-Scoring
-Your score will be the highest score across all password guesses, divided by N-H. The goal is to maximise this score.
-Sample Input + Output
-In:  4 3 1
-Out: applepie
-Out: berrypie
-Out: cherrypie
-In:  12186
-Out: bananapie
-Out: custardpie
-Out: lemonpie
-In:  13466
-Out: keylimepie
-Out: pecanpie
-Out: blueberrypie
-In:  7785
-Out: chocolatepie
-Out: custardpie
-Out: peachpie
-In:  10517
+###Read problems statements Hindi , Vietnamese , Mandarin Chinese , Russian and Bengali as well.
+Chef loves prime numbers and trees.
+One day, Chef received
+N nodes (numbered
+1 through
+N) as a gift. There are no edges between them yet, but each node contains a value; let's denote the value in node
+i by
+V
+i
+. Since Chef likes trees, he wants to form a tree by adding
+N−1 edges between these nodes.
+Chef defines a subtree as any connected component obtained after deleting an edge. A tree with
+N nodes has
+2(N−1) subtrees. A prime subtree is a subtree such that the sum of values in its nodes is a prime number.
+Since Chef likes prime numbers too, he wants to maximize the number of prime subtrees in the resulting tree. Help him solve this difficult problem!
+Input
+The first line of the input contains a single integer
+N.
+The second line contains
+N space-separated integers
+V
+1
+,V
+2
+,…,V
+N
+.
+Output
+Print
+N−1 lines. Each of these lines should contain two space-separated integers
+u and
+v (
+1≤u,v≤N) denoting an edge between nodes
+u and
+v. The graph formed by these edges must be a tree.
+Constraints
+1≤N≤1,000
+1≤V
+i
+≤20,000 for each valid
+i
+Example Input
+4
+1 5 2 3
+Example Output
+1 3
+3 2
+3 4
 Explanation
-The salt is "codechef". The first server's password is "challenge". The second server is the honeypot, and the third server's password is "maythirteen". On the first guess, the hash of "applepiecodechef" is compared to the hash of "challengecodechef" and the hash of "cherrypiecodechef" is compared to the hash of "maythirteencodechef". The hash of "applepiecodechef" is "EC70A4442061F08180BDD0E1A4BD8284C5C72978", and the hash of "challengecodechef" is "4DE646F7F99F2735957070C9D49F1DA6960A8DD1". The hashes share 81 bits. On the third server, the hashes share 75 bits. Thus the first guess scores 81*81+75*75 = 12186.
-The best score across all 4 guesses is 13466, therefore this sample would score 13466/(3-1) = 6733.
-Test Case Generation
-T is chosen randomly and uniformly between 250 and 2000. N is chosen randomly and uniformly between 50 and 200. H is chosen randomly and uniformly between max(N-50,N/2) and N-10, inclusive. The salt and each of the N-H password strings are generated by first randomly choosing a length L between 8 and 12, and then choosing L random lowercase alphabetic characters. Each of the N-H password strings is assigned to a random server, ensuring no server is assigned multiple passwords. The remaining H servers become honeypot servers.
-Note: The test data is not guaranteed to be the same across multiple submissions, however T, N, and H will be the same across all submissions.
+Example case 1: We can form a tree by adding edges
+(1,3),
+(3,2) and
+(3,4). The sums of values in nodes of its subtrees are
+1,3,5,6,8,10, so there are two prime subtrees (the ones with sums
+3 and
+5).
+Scoring
+The score for each test case (and therefore each test file) is
+P/(N−1), where
+P is the number of prime subtrees. The score of a submission is the sum of its scores for all test files. For the example output, the score would be
+2/3≐0.666666.
+If the output of your solution is not a valid tree, its verdict will be Wrong Answer.
+Test Generation Process
+There are twenty test cases. During the contest, the displayed score will account for exactly four test files, i.e. your score reflects your submission's performance on 20% (4/20) of the test files. However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to include the sum of your program's scores over the other sixteen test files.
+The pseudocode used for generating all tests is given below. Assume that the function rand(l, r) generates a uniformly random integer between
+l and
+r (both inclusive).
+N := rand(500, 1000)
+for i in 1..N:
+ V[i] := rand(1, 20000)

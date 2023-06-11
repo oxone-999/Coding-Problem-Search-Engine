@@ -1,24 +1,134 @@
-Misinterpretation 2
+Connect All Cities
 Problem
-Chef's brother likes to put words in Chef's mouth. Chef hates it about him of course. He has decided to become extremely careful about what he speaks. Fortunately, he knows how his brother transforms the words, that Chef uses. He has decided to use only those words which remain the same even after his brother's transformation!
-
-If Chef speaks an N letter word, his brother moves all the letters which are at even positions (assuming, numbering of positions starts from 1), to the beginning of the word; and the rest of the letters follow as they appeared in the word, e.g. abdef becomes beadf; cdcd becomes ddcc.
-
-Chef wants to know how many words he can use, provided that the length of each word is between L and R inclusive and each word is composed of lowercase letters of the English alphabet. They use an ancient language in Byteland, which allows all possible words within the above definition!
-Input
-The first line contains a positive integer T, the number of test cases. In the following lines, T test cases follow. Every test case is a single line that contains two space separated positive integers, L and R. L is lower bound and R is upper bound for the length of the word that Chef wants to use.
-Output
-For each test case, print the number of words with length between L and R inclusive that Chef can use; that is, number of words, which remain the same after brother's transformation. Since the result can be quite large, output the result modulo 1000000007.
+The country of Berland initially has
+N isolated cities, the
+i-th city has a significance of
+A
+i
+. The President of Berland wants to connect all the cities. He can construct a bidirectional road of length
+L
+(L>0) from city
+X to city
+Y if
+(A
+X
+&A
+Y
+&L)=L, where
+& represents the bitwise AND operator.
+What is the minimum total length of roads he has to construct, in order to connect all the cities in Berland? Print
+−1 if it is impossible.
+Note: City
+X and City
+Y are said to be connected if there exists a sequence of cities
+C
+1
+,C
+2
+,…,C
+K
+(K≥1) such that
+C
+1
+=X,
+C
+K
+=Y, and there exists a road from
+C
+i
+to
+C
+i+1
+,
+(1≤i<K). All the cities in Berland are said to be connected when every pair of cities in Berland are connected.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test case contains
+N — the number of cities.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+— the significance of each of the
+N cities.
+Output Format
+For each test case, output on a new line the minimum total length of roads to connect all the cities in Berland, or
+−1 if it is impossible.
 Constraints
-1 <= T <= 5
-1 <= L <= R <= 1010
-R - L <= 50000
-Sample input
+1≤T≤10
+5
+1≤N≤10
+5
+0≤A
+i
+≤10
+9
+The sum of
+N over all test cases won't exceed
+3⋅10
+5
+.
+Sample 1:
+Input
+Output
+2
+4
+4 4 4 4
 3
-1 5
-6 7
-45 50
-Sample output
-1430
-18252
-871229844
+2 4 6
+12
+6
+Explanation:
+Test case 1: The following roads with minimum total length can be constructed to connect Berland:
+A road with
+L=4 between city
+1 and city
+2, since (
+A
+1
+&A
+2
+&4)=4.
+A road with
+L=4 between city
+2 and city
+3, since (
+A
+2
+&A
+3
+&4)=4.
+A road with
+L=4 between city
+3 and city
+4, since (
+A
+3
+&A
+4
+&4)=4.
+Test case 2: The following roads with minimum total length can be constructed to connect Berland:
+A road with
+L=2 between city
+1 and city
+3, since (
+A
+1
+&A
+3
+&2)=2.
+A road with
+L=4 between city
+2 and city
+3, since (
+A
+2
+&A
+3
+&4)=4.

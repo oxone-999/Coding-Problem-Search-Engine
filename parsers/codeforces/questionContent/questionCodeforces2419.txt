@@ -1,72 +1,350 @@
-A. LCM Problem
+D. Segment Intersections
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let
-LCM(x,y)
-be the minimum positive integer that is divisible by both
-x
-and
-y
-. For example,
-LCM(13,37)=481
-,
-LCM(9,6)=18
-.
-You are given two integers
+You are given two lists of segments
+[a
 l
-and
+1
+,a
 r
-. Find two integers
-x
+1
+],[a
+l
+2
+,a
+r
+2
+],…,[a
+l
+n
+,a
+r
+n
+]
 and
-y
-such that
-l≤x<y≤r
-and
-l≤LCM(x,y)≤r
+[b
+l
+1
+,b
+r
+1
+],[b
+l
+2
+,b
+r
+2
+],…,[b
+l
+n
+,b
+r
+n
+]
 .
+Initially, all segments
+[a
+l
+i
+,a
+r
+i
+]
+are equal to
+[
+l
+1
+,
+r
+1
+]
+and all segments
+[b
+l
+i
+,b
+r
+i
+]
+are equal to
+[
+l
+2
+,
+r
+2
+]
+.
+In one step, you can choose one segment (either from the first or from the second list) and extend it by
+1
+. In other words, suppose you've chosen segment
+[x,y]
+then you can transform it either into
+[x−1,y]
+or into
+[x,y+1]
+.
+Let's define a total intersection
+I
+as the sum of lengths of intersections of the corresponding pairs of segments, i.e.
+∑
+i=1
+n
+intersection_length([a
+l
+i
+,a
+r
+i
+],[b
+l
+i
+,b
+r
+i
+])
+. Empty intersection has length
+0
+and length of a segment
+[x,y]
+is equal to
+y−x
+.
+What is the minimum number of steps you need to make
+I
+greater or equal to
+k
+?
 Input
-The first line contains one integer
+The first line contains the single integer
 t
 (
-1≤t≤10000
+1≤t≤1000
 ) — the number of test cases.
-Each test case is represented by one line containing two integers
-l
+The first line of each test case contains two integers
+n
 and
-r
+k
 (
-1≤l<r≤
+1≤n≤2⋅
+10
+5
+;
+1≤k≤
 10
 9
-).
+) — the length of lists and the minimum required total intersection.
+The second line of each test case contains two integers
+l
+1
+and
+r
+1
+(
+1≤
+l
+1
+≤
+r
+1
+≤
+10
+9
+) — the segment all
+[a
+l
+i
+,a
+r
+i
+]
+are equal to initially.
+The third line of each test case contains two integers
+l
+2
+and
+r
+2
+(
+1≤
+l
+2
+≤
+r
+2
+≤
+10
+9
+) — the segment all
+[b
+l
+i
+,b
+r
+i
+]
+are equal to initially.
+It's guaranteed that the sum of
+n
+doesn't exceed
+2⋅
+10
+5
+.
 Output
-For each test case, print two integers:
-if it is impossible to find integers
-x
-and
-y
-meeting the constraints in the statement, print two integers equal to
-−1
-;
-otherwise, print the values of
-x
-and
-y
-(if there are multiple valid answers, you may print any of them).
+Print
+t
+integers — one per test case. For each test case, print the minimum number of step you need to make
+I
+greater or equal to
+k
+.
 Example
 input
 Copy
-4
-1 1337
-13 69
-2 4
-88 89
+3
+3 5
+1 2
+3 4
+2 1000000000
+1 1
+999999999 999999999
+10 3
+5 10
+7 8
 output
 Copy
-6 7
-14 21
-2 4
--1 -1
+7
+2000000000
+0
+Note
+In the first test case, we can achieve total intersection
+5
+, for example, using next strategy:
+make
+[a
+l
+1
+,a
+r
+1
+]
+from
+[1,2]
+to
+[1,4]
+in
+2
+steps;
+make
+[a
+l
+2
+,a
+r
+2
+]
+from
+[1,2]
+to
+[1,3]
+in
+1
+step;
+make
+[b
+l
+1
+,b
+r
+1
+]
+from
+[3,4]
+to
+[1,4]
+in
+2
+steps;
+make
+[b
+l
+2
+,b
+r
+2
+]
+from
+[3,4]
+to
+[1,4]
+in
+2
+steps.
+In result,
+I=intersection_length([a
+l
+1
+,a
+r
+1
+],[b
+l
+1
+,b
+r
+1
+])+intersection_length([a
+l
+2
+,a
+r
+2
+],[b
+l
+2
+,b
+r
+2
+])+
++intersection_length([a
+l
+3
+,a
+r
+3
+],[b
+l
+3
+,b
+r
+3
+])=3+2+0=5
+In the second test case, we can make
+[a
+l
+1
+,a
+r
+1
+]=[0,1000000000]
+in
+1000000000
+steps and
+[b
+l
+1
+,b
+r
+1
+]=[0,1000000000]
+in
+1000000000
+steps.
+In the third test case, the total intersection
+I
+is already equal to
+10>3
+, so we don't need to do any steps.

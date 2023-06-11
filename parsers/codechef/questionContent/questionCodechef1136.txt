@@ -1,96 +1,117 @@
-Gravity Guy
+Good Binary Strings
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Chef likes to play games a lot. Gravity Guy is one such interesting game.
-"Gravity Guy is an arcade side-scrolling game in which the player controls Gravity Guy by tapping the screen to switch gravity. The objective in this game is to run as far as possible while avoiding being trapped by obstacles, falling, or flying off the screen. If hit by obstacles, the game is over."
-Chef is so addicted to this game that each night he dreams of himself being in the game as Gravity Guy. He has two lanes in front of him represented by two strings of equal length named as L1 and L2. Each of the two lanes consists of some clean blocks represented by '.' and some dirty blocks represented by '#'.
-Chef can start running from the beginning of any of the two lanes and cannot step over any dirty block ( '#' ) encountered during his journey. He has to complete his journey by reaching the end block of any of the two lanes.
-Chef can use the following jumps to reach his destination. Considering chef is at xth block of some lane.
-He can jump to x+1th block of the same lane.
-He can switch gravity quickly and jump to xth block of the other lane.
-He can switch gravity and jump to x+1th block of the other lane.
-You have to tell him whether he can reach his destination or not. If it is possible for him to reach his destination, then Chef is interested in knowing the minimum number of gravity switches required to reach the destination.
-Input
-First line of input contains a single integer T denoting the number of test cases. Each test case consists of 2 lines. First line of each test case contains a string denoting lane L1. Second line of each test case contains a string denoting lane L2.
-Output
-For each test case, print "Yes" (without quotes) in the first line if Chef is able to reach the destination followed by a line containing an integer denoting minimum number of gravity switches required to reach to the destination. Print a single line containing the word "No" (without quotes) otherwise.
+You are given a binary string
+S. A binary string is a string consisting of only
+0's and
+1's.
+A binary string is called good if it has an equal number of occurrences of
+01 substrings and
+10 substrings. Note that these substrings may overlap. For example, the string
+1101001 is good since there are two occurrences of
+01 (
+11
+01
+001 and
+11010
+01
+) and two occurrences of
+10 (
+1
+10
+1001 and
+110
+10
+01).
+Find the number of indices
+i
+(1≤i≤∣S∣) such that after flipping
+S
+i
+, the resultant binary string is good. (If
+S
+i
+is
+0, flipping it changes it to
+1, and if
+S
+i
+is
+1, flipping it changes it to
+0)
+Note: A string
+A is a substring of a string
+B if
+A can be obtained from
+B by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
+Input Format
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
+The second line of each test case contains a binary string
+S containing
+0s and
+1s only.
+Output Format
+For each test case, output on a single line the number indices
+i such that flipping
+S
+i
+results in a good binary string.
 Constraints
-1 ≤ T ≤ 105
-1 ≤ |L1| ≤ 2 × 105, where |S| denotes the length of string S
-|L1| = |L2|
-Subtasks
-Subtask 1 (25 points)
-Sum of |L1| over all test cases in one file it at most 200.
-Only "Yes"/"No" response will be evaluated.
-
-Subtask 2 (25 points)
-Sum of |L1| over all test cases in one file it at most 200.
-
-Subtask 3 (25 points)
-Sum of |L1| over all test cases in one file it at most 106.
-Only "Yes"/"No" response will be evaluated.
-
-Subtask 4 (25 points)
-Sum of |L1| over all test cases in one file it at most 106.
+1≤T≤10
+5
+2≤∣S∣≤2⋅10
+5
+The sum of lengths of
+S over all test cases does not exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
+2
+10100
+11111
+2
 3
-#...#
-.###.
-#.#.#.
-.#.#.#
-#...
-#...
-Yes
-2
-Yes
-5
-No
 Explanation:
-Test case
-1: Chef will start his journey from
-L
-2
-. He switches gravity and jumps to
-L
+Test case 1: When
+i=1, flipping
+S
 1
-. He continues on
-L
+produces the string
+00100, which is good since there is one occurrence of
+01 (
+0
+01
+00) and one occurrence of
+10 (
+00
+10
+0).
+When
+i=5, flipping
+S
+5
+produces the string
+10101, which is good since there are two occurrences of
+01 (
 1
-till block
-4 and then again switch gravity and jump to block
-5 of
-L
-2
-. Therefore, he requires total
-2 gravity switches to reach the destination.
-Test case
-2: Chef will start his journey from
-L
-2
-. He switches gravity and jumps to second block of
-L
-1
-. He switches gravity and jumps to third block of
-L
-2
-. He switches gravity and jumps to fourth block of
-L
-1
-. He switches gravity and jumps to fifth block of
-L
-2
-. He switches gravity and jumps to sixth block of
-L
-1
-. Therefore, he requires total
-5 gravity switches to reach the destination.
-Test case
-3: Chef cannot start his journey as starting block of both the lanes
-L
-1
-and
-L
-2
-are dirty and he cannot step over them.
+01
+01 and
+101
+01
+) and are two occurrences of
+10 (
+10
+101 and
+10
+10
+1).
+It can be shown that for
+i=2,3,4 flipping
+S
+i
+does not result in a good binary string.
+Thus the number of indices resulting in a good binary string is
+2.

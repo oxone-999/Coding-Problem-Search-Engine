@@ -1,246 +1,55 @@
-E. Off by One
-time limit per test2 seconds
+A. Do Not Be Distracted!
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-points on an infinite plane. The
-i
--th point has coordinates
-(
-x
-i
-,
-y
-i
-)
-such that
-x
-i
->0
-and
-y
-i
->0
-. The coordinates are not necessarily integer.
-In one move you perform the following operations:
-choose two points
-a
-and
-b
-(
-a≠b
-);
-move point
-a
-from
-(
-x
-a
-,
-y
-a
-)
-to either
-(
-x
-a
-+1,
-y
-a
-)
-or
-(
-x
-a
-,
-y
-a
-+1)
-;
-move point
-b
-from
-(
-x
-b
-,
-y
-b
-)
-to either
-(
-x
-b
-+1,
-y
-b
-)
-or
-(
-x
-b
-,
-y
-b
-+1)
-;
-remove points
-a
-and
-b
-.
-However, the move can only be performed if there exists a line that passes through the new coordinates of
-a
-, new coordinates of
-b
-and
-(0,0)
-.
-Otherwise, the move can't be performed and the points stay at their original coordinates
-(
-x
-a
-,
-y
-a
-)
-and
-(
-x
-b
-,
-y
-b
-)
-, respectively.
-The numeration of points does not change after some points are removed. Once the points are removed, they can't be chosen in any later moves. Note that you have to move both points during the move, you can't leave them at their original coordinates.
-What is the maximum number of moves you can perform? What are these moves?
-If there are multiple answers, you can print any of them.
+Polycarp has
+26
+tasks. Each task is designated by a capital letter of the Latin alphabet.
+The teacher asked Polycarp to solve tasks in the following way: if Polycarp began to solve some task, then he must solve it to the end, without being distracted by another task. After switching to another task, Polycarp cannot return to the previous task.
+Polycarp can only solve one task during the day. Every day he wrote down what task he solved. Now the teacher wants to know if Polycarp followed his advice.
+For example, if Polycarp solved tasks in the following order: "DDBBCCCBBEZ", then the teacher will see that on the third day Polycarp began to solve the task 'B', then on the fifth day he got distracted and began to solve the task 'C', on the eighth day Polycarp returned to the task 'B'. Other examples of when the teacher is suspicious: "BAB", "AABBCCDDEEBZZ" and "AAAAZAAAAA".
+If Polycarp solved the tasks as follows: "FFGZZZY", then the teacher cannot have any suspicions. Please note that Polycarp is not obligated to solve all tasks. Other examples of when the teacher doesn't have any suspicious: "BA", "AFFFCC" and "YYYYY".
+Help Polycarp find out if his teacher might be suspicious.
 Input
-The first line contains a single integer
+The first line contains an integer
+t
+(
+1≤t≤1000
+). Then
+t
+test cases follow.
+The first line of each test case contains one integer
 n
 (
-1≤n≤2⋅
-10
-5
-) — the number of points.
-The
-i
--th of the next
+1≤n≤50
+) — the number of days during which Polycarp solved tasks.
+The second line contains a string of length
 n
-lines contains four integers
-a
-i
-,
-b
-i
-,
-c
-i
-,
-d
-i
-(
-1≤
-a
-i
-,
-b
-i
-,
-c
-i
-,
-d
-i
-≤
-10
-9
-). The coordinates of the
-i
--th point are
-x
-i
-=
-a
-i
-b
-i
-and
-y
-i
-=
-c
-i
-d
-i
-.
+, consisting of uppercase Latin letters, which is the order in which Polycarp solved the tasks.
 Output
-In the first line print a single integer
-c
- — the maximum number of moves you can perform.
-Each of the next
-c
-lines should contain a description of a move: two integers
-a
-and
-b
-(
-1≤a,b≤n
-,
-a≠b
-) — the points that are removed during the current move. There should be a way to move points
-a
-and
-b
-according to the statement so that there's a line that passes through the new coordinates of
-a
-, the new coordinates of
-b
-and
-(0,0)
-. No removed point can be chosen in a later move.
-If there are multiple answers, you can print any of them. You can print the moves and the points in the move in the arbitrary order.
-Examples
+For each test case output:
+"YES", if the teacher cannot be suspicious;
+"NO", otherwise.
+You may print every letter in any case you want (so, for example, the strings yEs, yes, Yes and YES are all recognized as positive answer).
+Example
 input
 Copy
-7
-4 1 5 1
-1 1 1 1
-3 3 3 3
-1 1 4 1
-6 1 1 1
-5 1 4 1
-6 1 1 1
-output
-Copy
+5
 3
-1 6
-2 4
-5 7
-input
-Copy
-4
-2 1 1 1
-1 1 2 1
-2 1 1 2
-1 2 1 2
+ABA
+11
+DDBBCCCBBEZ
+7
+FFGZZZY
+1
+Z
+2
+AB
 output
 Copy
-1
-1 2
-input
-Copy
-4
-182 168 60 96
-78 72 45 72
-69 21 144 63
-148 12 105 6
-output
-Copy
-1
-2 4
-Note
-Here are the points and the moves for the ones that get chosen for the moves from the first example:
+NO
+NO
+YES
+YES
+YES

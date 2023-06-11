@@ -1,30 +1,59 @@
-Ingredients
+Most Distant Points
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef would like go shopping to buy ingredients for his special dish. The local grocery store has some special discount offers. If you want to buy some set of ingredients you will pay for all ingredients except the cheapest one. Chef would like to spend as little money as possible. You have to help him. :)
-The store is pretty small and stocks only one unit of each ingredients. Opposite each ingredient is a hanging price tag corresponding to it. The salesman walked away for a minute, giving Chef an opportunity to swap some price tags. He would like to swap some tags to minimize his purchase cost.
+Read problems statements in Mandarin Chinese and Russian as well.
+Let's consider a set of points S. Initially, S is an empty set. Your task is to implement a data structure that can process the following queries efficiently:
+"+ X Y" - add a new point P with coordinates (X, Y) to S. It's guaranteed that this point will not be in S.
+"- N" - remove a point that was added during the N'th adding query from S. All of the adding queries are numbered in the order of their appearance starting from 1 (queries of other types are not included). It's guaranteed that this point is in S.
+"? X Y" - calculate the maximal Manhattan distance between a point P with coordinates (X, Y) and any point from S. It's guaranteed that S will not be empty.
+In addition, you won't be given the exact query data, but instead should decode it in the following way:
+Let's store the result of the last processed query of the third type in a variable called ANSWER. Initially, ANSWER is equal to 0. You will be given X', Y' and N' instead of the real values of X, Y and N. To get the real data you should perform the following computations:
+X = X' xor ANSWER;
+Y = Y' xor ANSWER;
+N = N' xor ANSWER.
+Don't forget to update the value of ANSWER after processing each query of the third type.
+Note
+Maybe some of you aren't familiar with some terms in the statement. Here are some articles that could help you understand the problem correctly:
+XOR operation: http://en.wikipedia.org/wiki/Exclusive_or
+Manhattan distance: http://en.wikipedia.org/wiki/Taxicab_geometry
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains a single integer N denoting the number of ingredients Chef needs to buy. The second line contains N space-separated integers A1, A2, ... , AN denoting the value written on the price tags opposite the needed ingredients. The third line contains a single integer M denoting the number of special offers. The following M lines lists inventory of special offers, one offer per line. Each line contains an integer Ci followed by Ci integers denoting the indices of ingredients constituting the ith discount offer.
+The first line of the input contains one integer Q denoting the number of queries to process.
+Each of the next Q lines contains a query to process in the format described above.
 Output
-For each test case, output a single line containing the minimal purchase cost.
+For each query on the third type you should output your answer on a new line.
 Constraints
-T ≤ 5
-1 ≤ N ≤ 15
-1 ≤ Ai ≤ 106
-0 ≤ M ≤ 2N-1
-2 ≤ Ci ≤ N
-Subtask 1 (15 points): 1 ≤ N ≤ 5
-Subtask 2 (25 points): 1 ≤ N ≤ 10
-Subtask 3 (60 points): 1 ≤ N ≤ 15
-Sample 1:
-Input
-Output
-1
-4 
-1 2 3 4
-3
-2 1 2
-2 3 4
-3 1 2 3
-6
+1 ≤ Q ≤ 500,000(5 × 105);
+0 ≤ X', Y', N' < 231 for each query;
+0 ≤ X, Y ≤ 109 for each query.
+Example
+Input:
+10
++ 8 1
+- 1
++ 3 9
+? 8 4
+? 8 8
+? 12 0
++ 6 5
+? 7 8
+? 4 5
+- 9
+Output:
+10
+8
+2
+4
+11
+Explanations
+Here's a non-encrypted version of the example:
+10
++ 8 1
+- 1
++ 3 9
+? 8 4
+? 2 2
+? 4 8
++ 4 7
+? 5 10
+? 0 1
+- 2
+The answers are the same.

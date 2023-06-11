@@ -1,81 +1,39 @@
-Paragraph Formatting
+Our Base is Under Attack
 Problem
-Johnny is developing some word processing software. Right now, he has to deal with the problem of formatting a paragraph. Johnny has formulated the problem as follows.
-There are N words in a paragraph, in which the ith word has ai characters. Each line of the paragraph can hold at most M characters. For simplicity, we assume that every two consecutive words in a line are separated by exactly one whitespace and we disregard punctuation marks.
-The text editor always uses a simple greedy algorithm to break the paragraph into lines. The algorithm puts as many words in a line as possible, then moving on to the next line to do the same until there are no more words left to be placed.
-Johnny needs to write a program that, given the description of the words in a paragraph, is able to process the following two operations:
-Return the line number of a specified word
-Replace one word with another one
-Since the number of words in a paragraph can be huge, Johnny needs to find an efficient algorithm to process the above queries. Please help him!
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef has recently learned about number bases and is becoming fascinated.
+Chef learned that for bases greater than ten, new digit symbols need to be introduced, and that the convention is to use the first few letters of the English alphabet. For example, in base 16, the digits are 0123456789ABCDEF. Chef thought that this is unsustainable; the English alphabet only has 26 letters, so this scheme can only work up to base 36. But this is no problem for Chef, because Chef is very creative and can just invent new digit symbols when she needs them. (Chef is very creative.)
+Chef also noticed that in base two, all positive integers start with the digit 1! However, this is the only base where this is true. So naturally, Chef wonders: Given some integer N, how many bases b are there such that the base-b representation of N starts with a 1?
 Input
-The first line contains t, the number of test cases (about 50). Then t test cases follow. Each test case has the following form:
-The first line contains a number M, the maximum number of characters that can be put in a line.
-The second line contains a number N, the number of words in the given paragraph.
-The third line contains N numbers a1, a2, ..., aN, the lengths of the words in the paragraph.
-The next lines contain the description of the queries, one query in a line. Each query can be of one of the following 3 types:
-I i - Ask for the line number of the ith word.
-C i l - Replace the ith word by a new word of length l (1 ≤ l ≤ M).
-E - Signal the end of the description of the queries.
-Note that the line numbers and the word indexes are counted from 1.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+Each test case consists of one line containing a single integer N (in base ten).
 Output
-For each test case, the first line of output should contain the string "Case #T:" where T should be replaced by the corresponding test case number.
-For every 'I' query in the test case, print the correct line number of the word being queried.
-Print a blank line after each test case.
+For each test case, output a single line containing the number of bases b, or INFINITY if there are an infinite number of them.
 Constraints
-1 ≤ N ≤ 50000
-1 ≤ M ≤ 100000
-1 ≤ ai ≤ M
-The number of lines in each paragraph never exceeds 200.
-The number of queries in each test case does not exceed 10000.
+Subtasks
+Subtask #1 (16 points):
+1 ≤ T ≤ 103
+0 ≤ N < 103
+Subtask #2 (24 points):
+1 ≤ T ≤ 103
+0 ≤ N < 106
+Subtask #3 (28 points):
+1 ≤ T ≤ 103
+0 ≤ N < 1012
+Subtask #4 (32 points):
+1 ≤ T ≤ 105
+0 ≤ N < 1012
 Sample 1:
 Input
 Output
-2
 4
-2
-1 2
-I 2
-C 2 3
-I 2
-E
 6
-5
-1 5 4 5 6
-I 2
-I 4
-I 5
-C 4 1
-I 4
-I 5
-C 2 1
-C 3 2
-C 5 4
-I 5
-I 3
-E
-Case #1:
-1
-2
-Case #2:
-2
+9
+11
+24
 4
-5
-3
-4
-2
-1
+7
+8
+14
 Explanation:
-In the following description of the second exemplary test case, we use the digit i to denote a character of the ith word. Note that each line can hold at most 6 characters. Initially, the paragraph has the following form:
-1
-22222
-3333
-44444
-555555
-After replacing the 4thword with a one-character word, the paragraph becomes:
-1
-22222
-3333 4
-555555
-After the last 3 replacements, the paragraph becomes:
-1 2 33
-4 5555
+In the first test case, 6 has a leading digit 1 in bases 2, 4, 5 and 6: 610 = 1102 = 124 = 115 = 106.

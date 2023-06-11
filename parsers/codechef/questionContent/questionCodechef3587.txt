@@ -1,92 +1,42 @@
-Cleaning Drive
+DP Made Easy
 Problem
-There is a hallway of length
-N−1 and you have
-M workers to clean the floor. Each worker is responsible for segment
-[L
-i
-,R
-i
-], i.e., the segment starting at
-L
-i
-and ending at
-R
-i
-. The segments might overlap.
-Every unit of length of the floor should be cleaned by at least one worker. A worker can clean
-1 unit of length of the floor in
-1 unit of time and can start from any position within their segment. A worker can also choose to move in any direction. However, the flow of each worker should be continuous, i.e, they can’t skip any portion and jump to the next one, though they can change their direction. What’s the minimum amount of time required to clean the floor, if the workers work simultaneously?
-###Input:
-First line will contain
-T, number of testcases. Then the testcases follow.
-Each testcase contains of
-M+1 lines of input.
-First line contains
-2 space separated integers
-N,
-M, length of the hallway and number of workers.
-Each of the next
-M lines contain
-2 space separated integers
-L
-i
-,
-R
-i
-, endpoints of the segment under
-i
-th
-worker.
-###Output: For each testcase, output in a single line minimum time required to clean the hallway or
-−1 if it's not possible to clean the entire floor.
-###Constraints
-1≤T≤10
-5
-2≤N≤10
-9
-1≤M≤10
-5
-1≤L
-i
-<R
-i
-≤N
-The sum of
-M over all tests is atmost
-2∗10
-5
-Sample 1:
-Input
-Output
-3
-10 3
-1 10
-1 5
-6 10
-10 1
-2 10
-10 2
-5 10
-1 5
-3
--1
-5
-Explanation:
-Case
-1: The first worker cleans the segment
-[4,7], the second cleans
-[1,4] and the third cleans
-[7,10] each taking
-3 units of time. So the minimum time required is
-3 units.
-Case
-2: Segment
-[1,2] is not covered by any worker and hence the entire hallway can't be cleaned.
-Case
-3: The first worker cleans the segment
-[5,10] taking
-5 units of time, and the second cleans
-[1,5] taking
-4 units of time. So the minimum time required is
-max(5,4)=5 units.
+
+Consider a 2 dimensional minimum Dynamic Programming problem represented as DP[i][j].
+Initially we are given N quadratic functions of the form ƒi(x) = ai*x2 + bi*x1 + ci, where ai >= bi >= ci >= 0.
+
+Transition of the DP in 1st dimension is given as some transition pairs with a cost associated with it.
+For example, given i one can transit to v1, v2, v3 ... vx with cost w1, w2, w3 ... wx respectively then
+DP[i][j] = min( DP[vk][j] + wk ) ∀ k <= x and ∀ j.
+If it is possible to transit from i to vk with cost wk then it is also possible to transit from vk to i with cost wk.
+
+Transition in 2nd dimension is given as -
+DP[i][j] = min ( DP[i][j-d] + ƒi(d) ) ∀ d <= j-1.
+
+Also we are given that DP[1][1] = 0.
+
+There are Q queries, each query representing change in ƒi(x) and is given as i ai bi ci, where ai >= bi >= ci >= 0. After this query ƒi(x) = ai*x2 + bi*x1 + ci.
+For each query find DP[N][N].
+Input Format:
+First line of the input contains 3 space separated integers denoting N, M, Q where M denotes number of valid transition pairs given.
+Next M lines contains 3 space separated integers u, v, w which denotes we can transit from u to v and from v to u in the first dimension with cost w.
+Each of the next N lines contains 3 space separated integers ai, bi, ci representing ƒi(x). Next Q lines contains queries as described in the problem statement.
+
+Output Format:
+After each query print a line containing the value of DP[N][N].
+
+Constraints:
+1<= N <= 100000
+1<= M <= 400000
+1<= Q <= 100000
+0<= ci <= bi <= ai <= 100000
+Sample Input:-
+2 1 2
+2 1 5
+1 1 1
+5 4 1
+2 2 2 1
+1 3 2 2
+
+Sample Output:
+8
+10

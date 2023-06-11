@@ -1,144 +1,34 @@
-Consecutive Deletions
+The Lost Arithmetic Sequences
 Problem
-Read problems statements in Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-You are given a positive integer
-K and a sequence
-A
-1
-,A
-2
-,…,A
-N
-. Initially, each element of this sequence is
-0 or
-1; your goal is to make all elements equal to
-0.
-In order to do that, you may perform the following operation any number of times:
-Choose a subarray (a contiguous subsequence) with length
-K, i.e. choose two indices
-L and
-R such that
-1≤L≤R≤N and
-R−L+1=K.
-Choose one element of that subarray and change it to
-0, i.e. choose an index
-P such that
-L≤P≤R and change
-A
-P
-to
-0.
-The cost of this operation is the sum of this subarray
-A
-L
-+A
-L+1
-+…+A
-R
-before
-A
-P
-is changed.
-Find the minimum total cost (sum of costs of individual operations) of making all elements of
-A equal to
-0.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Jem couldn't even finish half of the homework exercises in "Advanced topics in algorithm" class. The teacher is really upset and gives him one final problem to solve - if he can't solve it, he is gonna fail the course.
+Jem is given an array A consisting of N integers. The teacher asks him to remove exactly one number in the array to make the array become an arithmetic progressions.
+Jem wanted to ask the teacher about the definition of arithmetic progressions but he remembered that he had heard this term in last week's lesson just before falling asleep. Now his life is in your hands again!
+Anyways, we provide you the definition of arithmetic progression. Arithmetic progression is a sequence of numbers, where the difference between any two adjacent numbers is same.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-K.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+Input contains mutilpe test cases. The first line of the input contains a single integer T represents the number of tests. It is followed by T group of line represent the test cases.
+Each test case consists of two lines where the first line contains a single integer N.
+The second line contains N space separated integers denoting the array A.
 Output
-For each test case, print a single line containing one integer ― the minimum cost of turning all elements of
-A into zeros.
+For each test case print out single integer which is the number you will remove from the array. If there is more than one solution take the smallest one. If there is no solution print out -1.
 Constraints
-1≤T≤200
-1≤K≤N≤2⋅10
-5
-0≤A
-i
-≤1 for each valid
-i
-the sum of
-N over all test cases does not exceed
-4⋅10
-5
+1 ≤ T ≤ 10
+2 ≤ N ≤ 105
+0 ≤ Ai ≤ 109
 Sample 1:
 Input
 Output
 3
-5 3
-1 0 1 0 1
-4 4
-1 1 0 1
-3 1
-1 1 0
-3
-6
 2
-Explanation:
-Example case 1: The minimum cost is
-3 and it can be obtained using the following sequence of operations:
-choose the subarray
-[L,R]=[2,4] and set
-A
-3
-=0 with cost
-1
-choose the subarray
-[1,3] and set
-A
-1
-=0 with cost
-1
-choose the subarray
-[3,5] and set
-A
-5
-=0 with cost
-1
-Example case 2: We have to choose the whole sequence (
-[L,R]=[1,4]) in each operation, so the total cost is
-3+2+1=6:
-choose the subarray
-[1,4] and set
-A
-1
-=0 with cost
-3
-choose the subarray
-[1,4] and set
-A
-2
-=0 with cost
-2
-choose the subarray
-[1,4] and set
-A
+3 4
 4
-=0 with cost
-1
-Example case 3: The minimum cost is
-2 and it can be obtained using the following sequence of operations:
-choose the subarray
-[2,2] and set
-A
-2
-=0 with cost
-1
-choose the subarray
-[1,1] and set
-A
-1
-=0 with cost
-1
+1 5 3 4
+6
+2 4 6 7 8 10
+3
+-1
+7
+Explanation:
+test 1: an array contain a single integer is considered to be an arithmetic progression so you can remove any number in the array. But note that we must print out the smallest result which is 3.
+test 2: there is no solution since none of [1, 3, 4], [1, 5, 3], [1, 5, 4], [5, 3, 4] is an arithmetic progressions.
+test 3: the only way to archive an airthmetic progressions is remove the number 7 which will give us [2, 4, 6, 8, 10].

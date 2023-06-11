@@ -1,48 +1,122 @@
-D. Minimum Triangulation
+E. Palindrome-less Arrays
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a regular polygon with
+Let's denote that some array
+b
+is bad if it contains a subarray
+b
+l
+,
+b
+l+1
+,…,
+b
+r
+of odd length more than
+1
+(
+l<r
+and
+r−l+1
+is odd) such that
+∀i∈{0,1,…,r−l}
+b
+l+i
+=
+b
+r−i
+.
+If an array is not bad, it is good.
+Now you are given an array
+a
+1
+,
+a
+2
+,…,
+a
 n
-vertices labeled from
+. Some elements are replaced by
+−1
+. Calculate the number of good arrays you can obtain by replacing each
+−1
+with some integer from
 1
 to
-n
-in counter-clockwise order. The triangulation of a given polygon is a set of triangles such that each vertex of each triangle is a vertex of the initial polygon, there is no pair of triangles such that their intersection has non-zero area, and the total area of all triangles is equal to the area of the given polygon. The weight of a triangulation is the sum of weigths of triangles it consists of, where the weight of a triagle is denoted as the product of labels of its vertices.
-Calculate the minimum weight among all triangulations of the polygon.
+k
+.
+Since the answer can be large, print it modulo
+998244353
+.
 Input
-The first line contains single integer
+The first line contains two integers
+n
+and
+k
+(
+2≤n,k≤2⋅
+10
+5
+) — the length of array
+a
+and the size of "alphabet", i. e., the upper bound on the numbers you may use to replace
+−1
+.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
 (
-3≤n≤500
-) — the number of vertices in the regular polygon.
+a
+i
+=−1
+or
+1≤
+a
+i
+≤k
+) — the array
+a
+.
 Output
-Print one integer — the minimum weight among all triangulations of the given polygon.
+Print one integer — the number of good arrays you can get, modulo
+998244353
+.
 Examples
 input
 Copy
-3
+2 3
+-1 -1
 output
 Copy
-6
+9
 input
 Copy
-4
+5 2
+1 -1 -1 1 2
 output
 Copy
-18
-Note
-According to Wiki: polygon triangulation is the decomposition of a polygonal area (simple polygon)
-P
-into a set of triangles, i. e., finding a set of triangles with pairwise non-intersecting interiors whose union is
-P
-.
-In the first example the polygon is a triangle, so we don't need to cut it further, so the answer is
-1⋅2⋅3=6
-.
-In the second example the polygon is a rectangle, so it should be divided into two triangles. It's optimal to cut it using diagonal
-1−3
-so answer is
-1⋅2⋅3+1⋅3⋅4=6+12=18
-.
+0
+input
+Copy
+5 3
+1 -1 -1 1 2
+output
+Copy
+2
+input
+Copy
+4 200000
+-1 -1 12345 -1
+output
+Copy
+735945883

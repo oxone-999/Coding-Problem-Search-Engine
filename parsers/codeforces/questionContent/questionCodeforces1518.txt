@@ -1,131 +1,109 @@
-D1. Up the Strip (simplified version)
-time limit per test6 seconds
-memory limit per test128 megabytes
+B. Scenes From a Memory
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This version of the problem differs from the next one only in the constraint on
+During the hypnosis session, Nicholas suddenly remembered a positive integer
 n
-.
-Note that the memory limit in this problem is lower than in others.
-You have a vertical strip with
+, which doesn't contain zeros in decimal notation.
+Soon, when he returned home, he got curious: what is the maximum number of digits that can be removed from the number so that the number becomes not prime, that is, either composite or equal to one?
+For some numbers doing so is impossible: for example, for number
+53
+it's impossible to delete some of its digits to obtain a not prime integer. However, for all
 n
-cells, numbered consecutively from
+in the test cases of this problem, it's guaranteed that it's possible to delete some of their digits to obtain a not prime number.
+Note that you cannot remove all the digits from the number.
+A prime number is a number that has no divisors except one and itself. A composite is a number that has more than two divisors.
 1
-to
-n
-from top to bottom.
-You also have a token that is initially placed in cell
-n
-. You will move the token up until it arrives at cell
-1
-.
-Let the token be in cell
-x>1
-at some moment. One shift of the token can have either of the following kinds:
-Subtraction: you choose an integer
-y
-between
-1
-and
-x−1
-, inclusive, and move the token from cell
-x
-to cell
-x−y
-.
-Floored division: you choose an integer
-z
-between
-2
-and
-x
-, inclusive, and move the token from cell
-x
-to cell
-⌊
-x
-z
-⌋
-(
-x
-divided by
-z
-rounded down).
-Find the number of ways to move the token from cell
-n
-to cell
-1
-using one or more shifts, and print it modulo
-m
-. Note that if there are several ways to move the token from one cell to another in one shift, all these ways are considered distinct (check example explanation for a better understanding).
+is neither a prime nor a composite number.
 Input
-The only line contains two integers
-n
-and
-m
+Each test contains multiple test cases.
+The first line contains one positive integer
+t
 (
-2≤n≤2⋅
+1≤t≤
 10
-5
-;
-10
-8
-<m<
-10
-9
-;
-m
-is a prime number) — the length of the strip and the modulo.
-Output
-Print the number of ways to move the token from cell
+3
+), denoting the number of test cases. Description of the test cases follows.
+The first line of each test case contains one positive integer
+k
+(
+1≤k≤50
+) — the number of digits in the number.
+The second line of each test case contains a positive integer
 n
-to cell
-1
-, modulo
-m
+, which doesn't contain zeros in decimal notation (
+10
+k−1
+≤n<
+10
+k
+). It is guaranteed that it is always possible to remove less than
+k
+digits to make the number not prime.
+It is guaranteed that the sum of
+k
+over all test cases does not exceed
+10
+4
 .
-Examples
+Output
+For every test case, print two numbers in two lines. In the first line print the number of digits, that you have left in the number. In the second line print the digits left after all delitions.
+If there are multiple solutions, print any.
+Example
 input
 Copy
-3 998244353
-output
-Copy
+7
+3
+237
 5
-input
-Copy
-5 998244353
-output
-Copy
-25
-input
-Copy
-42 998244353
-output
-Copy
-793019428
-Note
-In the first test, there are three ways to move the token from cell
+44444
 3
-to cell
-1
-in one shift: using subtraction of
-y=2
-, or using division by
-z=2
-or
-z=3
-.
-There are also two ways to move the token from cell
-3
-to cell
-1
-via cell
+221
 2
-: first subtract
-y=1
-, and then either subtract
-y=1
-again or divide by
-z=2
+35
+3
+773
+1
+4
+30
+626221626221626221626221626221
+output
+Copy
+2
+27
+1
+4
+1
+1
+2
+35
+2
+77
+1
+4
+1
+6
+Note
+In the first test case, you can't delete
+2
+digits from the number
+237
+, as all the numbers
+2
+,
+3
+, and
+7
+are prime. However, you can delete
+1
+digit, obtaining a number
+27=
+3
+3
 .
-Therefore, there are five ways in total.
+In the second test case, you can delete all digits except one, as
+4=
+2
+2
+is a composite number.

@@ -1,35 +1,38 @@
-Sereja and Array and Subtracting
+Chef and Sign Sequences
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Sereja has an array A of N positive integers : A[1], A[2], A[3], ... , A[N].
-In a single operation on the array, he performs the following two steps :
-Pick two indices i, j s.t. A[i] > A[j]
-A[i] -= A[j]
-Sereja can apply these operations any number of times (possibly zero), such that the sum of resulting elements of the array is as small as possible.
-Help Sereja find this minimum sum.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef found a strange string yesterday - a string of signs s, where each sign is either a '<', '=' or a '>'. Let N be the length of this string. Chef wants to insert N + 1 positive integers into this sequence and make it valid. A valid sequence is a sequence where every sign is preceded and followed by an integer, and the signs are correct. That is, if a sign '<' is preceded by the integer a and followed by an integer b, then a should be less than b. Likewise for the other two signs as well.
+Chef can take some positive integers in the range [1, P] and use a number in the range as many times as he wants.
+Help Chef find the minimum possible P with which he can create a valid sequence.
 Input
-First line of input contains an integer T - the number of test cases. T test cases follow.
-First line of each test case contains the integer N. The next line contains N integers — A[1], A[2], A[3], ... , A[N].
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The only line of each test case contains the string of signs s, where each sign is either '<', '=' or a '>'.
 Output
-For each test case, output a single line with the answer.
+For each test case, output a single line containing an integer corresponding to the minimum possible P.
 Constraints
-1 ≤ T ≤ 10
-1 ≤ N ≤ 105
-1 ≤ A[i] ≤ 109
+1 ≤ T, |s| ≤ 105
+1 ≤ Sum of |s| over all test cases in a single test file ≤ 106
+Subtasks
+Subtask #1 (30 points)
+1 ≤ T, |s| ≤ 103
+1 ≤ Sum of |s| over all test cases in a single test file ≤ 104
+Subtask #2 (70 points)
+Original constraints
 Sample 1:
 Input
 Output
+4
+<<<
+<><
+<=>
+<=<
+4
 2
-1
-1
+2
 3
-2 4 6
-1
-6
 Explanation:
-Example case 2. In this case, one possible way in which Sereja can perform the operations could be as follows.
-Pick i = 2, j = 1. A[2] -= A[1]. Now the resulting array would be [2, 2, 6].
-Pick i = 3, j = 2. A[3] -= A[2]. Now the resulting array would be [2, 2, 4].
-Pick i = 3, j = 2. A[3] -= A[2]. Now the resulting array would be [2, 2, 2].
-
-As the resulting array is [2 2 2], so the sum is 6.
+Here are some possible valid sequences which can be formed with the minimum P for each of the test cases:
+1 < 2 < 3 < 4
+1 < 2 > 1 < 2
+1 < 2 = 2 > 1
+1 < 2 = 2 < 3

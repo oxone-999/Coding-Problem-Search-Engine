@@ -1,43 +1,73 @@
-ChefWatson uses Social Network
+Birthday Gifts
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef Watson uses a social network called ChefBook, which has a new feed consisting of posts by his friends. Each post can be characterized by f - the identifier of the friend who created the post, p - the popularity of the post(which is pre-calculated by ChefBook platform using some machine learning algorithm) and s - the contents of the post which is a string of lower and uppercase English alphabets.
-Also, Chef has some friends, which he has marked as special.
-The algorithm used by ChefBook for determining the order of posts in news feed is as follows:
-Posts of special friends should be shown first, irrespective of popularity. Among all such posts the popular ones should be shown earlier.
-Among all other posts, popular posts should be shown earlier.
-Given, a list of identifiers of Chef's special friends and a list of posts, you have to implement this algorithm for engineers of ChefBook and output the correct ordering of posts in the new feed.
-Input
-First line contains N, number of special friends of Chef and M, the number of posts. Next line contains N integers A1, A2, ..., AN denoting the identifiers of special friends of Chef. Each of the next M lines contains a pair of integers and a string denoting f, p and s, identifier of the friend who created the post, the popularity of the post and the contents of the post, respectively. It is guaranteed that no two posts have same popularity, but the same friend might make multiple posts.
-Output
-Output correct ordering of posts in news feed in M lines. Output only the contents of a post.
-Constraints
-1 ≤ N, M ≤ 103
-1 ≤ Ai, f, p ≤ 105
-1 ≤ length(s) ≤ 100
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+It’s Chef's birthday. He and his twin have received
+N gifts in total. The
+i-th gift has a price of
+A
+i
+. Each twin wants to keep the most expensive gifts for himself.
+The twins take
+K turns alternately (each has
+K turns, for
+2⋅K turns in total). It is given that
+2⋅K+1≤N. In a turn, a person may choose one gift. The only exception is the last turn of the twin who moves second, where he gets to choose two gifts instead of one. Assuming they both choose gifts optimally and you can choose who takes the first turn, find the maximum total cost of the gifts that Chef keeps.
+###Input
+The first line contains an integer
+T, the number of test cases. Then the test cases follow.
+Each test case contains two lines of input.
+The first line contains two space-separated integers
+N,
+K.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+, the price of the gifts.
+###Output For each test case, output in a single line the answer to the problem.
+###Constraints
+1≤T≤100
+3≤N≤10
+3
+1≤K≤
+2
+N−1
+1≤A
+i
+≤10
+9
+###Subtasks Subtask #1 (100 points): original constraints
 Sample 1:
 Input
 Output
-2 4
-1 2
-1 1 WhoDoesntLoveChefBook
-2 2 WinterIsComing
-3 10 TheseViolentDelightsHaveViolentEnds
-4 3 ComeAtTheKingBestNotMiss
-WinterIsComing
-WhoDoesntLoveChefBook
-TheseViolentDelightsHaveViolentEnds
-ComeAtTheKingBestNotMiss
+3
+3 1
+1 3 2
+3 1
+3 1 3
+5 2
+5 1 3 2 4
+3
+4
+8
 Explanation:
-Friends
+Test Case
+1: Chef moves first and he chooses the gift with cost
+3. His twin then chooses the gifts of costs
 1 and
-2 are special. Among them, friend
-2's post has more popularity. Thus, the first two posts of the feed would be of friend
-2 and
-1 respectively.
-From remaining friends, i.e., friends
-3 and
-4, friend
-4's post has more popularity. Thus, it would be shown earlier in the feed.
-The final ordering of posts is
-2→1→4→3.
+2.
+Test Case
+2: Chef allows his brother to choose first and his brother chooses a gift with cost
+3. Then Chef chooses the remaining gift with cost
+3. Since Chef moves second, he is allowed to choose one more gift, so he chooses gift with cost
+1. The total cost of Chef's gifts is
+3+1=4.
+Test Case
+3: Chef moves first and at the end he will have the gifts with costs
+5 and
+3. Hence, the total cost of gifts with Chef =
+5+3=8.

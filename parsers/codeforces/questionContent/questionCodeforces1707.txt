@@ -1,142 +1,194 @@
-E. Minimax
+G. What a Reversal
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Prefix function of string
-t=
-t
-1
-t
-2
-…
-t
-n
-and position
-i
-in it is defined as the length
-k
-of the longest proper (not equal to the whole substring) prefix of substring
-t
-1
-t
-2
-…
-t
-i
-which is also a suffix of the same substring.
-For example, for string
-t=
-abacaba the values of the prefix function in positions
-1,2,…,7
-are equal to
-[0,0,1,0,1,2,3]
-.
-Let
-f(t)
-be equal to the maximum value of the prefix function of string
-t
-over all its positions. For example,
-f(
-abacaba
-)=3
-.
-You are given a string
-s
-. Reorder its characters arbitrarily to get a string
-t
-(the number of occurrences of any character in strings
-s
+You have two strings
+a
 and
-t
-must be equal). The value of
-f(t)
-must be minimized. Out of all options to minimize
-f(t)
-, choose the one where string
-t
-is the lexicographically smallest.
+b
+of equal length
+n
+consisting of characters 0 and 1, and an integer
+k
+.
+You need to make strings
+a
+and
+b
+equal.
+In one step, you can choose any substring of
+a
+containing exactly
+k
+characters 1 (and arbitrary number of characters 0) and reverse it. Formally, if
+a=
+a
+1
+a
+2
+…
+a
+n
+, you can choose any integers
+l
+and
+r
+(
+1≤l≤r≤n
+) such that there are exactly
+k
+ones among characters
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+, and set
+a
+to
+a
+1
+a
+2
+…
+a
+l−1
+a
+r
+a
+r−1
+…
+a
+l
+a
+r+1
+a
+r+2
+…
+a
+n
+.
+Find a way to make
+a
+equal to
+b
+using at most
+4n
+reversals of the above kind, or determine that such a way doesn't exist. The number of reversals doesn't have to be minimized.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
-10
-5
+1≤t≤2000
 ). Description of the test cases follows.
-The only line of each test case contains string
-s
+Each test case consists of three lines. The first line of each test case contains two integers
+n
+and
+k
 (
-1≤|s|≤
-10
-5
-) consisting of lowercase English letters.
-It is guaranteed that the sum of lengths of
-s
+1≤n≤2000
+;
+0≤k≤n
+).
+The second line contains string
+a
+of length
+n
+.
+The third line contains string
+b
+of the same length. Both strings consist of characters 0 and 1.
+It is guaranteed that the sum of
+n
 over all test cases does not exceed
-10
-5
+2000
 .
 Output
-For each test case print a single string
-t
+For each test case, if it's impossible to make
+a
+equal to
+b
+in at most
+4n
+reversals, print a single integer
+−1
 .
-The multisets of letters in strings
-s
-and
-t
-must be equal. The value of
-f(t)
-, the maximum of prefix functions in string
-t
-, must be as small as possible. String
-t
-must be the lexicographically smallest string out of all strings satisfying the previous conditions.
+Otherwise, print an integer
+m
+(
+0≤m≤4n
+), denoting the number of reversals in your sequence of steps, followed by
+m
+pairs of integers
+l
+i
+,
+r
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤n
+), denoting the boundaries of the substrings of
+a
+to be reversed, in chronological order. Each substring must contain exactly
+k
+ones at the moment of reversal.
+Note that
+m
+doesn't have to be minimized. If there are multiple answers, print any.
 Example
 input
 Copy
-3
-vkcup
-abababa
-zzzzzz
+6
+6 1
+101010
+010101
+6 3
+101010
+010101
+6 0
+101010
+010101
+6 6
+101010
+010101
+4 2
+0000
+1111
+9 2
+011100101
+101001011
 output
 Copy
-ckpuv
-aababab
-zzzzzz
+3
+1 2
+3 4
+5 6
+1
+1 6
+-1
+-1
+-1
+5
+4 8
+8 9
+3 6
+1 4
+3 6
 Note
-A string
-a
-is lexicographically smaller than a string
-b
-if and only if one of the following holds:
-a
-is a prefix of
-b
-, but
-a≠b
-;
-in the first position where
-a
-and
-b
-differ, the string
-a
-has a letter that appears earlier in the alphabet than the corresponding letter in
-b
-.
-In the first test case,
-f(t)=0
-and the values of prefix function are
-[0,0,0,0,0]
-for any permutation of letters. String ckpuv is the lexicographically smallest permutation of letters of string vkcup.
-In the second test case,
-f(t)=1
-and the values of prefix function are
-[0,1,0,1,0,1,0]
-.
-In the third test case,
-f(t)=5
-and the values of prefix function are
-[0,1,2,3,4,5]
-.
+In the first test case, after the first reversal
+a=
+011010, after the second reversal
+a=
+010110, after the third reversal
+a=
+010101.

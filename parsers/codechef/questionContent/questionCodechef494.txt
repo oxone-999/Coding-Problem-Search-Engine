@@ -1,26 +1,83 @@
-Dividing Stamps
+Alternating String
 Problem
-Read problems statements in Mandarin Chinese and Russian as well.
-Are you fond of collecting some kind of stuff? Mike is crazy about collecting stamps. He is an active member of Stamp Collecting Сommunity(SCC).
-SCC consists of N members which are fond of philately. A few days ago Mike argued with the others from SCC. Mike told them that all stamps of the members could be divided in such a way that i'th member would get i postage stamps. Now Mike wants to know if he was right. The next SCC meeting is tomorrow. Mike still has no answer.
-So, help Mike! There are N members in the SCC, i'th member has Ci stamps in his collection. Your task is to determine if it is possible to redistribute C1 + C2 + ... + Cn stamps among the members of SCC thus that i'th member would get i stamps.
-Input
-The first line contains one integer N, denoting the number of members of SCC.
-The second line contains N integers Ci, denoting the numbers of the stamps in the collection of i'th member.
-Output
-The first line should contain YES, if we can obtain the required division, otherwise NO.
+A binary string is called alternating if no two adjacent characters of the string are equal. Formally, a binary string
+T of length
+M is called alternating if
+T
+i
+
+=T
+i+1
+for each
+1≤i<M.
+For example, 0, 1, 01, 10, 101, 010, 1010 are alternating strings while 11, 001, 1110 are not.
+You are given a binary string
+S of length
+N. You would like to rearrange the characters of
+S such that the length of the longest alternating substring of
+S is maximum. Find this maximum value.
+A binary string is a string that consists of characters 0 and 1. A string
+a is a substring of a string
+b if
+a can be obtained from
+b by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
+Input Format
+The first line of input contains an integer
+T, denoting the number of test cases. The
+T test cases then follow:
+The first line of each test case contains an integer
+N.
+The second line of each test case contains the binary string
+S.
+Output Format
+For each test case, output the maximum possible length of the longest alternating substring of
+S after rearrangement.
 Constraints
-1 ≤ N ≤ 100 000;
-1 ≤ Ci ≤ 109.
+1≤T≤10
+4
+1≤N≤10
+5
+S contains only the characters 0 and 1.
+Sum of
+N over all test cases does not exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
+4
+3
+110
+4
+1010
+4
+0000
+7
+1101101
+3
+4
+1
 5
-7 4 1 1 2
-YES
-Sample 2:
-Input
-Output
-5
-1 1 1 1 1
-NO
+Explanation:
+Test case
+1: Swapping the second and third characters makes
+S=101. Hence the length of the longest alternating substring is
+3 (choosing the entire string as a substring).
+Test case
+2: The given string
+S=1010 is an alternating string of length
+4.
+Test case
+3: The length of the longest alternating substring is
+1 for any rearrangement of
+S=0000.
+Test case
+4: One possible rearrangement of
+S is
+1
+10101
+1, which has an alternating substring of length
+5 (the substring starting at index
+2 and ending at index
+6).

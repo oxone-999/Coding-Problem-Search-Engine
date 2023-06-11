@@ -1,106 +1,112 @@
-F. Spy-string
+B. Johnny and Grandmaster
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given
-n
-strings
-a
-1
-,
-a
-2
-,…,
-a
-n
-: all of them have the same length
-m
-. The strings consist of lowercase English letters.
-Find any string
-s
-of length
-m
-such that each of the given
-n
-strings differs from
-s
-in at most one position. Formally, for each given string
-a
+Johnny has just found the new, great tutorial: "How to become a grandmaster?". The tutorial tells many strange and unexpected for Johnny things, such as you have to be patient or that very important is solving many harder and harder problems.
+The boy has found an online judge with tasks divided by topics they cover. He has picked
+p
+k
 i
-, there is no more than one position
-j
-such that
-a
+problems from
 i
-[j]≠s[j]
+-th category (
+p
+is his favorite number). He wants to solve them in two weeks (the patience condition is too hard for Johnny, so for simplicity, he looks only at easy tasks, which can be solved in such a period). Now our future grandmaster has to decide which topics to cover first and which the second week. Help him assign topics in such a way, that workload is balanced.
+Formally, given
+n
+numbers
+p
+k
+i
+, the boy wants to divide them into two disjoint sets, minimizing the absolute difference between sums of numbers in each set. Find the minimal absolute difference. Output the result modulo
+10
+9
++7
 .
-Note that the desired string
-s
-may be equal to one of the given strings
-a
-i
-, or it may differ from all the given strings.
-For example, if you have the strings abac and zbab, then the answer to the problem might be the string abab, which differs from the first only by the last character, and from the second only by the first.
 Input
-The first line contains an integer
+Input consists of multiple test cases. The first line contains one integer
 t
-(
-1≤t≤100
-) — the number of test cases. Then
-t
-test cases follow.
-Each test case starts with a line containing two positive integers
+(1≤t≤
+10
+5
+)
+ — the number of test cases. Each test case is described as follows:
+The first line contains two integers
 n
-(
-1≤n≤10
-) and
-m
-(
-1≤m≤10
-) — the number of strings and their length.
-Then follow
+and
+p
+(1≤n,p≤
+10
+6
+)
+. The second line contains
 n
-strings
-a
+integers
+k
 i
-, one per line. Each of them has length
-m
-and consists of lowercase English letters.
+(0≤
+k
+i
+≤
+10
+6
+)
+.
+The sum of
+n
+over all test cases doesn't exceed
+10
+6
+.
 Output
-Print
-t
-answers to the test cases. Each answer (if it exists) is a string of length
-m
-consisting of lowercase English letters. If there are several answers, print any of them. If the answer does not exist, print "-1" ("minus one", without quotes).
+Output one integer — the reminder of division the answer by
+1000000007
+.
 Example
 input
 Copy
-5
-2 4
-abac
-zbab
-2 4
-aaaa
-bbbb
-3 3
-baa
-aaa
-aab
-2 2
-ab
-bb
+4
+5 2
+2 3 4 4 3
 3 1
-a
-b
-c
+2 10 1000
+4 5
+0 1 1 100
+1 8
+89
 output
 Copy
-abab
--1
-aaa
-ab
-z
+4
+1
+146981438
+747093407
 Note
-The first test case was explained in the statement.
-In the second test case, the answer does not exist.
+You have to minimize the difference, not it's remainder. For example, if the minimum difference is equal to
+2
+, but there is also a distribution where the difference is
+10
+9
++8
+, then the answer is
+2
+, not
+1
+.
+In the first test case of the example, there're the following numbers:
+4
+,
+8
+,
+16
+,
+16
+, and
+8
+. We can divide them into such two sets:
+4,8,16
+and
+8,16
+. Then the difference between the sums of numbers in sets would be
+4
+.

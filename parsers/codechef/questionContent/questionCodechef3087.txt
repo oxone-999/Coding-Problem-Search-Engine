@@ -1,194 +1,30 @@
-Yet Another XOR Sort
+Lame Queen Game
 Problem
-You are given an array
-A of size
-N. You can perform the following operation on the array:
-Choose an index
-i
-(1≤i≤N);
-Choose a set of indices
-S of size
-K,
-(1≤K≤N,1≤S
-j
-≤N);
-Set
-A
-i
-=A
-S
-1
-⊕A
-S
-2
-⊕A
-S
-3
-⊕…⊕A
-S
-K
-, where
-⊕ denotes the bitwise XOR operation.
-Let
-B denote the array obtained after sorting the array
-A. Your task is to convert the array
-A to array
-B using at most
-⌈
-2
-3⋅N
-⌉ operations.
-You also need to print the operations performed to convert the array
-A to array
-B. If there are multiple ways to convert the array, print any.
-It is guaranteed that there exists at least one possible solution.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains an integer
-N, the size of the array.
-The next line contains
-N space-separated integers, the elements of the array
-A.
-Output Format
-For each test case, print
-(2⋅M+1) lines:
-On the first line, print
-M, the number of operations required to convert the array
-A to array
-B, where
-(0≤M≤⌈
-2
-3⋅N
-⌉).
-Describe each operation in two lines:
-In the first line, print two space-separated integers
-i and
-K
-(1≤i,K≤N), the chosen index and the number of elements in the set
-S.
-In the second line, print
-K space-separated integers, the elements of set
-S. Note that all elements of the set
-S should be distinct.
-Constraints
-1≤T≤3000
-2≤N≤1000
-1≤A
-i
-≤N
-The sum of
-N over all test cases does not exceed
-6000.
-Sample 1:
+Code and Chef play a game on the set of all points with positive integer coordinates of the usual coordinate plane. Initially the lame queen stands in the point with coordinates (x0, y0) or shortly: in the point (x0, y0). Players alternate moves. Code moves first. During each move the player can move the queen from the point (x, y) to the point (x - a, y), (x, y - a) or (x - a, y - a) for some positive integer a, provided that the new point has positive coordinates. But since the queen is lame she possibly can't make all diagonal moves. Namely she can move from the point (x, y) to the point (x - a, y - a) only if a is divisible by d, where d is some positive integer that is called the queen lameness. So if d = 2 the queen can move diagonally from the point (x, y) only to the points (x - 2, y - 2), (x - 4, y - 4), (x - 6, y - 6) and so on. However if d = 1 then the queen becomes the usual chess queen. The first player who can't make a valid move loses the game. Both players play optimally in their respective moves.
+
+After playing this game for some time Chef realizes that he loses almost always. Now he wants to know what is the probability that he wins if initial point (x0, y0) is chosen randomly from the rectangle x1 <= x0 <= x2, y1 <= y0 <= y2. But I should warn that he wants to know this for a large number of rectangles.
 Input
+The first line contains two space separated positive integers d and T, the queen lameness and the number of rectangles for which Chef wants to know the answer. Each of the next T lines contains four space separated positive integers x1, y1, x2, y2 the coordinates of rectangle corners.
 Output
-3
-4
-2 2 2 1
-5
-1 3 5 4 5
-6
-2 4 5 5 6 6
-3
-4 4
-1 2 3 4
-1 2
+For each rectangle from the input file, output a single line containing the probability in the form of an irreducible fraction that Chef wins if the initial cell is chosen randomly from this rectangle.
+Constraints
+1 <= d <= 20
+1 <= T <= 100000
+1 <= x1 <= x2 <= 200000
+1 <= y1 <= y2 <= 200000
+Example
+Input:
 1 4
-4 2
-1 4
-2
-4 2
-1 4
-3 4
-1 3 4 5
-0
-Explanation:
-Test case
-1: The array
-B=[1,2,2,2]. We can convert the array
-A to array
-B using
-3 operations in the following way:
-Operation
-1: Choose
-i=4 and
-S={1,2,3,4}. Thus, we set
-A
-4
-=A
-1
-⊕A
-2
-⊕A
-3
-⊕A
-4
-=2⊕2⊕1⊕2=3. Thus, the array becomes
-[2,2,2,3].
-Operation
-2: Choose
-i=1 and
-S={1,4}. Thus, we set
-A
-1
-=A
-1
-⊕A
-4
-=2⊕3=1. Thus, the array becomes
-[1,2,2,3].
-Operation
-3: Choose
-i=4 and
-S={1,4}. Thus, we set
-A
-4
-=A
-1
-⊕A
-4
-=1⊕3=2. Thus, the array becomes
-[1,2,2,2].
-Note that there might be other ways to convert the array as well.
-Test case
-2: The array
-B=[1,3,4,5,5]. We can convert the array
-A to array
-B using
-2 operations in the following way:
-Operation
-1: Choose
-i=4 and
-S={1,4}. Thus, we set
-A
-4
-=A
-1
-⊕A
-4
-=1⊕4=5. Thus, the array becomes
-[1,3,5,5,5].
-Operation
-2: Choose
-i=3 and
-S={1,3,4,5}. Thus, we set
-A
-3
-=A
-1
-⊕A
-3
-⊕A
-4
-⊕A
-5
-=1⊕5⊕5⊕5=4. Thus, the array becomes
-[1,3,4,5,5].
-Note that there might be other ways to convert the array as well.
-Test case
-3: The array
-B=[2,4,5,5,6,6]. Since the array is already equal to array
-B, we require
-0 operations.
+1 1 4 4
+2 4 5 8
+3 7 10 10
+5 8 5 8
+
+Output:
+3/16
+1/10
+1/32
+1/1
+Explanation
+For the first rectangle Chef wins in three cases out of 16. Namely when the starting point is (1,1), (2,3) or (3,2).
+The fourth rectangle is lucky. It contains only one point and this one is winning for Chef.

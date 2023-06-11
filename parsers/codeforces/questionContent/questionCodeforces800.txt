@@ -1,158 +1,117 @@
-H. Maximum Product?
-time limit per test1.5 seconds
-memory limit per test512 megabytes
+B. Promo
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a positive integer
-k
-. For a multiset of integers
-S
-, define
-f(S)
-as the following.
-If the number of elements in
-S
-is less than
-k
-,
-f(S)=0
-.
-Otherwise, define
-f(S)
-as the maximum product you can get by choosing exactly
-k
-integers from
-S
-.
-More formally, let
-|S|
-denote the number of elements in
-S
-. Then,
-If
-|S|<k
-,
-f(S)=0
-.
-Otherwise,
-f(S)=
-max
-T⊆S,|T|=k
-(
-∏
-i∈T
-i)
-.
-You are given a multiset of integers,
-A
-. Compute
-∑
-B⊆A
-f(B)
-modulo
-10
-9
-+7
-.
-Note that in this problem, we distinguish the elements by indices instead of values. That is, a multiset consisting of
+The store sells
 n
-elements always has
-2
-n
-distinct subsets regardless of whether some of its elements are equal.
+items, the price of the
+i
+-th item is
+p
+i
+. The store's management is going to hold a promotion: if a customer purchases at least
+x
+items,
+y
+cheapest of them are free.
+The management has not yet decided on the exact values of
+x
+and
+y
+. Therefore, they ask you to process
+q
+queries: for the given values of
+x
+and
+y
+, determine the maximum total value of items received for free, if a customer makes one purchase.
+Note that all queries are independent; they don't affect the store's stock.
 Input
-The first line of input contains two integers
+The first line contains two integers
 n
 and
-k
-, where
-n
-is the number of elements in
-A
+q
 (
-1≤k≤n≤600
-).
-The second line of input contains
+1≤n,q≤2⋅
+10
+5
+) — the number of items in the store and the number of queries, respectively.
+The second line contains
 n
 integers
-a
+p
 1
 ,
-a
+p
 2
 ,…,
-a
+p
 n
-, describing the elements in
-A
 (
-−
-10
-9
-≤
-a
+1≤
+p
 i
 ≤
 10
-9
-).
+6
+), where
+p
+i
+ — the price of the
+i
+-th item.
+The following
+q
+lines contain two integers
+x
+i
+and
+y
+i
+each (
+1≤
+y
+i
+≤
+x
+i
+≤n
+) — the values of the parameters
+x
+and
+y
+in the
+i
+-th query.
 Output
-Output
-∑
-B⊆A
-f(B)
-modulo
-10
-9
-+7
-.
-Examples
+For each query, print a single integer — the maximum total value of items received for free for one purchase.
+Example
 input
 Copy
+5 3
+5 3 1 5 2
 3 2
--1 2 4
+1 1
+5 3
 output
 Copy
-10
-input
-Copy
-3 1
-1 1 1
-output
-Copy
-7
-input
-Copy
-10 4
--24 -41 9 -154 -56 14 18 53 -7 120
-output
-Copy
-225905161
-input
-Copy
-15 5
-0 0 2 -2 2 -2 3 -3 -3 4 5 -4 -4 4 5
-output
-Copy
-18119684
-Note
-Consider the first sample. From the definitions we know that
-f(∅)=0
-f({−1})=0
-f({2})=0
-f({4})=0
-f({−1,2})=−2
-f({−1,4})=−4
-f({2,4})=8
-f({−1,2,4})=8
-So we should print
-(0+0+0+0−2−4+8+8)mod(
-10
-9
-+7)=10
-.
-In the second example, note that although the multiset consists of three same values, it still has
 8
-distinct subsets:
-∅,{1},{1},{1},{1,1},{1,1},{1,1},{1,1,1}
+5
+6
+Note
+In the first query, a customer can buy three items worth
+5,3,5
+, the two cheapest of them are
+3+5=8
+.
+In the second query, a customer can buy two items worth
+5
+and
+5
+, the cheapest of them is
+5
+.
+In the third query, a customer has to buy all the items to receive the three cheapest of them for free; their total price is
+1+2+3=6
 .

@@ -1,77 +1,62 @@
-B. Petr and a Combination Lock
-time limit per test1 second
+C. Yuhao and a Parenthesis
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Petr has just bought a new car. He's just arrived at the most known Petersburg's petrol station to refuel it when he suddenly discovered that the petrol tank is secured with a combination lock! The lock has a scale of
-360
-degrees and a pointer which initially points at zero:
-Petr called his car dealer, who instructed him to rotate the lock's wheel exactly
-n
-times. The
-i
--th rotation should be
-a
-i
-degrees, either clockwise or counterclockwise, and after all
-n
-rotations the pointer should again point at zero.
-This confused Petr a little bit as he isn't sure which rotations should be done clockwise and which should be done counterclockwise. As there are many possible ways of rotating the lock, help him and find out whether there exists at least one, such that after all
-n
-rotations the pointer will point at zero again.
+One day, Yuhao came across a problem about checking if some bracket sequences are correct bracket sequences.
+A bracket sequence is any non-empty sequence of opening and closing parentheses. A bracket sequence is called a correct bracket sequence if it's possible to obtain a correct arithmetic expression by inserting characters "+" and "1" into this sequence. For example, the sequences "(())()", "()" and "(()(()))" are correct, while the bracket sequences ")(", "(()" and "(()))(" are not correct.
+Yuhao found this problem too simple for him so he decided to make the problem harder. You are given many (not necessarily correct) bracket sequences. The task is to connect some of them into ordered pairs so that each bracket sequence occurs in at most one pair and the concatenation of the bracket sequences in each pair is a correct bracket sequence. The goal is to create as many pairs as possible.
+This problem unfortunately turned out to be too difficult for Yuhao. Can you help him and solve it?
 Input
 The first line contains one integer
 n
 (
-1≤n≤15
-) — the number of rotations.
+1≤n≤
+10
+5
+) — the number of bracket sequences.
 Each of the following
 n
-lines contains one integer
-a
-i
-(
-1≤
-a
-i
-≤180
-) — the angle of the
-i
--th rotation in degrees.
+lines contains one bracket sequence — a non-empty string which consists only of characters "(" and ")".
+The sum of lengths of all bracket sequences in the input is at most
+5⋅
+10
+5
+.
+Note that a bracket sequence may appear in the input multiple times. In this case, you can use each copy of the sequence separately. Also note that the order in which strings appear in the input doesn't matter.
 Output
-If it is possible to do all the rotations so that the pointer will point at zero after all of them are performed, print a single word "YES". Otherwise, print "NO". Petr will probably buy a new car in this case.
-You can print each letter in any case (upper or lower).
+Print a single integer — the maximum number of pairs which can be made, adhering to the conditions in the statement.
 Examples
 input
 Copy
-3
-10
-20
-30
+7
+)())
+)
+((
+((
+(
+)
+)
 output
 Copy
-YES
+2
 input
 Copy
-3
-10
-10
-10
+4
+(
+((
+(((
+(())
 output
 Copy
-NO
+0
 input
 Copy
-3
-120
-120
-120
+2
+(())
+()
 output
 Copy
-YES
+1
 Note
-In the first example, we can achieve our goal by applying the first and the second rotation clockwise, and performing the third rotation counterclockwise.
-In the second example, it's impossible to perform the rotations in order to make the pointer point at zero in the end.
-In the third example, Petr can do all three rotations clockwise. In this case, the whole wheel will be rotated by
-360
-degrees clockwise and the pointer will point at zero again.
+In the first example, it's optimal to construct two pairs: "((     )())" and "(     )".

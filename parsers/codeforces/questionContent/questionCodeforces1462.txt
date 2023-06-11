@@ -1,73 +1,203 @@
-D. Divisible by Twenty-Five
-time limit per test2 seconds
+F. Finding Expected Value
+time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Mr. Chanek has an integer represented by a string
-s
-. Zero or more digits have been erased and are denoted by the character _. There are also zero or more digits marked by the character X, meaning they're the same digit.
-Mr. Chanek wants to count the number of possible integer
-s
-, where
-s
-is divisible by
-25
-. Of course,
-s
-must not contain any leading zero. He can replace the character _ with any digit. He can also replace the character X with any digit, but it must be the same for every character X.
-As a note, a leading zero is any 0 digit that comes before the first nonzero digit in a number string in positional notation. For example, 0025 has two leading zeroes. An exception is the integer zero, (0 has no leading zero, but 0000 has three leading zeroes).
-Input
-One line containing the string
-s
+Mr. Chanek opened a letter from his fellow, who is currently studying at Singanesia. Here is what it says.
+Define an array
+b
 (
-1≤|s|≤8
-). The string
-s
-consists of the characters 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, _, and X.
+0≤
+b
+i
+<k
+) with
+n
+integers. While there exists a pair
+(i,j)
+such that
+b
+i
+≠
+b
+j
+, do the following operation:
+Randomly pick a number
+i
+satisfying
+0≤i<n
+. Note that each number
+i
+has a probability of
+1
+n
+to be picked.
+Randomly Pick a number
+j
+satisfying
+0≤j<k
+.
+Change the value of
+b
+i
+to
+j
+. It is possible for
+b
+i
+to be changed to the same value.
+Denote
+f(b)
+as the expected number of operations done to
+b
+until all elements of
+b
+are equal.
+You are given two integers
+n
+and
+k
+, and an array
+a
+(
+−1≤
+a
+i
+<k
+) of
+n
+integers.
+For every index
+i
+with
+a
+i
+=−1
+, replace
+a
+i
+with a random number
+j
+satisfying
+0≤j<k
+. Let
+c
+be the number of occurrences of
+−1
+in
+a
+. There are
+k
+c
+possibilites of
+a
+after the replacement, each with equal probability of being the final array.
+Find the expected value of
+f(a)
+modulo
+10
+9
++7
+.
+Formally, let
+M=
+10
+9
++7
+. It can be shown that the answer can be expressed as an irreducible fraction
+p
+q
+, where
+p
+and
+q
+are integers and
+q≢0(modM)
+. Output the integer equal to
+p⋅
+q
+−1
+modM
+. In other words, output such an integer
+x
+that
+0≤x<M
+and
+x⋅q≡p(modM)
+.
+After reading the letter, Mr. Chanek gave the task to you. Solve it for the sake of their friendship!
+Input
+The first line contains two integers
+n
+and
+k
+(
+2≤n≤
+10
+5
+,
+2≤k≤
+10
+9
+).
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+−1≤
+a
+i
+<k
+).
 Output
-Output an integer denoting the number of possible integer
-s
+Output an integer denoting the expected value of
+f(a)
+modulo
+10
+9
++7
 .
 Examples
 input
 Copy
-25
+2 2
+0 1
+output
+Copy
+2
+input
+Copy
+2 2
+0 -1
 output
 Copy
 1
 input
 Copy
-_00
+3 3
+0 1 1
 output
 Copy
-9
+12
 input
 Copy
-_XX
+3 3
+-1 -1 -1
 output
 Copy
-9
+11
 input
 Copy
-0
+10 9
+-1 0 -1 1 1 2 2 3 3 3
 output
 Copy
-1
-input
-Copy
-0_25
-output
-Copy
-0
-Note
-In the first example, the only possible
-s
-is
-25
-.
-In the second and third example,
-s∈{100,200,300,400,500,600,700,800,900}
-.
-In the fifth example, all possible
-s
-will have at least one leading zero.
+652419213

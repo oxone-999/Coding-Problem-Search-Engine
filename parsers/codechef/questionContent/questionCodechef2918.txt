@@ -1,75 +1,36 @@
-Zawad and Index Sum
+Knight Moving
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-Zawad is a rare competitive programmer — he takes his studies seriously. One day, while studying in a library, he found a pattern
-P in a century old book. The pattern is a string of lowercase English letters, with length
-M. Since Zawad is a curious boy, he started experimenting with the pattern.
-In one experiment, Zawad considers all
-26
-N
-strings with length
-N that contain only lowercase English letters. The strings are numbered
-0 through
-26
-N
-−1 in lexicographical order. For each valid
-i, let
-C
-i
-be the length of the longest prefix of
-P which is also a suffix of the
-i-th of these strings (
-0≤C
-i
-≤M).
-For each integer
-k between
-0 and
-M inclusive, let
-S
-k
-denote the sum of all valid indices
-i such that
-C
-i
-=k. Zawad wants to know all these sums, but since they could be huge, it is enough to compute them modulo
-998,244,353.
-Since Zawad is a bit busy at the library, he is asking for your help. Can you find the sums and earn Zawad's respect?
+Consider an infinitely large chess table. From the cell (0, 0), our knight has to move to the cell (X, Y) by the rule: our knight could only move from a cell (u, v) to the cell (u+AX, v+AY) or (u+BX, v+BY) in one move. Note that it may be different from ordinary knight's move of chess.
+In addition, there is K blocked cell(s) on the table where the knight could not move on.
+Your task is to count how many distinct ways the knight could complete his mission. Two ways are called "distinct" if and only if they have different numbers of steps or there exists i such that they are in different cells after i-th step. Note that our knight may continue to move after he reaches the cell (X, Y).
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-M and
-N.
-The second line contains a single string
-P with length
-M.
+The first line contains an integer T, denoting the number of test cases. Each test case is described as follows:
+The first line contains 3 integer X, Y, K.
+The second line contains 4 integers AX, AY, BX, BY.
+The third line contains K pair(s) of integers, each represents co-ordinate of a blocked cell. This line does not exist if K = 0.
 Output
-For each test case, print a single line containing
-M+1 space-separated integers
-S
-0
-,S
-1
-,…,S
-M
-— the sums modulo
-998,244,353.
+For each test case, output on a line the number of ways found modulo 1000000007 (109+7). If there are infinitely many ways, then output -1 instead.
 Constraints
-1≤T≤5
-1≤M≤10
-5
-M≤N≤10
-6
-P contains only lowercase English letters
-Sample 1:
-Input
-Output
+1 ≤ T ≤ 5
+0 ≤ K ≤ 15
+The absolute values of all other input values are at most 500.
+(0, 0) is not a blocked cell.
+(X, Y) is not a blocked cell.
+Example
+Input:
+3
+3 3 0
+1 2 2 1
+9 9 2
+1 2 2 1
+1 2 6 6
+1 1 0
+0 0 0 0
+
+Output:
 2
-1 1
-a
-3 5
-nan
-325 0
-555099525 502507217 596119576 22936464
+4
+0
+Explanations:
+In the first and second examples, our knight's move is the similar to ordinary knight's, but only 2 directions are allowed. In the first example, there are 2 ways (0, 0) -> (1, 2) -> (3, 3) and (0, 0) -> (2, 1) -> (3, 3).
+In the third example, our knight's cannot move toward, so our knight's cannot complete his mission.

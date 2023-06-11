@@ -1,38 +1,38 @@
-D. Merge Sort
-time limit per test2 seconds
+C. Strange Game On Matrix
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Merge sort is a well-known sorting algorithm. The main function that sorts the elements of array a with indices from [l, r) can be implemented as follows:
-If the segment [l, r) is already sorted in non-descending order (that is, for any i such that l ≤ i < r - 1 a[i] ≤ a[i + 1]), then end the function call;
-Let ;
-Call mergesort(a, l, mid);
-Call mergesort(a, mid, r);
-Merge segments [l, mid) and [mid, r), making the segment [l, r) sorted in non-descending order. The merge algorithm doesn't call any other functions.
-The array in this problem is 0-indexed, so to sort the whole array, you need to call mergesort(a, 0, n).
-The number of calls of function mergesort is very important, so Ivan has decided to calculate it while sorting the array. For example, if a = {1, 2, 3, 4}, then there will be 1 call of mergesort — mergesort(0, 4), which will check that the array is sorted and then end. If a = {2, 1, 3}, then the number of calls is 3: first of all, you call mergesort(0, 3), which then sets mid = 1 and calls mergesort(0, 1) and mergesort(1, 3), which do not perform any recursive calls because segments (0, 1) and (1, 3) are sorted.
-Ivan has implemented the program that counts the number of mergesort calls, but now he needs to test it. To do this, he needs to find an array a such that a is a permutation of size n (that is, the number of elements in a is n, and every integer number from [1, n] can be found in this array), and the number of mergesort calls when sorting the array is exactly k.
-Help Ivan to find an array he wants!
+Ivan is playing a strange game.
+He has a matrix a with n rows and m columns. Each element of the matrix is equal to either 0 or 1. Rows and columns are 1-indexed. Ivan can replace any number of ones in this matrix with zeroes. After that, his score in the game will be calculated as follows:
+Initially Ivan's score is 0;
+In each column, Ivan will find the topmost 1 (that is, if the current column is j, then he will find minimum i such that ai, j = 1). If there are no 1's in the column, this column is skipped;
+Ivan will look at the next min(k, n - i + 1) elements in this column (starting from the element he found) and count the number of 1's among these elements. This number will be added to his score.
+Of course, Ivan wants to maximize his score in this strange game. Also he doesn't want to change many elements, so he will replace the minimum possible number of ones with zeroes. Help him to determine the maximum possible score he can get and the minimum possible number of replacements required to achieve that score.
 Input
-The first line contains two numbers n and k (1 ≤ n ≤ 100000, 1 ≤ k ≤ 200000) — the size of a desired permutation and the number of mergesort calls required to sort it.
+The first line contains three integer numbers n, m and k (1 ≤ k ≤ n ≤ 100, 1 ≤ m ≤ 100).
+Then n lines follow, i-th of them contains m integer numbers — the elements of i-th row of matrix a. Each number is either 0 or 1.
 Output
-If a permutation of size n such that there will be exactly k calls of mergesort while sorting it doesn't exist, output  - 1. Otherwise output n integer numbers a[0], a[1], ..., a[n - 1] — the elements of a permutation that would meet the required conditions. If there are multiple answers, print any of them.
+Print two numbers: the maximum possible score Ivan can get and the minimum number of replacements required to get this score.
 Examples
 input
 Copy
-3 3
+4 3 2
+0 1 0
+1 0 1
+0 1 0
+1 1 1
 output
-Copy
-2 1 3 
-input
 Copy
 4 1
-output
-Copy
-1 2 3 4 
 input
 Copy
-5 6
+3 2 1
+1 0
+0 1
+0 0
 output
 Copy
--1
+2 0
+Note
+In the first example Ivan will replace the element a1, 2.

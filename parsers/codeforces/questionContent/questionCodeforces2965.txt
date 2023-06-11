@@ -1,112 +1,215 @@
-F. DIY Garland
-time limit per test2 seconds
-memory limit per test256 megabytes
+C. New Year and Permutation
+time limit per test1 second
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Polycarp has decided to decorate his room because the New Year is soon. One of the main decorations that Polycarp will install is the garland he is going to solder himself.
-Simple garlands consisting of several lamps connected by one wire are too boring for Polycarp. He is going to solder a garland consisting of
+Recall that the permutation is an array consisting of
 n
-lamps and
-n−1
-wires. Exactly one lamp will be connected to power grid, and power will be transmitted from it to other lamps by the wires. Each wire connectes exactly two lamps; one lamp is called the main lamp for this wire (the one that gets power from some other wire and transmits it to this wire), the other one is called the auxiliary lamp (the one that gets power from this wire). Obviously, each lamp has at most one wire that brings power to it (and this lamp is the auxiliary lamp for this wire, and the main lamp for all other wires connected directly to it).
-Each lamp has a brightness value associated with it, the
-i
--th lamp has brightness
-2
-i
-. We define the importance of the wire as the sum of brightness values over all lamps that become disconnected from the grid if the wire is cut (and all other wires are still working).
-Polycarp has drawn the scheme of the garland he wants to make (the scheme depicts all
-n
-lamp and
-n−1
-wires, and the lamp that will be connected directly to the grid is marked; the wires are placed in such a way that the power can be transmitted to each lamp). After that, Polycarp calculated the importance of each wire, enumerated them from
+distinct integers from
 1
 to
-n−1
-in descending order of their importance, and then wrote the index of the main lamp for each wire (in the order from the first wire to the last one).
-The following day Polycarp bought all required components of the garland and decided to solder it — but he could not find the scheme. Fortunately, Polycarp found the list of indices of main lamps for all wires. Can you help him restore the original scheme?
-Input
-The first line contains one integer
 n
-(
-2≤n≤2⋅
-10
-5
-) — the number of lamps.
-The second line contains
-n−1
-integers
+in arbitrary order. For example,
+[2,3,1,5,4]
+is a permutation, but
+[1,2,2]
+is not a permutation (
+2
+appears twice in the array) and
+[1,3,4]
+is also not a permutation (
+n=3
+but there is
+4
+in the array).
+A sequence
 a
+is a subsegment of a sequence
+b
+if
+a
+can be obtained from
+b
+by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end. We will denote the subsegments as
+[l,r]
+, where
+l,r
+are two integers with
+1≤l≤r≤n
+. This indicates the subsegment where
+l−1
+elements from the beginning and
+n−r
+elements from the end are deleted from the sequence.
+For a permutation
+p
 1
 ,
-a
+p
 2
-, ...,
-a
-n−1
-(
-1≤
-a
+,…,
+p
+n
+, we define a framed segment as a subsegment
+[l,r]
+where
+max{
+p
+l
+,
+p
+l+1
+,…,
+p
+r
+}−min{
+p
+l
+,
+p
+l+1
+,…,
+p
+r
+}=r−l
+. For example, for the permutation
+(6,7,1,8,5,3,2,4)
+some of its framed segments are:
+[1,2],[5,8],[6,7],[3,3],[8,8]
+. In particular, a subsegment
+[i,i]
+is always a framed segments for any
 i
-≤n
-), where
-a
-i
-is the index of the main lamp for the
-i
--th wire (wires are numbered in descending order of importance).
-Output
-If it is impossible to restore the original scheme, print one integer
-−1
-.
-Otherwise print the scheme as follows. In the first line, print one integer
-k
-(
-1≤k≤n
-) — the index of the lamp that is connected to the power grid. Then print
-n−1
-lines, each containing two integers
-x
-i
+between
+1
 and
-y
-i
+n
+, inclusive.
+We define the happiness of a permutation
+p
+as the number of pairs
+(l,r)
+such that
+1≤l≤r≤n
+, and
+[l,r]
+is a framed segment. For example, the permutation
+[3,1,2]
+has happiness
+5
+: all segments except
+[1,2]
+are framed segments.
+Given integers
+n
+and
+m
+, Jongwon wants to compute the sum of happiness for all permutations of length
+n
+, modulo the prime number
+m
+. Note that there exist
+n!
+(factorial of
+n
+) different permutations of length
+n
+.
+Input
+The only line contains two integers
+n
+and
+m
 (
-1≤
-x
-i
+1≤n≤250000
 ,
-y
-i
-≤n
+10
+8
+≤m≤
+10
+9
 ,
-x
-i
-≠
-y
-i
-) — the indices of the lamps connected by some wire. The descriptions of the wires (and the lamps connected by a wire) can be printed in any order. The printed description must correspond to a scheme of a garland such that Polycarp could have written the list
-a
-1
-,
-a
-2
-, ...,
-a
-n−1
-from it. If there are multiple such schemes, output any of them.
-Example
+m
+is prime).
+Output
+Print
+r
+(
+0≤r<m
+), the sum of happiness for all permutations of length
+n
+, modulo a prime number
+m
+.
+Examples
 input
 Copy
-6
-3 6 3 1 5
+1 993244853
 output
 Copy
-3
-6 3
-6 5
-1 3
-1 4
-5 2
+1
+input
+Copy
+2 993244853
+output
+Copy
+6
+input
+Copy
+3 993244853
+output
+Copy
+32
+input
+Copy
+2019 993244853
+output
+Copy
+923958830
+input
+Copy
+2020 437122297
+output
+Copy
+265955509
 Note
-The scheme for the first example (R denotes the lamp connected to the grid, the numbers on wires are their importance values):
+For sample input
+n=3
+, let's consider all permutations of length
+3
+:
+[1,2,3]
+, all subsegments are framed segment. Happiness is
+6
+.
+[1,3,2]
+, all subsegments except
+[1,2]
+are framed segment. Happiness is
+5
+.
+[2,1,3]
+, all subsegments except
+[2,3]
+are framed segment. Happiness is
+5
+.
+[2,3,1]
+, all subsegments except
+[2,3]
+are framed segment. Happiness is
+5
+.
+[3,1,2]
+, all subsegments except
+[1,2]
+are framed segment. Happiness is
+5
+.
+[3,2,1]
+, all subsegments are framed segment. Happiness is
+6
+.
+Thus, the sum of happiness is
+6+5+5+5+5+6=32
+.

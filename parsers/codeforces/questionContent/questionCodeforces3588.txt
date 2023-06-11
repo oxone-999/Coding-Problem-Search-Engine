@@ -1,136 +1,91 @@
-B2. Cat Party (Hard Edition)
-time limit per test1 second
+C1. Power Transmission (Easy Edition)
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This problem is same as the previous one, but has larger constraints.
-Shiro's just moved to the new house. She wants to invite all friends of her to the house so they can play monopoly. However, her house is too small, so she can only invite one friend at a time.
-For each of the
-n
-days since the day Shiro moved to the new house, there will be exactly one cat coming to the Shiro's house. The cat coming in the
-i
--th day has a ribbon with color
-u
-i
-. Shiro wants to know the largest number
+This problem is same as the next one, but has smaller constraints.
+It was a Sunday morning when the three friends Selena, Shiro and Katie decided to have a trip to the nearby power station (do not try this at home). After arriving at the power station, the cats got impressed with a large power transmission system consisting of many chimneys, electric poles, and wires. Since they are cats, they found those things gigantic.
+At the entrance of the station, there is a map describing the complicated wiring system. Selena is the best at math among three friends. He decided to draw the map on the Cartesian plane. Each pole is now a point at some coordinates
+(
 x
-, such that if we consider the streak of the first
-x
-days, it is possible to remove exactly one day from this streak so that every ribbon color that has appeared among the remaining
-x−1
-will have the same number of occurrences.
-For example, consider the following sequence of
-u
 i
-:
-[2,2,1,1,5,4,4,5]
-. Then
-x=7
-makes a streak, since if we remove the leftmost
-u
+,
+y
 i
-=5
-, each ribbon color will appear exactly twice in the prefix of
-x−1
-days. Note that
-x=8
-doesn't form a streak, since you must remove exactly one day.
-Since Shiro is just a cat, she is not very good at counting and needs your help finding the longest streak.
+)
+. Since every pole is different, all of the points representing these poles are distinct. Also, every two poles are connected with each other by wires. A wire is a straight line on the plane infinite in both directions. If there are more than two poles lying on the same line, they are connected by a single common wire.
+Selena thinks, that whenever two different electric wires intersect, they may interfere with each other and cause damage. So he wonders, how many pairs are intersecting? Could you help him with this problem?
 Input
 The first line contains a single integer
 n
 (
-1≤n≤
-10
-5
-) — the total number of days.
-The second line contains
+2≤n≤50
+) — the number of electric poles.
+Each of the following
 n
-integers
-u
-1
+lines contains two integers
+x
+i
 ,
-u
-2
-,…,
-u
-n
+y
+i
 (
-1≤
-u
+−
+10
+4
+≤
+x
+i
+,
+y
 i
 ≤
 10
-5
-) — the colors of the ribbons the cats wear.
+4
+) — the coordinates of the poles.
+It is guaranteed that all of these
+n
+points are distinct.
 Output
-Print a single integer
-x
- — the largest possible streak of days.
+Print a single integer — the number of pairs of wires that are intersecting.
 Examples
 input
 Copy
-13
-1 1 1 2 2 2 3 3 3 4 4 4 5
+4
+0 0
+1 1
+0 3
+1 2
 output
 Copy
-13
+14
 input
 Copy
-5
-10 100 20 200 1
-output
-Copy
-5
-input
-Copy
-1
-100000
-output
-Copy
-1
-input
-Copy
-7
-3 2 1 1 4 5 1
+4
+0 0
+0 2
+0 4
+2 0
 output
 Copy
 6
 input
 Copy
-6
-1 1 1 2 2 2
+3
+-1 -1
+1 0
+3 1
 output
 Copy
-5
+0
 Note
-In the first example, we can choose the longest streak of
-13
-days, since upon removing the last day out of the streak, all of the remaining colors
-1
+In the first example:
+In the second example:
+Note that the three poles
+(0,0)
 ,
-2
-,
-3
-, and
-4
-will have the same number of occurrences of
-3
-. Note that the streak can also be
-10
-days (by removing the
-10
--th day from this streak) but we are interested in the longest streak.
-In the fourth example, if we take the streak of the first
-6
-days, we can remove the third day from this streak then all of the remaining colors
-1
-,
-2
-,
-3
-,
-4
+(0,2)
 and
-5
-will occur exactly once.
+(0,4)
+are connected by a single wire.
+In the third example:

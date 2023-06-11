@@ -1,96 +1,84 @@
-J. Japanese Game
-time limit per test3 seconds
-memory limit per test512 megabytes
+A. Review Site
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Joseph really likes the culture of Japan. Last year he learned Japanese traditional clothes and visual arts and now he is trying to find out the secret of the Japanese game called Nonogram.
-In the one-dimensional version of the game, there is a row of
+You are an upcoming movie director, and you have just released your first movie. You have also launched a simple review site with two buttons to press — upvote and downvote.
+However, the site is not so simple on the inside. There are two servers, each with its separate counts for the upvotes and the downvotes.
 n
-empty cells, some of which are to be filled with a pen. There is a description of a solution called a profile — a sequence of positive integers denoting the lengths of consecutive sets of filled cells. For example, the profile of
-[4,3,1]
-means that there are sets of four, three, and one filled cell, in that order, with at least one empty cell between successive sets.
-A suitable solution for
-n=12
-and
-p=[4,3,1]
-.
-A wrong solution: the first four filled cells should be consecutive.
-A wrong solution: there should be at least one empty cell before the last filled cell.
-Joseph found out that for some numbers
-n
-and profiles
-p
-there are lots of ways to fill the cells to satisfy the profile. Now he is in the process of solving a nonogram consisting of
-n
-cells and a profile
-p
-. He has already created a mask of
-p
- — he has filled all the cells that must be filled in every solution of the nonogram.
-The mask for
-n=12
-and
-p=[4,3,1]
-: all the filled cells above are filled in every solution.
-After a break, he lost the source profile
-p
-. He only has
-n
-and the mask
-m
-. Help Joseph find any profile
-p
-′
-with the mask
-m
-or say that there is no such profile and Joseph has made a mistake.
+reviewers enter the site one by one. Each reviewer is one of the following types:
+type
+1
+: a reviewer has watched the movie, and they like it — they press the upvote button;
+type
+2
+: a reviewer has watched the movie, and they dislike it — they press the downvote button;
+type
+3
+: a reviewer hasn't watched the movie — they look at the current number of upvotes and downvotes of the movie on the server they are in and decide what button to press. If there are more downvotes than upvotes, then a reviewer downvotes the movie. Otherwise, they upvote the movie.
+Each reviewer votes on the movie exactly once.
+Since you have two servers, you can actually manipulate the votes so that your movie gets as many upvotes as possible. When a reviewer enters a site, you know their type, and you can send them either to the first server or to the second one.
+What is the maximum total number of upvotes you can gather over both servers if you decide which server to send each reviewer to?
 Input
-The only line contains a string
-m
- — the mask of the source profile
-p
-. The length of
-m
-is
+The first line contains a single integer
+t
+(
+1≤t≤
+10
+4
+) — the number of testcases.
+Then the descriptions of
+t
+testcases follow.
+The first line of each testcase contains a single integer
 n
 (
-1≤n≤100000
-). The string
-m
-consists of symbols # and _ — denoting filled and empty cells respectively.
-Output
-If there is no profile with the mask
-m
-, output the number
-−1
-. Otherwise, on the first line, output an integer
-k
- — the number of integers in the profile
-p
-′
-. On the second line, output
-k
-integers of the profile
-p
-′
-.
-Examples
-input
-Copy
-__#_____
-output
-Copy
+1≤n≤50
+) — the number of reviewers.
+The second line of each testcase contains
+n
+integers
+r
+1
+,
+r
 2
-3 2 
+,…,
+r
+n
+(
+1≤
+r
+i
+≤3
+) — the types of the reviewers in the same order they enter the site.
+Output
+For each testcase print a single integer — the maximum total number of upvotes you can gather over both servers if you decide which server to send each reviewer to.
+Example
 input
 Copy
-_#
-output
-Copy
--1
-input
-Copy
-___
+4
+1
+2
+3
+1 2 3
+5
+1 1 1 1 1
+3
+3 3 2
 output
 Copy
 0
+2
+5
+2
+Note
+In the first testcase of the example you can send the only reviewer to either of the servers — they'll downvote anyway. The movie won't receive any upvotes.
+In the second testcase of the example you can send all reviewers to the first server:
+the first reviewer upvotes;
+the second reviewer downvotes;
+the last reviewer sees that the number of downvotes is not greater than the number of upvotes — upvote themselves.
+There are two upvotes in total. Alternatevely, you can send the first and the second reviewers to the first server and the last reviewer — to the second server:
+the first reviewer upvotes on the first server;
+the second reviewer downvotes on the first server;
+the last reviewer sees no upvotes or downvotes on the second server — upvote themselves.

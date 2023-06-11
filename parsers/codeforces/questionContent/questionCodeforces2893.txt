@@ -1,67 +1,144 @@
-H. Paint the String
+B. Aerodynamic
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string
-s
-of lowercase Latin letters. It is required to paint each letter of the string in one of two colors (red or blue) so that if you write all the red letters from left to right and write all the blue letters from left to right, then the lexicographically maximum of the two written strings is lexicographically minimal. For each index, in the string
-s
-you can choose either of two colors.
-Formally, we write out:
-the string
-r
-(can be empty) — all red letters in the order from left to right (red subsequence),
-the string
-b
-(can be empty) — all blue letters in the order from left to right (blue subsequence).
-Your task is to paint the string such that
-max(r,b)
-is minimal. Small reminder: the empty string is the lexicographically smallest string.
+Guy-Manuel and Thomas are going to build a polygon spaceship.
+You're given a strictly convex (i. e. no three points are collinear) polygon
+P
+which is defined by coordinates of its vertices. Define
+P(x,y)
+as a polygon obtained by translating
+P
+by vector
+(x,y)
+−
+→
+−
+−
+. The picture below depicts an example of the translation:
+Define
+T
+as a set of points which is the union of all
+P(x,y)
+such that the origin
+(0,0)
+lies in
+P(x,y)
+(both strictly inside and on the boundary). There is also an equivalent definition: a point
+(x,y)
+lies in
+T
+only if there are two points
+A,B
+in
+P
+such that
+AB
+−
+→
+−
+=
+(x,y)
+−
+→
+−
+−
+. One can prove
+T
+is a polygon too. For example, if
+P
+is a regular triangle then
+T
+is a regular hexagon. At the picture below
+P
+is drawn in black and some
+P(x,y)
+which contain the origin are drawn in colored:
+The spaceship has the best aerodynamic performance if
+P
+and
+T
+are similar. Your task is to check whether the polygons
+P
+and
+T
+are similar.
 Input
-The first line contains an integer
-t
+The first line of input will contain a single integer
+n
 (
-1≤t≤100
-) — the number of test cases in the test. Next, the test cases are given, one per line.
-Each test case is a non-empty string
-s
-of length between
-2
-to
-100
-characters, inclusive, which consists of lowercase Latin letters.
+3≤n≤
+10
+5
+) — the number of points.
+The
+i
+-th of the next
+n
+lines contains two integers
+x
+i
+,
+y
+i
+(
+|
+x
+i
+|,|
+y
+i
+|≤
+10
+9
+), denoting the coordinates of the
+i
+-th vertex.
+It is guaranteed that these points are listed in counterclockwise order and these points form a strictly convex polygon.
 Output
-Print
-t
-lines, the
-i
--th of them should contain the answer to the
-i
--th test case of the input. Print a string of length
-n
-, where
-n
-is the length of the given string
-s
-: the
-j
--th character of the string should be either 'R'or 'B' depending on the color of the
-j
--th character in the answer (painted in red or blue). If there are several possible answers, print any of them.
-Example
+Output "YES" in a separate line, if
+P
+and
+T
+are similar. Otherwise, output "NO" in a separate line. You can print each letter in any case (upper or lower).
+Examples
 input
 Copy
-5
-kotlin
-codeforces
-abacaba
-ffccgc
-yz
+4
+1 0
+4 1
+3 4
+0 3
 output
 Copy
-RRRRBB
-RRRRRRRBBB
-RRRRBBB
-RBBBBR
-RR
+YES
+input
+Copy
+3
+100 86
+50 0
+150 0
+output
+Copy
+nO
+input
+Copy
+8
+0 0
+1 0
+2 1
+3 3
+4 6
+3 6
+2 5
+1 3
+output
+Copy
+YES
+Note
+The following image shows the first sample: both
+P
+and
+T
+are squares. The second sample was shown in the statements.

@@ -1,79 +1,35 @@
-Los Pollos Hermanos
+Restore the Recipe
 Problem
-"I hide in plain sight, just as you".
-Gus Fring has earned a huge profit from Los Pollos Hermanos and he wishes to celebrate. He loves watching horse-riding, hence he bought
-N horses. One day he organizes a horse-riding competition to celebrate the deal with Don Eladio.
-There are
-N horses taking part in the competition with speeds of
-A
-1
-,
-A
-2
-,
-...,
-A
-N respectively. It is given that all speeds are distinct.
-Multiple races are being conducted and it is not mandatory for each horse to participate in every race.
-For the
-i
-th horse, find the number of subsets with size
-≥
-2 such that if a race were to be conducted between horses in this subset then the
-i
-th horse would finish in the top three.
-For subsets of size 2 the runner should finish either 1st or 2nd. There is no 3rd position when the size of the subset is 2.
-Since the answer might be quite large, compute it, modulo
-1000000007
-(10
-9
-+7).
-###Input:
-First line will contain
-T, number of testcases. Then the testcases follow.
-First line of each testcase contains of a single integer
-N denoting the number of horses.
-The second line of each testcase contains
-N space-separated integers
-A
-1
-,
-A
-2
-, ...,$$A
-N, denoting the speeds of the horses.
-###Output: For each testcase, output a single line containing
-N space separated integers , where the
-i
-th integer denotes the number of subsets of size
-≥
-2 modulo
-(10
-9
-+7), such that the
-i
-th horse finishes in the top three.
-###Constraints
-1≤T≤5000
-2≤N≤10
-5
-1≤A[i]≤10
-9
-All speeds are distinct
-Sum of N over all test cases does not exceed
-5∗10
-5
+Chef has had a recipe. He had written it as a sequence of N integer numbers A[1], A[2], ..., A[N]. To be on the safe side, he decided to write out M triples of numbers, where i-th triple is composed of three numbers Xi, Yi and Zi. It means that the sum of numbers in the recipe from Xi-th to Yi-th is equal to Zi. In other words, A[Xi] + A[Xi + 1] + ... + A[Yi] = Zi. Unfortunately, the recipe has been recently lost. So Chef needs to restore his recipe using these M triples. Your task is to help him.
+Input
+The first line contains two space separated integer numbers N and M.
+Then M lines follow. Each line contains three space separated integer numbers Xi, Yi and Zi. It means that the sum of numbers in the recipe from Xi-th to Yi-th is equal to Zi.
+Output
+If there is a solution output N space separated integer numbers - the sequence that you have restored. If there are several solutions you can output any of them. However, any number in the output should be no more than 1014 by its absolute value. If it is impossible to restore the sequence output "-1" without quotes.
+Constraints
+2 ≤ N ≤ 65536
+1 ≤ M ≤ 200000
+1 ≤ Xi ≤ Yi ≤ N
+|Zi| ≤ 1000000000 (109)
+If It is possible to restore the sequence then there is way to do this such that every number in the restored sequence is in range [-10000; 10000]
 Sample 1:
 Input
 Output
-1
- 4
- 4 2 3 1
-7 7 7 6
+4 4
+1 2 3
+2 3 1
+3 4 -2
+1 4 1
+1 2 -1 -1
+Sample 2:
+Input
+Output
+5 3
+1 3 4
+4 5 6
+1 5 9
+-1
 Explanation:
-For the 1st horse the 7 subsets are-
-[4,2,3,1],[4,2,3],[4,2,1],[4,3,1],[4,2],[4,1],[4,3]
-For the 2nd horse the subsets are-
-[4,2,3,1],[4,2,3],[4,2,1],[2,3,1],[2,4],[2,1],[2,3] For the 3rd horse the subsets are-
-[4,2,3,1],[4,2,3],[3,2,1],[4,3,1],[3,2],[3,1],[4,3] For the 4th horse the subsets are-
-[1,2,3],[4,2,1],[4,3,1],[1,2],[4,1],[1,3]
+In the first test case the answer is not unique. Possible answers are also {0, 3, -2, 0}, {2, 1, 0, -2} and many others.
+
+In the second test case first two conditions imply A[1] + A[2] + A[3] = 4 and A[4] + A[5] = 6 and hence A[1] + A[2] + A[3] + A[4] + A[5] = (A[1] + A[2] + A[3]) + (A[4] + A[5]) = 4 + 6 = 10. And it contradicts to the third condition. Hence it is impossible to restore the recipe.

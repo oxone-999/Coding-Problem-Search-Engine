@@ -1,126 +1,100 @@
-D. Hexagons
-time limit per test2 seconds
+B. Nice Matrix
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Lindsey Buckingham told Stevie Nicks "Go your own way". Nicks is now sad and wants to go away as quickly as possible, but she lives in a 2D hexagonal world.
-Consider a hexagonal tiling of the plane as on the picture below.
-Nicks wishes to go from the cell marked
-(0,0)
-to a certain cell given by the coordinates. She may go from a hexagon to any of its six neighbors you want, but there is a cost associated with each of them. The costs depend only on the direction in which you travel. Going from
-(0,0)
-to
-(1,1)
-will take the exact same cost as going from
-(−2,−1)
-to
-(−1,0)
-. The costs are given in the input in the order
-c
+A matrix of size
+n×m
+is called nice, if all rows and columns of the matrix are palindromes. A sequence of integers
+(
+a
 1
 ,
-c
+a
 2
-,
-c
-3
-,
-c
-4
-,
-c
-5
-,
-c
-6
-as in the picture below.
-Print the smallest cost of a path from the origin which has coordinates
-(0,0)
-to the given cell.
+,…,
+a
+k
+)
+is a palindrome, if for any integer
+i
+(
+1≤i≤k
+) the equality
+a
+i
+=
+a
+k−i+1
+holds.
+Sasha owns a matrix
+a
+of size
+n×m
+. In one operation he can increase or decrease any number in the matrix by one. Sasha wants to make the matrix nice. He is interested what is the minimum number of operations he needs.
+Help him!
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
+The first line contains a single integer
 t
-(
-1≤t≤
-10
-4
-). Description of the test cases follows.
-The first line of each test case contains two integers
-x
+ — the number of test cases (
+1≤t≤10
+). The
+t
+tests follow.
+The first line of each test contains two integers
+n
 and
-y
+m
 (
-−
-10
-9
-≤x,y≤
-10
-9
-) representing the coordinates of the target hexagon.
-The second line of each test case contains six integers
-c
-1
-,
-c
-2
-,
-c
-3
-,
-c
-4
-,
-c
-5
-,
-c
-6
+1≤n,m≤100
+) — the size of the matrix.
+Each of the next
+n
+lines contains
+m
+integers
+a
+i,j
 (
-1≤
-c
-1
-,
-c
-2
-,
-c
-3
-,
-c
-4
-,
-c
-5
-,
-c
-6
+0≤
+a
+i,j
 ≤
 10
 9
-) representing the six costs of the making one step in a particular direction (refer to the picture above to see which edge is for each value).
+) — the elements of the matrix.
 Output
-For each testcase output the smallest cost of a path from the origin to the given cell.
+For each test output the smallest number of operations required to make the matrix nice.
 Example
 input
 Copy
 2
--3 1
-1 3 5 7 9 11
-1000000000 1000000000
-1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
+4 2
+4 2
+2 4
+4 2
+2 4
+3 4
+1 2 3 4
+5 6 7 8
+9 10 11 18
 output
 Copy
-18
-1000000000000000000
+8
+42
 Note
-The picture below shows the solution for the first sample. The cost
-18
-is reached by taking
-c
-3
-3 times and
-c
-2
-once, amounting to
-5+5+5+3=18
-.
+In the first test case we can, for example, obtain the following nice matrix in
+8
+operations:
+
+2 2
+4 4
+4 4
+2 2
+In the second test case we can, for example, obtain the following nice matrix in
+42
+operations:
+
+5 6 6 5
+6 6 6 6
+5 6 6 5

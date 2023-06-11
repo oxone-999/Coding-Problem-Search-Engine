@@ -1,157 +1,135 @@
-F. Network Coverage
-time limit per test2 seconds
+B. Multiply by 2, divide by 6
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The government of Berland decided to improve network coverage in his country. Berland has a unique structure: the capital in the center and
+You are given an integer
 n
-cities in a circle around the capital. The capital already has a good network coverage (so the government ignores it), but the
-i
--th city contains
-a
-i
-households that require a connection.
-The government designed a plan to build
+. In one move, you can either multiply
 n
-network stations between all pairs of neighboring cities which will maintain connections only for these cities. In other words, the
-i
--th network station will provide service only for the
-i
--th and the
-(i+1)
--th city (the
+by two or divide
 n
--th station is connected to the
-n
--th and the
+by
+6
+(if it is divisible by
+6
+without the remainder).
+Your task is to find the minimum number of moves needed to obtain
 1
--st city).
-All network stations have capacities: the
-i
--th station can provide the connection to at most
-b
-i
-households.
-Now the government asks you to check can the designed stations meet the needs of all cities or not — that is, is it possible to assign each household a network station so that each network station
-i
-provides the connection to at most
-b
-i
-households.
+from
+n
+or determine if it's impossible to do that.
+You have to answer
+t
+independent test cases.
 Input
-The first line contains a single integer
+The first line of the input contains one integer
 t
 (
-1≤t≤
+1≤t≤2⋅
 10
 4
-) — the number of test cases.
-The first line of each test case contains the single integer
+) — the number of test cases. Then
+t
+test cases follow.
+The only line of the test case contains one integer
 n
 (
-2≤n≤
-10
-6
-) — the number of cities and stations.
-The second line of each test case contains
-n
-integers (
-1≤
-a
-i
-≤
+1≤n≤
 10
 9
-) — the number of households in the
-i
--th city.
-The third line of each test case contains
-n
-integers (
-1≤
-b
-i
-≤
-10
-9
-) — the capacities of the designed stations.
-It's guaranteed that the sum of
-n
-over test cases doesn't exceed
-10
-6
-.
+).
 Output
-For each test case, print YES, if the designed stations can meet the needs of all cities, or NO otherwise (case insensitive).
+For each test case, print the answer — the minimum number of moves needed to obtain
+1
+from
+n
+if it's possible to do that or -1 if it's impossible to obtain
+1
+from
+n
+.
 Example
 input
 Copy
-5
-3
-2 3 4
-3 3 3
-3
-3 3 3
-2 3 4
-4
-2 3 4 5
-3 7 2 2
-4
-4 5 2 3
-2 3 2 7
+7
+1
 2
-1 1
-10 10
+3
+12
+12345
+15116544
+387420489
 output
 Copy
-YES
-YES
-NO
-YES
-YES
+0
+-1
+2
+-1
+-1
+12
+36
 Note
-In the first test case:
-the first network station can provide
+Consider the sixth test case of the example. The answer can be obtained by the following sequence of moves from the given integer
+15116544
+:
+Divide by
+6
+and get
+2519424
+;
+divide by
+6
+and get
+419904
+;
+divide by
+6
+and get
+69984
+;
+divide by
+6
+and get
+11664
+;
+multiply by
 2
-connections to the first city and
-1
-connection to the second city;
-the second station can provide
+and get
+23328
+;
+divide by
+6
+and get
+3888
+;
+divide by
+6
+and get
+648
+;
+divide by
+6
+and get
+108
+;
+multiply by
 2
-connections to the second city and
+and get
+216
+;
+divide by
+6
+and get
+36
+;
+divide by
+6
+and get
+6
+;
+divide by
+6
+and get
 1
-connection to the third city;
-the third station can provide
-3
-connections to the third city.
-In the second test case:
-the
-1
--st station can provide
-2
-connections to the
-1
--st city;
-the
-2
--nd station can provide
-3
-connections to the
-2
--nd city;
-the
-3
--rd station can provide
-3
-connections to the
-3
--rd city and
-1
-connection to the
-1
--st station.
-In the third test case, the fourth city needs
-5
-connections, but the third and the fourth station has
-4
-connections in total.
+.

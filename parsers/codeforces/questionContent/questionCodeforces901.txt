@@ -1,173 +1,171 @@
-E. Tokitsukaze and Beautiful Subsegments
-time limit per test4 seconds
-memory limit per test1024 megabytes
+A. Tokitsukaze and All Zero Sequence
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Tokitsukaze has a permutation
-p
+Tokitsukaze has a sequence
+a
 of length
 n
-.
-Let's call a segment
-[l,r]
-beautiful if there exist
+. For each operation, she selects two numbers
+a
 i
 and
+a
 j
-satisfying
-p
-i
-⋅
-p
-j
-=max{
-p
-l
-,
-p
-l+1
-,…,
-p
-r
-}
-, where
-l≤i<j≤r
-.
-Now Tokitsukaze has
-q
-queries, in the
-i
--th query she wants to know how many beautiful subsegments
-[x,y]
-there are in the segment
-[
-l
-i
-,
-r
-i
-]
-(i. e.
-l
-i
-≤x≤y≤
-r
-i
-).
-Input
-The first line contains two integers
-n
-and
-q
 (
-1≤n≤2⋅
-10
-5
+i≠j
 ;
-1≤q≤
-10
-6
-) — the length of permutation
-p
-and the number of queries.
+1≤i,j≤n
+).
+If
+a
+i
+=
+a
+j
+, change one of them to
+0
+.
+Otherwise change both of them to
+min(
+a
+i
+,
+a
+j
+)
+.
+Tokitsukaze wants to know the minimum number of operations to change all numbers in the sequence to
+0
+. It can be proved that the answer always exists.
+Input
+The first line contains a single positive integer
+t
+(
+1≤t≤1000
+) — the number of test cases.
+For each test case, the first line contains a single integer
+n
+(
+2≤n≤100
+) — the length of the sequence
+a
+.
 The second line contains
 n
-distinct integers
-p
+integers
+a
 1
 ,
-p
+a
 2
 ,…,
-p
+a
 n
 (
-1≤
-p
+0≤
+a
 i
-≤n
-) — the permutation
-p
+≤100
+) — the sequence
+a
 .
-Each of the next
-q
-lines contains two integers
-l
-i
-and
-r
-i
-(
-1≤
-l
-i
-≤
-r
-i
-≤n
-) — the segment
-[
-l
-i
-,
-r
-i
-]
-of this query.
 Output
-For each query, print one integer — the numbers of beautiful subsegments in the segment
-[
-l
-i
-,
-r
-i
-]
+For each test case, print a single integer — the minimum number of operations to change all numbers in the sequence to
+0
 .
-Examples
+Example
 input
 Copy
-8 3
-1 3 5 2 4 7 6 8
-1 3
-1 1
-1 8
+3
+3
+1 2 3
+3
+1 2 2
+3
+1 2 0
 output
 Copy
-2
-0
-10
-input
-Copy
-10 10
-6 1 3 2 5 8 4 10 7 9
-1 8
-1 10
-1 2
-1 4
-2 4
-5 8
-4 10
-4 7
-8 10
-5 9
-output
-Copy
-17
-25
-1
-5
-2
-0
 4
-1
-0
-0
-Note
-In the first example, for the first query, there are
+3
 2
-beautiful subsegments —
-[1,2]
-and
-[1,3]
+Note
+In the first test case, one of the possible ways to change all numbers in the sequence to
+0
+:
+In the
+1
+-st operation,
+a
+1
+<
+a
+2
+, after the operation,
+a
+2
+=
+a
+1
+=1
+. Now the sequence
+a
+is
+[1,1,3]
+.
+In the
+2
+-nd operation,
+a
+1
+=
+a
+2
+=1
+, after the operation,
+a
+1
+=0
+. Now the sequence
+a
+is
+[0,1,3]
+.
+In the
+3
+-rd operation,
+a
+1
+<
+a
+2
+, after the operation,
+a
+2
+=0
+. Now the sequence
+a
+is
+[0,0,3]
+.
+In the
+4
+-th operation,
+a
+2
+<
+a
+3
+, after the operation,
+a
+3
+=0
+. Now the sequence
+a
+is
+[0,0,0]
+.
+So the minimum number of operations is
+4
 .

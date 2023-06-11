@@ -1,28 +1,56 @@
-The Morning Commute
+Phone Prices
 Problem
-The Chef commutes to work every day using the city's underground metro. The schedule for the trains has recently been changed and he wants to know how long it will take to travel from the station nearest to his house and the station nearest to his restaurant.
-The Chef doesn't want to change the route he took before, so he simply has to find out how long it will take to reach his restaurant along his usual route. This route is given by a sequence of stations s0, s1, ..., sn where s0 is the station where the Chef enters the metro and sn is the station where the Chef exits the metro.
-Trains are scheduled to run between every two consecutive stations si-1 and si. Such a schedule is specified by three integers xi, li, and fi. This means that the first train on this line starts operating at time xi. The time it takes this train to travel from si-1 and si is exactly li units. Finally, a train departs from station si-1 every fi minutes following the previous train. That is, a train departs at time xi, xi+fi, xi+2fi, and so on.
-The Chef is very experienced at navigating the metro so the time it takes him to transfer between trains at a given station is essentially zero. Thus, if the Chef arrives at a station, say si, the moment that the train from si to si+1 is scheduled to depart, he skillfully hops on this next train. However, if the Chef arrives when no train to si+1 is scheduled to depart, he must wait until the scheduled departure time.
-Help the Chef figure out how long it will take him to travel from station s0 to station sn. You may assume that the Chef is already at station s0 at time 0.
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef wants to buy a new phone, but he is not willing to spend a lot of money. Instead, he checks the price of his chosen model everyday and waits for the price to drop to an acceptable value. So far, he has observed the price for
+N days (numbere
+1 through
+N); for each valid
+i, the price on the
+i-th day was
+P
+i
+dollars.
+On each day, Chef considers the price of the phone to be good if it is strictly smaller than all the prices he has observed during the previous five days. If there is no record of the price on some of the previous five days (because Chef has not started checking the price on that day yet), then Chef simply ignores that previous day ― we could say that he considers the price on that day to be infinite.
+Now, Chef is wondering ― on how many days has he considered the price to be good? Find the number of these days.
 Input
-The first line consists of a single integer denoting the number of test cases (at most 50). Each test case begins with a line containing a single integer n between 1 and 1000 indicating the number of lines the Chef must traverse (so there are n+1 stations s0, s1, ..., sn). The next n lines describe the train schedules between stations, one per line. The i'th such line gives the values xi, li, and fi for the train that travels between stations si-1 and si.
-The xi values will be between 0 and 1000 and the li and fi values will be between 1 and 1000.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains
+N space-separated integers
+P
+1
+,P
+2
+,…,P
+N
+.
 Output
-For each test case you are to output a single integer denoting the minimum time t for which the Chef can reach station sn using the given route. Remember, the Chef starts at s0 at time 0.
+For each test case, print a single line containing one integer ― the number of days with a good price.
+Constraints
+1≤T≤100
+7≤N≤100
+350≤P
+i
+≤750 for each valid
+i
+Subtasks
+Subtask #1 (30 points):
+N=7
+Subtask #2 (70 points): original constraints
 Sample 1:
 Input
 Output
-3
+1
+7
+375 750 723 662 647 656 619
 2
-0 4 7
-0 6 5
-2
-0 1 2
-6 2 10
-2
-1 2 3
-0 2 3
-11
-8
-5
+Explanation:
+Example case 1: Chef considers the price to be good on day
+1, because he has not observed any prices on the previous days. The prices on days
+2,3,4,5,6 are not considered good because they are greater than the price on day
+1. Finally, the price on day
+7 is considered good because it is smaller than all of the prices on days
+2,3,4,5,6.

@@ -1,164 +1,249 @@
-B. Hemose Shopping
+D. Hemose in ICPC ?
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Hemose was shopping with his friends Samez, AhmedZ, AshrafEzz, TheSawan and O_E in Germany. As you know, Hemose and his friends are problem solvers, so they are very clever. Therefore, they will go to all discount markets in Germany.
-Hemose has an array of
+This is an interactive problem!
+In the last regional contest Hemose, ZeyadKhattab and YahiaSherif — members of the team Carpe Diem — did not qualify to ICPC because of some unknown reasons. Hemose was very sad and had a bad day after the contest, but ZeyadKhattab is very wise and knows Hemose very well, and does not want to see him sad.
+Zeyad knows that Hemose loves tree problems, so he gave him a tree problem with a very special device.
+Hemose has a weighted tree with
 n
-integers. He wants Samez to sort the array in the non-decreasing order. Since it would be a too easy problem for Samez, Hemose allows Samez to use only the following operation:
-Choose indices
-i
-and
-j
-such that
-1≤i,j≤n
-, and
-|i−j|≥x
-. Then, swap elements
-a
-i
-and
-a
-j
+nodes and
+n−1
+edges. Unfortunately, Hemose doesn't remember the weights of edges.
+Let's define
+Dist(u,v)
+for
+u≠v
+as the greatest common divisor of the weights of all edges on the path from node
+u
+to node
+v
 .
-Can you tell Samez if there's a way to sort the array in the non-decreasing order by using the operation written above some finite number of times (possibly
-0
-)?
-Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(1≤t≤
-10
-5
-)
-. Description of the test cases follows.
-The first line of each test case contains two integers
-n
-and
-x
-(1≤x≤n≤
-10
-5
-)
-.
-The second line of each test case contains
-n
-integers
-a
-1
+Hemose has a special device. Hemose can give the device a set of nodes, and the device will return the largest
+Dist
+between any two nodes from the set. More formally, if Hemose gives the device a set
+S
+of nodes, the device will return the largest value of
+Dist(u,v)
+over all pairs
+(u,v)
+with
+u
 ,
+v
+∈
+S
+and
+u≠v
+.
+Hemose can use this Device at most
+12
+times, and wants to find any two distinct nodes
 a
-2
-,...,
-a
+,
+b
+, such that
+Dist(a,b)
+is maximum possible. Can you help him?
+Interaction
+Begin the interaction from reading a single integer
 n
-(1≤
-a
+(
+2≤n≤
+10
+3
+) — the number of nodes in the tree.
+Next, read
+n−1
+lines.
+The
 i
+-th of the next
+n−1
+lines contains two integers
+u
+i
+and
+v
+i
+(
+1≤
+u
+i
+,
+v
+i
+≤n
+,
+u
+i
+≠
+v
+i
+), which means that there's an edge between nodes
+u
+i
+and
+v
+i
+.
+It's guaranteed that weights of edges were
 ≤
 10
 9
+.
+It is guaranteed that the given graph is a tree.
+Now you may begin asking queries. To ask a query about a set of
+k
+nodes
+v
+1
+,
+v
+2
+,…,
+v
+k
+(
+2≤k≤n
+,
+1≤
+v
+i
+≤n
+, all
+v
+i
+are distinct), output:
+?
+k
+v
+1
+v
+2
+…
+v
+k
+You will then receive an integer
+x
+, the largest
+Dist(
+v
+i
+,
+v
+j
 )
+over
+1≤i,j≤k
+with
+i≠j
 .
-It is guaranteed that the sum of
+When you have found
+a
+and
+b
+(
+1≤a,b≤n)
+,
+a≠b
+) such that
+Dist(a,b)
+is the maximum possible, print the answer in the following format:
+!
+a
+b
+Outputting answer doesn't count towards the limit of
+12
+queries.
+If there are several pairs
+(a,b)
+with the same largest
+Dist(a,b)
+, you can output any.
+After printing a query do not forget to output the end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see the documentation for other languages.
+Hacks
+To hack a solution, use the following format.
+The first line should contain a single integer
 n
-over all test cases doesn't exceed
-2⋅
+(2≤n≤
 10
-5
+3
+)
+— the number of nodes.
+The
+i
+-th of the next
+n−1
+lines should contain three integers
+u
+i
+,
+v
+i
+,
+w
+i
+(
+1≤
+u
+i
+,
+v
+i
+≤n
+,
+u
+i
+≠
+v
+i
+,
+1≤w≤
+10
+9
+), which means that there's an edge between nodes
+u
+i
+and
+v
+i
+with weight
+w
+i
 .
-Output
-For each test case, you should output a single string.
-If Samez can sort the array in non-decreasing order using the operation written above, output "YES" (without quotes). Otherwise, output "NO" (without quotes).
-You can print each letter of "YES" and "NO" in any case (upper or lower).
+These
+n−1
+edges must form a tree.
 Example
 input
 Copy
-4
-3 3
-3 2 1
-4 3
-1 2 3 4
-5 2
-5 1 2 3 4
-5 4
-1 2 3 4 4
+6
+1 2
+2 3
+2 4
+1 5
+5 6
+
+10
+
+2
+
+10
 output
 Copy
-NO
-YES
-YES
-YES
+? 6 1 2 3 4 5 6
+
+? 3 3 1 5
+
+? 2 1 2
+
+! 1 2
 Note
-In the first test case, you can't do any operations.
-In the second test case, the array is already sorted.
-In the third test case, you can do the operations as follows:
-[5,1,2,3,4]
-,
-swap(
-a
-1
-,
-a
-3
-)
-[2,1,5,3,4]
-,
-swap(
-a
-2
-,
-a
-5
-)
-[2,4,5,3,1]
-,
-swap(
-a
-2
-,
-a
-4
-)
-[2,3,5,4,1]
-,
-swap(
-a
-1
-,
-a
-5
-)
-[1,3,5,4,2]
-,
-swap(
-a
-2
-,
-a
-5
-)
-[1,2,5,4,3]
-,
-swap(
-a
-3
-,
-a
-5
-)
-[1,2,3,4,5]
-(Here
-swap(
-a
-i
-,
-a
-j
-)
-refers to swapping elements at positions
-i
-,
-j
-).
+The tree in the first sample:

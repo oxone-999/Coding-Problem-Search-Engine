@@ -1,92 +1,27 @@
-Can you do it better
+Authentication Failed
 Problem
-Your task is to write a program which computes exactly the same result as Chef's programs below. He was kind enough to provide you with the same program written in three different programming languages. However, your solution should be much faster.
-C++
-#include 
-#include 
-using namespace std;
-int main() {
-string a, b, c;
-int na, nb, r;
-cin >> a;
-na = a.size();
-cin >> b;
-nb = b.size();
-cin >> c;
-r = 0;
-for (int i = 0; i < nb; i++) {
-for (int j = 1; j < min(na+1, nb-i+1); j++) {
-bool f = true;
-int d = 0;
-for (int k = 0; k < j; k++) {
-if (a[k] != b[i+k]) {
-if (c[k] == '1')  { d += 1; }
-else { f = false; }
-}
-}
-if (f && d <= 2) { r = (r + j*j) % 1000000007; }
-}
-}
-cout << r << endl;
-return 0;
-}
-Java
-import java.util.Scanner;
-public class Main {
-static String a, b, c;
-static int na, nb, r;
-
-public static void main(String[] args) {
- Scanner sc = new Scanner(System.in);
- a = sc.next();
- na = a.length();
- b = sc.next();
- nb = b.length();
- c = sc.next();
- r = 0;
- for (int i = 0; i < nb; i++) {
-  for (int j = 1; j < Math.min(na+1, nb-i+1); j++) {
-   boolean f = true;
-   int d = 0;
-   for (int k = 0; k < j; k++) {
-    if (a.charAt(k) != b.charAt(i+k)) { 
-     if (c.charAt(k) == '1') { d += 1; }
-     else { f = false; }
-    }
-   }
-   if (f && d <= 2) { r = (r + j*j) % 1000000007; }
-  }
- }
- System.out.println(r);
-}
-}
-Python
-a = raw_input()
-na = len(a)
-b = raw_input()
-nb = len(b)
-c = raw_input()
-r = 0
-for i in range(nb):
- for j in range(1, min(na+1, nb-i+1)):
-  f = True
-  d = 0
-  for k in range(j):
-   if (a[k] != b[i+k]):
-    if (c[k] == '1'): d +=1
-    else: f = False
-  if (f and d <= 2): r = (r + j*j) % 1000000007
-print r
+Several days ago Chef decided to register at one of the programming sites. For registering he was asked to choose a nickname and a password. There was no problem with choosing a nickname ("Chef" is his favorite nickname), but choosing a password in a secure way seemed to be a real problem for Chef. Therefore, he decided to write a program which would generate the password of length N consisting of small Latin letters a..z. Then Chef successfully registered at the site and saved the password in a file (as it was too hard to remember).
+Today Chef decided to visit the site once again. He entered his nickname, copied the password from the file... "Authentication failed!" was the answer. Trying to understand the reason of this, he noticed that the password in his file had length N+K instead of N! Sure enough of the source of the problem, Chef went straight to his young brother.
+And Chef was right, it was his brother who had inserted K random small Latin letters at some random positions (possibly at the beginning or at the end) of the password. Chef's brother didn't remember what exactly changes he had made at all, but he promised that he had done nothing besides inserting letters.
+As there is no other way to recover the password, Chef is now starting to remove every possible combination of K letters from the password trying to enter (when Chef obtains the same password as one of the previously entered passwords, he doesn't try to enter using this password again). Now the question is: what is the number of times Chef will receive "Authentication failed!" as the answer before successful entering in the worst case? As the answer might be quite large, output its remainder of division by 1009419529.
 Input
-The strings A, B and C are provided in a compressed form to keep the input small enough. Sequence 00000 is encoded with letter 'a', 00001 with 'b' and so on until 'z'. 11010 is represented by 'A' and 11111 by 'F'.
-The input consists of three lines of letters a-z, A-F. First line contains at most 200 characters and the second one at most 2 000 000. Third line has the same length as the first line and will contain at most 40 digits 1 when decompressed.
+The first line of the input file contains one integer T -- the number of test cases (no more than 10). Each test case is described by a line containing two integers N and K (1 ≤ N ≤ 10000, 1 ≤ K ≤ 100) separated by a single space, followed by a line containing a string of length N+K consisting of small Latin letters a..z.
+Output
+For each test case output just one line containing the required number modulo 1009419529.
 Example
 Input:
-aBFn
-ygFBg
-bbdb
+3
+2 1
+aaa
+3 1
+abcd
+4 2
+ababab
 
 Output:
-2990
-Explanation
-After decompression we get strings 00000110111111101101, 1100000110111111101100110 and 00001000010001100001. If we run chef's program with this decompressed input, we will get 2990 as a result.
+0
+3
+10
+
+Explanation:
+In the first test case, the password is definitely "aa". In the second test case, it can be "abc", "abd", "acd" or "bcd", so in the worst case Chef will guess the correct option from the fourth attempt, thus making 3 unsuccessful attempts.

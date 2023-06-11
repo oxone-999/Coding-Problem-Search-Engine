@@ -1,215 +1,262 @@
-C. New Year and Permutation
-time limit per test1 second
+F. New Year and Social Network
+time limit per test4 seconds
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Recall that the permutation is an array consisting of
+Donghyun's new social network service (SNS) contains
 n
-distinct integers from
+users numbered
+1,2,…,n
+. Internally, their network is a tree graph, so there are
+n−1
+direct connections between each user. Each user can reach every other users by using some sequence of direct connections. From now on, we will denote this primary network as
+T
 1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
-2
-appears twice in the array) and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
-A sequence
-a
-is a subsegment of a sequence
-b
-if
-a
-can be obtained from
-b
-by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end. We will denote the subsegments as
-[l,r]
-, where
-l,r
-are two integers with
-1≤l≤r≤n
-. This indicates the subsegment where
-l−1
-elements from the beginning and
-n−r
-elements from the end are deleted from the sequence.
-For a permutation
-p
-1
-,
-p
-2
-,…,
-p
-n
-, we define a framed segment as a subsegment
-[l,r]
-where
-max{
-p
-l
-,
-p
-l+1
-,…,
-p
-r
-}−min{
-p
-l
-,
-p
-l+1
-,…,
-p
-r
-}=r−l
-. For example, for the permutation
-(6,7,1,8,5,3,2,4)
-some of its framed segments are:
-[1,2],[5,8],[6,7],[3,3],[8,8]
-. In particular, a subsegment
-[i,i]
-is always a framed segments for any
-i
-between
-1
-and
-n
-, inclusive.
-We define the happiness of a permutation
-p
-as the number of pairs
-(l,r)
-such that
-1≤l≤r≤n
-, and
-[l,r]
-is a framed segment. For example, the permutation
-[3,1,2]
-has happiness
-5
-: all segments except
-[1,2]
-are framed segments.
-Given integers
-n
-and
-m
-, Jongwon wants to compute the sum of happiness for all permutations of length
-n
-, modulo the prime number
-m
-. Note that there exist
-n!
-(factorial of
-n
-) different permutations of length
-n
 .
+To prevent a possible server breakdown, Donghyun created a backup network
+T
+2
+, which also connects the same
+n
+users via a tree graph. If a system breaks down, exactly one edge
+e∈
+T
+1
+becomes unusable. In this case, Donghyun will protect the edge
+e
+by picking another edge
+f∈
+T
+2
+, and add it to the existing network. This new edge should make the network be connected again.
+Donghyun wants to assign a replacement edge
+f∈
+T
+2
+for as many edges
+e∈
+T
+1
+as possible. However, since the backup network
+T
+2
+is fragile,
+f∈
+T
+2
+can be assigned as the replacement edge for at most one edge in
+T
+1
+. With this restriction, Donghyun wants to protect as many edges in
+T
+1
+as possible.
+Formally, let
+E(T)
+be an edge set of the tree
+T
+. We consider a bipartite graph with two parts
+E(
+T
+1
+)
+and
+E(
+T
+2
+)
+. For
+e∈E(
+T
+1
+),f∈E(
+T
+2
+)
+, there is an edge connecting
+{e,f}
+if and only if graph
+T
+1
+−{e}+{f}
+is a tree. You should find a maximum matching in this bipartite graph.
 Input
-The only line contains two integers
+The first line contains an integer
 n
-and
-m
 (
-1≤n≤250000
+2≤n≤250000
+), the number of users.
+In the next
+n−1
+lines, two integers
+a
+i
 ,
-10
-8
-≤m≤
-10
-9
-,
-m
-is prime).
-Output
-Print
-r
+b
+i
 (
-0≤r<m
-), the sum of happiness for all permutations of length
-n
-, modulo a prime number
-m
+1≤
+a
+i
+,
+b
+i
+≤n
+) are given. Those two numbers denote the indices of the vertices connected by the corresponding edge in
+T
+1
 .
+In the next
+n−1
+lines, two integers
+c
+i
+,
+d
+i
+(
+1≤
+c
+i
+,
+d
+i
+≤n
+) are given. Those two numbers denote the indices of the vertices connected by the corresponding edge in
+T
+2
+.
+It is guaranteed that both edge sets form a tree of size
+n
+.
+Output
+In the first line, print the number
+m
+(
+0≤m<n
+), the maximum number of edges that can be protected.
+In the next
+m
+lines, print four integers
+a
+i
+,
+b
+i
+,
+c
+i
+,
+d
+i
+. Those four numbers denote that the edge
+(
+a
+i
+,
+b
+i
+)
+in
+T
+1
+is will be replaced with an edge
+(
+c
+i
+,
+d
+i
+)
+in
+T
+2
+.
+All printed edges should belong to their respective network, and they should link to distinct edges in their respective network. If one removes an edge
+(
+a
+i
+,
+b
+i
+)
+from
+T
+1
+and adds edge
+(
+c
+i
+,
+d
+i
+)
+from
+T
+2
+, the network should remain connected. The order of printing the edges or the order of vertices in each edge does not matter.
+If there are several solutions, you can print any.
 Examples
 input
 Copy
-1 993244853
+4
+1 2
+2 3
+4 3
+1 3
+2 4
+1 4
 output
 Copy
-1
-input
-Copy
-2 993244853
-output
-Copy
-6
-input
-Copy
-3 993244853
-output
-Copy
-32
-input
-Copy
-2019 993244853
-output
-Copy
-923958830
-input
-Copy
-2020 437122297
-output
-Copy
-265955509
-Note
-For sample input
-n=3
-, let's consider all permutations of length
 3
-:
-[1,2,3]
-, all subsegments are framed segment. Happiness is
-6
-.
-[1,3,2]
-, all subsegments except
-[1,2]
-are framed segment. Happiness is
+3 2 4 2
+2 1 1 3
+4 3 1 4
+input
+Copy
 5
-.
-[2,1,3]
-, all subsegments except
-[2,3]
-are framed segment. Happiness is
-5
-.
-[2,3,1]
-, all subsegments except
-[2,3]
-are framed segment. Happiness is
-5
-.
-[3,1,2]
-, all subsegments except
-[1,2]
-are framed segment. Happiness is
-5
-.
-[3,2,1]
-, all subsegments are framed segment. Happiness is
-6
-.
-Thus, the sum of happiness is
-6+5+5+5+5+6=32
-.
+1 2
+2 4
+3 4
+4 5
+1 2
+1 3
+1 4
+1 5
+output
+Copy
+4
+2 1 1 2
+3 4 1 3
+4 2 1 4
+5 4 1 5
+input
+Copy
+9
+7 9
+2 8
+2 1
+7 5
+4 7
+2 4
+9 6
+3 9
+1 8
+4 8
+2 9
+9 5
+7 6
+1 3
+4 6
+5 3
+output
+Copy
+8
+4 2 9 2
+9 7 6 7
+5 7 5 9
+6 9 4 6
+8 2 8 4
+3 9 3 5
+2 1 1 8
+7 4 1 3

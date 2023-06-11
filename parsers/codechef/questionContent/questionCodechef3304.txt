@@ -1,181 +1,191 @@
-Tree Master
+Bad Luck
 Problem
-Given is a tree with
-N weighted vertices and
-N−1 weighted edges. The
-i-th vertex has a weight of
-A
-i
-. The
-i-th edge has a weight of
-W
-i
-and connects vertices
-u
-i
-and
-v
-i
-.
-Let
-dist(x,y) be the sum of weights of the edges in the unique simple path connecting vertices
-x and
-y.
-Let
-V(x,y) be the set of vertices appearing in the unique simple path connecting vertices
-x and
-y (including
-x and
-y).
-You are asked
-Q queries. In the
-i-th query, you are given two integers
+Read problem statements in Mandarin, Bengali, Russian, and Vietnamese as well.
+Chef has failed miserably in several cooking competitions, which makes him think that he's been out of luck recently. Therefore, he decided to build a magic circle using his
+N chopsticks (numbered
+1 through
+N), hoping that it would somehow improve his luck.
+The magic circle consists of
+N chopsticks placed on an infinite straight line (so it's not actually a circle). The line is drawn on the ground and chopsticks should be stuck vertically into the ground.
+The chopsticks have lengths
 x
-i
-and
+1
+,x
+2
+,⋯,x
+N
+. For each valid
+i, the
+i-th chopstick can be placed on the line at any integer position
 y
 i
-and you need to compute:
-k∈V(x
+; then it casts a shadow on the range
+[y
 i
 ,y
 i
-)
-∑
-(dist(x
++x
 i
-,k)−dist(k,y
+] on the line. No two chopsticks may be placed at the same position.
+The positions of the chopsticks should satisfy an additional condition: for each pair of neighbouring chopsticks
+i and
+j (such that there are no other chopsticks between them), the distances between these neighbouring chopsticks
+∣y
 i
-))⋅A
-k
+−y
+j
+∣ must fall in a given range
+[L,U].
+The magic power of the circle depends on the total shadowed length
+S=∣⋃
+i
+[y
+i
+,y
+i
++x
+i
+]∣. While Chef expects the circle to have the maximum effect, he must prepare for the worst-case scenario — due to his recent bad luck. Please help Chef find both the minimum and the maximum value of
+S.
 Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
 T test cases follows.
-The first line contains two integers
-N and
-Q.
+The first line of each test case contains three space-separated integers
+N,
+L and
+U.
 The second line contains
-N integers
-A
+N space-separated integers
+x
 1
-,A
+,x
 2
-,…,A
+,⋯,x
 N
 .
-Each of the next
-N−1 lines contains three integers
-u
-i
-,
-v
-i
-and
-W
-i
-.
-Each of the next
-Q lines contains two integers
-x
-i
-and
-y
-i
-.
 Output Format
-For each query, print the answer to it on a new line.
+For each test case, print a single line containing two space-separated integers
+S
+min
+and
+S
+max
+.
 Constraints
 1≤T≤10
-3
-2≤N≤2⋅10
 5
-1≤Q≤2⋅10
+1≤N≤10
 5
-1≤A
-i
-,W
+1≤L≤U≤10
+9
+1≤x
 i
 ≤10
-4
-1≤u
+9
+for each valid
 i
-,v
-i
-,x
-i
-,y
-i
-≤N
-x
-i
-
-=y
-i
-u
-i
-
-=v
-i
-The sum of
-N across all test cases does not exceed
-2⋅10
+the sum of
+N over all test cases does not exceed
+10
 5
-.
-The sum of
-Q across all test cases does not exceed
-2⋅10
-5
-.
 Subtasks
-Subtask #1 (20 points):
-u
-i
-=i,v
-i
-=i+1
-Subtask #2 (80 points): Original constraints
+Subtask #1 (5 points):
+T≤5
+N≤3
+Subtask #2 (15 points):
+T≤5
+N≤11, and additionally
+N>5 in at most one test case
+Subtask #3 (30 points):
+N≤200
+Subtask #4 (50 points): original constraints
 Sample 1:
 Input
 Output
-2
-5 2
-5 3 3 1 2
-1 2 2
-2 3 1
-2 4 1
-1 5 2
-4 5
-5 4
-10 5
-3 6 9 2 3 8 3 7 9 7
-1 2 4
-1 3 6
-1 4 8
-4 5 9
-1 6 2
-5 7 3
-3 8 7
-3 9 2
-7 10 9
-9 2
-2 1
+3
+2 2 4
 8 5
-3 2
-3 10
-1
--1
--96
--12
--252
--24
--69
+3 1 2
+1 2 3
+5 3 5
+1 9 2 6 6
+8 12
+3 6
+13 22
 Explanation:
-Test Case
-1:
-For the first query,
-V(4,5)={4,2,1,5}. The answer is
-1⋅(0−5)+3⋅(1−4)+5⋅(3−2)+2⋅(5−0)=1
-For the second query,
-V(5,4)={5,1,2,4}. The answer is
-2⋅(0−5)+5⋅(2−3)+3⋅(4−1)+1⋅(5−0)=−1
+Example case 1:
+To minimize
+S, we may set
+y
+1
+=0 and
+y
+2
+=2.
+To maximize
+S, we may set
+y
+1
+=4 and
+y
+2
+=0.
+Example case 2:
+To minimize
+S, we may set
+y
+1
+=2,
+y
+2
+=1 and
+y
+3
+=0.
+To maximize
+S, we may set
+y
+1
+=0,
+y
+2
+=1 and
+y
+3
+=3.
+Example case 3:
+To minimize
+S, we may set
+y
+1
+=0,
+y
+2
+=3,
+y
+3
+=12,
+y
+4
+=6 and
+y
+5
+=9.
+To maximize
+S, we may set
+y
+1
+=0,
+y
+2
+=20,
+y
+3
+=5,
+y
+4
+=10 and
+y
+5
+=15.

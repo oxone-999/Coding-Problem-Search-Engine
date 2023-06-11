@@ -1,172 +1,131 @@
-B1. Social Network (easy version)
+C. Pipes
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The only difference between easy and hard versions are constraints on
+You are given a system of pipes. It consists of two rows, each row consists of
 n
-and
-k
+pipes. The top left pipe has the coordinates
+(1,1)
+and the bottom right —
+(2,n)
 .
-You are messaging in one of the popular social networks via your smartphone. Your smartphone can show at most
-k
-most recent conversations with your friends. Initially, the screen is empty (i.e. the number of displayed conversations equals
-0
-).
-Each conversation is between you and some of your friends. There is at most one conversation with any of your friends. So each conversation is uniquely defined by your friend.
-You (suddenly!) have the ability to see the future. You know that during the day you will receive
-n
-messages, the
-i
--th message will be received from the friend with ID
-i
-d
-i
-(
-1≤i
-d
-i
-≤
-10
-9
-).
-If you receive a message from
-i
-d
-i
-in the conversation which is currently displayed on the smartphone then nothing happens: the conversations of the screen do not change and do not change their order, you read the message and continue waiting for new messages.
-Otherwise (i.e. if there is no conversation with
-i
-d
-i
-on the screen):
-Firstly, if the number of conversations displayed on the screen is
-k
-, the last conversation (which has the position
-k
-) is removed from the screen.
-Now the number of conversations on the screen is guaranteed to be less than
-k
-and the conversation with the friend
-i
-d
-i
-is not displayed on the screen.
-The conversation with the friend
-i
-d
-i
-appears on the first (the topmost) position on the screen and all the other displayed conversations are shifted one position down.
-Your task is to find the list of conversations (in the order they are displayed on the screen) after processing all
-n
-messages.
+There are six types of pipes: two types of straight pipes and four types of curved pipes. Here are the examples of all six types:
+Types of pipes
+You can turn each of the given pipes
+90
+degrees clockwise or counterclockwise arbitrary (possibly, zero) number of times (so the types
+1
+and
+2
+can become each other and types
+3,4,5,6
+can become each other).
+You want to turn some pipes in a way that the water flow can start at
+(1,0)
+(to the left of the top left pipe), move to the pipe at
+(1,1)
+, flow somehow by connected pipes to the pipe at
+(2,n)
+and flow right to
+(2,n+1)
+.
+Pipes are connected if they are adjacent in the system and their ends are connected. Here are examples of connected pipes:
+Examples of connected pipes
+Let's describe the problem using some example:
+The first example input
+And its solution is below:
+The first example answer
+As you can see, the water flow is the poorly drawn blue line. To obtain the answer, we need to turn the pipe at
+(1,2)
+90
+degrees clockwise, the pipe at
+(2,3)
+90
+degrees, the pipe at
+(1,6)
+90
+degrees, the pipe at
+(1,7)
+180
+degrees and the pipe at
+(2,7)
+180
+degrees. Then the flow of water can reach
+(2,n+1)
+from
+(1,0)
+.
+You have to answer
+q
+independent queries.
 Input
-The first line of the input contains two integers
-n
-and
-k
+The first line of the input contains one integer
+q
 (
-1≤n,k≤200)
-— the number of messages and the number of conversations your smartphone can show.
-The second line of the input contains
-n
-integers
-i
-d
-1
-,i
-d
-2
-,…,i
-d
-n
-(
-1≤i
-d
-i
-≤
+1≤q≤
 10
-9
-), where
-i
-d
-i
-is the ID of the friend which sends you the
-i
--th message.
-Output
-In the first line of the output print one integer
-m
+4
+) — the number of queries. Then
+q
+queries follow.
+Each query consists of exactly three lines. The first line of the query contains one integer
+n
 (
-1≤m≤min(n,k)
-) — the number of conversations shown after receiving all
+1≤n≤2⋅
+10
+5
+) — the number of pipes in each row. The next two lines contain a description of the first and the second rows correspondingly. Each row description consists of
 n
-messages.
-In the second line print
-m
-integers
-id
-s
+digits from
 1
-,id
-s
-2
-,…,id
-s
-m
-, where
-id
-s
-i
-should be equal to the ID of the friend corresponding to the conversation displayed on the position
-i
-after receiving all
+to
+6
+without any whitespaces between them, each digit corresponds to the type of pipe in the corresponding cell. See the problem statement to understand which digits correspond to which types of pipes.
+It is guaranteed that the sum of
 n
-messages.
-Examples
-input
-Copy
-7 2
-1 2 3 2 1 3 2
-output
-Copy
-2
-2 1 
-input
-Copy
-10 4
-2 3 3 1 1 2 1 2 3 3
-output
-Copy
-3
-1 3 2 
-Note
-In the first example the list of conversations will change in the following way (in order from the first to last message):
-[]
-;
-[1]
-;
-[2,1]
-;
-[3,2]
-;
-[3,2]
-;
-[1,3]
-;
-[1,3]
-;
-[2,1]
+over all queries does not exceed
+2⋅
+10
+5
 .
-In the second example the list of conversations will change in the following way:
-[]
-;
-[2]
-;
-[3,2]
-;
-[3,2]
-;
-[1,3,2]
-;
-and then the list will not change till the end.
+Output
+For the
+i
+-th query print the answer for it — "YES" (without quotes) if it is possible to turn some pipes in a way that the water flow can reach
+(2,n+1)
+from
+(1,0)
+, and "NO" otherwise.
+Example
+input
+Copy
+6
+7
+2323216
+1615124
+1
+3
+4
+2
+13
+24
+2
+12
+34
+3
+536
+345
+2
+46
+54
+output
+Copy
+YES
+YES
+YES
+NO
+YES
+NO
+Note
+The first query from the example is described in the problem statement.

@@ -1,136 +1,149 @@
-A. Balance the Bits
-time limit per test1 second
+C. Travelling Salesman Problem
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A sequence of brackets is called balanced if one can turn it into a valid math expression by adding characters '+' and '1'. For example, sequences '(())()', '()', and '(()(()))' are balanced, while ')(', '(()', and '(()))(' are not.
-You are given a binary string
-s
-of length
+There are
 n
-. Construct two balanced bracket sequences
-a
-and
-b
-of length
+cities numbered from
+1
+to
 n
-such that for all
-1≤i≤n
-:
-if
-s
+, and city
 i
-=1
-, then
+has beauty
 a
 i
-=
-b
+.
+A salesman wants to start at city
+1
+, visit every city exactly once, and return to city
+1
+.
+For all
+i≠j
+, a flight from city
 i
-if
-s
+to city
+j
+costs
+max(
+c
 i
-=0
-, then
+,
+a
+j
+−
 a
 i
-≠
-b
+)
+dollars, where
+c
 i
-If it is impossible, you should report about it.
+is the price floor enforced by city
+i
+. Note that there is no absolute value. Find the minimum total cost for the salesman to complete his trip.
 Input
 The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases.
-The first line of each test case contains a single integer
 n
 (
-2≤n≤2⋅
+2≤n≤
 10
 5
-,
+) — the number of cities.
+The
+i
+-th of the next
 n
-is even).
-The next line contains a string
-s
-of length
-n
-, consisting of characters 0 and 1.
-The sum of
-n
-across all test cases does not exceed
-2⋅
-10
-5
-.
-Output
-If such two balanced bracked sequences exist, output "YES" on the first line, otherwise output "NO". You can print each letter in any case (upper or lower).
-If the answer is "YES", output the balanced bracket sequences
+lines contains two integers
 a
-and
-b
-satisfying the conditions on the next two lines.
-If there are multiple solutions, you may print any.
-Example
+i
+,
+c
+i
+(
+0≤
+a
+i
+,
+c
+i
+≤
+10
+9
+) — the beauty and price floor of the
+i
+-th city.
+Output
+Output a single integer — the minimum total cost.
+Examples
 input
 Copy
 3
-6
-101101
-10
-1001101101
-4
-1100
+1 9
+2 1
+4 1
 output
 Copy
-YES
-()()()
-((()))
-YES
-()()((()))
-(())()()()
-NO
+11
+input
+Copy
+6
+4 2
+8 4
+3 0
+2 3
+7 1
+0 1
+output
+Copy
+13
 Note
-In the first test case,
-a=
-"()()()" and
-b=
-"((()))". The characters are equal in positions
+In the first test case, we can travel in order
+1→3→2→1
+.
+The flight
+1→3
+costs
+max(
+c
 1
 ,
+a
+3
+−
+a
+1
+)=max(9,4−1)=9
+.
+The flight
+3→2
+costs
+max(
+c
 3
 ,
-4
-, and
-6
-, which are the exact same positions where
-s
-i
-=1
+a
+2
+−
+a
+3
+)=max(1,2−4)=1
 .
-In the second test case,
-a=
-"()()((()))" and
-b=
-"(())()()()". The characters are equal in positions
+The flight
+2→1
+costs
+max(
+c
+2
+,
+a
 1
-,
-4
-,
-5
-,
-7
-,
-8
-,
-10
-, which are the exact same positions where
-s
-i
-=1
+−
+a
+2
+)=max(1,1−2)=1
 .
-In the third test case, there is no solution.
+The total cost is
+11
+, and we cannot do better.

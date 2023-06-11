@@ -1,281 +1,179 @@
-E. Not Escaping
+A. Meximum Array
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Major Ram is being chased by his arch enemy Raghav. Ram must reach the top of the building to escape via helicopter. The building, however, is on fire. Ram must choose the optimal path to reach the top of the building to lose the minimum amount of health.
-The building consists of
+Mihai has just learned about the MEX concept and since he liked it so much, he decided to use it right away.
+Given an array
+a
+of
 n
-floors, each with
-m
-rooms each. Let
-(i,j)
-represent the
-j
--th room on the
-i
--th floor. Additionally, there are
-k
-ladders installed. The
-i
--th ladder allows Ram to travel from
-(
-a
-i
-,
+non-negative integers, Mihai wants to create a new array
 b
-i
-)
-to
-(
-c
-i
-,
-d
-i
-)
-, but not in the other direction. Ram also gains
-h
-i
-health points if he uses the ladder
-i
-. It is guaranteed
+that is formed in the following way:
+While
 a
-i
-<
-c
-i
-for all ladders.
-If Ram is on the
-i
--th floor, he can move either left or right. Travelling across floors, however, is treacherous. If Ram travels from
-(i,j)
-to
-(i,k)
-, he loses
-|j−k|⋅
+is not empty:
+Choose an integer
+k
+(
+1≤k≤|a|
+).
+Append the MEX of the first
+k
+numbers of the array
+a
+to the end of array
+b
+and erase them from the array
+a
+, shifting the positions of the remaining numbers in
+a
+.
+But, since Mihai loves big arrays as much as the MEX concept, he wants the new array
+b
+to be the lexicographically maximum. So, Mihai asks you to tell him what the maximum array
+b
+that can be created by constructing the array optimally is.
+An array
+x
+is lexicographically greater than an array
+y
+if in the first position where
+x
+and
+y
+differ
 x
 i
-health points.
-Ram enters the building at
-(1,1)
-while his helicopter is waiting at
-(n,m)
-. What is the minimum amount of health Ram loses if he takes the most optimal path? Note this answer may be negative (in which case he gains health). Output "NO ESCAPE" if no matter what path Ram takes, he cannot escape the clutches of Raghav.
+>
+y
+i
+or if
+|x|>|y|
+and
+y
+is a prefix of
+x
+(where
+|x|
+denotes the size of the array
+x
+).
+The MEX of a set of non-negative integers is the minimal non-negative integer such that it is not in the set. For example, MEX({
+1,2,3
+})
+=0
+and MEX({
+0,1,2,4,5
+})
+=3
+.
 Input
-The first line of input contains
+The first line of the input contains a single integer
 t
 (
-1≤t≤5⋅
-10
-4
-) — the number of test cases.
-The first line of each test case consists of
-3
-integers
-n,m,k
-(
-2≤n,m≤
-10
-5
-;
-1≤k≤
-10
-5
-) — the number of floors, the number of rooms on each floor and the number of ladders respectively.
-The second line of a test case consists of
+1≤t≤100
+) — the number of test cases. The description of test cases follows.
+The first line of each test case contains a single integer
 n
-integers
-x
+(
+1≤n≤2⋅
+10
+5
+) — the number of elements in the array
+a
+.
+The second line of each test case contains
+n
+non-negative integers
+a
 1
-,
-x
-2
 ,…,
-x
+a
 n
 (
-1≤
-x
-i
-≤
-10
-6
-).
-The next
-k
-lines describe the ladders. Ladder
-i
-is denoted by
+0≤
 a
-i
-,
-b
-i
-,
-c
-i
-,
-d
-i
-,
-h
-i
-(
-1≤
-a
-i
-<
-c
 i
 ≤n
-;
-1≤
-b
-i
-,
-d
-i
-≤m
-;
-1≤
-h
-i
-≤
-10
-6
-)  — the rooms it connects and the health points gained from using it.
-It is guaranteed
+), where
 a
 i
-<
-c
+is the
 i
-for all ladders and there is at most one ladder between any 2 rooms in the building.
-The sum of
+-th integer from the array
+a
+.
+It is guaranteed that the sum of
 n
-, the sum of
-m
-, and the sum of
-k
-over all test cases do not exceed
+over all test cases does not exceed
+2⋅
 10
 5
 .
 Output
-Output the minimum health Ram loses on the optimal path from
-(1,1)
-to
-(n,m)
-. If Ram cannot escape the clutches of Raghav regardless of the path he takes, output "NO ESCAPE" (all uppercase, without quotes).
+For each test case print
+m
+— the length of the maximum array
+b
+Mihai can create, followed by
+m
+integers denoting the elements of the array
+b
+.
 Example
 input
 Copy
+6
+5
+1 0 2 0 3
+8
+2 2 3 4 0 1 2 0
+1
+1
+5
+0 1 2 3 4
 4
-5 3 3
-5 17 8 1 4
-1 3 3 3 4
-3 1 5 2 5
-3 2 5 1 6
-6 3 3
-5 17 8 1 4 2
-1 3 3 3 4
-3 1 5 2 5
-3 2 5 1 6
-5 3 1
-5 17 8 1 4
-1 3 5 3 100
-5 5 5
-3 2 3 7 5
-3 5 4 2 1
-2 2 5 4 5
-4 4 5 2 3
-1 2 4 2 2
-3 3 5 2 4
+0 1 1 0
+10
+0 0 2 1 1 1 0 0 1 1
 output
 Copy
-16
-NO ESCAPE
--90
-27
+1
+4 
+2
+5 1 
+1
+0 
+1
+5 
+2
+2 2 
+4
+3 2 2 0 
 Note
-The figure for the first test case is in the statement. There are only
-2
-possible paths to
-(n,m)
-:
-Ram travels to
-(1,3)
-, takes the ladder to
-(3,3)
-, travels to
-(3,2)
-, takes the ladder to
-(5,1)
-, travels to
-(5,3)
-where he finally escapes via helicopter. The health lost would be
-x
-1
-⋅|1−3|−
-h
-1
-+
-x
-3
-⋅|3−2|−
-h
-3
-+
-x
-5
-⋅|1−3|
-=5⋅2−4+8⋅1−6+4⋅2
-=16.
-Ram travels to
-(1,3)
-, takes the ladder to
-(3,3)
-, travels to
-(3,1)
-, takes the ladder to
-(5,2)
-, travels to
-(5,3)
-where he finally escapes via helicopter. The health lost would be
-x
-1
-⋅|1−3|−
-h
-1
-+
-x
-3
-⋅|3−1|−
-h
-2
-+
+In the first test case, the lexicographically maximum array
+b
+is obtained by selecting
+k=5
+, resulting in the
+MEX
+of the whole array
 a
-5
-⋅|2−3|
-=5⋅2−4+8⋅2−5+4⋅1
-=21.
-Therefore, the minimum health lost would be
-16
+. It is lexicographically maximum because an array starting with a smaller number than
+4
+is lexicographically smaller, and choosing a
+k<5
+would result in an array starting with a number smaller than
+4
 .
-In the second test case, there is no path to
-(n,m)
+In the second test case, there are two ways to obtain the maximum array: first selecting
+k=6
+, then
+k=2
+, or first selecting
+k=7
+and then
+k=1
 .
-In the third case case, Ram travels to
-(1,3)
-and takes the only ladder to
-(5,3)
-. He loses
-5⋅2
-health points and gains
-h
-1
-=100
-health points. Therefore the total loss is
-10−100=−90
-(negative implies he gains health after the path).

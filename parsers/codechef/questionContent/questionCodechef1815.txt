@@ -1,34 +1,180 @@
-Whole submatrix
+Distinct Neighbours 
 Problem
-After Chef successfully built a modern (L, K)-window on the attic wall he decided to expand the notion of the (L, K)-window in some other areas. Now he considers a rectangular grid that contains only zeroes and ones and has size N x M. He considers the (L, K)-window here as any submatrix of size L x K that contains only ones. Formally he defines (L, K)-window as any (K+L)-tuple (R1, ..., RL, C1, ..., CK) such that 1 <= R1 < ... < RL <= N, 1 <= C1 < ... < CK <= M and A[Ri][Cj]=1 for all 1 <= i <= L, 1<= j <= K. Here A[r][c] is the c-th element of the r-th row of considered rectangular grid.
-
-Why does Chef call some (K+L)-tuple of numbers by the window? Just mark all points (Ri,Cj) (1 <= i <= L, 1<= j <= K) on the plane and join by line segments all pairs of points that has equal abscises or ordinates and you will see that this picture is like a window.
-
-Now Chef considers some particular N x M grid and wants to calculate the total number of (L, K)-windows in this rectangular grid. Help him. Since this number can be very large calculate the result modulo 1000000080798150871.
-Input
-The first line contains a single positive integer T <= 100, the number of test cases. T test cases follow. The first line of each test case contains four positive integers N, M, L, K, where L, N <= 1000, K, M <=3. Next N lines describe the rectangular grid considered by Chef. Each of these lines contains M symbols. Every symbol is either one or zero.
-Output
-For each test case, output a single line containing the total number of (L, K)-windows for the given grid modulo 1000000080798150871.
+You are given an array
+A of length
+2⋅N.
+You also have an empty array
+B. You are asked to do the following operation exactly
+N times.
+Choose two distinct indices
+x and
+y
+(1≤x,y≤∣A∣);
+Append
+(A
+x
+−A
+y
+) to the end of array
+B;
+Delete the
+x
+th
+and
+y
+th
+elements from
+A and concatenate remaining elements without changing the order.
+Find whether there exists a set of operations to get array
+B such that
+B
+i
+
+=B
+(i+1)
+(1≤i<N).
+Input Format
+The first line of input contains a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test case contains an integer
+N.
+The second line of each test case contains
+2⋅N space-separated integers
+A
+1
+,A
+2
+,…,A
+2⋅N
+representing the array
+A.
+Output Format
+For each test case, print on a new line the answer: YES if it is possible to obtain valid
+B, and NO otherwise.
+Each character of the output may be printed in either uppercase or lowercase, i.e, the strings Yes, YES, yes, yEs` will all be treated as identical.
+Constraints
+1≤T≤10
+3
+2≤N≤10
+3
+1≤A
+i
+≤N
+The sum of
+N over all test cases won't exceed
+5⋅10
+3
+.
 Sample 1:
 Input
 Output
+3
 2
-3 2 2 1
-11
-01
-10
-3 3 2 2
-111
-101
-111
+1 1 1 1
+3
+1 1 2 2 3 3
 2
-5
+1 1 2 2
+NO
+YES
+YES
 Explanation:
-In the first case it is just the number of pairs of cells with value 1 that have the same column number.
-
-In the second case we have the following (2, 2)-windows:
-(First row, Second row, First column, Third column)
-(First row, Third row, First column, Second column)
-(First row, Third row, First column, Third column)
-(First row, Third row, Second column, Third column)
-(Second row, Third row, First column, Third column)
+Test case
+1: No matter how we perform the operations,
+B=[0,0].
+Test case
+2:
+In first operation, we can take
+x=2 and
+y=3. Now we append
+A
+x
+−A
+y
+=1−2=−1 at the back of
+B, and delete
+A
+2
+and
+A
+3
+from
+A. Now
+A=[1,2,3,3].
+In second operation, we can take
+x=2 and
+y=1; append
+A
+x
+−A
+y
+=2−1=1 at the back of
+B and delete
+A
+2
+and
+A
+1
+. Thus,
+A=[3,3] and
+B=[−1,1].
+In the third operation, we take
+x=1 and
+y=2; append
+A
+x
+−A
+y
+=3−3=0 at the back of
+B and delete
+A
+1
+and
+A
+2
+. Thus,
+A=[] and
+B=[−1,1,0].
+Thus, finally
+B=[−1,1,0]. There are no two consecutive elements in
+B that are equal.
+Test case
+3:
+In first operation, we can take
+x=2 and
+y=3. Now we append
+A
+x
+−A
+y
+=1−2=−1 at the back of
+B, and delete
+A
+2
+and
+A
+3
+from
+A. Now
+A=[1,2].
+In second operation, we can take
+x=2 and
+y=1; append
+A
+x
+−A
+y
+=2−1=1 at the back of
+B and delete
+A
+2
+and
+A
+1
+. Thus,
+A=[] and
+B=[−1,1].
+Thus, finally
+B=[−1,1]. There are no two consecutive elements in
+B that are equal.

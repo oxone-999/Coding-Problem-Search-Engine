@@ -1,19 +1,88 @@
-Squash the Bugs
+Chef & Cook Game
 Problem
-This problem was part of the CodeChef April Challenge. All user submissions for this contest problem are publicly available here.
-Bugs have gotten into The Chef’s kitchen! Help him trap them all and he’ll make you a batch of his famous chocolate chip cookies. You are given a given a square map of the kitchen divided into tiles, and in each tile sits some known number of bugs. You also have a square trap, which can be dropped to cover a certain number of tiles (the trap may only cover tiles from within the map, and must be aligned to the borders of the kitchen). However, the trap only catches bugs from one of the tiles which it has covered, having a minimum number of bugs on it. For all possible positions at which the trap can be dropped, determine number of bugs that will be caught.
-Input
-Two numbers, 0< n <= 1000 (size of the map), and 0< k <= n (size of the trap), followed by n rows with n numbers, determining the number of bugs on each tile. The number of bugs on each tile will fit in an signed 32-bit integer.
-Output
-You should output n-k+1 rows with n-k+1 numbers in each row.
+There is a non-negative integer array
+A of length
+N. Chef and Cook will play a game on the array with Chef starting first.
+In one turn the player will perform the following operation:
+Choose two indices
+i,j such that
+1≤i<j≤N and
+A
+i
+>0.
+Set
+A
+i
+←A
+i
+−1 and
+A
+j
+←A
+j
++1, i.e, subtract
+1 from
+A
+i
+and add
+1 to
+A
+j
+.
+The player who is unable to perform the operation loses. If both Chef and Cook play optimally, who will win?
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first line of each test case contains a single integer
+N denoting the length of the array.
+The second line of teach test case contains
+N integers
+A
+1
+,A
+2
+,…,A
+N
+denoting the initial values of the array.
+Output Format
+For each test case, output "Chef" if Chef wins, otherwise output "Cook" (without quotes).
+Each letter of the output may be printed in either uppercase or lowercase. For example, Chef, chEf, CHEF, and cHEf will all be treated as equivalent.
+Constraints
+1≤T≤1000
+1≤N≤100
+0≤A
+i
+≤10
+9
+There are no limits on the sum of
+N over all test cases.
 Sample 1:
 Input
 Output
-4 2
-0 1 2 3
-4 5 6 7
-8 9 0 1
-2 3 4 0
-0 1 2
-4 0 0
-2 0 0
+3
+4
+1 0 1 0
+4
+1 2 3 4
+1
+420
+Chef
+Chef
+Cook
+Explanation:
+For the first test case, Chef wins. Here is the strategy for Chef.
+Initially,
+A=[1,0,1,0].
+In the first turn, Chef will pick
+i=1 and
+j=3. Then,
+A=[0,0,2,0].
+In the second turn, Cook is can only pick
+i=3 and
+j=4. Then
+A=[0,0,1,1].
+In the third turn, Chef will pick
+i=3 and
+j=4. Then
+A=[0,0,0,2].
+In the fourth turn, Cook cannot perform any operation and loses. Therefore, Chef has won.

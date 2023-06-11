@@ -1,167 +1,275 @@
-E. Moment of Bloom
-time limit per test3 seconds
-memory limit per test512 megabytes
+G. Omkar and Time Travel
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-She does her utmost to flawlessly carry out a person's last rites and preserve the world's balance of yin and yang.
-Hu Tao, being the little prankster she is, has tried to scare you with this graph problem! You are given a connected undirected graph of
+El Psy Kongroo.
+Omkar is watching Steins;Gate.
+In Steins;Gate, Okabe Rintarou needs to complete
 n
-nodes with
-m
-edges. You also have
-q
-queries. Each query consists of two nodes
-a
-and
-b
-.
-Initially, all edges in the graph have a weight of
+tasks (
+1≤n≤2⋅
+10
+5
+). Unfortunately, he doesn't know when he needs to complete the tasks.
+Initially, the time is
 0
-. For each query, you must choose a simple path starting from
-a
-and ending at
+. Time travel will now happen according to the following rules:
+For each
+k=1,2,…,n
+, Okabe will realize at time
 b
-. Then you add
-1
-to every edge along this path. Determine if it's possible, after processing all
-q
-queries, for all edges in this graph to have an even weight. If so, output the choice of paths for each query.
-If it is not possible, determine the smallest number of extra queries you could add to make it possible. It can be shown that this number will not exceed
+k
+that he was supposed to complete the
+k
+-th task at time
+a
+k
+(
+a
+k
+<
+b
+k
+).
+When he realizes this, if
+k
+-th task was already completed at time
+a
+k
+, Okabe keeps the usual flow of time. Otherwise, he time travels to time
+a
+k
+then immediately completes the task.
+If Okabe time travels to time
+a
+k
+, all tasks completed after this time will become incomplete again. That is, for every
+j
+, if
+a
+j
+>
+a
+k
+, the
+j
+-th task will become incomplete, if it was complete (if it was incomplete, nothing will change).
+Okabe has bad memory, so he can time travel to time
+a
+k
+only immediately after getting to time
+b
+k
+and learning that he was supposed to complete the
+k
+-th task at time
+a
+k
+. That is, even if Okabe already had to perform
+k
+-th task before, he wouldn't remember it before stumbling on the info about this task at time
+b
+k
+again.
+Please refer to the notes for an example of time travelling.
+There is a certain set
+s
+of tasks such that the first moment that all of the tasks in
+s
+are simultaneously completed (regardless of whether any other tasks are currently completed), a funny scene will take place. Omkar loves this scene and wants to know how many times Okabe will time travel before this scene takes place. Find this number modulo
 10
-18
-under the given constraints.
-A simple path is defined as any path that does not visit a node more than once.
-An edge is said to have an even weight if its value is divisible by
-2
-.
+9
++7
+. It can be proven that eventually all
+n
+tasks will be completed and so the answer always exists.
 Input
-The first line contains two integers
+The first line contains an integer
 n
-and
-m
 (
-2≤n≤3⋅
+1≤n≤2⋅
 10
 5
-,
-n−1≤m≤min(
-n(n−1)
-2
-,3⋅
-10
-5
-)
-).
-Each of the next
-m
-lines contains two integers
-x
-and
-y
-(
-1≤x,y≤n
-,
-x≠y
-) indicating an undirected edge between node
-x
-and
-y
-. The input will not contain self-loops or duplicate edges, and the provided graph will be connected.
-The next line contains a single integer
-q
-(
-1≤q≤3⋅
-10
-5
-).
-Each of the next
-q
-lines contains two integers
+)  — the number of tasks that Okabe needs to complete.
+n
+lines follow. The
+k
+-th of these lines contain two integers
 a
+k
 and
 b
+k
 (
-1≤a,b≤n,a≠b
-), the description of each query.
-It is guaranteed that
-nq≤3⋅
-10
-5
-.
+1≤
+a
+k
+<
+b
+k
+≤2n
+)  — the time at which Okabe needs to complete the
+k
+-th task and the time that he realizes this respectively. All
+2n
+of these times are distinct (so every time from
+1
+to
+2n
+inclusive appears exactly once in the input).
+The next line contains a single integer
+t
+(
+1≤t≤n
+)  — the size of the set
+s
+of tasks that lead to the funny scene.
+The last line contains
+t
+integers
+s
+1
+,
+s
+2
+,…,
+s
+t
+ — (
+1≤
+s
+k
+≤n
+, the numbers
+s
+1
+,
+s
+2
+,…,
+s
+t
+are distinct)  — the set
+s
+of tasks.
 Output
-If it is possible to force all edge weights to be even, print "YES" on the first line, followed by
-2q
-lines indicating the choice of path for each query in the same order the queries are given. For each query, the first line should contain a single integer
-x
-: the number of nodes in the chosen path. The next line should then contain
-x
-spaced separated integers
-p
-i
-indicating the path you take (
-p
-1
-=a,
-p
-x
-=b
-and all numbers should fall between
-1
-and
-n
-). This path cannot contain duplicate nodes and must be a valid simple path in the graph.
-If it is impossible to force all edge weights to be even, print "NO" on the first line and the minimum number of added queries on the second line.
+Output a single integer  — the number of times that Okabe time travels until all tasks in the set
+s
+are simultaneously completed, modulo
+10
+9
++7
+.
 Examples
 input
 Copy
-6 7
-2 1
-2 3
-3 5
-1 4
-6 1
-5 6
-4 5
-3
-1 4
-5 1
-4 5
-output
-Copy
-YES
 2
 1 4
-4
-5 3 2 1
-5
-4 1 2 3 5
+2 3
+2
+1 2
+output
+Copy
+3
 input
 Copy
-5 7
-4 3
-4 5
-2 1
+2
 1 4
-1 3
-3 5
-3 2
-4
-4 2
-3 5
-5 1
-4 5
+2 3
+1
+1
 output
 Copy
-NO
 2
+input
+Copy
+1
+1 2
+1
+1
+output
+Copy
+1
+input
+Copy
+6
+10 12
+3 7
+4 6
+2 9
+5 8
+1 11
+3
+2 4 6
+output
+Copy
+17
+input
+Copy
+16
+31 32
+3 26
+17 19
+4 24
+1 28
+15 21
+12 16
+18 29
+20 23
+7 8
+11 14
+9 22
+6 30
+5 10
+25 27
+2 13
+6
+3 8 2 5 12 11
+output
+Copy
+138
 Note
-Here is what the queries look like for the first test case (red corresponds to the 1st query, blue 2nd query, and green 3rd query):
-Notice that every edge in the graph is part of either
+For the first sample, all tasks need to be completed in order for the funny scene to occur.
+Initially, the time is
 0
-or
+. Nothing happens until time
+3
+, when Okabe realizes that he should have done the
 2
-colored query edges.
-The graph in the second test case looks like this:
-There does not exist an assignment of paths that will force all edges to have even weights with the given queries. One must add at least
+-nd task at time
 2
-new queries to obtain a set of queries that can satisfy the condition.
+. He then time travels to time
+2
+and completes the task.
+As the task is done now, he does not time travel again when the time is again
+3
+. However, at time
+4
+, he travels to time
+1
+to complete the
+1
+-st task.
+This undoes the
+2
+-nd task. This means that the
+2
+-nd task is not currently completed, meaning that the funny scene will not occur at this point even though the
+1
+-st task is currently completed and Okabe had previously completed the
+2
+-nd task.
+Once it is again time
+3
+he travels back to time
+2
+once more and does the
+2
+-nd task again.
+Now all tasks are complete, with Okabe having time travelled
+3
+times.
+The second sample has the same tasks for Okabe to complete. However, this time the funny scene only needs the first task to be completed in order to occur. From reading the above sample you can see that this occurs once Okabe has time travelled
+2
+times.

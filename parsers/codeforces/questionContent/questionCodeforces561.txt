@@ -1,46 +1,121 @@
-A. Glory Addicts
+B. Prefix Sum Addicts
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-The hero is addicted to glory, and is fighting against a monster.
-The hero has
+Suppose
+a
+1
+,
+a
+2
+,…,
+a
 n
-skills. The
+is a sorted integer sequence of length
+n
+such that
+a
+1
+≤
+a
+2
+≤⋯≤
+a
+n
+.
+For every
+1≤i≤n
+, the prefix sum
+s
 i
--th skill is of type
+of the first
+i
+terms
+a
+1
+,
+a
+2
+,…,
 a
 i
-(either fire or frost) and has initial damage
-b
+is defined by
+s
+i
+=
+∑
+k=1
+i
+a
+k
+=
+a
+1
++
+a
+2
++⋯+
+a
 i
 .
-The hero can perform all of the
+i
+Now you are given the last
+k
+terms of the prefix sums, which are
+s
+n−k+1
+,…,
+s
+n−1
+,
+s
 n
-skills in any order (with each skill performed exactly once). When performing each skill, the hero can play a magic as follows:
-If the current skill immediately follows another skill of a different type, then its damage is doubled.
-In other words,
-If a skill of type fire and with initial damage
-c
-is performed immediately after a skill of type fire, then it will deal
-c
-damage;
-If a skill of type fire and with initial damage
-c
-is performed immediately after a skill of type frost, then it will deal
-2c
-damage;
-If a skill of type frost and with initial damage
-c
-is performed immediately after a skill of type fire, then it will deal
-2c
-damage;
-If a skill of type frost and with initial damage
-c
-is performed immediately after a skill of type frost , then it will deal
-c
-damage.
-Your task is to find the maximum damage the hero can deal.
+. Your task is to determine whether this is possible.
+Formally, given
+k
+integers
+s
+n−k+1
+,…,
+s
+n−1
+,
+s
+n
+, the task is to check whether there is a sequence
+a
+1
+,
+a
+2
+,…,
+a
+n
+such that
+a
+1
+≤
+a
+2
+≤⋯≤
+a
+n
+, and
+s
+i
+=
+a
+1
++
+a
+2
++⋯+
+a
+i
+for all
+n−k+1≤i≤n
+.
 Input
 Each test contains multiple test cases. The first line contains an integer
 t
@@ -49,69 +124,43 @@ t
 10
 5
 ) — the number of test cases. The following lines contain the description of each test case.
-The first line of each test case contains an integer
+The first line of each test case contains two integers
 n
 (
 1≤n≤
 10
 5
-), indicating the number of skills.
+) and
+k
+(
+1≤k≤n
+), indicating the length of the sequence
+a
+and the number of terms of prefix sums, respectively.
 The second line of each test case contains
-n
+k
 integers
-a
-1
-,
-a
-2
+s
+n−k+1
 ,…,
-a
+s
+n−1
+,
+s
 n
 (
-0≤
-a
-i
-≤1
-), where
-a
-i
-indicates the type of the
-i
--th skill. Specifically, the
-i
--th skill is of type fire if
-a
-i
-=0
-, and of type frost if
-a
-i
-=1
-.
-The third line of each test case contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-1≤
-b
+−
+10
+9
+≤
+s
 i
 ≤
 10
 9
-), where
-b
-i
-indicates the initial damage of the
-i
--th skill.
+for every
+n−k+1≤i≤n
+).
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
@@ -119,47 +168,34 @@ over all test cases does not exceed
 5
 .
 Output
-For each test case, output the maximum damage the hero can deal.
+For each test case, output "YES" (without quotes) if it is possible and "NO" (without quotes) otherwise.
+You can output "YES" and "NO" in any case (for example, strings "yEs", "yes" and "Yes" will be recognized as a positive response).
 Example
 input
 Copy
 4
-4
-0 1 1 1
-1 10 100 1000
-6
-0 0 0 1 1 1
-3 4 5 6 7 8
-3
-1 1 1
-1000000000 1000000000 1000000000
-1
-1
-1
+5 5
+1 2 3 4 5
+7 4
+-6 -5 -3 0
+3 3
+2 3 4
+3 2
+3 4
 output
 Copy
-2112
-63
-3000000000
-1
+Yes
+Yes
+No
+No
 Note
-In the first test case, we can order the skills by
-[3,1,4,2]
-, and the total damage is
-100+2×1+2×1000+10=2112
+In the first test case, we have the only sequence
+a=[1,1,1,1,1]
 .
-In the second test case, we can order the skills by
-[1,4,2,5,3,6]
-, and the total damage is
-3+2×6+2×4+2×7+2×5+2×8=63
+In the second test case, we can choose, for example,
+a=[−3,−2,−1,0,1,2,3]
 .
-In the third test case, we can order the skills by
-[1,2,3]
-, and the total damage is
-1000000000+1000000000+1000000000=3000000000
-.
-In the fourth test case, there is only one skill with initial damage
-1
-, so the total damage is
-1
-.
+In the third test case, the prefix sums define the only sequence
+a=[2,1,1]
+, but it is not sorted.
+In the fourth test case, it can be shown that there is no sequence with the given prefix sums.

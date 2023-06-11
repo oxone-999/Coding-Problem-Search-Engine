@@ -1,26 +1,130 @@
-Puppy and GCD
+Chef Thanos Wants Perfect Balance
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-One fine sunny day Tuzik was waiting for his master Vanka near their house. Time kept going by but the boy just wouldn't come out of the house. "Oh no, maybe he is participating in some programming contest like Lunchtime again. If I help him, we can go and start playing some interesting game outdoors sooner." - thought Tuzik, so he went into the house.
-Vanka was struggling with the last problem indeed. The statement was: "Given integers N and D, find how many pairs of integers (i, j) such that 1 ≤ i ≤ j ≤ N have the greatest common divisor exactly D."
-"LOL, even I can solve it faster than him." - thought Tuzik. Unfortunately he is just a little puppy so he can't explain or code up the solution. But he wants to go outdoors with his master, so please help Vanka solve this problem for Tuzik's sake.
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef Thanos has an undirected simple graph with
+N vertices (numbered
+1 through
+N) and
+M edges (numbered
+1 through
+M). For each valid
+i, the
+i-th edge connects vertices
+u
+i
+and
+v
+i
+. Chef Thanos wants to colour the edges in red and green so that the graph would be perfectly balanced, which means that for each vertex, the number of red edges incident to it must be equal to the number of green edges incident to it.
+Obviously, Chef Thanos does not want to leave any edges colourless, but he immediately realised that in such a case, it generally may be impossible to make the graph perfectly balanced, so he decided to colour some of the edges yellow instead, so that it is always possible.
+Since Chef Thanos hates the colour yellow, his satisfaction with the graph will be greater when he uses fewer yellow edges. Can you help him choose how to colour the edges so that you remain in the surviving half of humanity?
 Input
-The first line contains one integer T denoting the number of test cases.
-The following T lines contain two space-separated integers each: N and D - description of each test case.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+M.
+M lines follow. For each valid
+i, the
+i-th of these lines contains two space-separated integers
+u
+i
+and
+v
+i
+.
 Output
-For each test case, output a single line containing the answer for this test case.
+Print
+M lines. For each valid
+i, the
+i-th of these lines should contain the integer
+0 if you want the
+i-th edge to be yellow,
+1 if you want it to be red or
+−1 if you want it to be green.
 Constraints
-1 ≤ T ≤ 10
-1 ≤ N, D ≤ 5*108
-Subtask #1[20 points]: 1 ≤ N, D ≤ 500
-Subtask #2[25 points]: 1 ≤ N, D ≤ 105
-Subtask #3[25 points]: 1 ≤ N, D ≤ 2*108
-Subtask #4[30 points]:1 ≤ N, D ≤ 5*108
-Sample 1:
-Input
-Output
+1≤N≤10
+5
+0≤M≤3⋅10
+5
+1≤u
+i
+,v
+i
+≤N for each valid
+i
+the graph does not contain any self-loops or parallel edges, but it can be disconnected
+the sum of
+N over all the test cases does not exceed
+3⋅10
+5
+the sum of
+M over all the test cases does not exceed
+9⋅10
+5
+Scoring
+If your output is invalid or you do not colour the graph in a perfectly balanced way, you will receive the Wrong Answer verdict and 0 points. Otherwise:
+For each test case, let's define
+R=Y/N, where
+Y is the number of yellow edges you used to colour a graph with
+N vertices. We then take the maximum of
+R across all test cases and denote it by
+R
+max
+.
+If
+R
+max
+≥3, you will receive 0 points because you used too many yellow edges (but you will still receive the Accepted verdict).
+If
+2≤R
+max
+<3, you will receive 20 points.
+If
+1.5≤R
+max
+<2, you will receive 40 points.
+If
+R
+max
+<1.5, you will receive 100 points.
+Note that you do not have to use the smallest number of yellow edges.
+Example Input
+2
+5 6
+1 2
+2 3
+3 1
+3 4
+4 5
+5 3
+6 9
+1 2
+1 3
+1 4
+2 3
+2 4
+3 4
+3 6
+4 5
+5 6
+Example Output
+-1
 1
-12 3
-6
-Explanation:
-6 such pairs: (3, 3), (3, 6), (3, 9), (3, 12), (6, 9), and (9, 12).
+1
+-1
+1
+-1
+-1
+1
+0
+0
+1
+-1
+0
+0
+0
+Explanation
+Example case 1: The graph can be perfectly balanced without using any yellow edges.
+Example case 2: The first colouring in the figure below corresponds to the output. Note, again, that you do not have to completely minimise the number of yellow edges, so even though the second colouring is also perfectly balanced and uses fewer yellow edges, both of them would receive 100 points.

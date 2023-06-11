@@ -1,167 +1,172 @@
-B. Fridge Lockers
+B. Minimize the Permutation
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Hanh lives in a shared apartment. There are
+You are given a permutation of length
 n
-people (including Hanh) living there, each has a private fridge.
+. Recall that the permutation is an array consisting of
 n
-fridges are secured by several steel chains. Each steel chain connects two different fridges and is protected by a digital lock. The owner of a fridge knows passcodes of all chains connected to it. A fridge can be open only if all chains connected to it are unlocked. For example, if a fridge has no chains connected to it at all, then any of
-n
-people can open it.
-For exampe, in the picture there are
-n=4
-people and
-5
-chains. The first person knows passcodes of two chains:
-1−4
-and
-1−2
-. The fridge
+distinct integers from
 1
-can be open by its owner (the person
-1
-), also two people
+to
+n
+in arbitrary order. For example,
+[2,3,1,5,4]
+is a permutation, but
+[1,2,2]
+is not a permutation (
 2
-and
+appears twice in the array) and
+[1,3,4]
+is also not a permutation (
+n=3
+but there is
 4
-(acting together) can open it.
-The weights of these fridges are
-a
-1
-,
-a
-2
-,…,
-a
-n
-. To make a steel chain connecting fridges
-u
+in the array).
+You can perform at most
+n−1
+operations with the given permutation (it is possible that you don't perform any operations at all). The
+i
+-th operation allows you to swap elements of the given permutation on positions
+i
 and
-v
-, you have to pay
-a
-u
-+
-a
-v
-dollars. Note that the landlord allows you to create multiple chains connecting the same pair of fridges.
-Hanh's apartment landlord asks you to create exactly
-m
-steel chains so that all fridges are private. A fridge is private if and only if, among
-n
-people living in the apartment, only the owner can open it (i.e. no other person acting alone can do it). In other words, the fridge
-i
-is not private if there exists the person
-j
-(
-i≠j
-) that the person
-j
-can open the fridge
-i
+i+1
+. Each operation can be performed at most once. The operations can be performed in arbitrary order.
+Your task is to find the lexicographically minimum possible permutation obtained by performing some of the given operations in some order.
+You can see the definition of the lexicographical order in the notes section.
+You have to answer
+q
+independent test cases.
+For example, let's consider the permutation
+[5,4,1,3,2]
+. The minimum possible permutation we can obtain is
+[1,5,2,4,3]
+and we can do it in the following way:
+perform the second operation (swap the second and the third elements) and obtain the permutation
+[5,1,4,3,2]
+;
+perform the fourth operation (swap the fourth and the fifth elements) and obtain the permutation
+[5,1,4,2,3]
+;
+perform the third operation (swap the third and the fourth elements) and obtain the permutation
+[5,1,2,4,3]
 .
-For example, in the picture all the fridges are private. On the other hand, if there are
-n=2
-fridges and only one chain (which connects them) then both fridges are not private (both fridges can be open not only by its owner but also by another person).
-Of course, the landlord wants to minimize the total cost of all steel chains to fulfill his request. Determine whether there exists any way to make exactly
-m
-chains, and if yes, output any solution that minimizes the total cost.
+perform the first operation (swap the first and the second elements) and obtain the permutation
+[1,5,2,4,3]
+;
+Another example is
+[1,2,4,3]
+. The minimum possible permutation we can obtain is
+[1,2,3,4]
+by performing the third operation (swap the third and the fourth elements).
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-T
+The first line of the input contains one integer
+q
 (
-1≤T≤10
-). Then the descriptions of the test cases follow.
-The first line of each test case contains two integers
+1≤q≤100
+) — the number of test cases. Then
+q
+test cases follow.
+The first line of the test case contains one integer
 n
-,
-m
 (
-2≤n≤1000
-,
-1≤m≤n
-) — the number of people living in Hanh's apartment and the number of steel chains that the landlord requires, respectively.
-The second line of each test case contains
+1≤n≤100
+) — the number of elements in the permutation.
+The second line of the test case contains
 n
-integers
-a
+distinct integers from
 1
-,
-a
-2
-,…,
-a
+to
 n
-(
-0≤
-a
-i
-≤
-10
-4
-) — weights of all fridges.
+— the given permutation.
 Output
-For each test case:
-If there is no solution, print a single integer
-−1
-.
-Otherwise, print a single integer
-c
- — the minimum total cost. The
-i
--th of the next
-m
-lines contains two integers
-u
-i
-and
-v
-i
-(
-1≤
-u
-i
-,
-v
-i
-≤n
-,
-u
-i
-≠
-v
-i
-), meaning that the
-i
--th steel chain connects fridges
-u
-i
-and
-v
-i
-. An arbitrary number of chains can be between a pair of fridges.
-If there are multiple answers, print any.
+For each test case, print the answer on it — the lexicograhically minimum possible permutation obtained by performing some of the given operations in some order.
 Example
 input
 Copy
-3
-4 4
-1 1 1 1
-3 1
-1 2 3
-3 3
-1 2 3
+4
+5
+5 4 1 3 2
+4
+1 2 4 3
+1
+1
+4
+4 3 2 1
 output
 Copy
-8
-1 2
-4 3
-3 2
-4 1
--1
-12
-3 2
-1 2
-3 1
+1 5 2 4 3 
+1 2 3 4 
+1 
+1 4 3 2 
+Note
+Recall that the permutation
+p
+of length
+n
+is lexicographically less than the permutation
+q
+of length
+n
+if there is such index
+i≤n
+that for all
+j
+from
+1
+to
+i−1
+the condition
+p
+j
+=
+q
+j
+is satisfied, and
+p
+i
+<
+q
+i
+. For example:
+p=[1,3,5,2,4]
+is less than
+q=[1,3,5,4,2]
+(such
+i=4
+exists, that
+p
+i
+<
+q
+i
+and for each
+j<i
+holds
+p
+j
+=
+q
+j
+),
+p=[1,2]
+is less than
+q=[2,1]
+(such
+i=1
+exists, that
+p
+i
+<
+q
+i
+and for each
+j<i
+holds
+p
+j
+=
+q
+j
+).

@@ -1,132 +1,281 @@
-C. Not Assigning
-time limit per test1.5 seconds
+E. Not Escaping
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a tree of
+Major Ram is being chased by his arch enemy Raghav. Ram must reach the top of the building to escape via helicopter. The building, however, is on fire. Ram must choose the optimal path to reach the top of the building to lose the minimum amount of health.
+The building consists of
 n
-vertices numbered from
-1
+floors, each with
+m
+rooms each. Let
+(i,j)
+represent the
+j
+-th room on the
+i
+-th floor. Additionally, there are
+k
+ladders installed. The
+i
+-th ladder allows Ram to travel from
+(
+a
+i
+,
+b
+i
+)
 to
-n
-, with edges numbered from
-1
+(
+c
+i
+,
+d
+i
+)
+, but not in the other direction. Ram also gains
+h
+i
+health points if he uses the ladder
+i
+. It is guaranteed
+a
+i
+<
+c
+i
+for all ladders.
+If Ram is on the
+i
+-th floor, he can move either left or right. Travelling across floors, however, is treacherous. If Ram travels from
+(i,j)
 to
-n−1
-. A tree is a connected undirected graph without cycles. You have to assign integer weights to each edge of the tree, such that the resultant graph is a prime tree.
-A prime tree is a tree where the weight of every path consisting of one or two edges is prime. A path should not visit any vertex twice. The weight of a path is the sum of edge weights on that path.
-Consider the graph below. It is a prime tree as the weight of every path of two or less edges is prime. For example, the following path of two edges:
-2→1→3
-has a weight of
-11+2=13
-, which is prime. Similarly, the path of one edge:
-4→3
-has a weight of
-5
-, which is also prime.
-Print any valid assignment of weights such that the resultant tree is a prime tree. If there is no such assignment, then print
-−1
-. It can be proven that if a valid assignment exists, one exists with weights between
-1
-and
-10
-5
-as well.
+(i,k)
+, he loses
+|j−k|⋅
+x
+i
+health points.
+Ram enters the building at
+(1,1)
+while his helicopter is waiting at
+(n,m)
+. What is the minimum amount of health Ram loses if he takes the most optimal path? Note this answer may be negative (in which case he gains health). Output "NO ESCAPE" if no matter what path Ram takes, he cannot escape the clutches of Raghav.
 Input
-The input consists of multiple test cases. The first line contains an integer
+The first line of input contains
 t
 (
-1≤t≤
+1≤t≤5⋅
 10
 4
-) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains one integer
-n
-(
-2≤n≤
-10
-5
-) — the number of vertices in the tree.
-Then,
-n−1
-lines follow. The
-i
--th line contains two integers
-u
-and
-v
-(
-1≤u,v≤n
-) denoting that edge number
-i
-is between vertices
-u
-and
-v
-. It is guaranteed that the edges form a tree.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-5
-.
-Output
-For each test case, if a valid assignment exists, then print a single line containing
-n−1
+) — the number of test cases.
+The first line of each test case consists of
+3
 integers
-a
+n,m,k
+(
+2≤n,m≤
+10
+5
+;
+1≤k≤
+10
+5
+) — the number of floors, the number of rooms on each floor and the number of ladders respectively.
+The second line of a test case consists of
+n
+integers
+x
 1
 ,
-a
+x
 2
 ,…,
+x
+n
+(
+1≤
+x
+i
+≤
+10
+6
+).
+The next
+k
+lines describe the ladders. Ladder
+i
+is denoted by
 a
-n−1
+i
+,
+b
+i
+,
+c
+i
+,
+d
+i
+,
+h
+i
 (
 1≤
 a
 i
+<
+c
+i
+≤n
+;
+1≤
+b
+i
+,
+d
+i
+≤m
+;
+1≤
+h
+i
 ≤
 10
-5
-), where
+6
+)  — the rooms it connects and the health points gained from using it.
+It is guaranteed
 a
 i
-denotes the weight assigned to the edge numbered
+<
+c
 i
-. Otherwise, print
-−1
+for all ladders and there is at most one ladder between any 2 rooms in the building.
+The sum of
+n
+, the sum of
+m
+, and the sum of
+k
+over all test cases do not exceed
+10
+5
 .
-If there are multiple solutions, you may print any.
+Output
+Output the minimum health Ram loses on the optimal path from
+(1,1)
+to
+(n,m)
+. If Ram cannot escape the clutches of Raghav regardless of the path he takes, output "NO ESCAPE" (all uppercase, without quotes).
 Example
 input
 Copy
-3
-2
-1 2
 4
-1 3
-4 3
-2 1
-7
-1 2
-1 3
-3 4
-3 5
-6 2
-7 2
+5 3 3
+5 17 8 1 4
+1 3 3 3 4
+3 1 5 2 5
+3 2 5 1 6
+6 3 3
+5 17 8 1 4 2
+1 3 3 3 4
+3 1 5 2 5
+3 2 5 1 6
+5 3 1
+5 17 8 1 4
+1 3 5 3 100
+5 5 5
+3 2 3 7 5
+3 5 4 2 1
+2 2 5 4 5
+4 4 5 2 3
+1 2 4 2 2
+3 3 5 2 4
 output
 Copy
-17
-2 5 11
--1
+16
+NO ESCAPE
+-90
+27
 Note
-For the first test case, there are only two paths having one edge each:
-1→2
-and
-2→1
-, both having a weight of
-17
-, which is prime.
-The second test case is described in the statement.
-It can be proven that no such assignment exists for the third test case.
+The figure for the first test case is in the statement. There are only
+2
+possible paths to
+(n,m)
+:
+Ram travels to
+(1,3)
+, takes the ladder to
+(3,3)
+, travels to
+(3,2)
+, takes the ladder to
+(5,1)
+, travels to
+(5,3)
+where he finally escapes via helicopter. The health lost would be
+x
+1
+⋅|1−3|−
+h
+1
++
+x
+3
+⋅|3−2|−
+h
+3
++
+x
+5
+⋅|1−3|
+=5⋅2−4+8⋅1−6+4⋅2
+=16.
+Ram travels to
+(1,3)
+, takes the ladder to
+(3,3)
+, travels to
+(3,1)
+, takes the ladder to
+(5,2)
+, travels to
+(5,3)
+where he finally escapes via helicopter. The health lost would be
+x
+1
+⋅|1−3|−
+h
+1
++
+x
+3
+⋅|3−1|−
+h
+2
++
+a
+5
+⋅|2−3|
+=5⋅2−4+8⋅2−5+4⋅1
+=21.
+Therefore, the minimum health lost would be
+16
+.
+In the second test case, there is no path to
+(n,m)
+.
+In the third case case, Ram travels to
+(1,3)
+and takes the only ladder to
+(5,3)
+. He loses
+5⋅2
+health points and gains
+h
+1
+=100
+health points. Therefore the total loss is
+10−100=−90
+(negative implies he gains health after the path).

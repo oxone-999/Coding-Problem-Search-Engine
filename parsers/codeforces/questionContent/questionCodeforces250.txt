@@ -1,54 +1,55 @@
-C. Serval and Toxel's Arrays
-time limit per test2 seconds
+B. Serval and Inversion Magic
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Toxel likes arrays. Before traveling to the Paldea region, Serval gave him an array
-a
-as a gift. This array has
+Serval has a string
+s
+that only consists of 0 and 1 of length
 n
-pairwise distinct elements.
-In order to get more arrays, Toxel performed
-m
-operations with the initial array. In the
+. The
 i
--th operation, he modified the
-p
+-th character of
+s
+is denoted as
+s
 i
--th element of the
-(i−1)
--th array to
-v
-i
-, resulting in the
-i
--th array (the initial array
-a
-is numbered as
-0
-). During modifications, Toxel guaranteed that the elements of each array are still pairwise distinct after each operation.
-Finally, Toxel got
-m+1
-arrays and denoted them as
-A
-0
-=a,
-A
-1
-,…,
-A
-m
-. For each pair
-(i,j)
+, where
+1≤i≤n
+.
+Serval can perform the following operation called Inversion Magic on the string
+s
+:
+Choose an segment
+[l,r]
 (
-0≤i<j≤m
-), Toxel defines its value as the number of distinct elements of the concatenation of
-A
+1≤l≤r≤n
+). For
+l≤i≤r
+, change
+s
 i
-and
-A
-j
-. Now Toxel wonders, what is the sum of the values of all pairs? Please help him to calculate the answer.
+into 1 if
+s
+i
+is 0, and change
+s
+i
+into 0 if
+s
+i
+is 1.
+For example, let
+s
+be 010100 and the segment
+[2,5]
+is chosen. The string
+s
+will be 001010 after performing the Inversion Magic.
+Serval wants to make
+s
+a palindrome after performing Inversion Magic exactly once. Help him to determine whether it is possible.
+A string is a palindrome iff it reads the same backwards as forwards. For example, 010010 is a palindrome but 10111 is not.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
@@ -57,142 +58,60 @@ t
 10
 4
 ). The description of the test cases follows.
-The first line of each test case contains two integers
+The first line of each test case contains a single integer
 n
-and
-m
 (
-1≤n,m≤2⋅
+2≤n≤
 10
 5
-) — the length of the array and the number of operations.
-The second line of each test case contains
+) — the length of string
+s
+.
+The second line of each test case contains a binary string
+s
+of length
 n
-integers
-a
-1
-,
-a
-2
-,…,
-a
+. Only characters 0 and 1 can appear in
+s
+.
+It's guaranteed that the sum of
 n
-(
-1≤
-a
-i
-≤n+m
-). It is guaranteed that all
-a
-i
-are pairwise distinct.
-Each of the next
-m
-lines of each test case contains two integers
-p
-i
-and
-v
-i
-(
-1≤
-p
-i
-≤n
-,
-1≤
-v
-i
-≤n+m
-) — the position of the modified element and its new value. It is guaranteed that the elements of each array are still pairwise distinct after each modification.
-It is guaranteed that the sum of
-n
-and the sum of
-m
-over all test cases do not exceed
+over all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case, print a single integer — the sum of the values of all pairs of arrays.
+For each test case, print Yes if
+s
+can be a palindrome after performing Inversion Magic exactly once, and print No if not.
+You can output Yes and No in any case (for example, strings yEs, yes, Yes and YES will be recognized as a positive response).
 Example
 input
 Copy
 3
-3 2
-1 2 3
-1 4
-2 5
-1 1
-1
-1 1
-10 10
-4 6 9 12 16 20 2 10 19 7
-1 3
-5 4
-2 17
-2 18
-6 11
-7 1
-8 17
-5 5
-5 5
-2 2
+4
+1001
+5
+10010
+7
+0111011
 output
 Copy
-13
-1
-705
+Yes
+Yes
+No
 Note
-In the first test case, the arrays change as follows:
-[1,2,3]→[
-4
-–
-,2,3]→[4,
-5
-–
-,3]
-.
-The concatenation of the
-0
--th array and the
-1
--st array is
-[1,2,3,4,
-2
-,
-3
-]
-. There are
-4
-distinct elements.
-The concatenation of the
-0
--th array and the
-2
--nd array is
-[1,2,3,4,5,
-3
-]
-. There are
-5
-distinct elements.
-The concatenation of the
-1
--st array and the
-2
--nd array is
-[4,2,3,
-4
-,5,
-3
-]
-. There are
-4
-distinct elements.
-Strikethrough elements are duplicates in the array.
-Therefore, the answer is
-4+5+4=13
-.
-In the second test case, note that the array may remain unchanged after operations.
+In the first test case, Serval can perform Inversion Magic on the segment
+[1,4]
+. The string
+s
+will be 0110 after the magic.
+In the second test case, Serval can perform Inversion Magic on the segment
+[1,3]
+. The string
+s
+will be 01110 after the magic.
+In the third test case, Serval can't make
+s
+a palindrome by performing Inversion Magic exactly once.

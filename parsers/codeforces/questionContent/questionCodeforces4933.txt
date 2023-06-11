@@ -1,37 +1,28 @@
-A. The Artful Expedient
-time limit per test1 second
+G. El Toll Caves
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Rock... Paper!
-After Karen have found the deterministic winning (losing?) strategy for rock-paper-scissors, her brother, Koyomi, comes up with a new game as a substitute. The game works as follows.
-A positive integer n is decided first. Both Koyomi and Karen independently choose n distinct positive integers, denoted by x1, x2, ..., xn and y1, y2, ..., yn respectively. They reveal their sequences, and repeat until all of 2n integers become distinct, which is the only final state to be kept and considered.
-Then they count the number of ordered pairs (i, j) (1 ≤ i, j ≤ n) such that the value xi xor yj equals to one of the 2n integers. Here xor means the bitwise exclusive or operation on two integers, and is denoted by operators ^ and/or xor in most programming languages.
-Karen claims a win if the number of such pairs is even, and Koyomi does otherwise. And you're here to help determine the winner of their latest game.
+The prehistoric caves of El Toll are located in Moià (Barcelona). You have heard that there is a treasure hidden in one of n possible spots in the caves. You assume that each of the spots has probability 1 / n to contain a treasure.
+You cannot get into the caves yourself, so you have constructed a robot that can search the caves for treasure. Each day you can instruct the robot to visit exactly k distinct spots in the caves. If none of these spots contain treasure, then the robot will obviously return with empty hands. However, the caves are dark, and the robot may miss the treasure even when visiting the right spot. Formally, if one of the visited spots does contain a treasure, the robot will obtain it with probability 1 / 2, otherwise it will return empty. Each time the robot searches the spot with the treasure, his success probability is independent of all previous tries (that is, the probability to miss the treasure after searching the right spot x times is 1 / 2x).
+What is the expected number of days it will take to obtain the treasure if you choose optimal scheduling for the robot? Output the answer as a rational number modulo 109 + 7. Formally, let the answer be an irreducible fraction P / Q, then you have to output . It is guaranteed that Q is not divisible by 109 + 7.
 Input
-The first line of input contains a positive integer n (1 ≤ n ≤ 2 000) — the length of both sequences.
-The second line contains n space-separated integers x1, x2, ..., xn (1 ≤ xi ≤ 2·106) — the integers finally chosen by Koyomi.
-The third line contains n space-separated integers y1, y2, ..., yn (1 ≤ yi ≤ 2·106) — the integers finally chosen by Karen.
-Input guarantees that the given 2n integers are pairwise distinct, that is, no pair (i, j) (1 ≤ i, j ≤ n) exists such that one of the following holds: xi = yj; i ≠ j and xi = xj; i ≠ j and yi = yj.
+The first line contains the number of test cases T (1 ≤ T ≤ 1000).
+Each of the next T lines contains two integers n and k (1 ≤ k ≤ n ≤ 5·108).
 Output
-Output one line — the name of the winner, that is, "Koyomi" or "Karen" (without quotes). Please be aware of the capitalization.
-Examples
+For each test case output the answer in a separate line.
+Example
 input
 Copy
 3
-1 2 3
-4 5 6
+1 1
+2 1
+3 2
 output
 Copy
-Karen
-input
-Copy
-5
-2 4 6 8 10
-9 7 5 3 1
-output
-Copy
-Karen
+2
+500000007
+777777786
 Note
-In the first example, there are 6 pairs satisfying the constraint: (1, 1), (1, 2), (2, 1), (2, 3), (3, 2) and (3, 3). Thus, Karen wins since 6 is an even number.
-In the second example, there are 16 such pairs, and Karen wins again.
+In the first case the robot will repeatedly search in the only spot. The expected number of days in this case is 2. Note that in spite of the fact that we know the treasure spot from the start, the robot still has to search there until he succesfully recovers the treasure.
+In the second case the answer can be shown to be equal to 7 / 2 if we search the two spots alternatively. In the third case the answer is 25 / 9.

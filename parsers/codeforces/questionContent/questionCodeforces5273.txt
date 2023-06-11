@@ -1,39 +1,35 @@
-A. Oleg and shares
-time limit per test1 second
+F. Mages and Monsters
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Oleg the bank client checks share prices every day. There are n share prices he is interested in. Today he observed that each second exactly one of these prices decreases by k rubles (note that each second exactly one price changes, but at different seconds different prices can change). Prices can become negative. Oleg found this process interesting, and he asked Igor the financial analyst, what is the minimum time needed for all n prices to become equal, or it is impossible at all? Igor is busy right now, so he asked you to help Oleg. Can you answer this question?
+Vova plays a computer game known as Mages and Monsters. Vova's character is a mage. Though as he has just started, his character knows no spells.
+Vova's character can learn new spells during the game. Every spell is characterized by two values xi and yi — damage per second and mana cost per second, respectively. Vova doesn't have to use a spell for an integer amount of seconds. More formally, if he uses a spell with damage x and mana cost y for z seconds, then he will deal x·z damage and spend y·z mana (no rounding). If there is no mana left (mana amount is set in the start of the game and it remains the same at the beginning of every fight), then character won't be able to use any spells. It is prohibited to use multiple spells simultaneously.
+Also Vova can fight monsters. Every monster is characterized by two values tj and hj — monster kills Vova's character in tj seconds and has hj health points. Mana refills after every fight (or Vova's character revives with full mana reserve), so previous fights have no influence on further ones.
+Vova's character kills a monster, if he deals hj damage to it in no more than tj seconds using his spells (it is allowed to use more than one spell in a fight) and spending no more mana than he had at the beginning of the fight. If monster's health becomes zero exactly in tj seconds (it means that the monster and Vova's character kill each other at the same time), then Vova wins the fight.
+You have to write a program which can answer two types of queries:
+1 x y — Vova's character learns new spell which deals x damage per second and costs y mana per second.
+2 t h — Vova fights the monster which kills his character in t seconds and has h health points.
+Note that queries are given in a different form. Also remember that Vova's character knows no spells at the beginning of the game.
+For every query of second type you have to determine if Vova is able to win the fight with corresponding monster.
 Input
-The first line contains two integers n and k (1 ≤ n ≤ 105, 1 ≤ k ≤ 109) — the number of share prices, and the amount of rubles some price decreases each second.
-The second line contains n integers a1, a2, ..., an (1 ≤ ai ≤ 109) — the initial prices.
+The first line contains two integer numbers q and m (2 ≤ q ≤ 105, 1 ≤ m ≤ 1012) — the number of queries and the amount of mana at the beginning of every fight.
+i-th of each next q lines contains three numbers ki, ai and bi (1 ≤ ki ≤ 2, 1 ≤ ai, bi ≤ 106).
+Using them you can restore queries this way: let j be the index of the last query of second type with positive answer (j = 0 if there were none of these).
+If ki = 1, then character learns spell with x = (ai + j) mod 106 + 1, y = (bi + j) mod 106 + 1.
+If ki = 2, then you have to determine if Vova is able to win the fight against monster with t = (ai + j) mod 106 + 1, h = (bi + j) mod 106 + 1.
 Output
-Print the only line containing the minimum number of seconds needed for prices to become equal, of «-1» if it is impossible.
-Examples
+For every query of second type print YES if Vova is able to win the fight with corresponding monster and NO otherwise.
+Example
 input
 Copy
-3 3
-12 9 15
+3 100
+1 4 9
+2 19 49
+2 19 49
 output
 Copy
-3
-input
-Copy
-2 2
-10 9
-output
-Copy
--1
-input
-Copy
-4 1
-1 1000000000 1000000000 1000000000
-output
-Copy
-2999999997
+YES
+NO
 Note
-Consider the first example.
-Suppose the third price decreases in the first second and become equal 12 rubles, then the first price decreases and becomes equal 9 rubles, and in the third second the third price decreases again and becomes equal 9 rubles. In this case all prices become equal 9 rubles in 3 seconds.
-There could be other possibilities, but this minimizes the time needed for all prices to become equal. Thus the answer is 3.
-In the second example we can notice that parity of first and second price is different and never changes within described process. Thus prices never can become equal.
-In the third example following scenario can take place: firstly, the second price drops, then the third price, and then fourth price. It happens 999999999 times, and, since in one second only one price can drop, the whole process takes 999999999 * 3 = 2999999997 seconds. We can note that this is the minimum possible time.
+In first example Vova's character at first learns the spell with 5 damage and 10 mana cost per second. Next query is a fight with monster which can kill character in 20 seconds and has 50 health points. Vova kills it in 10 seconds (spending 100 mana). Next monster has 52 health, so Vova can't deal that much damage with only 100 mana.

@@ -1,150 +1,110 @@
-F. Fancy Stack
+J. Job Lookup
 time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Little Fiona has a collection of
+Julia's
 n
-blocks of various sizes
-a
-1
-,
-a
-2
-,…,
-a
+friends want to organize a startup in a new country they moved to. They assigned each other numbers from 1 to
 n
+according to the jobs they have, from the most front-end tasks to the most back-end ones. They also estimated a matrix
+c
 , where
-n
-is even. Some of the blocks can be equal in size. She would like to put all these blocks one onto another to form a fancy stack.
-Let
-b
-1
-,
-b
-2
-,…,
-b
-n
-be the sizes of blocks in the stack from top to bottom. Since Fiona is using all her blocks,
-b
-1
-,
-b
-2
-,…,
-b
-n
-must be a permutation of
-a
-1
-,
-a
-2
-,…,
-a
-n
-. Fiona thinks the stack is fancy if both of the following conditions are satisfied:
-The second block is strictly bigger than the first one, and then each block is alternately strictly smaller or strictly bigger than the previous one. Formally,
-b
-1
-<
-b
-2
->
-b
-3
-<
-b
-4
->…>
-b
-n−1
-<
-b
-n
+c
+ij
+=
+c
+ji
+is the average number of messages per month between people doing jobs
+i
+and
+j
 .
-The sizes of the blocks on even positions are strictly increasing. Formally,
-b
-2
-<
-b
-4
-<
-b
-6
-<…<
-b
-n
-(remember that
-n
-is even).
-Two stacks are considered different if their corresponding sequences
-b
-1
-,
-b
-2
-,…,
-b
-n
-differ in at least one position.
-Fiona wants to know how many different fancy stacks she can build with all of her blocks. Since large numbers scare Fiona, find this number modulo
-998244353
+Now they want to make a hierarchy tree. It will be a binary tree with each node containing one member of the team. Some member will be selected as a leader of the team and will be contained in the root node. In order for the leader to be able to easily reach any subordinate, for each node
+v
+of the tree, the following should apply: all members in its left subtree must have smaller numbers than
+v
+, and all members in its right subtree must have larger numbers than
+v
+.
+After the hierarchy tree is settled, people doing jobs
+i
+and
+j
+will be communicating via the shortest path in the tree between their nodes. Let's denote the length of this path as
+d
+ij
+. Thus, the cost of their communication is
+c
+ij
+⋅
+d
+ij
+.
+Your task is to find a hierarchy tree that minimizes the total cost of communication over all pairs:
+∑
+1≤i<j≤n
+c
+ij
+⋅
+d
+ij
 .
 Input
-Each input contains multiple test cases. The first line contains the number of test cases
-t
+The first line contains an integer
+n
 (
-1≤t≤2500
-). Description of the test cases follows.
-The first line of each test case contains a single integer
+1≤n≤200
+) – the number of team members organizing a startup.
+The next
 n
- — the number of blocks at Fiona's disposal (
-2≤n≤5000
-;
+lines contain
 n
-is even). The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
- — the sizes of the blocks in non-decreasing order (
-1≤
-a
-1
+integers each,
+j
+-th number in
+i
+-th line is
+c
+ij
+ — the estimated number of messages per month between team members
+i
+and
+j
+(
+0≤
+c
+ij
 ≤
-a
-2
-≤⋯≤
-a
-n
-≤n
+10
+9
+;
+c
+ij
+=
+c
+ji
+;
+c
+ii
+=0
 ).
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-5000
-.
 Output
-For each test case, print the number of ways to build a fancy stack, modulo
-998244353
-.
+Output a description of a hierarchy tree that minimizes the total cost of communication. To do so, for each team member from 1 to
+n
+output the number of the member in its parent node, or 0 for the leader. If there are many optimal trees, output a description of any one of them.
 Example
 input
 Copy
-2
 4
-1 2 3 4
-8
-1 1 2 3 4 4 6 7
+0 566 1 0
+566 0 239 30
+1 239 0 1
+0 30 1 0
 output
 Copy
-2
-4
+2 4 2 0
+Note
+The minimal possible total cost is
+566⋅1+239⋅1+30⋅1+1⋅2+1⋅2=839
+:

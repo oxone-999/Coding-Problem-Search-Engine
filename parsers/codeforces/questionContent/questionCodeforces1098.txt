@@ -1,42 +1,150 @@
-A. Doors and Keys
+C. Increase Subarray Sums
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The knight is standing in front of a long and narrow hallway. A princess is waiting at the end of it.
-In a hallway there are three doors: a red door, a green door and a blue door. The doors are placed one after another, however, possibly in a different order. To proceed to the next door, the knight must first open the door before.
-Each door can be only opened with a key of the corresponding color. So three keys: a red key, a green key and a blue key — are also placed somewhere in the hallway. To open the door, the knight should first pick up the key of its color.
-The knight has a map of the hallway. It can be transcribed as a string, consisting of six characters:
-R, G, B — denoting red, green and blue doors, respectively;
-r, g, b — denoting red, green and blue keys, respectively.
-Each of these six characters appears in the string exactly once.
-The knight is standing at the beginning of the hallway — on the left on the map.
-Given a map of the hallway, determine if the knight can open all doors and meet the princess at the end of the hallway.
+You are given an array
+a
+1
+,
+a
+2
+,…,
+a
+n
+, consisting of
+n
+integers. You are also given an integer value
+x
+.
+Let
+f(k)
+be the maximum sum of a contiguous subarray of
+a
+after applying the following operation: add
+x
+to the elements on exactly
+k
+distinct positions. An empty subarray should also be considered, it has sum
+0
+.
+Note that the subarray doesn't have to include all of the increased elements.
+Calculate the maximum value of
+f(k)
+for all
+k
+from
+0
+to
+n
+independently.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤720
+1≤t≤5000
 ) — the number of testcases.
-Each testcase consists of a single string. Each character is one of R, G, B (for the doors), r, g, b (for the keys), and each of them appears exactly once.
+The first line of the testcase contains two integers
+n
+and
+x
+(
+1≤n≤5000
+;
+0≤x≤
+10
+5
+) — the number of elements in the array and the value to add.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+−
+10
+5
+≤
+a
+i
+≤
+10
+5
+).
+The sum of
+n
+over all testcases doesn't exceed
+5000
+.
 Output
-For each testcase, print YES if the knight can open all doors. Otherwise, print NO.
+For each testcase, print
+n+1
+integers — the maximum value of
+f(k)
+for all
+k
+from
+0
+to
+n
+independently.
 Example
 input
 Copy
-4
-rgbBRG
-RgbrBG
-bBrRgG
-rgRGBb
+3
+4 2
+4 1 3 2
+3 5
+-2 -7 -1
+10 2
+-6 -1 -2 4 -6 -1 -4 4 -5 -4
 output
 Copy
-YES
-NO
-YES
-NO
+10 12 14 16 18
+0 4 4 5
+4 6 6 7 7 7 7 8 8 8 8
 Note
-In the first testcase, the knight first collects all keys, then opens all doors with them.
-In the second testcase, there is a red door right in front of the knight, but he doesn't have a key for it.
-In the third testcase, the key to each door is in front of each respective door, so the knight collects the key and uses it immediately three times.
-In the fourth testcase, the knight can't open the blue door.
+In the first testcase, it doesn't matter which elements you add
+x
+to. The subarray with the maximum sum will always be the entire array. If you increase
+k
+elements by
+x
+,
+k⋅x
+will be added to the sum.
+In the second testcase:
+For
+k=0
+, the empty subarray is the best option.
+For
+k=1
+, it's optimal to increase the element at position
+3
+. The best sum becomes
+−1+5=4
+for a subarray
+[3,3]
+.
+For
+k=2
+, it's optimal to increase the element at position
+3
+and any other element. The best sum is still
+4
+for a subarray
+[3,3]
+.
+For
+k=3
+, you have to increase all elements. The best sum becomes
+(−2+5)+(−7+5)+(−1+5)=5
+for a subarray
+[1,3]
+.

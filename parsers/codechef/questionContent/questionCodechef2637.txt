@@ -1,94 +1,111 @@
-Intersecting Paths
+Doubly Increasing Path
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given a tree (a connected undirected graph without cycles) with
-N vertices numbered
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
+You are given an undirected graph with
+N nodes (numbered
 1 through
-N. For each pair of vertices
-u and
-v, let's denote the simple path between them by
-(u,v); the paths are undirected, so
-(u,v) is the same path as
-(v,u).
-You should answer
-Q queries. In each query, you are given two vertices
-u and
-v. Then, for each simple path
-(a,b) in the tree, we define perfect intersection as follows:
-Let's denote the sets of vertices in the paths
-(u,v) and
-(a,b) by
-S
+N) and
+M edges. Each node has a value; let's denote the value of node
+i by
+A
+i
+. Note that the graph is not necessarily simple.
+A doubly increasing path is a directed path such that both the values of nodes and differences of values of nodes on this path are strictly increasing. Formally, it is a sequence of nodes
+p
 1
+,p
+2
+,p
+3
+,…,p
+k
+for some integer (the length of this path)
+k≥1 such that
+0<A
+p
+2
+−A
+p
+1
+<A
+p
+3
+−A
+p
+2
+<…<A
+p
+k
+−A
+p
+k−1
+and for each valid
+i, nodes
+p
+i
 and
-S
-2
-respectively (a path contains its endpoints too).
-The path
-(a,b) intersects perfectly with
-(u,v) if
-∣S
-1
-∩S
-2
-∣=1, i.e. these paths have exactly one common vertex.
-The answer to the query is the number of paths which intersect perfectly with the path
-(u,v).
+p
+i−1
+are connected by an edge.
+You need to find the length of the longest doubly increasing path in the graph.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
 The first line of each test case contains two space-separated integers
 N and
-Q.
-Each of the next
-N−1 lines contains two space-separated integers
+M.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+Each of the following
+M lines contains two space-separated integers
 u and
-v denoting that vertices
+v denoting that nodes
 u and
 v are connected by an edge.
-Each of the next
-Q lines contains two space-separated integers
-u and
-v describing one query.
 Output
-For each query, print a single line containing one integer — the answer to this query.
+For each test case, print a single line containing one integer — the maximum length of a doubly increasing path.
 Constraints
 1≤T≤10
-1≤N,Q≤3⋅10
+1≤N≤10
+5
+1≤M≤10
 5
 1≤u,v≤N
-Subtasks
-Subtask #1 (10 points):
-1≤N,Q≤100
-Subtask #2 (20 points):
-1≤N,Q≤1,000
-Subtask #3 (70 points):
-T≤5
-1≤N≤250,000
-1≤Q≤3⋅10
-5
+∣A
+i
+∣≤10
+15
+for each valid
+i
 Sample 1:
 Input
 Output
-1
-6 2
+2
+5 4
+1 2 3 4 5
+2 4
+1 5
+1 3
+3 5
+5 4
+1 2 3 4 5
+3 5
 1 2
-1 3
-1 4
-2 5
-2 6
 4 5
-1 3
-6
-9
+5 2
+2
+3
 Explanation:
-Example case 1:
-In the first query, the paths that intersect perfectly with the given path
-(4,5) are
-(1,1),
-(1,3),
-(2,2),
-(2,6),
-(4,4) and
-(5,5).
+Example case 1: Any path with length
+2 from a smaller node to a larger one is doubly increasing. There is no doubly increasing path with length greater than
+2.
+Example case 2: The path
+1→2→5 is doubly increasing.

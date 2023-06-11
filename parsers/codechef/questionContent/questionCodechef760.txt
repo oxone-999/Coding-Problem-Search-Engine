@@ -1,147 +1,133 @@
-Expensive Steps
+Split and Maximize
 Problem
-There is an
-N×N grid, with rows numbered
-1 to
-N from top to bottom and columns numbered
-1 to
-N from left to right. The cell at the intersection of the
-i-th row and
-j-th column is denoted
-(i,j).
-Chef is standing at position
-(x
-1
-,y
-1
-) of this grid. He wants to reach position
-(x
-2
-,y
-2
-).
-To achieve this, he can take either horizontal or vertical steps. That is, from cell
-(x,y), he can move to one of
-(x−1,y),(x+1,y),(x,y−1),(x,y+1).
-However, Chef does not need to stay within the grid, that is, he can choose to go outside it if he so wishes.
-The cost of a horizontal/vertical step is
-0 if both the starting and ending square lie outside the grid, and
-1 otherwise.
-Formally, suppose Chef takes one step from
-(x,y) to
-(x
-′
-,y
-′
-). Then,
-If
-(x,y) lies within the grid, the cost of this step is
-1
-If
-(x
-′
-,y
-′
-) lies within the grid, the cost of this step is
-1
-If both the above don't hold, the cost of this step is
-0
-Find the minimum cost to reach
-(x
-2
-,y
-2
-) from
-(x
-1
-,y
-1
-).
+Let
+f be a function, such that, for an array
+A of size
+M,
+f(A) is defined as
+$f(A) = \sum_{i=1}^{M}\sum_{j=1, j \ne i}^{j=M} (A_i\cdot A_j)$
+You are given an array
+C of size
+N. In one operation on the array, you can:
+Choose an index
+i
+(1≤i≤∣C∣)
+Select two positive integers
+X and
+Y such that
+X+Y=C
+i
+Remove the element
+C
+i
+from the array
+C
+Insert the elements
+X and
+Y to the array
+C
+Find the maximum value of
+f(C) that can be obtained using any (possibly zero) number of given operations. Since this value can be huge, output the answer modulo
+998244353.
 Input Format
 The first line of input will contain a single integer
 T, denoting the number of test cases.
-Each test case consists of one line of input containing five space-separated integers
-N,
-x
+Each test case consists of two lines of input.
+The first line of each test case contains an integer
+N, denoting the size of the array.
+The next line contains
+N space-separated integers
+C
 1
-,
-y
-1
-,
-x
+,C
 2
-, and
-y
-2
-.
+,…,C
+N
+, the elements of the array
+C.
 Output Format
-For each test case, output on a new line the minimum cost of traveling from
-(x
-1
-,y
-1
-) to
-(x
-2
-,y
-2
-).
+For each test case, output on a new line, the maximum value of
+f(C) that can be obtained using any (possibly zero) number of given operations. Since this value can be huge, output the answer modulo
+998244353.
 Constraints
 1≤T≤10
+3
+1≤N≤2⋅10
 5
-1≤N≤10
+1≤C
+i
+≤10
+9
+The sum of
+N over all test cases won't exceed
+2⋅10
 5
-1≤x
-1
-,y
-1
-,x
-2
-,y
-2
-≤N
+.
 Sample 1:
 Input
 Output
-6
-3 1 1 2 3
-5 2 3 3 4
-3 1 1 2 1
-6 2 1 5 5
-8 3 4 6 7
-10 4 5 9 9
 2
 2
-1
-3
-5
+1 2
+2
+1 3
 6
+12
 Explanation:
 Test case
-1: One optimal sequence of moves is as follows:
-Chef moves from
-(1,1) to
-(0,1) with a cost of
-1. Note that
-(0,1) is outside the grid.
-Now, Chef can move on the outside from
-(0,1) to
-(2,4) with no cost.
-Finally, Chef moves from
-(2,4) to
-(2,3) with cost
-1, for a total cost of
-2.
+1: Using one operation, we choose
+i=2, set
+X=1 and
+Y=1, remove
+2 from the array, and insert
+X and
+Y. Thus, the final array is
+C=[1,1,1].
+Here,
+f(C)=(A
+1
+⋅A
+2
+)+(A
+1
+⋅A
+3
+)+(A
+2
+⋅A
+1
+)+(A
+2
+⋅A
+3
+)+(A
+3
+⋅A
+1
+)+(A
+3
+⋅A
+2
+)=1+1+1+1+1+1=6.
 Test case
-2: Chef can move as follows:
-(2,3)→(3,3)→(3,4), for a cost of
-2.
-Test case
-4: Chef can move as follows:
-(2,1)→(2,0) with cost
-1, then
-(2,0)→(5,7) on the outside with cost
-0, then
-(5,7)→(5,6)→(5,5) with cost
-2 for a total cost of
-3.
+2:
+Operation
+1: We choose
+i=2, set
+X=1 and
+Y=2, remove
+3 from the array, and insert
+X and
+Y. Thus, the final array is
+C=[1,1,2].
+Operation
+2: We choose
+i=3, set
+X=1 and
+Y=1, remove
+3 from the array, and insert
+X and
+Y. Thus, the final array is
+C=[1,1,1,1].
+Here,
+f(C)=12.

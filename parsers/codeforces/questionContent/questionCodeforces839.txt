@@ -1,104 +1,141 @@
-D. Black and White Stripe
-time limit per test2 seconds
+F. Shifting String
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have a stripe of checkered paper of length
+Polycarp found the string
+s
+and the permutation
+p
+. Their lengths turned out to be the same and equal to
 n
-. Each cell is either white or black.
-What is the minimum number of cells that must be recolored from white to black in order to have a segment of
-k
-consecutive black cells on the stripe?
-If the input data is such that a segment of
-k
-consecutive black cells already exists, then print 0.
-Input
-The first line contains an integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases.
-Next, descriptions of
-t
-test cases follow.
-The first line of the input contains two integers
+.
+A permutation of
 n
+elements — is an array of length
+n
+, in which every integer from
+1
+to
+n
+occurs exactly once. For example,
+[1,2,3]
 and
-k
-(
-1≤k≤n≤2⋅
-10
-5
-). The second line consists of the letters 'W' (white) and 'B' (black). The line length is
+[4,3,5,1,2]
+are permutations, but
+[1,2,4]
+,
+[4,3,2,1,2]
+and
+[0,1,2]
+are not.
+In one operation he can multiply
+s
+by
+p
+, so he replaces
+s
+with string
+new
+, in which for any
+i
+from
+1
+to
 n
+it is true that
+ne
+w
+i
+=
+s
+p
+i
+. For example, with
+s=wmbe
+and
+p=[3,1,4,2]
+, after operation the string will turn to
+s=
+s
+3
+s
+1
+s
+4
+s
+2
+=bwem
 .
-It is guaranteed that the sum of values
-n
-does not exceed
-2⋅
-10
-5
-.
-Output
-For each of
+Polycarp wondered after how many operations the string would become equal to its initial value for the first time. Since it may take too long, he asks for your help in this matter.
+It can be proved that the required number of operations always exists. It can be very large, so use a 64-bit integer type.
+Input
+The first line of input contains one integer
 t
-test cases print an integer — the minimum number of cells that need to be repainted from white to black in order to have a segment of
-k
-consecutive black cells.
+(
+1≤t≤5000
+) — the number of test cases in input.
+The first line of each case contains single integer
+n
+(
+1≤n≤200
+) — the length of string and permutation.
+The second line of each case contains a string
+s
+of length
+n
+, containing lowercase Latin letters.
+The third line of each case contains
+n
+integers — permutation
+p
+(
+1≤
+p
+i
+≤n
+), all
+p
+i
+are different.
+Output
+Output
+t
+lines, each of which contains the answer to the corresponding test case of input. As an answer output single integer — the minimum number of operations, after which the string
+s
+will become the same as it was before operations.
 Example
 input
 Copy
-4
-5 3
-BBWBW
-5 5
-BBWBW
-5 1
-BBWBW
-1 1
-W
+3
+5
+ababa
+3 4 5 2 1
+5
+ababa
+2 1 4 5 3
+10
+codeforces
+8 6 1 7 5 2 9 3 10 4
 output
 Copy
 1
-2
-0
-1
+6
+12
 Note
-In the first test case,
+In the first sample operation doesn't change the string, so it will become the same as it was after
+1
+operations.
+In the second sample the string will change as follows:
 s
-="BBWBW" and
-k=3
-. It is enough to recolor
+= babaa
 s
-3
-and get
+= abaab
 s
-="BBBBW". This string contains a segment of length
-k=3
-consisting of the letters 'B'.
-In the second test case of the example
+= baaba
 s
-="BBWBW" and
-k=5
-. It is enough to recolor
+= abbaa
 s
-3
-and
+= baaab
 s
-5
-and get
-s
-="BBBBB". This string contains a segment of length
-k=5
-consisting of the letters 'B'.
-In the third test case of the example
-s
-="BBWBW" and
-k=1
-. The string
-s
-already contains a segment of length
-k=1
-consisting of the letters 'B'.
+= ababa

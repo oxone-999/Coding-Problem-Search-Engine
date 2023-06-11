@@ -1,177 +1,164 @@
-Isomorphic Morphism
+Hidden Cell
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-If I keep moving, they won't know | I'll morph to someone else | What they throw at me's too slow | I'll morph to someone else | I'm just a ghost | I'll morph to someone else | Defense mechanism mode!
-You are given two integer sequences
-A
+Read problem statements in Mandarin, Bengali, Russian, and Vietnamese as well.
+There is an
+N×N matrix. Let
+(i,j) denote the cell in the
+i-th row and the
+j-th column, where the rows are numbered
+0,1,…,N−1 from top to bottom and the columns are numbered
+0,1,…N−1 from left to right. There is a hidden cell
+(a,b). It is known that this cell doesn't lie on the boundary of the matrix. That is,
+min(a,b)≥1 and
+max(a,b)<N−1.
+Your task is to recover the hidden cell. You can ask queries, in which you give the judge a matrix
+M of size
+N×N, consisting of zeroes and ones. Let's call a cell
+(i,j) valid if
+(i,j)=(a,b) or
+M
+i,j
+=1. The judge replies whether there exists a path from
+(0,0) to
+(N−1,N−1) consisting of only valid cells, moving only down and right.
+Formally, it tells whether there exits a sequence of
+2N−1 cells
+(0=u
+0
+,0=v
+0
+),(u
 1
-,A
-2
-,…,A
-N
-and
-B
+,v
 1
-,B
-2
-,…,B
-N
-and an integer
-K. You may perform the following operation at most
-3⋅N times:
-Select a contiguous subsequence of
-A with length
-K. Let's denote this subsequence by
-A
-L
-,A
-L+1
-,…,A
-L+K−1
-.
-Create an integer sequence
-S
-1
-,S
-2
-,…,S
-K
-which is isomorphic to the selected subsequence ― for each pair of integers
-i and
-j (
-1≤i,j≤K),
-S
+),…,(N−1=u
+2N−2
+,N−1=v
+2N−2
+), such that
+(u
 i
-=S
-j
-must hold if
-A
-L−1+i
-=A
-L−1+j
-and
-S
+,v
 i
-
-=S
-j
-must hold if
-A
-L−1+i
-
-=A
-L−1+j
-. In addition,
-1≤S
+) is a valid cell for all
+i and either
+(u
+i+1
+=u
 i
-≤1,000 must hold for each valid
-i.
-For each valid
-i, replace
-A
-L−1+i
-by
-S
+,v
+i+1
+=v
 i
-.
-Is it possible to change the sequence
-A to
-B? If it is possible, find a sequence of operations which morphs
-A to
-B.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-K.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
-The third line contains
-N space-separated integers
-B
-1
-,B
-2
-,…,B
-N
-.
-Output
-For each test case:
-If it is impossible to morph
-A to
-B using no more than
-3⋅N operations, print a single line containing the string "NO" (without quotes).
-Otherwise, start by printing a line containing the string "YES" (without quotes).
-Then, print a line containing a single integer
-P (
-0≤P≤3⋅N) ― the number of operations you want to perform.
-Finally, print
-P lines. Each of these lines should contain
-K+1 space-separated integers
-L,S
-1
-,S
-2
-,…,S
-K
-describing an operation (
-1≤L≤N−K+1;
-1≤S
++1) or
+(u
+i+1
+=u
 i
-≤1,000 for each valid
-i).
-If there are multiple solutions, you may find any one of them.
-Constraints
-1≤T≤100
-1≤K≤N≤100
-1≤A
++1,v
+i+1
+=v
 i
-,B
-i
-≤1,000 for each valid
-i
-Example Input
-4
-4 3
-1 2 3 4
-4 3 2 1
-7 5
-2 1 2 1 1 3 2
-5 4 1 5 4 3 9 
-6 4 
-1 1 5 4 3 6
-5 3 4 5 1 1
-3 1
-1 1 1
-9 10 21
-Example Output
-YES
-2
-1 4 3 2
-2 3 2 1
-NO
-YES
-3
-2 3 4 1 6
-1 5 3 4 5
-3 4 5 1 1
-YES
-3
-1 9
-2 10
-3 21
+).
+The score of your submission is a function of the number of queries asked. Please refer to the scoring section for more details.
+Note that the grader is not adaptive, which means that the hidden cell is fixed in the beginning and won't change according to the queries you ask.
+###Input
+First, you should read a single integer
+T, the number of test cases.
+For each test case, first read the value of
+N.
+To make a query, you should first print ? on a new line. Then you should print
+N lines each containing a string of
+N characters denoting the matrix
+M.
+If the query format is incorrect (i.e. if the matrix doesn't have dimensions
+N×N or if some character in the matrix is not
+0 or
+1), or if you have asked more than
+120 queries, the judge prints -1, and exits with a wrong answer verdict. In this case, you must also terminate your program.
+Once you know the hidden cell, print a character ! on a new line. In the next line, print two space-separated integers
+a and
+b, the row and column numbers of the hidden cell respectively.
+If your answer is incorrect, the judge prints -1 and exits with a Wrong Answer verdict. In this case, you must terminate your program as well. Otherwise, the judge prints 1, and you should move to the next test case (if any).
+Note that whenever the judge prints −1, you should immediately terminate your program to receive a Wrong Answer verdict; otherwise, you may receive any verdict. Don't forget to flush the output after printing each line!
+Test Data and Scoring
+Each test file has exactly
+50 test cases all with
+N=50.
+Let
+Q be the maximum number of queries asked by you over all the test cases of all the test files.
+If
+Q>120, you get
+0 points.
+If
+61≤Q≤120, you get
+9 points.
+If
+51≤Q≤60, you get
+24 points.
+If
+Q≤50, you get
+54+⌊
+36
+46×(50−max(Q,14))
+⌋ points, where
+⌊x⌋ denotes the largest integer
+≤x. In particular, you get
+54 points if
+Q=50 and
+100 points if
+Q≤14.
+Interaction Example
+You                     Grader
+                        3           # 3 test cases
+                        4           # N = 4
+?
+1100
+0100
+0001
+1111
+                        1           # The judge tells that there is
+                                    # a valid path.
+!
+2 1
+
+                        1           # Correct answer! 
+
+                        4           # Next test case, N = 4
+
+?
+1000
+0000
+0010
+0001
+                        0           # There doesn't exist a path
+!
+2 2
+                        -1          # Incorrect output! Judge exits
+You should also
+terminate here
+without reading
+the next test case
 Explanation
-Example case 1: The state of the sequence after each operation is
-[1,2,3,4]→[4,3,2,4]→[4,3,2,1].
-Example case 3: The state of the sequence after each operation is
-[1,1,5,4,3,6]→[1,3,4,1,6,6]→[5,3,4,5,6,6]→[5,3,4,5,1,1].
-See the following animation for more clarity:
+Please note that a small value of
+T,N is used for explanation purposes. In all the actual tests,
+T=50,N=50.
+In the first example,
+(2,1) is the hidden cell. You ask the query:
+1100
+0100
+0001
+1111
+The path
+(0,0)→(0,1)→(1,1)→(2,1)→(3,1)→(3,2)→(3,3) consists of only valid cells and the judge replies with
+1.
+In the second test case, the hidden cell is
+(1,1). When you ask the query
+1000
+0000
+0010
+0001
+Only all the diagonal cells are valid. There is no path from
+(0,0) to
+(3,3) passing only through valid cells, so the judge replies with
+0.

@@ -1,29 +1,100 @@
-Very Long Suffix Array
+Chef and Edge Flipping
 Problem
-Let S = s1, s2, ...,sn be a string and let S[i, j] denote the substring si, si+1, ... sj. The suffix array A of S is an array of integers giving the starting positions of suffixes of S in lexicographical order. This means, the entry A[i] contains the starting position of the i-th smallest(lexicographically) suffix of S. In other words, for all 1 < i ≤ n: S[A[i - 1], n] < S[A[i], n].
-Let us take an example. Suppose S = "12323". Then all suffixes of S are "12323", "2323", "323", "23", "3". If we sort the suffixes lexicographically, we get "12323", "23", "2323", "3", "323". Therefore the suffix array, which gives the starting positions of suffixes in lexicographic order, will be A = 1, 4, 2, 5, 3.
-There is exactly one suffix array for each string. However, several strings can give the same suffix array. In this problem, given a suffix array A of length N, you have to calculate the number of strings S whose suffix array is A.
-However, N can be very large, so the array A is not given directly. You should initialize the array A as A[i] = i for all 1 ≤ i ≤ N and apply M operations to it in order to obtain the desired suffix array A. Each operation can be of one of the following types:
-0 u v: Remove the sub-sequence A[u,v] and bring it to the front. After this operation, the N elements would be in the following order:
-          A[u], A[u + 1], ... A[v], A[1], A[2], ... A[u - 1], A[v + 1], A[v + 2], ... A[N].
-1 u v: Flip A[u,v]. After this operation, the N elements would be in the following order:
-          A[1], A[2], ... A[u-1], A[v], A[v-1], ... A[u+1], A[u], A[v+1], A[v+2], ... A[N].
-For this problem, a string is an array of positive integers. Additionally, the number of different integers used in a string must be same as the largest integer in the string. For example: (1, 2, 2) and (4, 5, 1, 2, 3) are valid strings while (1, 1, 3) and (-1, 0, 1, 2) are not.
-Since the result can be extremely large, you just have to print it modulo 1,000,000,007(109 + 7)
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef likes tournament graphs, which are directed graphs where each unordered pair of vertices is directly connected by exactly one edge. A directed graph is strongly connected if for each pair of vertices
+(a,b), there is a path from the vertex
+a to the vertex
+b.
+Consider a tournament graph
+G with
+N vertices (numbered
+1 through
+N). Chef takes a sequence of pairs of vertices
+(a
+1
+,b
+1
+),(a
+2
+,b
+2
+),…,(a
+M
+,b
+M
+) and does the following for each
+i from
+1 to
+M in this order:
+Flip the direction of the edge between vertices
+a
+i
+and
+b
+i
+.
+If the graph is strongly connected either before or after flipping this edge, declare
+G a bad tournament.
+If
+G is never declared a bad tournament, Chef calls it a good tournament. Given the sequence of
+M edge flips, find a good tournament.
 Input
-The first line of the input contains 2 space separated integers, N and M. N is the length of suffix array, and M is the number of operations. Each of the next M lines contains 3 space separated integers representing an operation of one of the two types.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+M.
+M lines follow. For each valid
+i, the
+i-th of these lines contains two space-separated integers
+a
+i
+and
+b
+i
+.
 Output
-Output a single line containing the number of strings corresponding to the given suffix array modulo 1,000,000,007(109 + 7) .
+For each test case, print
+N−1 lines. For each valid
+i, the
+i-th of these lines should contain
+N−i space-separated integers; for each valid
+j, the
+j-th of these integers should be
+1 if there is an edge from the vertex
+i to the vertex
+i+j or
+0 if there is an edge from the vertex
+i+j to the vertex
+i.
+It can be proved that a good tournament always exists under the given constraints. If there are multiple solutions, you may print any one of them.
 Constraints
-1 ≤ N ≤ 1,000,000,000 (109)
-0 ≤ M ≤ 100,000 (105)
-For all operations, 1 ≤ u ≤ v ≤ N
-Example
-Input:
-4 2
-1 2 3
-0 3 4
-Output:
-4
-Explanation
-The initial array is (1, 2, 3, 4). After the first operation the array becomes (1, 3, 2, 4). After the second operation the array becomes (2, 4, 1, 3). The 4 possible strings are (2, 1, 2, 2), (2, 1, 3, 2), (3, 1, 3, 2), (3, 1, 4, 2).
+1≤T≤400
+6≤N≤400
+the sum of
+N over all test cases does not exceed
+4,000
+Subtasks
+Subtask #1 (30 points):
+M=N−2
+Subtask #2 (40 points):
+M=⌈
+2
+3N
+⌉−3
+Subtask #3 (30 points):
+M=2N−11
+Example Input
+1
+6 4
+1 3
+3 4
+2 6
+5 6
+Example Output
+1 0 1 1 1
+0 0 0 1
+1 1 1
+1 1
+0

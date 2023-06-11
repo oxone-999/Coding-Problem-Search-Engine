@@ -1,128 +1,75 @@
-F. String Distance
+B. Prinzessin der Verurteilung
 time limit per test2 seconds
-memory limit per test1024 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Suppose you are given two strings
+I, Fischl, Prinzessin der Verurteilung, descend upon this land by the call of fate an — Oh, you are also a traveler from another world? Very well, I grant you permission to travel with me.
+It is no surprise Fischl speaks with a strange choice of words. However, this time, not even Oz, her raven friend, can interpret her expressions! Maybe you can help us understand what this young princess is saying?
+You are given a string of
+n
+lowercase Latin letters, the word that Fischl just spoke. You think that the MEX of this string may help you find the meaning behind this message. The MEX of the string is defined as the shortest string that doesn't appear as a contiguous substring in the input. If multiple strings exist, the lexicographically smallest one is considered the MEX. Note that the empty substring does NOT count as a valid MEX.
+A string
 a
-and
+is lexicographically smaller than a string
 b
-. You can apply the following operation any number of times: choose any contiguous substring of
+if and only if one of the following holds:
 a
-or
+is a prefix of
 b
-, and sort the characters in it in non-descending order. Let
-f(a,b)
-the minimum number of operations you have to apply in order to make them equal (or
-f(a,b)=1337
-if it is impossible to make
-a
-and
-b
-equal using these operations).
-For example:
-f(ab,ab)=0
+, but
+a≠b
 ;
-f(ba,ab)=1
-(in one operation, we can sort the whole first string);
-f(ebcda,ecdba)=1
-(in one operation, we can sort the substring of the second string starting from the
-2
--nd character and ending with the
-4
--th character);
-f(a,b)=1337
+in the first position where
+a
+and
+b
+differ, the string
+a
+has a letter that appears earlier in the alphabet than the corresponding letter in
+b
 .
-You are given
-n
-strings
-s
-1
-,
-s
-2
-,…,
-s
-k
-having equal length. Calculate
-∑
-i=1
-n
-∑
-j=i+1
-n
-f(
-s
-i
-,
-s
-j
-)
-.
+A string
+a
+is a substring of a string
+b
+if
+a
+can be obtained from
+b
+by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
+Find out what the MEX of the string is!
 Input
-The first line contains one integer
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤1000
+). Description of the test cases follows.
+The first line of each test case contains an integer
 n
 (
-1≤n≤2⋅
-10
-5
-) — the number of strings.
-Then
+1≤n≤1000
+) — the length of the word. The second line for each test case contains a single string of
 n
-lines follow, each line contains one of the strings
-s
-i
-, consisting of lowercase Latin letters.
-|
-s
-1
-|=|
-s
-2
-|=…=|
-s
+lowercase Latin letters.
+The sum of
 n
-|
-, and
-n⋅|
-s
-1
-|≤2⋅
-10
-5
-. All these strings are pairwise distinct.
-Output
-Print one integer:
-∑
-i=1
-n
-∑
-j=i+1
-n
-f(
-s
-i
-,
-s
-j
-)
+over all test cases will not exceed
+1000
 .
-Examples
+Output
+For each test case, output the MEX of the string on a new line.
+Example
 input
 Copy
-4
-zzz
-bac
-abc
-acb
+3
+28
+qaabzwsxedcrfvtgbyhnujmiklop
+13
+cleanairactbd
+10
+aannttoonn
 output
 Copy
-4015
-input
-Copy
-2
-a
+ac
+f
 b
-output
-Copy
-1337

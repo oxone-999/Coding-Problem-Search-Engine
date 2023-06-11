@@ -1,209 +1,87 @@
-E. Non-Decreasing Dilemma
+A. Balanced Substring
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alice has recently received an array
-a
-1
-,
-a
-2
-,…,
-a
+You are given a string
+s
+, consisting of
 n
-for her birthday! She is very proud of her array, and when she showed her friend Bob the array, he was very happy with her present too!
-However, soon Bob became curious, and as any sane friend would do, asked Alice to perform
-q
-operations of two types on her array:
+letters, each letter is either 'a' or 'b'. The letters in the string are numbered from
 1
-x
-y
-: update the element
-a
-x
 to
-y
-(set
-a
-x
-=y
-).
-2
-l
-r
-: calculate how many non-decreasing subarrays exist within the subarray
-[
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-]
-. More formally, count the number of pairs of integers
-(p,q)
-such that
-l≤p≤q≤r
-and
-a
-p
-≤
-a
-p+1
-≤⋯≤
-a
-q−1
-≤
-a
-q
+n
 .
-Help Alice answer Bob's queries!
-Input
-The first line contains two integers
-n
-and
-q
-(
-1≤n,q≤2⋅
-10
-5
-) — the size of the array, and the number of queries, respectively.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-9
-) — the elements of Alice's array.
-The next
-q
-lines consist of three integers each. The first integer of the
-i
--th line is
-t
-i
-, the operation being performed on the
-i
--th step (
-t
-i
-=1
-or
-t
-i
-=2
-).
-If
-t
-i
-=1
-, the next two integers are
-x
-i
-and
-y
-i
-(
-1≤
-x
-i
-≤n
-;
-1≤
-y
-i
-≤
-10
-9
-), updating the element at position
-x
-i
+s[l;r]
+is a continuous substring of letters from index
+l
 to
-y
-i
-(setting
-a
-x
-i
-=
-y
-i
-).
-If
-t
-i
-=2
-, the next two integers are
+r
+of the string inclusive.
+A string is called balanced if the number of letters 'a' in it is equal to the number of letters 'b'. For example, strings "baba" and "aabbab" are balanced and strings "aaab" and "b" are not.
+Find any non-empty balanced substring
+s[l;r]
+of string
+s
+. Print its
 l
-i
 and
 r
-i
 (
-1≤
-l
-i
-≤
-r
-i
-≤n
-), the two indices Bob asks Alice about for the
-i
--th query.
-It's guaranteed that there is at least one operation of the second type.
+1≤l≤r≤n
+). If there is no such substring, then print
+−1
+−1
+.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤1000
+) — the number of testcases.
+Then the descriptions of
+t
+testcases follow.
+The first line of the testcase contains a single integer
+n
+(
+1≤n≤50
+) — the length of the string.
+The second line of the testcase contains a string
+s
+, consisting of
+n
+letters, each letter is either 'a' or 'b'.
 Output
-For each query of type
-2
-, print a single integer, the answer to the query.
+For each testcase print two integers. If there exists a non-empty balanced substring
+s[l;r]
+, then print
+l
+r
+(
+1≤l≤r≤n
+). Otherwise, print
+−1
+−1
+.
 Example
 input
 Copy
-5 6
-3 1 4 1 5
-2 2 5
-2 1 3
-1 4 4
-2 2 5
-1 2 6
-2 2 5
+4
+1
+a
+6
+abbaba
+6
+abbaba
+9
+babbabbaa
 output
 Copy
-6
-4
-10
-7
+-1 -1
+1 6
+3 6
+2 5
 Note
-For the first query,
-l=2
-and
-r=5
-, and the non-decreasing subarrays
-[p,q]
-are
-[2,2]
-,
-[3,3]
-,
-[4,4]
-,
-[5,5]
-,
-[2,3]
-and
-[4,5]
-.
+In the first testcase there are no non-empty balanced subtrings.
+In the second and third testcases there are multiple balanced substrings, including the entire string "abbaba" and substring "baba".

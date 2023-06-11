@@ -1,219 +1,76 @@
-C2. Balanced Removals (Harder)
-time limit per test1 second
+E. Balanced Binary Search Trees
+time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is a harder version of the problem. In this version,
-n≤50000
+Recall that a binary search tree is a rooted binary tree, whose nodes each store a key and each have at most two distinguished subtrees, left and right. The key in each node must be greater than any key stored in the left subtree, and less than any key stored in the right subtree.
+The depth of a vertex is the number of edges on the simple path from the vertex to the root. In particular, the depth of the root is
+0
 .
-There are
+Let's call a binary search tree perfectly balanced if there doesn't exist a binary search tree with the same number of vertices that has a strictly smaller sum of depths of its vertices.
+Let's call a binary search tree with integer keys striped if both of the following conditions are satisfied for every vertex
+v
+:
+If
+v
+has a left subtree whose root is
+u
+, then the parity of the key of
+v
+is different from the parity of the key of
+u
+.
+If
+v
+has a right subtree whose root is
+w
+, then the parity of the key of
+v
+is the same as the parity of the key of
+w
+.
+You are given a single integer
 n
-distinct points in three-dimensional space numbered from
+. Find the number of perfectly balanced striped binary search trees with
+n
+vertices that have distinct integer keys between
 1
-to
-n
-. The
-i
--th point has coordinates
-(
-x
-i
-,
-y
-i
-,
-z
-i
-)
-. The number of points
-n
-is even.
-You'd like to remove all
-n
-points using a sequence of
-n
-2
-snaps. In one snap, you can remove any two points
-a
 and
-b
-that have not been removed yet and form a perfectly balanced pair. A pair of points
-a
-and
-b
-is perfectly balanced if no other point
-c
-(that has not been removed yet) lies within the axis-aligned minimum bounding box of points
-a
-and
-b
+n
+, inclusive. Output this number modulo
+998244353
 .
-Formally, point
-c
-lies within the axis-aligned minimum bounding box of points
-a
-and
-b
-if and only if
-min(
-x
-a
-,
-x
-b
-)≤
-x
-c
-≤max(
-x
-a
-,
-x
-b
-)
-,
-min(
-y
-a
-,
-y
-b
-)≤
-y
-c
-≤max(
-y
-a
-,
-y
-b
-)
-, and
-min(
-z
-a
-,
-z
-b
-)≤
-z
-c
-≤max(
-z
-a
-,
-z
-b
-)
-. Note that the bounding box might be degenerate.
-Find a way to remove all points in
-n
-2
-snaps.
 Input
-The first line contains a single integer
+The only line contains a single integer
 n
 (
-2≤n≤50000
-;
-n
-is even), denoting the number of points.
-Each of the next
-n
-lines contains three integers
-x
-i
-,
-y
-i
-,
-z
-i
-(
-−
+1≤n≤
 10
-8
-≤
-x
-i
-,
-y
-i
-,
-z
-i
-≤
-10
-8
-), denoting the coordinates of the
-i
--th point.
-No two points coincide.
+6
+), denoting the required number of vertices.
 Output
-Output
+Output the number of perfectly balanced striped binary search trees with
 n
-2
-pairs of integers
-a
-i
-,
-b
-i
-(
-1≤
-a
-i
-,
-b
-i
-≤n
-), denoting the indices of points removed on snap
-i
-. Every integer between
+vertices and distinct integer keys between
 1
 and
 n
-, inclusive, must appear in your output exactly once.
-We can show that it is always possible to remove all points. If there are many solutions, output any of them.
+, inclusive, modulo
+998244353
+.
 Examples
 input
 Copy
-6
-3 1 0
-0 3 0
-2 2 0
-1 0 0
-1 3 0
-0 1 0
+4
 output
 Copy
-3 6
-5 1
-2 4
+1
 input
 Copy
-8
-0 1 1
-1 0 1
-1 1 0
-1 1 1
-2 2 2
-3 2 2
-2 3 2
-2 2 3
+3
 output
 Copy
-4 5
-1 6
-2 7
-3 8
+0
 Note
-In the first example, here is what points and their corresponding bounding boxes look like (drawn in two dimensions for simplicity, as all points lie on
-z=0
-plane). Note that order of removing matters: for example, points
-5
-and
-1
-don't form a perfectly balanced pair initially, but they do after point
-3
-is removed.
+In the first example, this is the only tree that satisfies the conditions:
+In the second example, here are various trees that don't satisfy some condition:

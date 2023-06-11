@@ -1,43 +1,81 @@
-Many bananas
+Coronavirus
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-You are a tribal leader and live in jungle with your people. Life of the leader is not easy sometimes. One of your responsibilities is food distribution. Let's consider this process in details.
-There are many families in your tribal. Thei-th family consists of Xipeople. In some moment you give each family Y bananas(Y is equal for all families independently of its size). All members of family receive equal number of bananas each and this number is maximal with condition that total number of bananas this family have received doesn't exceed Y. Of course some bananas of these initial Y are left. They are given back to the leader of the tribal(you). In other words each member of family receives floor Y / Xibananas and Y modulo Xi are given back to the leader.
-. You are interested in total number of bananas you will have after this distribution process.
-But things are not so simple. There are many events in life of your tribal. You will have to process many queries of three types:
-New family with Ximembers joined your tribal
-Some family with Ximembers left your tribal(it's guaranteed that there was such a family before this query).
-You give each family in your tribal Yj bananas. You want to know the total number of bananas you will have after distribution.
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Arya is a country with
+N cities (numbered
+1 through
+N). We may assume that the map of Arya is a tree with
+N vertices corresponding to the cities, rooted at the city number
+1. The coronavirus has spread all over the world and unfortunately, Arya is infected too.
+The government is trying to defeat this virus. Their scientists made a medicine which can be used to cure parts of the country. We know that there is an integer
+k with the following meaning: for each city
+v, if we give the medicine to people in this city, then this city and all cities in its subtree such that their distance from
+v is at most
+k become cured. When a city is cured, it never becomes infected again.
+Clearly, to cure the whole tree, this procedure has to be repeated one or more times; let's say when we give medicine to people in one city, we need to spend one unit of medicine. Now, for each possible
+k, the government wants to know the minimum number of units of medicine that need to be produced in order to cure all cities, and they told the National Olympiad in Informatics Committee to solve this critical problem.
+For each possible value of
+k (
+1≤k≤N), let's denote the minimum required number of units of medicine by
+a
+k
+. Can you find
+S=∑
+i=1
+N
+a
+i
+?
 Input
-The first line of input file contains one integer N denoting number of different family sizes before queries. Each of next Nlines contains two space-separated integers Ai and Bi denoting size of the family and number of families with such size correspondingly. It's guaranteed that all the Ai are pairwise different.
-The next line contains one integer M denoting the number of queries. Next M lines describe one query each and can be one of the three types:
-"+ X" - one family with X members joined your tribal
-"- X" - one family with X members left your tribal(it's guaranteed that there was such a family before this query).
-"? Y" - You give each family in your tribal Y bananas. You want to know the total number of bananas you will have after distribution.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+Each of the next
+N−1 lines contains two space-separated integers
+u and
+v denoting that cities
+u and
+v are connected by an edge.
 Output
-For each third type query output one integer per line - answer for this query.
+For each test case, print a single line containing one integer
+S.
 Constraints
-0 ≤ N ≤ 105
-1 ≤ M ≤ 105
-1 ≤ Ai, Bi, Xi, Yi≤ 105
+1≤T≤1,000
+1≤N≤100,000
+1≤u,v≤N
+the graph described on the input is a tree
+the sum of
+N over all test cases does not exceed
+100,000
 Subtasks
-Subtask #1[25 points]: M < 1000
-Subtask #2[75 points]: no additional conditions
-Example
-Input:
-3
-1 4
-3 2
-2 2
-6
-? 10
-? 8
-+ 4
-? 9
-- 2
-? 8
-Output:
+Subtask #1 (50 points):
+N≤5,000
+the sum of
+N over all test cases does not exceed
+5,000
+Subtask #2 (50 points): original constraints
+Sample 1:
+Input
+Output
 2
 4
-3
-4
+1 2
+2 3
+2 4
+6
+1 2
+1 3
+1 4
+4 5
+4 6
+5
+7
+Explanation:
+Example case 1: For any
+k>1, we can cure all cities by giving just one unit of medicine to people in the city
+1, but for
+k=1, we need at least two units of medicine (for the cities
+1 and
+4).

@@ -1,115 +1,79 @@
-I Hate Symbo-LIS-m
+Sussy Perms
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-The longest increasing subsequence (LIS) of a sequence
-B
-1
-,B
-2
-,…,B
-L
-is the longest sequence of valid indices
+After getting lost in Hollywood, ibti decided to give you yet another problem related to permutations.
+Consider a permutation
+P of length
+2⋅N.
+An array
+A of size
+N is generated using the permutation
+P, such that the
 i
-1
-,i
-2
-,…,i
-k
-such that
-i
-1
-<i
-2
-<…<i
-k
-and
-B
-i
-1
-<B
-i
-2
-<…<B
-i
-k
-.
-You are given a sequence
+th
+element of the array is a pair having value,
 A
-1
-,A
-2
-,…,A
-N
-. You may modify it by performing the following operation zero or more times:
-Let
-K be the length of the LIS of the current sequence
-A.
-Choose a position in this sequence (possibly the beginning or end of the sequence) and insert a new element
-K into this sequence at this position.
-This way, the sequence
-A changes and the next operation is performed on this changed sequence.
-For example, if
-A=[3,3,4], then the LIS of
-A has length
-2, so we can insert
-2 anywhere into
-A, obtaining one of the sequences
-[2,3,3,4],
-[3,2,3,4],
-[3,3,2,4] or
-[3,3,4,2].
-Find the maximum length of the LIS of
-A that can be obtained after performing the given operation a finite number of times.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
-Output
-For each test case, print a single line containing one integer ― the maximum possible length of the LIS.
+i
+=(P
+i
+modN,P
+(i+N)
+modN).
+The permutation
+P (of length
+2⋅N) is called
+N-beautiful, if, all elements of the array
+A are distinct.
+Given integers
+K and
+M, your task is to count the number of
+i-beautiful permutations for each
+1≤i≤K.
+Since the answers can be large, print them modulo
+M.
+Input Format
+The first and only line of the input contains two space-separated integers
+K,
+M - the parameters defined in the statement.
+Output Format
+Print
+K space-separated integers, the
+i
+th
+integer will denote the number of
+i-beautiful permutations modulo
+M.
 Constraints
-1≤T≤10
+1≤K≤2⋅10
 5
-1≤N≤10
-6
-1≤A
-i
-≤10
-9
-for each valid
-i
-the sum of
-N over all test cases does not exceed
 10
-6
+7
++19≤M≤10
+9
++7
+It is guaranteed that
+M is a prime number.
+Subtasks
+Subtask 1 (50 points):
+1≤K≤10
+3
+Subtask 2 (50 points): No further constraints.
 Sample 1:
 Input
 Output
-2
-5
-5 4 3 2 1
-5
-5 4 3 1 2
-5
-2
+8 269696969
+2 16 576 34560 3110400 142258231 78756849 13872609
 Explanation:
-Example case 1: We can perform the following operations (the newly inserted elements, which are always equal to the length of the LIS of the previous sequence, are underlined):
-[5,4,3,2,1]→[
-1
-,5,4,3,2,1]→[1,
-2
-,5,4,3,2,1]→[1,2,
-3
-,5,4,3,2,1]→[1,2,3,
-4
-,5,4,3,2,1].
+All permutations of length
+2 are
+1-beautiful, thus the first value we print is
+2!=2.
+There are
+16
+2-beautiful permutations out of the
+24 possible permutations. The
+8 non-beautiful permutations are:
+{1,3,2,4},{1,3,4,2},{2,4,1,3},{2,4,3,1},{3,1,2,4},{3,1,4,2},{4,2,1,3},{4,2,3,1}
+For example, the permutation
+{1,3,2,4} is not beautiful as
+A=[(1mod2,2mod2),(3mod2,4mod2)]=[(1,0),(1,0)]. Both elements of the array
+A are same.

@@ -1,125 +1,84 @@
-C. Manhattan Subarrays
-time limit per test2 seconds
+F. Jumping Around
+time limit per test5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Suppose you have two points
-p=(
-x
-p
-,
-y
-p
-)
-and
-q=(
-x
-q
-,
-y
-q
-)
-. Let's denote the Manhattan distance between them as
-d(p,q)=|
-x
-p
-−
-x
-q
-|+|
-y
-p
-−
-y
-q
-|
-.
-Let's say that three points
-p
-,
-q
-,
-r
-form a bad triple if
-d(p,r)=d(p,q)+d(q,r)
-.
-Let's say that an array
-b
+There is an infinite pond that can be represented with a number line. There are
+n
+rocks in the pond, numbered from
 1
-,
-b
-2
-,…,
-b
-m
-is good if it is impossible to choose three distinct indices
+to
+n
+. The
 i
-,
-j
-,
-k
-such that the points
-(
-b
+-th rock is located at an integer coordinate
+a
 i
-,i)
-,
-(
-b
-j
-,j)
-and
-(
-b
-k
-,k)
-form a bad triple.
-You are given an array
+. The coordinates of the rocks are pairwise distinct. The rocks are numbered in the increasing order of the coordinate, so
 a
 1
-,
+<
 a
 2
-,…,
+<⋯<
 a
 n
-. Calculate the number of good subarrays of
-a
-. A subarray of the array
-a
-is the array
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-for some
-1≤l≤r≤n
 .
-Note that, according to the definition, subarrays of length
-1
+A robot frog sits on the rock number
+s
+. The frog is programmable. It has a base jumping distance parameter
+d
+. There also is a setting for the jumping distance range. If the jumping distance range is set to some integer
+k
+, then the frog can jump from some rock to any rock at a distance from
+d−k
+to
+d+k
+inclusive in any direction. The distance between two rocks is an absolute difference between their coordinates.
+You are assigned a task to implement a feature for the frog. Given two integers
+i
 and
-2
-are good.
+k
+determine if the frog can reach a rock number
+i
+from a rock number
+s
+performing a sequence of jumps with the jumping distance range set to
+k
+. The sequence can be arbitrarily long or empty.
+You will be given
+q
+testcases for that feature, the
+j
+-th testcase consists of two integers
+i
+and
+k
+. Print "Yes" if the
+i
+-th rock is reachable and "No" otherwise.
+You can output "YES" and "NO" in any case (for example, strings "yEs", "yes", "Yes" and 'YES"' will be recognized as a positive answer).
 Input
-The first line contains one integer
-t
-(
-1≤t≤5000
-) — the number of test cases.
-The first line of each test case contains one integer
+The first line contains four integers
 n
+,
+q
+,
+s
+and
+d
 (
-1≤n≤2⋅
+1≤n,q≤2⋅
 10
 5
-) — the length of array
-a
-.
-The second line of each test case contains
+;
+1≤s≤n
+;
+1≤d≤
+10
+6
+) — the number of rocks, the number of testcases, the starting rock and the base jumping distance parameter.
+The second line contains
 n
 integers
 a
@@ -136,187 +95,142 @@ a
 i
 ≤
 10
-9
-).
-It's guaranteed that the sum of
-n
-doesn't exceed
-2⋅
-10
-5
-.
-Output
-For each test case, print the number of good subarrays of array
+6
+) — the coordinates of the rocks. The coordinates of the rocks are pairwise distinct. The rocks are numbered in the increasing order of distance from the land, so
 a
+1
+<
+a
+2
+<⋯<
+a
+n
 .
-Example
+Each of the next
+q
+lines contains two integers
+i
+and
+k
+(
+1≤i≤n
+;
+1≤k≤
+10
+6
+) — the parameters to the testcase.
+Output
+For each of the testcases print an answer. If there is a sequence of jumps from a rock number
+s
+to a rock number
+i
+with the jumping distance range set to
+k
+, then print "Yes". Otherwise, print "No".
+Examples
 input
 Copy
-3
-4
-2 4 1 3
-5
-6 9 1 9 6
-2
-13 37
+7 4 4 5
+1 5 10 13 20 22 28
+4 1
+7 2
+7 3
+3 2
 output
 Copy
-10
-12
-3
+Yes
+No
+Yes
+Yes
+input
+Copy
+10 8 6 11
+1 2 4 7 8 9 11 13 19 20
+2 13
+5 8
+8 1
+6 15
+1 15
+2 7
+7 6
+8 9
+output
+Copy
+Yes
+Yes
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+input
+Copy
+6 9 6 6
+1 2 4 9 18 19
+2 17
+1 18
+5 4
+2 11
+5 17
+6 8
+4 3
+3 3
+6 6
+output
+Copy
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+No
+Yes
+input
+Copy
+4 1 1 10
+1 8 10 19
+2 1
+output
+Copy
+Yes
 Note
-In the first test case, it can be proven that any subarray of
-a
-is good. For example, subarray
-[
-a
-2
-,
-a
+Explanation of the first example:
+In the first testcase the destination rock is the same as the starting rock, thus no jumps are required to reach it.
+In the second testcase the frog can jump any distance in the range
+[5−2;5+2]
+. Thus, it can reach rock number
+5
+(by jumping
+7
+to the right) and rock number
 3
-,
-a
-4
-]
-is good since it contains only three elements and:
-d((
-a
-2
-,2),(
-a
-4
-,4))=|4−3|+|2−4|=3
-<
-d((
-a
-2
-,2),(
-a
+(by jumping
 3
-,3))+d((
-a
+to the left). From rock number
 3
-,3),(
-a
-4
-,4))=3+1+2+1=7
-;
-d((
-a
+it can reach rock number
 2
-,2),(
-a
-3
-,3))
-<
-d((
-a
+(by jumping
+5
+to the left). From rock number
 2
-,2),(
-a
-4
-,4))+d((
-a
-4
-,4),(
-a
-3
-,3))
-;
-d((
-a
-3
-,3),(
-a
-4
-,4))
-<
-d((
-a
-3
-,3),(
-a
-2
-,2))+d((
-a
-2
-,2),(
-a
-4
-,4))
-;
-In the second test case, for example, subarray
-[
-a
+it can reach rock number
 1
-,
-a
-2
-,
-a
-3
-,
-a
+(by jumping
 4
-]
-is not good, since it contains a bad triple
-(
-a
-1
-,1)
-,
-(
-a
-2
-,2)
-,
-(
-a
-4
-,4)
-:
-d((
-a
-1
-,1),(
-a
-4
-,4))=|6−9|+|1−4|=6
-;
-d((
-a
-1
-,1),(
-a
-2
-,2))=|6−9|+|1−2|=4
-;
-d((
-a
-2
-,2),(
-a
-4
-,4))=|9−9|+|2−4|=2
-;
-So,
-d((
-a
-1
-,1),(
-a
-4
-,4))=d((
-a
-1
-,1),(
-a
-2
-,2))+d((
-a
-2
-,2),(
-a
-4
-,4))
+to the left). However, there is no way to reach rock number
+7
 .
+In the third testcase the frog can jump any distance in the range
+[5−3;5+3]
+. Thus, it can reach rock number
+7
+by jumping to rock
+5
+first and to
+7
+afterwards.
+The fourth testcase is shown in the explanation for the second testcase.

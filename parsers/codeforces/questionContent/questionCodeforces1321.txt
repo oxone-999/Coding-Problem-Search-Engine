@@ -1,219 +1,139 @@
-F. Tree Queries
-time limit per test6 seconds
-memory limit per test512 megabytes
+B. Odd Grasshopper
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a tree consisting of
-n
-vertices. Recall that a tree is an undirected connected acyclic graph. The given tree is rooted at the vertex
+The grasshopper is located on the numeric axis at the point with coordinate
+x
+0
+.
+Having nothing else to do he starts jumping between integer points on the axis. Making a jump from a point with coordinate
+x
+with a distance
+d
+to the left moves the grasshopper to a point with a coordinate
+x−d
+, while jumping to the right moves him to a point with a coordinate
+x+d
+.
+The grasshopper is very fond of positive integers, so for each integer
+i
+starting with
 1
+the following holds: exactly
+i
+minutes after the start he makes a jump with a distance of exactly
+i
+. So, in the first minutes he jumps by
+1
+, then by
+2
+, and so on.
+The direction of a jump is determined as follows: if the point where the grasshopper was before the jump has an even coordinate, the grasshopper jumps to the left, otherwise he jumps to the right.
+For example, if after
+18
+consecutive jumps he arrives at the point with a coordinate
+7
+, he will jump by a distance of
+19
+to the right, since
+7
+is an odd number, and will end up at a point
+7+19=26
+. Since
+26
+is an even number, the next jump the grasshopper will make to the left by a distance of
+20
+, and it will move him to the point
+26−20=6
 .
-You have to process
-q
-queries. In each query, you are given a vertex of the tree
-v
-and an integer
-k
-.
-To process a query, you may delete any vertices from the tree in any order, except for the root and the vertex
-v
-. When a vertex is deleted, its children become the children of its parent. You have to process a query in such a way that maximizes the value of
-c(v)−m⋅k
-(where
-c(v)
-is the resulting number of children of the vertex
-v
-, and
-m
-is the number of vertices you have deleted). Print the maximum possible value you can obtain.
-The queries are independent: the changes you make to the tree while processing a query don't affect the tree in other queries.
+Find exactly which point the grasshopper will be at after exactly
+n
+jumps.
 Input
-The first line contains one integer
+The first line of input contains an integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases.
+Each of the following
+t
+lines contains two integers
+x
+0
+(
+−
+10
+14
+≤
+x
+0
+≤
+10
+14
+) and
 n
 (
-1≤n≤2⋅
+0≤n≤
 10
-5
-) — the number of vertices in the tree.
-Then
-n−1
-lines follow, the
-i
--th of them contains two integers
-x
-i
-and
-y
-i
-(
-1≤
-x
-i
-,
-y
-i
-≤n
-;
-x
-i
-≠
-y
-i
-) — the endpoints of the
-i
--th edge. These edges form a tree.
-The next line contains one integer
-q
-(
-1≤q≤2⋅
-10
-5
-) — the number of queries.
-Then
-q
-lines follow, the
-j
--th of them contains two integers
-v
-j
-and
-k
-j
-(
-1≤
-v
-j
-≤n
-;
-0≤
-k
-j
-≤2⋅
-10
-5
-) — the parameters of the
-j
--th query.
+14
+) — the coordinate of the grasshopper's initial position and the number of jumps.
 Output
-For each query, print one integer — the maximum value of
-c(v)−m⋅k
-you can achieve.
+Print exactly
+t
+lines. On the
+i
+-th line print one integer — the answer to the
+i
+-th test case — the coordinate of the point the grasshopper will be at after making
+n
+jumps from the point
+x
+0
+.
 Example
 input
 Copy
-8
-6 7
-3 2
-8 3
-5 7
-7 4
-7 1
-7 3
-6
+9
+0 1
+0 2
+10 10
+10 99
+177 13
+10000000000 987654321
+-433494437 87178291199
 1 0
-1 2
-1 3
-7 1
-5 0
-7 200000
+-1 1
 output
 Copy
-5
-2
+-1
 1
-4
+11
+110
+190
+9012345679
+-87611785637
+1
 0
-4
 Note
-The tree in the first example is shown in the following picture:
-Answers to the queries are obtained as follows:
-v=1,k=0
-: you can delete vertices
-7
-and
-3
-, so the vertex
-1
-has
-5
-children (vertices
-2
-,
-4
-,
-5
-,
-6
-, and
-8
-), and the score is
-5−2⋅0=5
-;
-v=1,k=2
-: you can delete the vertex
-7
-, so the vertex
-1
-has
-4
-children (vertices
-3
-,
-4
-,
-5
-, and
-6
-), and the score is
-4−1⋅2=2
-.
-v=1,k=3
-: you shouldn't delete any vertices, so the vertex
-1
-has only one child (vertex
-7
-), and the score is
-1−0⋅3=1
-;
-v=7,k=1
-: you can delete the vertex
-3
-, so the vertex
-7
-has
-5
-children (vertices
-2
-,
-4
-,
-5
-,
-6
-, and
-8
-), and the score is
-5−1⋅1=4
-;
-v=5,k=0
-: no matter what you do, the vertex
-5
-will have no children, so the score is
+The first two test cases in the example correspond to the first two jumps from the point
+x
 0
-;
-v=7,k=200000
-: you shouldn't delete any vertices, so the vertex
-7
-has
-4
-children (vertices
-3
-,
-4
-,
-5
-, and
-6
-), and the score is
-4−0⋅200000=4
+=0
+.
+Since
+0
+is an even number, the first jump of length
+1
+is made to the left, and the grasshopper ends up at the point
+0−1=−1
+.
+Then, since
+−1
+is an odd number, a jump of length
+2
+is made to the right, bringing the grasshopper to the point with coordinate
+−1+2=1
 .

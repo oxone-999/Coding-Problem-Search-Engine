@@ -1,67 +1,223 @@
-A. Minutes Before the New Year
-time limit per test1 second
+D. Christmas Trees
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-New Year is coming and you are excited to know how many minutes remain before the New Year. You know that currently the clock shows
-h
-hours and
-m
-minutes, where
-0≤hh<24
-and
-0≤mm<60
-. We use 24-hour time format!
-Your task is to find the number of minutes before the New Year. You know that New Year comes when the clock shows
-0
-hours and
-0
-minutes.
-You have to answer
-t
-independent test cases.
-Input
-The first line of the input contains one integer
-t
-(
-1≤t≤1439
-) — the number of test cases.
-The following
-t
-lines describe test cases. The
+There are
+n
+Christmas trees on an infinite number line. The
 i
--th line contains the time as two integers
-h
+-th tree grows at the position
+x
+i
+. All
+x
+i
+are guaranteed to be distinct.
+Each integer point can be either occupied by the Christmas tree, by the human or not occupied at all. Non-integer points cannot be occupied by anything.
+There are
+m
+people who want to celebrate Christmas. Let
+y
+1
+,
+y
+2
+,…,
+y
+m
+be the positions of people (note that all values
+x
+1
+,
+x
+2
+,…,
+x
+n
+,
+y
+1
+,
+y
+2
+,…,
+y
+m
+should be distinct and all
+y
+j
+should be integer). You want to find such an arrangement of people that the value
+∑
+j=1
+m
+min
+i=1
+n
+|
+x
+i
+−
+y
+j
+|
+is the minimum possible (in other words, the sum of distances to the nearest Christmas tree for all people should be minimized).
+In other words, let
+d
+j
+be the distance from the
+j
+-th human to the nearest Christmas tree (
+d
+j
+=
+min
+i=1
+n
+|
+y
+j
+−
+x
+i
+|
+). Then you need to choose such positions
+y
+1
+,
+y
+2
+,…,
+y
+m
+that
+∑
+j=1
+m
+d
+j
+is the minimum possible.
+Input
+The first line of the input contains two integers
+n
 and
 m
 (
-0≤h<24
+1≤n,m≤2⋅
+10
+5
+) — the number of Christmas trees and the number of people.
+The second line of the input contains
+n
+integers
+x
+1
 ,
-0≤m<60
-). It is guaranteed that this time is not a midnight, i.e. the following two conditions can't be met at the same time:
-h=0
-and
-m=0
-. It is guaranteed that both
-h
-and
-m
-are given without leading zeros.
+x
+2
+,…,
+x
+n
+(
+−
+10
+9
+≤
+x
+i
+≤
+10
+9
+), where
+x
+i
+is the position of the
+i
+-th Christmas tree. It is guaranteed that all
+x
+i
+are distinct.
 Output
-For each test case, print the answer on it — the number of minutes before the New Year.
-Example
+In the first line print one integer
+res
+— the minimum possible value of
+∑
+j=1
+m
+min
+i=1
+n
+|
+x
+i
+−
+y
+j
+|
+(in other words, the sum of distances to the nearest Christmas tree for all people).
+In the second line print
+m
+integers
+y
+1
+,
+y
+2
+,…,
+y
+m
+(
+−2⋅
+10
+9
+≤
+y
+j
+≤2⋅
+10
+9
+), where
+y
+j
+is the position of the
+j
+-th human. All
+y
+j
+should be distinct and all values
+x
+1
+,
+x
+2
+,…,
+x
+n
+,
+y
+1
+,
+y
+2
+,…,
+y
+m
+should be distinct.
+If there are multiple answers, print any of them.
+Examples
 input
 Copy
-5
-23 55
-23 0
-0 1
-4 20
-23 59
+2 6
+1 5
 output
 Copy
-5
-60
-1439
-1180
-1
+8
+-1 2 6 4 0 3 
+input
+Copy
+3 5
+0 3 1
+output
+Copy
+7
+5 -2 4 -1 2 

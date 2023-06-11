@@ -1,67 +1,51 @@
-A. Orac and LCM
-time limit per test3 seconds
+D. Slime and Biscuits
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-For the multiset of positive integers
-s={
-s
-1
-,
-s
-2
-,…,
-s
-k
-}
-, define the Greatest Common Divisor (GCD) and Least Common Multiple (LCM) of
-s
-as follow:
-gcd(s)
-is the maximum positive integer
-x
-, such that all integers in
-s
-are divisible on
-x
-.
-lcm(s)
-is the minimum positive integer
-x
-, that divisible on all integers from
-s
-.
-For example,
-gcd({8,12})=4,gcd({12,18,6})=6
-and
-lcm({4,6})=12
-. Note that for any positive integer
-x
-,
-gcd({x})=lcm({x})=x
-.
-Orac has a sequence
-a
-with length
+Slime and his
 n
-. He come up with the multiset
-t={lcm({
+friends are at a party. Slime has designed a game for his friends to play.
+At the beginning of the game, the
+i
+-th player has
 a
 i
-,
+biscuits. At each second, Slime will choose a biscuit randomly uniformly among all
 a
-j
-}) | i<j}
-, and asked you to find the value of
-gcd(t)
-for him. In other words, you need to calculate the GCD of LCMs of all pairs of elements in the given sequence.
+1
++
+a
+2
++…+
+a
+n
+biscuits, and the owner of this biscuit will give it to a random uniform player among
+n−1
+players except himself. The game stops when one person will have all the biscuits.
+As the host of the party, Slime wants to know the expected value of the time that the game will last, to hold the next activity on time.
+For convenience, as the answer can be represented as a rational number
+p
+q
+for coprime
+p
+and
+q
+, you need to find the value of
+(p⋅
+q
+−1
+)mod998244353
+. You can prove that
+qmod998244353≠0
+.
 Input
 The first line contains one integer
 n (2≤n≤100000)
-.
+: the number of people playing the game.
 The second line contains
 n
-integers,
+non-negative integers
 a
 1
 ,
@@ -70,21 +54,25 @@ a
 ,…,
 a
 n
-(
-1≤
+ (1≤
+a
+1
++
+a
+2
++⋯+
+a
+n
+≤300000)
+, where
 a
 i
-≤200000
-).
+represents the number of biscuits the
+i
+-th person own at the beginning.
 Output
-Print one integer:
-gcd({lcm({
-a
-i
-,
-a
-j
-}) | i<j})
+Print one integer: the expected value of the time that the game will last, modulo
+998244353
 .
 Examples
 input
@@ -96,26 +84,44 @@ Copy
 1
 input
 Copy
-4
-10 24 40 80
+2
+1 2
 output
 Copy
-40
+3
 input
 Copy
-10
-540 648 810 648 720 540 594 864 972 648
+5
+0 0 0 0 35
 output
 Copy
-54
+0
+input
+Copy
+5
+8 4 2 0 1
+output
+Copy
+801604029
 Note
-For the first example,
-t={lcm({1,1})}={1}
-, so
-gcd(t)=1
-.
-For the second example,
-t={120,40,80,120,240,80}
-, and it's not hard to see that
-gcd(t)=40
+For the first example, in the first second, the probability that player
+1
+will give the player
+2
+a biscuit is
+1
+2
+, and the probability that player
+2
+will give the player
+1
+a biscuit is
+1
+2
+. But anyway, the game will stop after exactly
+1
+second because only one player will occupy all biscuits after
+1
+second, so the answer is
+1
 .

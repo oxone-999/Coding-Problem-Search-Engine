@@ -1,119 +1,116 @@
-B. Phoenix and Beauty
+E. Phoenix and Berries
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Phoenix loves beautiful arrays. An array is beautiful if all its subarrays of length 
-k
-have the same sum. A subarray of an array is any sequence of consecutive elements.
-Phoenix currently has an array
-a
-of length
+Phoenix is picking berries in his backyard. There are
 n
-. He wants to insert some number of integers, possibly zero, into his array such that it becomes beautiful. The inserted integers must be between
-1
-and
-n
-inclusive. Integers may be inserted anywhere (even before the first or after the last element), and he is not trying to minimize the number of inserted integers.
-Input
-The input consists of multiple test cases. The first line contains an integer
-t
-(
-1≤t≤50
-) — the number of test cases.
-The first line of each test case contains two integers
-n
-and
-k
-(
-1≤k≤n≤100
-).
-The second line of each test case contains
-n
-space-separated integers (
-1≤
+shrubs, and each shrub has
 a
 i
-≤n
-) — the array that Phoenix currently has. This array may or may not be already beautiful.
-Output
-For each test case, if it is impossible to create a beautiful array, print -1. Otherwise, print two lines.
-The first line should contain the length of the beautiful array
-m
-(
-n≤m≤
-10
-4
-). You don't need to minimize
-m
-.
-The second line should contain
-m
-space-separated integers (
-1≤
+red berries and
 b
 i
-≤n
-) — a beautiful array that Phoenix can obtain after inserting some, possibly zero, integers into his array
-a
-. You may print integers that weren't originally in array
-a
-.
-If there are multiple solutions, print any. It's guaranteed that if we can make array
-a
-beautiful, we can always make it with resulting length no more than
-10
+blue berries.
+Each basket can contain
+k
+berries. But, Phoenix has decided that each basket may only contain berries from the same shrub or berries of the same color (red or blue). In other words, all berries in a basket must be from the same shrub or/and have the same color.
+For example, if there are two shrubs with
+5
+red and
+2
+blue berries in the first shrub and
+2
+red and
+1
+blue berries in the second shrub then Phoenix can fill
+2
+baskets of capacity
 4
-.
-Example
+completely:
+the first basket will contain
+3
+red and
+1
+blue berries from the first shrub;
+the second basket will contain the
+2
+remaining red berries from the first shrub and
+2
+red berries from the second shrub.
+Help Phoenix determine the maximum number of baskets he can fill completely!
+Input
+The first line contains two integers
+n
+and
+k
+(
+1≤n,k≤500
+) — the number of shrubs and the basket capacity, respectively.
+The
+i
+-th of the next
+n
+lines contain two integers
+a
+i
+and
+b
+i
+(
+0≤
+a
+i
+,
+b
+i
+≤
+10
+9
+) — the number of red and blue berries in the
+i
+-th shrub, respectively.
+Output
+Output one integer — the maximum number of baskets that Phoenix can fill completely.
+Examples
 input
 Copy
-4
-4 2
-1 2 2 1
-4 3
-1 2 2 1
-3 2
-1 2 3
-4 4
-4 3 4 2
+2 4
+5 2
+2 1
 output
 Copy
-5
-1 2 1 2 1
-4
-1 2 2 1
--1
-7
-4 3 2 1 4 3 2
-Note
-In the first test case, we can make array
-a
-beautiful by inserting the integer
-1
-at index
-3
-(in between the two existing
 2
-s). Now, all subarrays of length
-k=2
-have the same sum
-3
-. There exists many other possible solutions, for example:
-2,1,2,1,2,1
-1,2,1,2,1,2
-In the second test case, the array is already beautiful: all subarrays of length
-k=3
-have the same sum
+input
+Copy
+1 5
+2 3
+output
+Copy
+1
+input
+Copy
+2 5
+2 1
+1 3
+output
+Copy
+0
+input
+Copy
+1 2
+1000000000 1
+output
+Copy
+500000000
+Note
+The first example is described above.
+In the second example, Phoenix can fill one basket fully using all the berries from the first (and only) shrub.
+In the third example, Phoenix cannot fill any basket completely because there are less than
 5
-.
-In the third test case, it can be shown that we cannot insert numbers to make array
-a
-beautiful.
-In the fourth test case, the array
-b
-shown is beautiful and all subarrays of length
-k=4
-have the same sum
-10
-. There exist other solutions also.
+berries in each shrub, less than
+5
+total red berries, and less than
+5
+total blue berries.
+In the fourth example, Phoenix can put all the red berries into baskets, leaving an extra blue berry behind.

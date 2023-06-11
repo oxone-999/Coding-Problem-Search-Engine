@@ -1,189 +1,377 @@
-E. Arithmetic Operations
+G. Snowy Mountain
 time limit per test5 seconds
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-You are given an array of integers
-a
-1
-,
-a
-2
-,…,
-a
+There are
 n
-.
-You can do the following operation any number of times (possibly zero):
-Choose any index
+locations on a snowy mountain range (numbered from
+1
+to
+n
+), connected by
+n−1
+trails in the shape of a tree. Each trail has length
+1
+. Some of the locations are base lodges. The height
+h
 i
-and set
-a
-i
-to any integer (positive, negative or
+of each location is equal to the distance to the nearest base lodge (a base lodge has height
 0
 ).
-What is the minimum number of operations needed to turn
-a
-into an arithmetic progression? The array
-a
-is an arithmetic progression if
-a
-i+1
-−
-a
+There is a skier at each location, each skier has initial kinetic energy
+0
+. Each skier wants to ski along as many trails as possible. Suppose that the skier is skiing along a trail from location
+i
+to
+j
+. Skiers are not allowed to ski uphill (i.e., if
+h
+i
+<
+h
+j
+). It costs one unit of kinetic energy to ski along flat ground (i.e., if
+h
 i
 =
-a
+h
+j
+), and a skier gains one unit of kinetic energy by skiing downhill (i.e., if
+h
 i
-−
-a
-i−1
-for any
-2≤i≤n−1
-.
+>
+h
+j
+). For each location, compute the length of the longest sequence of trails that the skier starting at that location can ski along without their kinetic energy ever becoming negative. Skiers are allowed to visit the same location or trail multiple times.
 Input
 The first line contains a single integer
 n
 (
-1≤n≤
+2≤n≤2⋅
 10
 5
 ).
 The second line contains
 n
 integers
-a
+l
 1
 ,
-a
+l
 2
 ,…,
-a
+l
 n
 (
-1≤
-a
+0≤
+l
 i
-≤
-10
-5
-).
+≤1
+). If
+l
+i
+=1
+, location
+i
+is a base lodge; if
+l
+i
+=0
+, location
+i
+is not a base lodge. It is guaranteed that there is at least
+1
+base lodge.
+Each of the next
+n−1
+lines contains two integers
+u,v
+(
+1≤u,v≤n
+,
+u≠v
+), meaning that there is a trail that connects the locations
+u
+and
+v
+. It is guaranteed that the given trails form a tree.
 Output
-Print a single integer: the minimum number of operations needed to turn
-a
-into an arithmetic progression.
+Print
+n
+integers: the
+i
+-th integer is equal to the length of the longest sequence of trails that the skier starting at location
+i
+can ski along without their kinetic energy ever becoming negative.
 Examples
 input
 Copy
-9
-3 2 7 8 6 9 5 4 1
+6
+1 1 0 0 0 0
+1 3
+2 4
+3 4
+4 5
+5 6
 output
 Copy
-6
+0 0 1 1 3 5 
+input
+Copy
+9
+0 0 0 0 0 0 1 1 1
+1 3
+2 3
+2 5
+3 6
+4 5
+4 7
+5 8
+6 9
+output
+Copy
+5 3 2 1 1 1 0 0 0 
 input
 Copy
 14
-19 2 15 8 9 14 17 13 4 14 4 11 15 7
+0 0 0 0 0 0 0 0 0 1 1 1 1 1
+1 2
+2 5
+3 4
+4 5
+3 6
+4 8
+5 9
+7 8
+6 11
+7 12
+8 13
+9 14
+10 11
 output
 Copy
-10
+8 5 4 3 2 2 1 1 1 0 0 0 0 0 
 input
 Copy
-10
-100000 1 60000 2 20000 4 8 16 32 64
+20
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1 0 1
+17 3
+11 12
+6 10
+18 19
+8 14
+16 20
+5 3
+2 11
+7 10
+2 15
+8 3
+3 15
+9 16
+7 13
+16 1
+19 2
+2 16
+6 1
+4 17
 output
 Copy
-7
-input
-Copy
-4
-10000 20000 10000 1
-output
-Copy
-2
+2 2 1 5 3 4 8 1 2 6 4 6 10 0 0 0 3 0 1 0 
 Note
-In the first test, you can get the array
-a=[11,10,9,8,7,6,5,4,3]
-by performing
+In the first test,
+h=[0,0,1,1,2,3]
+. The skier starting from
 6
-operations:
-Set
-a
-3
-to
-9
-: the array becomes
-[3,2,9,8,6,9,5,4,1]
-;
-Set
-a
-2
-to
-10
-: the array becomes
-[3,10,9,8,6,9,5,4,1]
-;
-Set
-a
-6
-to
-6
-: the array becomes
-[3,10,9,8,6,6,5,4,1]
-;
-Set
-a
-9
-to
-3
-: the array becomes
-[3,10,9,8,6,6,5,4,3]
-;
-Set
-a
+can ski along at most
 5
-to
-7
-: the array becomes
-[3,10,9,8,7,6,5,4,3]
-;
-Set
-a
-1
-to
-11
-: the array becomes
-[11,10,9,8,7,6,5,4,3]
-.
-a
-is an arithmetic progression: in fact,
-a
-i+1
-−
-a
-i
-=
-a
-i
-−
-a
-i−1
-=−1
-for any
-2≤i≤n−1
-.
-There is no sequence of less than
+trails, in the path
+6→5→4→3→4→2
+(notice that a skier can ski multiple times along the same trail and can visit more than once the same location):
+at the location
 6
-operations that makes
-a
-an arithmetic progression.
-In the second test, you can get the array
-a=[−1,2,5,8,11,14,17,20,23,26,29,32,35,38]
-by performing
-10
-operations.
-In the third test, you can get the array
-a=[100000,80000,60000,40000,20000,0,−20000,−40000,−60000,−80000]
-by performing
+, the kinetic energy is
+0
+;
+at the location
+5
+, the kinetic energy increases by
+1
+(because
+h
+5
+<
+h
+6
+), so it becomes
+1
+;
+at the location
+4
+, the kinetic energy increases by
+1
+(because
+h
+4
+<
+h
+5
+), so it becomes
+2
+;
+at the location
+3
+, the kinetic energy decreases by
+1
+(because
+h
+3
+=
+h
+4
+), so it becomes
+1
+;
+at the location
+4
+, the kinetic energy decreases by
+1
+(because
+h
+4
+=
+h
+3
+), so it becomes
+0
+;
+at the location
+2
+, the kinetic energy increases by
+1
+(because
+h
+2
+<
+h
+4
+), so it becomes
+1
+.
+There isn't any sequence of trails of length greater than
+5
+such that the kinetic energy is always non-negative.
+Moreover,
+the optimal path for the skier starting from
+1
+is
+1
+(no trails);
+the optimal path for the skier starting from
+2
+is
+2
+(no trails);
+the optimal path for the skier starting from
+3
+is
+3→1
+;
+the optimal path for the skier starting from
+4
+is
+4→2
+;
+the optimal path for the skier starting from
+5
+is
+5→4→3→1
+.
+In the second test,
+h=[3,2,2,1,1,1,0,0,0]
+. The skier starting from
+1
+can ski along at most
+5
+trails, in the path
+1→3→2→5→4→7
+.
+at the location
+1
+, the kinetic energy is
+0
+;
+at the location
+3
+, the kinetic energy increases by
+1
+(because
+h
+3
+<
+h
+1
+), so it becomes
+1
+;
+at the location
+2
+, the kinetic energy decreases by
+1
+(because
+h
+2
+=
+h
+3
+), so it becomes
+0
+;
+at the location
+5
+, the kinetic energy increases by
+1
+(because
+h
+5
+<
+h
+2
+), so it becomes
+1
+;
+at the location
+4
+, the kinetic energy decreases by
+1
+(because
+h
+4
+=
+h
+5
+), so it becomes
+0
+;
+at the location
 7
-operations.
+, the kinetic energy increases by
+1
+(because
+h
+7
+<
+h
+4
+), so it becomes
+1
+.
+There isn't any sequence of trails of length greater than
+5
+such that the kinetic energy is always non-negative.
+In the third test, for the skier starting from vertex
+1
+, the optimal path is
+1→2→5→4→3→6→11→10→11
+.
+Here are pictures of the first, second, and third test, with the base lodges shown in red:

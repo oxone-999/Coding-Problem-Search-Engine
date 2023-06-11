@@ -1,116 +1,194 @@
-C. A Cookie for You
-time limit per test1 second
-memory limit per test256 megabytes
+F. Raging Thunder
+time limit per test3 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Anna is a girl so brave that she is loved by everyone in the city and citizens love her cookies. She is planning to hold a party with cookies. Now she has
-a
-vanilla cookies and
-b
-chocolate cookies for the party.
-She invited
+You are a warrior fighting against the machine god Thor.
+Thor challenge you to solve the following problem:
+There are
 n
-guests of the first type and
-m
-guests of the second type to the party. They will come to the party in some order. After coming to the party, each guest will choose the type of cookie (vanilla or chocolate) to eat. There is a difference in the way how they choose that type:
-If there are
-v
-vanilla cookies and
-c
-chocolate cookies at the moment, when the guest comes, then
-if the guest of the first type: if
-v>c
-the guest selects a vanilla cookie. Otherwise, the guest selects a chocolate cookie.
-if the guest of the second type: if
-v>c
-the guest selects a chocolate cookie. Otherwise, the guest selects a vanilla cookie.
-After that:
-If there is at least one cookie of the selected type, the guest eats one.
-Otherwise (there are no cookies of the selected type), the guest gets angry and returns to home.
-Anna wants to know if there exists some order of guests, such that no one guest gets angry. Your task is to answer her question.
+conveyors arranged in a line numbered with integers from
+1
+to
+n
+from left to right. Each conveyor has a symbol "<" or ">". The initial state of the conveyor
+i
+is equal to the
+i
+-th character of the string
+s
+. There are
+n+1
+holes numbered with integers from
+0
+to
+n
+. The hole
+0
+is on the left side of the conveyor
+1
+, and for all
+i≥1
+the hole
+i
+is on the right side of the conveyor
+i
+.
+When a ball is on the conveyor
+i
+, the ball moves by the next rules:
+If the symbol "<" is on the conveyor
+i
+, then:
+If
+i=1
+, the ball falls into the hole
+0
+.
+If the symbol "<" is on the conveyor
+i−1
+, the ball moves to the conveyor
+i−1
+.
+If the symbol ">" is on the conveyor
+i−1
+, the ball falls into the hole
+i−1
+.
+If the symbol ">" is on the conveyor
+i
+, then:
+If
+i=n
+, the ball falls into the hole
+n
+.
+If the symbol ">" is on the conveyor
+i+1
+, the ball moves to the conveyor
+i+1
+.
+If the symbol "<" is on the conveyor
+i+1
+, the ball falls into the hole
+i
+.
+You should answer next
+q
+queries, each query is defined by the pair of integers
+l,r
+(
+1≤l≤r≤n
+):
+First, for all conveyors
+l,l+1,...,r
+, the symbol "<" changes to ">" and vice versa. These changes remain for the next queries.
+After that, put one ball on each conveyor
+l,l+1,...,r
+. Then, each ball falls into some hole. Find the maximum number of balls in one hole. After the query all balls disappear and don't considered in the next queries.
 Input
-The input consists of multiple test cases. The first line contains a single integer
-t
-(
-1≤t≤1000
-) — the number of test cases. Next
-t
-lines contain descriptions of test cases.
-For each test case, the only line contains four integers
-a
-,
-b
-,
+The first line contains two integers
 n
 ,
-m
+q
 (
-0≤a,b,n,m≤
+1≤n≤5×
 10
-18
-,n+m≠0
+5
+,1≤q≤
+10
+5
 ).
+The second line contains a string
+s
+of length
+n
+. It consists of characters "<" and ">".
+Next
+q
+lines contain the descriptions of the queries,
+i
+-th of them contains two integers
+l
+,
+r
+(1≤l≤r≤n)
+, describing the
+i
+-th query.
 Output
-For each test case, print the answer in one line. If there exists at least one valid order, print "Yes". Otherwise, print "No".
-You can print each letter in any case (upper or lower).
+Print
+q
+lines, in the
+i
+-th of them print the answer to the
+i
+-th query.
 Example
 input
 Copy
-6
-2 2 1 2
-0 100 0 1
-12 13 25 1
-27 83 14 25
-0 0 1 0
-1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000
+5 6
+><>><
+2 4
+3 5
+1 5
+1 3
+2 4
+1 5
 output
 Copy
-Yes
-No
-No
-Yes
-No
-Yes
+3
+3
+5
+3
+2
+3
 Note
-In the first test case, let's consider the order
-{1,2,2}
-of types of guests. Then:
-The first guest eats a chocolate cookie. After that, there are
+In the first query, the conveyors change to ">><<<". After that, put a ball on each conveyor
+{2,3,4}
+. All three balls fall into the hole
 2
-vanilla cookies and
-1
-chocolate cookie.
-The second guest eats a chocolate cookie. After that, there are
-2
-vanilla cookies and
+. So the answer is
+3
+.
+In the second query, the conveyors change to ">>>>>". After that, put a ball on each conveyor
+{3,4,5}
+. All three balls fall into the hole
+5
+. So the answer is
+3
+.
+In the third query, the conveyors change to "<<<<<". After that, put a ball on each conveyor
+{1,2,3,4,5}
+. All five balls fall into the hole
 0
-chocolate cookies.
-The last guest selects a chocolate cookie, but there are no chocolate cookies. So, the guest gets angry.
-So, this order can't be chosen by Anna.
-Let's consider the order
-{2,2,1}
-of types of guests. Then:
-The first guest eats a vanilla cookie. After that, there is
+. So the answer is
+5
+.
+In the fourth query, the conveyors change to ">>><<". After that, put a ball on each conveyor
+{1,2,3}
+. All three balls fall into the hole
+3
+. So the answer is
+3
+.
+In the fifth query, the conveyors change to "><<><". After that, put a ball on each conveyor
+{2,3,4}
+. Two balls fall into the hole
 1
-vanilla cookie and
+, and one ball falls into the hole
+4
+. So, the answer is
 2
-chocolate cookies.
-The second guest eats a vanilla cookie. After that, there are
+.
+In the sixth query, the conveyors change to "<>><>". After that, put a ball on each conveyor
+{1,2,3,4,5}
+. Three balls fall into the hole
+3
+, one ball falls into the hole
 0
-vanilla cookies and
-2
-chocolate cookies.
-The last guest eats a chocolate cookie. After that, there are
-0
-vanilla cookies and
-1
-chocolate cookie.
-So, the answer to this test case is "Yes".
-In the fifth test case, it is illustrated, that the number of cookies (
-a+b
-) can be equal to zero, but the number of guests (
-n+m
-) can't be equal to zero.
-In the sixth test case, be careful about the overflow of
-32
--bit integer type.
+and one ball falls into the hole
+5
+. So, the answer is
+3
+.

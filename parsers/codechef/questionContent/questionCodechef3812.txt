@@ -1,70 +1,111 @@
-Make It
+Tree Distance Sum
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-Roger is the mayor of a city with
-N citizens (numbered
-1 through
-N). On each day, each citizen has to pay a tax; let's denote the tax paid by the
-i-th citizen by
-A
+You are given a tree consisting of
+N nodes. The nodes are numbered from
+1 to
+N. The tree is rooted at the node
+1.
+A tree is a connected undirected graph with
+N−1 edges.
+Find the sum of the distance between nodes
+x and
+y over all tuples (
+u,v,x,y) satisfying the following conditions:
+1)
+u<v
+2)
+u is the ancestor of node
+x and
+v is the ancestor of node
+y.
+3) Neither of
+u or
+v is the ancestor of the other.
+Since the sum can be enormous, print it modulo
+(10
+9
++7).
+Note:
+The distance between two nodes of a tree is the number of edges in the shortest path between these two nodes.
+Node
+x is considered to be the ancestor of
+y if
+x lies on the path from
+1 to
+y.
+Usually, there is no bound on the stack memory and is equal to the total memory limit of 1.5 GB. But due to a system configuration issue, the stack limit for C++ is temporarily set to 8 MB. So, if you believe that your code requires a larger stack limit, please include this in your code.
+Input Format
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test contains an integer
+N, denoting the number of nodes in the tree.
+N−1 lines follow. The
+i
+th
+of these lines contains two space-separated integers
+u
+i
+and
+v
+i
+, denoting an edge between the nodes
+u
+i
+and
+v
 i
 .
-One day, Roger was extremely bored, so he decided to start a return-tax-for-fun program. The program is simple: on each day, Roger picks some non-empty group of citizens and returns to them the taxes they paid that day. However, picking some random citizens is not very fun, and Roger has always been fond of the number
-K and its multiples, so he decided to only pick groups of citizens such that the product of the taxes returned to them is a multiple of
-K. Among all such choices, he picks a group which minimises the sum of the returned taxes (he does not want to waste too much money).
-We know that Roger is a moody person. Sometimes, he chooses two integers
-1≤L≤R≤N and decides that he will not consider the citizens numbered
-L through
-R for the return-tax-for-fun program, i.e. the sum of returned taxes should be the smallest possible among all groups that do not contain any of these citizens. Roger told Melanie, his secretary, to do all the work and report to him the smallest sum of taxes that should be returned. Now, Melanie is looking for your help.
-You should answer
-Q queries. In each query, you are given the integers
-L and
-R and you should compute the smallest sum of taxes that should be returned or determine that there is no way to choose a group of citizens such that the product of the taxes returned to them is a multiple of
-K. Note that the queries are independent — a citizen that is not considered for the return-tax-for-fun program in one query may be considered for the program again in subsequent queries.
-Input
-The first line of the input contains three space-separated integers
-N,
-Q and
-K.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
-Q lines follow. Each of these lines contains two space-separated integers
-L and
-R describing a query.
-Output
-For each query, print a single line containing one integer — the smallest returned sum, or
-−1 if it is impossible to pick a valid group of citizens.
+Output Format
+For each test case, output in a single line the sum obtained modulo
+(10
+9
++7).
 Constraints
-1≤N,Q≤10
+1≤T≤2000
+1≤N≤10
 5
-1≤K≤10
-8
-1≤A
+1≤u
 i
-≤10
-8
-for each valid
+,v
 i
-1≤L≤R≤N
+≤N
+It is guaranteed that the given nodes and edges construct a tree.
+The sum of
+N over all test cases does not exceed
+10
+6
 Sample 1:
 Input
 Output
-5 5 24
-6 3 12 2 8
-3 3
-2 4
-3 4
+4
+3
+1 2
+2 3
+3
+1 2
 1 3
-2 2
-11
-14
-11
--1
-14
+5
+1 2
+2 3
+3 4
+2 5
+6
+1 2
+1 3
+3 4
+2 5
+2 6
+0
+2
+8
+54
+Explanation:
+Test case
+1: There is no such tuple satisfying the constraints.
+Test case
+2:
+(2,3,2,3) is the only valid tuple and distance between node
+2 and node
+3 is
+2.

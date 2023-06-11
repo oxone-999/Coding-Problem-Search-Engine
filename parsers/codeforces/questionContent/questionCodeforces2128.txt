@@ -1,163 +1,190 @@
-B. Balls of Steel
-time limit per test1 second
+D. Rating Compression
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have
+On the competitive programming platform CodeCook, every person has a rating graph described by an array of integers
+a
+of length
 n
-distinct points
-(
-x
-1
-,
-y
-1
-),…,(
-x
-n
-,
-y
-n
-)
-on the plane and a non-negative integer parameter
+. You are now updating the infrastructure, so you've created a program to compress these graphs.
+The program works as follows. Given an integer parameter
 k
-. Each point is a microscopic steel ball and
+, the program takes the minimum of each contiguous subarray of length
 k
-is the attract power of a ball when it's charged. The attract power is the same for all balls.
-In one operation, you can select a ball
-i
-to charge it. Once charged, all balls with Manhattan distance at most
-k
-from ball
-i
-move to the position of ball
-i
-. Many balls may have the same coordinate after an operation.
-More formally, for all balls
-j
-such that
-|
-x
-i
-−
-x
-j
-|+|
-y
-i
-−
-y
-j
-|≤k
-, we assign
-x
-j
-:=
-x
-i
-and
-y
-j
-:=
-y
-i
+in
+a
 .
-An example of an operation. After charging the ball in the center, two other balls move to its position. On the right side, the red dot in the center is the common position of those balls.
-Your task is to find the minimum number of operations to move all balls to the same position, or report that this is impossible.
+More formally, for an array
+a
+of length
+n
+and an integer
+k
+, define the
+k
+-compression array of
+a
+as an array
+b
+of length
+n−k+1
+, such that
+b
+j
+=
+min
+j≤i≤j+k−1
+a
+i
+b
+min
+For example, the
+3
+-compression array of
+[1,3,4,5,2]
+is
+[min{1,3,4},min{3,4,5},min{4,5,2}]=[1,3,2].
+A permutation of length
+m
+is an array consisting of
+m
+distinct integers from
+1
+to
+m
+in arbitrary order. For example,
+[2,3,1,5,4]
+is a permutation, but
+[1,2,2]
+is not a permutation (
+2
+appears twice in the array) and
+[1,3,4]
+is also not a permutation (
+m=3
+but there is
+4
+in the array).
+A
+k
+-compression array will make CodeCook users happy if it will be a permutation. Given an array
+a
+, determine for all
+1≤k≤n
+if CodeCook users will be happy after a
+k
+-compression of this array or not.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤100
-) — the number of test cases.
-The first line of each test case contains two integers
-n
-,
-k
-(
-2≤n≤100
-,
-0≤k≤
+1≤t≤
 10
-6
-) — the number of balls and the attract power of all balls, respectively.
-The following
+4
+) — the number of test cases.
+The first line of the description of each test case contains a single integer
 n
-lines describe the balls' coordinates. The
-i
--th of these lines contains two integers
-x
-i
-,
-y
-i
 (
-0≤
-x
-i
-,
-y
-i
-≤
+1≤n≤3⋅
 10
 5
-) — the coordinates of the
+) — the length of the array.
+The second line of the description of each test case contains
+n
+integers
+a
+1
+,…,
+a
+n
+(
+1≤
+a
 i
--th ball.
-It is guaranteed that all points are distinct.
+≤n
+) — the elements of the array.
+It is guaranteed, that the sum of
+n
+for all test cases does not exceed
+3⋅
+10
+5
+.
 Output
-For each test case print a single integer — the minimum number of operations to move all balls to the same position, or
-−1
-if it is impossible.
+For each test case, print a binary string of length
+n
+.
+The
+k
+-th character of the string should be
+1
+if CodeCook users will be happy after a
+k
+-compression of the array
+a
+, and
+0
+otherwise.
 Example
 input
 Copy
+5
+5
+1 5 3 4 2
+4
+1 3 2 1
+5
+1 3 3 3 2
+10
+1 2 3 4 5 6 7 8 9 10
 3
-3 2
-0 0
-3 3
-1 1
-3 3
-6 7
-8 8
-6 9
-4 1
-0 0
-0 1
-0 2
-0 3
+3 3 2
 output
 Copy
--1
-1
--1
+10111
+0001
+00111
+1111111111
+000
 Note
-In the first test case, there are three balls at
-(0,0)
-,
-(3,3)
-, and
-(1,1)
-and the attract power is
-2
-. It is possible to move two balls together with one operation, but not all three balls together with any number of operations.
-In the second test case, there are three balls at
-(6,7)
-,
-(8,8)
-, and
-(6,9)
-and the attract power is
-3
-. If we charge any ball, the other two will move to the same position, so we only require one operation.
-In the third test case, there are four balls at
-(0,0)
-,
-(0,1)
-,
-(0,2)
-, and
-(0,3)
-, and the attract power is
+In the first test case,
+a=[1,5,3,4,2]
+.
+The
 1
-. We can show that it is impossible to move all balls to the same position with a sequence of operations.
+-compression of
+a
+is
+[1,5,3,4,2]
+and it is a permutation.
+The
+2
+-compression of
+a
+is
+[1,3,3,2]
+and it is not a permutation, since
+3
+appears twice.
+The
+3
+-compression of
+a
+is
+[1,3,2]
+and it is a permutation.
+The
+4
+-compression of
+a
+is
+[1,2]
+and it is a permutation.
+The
+5
+-compression of
+a
+is
+[1]
+and it is a permutation.

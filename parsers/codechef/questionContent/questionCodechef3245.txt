@@ -1,74 +1,31 @@
-Cherry and Pyramid
+Place the mines!
 Problem
-Cherry has a string
-S consisting of lowercase English letters. Using this string, he formed a pyramid of infinite length with certain rules:
-N-th row of pyramid contains
-N characters.
-Each row of pyramid begins with the first character of the string.
-The subsequent characters of the row are appended to the string in cyclic fashion, until the size of string for that Row is reached (See example pyramid for better understanding).
-He has another string
-T of smaller (or equal) size.
-You are asked
-Q queries. Each query is provided with a row number
-N. The answer to the query is number of occurrences of string
-T in that particular row of pyramid. No of occurrences of String
-T in a string
-V would mean that you'd need to find number of substrings
-V
-i
-,V
-i+1
-...V
-j
-which are equal to String
-T, where
-i≤j.
-For eg: If the string is code, then the pyramid will be of the form:
-c
-co
-cod
-code
-codec
-codeco
-codecod
-codecode
-codecodec
-codecodeco
-...
-###Input:
-The first line contains string
-S — consisting of lowercase English letters.
-The second line contains string
-T — consisting of lowercase English letters.
-Next line contains an integer
-Q — the number of queries.
-Then follow
-Q lines with queries descriptions. Each of them contains a single integer
-N denoting the row number of pyramid.
-###Output:
-Print
-Q lines. The
-i-th of them should contain a integer denoting occurrences of string
-T in that particular row.
-###Constraints
-1≤∣S∣≤10
-5
-1≤∣T∣≤∣S∣
-1≤Q≤10
-5
-1≤N≤10
-9
-###Sample Input:
-codechef
-chefcode
-3
-4
-12
-1455
-###Sample Output:
-0
+The following a tie breaker problem. The best answer will receive one point. All other successful answers will be scored on a curve and receive a fraction of a point based on how close they come to the best answer.
+You are given a large square area with an edge length of 2n, subdivided into unit squares (fields). Some mines have already been planted on certain fields, and we would like to plant as few more mines as possible, so as to destroy all of the fields of the area (assuming all the mines explode simultaneously). For each mine, the fields it destroys are given as follows. For any k , 0 <= k <= n, we can partition the considered area into 2n rectangles of size 2k x 2n-k. The mine is assumed to destroy a square if and only if the mine and the square belong to the same rectangle in the considered partition, for some value of k.
+For example, if n=3, the mine "*" placed on the square at position (1,1) will destroy all the fields which are not marked with dots below:
+.#......
+.#......
+.#......
+.#......
+##......
+##......
+#*######
+####....
+Input
+The first line will contain integer 8<=n<=16, (where 2n is the size of the area). The second line will contain 0<=m<2n, the number of already planted mines. The next m lines will contain the 0-based x and y coordinates of the existing mines.
+Output
+The first line should contain t - the number of mines to be added. The next t lines should contain the coordinates of the added mines.
+Scoring
+For each test case, you will receive (2n-m)/t-1 points, provided you destroy all the fields of the area.
+Example
+Input:
+2
 1
-181
-###Explanation: Pyramid will be formed as explained in the statement.
-Query 1: Row number 4 of the pyramid is code. The number of occurrences of chefcode in code is 0.
-Query 2: Row number 12 of the pyramid is codechefcode. The number of occurrences of chefcode in codechefcode is 1.
+3 3
+
+Output:
+2
+0 1
+2 2
+You will receive (4-1)/2 - 1 = 0.5 pts for such a mine placement.
+Note: There will be some tests with no initially placed mines, and some tests with initial placements covering most of the area pretty well. Good luck!

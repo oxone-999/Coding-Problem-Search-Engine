@@ -1,23 +1,42 @@
-A. XORwice
-time limit per test1 second
+D. Hexagons
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-In order to celebrate Twice's 5th anniversary, Tzuyu and Sana decided to play a game.
-Tzuyu gave Sana two integers
-a
-and
-b
-and a really important quest.
-In order to complete the quest, Sana has to output the smallest possible value of (
-a⊕x
-) + (
-b⊕x
-) for any given
-x
-, where
-⊕
-denotes the bitwise XOR operation.
+Lindsey Buckingham told Stevie Nicks "Go your own way". Nicks is now sad and wants to go away as quickly as possible, but she lives in a 2D hexagonal world.
+Consider a hexagonal tiling of the plane as on the picture below.
+Nicks wishes to go from the cell marked
+(0,0)
+to a certain cell given by the coordinates. She may go from a hexagon to any of its six neighbors you want, but there is a cost associated with each of them. The costs depend only on the direction in which you travel. Going from
+(0,0)
+to
+(1,1)
+will take the exact same cost as going from
+(−2,−1)
+to
+(−1,0)
+. The costs are given in the input in the order
+c
+1
+,
+c
+2
+,
+c
+3
+,
+c
+4
+,
+c
+5
+,
+c
+6
+as in the picture below.
+Print the smallest cost of a path from the origin which has coordinates
+(0,0)
+to the given cell.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
@@ -26,44 +45,82 @@ t
 10
 4
 ). Description of the test cases follows.
-The only line of each test case contains two integers
-a
+The first line of each test case contains two integers
+x
 and
-b
+y
 (
-1≤a,b≤
+−
 10
 9
-).
+≤x,y≤
+10
+9
+) representing the coordinates of the target hexagon.
+The second line of each test case contains six integers
+c
+1
+,
+c
+2
+,
+c
+3
+,
+c
+4
+,
+c
+5
+,
+c
+6
+(
+1≤
+c
+1
+,
+c
+2
+,
+c
+3
+,
+c
+4
+,
+c
+5
+,
+c
+6
+≤
+10
+9
+) representing the six costs of the making one step in a particular direction (refer to the picture above to see which edge is for each value).
 Output
-For each testcase, output the smallest possible value of the given expression.
+For each testcase output the smallest cost of a path from the origin to the given cell.
 Example
 input
 Copy
-6
-6 12
-4 9
-59 832
-28 14
-4925 2912
-1 1
+2
+-3 1
+1 3 5 7 9 11
+1000000000 1000000000
+1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
 output
 Copy
-10
-13
-891
 18
-6237
-0
+1000000000000000000
 Note
-For the first test case Sana can choose
-x=4
-and the value will be (
-6⊕4
-) + (
-12⊕4
-) =
-2+8
-=
-10
-. It can be shown that this is the smallest possible value.
+The picture below shows the solution for the first sample. The cost
+18
+is reached by taking
+c
+3
+3 times and
+c
+2
+once, amounting to
+5+5+5+3=18
+.

@@ -1,193 +1,241 @@
-E. Ela Goes Hiking
-time limit per test2.5 seconds
+F. Ela and Prime GCD
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ela likes to go hiking a lot. She loves nature and exploring the various creatures it offers. One day, she saw a strange type of ant, with a cannibalistic feature. More specifically, an ant would eat any ants that it sees which is smaller than it.
-Curious about this feature from a new creature, Ela ain't furious. She conducts a long, non-dubious, sentimental experiment.
-She puts
+After a long, tough, but fruitful day at DTL, Ela goes home happily. She entertains herself by solving Competitive Programming problems. She prefers short statements, because she already read too many long papers and documentation at work. The problem of the day reads:
+You are given an integer
+c
+. Suppose that
+c
+has
 n
-cannibalistic ants in a line on a long wooden stick. Initially, the ants have the same weight of
+divisors. You have to find a sequence with
+n−1
+integers
+[
+a
 1
-. The distance between any two consecutive ants is the same. The distance between the first ant in the line to the left end and the last ant in the line to the right end is also the same as the distance between the ants. Each ant starts moving towards the left-end or the right-end randomly and equiprobably, at the same constant pace throughout the experiment. Two ants will crash if they are standing next to each other in the line and moving in opposite directions, and ants will change direction immediately when they reach the end of the stick. Ela can't determine the moving direction of each ant, but she understands very well their behavior when crashes happen.
-If a crash happens between two ants of different weights, the heavier one will eat the lighter one, and gain the weight of the lighter one. After that, the heavier and will continue walking in the same direction. In other words, if the heavier one has weight
-x
-and walking to the right, the lighter one has weight
-y
-and walking to the left (
-x>y
-), then after the crash, the lighter one will diminish, and the heavier one will have weight
-x+y
-and continue walking to the right.
-If a crash happens between two ants with the same weight, the one walking to the left end of the stick will eat the one walking to the right, and then continue walking in the same direction. In other words, if one ant of weight
-x
-walking to the left, crashes with another ant of weight
-x
-walking to the right, the one walking to the right will disappear, and the one walking to the left will have to weight
-2x
-and continue walking to the left.
-Please, check the example in the "Note" section, which will demonstrate the ants' behavior as above.
-We can prove that after a definite amount of time, there will be only one last ant standing. Initially, each ant can randomly and equiprobably move to the left or the right, which generates
+,
+a
 2
-n
-different cases of initial movements for the whole pack. For each position in the line, calculate the probability that the ant begins in that position and survives. Output it modulo
-10
-9
-+7
+,...
+a
+n−1
+]
+, which satisfies the following conditions:
+Each element is strictly greater than
+1
 .
-Formally, let
-M=
-10
-9
-+7
-. It can be shown that the answer can be expressed as an irreducible fraction
-p
-q
-, where
-p
-and
-q
-are integers and
-q≢0(modM)
-. Output the integer equal to
-p⋅
-q
-−1
-modM
-. In other words, output such an integer
+Each element is a divisor of
+c
+.
+All elements are distinct.
+For all
+1≤i<n−1
+,
+gcd(
+a
+i
+,
+a
+i+1
+)
+is a prime number.
+In this problem, because
+c
+can be too big, the result of prime factorization of
+c
+is given instead. Note that
+gcd(x,y)
+denotes the greatest common divisor (GCD) of integers
 x
-that
-0≤x<M
 and
-x⋅q≡p(modM)
-.
+y
+and a prime number is a positive integer which has exactly
+2
+divisors.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
+The first line contains one integer
 t
 (
 1≤t≤
 10
-3
-). The description of the test cases follows.
-The only line of each test contains an integer
-n
+4
+) - the number of test cases.
+The first line of each test case contains one integer
+m
 (
-1≤n≤
-10
-6
-) — the number of ants in the experiment.
+1≤m≤16
+) - the number of prime factor of
+c
+.
+The second line of each test case contains
+m
+integers
+b
+1
+,
+b
+2
+,…,
+b
+m
+(
+1≤
+b
+i
+<
+2
+20
+) — exponents of corresponding prime factors of
+c
+, so that
+c=
+p
+b
+1
+1
+⋅
+p
+b
+2
+2
+⋅…⋅
+p
+b
+m
+m
+and
+n=(
+b
+1
++1)(
+b
+2
++1)…(
+b
+m
++1)
+hold.
+p
+i
+is the
+i
+-th smallest prime number.
 It is guaranteed that the sum of
-n
-in all tests will not exceed
-10
-6
+n⋅m
+over all test cases does not exceed
+2
+20
 .
 Output
-For each test, print
-n
-lines.
-i
--th line contains a single number that denotes the survival probability of the
-i
--th ant in the line modulo
-10
-9
-+7
+Print the answer for each test case, one per line. If there is no sequence for the given
+c
+, print
+−1
 .
+Otherwise, print
+n−1
+lines. In
+i
+-th line, print
+m
+space-separated integers. The
+j
+-th integer of
+i
+-th line is equal to the exponent of
+j
+-th prime number from
+a
+i
+.
+If there are multiple answers, print any of them.
 Example
 input
 Copy
-3
-4
 5
 2
+1 1
+1
+1
+3
+1 1 1
+1
+4
+2
+2 1
 output
 Copy
-0
-250000002
-250000002
-500000004
-0
-250000002
-250000002
-250000002
-250000002
-0
-1
+0 1 
+1 1 
+1 0 
+1 
+0 1 1 
+0 0 1 
+1 0 1 
+1 1 0 
+0 1 0 
+1 1 1 
+1 0 0 
+-1
+2 0 
+1 1 
+0 1 
+2 1 
+1 0 
 Note
-Here is the example of
+In each test case, the values of
+c
+are
 6
-ants moving on the branch. An ant's movement will be denoted by either a character
-L
-or
-R
-. Initially, the pack of ants on the branch will move as
-RLRRLR
-. Here's how the behavior of the pack demonstrated:
-Initially, the ants are positioned as above.
-After a while, the ant with index
+,
 2
-(walking to the left) will crash with the ant with index
+,
+30
+,
+16
+, and
+12
+in that order.
+In the first test case,
 1
-(walking to the right). The two ants have the same weight, therefore, ant
+,
 2
-will eat ant
+,
+3
+,
+6
+are divisors of
+6
+. Here, sequences
+[2,6,3]
+and
+[3,6,2]
+can be answer. Permutation
+[3,2,6]
+is invalid because
+gcd(
+a
 1
-and gain its weight to
+,
+a
 2
-. The same thing happens with ant
-5
-and ant
+)=1
+is not a prime number.
+In the forth test case,
+1
+,
+2
+,
 4
-.
-The ant
-6
-will walk to the end of the stick, therefore changing its direction.
-After that, the ant with index
-5
-will crash with the ant with index
-3
-. Since ant
-5
-is more heavy (weight=
-2
-) than ant
-3
-(weight=
-1
-), ant
-5
-will eat ant
-3
-and gain its weight to
-3
-.
-Ant
-2
-will walk to the end of the stick, therefore changing its direction.
-After that, the ant with index
-5
-will crash with the ant with index
-2
-. Since ant
-5
-is more heavy (weight=
-3
-) than ant
-2
-(weight=
-2
-), ant
-5
-will eat ant
-2
-and gain its weight to
-5
-.
-Lastly, after ant
-5
-walk to the end of the branch and changes its direction, ant
-5
-will eat ant
-6
-and be the last ant standing.
+,
+8
+,
+16
+are divisors of
+16
+. Among the permutation of sequence
+[2,4,8,16]
+, no valid answer exist.

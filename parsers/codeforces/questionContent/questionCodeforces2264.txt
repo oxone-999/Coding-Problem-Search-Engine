@@ -1,140 +1,87 @@
-B. Putting Bricks in the Wall
-time limit per test1 second
+E. Swedish Heroes
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Pink Floyd are pulling a prank on Roger Waters. They know he doesn't like walls, he wants to be able to walk freely, so they are blocking him from exiting his room which can be seen as a grid.
-Roger Waters has a square grid of size
-n×n
-and he wants to traverse his grid from the upper left (
-1,1
-) corner to the lower right corner (
-n,n
-). Waters can move from a square to any other square adjacent by a side, as long as he is still in the grid. Also except for the cells (
-1,1
-) and (
-n,n
-) every cell has a value
-0
-or
-1
-in it.
-Before starting his traversal he will pick either a
-0
-or a
-1
-and will be able to only go to cells values in which are equal to the digit he chose. The starting and finishing cells (
-1,1
-) and (
-n,n
-) are exempt from this rule, he may go through them regardless of picked digit. Because of this the cell (
-1,1
-) takes value the letter 'S' and the cell (
-n,n
-) takes value the letter 'F'.
-For example, in the first example test case, he can go from (
-1,1
-) to (
-n,n
-) by using the zeroes on this path: (
-1,1
-), (
-2,1
-), (
-2,2
-), (
-2,3
-), (
-3,3
-), (
-3,4
-), (
-4,4
+While playing yet another strategy game, Mans has recruited
+n
+Swedish heroes, whose powers which can be represented as an array
+a
+.
+Unfortunately, not all of those mighty heroes were created as capable as he wanted, so that he decided to do something about it. In order to accomplish his goal, he can pick two consecutive heroes, with powers
+a
+i
+and
+a
+i+1
+, remove them and insert a hero with power
+−(
+a
+i
++
+a
+i+1
 )
-The rest of the band (Pink Floyd) wants Waters to not be able to do his traversal, so while he is not looking they will invert at most two cells in the grid (from
-0
-to
-1
-or vice versa). They are afraid they will not be quick enough and asked for your help in choosing the cells. Note that you cannot invert cells
-(1,1)
+back in the same position.
+For example if the array contains the elements
+[5,6,7,8]
+, he can pick
+6
 and
-(n,n)
+7
+and get
+[5,−(6+7),8]=[5,−13,8]
 .
-We can show that there always exists a solution for the given constraints.
-Also note that Waters will pick his digit of the traversal after the band has changed his grid, so he must not be able to reach (
-n,n
-) no matter what digit he picks.
+After he will perform this operation
+n−1
+times, Mans will end up having only one hero. He wants his power to be as big as possible. What's the largest possible power he can achieve?
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤50
-). Description of the test cases follows.
-The first line of each test case contains one integers
+The first line contains a single integer
 n
 (
-3≤n≤200
+1≤n≤200000
 ).
-The following
+The second line contains
 n
-lines of each test case contain the binary grid, square (
-1,1
-) being colored in 'S' and square (
-n,n
-) being colored in 'F'.
-The sum of values of
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
-doesn't exceed
-200
-.
-Output
-For each test case output on the first line an integer
-c
 (
-0≤c≤2
-)  — the number of inverted cells.
-In
+−
+10
+9
+≤
+a
 i
--th of the following
-c
-lines, print the coordinates of the
-i
--th cell you inverted. You may not invert the same cell twice. Note that you cannot invert cells
-(1,1)
-and
-(n,n)
-.
-Example
+≤
+10
+9
+) — powers of the heroes.
+Output
+Print the largest possible power he can achieve after
+n−1
+operations.
+Examples
 input
 Copy
-3
 4
-S010
-0001
-1000
-111F
-3
-S10
-101
-01F
-5
-S0101
-00000
-01111
-11111
-0001F
+5 6 7 8
 output
 Copy
-1
-3 4
-2
-1 2
-2 1
-0
+26
+input
+Copy
+5
+4 -5 9 -2 1
+output
+Copy
+15
 Note
-For the first test case, after inverting the cell, we get the following grid:
-
-S010
-0001
-1001
-111F
+Suitable list of operations for the first sample:
+[5,6,7,8]→[−11,7,8]→[−11,−15]→[26]

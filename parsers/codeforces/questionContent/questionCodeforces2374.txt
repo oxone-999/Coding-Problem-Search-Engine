@@ -1,181 +1,177 @@
-D. Colored Rectangles
+G. Running Competition
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given three multisets of pairs of colored sticks:
-R
-pairs of red sticks, the first pair has length
-r
-1
-, the second pair has length
-r
-2
-,
-…
-, the
-R
--th pair has length
-r
-R
+A running competition is going to be held soon. The stadium where the competition will be held can be represented by several segments on the coordinate plane:
+two horizontal segments: one connecting the points
+(0,0)
+and
+(x,0)
+, the other connecting the points
+(0,y)
+and
+(x,y)
 ;
-G
-pairs of green sticks, the first pair has length
-g
-1
-, the second pair has length
-g
-2
-,
-…
-, the
-G
--th pair has length
-g
-G
+n+1
+vertical segments, numbered from
+0
+to
+n
+. The
+i
+-th segment connects the points
+(
+a
+i
+,0)
+and
+(
+a
+i
+,y)
 ;
-B
-pairs of blue sticks, the first pair has length
-b
+0=
+a
+0
+<
+a
 1
-, the second pair has length
-b
+<
+a
 2
+<⋯<
+a
+n−1
+<
+a
+n
+=x
+.
+For example, here is a picture of the stadium with
+x=10
 ,
-…
-, the
-B
--th pair has length
-b
-B
-;
-You are constructing rectangles from these pairs of sticks with the following process:
-take a pair of sticks of one color;
-take a pair of sticks of another color different from the first one;
-add the area of the resulting rectangle to the total area.
-Thus, you get such rectangles that their opposite sides are the same color and their adjacent sides are not the same color.
-Each pair of sticks can be used at most once, some pairs can be left unused. You are not allowed to split a pair into independent sticks.
-What is the maximum area you can achieve?
+y=5
+,
+n=3
+and
+a=[0,3,5,10]
+:
+A lap is a route that goes along the segments, starts and finishes at the same point, and never intersects itself (the only two points of a lap that coincide are its starting point and ending point). The length of a lap is a total distance travelled around it. For example, the red route in the picture representing the stadium is a lap of length
+24
+.
+The competition will be held in
+q
+stages. The
+i
+-th stage has length
+l
+i
+, and the organizers want to choose a lap for each stage such that the length of the lap is a divisor of
+l
+i
+. The organizers don't want to choose short laps for the stages, so for each stage, they want to find the maximum possible length of a suitable lap.
+Help the organizers to calculate the maximum possible lengths of the laps for the stages! In other words, for every
+l
+i
+, find the maximum possible integer
+L
+such that
+l
+i
+modL=0
+, and there exists a lap of length exactly
+L
+.
+If it is impossible to choose such a lap then print
+−1
+.
 Input
 The first line contains three integers
-R
+n
 ,
-G
-,
-B
+x
+and
+y
 (
-1≤R,G,B≤200
-) — the number of pairs of red sticks, the number of pairs of green sticks and the number of pairs of blue sticks.
+1≤n,x,y≤2⋅
+10
+5
+,
+n≤x
+).
 The second line contains
-R
+n+1
 integers
-r
-1
+a
+0
 ,
-r
-2
-,…,
-r
-R
-(
-1≤
-r
-i
-≤2000
-) — the lengths of sticks in each pair of red sticks.
-The third line contains
-G
-integers
-g
+a
 1
-,
-g
-2
-,…,
-g
-G
+, ...,
+a
+n
 (
-1≤
-g
-i
-≤2000
-) — the lengths of sticks in each pair of green sticks.
+0=
+a
+0
+<
+a
+1
+<
+a
+2
+<⋯<
+a
+n−1
+<
+a
+n
+=x
+).
+The third line contains one integer
+q
+(
+1≤q≤2⋅
+10
+5
+) — the number of stages.
 The fourth line contains
-B
-integers
-b
+q
+even integers
+l
 1
 ,
-b
+l
 2
-,…,
-b
-B
+, ...,
+l
+q
 (
-1≤
-b
+4≤
+l
 i
-≤2000
-) — the lengths of sticks in each pair of blue sticks.
+≤
+10
+6
+) — the lengths of the stages.
 Output
-Print the maximum possible total area of the constructed rectangles.
-Examples
+Print
+q
+numbers. The
+i
+-th number should be equal to the maximum possible length of a suitable lap for the
+i
+-th stage, or
+−1
+if it is impossible to choose a lap for that stage.
+Example
 input
 Copy
-1 1 1
-3
-5
-4
+3 10 5
+0 3 5 10
+6
+24 30 14 16 18 10
 output
 Copy
-20
-input
-Copy
-2 1 3
-9 5
-1
-2 8 5
-output
-Copy
-99
-input
-Copy
-10 1 1
-11 7 20 15 19 14 2 4 13 14
-8
-11
-output
-Copy
-372
-Note
-In the first example you can construct one of these rectangles: red and green with sides
-3
-and
-5
-, red and blue with sides
-3
-and
-4
-and green and blue with sides
-5
-and
-4
-. The best area of them is
-4×5=20
-.
-In the second example the best rectangles are: red/blue
-9×8
-, red/blue
-5×5
-, green/blue
-2×1
-. So the total area is
-72+25+2=99
-.
-In the third example the best rectangles are: red/green
-19×8
-and red/blue
-20×11
-. The total area is
-152+220=372
-. Note that you can't construct more rectangles because you are not allowed to have both pairs taken to be the same color.
+24 30 14 16 -1 -1 

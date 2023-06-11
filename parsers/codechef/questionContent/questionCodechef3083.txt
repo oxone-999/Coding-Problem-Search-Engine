@@ -1,35 +1,107 @@
-Chef and Magic Numbers
+Locked Safe
 Problem
-Chef is the cleverest man in the whole world. However he is not interested in science, give him the magic. His first magic lesson consists of converting a number k to F(k) where F(k) - is the k-th magic integer. An integer is magic if S(n) is smaller than or equal to q. S(n) is the sum of squares of the digits in n. For example, S(13) = 1^2 + 3^2 = 10.
-Now Chef want to test his magical abilities. He knows how to solve this task, but who will check it? That is where you come in.
-The problem is as follows: there is an array of N numbers. Let A be the given array. Then Bi = F(Ai) for all i (1 <= i <= N). This is followed by M queries of the form (l, r). For each such query you need to find the sum of the elements of the array B that are in the interval (l, r) modulo 1000000007.
-  Input
-The first line of the input contains an integer q. The next line contains an integer N. The third line contains N space-separated integers A1, A2, ..., AN denoting the given array. Next line contains M denoting the number of queries. The next M lines contains two integers denoting left and right ends of queries.
-  Output
-For each query, output a single line containing sum of the elements of the array B in the given interval.
-Constraints
-1 ≤ q ≤ 10^9
-1 ≤ N ≤ 3*10^5
-1 ≤ Ai ≤ 3*10^5
-1 ≤ M ≤ 10^5
-1 ≤ l ≤ r ≤ N
-  Example
-Input:
-201
-5
-1 2 10 5 10000
-5
-1 1
-2 2
-3 3
-5 5
-1 5  
-Output:
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef has met up with his old friend Jack recently. Jack told Chef that he found a recipe for an ancient dish, but unfortunately, it is locked in a safe and to open the safe, it is necessary to enter the solution to the following problem.
+There is a sequence of non-negative integers
+A
 1
+,A
 2
+,…,A
+N
+on the safe. Find the number of pairs
+(l,r) (
+1≤l≤r≤N) which satisfy the condition
+(A
+l
+∨A
+l+1
+∨…∨A
+r
+)⊕(A
+l
+∧A
+l+1
+∧…∧A
+r
+)≥max(A
+l
+,A
+l+1
+,…,A
+r
+).
+Here,
+⊕ denotes bitwise XOR,
+∨ denotes bitwise OR and
+∧ denotes bitwise AND.
+Jack and Chef cannot think of anything except the recipe, so you are asked to open the safe.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+Output
+For each test case, print a single line containing one integer ― the number of pairs
+(l,r) that satisfy the given condition.
+Constraints
+1≤N≤10
+6
+0≤A
+i
+<2
+60
+for each valid
+i
+the sum of
+N over all test cases does not exceed
 10
-10636
-10654 
-  Scoring
-Subtask 1 (30 points): 200 ≤ q ≤ 109.
-Subtask 2 (70 points): Look at constraints
+6
+Subtasks
+Subtask #1 (10 points): for each valid
+i,
+A
+i
+is a power of
+2
+Subtask #2 (30 points):
+A
+i
+≤3⋅10
+5
+for each valid
+i
+the sum of
+N over all test cases does not exceed
+3⋅10
+5
+Subtask #3 (60 points): original constraints
+Sample 1:
+Input
+Output
+2
+4
+0 1 2 3
+6
+1 3 5 6 4 2
+6
+11
+Explanation:
+Example case 1: The pairs
+(l,r) satisfying the condition are
+(1,1),
+(1,2),
+(1,3),
+(1,4),
+(2,3) and
+(2,4).

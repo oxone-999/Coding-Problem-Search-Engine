@@ -1,116 +1,110 @@
-Range Assign, Number of Distinct Elements Minimize
+OR Matrix
 Problem
-You are given an array
-A of
-N positive integers.
-In one operation, you can do the following:
-Choose integers
-i and
-j
-(1≤i<j≤N), such that
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+You are given a matrix of integers
+A with
+N rows (numbered
+1 through
+N) and
+M columns (numbered
+1 through
+M). Each element of this matrix is either
+0 or
+1.
+A move consists of the following steps:
+Choose two different rows
+r
+1
+and
+r
+2
+or two different columns
+c
+1
+and
+c
+2
+.
+Apply the bitwise OR operation with the second row/column on the first row/column. Formally, if you chose two rows, this means you should change
 A
-i
-=A
-j
-;
-For all
-k
-(i<k<j), change the value of
-A
-k
+r
+1
+,k
 to
 A
-i
-.
-Find out whether
-A can have at most
-2 distinct values after using any (possibly zero) number of operations.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of two lines of input:
-The first line of each test case contains
-N - the size of the array.
-The next line contains
-N integers,
-A
+r
 1
-,A
+,k
+∨A
+r
 2
+,k
+for each
+1≤k≤M; if you chose two columns, then you should change
+A
+k,c
+1
+to
+A
+k,c
+1
+∨A
+k,c
+2
+for each
+1≤k≤N.
+For each element of the matrix, compute the minimum number of moves required to make it equal to
+1 or determine that it is impossible. Note that these answers are independent, i.e. we are starting with the initial matrix for each of them.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+M.
+N lines follow. For each
+i (
+1≤i≤N), the
+i-th of these lines contains
+M integers
+A
+i,1
 ,A
-3
+i,2
 ,…,A
-N
-- the elements of the array.
-Output Format
-For each test case, print YES if
-A can have at most
-2 distinct values after using any (possibly zero) number of operations and NO otherwise.
-You may print each character of the string in uppercase or lowercase (for example, the strings YES, yEs, yes, and yeS will all be treated as identical).
-Constraints
-1≤T≤1000
-1≤N≤10
-5
-1≤A
-i
-≤10
-9
-The sum of
-N over all test cases won't exceed
-10
-5
-.
+i,M
+NOT separated by spaces.
+Output
+For each test case, print
+N lines. For each valid
+i, the
+i-th of these lines should contain
+M space-separated integers; for each valid
+j, the
+j-th of these integers should be the minimum number of moves required to make
+A
+i,j
+equal to
+1, or
+−1 if it is impossible.
+###Constraints
+1≤T≤100
+1≤N,M≤1,000
+A
+i,j
+∈{0,1} for each valid
+i,j
+the sum of
+N⋅M for all test cases does not exceed
+1,000,000
 Sample 1:
 Input
 Output
-4
-5
-5 9 5 5 5
-3
-1 2 3
-4
-1 2 1 3
-4
-1 2 3 1
-YES
-NO
-YES
-YES
-Explanation:
-Test case
-1: The array
-A already has
-2 distinct elements.
-Test case
-2: It is impossible to make operations such that
-A has
-2 distinct elements.
-Test case
-3: We can make an operation as:
-Choose
-i=1 and
-j=3. Thus, we change
-A
-2
-to
-A
 1
-=1.
-The final array is
-[1,1,1,3] which has two distinct elements.
-Test case
-4: We can make an operation as:
-Choose
-i=1 and
-j=4. Thus, we change
-A
-2
-and
-A
-3
-to
-A
-1
-=1.
-The final array is
-[1,1,1,1] which has one distinct element.
+3 3
+010
+000
+001
+1 0 1
+2 1 1
+1 1 0

@@ -1,38 +1,65 @@
-The In-XOR-able Task
+Prefix Suffix And Or
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-You are given a sequence of integers
+JJ has an integer
+K. JJ also has an array
+A of length
+N where
+(0≤A
+i
+<2
+K
+). He can perform the following operations on
+A any number of times (possibly zero):
+Select
+i and
+x such that
+1≤i≤N and
+0≤x<2
+K
+and for each
+1≤j≤i, set
 A
-1
-,A
-2
-,…,A
-N
-. You have to answer
-Q queries.
-In each query, you are given two integers
-L and
-R, and you have to find the number of ordered pairs
-(X,Y) such that
-L≤X,Y≤R and
+j
+:=A
+j
+&x.
+Select
+i and
+x such that
+1≤i≤N and
+0≤x<2
+K
+and for each
+i≤j≤N, set
 A
-X
-≤A
-X
-⊕A
-Y
-≤A
-Y
-. Here,
-⊕ is the bitwise XOR operator.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
+j
+:=A
+j
+∣x.
+Here,
+& denotes the bitwise AND operation and
+∣ denotes the bitwise OR operation.
+Determine the number of different arrays JJ can obtain by applying the above operations zero or more times. Since the answer can be large, output the answer modulo
+998244353.
+Two arrays
+P and
+Q are said to be different if there exists any index
+i such that
+P
+i
+
+=Q
+i
+.
+Input Format
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
 The first line of each test case contains two space-separated integers
 N and
-Q.
-The second line contains
+K — the size of the array
+A and the parameter
+K mentioned in the statement.
+The second line of each test case contains
 N space-separated integers
 A
 1
@@ -40,47 +67,51 @@ A
 2
 ,…,A
 N
-.
-Each of the next
-Q lines contains two space-separated integers
-L and
-R describing a query.
-Output
-For each query, print a single line containing one integer ― the number of valid pairs.
+denoting the array
+A.
+Output Format
+For each test case, output the number of different arrays JJ can obtain, modulo
+998244353.
 Constraints
-1≤T≤50,000
-1≤N,Q≤5⋅10
+1≤T≤10
 5
+1≤N≤10
+5
+1≤K≤30
 0≤A
 i
 <2
-30
-for each valid
-i
-1≤L≤R≤N
-the sum of
-N over all test cases does not exceed
-5⋅10
+K
+The sum of
+N over all test cases won't exceed
+2⋅10
 5
-the sum of
-Q over all test cases does not exceed
-5⋅10
-5
+.
 Sample 1:
 Input
 Output
-2
-5 4
-2 7 1 5 2
-1 5
-2 3
-4 5
-2 4
-10 1
-123 667 232 989 0 104 305 329 567 345
-1 10
+3
+2 1
+1 0
+2 1
+0 1
+4 2
+3 2 1 0
 4
-1
-0
-2
-23
+3
+72
+Explanation:
+Test case
+1:
+[0,0],
+[0,1],
+[1,0] and
+[1,1] are the arrays which can be obtained from
+A=[1,0].
+Test case
+2:
+[0,0],
+[0,1], and
+[1,1] are the arrays which can be obtained from
+A=[0,1]. Note that we cannot obtain
+[1,0].

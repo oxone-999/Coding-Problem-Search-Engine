@@ -1,42 +1,139 @@
-ForbiddenSum
+Max Shift After XOR
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Mike likes to invent new functions. The latest one he has invented is called ForbiddenSum. Let's consider how it can be calculated:
-You are given a set S of positive integers. The integers are not necessary distinct. ForbiddenSum of S equals to the minimal non-negative integer, that can't be returned by the algorithm described below:
-Choose a random subset S' of S(it can be empty as well);
-Calculate the sum of all the numbers of S' and assign it to the variable T;
-Return the value of the variable T.
-I.e. if S = {1, 1, 3, 7}, the algorithm can return 0(S' = {}), 1(S' = {1}), 2(S' = {1, 1}), 3(S' = {3}), 4(S' = {1, 3}), 5(S' = {1, 1, 3}), but it can't return 6. So, ForbiddenSum of S equals to 6.
-Inventing of new function is not the only Mike's hobby. Also, he likes to collect rare and unusual arrays. He is going to share with you one of them.
-Formally, Mike gives you one array A, consisting of N positive integers. After that, he asks you M questions, two integers Li and Ri describe i'th question: What does ForbiddenSum of S={ALi, ALi+1, ..., ARi-1, ARi} equal to?
-Input
-The first line contains the only integer N. The second line contains N integers - the array A. A is 1-indexed.
-The third line contains the only integer M. The following M lines contain two integer numbers 1 ≤ Li ≤ Ri ≤ N each.
-  Output
-Output should consists of M lines. The i'th line should contains the answer to the i'th question.
-  Constraints
-1 ≤ N, M ≤ 100,000
-1 ≤ Ai ≤ 109
-1 ≤ A1 + A2 + ... + AN ≤ 109
-  Example
-Input:
-5
-1 2 4 9 10
-5
-1 1
-1 2
-1 3
-1 4
-1 5
-Output:
+You are given an array
+A, consisting of
+N integers.
+Consider the following definitions:
+Prefix xor array of an array
+A is defined as the array
+B such that
+B
+i
+=A
+1
+⊕…⊕A
+i
+, where
+⊕ denotes bitwise XOR operation.
+In other words,
+B=[A
+1
+,A
+1
+⊕A
 2
+,…,A
+1
+⊕A
+2
+…⊕A
+N
+]
+The value of an array
+A is the number of distinct values in array
+B. For example, for array
+A=[1,2,3,0], we have
+B=[1,3,0,0]. The array
+B has
+3 distinct values, thus, the value of array
+A is
+3.
+One right shift on the array
+A is a transformation that changes the array
+A=[A
+1
+,A
+2
+…,A
+N
+] to
+A
+′
+=[A
+N
+,A
+1
+,…,A
+N−1
+].
+Calculate the maximum value of the array
+A you can get, by performing any (possibly zero) number of right shifts on the array
+A.
+Input Format
+The first line of input contains
+T
+− the number of test cases you need to solve.
+The first line of each test case contains one integer
+N
+− the size of the array.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,…,A
+N
+− the elements of the array
+A.
+Output Format
+For each test case, output on a new line the maximum value of an array
+A you can achieve after performing any (possibly zero) number of right shifts on the array.
+Constraints
+1≤T≤10
+5
+2≤N≤2⋅10
+5
+0≤A
+i
+≤2
+60
+−1
+Sum of
+N over all test cases doesn't exceed
+2⋅10
+5
+.
+Subtasks
+Subtask 1 (20 points): Sum of
+N over all test cases doesn't exceed
+2000.
+Subtask 2 (80 points): Original constraints.
+Sample 1:
+Input
+Output
+3
+2
+0 0
+6
+1 1 1 2 2 2
 4
-8
-8
-8
-  Explanation
-In the example test there are M=5 questions. We won't describe all of them, only two ones.
-The first question
-In the first test case S equals to {1}. The answer is 2, because we can recieve 1 in case the algorithm chooses S' = {1}. But there are no chances to receive 2.
-The second question
-In the first test case S equals to {1, 2}. The answer is 4, because we can recieve 1 in case the algorithm chooses S' = {1}, 2 in case the algorithm chooses S' = {2} and 3 in case the algorithm chooses S' = {1, 2}. But there are no chances to receive 4.
+1 2 2 8
+1
+4
+4
+Explanation:
+Test case
+1: Perform zero right shifts on
+A=[0,0]. Thus,
+B=[0,0⊕0]=[0,0]. Thus, the value of array
+A is
+1.
+Test case
+2: Perform two right shifts on
+A=[1,1,1,2,2,2]. Thus,
+A becomes
+[2,2,1,1,1,2]. The array
+B=[2,0,1,0,1,3]. Thus, the value of
+A is
+4. It can be shown that the value of
+A cannot exceed
+4.
+Test case
+3: Perform three right shifts on
+A=[1,2,2,8]. Thus,
+A becomes
+[2,2,8,1]. The array
+B=[2,2⊕2,2⊕2⊕8,2⊕2⊕8⊕1]=[2,0,8,9]. Thus, the value of
+A is
+4. It can be shown that the value of
+A cannot exceed
+4.

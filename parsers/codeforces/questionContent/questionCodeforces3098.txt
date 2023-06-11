@@ -1,142 +1,153 @@
-E. Send Tree to Charlie
-time limit per test4 seconds
-memory limit per test512 megabytes
+C. League of Leesins
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Christmas was knocking on the door, and our protagonist, Bob, was preparing a spectacular present for his long-time second best friend Charlie. As chocolate boxes are lame, he decided to decorate a tree instead. Bob's tree can be represented as an undirected connected graph with
+Bob is an avid fan of the video game "League of Leesins", and today he celebrates as the League of Leesins World Championship comes to an end!
+The tournament consisted of
 n
-nodes (numbered
-1
-to
-n
-) and
-n−1
-edges. Initially, Bob placed a decoration with label
-i
-on node
-i
-, for each
-1≤i≤n
-. However, as such a simple arrangement is lame, he decided to shuffle the decorations a bit. Formally, Bob did the following steps:
-First, he listed the
-n−1
-edges in some order.
-Then, he considered the edges one by one in that order. For each edge
-(u,v)
-, he swapped the decorations of node
-u
-with the one of node
-v
-.
-After finishing, Bob seemed satisfied with the arrangement, so he went to sleep.
-The next morning, Bob wakes up only to find out that his beautiful arrangement has been ruined! Last night, Bob's younger brother Bobo dropped some of the decorations on the floor while he was playing with the tree. Fortunately, no decorations were lost, so Bob can repair the tree in no time. However, he completely forgets how the tree looked like yesterday. Therefore, given the labels of the decorations still on the tree, Bob wants to know the number of possible configurations of the tree. As the result can be quite large, Bob will be happy if you can output the result modulo
-1000000007
 (
-10
-9
-+7
-). Note that, it is possible that there exists no possible configurations.
+n≥5
+) teams around the world. Before the tournament starts, Bob has made a prediction of the rankings of each team, from
+1
+-st to
+n
+-th. After the final, he compared the prediction with the actual result and found out that the
+i
+-th team according to his prediction ended up at the
+p
+i
+-th position (
+1≤
+p
+i
+≤n
+, all
+p
+i
+are unique). In other words,
+p
+is a permutation of
+1,2,…,n
+.
+As Bob's favorite League player is the famous "3ga", he decided to write down every
+3
+consecutive elements of the permutation
+p
+. Formally, Bob created an array
+q
+of
+n−2
+triples, where
+q
+i
+=(
+p
+i
+,
+p
+i+1
+,
+p
+i+2
+)
+for each
+1≤i≤n−2
+. Bob was very proud of his array, so he showed it to his friend Alice.
+After learning of Bob's array, Alice declared that she could retrieve the permutation
+p
+even if Bob rearranges the elements of
+q
+and the elements within each triple. Of course, Bob did not believe in such magic, so he did just the same as above to see Alice's respond.
+For example, if
+n=5
+and
+p=[1,4,2,3,5]
+, then the original array
+q
+will be
+[(1,4,2),(4,2,3),(2,3,5)]
+. Bob can then rearrange the numbers within each triple and the positions of the triples to get
+[(4,3,2),(2,3,5),(4,1,2)]
+. Note that
+[(1,4,2),(4,2,2),(3,3,5)]
+is not a valid rearrangement of
+q
+, as Bob is not allowed to swap numbers belong to different triples.
+As Alice's friend, you know for sure that Alice was just trying to show off, so you decided to save her some face by giving her any permutation
+p
+that is consistent with the array
+q
+she was given.
 Input
 The first line contains a single integer
 n
 (
-2≤n≤500000
-) — the number of nodes.
-Each of the next
-n−1
-lines contains two integers
-u
-and
-v
-(
-1≤u,v≤n
-), denoting that there is an edge connecting two nodes
-u
-and
-v
-. It is guaranteed that the given edges form a tree.
-The last line contains
-n
+5≤n≤
+10
+5
+) — the size of permutation
+p
+.
+The
+i
+-th of the next
+n−2
+lines contains
+3
 integers
-a
+q
+i,1
+,
+q
+i,2
+,
+q
+i,3
+(
+1≤
+q
+i,j
+≤n
+) — the elements of the
+i
+-th triple of the rearranged (shuffled) array
+q
+i
+, in random order. Remember, that the numbers within each triple can be rearranged and also the positions of the triples can be rearranged.
+It is guaranteed that there is at least one permutation
+p
+that is consistent with the input.
+Output
+Print
+n
+distinct integers
+p
 1
 ,
-a
+p
 2
 ,…,
-a
+p
 n
 (
-0≤
-a
+1≤
+p
 i
 ≤n
-). For each
-i
-,
-a
-i
-=0
-means that the decoration of node
-i
-has been dropped on the floor. Otherwise,
-a
-i
-is the label of the decoration of node
-i
-. It is guaranteed that no label appears more than once.
-Output
-Output the number of possible configurations modulo
-1000000007
-(
-10
-9
-+7
-).
-Examples
-input
-Copy
-4
-3 4
-2 4
-4 1
-0 4 0 0
-output
-Copy
-2
+) such that
+p
+is consistent with array
+q
+.
+If there are multiple answers, print any.
+Example
 input
 Copy
 5
-1 2
-2 4
-3 4
-5 4
-0 0 0 0 0
+4 3 2
+2 3 5
+4 1 2
 output
 Copy
-12
-input
-Copy
-3
-1 2
-1 3
-1 0 0
-output
-Copy
-0
-Note
-In the first example, the possible configurations of the tree are
-[2,4,1,3]
-and
-[3,4,2,1]
-.
-In the second example, note that while there are
-4!=24
-possible permutations of the edges, each of them results in a possible configuration, there are only
-12
-different configurations.
-In the third example, it is easy to see that the decoration
-1
-cannot stay at node
-1
-after the swaps.
+1 4 2 3 5 

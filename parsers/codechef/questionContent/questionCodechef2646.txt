@@ -1,63 +1,109 @@
-What Is This, a Crossover Episode
+College Admissions
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-You are given an integer
-D. You have to find a string
-S such that the following conditions are satisfied:
-S is non-empty and its length does not exceed
-7⋅D.
-S contains only lowercase English letters.
-The number of distinct substrings in
-S minus the number of palindromic substrings in
-S equals
-D. Here, when counting palindromic substrings, a substring that occurs multiple times should be counted multiple times.
-It can be proved that a solution always exists under the given constraints.
-Notes:
-A string
-B is a substring of a string
-A if
-B can be obtained from
-A by deleting several (possibly none or all) characters from the beginning and several (possibly none or all) characters from the end.
-A palindrome is a string that does not change when it is reversed. E.g. strings "z", "aba" and "dammitimmad" are palindromes, but strings "ab" and "bojack" are not.
-A palindromic substring is a substring which is also a palindrome.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains a single integer
-D.
-Output
-For each test case, print two lines. The first of these lines should contain a single integer ― the length of your string
-S. The second line should contain this string
-S.
-If there are multiple solutions, you may find any one of them.
-Constraints
-1≤T≤100
-1≤D≤10
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+College admissions are starting and Chef has also recently completed his high school. There are
+N colleges, numbered from
+1 to
+N, and they are ranked from
+1 to
+N. Each college has only a single seat left. To apply for the colleges, every student has to give a common exam, the result of which decides their destiny, i.e, the student having best rank (scoring max marks) gets to choose the college of their preference first.
+Each student has a list of colleges that they like. They will want to get to the best-ranked college from their list. If they can't get into it, they will want to get into the second-ranked college from among their list, and so on.
+If the single vacant seat of a college gets filled, the admission for that year is closed in that college. Then, the people who have applied for that college have to look for a lower-ranked college in their preference list provided that it still has vacancies.
+Given information about
+M students, about their marks scored in the exam (given as ranks) and the id’s of the college they are applying for, find which college Chef will land into given that he is the student with
+id=1.
+Every student tries to get into the highest-ranked college on his list which has a vacancy and if not possible to get into any of the colleges on his list, he won’t join any college this year.
+###Input:
+First line will contain
+T, number of testcases. Then the testcases follow.
+Each testcase contains
+M+3 lines of input.
+First line contains
+2 space separated integers
+N,
+M, the total number of colleges, and total number of students respectively.
+Second line contain
+N distinct space separated integers
+R
+i
+, rank of the
+i
+th
+college. Here
+1 denotes a higher rank and
+N denotes a lower rank.
+Third line contains
+M distinct space separated integers
+S
+i
+, the rank of the
+i
+th
+student in the exam. Here
+1 denotes a higher rank, i.e, maximum marks scored and
+M denotes a lower rank, i.e, minimum marks scored.
+Next
+M lines contain
+K+1 space separated integers which the first integer
+K is the number of colleges
+i
+th
+student will apply to and the next
+K integers describe the same.
+###Output: For each testcase, output in a single line the college in which Chef applies and
+0 if he won't be joining any college this year.
+###Constraints
+1≤N,M≤5∗10
 4
-the sum of
-D over all test cases does not exceed
-10
+R is the permutation of integers from
+[1,N]
+S is the permutation of integers from
+[1,M]
+Sum of
+N over all tests is atmost
+3∗10
 5
-Example Input
-4
-4
-10
-15
-60
-Example Output
-4
-todd
+Sum of
+M over all tests is atmost
+3.5∗10
 5
-diane
+Sum of
+K over all students over all tests is atmost
+1.5∗10
 6
-bojack
-12
-peanutbutter
-Exaplanation
-Example case
-1: There are
-9 distinct substrings in
-S: "t", "o", "d", "to", "od", "dd", "tod", "odd", "todd". Five of them are palindromic: "t", "o", "d", "d", "dd". Therefore,
-D=9−5=4.
-Notice that while counting palindromic substrings (but not while counting distinct substrings), we are including both occurrences of the substring "d".
+Every student applies to atleast
+1 college and all the applied colleges are different.
+Note: Language multiplier for
+Java is
+3 and for
+python is
+5 and its recommended to use Fast Input-Output for this problem.
+Sample 1:
+Input
+Output
+3
+2 2
+2 1
+1 2
+2 1 2
+2 1 2
+1 2
+1
+2 1
+1 1
+1 1
+2 1
+1 2
+1
+2 2 1
+2
+0
+1
+Explanation:
+Case 1: Here since Chef has the highest rank, he gets to choose the highest rank college in his preference list first, that is college with
+id=2.
+Case 2: Here since there is only
+1 college and Chef stood second, he won't be able to apply to any of the colleges this year, so we print
+id=0.
+Case 3: Here since Chef is the only student and thus has the highest rank, he gets to choose the highest rank college in his preference list first, that is college with
+id=1.

@@ -1,83 +1,76 @@
-C. Weight of the System of Nested Segments
+E. Rescheduling the Exam
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-On the number line there are
-m
-points,
-i
--th of which has integer coordinate
-x
-i
-and integer weight
-w
-i
-. The coordinates of all points are different, and the points are numbered from
-1
-to
-m
-.
-A sequence of
+Now Dmitry has a session, and he has to pass
 n
-segments
-[
-l
+exams. The session starts on day
 1
-,
-r
-1
-],[
-l
-2
-,
-r
-2
-],…,[
-l
-n
-,
-r
-n
-]
-is called system of nested segments if for each pair
-i,j
+and lasts
+d
+days. The
+i
+th exam will take place on the day of
+a
+i
 (
-1≤i<j≤n
-) the condition
-l
+1≤
+a
 i
-<
-l
-j
-<
-r
-j
-<
-r
+≤d
+), all
+a
 i
-is satisfied. In other words, the second segment is strictly inside the first one, the third segment is strictly inside the second one, and so on.
-For a given number
+ — are different.
+Sample, where
+n=3
+,
+d=12
+,
+a=[3,5,9]
+. Orange — exam days. Before the first exam Dmitry will rest
+2
+days, before the second he will rest
+1
+day and before the third he will rest
+3
+days.
+For the session schedule, Dmitry considers a special value
+μ
+— the smallest of the rest times before the exam for all exams. For example, for the image above,
+μ=1
+. In other words, for the schedule, he counts exactly
 n
-, find a system of nested segments such that:
-both ends of each segment are one of
-m
-given points;
-the sum of the weights
-2⋅n
-of the points used as ends of the segments is minimal.
-For example, let
-m=8
-. The given points are marked in the picture, their weights are marked in red, their coordinates are marked in blue. Make a system of three nested segments:
-weight of the first segment:
-1+1=2
-weight of the second segment:
-10+(−1)=9
-weight of the third segment:
-3+(−2)=1
-sum of the weights of all the segments in the system:
-2+9+1=12
-System of three nested segments
+numbers  — how many days he rests between the exam
+i−1
+and
+i
+(for
+i=0
+between the start of the session and the exam
+i
+). Then it finds
+μ
+ — the minimum among these
+n
+numbers.
+Dmitry believes that he can improve the schedule of the session. He may ask to change the date of one exam (change one arbitrary value of
+a
+i
+). Help him change the date so that all
+a
+i
+remain different, and the value of
+μ
+is as large as possible.
+For example, for the schedule above, it is most advantageous for Dmitry to move the second exam to the very end of the session. The new schedule will take the form:
+Now the rest periods before exams are equal to
+[2,2,5]
+. So,
+μ=2
+.
+Dmitry can leave the proposed schedule unchanged (if there is no way to move one exam so that it will lead to an improvement in the situation).
 Input
 The first line of input data contains an integer
 t
@@ -85,123 +78,119 @@ t
 1≤t≤
 10
 4
-) —the number of input test cases.
-An empty line is written before each test case.
-The first line of each test case contains two positive integers
+) — the number of input test cases. The descriptions of test cases follow.
+An empty line is written in the test before each case.
+The first line of each test case contains two integers
 n
+and
+d
 (
-1≤n≤
+2≤n≤2⋅
 10
 5
-) and
-m
-(
-2⋅n≤m≤2⋅
-10
-5
-).
-The next
-m
-lines contain pairs of integers
-x
-i
-(
-−
+,1≤d≤
 10
 9
-≤
-x
-i
-≤
-10
-9
-) and
-w
+) — the number of exams and the length of the session, respectively.
+The second line of each test case contains
+n
+integers
+a
 i
 (
-−
-10
-4
-≤
-w
+1≤
+a
 i
-≤
-10
-4
-) — coordinate and weight of point number
+≤d,
+a
 i
-(
-1≤i≤m
-) respectively. All
-x
+<
+a
+i+1
+), where the
 i
-are different.
+-th number means the date of the
+i
+-th exam.
 It is guaranteed that the sum of
-m
-values over all test cases does not exceed
+n
+for all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case, output
-n+1
-lines: in the first of them, output the weight of the composed system, and in the next
-n
-lines output exactly two numbers  — the indices of the points which are the endpoints of the
+For each test case, output the maximum possible value of
+μ
+if Dmitry can move any one exam to an arbitrary day. All values of
+a
 i
--th segment (
-1≤i≤n
-). The order in which you output the endpoints of a segment is not important — you can output the index of the left endpoint first and then the number of the right endpoint, or the other way around.
-If there are several ways to make a system of nested segments with minimal weight, output any of them.
+should remain distinct.
 Example
 input
 Copy
-3
+9
 
-3 8
-0 10
--2 1
-4 10
-11 20
-7 -1
-9 1
-2 3
-5 -2
-
-3 6
--1 2
-1 3
-3 -1
-2 4
-4 0
-8 2
+3 12
+3 5 9
 
 2 5
-5 -1
-3 -2
-1 0
--2 0
--5 -3
-output
-Copy
-12
-2 6
-5 1
-7 8
+1 5
 
-10
-1 6
-5 2
+2 100
+1 2
+
+5 15
+3 6 9 12 15
+
+3 1000000000
+1 400000000 500000000
+
+2 10
 3 4
 
--6
-5 1
-4 2
-Note
-The first test case coincides with the example from the condition. It can be shown that the weight of the composed system is minimal.
-The second test case has only
-6
-points, so you need to use each of them to compose
+2 2
+1 2
+
+4 15
+6 11 12 13
+
+2 20
+17 20
+output
+Copy
+2
+1
+1
+2
+99999999
 3
-segments.
+0
+1
+9
+Note
+The first sample is parsed in statement.
+One of the optimal schedule changes for the second sample:
+Initial schedule.
+New schedule.
+In the third sample, we need to move the exam from day
+1
+to any day from
+4
+to
+100
+.
+In the fourth sample, any change in the schedule will only reduce
+μ
+, so the schedule should be left as it is.
+In the fifth sample, we need to move the exam from day
+1
+to any day from
+100000000
+to
+300000000
+.
+One of the optimal schedule changes for the sixth sample:
+Initial schedule.
+New schedule.
+In the seventh sample, every day is exam day, and it is impossible to rearrange the schedule.

@@ -1,50 +1,62 @@
-B. Kill Demodogs
-time limit per test1 second
+C. Even Subarrays
+time limit per test2.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Demodogs from the Upside-down have attacked Hawkins again. El wants to reach Mike and also kill as many Demodogs in the way as possible.
-Hawkins can be represented as an
-n×n
-grid. The number of Demodogs in a cell at the
+You are given an integer array
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
 i
--th row and the
+≤n
+).
+Find the number of subarrays of
+a
+whose
+XOR
+has an even number of divisors. In other words, find all pairs of indices
+(i,j)
+(
+i≤j
+) such that
+a
+i
+⊕
+a
+i+1
+⊕⋯⊕
+a
 j
--th column is
-i⋅j
-. El is at position
-(1,1)
-of the grid, and she has to reach
-(n,n)
-where she can find Mike.
-The only directions she can move are the right (from
-(i,j)
-to
-(i,j+1)
-) and the down (from
-(i,j)
-to
-(i+1,j)
-). She can't go out of the grid, as there are doors to the Upside-down at the boundaries.
-Calculate the maximum possible number of Demodogs
-ans
-she can kill on the way, considering that she kills all Demodogs in cells she visits (including starting and finishing cells).
-Print
-2022⋅ans
-modulo
-10
-9
-+7
-. Modulo
-10
-9
-+7
-because the result can be too large and multiplied by
-2022
-because we are never gonna see it again!
-(Note, you firstly multiply by
-2022
-and only after that take the remainder.)
+has an even number of divisors.
+For example, numbers
+2
+,
+3
+,
+5
+or
+6
+have an even number of divisors, while
+1
+and
+4
+ — odd. Consider that
+0
+has an odd number of divisors in this task.
+Here
+XOR
+(or
+⊕
+) denotes the bitwise XOR operation.
+Print the number of subarrays but multiplied by 2022... Okay, let's stop. Just print the actual answer.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
@@ -53,38 +65,108 @@ t
 10
 4
 ). Description of the test cases follows.
-The first line of each test case contains one integer
+The first line of each test case contains a single integer
 n
 (
-2≤n≤
+2≤n≤2⋅
 10
-9
-) — the size of the grid.
-Output
-For each test case, print a single integer — the maximum number of Demodogs that can be killed multiplied by
-2022
-, modulo
-10
-9
-+7
+5
+) — the length of the array
+a
 .
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤n
+).
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+.
+Output
+For each test case, print the number of subarrays, whose
+XOR
+has an even number of divisors.
 Example
 input
 Copy
 4
-2
 3
-50
-1000000000
+3 1 2
+5
+4 2 1 5 3
+4
+4 4 4 4
+7
+5 7 3 7 1 7 3
 output
 Copy
-14154
-44484
-171010650
-999589541
+4
+11
+0
+20
 Note
-In the first test case, for any path chosen by her the number of Demodogs to be killed would be
-7
-, so the answer would be
-2022⋅7=14154
+In the first test case, there are
+4
+subarrays whose
+XOR
+has an even number of divisors:
+[3]
+,
+[3,1]
+,
+[1,2]
+,
+[2]
+.
+In the second test case, there are
+11
+subarrays whose
+XOR
+has an even number of divisors:
+[4,2]
+,
+[4,2,1]
+,
+[4,2,1,5]
+,
+[2]
+,
+[2,1]
+,
+[2,1,5]
+,
+[2,1,5,3]
+,
+[1,5,3]
+,
+[5]
+,
+[5,3]
+,
+[3]
+.
+In the third test case, there is no subarray whose
+XOR
+has an even number of divisors since
+XOR
+of any subarray is either
+4
+or
+0
 .

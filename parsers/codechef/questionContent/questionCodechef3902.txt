@@ -1,56 +1,43 @@
-Smart Chef vs Evil Chef
+Addition chains
 Problem
-Evil Chef recently challenged Smart Chef in the following way: Evil Chef will design a maze, and Smart Chef will provide a route through the maze. The maze consists of a square grid of cells, one of which is marked as the starting point, and one of which is marked as the exit. A robot will be placed at the starting point, which will attempt to execute each move of Smart Chef's route one at a time. If the robot cannot move in the specified direction (either because the cell in that direction is impassable, or because doing so would move the robot off the grid) the move will be ignored. Otherwise it will move one space in the specified direction. It then checks to see if it has exited the maze, and if so ignores the rest of the route. If the robot makes it to the exit, Smart Chef wins. Otherwise Evil Chef wins.
-But Smart Chef's task is not as easy as it seems. Smart Chef must provide the route without knowing what the maze looks like. Furthermore, Evil Chef may cheat and change the layout of the maze after he finds out Smart Chef's route. Luckily, Evil Chef is not very smart, and only knows how to make a limited number of mazes. And Smart Chef is so smart that he knows all the mazes Evil Chef is capable of making. He's also smart enough to know when to ask for help, and has asked for your help in designing the route.
-Your task is to design a route guarantees Smart Chef will win. In other words, your route must be able to solve all of Evil Chef's mazes. Your goal is to minimize the length of the route, but it is not necessary to find the shortest possible route (see the scoring section for additional details). As long as your route solves all the mazes, does not exceed 10000 moves in length, and no prefix of your route solves all mazes, your solution will be judged as correct.
+An addition chain for a positive integer N is a sequence of positive integers C = (A0, A1, ..., AL) such that
+1 = A0 < A1 < ... < AL – 1 < AL = N,
+for each i such that 1 ≤ i ≤ L there exist integers j and k such that 0 ≤ j, k < i and Ai = Aj + Ak.
+The integer L is called the length of the chain C.
+For example, C = (1, 2, 3, 6, 12, 15) is an addition chain of length 5 for N = 15. Indeed,
+A0 = 1,
+A1 = 2 = 1 + 1 = A0 + A0,
+A2 = 3 = 2 + 1 = A1 + A0,
+A3 = 6 = 3 + 3 = A2 + A2,
+A4 = 12 = 6 + 6 = A3 + A3,
+A5 = 15 = 3 + 12 = A2 + A4.
+It is, in fact, the shortest addition chain for N = 15.
+Your task is to find some addition chain for a given positive integer N.
+The shorter chain you will find the better score you will get.
 Input
-Input will begin with an integer T, the number of test cases that follow. Each test case begins with an integer K, the number of mazes. K maze descriptions follow. Each maze description begins with 2 integers M and N, the height and width of the maze, respectively. M lines follow with N characters each. A '.' character indicates a passable cell. A '#' character indicates an impassable cell. A 'S' character indicates the starting point, and a 'E' character indicates the exit point. There will be exactly one 'S' character and one 'E' character per maze.
+The only line of the input file contains an integer N, the number for which you need to find an addition chain.
 Output
-Output one line per test case containing the route Smart Chef should use, as a sequence of 'N', 'E', 'S', and 'W' characters, corresponding to the directions North, East, South, and West, respectively. Your route must not exceed 10000 moves in length.
+The first line of the output file should contain an integer L ≤ 500, the length of your addition chain for the value of N given in the input file. L lines should follow. ith line should contain two non-negative integers j[i] and k[i] both less than i separated by exactly one space. Their meaning is that for your addition chain, Ai is equal to Aj[i] + Ak[i]. More specifically, your output will be considered as correct if and only if all of the following conditions hold:
+1 ≤ L ≤ 500;
+0 ≤ j[i], k[i] < i for all i such that 1 ≤ i ≤ L;
+for the sequence (A0, A1, ..., AL) defined by the rules A0 = 1 and Ai = Aj[i] + Ak[i] for i = 1, 2, ..., L we have 1 = A0 < A1 < ... < AL – 1 < AL = N.
+Your program will get Accepted if and only if it returns correct output for each test case within a given time limit.
 Scoring
-Your score for each test case is the length of your route. Your total score for each test file is the sum of your scores on the individual test cases. Your overall score is the average of your scores on the individual test files.
-Sample Input
-2
-2
-6 7
-.###.##
-..#...#
-#S#.#..
-.....#.
-#.##..#
-E...#..
-6 7
-.##.#.#
-.......
-#.#.#.#
-..E#S..
-.##..#.
-#...#..
-3
-5 6
-...E#.
-#.##..
-...##.
-.##.#.
-.....S
-5 6
-##.###
-#...##
-E##..#
-.##.#.
-..S...
-6 6
-#..###
-.#..##
-.S.#.#
-.#.#.E
-#..#.#
-##....
-Sample Output
-SSSWENENNWWWWSSE
-ESSSWWWWNWNNESEEEWNNEE
-This sample output would score 16+22=38. Note that better scores may be possible.
-Test case generation
-For each official test file, T is 10. K is chosen uniformly between 2 and 25, inclusive. An integer L is calculated as floor(45/sqrt(K)) and H as floor(70/sqrt(K)). Then for each maze M and N are each chosen uniformly between L and H, inclusive.
-Each maze is generated using a random walk algorithm. Initially all cells are marked as impassable. One cell, chosen randomly, is marked as passable, and a marker is placed in this cell. The following process repeated 10000000 times: The marker is moved to a random adjacent cell. Then, if the marker is in a cell adjacent to exactly one passable cell, the cell with the marker becomes passable.
-Finally, the exit is chosen randomly among all passable cells with only one passable neighbor, and the start cell is chosen randomly among all remaining passable cells.
+Your score for a test file is the length of your addition chain, that is, an integer L. The total score for a submission is the average score across all test files. Your goal is to minimize the total score.
+Constraints
+1 < N < 10100
+Example
+Input:
+15
+Output:
+6
+0 0
+1 0
+2 0
+0 3
+4 4
+4 5
+Explanation
+Sample output represents an addition chain (1, 2, 3, 4, 5, 10, 15) for N = 15. Your score for such output will be 6. Note that according to the problem statement shorter chain is possible for this value of N but you don't need to find the shortest chain since this is a challenge problem. Also note that order in which we write numbers j[i] and k[i] for the given i doesn't matter.
+Test Generation
+Values of N are generated using different strategies. There are 50 official test files in all. Among them there are 8 files where N < 100000, 5 files where N is a random decimal string of the length 100 (that is, each digit of N is distributed uniformly in the range [0, 9] except the first digit which is distributed in the range [1, 9]), 8 files where binary representation of N is a random string of the random length from 300 to 332 (that is, at first an integer L is chosen randomly in the range [300, 332] and then L digits d1, d2, ..., dL are chosen so that d1 = 1 and each di, 2 ≤ i ≤ L, is uniformly distributed in the range [0, 1]. After that N is set to d1 ∙ 2L-1 + d2 ∙ 2L-2 + ... + dL-1 ∙ 2 + dL, that is, d1d2...dL is the binary representation of N). Other 29 files generated using some special strategies which we prefer to keep in secret.

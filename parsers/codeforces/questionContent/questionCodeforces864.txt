@@ -1,112 +1,50 @@
-A. Circular Local MiniMax
+C. Bring Balance
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given
+Alina has a bracket sequence
+s
+of length
+2n
+, consisting of
 n
-integers
-a
-1
-,
-a
-2
-,…,
-a
+opening brackets '(' and
 n
-. Is it possible to arrange them on a circle so that each number is strictly greater than both its neighbors or strictly smaller than both its neighbors?
-In other words, check if there exists a rearrangement
-b
-1
-,
-b
-2
-,…,
-b
-n
-of the integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-such that for each
-i
-from
-1
-to
-n
-at least one of the following conditions holds:
-b
-i−1
-<
-b
-i
->
-b
-i+1
-b
-i−1
->
-b
-i
-<
-b
-i+1
-To make sense of the previous formulas for
-i=1
-and
-i=n
-, one shall define
-b
-0
-=
-b
-n
-and
-b
-n+1
-=
-b
-1
+closing brackets ')'. As she likes balance, she wants to turn this bracket sequence into a balanced bracket sequence.
+In one operation, she can reverse any substring of
+s
 .
+What's the smallest number of operations that she needs to turn
+s
+into a balanced bracket sequence? It can be shown that it's always possible in at most
+n
+operations.
+As a reminder, a sequence of brackets is called balanced if one can turn it into a valid math expression by adding characters + and 1. For example, sequences (())(), (), and (()(())) are balanced, while )(, ((), and (()))( are not.
 Input
 The first line of the input contains a single integer
 t
 (
-1≤t≤3⋅
+1≤t≤2⋅
 10
 4
 )  — the number of test cases. The description of the test cases follows.
 The first line of each test case contains a single integer
 n
 (
-3≤n≤
+1≤n≤
 10
 5
-)  — the number of integers.
-The second line of each test case contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤
-10
-9
 ).
+The second line of each test case contains a string
+s
+of length
+2n
+, consisting of
+n
+opening and
+n
+closing brackets.
 The sum of
 n
 over all test cases doesn't exceed
@@ -115,65 +53,67 @@ over all test cases doesn't exceed
 5
 .
 Output
-For each test case, if it is not possible to arrange the numbers on the circle satisfying the conditions from the statement, output
-NO
-. You can output each letter in any case.
-Otherwise, output
-YES
-. In the second line, output
-n
-integers
-b
-1
+For each test case, in the first line output a single integer
+k
+(0≤k≤n)
+ — the smallest number of operations required.
+The
+i
+-th of the next
+k
+lines should contain two integers
+l
+i
 ,
-b
-2
-,…,
-b
-n
-, which are a rearrangement of
-a
+r
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤2n
+), indicating that in the
+i
+-th operation, Alina will reverse the substring
+s
+l
+s
+l+1
+…
+s
+r−1
+s
+r
+. Here the numeration starts from
 1
-,
-a
-2
-,…,
-a
-n
-and satisfy the conditions from the statement. If there are multiple valid ways to arrange the numbers, you can output any of them.
+.
+If there are multiple sequences of operations with the smallest length which transform the sequence into a balanced one, you can output any of them.
 Example
 input
 Copy
-4
 3
-1 1 2
-4
-1 9 8 4
-4
-2 0 2 2
+2
+(())
+5
+())((()))(
 6
-1 1 1 11 111 1111
+())((()))(()
 output
 Copy
-NO
-YES
-1 8 4 9 
-NO
-YES
-1 11 1 111 1 1111 
+0
+2
+3 4
+9 10
+1
+2 11
 Note
-It can be shown that there are no valid arrangements for the first and the third test cases.
-In the second test case, the arrangement
-[1,8,4,9]
-works. In this arrangement,
-1
-and
-4
-are both smaller than their neighbors, and
-8,9
-are larger.
-In the fourth test case, the arrangement
-[1,11,1,111,1,1111]
-works. In this arrangement, the three elements equal to
-1
-are smaller than their neighbors, while all other elements are larger than their neighbors.
+In the first test case, the string is already balanced.
+In the second test case, the string will be transformed as follows: ())((()))(
+→
+()()(()))(
+→
+()()(())(), where the last string is balanced.
+In the third test case, the string will be transformed to ((()))((())), which is balanced.

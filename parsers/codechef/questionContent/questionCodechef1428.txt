@@ -1,53 +1,22 @@
-Count Good Prefixes
+Breaking Into Atoms
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-You are given an integer
-n and a string
-s consisting only of characters 'a' and 'b'. Consider a string
-t=
-n times
-s+s+⋯+s
-, i.e. the string obtained by concatenating
-n copies of
-s.
-Find the number of non-empty prefixes of
-t in which the number of occurrences of 'a' is strictly greater than the number of occurrences of 'b'.
+Let X be the set of all integers between 0 and n-1. Suppose we have a collection S1, S2, ..., Sm of subsets of X. Say an atom A is a subset of X such that for each Si we have either A is a subset of Si or A and Si do not have any common elements.
+Your task is to find a collection A1, ..., Ak of atoms such that every item in X is in some Ai and no two Ai, Aj with i ≠ j share a common item. Surely such a collection exists as we could create a single set {x} for each x in X. A more interesting question is to minimize k, the number of atoms.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains the string
-s and the integer
-n, separated by a single space.
+The first line contains a single positive integer t ≤ 30 indicating the number of test cases. Each test case begins with two integers n,m where n is the size of X and m is the number of sets Si. Then m lines follow where the i'th such line begins with an integer vi between 1 and n (inclusive) indicating the size of Si. Following this are vi distinct integers between 0 and n-1 that describe the contents of Si.
+You are guaranteed that 1 ≤ n ≤ 100 and 1 ≤ m ≤ 30. Furthermore, each number between 0 and n-1 will appear in at least one set Si.
 Output
-For each test case, print a single line containing one integer — the number of valid prefixes.
-Constraints
-1≤T≤100
-1≤∣s∣≤10
-3
-1≤n≤10
-9
-each character of
-s is either 'a' or 'b'
-Subtasks
-Subtask #1 (30 points):
-1≤n≤10
-3
-Subtask #2 (70 points): original constraints
+For each test case you are to output a single integer indicating the minimum number of atoms that X can be partitioned into to satisfy the constraints.
 Sample 1:
 Input
 Output
+2
+5 2
+3 0 1 2
+3 2 3 4
+4 3
+2 0 1
+2 1 2
+2 2 3
 3
-aba 2
-baa 3
-bba 3
-5
-6
-0
-Explanation:
-Example case 1: The string
-t is "abaaba". It has five prefixes which contain more a-s than b-s: "a", "aba", "abaa", "abaab" and "abaaba".
-Example case 2: The string
-t is "baabaabaa". The strings "baa", "baaba", "baabaa", "baabaab", "baabaaba" and "baabaabaa" are the six valid prefixes.
-Example case 3: The string
-t is "bbabbabba". There is no prefix of this string which consists of more a-s than b-s. Therefore, the answer is zero.
+4

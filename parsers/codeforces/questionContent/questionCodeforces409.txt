@@ -1,165 +1,277 @@
-I. Infinite Chess
-time limit per test3 seconds
+J. Hero to Zero
+time limit per test4 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-The black king lives on a chess board with an infinite number of columns (files) and
-8
-rows (ranks). The columns are numbered with all integer numbers (including negative). The rows are numbered from
-1
-to 
-8
+There are no heroes in this problem. I guess we should have named it "To Zero".
+You are given two arrays
+a
+and
+b
+, each of these arrays contains
+n
+non-negative integers.
+Let
+c
+be a matrix of size
+n×n
+such that
+c
+i,j
+=|
+a
+i
+−
+b
+j
+|
+for every
+i∈[1,n]
+and every
+j∈[1,n]
 .
-Initially, the black king is located on the starting square
-(
-x
-s
-,
-y
-s
-)
-, and he needs to reach some target square
-(
-x
-t
-,
-y
-t
-)
-. Unfortunately, there are also white pieces on the board, and they threaten the black king. After negotiations, the white pieces agreed to let the black king pass to the target square on the following conditions:
-each turn, the black king makes a move according to the movement rules;
-the black king cannot move to a square occupied by a white piece;
-the black king cannot move to a square which is under attack by any white piece. A square is under attack if a white piece can reach it in one move according to the movement rules;
-the white pieces never move.
-Help the black king find the minimum number of moves needed to reach the target square while not violating the conditions. The black king cannot leave the board at any time.
-The black king moves according to the movement rules below. Even though the white pieces never move, squares which they can reach in one move are considered to be under attack, so the black king cannot move into those squares.
-Below are the movement rules. Note that the pieces (except for the knight) cannot jump over other pieces.
-a king moves exactly one square horizontally, vertically, or diagonally.
-a rook moves any number of vacant squares horizontally or vertically.
-a bishop moves any number of vacant squares diagonally.
-a queen moves any number of vacant squares horizontally, vertically, or diagonally.
-a knight moves to one of the nearest squares not on the same rank, file, or diagonal (this can be thought of as moving two squares horizontally then one square vertically, or moving one square horizontally then two squares vertically — i. e. in an "L" pattern). Knights are not blocked by other pieces, they can simply jump over them.
-There are no pawns on the board.
-King and knight possible moves, respectively. Dotted line shows that knight can jump over other pieces.
-Queen, bishop, and rook possible moves, respectively.
+Your goal is to transform the matrix
+c
+so that it becomes the zero matrix, i. e. a matrix where every element is exactly
+0
+. In order to do so, you may perform the following operations any number of times, in any order:
+choose an integer
+i
+, then decrease
+c
+i,j
+by
+1
+for every
+j∈[1,n]
+(i. e. decrease all elements in the
+i
+-th row by
+1
+). In order to perform this operation, you pay
+1
+coin;
+choose an integer
+j
+, then decrease
+c
+i,j
+by
+1
+for every
+i∈[1,n]
+(i. e. decrease all elements in the
+j
+-th column by
+1
+). In order to perform this operation, you pay
+1
+coin;
+choose two integers
+i
+and
+j
+, then decrease
+c
+i,j
+by
+1
+. In order to perform this operation, you pay
+1
+coin;
+choose an integer
+i
+, then increase
+c
+i,j
+by
+1
+for every
+j∈[1,n]
+(i. e. increase all elements in the
+i
+-th row by
+1
+). When you perform this operation, you receive
+1
+coin;
+choose an integer
+j
+, then increase
+c
+i,j
+by
+1
+for every
+i∈[1,n]
+(i. e. increase all elements in the
+j
+-th column by
+1
+). When you perform this operation, you receive
+1
+coin.
+You have to calculate the minimum number of coins required to transform the matrix
+c
+into the zero matrix. Note that all elements of
+c
+should be equal to
+0
+simultaneously after the operations.
 Input
-The first line contains two integers
-x
-s
-and
-y
-s
-(
-1≤
-x
-s
-≤
-10
-8
-;
-1≤
-y
-s
-≤8
-) — the starting coordinates of the black king.
-The second line contains two integers
-x
-t
-and
-y
-t
-(
-1≤
-x
-t
-≤
-10
-8
-;
-1≤
-y
-t
-≤8
-) — the coordinates of the target square for the black king.
-The third line contains one integer
+The first line contains one integer
 n
 (
-0≤n≤2000
-) — the number of white pieces on the board.
-Then
+2≤n≤2⋅
+10
+5
+).
+The second line contains
 n
-lines follow, the
-i
--th line contains one character
-t
-i
-and two integers
-x
-i
-and
-y
-i
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
 (
-1≤
-x
+0≤
+a
 i
 ≤
 10
 8
-;
-1≤
-y
-i
-≤8
-) — the type and the coordinates of the
-i
--th white piece. The types of pieces are represented by the following uppercase Latin letters:
-K — king
-Q — queen
-R — rook
-B — bishop
-N — knight
-There can be any number of white pieces of any type listed above on the board, for example,
-3
-white kings or
-4
-white queens. There are no pawns on the board.
-Additional constrains on the input:
-no square is occupied by more than one white piece;
-the starting square for the black king is different from the square he wants to reach, and neither of these two squares is occupied or is under attack by any white piece.
+).
+The third line contains
+n
+integers
+b
+1
+,
+b
+2
+,…,
+b
+n
+(
+0≤
+b
+j
+≤
+10
+8
+).
 Output
-Print one integer — the minimum number of moves needed for the black king to reach the target square while not violating the conditions, or
-−1
-if it is impossible.
+Print one integer — the minimum number of coins required to transform the matrix
+c
+into the zero matrix.
 Examples
 input
 Copy
-1 8
-7 8
-2
-N 4 8
-B 4 6
+3
+1 2 3
+2 2 2
 output
 Copy
-10
+2
 input
 Copy
-1 1
-1 5
-2
-K 1 3
-R 2 3
+3
+3 1 3
+1 1 2
 output
 Copy
-6
+5
 input
 Copy
-2 2
-6 4
-1
-Q 4 3
+2
+1 0
+2 1
 output
 Copy
--1
+2
+input
+Copy
+2
+1 4
+2 3
+output
+Copy
+4
+input
+Copy
+4
+1 3 3 7
+6 9 4 2
+output
+Copy
+29
 Note
-The image below demonstrates the solution for the second example. Here, the letters K, R, s, and t represent the white king, the white rook, the starting square, and the target square, respectively. Bold crosses mark the squares which are under attack by the white pieces. Bold dots show the shortest path for the black king.
+In the first example, the matrix looks as follows:
+1 1 1
+0 0 0
+1 1 1
+You can turn it into a zero matrix using
+2
+coins as follows:
+subtract
+1
+from the first row, paying
+1
+coin;
+subtract
+1
+from the third row, paying
+1
+coin.
+In the second example, the matrix looks as follows:
+2 2 1
+0 0 1
+2 2 1
+You can turn it into a zero matrix using
+5
+coins as follows:
+subtract
+1
+from the first row, paying
+1
+coin;
+subtract
+1
+from the third row, paying
+1
+coin;
+subtract
+1
+from the third row, paying
+1
+coin;
+subtract
+1
+from
+a
+2,3
+, paying
+1
+coin;
+add
+1
+to the third column, receiving
+1
+coin;
+subtract
+1
+from the first row, paying
+1
+coin;
+subtract
+1
+from
+a
+2,3
+, paying
+1
+coin.

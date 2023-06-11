@@ -1,19 +1,81 @@
-Sereja and Arcs
+Oh I Dont Care
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Sereja have N points, with coordinates (1, 0), (2, 0), ..., (N, 0). Every point has a color, point with coordinate (i, 0) has color A[i].
-Sereja have painted arcs between every pair of points with same color. Formally Sereja painted arc between points (i, 0) and (j, 0) if A[i] = A[j] and i != j, such arc has color A[i]. All the arcs are painted such way that they will reside along the positive quadrant.
-Now Sereja wants to know how many pairs of arc with different color intersect?
-Input
- First line contain integer N. Next line contain integers A[1], A[2], ..., A[N].
-Output
- In single line output answer modulo 1000000007 (10^9 + 7). 
+You are given a matrix
+C that has
+N rows and
+M columns where each entry is
+1 or
+0 or
+x. Here
+x denotes a don't care value.
+You can perform the following operation on the matrix:
+Pick any column
+j such that
+1≤j≤M.
+Assign
+C
+i,j
+→C
+i,j
+⊕1 for all
+1≤i≤N
+You are given that:
+0⊕1=1
+1⊕1=0
+x⊕1=x
+where
+⊕ denotes the bitwise XOR operation.
+You have to perform any number of operations (possibly
+0) such that each row in the matrix has at most a single
+1.
+Determine if it's possible to achieve this. Print YES if it's possible, else print NO.
+Input Format
+The first line will contain
+T - the number of test cases. Then the test cases follow.
+The first line of each test case has two integers
+N and
+M - the number of rows and number of columns respectively.
+The next
+M lines of the test case contain
+N characters each where the
+j-th character in the
+i-th line denotes
+C
+i,j
+.
+Output Format
+Print YES if it's possible to perform any number of operations so that each row has at most a single
+1, else print NO.
+You may print each character of Yes and No in uppercase or lowercase (for example, yes, yEs, YES will be considered identical).
 Constraints
-1 ≤ N ≤ 100000
-1 ≤ A[i] ≤ 100000
-  Example
-Input:
-4
-1 2 1 2
-Output:
-1
+1≤T≤400
+1≤N,M≤1000
+Sum of
+N⋅M over all test cases does not exceed
+10
+6
+Sample 1:
+Input
+Output
+3
+2 2
+00
+11
+4 5
+10x1x
+1xx11
+xx101
+1x11x
+3 3
+101
+010
+100
+YES
+YES
+NO
+Explanation:
+Test case-1: We just perform one operation on the first column.
+Test case-2: We perform the operations on the columns
+1,3 and
+5.
+Test case-3: It can be proven that it is impossible to satisfy the given conditions using any number of operations.

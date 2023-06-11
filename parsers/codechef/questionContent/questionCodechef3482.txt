@@ -1,122 +1,100 @@
-Anagram Split
+Chef and Divisors
 Problem
-This is an interactive task
-Let's clear things up with some definitions:
-Two binary strings
-S and
-T are anagrams of each other if it is possible to rearrange the letters in the string
-S to get a string equal to
-T.
-Let
-S[l,r] be the substring of
-S starting at
-l and ending at
-r both inclusive.
-Let
-f(S,l,r) be the frequency of character 1 in
-S[l,r].
-Chef has two hidden binary strings
-A and
-B both of which are of size
-N. It is known that
-A and
-B are not anagrams.
-You can make queries on the two strings. Each query is of the form:
-? l r
-The judge will reply with the value of
-∣f(A,l,r)−f(B,l,r)∣
-You have to find any such index
-i such that both conditions are fulfilled:
-A[1,i−1] and
-B[1,i−1] are anagrams.
-A[i+1,N] and
-B[i+1,N] are anagrams.
-If there is no such index then print -1.
-You can make atmost
-35 queries per test case.
-Note:
-i can be
-1 or
-N as well. We consider all of
-A[1,0],B[1,0],A[N+1,N],B[N+1,N] to be empty strings.
-Interaction
-Begin the interaction by reading a single integer
-T denoting the number of test cases. The description of interaction for
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Given an integer N, you can apply a operation on
+N multiple times(possibly 0).
+Operation is defined as follows:
+Choose a positive integer
+K such that
+K has exactly
+4 divisors and
+K is a divisor of
+N.
+Change
+N to
+N/K.
+Find the minimum number of divisors possible of the resulting number
+N.
+Input:
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
 T test cases follows.
-Then for each test case read a single integer
-N denoting the size of
-A and
-B.
-To ask a query, output ? i j (
-1≤i≤j≤N) and then read a single integer.
-To print the answer, output ! then print the index.
-If at any time you make an invalid query or exceed the query limit, the interaction is terminated and you will receive a Wrong Answer verdict.
-Don't forget to flush the output after printing each line!
+The first and only line of each test case contains an integers
+N.
+Output:
+For each test case, output a single line containing one integer — the minimum number of divisors possible of the resulting number.
 Constraints
-1≤T≤100
-1≤N≤1000
-A and
-B are not anagrams of each other
-Sample Interaction
-Grader                You
+1≤T≤10
+6
+1≤N≤10
+6
+Subtasks
+100 points : original constraints
+Sample 1:
+Input
+Output
+5
 3
-4
-                      ? 1 3
-1
-                      ? 2 4
-0
-                      ! 3
-3          
-                      ? 1 1
-1
-                      ? 2 3
+64
+30
+120
+45
 2
-                      ! -1
-3
-                      ? 1 2
-2
-                      ? 1 3
 1
-                      ! 1
-Explanation
-Test case
-1:
-A=0101,
-B=1011
-The query ? 1 3 gives
-∣1−2∣=1
-The query ? 2 4 gives
-∣2−2∣=0
-We can see that
-A[1,2] and
-B[1,2] are anagrams.
-A[4,4] and
-B[4,4] are anagrams.
-Therefore
-3 is a valid answer.
-Test case
-2:
-A=111,
-B=000
-The query ? 1 1 gives
-∣1−0∣=1
-The query ? 2 3 gives
-∣2−0∣=2
-There is no index satisfying the conditions, so we print
-−1.
-Test case
-3:
-A=110,
-B=001
-The query ? 1 2 gives
-∣2−0∣=2
-The query ? 1 3 gives
-∣2−1∣=1
-We can see that
-A[1,0] and
-B[1,0] are anagrams (both are empty strings).
-A[2,3] and
-B[2,3] are anagrams.
-Therefore
-1 is a valid answer.
-Note: The above queries are just to demonstrate the interaction. They may or may not be sufficient to deduce the final answer.
+2
+1
+2
+Explanation:
+Example case 1: We cannot divide
+N=3 by any valid
+K and hence output is
+2 as
+N=3 has exactly two divisors
+1 and
+3.
+Example case 2:
+N=64 can be divided by
+8 twice as
+8 has exactly
+4 divisors (
+1,
+2,
+4,
+8 ) and hence the resultant value of
+N will be
+1 and
+1 has only
+1 divisor hence answer is
+1.
+Example case 3: We can divide
+N=30 by
+6,
+10 or
+15 as all three of them have exactly
+4 divisors. In each case resultant value of
+N will be either
+5,
+3 or
+2. And all three of them has exactly
+2 divisors and they cannot be divided further. Hence the output is
+2.
+Example case 4: One of the optimal ways to divide
+N=120 is divide
+120 by
+8 followed by dividing by
+15. The resultant value will be
+120/8=15 and
+15/15=1. The number
+1 has exactly one divisor and hence output is
+1.
+Note that, If we divided
+N=120 by
+6 then we won't get the optimal answer.
+Example case 5: We can divide
+N=45 by
+15 and resultant value of
+N will be
+3. The number
+3 has exactly
+2 divisors and hence output is
+2

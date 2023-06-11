@@ -1,113 +1,46 @@
-Remove Adjacent
+Trees and Subtrees
 Problem
-You are given an array
-A of length
-N.
-You can perform the following operation on the array, as long as it has more than one element:
-Choose any two adjacent elements, remove them from the array and insert their sum at that position.
-Formally, if the current length of the array is
-∣A∣, you can choose an index
-1≤i<∣A∣, and transform the array into
-[A
-1
-,A
-2
-,…,A
-i−1
-,A
-i
-+A
-i+1
-,A
-i+2
-,…,A
-N
-].
-Note that after each operation, the length of array decreases by exactly
-1.
-Print the minimum number of operations to be applied on array
-A such that all the elements in the resulting array are equal. See sample explanation for more details.
-Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of
-T test cases follows.
-Each test case consists of two lines of input.
-The first line contains an integer
-N.
-The second line contains
-N space-separated integers, the elements of array
-A.
-Output Format
-For each test case, output on a new line the minimum number of operations required to make all the elements equal.
-Constraints
-1≤T≤10
-4
-2≤N≤3⋅10
-4
-−3⋅10
-4
-≤A
-i
-≤3⋅10
-4
-Sum of
-N over all test cases does not exceed
-3⋅10
-4
-Subtasks
-Subtask #1 (100 points): Original constraints
-Sample 1:
+Read problems statements in Russian here
+The Head Chef has a reporting hierarchy for his chefs which is basically a binary tree i.e. Each chef reports to exactly one chef and every chef can take reporting of atmost two chefs . In case two chefs report to the same chef they must report at different times . The time of reporting can have only two values : Morning or Evening ( denoted by M and E , respectively ) .The Head Chef himself is not part of the reporting structure . The Head Chef has found that a new restaurant in Byteland is opening and it is hiring a group of chefs from some existing restaurant . The new restaurant will basically make an offer to one of the chefs and all the chefs directly or indirectly reporting to the chef . The Head Chef is worried that the new restaurant may be taking away some of his chefs . The Head Chef knows that the new restaurant will not change the reporting structure of the chefs . The Head Chef also has access to the reporting structure of the new restaurant in terms of ages of Chefs . The Head Chef wants to know whether there is a need to worry or not . He needs to worry if the new restaurant can possibly be targetting his chefs .
+In short given a tree T and another tree O you need to tell whether O is a subtree of T or not . The node values of T or O need not be distinct as they represent the age of the Chef . Also , a subtree of a rooted tree includes a particular node and the entire tree structure below it .
+Two trees A and B are considered same if age(A->root ) = age(B->root) and subtree rooted at A->left is same as subtree rooted at B->left and subtree rooted at A->right is same as subtree rooted B->right .
 Input
+The first line of the input contains an integer N denoting the number of chefs in Head Chef's restaurant. The Chefs are denoted by number 1 to N .
+The next N lines contain ages of the chefs with the i th line containing the age of chef i .
+The next N - 1 lines contain two integers A and B and a character C which is either 'M' or 'E' where A denotes the senior chef and B denotes the reporting chef , and the character C denotes the time of reporting .
+The next line of the input contains an integer Q denoting the number of queries/possible structures of chefs of new restaurant . This is followed by description of Q queries .
+The first line of each query contains an integer M denoting the number of chefs in new restaurant. The Chefs are denoted by numbers 1 to M.
+The next M lines contain the ages of the chefs with the i th line denoting the age of chef i .
+The next M - 1 lines contain two integers A and B and a character C which is either 'M' or 'E' where B denotes the reporting chef and A denotes the chef who takes the reporting , and the character C denotes the time of reporting .
 Output
-4
-3
-5 2 3
-2
-6 9
+For each test case answer "YES" or "NO" as applicable .
+Constraints
+2 ≤ N ≤ 100000
+1 ≤ M ≤ 1000
+1 ≤ Q ≤ 200
+1 ≤ Age of Chef ≤ 100
+Example
+Input:
 5
-3 6 5 4 9
-3
-3 3 3
-1
 1
 2
-0
-Explanation:
-Test case
-1: It is optimal to remove
-A
-2
-and
-A
-3
-in the first operation, after which the array becomes
-[5,5] — all of whose elements are equal.
-Test case
-2: Remove
-A
 1
-and
-A
 2
-after which the array becomes
-[15], which contains equal elements because it is of length
-1.
-Test case
-3: First remove
-A
-3
-and
-A
-4
-after which the updated array
-A becomes
-[3,6,9,9]. Now remove
-A
 1
-and
-A
+1 2 M
+1 3 E
+2 4 E
+3 5 M
 2
-after which the array becomes
-[9,9,9].
-Test case
-4: The array elements are already equal.
+2
+1
+2
+1 2 M
+2
+1
+1
+1 2 M
+Output:
+NO
+YES
+ 

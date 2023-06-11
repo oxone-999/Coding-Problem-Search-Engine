@@ -1,63 +1,42 @@
-K Flip
+ForbiddenSum
 Problem
-Chef is given a binary string
-S of length
-N.
-In one operation, Chef has to choose exactly
-K indices and flip their values.
-Chef can perform the above operation any number of times. Find the number of distinct binary strings Chef can obtain.
-Since the answer might be large, output it module
-10
-9
-+7.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains two space-separated integers
-N and
-K, as mentioned in statement.
-The next line contains the binary string
-S.
-Output Format
-For each test case, output the number of distinct binary strings Chef can obtain, modulo
-10
-9
-+7.
-Constraints
-1≤T≤10
-4
-1≤N≤10
-5
-1≤K≤N
-Sum of
-N over all test cases do not exceed
-3⋅10
-5
-.
-Sample 1:
+Read problems statements in Mandarin Chinese and Russian.
+Mike likes to invent new functions. The latest one he has invented is called ForbiddenSum. Let's consider how it can be calculated:
+You are given a set S of positive integers. The integers are not necessary distinct. ForbiddenSum of S equals to the minimal non-negative integer, that can't be returned by the algorithm described below:
+Choose a random subset S' of S(it can be empty as well);
+Calculate the sum of all the numbers of S' and assign it to the variable T;
+Return the value of the variable T.
+I.e. if S = {1, 1, 3, 7}, the algorithm can return 0(S' = {}), 1(S' = {1}), 2(S' = {1, 1}), 3(S' = {3}), 4(S' = {1, 3}), 5(S' = {1, 1, 3}), but it can't return 6. So, ForbiddenSum of S equals to 6.
+Inventing of new function is not the only Mike's hobby. Also, he likes to collect rare and unusual arrays. He is going to share with you one of them.
+Formally, Mike gives you one array A, consisting of N positive integers. After that, he asks you M questions, two integers Li and Ri describe i'th question: What does ForbiddenSum of S={ALi, ALi+1, ..., ARi-1, ARi} equal to?
 Input
-Output
-2
-4 1
-0010
-2 2
-00
-16
-2
-Explanation:
-Test case
-1: We can flip
-1 index in an operation. Thus, we can generate all possible binary strings of length
-4. The total number of distinct strings that can be generated are
+The first line contains the only integer N. The second line contains N integers - the array A. A is 1-indexed.
+The third line contains the only integer M. The following M lines contain two integer numbers 1 ≤ Li ≤ Ri ≤ N each.
+  Output
+Output should consists of M lines. The i'th line should contains the answer to the i'th question.
+  Constraints
+1 ≤ N, M ≤ 100,000
+1 ≤ Ai ≤ 109
+1 ≤ A1 + A2 + ... + AN ≤ 109
+  Example
+Input:
+5
+1 2 4 9 10
+5
+1 1
+1 2
+1 3
+1 4
+1 5
+Output:
 2
 4
-=16.
-Test case
-2: We have to flip
-2 indices at once. Thus, we can convert
-00 to
-11. The only possible strings that can be generated are
-00 and
-11. Thus, the answer is
-2.
+8
+8
+8
+  Explanation
+In the example test there are M=5 questions. We won't describe all of them, only two ones.
+The first question
+In the first test case S equals to {1}. The answer is 2, because we can recieve 1 in case the algorithm chooses S' = {1}. But there are no chances to receive 2.
+The second question
+In the first test case S equals to {1, 2}. The answer is 4, because we can recieve 1 in case the algorithm chooses S' = {1}, 2 in case the algorithm chooses S' = {2} and 3 in case the algorithm chooses S' = {1, 2}. But there are no chances to receive 4.

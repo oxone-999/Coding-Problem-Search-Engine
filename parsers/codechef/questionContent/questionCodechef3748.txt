@@ -1,160 +1,179 @@
-Alice Potter and Wingardium Leviosa
+Village Road Network
 Problem
-Alice wants to clean up the mess in her room. She has
-N objects in her room, numbered from
-1 to
-N.
-Each object must be in its place. In other words,
-i
-th
-object should be in the
-i
-th
-location.
-Currently, the object with the index
-P
-i
-is in the
-i
-th
-location.
-To move the objects, Alice can use the spell Wingardium Leviosa. To perform it:
-She needs to specify
-N different indices
-K
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+In the nation of Chefland there are villages at co-ordinates
+(x,y) whenever
+x and
+y are non-zero odd co-prime integers.
+x can be either positive or negative, but
+y is always positive.
+In each village
+(x,y) there is a crossroads, with the roads marked North, South, East, West.
+Road East leads to
+(x+2y,y).
+Road West leads to
+(x−2y,y).
+Road North leads to either
+(x,y+2x) or
+(−x,−(y+2x)), chosen so that the new
+y co-ordinate is positive.
+Road South leads to either
+(x,y−2x) or
+(−x,−(y−2x)), chosen so that the new
+y co-ordinate is positive.
+Some citizens of Chefland prefer these equivalent definitions for the North and South roads:
+Road North leads to
+{
+(x,y+2x)
+(−x,−(y+2x))
+when y+2x>0
+when y+2x<0
+Road South leads to
+{
+(x,y−2x)
+(−x,−(y−2x))
+when y−2x>0
+when y−2x<0
+The cost to travel a road between two adjacent villages is 1 pound. Determine the minimum cost to travel between villages at
+(x
 1
-,K
-2
-,…,K
-N
-(1≤K
-i
-≤N).
-The object that was at location
-K
+,y
 1
-will move to location
-K
+) and
+(x
 2
-, the object that was at location
-K
+,y
 2
-will move to location
-K
-3
-,
-… , the object that was at location
-K
-N−1
-will move to location
-K
-N
-, the object that was at location
-K
-N
-will move to location
-K
+).
+Notes:
+The road network is defined so that the villages form an undirected graph.
+There are two roads joining
+(−1,1) and
+(1,1), but otherwise there is a single road between any adjacent pair of villages.
+The road network does not form a simple grid - that would be too easy!
+###Input:
+First line will contain
+T, the number of testcases. Then the testcases follow.
+Each testcase contains a single line of input, which has four integers
+x
 1
-(all of these happen simultaneously).
-Your task is to help Alice move all the objects to their places by using the spell Wingardium Leviosa at most
-4 times or to inform her that it is impossible.
-Input Format
-The first line of the input contains a single integer
-N — the number of items.
-The second line contains
-N integers
-P
+,y
 1
-,P
+,x
 2
-,…,P
-N
-—
-P
-i
-is the index of the item that is initially located in the
-i
-th
-location.
-Output Format
-If it is possible to move all the items to their places by using the spell Wingardium Leviosa at most
-4 times, then:
-In the first line print the number
-M
-(0≤M≤4) — the number of spells to be used.
-Next, print
-M lines of spell descriptions. A spell description is
-N numbers
-K
+,y
+2
+.
+###Output: For each testcase, output in a single line, the answer. That is, the minimum cost in pounds to travel from
+(x
 1
-,K
+,y
+1
+) to
+(x
 2
-,…,K
-N
-(1≤K
-i
-≤N), all
-K
-i
-have to be distinct.
-If there are multiple correct answers, print any of them. Note that you do not need to minimise
-M.
-Otherwise, print a single integer
-−1.
-Constraints
-1≤N≤10
+,y
+2
+).
+###Constraints
+T≤1000
+The co-ordinates
+(x
+1
+,y
+1
+) and
+(x
+2
+,y
+2
+) of the villages satisfy
+−10
+15
+<x
+1
+,x
+2
+<10
+15
+and
+0<y
+1
+,y
+2
+<10
+15
+###Subtasks
+10 points :
+−10<x
+1
+,x
+2
+<10 and
+0<y
+1
+,y
+2
+<10
+10 points : original constraints, but the villages are selected so that the minimum cost for each testcase is
+<6
+30 points:
+−10
 6
-1≤P
-i
-≤N, all
-P
-i
-are distinct
+<x
+1
+,x
+2
+<10
+6
+and
+0<y
+1
+,y
+2
+<10
+6
+50 points: original constraints
 Sample 1:
 Input
 Output
-3
-1 2 3
-3
-1 2 3 
-1 2 3 
-2 3 1
-Explanation:
-After the first spell, the indices of objects at corresponding locations becomes
-[3,1,2].
-After the second spell, the indices of objects at corresponding locations becomes
-[2,3,1].
-After the third spell, the indices of objects at corresponding locations becomes
-[1,2,3].
-Thus, all objects are at their places.
-Note that all objects were in their places at the start, so
-M=0 would also be a correct output.
-Sample 2:
-Input
-Output
-4
-3 4 1 2
-4
-1 3 2 4 
-1 2 3 4 
-2 1 3 4 
-2 3 4 1
-Explanation:
-After the first spell, the indices of objects at corresponding locations becomes
-[2,1,3,4].
-After the second spell, the indices of objects at corresponding locations becomes
-[4,2,1,3].
-After the third spell, the indices of objects at corresponding locations becomes
-[2,3,4,1].
-After the fourth operation, the indices of objects at corresponding locations becomes
-[1,2,3,4].
-Thus, all objects are at their places.
-Sample 3:
-Input
-Output
 5
-4 1 5 2 3
--1
+7 5 7 5
+1 1 -1 1
+3 7 5 9
+113 167 361765 170831
+24844359 74532371 14673633991 3057007029
+0
+1
+6
+78
+278031
 Explanation:
-It is not possible to move all objects to their places in at most
-4 spells.
+In the first test case, the start and end village co-ordinates are both
+(7,5), so the cost is 0.
+In the second test case:
+From
+(1,1) go West to
+(−1,1) in one step. So the cost is 1.
+Note that the South road from
+(1,1) also goes to
+(−1,1).
+In the third test case:
+From
+(3,7) go South to
+(3,1).
+From
+(3,1) go West to
+(1,1).
+From
+(1,1) go West to
+(−1,1).
+From
+(−1,1) go West to
+(−3,1).
+From
+(−3,1) go West to
+(−5,1).
+From
+(−5,1) go North to
+(5,9).

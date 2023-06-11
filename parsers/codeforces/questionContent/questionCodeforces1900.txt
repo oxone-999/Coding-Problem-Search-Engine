@@ -1,58 +1,113 @@
-A. Anti-knapsack
-time limit per test1 second
+D. GCD of an Array
+time limit per test2.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given two integers
+You are given an array
+a
+of length
 n
+. You are asked to process
+q
+queries of the following format: given integers
+i
 and
-k
-. You are asked to choose maximum number of distinct integers from
-1
-to
-n
-so that there is no subset of chosen numbers with sum equal to
-k
+x
+, multiply
+a
+i
+by
+x
 .
-A subset of a set is a set that can be obtained from initial one by removing some (possibly all or none) elements of it.
+After processing each query you need to output the greatest common divisor (GCD) of all elements of the array
+a
+.
+Since the answer can be too large, you are asked to output it modulo
+10
+9
++7
+.
 Input
-The first line contains the number of test cases
-T
-(
-1≤T≤100
-).
-Each of the next
-T
-lines contains two integers
+The first line contains two integers —
 n
 and
-k
+q
 (
-1≤k≤n≤1000
-) — the description of test cases.
-Output
-For each test case output two lines. In the first line output a single integer
-m
-— the number of chosen integers.
-In the second line output
-m
-distinct integers from
-1
-to
+1≤n,q≤2⋅
+10
+5
+).
+The second line contains
 n
-— the chosen numbers.
-If there are multiple answers, print any. You can print the numbers in any order.
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤2⋅
+10
+5
+) — the elements of the array
+a
+before the changes.
+The next
+q
+lines contain queries in the following format: each line contains two integers
+i
+and
+x
+(
+1≤i≤n
+,
+1≤x≤2⋅
+10
+5
+).
+Output
+Print
+q
+lines: after processing each query output the GCD of all elements modulo
+10
+9
++7
+on a separate line.
 Example
 input
 Copy
-3
-3 2
-5 3
-1 1
+4 3
+1 6 8 12
+1 12
+2 3
+3 3
 output
 Copy
 2
-3 1 
-3
-4 5 2 
-0
+2
+6
+Note
+After the first query the array is
+[12,6,8,12]
+,
+gcd(12,6,8,12)=2
+.
+After the second query —
+[12,18,8,12]
+,
+gcd(12,18,8,12)=2
+.
+After the third query —
+[12,18,24,12]
+,
+gcd(12,18,24,12)=6
+.
+Here the
+gcd
+function denotes the greatest common divisor.

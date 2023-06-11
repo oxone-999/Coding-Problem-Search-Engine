@@ -1,84 +1,110 @@
-Empire Business
+Mountain
 Problem
-“Jesse, you asked me if I was in the meth business, or the money business… Neither. I’m in the empire business.”
-Walter’s sold his stack in Gray Matter Technologies, a company which he deserved half a credit, for peanuts. Now this company is worth a billion dollar company. Walter wants to get it's shares to have his Empire Business back and he founds an opportunity.
-There are
-N persons having shares
+You're given an
+N×M matrix
+A, where
 A
+(i,j)
+=i.
+A mountain in the matrix is defined as a set of cells and is expressed using
+K+2 integers:
+P,K,L
 1
-,A
+,L
 2
-,A
-3
-,…A
-N
-in this company. Walter can buy these shares with their minimum Sold Values.
-Sold Values of a person's share
+,…,L
+K
+.
+This translates to: from the
+(P+i−1)
+th
+row, select the first
+L
 i
-(1≤i≤N) with another person's share
-j
-(1≤j≤N) is equal to
-A
-j
-+∣i−j∣. So, a person's share can have
-N possible sold values and Walter has to find minimum sold value among them for each person.
-Since Walter has to run his meth business also he asks you to find minimum sold value for each person.
-###Input:
-First line will contain
-T, number of test cases. Then the testcases follow.
-The First line of each test case contains a integer
-N.
-The Second line of each test case contains
-N space integers namely
-A
+cells
+(1≤i≤K) in the row. Refer samples for more clarity.
+Your task is to answer
+Q queries. For the
+i
+th
+query:
+You are given an integer
+S
+i
+and you need to find a mountain with sum
+S
+i
+.
+Input Format
+The first line contains three space-separated integers
+N,
+M, and
+Q, the dimensions of the matrix and the number of queries.
+The second line contains
+Q space-separated integers
+S
 1
-,A
+,S
 2
-,…A
-N
-.
-###Output: For each test case, output in single line
-N space integers denoting minimum sold value for each person.
-###Constraints
-1≤T≤10
-5
-1≤N≤2∗10
-6
-1≤A
+,…,S
+Q
+, denoting each query.
+Output Format
+For each query, if no possible mountain with given sum exists, output
+−1.
+Otherwise, output two lines:
+The first line contains two space-separated integers
+P,
+K
+(1≤P≤N,P+K−1≤N);
+The second line contains
+K space-separated integers
+L
+1
+,L
+2
+,…,L
+K
+(1≤L
 i
-≤10
-9
-Sum of
-N over all test cases will not exceed
-2∗10
-6
-.
+≤M).
+If multiple mountains satisfy the condition, you may print any.
+Constraints
+2≤N,M≤3⋅10
+4
+1≤Q≤10
+1≤S
+i
+≤M⋅N⋅
+2
+(N+1)
 Sample 1:
 Input
 Output
-2
- 5
- 6 5 5 5 2
- 5
- 1 2 3 4 5
-6 5 4 3 2
- 1 2 3 4 5
+5 4 4
+20 36 1 60
+2 3
+2 4 1
+1 5
+3 1 4 1 3
+1 1
+1
+1 5
+4 4 4 4 4
 Explanation:
-For first case:
-Sold value for index
-1:
-6,6,7,8,6
-Sold value for index
-2:
-7,5,6,7,5
-Sold value for index
-3:
-8,6,5,6,4
-Sold value for index
-4:
-9,7,6,5,3
-Sold value for index
-5:
-10,8,7,6,2
-Minimum sold value for each index will be
-6,5,4,3,2.
+Query
+1: A possible mountain that satisfies the condition is highlighted below:
+Here,
+P=2 and
+K=3 and we are selecting
+2,4, and
+1 cells from the second, third, and fourth row respectively. The sum of the highlighted cells is
+20.
+Query
+2: A possible mountain that satisfies the condition is highlighted below:
+Here,
+P=1 and
+K=5 and we are selecting
+3,1,4,1, and
+3 cells from the first, second, third, fourth and fifth rows respectively. The sum of the highlighted cells is
+36.

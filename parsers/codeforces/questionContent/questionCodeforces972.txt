@@ -1,151 +1,115 @@
-A. Make it Increasing
-time limit per test2 seconds
+C. Half Queen Cover
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-consisting of
+You are given a board with
 n
-positive integers, and an array
-b
-, with length
+rows and
 n
-. Initially
-b
-i
-=0
-for each
-1≤i≤n
-.
-In one move you can choose an integer
-i
-(
-1≤i≤n
-), and add
-a
-i
+columns, numbered from
+1
 to
-b
-i
-or subtract
+n
+. The intersection of the
 a
-i
-from
+-th row and
 b
-i
-. What is the minimum number of moves needed to make
-b
-increasing (that is, every element is strictly greater than every element before it)?
+-th column is denoted by
+(a,b)
+.
+A half-queen attacks cells in the same row, same column, and on one diagonal. More formally, a half-queen on
+(a,b)
+attacks the cell
+(c,d)
+if
+a=c
+or
+b=d
+or
+a−b=c−d
+.
+The blue cells are under attack.
+What is the minimum number of half-queens that can be placed on that board so as to ensure that each square is attacked by at least one half-queen?
+Construct an optimal solution.
 Input
 The first line contains a single integer
 n
 (
-2≤n≤5000
-).
-The second line contains
-n
-integers,
+1≤n≤
+10
+5
+) — the size of the board.
+Output
+In the first line print a single integer
+k
+— the minimum number of half-queens.
+In each of the next
+k
+lines print two integers
 a
-1
+i
 ,
-a
-2
-, ...,
-a
-n
+b
+i
 (
 1≤
 a
 i
-≤
-10
-9
-) — the elements of the array
-a
-.
-Output
-Print a single integer, the minimum number of moves to make
+,
 b
-increasing.
+i
+≤n
+) — the position of the
+i
+-th half-queen.
+If there are multiple solutions, print any.
 Examples
 input
 Copy
-5
-1 2 3 4 5
+1
 output
 Copy
-4
+1
+1 1
 input
 Copy
-7
-1 2 1 2 1 2 1
+2
 output
 Copy
-10
+1
+1 1
 input
 Copy
-8
-1 8 2 7 3 6 4 5
+3
 output
 Copy
-16
+2
+1 1
+1 2
 Note
 Example
 1
-: you can subtract
-a
-1
-from
-b
-1
-, and add
-a
-3
-,
-a
-4
-, and
-a
-5
-to
-b
-3
-,
-b
-4
-, and
-b
-5
-respectively. The final array will be [
-−1
-,
-0
-,
-3
-,
-4
-,
-5
-] after
-4
-moves.
+: one half-queen is enough. Note: a half-queen on
+(1,1)
+attacks
+(1,1)
+.
 Example
 2
-: you can reach [
-−3
-,
-−2
-,
-−1
-,
-0
-,
-1
-,
-2
-,
+: one half-queen is enough too.
+(1,2)
+or
+(2,1)
+would be wrong solutions, because a half-queen on
+(1,2)
+does not attack the cell
+(2,1)
+and vice versa.
+(2,2)
+is also a valid solution.
+Example
 3
-] in
-10
-moves.
+: it is impossible to cover the board with one half queen. There are multiple solutions for
+2
+half-queens; you can print any of them.

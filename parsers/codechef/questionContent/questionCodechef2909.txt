@@ -1,159 +1,30 @@
-Permutation Composition Queries
+The First Cube
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-You are given
-N sequences
-P
-1
-,P
-2
-,…,P
-N
-. Each of them is a permutation of numbers
-1 through
-M.
-Let's define a product of two permutations
-X and
-Y of numbers
-1 through
-M as a permutation
-Z=X⋅Y such that
-Z
-i
-=Y
-X
-i
-for each valid
-i.
-You should answer
-Q queries. Each query is described by two numbers
-L and
-R. Let's define a permutation
-B=P
-L
-⋅P
-L+1
-⋅…⋅P
-R
-; the multiplication of permutations is evaluated left to right, i.e. as
-((P
-L
-⋅P
-L+1
-)⋅…)⋅P
-R
-. The answer to a query is
-∑
-i=1
-M
-i⋅B
-i
-.
+Read problems statements in Mandarin Chinese and Russian.
+This problem's statement is really a short one.
+You are given an integer S. Consider an infinite sequence S, 2S, 3S, ... . Find the first number in this sequence that can be represented as Q3, where Q is some positive integer number. As the sought number could be very large, please print modulo (109 + 7).
+The number S will be given to you as a product of N positive integer numbers A1, A2, ..., AN, namely S = A1 * A2 * ... * AN
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-M.
-N lines follow. For each valid
-i, the
-i-th of these lines contains
-M space-separated integers
-P
-i,1
-,P
-i,2
-,…,P
-i,M
-denoting the permutation
-P
-i
-.
-The next line contains a single integer
-Q.
-Each of the following
-Q lines contains two space-separated integers
-L and
-R describing one query.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains an integer N.
+Then there is a line, containing N space separated integers, denoting the numbers A1, A2, ..., AN.
 Output
-For each test case, print
-Q lines. For each valid
-i, the
-i-th of these lines should contain a single integer — the answer to the
-i-th query.
+For each test case, output a single line containing the first term of the sequence which is the perfect cube, modulo 109+7.
 Constraints
-1≤T≤1,000
-1≤N,M≤10
-5
-1≤N⋅M≤2⋅10
-5
-1≤P
-i,j
-≤M for each valid
-i and
-j
-1≤Q≤2⋅10
-5
-1≤L≤R≤N
-for each valid
-i,
-P
-i
-is permutation of numbers
-1 through
-M
-the sum of
-N⋅M for all test cases does not exceed
-2⋅10
-5
-the sum of
-Q for all test cases does not exceed
-2⋅10
-5
-Subtasks
-Subtask #1 (15 points):
-1≤T≤100
-1≤Q≤50
-1≤N⋅M≤200
-Subtask #2 (25 points):
-1≤T≤100
-1≤M≤10
-Subtask #3 (60 points): original constraints
+1 ≤ T ≤ 10
+(Subtask 1): N = 1, 1 ≤ S ≤ 109 - 15 points.
+(Subtask 2): N = 1, 1 ≤ S ≤ 1018 - 31 point.
+(Subtask 3): 1 ≤ N ≤ 100, 1 ≤ Ai ≤ 1018 - 54 points.
 Sample 1:
 Input
 Output
-1
-4 3
-3 2 1
-1 3 2
-1 2 3
-2 3 1
-5
-1 1
-1 4
-3 4
-3 3
-1 3
-10
-11
-11
-14
-11
+2
+2
+2 2
+2
+2 3
+8
+216
 Explanation:
-Example case 1:
-query 1:
-B=[3,2,1], so the answer is
-1⋅3+2⋅2+3⋅1=10
-query 2:
-B=[3,1,2], the answer is
-11
-query 3:
-B=[2,3,1], the answer is
-11
-query 4:
-B=[1,2,3], the answer is
-14
-query 5:
-B=[2,3,1], the answer is
-11
+Example case 1. First few numbers in the infinite sequence 4, 8, 12, 16, 20, , etc. In this sequence, 8 is the first number which is also a cube (as 23 = 8).
+Example case 2. First few numbers in the infinite sequence 6, 12, 18, 24, , etc. In this sequence, 216 is the first number which is also a cube (as 63 = 216).

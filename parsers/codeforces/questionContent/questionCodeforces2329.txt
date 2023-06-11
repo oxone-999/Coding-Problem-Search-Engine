@@ -1,125 +1,197 @@
-D. Discrete Centrifugal Jumps
-time limit per test2 seconds
+B. Arrays Sum
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-beautiful skyscrapers in New York, the height of the
-i
--th one is
-h
-i
-. Today some villains have set on fire first
-n−1
-of them, and now the only safety building is
-n
--th skyscraper.
-Let's call a jump from
-i
--th skyscraper to
-j
--th (
-i<j
-) discrete, if all skyscrapers between are strictly lower or higher than both of them. Formally, jump is discrete, if
-i<j
-and one of the following conditions satisfied:
-i+1=j
-max(
-h
-i+1
-,…,
-h
-j−1
-)<min(
-h
-i
+You are given a non-decreasing array of non-negative integers
+a
+1
 ,
-h
-j
-)
-max(
-h
-i
-,
-h
-j
-)<min(
-h
-i+1
+a
+2
 ,…,
-h
-j−1
-)
+a
+n
+. Also you are given a positive integer
+k
 .
-At the moment, Vasya is staying on the first skyscraper and wants to live a little longer, so his goal is to reach
+You want to find
+m
+non-decreasing arrays of non-negative integers
+b
+1
+,
+b
+2
+,…,
+b
+m
+, such that:
+The size of
+b
+i
+is equal to
 n
--th skyscraper with minimal count of discrete jumps. Help him with calcualting this number.
+for all
+1≤i≤m
+.
+For all
+1≤j≤n
+,
+a
+j
+=
+b
+1,j
++
+b
+2,j
++…+
+b
+m,j
+. In the other word, array
+a
+is the sum of arrays
+b
+i
+.
+The number of different elements in the array
+b
+i
+is at most
+k
+for all
+1≤i≤m
+.
+Find the minimum possible value of
+m
+, or report that there is no possible
+m
+.
 Input
-The first line contains a single integer
-n
+The first line contains one integer
+t
 (
-2≤n≤3⋅
-10
-5
-) — total amount of skyscrapers.
+1≤t≤100
+): the number of test cases.
+The first line of each test case contains two integers
+n
+,
+k
+(
+1≤n≤100
+,
+1≤k≤n
+).
 The second line contains
 n
 integers
-h
+a
 1
 ,
-h
+a
 2
 ,…,
-h
+a
 n
 (
-1≤
-h
-i
+0≤
+a
+1
 ≤
-10
-9
-) — heights of skyscrapers.
+a
+2
+≤…≤
+a
+n
+≤100
+,
+a
+n
+>0
+).
 Output
-Print single number
-k
-— minimal amount of discrete jumps. We can show that an answer always exists.
-Examples
-input
-Copy
-5
-1 3 1 4 5
-output
-Copy
-3
-input
-Copy
-4
-4 2 2 4
-output
-Copy
-1
-input
-Copy
-2
-1 1
-output
-Copy
-1
-input
-Copy
-5
-100 1 100 1 100
-output
-Copy
-2
-Note
-In the first testcase, Vasya can jump in the following way:
-1→2→4→5
+For each test case print a single integer: the minimum possible value of
+m
+. If there is no such
+m
+, print
+−1
 .
-In the second and third testcases, we can reach last skyscraper in one jump.
-Sequence of jumps in the fourth testcase:
-1→3→5
+Example
+input
+Copy
+6
+4 1
+0 0 0 1
+3 1
+3 3 3
+11 3
+0 1 2 2 3 3 3 4 4 4 4
+5 3
+1 2 3 4 5
+9 4
+2 2 3 5 7 11 13 13 17
+10 7
+0 1 1 2 3 3 4 5 5 6
+output
+Copy
+-1
+1
+2
+2
+2
+1
+Note
+In the first test case, there is no possible
+m
+, because all elements of all arrays should be equal to
+0
+. But in this case, it is impossible to get
+a
+4
+=1
+as the sum of zeros.
+In the second test case, we can take
+b
+1
+=[3,3,3]
+.
+1
+is the smallest possible value of
+m
+.
+In the third test case, we can take
+b
+1
+=[0,1,1,1,2,2,2,2,2,2,2]
+and
+b
+2
+=[0,0,1,1,1,1,1,2,2,2,2]
+. It's easy to see, that
+a
+i
+=
+b
+1,i
++
+b
+2,i
+for all
+i
+and the number of different elements in
+b
+1
+and in
+b
+2
+is equal to
+3
+(so it is at most
+3
+). It can be proven that
+2
+is the smallest possible value of
+m
 .

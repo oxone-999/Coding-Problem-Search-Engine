@@ -1,104 +1,123 @@
-E. Even Split
+I. Interactive Treasure Hunt
 time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-A revolution has recently happened in Segmentland. The new government is committed to equality, and they hired you to help with land redistribution in the country.
-Segmentland is a segment of length
-l
-kilometers, with the capital in one of its ends. There are
+This is an interactive problem.
+There is a grid of
+n×m
+cells. Two treasure chests are buried in two different cells of the grid. Your task is to find both of them. You can make two types of operations:
+DIG
+r
+c
+: try to find the treasure in the cell
+(r,c)
+. The interactor will tell you if you found the treasure or not.
+SCAN
+r
+c
+: scan from the cell
+(r,c)
+. The result of this operation is the sum of Manhattan distances from the cell
+(r,c)
+to the cells where the treasures are hidden. Manhattan distance from a cell
+(
+r
+1
+,
+c
+1
+)
+to a cell
+(
+r
+2
+,
+c
+2
+)
+is calculated as
+|
+r
+1
+−
+r
+2
+|+|
+c
+1
+−
+c
+2
+|
+.
+You need to find the treasures in at most 7 operations. This includes both DIG and SCAN operations in total. To solve the test you need to call DIG operation at least once in both of the cells where the treasures are hidden.
+Interaction
+Your program has to process multiple test cases in a single run. First, the testing system writes
+t
+ — the number of test cases (
+1≤t≤100
+). Then,
+t
+test cases should be processed one by one.
+In each test case, your program should start by reading the integers
 n
-citizens in Segmentland, the home of
-i
--th citizen is located at the point
-a
-i
-kilometers from the capital. No two homes are located at the same point. Each citizen should receive a segment of positive length with ends at integer distances from the capital that contains her home. The union of these segments should be the whole of Segmentland, and they should not have common points besides their ends. To ensure equality, the difference between the lengths of the longest and the shortest segments should be as small as possible.
-Input
-The first line of the input contains two integers
-l
 and
-n
+m
 (
-2≤l≤
-10
-9
-;1≤n≤
-10
-5
+2≤n,m≤16
 ).
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
+Then, your program can make queries of two types:
+DIG
+r
+c
 (
-0<
-a
+1≤r≤n
+;
+1≤c≤m
+). The interactor responds with integer
 1
-<
-a
-2
-<⋯<
-a
-n
-<l
-).
-Output
-Output
-n
-pairs of numbers
-s
-i
-,
-f
-i
+, if you found the treasure, and
+0
+if not. If you try to find the treasure in the same cell multiple times, the result will be
+0
+since the treasure is already found.
+SCAN
+r
+c
 (
-0≤
-s
-i
-<
-f
-i
-≤l
-), one pair per line. The pair on
-i
--th line denotes the ends of the
-[
-s
-i
-,
-f
-i
-]
-segment that
-i
--th citizen receives.
-If there are many possible arrangements with the same difference between the lengths of the longest and the shortest segments, you can output any of them.
-Examples
+1≤r≤n
+;
+1≤c≤m
+). The interactor responds with an integer that is the sum of Manhattan distances from the cell
+(r,c)
+to the cells where the treasures were hidden. The sum is calculated for both cells with treasures, even if you already found one of them.
+After you found both treasures, i. e. you received
+1
+for two DIG operations, your program should continue to the next test case or exit if that test case was the last one.
+Example
 input
 Copy
-6 3
-1 3 5
+1
+2 3
+
+1
+
+1
+
+3
+
+0
+
+1
 output
 Copy
-0 2
-2 4
-4 6
-input
-Copy
-10 2
-1 2
-output
-Copy
-0 2
-2 10
-Note
-In the first example, it is possible to make all segments equal. Viva la revolucion!
-In the second example, citizens live close to the capital, so the length of the shortest segment is 2 and the length of the longest segment is 8.
+SCAN 1 2
+
+DIG 1 2
+
+SCAN 2 2
+
+DIG 1 1
+
+DIG 1 3

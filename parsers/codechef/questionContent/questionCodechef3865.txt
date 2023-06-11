@@ -1,99 +1,113 @@
-Double Distance Query
+The Frictionless Bisected 2-Dimensional World
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given an unweighted tree with
-N nodes (numbered
-1 through
-N). Let's denote the distance between any two nodes
-p and
-q by
-d(p,q).
-You should answer
-Q queries. In each query, you are given parameters
-a,
-d
-a
-,
-b,
-d
-b
-, and you should find a node
-x such that
-d(x,a)=d
-a
-and
-d(x,b)=d
-b
-, or determine that there is no such node.
+###Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
+Colonel and Erfan were walking in the Frictionless Bisected Two-Dimensional World, talking about this contest’s hardest problem. As the name implies, this world is a plane (with a Cartesian coordinate system with axes
+x,
+y) divided by an impassable infinite straight wall. The wall is infinitely thin, immovable and all collisions with it are perfectly elastic collisions.
+Colonel and Erfan are holding two-dimensional tennis balls (tennis discs). They decided to throw the discs, wondering if they will collide at some point. After being thrown, each disc is moving in the two-dimensional world with a constant velocity. A disc with radius
+r collides with the wall if the distance of its centre from the wall is
+r. In an elastic collision with the wall, the component of velocity of the disc perpendicular to the wall flips its sign and the disc continues moving with a constant velocity afterwards.
+Since just finding out whether the discs will collide is boring, let's define the maximum overlap between the thrown discs in the following way: Assume that the discs can freely pass through each other without affecting each other's trajectory. At each (not necessarily integer) moment in time after the discs are thrown, calculate the area of their intersection; the maximum overlap is the maximum value of this area. (Clearly, if the discs would never collide or only touch each other, the maximum overlap is zero.) We are asking you to tell Colonel and Erfan the maximum overlap between the discs.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
 The first line of each test case contains two space-separated integers
-N and
-Q.
-Each of the next
-N−1 lines contains two space-separated integers
-u and
-v denoting that nodes
-u and
-v are connected by an edge.
-Each of the next
-Q lines contains four space-separated integers
-a,
-d
-a
-,
-b and
-d
-b
-describing a query.
-Output
-For each query, print a single line containing one integer ― the number of a node satisfying the given requirements, or
-−1 if no such node exists.
-If there are multiple solutions, you may output any one.
-Constraints
-1≤T≤1,000
-1≤N,Q≤10
-6
-1≤u,v≤N
-the graph on the input is a tree
-1≤a,b≤N
-1≤d
-a
-,d
-b
-<N
-the sum of
-N over all test cases does not exceed
-10
-6
-the sum of
-Q over all test cases does not exceed
-10
-6
-Subtasks
-Subtask #1 (50 points):
-1≤N,Q≤1,000
-the sum of
-N over all test cases does not exceed
-1,000
-the sum of
-Q over all test cases does not exceed
-1,000
-Subtask #2 (50 points): original constraints
-Sample 1:
-Input
-Output
+s
+1,x
+and
+s
+1,y
+denoting the initial coordinates of the centre of the first disc.
+The second line contains two space-separated integers
+v
+1,x
+and
+v
+1,y
+denoting the
+x- and
+y-components of the initial velocity of the first disc.
+The third line contains a single integer
+r
 1
-5 3
-1 2
-2 3
-3 4
-3 5
-2 1 4 1
-2 2 4 2
-1 1 2 1
-3
+denoting the radius of the first disc.
+The following three lines describe the second disc in the same format ― the first of these lines contains two space-separated integers
+s
+2,x
+and
+s
+2,y
+, the second line contains two space-separated integers
+v
+2,x
+and
+v
+2,y
+, and the third line contains a single integer
+r
+2
+.
+The last two lines describe the wall as a line passing through two points. Each of these lines contains two space-separated integers
+w
+x
+and
+w
+y
+denoting the coordinates of a point on the wall.
+Constraints
+1≤T≤100
+∣s
+i,x
+∣,∣s
+i,y
+∣,∣v
+i,x
+∣,∣v
+i,y
+∣≤10
+4
+for each valid
+i
+∣w
+x
+∣,∣w
+y
+∣≤10
+4
+1≤r
+i
+≤10
+4
+for each valid
+i
+the velocity of each disc is non-zero
+initially, the discs do not intersect or touch the wall or each other
+initially, the discs are located at the same side of the wall
+the two given points on the wall are distinct
+Output
+For each test case, print a single line containing one real number ― the maximum overlap between the discs. Your answer will be considered correct if its absolute or relative error does not exceed
+10
+−6
+.
+Example Input
+2
+0 -100
+0 1
+10
+180 -100
+-1 0
 5
--1
+1 0
+0 0
+0 -100
+0 1
+10
+180 -100
+1 0
+10
+1 0
+0 0
+Example Output
+78.539816339745
+0.000000000000

@@ -1,152 +1,98 @@
-E. Swap and Maximum Block
-time limit per test4 seconds
-memory limit per test512 megabytes
+A. Madoka and Strange Thoughts
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array of length
-2
-n
-. The elements of the array are numbered from
-1
-to
-2
-n
+Madoka is a very strange girl, and therefore she suddenly wondered how many pairs of integers
+(a,b)
+exist, where
+1≤a,b≤n
+, for which
+lcm(a,b)
+gcd(a,b)
+≤3
 .
-You have to process
-q
-queries to this array. In the
-i
--th query, you will be given an integer
-k
-(
-0≤k≤n−1
-). To process the query, you should do the following:
-for every
-i∈[1,
-2
-n
-−
-2
-k
-]
-in ascending order, do the following: if the
-i
--th element was already swapped with some other element during this query, skip it; otherwise, swap
+In this problem,
+gcd(a,b)
+denotes the greatest common divisor of the numbers
 a
-i
 and
-a
-i+
-2
-k
-;
-after that, print the maximum sum over all contiguous subsegments of the array (including the empty subsegment).
-For example, if the array
-a
-is
-[−3,5,−3,2,8,−20,6,−1]
+b
 , and
-k=1
-, the query is processed as follows:
-the
-1
--st element wasn't swapped yet, so we swap it with the
-3
--rd element;
-the
-2
--nd element wasn't swapped yet, so we swap it with the
-4
--th element;
-the
-3
--rd element was swapped already;
-the
-4
--th element was swapped already;
-the
-5
--th element wasn't swapped yet, so we swap it with the
-7
--th element;
-the
-6
--th element wasn't swapped yet, so we swap it with the
-8
--th element.
-So, the array becomes
-[−3,2,−3,5,6,−1,8,−20]
-. The subsegment with the maximum sum is
-[5,6,−1,8]
-, and the answer to the query is
-18
+lcm(a,b)
+denotes the smallest common multiple of the numbers
+a
+and
+b
 .
-Note that the queries actually change the array, i. e. after a query is performed, the array does not return to its original state, and the next query will be applied to the modified array.
 Input
-The first line contains one integer
+The input consists of multiple test cases. The first line contains a single integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases. Description of the test cases follows.
+The first and the only line of each test case contains the integer
 n
 (
-1≤n≤18
-).
-The second line contains
-2
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-2
-n
-(
-−
+1≤n≤
 10
-9
-≤
-a
-i
-≤
-10
-9
+8
 ).
-The third line contains one integer
-q
-(
-1≤q≤2⋅
-10
-5
-).
-Then
-q
-lines follow, the
-i
--th of them contains one integer
-k
-(
-0≤k≤n−1
-) describing the
-i
--th query.
 Output
-For each query, print one integer — the maximum sum over all contiguous subsegments of the array (including the empty subsegment) after processing the query.
+For each test case output a single integer — the number of pairs of integers satisfying the condition.
 Example
 input
 Copy
-3
--3 5 -3 2 8 -20 6 -1
-3
+6
 1
-0
-1
+2
+3
+4
+5
+100000000
 output
 Copy
-18
-8
-13
+1
+4
+7
+10
+11
+266666666
 Note
-Transformation of the array in the example:
-[−3,5,−3,2,8,−20,6,−1]→[−3,2,−3,5,6,−1,8,−20]→[2,−3,5,−3,−1,6,−20,8]→[5,−3,2,−3,−20,8,−1,6]
-.
+For
+n=1
+there is exactly one pair of numbers —
+(1,1)
+and it fits.
+For
+n=2
+, there are only
+4
+pairs —
+(1,1)
+,
+(1,2)
+,
+(2,1)
+,
+(2,2)
+and they all fit.
+For
+n=3
+, all
+9
+pair are suitable, except
+(2,3)
+and
+(3,2)
+, since their
+lcm
+is
+6
+, and
+gcd
+is
+1
+, which doesn't fit the condition.

@@ -1,55 +1,92 @@
-Worst Case Analysis
+Pied Piper vs Hooli
 Problem
-All of you must have heard of merge sort while learning sorting algorithms. So, now is time to explore it more. Let us consider the following merge function in the merge sort algorithm: (Assume 1-base indexing)
-void merge(int a[], int b[], int n1, int n2, int c[])
-/* Function to merge the 2 arrays
-a[1..n1] and b[1..n2] into array c[1..n1+n2] */
-{
-    int i = 1, j = 1, k = 1;
-    while (i <= n1 && j <= n2) {
-        if (a[i] <= b[j]) {  /* This is considered as 1 comparison */
-            c[k] = a[i];
-            i++;
-        }
-        else {
-            c[k] = b[j];
-            j++;
-        }
-        k++;
-    }
-    while (i <= n1) {
-        c[k] = a[i];
-        i++;
-        k++;
-    }
-    while (j <= n2) {
-        c[k] = b[j];
-        j++;
-        k++;
-    }
-}
-Now, in the function above, let us denote the maximum number of comparisons needed in the worst case while merging 2 arrays of sizes n1 and n2 as X. We are given M sorted arrays of size n1, n2, n3, ..., nM. To make a larger array of size n1 + n2 + n3 + ... + nM, you perform the following operation:
-If only 1 array is left then stop.
-Else Pick any 2 sorted arrays and merge them using the above operation.
-Assume, that while merging any 2 arrays, it always takes worst case in the number of comparisons. You are required to minimise the number of comparison operations.
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
+Pied Piper is a startup company trying to build a new Internet called Pipernet. Currently, they have
+A users and they gain
+X users everyday. There is also another company called Hooli, which has currently
+B users and gains
+Y users everyday.
+Whichever company reaches
+Z users first takes over Pipernet. In case both companies reach
+Z users on the same day, Hooli takes over.
+Hooli is a very evil company (like E-Corp in Mr. Robot or Innovative Online Industries in Ready Player One). Therefore, many people are trying to help Pied Piper gain some users.
+Pied Piper has
+N supporters with contribution values
+C
+1
+,C
+2
+,…,C
+N
+. For each valid
+i, when the
+i-th supporter contributes, Pied Piper gains
+C
+i
+users instantly. After contributing, the contribution value of the supporter is halved, i.e.
+C
+i
+changes to
+⌊C
+i
+/2⌋. Each supporter may contribute any number of times, including zero. Supporters may contribute at any time until one of the companies takes over Pipernet, even during the current day.
+Find the minimum number of times supporters must contribute (the minimum total number of contributions) so that Pied Piper gains control of Pipernet.
 Input
-The first line in the input consists of the number of test cases, T. Each input consists of 2 lines. The first line contain an integer M, denoting the number of arrays. The second line consists of the sizes of arrays, n1, n2, n3, ... nM
-NOTE: The input dataset is large. Please prefer using scanf/printf in C/C++ and buffered I/O in Java.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains six space-separated integers
+N,
+A,
+B,
+X,
+Y and
+Z.
+The second line contains
+N space-separated integers
+C
+1
+,C
+2
+,…,C
+N
+— the initial contribution values.
 Output
-Output for each test case, the minimum number of comparisions while merging the M arrays into the final array.
+For each test case, if Hooli will always gain control of Pipernet, print a single line containing the string "RIP" (without quotes). Otherwise, print a single line containing one integer — the minimum number of times supporters must contribute.
 Constraints
-1 ≤ T ≤ 20, 2 ≤ M ≤ 105
-2 ≤ ni ≤ 109
+1≤T≤10
+1≤N≤10
+5
+1≤A,B,X,Y,Z≤10
+9
+A,B<Z
+0≤C
+i
+≤10
+9
+for each valid
+i
 Sample 1:
 Input
 Output
-2
-2
-3 4
 3
-4 3 4
-6
-16
+3 10 15 5 10 100
+12 15 18
+3 10 15 5 10 100
+5 5 10
+4 40 80 30 30 100
+100 100 100 100
+4
+RIP
+1
 Explanation:
-In the first test case, the number of comparisons in worst case are 6. Consider for example, arrays a = {1, 6, 9} and b = {2, 5, 7, 8}. The comparisons are between the pair of elements (1, 2), (2, 6), (5, 6), (6, 7), (7, 9), (8, 9).
-In the second test case, the best order to perform the merge operations is as follows. Merge the arrays with sizes 3 and 4 to obtain array of size 7. The number of comparisons in worst case is 6. Merge the arrays with sizes 4 and 7 to obtain array of size 11. The number of comparisons in worst case is 10. The total number of comparisons is 6 + 10 = 16
+Example case 1: After
+8 days, Pied Piper will have
+50 users and Hooli will have
+95 users. Then, if each supporter contributes once, Pied Piper will also have
+95 users. After that, they still need
+5 more users, so supporter
+3 can contribute again, with
+18/2=9 more users. So the answer will be
+4.
+Example case 2: There is no way to beat Hooli.

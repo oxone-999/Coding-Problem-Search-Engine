@@ -1,75 +1,172 @@
-D. Happy New Year
-time limit per test2 seconds
-memory limit per test512 megabytes
+B. Homecoming
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Being Santa Claus is very difficult. Sometimes you have to deal with difficult situations.
-Today Santa Claus came to the holiday and there were
-m
-children lined up in front of him. Let's number them from
-1
-to
-m
-. Grandfather Frost knows
+After a long party Petya decided to return home, but he turned out to be at the opposite end of the town from his home. There are
 n
-spells. The
-i
--th spell gives a candy to every child whose place is in the
-[
-L
-i
-,
-R
-i
-]
-range. Each spell can be used at most once. It is also known that if all spells are used, each child will receive at most
-k
-candies.
-It is not good for children to eat a lot of sweets, so each child can eat no more than one candy, while the remaining candies will be equally divided between his (or her) Mom and Dad. So it turns out that if a child would be given an even amount of candies (possibly zero), then he (or she) will be unable to eat any candies and will go sad. However, the rest of the children (who received an odd number of candies) will be happy.
-Help Santa Claus to know the maximum number of children he can make happy by casting some of his spells.
-Input
-The first line contains three integers of
+crossroads in the line in the town, and there is either the bus or the tram station at each crossroad.
+The crossroads are represented as a string
+s
+of length
 n
-,
-m
-, and
-k
-(
-1≤n≤100000,1≤m≤
-10
-9
-,1≤k≤8
-) — the number of spells, the number of children and the upper limit on the number of candy a child can get if all spells are used, respectively.
-This is followed by
-n
-lines, each containing integers
-L
+, where
+si=A
+, if there is a bus station at
+i
+-th crossroad, and
+si=B
+, if there is a tram station at
+i
+-th crossroad. Currently Petya is at the first crossroad (which corresponds to
+s1
+) and his goal is to get to the last crossroad (which corresponds to
+sn
+).
+If for two crossroads
 i
 and
-R
+j
+for all crossroads
+i,i+1,…,j−1
+there is a bus station, one can pay
+a
+roubles for the bus ticket, and go from
 i
+-th crossroad to the
+j
+-th crossroad by the bus (it is not necessary to have a bus station at the
+j
+-th crossroad). Formally, paying
+a
+roubles Petya can go from
+i
+to
+j
+if
+st=A
+for all
+i≤t<j
+.
+If for two crossroads
+i
+and
+j
+for all crossroads
+i,i+1,…,j−1
+there is a tram station, one can pay
+b
+roubles for the tram ticket, and go from
+i
+-th crossroad to the
+j
+-th crossroad by the tram (it is not necessary to have a tram station at the
+j
+-th crossroad). Formally, paying
+b
+roubles Petya can go from
+i
+to
+j
+if
+st=B
+for all
+i≤t<j
+.
+For example, if
+s
+="AABBBAB",
+a=4
+and
+b=3
+then Petya needs:
+buy one bus ticket to get from
+1
+to
+3
+,
+buy one tram ticket to get from
+3
+to
+6
+,
+buy one bus ticket to get from
+6
+to
+7
+.
+Thus, in total he needs to spend
+4+3+4=11
+roubles. Please note that the type of the stop at the last crossroad (i.e. the character
+sn
+) does not affect the final expense.
+Now Petya is at the first crossroad, and he wants to get to the
+n
+-th crossroad. After the party he has left with
+p
+roubles. He's decided to go to some station on foot, and then go to home using only public transport.
+Help him to choose the closest crossroad
+i
+to go on foot the first, so he has enough money to get from the
+i
+-th crossroad to the
+n
+-th, using only tram and bus tickets.
+Input
+Each test contains one or more test cases. The first line contains the number of test cases
+t
 (
-1≤
-L
+1≤t≤104
+).
+The first line of each test case consists of three integers
+a,b,p
+(
+1≤a,b,p≤105
+) — the cost of bus ticket, the cost of tram ticket and the amount of money Petya has.
+The second line of each test case consists of one string
+s
+, where
+si=A
+, if there is a bus station at
 i
-≤
-R
+-th crossroad, and
+si=B
+, if there is a tram station at
 i
-≤m
-) — the parameters of the
-i
-spell.
+-th crossroad (
+2≤|s|≤105
+).
+It is guaranteed, that the sum of the length of strings
+s
+by all test cases in one test doesn't exceed
+105
+.
 Output
-Print a single integer — the maximum number of children that Santa can make happy.
+For each test case print one number — the minimal index
+i
+of a crossroad Petya should go on foot. The rest of the path (i.e. from
+i
+to
+n
+he should use public transport).
 Example
 input
 Copy
-3 5 3
-1 3
-2 4
-3 5
+5
+2 2 1
+BB
+1 1 1
+AB
+3 2 8
+AABBBBAABB
+5 3 4
+BBBBB
+2 1 1
+ABABAB
 output
 Copy
-4
-Note
-In the first example, Santa should apply the first and third spell. In this case all children will be happy except the third.
+2
+1
+3
+1
+6

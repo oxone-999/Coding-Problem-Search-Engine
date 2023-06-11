@@ -1,157 +1,217 @@
-C. DFS Trees
-time limit per test1 second
-memory limit per test256 megabytes
+E. Replace
+time limit per test1.5 seconds
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-You are given a connected undirected graph consisting of
+You are given an integer array
+a
+1
+,…,
+a
 n
-vertices and
-m
-edges. The weight of the
+, where
+1≤
+a
 i
--th edge is
+≤n
+for all
 i
 .
-Here is a wrong algorithm of finding a minimum spanning tree (MST) of a graph:
-
-vis := an array of length n
-s := a set of edges
-
-function dfs(u):
-    vis[u] := true
-    iterate through each edge (u, v) in the order from smallest to largest edge weight
-        if vis[v] = false
-            add edge (u, v) into the set (s)
-            dfs(v)
-
-function findMST(u):
-    reset all elements of (vis) to false
-    reset the edge set (s) to empty
-    dfs(u)
-    return the edge set (s)
-Each of the calls findMST(1), findMST(2), ..., findMST(n) gives you a spanning tree of the graph. Determine which of these trees are minimum spanning trees.
-Input
-The first line of the input contains two integers
-n
+There's a "replace" function
+f
+which takes a pair of integers
+(l,r)
+, where
+l≤r
+, as input and outputs the pair
+f((l,r))=(min{
+a
+l
 ,
-m
+a
+l+1
+,…,
+a
+r
+},max{
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+}).
+f
 (
-2≤n≤
-10
-5
-,
-n−1≤m≤2⋅
-10
-5
-) — the number of vertices and the number of edges in the graph.
-Each of the following
-m
-lines contains two integers
-u
+(
+l
+)
+)
+(
+min
+{
+}
+{
+}
+)
+Consider repeated calls of this function. That is, from a starting pair
+(l,r)
+we get
+f((l,r))
+, then
+f(f((l,r)))
+, then
+f(f(f((l,r))))
+, and so on.
+Now you need to answer
+q
+queries. For the
+i
+-th query you have two integers
+l
 i
 and
-v
+r
 i
 (
 1≤
-u
+l
 i
-,
-v
+≤
+r
 i
 ≤n
-,
-u
-i
-≠
-v
-i
-), describing an undirected edge
+). You must answer the minimum number of times you must apply the "replace" function to the pair
 (
-u
+l
 i
 ,
-v
+r
 i
 )
-in the graph. The
+to get
+(1,n)
+, or report that it is impossible.
+Input
+The first line contains two positive integers
+n
+,
+q
+(
+1≤n,q≤
+10
+5
+) — the length of the sequence
+a
+and the number of the queries.
+The second line contains
+n
+positive integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
 i
--th edge in the input has weight
-i
+≤n
+) — the sequence
+a
 .
-It is guaranteed that the graph is connected and there is at most one edge between any pair of vertices.
+Each line of the following
+q
+lines contains two integers
+l
+i
+,
+r
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤n
+) — the queries.
 Output
-You need to output a binary string
-s
-, where
-s
-i
-=1
-if findMST(i) creates an MST, and
-s
-i
-=0
-otherwise.
+For each query, output the required number of times, or
+−1
+if it is impossible.
 Examples
 input
 Copy
-5 5
-1 2
+5 6
+2 5 4 1 3
+4 4
+1 5
+1 4
 3 5
-1 3
-3 2
-4 2
+4 5
+2 3
 output
 Copy
-01111
+-1
+0
+1
+2
+3
+4
 input
 Copy
-10 11
-1 2
+6 3
+2 3 4 6 1 2
+5 6
 2 5
-3 4
-4 2
-8 1
-4 5
-10 5
-9 5
-8 2
-5 7
-4 6
+2 3
 output
 Copy
-0011111011
+5
+1
+3
+input
+Copy
+5 3
+3 2 2 4 1
+2 5
+1 3
+1 5
+output
+Copy
+-1
+-1
+0
 Note
-Here is the graph given in the first example.
-There is only one minimum spanning tree in this graph. A minimum spanning tree is
-(1,2),(3,5),(1,3),(2,4)
-which has weight
-1+2+3+5=11
+In the first example,
+n=5
+and
+a=[2,5,4,1,3]
 .
-Here is a part of the process of calling findMST(1):
-reset the array vis and the edge set s;
-calling dfs(1);
-vis[1] := true;
-iterate through each edge
-(1,2),(1,3)
-;
-add edge
-(1,2)
-into the edge set s, calling dfs(2):
-vis[2] := true
-iterate through each edge
-(2,1),(2,3),(2,4)
-;
-because vis[1] = true, ignore the edge
-(2,1)
-;
-add edge
-(2,3)
-into the edge set s, calling dfs(3):
-...
-In the end, it will select edges
-(1,2),(2,3),(3,5),(2,4)
-with total weight
-1+4+2+5=12>11
-, so findMST(1) does not find a minimum spanning tree.
-It can be shown that the other trees are all MSTs, so the answer is 01111.
+For the first query:
+(4,4)→(1,1)→(2,2)→(5,5)→(3,3)→(4,4)→…
+, so it's impossible to get
+(1,5)
+.
+For the second query, you already have
+(1,5)
+.
+For the third query:
+(1,4)→(1,5)
+.
+For the fourth query:
+(3,5)→(1,4)→(1,5)
+.
+For the fifth query:
+(4,5)→(1,3)→(2,5)→(1,5)
+.
+For the sixth query:
+(2,3)→(4,5)→(1,3)→(2,5)→(1,5)
+.

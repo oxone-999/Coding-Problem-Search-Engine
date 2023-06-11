@@ -1,95 +1,113 @@
-Ada Matrix
+Remove Adjacent
 Problem
-###Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-Ada has two matrices
-A and
-B, each with
-N rows (numbered
-1 through
-N) and
-N columns (numbered
-1 through
-N).
-Ada may perform the following operation any number of times (including zero): choose an integer
-i (
-1≤i≤N), then swap row
-i and column
-i in matrix
-A. (Formally, for each valid
-j, she swaps
-A
-i,j
-with
-A
-j,i
-.)
-Is it possible to transform matrix
-A into matrix
-B?
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
+You are given an array
+A of length
 N.
-N lines follow. For each
-i (
-1≤i≤N), the
-i-th of these lines contains
-N space-separated integers
-A
-i,1
+You can perform the following operation on the array, as long as it has more than one element:
+Choose any two adjacent elements, remove them from the array and insert their sum at that position.
+Formally, if the current length of the array is
+∣A∣, you can choose an index
+1≤i<∣A∣, and transform the array into
+[A
+1
 ,A
-i,2
+2
 ,…,A
-i,N
-.
-N more lines follow. For each
-i (
-1≤i≤N), the
-i-th of these lines contains
-N space-separated integers
-B
-i,1
-,B
-i,2
-,…,B
-i,N
-.
-Output
-For each test case, print a single line containing the string "Yes" if it is possible to transform
-A into
-B or "No" if it is impossible (without quotes).
+i−1
+,A
+i
++A
+i+1
+,A
+i+2
+,…,A
+N
+].
+Note that after each operation, the length of array decreases by exactly
+1.
+Print the minimum number of operations to be applied on array
+A such that all the elements in the resulting array are equal. See sample explanation for more details.
+Input Format
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+Each test case consists of two lines of input.
+The first line contains an integer
+N.
+The second line contains
+N space-separated integers, the elements of array
+A.
+Output Format
+For each test case, output on a new line the minimum number of operations required to make all the elements equal.
 Constraints
 1≤T≤10
-5
-1≤N≤2
-10
-1≤A
-i,j
-,B
-i,j
-≤10
-9
-for each valid
-i,j
-the sum of
-N
-2
-over all test cases does not exceed
+4
+2≤N≤3⋅10
+4
+−3⋅10
+4
+≤A
+i
+≤3⋅10
+4
+Sum of
+N over all test cases does not exceed
 3⋅10
-6
+4
+Subtasks
+Subtask #1 (100 points): Original constraints
 Sample 1:
 Input
 Output
-1
+4
 3
-1 2 3
-4 5 6
-7 8 9
-1 2 7
-4 5 8
-3 6 9
-Yes
+5 2 3
+2
+6 9
+5
+3 6 5 4 9
+3
+3 3 3
+1
+1
+2
+0
 Explanation:
-Example case 1: We can swap the second row with the second column and in the resulting matrix, swap the first row with the first column.
+Test case
+1: It is optimal to remove
+A
+2
+and
+A
+3
+in the first operation, after which the array becomes
+[5,5] — all of whose elements are equal.
+Test case
+2: Remove
+A
+1
+and
+A
+2
+after which the array becomes
+[15], which contains equal elements because it is of length
+1.
+Test case
+3: First remove
+A
+3
+and
+A
+4
+after which the updated array
+A becomes
+[3,6,9,9]. Now remove
+A
+1
+and
+A
+2
+after which the array becomes
+[9,9,9].
+Test case
+4: The array elements are already equal.

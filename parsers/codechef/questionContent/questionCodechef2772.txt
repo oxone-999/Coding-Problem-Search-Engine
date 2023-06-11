@@ -1,30 +1,102 @@
-Different Trips
+Minimum Insertions
 Problem
-The Chef is enjoying a wonderful vacation in Byteland. What makes the Chef impressed the most is the road system of the country. Byteland has N cities numbered 1 through N. City 1 is the capital of Byteland. The country also has N-1 bidirectional roads connecting the cities. The i-th road connects two different cities ui and vi. In this road system, people can travel between every pair of different cities by going through exactly one path of roads.
-The roads are arranged in such a way that people can distinguish two cities only when both cities have different number of roads connected to it. Such two cities will be considered similar. For example, city A is similar to the capital if the number of roads connected to city A is equal to the number of roads connected to the capital.
-On each day during the vacation, the Chef wants to have a trip as follows. He chooses two cities A and B such that the Chef will visit city B if he goes from A to the capital using the shortest path. Then, the Chef will visit the cities on the shortest path from A to B through this path. Please note that A may be equal to B; that means the Chef will enjoy the day in a single city.
-The Chef does not want to have similar trips. Two trips are considered similar if and only if they both have the same number of visited cities and for each i, the i-th city visited in one trip is similar to the i-th city visited in the other trip.
-The Chef wants to have as many different, namely not similar, trips as possible. Help him count the maximum number of possible trips such that no two of them are similar.
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+You are given a sequence of integers
+A
+1
+,A
+2
+,…,A
+N
+. This sequence is circular ― for each valid
+i, the element
+A
+i+1
+follows after
+A
+i
+, and the element
+A
+1
+follows after
+A
+N
+.
+You may insert any positive integers at any positions you choose in this sequence; let's denote the resulting sequence by
+B. This sequence is also circular. For each pair of its elements
+B
+s
+and
+B
+f
+, let's denote the (non-circular) sequence created by starting at
+B
+s
+and moving from each element to the one that follows after it, until we reach
+B
+f
+, by
+B(s,f). This sequence includes the elements
+B
+s
+and
+B
+f
+.
+For each
+K from
+2 to
+N inclusive, find the smallest possible number of elements that need to be inserted into
+A to form a sequence
+B for which there is no subsequence
+B(p,q) such that:
+The size of
+B(p,q) is at least
+K.
+There is no pair of consecutive elements in
+B(p,q) such that their GCD is equal to
+1.
 Input
-The first line of the input contains a single integer N. The i-th line of next N-1 lines contains two space-separated integers ui and vi, denoting the i-th road.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
 Output
-Output a single line containing the maximum number of different trips.
+For each test case, print a single line containing
+N−1 space-separated integers. For each
+i (
+1≤i≤N−1), the
+i-th of these integers should be the smallest number of inserted elements in a valid sequence
+B for
+K=i+1.
 Constraints
-1 ≤ N ≤ 100000 (105)
-ui ≠ vi
-Every pair of different cities can be traveled by going through exactly one path of roads.
-Sample
-Input:
-3
-2 1
-3 1
-Output:
-3
-Explanation
-In the sample, the country consists of three cities. There are two roads. The first road connects city 1 and city 2. The second road connects city 1 and city 3. Each day, the Chef can choose the following possible trips:
-A = 1, B = 1
-A = 2, B = 2
-A = 3, B = 3
-A = 2, B = 1
-A = 3, B = 1
-However, since the trip (A = 2, B = 2) is similar to the trip (A = 3, B = 3), and the trip (A = 2, B = 1) is similar to the trip (A = 3, B = 1), there are only three possible different trips for the Chef.
+1≤T≤2,000
+2≤N≤10
+5
+1≤A
+i
+≤10
+9
+for each valid
+i
+the sum of
+N over all test cases does not exceed
+2⋅10
+6
+Sample 1:
+Input
+Output
+1
+5
+3 6 4 5 9
+3 1 1 0

@@ -1,231 +1,36 @@
-From Zero to Infinity
+The Best Tower
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Alice and Bob created
-N and
-M recipes, respectively (
-N,M≥1), and submitted them to Chef for evaluation. Each recipe is represented by a string containing only lowercase English letters. Let's denote Alice's recipes by
-A
-1
-,A
-2
-,…,A
-N
-and Bob's recipes by
-B
-1
-,B
-2
-,…,B
-M
-.
-Accidentally, Chef mixed up those recipes ― now, he has
-L=N+M recipes in a sequence
-S
-1
-,S
-2
-,…,S
-L
-. Thankfully, the recipes created by Alice and Bob are distinguishable from each other. It is well-known that for each recipe
-s created by Alice, the following property holds, and for each recipe created by Bob, it does not hold: For each
-1≤l<r≤∣s∣, the substring
-s
-l
-,s
-l+1
-,…,s
-r
-contains at least as many vowels as consonants. The letters 'a', 'e', 'i', 'o', 'u' are vowels, while the other letters are consonants.
-The score of a candidate who made
-K recipes is calculated as the product of
-fx
-c
-K
-x
-c
-for all letters
-c that occur in at least one of these recipes; here,
-x
-c
-is the number of recipes which contain the letter
-c and
-fx
-c
-is the total number of occurrences of this letter in all
-K recipes.
-Let's denote the scores of Alice and Bob by
-sc
-A
-and
-sc
-B
-respectively. Chef wants to know their ratio
-sc
-A
-/sc
-B
-. We know that Chef is a legendary cook, but he is not very good at calculating, so he is asking you to find that number.
+ByteTel, the largest mobile operator in Byteland, would like to find a place to construct a cellphone tower. There are N important places in Byteland that need to be considered.
+These N buildings can be represented by N points in a 2D plane. The cellphone tower can be represented by a circle, and in order to construct the tower, ByteTel needs to specify its center and radius.
+Moreover, the center of the tower cannot be outside the secure area, which is also a circle.
+ByteTel wants to find a center and radius for the tower such that the total squared distance between each of the building and the tower is as small as possible.
+The distance between a point and a circle is defined to be the difference between the distance from the circle's center to the point and the circle's radius.
+Your task is to help ByteTel find a center and radius for their cellphone tower.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-L.
-L lines follow. For each valid
-i, the
-i-th of these lines contains a single string
-S
-i
-.
+The first line contains a number t (about 10), which is the number of test case. Each test case has the following form.
+The first line contains three numbers (Xs, Ys) and Rs, specifying the secure circle.
+The second line contains N, the number of buildings (1 ≤ N ≤ 100).
+Each line in the next N lines contain two numbers which are the coordinates of a building.
+All coordinates are integer and are between 0 and 10000 (inclusive).
 Output
-For each test case, if the ratio of scores exceeds
-10
-7
-, print a single line containing the string "Infinity" (without quotes); otherwise, print a single line containing one real number
-sc
-A
-/sc
-B
-.
-Your answer will be considered correct if its absolute or relative error does not exceed
-10
-−6
-. It is guaranteed that
-sc
-A
-/sc
-B
-does not lie in the range
-10
-7
-±10.
-Constraints
-1≤T≤10
+For each test case, output 3 numbers (X,Y) and R, rounded to 3 decimal digits, which are the center and radius of the cellphone tower.
+Scoring
+For each test case, your score is d/D in which:
+d is the total square distance between each of the building and the tower your program has found
+D is the total square distance between each of the building and the secure circle's center.
+Your program's score is the sum of each test case's score, the lower the better.
+Example
+Input:
+1
+
+1 1 4
 5
-2≤L≤10
-5
-2≤∣S
-i
-∣≤10
-5
-for each valid
-i
-for each valid
-i,
-S
-i
-contains only lowercase English letters
-the sum of
-∣S
-1
-∣+∣S
-2
-∣+…+∣S
-L
-∣ over all test cases does not exceed
-10
-7
-Subtasks
-Subtask #1 (25 points):
-L≤10
-∣S
-i
-∣≤10 for each valid
-i
-Subtask #2 (75 points): original constraints
-Sample 1:
-Input
-Output
-2
-4
-aba
-abc
-bab
-aac
-3
-aba
-baab
-abc
-1.1250000
-0.0277778
-Explanation:
-Example case 1: The recipes "aba" and "aac" are created by Alice, while the recipes "abc" and "bab" are created by Bob. The scores are:
-sc
-A
-=
-fx
-a
-N
-x
-a
-⋅
-fx
-b
-N
-x
-b
-⋅
-fx
-c
-N
-x
-c
-=
-4
-2
-2
-⋅
-1
-2
-1
-⋅
-1
-2
-1
-=
-8
-1
-sc
-B
-=
-fx
-a
-M
-x
-a
-⋅
-fx
-b
-M
-x
-b
-⋅
-fx
-c
-M
-x
-c
-=
-2
-2
-2
-⋅
-3
-2
-2
-⋅
-1
-2
-1
-=
-9
-1
-sc
-B
-sc
-A
-=
-1/9
-1/8
-=1.125
+3 -2
+2 1
+5 3
+4 3
+4 -1
+
+Output:
+4.000 1.000 2.000
+The sample output's score is 0.023444. The secure circle is red and the tower is yellow.

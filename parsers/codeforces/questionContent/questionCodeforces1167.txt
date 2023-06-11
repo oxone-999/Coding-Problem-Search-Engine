@@ -1,248 +1,93 @@
-E. Groceries in Meteor Town
-time limit per test2 seconds
+A. Download More RAM
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Mihai lives in a town where meteor storms are a common problem. It's annoying, because Mihai has to buy groceries sometimes, and getting hit by meteors isn't fun. Therefore, we ask you to find the most dangerous way to buy groceries so that we can trick him to go there.
-The town has
+Did you know you can download more RAM? There is a shop with
 n
-buildings numbered from
-1
-to
-n
-. Some buildings have roads between them, and there is exactly
-1
-simple path from any building to any other building. Each road has a certain meteor danger level. The buildings all have grocery stores, but Mihai only cares about the open ones, of course. Initially, all the grocery stores are closed.
-You are given
-q
-queries of three types:
-Given the integers
-l
-and
-r
-, the buildings numbered from
-l
-to
-r
-open their grocery stores (nothing happens to buildings in the range that already have an open grocery store).
-Given the integers
-l
-and
-r
-, the buildings numbered from
-l
-to
-r
-close their grocery stores (nothing happens to buildings in the range that didn't have an open grocery store).
-Given the integer
-x
-, find the maximum meteor danger level on the simple path from
-x
-to any open grocery store, or
-−1
-if there is no edge on any simple path to an open store.
+different pieces of software that increase your RAM. The
+i
+-th RAM increasing software takes
+a
+i
+GB of memory to run (temporarily, once the program is done running, you get the RAM back), and gives you an additional
+b
+i
+GB of RAM (permanently). Each software can only be used once. Your PC currently has
+k
+GB of RAM.
+Note that you can't use a RAM-increasing software if it takes more GB of RAM to use than what you currently have.
+Since RAM is the most important thing in the world, you wonder, what is the maximum possible amount of RAM achievable?
 Input
-The first line contains the two integers
+The first line of the input contains a single integer
+t
+(
+1≤t≤100
+) — the number of test cases. The description of test cases follows.
+The first line of each test case contains the integers
 n
 and
-q
+k
 (
-2≤n,q≤3⋅
-10
-5
-).
-Then follows
-n−1
-lines, the
-i
--th of which containing the integers
-u
+1≤n≤100
+,
+1≤k≤1000
+). Then two lines follow, each containing
+n
+integers describing the arrays
+a
+and
+b
+(
+1≤
+a
 i
 ,
-v
+b
 i
-, and
-w
-i
-(
-1≤
-u
-i
-,
-v
-i
-≤n,1≤
-w
-i
-≤
-10
-9
-) meaning there is two way road between building
-u
-i
-and
-v
-i
-with meteor danger level
-w
-i
-.
-It is guaranteed that the given edges form a tree.
-Then follows
-q
-lines, the
-j
--th of which begin with the integer
-t
-j
-(
-1≤
-t
-j
-≤3
-), meaning the
-j
--th query is of the
-t
-j
--th type.
-If
-t
-j
-is
-1
-or
-2
-the rest of the line contains the integers
-l
-j
-and
-r
-j
-(
-1≤
-l
-j
-≤
-r
-j
-≤n
-).
-If
-t
-j
-is
-3
-the rest of the line contains the integer
-x
-j
-(
-1≤
-x
-j
-≤n
+≤1000
 ).
 Output
-For each query of the
-3
-rd type (
-t
-j
-=3
-), output the maximum meteor danger level that is on some edge on the simple path from
-x
-j
-to some open store, or
-−1
-if there is no such edge.
+For each test case, output a single line containing the largest amount of RAM you can achieve.
 Example
 input
 Copy
-6 9
-1 3 1
-2 3 2
-4 5 3
-4 6 4
-3 4 5
-3 1
-1 1 1
-3 1
-2 1 1
-1 5 6
-3 4
-2 6 6
-3 4
-3 1
+4
+3 10
+20 30 10
+9 100 10
+5 1
+1 1 5 1 1
+1 1 1 1 1
+5 1
+2 2 2 2 2
+100 100 100 100 100
+5 8
+128 64 32 16 8
+128 64 32 16 8
 output
 Copy
--1
--1
-4
-3
-5
+29
+6
+1
+256
 Note
-This is an illustration of the town given in the sample input.
-In the first query, there are no open stores, so obviously there are no edges on the simple path from
+In the first test case, you only have enough RAM to run the third software initially, but that increases your RAM to
+20
+GB, which allows you to use the first software, increasing your RAM to
+29
+GB. The only software left needs
+30
+GB of RAM, so you have to stop here.
+In the second test case, you can use the first, second, fourth and fifth software that need only
 1
-to any open store, so the answer is
-−1
-.
-After the second and third queries, the set of open stores is
-{1}
-. The simple path from
-1
-to
-1
-has no edges, so the answer for the
-3
-rd query is
-−1
-.
-After the fourth query, there are no open stores.
-After the fifth and sixth queries, the set of open stores is
-{5,6}
-. In the sixth query, there are two paths from
-x
-j
-=4
-to some open grocery store:
-4
-to
+GB of RAM per software to run to increase your RAM to
 5
-and
-4
-to
+GB, and then use the last remaining one to increase your RAM to
 6
-. The biggest meteor danger is found on the edge from
-4
-to
-6
-, so the answer for the
-6
-th query is
-4
-. This path is marked with red in the illustration.
-After the rest of the queries, the set of open stores is
-{5}
-. In the eighth query, the only path from
-x
-j
-=4
-to an open store is from
-4
-to
-5
-, and the maximum weight on that path is
-3
-. This path is marked with green in the illustration.
-In the ninth query, the only path from
-x
-j
-=1
-to an open store is from
+GB.
+In the third test case, all the software need more than
 1
-to
-5
-, and the maximum weight on that path is
-5
-. This path is marked with blue in the illustration.
+GB of RAM to run, so the amount of RAM you have stays at
+1
+GB.

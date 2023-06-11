@@ -1,180 +1,132 @@
-G. Yet Another DAG Problem
+C. Black Friday
 time limit per test2 seconds
-memory limit per test1024 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a directed acyclic graph (a directed graph that does not contain cycles) of
+There is a local shop in your area getting prepared for the great holiday of Black Friday. There are
 n
-vertices and
-m
-arcs. The
-i
--th arc leads from the vertex
-x
-i
-to the vertex
-y
-i
-and has the weight
-w
-i
-.
-Your task is to select an integer
-a
-v
-for each vertex
-v
-, and then write a number
-b
-i
-on each arcs
-i
-such that
-b
-i
-=
-a
-x
-i
-−
-a
-y
-i
-. You must select the numbers so that:
-all
-b
-i
-are positive;
-the value of the expression
-∑
-i=1
-m
-w
-i
-b
-i
-is the lowest possible.
-It can be shown that for any directed acyclic graph with non-negative
-w
-i
-, such a way to choose numbers exists.
-Input
-The first line contains two integers
-n
-and
-m
-(
-2≤n≤18
-;
-0≤m≤
-n(n−1)
-2
-).
-Then
-m
-lines follow, the
-i
--th of them contains three integers
-x
-i
-,
-y
-i
-and
-w
-i
-(
-1≤
-x
-i
-,
-y
-i
-≤n
-,
-1≤
-w
-i
-≤
-10
-5
-,
-x
-i
-≠
-y
-i
-) — the description of the
-i
--th arc.
-It is guaranteed that the lines describe
-m
-arcs of a directed acyclic graph without multiple arcs between the same pair of vertices.
-Output
-Print
-n
-integers
-a
+items with prices
+p
 1
 ,
-a
+p
 2
-, ...,
-a
+,…,
+p
+n
+on the display. They are ordered by price, so
+p
+1
+≤
+p
+2
+≤⋯≤
+p
+n
+.
+The shop has a prechosen discount value
+k
+. The Black Friday discount is applied in the following way: for a single purchase of
+x
+items, you get the cheapest
+⌊
+x
+k
+⌋
+items of them for free (
+⌊
+x
+k
+⌋
+is
+x
+divided by
+k
+rounded down to the nearest integer). You can include each item in your purchase no more than once.
+For example, if there are items with prices
+[1,1,2,2,2,3,4,5,6]
+in the shop, and you buy items with prices
+[1,2,2,4,5]
+, and
+k=2
+, then you get the cheapest
+⌊
+5
+2
+⌋=2
+for free. They are items with prices
+1
+and
+2
+.
+So you, being the naive customer, don't care about how much money you spend. However, you want the total price of the items you get for free to be as large as possible.
+What is the maximum total price of the items you can get for free on a single purchase?
+Input
+The first line contains a single integer
+t
+(
+1≤t≤500
+) — the number of testcases.
+Then the description of
+t
+testcases follows.
+The first line of each testcase contains two integers
+n
+and
+k
+(
+1≤n≤200
+;
+1≤k≤n
+) — the number of items in the shop and the discount value, respectively.
+The second line of each testcase contains
+n
+integers
+p
+1
+,
+p
+2
+,…,
+p
 n
 (
-0≤
-a
-v
+1≤
+p
+i
 ≤
 10
-9
-), which must be written on the vertices so that all
-b
-i
-are positive, and the value of the expression
-∑
-i=1
-m
-w
-i
-b
-i
-is the lowest possible. If there are several answers, print any of them. It can be shown that the answer always exists, and at least one of the optimal answers satisfies the constraints
-0≤
-a
-v
+6
+) — the prices of the items on the display of the shop. The items are ordered by their price, so
+p
+1
 ≤
-10
-9
+p
+2
+≤⋯≤
+p
+n
 .
-Examples
+Output
+Print a single integer for each testcase: the maximum total price of the items you can get for free on a single purchase.
+Example
 input
 Copy
-3 2
-2 1 4
-1 3 2
+5
+5 2
+1 3 4 6 7
+6 3
+1 2 3 4 5 6
+6 3
+3 3 4 4 5 5
+1 1
+7
+4 4
+1 3 3 7
 output
 Copy
-1 2 0
-input
-Copy
-5 4
-1 2 1
-2 3 1
-1 3 6
-4 5 8
-output
-Copy
-43 42 41 1337 1336
-input
-Copy
-5 5
-1 2 1
-2 3 1
-3 4 1
-1 5 1
-5 4 10
-output
-Copy
-4 3 2 1 2
+7
+4
+6
+7
+1

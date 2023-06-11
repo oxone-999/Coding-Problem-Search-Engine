@@ -1,52 +1,96 @@
-Infinite OR Game
+Flipping Failure
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-Chef Tobby is trying to run a code given to him by Bhuvan for an experiment they want to include in the manuscript to be submitted to a conference. The deadline to submit the manuscript is within a couple of hours and Chef Tobby needs to finish the experiments before then.
-The code given by Bhuvan is the following which runs given an array of N integers and another integer K :
-void recurse ( array a, int n )
-{
- // n = size of array
- define array b currently empty
- consider all 2^n subsets of a[]
- {
-  x = bitwise OR of elements in the subsets
-  add x into "b" if it is not present yet
- }
- if (sizeof( b ) == 1 << k)
- {
-  printf(“Won”);
-  return;
- }
- recurse ( b, sizeof( b ) );
-}
-Chef Tobby tried to run an experiment with only one integer in the array with value 2 and K = 3. To his horror, he found out that the algorithm is resulting in an infinite loop. He is livid with the possibility that the algorithm can lead to infinite loops for certain cases. On closer inspection he determines that it might be possible to insert additional elements in the initial array to subvert the problem. Since time is very less, Chef Tobby would like to insert the minimum number of elements.
-Chef Tobby has to finish writing the paper, so he asks his graduate student Leamas to fix it. Leamas has no idea how to fix the problem so he asks you for help.
-Input section
-The first line contains T, the number of test cases.
-Each test case consists of 2 lines. The first line contains 2 integers N and K, denoting the number of elements in the array and parameter mentioned in problem statement.
-Next line contains N space separated integers, denoting the elements of the array.
-Output section
-Output the minimum number of elements that need to be inserted so that inifinite loop can be avoided.
-Input constraints
-1 ≤ T ≤ 10
-1 ≤ Sum of N over all test cases ≤ 105
-1 ≤ K ≤ 20
-0 ≤ A[i] ≤ 2K-1, where A[i] denotes the ith element of the array.
+Chef has a binary string
+S with him and he wants to modify it using the following two types of operations -
+Type 1 : Choose any two indices
+i and
+j such that
+1≤i,j≤∣S∣ and swap
+S
+i
+and
+S
+j
+. This operation costs
+1 rupee and can be performed any number of times.
+Type 2 : Choose any prefix of length
+i, where
+1≤i≤∣S∣, and reverse this prefix of the binary string. This operation is free of cost and can be performed at most once.
+Chef wants to obtain the lexicographically smallest string. Can you help him find the minimum cost to obtain the lexicographically smallest string?
+Note:
+∣S∣ denotes the length of the string
+S.
+A string
+A is lexicographically smaller than string
+B, if
+A
+i
+<B
+i
+, where
+i is the first index where
+A and
+B differ.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of a single line of input denoting
+S, the original string.
+Output Format
+For each test case, output the minimum cost to obtain the lexicographically minimal string.
+Constraints
+1≤T≤5⋅10
+4
+1≤∣S∣≤10
+5
+The sum of
+∣S∣ over all test cases won't exceed
+5⋅10
+5
+.
+Subtasks
+Subtask 1 (10 points):
+1≤M≤10
+Subtask 2 (20 points): The sum of
+N across all test cases won't exceed
+20.
+Subtask 3 (70 points): No further constraints.
 Sample 1:
 Input
 Output
+3
+1010
+101
+100100
 1
-2 2
-3 1
-1
-Explanation:
-You can win the game by inserting the element 2 into the array.
-Sample 2:
-Input
-Output
-1
-7 3
-3 7 5 4 6 2 1
 0
+1
 Explanation:
-The initial array will result will terminate in the first step of algorithm only. Thus there is no need to insert any new element.
+Test case 1: You can perform an operation of Type 1 by choosing
+i=2 and
+j=3. So from
+1010, you get
+1100, and it has cost you
+1 rupee so far. Then, you perform an operation of Type 2, by choosing
+i=4. So you reverse the entire string, and so from
+1100, you get
+0011. This operation is free of cost. This is the lexicographically smallest string that you can achieve, and it cost us
+1 rupee to get there. So the answer is
+1.
+Test case 2: You can perform an operation of Type 2, by choosing
+i=2. So you reverse the prefix of length 2, and so from
+101, you get
+011. This operation is free of cost. This is the lexicographically smallest string that you can achieve, and it cost us
+0 rupees to get there. So the answer is
+0.
+Test case 3: You can perform an operation of Type 1 by choosing
+i=4 and
+j=6. So from
+100100, you get
+100001, and it has cost you
+1 rupee so far. Then, you perform an operation of Type 2, by choosing
+i=5. So you reverse the prefix of length 5, and so from
+100001, you get
+000011. This operation is free of cost. This is the lexicographically smallest string that you can achieve, and it cost us
+1 rupee to get there. So the answer is
+1.

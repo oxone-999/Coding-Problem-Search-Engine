@@ -1,154 +1,100 @@
-E. Frequency Queries
-time limit per test4 seconds
-memory limit per test512 megabytes
+G. Poachers
+time limit per test1.5 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Petya has a rooted tree with an integer written on each vertex. The vertex
-1
-is the root. You are to answer some questions about the tree.
-A tree is a connected graph without cycles. A rooted tree has a special vertex called the root. The parent of a node
+Alice and Bob are two poachers who cut trees in a forest.
+A forest is a set of zero or more trees. A tree is a connected graph without cycles. A rooted tree has a special vertex called the root. The parent of a node
 v
 is the next vertex on the shortest path from
 v
-to the root.
-Each question is defined by three integers
+to the root. Children of vertex
 v
-,
-l
-, and
-k
-. To get the answer to the question, you need to perform the following steps:
-First, write down the sequence of all integers written on the shortest path from the vertex
+are all nodes for which
 v
-to the root (including those written in the
-v
-and the root).
-Count the number of times each integer occurs. Remove all integers with less than
-l
-occurrences.
-Replace the sequence, removing all duplicates and ordering the elements by the number of occurrences in the original list in increasing order. In case of a tie, you can choose the order of these elements arbitrary.
-The answer to the question is the
-k
--th number in the remaining sequence. Note that the answer is not always uniquely determined, because there could be several orderings. Also, it is possible that the length of the sequence on this step is less than
-k
-, in this case the answer is
-−1
-.
-For example, if the sequence of integers on the path from
-v
-to the root is
-[2,2,1,7,1,1,4,4,4,4]
-,
-l=2
-and
-k=2
-, then the answer is
-1
-.
-Please answer all questions about the tree.
+is the parent. A vertex is a leaf if it has no children.
+In this problem we define the depth of vertex as number of vertices on the simple path from this vertex to the root. The rank of a tree is the minimum depth among its leaves.
+Initially there is a forest of rooted trees. Alice and Bob play a game on this forest. They play alternating turns with Alice going first. At the beginning of their turn, the player chooses a tree from the forest. Then the player chooses a positive cutting depth, which should not exceed the rank of the chosen tree. Then the player removes all vertices of that tree whose depth is less that or equal to the cutting depth. All other vertices of the tree form a set of rooted trees with root being the vertex with the smallest depth before the cut. All these trees are included in the game forest and the game continues.
+A player loses if the forest is empty at the beginning of his move.
+You are to determine whether Alice wins the game if both players play optimally.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
+1≤t≤5⋅
 10
-6
+5
 ). Description of the test cases follows.
-The first line of each test case contains two integers
+The first line of each test case contains a single integer
 n
-,
-q
 (
-1≤n,q≤
+1≤n≤5⋅
 10
-6
-) — the number of vertices in the tree and the number of questions.
+5
+) — total number of vertices in the initial forest.
 The second line contains
 n
 integers
-a
+p
 1
 ,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤n
-), where
-a
-i
-is the number written on the
-i
--th vertex.
-The third line contains
-n−1
-integers
 p
 2
-,
-p
-3
 ,…,
 p
 n
 (
-1≤
+0≤
 p
 i
 ≤n
-), where
+) — description of the forest. If
 p
 i
-is the parent of node
+=0
+, then the
 i
-. It's guaranteed that the values
+-th vertex is the root of a tree, otherwise
 p
-define a correct tree.
-Each of the next
-q
-lines contains three integers
-v
-,
-l
-,
-k
-(
-1≤v,l,k≤n
-) — descriptions of questions.
+i
+is the parent of the vertex
+i
+. It's guaranteed that
+p
+defines a correct forest of rooted trees.
 It is guaranteed that the sum of
 n
-and the sum of
-q
-over all test cases do not exceed
+over all test cases does not exceed
+5⋅
 10
-6
+5
 .
 Output
-For each question of each test case print the answer to the question. In case of multiple answers, print any.
+For each test case, print "YES" (without quotes) if Alice wins, otherwise print "NO" (without quotes). You can print each letter in any case (upper or lower).
 Example
 input
 Copy
-2
-3 3
-1 1 1
-1 2
-3 1 1
-3 1 2
-3 2 1
-5 5
-1 2 1 1 2
-1 1 2 2
-3 1 1
-2 1 2
-4 1 1
-4 2 1
-4 2 2
+4
+4
+0 1 0 3
+7
+0 1 2 0 4 5 6
+4
+0 1 1 2
+7
+0 1 1 2 2 3 3
 output
 Copy
-1 -1 1 
-1 1 2 1 -1 
+NO
+YES
+NO
+YES
+Note
+In the first test case Bob has a symmetric strategy, so Alice cannot win.
+In the second test case Alice can choose the second tree and cutting depth
+1
+to get a forest on which she has a symmetric strategy.
+In third test case the rank of the only tree is
+2
+and both possible moves for Alice result in a loss. Bob either can make the forest with a symmetric strategy for himself, or clear the forest.
+In the fourth test case all leafs have the same depth, so Alice can clear the forest in one move.

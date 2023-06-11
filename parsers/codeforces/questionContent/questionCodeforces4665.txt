@@ -1,43 +1,33 @@
-H. Endless Roses Most Beautiful
+I. A Vital Problem
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Arkady decided to buy roses for his girlfriend.
-A flower shop has white, orange and red roses, and the total amount of them is n. Arkady thinks that red roses are not good together with white roses, so he won't buy a bouquet containing both red and white roses. Also, Arkady won't buy a bouquet where all roses have the same color.
-Arkady wants to buy exactly k roses. For each rose in the shop he knows its beauty and color: the beauty of the i-th rose is bi, and its color is ci ('W' for a white rose, 'O' for an orange rose and 'R' for a red rose).
-Compute the maximum possible total beauty of a bouquet of k roses satisfying the constraints above or determine that it is not possible to make such a bouquet.
+Polycarp has a strict daily schedule. He has n alarms set for each day, and the i-th alarm rings each day at the same time during exactly one minute.
+Determine the longest time segment when Polycarp can sleep, i. e. no alarm rings in that period. It is possible that Polycarp begins to sleep in one day, and wakes up in another.
 Input
-The first line contains two integers n and k (1 ≤ k ≤ n ≤ 200 000) — the number of roses in the show and the number of roses Arkady wants to buy.
-The second line contains a sequence of integers b1, b2, ..., bn (1 ≤ bi ≤ 10 000), where bi equals the beauty of the i-th rose.
-The third line contains a string c of length n, consisting of uppercase English letters 'W', 'O' and 'R', where ci denotes the color of the i-th rose: 'W' denotes white, 'O'  — orange, 'R' — red.
+The first line contains a single integer n (1 ≤ n ≤ 100) — the number of alarms.
+Each of the next n lines contains a description of one alarm. Each description has a format "hh:mm", where hh is the hour when the alarm rings, and mm is the minute of that hour when the alarm rings. The number of hours is between 0 and 23, and the number of minutes is between 0 and 59. All alarm times are distinct. The order of the alarms is arbitrary.
+Each alarm starts ringing in the beginning of the corresponding minute and rings for exactly one minute (i. e. stops ringing in the beginning of the next minute). Polycarp can start sleeping instantly when no alarm is ringing, and he wakes up at the moment when some alarm starts ringing.
 Output
-Print the maximum possible total beauty of a bouquet of k roses that satisfies the constraints above. If it is not possible to make a single such bouquet, print -1.
+Print a line in format "hh:mm", denoting the maximum time Polycarp can sleep continuously. hh denotes the number of hours, and mm denotes the number of minutes. The number of minutes should be between 0 and 59. Look through examples to understand the format better.
 Examples
 input
 Copy
-5 3
-4 3 4 1 6
-RROWW
+1
+05:43
 output
 Copy
-11
+23:59
 input
 Copy
-5 2
-10 20 14 20 11
-RRRRR
+4
+22:00
+03:21
+16:03
+09:59
 output
 Copy
--1
-input
-Copy
-11 5
-5 6 3 2 3 4 7 5 4 5 6
-RWOORWORROW
-output
-Copy
-28
+06:37
 Note
-In the first example Arkady wants to buy 3 roses. He can, for example, buy both red roses (their indices are 1 and 2, and their total beauty is 7) and the only orange rose (its index is 3, its beauty is 4). This way the total beauty of the bouquet is 11.
-In the second example Arkady can not buy a bouquet because all roses have the same color.
+In the first example there is only one alarm which rings during one minute of a day, and then rings again on the next day, 23 hours and 59 minutes later. Polycarp can sleep all this time.

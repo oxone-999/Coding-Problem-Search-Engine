@@ -1,181 +1,149 @@
-Dipole Moment
+No Queries No Fun
 Problem
-You are given a tree with
-N nodes, numbered from
-1 to
-N. It is rooted at node
-1.
-We call the simple path between node
-A and node
-B to be vertical if node
-A lies on the path from the root to
-B or node
-B lies on the path from the root to
-A. In other words, LCA (
-A,B) must be
-A or
-B. And in such cases, we define a node
-A to lie above node
-B in the tree if distance to
-A from the root is less than the distance from the root to
-B. Otherwise we define it to lie below
-B.
-You also have with you
-1 Proton and
-E Electrons (together called as particles) . And you need to place these in some nodes of the tree.
-Suppose we fix the proton to be at some node
-A. We then call a placement of electrons valid if the following conditions are met :-
-Each node can have at most one particle in it. Also, every particle should be placed in some node.
-Electrons can only be placed in nodes from which the simple path to
-A is vertical (that is, they should either be above
-A, or below
-A).
-At least
-X
+Read problems statements in Mandarin chinese , Russian and Vietnamese as well.
+Maybe Fulu is not so good at writing codes for median elements, but solving problems with queries is really easy for him. Today, he decided to give you one hard problem with queries from his national contest.
+You are given two sequences
+A and
+B, each with length
+N (
+1-indexed), and
+Q queries. There are four types of queries:
+1lr — find
+max(A
+l
+,A
+l+1
+,…,A
+r
+)
+2lr — increase
 A
-nodes above
-A should contain an electron and at least
-Y
+l
+,A
+l+1
+,…,A
+r
+by
+B
+l
+,B
+l+1
+,…,B
+r
+, i.e. for each
+i (
+l≤i≤r), change
 A
-nodes below
-A should contain an electron.
-The Dipole moment for a valid placement of electrons is calculated as follows :-
-Consider the sum of distances from
-A to nodes which contain an electron and lie above
-A. Let this sum be
-S
-1
-.
-Similarly, consider the sum of distances from
-A to nodes which contain an electron and lie below
-A. Let this sum be
-S
-2
-.
-The Dipole Moment is then defined as |
-S
-1
-−S
-2
-+Z
+i
+to
 A
-|, here
-Z
+i
++B
+i
+3lrx — for each
+l≤i≤r, increase
+B
+i
+by
+x
+4lrx — for each
+l≤i≤r, increase
 A
-is the positive charge if the proton is placed at
-A. Here, |
-X| refers to the absolute value of
-X.
-For every
-A (
-1≤A≤N) print the minimum dipole moment you can achieve among all valid placement in which the node
-A contains the proton.
-In case there is no valid placement for a particular node
-A, print
-−1 for that.
-Note that the distance between two nodes is the number of edges in the simple path between them.
-###Input:
-The first line contains a single integer,
-T, which denotes the number of testcases.
-The first line of each testcase will contain two integers,
+i
+by
+x
+Can you quickly process the queries?
+Input
+The first line of the input contains two space-separated integers
 N and
-E, which denote the number of nodes and number of electrons respectively.
-The next
-N−1 lines contain two integers
-u and
-v denoting that there’s an edge between
-u and
-v in the tree.
-The i-th of the next
-N lines contain 3 space separated integers ,
-X
-i
-,Y
-i
-,Z
-i
-###Output:
-Output
-T lines, where each line should be containing
-N space-separated integers, the
+Q.
+The second line contains
+N space-separated integers
 A
-th
-integer should be the minimum dipole moment if the proton is placed at node
-A , or -1 if there is no valid placement.
-###Constraints
-1≤T≤5
-2≤N≤2∗10
+1
+,A
+2
+,…,A
+N
+denoting the initial sequence
+A.
+The third line contains
+N space-separated integers
+B
+1
+,B
+2
+,…,B
+N
+denoting the initial sequence
+B.
+The following
+Q lines describe queries. Each of these lines starts with an integer
+t denoting the type of the query. If
+1≤t≤2, it is followed by a space and two space-separated integers
+l and
+r. If
+3≤t≤4, it is followed by a space and three space-separated integers
+l,
+r and
+x.
+Output
+For each query of the first type, print a single line containing one integer — the maximum element in the subsequence
+A
+l..r
+.
+Constraints
+1≤N,Q≤10
 5
-1≤u,v≤N
-Sum of
-N over all testcases
-≤4∗10
-5
-1≤E≤N−1
-0≤∣Z
+∣A
 i
 ∣≤10
-6
-0≤X
+9
+for each valid
 i
-,Y
+∣B
 i
-<N
-0≤X
+∣≤10
+9
+for each valid
 i
-+Y
-i
-≤E
-X
+∣x∣≤10
+9
+1≤l≤r≤N
+Sample 1:
+Input
+Output
+3 6
+1 4 2
+3 1 2
+1 1 3
+2 1 3
+3 1 1 -2
+2 1 3
+4 1 2 3
+1 1 2
+4
+9
+Explanation:
+Initially,
+A=[1,4,2] and
+B=[3,1,2].
+In the first query, we should find the maximum element of
+A, which is
+4.
+After the second query,
+A=[4,5,4].
+After the third query,
+B=[1,1,2].
+After the fourth query,
+A=[5,6,6].
+After the fifth query,
+A=[8,9,6].
+In the sixth query, we should find the maximum of
 A
-≤ number of nodes above
-A, for all
-A.
-Y
-A
-≤ number of nodes below
-A, for all
-A.
-###Subtasks
-15 points : sum of
-N over all testcases
-≤300
-25 points : sum of
-N over all testcases
-≤3000
-60 points : Original Constraints.
-###Sample Input:
 1
-13 2
-1 2
-2 3
-2 4
-2 5
-4 6
-4 7
-1 8
-8 9
-8 10
-8 12
-10 11
-1 13
-0 1 5
-0 0 0
-1 0 4
-2 0 -3
-1 0 -8
-2 0 -6
-2 0 3
-0 2 0
-1 0 -4
-2 0 7
-0 0 2
-0 0 10
-1 0 -2
-###Sample Output:
-0 0 7 0 5 1 6 2 1 10 5 13 -1
-###Explanation: With the proton fixed at node
-1, we can achieve a dipole moment of
-0 by placing the electrons at nodes
-2 and
-12 for instance.
+and
+A
+2
+, which is
+9.

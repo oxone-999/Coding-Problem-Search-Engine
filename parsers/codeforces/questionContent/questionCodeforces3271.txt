@@ -1,45 +1,83 @@
-A. BubbleReactor
-time limit per test1.5 seconds
-memory limit per test256 megabytes
+C. Jumping Transformers
+time limit per test4 seconds
+memory limit per test128 megabytes
 inputstandard input
 outputstandard output
-You are in charge of the BubbleReactor. It consists of
+You, the mighty Blackout, are standing in the upper-left
+(0,0)
+corner of
 N
-BubbleCores connected with
-N
-lines of electrical wiring. Each electrical wiring connects two distinct BubbleCores. There are no BubbleCores connected with more than one line of electrical wiring.
-Your task is to start the BubbleReactor by starting each BubbleCore. In order for a BubbleCore to be started it needs to be receiving power from a directly connected BubbleCore which is already started. However, you can kick-start one BubbleCore manually without needing power. It is guaranteed that all BubbleCores can be started.
-Before the BubbleCore boot up procedure its potential is calculated as the number of BubbleCores it can power on (the number of inactive BubbleCores which are connected to it directly or with any number of inactive BubbleCores in between, itself included)
-Start the BubbleReactor so that the sum of all BubbleCores' potentials is maximum.
+x
+M
+matrix. You must move either right or down each second.
+There are
+K
+transformers jumping around the matrix in the following way. Each transformer starts jumping from position
+(x,y)
+, at time
+t
+, and jumps to the next position each second. The
+x
+-axes grows downwards, and
+y
+-axes grows to the right. The order of jumping positions is defined as
+(x,y),(x+d,y−d),(x+d,y),(x,y+d)
+, and is periodic. Before time
+t
+transformer is not in the matrix.
+You want to arrive to the bottom-right corner
+(N−1,M−1)
+, while slaying transformers and losing the least possible amount of energy. When you meet the transformer (or more of them) in the matrix field, you must kill them all, and you lose the sum of the energy amounts required to kill each transformer.
+After the transformer is killed, he of course stops jumping, falls into the abyss and leaves the matrix world. Output minimum possible amount of energy wasted.
 Input
-First line contains one integer
-N(3≤N≤15.000)
-, the number of BubbleCores.
-The following N lines contain two integers
-U,V(0≤U≠V<N)
-denoting that there exists electrical wiring between BubbleCores
-U
-and
-V
-.
+In the first line, integers
+N
+,
+M
+(
+1≤N,M≤500
+), representing size of the matrix, and
+K
+(
+0≤K≤5∗
+10
+5
+) , the number of jumping transformers.
+In next
+K
+lines, for each transformer, numbers
+x
+,
+y
+,
+d
+(
+d≥1
+),
+t
+(
+0≤t≤N+M−2
+), and
+e
+(
+0≤e≤
+10
+9
+), representing starting coordinates of transformer, jumping positions distance in pattern described above, time when transformer starts jumping, and energy required to kill it.
+It is guaranteed that all 4 of jumping points of the transformers are within matrix coordinates
 Output
-Single integer, the maximum sum of all BubbleCores' potentials.
+Print single integer, the minimum possible amount of energy wasted, for Blackout to arrive at bottom-right corner.
 Example
 input
 Copy
-10
-0 1
-0 3
-0 4
-0 9
-1 2
-2 3
-2 7
-4 5
-4 6
-7 8
+3 3 5
+0 1 1 0 7
+1 1 1 0 10
+1 1 1 1 2
+1 1 1 2 2
+0 1 1 2 3
 output
 Copy
-51
+9
 Note
-If we start by kickstarting BubbleCup 8 and then turning on cores 7, 2, 1, 3, 0, 9, 4, 5, 6 in that order we get potentials 10 + 9 + 8 + 7 + 6 + 5 + 1 + 3 + 1 + 1 = 51
+If Blackout takes the path from (0, 0) to (2, 0), and then from (2, 0) to (2, 2) he will need to kill the first and third transformer for a total energy cost of 9. There exists no path with less energy value.

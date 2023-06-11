@@ -1,34 +1,66 @@
-Nothing in Common
+Sad Splits
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Alice has quarreled with Berta recently. Now she doesn't want to have anything in common with her!
-Recently, they've received two collections of positive integers. The Alice's integers were A1, A2, ..., AN, while Berta's were B1, B2, ..., BM.
-Now Alice wants to throw away the minimal amount of number from her collection so that their collections would have no common numbers, i.e. there won't be any number which is present in both collections. Please help Alice to find the minimal amount of numbers she would need to throw away.
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains two space-separated integer numbers N and M denoting the amount of numbers in Alice's and Berta's collections respectively.
-The second line contains N space-separated integers A1, A2, ..., AN denoting the numbers of Alice.
-The third line contains M space-separated integers B1, B2, ..., BM denoting the numbers of Berta.
-Output
-For each test case, output a single line containing the minimal amount of numbers Alice needs to throw away from her collection so that she wouldn't have any numbers in common with Berta.
+You are given a positive integer
+N. You have to split each digit of
+N into either of two non-empty subsequences
+A or
+B.
+For example, if
+N=104, some possible values of
+(A,B) can be
+(10,4),(14,0) and
+(1,4). Note that, after separating the digits into
+A and
+B, these subsequences are considered as positive integers and thus leading zeros can be omitted.
+Let us define a function
+F(X,Y)=(X+Y)%2. Find out whether it is possible to find two non-empty subsequences
+A and
+B formed out of
+N such that
+F(A,B)=0.
+Input Format
+First line will contain
+T, number of test cases. Then the test cases follow.
+Each test case contains of a single line of input, one integer
+N.
+Output Format
+For each test case, print
+YES if it is possible to find two non-empty subsequences
+A and
+B formed out of
+N such that
+F(A,B)=0. Otherwise, print
+NO.
+You may print each character of the string in uppercase or lowercase (for example, the strings
+YeS,
+yEs,
+yes and
+YES will all be treated as identical).
 Constraints
-1 ≤ Ai, Bi ≤ 106
-All numbers are distinct within a single girl's collection.
+1≤T≤1000
+10≤N≤10
+9
 Subtasks
-Subtask #1 (47 points): T = 25, 1 ≤ N, M ≤ 1000
-Subtask #2 (53 points): T = 5, 1 ≤ N, M ≤ 100000
+Subtask 1 (100 points): Original constraints.
 Sample 1:
 Input
 Output
 2
-3 4
-1 2 3
-3 4 5 6
-3 3
-1 2 3
-4 5 6
-1
-0
+10
+73452
+NO
+YES
 Explanation:
-Example case 1. If Alice throws away the number 3 from her collection, she would obtain {1, 2} which is disjoint with {3, 4, 5, 6}.
-Example case 2. Girls don't have any number in common initially. So there is no need to throw away any number.
+Test Case
+1: The only two possibilities are:
+A=0,B=1: Here
+F(A,B)=(A+B)%2=(0+1)%2=1%2=1.
+A=1,B=0: Here
+F(A,B)=(A+B)%2=(1+0)%2=1%2=1. Hence it's not possible to achieve
+F(A,B)=0.
+Test Case
+2: One of the possible ways to split the digits of
+N such that
+F(A,B)=0 is:
+A=74,B=352: Here
+F(A,B)=(A+B)%2=(74+352)%2=426%2=0.

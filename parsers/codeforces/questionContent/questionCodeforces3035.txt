@@ -1,234 +1,158 @@
-B. Modulo Equality
-time limit per test3 seconds
+C. Make Good
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a positive integer
+Let's call an array
+a
+1
+,
+a
+2
+,…,
+a
 m
-and two integer sequence:
-a=[
+of nonnegative integer numbers good if
 a
 1
-,
++
 a
 2
-,…,
++⋯+
 a
-n
-]
-and
-b=[
-b
-1
-,
-b
-2
-,…,
-b
-n
-]
-. Both of these sequence have a length
-n
-.
-Permutation is a sequence of
-n
-different positive integers from
-1
-to
-n
-. For example, these sequences are permutations:
-[1]
-,
-[1,2]
-,
-[2,1]
-,
-[6,7,3,4,1,2,5]
-. These are not:
-[0]
-,
-[1,1]
-,
-[2,3]
-.
-You need to find the non-negative integer
-x
-, and increase all elements of
-a
-i
-by
-x
-, modulo
 m
-(i.e. you want to change
+=2⋅(
 a
-i
-to
-(
-a
-i
-+x)modm
-), so it would be possible to rearrange elements of
-a
-to make it equal
-b
-, among them you need to find the smallest possible
-x
-.
-In other words, you need to find the smallest non-negative integer
-x
-, for which it is possible to find some permutation
-p=[
-p
 1
-,
-p
-2
-,…,
-p
-n
-]
-, such that for all
-1≤i≤n
-,
-(
+⊕
 a
-i
-+x)modm=
-b
-p
-i
+2
+⊕⋯⊕
+a
+m
+)
 , where
-ymodm
- — remainder of division of
-y
-by
-m
+⊕
+denotes the bitwise XOR operation.
+For example, array
+[1,2,3,6]
+is good, as
+1+2+3+6=12=2⋅6=2⋅(1⊕2⊕3⊕6)
+. At the same time, array
+[1,2,1,3]
+isn't good, as
+1+2+1+3=7≠2⋅1=2⋅(1⊕2⊕1⊕3)
 .
-For example, if
-m=3
-,
-a=[0,0,2,1],b=[2,0,1,1]
-, you can choose
-x=1
-, and
+You are given an array of length
+n
+:
 a
-will be equal to
-[1,1,0,2]
-and you can rearrange it to make it equal
-[2,0,1,1]
-, which is equal to
-b
-.
+1
+,
+a
+2
+,…,
+a
+n
+. Append at most
+3
+elements to it to make it good. Appended elements don't have to be different. It can be shown that the solution always exists under the given constraints. If there are different solutions, you are allowed to output any of them. Note that you don't have to minimize the number of added elements!. So, if an array is good already you are allowed to not append elements.
 Input
-The first line contains two integers
-n,m
+Each test contains multiple test cases. The first line contains the number of test cases
+t
 (
-1≤n≤2000,1≤m≤
+1≤t≤10000
+). The description of the test cases follows.
+The first line of each test case contains a single integer
+n
+(1≤n≤
+10
+5
+)
+ — the size of the array.
+The second line of each test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤
 10
 9
-): number of elemens in arrays and
-m
-.
-The second line contains
+) — the elements of the array.
+It is guaranteed that the sum of
 n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-<m
-).
-The third line contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-0≤
-b
-i
-<m
-).
-It is guaranteed that there exists some non-negative integer
-x
-, such that it would be possible to find some permutation
-p
-1
-,
-p
-2
-,…,
-p
-n
-such that
-(
-a
-i
-+x)modm=
-b
-p
-i
+over all test cases does not exceed
+10
+5
 .
 Output
-Print one integer, the smallest non-negative integer
-x
-, such that it would be possible to find some permutation
-p
-1
-,
-p
-2
-,…,
-p
-n
-such that
+For each test case, output two lines.
+In the first line, output a single integer
+s
 (
-a
-i
-+x)modm=
+0≤s≤3
+) — the number of elements you want to append.
+In the second line, output
+s
+integers
 b
-p
+1
+,…,
+b
+s
+(
+0≤
+b
 i
-for all
-1≤i≤n
-.
-Examples
+≤
+10
+18
+) — the elements you want to append to the array.
+If there are different solutions, you are allowed to output any of them.
+Example
 input
 Copy
-4 3
-0 0 2 1
-2 0 1 1
-output
-Copy
+3
+4
+1 2 3 6
 1
-input
-Copy
-3 2
-0 0 0
-1 1 1
-output
-Copy
-1
-input
-Copy
-5 10
-0 0 0 1 2
-2 1 0 0 0
+8
+2
+1 1
 output
 Copy
 0
+
+2
+4 4
+3
+2 6 2
+Note
+In the first test case of the example, the sum of all numbers is
+12
+, and their
+⊕
+is
+6
+, so the condition is already satisfied.
+In the second test case of the example, after adding
+4,4
+, the array becomes
+[8,4,4]
+. The sum of numbers in it is
+16
+,
+⊕
+of numbers in it is
+8
+.

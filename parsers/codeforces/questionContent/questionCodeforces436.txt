@@ -1,176 +1,167 @@
-E. Tree Sum
+F. Good Pairs
 time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let us call an edge-weighted tree with
+You are given an array
+a
+consisting of
 n
-vertices numbered from
-1
-to
-n
-good if the weight of each edge is either
-1
-or
-−1
-and for each vertex
+integers and an integer
+k
+.
+A pair
+(l,r)
+is good if there exists a sequence of indices
 i
-, the product of the edge weights of all edges having
+1
+,
 i
-as one endpoint is
-−1
-.
-You are given a positive integer
-n
-. There are
-n
-n−2
-⋅
 2
-n−1
-distinct
-†
-†
-edge-weighted trees with
-n
-vertices numbered from
+,…,
+i
+m
+such that
+i
 1
-to
-n
-such that each edge is either
-1
-or
-−1
-. Your task is to find the sum of
-d(1,n
-)
-‡
-of all such trees that are good. Since the answer can be quite large, you only need to find it modulo
-998244353
+=l
+and
+i
+m
+=r
+;
+i
+j
+<
+i
+j+1
+for all
+1≤j<m
+; and
+|
+a
+i
+j
+−
+a
+i
+j+1
+|≤k
+for all
+1≤j<m
 .
-†
-†
-Two trees are considered to be distinct if either:
-there exists two vertices such that there is an edge between them in one of the trees, and not in the other.
-there exists two vertices such that there is an edge between them in both trees but the weight of the edge between them in one tree is different from the one in the other tree.
-Note that by Cayley's formula, the number of trees on
-n
-labeled vertices is
-n
-n−2
-. Since we have
-n−1
-edges, there are
-2
-n−1
-possible assignment of weights(weight can either be
-1
-or
-−1
-). That is why total number of distinct edge-weighted tree is
-n
-n−2
-⋅
-2
-n−1
-.
-‡
-‡
-d(u,v)
-denotes the sum of the weight of all edges on the unique simple path from
-u
-to
-v
-.
+Find the number of pairs
+(l,r)
+(
+1≤l≤r≤n
+) that are good.
 Input
-The first and only line of input contains a single integer
+Each test contains multiple test cases. The first line contains a single integer
+t
+(
+1≤t≤
+10
+5
+) — the number of test cases. The description of the test cases follows.
+The first line of each test case contains two space-separated integers
 n
+and
+k
 (
 1≤n≤5⋅
 10
 5
-).
-Output
-The only line of output should contain a single integer, the required answer, modulo
-998244353
-.
-Examples
-input
-Copy
-2
-output
-Copy
-998244352
-input
-Copy
-1
-output
-Copy
-0
-input
-Copy
-4
-output
-Copy
-998244343
-input
-Copy
+;
+0≤k≤
 10
-output
-Copy
-948359297
+5
+) — the length of the array
+a
+and the integer
+k
+.
+The second line of each test case contains
+n
+space-separated integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
+10
+5
+) — representing the array
+a
+.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+5⋅
+10
+5
+.
+Output
+For each test case, print the number of good pairs.
+Example
 input
 Copy
-43434
+4
+3 0
+1 1 1
+4 2
+4 8 6 8
+6 4
+7 2 5 8 3 8
+20 23
+110 57 98 14 20 1 60 82 108 37 82 73 8 46 38 35 106 115 58 112
 output
 Copy
-86232114
+6
+9
+18
+92
 Note
-In the first test case, there is only
-1
-distinct good tree. The value of
-d(1,2)
-for that tree is
-−1
-, which is
-998244352
-under modulo
-998244353
+In the first test case, good pairs are
+(1,1)
+,
+(1,2)
+,
+(1,3)
+,
+(2,2)
+,
+(2,3)
+, and
+(3,3)
 .
-In the second test case, the value of
-d(1,1)
-for any tree is
-0
-, so the answer is
-0
-.
-In the third test case, there are
-16
-distinct good trees. The value of
-d(1,4)
-is:
-−2
-for
-2
-trees;
-−1
-for
-8
-trees;
-0
-for
-4
-trees;
-1
-for
-2
-trees.
-The sum of
-d(1,4)
-over all trees is
-2⋅(−2)+8⋅(−1)+4⋅(0)+2⋅(1)=−10
-, which is
-998244343
-under modulo
-998244353
-.
+In the second test case, good pairs are
+(1,1)
+,
+(1,3)
+,
+(1,4)
+,
+(2,2)
+,
+(2,3)
+,
+(2,4)
+,
+(3,3)
+,
+(3,4)
+and
+(4,4)
+. Pair
+(1,4)
+is good because there exists a sequence of indices
+1,3,4
+which satisfy the given conditions.

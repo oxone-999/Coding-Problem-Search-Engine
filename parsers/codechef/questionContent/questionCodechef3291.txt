@@ -1,44 +1,28 @@
-Points and Convex Hulls
+Hypertrees
 Problem
-New constraints are not updated in the translations.
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-You are given
-N distinct points on a two-dimensional plane. It is guaranteed that no three of them are collinear. Let's call a subset of these points compact if the convex hull of this subset has exactly four vertices.
-Find the number of compact non-empty subsets of the given points. Since this number may be very large, compute it modulo
-10
-9
-+7.
+A hypergraph is a generalization of a graph, where an edge can connect any number of vertices. A k-uniform hypergraph is a hypergraph such that all its hyperedges have size k. For more information, see Wikipedia.
+
+Let's call a particular hypergraph a hypertree if it is connected (that is, you can move from any vertex to any other vertex using only its hyperedges) and removing any of its hyperedges makes the hypergraph disconnected (note that this definition of hypertrees differs from the standard one).
+
+Given just one integer N, find the number of 3-uniform hypertrees on N vertices. Two 3-uniform hypertrees are considered different if a hyperedge (u, v, w) exists such that it is present in exactly one of these hypertrees (note that the order of vertices in the hyperedge doesn't matter, and neither does the order of hyperedges in the hypertree).
 Input
-The first line of the input contains a single integer
-N.
-Each of the next
-N lines contains two space-separated integers
-x and
-y denoting the coordinates of one point.
+The first line of the input contains an integer T -- the number of test cases (at most 15). Then T lines follow, each contains an integer N (3 ≤ N ≤ 17).
+Important! Please include all code used in solving this problem in your solution.
 Output
-Print a single line containing one integer ― the number of compact subsets modulo
-10
-9
-+7.
-Constraints
-1≤N≤300
-∣x∣,∣y∣≤10
-9
-no two points coincide and no three points are collinear
-Example Input 1
+For each test case output one line containing the requested number. It's guaranteed that this number won't exceed 263-1.
+Examples
+Input:
 4
-0 0
-100 0
-0 100
-100 100
-Example Output 1
-1
-Example Input 2
+3
+4
 5
-0 0
-100 0
-0 100
-100 100
-50 60
-Example Output 2
-4
+8
+
+Output:
+1
+6
+25
+93268
+
+Explanation:
+There is just one 3-uniform hypertree on 3 vertices: {(1,2,3)}. There are six of them on 4 vertices: {(1,2,3), (1,2,4)}, {(1,2,3), (1,3,4)}, {(1,2,3), (2,3,4)}, {(1,2,4), (1,3,4)}, {(1,2,4), (2,3,4)}, {(1,3,4), (2,3,4)}. Two of the 25 possible hypertrees on 5 vertices are {(1,2,3), (3,4,5)} and {(1,2,3), (1,2,4), (1,2,5)}.

@@ -1,103 +1,77 @@
-Learning Dishes
+Sum and OR
 Problem
-###Read problems statements Bengali , Mandarin chinese and Vietnamese as well.
-In Chefland, there are
-N cities (numbered
-1 through
-N) connected by
-N−1 bidirectional roads in such a way that it is possible to reach any city from any other city. Each city has its own traditional dish for which it is famous; let's denote the tastiness of the dish in city
-i by
-A
-i
-.
-Chef is currently learning how to prepare tastier dishes. At any point, he can only remember how to cook one dish. Initially, the tastiness of the dish he can cook is
-W. Chef is going to travel from city
-1 to city
-v. In each city he visits (including
-1 and
-v), if the tastiness of the traditional dish of this city is strictly greater than the tastiness of the dish he can currently cook, then he forgets the dish he can currently cook and learns the traditional dish of this city.
-Now, Chef is wondering how many times he is going to learn a new dish during his trip. You should answer
-Q independent queries. In each query, you are given the initial tastiness
-W and Chef's final destination
-v; compute the number of times Chef learns a new dish. Note that the input is given in a special format, so you have to answer the queries online.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains one integer
-N.
-The second line contains
-N space-separated integers
-A
+Chef has two integers
+X and
+S. He is interested in sequences of non-negative integers such that the sum of their elements is
+S and the bitwise OR of their elements is
+X. Chef would like to know the shortest possible length such a sequence can have.
+Formally, find the smallest positive integer
+N such that there exists a sequence
+A=[A
 1
 ,A
 2
 ,…,A
 N
-.
-The third line contains
-N−1 space-separated integers
-P
-2
-,P
-3
-,…,P
-N
-, meaning there's an edge between
-i and
-P
+] satisfying the following conditions:
+Each
+A
 i
-.
-The fourth line contains one integer
-Q.
-Each of the following
-Q lines contains two space-separated integers
-A and
-B describing a query in the following format:
-Let's denote the answer to the previous query by
-Pr (
-Pr=0 if this is the first query).
-For this query,
-v=A⊕Pr and
-W=B⊕Pr.
-Output
-For each query, print a single line containing one integer — the number of times Chef learns a new dish.
+is a non-negative integer
+A
+1
++A
+2
++…+A
+N
+=S
+A
+1
+∨A
+2
+∨…∨A
+N
+=X
+where
+∨ denotes the bitwise OR operation.
+If there does not exist any sequence which satisfies the above conditions, output
+−1. Otherwise, output the minimum possible length of such a sequence.
+Input Format
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+Each test case consists of a single line of input, containing two space-separated integers
+X and
+S — the required bitwise OR and sum, respectively.
+Output Format
+For each test case, output a single line containing one integer — the shortest possible length of such a sequence, or
+−1 if no such sequence exists.
 Constraints
 1≤T≤1000
-2≤N≤10
-6
-1≤Q≤10
-6
-1≤A
-i
-≤10
-8
-for each valid
-i
-1≤P
-i
-≤i−1 for each valid
-i
-1≤W≤10
-8
-1≤v≤N
-the sum of
-N for all test cases does not exceed
-10
-6
-the sum of
-Q for all test cases does not exceed
-10
-6
+1≤X≤S≤10
+9
+Subtasks
+Subtask #1 (100 points): Original constraints
 Sample 1:
 Input
 Output
-1
-5
-2 3 1 4 5
-1 2 2 3
-2
-2 1
-1 0
-2
-1
+3
+13 23
+6 13
+1 25
+3
+-1
+25
+Explanation:
+Test Case
+1: One of the valid arrays of length
+3 is
+[9,9,5]. It can be shown that there is no valid array with length
+<3.
+Test Case
+2: There does not exist any sequence whose sum is
+13 and bitwise OR is
+6.
+Test Case
+3: The valid array of minimum length contains
+25 ones.

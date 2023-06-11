@@ -1,38 +1,36 @@
-Buying Land
+Triangular Queries
 Problem
-After recent success of cooking reality shows, Chef decided to borrow the idea and host his own "Devil's Kitchen" show. But his ambitions are even bigger. He plans to build a whole complex of hotels, gyms and other entertainment facilities along with one main restaurant where he'll host the show. But first of all, he needs to purhase some land to build on. The country is divided into a grid with R rows and C columns of smaller parcels. Chef wants to buy a rectangular piece of land H parcels high and W parcels wide. He also has a preferred layout in mind. The restaurant will be located at (i,j). For every parcel he defined its preferred height relative to the height of the restaurant parcel. For a particular piece of land, he computes height differences relative to the restaurant and compares them to the preferred layout. This comparison is done as a sum of squared differences over all H*W parcels. Given the map of the country, help him out by finding the K most suitable pieces of land.
+You are given N lattice points (Xi, Yi), i = 1, 2, ..., N on a 2D Coordinate System. You have to process Q queries, each query will be given as the form "x y d". Let ABC be the triangle having vertices at A(x+d, y), B(x, y) and C(x, y+d). For each query, you have to find how many of the given lattice points lie inside or on the boundary of the triangle ABC.
 Input
-Input starts with a description of the country. It is described from north to south and from west to east. All coordinates are 1-based, which means that the parcel farthest to the north-west is at (1,1). Dimensions R and C are given in the first line, followed by R lines of C integers, describing the heights of individual parcels. Following is the description of the chef's preferred layout, starting with dimensions H and W. Position of the restaurant within the layout (i,j) is given in the next line. The j-th number in the i-th line of preferred layout will always be 0. Input ends with number K, the number of solutions you are required to find. It will be possible to buy the piece of land on at least K different positions. All numbers describing heights will have absolute value at most 30.
+The first line of the input contains two space-sparated integers N and Q. Each of the following N lines have two space-sparated integers Xi, Yi giving the x and y coordinate of a lattice point. Then the following Q lines contain three space-sparated integers x, y, d giving a query.
 Output
-Output exactly K lines containing the K best pieces of land chef can buy, ordered from best to worst. Each piece of land should be described by numbers BR, BC, S, where (BR,BC) represents the position of the upper-left corner of the purchased piece of land and S the corresponding score. In case of a tie, the chef prefers solutions to the north (direction of decreasing row numbers). If there is still a tie, choose the solution farthest to the west (direction of decreasing column numbers).
+For each query, output one integer on a line which denotes the number of the given lattice points which lie inside or on the boundary of the triangle.
 Constraints
-1 <= R, C <= 666
-1 <= H <= (R+1)/2
-1 <= W <= (C+1)/2
-1 <= K <= 1000
-Example
-Input:
-5 8
-6 1 8 6 0 0 8 1
-6 5 8 6 8 6 8 1
-6 5 8 6 8 6 8 2
-6 5 8 6 8 6 8 2
-6 5 8 6 8 6 0 2
-3 4
--1 2 2 2
--1 2 0 2
--1 2 2 2
-2 3
-4
-
-Output:
-2 2 8
-3 2 8
-2 4 11
-3 4 75
-Explanation
-If the chef decides to buy the land from (3,4) to (5,7), he will end up with the following layout:
-0 2 0 2
-0 2 0 2
-0 2 0 -6
-Comparing it to the preferred layout gives the penalty of 1+0+4+0+1+0+0+0+1+0+4+64=75, which is 4th best.
+1 ≤ N ≤ 300000 (3 * 105)
+1 ≤ Q ≤ 200000 (2 * 105)
+1 ≤ Xi, Yi ≤ 300000 (3 * 105)
+1 ≤ x, y, d ≤ 300000 (3 * 105)
+Sample
+Input 1:
+5 3
+1 3
+1 5
+3 6
+4 4
+2 6
+1 5 3
+1 5 4
+1 1 1
+Output 1:
+3
+3
+0
+Input 2:
+2 2
+1 5
+3 7
+2 5 6
+2 3 4
+Output 2:
+1
+0

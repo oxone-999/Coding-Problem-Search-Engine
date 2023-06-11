@@ -1,142 +1,129 @@
-D. Carousel
+A. Dreamoon Likes Coloring
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The round carousel consists of
+Dreamoon likes coloring cells very much.
+There is a row of
 n
-figures of animals. Figures are numbered from
+cells. Initially, all cells are empty (don't contain any color). Cells are numbered from
 1
 to
 n
-in order of the carousel moving. Thus, after the
-n
--th figure the figure with the number
-1
-follows. Each figure has its own type — the type of the animal corresponding to this figure (the horse, the tiger and so on). The type of animal of the
-i
--th figure equals
-t
-i
 .
-The example of the carousel for
-n=9
+You are given an integer
+m
 and
-t=[5,5,1,15,1,5,5,1,1]
-.
-You want to color each figure in one of the colors. You think that it's boring if the carousel contains two different figures (with the distinct types of animals) going one right after another and colored in the same color.
-Your task is to color the figures in such a way that the number of distinct colors used is the minimum possible and there are no figures of the different types going one right after another and colored in the same color. If you use exactly
-k
-distinct colors, then the colors of figures should be denoted with integers from
+m
+integers
+l
 1
+,
+l
+2
+,…,
+l
+m
+(
+1≤
+l
+i
+≤n
+)
+Dreamoon will perform
+m
+operations.
+In
+i
+-th operation, Dreamoon will choose a number
+p
+i
+from range
+[1,n−
+l
+i
++1]
+(inclusive) and will paint all cells from
+p
+i
 to
-k
-.
+p
+i
++
+l
+i
+−1
+(inclusive) in
+i
+-th color. Note that cells may be colored more one than once, in this case, cell will have the color from the latest operation.
+Dreamoon hopes that after these
+m
+operations, all colors will appear at least once and all cells will be colored. Please help Dreamoon to choose
+p
+i
+in each operation to satisfy all constraints.
 Input
-The input contains one or more test cases.
-The first line contains one integer
-q
+The first line contains two integers
+n,m
 (
-1≤q≤
-10
-4
-) — the number of test cases in the test. Then
-q
-test cases follow. One test case is given on two lines.
-The first line of the test case contains one integer
-n
-(
-3≤n≤2⋅
-10
-5
-) — the number of figures in the carousel. Figures are numbered from
-1
-to
-n
-in order of carousel moving. Assume that after the
-n
--th figure the figure
-1
-goes.
-The second line of the test case contains
-n
+1≤m≤n≤100000
+).
+The second line contains
+m
 integers
-t
+l
 1
 ,
-t
+l
 2
 ,…,
-t
-n
+l
+m
 (
 1≤
-t
+l
 i
-≤2⋅
-10
-5
-), where
-t
-i
-is the type of the animal of the
-i
--th figure.
-The sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-.
+≤n
+).
 Output
-Print
-q
-answers, for each test case print two lines.
-In the first line print one integer
-k
-— the minimum possible number of distinct colors of figures.
-In the second line print
-n
+If it's impossible to perform
+m
+operations to satisfy all constraints, print "'-1" (without quotes).
+Otherwise, print
+m
 integers
-c
+p
 1
 ,
-c
+p
 2
 ,…,
-c
-n
+p
+m
 (
 1≤
-c
+p
 i
-≤k
-), where
-c
+≤n−
+l
 i
-is the color of the
-i
--th figure. If there are several answers, you can print any.
-Example
++1
+), after these
+m
+operations, all colors should appear at least once and all cells should be colored.
+If there are several possible solutions, you can print any.
+Examples
 input
 Copy
-4
-5
-1 2 1 2 2
-6
-1 2 2 1 2 2
-5
-1 2 1 2 3
-3
-10 10 10
+5 3
+3 2 2
 output
 Copy
-2
-1 2 1 2 2
-2
-2 1 2 1 2 1
-3
-2 3 2 3 1
+2 4 1
+input
+Copy
+10 1
 1
-1 1 1 
+output
+Copy
+-1

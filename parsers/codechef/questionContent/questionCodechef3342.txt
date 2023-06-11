@@ -1,150 +1,80 @@
-Help Chef
+Deja Vu
 Problem
-Chef is the king of the kingdom named Chefland. Chefland consists of
-N cities numbered from
-1 to
-N and
-(N−1) roads in such a way that there exists a path between any pair of cities. In other words, Chefland has a tree like structure.
-Out of the
-N cities in Chefland,
-K
-(1≤K≤N) are considered tourist attractions.
-Chef decided to visit exactly
-(K−1) out of
-K tourist attractions. He wishes to stay in the city
-i
-(1≤i≤N) such that the sum of distances of the nearest
-(K−1) tourist attractions from city
-i is as minimum as possible.
-More formally, if Chef stays at city
-i and visits
-(K−1) tourist attractions denoted by set
-S, then, the value
-∑
-j∈S
-D(i,j) should be minimum.
-Here,
-D(i,j) denotes the distance between cities
-i and
-j which is given by the number of roads between cities
-i and
-j.
-Find the city in which Chef should stay. If there are multiple such cities, print the one with the largest number.
+You're given a sequence of
+N - distinct positive integers, not necessarily sorted in ascending order. Your task is pretty straightforward: sort the sequence in ascending order. At any point of time, you can perform one of the following operations:
+If there is only one sequence, with a length greater than
+1, split it at some point to divide it into two non-empty sequences. The cost to perform this operation is the minimum of the sizes of the two broken parts.
+If there are multiple sequences (due to one or more split operations in the past), you may choose one of them with a length greater than
+1 and split it at some point to divide it into two non-empty sequences. The cost to perform this operation is the minimum of the sizes of the two broken parts.
+If there are multiple sequences (due to one or more split operations in the past), you may choose two of them and concatenate them in any order. The cost to perform this operation is the length of the resulting sequence, i.e., the sum of the lengths of the first and the second part.
+It turns out that there are a LOT of ways to sort the array by following this scheme! You need to find out the minimum cost of all the operations required to sort the array in the optimal manner.
 Input Format
-First line will contain integer
-T, the number of test cases. Then the test cases follow.
-The first line of each test case contains two integers
-N and
-K denoting the number of total cities and the number of tourist attractions in Chefland.
+Each test file contains multiple test cases. The first line contains the number of test cases,
+T. Description of the test cases follows.
+The first line of each test case contains a single integer
+N, the length of the array.
 The second line of each test case contains
-K integers denoting the numbers of cities which are tourist attractions in Chefland.
-The next
-N−1 lines contain two integers each,
-u
-i
-and
-v
-i
-denoting that a road exists between cities
-u
-i
-and
-v
-i
-.
+N space-separated integers, the elements of the array.
 Output Format
-For each test case, output in a single integer the number of the city in which Chef should stay so that sum of distances to nearest
-(K−1) tourist attractions is as minimum as possible.
-If there are multiple such cities, output the city with the maximum number.
+For each test case, output in a single line, the minimum cost of operations that is required to sort the array according to the given scheme.
 Constraints
 1≤T≤10
-1≤N≤10
-5
-1≤K≤N
-1≤u
+1≤N≤200
+1≤A
 i
-,v
-i
-≤N
+≤10
+6
 Sample 1:
 Input
 Output
 2
-5 3
-2 4 5
-1 2
-1 3
-3 4
-3 5
-5 2
-2 5
-1 2
-1 3
-3 4
-3 5
 5
+1 2 4 5 3
 5
+1 2 3 4 5
+11
+0
 Explanation:
-Test case
-1: Chef needs to visit
-3−1=2 tourist attractions. The total distance to visit
-2 tourist attractions from each of the cities is:
-From city
-1: Nearest tourist attractions are cities
-2 and
-4 or
-5. The sum of distances for these cities is
-1+2=3.
-From city
-2: Nearest tourist attractions are cities
-2 and
-4 or
-5. The sum of distances for these cities is
-0+3=3.
-From city
-3: Nearest tourist attractions are cities
-4 and
-5. The sum of distances for these cities is
-1+1=2.
-From city
-4: Nearest tourist attractions are cities
-4 and
-5. The sum of distances for these cities is
-0+2=2.
-From city
-5: Nearest tourist attractions are cities
+In the first test case, we can achieve an optimal cost of
+11 with the following sequence of operations:
+First split the sequence
+[1,2,4,5,3] between
 5 and
-4. The sum of distances for these cities is
-2+0=2.
-The cities from which the distance is minimum are
-3,4, and
-5. Out of these,
-5 is the highest.
-Test case
-2: Chef needs to visit
-2−1=1 tourist attractions. The total distance to visit
-1 tourist attractions from each of the cities is:
-From city
-1: Nearest tourist attraction is city
-2. The sum of distances is
+3 into two new sequences:
+[1,2,4,5] and
+[3]. We have two sequences now:
+{[1,2,4,5],[3]}. The cost to perform this operation is
+min(length([1,2,4,5]), length([3])) =
+min(4,1) =
 1.
-From city
-2: Nearest tourist attraction is city
-2. The sum of distances is
-0.
-From city
-3: Nearest tourist attraction is city
-5. The sum of distances is
-1.
-From city
-4: Nearest tourist attraction is city
-5. The sum of distances is
-2.
-From city
-5: Nearest tourist attraction is city
-5. The sum of distances is
-0.
-The cities from which the distance is minimum are
+Now, split the sequence
+[1,2,4,5] between
 2 and
-5. Out of these,
-5 is the highest.
+4 into two new sequences:
+[1,2] and
+[4,5]. We have three sequences now:
+{[1,2],[4,5],[3]}. The cost to perform this operation is
+min(length([1,2]), length([4,5])) =
+min(2,2) =
+2.
+Now, concatenate the sequences
+[3] and
+[4,5] in this order to form a new sequence:
+[3,4,5]. We have two sequences now:
+{[1,2],[3,4,5]}. The cost to perform this operation is
+length([3])+length([4,5]) =
+1+2 =
+3.
+Now, concatenate the sequences
+[1,2] and
+[3,4,5] in this order to form a new sequence:
+[1,2,3,4,5]. We have one sequence now:
+[1,2,3,4,5], which is sorted as desired. The cost to perform this operation is
+length([1,2])+length([3,4,5]) =
+2+3 =
+5.
+Hence, the total cost =
+1+2+3+5 =
+11.
+In the second test case, we notice that the sequence is already in ascending order. Hence, we need not do any operations. The total cost is
+0, without a scratch.

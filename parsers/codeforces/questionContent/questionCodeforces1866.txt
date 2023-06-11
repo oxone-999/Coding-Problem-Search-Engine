@@ -1,173 +1,241 @@
-C. Minimum Grid Path
+E. Chaotic Merge
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let's say you are standing on the
-XY
--plane at point
-(0,0)
-and you want to reach point
-(n,n)
-.
-You can move only in two directions:
-to the right, i. e. horizontally and in the direction that increase your
+You are given two strings
 x
-coordinate,
-or up, i. e. vertically and in the direction that increase your
+and
 y
-coordinate.
-In other words, your path will have the following structure:
-initially, you choose to go to the right or up;
-then you go some positive integer distance in the chosen direction (distances can be chosen independently);
-after that you change your direction (from right to up, or from up to right) and repeat the process.
-You don't like to change your direction too much, so you will make no more than
-n−1
-direction changes.
-As a result, your path will be a polygonal chain from
-(0,0)
-to
-(n,n)
-, consisting of at most
-n
-line segments where each segment has positive integer length and vertical and horizontal segments alternate.
-Not all paths are equal. You have
-n
-integers
-c
-1
-,
-c
-2
-,…,
-c
-n
-where
-c
-i
-is the cost of the
-i
--th segment.
-Using these costs we can define the cost of the path as the sum of lengths of the segments of this path multiplied by their cost, i. e. if the path consists of
-k
-segments (
-k≤n
-), then the cost of the path is equal to
-∑
-i=1
-k
-c
-i
-⋅lengt
-h
-i
-(segments are numbered from
-1
-to
-k
-in the order they are in the path).
-Find the path of the minimum cost and print its cost.
-Input
-The first line contains the single integer
-t
-(
-1≤t≤1000
-) — the number of test cases.
-The first line of each test case contains the single integer
-n
-(
-2≤n≤
-10
-5
-).
-The second line of each test case contains
-n
-integers
-c
-1
-,
-c
-2
-,…,
-c
-n
-(
-1≤
-c
-i
-≤
-10
-9
-) — the costs of each segment.
-It's guaranteed that the total sum of
-n
-doesn't exceed
-10
-5
+, both consist only of lowercase Latin letters. Let
+|s|
+be the length of string
+s
 .
-Output
-For each test case, print the minimum possible cost of the path from
-(0,0)
+Let's call a sequence
+a
+a merging sequence if it consists of exactly
+|x|
+zeros and exactly
+|y|
+ones in some order.
+A merge
+z
+is produced from a sequence
+a
+by the following rules:
+if
+a
+i
+=0
+, then remove a letter from the beginning of
+x
+and append it to the end of
+z
+;
+if
+a
+i
+=1
+, then remove a letter from the beginning of
+y
+and append it to the end of
+z
+.
+Two merging sequences
+a
+and
+b
+are different if there is some position
+i
+such that
+a
+i
+≠
+b
+i
+.
+Let's call a string
+z
+chaotic if for all
+i
+from
+2
 to
-(n,n)
-consisting of at most
-n
-alternating segments.
-Example
+|z|
+z
+i−1
+≠
+z
+i
+.
+Let
+s[l,r]
+for some
+1≤l≤r≤|s|
+be a substring of consecutive letters of
+s
+, starting from position
+l
+and ending at position
+r
+inclusive.
+Let
+f(
+l
+1
+,
+r
+1
+,
+l
+2
+,
+r
+2
+)
+be the number of different merging sequences of
+x[
+l
+1
+,
+r
+1
+]
+and
+y[
+l
+2
+,
+r
+2
+]
+that produce chaotic merges. Note that only non-empty substrings of
+x
+and
+y
+are considered.
+Calculate
+∑
+1≤
+l
+1
+≤
+r
+1
+≤|x|
+1≤
+l
+2
+≤
+r
+2
+≤|y|
+f(
+l
+1
+,
+r
+1
+,
+l
+2
+,
+r
+2
+)
+. Output the answer modulo
+998244353
+.
+Input
+The first line contains a string
+x
+(
+1≤|x|≤1000
+).
+The second line contains a string
+y
+(
+1≤|y|≤1000
+).
+Both strings consist only of lowercase Latin letters.
+Output
+Print a single integer — the sum of
+f(
+l
+1
+,
+r
+1
+,
+l
+2
+,
+r
+2
+)
+over
+1≤
+l
+1
+≤
+r
+1
+≤|x|
+and
+1≤
+l
+2
+≤
+r
+2
+≤|y|
+modulo
+998244353
+.
+Examples
 input
 Copy
-3
-2
-13 88
-3
-2 3 1
-5
-4 3 2 1 4
+aaa
+bb
 output
 Copy
-202
-13
-19
+24
+input
+Copy
+code
+forces
+output
+Copy
+1574
+input
+Copy
+aaaaa
+aaa
+output
+Copy
+0
+input
+Copy
+justamassivetesttocheck
+howwellyouhandlemodulooperations
+output
+Copy
+667387032
 Note
-In the first test case, to reach
-(2,2)
-you need to make at least one turn, so your path will consist of exactly
-2
-segments: one horizontal of length
-2
-and one vertical of length
-2
-. The cost of the path will be equal to
-2⋅
-c
-1
-+2⋅
-c
-2
-=26+176=202
-.
-In the second test case, one of the optimal paths consists of
+In the first example there are:
+6
+pairs of substrings "a" and "b", each with valid merging sequences "01" and "10";
 3
-segments: the first segment of length
-1
-, the second segment of length
-3
-and the third segment of length
+pairs of substrings "a" and "bb", each with a valid merging sequence "101";
+4
+pairs of substrings "aa" and "b", each with a valid merging sequence "010";
 2
-.
-The cost of the path is
-1⋅2+3⋅3+2⋅1=13
-.
-In the third test case, one of the optimal paths consists of
-4
-segments: the first segment of length
+pairs of substrings "aa" and "bb", each with valid merging sequences "0101" and "1010";
+2
+pairs of substrings "aaa" and "b", each with no valid merging sequences;
 1
-, the second one —
-1
-, the third one —
-4
-, the fourth one —
-4
-. The cost of the path is
-1⋅4+1⋅3+4⋅2+4⋅1=19
+pair of substrings "aaa" and "bb" with a valid merging sequence "01010";
+Thus, the answer is
+6⋅2+3⋅1+4⋅1+2⋅2+2⋅0+1⋅1=24
 .

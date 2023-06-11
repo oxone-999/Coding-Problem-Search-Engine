@@ -1,184 +1,121 @@
-A. Ancient Civilization
-time limit per test1 second
-memory limit per test256 megabytes
+C. Road Optimization
+time limit per test3 seconds
+memory limit per test128 megabytes
 inputstandard input
 outputstandard output
-Martian scientists explore Ganymede, one of Jupiter's numerous moons. Recently, they have found ruins of an ancient civilization. The scientists brought to Mars some tablets with writings in a language unknown to science.
-They found out that the inhabitants of Ganymede used an alphabet consisting of two letters, and each word was exactly
+The Government of Mars is not only interested in optimizing space flights, but also wants to improve the road system of the planet.
+One of the most important highways of Mars connects Olymp City and Kstolop, the capital of Cydonia. In this problem, we only consider the way from Kstolop to Olymp City, but not the reverse path (i. e. the path from Olymp City to Kstolop).
+The road from Kstolop to Olymp City is
 ℓ
-letters long. So, the scientists decided to write each word of this language as an integer from
+kilometers long. Each point of the road has a coordinate
+x
+(
+0≤x≤ℓ
+), which is equal to the distance from Kstolop in kilometers. So, Kstolop is located in the point with coordinate
 0
-to
-2
+, and Olymp City is located in the point with coordinate
 ℓ
-−1
-inclusively. The first letter of the alphabet corresponds to zero bit in this integer, and the second letter corresponds to one bit.
-The same word may have various forms in this language. Then, you need to restore the initial form. The process of doing it is described below.
-Denote the distance between two words as the amount of positions, in which these words differ. For example, the distance between
-1001
-2
-and
-1100
-2
-(in binary) is equal to two, as these words have different letters in the second and the fourth positions, counting from left to right. Further, denote the distance between words
-x
-and
-y
-as
-d(x,y)
 .
-Let the word have
+There are
 n
-forms, the
+signs along the road,
 i
--th of which is described with an integer
-x
+-th of which sets a speed limit
+a
 i
-. All the
-x
+. This limit means that the next kilometer must be passed in
+a
 i
-are not necessarily different, as two various forms of the word can be written the same. Consider some word
-y
-. Then, closeness of the word
-y
-is equal to the sum of distances to each of the word forms, i. e. the sum
-d(
-x
-i
-,y)
-over all
-1≤i≤n
-.
-The initial form is the word
-y
-with minimal possible nearness.
-You need to help the scientists and write the program which finds the initial form of the word given all its known forms. Note that the initial form is not necessarily equal to any of the
-n
-given forms.
+minutes and is active until you encounter the next along the road. There is a road sign at the start of the road (i. e. in the point with coordinate
+0
+), which sets the initial speed limit.
+If you know the location of all the signs, it's not hard to calculate how much time it takes to drive from Kstolop to Olymp City. Consider an example:
+Here, you need to drive the first three kilometers in five minutes each, then one kilometer in eight minutes, then four kilometers in three minutes each, and finally the last two kilometers must be passed in six minutes each. Total time is
+3⋅5+1⋅8+4⋅3+2⋅6=47
+minutes.
+To optimize the road traffic, the Government of Mars decided to remove no more than
+k
+road signs. It cannot remove the sign at the start of the road, otherwise, there will be no limit at the start. By removing these signs, the Government also wants to make the time needed to drive from Kstolop to Olymp City as small as possible.
+The largest industrial enterprises are located in Cydonia, so it's the priority task to optimize the road traffic from Olymp City. So, the Government of Mars wants you to remove the signs in the way described above.
 Input
-The first line contains an integer
-t
-(
-1≤t≤100
-) — the number of test cases. The following are descriptions of the test cases.
-The first line contains two integers
+The first line contains three integers
 n
-and
-ℓ
-(
-1≤n≤100
 ,
-1≤ℓ≤30
-) — the amount of word forms, and the number of letters in one word.
+ℓ
+,
+k
+(
+1≤n≤500
+,
+1≤ℓ≤
+10
+5
+,
+0≤k≤n−1
+), the amount of signs on the road, the distance between the cities and the maximal number of signs you may remove.
 The second line contains
 n
 integers
-x
+d
 i
 (
+d
+1
+=0
+,
+d
+i
+<
+d
+i+1
+,
 0≤
-x
+d
+i
+≤ℓ−1
+) — coordinates of all signs.
+The third line contains
+n
+integers
+a
+i
+(
+1≤
+a
 i
 ≤
-2
-ℓ
-−1
-) — word forms. The integers are not necessarily different.
+10
+4
+) — speed limits.
 Output
-For each test, print a single integer, the initial form of the word, i. e. such
-y
-(
-0≤y≤
-2
-ℓ
-−1
-) that the sum
-d(
-x
-i
-,y)
-over all
-1≤i≤n
-is minimal possible. Note that
-y
-can differ from all the integers
-x
-i
-.
-If there are multiple ways to restore the initial form, print any.
-Example
+Print a single integer — minimal possible time to drive from Kstolop to Olymp City in minutes, if you remove no more than
+k
+road signs.
+Examples
 input
 Copy
-7
-3 5
-18 9 21
-3 5
-18 18 18
-1 1
-1
-5 30
-1 2 3 4 5
-6 10
-99 35 85 46 78 55
-2 1
-0 1
-8 8
-5 16 42 15 83 65 78 42
+4 10 0
+0 3 4 8
+5 8 3 6
 output
 Copy
-17
-18
-1
-1
-39
-0
-2
+47
+input
+Copy
+4 10 2
+0 3 4 8
+5 8 3 6
+output
+Copy
+38
 Note
-In the first test case, the words can be written as
-x
-1
-=
-10010
-2
-,
-x
-2
-=
-01001
-2
-and
-x
-3
-=
-10101
-2
-in binary. Let
-y=
-10001
-2
-. Then,
-d(
-x
-1
-,y)=2
-(the difference is in the fourth and the fifth positions),
-d(
-x
-2
-,y)=2
-(the difference is in the first and the second positions),
-d(
-x
-3
-,y)=1
-(the difference is in the third position). So, the closeness is
-2+2+1=5
-. It can be shown that you cannot achieve smaller closeness.
-In the second test case, all the forms are equal to
-18
-(
-10010
-2
-in binary), so the initial form is also
-18
-. It's easy to see that closeness is equal to zero in this case.
+In the first example, you cannot remove the signs. So the answer is
+47
+, as it's said in the statements above.
+In the second example, you may remove the second and the fourth sign. In this case, you need to drive four kilometers in
+4⋅5=20
+minutes, and then six kilometers in
+6⋅3=18
+, so the total time is
+4⋅5+6⋅3=38
+minutes.

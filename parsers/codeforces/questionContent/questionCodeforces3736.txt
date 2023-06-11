@@ -1,45 +1,37 @@
-D. Zero Quantity Maximization
-time limit per test2 seconds
+E. K Balanced Teams
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given two arrays
-a
-and
-b
-, each contains
+You are a coach at your local university. There are
 n
-integers.
-You want to create a new array
-c
-as follows: choose some real (i.e. not necessarily integer) number
-d
-, and then for every
-i∈[1,n]
-let
-c
+students under your supervision, the programming skill of the
 i
-:=d⋅
+-th student is
 a
-i
-+
-b
 i
 .
-Your goal is to maximize the number of zeroes in array
-c
-. What is the largest possible answer, if you choose
-d
-optimally?
-Input
-The first line contains one integer
-n
-(
-1≤n≤2⋅
-10
+You have to form
+k
+teams for yet another new programming competition. As you know, the more students are involved in competition the more probable the victory of your university is! So you have to form no more than
+k
+(and at least one) non-empty teams so that the total number of students in them is maximized. But you also know that each team should be balanced. It means that the programming skill of each pair of students in each team should differ by no more than
 5
-) — the number of elements in both arrays.
-The second line contains
+. Teams are independent from one another (it means that the difference between programming skills of two students from two different teams does not matter).
+It is possible that some students not be included in any team at all.
+Your task is to report the maximum possible total number of students in no more than
+k
+(and at least one) non-empty balanced teams.
+If you are Python programmer, consider using PyPy instead of Python when you submit your code.
+Input
+The first line of the input contains two integers
+n
+and
+k
+(
+1≤k≤n≤5000
+) — the number of students and the maximum number of teams, correspondingly.
+The second line of the input contains
 n
 integers
 a
@@ -47,95 +39,45 @@ a
 ,
 a
 2
-, ...,
+,…,
 a
 n
 (
-−
-10
-9
-≤
+1≤
 a
 i
 ≤
 10
 9
-).
-The third line contains
-n
-integers
-b
-1
-,
-b
-2
-, ...,
-b
-n
-(
-−
-10
-9
-≤
-b
+), where
+a
 i
-≤
-10
-9
-).
+is a programming skill of the
+i
+-th student.
 Output
-Print one integer — the maximum number of zeroes in array
-c
-, if you choose
-d
-optimally.
+Print one integer — the maximum possible total number of students in no more than
+k
+(and at least one) non-empty balanced teams.
 Examples
 input
 Copy
+5 2
+1 2 15 15 15
+output
+Copy
 5
-1 2 3 4 5
-2 4 7 11 3
+input
+Copy
+6 1
+36 4 1 25 9 16
 output
 Copy
 2
 input
 Copy
-3
-13 37 39
-1 2 3
+4 4
+1 10 100 1000
 output
-Copy
-2
-input
 Copy
 4
-0 0 0 0
-1 2 3 4
-output
-Copy
-0
-input
-Copy
-3
-1 2 -1
--6 -12 6
-output
-Copy
-3
-Note
-In the first example, we may choose
-d=−2
-.
-In the second example, we may choose
-d=−
-1
-13
-.
-In the third example, we cannot obtain any zero in array
-c
-, no matter which
-d
-we choose.
-In the fourth example, we may choose
-d=6
-.

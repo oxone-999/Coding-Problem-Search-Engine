@@ -1,112 +1,101 @@
-A. Sea Battle
-time limit per test1 second
+B. Draw!
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-In order to make the "Sea Battle" game more interesting, Boris decided to add a new ship type to it. The ship consists of two rectangles. The first rectangle has a width of
-w
-1
-and a height of
-h
-1
-, while the second rectangle has a width of
-w
-2
-and a height of
-h
-2
-, where
-w
-1
-≥
-w
-2
-. In this game, exactly one ship is used, made up of two rectangles. There are no other ships on the field.
-The rectangles are placed on field in the following way:
-the second rectangle is on top the first rectangle;
-they are aligned to the left, i.e. their left sides are on the same line;
-the rectangles are adjacent to each other without a gap.
-See the pictures in the notes: the first rectangle is colored red, the second rectangle is colored blue.
-Formally, let's introduce a coordinate system. Then, the leftmost bottom cell of the first rectangle has coordinates
-(1,1)
-, the rightmost top cell of the first rectangle has coordinates
+You still have partial information about the score during the historic football match. You are given a set of pairs
 (
-w
-1
+a
+i
 ,
-h
-1
+b
+i
 )
-, the leftmost bottom cell of the second rectangle has coordinates
-(1,
-h
-1
-+1)
-and the rightmost top cell of the second rectangle has coordinates
-(
-w
-2
-,
-h
-1
-+
-h
-2
-)
-.
-After the ship is completely destroyed, all cells neighboring by side or a corner with the ship are marked. Of course, only cells, which don't belong to the ship are marked. On the pictures in the notes such cells are colored green.
-Find out how many cells should be marked after the ship is destroyed. The field of the game is infinite in any direction.
+, indicating that at some point during the match the score was "
+a
+i
+:
+b
+i
+". It is known that if the current score is «
+x
+:
+y
+», then after the goal it will change to "
+x+1
+:
+y
+" or "
+x
+:
+y+1
+". What is the largest number of times a draw could appear on the scoreboard?
+The pairs "
+a
+i
+:
+b
+i
+" are given in chronological order (time increases), but you are given score only for some moments of time. The last pair corresponds to the end of the match.
 Input
-Four lines contain integers
-w
-1
-,
-h
-1
-,
-w
-2
-and
-h
-2
+The first line contains a single integer
+n
 (
-1≤
-w
-1
+1≤n≤10000
+) — the number of known moments in the match.
+Each of the next
+n
+lines contains integers
+a
+i
+and
+b
+i
+(
+0≤
+a
+i
 ,
-h
-1
-,
-w
-2
-,
-h
-2
+b
+i
 ≤
 10
-8
-,
-w
-1
-≥
-w
-2
-) — the width of the first rectangle, the height of the first rectangle, the width of the second rectangle and the height of the second rectangle. You can't rotate the rectangles.
+9
+), denoting the score of the match at that moment (that is, the number of goals by the first team and the number of goals by the second team).
+All moments are given in chronological order, that is, sequences
+x
+i
+and
+y
+j
+are non-decreasing. The last score denotes the final result of the match.
 Output
-Print exactly one integer — the number of cells, which should be marked after the ship is destroyed.
+Print the maximum number of moments of time, during which the score was a draw. The starting moment of the match (with a score 0:0) is also counted.
 Examples
 input
 Copy
-2 1 2 1
+3
+2 0
+3 1
+3 4
 output
 Copy
-12
+2
 input
 Copy
-2 2 1 2
+3
+0 0
+0 0
+0 0
 output
 Copy
-16
+1
+input
+Copy
+1
+5 4
+output
+Copy
+5
 Note
-In the first example the field looks as follows (the first rectangle is red, the second rectangle is blue, green shows the marked squares):
-In the second example the field looks as:
+In the example one of the possible score sequences leading to the maximum number of draws is as follows: 0:0, 1:0, 2:0, 2:1, 3:1, 3:2, 3:3, 3:4.

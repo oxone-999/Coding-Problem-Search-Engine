@@ -1,122 +1,90 @@
-Too Mean
+Accurate XOR
 Problem
-You are given an array
-A of length
-N.
-You have to partition the elements of the array into some subsequences such that:
-Each element
-A
+Chef has a tree consisting of
+N nodes, rooted at node
+1. The parent of the
 i
-(1≤i≤N) belongs to exactly one subsequence.
-The mean of the mean of subsequences is maximised.
-Formally, let
-S
-1
-,S
-2
-,…,S
-K
-denote
-K subsequences of array
-A such that each element
-A
+th
+(2≤i≤N) node in the tree is the node
+P
 i
-(1≤i≤N) belongs to exactly one subsequence
-S
-j
-(1≤j≤K).
-Let
-X
-j
-(1≤j≤K) denote the mean of the elements of subsequence
-S
-j
-. You need to maximise the value
-K
-∑
-j=1
-K
-X
-j
 .
-Print the maximum value. The answer is considered correct if the relative error is less than
-10
-−6
-.
+Chef wants to assign a binary value (0 or 1) to every node of the tree. The Xor-value of a node is defined as the bitwise XOR of all the binary values present in the subtree of that node.
+Help Chef to assign values to the nodes of the tree in such a way that the sum of Xor-value of all the
+N nodes in the tree is exactly
+K.
+It can be shown that such an assignment always exists. If there are multiple possible answers, you may print any of them.
 Input Format
-First line will contain
-T, number of test cases. Then the test cases follow.
-First line of each test case consists of a single integer
-N - denoting the length of array
-A.
-Second line of each test case consists of
-N space-separated integers
-A
-1
-,A
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first line of each test case contains two space-separated integers
+N and
+K, denoting the number of vertices in the tree and the required sum of Xor-value respectively.
+The second line of each test case contains
+N−1 space-separated integers
+P
 2
-,…,A
+,P
+3
+,…,P
 N
-- denoting the array
-A.
-Output Format
-For each test case, output in a single line, the maximum possible mean of mean of subsequences. The answer is considered correct if the relative error is less than
-10
-−6
-.
-Constraints
-1≤T≤1000
-2≤N≤10
-5
-1≤A
+, where
+P
 i
-≤10
-6
-Sum of
-N over all test cases does not exceed
-3⋅10
+denotes the parent-node of the
+i
+th
+node.
+Output Format
+For each test case, print on a new line a binary string of length
+N where the
+i
+th
+(1≤i≤N) character of the string denotes the binary value assigned to node
+i. If there are multiple ways to assign values to the node, you can do it in any way.
+Constraints
+1≤T≤10
+5
+2≤N≤2⋅10
+5
+0≤K≤N
+1≤P
+i
+<i for each
+2≤i≤N
+The sum of
+N over all test cases won't exceed
+2⋅10
 5
 .
 Sample 1:
 Input
 Output
 3
-2
-10 20
-3
-1 2 3
-5
-50 50 50 50 50
-15
-2.25
-50
-Explanation:
-Test Case
-1: We can partition the array in
-2 ways -
-({10},{20}) or
-({10,20}). In both cases, mean of mean of subsequences comes out to be
-15.
-Test Case
-2: The optimal partition is
-({1,2},{3}).
-Mean of first subsequence
-=
-2
-1+2
-=1.5.
-Mean of second subsequence
-=
+2 0
 1
-3
-=3.
-Thus, mean of mean of subsequences is
-2
-1.5+3
-=
-2
-4.5
-=2.25.
-Test Case
-3: Any partition will yield the mean of mean of subsequences as
-50.
+3 1
+1 1
+5 2
+1 2 2 1
+00
+100
+11010
+Explanation:
+Test case
+1: The Xor-value of both nodes is 0.
+Test case
+2: The Xor-value of the node
+1 is
+1 because the subtree of the node
+1 contains the values
+1,0,1 and
+1⊕0⊕0=1. The nodes
+2,3 have Xor-value
+0 because the subtree of both nodes contains the value
+0.
+Test case
+3: The Xor-value of the nodes
+1,4 is
+1 and the remaining nodes have Xor-value
+0.

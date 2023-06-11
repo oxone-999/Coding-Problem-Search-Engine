@@ -1,102 +1,37 @@
-Swag Subsets
+Updating Edges on Trees
 Problem
-###Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-Hussain really likes problems that involve summation over X, where X can be subsets, paths in a tree, intervals of numbers etc.
-You are given two integer sequences
-A
-1
-,A
-2
-,A
-3
-,…,A
-N
-and
-B
-1
-,B
-2
-,B
-3
-,…,B
-N
-. Consider an arbitrary non-empty subset
-S of the set
-{1,2,…,N}. Let's define the swagness of such a set as
-(max
-(p∈S)
-A
-p
-)⋅(max
-(p∈S)
-B
-p
-).
-Hussain is interested in the sum of swagnesses of all possible sets
-S. (Note that there are
-2
-N
-−1 such sets.) Since the sum may be very large, compute it modulo
-10
-9
-+7.
+Read problems statements in English, Mandarin Chinese and Russian as well.
+You have a tree consisting of N vertices numbered 1 to N.
+Initially each edge has a value equal to zero. You have to first perform M1 operations and then answer M2 queries. Note you have to first perform all the operations and then answer all queries after all operations have been done.
+
+Operations are defined by:
+A B C D: On the path between nodes numbered A and B increase the value of each edge by 1, except for those edges which occur on the path between C and D. Note that there is an unique path between every pair of nodes ie. we don't consider values on edges for finding the path. All four values given in input will be distinct.
+
+Queries are of the following type:
+E F: Print the sum of values of all the edges on the path between two distinct nodes E and F. Again the path will be unique.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,A
-3
-,…,A
-N
-.
-The third line contains
-N space-separated integers
-B
-1
-,B
-2
-,B
-3
-,…,B
-N
-.
+Input description.
+First line contains N, M1 and M2. Each of the next N-1 lines contain two integers u v denoting an undirected edge between node numbered u and v. Each of the next M1 lines contain four integers Ai Bi Ci Di, denoting the operations. Each of the next M2 lines contain two integers Ei Fi denoting the queries.
 Output
-For each test case, print a single line containing one integer — the total swagness modulo
-10
-9
-+7.
+For each query, print the required answer in one line.
 Constraints
-1≤T≤1,000
-2≤N≤2⋅10
-5
-1≤A
-i
-,B
-i
-≤10
-6
-for each valid
-i
-the sum of
-N over all test cases does not exceed
-10
-6
-Sample 1:
-Input
-Output
-1
-3
-1 2 3
-6 5 4
-91
-Explanation:
-Example case 1: The answer is
-1⋅6+2⋅5+3⋅4+2⋅6+3⋅6+3⋅5+3⋅6.
+1 ≤ N ≤ 105
+1 ≤ M1, M2 ≤ 5*105
+1 ≤ Ai, Bi, Ci, Di, Ei, Fi ≤ N
+  Example
+Input:
+5 2 2
+1 2
+2 4
+2 5
+1 3
+1 4 2 3
+3 4 2 5
+4 5
+4 3
+Output:
+2
+4
+Explanation
+On first operation, value of edge (2-4) is increased by one. On second operation, value of edges (1-3), (1-2), (2-4) are increased by one.
+Warning:Use fast input/output. Large input files.

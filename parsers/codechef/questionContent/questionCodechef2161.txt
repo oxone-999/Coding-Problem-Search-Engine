@@ -1,66 +1,71 @@
-Pyramid Traversal
+Point Grid
 Problem
-You are given a pyramid of the following form with an infinite number of rows:
-1
-2 3
-4 5 6
-7 8 9 10
-...........
-From a cell, you can move to either the bottom-left cell or the bottom-right cell directly in contact with the current one (For example, you can make the following moves:
-1→2,1→3,6→9,6→10, while you cannot make moves
-2→6 or
-2→7).
-You are given a starting cell
-s and an ending cell
-e. Starting at cell
-s, find the number of ways to reach cell
-e. This number can be large, so print the answer modulo
-10
+Suppose we have a 2D grid
+A of infinite width and height of
+N units. Each row of the grid can be represented in the form of
+111…100…∞ where the
+1s are repeated
+x times,
+x>0. Implying that the row starts with
+x consecutive
+1-s followed by all
+0-s.
+Initially all cells are unmarked. Cell (i,j) refers to the i-th row, and j-th column. (1,1) refers to the bottom-left cell.
+Now you do the following in each step.
+Choose an unmarked cell having 1. Let it be (i, j).
+while((i,j) lies in the grid boundaries && A[i][j] == 1){
+ mark[i][j] = true; i--; j--;
+}
+How many minimum number of steps are required to mark all the cells containing
+1?
+Note: The number of consecutive
+1-s at each height is given by the array
+W where
+W
+i
+represents the same at
+i
+th
+row.
+###Input:
+First line will contain
+T, number of testcases. Then the testcases follow.
+Each testcase contain
+2 lines of input.
+First line will contain
+N, height of the grid (number of rows).
+Second line contains
+N space separated integers where
+i
+th
+index represents number of consecutive
+1-s at the beginning of row
+i.
+###Output: For each testcase, output in a single line answer to the problem.
+###Constraints
+1≤T≤10
+1≤N≤10
+5
+1≤W
+i
+≤10
 9
-+7.
-Two ways are said to be different if there exists at least one cell which was visited in one of the ways but not the other one.
-Input Format
-The first line of input contains a single integer
-T, the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains two space-separated integers
-s and
-e, denoting the starting and the ending cell respectively.
-Output Format
-For each test case, output a single line containing one integer: the number of ways to go from
-s to
-e modulo
-10
-9
-+7.
-Constraints
-1≤T≤1000
-1≤s,e≤10
-9
-Subtasks
-Subtask 1(100 points): Original constraints
 Sample 1:
 Input
 Output
 3
-2 7
-1 5
-5 3
-1
-2
-0
+3
+1 1 1
+3
+5 3 2
+3
+4 2 5
+3
+7
+8
 Explanation:
-In the first test case, there exists only
-1 way to move from
-2 to
-7, which is:
-2→4→7
-In the second test case, there exist
-2 ways to move from
-1 to
-5, which are:
-1→2→5
-1→3→5
-In the third test case, it is not possible to move from
-5 to
-3.
+TestCase 1: All the points need to be considered to cover all
+1-s.
+TestCase 2: The optimal set of starting points is
+{(1,3),(2,3),(2,2),(3,2),(3,1),(4,1),(5,1)}.
+![fig1](https://codechef_shared.s3.amazonaws.com/download/Images/DAANISH/pointGrid.png =394x336)

@@ -1,61 +1,35 @@
-The New Scheme
+The Leaking Robot
 Problem
-Scheme? - Too loudly said. Just a new idea. Now Chef is expanding his business. He wants to make some new restaurants in the big city of Lviv. To make his business competitive he should interest customers. Now he knows how. But don't tell anyone - it is a secret plan. Chef knows four national Ukrainian dishes - salo, borsch, varenyky and galushky. It is too few, of course, but enough for the beginning. Every day in his restaurant will be a dish of the day among these four ones. And dishes of the consecutive days must be different. To make the scheme more refined the dish of the first day and the dish of the last day must be different too. Now he wants his assistant to make schedule for some period. Chef suspects that there is more than one possible schedule. Hence he wants his assistant to prepare all possible plans so that he can choose the best one among them. He asks you for help. At first tell him how many such schedules exist. Since the answer can be large output it modulo 109 + 7, that is, you need to output the remainder of division of the actual answer by 109 + 7.
+Read problems statements in Mandarin Chinese and Russian.
+Oh no! Chef’s robot from problem "Reach The Point" (RETPO) has broken up. It's old oil tank has got leaked, it is leaking oil now.
+The robot start doing the following weird moves. While moving it keeps leaving a trace of oil on the path it's been tracing.
+Note that in a single step robot will move by one unit in the current direction it is moving.
+Initially the robot is at position (0, 0).
+In the beginning it goes 1 step to the East (i.e. In a single step, its x coordinate will increase by 1 unit.)
+then 2 steps to the North, (i.e. In a single step, its y coordinate will increase by 1 unit.)
+then 3 steps to the West, (i.e. In a single step, its x coordinate will decrease by 1 unit.)
+then 4 steps to the South, (i.e. In a single step, its y coordinate will decrease by 1 unit.)
+then 5 steps to the East,
+and so on.
+Thus each time the robot turns 90 degrees anti clockwise, and it will go one more step than before. Please view the following image to understand the moves. The red line in the example shows the path traced by the robot having traces of oil on it.
+Now chef wants to know whether the point (X, Y) will have traces of oil on it or not.
 Input
-The first line of the input contains an integer T, the number of test cases. Each of the following T lines contains a single integer N denoting the number of days for which the schedule should be made.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+For each test case, there is a single line containing two space-separated integers X and Y.
 Output
-For each test case output a single integer in a separate line, the answer for the corresponding test case.
+For each test case, output a single line containing “YES” (without quotes) if robot will reach point (X, Y) and “NO” otherwise.
 Constraints
-1 ≤ T ≤ 100 2 ≤ N ≤ 109
+1 ≤ T ≤ 100000 = 105
+-1000000000 ≤ X, Y ≤ 1000000000, i.e., -109 ≤ X, Y ≤ 109
 Sample 1:
 Input
 Output
 3
-2
-3
-5
-12
-24
-240
+3 3
+3 5
+0 0
+YES
+NO
+YES
 Explanation:
-Case 1. For N = 2 days we have the following 12 schedules:
-First day Second day
-salo borsch
-salo varenyky
-salo galushky
-borsch salo
-borsch varenyky
-borsch galushky
-varenyky salo
-varenyky borsch
-varenyky galushky
-galushky salo
-galushky borsch
-galushky varenyky
-Case 2. For N = 3 we have the following 24 schedules:
-First day Second day Third day
-salo borsch varenyky
-salo borsch galushky
-salo varenyky borsch
-salo varenyky galushky
-salo galushky borsch
-salo galushky varenyky
-borsch salo varenyky
-borsch salo galushky
-borsch varenyky salo
-borsch varenyky galushky
-borsch galushky salo
-borsch galushky varenyky
-varenyky salo borsch
-varenyky salo galushky
-varenyky borsch salo
-varenyky borsch galushky
-varenyky galushky salo
-varenyky galushky borsch
-galushky salo borsch
-galushky salo varenyky
-galushky borsch salo
-galushky borsch varenyky
-galushky varenyky salo
-galushky varenyky borsch
-Case 3. Don't be afraid. This time we will not provide you with a table of 240 schedules. The only thing we want to mention here is that apart from the previous two cases schedules for other values of N can have equal dishes (and even must have for N > 4). For example the schedule (salo, borsch, salo, borsch) is a correct schedule for N = 4 while the schedule (varenyky, salo, galushky, verynky, salo) is a correct schedule for N = 5.
+The points (0, 0) and (3, 3) will be having trace of oil while point (3, 5) will not have any trace of oil because point (3, 5) does not lie on the trajectory of robot.

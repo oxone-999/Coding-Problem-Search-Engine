@@ -1,71 +1,86 @@
-Avoid Contact
+Count the Holidays
 Problem
-A hostel has
-N rooms in a straight line. It has to accommodate
-X people. Unfortunately, out of these
-X people,
-Y of them are infected with chickenpox. Due to safety norms, the following precaution must be taken:
-No person should occupy a room directly adjacent to a room occupied by a chickenpox-infected person. In particular, two chickenpox-infected people cannot occupy adjacent rooms.
-For example, if room
-4 has a chickenpox-infected person, then nobody should occupy rooms
-3 and
-5. Similarly, if room
-1 has a chickenpox-infected person then nobody should occupy room
-2.
-What's the minimum value of
-N for which all the people can be accommodated in the hostel, following the above condition?
+A particular month has
+30 days, numbered from
+1 to
+30.
+Day
+1 is a Monday, and the usual
+7-day week is followed (so day
+2 is Tuesday, day
+3 is Wednesday, and so on).
+Every Saturday and Sunday is a holiday. There are
+N festival days, which are also holidays. Note that it is possible for a festival day to occur on a Saturday or Sunday.
+You are given the dates of the festivals. Determine the total number of holidays in this month.
 Input Format
 The first line of input contains a single integer
-T — the number of test cases. The description of
+T, denoting the number of test cases. The description of
 T test cases follows.
-The first and only line of each test case contains two integers
-X and
-Y — the total number of people and the number of chickenpox-infected people.
+The first line of each test case contains an integer
+N denoting the number of festival days.
+The second line of each test case contains
+N distinct space-separated integers
+A
+1
+,A
+2
+,…A
+N
+, denoting the festival days. Note that the
+A
+i
+are not necessarily given in sorted order.
 Output Format
-For each test case, output on a new line a single integer — the minimum value of
-N for which all the people can be accommodated in the hostel.
+For each test case, output a new line containing the total number of holidays.
 Constraints
-1≤T≤200
-1≤X≤1000
-0≤Y≤X
+1≤T≤1000
+1≤N≤30
+1≤A
+i
+≤30
+All the
+A
+i
+are distinct
 Sample 1:
 Input
 Output
 3
-4 0
-5 3
-3 3
-4
+2
+5 7
+3
+23 1 6
+1
+13
+9
+10
 8
-5
 Explanation:
-Note: Below,
-C represents a room occupied by a chickenpox-infected person,
-N represents a room occupied by an uninfected person, and
-_ represents an empty room.
-Test case
-1: One of the possible ways to accommodate the people in
-4 rooms is:
-N
-N
-N
-N
-Test case
-2: One of the possible ways to accommodate the people in
-8 rooms is:
-C
-_
-C
-_
-N
-N
-_
-C
-Test case
-3: One of the possible ways to accommodate the people in
-5 rooms is:
-C
-_
-C
-_
-C
+Test Case
+1: Days
+6,13,20 and
+27 are Saturdays, and days
+7,14,21,28 are Sundays. The festivals fall on day
+5 and day
+7, but day
+7 is already a Sunday. This gives us
+9 holidays in total — days
+5,6,7,13,14,20,21,27,28.
+Test Case
+2: Days
+6,13,20 and
+27 are Saturdays, and days
+7,14,21,28 are Sundays. The festivals fall on day
+1, day
+6, and day
+23. This gives us
+10 holidays in total — days
+1,6,7,13,14,20,21,23,27,28.
+Test Case
+3: Days
+6,13,20 and
+27 are Saturdays, and days
+7,14,21,28 are Sundays. The only festival is on day
+13, which is already a holiday. This gives us
+8 holidays in total — days
+6,7,13,14,20,21,27,28.

@@ -1,185 +1,239 @@
-E. Subset Trick
-time limit per test3 seconds
-memory limit per test512 megabytes
+A. Alexey and Train
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Vanya invented an interesting trick with a set of integers.
-Let an illusionist have a set of positive integers
-S
-. He names a positive integer
-x
-. Then an audience volunteer must choose some subset (possibly, empty) of
-S
-without disclosing it to the illusionist. The volunteer tells the illusionist the size of the chosen subset. And here comes the trick: the illusionist guesses whether the sum of the subset elements does not exceed
-x
-. The sum of elements of an empty subset is considered to be
+Alexey is travelling on a train. Unfortunately, due to the bad weather, the train moves slower that it should!
+Alexey took the train at the railroad terminal. Let's say that the train starts from the terminal at the moment
 0
+. Also, let's say that the train will visit
+n
+stations numbered from
+1
+to
+n
+along its way, and that Alexey destination is the station
+n
 .
-Vanya wants to prepare the trick for a public performance. He prepared some set of distinct positive integers
-S
-. Vasya wants the trick to be successful. He calls a positive number
-x
-unsuitable, if he can't be sure that the trick would be successful for every subset a viewer can choose.
-Vanya wants to count the number of unsuitable integers for the chosen set
-S
+Alexey learned from the train schedule
+n
+integer pairs
+(
+a
+i
+,
+b
+i
+)
+where
+a
+i
+is the expected time of train's arrival at the
+i
+-th station and
+b
+i
+is the expected time of departure.
+Also, using all information he has, Alexey was able to calculate
+n
+integers
+t
+m
+1
+,t
+m
+2
+,…,t
+m
+n
+where
+t
+m
+i
+is the extra time the train need to travel from the station
+i−1
+to the station
+i
+. Formally, the train needs exactly
+a
+i
+−
+b
+i−1
++t
+m
+i
+time to travel from station
+i−1
+to station
+i
+(if
+i=1
+then
+b
+0
+is the moment the train leave the terminal, and it's equal to
+0
+).
+The train leaves the station
+i
+, if both conditions are met:
+it's on the station for at least
+⌈
+b
+i
+−
+a
+i
+2
+⌉
+units of time (division with ceiling);
+current time
+≥
+b
+i
 .
-Vanya plans to try different sets
-S
-. He wants you to write a program that finds the number of unsuitable integers for the initial set
-S
-, and after each change to the set
-S
-. Vanya will make
-q
-changes to the set, and each change is one of the following two types:
-add a new integer
-a
-to the set
-S
-, or
-remove some integer
-a
-from the set
-S
+Since Alexey spent all his energy on prediction of time delays, help him to calculate the time of arrival at the station
+n
 .
 Input
-The first line contains two integers
-n
-,
-q
+The first line contains one integer
+t
 (
-1≤n,q≤200000
-) — the size of the initial set
-S
-and the number of changes.
-The next line contains
+1≤t≤100
+) — the number of test cases.
+The first line of each test case contains the single integer
 n
-distinct integers
-s
-1
-,
-s
-2
-,…,
-s
+(
+1≤n≤100
+) — the number of stations.
+Next
 n
+lines contain two integers each:
+a
+i
+and
+b
+i
 (
 1≤
-s
+a
+i
+<
+b
 i
 ≤
 10
-13
-) — the initial elements of
-S
+6
+). It's guaranteed that
+b
+i
+<
+a
+i+1
 .
-Each of the following
-q
-lines contain two integers
+Next line contains
+n
+integers
 t
-i
-,
-a
-i
+m
+1
+,t
+m
+2
+,…,t
+m
+n
 (
-1≤
-t
-i
-≤2
-,
-1≤
-a
+0≤t
+m
 i
 ≤
 10
-13
-), describing a change:
-If
-t
-i
-=1
-, then an integer
-a
-i
-is added to the set
-S
-. It is guaranteed that this integer is not present in
-S
-before this operation.
-If
-t
-i
-=2
-, then an integer
-a
-i
-is removed from the set
-S
-. In is guaranteed that this integer is present in
-S
-before this operation.
+6
+).
 Output
-Print
-q+1
-lines.
-In the first line print the number of unsuitable integers for the initial set
-S
-. In the next
-q
-lines print the number of unsuitable integers for
-S
-after each change.
+For each test case, print one integer — the time of Alexey's arrival at the last station.
 Example
 input
 Copy
-3 11
-1 2 3
-2 1
-1 5
-1 6
-1 7
-2 6
-2 2
-2 3
-1 10
-2 5
-2 7
-2 10
+2
+2
+2 4
+10 12
+0 2
+5
+1 4
+7 8
+9 10
+13 15
+19 20
+1 2 3 4 5
 output
 Copy
-4
-1
-6
 12
-19
-13
-8
-2
-10
-3
-0
-0
+32
 Note
-In the first example the initial set is
-S={1,2,3}
-. For this set the trick can be unsuccessful for
-x∈{1,2,3,4}
-. For example, if
-x=4
-, the volunteer can choose the subset
-{1,2}
-with sum
-3≤x
-, and can choose the subset
-{2,3}
-with sum
-5>x
-. However, in both cases the illusionist only know the same size of the subset (
+In the first test case, Alexey arrives at station
+1
+without any delay at the moment
+a
+1
+=2
+(since
+t
+m
+1
+=0
+). After that, he departs at moment
+b
+1
+=4
+. Finally, he arrives at station
 2
-), so he can't be sure answering making a guess. Since there is only one subset of size
-3
-, and the sum of each subset of smaller size does not exceed
-5
-, all
-x≥5
-are suitable.
+with
+t
+m
+2
+=2
+extra time, or at the moment
+12
+.
+In the second test case, Alexey arrives at the first station with
+t
+m
+1
+=1
+extra time, or at moment
+2
+. The train, from one side, should stay at the station at least
+⌈
+b
+1
+−
+a
+1
+2
+⌉=2
+units of time and from the other side should depart not earlier than at moment
+b
+1
+=4
+. As a result, the trains departs right at the moment
+4
+.
+Using the same logic, we can figure out that the train arrives at the second station at the moment
+9
+and departs at the moment
+10
+; at the third station: arrives at
+14
+and departs at
+15
+; at the fourth: arrives at
+22
+and departs at
+23
+. And, finally, arrives at the fifth station at
+32
+.

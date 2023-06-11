@@ -1,113 +1,127 @@
-A. Lame King
+B. Settlement of Guinea Pigs
 time limit per test1 second
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a checkerboard of size
-201×201
-, i. e. it has
-201
-rows and
-201
-columns. The rows of this checkerboard are numbered from
-−100
-to
-100
-from bottom to top. The columns of this checkerboard are numbered from
-−100
-to
-100
-from left to right. The notation
-(r,c)
-denotes the cell located in the
-r
--th row and the
-c
--th column.
-There is a king piece at position
-(0,0)
-and it wants to get to position
-(a,b)
-as soon as possible. In this problem our king is lame. Each second, the king makes exactly one of the following five moves.
-Skip move. King's position remains unchanged.
-Go up. If the current position of the king is
-(r,c)
-he goes to position
-(r+1,c)
-.
-Go down. Position changes from
-(r,c)
-to
-(r−1,c)
-.
-Go right. Position changes from
-(r,c)
-to
-(r,c+1)
-.
-Go left. Position changes from
-(r,c)
-to
-(r,c−1)
-.
-King is not allowed to make moves that put him outside of the board. The important consequence of the king being lame is that he is not allowed to make the same move during two consecutive seconds. For example, if the king goes right, the next second he can only skip, go up, down, or left.
-What is the minimum number of seconds the lame king needs to reach position
-(a,b)
-?
+Dasha loves guinea pigs very much. In this regard, she decided to settle as many guinea pigs at home as possible and developed a plan for the next
+n
+days. Every day, she will either buy a new guinea pig or call a doctor to examine all her pets.
+Unfortunately, the store where she was going to buy guinea pigs does not understand them. Therefore, it cannot determine their gender. Dasha can't do it either. The only one who can help is a doctor.
+To keep guinea pigs, aviaries are needed. Dasha plans to buy them in the same store. Unfortunately, only one species is sold there — a double aviary. No more than two guinea pigs can live in it.
+Since Dasha does not want to cause moral injury to her pets — she will not settle two guinea pigs of different genders in one aviary.
+Help Dasha calculate how many aviaries in the worst case you need to buy so that you can be sure that at no moment of time do two guinea pigs of different genders live in the same aviary.
+As part of this task, we believe that guinea pigs have only two genders — male and female.
 Input
-The first line of the input contains a single integer
+The first line of input data contains one number
 t
 (
-1≤t≤
+1⩽t⩽
 10
-4
-) — the number of test cases. Then follow
-t
-lines containing one test case description each.
-Each test case consists of two integers
-a
-and
-b
+5
+) — the number of input data sets.
+The first line of each input data set contains one number
+n
 (
-−100≤a,b≤100
-) — the position of the cell that the king wants to reach. It is guaranteed that either
-a≠0
-or
-b≠0
+1⩽n⩽
+10
+5
+) — the number of days Dasha has a plan for.
+The next line contains
+n
+numbers
+b
+1
+,
+b
+2
+,
+b
+3
+,…,
+b
+n
+(
+1⩽
+b
+i
+⩽2
+) — Dasha's plan. If
+b
+i
+=1
+, then on the
+i
+th day, Dasha will buy a new guinea pig. If
+b
+i
+=2
+, then on the
+i
+th day, a doctor will come to Dasha and help determine the sex of all guinea pigs that Dasha already has.
+It is guaranteed that the sum of
+n
+for all input data sets does not exceed
+10
+5
 .
 Output
-Print
-t
-integers. The
-i
--th of these integers should be equal to the minimum number of seconds the lame king needs to get to the position he wants to reach in the
-i
--th test case. The king always starts at position
-(0,0)
-.
+For each set of input data, output one number — the minimum number of aviaries Dasha needs to buy so that no matter what the genders of the pigs turn out to be, we can settle them so that at no point in time do two guinea pigs of different genders live together.
 Example
 input
 Copy
+6
+3
+1 1 1
+3
+2 2 2
 5
--4 1
-4 4
-0 -6
--5 -4
-7 -8
+1 1 1 2 1
+10
+1 2 1 2 1 2 1 2 1 2
+20
+1 2 1 1 1 1 1 2 1 2 1 2 2 1 1 1 1 1 1 1
+20
+2 1 1 2 1 1 2 1 2 2 1 1 1 2 2 1 1 1 1 2
 output
 Copy
-7
-8
-11
-9
-15
-Note
-One of the possible solutions for the first example is: go down, go right, go down, go right, go down, go left, go down.
-One of the possible solutions for the second example is to alternate "go right" and "go up" moves
+3
+0
+3
 4
-times each.
-One of the possible solutions for the third example is to alternate "go left" and "skip" moves starting with "go left". Thus, "go left" will be used
-6
-times, and "skip" will be used
-5
-times.
+12
+9
+Note
+In the first set of input data, Dasha needs to put each guinea pig in a separate enclosure, since she does not know their gender.
+In the second set of input data, Dasha will buy
+0
+guinea pigs, which means she will need
+0
+aviaries.
+In the third set of input data, you even need
+3
+aviaries to put each guinea pig in a separate aviary before the doctor arrives at the
+4
+th day. When she finds out their gender, at least two guinea pigs will be of the same gender and they can be placed in one aviary, and the third in another aviary. Thus, she will have one free aviary in which she can settle a new guinea pig. So answer is
+3
+.
+In the fourth set of input data, we show that
+4
+is the optimal answer.
+To begin with, we note that the first four guinea pigs can be placed one at a time in an aviary. Then a doctor will come and determine their gender. Among these four guinea pigs there will be at least one pair of the same gender, because: either male guinea pigs are at least
+2
+, or they are not more than
+1
+, which means that the female is at least
+3
+. Now we can put this couple in one aviary, and the other two in separate ones. We will have one more empty aviary where we can put a new pig.
+Now let's show that the answer is at least
+4
+. Let's say that among the first
+4
+guinea pigs,
+3
+are female and
+1
+is male. We need at least
+3
+aviaries to settle them. Then, when we buy a new guinea pig, we will need another aviary in which we will put it, since we do not know its gender.

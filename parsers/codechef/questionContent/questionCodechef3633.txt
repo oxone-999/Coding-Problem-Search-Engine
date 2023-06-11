@@ -1,157 +1,186 @@
-Strange BST
+Red-Black Boolean Expression
 Problem
-There are
-N nodes where the
-i
-th
-node has the following values associated to it:
-Weight: Each node has a distinct weight
-W
-i
-. The value
-W
-i
-is given in the input.
-Support: Each node has a support value
-S
-i
-. The value
-S
-i
-is given in the input.
-Key: The key for the
-i
-th
-node is defined as
-K
-i
-=S
-i
-+ΣW
-j
-, where the
-j
-th
-node is a descendant node of the
-i
-th
-node.
-Note:
-Descendant node: If a node
-C is a child of
-P, then
-C is a descendant of
-P. If a node
-C is a child of a descendant of
-P, then
-C is a descendant of
-P. Note that a node is not a descendant of itself.
-Binary search tree: A binary tree is called a binary search tree, if, for every node
-X, having the left child
-L and the right child
-R (if they exist),
-W
-L
-<W
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Let
+S be a set of
+N boolean variables
 X
-<W
-R
-.
-Your task is to form a binary search tree with
-N nodes, such that, the value
-max
-i=1
+1
+,X
+2
+,…,X
 N
-(K
+and their negations
+¬X
+1
+,¬X
+2
+,…,¬X
+N
+. You are given the initial values of all variables.
+A 2-CNF boolean expression is defined as a conjunction of clauses, where each clause is a disjunction of two elements of the set
+S. Ada constructed a 2-CNF boolean expression
+B with
+M clauses as follows:
+First, Ada painted each of the variables
+X
+1
+,X
+2
+,…,X
+N
+with one colour ― either red or black.
+Then, she painted the negated variables ― for each valid
+i, if
+X
 i
-) is minimum.
-In other words, you need to minimise the maximum value of the key of any node.
-Output the maximum key in the formed binary search tree.
-Input Format
-The first line contains an integer
-N — the number of nodes.
-The next line contains
+is painted red, then
+¬X
+i
+is painted black, and vice versa (if
+X
+i
+is black,
+¬X
+i
+is painted red).
+Finally, she wrote the boolean expression
+B=(P
+1
+∨Q
+1
+)∧(P
+2
+∨Q
+2
+)∧…∧(P
+M
+∨Q
+M
+), in such a way that no clause contains two variables with the same colour and
+P
+i
+
+=¬Q
+i
+for each clause.
+Ada wants the expression to evaluate to "true". In order to achieve that, she may change the values of variables; for each valid
+i, the cost of changing the value of
+X
+i
+(from "true" to "false" or vice versa) is
+C
+i
+. Find the minimum total cost needed to make the expression
+B evaluate to "true" or determine that it is impossible.
+Note that you are not given the colours of variables, but it is guaranteed that the expression
+B is chosen in such a way that there is at least one valid way to assign colours and the minimum cost is the same for each valid assignment of colours.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+M.
+The second line contains a binary string
+S with length
+N describing the initial values of the variables. For each valid
+i, the
+i-th character of
+S is '1' if
+X
+i
+is true or '0' if
+X
+i
+is false.
+The third line contains
 N space-separated integers
-W
-i
-, denoting the weight of node
-i.
-The next line contains
-N space-separated integers
-S
-i
-, denoting the support value of node
-i.
-Output Format
-Output on a new line, the maximum key in the formed binary search tree.
-Constraints
-1≤N≤10
-5
-1≤W
-i
-,S
-i
-≤10
-9
+C
+1
+,C
+2
+,…,C
+N
 .
-The value
-W
+M lines follow. For each valid
+i, the
+i-th of these lines contains two space-separated integers
+P
 i
-is distinct
+and
+Q
+i
+. For each valid
+i, the variable
+X
+i
+is represented by the integer
+i and its negation is represented by
+−i.
+Output
+For each test case, print a single line containing one integer ― the minimum cost needed to make the boolean expression evaluate to "true", or
+−1 if it is impossible.
+Constraints
+1≤T≤10
+5
+1≤N≤256
+1≤C
+i
+≤256 for each valid
+i
+1≤∣P
+i
+∣,∣Q
+i
+∣≤N for each valid
+i
+each character of
+S is either '0' or '1'
+the sum of
+M over all test cases does not exceed
+43,210
+Subtasks
+Subtask #1 (1 points):
+N≤10
+Subtask #2 (99 points): original constraints
 Sample 1:
 Input
 Output
-4
-1 2 3 4
-4 3 2 1
-7
+1
+3 3
+101
+1 2 3
+-1 -2
+-1 -3
+2 1
+3
 Explanation:
-Consider the following BST:
-Here, the key of the nodes are:
-K
+Example case 1: The expression
+B is
+(¬X
 1
-=S
-1
-=4.
-K
+∨¬X
 2
-=S
-2
-+W
+)∧(¬X
 1
-+W
+∨¬X
 3
-=3+1+3=7.
-K
-3
-=S
-3
-=2.
-K
-4
-=S
-4
-+W
-1
-+W
+)∧(X
 2
-+W
+∨X
+1
+). Ada generated this expression by painting
+X
+2
+and
+X
 3
-=1+1+2+3=7.
-Thus, the maximum key is
-7. It can be shown that there exists no binary search tree with maximum key less than
-7.
-Sample 2:
-Input
-Output
-5
-1 2 3 4 5
-20 21 10 20 10
-22
-Sample 3:
-Input
-Output
-6
-952936228 979876854 986572948 957923235 903104456 920786644
-909208950 921719860 961315817 981037233 945025254 948909455
-5643043371
+in red and
+X
+1
+in black.
+One optimal way to make the expression true is changing the value of
+X
+3
+.

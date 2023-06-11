@@ -1,137 +1,135 @@
-E. Narrow Components
+A. Organizing SWERC
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a matrix
-a
-, consisting of
-3
-rows and
+Gianni, SWERC's chief judge, received a huge amount of high quality problems from the judges and now he has to choose a problem set for SWERC.
+He received
 n
-columns. Each cell of the matrix is either free or taken.
-A free cell
-y
-is reachable from a free cell
-x
-if at least one of these conditions hold:
-x
-and
-y
-share a side;
-there exists a free cell
-z
-such that
-z
-is reachable from
-x
-and
-y
-is reachable from
-z
-.
-A connected component is a set of free cells of the matrix such that all cells in it are reachable from one another, but adding any other free cell to the set violates this rule.
-You are asked
-q
-queries about the matrix. Each query is the following:
-l
-r
- — count the number of connected components of the matrix, consisting of columns from
-l
-to
-r
-of the matrix
-a
-, inclusive.
-Print the answers to all queries.
-Input
-The first line contains an integer
-n
-(
-1≤n≤5⋅
-10
-5
-) — the number of columns of matrix
-a
-.
-The
+problems and he assigned a beauty score and a difficulty to each of them. The
 i
--th of the next three lines contains a description of the
+-th problem has beauty score equal to
+b
 i
--th row of the matrix
-a
- — a string, consisting of
-n
-characters. Each character is either
+and difficulty equal to
+d
+i
+. The beauty and the difficulty are integers between
 1
-(denoting a free cell) or
-0
-(denoting a taken cell).
-The next line contains an integer
-q
-(
-1≤q≤3⋅
-10
-5
-) — the number of queries.
-The
-j
--th of the next
-q
-lines contains two integers
-l
-j
 and
-r
-j
+10
+.
+If there are no problems with a certain difficulty (the possible difficulties are
+1,2,…,10
+) then Gianni will ask for more problems to the judges.
+Otherwise, for each difficulty between
+1
+and
+10
+, he will put in the problem set one of the most beautiful problems with such difficulty (so the problem set will contain exactly
+10
+problems with distinct difficulties). You shall compute the total beauty of the problem set, that is the sum of the beauty scores of the problems chosen by Gianni.
+Input
+Each test contains multiple test cases. The first line contains an integer
+t
+(
+1≤t≤100
+) — the number of test cases. The descriptions of the
+t
+test cases follow.
+The first line of each test case contains the integer
+n
+(
+1≤n≤100
+) — how many problems Gianni received from the judges.
+The next
+n
+lines contain two integers each. The
+i
+-th of such lines contains
+b
+i
+and
+d
+i
 (
 1≤
-l
-j
-≤
-r
-j
-≤n
-) — the description of the
-j
--th query.
+b
+i
+,
+d
+i
+≤10
+) — the beauty score and the difficulty of the
+i
+-th problem.
 Output
-Print
-q
-integers — the
-j
--th value should be equal to the number of the connected components of the matrix, consisting of columns from
-l
-j
-to
-r
-j
-of the matrix
-a
-, inclusive.
+For each test case, print the total beauty of the problem set chosen by Gianni. If Gianni cannot create a problem set (because there are no problems with a certain difficulty) print the string MOREPROBLEMS (all letters are uppercase, there are no spaces).
 Example
 input
 Copy
+2
+3
+8 4
+9 3
+6 7
 12
-100101011101
-110110010110
-010001011101
-8
-1 12
-1 1
-1 2
-9 9
-8 11
-9 12
-11 12
-4 6
+3 10
+10 1
+10 2
+10 3
+10 4
+3 10
+10 5
+10 6
+10 7
+10 8
+10 9
+1 10
 output
 Copy
-7
+MOREPROBLEMS
+93
+Note
+In the first test case, Gianni has received only
+3
+problems, with difficulties
+3,4,7
+which are not sufficient to create a problem set (for example because there is not a problem with difficulty
 1
-1
+).
+In the second test case, Gianni will create a problem set by taking the problems
 2
+,
+3
+,
+4
+,
+5
+,
+7
+,
+8
+,
+9
+,
+10
+,
+11
+(which have beauty equal to
+10
+and all difficulties from
 1
+to
+9
+) and one of the problems
+1
+and
+6
+(which have both beauty
 3
-3
-3
+and difficulty
+10
+). The total beauty of the resulting problem set is
+10⋅9+3=93
+.

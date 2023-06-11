@@ -1,79 +1,185 @@
-Sussy Perms
+Bus Station
 Problem
-After getting lost in Hollywood, ibti decided to give you yet another problem related to permutations.
-Consider a permutation
-P of length
-2⋅N.
-An array
-A of size
-N is generated using the permutation
-P, such that the
+###Read problems statements Mandarin , Bengali , Hindi , Russian and Vietnamese as well.
+Ryan is the president of a planet. There is a large bus station on this planet and
+M buses stop at this station every day. For each valid
+i, the
+i-th bus arrives at the station
+t
 i
-th
-element of the array is a pair having value,
-A
-i
-=(P
-i
-modN,P
-(i+N)
-modN).
-The permutation
-P (of length
-2⋅N) is called
-N-beautiful, if, all elements of the array
-A are distinct.
-Given integers
-K and
-M, your task is to count the number of
-i-beautiful permutations for each
-1≤i≤K.
-Since the answers can be large, print them modulo
-M.
-Input Format
-The first and only line of the input contains two space-separated integers
-K,
-M - the parameters defined in the statement.
-Output Format
-Print
-K space-separated integers, the
-i
-th
-integer will denote the number of
-i-beautiful permutations modulo
-M.
-Constraints
-1≤K≤2⋅10
-5
+seconds after midnight (on Ryan's planet, each day lasts
 10
-7
-+19≤M≤10
+100
+hours, not
+24 hours), waits at the station for some non-negative (not necessarily integer) amount of time and then leaves.
+Ryan knows that
+N people are coming to the station today. For each
+i (
+1≤i≤N), the
+i-th person is described by parameters
+s
+i
+,
+a
+i
+,
+b
+i
+,
+c
+i
+,
+d
+i
+with the following meaning:
+This person arrives at the station
+s
+i
+seconds after midnight with dissatisfaction
+0.
+If there is at least one bus that leaves the station strictly less than
+a
+i
+seconds before this person arrives, their dissatisfaction increases by
+b
+i
+.
+If this person has to wait at the station for at least
+c
+i
+seconds before boarding a bus and leaving (this includes the time they spend waiting for a bus and the time spent waiting for that bus to leave), their dissatisfaction increases by
+d
+i
+.
+Ryan may be the president, but his power is quite limited. He can tell each bus driver when to leave the station and each passenger when to board a bus (these times do not have to be integers). He also has to follow one rule: it is not allowed for two buses to be at the station at the same time.
+As the president, his job is to make the citizens happy. Therefore, he is wondering about the minimum total dissatisfaction (the sum of final dissatisfactions of all
+N passengers) he can achieve by using his power optimally. Of course, as an assistant to the president, you are the one who has to calculate that for him.
+Note that each passenger should board a bus at some point (during the day when they arrive at the station). Ryan does not want to leave someone hanging there for an eternity. Also, a passenger is allowed to board a bus at the moment when that bus is leaving (even if that passenger just arrived at the station at that moment).
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+M.
+The second line contains
+M space-separated integers
+t
+1
+,t
+2
+,…,t
+M
+.
+The third line contains a single integer
+N.
+The fourth line contains
+N space-separated integers
+s
+1
+,s
+2
+,…,s
+N
+.
+The fifth line contains
+N space-separated integers
+a
+1
+,a
+2
+,…,a
+N
+.
+The sixth line contains
+N space-separated integers
+b
+1
+,b
+2
+,…,b
+N
+.
+The seventh line contains
+N space-separated integers
+c
+1
+,c
+2
+,…,c
+N
+.
+The eighth line contains
+N space-separated integers
+d
+1
+,d
+2
+,…,d
+N
+.
+Output
+For each test case, print a single line containing one integer — the minimum total dissatisfaction of the passengers.
+Constraints
+1≤T≤1,000
+1≤M,N≤5⋅10
+5
+1≤t
+i
+≤10
 9
-+7
-It is guaranteed that
-M is a prime number.
+for each valid
+i
+1≤s
+i
+,a
+i
+,b
+i
+,c
+i
+,d
+i
+≤10
+9
+for each valid
+i
+t
+1
+,t
+2
+,…,t
+M
+,s
+1
+,s
+2
+,…,s
+N
+are pairwise distinct
+the sum of
+M over all test cases does not exceed
+5⋅10
+5
+the sum of
+N over all test cases does not exceed
+5⋅10
+5
 Subtasks
-Subtask 1 (50 points):
-1≤K≤10
+Subtask #1 (15 points):
+1≤T≤50
+1≤N,M≤10
 3
-Subtask 2 (50 points): No further constraints.
+Subtask #2 (85 points): original constraints
 Sample 1:
 Input
 Output
-8 269696969
-2 16 576 34560 3110400 142258231 78756849 13872609
-Explanation:
-All permutations of length
-2 are
-1-beautiful, thus the first value we print is
-2!=2.
-There are
-16
-2-beautiful permutations out of the
-24 possible permutations. The
-8 non-beautiful permutations are:
-{1,3,2,4},{1,3,4,2},{2,4,1,3},{2,4,3,1},{3,1,2,4},{3,1,4,2},{4,2,1,3},{4,2,3,1}
-For example, the permutation
-{1,3,2,4} is not beautiful as
-A=[(1mod2,2mod2),(3mod2,4mod2)]=[(1,0),(1,0)]. Both elements of the array
-A are same.
+1
+2
+5 10
+3
+4 6 11
+4 4 4
+4 4 4
+2 4 1
+100 2 2
+6

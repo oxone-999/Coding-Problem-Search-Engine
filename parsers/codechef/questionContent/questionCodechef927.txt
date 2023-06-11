@@ -1,72 +1,86 @@
-The Tricky Deal
+Ada Matrix
 Problem
-###Read problems statements Mandarin , Bengali , Hindi , Russian and Vietnamese as well.
-One of Chef's friends offered him a deal: during
-D days, they are going to exchange money. For each
-i (
-1≤i≤D), on the
-i-th day, Chef's friend would give Chef
-A rupees, while Chef would give his friend
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef Ada has a matrix with
+N rows (numbered
+1 through
+N from top to bottom) and
+N columns (numbered
+1 through
+N from left to right) containing all integers between
+1 and
+N
 2
-i−1
-rupees (
-1 rupee on day
-1,
-2 rupees on day
-2,
-4 rupees on day
-3, and so on). Chef's profit from the deal is the total number of rupees he received from his friend minus the total number of rupees he gave his friend.
-Chef decided to ask for your advice before accepting the deal. You want to help him by telling him two numbers
-D
-1
-and
-D
-2
-, where
-D
-1
-is the maximum value of
-D such that Chef should accept the deal, i.e. his profit from the deal is positive if
-D=D
-1
-, and
-D
-2
-is the value of
-D that leads to the maximum possible profit for Chef. If there are multiple values of
-D that lead to the maximum profit,
-D
-2
-is the smallest of these values.
+inclusive. For each valid
+i and
+j, let's denote the cell in the
+i-th row and
+j-th column by
+(i,j).
+Ada wants to sort the matrix in row-major order ― for each valid
+i and
+j, she wants the cell
+(i,j) to contain the value
+(i−1)⋅N+j.
+In one operation, Ada should choose an integer
+L and transpose the submatrix between rows
+1 and
+L and columns
+1 and
+L (inclusive). Formally, for each
+i and
+j (
+1≤i,j≤L), the value in the cell
+(i,j) after this operation is equal to the value in
+(j,i) before it.
+The initial state of the matrix is chosen in such a way that it is possible to sort it using a finite number of operations (possibly zero). Find the smallest number of operations required to sort the matrix.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first and only line of each test case contains a single integer
-A.
+The first line of each test case contains a single integer
+N.
+The next
+N lines describe the matrix. For each valid
+i, the
+i-th of these lines contains
+N space-separated integers ― the initial values in cells
+(i,1),(i,2),…,(i,N).
 Output
-For each test case, print a single line containing two space-separated integers
-D
-1
-and
-D
-2
-.
+For each test case, print a single line containing one integer ― the smallest number of operations required to sort the matrix.
 Constraints
-1≤T≤100,000
-5≤A≤10
-9
+4≤N≤64
+the sum of
+N
+2
+over all test files does not exceed
+3⋅10
+5
 Subtasks
-Subtask #1 (100 points): original constraints
+Subtask #1 (10 points):
+T≤50
+N=4
+Subtask #2 (90 points): original constraints
 Sample 1:
 Input
 Output
+1
 4
-5
-8
-9
-1000000000
-4 3
-5 3
-5 4
-35 30
+1 2 9 13
+5 6 10 14
+3 7 11 15
+4 8 12 16
+2
+Explanation:
+Example case 1: After the first operation, with
+L=2, the resulting matrix is
+1 5 9 13
+2 6 10 14
+3 7 11 15
+4 8 12 16
+After the second operation, with
+L=4, the matrix becomes sorted
+1 2 3 4
+5 6 7 8
+9 10 11 12
+13 14 15 16

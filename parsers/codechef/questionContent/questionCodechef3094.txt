@@ -1,106 +1,92 @@
-Binary String Happiness
+The Melancholy of Problem Setter
 Problem
-For a binary string
-S, define its beauty to be the maximum number of substrings
-S can be partitioned into, such that each substring has strictly more ones than zeroes. For example, the beauty of
-11011 is
-3, as it can be partitioned as
-[110][1][1]. If such a partition doesn't exist, the beauty is defined to be
-0.
-Also, define the happiness of a binary string to be the maximum beauty over all its substrings. For example, the happiness of the string
-S=010011011 is
-3, which is the beauty of its substring
-11011.
-You are given
-N binary strings
-S
-1
-,S
-2
-,…,S
-N
-. You have to process
-Q queries:
-Each query consists of two integers
-L,R, where
-1≤L≤R≤N.
-The result of the query is the maximum possible happiness of
-S
-p
-1
-+S
-p
-2
-+…S
-p
-(R−L+1)
-, where
-p is some permutation of
-{L,L+1,…,R−1,R} and
-+ denotes the concatenation operation.
+Roughly speaking, this problem asks you to create the checker of the problem used in December CookOff.
+You are given a tree with
+N vertices and a string
+C of length
+N, consisting of the characters 'R', 'G' and 'B'.
+For each integer
+i (1≤i≤N),
+C
+i
+is the color of vertex
+i — 'R' is for Red, 'G' is for Green and 'B' is for Blue.
+The input is called valid if for all pairs of Blue vertices
+(u, v), u
+
+=v, there is at least one Red vertex and one Green vertex on the simple path between
+u and
+v.
+Your task is to validate the input for given
+T test cases. For each test case, print Yes if the input is valid, otherwise No.
 Input Format
-The first line of input contains two space-separated integers
-N and
-Q, the number of strings and the number of queries. Then,
-2N+Q lines follow:
-For each
-1≤i≤N,
-S
-i
-is represented by two lines. The first line contains the length of
-S
-i
-and the second line contains
-S
-i
-itself.
-Each of the next
-Q lines contains two integers,
-L and
-R, denoting the query parameters
+The first line of input contains one positive integer
+T, the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains one positive integer
+N, the number of vertices of the tree.
+The second line of each test case contains a string
+C, denoting the colors of the vertices.
+Each of the following
+N−1 lines contains two space-separated integers
+u and
+v, denoting an edge between vertices
+u and
+v in the tree.
 Output Format
-For each query, print the maximum possible happiness of the concatenation of some permutation of the given interval on a new line.
+For each test case, output a single line containing Yes if the input is valid, and No otherwise.
+You may print each character of the string in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
 Constraints
-1≤N,Q≤10
+1≤T≤10
+4
+1≤N≤2⋅10
 5
-∣S
-i
-∣≥1 for each valid
-i.
-Every string consists of characters which are either '0' or '1'.
-The sum of the lengths of all the input strings doesn't exceed
-10
-6
-.
-Subtasks
-Subtask 1 (30 points): The sum of
-R−L+1 over all queries doesn't exceed
-10
-6
-.
-Subtask 3 (70 points): No further constraints.
+The sum of
+N for each test case is at most
+2⋅10
+5
+∣C∣=N
+C consists of three types of characters, 'R', 'G' and 'B'
+1≤u,v≤N,u
+
+=v
+The input graph forms a tree
 Sample 1:
 Input
 Output
-4 1
+5
+4
+BRGB
+3 2
+1 2
+4 3
+3
+RGB
+1 2
+2 3
 1
-0
+B
 2
-11
-3
-010
+BB
+1 2
 4
-0110
-2 4
-3
+BRGB
+3 2
+1 2
+4 2
+Yes
+Yes
+Yes
+No
+No
 Explanation:
-It is optimal to concatenate as
-S
-3
-+S
-4
-+S
-2
-to get
-010011011 with a happiness value of
-3.
+Test case 1:
+The only pair is
+(1,4).
+Test case 3:
+There are no pairs.
+Test case 5:
+The only pair is
+(1,4). There are no Green vertices on the path between
+1 and
+4.

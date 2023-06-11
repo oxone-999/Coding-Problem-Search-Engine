@@ -1,59 +1,87 @@
-L. Lexicography
+C. K Integers
 time limit per test3 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Lucy likes letters. She studied the definition of the lexicographical order at school and plays with it.
-At first, she tried to construct the lexicographically smallest word out of given letters. It was so easy! Then she tried to build multiple words and minimize one of them. This was much harder!
-Formally, Lucy wants to make
-n
-words of length
-l
-each out of the given
-n⋅l
-letters, so that the
-k
--th of them in the lexicographic order is lexicographically as small as possible.
-Input
-The first line contains three integers
-n
+You are given a permutation
+p
+1
 ,
-l
-, and
-k
-(
-1≤k≤n≤1000
-;
-1≤l≤1000
-) — the total number of words, the length of each word, and the index of the word Lucy wants to minimize.
-The next line contains a string of
-n⋅l
-lowercase letters of the English alphabet.
-Output
-Output
+p
+2
+,…,
+p
 n
-words of
-l
-letters each, one per line, using the letters from the input. Words must be sorted in the lexicographic order, and the
-k
--th of them must be lexicographically as small as possible. If there are multiple answers with the smallest
-k
--th word, output any of them.
+.
+In one move you can swap two adjacent values.
+You want to perform a minimum number of moves, such that in the end there will exist a subsegment
+1,2,…,k
+, in other words in the end there should be an integer
+i
+,
+1≤i≤n−k+1
+such that
+p
+i
+=1,
+p
+i+1
+=2,…,
+p
+i+k−1
+=k
+.
+Let
+f(k)
+be the minimum number of moves that you need to make a subsegment with values
+1,2,…,k
+appear in the permutation.
+You need to find
+f(1),f(2),…,f(n)
+.
+Input
+The first line of input contains one integer
+n
+(
+1≤n≤200000
+): the number of elements in the permutation.
+The next line of input contains
+n
+integers
+p
+1
+,
+p
+2
+,…,
+p
+n
+: given permutation (
+1≤
+p
+i
+≤n
+).
+Output
+Print
+n
+integers, the minimum number of moves that you need to make a subsegment with values
+1,2,…,k
+appear in the permutation, for
+k=1,2,…,n
+.
 Examples
 input
 Copy
-3 2 2
-abcdef
+5
+5 4 3 2 1
 output
 Copy
-af
-bc
-ed
+0 1 3 6 10 
 input
 Copy
-2 3 1
-abcabc
+3
+1 2 3
 output
 Copy
-aab
-bcc
+0 0 0 

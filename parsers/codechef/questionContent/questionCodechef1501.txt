@@ -1,170 +1,42 @@
-Digit Operation
+W String
 Problem
-You are given arrays
-A and
-B, each consisting of
-N strings, and a positive integer
-K.
-For all
-1≤i≤N, both
-A
-i
-and
-B
-i
-consist of characters from
-0 to
-9 (both inclusive).
-You can perform the following types of operations on array
-A:
-Type
-1: Choose two indices
-i and
-j
-(i
-
-=j) and swap any character of
-A
-i
-with any character of
-A
-j
-. The cost of this operation is
-0.
-Type
-2: Choose an index
-i and replace one character of
-A
-i
-with any character from
-0 to
-9 (both inclusive). The cost of this operation is
-1.
-For example, let
-A=[24,30,51]. A valid sequence of operations can be:
-Swap
-4 in
-A
-1
-=24 with
-0 in
-A
-2
-=30 to obtain
-[20,34,51].
-Swap
-0 in
-A
-1
-=20 with
-5 in
-A
-3
-=51 to obtain
-[25,34,01].
-Replace
-0 in
-A
-3
-=01 with
-1 to obtain
-[25,34,11].
-The cost of the above sequence of operations is
-1.
-Find whether we can convert the array
-A to array
-B using any (possibly zero) number of operations with cost
-≤K.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains two space-separated integers
-N and
-K, the size of array and the maximum cost of operations.
-The second line of each test case contains
-N space-separated strings
-A
-1
-,A
-2
-,…,A
-N
-.
-The third line of each test case contains
-N space-separated strings
-B
-1
-,B
-2
-,…,B
-N
-.
-Output Format
-For each test case, print YES if it is possible to convert array
-A to
-B using any (possibly zero) number of operations with cost
-≤K. Else, print NO.
-You may print each character of the string in uppercase or lowercase (for example, the strings yEs, yes, Yes, and YES will all be treated as identical).
+Kira likes to play with strings very much. Moreover he likes the shape of 'W' very much. He takes a string and try to make a 'W' shape out of it such that each angular point is a '#' character and each sides has same characters. He calls them W strings.
+For example, the W string can be formed from "aaaaa#bb#cc#dddd" such as:
+    a
+     a             d
+      a     #     d
+       a   b c   d
+        a b   c d
+         #     #
+He also call the strings which can generate a 'W' shape (satisfying the above conditions) W strings.
+More formally, a string S is a W string if and only if it satisfies the following conditions (some terms and notations are explained in Note, please see it if you cannot understand):
+The string S contains exactly 3 '#' characters. Let the indexes of all '#' be P1 < P2 < P3 (indexes are 0-origin).
+Each substring of S[0, P1−1], S[P1+1, P2−1], S[P2+1, P3−1], S[P3+1, |S|−1] contains exactly one kind of characters, where S[a, b] denotes the non-empty substring from a+1th character to b+1th character, and |S| denotes the length of string S (See Note for details).
+Now, his friend Ryuk gives him a string S and asks him to find the length of the longest W string which is a subsequence of S, with only one condition that there must not be any '#' symbols between the positions of the first and the second '#' symbol he chooses, nor between the second and the third (here the "positions" we are looking at are in S), i.e. suppose the index of the '#'s he chooses to make the W string are P1, P2, P3 (in increasing order) in the original string S, then there must be no index i such that S[i] = '#' where P1 < i < P2 or P2 < i < P3.
+Help Kira and he won't write your name in the Death Note.
+Note:
+For a given string S, let S[k] denote the k+1th character of string S, and let the index of the character S[k] be k. Let |S| denote the length of the string S. And a substring of a string S is a string S[a, b] = S[a] S[a+1] ... S[b], where 0 ≤ a ≤ b < |S|. And a subsequence of a string S is a string S[i0] S[i1] ... S[in−1], where 0 ≤ i0 < i1 < ... < in−1 < |S|.
+For example, let S be the string "kira", then S[0] = 'k', S[1] = 'i', S[3] = 'a', and |S| = 4. All of S[0, 2] = "kir", S[1, 1] = "i", and S[0, 3] = "kira" are substrings of S, but "ik", "kr", and "arik" are not. All of "k", "kr", "kira", "kia" are subsequences of S, but "ik", "kk" are not.
+From the above definition of W string, for example, "a#b#c#d", "aaa#yyy#aaa#yy", and "o#oo#ooo#oooo" are W string, but "a#b#c#d#e", "#a#a#a", and "aa##a#a" are not.
+Input
+First line of input contains an integer T, denoting the number of test cases. Then T lines follow. Each line contains a string S.
+Output
+Output an integer, denoting the length of the longest W string as explained before. If S has no W string as its subsequence, then output 0.
 Constraints
-1≤T≤1000
-2≤N≤10
-5
-1≤K≤10
-18
-1≤∣A
-i
-∣,∣B
-i
-∣≤19
-A
-i
-and
-B
-i
-consist of characters from
-0 to
-9 (both inclusive).
-The sum of
-N over all test cases won't exceed
-10
-5
-.
+1 ≤ T ≤ 100
+1 ≤ |S| ≤ 10000 (104)
+S contains no characters other than lower English characters ('a' to 'z') and '#' (without quotes)
 Sample 1:
 Input
 Output
 3
-2 2
-1 9
-9 1
-2 2
-1 11
-11 1
-4 1
-22 13 12 89
-28 98 21 31
-YES
-NO
-YES
+aaaaa#bb#cc#dddd
+acb#aab#bab#accba
+abc#dda#bb#bb#aca
+16
+10
+11
 Explanation:
-Test case
-1: We can use one operation of type
-1 to swap
-1 in
-A
-1
-with
-9 in
-A
-2
-. Thus,
-A becomes
-[9,1], which is equal to
-B. We are able to do this with
-0 cost, which is
-≤2.
-Test case
-2: It is impossible to convert
-A to
-B with at most
-2 cost.
+In the first case: the whole string forms a W String.
+In the second case: acb#aab#bab#accba, the longest W string is acb#aab#bab#accba
+In the third case: abc#dda#bb#bb#aca, note that even though abc#dda#bb#bb#aca (boldened characters form the subsequence) is a W string of length 12, it violates Ryuk's condition that there should not be any #'s inbetween the 3 chosen # positions. One correct string of length 11 is abc#dda#bb#bb#aca

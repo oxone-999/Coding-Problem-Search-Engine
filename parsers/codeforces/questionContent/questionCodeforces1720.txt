@@ -1,113 +1,88 @@
-E. Partition Game
-time limit per test3 seconds
+B. Kavi on Pairing Duty
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of
-n
-integers. Define the cost of some array
-t
-as follows:
-cost(t)=
-∑
-x∈set(t)
-last(x)−first(x),
-(
-)
-∑
-l
-(
-)
-f
+Kavi has
+2n
+points lying on the
+OX
+axis,
 i
-(
-)
-where
-set(t)
-is the set of all values in
-t
-without repetitions,
-first(x)
-, and
-last(x)
-are the indices of the first and last occurrence of
-x
-in
-t
-, respectively. In other words, we compute the distance between the first and last occurrences for each distinct element and sum them up.
-You need to split the array
-a
-into
-k
-consecutive segments such that each element of
-a
-belongs to exactly one segment and the sum of the cost of individual segments is minimum.
-Input
-The first line contains two integers
+-th of which is located at
+x=i
+.
+Kavi considers all ways to split these
+2n
+points into
 n
-,
-k
-(
-1≤n≤35000
-,
-1≤k≤min(n,100)
-).
-The second line contains
+pairs. Among those, he is interested in good pairings, which are defined as follows:
+Consider
 n
-integers
-a
-1
-,
-a
+segments with ends at the points in correspondent pairs. The pairing is called good, if for every
 2
-,…,
-a
+different segments
+A
+and
+B
+among those, at least one of the following holds:
+One of the segments
+A
+and
+B
+lies completely inside the other.
+A
+and
+B
+have the same length.
+Consider the following example:
+A
+is a good pairing since the red segment lies completely inside the blue segment.
+B
+is a good pairing since the red and the blue segment have the same length.
+C
+is not a good pairing since none of the red or blue segments lies inside the other, neither do they have the same size.
+Kavi is interested in the number of good pairings, so he wants you to find it for him. As the result can be large, find this number modulo
+998244353
+.
+Two pairings are called different, if some two points are in one pair in some pairing and in different pairs in another.
+Input
+The single line of the input contains a single integer
 n
-(
-1≤
-a
-i
-≤n
-).
+(1≤n≤
+10
+6
+)
+.
 Output
-Output the minimum sum of the cost of individual segments.
+Print the number of good pairings modulo
+998244353
+.
 Examples
 input
 Copy
-7 2
-1 6 6 4 6 6 6
+1
+output
+Copy
+1
+input
+Copy
+2
 output
 Copy
 3
 input
 Copy
-7 4
-5 5 5 5 2 3 3
+3
 output
 Copy
-1
+6
+input
+Copy
+100
+output
+Copy
+688750769
 Note
-In the first example, we can divide the array into
-[1,6,6,4]
-and
-[6,6,6]
-. Cost of
-[1,6,6,4]
-will be
-(1−1)+(3−2)+(4−4)=1
-and cost of
-[6,6,6]
-will be
-3−1=2
-. Total cost would be
-1+2=3
-.
-In the second example, divide the array into
-[5,5],[5],[5,2,3]
-and
-[3]
-. Total Cost would be
-1+0+0+0=1
-.
+The good pairings for the second example are:
+In the third example, the good pairings are:

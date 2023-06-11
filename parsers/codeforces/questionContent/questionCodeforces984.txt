@@ -1,142 +1,155 @@
-D. GCD Guess
+A. Admissible Map
 time limit per test3 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem.
-There is a positive integer
-1≤x≤
-10
-9
-that you have to guess.
-In one query you can choose two positive integers
-a≠b
-. As an answer to this query you will get
-gcd(x+a,x+b)
-, where
-gcd(n,m)
-is the greatest common divisor of the numbers
+A map is a matrix consisting of symbols from the set of 'U', 'L', 'D', and 'R'.
+A map graph of a map matrix
+a
+is a directed graph with
+n⋅m
+vertices numbered as
+(i,j)
+(
+1≤i≤n;1≤j≤m
+), where
 n
-and
+is the number of rows in the matrix,
 m
+is the number of columns in the matrix. The graph has
+n⋅m
+directed edges
+(i,j)→(i+d
+i
+a
+i,j
+,j+d
+j
+a
+i,j
+)
+, where
+(d
+i
+U
+,d
+j
+U
+)=(−1,0)
+;
+(d
+i
+L
+,d
+j
+L
+)=(0,−1)
+;
+(d
+i
+D
+,d
+j
+D
+)=(1,0)
+;
+(d
+i
+R
+,d
+j
+R
+)=(0,1)
+. A map graph is valid when all edges point to valid vertices in the graph.
+An admissible map is a map such that its map graph is valid and consists of a set of cycles.
+A description of a map
+a
+is a concatenation of all rows of the map — a string
+a
+1,1
+a
+1,2
+…
+a
+1,m
+a
+2,1
+…
+a
+n,m
 .
-To guess one hidden number
-x
-you are allowed to make no more than
-30
-queries.
+You are given a string
+s
+. Your task is to find how many substrings of this string can constitute a description of some admissible map.
+A substring of a string
+s
+1
+s
+2
+…
+s
+l
+of length
+l
+is defined by a pair of indices
+p
+and
+q
+(
+1≤p≤q≤l
+) and is equal to
+s
+p
+s
+p+1
+…
+s
+q
+. Two substrings of
+s
+are considered different when the pair of their indices
+(p,q)
+differs, even if they represent the same resulting string.
 Input
-The first line of input contains a single integer
-t
-(
-1≤t≤1000
-) denoting the number of test cases.
-The integer
-x
-that you have to guess satisfies the constraints: (
-1≤x≤
-10
-9
-).
-Interaction
-The hidden number
-x
-is fixed before the start of the interaction and does not depend on your queries.
-To guess each
-x
-you can make no more than
-30
-queries in the following way:
-"? a b" (
-1≤a,b≤2⋅
-10
-9
-,
-a≠b
-).
-For this query you will get
-gcd(x+a,x+b)
-.
-When you know
-x
-, print a single line in the following format.
-"! x" (
-1≤x≤
-10
-9
-).
-After that continue to solve the next test case.
-If you ask more than
-30
-queries for one
-x
-or make an invalid query, the interactor will terminate immediately and your program will receive verdict Wrong Answer.
-After printing each query do not forget to output end of line and flush the output buffer. Otherwise, you will get the Idleness limit exceeded verdict. To do flush use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-Read documentation for other languages.
-Hacks
-To use hacks, use the following format of tests:
-The first line should contain a single integer
-t
-(
-1≤t≤1000
-) — the number of test cases.
-The first and only line of each test case should contain a single integer
-x
-(
-1≤x≤
-10
-9
-) denoting the integer
-x
-that should be guessed.
-Example
+In the only input line, there is a string
+s
+, consisting of at least one and at most
+20000
+symbols 'U', 'L', 'D', or 'R'.
+Output
+Output one integer — the number of substrings of
+s
+that constitute a description of some admissible map.
+Examples
 input
 Copy
-2
-
-1
-
-8
-
-
-1
+RDUL
 output
 Copy
-? 1 2
-
-? 12 4
-
-! 4
-? 2000000000 1999999999
-
-! 1000000000
+2
+input
+Copy
+RDRU
+output
+Copy
+0
+input
+Copy
+RLRLRL
+output
+Copy
+6
 Note
-The first hidden number is
-4
-, that's why the answers for the queries are:
-"? 1 2" —
-gcd(4+1,4+2)=gcd(5,6)=1
-.
-"? 12 4" —
-gcd(4+12,4+4)=gcd(16,8)=8
-.
-The second hidden number is
-10
-9
-, that's why the answer for the query is:
-"? 2000000000 1999999999" —
-gcd(3⋅
-10
-9
-,3⋅
-10
-9
-−1)=1
-.
-These queries are made only for understanding the interaction and are not enough for finding the true
-x
-.
+In the first example, there are two substrings that can constitute a description of an admissible map — "RDUL" as a matrix of size
+2×2
+(pic. 1) and "DU" as a matrix of size
+2×1
+(pic. 2).
+In the second example, no substring can constitute a description of an admissible map. E. g. if we try to look at the string "RDRU" as a matrix of size
+2×2
+, we can find out that the resulting graph is not a set of cycles (pic. 3).
+In the third example, three substrings "RL", two substrings "RLRL" and one substring "RLRLRL" can constitute an admissible map, some of them in multiple ways. E. g. here are two illustrations of substring "RLRLRL" as matrices of size
+3×2
+(pic. 4) and
+1×6
+(pic. 5).

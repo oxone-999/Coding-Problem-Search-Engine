@@ -1,170 +1,88 @@
-A. Anti Light's Cell Guessing
+C. Keshi Is Throwing a Party
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are playing a game on a
-n×m
-grid, in which the computer has selected some cell
-(x,y)
-of the grid, and you have to determine which one.
-To do so, you will choose some
-k
-and some
-k
-cells
-(
-x
-1
-,
-y
-1
-),(
-x
-2
-,
-y
-2
-),…,(
-x
-k
-,
-y
-k
-)
-, and give them to the computer. In response, you will get
-k
-numbers
-b
-1
-,
-b
-2
-,…
-b
-k
-, where
+Keshi is throwing a party and he wants everybody in the party to be happy.
+He has
+n
+friends. His
+i
+-th friend has
+i
+dollars.
+If you invite the
+i
+-th friend to the party, he will be happy only if at most
+a
+i
+people in the party are strictly richer than him and at most
 b
 i
-is the manhattan distance from
-(
-x
-i
-,
-y
-i
-)
-to the hidden cell
-(x,y)
-(so you know which distance corresponds to which of
-k
-input cells).
-After receiving these
-b
-1
-,
-b
-2
-,…,
-b
-k
-, you have to be able to determine the hidden cell. What is the smallest
-k
-for which is it possible to always guess the hidden cell correctly, no matter what cell computer chooses?
-As a reminder, the manhattan distance between cells
-(
-a
-1
-,
-b
-1
-)
-and
-(
-a
-2
-,
-b
-2
-)
-is equal to
-|
-a
-1
-−
-a
-2
-|+|
-b
-1
-−
-b
-2
-|
-.
+people are strictly poorer than him.
+Keshi wants to invite as many people as possible. Find the maximum number of people he can invite to the party so that every invited person would be happy.
 Input
-The first line of the input contains a single integer
+The first line contains a single integer
 t
-(
-1≤t≤
+(1≤t≤
 10
 4
-) — the number of test cases. The description of test cases follows.
-The single line of each test case contains two integers
+)
+— the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single integer
 n
-and
-m
-(
-1≤n,m≤
+(1≤n≤2⋅
 10
-9
-) — the number of rows and the number of columns in the grid.
+5
+)
+— the number of Keshi's friends.
+The
+i
+-th of the following
+n
+lines contains two integers
+a
+i
+and
+b
+i
+(0≤
+a
+i
+,
+b
+i
+<n)
+.
+It is guaranteed that the sum of
+n
+over all test cases doesn't exceed
+2⋅
+10
+5
+.
 Output
-For each test case print a single integer — the minimum
-k
-for that test case.
+For each test case print the maximum number of people Keshi can invite.
 Example
 input
 Copy
+3
+3
+1 2
+2 1
+1 1
 2
-2 3
-3 1
+0 0
+0 1
+2
+1 0
+0 1
 output
 Copy
 2
 1
+2
 Note
-In the first test case, the smallest such
-k
-is
-2
-, for which you can choose, for example, cells
-(1,1)
-and
-(2,1)
-.
-Note that you can't choose cells
-(1,1)
-and
-(2,3)
-for
-k=2
-, as both cells
-(1,2)
-and
-(2,1)
-would give
-b
+In the first test case, he invites the first and the second person. If he invites all of them, the third person won't be happy because there will be more than
 1
-=1,
-b
-2
-=2
-, so we wouldn't be able to determine which cell is hidden if computer selects one of those.
-In the second test case, you should choose
-k=1
-, for it you can choose cell
-(3,1)
-or
-(1,1)
-.
+person poorer than him.

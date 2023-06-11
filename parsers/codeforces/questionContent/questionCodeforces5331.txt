@@ -1,50 +1,33 @@
-D. The Door Problem
-time limit per test2 seconds
+B. Sherlock and his girlfriend
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Moriarty has trapped n people in n distinct rooms in a hotel. Some rooms are locked, others are unlocked. But, there is a condition that the people in the hotel can only escape when all the doors are unlocked at the same time. There are m switches. Each switch control doors of some rooms, but each door is controlled by exactly two switches.
-You are given the initial configuration of the doors. Toggling any switch, that is, turning it ON when it is OFF, or turning it OFF when it is ON, toggles the condition of the doors that this switch controls. Say, we toggled switch 1, which was connected to room 1, 2 and 3 which were respectively locked, unlocked and unlocked. Then, after toggling the switch, they become unlocked, locked and locked.
-You need to tell Sherlock, if there exists a way to unlock all doors at the same time.
+Sherlock has a new girlfriend (so unlike him!). Valentine's day is coming and he wants to gift her some jewelry.
+He bought n pieces of jewelry. The i-th piece has price equal to i + 1, that is, the prices of the jewelry are 2, 3, 4, ... n + 1.
+Watson gave Sherlock a challenge to color these jewelry pieces such that two pieces don't have the same color if the price of one piece is a prime divisor of the price of the other piece. Also, Watson asked him to minimize the number of different colors used.
+Help Sherlock complete this trivial task.
 Input
-First line of input contains two integers n and m (2 ≤ n ≤ 105, 2 ≤ m ≤ 105) — the number of rooms and the number of switches.
-Next line contains n space-separated integers r1, r2, ..., rn (0 ≤ ri ≤ 1) which tell the status of room doors. The i-th room is locked if ri = 0, otherwise it is unlocked.
-The i-th of next m lines contains an integer xi (0 ≤ xi ≤ n) followed by xi distinct integers separated by space, denoting the number of rooms controlled by the i-th switch followed by the room numbers that this switch controls. It is guaranteed that the room numbers are in the range from 1 to n. It is guaranteed that each door is controlled by exactly two switches.
+The only line contains single integer n (1 ≤ n ≤ 100000) — the number of jewelry pieces.
 Output
-Output "YES" without quotes, if it is possible to open all doors at the same time, otherwise output "NO" without quotes.
+The first line of output should contain a single integer k, the minimum number of colors that can be used to color the pieces of jewelry with the given constraints.
+The next line should consist of n space-separated integers (between 1 and k) that specify the color of each piece in the order of increasing price.
+If there are multiple ways to color the pieces using k colors, you can output any of them.
 Examples
 input
 Copy
-3 3
-1 0 1
-2 1 3
-2 1 2
-2 2 3
+3
 output
 Copy
-NO
+2
+1 1 2 
 input
 Copy
-3 3
-1 0 1
-3 1 2 3
-1 2
-2 1 3
+4
 output
 Copy
-YES
-input
-Copy
-3 3
-1 0 1
-3 1 2 3
-2 1 2
-1 3
-output
-Copy
-NO
+2
+2 1 1 2
 Note
-In the second example input, the initial statuses of the doors are [1, 0, 1] (0 means locked, 1 — unlocked).
-After toggling switch 3, we get [0, 0, 0] that means all doors are locked.
-Then, after toggling switch 1, we get [1, 1, 1] that means all doors are unlocked.
-It can be seen that for the first and for the third example inputs it is not possible to make all doors unlocked.
+In the first input, the colors for first, second and third pieces of jewelry having respective prices 2, 3 and 4 are 1, 1 and 2 respectively.
+In this case, as 2 is a prime divisor of 4, colors of jewelry having prices 2 and 4 must be distinct.

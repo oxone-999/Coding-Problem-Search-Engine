@@ -1,195 +1,44 @@
-(Challenge) Interleaving Strings
+The Spelling Problem
 Problem
-Chef has
-N decimal strings
-S
-1
-,S
-2
-,…,S
-N
-with him (that is, each of these strings contains only characters '0' through '9'). The characters in all strings are indexed starting from
-1. Chef wants to form a single long string
-W by interleaving all these strings.
-A string
-W is said to be formed by interleaving
-S
-1
-,S
-2
-,…,S
-N
-if the characters of
-W can be partitioned into
-N subsequences
-T
-1
-,T
-2
-,…,T
-N
-such that for each valid
-i,
-T
-i
-is identical to the string
-S
-i
-. Formally, for each valid
-i, the subsequence
-T
-i
-must have length
-∣S
-i
-∣; let's denote
-T
-i
-=(T
-i,1
-,T
-i,2
-,…,T
-i,∣S
-i
-∣
-), where
-1≤T
-i,j
-≤N and
-T
-i,j
-<T
-i,j+1
-for each valid
-j. Each integer between
-1 and
-∣W∣=∣S
-1
-∣+∣S
-2
-∣+…+∣S
-N
-∣ inclusive must occur in exactly one of these subsequences, and for each valid
-i and
-j, the
-T
-i,j
--th character of
-W must be identical to the
-j-th character of
-S
-i
-. For example, if
-S
-1
-is "123",
-S
-2
-is "456" and
-S
-3
-is "789", then the strings "124758963" and "123456789" are formed by interleaving these strings, but "123456798" is not.
-The cost of the interleaved string
-W is defined as
-∑
-i=2
-∣W∣
-∣W
-i
-−W
-i−1
-∣
-2
-, where
-W
-i
-denotes the integer represented by the
-i-th character of
-W. For example, if
-W is "124", then its cost is
-∣2−1∣
-2
-+∣4−2∣
-2
-=1+4=5.
-Chef wants you to find an interleaved string
-W. The cost of this string should be as low as possible.
+Read problems statements in Mandarin Chinese and Russian.
+Fedya and Alex are OI-ers. They live in different cities, but they like to write letters to each other, in which they discuss complicated data structure problems, contests, nice girls/ boys, animes and other not so important things.
+Nevertheless, there is a problem, arising sometimes. Being quite young and impatient, Fedya is eager to send his just typed letter. Though everything is okay with it, but like any of us, Fedya sometimes makes some spelling mistakes in the typed text. Being a perfectionist, Alex sometimes gets upset, when he sees mistakes in Fedya's letters.
+More precisely, sometimes Fedya can following mistakes:
+to swap two letters;
+to skip a letter;
+to insert an irrelevant letter;
+to mistype a letter in some of the words.
+
+Though, he is an intelligent guy and he never makes more than one mistake in a single typed word.
+Fedya isn't really bad at spelling, so he will make mistakes in no more than 4% of the typed words.
+Alex is a nice guy. In order to upset less, he has decided to write a program that will correct Fedya's mistakes. But this appeared to be not an easy task for him. So we ask you to help Alex.
+Formally, you will be given a text. The text will be an English text with correct grammar and spelling. Somewhere in the text, the mistakes of some of the above kinds will be made. You need to provide the modified text that will contain as less mistakes as possible (see Grading section). In order to make our problem easier, we will give you a dictionary of English words. The most part of words will appear in the dictionary, but not all of them.
 Input
-The first line of the input contains a single integer
-N.
-N lines follow. For each
-i (
-1≤i≤N), the
-i-th of these lines contains a single string
-S
-i
-.
+The first line of input contains a single integer D, denoting the number of words in the dictionary. Then, D lines will follow, each will contain a dictionary word. The dictionary used is the same in all the test cases, and you can download it here.
+Then there is a line, containing lowercase English text, consisting of words and numbers. All the punctuation but dots, exclamation and question marks, commas and apostrophes will be removed. All the sentences always ends with dots, but the dot can also be used in shortings (like Mr., Mrs.) and abbreviations.
 Output
-Print a single line containing
-∣W∣=∣S
-1
-∣+∣S
-2
-∣+…+∣S
-N
-∣ space-separated integers. For each valid
-i, the
-i-th of these integers (let's denote it by
-x) should denote that the
-i-th character of your interleaved string comes from the string
-S
-x
-.
-Your output will be considered valid if for each
-i (
-1≤i≤N), your output contains the integer
-i exactly
-∣S
-i
-∣ times.
-Constraints
-N=10,000
-∣S
-i
-∣=100 for each valid
-i
-S
-1
-,S
-2
-,…,S
-N
-contain only decimal digits, i.e. characters '0' through '9'
-Scoring
-The score of each test case (and therefore each test file) is the cost of the string
-W described by your output, i.e.
-∑
-i=2
-∣W∣
-∣W
-i
-−W
-i−1
-∣
-2
-. The score of a submission is the sum of scores of all test files. Your goal is to minimise the score of your submission.
-If your output is invalid, the verdict of your submission will be Wrong Answer.
-There are twenty test files - ten of each type described below. During the contest, the displayed score will account for exactly four test files, i.e. your score reflects your submission's performance on 20% (4/20) of the test files, two for each of the types described below. However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to include the sum of your program's scores over the other sixteen test files.
-Example Input
-3
-123
-456
-789
-Example Output
-1 1 2 3 2 3 3 2 1
-Explanation
-The output corresponds to the string "124758963". The score for this test file would be the cost of this string, which is
-46.
-Test Generation Process
-There are two types of test files.
-Type 1: Each character of each string is chosen uniformly randomly from the set {'0', '1', ..., '9'}.
-Type 2: Each character of each string is chosen randomly from the set {'0', '1', ..., '9'}. The probability of '0' being chosen is
-0.4, the probability of '1' being chosen is also
-0.4 and the probability of each of the remaining 8 characters being chosen is
-0.025.
+Output the corrected text in the same format as it is given to you in the input.
+Grading
+You will not get any "Wrong Answer" verdict in this problem. The scoring mechanism works as follows:
+First, we split your output into the consecutive words of non-space symbols, that can't be extended by adding a symbol to the left, or to the right.
+Then, we do a group-by-group comparison with the official outputs' groups.
+If the current group was correct in the input, but in your output it is incorrect, your score for the test case decreases by 1.
+If the current group was incorrect in the input, but in your output it is correct, your score for the test cases increases by 3.
+We compare only the first min{the number of groups in your output; the number of groups in the official output} groups of symbols. So, you can output not all the text - that will possibly not enable you to score as much points as possible, but if you find it convenient, you can use it.
+If your score for the test case is lower than 0, it will be increased to 0.
+Your initial score for each test case equals to 100. So, if you don't change the text at all, you will still receive some positive amount of points.
+As you can easily see, you should leave all the punctuation on its' places.
+Test Data Generation
+All the texts, given to you will be basically normal English texts (of any style) with mistakes in some words. The amount of mistaken words is about 4%. Basically, you should treat the mistakes as the one that had been made by a human.
+Some test data sizes information:
+The 10% of the test data will have the text of the size of approximately 10 MB.
+The additional 40% of the test data will have the text of the size of 1 to 3 MB.
+The rest of the test data has texts of the size below 1 MB.
+Example
+Input:
+[dictionary declaration is omitted in this sample case]
+thus is the sample text.
+Output:
+this is the sample text.
+  Explanation
+This answer will get a score of 103 points.

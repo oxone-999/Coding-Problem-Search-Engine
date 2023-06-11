@@ -1,111 +1,90 @@
-F2. Anti-median (Hard Version)
-time limit per test2 seconds
-memory limit per test256 megabytes
+G. Centroid Guess
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is the hard version of the problem. The only difference between the two versions is the constraint on
+This in an interactive problem.
+There is an unknown tree consisting of
 n
-. You can make hacks only if all versions of the problem are solved.
-Let's call an array
-a
-of odd length
-2m+1
-(with
-m≥1
-) bad, if element
-am+1
-is equal to the median of this array. In other words, the array is bad if, after sorting it, the element at
-m+1
--st position remains the same.
-Let's call a permutation
-p
-of integers from
-1
-to
+nodes, which has exactly one centroid. You only know
 n
-anti-median, if every its subarray of odd length
-≥3
-is not bad.
-You are already given values of some elements of the permutation. Find the number of ways to set unknown values to obtain an anti-median permutation. As this number can be very large, find it modulo
-109+7
-.
+at first, and your task is to find the centroid of the tree.
+You can ask the distance between any two vertices for at most
+2⋅
+10
+5
+times.
+Note that the interactor is not adaptive. That is, the tree is fixed in each test beforehand and does not depend on your queries.
+A vertex is called a centroid if its removal splits the tree into subtrees with at most
+⌊
+n
+2
+⌋
+vertices each.
 Input
-The first line contains a single integer
-t
+The only line of the input contains an integer
+n
 (
-1≤t≤104
-)  — the number of test cases. The description of test cases follows.
-The first line of each test case contains a single integer
+3≤n≤7.5⋅
+10
+4
+) — the number of nodes in the tree.
+Interaction
+Start interaction by reading
 n
-(2≤n≤106)
- — the length of the permutation.
-The second line of each test case contains
-n
-integers
-p1,p2,…,pn
+.
+To ask a query about the distance between two nodes
+u,v
 (
-1≤pi≤n
-, or
-pi=−1
-)  — the elements of the permutation. If
-pi≠−1
-, it's given, else it's unknown. It's guaranteed that if for some
-i≠j
-holds
-pi≠−1,pj≠−1
-, then
-pi≠pj
-.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-106
-.
-Output
-For each test case, output a single integer  — the number of ways to set unknown values to obtain an anti-median permutation, modulo
-109+7
-.
+1≤u,v≤n
+), output "? u v".
+If you determine that the centroid of the tree is
+x
+, use "! x" to report.
+After printing a query, do not forget to output the end of a line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+Hacks are disabled in this problem.
+It's guaranteed that there are at most
+500
+tests in this problem.
 Example
 input
 Copy
 5
+
 2
--1 -1
+
+1
+
+2
+
 3
--1 -1 -1
-4
-1 2 3 4
-6
--1 -1 3 4 -1 -1
-8
--1 -1 -1 -1 -1 -1 -1 -1
+
+1
+
+1
+
+1
 output
 Copy
-2
-4
-0
-1
-316
+? 1 2
+
+? 1 3
+
+? 1 4
+
+? 1 5
+
+? 2 3
+
+? 3 4
+
+? 4 5
+
+! 3
 Note
-In the first test case, both
-[1,2]
-and
-[2,1]
-are anti-median.
-In the second test case, permutations
-[1,3,2],[2,1,3],[2,3,1],[3,1,2]
-are anti-median. The remaining two permutations,
-[1,2,3]
-,
-[3,2,1]
-, are bad arrays on their own, as their median,
-2
-, is in their middle.
-In the third test case,
-[1,2,3,4]
-isn't anti-median, as it contains bad subarray
-[1,2,3]
-.
-In the fourth test case, the only anti-median array you can get is
-[5,6,3,4,1,2]
-.
+Here is an image of the tree from the sample.

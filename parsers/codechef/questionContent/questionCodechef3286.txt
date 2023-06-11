@@ -1,116 +1,103 @@
-Break And Fix The Tree
+Falling Zero
 Problem
-Chef is playing a game, and to win the prize, he must complete it. But he is busy arranging meals for the vortex party, so he asked you the play the game in his place. The game is as below:
-You are given a rooted tree of size
-N rooted at node
-1, where each node
-i has a value
-V
-i
-assigned to it. Define
-P
+Read problems statements in Mandarin Chinese, Russian, Vietnamese and Bengali as well.
+You are given a tree of
+N nodes rooted at node
+1. Each node
+u initially has a positive value
+a
 u
-as the parent of node
-u. You have to perform queries of the following type on the tree:
-1XW: Break the edge between node
-X and
-P
-X
-in the tree, and attach
-X as a child of
-W (note that this means
-P
-X
-=W after this operation). It is guaranteed that
-X is a leaf node of the tree.
-2XK: Change the value on node
-X to
-K (i.e. assign
-V
-X
-←K).
-3XY: Calculate the sum of values of nodes on the path from
-X to
-Y.
-Note that the queries are accumulative, meaning the changes made in each query is persisted for the following queries.
-Input Format
-The first line of the input contains an integer
-N - the number of nodes in the tree.
-The next line contains
-N−1 space-separated integers
-P
-2
-,P
-3
-,…,P
-N
-- the parents node of
-2 to
-N.
-The next line contains
-N space-separated integers
-V
-1
-,V
-2
-,…,V
-N
-- the initial values of the nodes.
-The next line contains an integer
-Q - the number of queries.
-Each of the next
-Q lines contains a query as described in the statement.
-Output Format
-For each query of type
-3, output on a new line the sum of values of nodes on the path from
-X to
-Y.
-Constraints
-2≤N≤10
-5
-1≤P
-i
-≤N
-−10
+associated with it.
+You randomly choose one node in the tree and change its value to zero. If any node
+u has a value equal to
+0, a random node
+v will be chosen in the subtree of
+u (
+u
+
+=v), and the values
+a
+u
+and
+a
+v
+will be swapped, hence the value of the node
+v will become zero and the process will continue until the zero is on a leaf node. At this point, we will call the tree a final tree.
+Note: there is exactly one node with a value equal to zero in a final tree and that node is a leaf node.
+Your task is to tell how many different final trees are possible. Two final trees are different if there exists at least one node
+u, such that the value of the node
+u in one final tree differs from the value of the node
+u in the other final tree. Since the answer can be large, print it modulo
+10
 9
-≤V
++7.
+###Input
+The first line contains an integer
+T, the number of test cases. Then the test cases follow.
+The first line of each test case contains an integer
+N, the number of nodes.
+Each of the next
+N−1 lines contains two integers
+u and
+v, denoting that there is an undirected edge between the node
+u and the node
+v.
+The next line contains
+N integers
+a
+1
+,…,a
+N
+.
+###Output For each test case, output on a new line, number of different final trees possible, modulo
+10
+9
++7.
+###Constraints
+1≤T≤10
+5
+1≤N≤10
+5
+1≤u,v≤N
+1≤a
 i
 ≤10
 9
-1≤Q≤10
-5
-1≤X,Y,W≤N
-X
-
-=W
-−10
-9
-≤K≤10
-9
-Sample 1:
-Input
-Output
-5
-1 1 2 2
-1 2 3 4 5
+The edges form a tree structure.
+The sum of
+N over all test cases does not exceed
+10
 6
-3 4 5
-1 4 3
-1 5 3
-1 2 4
-2 4 10
-3 2 5
-11
-20
-Explanation:
-Initially, the tree is
-For first query, the path followed is
-4→2→5. Therefore the sum of values is
-4+2+5=11.
-After updating the tree according to second query, it becomes
-After updating the tree according to third query, it becomes
-After updating the tree according to fourth query, it becomes
-After updating the tree according to fifth query, it becomes
-The path for the sixth query is
-2→4→3→5. Therefore the sum of values is
-2+10+3+5=20.
+.
+###Sample Input
+3
+1
+1
+4
+1 2
+2 3
+2 4
+1 1 1 2
+7
+1 2
+1 3
+2 4
+2 5
+3 6
+3 7
+1 2 3 4 1 2 1
+###Sample Output
+1
+4
+14
+###Explanation
+For the first test case, the only possible final tree is when node
+1 is chosen and its value becomes 0.
+For the second test case, the four possible final trees are:
+[ 1, 1, 1, 0 ]
+[ 1, 1, 0, 2 ]
+[ 1, 2, 1, 0 ]
+[ 2, 1, 1, 0 ]
+( The
+i-th number in the array denotes the value of node
+i in the final tree).

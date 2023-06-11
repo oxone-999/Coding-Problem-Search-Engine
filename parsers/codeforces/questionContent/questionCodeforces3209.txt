@@ -1,131 +1,247 @@
-C. Pipes
+E. Special Permutations
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a system of pipes. It consists of two rows, each row consists of
-n
-pipes. The top left pipe has the coordinates
-(1,1)
-and the bottom right —
-(2,n)
-.
-There are six types of pipes: two types of straight pipes and four types of curved pipes. Here are the examples of all six types:
-Types of pipes
-You can turn each of the given pipes
-90
-degrees clockwise or counterclockwise arbitrary (possibly, zero) number of times (so the types
-1
-and
-2
-can become each other and types
-3,4,5,6
-can become each other).
-You want to turn some pipes in a way that the water flow can start at
-(1,0)
-(to the left of the top left pipe), move to the pipe at
-(1,1)
-, flow somehow by connected pipes to the pipe at
-(2,n)
-and flow right to
-(2,n+1)
-.
-Pipes are connected if they are adjacent in the system and their ends are connected. Here are examples of connected pipes:
-Examples of connected pipes
-Let's describe the problem using some example:
-The first example input
-And its solution is below:
-The first example answer
-As you can see, the water flow is the poorly drawn blue line. To obtain the answer, we need to turn the pipe at
-(1,2)
-90
-degrees clockwise, the pipe at
-(2,3)
-90
-degrees, the pipe at
-(1,6)
-90
-degrees, the pipe at
-(1,7)
-180
-degrees and the pipe at
-(2,7)
-180
-degrees. Then the flow of water can reach
-(2,n+1)
-from
-(1,0)
-.
-You have to answer
-q
-independent queries.
-Input
-The first line of the input contains one integer
-q
-(
-1≤q≤
-10
-4
-) — the number of queries. Then
-q
-queries follow.
-Each query consists of exactly three lines. The first line of the query contains one integer
-n
-(
-1≤n≤2⋅
-10
-5
-) — the number of pipes in each row. The next two lines contain a description of the first and the second rows correspondingly. Each row description consists of
-n
-digits from
-1
-to
-6
-without any whitespaces between them, each digit corresponds to the type of pipe in the corresponding cell. See the problem statement to understand which digits correspond to which types of pipes.
-It is guaranteed that the sum of
-n
-over all queries does not exceed
-2⋅
-10
-5
-.
-Output
-For the
+Let's define
+p
 i
--th query print the answer for it — "YES" (without quotes) if it is possible to turn some pipes in a way that the water flow can reach
-(2,n+1)
-from
-(1,0)
-, and "NO" otherwise.
-Example
+(n)
+as the following permutation:
+[i,1,2,…,i−1,i+1,…,n]
+. This means that the
+i
+-th permutation is almost identity (i.e. which maps every element to itself) permutation but the element
+i
+is on the first position. Examples:
+p
+1
+(4)=[1,2,3,4]
+;
+p
+2
+(4)=[2,1,3,4]
+;
+p
+3
+(4)=[3,1,2,4]
+;
+p
+4
+(4)=[4,1,2,3]
+.
+You are given an array
+x
+1
+,
+x
+2
+,…,
+x
+m
+(
+1≤
+x
+i
+≤n
+).
+Let
+pos(p,val)
+be the position of the element
+val
+in
+p
+. So,
+pos(
+p
+1
+(4),3)=3,pos(
+p
+2
+(4),2)=1,pos(
+p
+4
+(4),4)=1
+.
+Let's define a function
+f(p)=
+∑
+i=1
+m−1
+|pos(p,
+x
+i
+)−pos(p,
+x
+i+1
+)|
+, where
+|val|
+is the absolute value of
+val
+. This function means the sum of distances between adjacent elements of
+x
+in
+p
+.
+Your task is to calculate
+f(
+p
+1
+(n)),f(
+p
+2
+(n)),…,f(
+p
+n
+(n))
+.
+Input
+The first line of the input contains two integers
+n
+and
+m
+(
+2≤n,m≤2⋅
+10
+5
+) — the number of elements in each permutation and the number of elements in
+x
+.
+The second line of the input contains
+m
+integers (
+m
+, not
+n
+)
+x
+1
+,
+x
+2
+,…,
+x
+m
+(
+1≤
+x
+i
+≤n
+), where
+x
+i
+is the
+i
+-th element of
+x
+. Elements of
+x
+can repeat and appear in arbitrary order.
+Output
+Print
+n
+integers:
+f(
+p
+1
+(n)),f(
+p
+2
+(n)),…,f(
+p
+n
+(n))
+.
+Examples
 input
 Copy
-6
-7
-2323216
-1615124
-1
-3
-4
-2
-13
-24
-2
-12
-34
-3
-536
-345
-2
-46
-54
+4 4
+1 2 3 4
 output
 Copy
-YES
-YES
-YES
-NO
-YES
-NO
+3 4 6 5 
+input
+Copy
+5 5
+2 1 5 3 5
+output
+Copy
+9 8 12 6 8 
+input
+Copy
+2 10
+1 2 1 1 2 2 2 2 2 2
+output
+Copy
+3 3 
 Note
-The first query from the example is described in the problem statement.
+Consider the first example:
+x=[1,2,3,4]
+, so
+for the permutation
+p
+1
+(4)=[1,2,3,4]
+the answer is
+|1−2|+|2−3|+|3−4|=3
+;
+for the permutation
+p
+2
+(4)=[2,1,3,4]
+the answer is
+|2−1|+|1−3|+|3−4|=4
+;
+for the permutation
+p
+3
+(4)=[3,1,2,4]
+the answer is
+|2−3|+|3−1|+|1−4|=6
+;
+for the permutation
+p
+4
+(4)=[4,1,2,3]
+the answer is
+|2−3|+|3−4|+|4−1|=5
+.
+Consider the second example:
+x=[2,1,5,3,5]
+, so
+for the permutation
+p
+1
+(5)=[1,2,3,4,5]
+the answer is
+|2−1|+|1−5|+|5−3|+|3−5|=9
+;
+for the permutation
+p
+2
+(5)=[2,1,3,4,5]
+the answer is
+|1−2|+|2−5|+|5−3|+|3−5|=8
+;
+for the permutation
+p
+3
+(5)=[3,1,2,4,5]
+the answer is
+|3−2|+|2−5|+|5−1|+|1−5|=12
+;
+for the permutation
+p
+4
+(5)=[4,1,2,3,5]
+the answer is
+|3−2|+|2−5|+|5−4|+|4−5|=6
+;
+for the permutation
+p
+5
+(5)=[5,1,2,3,4]
+the answer is
+|3−2|+|2−1|+|1−4|+|4−1|=8
+.

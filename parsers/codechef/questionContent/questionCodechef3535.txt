@@ -1,106 +1,133 @@
-MEX Permutation Difference
+Power Tree
 Problem
-For a set
-S of non-negative integers,
-MEX(S) is defined as the smallest non-negative integer which does not appear in
-S.
-For a given permutation
-{P
-0
-,P
-1
-,P
-2
-,…,P
-N
-} of integers
-0 to
-N, we define the beauty of the permutation as
-∣A−B∣, where:
-A=∑
-i=0
-N
-MEX({P
-0
-,P
-1
-,P
-2
-,…,P
+You are given a tree containing
+N nodes numbered from
+1 to
+N such that the
 i
-})
-B=∑
-i=0
-N
-MEX({P
-N
-,P
-N−1
-,…,P
-N−i
-})
-Find any permutation
-P with beauty
-K, or determine whether no such permutation exists.
+th
+node has a value
+A
+i
+assigned to it. The root of the tree is node
+1.
+The power of each node is the maximum value assigned to any node present in the subtree of the node.
+You are given an integer
+X. Your task is to make the sum of the powers of all the nodes of the tree greater than or equal to
+X. For this, you can perform the following operation:
+Choose any node
+i
+(1≤i≤N) and set
+A
+i
+:=A
+i
++1.
+Find the minimum number of operations required to make the sum of the powers of all the nodes of the tree greater than or equal to
+X.
+Note that, the subtree of a node
+V is the set of all nodes
+U such that
+V lies on the simple path from
+U to the root.
 Input Format
-The first line contains a single integer
-T, the number of test cases.
-The only line of each test case contains two integers
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains two integers
 N and
-K, where
-(N+1) is the length of the permutation and
-K is the desired beauty of the permutation.
-Output Format
-For each test case, if there is no permutation of integers from
-0 to
-N with beauty
-K, output
-−1.
-Otherwise, output
-N+1 space-separated integers
-P
-0
-,P
+X — the number of nodes and the target sum
+X.
+The second line contains
+N integers -
+A
 1
-,…,P
+,A
+2
+,…,A
 N
-(0≤P
+, the values assigned to the nodes.
+The next
+N−1 lines describe the edges. The
 i
-≤N), the needed permutation.
+th
+of these
+N−1 lines contains two space-separated integers
+u
+i
+and
+v
+i
+, denoting an edge between
+u
+i
+and
+v
+i
+.
+Output Format
+For each test case, output on a new line, the minimum number of operations required.
 Constraints
 1≤T≤10
 4
-1≤N≤2⋅10
+1≤N≤10
 5
-0≤K≤10
-18
+1≤X≤10
+12
+1≤A
+i
+≤10
+6
+1≤u
+i
+,v
+i
+≤N
+u
+i
+
+=v
+i
 The sum of
 N over all test cases won't exceed
-2⋅10
+10
 5
 .
+It is guaranteed that the given graph is a tree.
 Sample 1:
 Input
 Output
 3
+4 87
+18 16 14 16
+3 1
 3 4
-2 2
-4 100000
-0 3 1 2
-1 2 0
--1
+4 2
+5 34
+12 13 15 18 16
+1 4
+1 3
+5 4
+3 2
+6 98
+1 18 9 10 10 14
+2 1
+5 3
+6 4
+6 3
+1 6
+6
+0
+8
 Explanation:
 Test case
-1: A valid permutation is
-P={0,3,1,2}. Here,
-A=1+1+2+4=8, and
-B=0+0+0+4=4, so
-∣A−B∣=4.
+1: Perform
+6 operations on node
+2 to make the value assigned to it equal to
+22. Thus, power of each node will become
+22 and
+87≤22⋅4.
+It can be proven that we can not satisfy the condition in less than
+6 operations.
 Test case
-2: A valid permutation is
-P={1,2,0}. Here,
-A=0+0+3=3, and
-B=1+1+3=5, so
-∣A−B∣=2.
-Test case
-3: There exists no valid permutation.
+2: Sum of power already satisfies the condition.

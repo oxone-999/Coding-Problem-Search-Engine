@@ -1,86 +1,117 @@
-H. Submatrices
-time limit per test3.5 seconds
+J. Pawns
+time limit per test5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given matrix
-s
-that contains
+There is an infinite chessboard, divided into cells. The cell
+(x,y)
+is the cell on the intersection of the
+x
+i
+-th row and
+y
+i
+-th column.
 n
-rows and
-m
-columns. Each element of a matrix is one of the
-5
-first Latin letters (in upper case).
-For each
-k
+black pawns are placed on the board, the
+i
+-th black pawn occupies the cell
 (
-1≤k≤5
-) calculate the number of submatrices that contain exactly
-k
-different letters. Recall that a submatrix of matrix
-s
-is a matrix that can be obtained from
-s
-after removing several (possibly zero) first rows, several (possibly zero) last rows, several (possibly zero) first columns, and several (possibly zero) last columns. If some submatrix can be obtained from
-s
-in two or more ways, you have to count this submatrix the corresponding number of times.
+x
+i
+,
+y
+i
+)
+.
+You want to capture all black pawns. In order to do so, you may perform the following actions:
+place a white pawn into any empty cell (any cell having integer coordinates can be chosen, as long as it doesn't contain any pawns);
+make a move with one of the white pawns according to the chess rules.
+Recall that when you make a move with a white pawn in the cell
+(x,y)
+, the chess rules allow you to choose exactly one of these actions:
+if there is a black pawn in the cell
+(x+1,y−1)
+, you can capture it — the black pawn is removed from the board, and the white pawn moves to
+(x+1,y−1)
+;
+if there is a black pawn in the cell
+(x+1,y+1)
+, you can capture it — the black pawn is removed from the board, and the white pawn moves to
+(x+1,y+1)
+;
+if the cell
+(x+1,y)
+is empty, you can move the white pawn to that cell.
+You may perform any finite sequence of actions (placing white pawns and moving them). You want to capture all of the black pawns, and it can be shown that it is always possible; and you want to do it placing as few white pawns as possible.
+What is the minimum number of white pawns you have to place to capture all
+n
+black pawns?
 Input
-The first line contains two integers
+The first line contains one integer
 n
-and
-m
 (
-1≤n,m≤800
-).
+1≤n≤5⋅
+10
+5
+) — the number of black pawns.
 Then
 n
-lines follow, each containing the string
-s
+lines follow. The
+i
+-th line contains two integers
+x
+i
+and
+y
 i
 (
-|
-s
+1≤
+x
 i
-|=m
-) —
+,
+y
 i
--th row of the matrix.
+≤5⋅
+10
+5
+) denoting a black pawn in the cell
+(
+x
+i
+,
+y
+i
+)
+. No cell is occupied by two or more black pawns.
 Output
-For each
-k
-(
-1≤k≤5
-) print one integer — the number of submatrices that contain exactly
-k
-different letters.
+Print one integer — the minimum number of white pawns you have to place to capture all
+n
+black pawns.
 Examples
 input
 Copy
-2 3
-ABB
-ABA
+3
+1 1
+5 1
+2 2
 output
 Copy
-9 9 0 0 0 
+1
 input
 Copy
-6 6
-EDCECE
-EDDCEB
-ACCECC
-BAEEDC
-DDDDEC
-DDAEAD
+3
+3 2
+1 3
+1 1
 output
 Copy
-56 94 131 103 57 
+2
 input
 Copy
-3 10
-AEAAEEEEEC
-CEEAAEEEEE
-CEEEEAACAA
+2
+1 1
+2 2
 output
 Copy
-78 153 99 0 0 
+1

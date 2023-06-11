@@ -1,95 +1,185 @@
-M. The Mind
+B. Shifting Sort
 time limit per test2 seconds
-memory limit per test1024 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem.
-In this problem, you need to come up with a strategy for a cooperative game. This game is played by two players. Each player receives 5 cards. Each card has a random integer between 1 and 100 on it. It is guaranteed that all numbers on cards are distinct.
-The goal of the game is to play a card with a minimal number on it out of all 10 cards dealt to the players before any other card. The problem is that each player can only see their own cards and cannot communicate with another player in any way.
-The game consists of 5 turns. During each turn, players simultaneously make a move. Each player can either play their smallest card or do nothing. If on some turn the smallest card is played, and no other card is played on or before that turn, players win. If two cards are played at the same turn or if after all 5 turns, no card is still played, players lose.
-Players cannot communicate, so a strategy for the game should only be based on 5 cards that the player has. You can describe a strategy as five numbers
-0.0≤
-p
-i
-≤1.0,
-∑
-5
-i=1
-p
-i
-≤1
-, where
-p
-i
- — the probability of playing the player's smallest card in their hand on
-i
--th turn. If you know the cards dealt to the players, and the strategies that players choose, you can compute the probability of winning by a simple formula.
-You will be given
-n=1000
-randomly generated hands of 5 cards. You need to generate a strategy for each of the hands to maximize the probability of winning. After the judge program receives all
+The new generation external memory contains an array of integers
+a[1…n]=[
+a
+1
+,
+a
+2
+,…,
+a
 n
-strategies, it generates all possible valid pairs of those hands (pairs which have the same numbers are discarded), and computes a probability of winning based on two strategies provided by your program.
-To ensure that answers for different hands are independent, you must output a strategy for a hand and flush the standard output before reading information about the next hand.
-If the average probability of winning a game is more than 85% over all valid pairs of hands, the test is considered passed. This problem contains the sample test and
-20
-randomly generated tests with
-n=1000
+]
 .
+This type of memory does not support changing the value of an arbitrary element. Instead, it allows you to cut out any segment of the given array, cyclically shift (rotate) it by any offset and insert it back into the same place.
+Technically, each cyclic shift consists of two consecutive actions:
+You may select arbitrary indices
+l
+and
+r
+(
+1≤l<r≤n
+) as the boundaries of the segment.
+Then you replace the segment
+a[l…r]
+with it's cyclic shift to the left by an arbitrary offset
+d
+. The concept of a cyclic shift can be also explained by following relations: the sequence
+[1,4,1,3]
+is a cyclic shift of the sequence
+[3,1,4,1]
+to the left by the offset
+1
+and the sequence
+[4,1,3,1]
+is a cyclic shift of the sequence
+[3,1,4,1]
+to the left by the offset
+2
+.
+For example, if
+a=[1,3,2,8,5]
+, then choosing
+l=2
+,
+r=4
+and
+d=2
+yields a segment
+a[2…4]=[3,2,8]
+. This segment is then shifted by the offset
+d=2
+to the left, and you get a segment
+[8,3,2]
+which then takes the place of of the original elements of the segment. In the end you get
+a=[1,8,3,2,5]
+.
+Sort the given array
+a
+using no more than
+n
+cyclic shifts of any of its segments. Note that you don't need to minimize the number of cyclic shifts. Any method that requires
+n
+or less cyclic shifts will be accepted.
 Input
-The first line contains one integer
+The first line contains an integer
+t
+(
+1≤t≤1000
+) — the number of test cases.
+The next
+2t
+lines contain the descriptions of the test cases.
+The first line of each test case description contains an integer
 n
- — the number of hands. It is guaranteed that
-n=1000
-for all cases except the first sample case.
-Each of the next
-n
-lines contains 5 numbers
+(
+2≤n≤50
+) — the length of the array. The second line consists of space-separated elements of the array
 a
 i
 (
-1≤
+−
+10
+9
+≤
 a
 i
-≤100,
+≤
+10
+9
+). Elements of array
 a
-i
-<
-a
-i+1
-) — the cards in the hand. It is guaranteed that each possible set of 5 cards has an equal probability of being chosen.
+may repeat and don't have to be unique.
 Output
-For each of the
+Print
+t
+answers to all input test cases.
+The first line of the answer of each test case should contain an integer
+k
+(
+0≤k≤n
+) — the number of actions to sort the array. The next
+k
+lines should contain descriptions of the actions formatted as "
+l
+ r
+ d
+" (without quotes) where
+l
+and
+r
+(
+1≤l<r≤n
+) are the boundaries of the segment being shifted, while
+d
+(
+1≤d≤r−l
+) is the offset value. Please remember that only the cyclic shifts to the left are considered so the chosen segment will be shifted by the offset
+d
+to the to the left.
+Note that you are not required to find the minimum number of cyclic shifts needed for sorting. Any sorting method where the number of shifts does not exceed
 n
-hands you need to output 5 numbers
-0.0≤
-p
-i
-≤1.0,
-∑
-5
-i=1
-p
-i
-≤1
-, where
-p
-i
- — probability of playing the smallest card on
-i
--th turn.
+will be accepted.
+If the given array
+a
+is already sorted, one of the possible answers is
+k=0
+and an empty sequence of cyclic shifts.
+If there are several possible answers, you may print any of them.
 Example
 input
 Copy
+4
 2
-2 12 27 71 100
-
-22 29 39 68 90
+2 1
+3
+1 2 1
+4
+2 4 1 3
+5
+2 5 1 4 3
 output
 Copy
-0.8 0.2 0.0 0.0 0.0 
-
-0.0 0.2 0.2 0.2 0.3 
+1
+1 2 1
+1
+1 3 2
+3
+2 4 1
+2 3 1
+1 3 2
+4
+2 4 2
+1 5 3
+1 2 1
+1 3 1
 Note
-In the example test there is only one valid pair of hands. The winning probability for the example output is equal to
-0.8+0.2⋅(1−0.2)=0.96
-. Also note that the second player will not play a card at all with probability 0.1.
+Explanation of the fourth data set in the example:
+The segment
+a[2…4]
+is selected and is shifted to the left by
+2
+:
+[2,5,1,4,3]⟶[2,4,5,1,3]
+The segment
+a[1…5]
+is then selected and is shifted to the left by
+3
+:
+[2,4,5,1,3]⟶[1,3,2,4,5]
+After that the segment
+a[1…2]
+is selected and is shifted to the left by
+1
+:
+[1,3,2,4,5]⟶[3,1,2,4,5]
+And in the end the segment
+a[1…3]
+is selected and is shifted to the left by
+1
+:
+[3,1,2,4,5]⟶[1,2,3,4,5]

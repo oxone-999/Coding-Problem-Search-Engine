@@ -1,100 +1,106 @@
-F. Mars
-time limit per test2 seconds
+H. Hidden Fortress
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-In the year 2420 humans have finally built a colony on Mars thanks to the work of Elon Tusk. There are
+This is an interactive problem!
+As part of your contribution in the Great Bubble War, you have been tasked with finding the newly built enemy fortress. The world you live in is a giant
 10
 9
-+7
-cities arranged in a circle in this colony and none of them are connected yet. Elon Tusk wants to connect some of those cities using only roads of the same size in order to lower the production cost of those roads. Because of that he gave a list on N cites where some cites can appear more than once and Q queries that you need to answer. For the query you need to determine if it is possible to connect all the cities from
-L
-i
-to
-R
-i
-on that list using only roads of length
-D
-i
+×
+10
+9
+grid, with squares having both coordinates between
+1
+and
+10
+9
 .
+You know that the enemy base has the shape of a rectangle, with the sides parallel to the sides of the grid. The people of your world are extremely scared of being at the edge of the world, so you know that the base doesn't contain any of the squares on the edges of the grid (the
+x
+or
+y
+coordinate being
+1
+or
+10
+9
+).
+To help you locate the base, you have been given a device that you can place in any square of the grid, and it will tell you the manhattan distance to the closest square of the base. The manhattan distance from square
+(a,b)
+to square
+(p,q)
+is calculated as
+|a−p|+|b−q|
+. If you try to place the device inside the enemy base, you will be captured by the enemy. Because of this, you need to make sure to never place the device inside the enemy base.
+Unfortunately, the device is powered by a battery and you can't recharge it. This means that you can use the device at most
+40
+times.
 Input
-The first line contains two integers
-N
-and
-Q
-(
-1≤N,Q≤2⋅
-10
-5
-) — the length of the array of cities and the number of queries you need to answer.
-The second lines contains
-N
-integers representing the array of cites. Next Q lines contain three integers
-L,R
-and
-D
-(
-1≤
-L
+The input contains the answers to your queries.
+Interaction
+Your code is allowed to place the device on any square in the grid by writing "?
 i
-,
-R
-i
-≤N
-,
-0≤
-D
-i
-≤
+j
+"
+(1≤i,j≤
 10
 9
-+6
-) — the range of cities that needs to be connected and the length of the road that you can use.
-Output
-The output contains Q lines. If it is possible to connect all the cities from the i-th query can be connected with roads of length
-D
-i
-the i-th line should contain the word "Yes", otherwise it should contain the word "No".
-Examples
+)
+. In return, it will recieve the manhattan distance to the closest square of the enemy base from square
+(i,j)
+or
+−1
+if the square you placed the device on is inside the enemy base or outside the grid.
+If you recieve
+−1
+instead of a positive number, exit immidiately and you will see the wrong answer verdict. Otherwise, you can get an arbitrary verdict because your solution will continue to read from a closed stream.
+Your solution should use no more than
+40
+queries.
+Once you are sure where the enemy base is located, you should print "!
+x
+y
+p
+q
+"
+(1≤x≤p≤
+10
+9
+,1≤y≤q≤
+10
+9
+)
+, where
+(x,y)
+is the square inside the enemy base with the smallest
+x
+and
+y
+coordinates, and
+(p,q)
+is the square inside the enemy base with the largest
+x
+and
+y
+coordinates. Note that answering doesn't count as one of the 40 queries.
+After printing a query or printing the answer, do not forget to output end of line and flush the output. Otherwise, you will get idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+See the documentation for other languages.
+Example
 input
 Copy
-9 8
-17 0 12 6 10 8 2 4 5
-2 3 12
-2 3 6
-2 4 6
-4 6 2
-2 8 2
-1 2 17
-1 8 2
-9 9 14
+1
+1
+2
+1
 output
 Copy
-Yes
-No
-Yes
-Yes
-Yes
-Yes
-No
-Yes
-input
-Copy
-4 1
-7 21 14 0
-1 4 1000000000
-output
-Copy
-Yes
-Note
-In the
-5
-th
-query of the first test case we can connect cities in this order 0-2-4-6-8-10-12 this way distance between any two connected cities is 2. In the second test case we can connect cities in this order 21-14-7-0 this way distance between any two connected cities is
-10
-9
-module
-10
-9
-+7
-.
+? 2 2
+? 5 5
+? 4 7
+? 1 5
+! 2 3 4 5

@@ -1,193 +1,237 @@
-E. Origami
-time limit per test4 seconds
+A. String Transformation 1
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-After being discouraged by 13 time-limit-exceeded verdicts on an ugly geometry problem, you decided to take a relaxing break for arts and crafts.
-There is a piece of paper in the shape of a simple polygon with
-n
-vertices. The polygon may be non-convex, but we all know that proper origami paper has the property that any horizontal line intersects the boundary of the polygon in at most two points.
-If you fold the paper along the vertical line
-x=f
-, what will be the area of the resulting shape? When you fold, the part of the paper to the left of the line is symmetrically reflected on the right side.
-Your task is to answer
-q
-independent queries for values
-f
-1
-,…,
-f
-q
-.
-Input
-The first line contains two integers
-n
-,
-q
-(
-3≤n≤
-10
-5
-,1≤q≤
-10
-5
-)  — the number of polygon vertices and queries, respectively.
-Each of the next
-n
-lines contains two integers
-x
-i
-,
+Note that the only difference between String Transformation 1 and String Transformation 2 is in the move Koa does. In this version the letter
 y
-i
-(
-|
+Koa selects must be strictly greater alphabetically than
 x
-i
-|,|
-y
-i
-|≤
-10
-5
-)  — the coordinates of the
-i
--th point of the polygon. The polygon has an edge connecting each pair of adjacent points in the input, and also an edge between
-(
-x
-1
-,
-y
-1
-)
-and
-(
-x
-n
-,
-y
-n
-)
-. It is guaranteed that the polygon is non-degenerate and that any horizontal line intersects the boundary of the polygon in at most two points. In particular, no boundary edge is strictly horizontal. Two adjacent sides may be collinear.
-Each of the next
-q
-lines contains a single integer
-f
-i
-(
-min
-j=1
-n
-(
-x
-j
-)<
-f
-i
-<
-max
-j=1
-n
-(
-x
-j
-)
-)  — the
-x
--coordinate of the
-i
--th fold query. It is guaranteed that all
-f
-i
-are distinct.
-Output
-For each query, output the area
+(read statement for better understanding). You can make hacks in these problems independently.
+Koa the Koala has two strings
 A
-i
-of the paper if you fold it along the line
-x=
-f
-i
-.
-Your answer is considered correct if its absolute or relative error does not exceed
-10
-−4
-.
-Formally, let your answer be
-a
-, and the jury's answer be
-b
-. Your answer is accepted if and only if
-|a−b|
-max(1,|b|)
-≤
-10
-−4
-.
-Examples
-input
-Copy
-4 7
-0 10
-10 0
-0 -10
--10 0
--9
--5
--1
-0
+and
+B
+of the same length
+n
+(
+|A|=|B|=n
+) consisting of the first
+20
+lowercase English alphabet letters (ie. from a to t).
+In one move Koa:
+selects some subset of positions
+p
 1
+,
+p
+2
+,…,
+p
+k
+(
+k≥1;1≤
+p
+i
+≤n;
+p
+i
+≠
+p
+j
+if
+i≠j
+) of
+A
+such that
+A
+p
+1
+=
+A
+p
+2
+=…=
+A
+p
+k
+=x
+(ie. all letters on this positions are equal to some letter
+x
+).
+selects a letter
+y
+(from the first
+20
+lowercase letters in English alphabet) such that
+y>x
+(ie. letter
+y
+is strictly greater alphabetically than
+x
+).
+sets each letter in positions
+p
+1
+,
+p
+2
+,…,
+p
+k
+to letter
+y
+. More formally: for each
+i
+(
+1≤i≤k
+) Koa sets
+A
+p
+i
+=y
+.
+Note that you can only modify letters in string
+A
+.
+Koa wants to know the smallest number of moves she has to do to make strings equal to each other (
+A=B
+) or to determine that there is no way to make them equal. Help her!
+Input
+Each test contains multiple test cases. The first line contains
+t
+(
+1≤t≤10
+) — the number of test cases. Description of the test cases follows.
+The first line of each test case contains one integer
+n
+(
+1≤n≤
+10
 5
-9
-output
-Copy
-199.0000000000
-175.0000000000
-119.0000000000
-100.0000000000
-119.0000000000
-175.0000000000
-199.0000000000
+) — the length of strings
+A
+and
+B
+.
+The second line of each test case contains string
+A
+(
+|A|=n
+).
+The third line of each test case contains string
+B
+(
+|B|=n
+).
+Both strings consists of the first
+20
+lowercase English alphabet letters (ie. from a to t).
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+5
+.
+Output
+For each test case:
+Print on a single line the smallest number of moves she has to do to make strings equal to each other (
+A=B
+) or
+−1
+if there is no way to make them equal.
+Example
 input
 Copy
-4 1
-0 0
-0 2
-2 4
-2 2
-1
+5
+3
+aab
+bcc
+4
+cabc
+abcb
+3
+abc
+tsr
+4
+aabd
+cccd
+5
+abcbd
+bcdda
 output
 Copy
-3.0000000000
-input
-Copy
-9 4
-0 -3
-2 -2
--1 -1
-0 4
-2 5
-1 6
--2 3
--1 1
--3 0
-0
--2
+2
 -1
-1
-output
-Copy
-11.1250000000
-11.7500000000
-10.3446969697
-11.3333333333
+3
+2
+-1
 Note
-The first test, with the fold
-f=−5
-:
-The second test, with the fold
-f=1
-:
-The third test, with the fold
-f=−1
-:
+In the
+1
+-st test case Koa:
+selects positions
+1
+and
+2
+and sets
+A
+1
+=
+A
+2
+=
+b (
+aab→bbb
+).
+selects positions
+2
+and
+3
+and sets
+A
+2
+=
+A
+3
+=
+c (
+bbb→bcc
+).
+In the
+2
+-nd test case Koa has no way to make string
+A
+equal
+B
+.
+In the
+3
+-rd test case Koa:
+selects position
+1
+and sets
+A
+1
+=
+t (
+abc→tbc
+).
+selects position
+2
+and sets
+A
+2
+=
+s (
+tbc→tsc
+).
+selects position
+3
+and sets
+A
+3
+=
+r (
+tsc→tsr
+).

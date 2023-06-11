@@ -10,9 +10,17 @@ from selenium.webdriver.common.by import By as by
 body_class = ".problem-statement"
 heading_class = ".title"
 
-def writeToFile2(body,index):
+def writeToFile2(heading,body,index,pageUrl):
     file = open(f'questionContent/questionCodeforces{index}.txt','w',encoding='utf-8')
     file.write(body)
+    file.close()
+    
+    file = open(f'questionLinks/questionsLink_{index}.txt','w',encoding="utf-8")
+    file.write(pageUrl)
+    file.close()
+    
+    file = open(f'questionHeadings/questionsName_{index}.txt','w',encoding="utf-8")
+    file.write(heading)
     file.close()
     
 def openBrowser(url):
@@ -45,7 +53,7 @@ def singlePageData(pageUrl,index):
         heading = headings[0]
         bodyContent = browser.find_element(by.CSS_SELECTOR, body_class)
         if(heading.text and bodyContent.text):
-            writeToFile2(bodyContent.text,index)
+            writeToFile2(heading.text,bodyContent.text,index,pageUrl)
             print("    ----------->  saving data ")
         time.sleep(1)
         return True

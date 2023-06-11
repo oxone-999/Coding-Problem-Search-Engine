@@ -1,91 +1,63 @@
-Xor Array
+Laura and her QUERIES On Tree
 Problem
-You are given an array
-A consisting of
-N distinct positive integers.
-In one operation, you can:
-Choose a non-negative integer
-X;
-For all
-(1≤i≤N), set
-A
-i
-:=A
-i
-⊕X, where
-⊕ denotes the bitwise XOR operation.
-Find the maximum possible length of the longest strictly increasing subarray after performing the given operation exactly once.
-Note:
-An array
-P is a subarray of an array
-Q if
-P can be obtained from
-Q by deletion of several (possibly zero or all) elements from the beginning and several (possibly zero or all) elements from the end.
-The longest strictly increasing subarray of
-Q is the longest (having most elements) subarray of
-Q which is sorted in strictly increasing order.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of two lines of input:
-The first line of each test case contains
-N - the size of the array.
-The next line contains
-N space-separated integers,
-A
-1
-,A
-2
-,…A
-N
-, the elements of the array
-A.
-Output Format
-For each test case, output on a new line, the maximum possible length of the longest strictly increasing subarray after performing the given operation exactly once.
-Constraints
-1≤T≤1000
-1≤N≤10
-5
-1≤A
-i
-<2
-30
-Elements of array
-A are distinct.
-The sum of
-N over all test cases won't exceed
-10
+  Logan: "Someone will come along"
+Charles: "Someone has come along"
+After much speculation, Logan has decided to escort Laura to a place in North Dakota called "Eden".
+But Laura is in playful mood right now, and wants Logan to play with her an interesting game.
+She gives Logan a tree with N nodes and Q queries. Each query will contain 5 integers R A B X and Y.
+R denotes the root node of the tree for the particular query.
+A denotes the cost of an edge if one traverses from a node to its parent node.
+B denotes the cost of an edge if one traverses from a node to its child node.
+Consider 2 friends are standing at nodes X and Y respectively. They both need to meet and can meet at any node. Logan need to tell Laura what is the minimum cost they both need to pay to meet?
+
+After a person travels through an edge (his current location gets updated), he needs to pay the cost which is equal to C * cost of edge where C is a factor whose value is equal to total edges traveled by a person from his starting location and upto his current location and cost of edge will be either equal to A or B depending upon the person's movement.
+See sample input output for better understanding.
+  Input
+First line contains an integer N denoting number of nodes in tree.
+Next N-1 lines contains two integers U and V denoting that there is an edge between node U and node V.
+Next line contains an integer Q denoting number of queries.
+Next Q lines contains five integers R, A, B, X and Y respectively.
+  Output
+For each query print required answer in a separate line.
+  Constraints
+1 ≤ N ≤ 105
+1 ≤ U, V, R, X, Y ≤ N
+1 ≤ Q ≤ 105
+1 ≤ A, B ≤ 106
+  Example
+Input:
+8
+1 2
+5 6
+5 3
+4 3
+8 2
+3 1
+7 5
+3
+3 5 2 3 2
+5 8 12 8 7
+1 10 2 4 7
+Output:
 6
-.
-Sample 1:
-Input
-Output
-3
-3
-3 2 5
-4
-10 20 30 40
-5
-14 11 9 3 7
-3
-4
-4
-Explanation:
-Test case
-1: Choose
-X=1. Thus the elements of the array become
-[3⊕1,2⊕1,5⊕1]=[2,3,4]. Thus, the longest strictly increasing subarray is
-[2,3,4] having length
-3.
-Test case
-2: Choose
-X=0. Thus the elements of the array become
-[10⊕0,20⊕0,30⊕0,40⊕0]=[10,20,30,40]. Thus, the longest strictly increasing subarray is
-[10,20,30,40] having length
-4.
-Test case
-3: Choose
-X=15. Thus the elements of the array become
-[14⊕15,11⊕15,9⊕15,3⊕15,7⊕15]=[1,4,6,12,8]. Thus, the longest strictly increasing subarray is
-[1,4,6,12] having length
-4.
+80
+20
+  Explanation
+Query 1 : Following will be the tree orientation as root node is given as 3.
+
+Consider both friends meet at node 3 than :
+2nd friend will move from node 2 to node 1. Cost needed to be paid while traversing through this edge will be 1*5 = 5 (total distance traveled by 2nd friend after traversing current edge) * (edge cost which will be equal to 5 as there is a traversal from a node to its parent).
+2nd friend will now move from node 1 to node 3. Cost needed to be paid while traversing through this edge will be 2*5 = 5 (total distance traveled by 2nd friend after traversing current edge) * (edge cost which will be equal to 5 as there is a traversal from a node to its parent).
+Total cost = Total cost paid by 1st friend + Total cost paid by 2nd friend = 0 + 1*5 + 2*5 = 15
+
+Similarly consider both friends meet at node 1 than :
+2nd friend will move from node 2 to node 1. Cost needed to be paid while traversing through this edge will be 1*5 = 5 (total distance traveled by 2nd friend after traversing current edge) * (edge cost which will be equal to 5 as there is a traversal from a node to its parent).
+1st friend will now move from node 3 to node 1. Cost needed to be paid while traversing through this edge will be 1*2 = 2 (total distance traveled by 1st friend after traversing current edge) * (edge cost which will be equal to 2 as there is a traversal from a node to its child).
+Total cost = Total cost paid by 1st friend + Total cost paid by 2nd friend = 1*2 + 1*5 = 7
+
+Similarly consider both friends meet at node 2 than :
+1st friend will move from node 3 to node 1. Cost needed to be paid while traversing through this edge will be 1*2 = 2 (total distance traveled by 1st friend after traversing current edge) * (edge cost which will be equal to 2 as there is a traversal from a node to its child).
+1st friend will now move from node 1 to node 2. Cost needed to be paid while traversing through this edge will be 2*2 = 4 (total distance traveled by 1st friend after traversing current edge) * (edge cost which will be equal to 2 as there is a traversal from a node to its child).
+Total cost = Total cost paid by 1st friend + Total cost paid by 2nd friend = 1*2 + 2*2 + 0 = 6
+
+Hence minimum cost needed to be paid by both the friends to meet is 6.

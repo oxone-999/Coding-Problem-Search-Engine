@@ -1,136 +1,42 @@
-Final Sum
+Chef And Coloring
 Problem
-Chef has an array
-A of length
-N. In one operation, Chef can:
-Choose any subarray
-[L,R]
-(1≤L≤R≤N);
-Add
-1 to
-A
-L
-, subtract
-1 from
-A
-L+1
-, add
-1 to
-A
-L+2
-, subtract
-1 from
-A
-L+3
-and so on, till
-A
-R
-.
-Chef performed
-Q such operations where the
-i
-th
-operation was performed on the subarray
-[L
-i
-,R
-i
-].
-Determine the final sum of the array after these
-Q operations.
-Note that a subarray is formed by deleting some (possibly zero) elements from the beginning and some (possibly zero) elements from the end of the array.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains two integers
-N,Q, number of elements and the number of queries.
-The next line contains
-N space-separated integers
-A
-1
-,A
-2
-,…A
-N
-- denoting the array
-A.
-The next
-Q lines contains two space-separated integers with
-i
-th
-line containing
-L
-i
-,R
-i
-.
-Output Format
-For each test case, output the final sum of the array after performing all the
-Q operations.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+After a long time, Chef has finally decided to renovate his house. Chef's house has N rooms in it numbered from 1 to N. Each room is currently painted in one of the red, blue or green colors. Your are given configuration of colors of his house by a string S consisting of N characters. In this string, color red will be denoted by 'R', green by 'G' and blue by 'B'.
+Chef does not like current painting configuration that much and would like to repaint the house such that each room has same color.
+For painting, Chef has all the 3 color paints available and mixing any 2 color paints will result into 3rd color paint i.e
+R + B = G
+B + G = R
+G + R = B
+For example, painting a room having red color before with green color paint will make the color of room blue.
+Also, Chef has many buckets of paint of each color. Simply put, you can assume that he will not run out of paint.
+Being extraordinary lazy, our little chef does not want to work much and therefore, he has asked you to find the minimum number of rooms he has to repaint (possibly zero) in order to have all the rooms with same color. Can you please help him?
+Input
+First line of input contains a single integer T denoting the number of test cases. First line of each test case contains an integer N denoting the number of rooms in the chef's house. Next line of each test case contains a string S denoting the current color configuration of rooms.
+Output
+For each test case, Print the minimum number of rooms need to be painted in order to have all the rooms painted with same color i.e either red, blue or green.
 Constraints
-1≤T≤1000
-1≤N,Q≤3⋅10
-5
-1≤A
-i
-≤100
-The sum of
-N over all test cases won't exceed
-3⋅10
-5
-.
-The sum of
-Q over all test cases won't exceed
-3⋅10
-5
-.
+1 ≤ T ≤ 10
+
+1 ≤ N ≤ 105
+
+Si = {'R','G','B'}
+Scoring
+Subtask 1 (40 points) : 1 ≤ N ≤ 10
+Subtask 2 (60 points) : original constraints
 Sample 1:
 Input
 Output
+3
+3
+RGR
+3
+RRR
+3
+RGB
+1
+0
 2
-5 3
-1 3 4 4 2
-1 5
-3 4
-2 2
-1 2
-4
-1 1
-1 1
-16
-6
 Explanation:
-Test case
-1: The queries are as follows:
-Query
-1: The chosen subarray is
-[1,3,4,4,2] which changes to
-[1+1,3−1,4+1,4−1,2+1]=[2,2,5,3,3]. Thus, the array becomes
-[2,2,5,3,3].
-Query
-2: The chosen subarray is
-[5,3] which changes to
-[5+1,3−1]=[6,2]. Thus, the array becomes
-[2,2,6,2,3].
-Query
-3: The chosen subarray is
-[2] which changes to
-[2+1]=[3]. Thus, the array becomes
-[2,3,6,2,3].
-The sum of final array is
-2+3+6+2+3=16.
-Test case
-2: The queries are as follows:
-Query
-1: The chosen subarray is
-[4] which changes to
-[4+1]=[5]. Thus, the array becomes
-[5].
-Query
-2: The chosen subarray is
-[5] which changes to
-[5+1]=[6]. Thus, the array becomes
-[6].
-The sum of final array is
-6.
+Test 1: Chef prefers to paint room 2 with blue color such that the resulting color will be red and all the rooms have same color i.e red.
+Test 2: Given configuration has all the rooms painted with red color and therefore, chef does not need to do painting work at all.
+Test 3: One possible way of renovation is to paint room 1 with green color, room 2 with red color such that all rooms have same color i.e blue.

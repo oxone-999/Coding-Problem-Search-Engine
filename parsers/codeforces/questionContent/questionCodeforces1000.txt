@@ -1,175 +1,131 @@
-K. Pandemic Restrictions
-time limit per test4 seconds
+M. Bottle Arrangements
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-After a long time living abroad, you have decided to move back to Italy and have to find a place to live, but things are not so easy due to the ongoing global pandemic.
-Your three friends Fabio, Flavio and Francesco live at the points with coordinates
-(
-x
-1
-,
-y
-1
-),(
-x
-2
-,
-y
-2
-)
-and
-(
-x
-3
-,
-y
-3
-)
-, respectively. Due to the mobility restrictions in response to the pandemic, meetings are limited to
-3
-persons, so you will only be able to meet
-2
-of your friends at a time. Moreover, in order to contain the spread of the infection, the authorities have imposed the following additional measure: for each meeting, the sum of the lengths travelled by each of the attendees from their residence place to the place of the meeting must not exceed
+Gabriella has been instructed to organize a renowned wine tasting event which will be attended by
+m
+critics. On display, there will be
+n
+different varieties of wine, each of which can either be a red wine or a white wine.
+The wines will come in
+n
+bottles arranged in a line on the table, and, for convenience, each critic will sip from a contiguous interval of bottles: that is, he/she will taste exactly the bottles at position
+a,a+1,…,b
+for some
+1≤a≤b≤n
+. The interval depends on the critic, who will select it on the spot according to their preferences. In fact, the
+i
+-th critic (
+1≤i≤m
+) has requested that he/she wants to taste exactly
 r
-.
-What is the minimum value of
-r
-(which can be any nonnegative real number) for which there exists a place of residence that allows you to hold the three possible meetings involving you and two of your friends? Note that the chosen place of residence need not have integer coordinates.
+i
+red wines and
+w
+i
+white wines.
+Gabriella has yet to choose how many bottles of red wine and white wine there will be, and in what order they will appear. Help her find an arrangement (that is, a sequence of
+n
+bottles of either red or white wine) that satisfies the requests of all the critics, or state that no such arrangement exists.
 Input
-The first line contains the two integers
-x
-1
-,
-y
-1
+Each test contains multiple test cases. The first line contains an integer
+t
 (
-−
-10
-4
-≤
-x
-1
-,
-y
-1
-≤
-10
-4
-) — the coordinates of the house of your friend Fabio.
-The second line contains the two integers
-x
-2
-,
-y
-2
-(
-−
-10
-4
-≤
-x
-2
-,
-y
-2
-≤
-10
-4
-) — the coordinates of the house of your friend Flavio.
-The third line contains the two integers
-x
-3
-,
-y
-3
-(
-−
-10
-4
-≤
-x
-3
-,
-y
-3
-≤
-10
-4
-) — the coordinates of the house of your friend Francesco.
-It is guaranteed that your three friends live in different places (i.e., the three points
-(
-x
-1
-,
-y
-1
-)
-,
-(
-x
-2
-,
-y
-2
-)
-,
-(
-x
-3
-,
-y
-3
-)
-are guaranteed to be distinct).
-Output
-Print the minimum value of
-r
-which allows you to find a residence place satisfying the above conditions. Your answer is considered correct if its absolute or relative error does not exceed
-10
-−4
-.
-Formally, let your answer be
-a
-, and the jury's answer be
-b
-. Your answer is accepted if and only if
-|a−b|
-max(1,|b|)
-≤
-10
-−4
-.
-Examples
-input
-Copy
-0 0
-5 0
-3 3
-output
-Copy
-5.0686143166
-input
-Copy
--1 0
-0 0
-1 0
-output
-Copy
-2.0000000000
-Note
-In the first sample, Fabio, Flavio and Francesco live at the points with coordinates
-(0,0)
-,
-(5,0)
+1≤t≤100
+) — the number of test cases. The descriptions of the
+t
+test cases follow.
+The first line of each test case contains two integers
+n
 and
-(3,3)
-respectively. The optimal place of residence, represented by a green house in the picture below, is at the point with coordinates
-(2.3842...,0.4151...)
-.
-For instance, it is possible for you to meet Flavio and Francesco at the point depicted below, so that the sum of the lengths travelled by the three attendees is at most (and in fact equal to)
-r=5.0686...
-.
-In the second sample, any point on the segment
-{(x,0): −1≤x≤1}
-is an optimal place of residence.
+m
+(
+1≤n≤100
+,
+1≤m≤100
+) — the number of bottles of wine and the number of critics.
+Each of the next
+m
+lines contains two integers
+r
+i
+and
+w
+i
+(
+0≤
+r
+i
+,
+w
+i
+≤100
+,
+r
+i
++
+w
+i
+≥1
+) — the number of red and white wines that the
+i
+-th critic wants to taste.
+Output
+For each test case, if at least one solution exists, print a string of length
+n
+made up of the characters R and W, where the
+j
+-th character (
+1≤j≤n
+) denotes the type of the wine in the
+j
+-th bottle of the arrangement (R for red and W for white). If there are multiple solutions, print any.
+If no solution exists, print the string IMPOSSIBLE.
+Example
+input
+Copy
+3
+5 3
+1 0
+3 2
+2 2
+4 3
+2 1
+1 1
+0 3
+3 2
+0 2
+0 3
+output
+Copy
+RWRRW
+IMPOSSIBLE
+WWW
+Note
+In the first test case, there are
+n=5
+bottles of wine to be arranged and
+m=3
+critics. The arrangement RWRRW satisfies the requests of all three critics. Indeed:
+the first critic can choose the interval
+[3,3]
+, which contains exactly one bottle of red wine (note that
+[1,1]
+and
+[4,4]
+are other valid choices);
+the second critic can choose the interval
+[1,5]
+, which contains
+3
+bottles of red wine and
+2
+bottles of white wine;
+the third critic can choose the interval
+[2,5]
+, which contains
+2
+bottles of red wine and
+2
+bottles of white wine.

@@ -1,24 +1,43 @@
-Baking Cupcakes
+Chef and Problems
 Problem
-The Chef is planning on serving cupcakes for dessert. However, time is running out and the Chef has only enough time to bake one batch. Thankfully, the cupcake baking tin the Chef plans on using has barely enough spaces to ensure each guest receives one cupcake.
-To the Chef's dismay, some of the spaces in the cupcake tin are too close to each other. If cupcake batter is placed in two such spaces then they will bake together and neither will have the aesthetically pleasing round shape one expects from gourmet cupcakes.
-The Chef wants to impress his guests with this dessert, so he wants all cupcakes to be perfectly round. You must determine if it is possible for the desired number of cupcakes to be baked without any two baking in to each other.
+Read problems statements in Mandarin Chinese and Russian.
+Chef was invited to the party of N people numbered from 1 to N. Chef knows the growth of all the people, i.e. he knows the growth of the ith person is denoted by an integer Ai not exceeding M.
+Chef decided to have some fun. At first, he forms K groups of people. The ith group consists of all the people numbered from Li to Ri. Groups may overlap too.
+For each group, Chef wants to know the following information: the maximum difference between the numberings of two people having same growth. Formally, Chef wants to know the following:
+max{|x − y| : Li ≤ x, y ≤ Ri and Ax = Ay}
+Please help Chef to have fun.
 Input
-The first line consists of a single integer T ≤ 30 denoting the number of test cases to follow. Each test case begins with a single line consisting of three integers n,m, and g. Here, n is the number of spaces in the cupcake tin, m is the number of conflicting pairs of spaces in the tin, and g is the number of guests. Following this line is m lines describing the conflicting pairs. Each line consists of two distinct integers i and j, both between 0 and n-1. This means spaces i and j are conflicting so batter may only be placed in at most one of them.
-The bounds are 1 ≤ n ≤ 1,000, 1 ≤ m ≤ 20,000, and 0 ≤ g ≤ n. Since the cupcake tin has barely more spaces than guests (if any), then we also have n-g ≤ 15.
+There is only one test case in one test file.
+The first line of input contains three space-separated integers N, M and K, denoting the number of people, the maximum growth and number of groups respectively. The second line contains N space-separated integers A1, A2, ..., AN denoting the growth of people. Then the ith line of the next K lines contains two space-separated integers Li, Ri, denoting the ith group.
 Output
-The output for each test case consists of a single line containing "Possible" if the Chef can bake all cupcakes perfectly round or "Impossible" if the Chef must settle for some cupcakes being imperfect.
+For each group, output the integer denoting the maximum difference between numbering of two people having same growth in a single line.
+Constraints and Subtasks
+1 ≤ Ai ≤ M
+1 ≤ Li ≤ Ri ≤ N
+
+Subtask 1: 20 points
+1 ≤ N, M, K ≤ 1000 = 103
+
+Subtask 2: 80 points
+1 ≤ N, M, K ≤ 100000 = 105
 Example
 Input:
-2
-3 2 2
-0 1
-1 2
-3 3 2
-0 1
-1 2
-2 0
-
+7 7 5
+4 5 6 6 5 7 4
+6 6
+5 6
+3 5
+3 7
+1 7
 Output:
-Possible
-Impossible
+0
+0
+1
+1
+6
+Explanation
+Group 1. There is only one person in the group. Thus the maximum difference of numbers should be 0.
+Group 2. There are two persons in the group. Their growth are A5 = 5 and A6 = 7. Thus there is no pair of persons who have the same growth. Thus the answer for this group will also be 0.
+Group 3. There are three persons in the group. Their growth are A3 = 6, A4 = 6 and A5 = 5. Here person 3 and person 4 has the same growth. Thus the answer is |4 − 3| = 1.
+Group 4. There are more persons than the group 3. But they has different growth, other than person 3 and person 4.Thus the answer is also |4 − 3| = 1.
+Group 5. This group contains all the people, and person 1 and person 7 has the same growth A1 = A7 = 4. So the answer is |7 − 1| = 6.

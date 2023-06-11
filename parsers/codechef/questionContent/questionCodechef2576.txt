@@ -1,36 +1,72 @@
-Akhil Recovers The Lost Array
+K Perfect Matchings
 Problem
-Read problems statements in Mandarin Chinese , Russian and Vietnamese as well.
-Akhil has an array consisting of N positive integers. As we know that there are (N*(N+1))/2 non-empty contiguous subarrays in an array of size N. Akhil found that exactly E of the contiguous subarrays had even sum and remaining O = (N*(N+1))/2 - E have odd sum.
-Next day, he lost the original array. But he still remembered the E and O values correctly. Now, he wants to recreate any such array which has exactly E even sum continuous subarrays and O odd ones. If there are many such possible arrays, printing any one of them will make him happy.
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows:
-First line of each test case contains an integer N denoting the length of lost array.
-Second line of each test case contains two space separated integers E and O, denoting number of contiguous subarrays with even and odd sums, respectively.
-Output
-For each test case, output a single line containing all the integers of an array separated by a space.
-Each integer should lie between 0 and 100(both inclusive).
-If there is no such possible array, print -1 in a single line.
-Constraints
-0 ≤ E, O ≤ N*(N+1)/2
-E + O = N*(N+1)/2
-Subtasks
-Subtask #1 (20 points) : 1 ≤ sum of N over all test cases ≤ 15
-Subtask #2 (20 points) : 1 ≤ sum of N over all test cases ≤ 2 * 103
-Subtask #3 (60 points) : 1 ≤ sum of N over all test cases ≤ 106
-Example
-Input:
-3
-3
-2 4
-3
-3 3
-3
-0 6
-Output:
-2 1 2
-1 2 2
--1
-Explanation
-Example case 1. There are total 6 subarrays : {2},{1},{2},{2,1},{1,2},{2,1,2}. Their sums {2, 1, 2, 3, 3, 5} are respectively. As 2 of them are even and 4 of them are odd. So, this is one possible answer which satisfies Akhil's requirements.
-Example case 3. There is no array of length 3 whose all the subarrays have odd sum. Akhil might have remembered something incorrectly. Hence, you should print -1.
+You are given a bipartite graph
+G=(U,V,E), and an integer
+K.
+U and
+V are the two bipartitions of the graph such that |
+U| = |
+V| =
+N , and
+E is the edge set. The vertices of
+U are {
+1,2,...,N } and that of
+V are {
+N+1,N+2,...,2N }. You need to find out whether the total number of different perfect matchings in
+G is strictly greater than
+K or not.
+Recall that a perfect matching is a subset of
+E such that every vertex of the graph belongs to exactly one edge in the subset. Two perfect matchings are considered to be different even if one edge is different.
+###Input
+First line of the input contains three integers:
+N,
+M and
+K, which represent |
+U| (which is also equal to |
+V|), |
+E| and the queried threshold respectively. The i-th of the next
+E lines contains two numbers
+L
+i
+and
+R
+i
+which denote the i-th edge is between the vertices
+L
+i
+and
+R
+i
+.
+###Output
+A single line containing “Yes” if the number of perfect matchings is greater than
+K, and “No” othewise.
+###Constraints
+1≤N≤100
+1≤M≤600
+0≤K≤10
+5
+1≤L
+i
+≤N<R
+i
+≤2∗N
+###Subtasks
+###Subtask 1 (10 Points):
+K=0
+###Subtask 2 (30 Points):
+1≤N≤50
+1≤M≤100
+0≤K≤300
+###Subtask 3 (60 Points):
+No further constraints.
+###Sample Input 1 3 5 2 1 4 2 6 2 5 3 5 3 6
+###Sample Output 1 No
+###Sample Input 2 3 5 1 1 4 2 6 2 5 3 5 3 6
+###Sample Output 2 Yes
+###Explanation: Explanation 1: The graph is as follows:
+There are exactly two perfect matchings in this graph: {(1, 4), (2, 5), (3, 6)} and {(1, 4), (2, 6), (3, 5)}. The number of perfect matchings is not
+>K, and hence the output is “No”.
+Explanation 2: The graph is the same as previous one, and the same 2 perfect matchings are present. But now,
+K is 1. Therefore, the number of perfect matchings is >
+K, and hence the output is “Yes”.

@@ -1,142 +1,60 @@
-D. Segment Tree
-time limit per test2 seconds
+A. New Year Garland
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-As the name of the task implies, you are asked to do some work with segments and trees.
-Recall that a tree is a connected undirected graph such that there is exactly one simple path between every pair of its vertices.
-You are given
-n
-segments
-[
-l
+Polycarp is sad — New Year is coming in few days but there is still no snow in his city. To bring himself New Year mood, he decided to decorate his house with some garlands.
+The local store introduced a new service this year, called "Build your own garland". So you can buy some red, green and blue lamps, provide them and the store workers will solder a single garland of them. The resulting garland will have all the lamps you provided put in a line. Moreover, no pair of lamps of the same color will be adjacent to each other in this garland!
+For example, if you provide
+3
+red,
+3
+green and
+3
+blue lamps, the resulting garland can look like this: "RGBRBGBGR" ("RGB" being the red, green and blue color, respectively). Note that it's ok to have lamps of the same color on the ends of the garland.
+However, if you provide, say,
 1
-,
-r
-1
-],[
-l
+red,
+10
+green and
 2
-,
-r
-2
-],…,[
-l
-n
-,
-r
-n
-]
-,
-l
-i
-<
-r
-i
-for every
-i
-. It is guaranteed that all segments' endpoints are integers, and all endpoints are unique — there is no pair of segments such that they start in the same point, end in the same point or one starts in the same point the other one ends.
-Let's generate a graph with
-n
-vertices from these segments. Vertices
-v
-and
-u
-are connected by an edge if and only if segments
-[
-l
-v
-,
-r
-v
-]
-and
-[
-l
-u
-,
-r
-u
-]
-intersect and neither of it lies fully inside the other one.
-For example, pairs
-([1,3],[2,4])
-and
-([5,10],[3,7])
-will induce the edges but pairs
-([1,2],[3,4])
-and
-([5,7],[3,10])
-will not.
-Determine if the resulting graph is a tree or not.
+blue lamps then the store workers won't be able to build any garland of them. Any garland consisting of these lamps will have at least one pair of lamps of the same color adjacent to each other. Note that the store workers should use all the lamps you provided.
+So Polycarp has bought some sets of lamps and now he wants to know if the store workers can build a garland from each of them.
 Input
 The first line contains a single integer
-n
+t
 (
-1≤n≤5⋅
-10
-5
-) — the number of segments.
-The
-i
--th of the next
-n
-lines contain the description of the
-i
--th segment — two integers
-l
-i
+1≤t≤100
+) — the number of sets of lamps Polycarp has bought.
+Each of the next
+t
+lines contains three integers
+r
+,
+g
 and
-r
-i
+b
 (
-1≤
-l
-i
-<
-r
-i
-≤2n
-).
-It is guaranteed that all segments borders are pairwise distinct.
+1≤r,g,b≤
+10
+9
+) — the number of red, green and blue lamps in the set, respectively.
 Output
-Print "YES" if the resulting graph is a tree and "NO" otherwise.
-Examples
+Print
+t
+lines — for each set of lamps print "Yes" if the store workers can build a garland from them and "No" otherwise.
+Example
 input
 Copy
-6
-9 12
-2 11
-1 3
-6 10
-5 7
-4 8
+3
+3 3 3
+1 10 2
+2 1 1
 output
 Copy
-YES
-input
-Copy
-5
-1 3
-2 4
-5 9
-6 8
-7 10
-output
-Copy
-NO
-input
-Copy
-5
-5 8
-3 6
-2 9
-7 10
-1 4
-output
-Copy
-NO
+Yes
+No
+Yes
 Note
-The graph corresponding to the first example:
-The graph corresponding to the second example:
-The graph corresponding to the third example:
+The first two sets are desribed in the statement.
+The third set produces garland "RBRG", for example.

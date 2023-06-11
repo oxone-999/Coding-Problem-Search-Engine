@@ -1,68 +1,38 @@
-Flip Sorting
+Compilers and parsers
 Problem
-Chef has a binary string
-S of length
-N. Chef can perform the following operation on
-S any number of times (possibly zero):
-Choose a number
-X (
-1≤X≤N) that hasn't been chosen in any previous operation and flip any substring of
-S having length
-X (i.e. change all
-0s to
-1s and all
-1s to
-0s in any substring of
-S having length
-X).
-Chef wants to transform
-S into a non-decreasing string using any sequence of operations. Can you help Chef find such a sequence of operations?
-If there are multiple answers, print any.
-Input Format
-The first line contains a single integer
-T - the number of test cases. Then the test cases follow.
-The first line of each test case contains an integer
-N - the length of the binary string
-S.
-The second line of each test case contains a binary string
-S of length
-N containing
-0s and
-1s only.
-Output Format
-For each test case,
-Output in the first line
-K - the number of operations applied.
-In each of the following
-K lines, output two integers
-i and
-X - the starting index of the substring selected and the length of the substring. (Note that
-X selected should not be used in any of the previous operations)
+Read problems statements in Mandarin Chinese and Russian.
+Lira is now very keen on compiler development. :)
+She knows that one of the most important components of a compiler, is its parser.
+A parser is, in simple terms, a software component that processes text, and checks it's semantic correctness, or, if you prefer, if the text is properly built.
+As an example, in declaring and initializing an integer, in C/C++, you can't do something like:
+int = x ;4
+as the semantics of such statement is incorrect, as we all know that the datatype must precede an identifier and only afterwards should come the equal sign and the initialization value, so, the corrected statement should be:
+int x = 4;
+Today, Lira is concerned with an abstract instruction which is composed of the characters "<" and ">" , which she will use on the design of her language, L++ :D.
+She is using it as an abstraction for generating XML code Tags in an easier fashion and she understood that, for an expression to be valid, a "<" symbol must always have a corresponding ">" character somewhere (not necessary immediately) after it. Moreover, each ">" symbol should correspond to exactly one "<" symbol.
+So, for instance, the instructions:
+<<>>
+<>
+<><>
+are all valid. While:
+>>
+><><
+are not.
+Given some expressions which represent some instructions to be analyzed by Lira's compiler, you should tell the length of the longest prefix of each of these expressions that is valid, or 0 if there's no such a prefix.
+Input
+Input will consist of an integer T denoting the number of test cases to follow.
+Then, T strings follow, each on a single line, representing a possible expression in L++.
+Output
+For each expression you should output the length of the longest prefix that is valid or 0 if there's no such a prefix.
 Constraints
-1≤T≤100
-1≤N≤1000
-Sample 1:
+1 ≤ T ≤ 500 1 ≤ The length of a single expression ≤ 106 The total size all the input expressions is no more than 5*106
+  Sample 1:
 Input
 Output
 3
-6
-110111
-9
-110110111
-5
-00111
-1
-1 2
-2
-1 2
-4 3
+<<>>
+><
+<>>>
+4
 0
-Explanation:
-Test Case 1: The operations applied are as follows:
-11
-0111→000111.
-Test Case 2: The operations applied are as follows:
-11
-0110111→000
-110
-111→000001111.
+2

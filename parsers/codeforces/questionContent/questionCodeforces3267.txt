@@ -1,171 +1,117 @@
-E. Product Tuples
-time limit per test8 seconds
+G. Alpha planetary system
+time limit per test1 second
 memory limit per test128 megabytes
 inputstandard input
 outputstandard output
-While roaming the mystic areas of Stonefalls, in order to drop legendary loot, an adventurer was given a quest as follows. He was given an array
-A=
-a
+Three planets
+X
+,
+Y
+and
+Z
+within the Alpha planetary system are inhabited with an advanced civilization. The spaceports of these planets are connected by interplanetary space shuttles. The flight scheduler should decide between
 1
 ,
-a
 2
-,...,
-a
-N
-of length
-N
-, and a number
-K
-.
-Define array
-B
-as
-B(q,A)=
-{
-q−
-a
+and
+3
+return flights for every existing space shuttle connection. Since the residents of Alpha are strong opponents of the symmetry, there is a strict rule that any two of the spaceports connected by a shuttle must have a different number of flights.
+For every pair of connected spaceports, your goal is to propose a number
 1
-,q−
-a
-2
-,...,q−
-a
-N
-}. Define function
-F
-as
-F(B,K)
-being sum of products of all
-K
--tuples of elements in array
-B
-. For example, if the array
-B
-is
-[2,3,4,5]
-, and with
-K=3
-, sum of products of all 3-tuples is
-F(B,3)=2∗3∗4+2∗3∗5+3∗4∗5+2∗4∗5
-F
-(
-B
-3
-)
-2
-3
-4
-2
-3
-5
-3
-4
-5
-2
-4
-5
-He was then given a number Q, number of queries of two types:
-Type 1: Given
-q
 ,
-i
-, and
-d
-calculate
-F(B(q,A),K)
-where we make change to initial array as
-A[i]=d
-.
-Type 2: Given
-q
-,
-L
-,
-R
-, and
-d
-calculate
-F(B(q,A),K)
-where we make change to initial array as
-A[i]=A[i]+d
-for all
-i
-in range
-[L,R]
-inclusive.
-All changes are temporarily made to initial array, and don't propagate to following queries. Help the adventurer calculate the answer to a quest, and finally get that loot!
+2
+or
+3
+for each shuttle flight, so that for every two connected spaceports the overall number of flights differs.
+You may assume that:
+1) Every planet has at least one spaceport
+2) There exist only shuttle flights between spaceports of different planets
+3) For every two spaceports there is a series of shuttle flights enabling traveling between them
+4) Spaceports are not connected by more than one shuttle
 Input
-In the first two lines, numbers
+The first row of the input is the integer number
 N
-(
-1≤N≤2∗
-10
-4
-) and
-K
-(
-1≤K≤N
-), the length of initial array
-A
-, and tuple size, followed by
-a
-1
-,
-a
-2
-,
-a
+(3≤N≤100000)
+, representing overall number of spaceports. The second row is the integer number
+M
+(2≤M≤100000)
+representing number of shuttle flight connections.
+Third row contains
+N
+characters from the set
+{X,Y,Z}
+. Letter on
+I
+th
+position indicates on which planet is situated spaceport
+I
+. For example, "XYYXZZ" indicates that the spaceports
+0
+and
 3
-,…,
-a
-N
-(
-0≤
-a
-i
-≤
-10
-9
-) , elements of array
-A
-, in the next line. Then follows number
-Q
-(
-Q≤10
-), number of queries. In the next
-Q
-lines come queries of the form:
-1 q i d, for type 1,
-2 q L R d, for type 2,
-as explained above (
-0≤q,d≤
-10
-9
-,1≤i,L,R≤N
-)
-Output
-Print
-Q
-lines, the answers to queries, modulo
-998244353
+are located at planet
+X
+, spaceports
+1
+and
+2
+are located at
+Y
+, and spaceports
+4
+and
+5
+are at
+Z
 .
+Starting from the fourth row, every row contains two integer numbers separated by a whitespace. These numbers are natural numbers smaller than
+N
+and indicate the numbers of the spaceports that are connected. For example, "
+12 15
+" indicates that there is a shuttle flight between spaceports
+12
+and
+15
+.
+Output
+The same representation of shuttle flights in separate rows as in the input, but also containing a third number from the set
+{1,2,3}
+standing for the number of shuttle flights between these spaceports.
 Example
 input
 Copy
-5
-2
-1 2 3 4 5
-3
-1 6 1 1
-1 6 5 2
-2 6 2 3 1
+10
+15
+XXXXYYYZZZ
+0 4
+0 5
+0 6
+4 1
+4 8
+1 7
+1 9
+7 2
+7 5
+5 3
+6 2
+6 9
+8 2
+8 3
+9 3
 output
 Copy
-85
-127
-63
-Note
-In the first query array A = [1, 2, 3, 4, 5], B = [5, 4, 3, 2, 1], sum of products of 2-tuples = 85.
-In second query array A = [1, 2, 3, 4, 2], B = [5, 4, 3, 2, 4], sum of products of 2-tuples = 127
-In third query array A = [1, 3, 4, 4, 5], B = [5, 3, 2, 2, 1], sum of products of 2-tuples = 63
+0 4 2
+0 5 2
+0 6 2
+4 1 1
+4 8 1
+1 7 2
+1 9 3
+7 2 2
+7 5 1
+5 3 1
+6 2 1
+6 9 1
+8 2 3
+8 3 1
+9 3 1

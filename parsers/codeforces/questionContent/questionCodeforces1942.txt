@@ -1,117 +1,159 @@
-C2. Guessing the Greatest (hard version)
-time limit per test1 second
-memory limit per test256 megabytes
+E. Paired Payment
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-The only difference between the easy and the hard version is the limit to the number of queries.
-This is an interactive problem.
-There is an array
-a
-of
+There are
 n
-different numbers. In one query you can ask the position of the second maximum element in a subsegment
-a[l..r]
-. Find the position of the maximum element in the array in no more than 20 queries.
-A subsegment
-a[l..r]
-is all the elements
+cities and
+m
+bidirectional roads in the country. The roads in the country form an undirected weighted graph. The graph is not guaranteed to be connected. Each road has it's own parameter
+w
+. You can travel through the roads, but the government made a new law: you can only go through two roads at a time (go from city
 a
-l
-,
-a
-l+1
-,...,
-a
-r
-. After asking this subsegment you will be given the position of the second maximum from this subsegment in the whole array.
-Input
-The first line contains a single integer
-n
-(2≤n≤
-10
-5
+to city
+b
+and then from city
+b
+to city
+c
+) and you will have to pay
+(
+w
+ab
++
+w
+bc
 )
-— the number of elements in the array.
-Interaction
-You can ask queries by printing "?
-l
-r
-"
-(1≤l<r≤n)
-. The answer is the index of the second maximum of all elements
-a
-l
-,
-a
-l+1
-,...,
-a
-r
-. Array
-a
-is fixed beforehand and can't be changed in time of interaction.
-You can output the answer by printing "!
-p
-", where
-p
-is the index of the maximum element in the array.
-You can ask no more than 20 queries. Printing the answer doesn't count as a query.
-After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages
-Hacks
-To make a hack, use the following test format.
-In the first line output a single integer
-n
-(2≤n≤
-10
-5
-)
-. In the second line output a permutation of
-n
-integers
+2
+money to go through those roads. Find out whether it is possible to travel from city
+1
+to every other city
+t
+and what's the minimum amount of money you need to get from
 1
 to
+t
+.
+Input
+First line contains two integers
 n
-. The position of
-n
-in the permutation is the position of the maximum
-Example
+,
+m
+(
+2≤n≤
+10
+5
+,
+1≤m≤min(
+n⋅(n−1)
+2
+,2⋅
+10
+5
+)
+).
+Next
+m
+lines each contain three integers
+v
+i
+,
+u
+i
+,
+w
+i
+(
+1≤
+v
+i
+,
+u
+i
+≤n
+,
+1≤
+w
+i
+≤50
+,
+u
+i
+≠
+v
+i
+). It's guaranteed that there are no multiple edges, i.e. for any edge
+(
+u
+i
+,
+v
+i
+)
+there are no other edges
+(
+u
+i
+,
+v
+i
+)
+or
+(
+v
+i
+,
+u
+i
+)
+.
+Output
+For every city
+t
+print one integer. If there is no correct path between
+1
+and
+t
+output
+−1
+. Otherwise print out the minimum amount of money needed to travel from
+1
+to
+t
+.
+Examples
 input
 Copy
-5
-
-3
-
-4
+5 6
+1 2 3
+2 3 4
+3 4 5
+4 5 6
+1 5 1
+2 4 2
 output
 Copy
-? 1 5
-
-? 4 5
-
-! 1
+0 98 49 25 114 
+input
+Copy
+3 2
+1 2 1
+2 3 2
+output
+Copy
+0 -1 9 
 Note
-In the sample suppose
-a
-is
-[5,1,4,2,3]
-. So after asking the
-[1..5]
-subsegment
-4
-is second to max value, and it's position is
+The graph in the first example looks like this.
+In the second example the path from
+1
+to
 3
-. After asking the
-[4..5]
-subsegment
+goes through
 2
-is second to max value and it's position in the whole array is
-4
+, so the resulting payment is
+(1+2
+)
+2
+=9
 .
-Note that there are other arrays
-a
-that would produce the same interaction, and the answer for them might be different. Example output is given in purpose of understanding the interaction.

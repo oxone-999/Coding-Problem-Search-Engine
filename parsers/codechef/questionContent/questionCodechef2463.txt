@@ -1,29 +1,114 @@
-Furik and Rubik and Sub Array
+Up for a Game
 Problem
-Furik and Rubik are playing the game Sub array. This game is played over an array of integers, consisting of N elements.
-In this game, Furik decides an integer that is equal to sum of some sub-array of this array and Rubik wants to guess this number.
-But, since Rubik is a busy man, he wants to know how many times in the worst case he will have to try to guess this number. You may assume he acts optimally, i.e. he doesn't call the same number twice, and calls only those numbers, that might have been decided by Furik, meaning, the sum of some or the other sub-array.
-Let's call the array b, sub-array of the array a, if there are numbers l and r such, that b1 = al AND b2 = al+1 AND ... b|b| = ar, where |b| is the length of the array b.
-Input
-The first line contains the positive integer N. The second line contains N positive integers, which are the elements of the array.
-Output
-Output a single line containing the answer to the problem.
-Constraints
-Test Files with Time Limit set to 2 seconds
-1 ≤ N * S ≤ 1010, where S is the sum of the elements in the array.
-
-Test Files with Time Limit set to 4 seconds
-1 ≤ N * S ≤ 4 * 1010
-Sample
-Input
+Chef is again playing a game with his best friend Garry. As usual, the rules of this game are extremely strange and uncommon.
+First, they are given a stack of
+N discs. Each disc has a distinct, non-negative integer written on it. The players exchange turns to make a move. Before the start of the game, they both agree upon a set of positive integers
+S of size
+K. It is guaranteed that S contains the integer
+1. In a move, a player can select any value
+x from
+S and pop exactly
+x elements from the top of the stack. The game ends when there are no discs remaining. Chef goes first.
+Scoring: For every disc a player pops, his score increases by
+2
+p
+where
+p is the integer written on the disc. For example, if a player pops the discs, with integers
+p
+1
+,p
+2
+,p
 3
-1 2 3
-Output
-4
-Input
+,…,p
+m
+written on it, during the entire course of the game, then his total score will be
+2
+p
+1
++2
+p
+2
++2
+p
+3
++⋯+2
+p
+m
+.
+The player with higher score wins the game. Determine the winner if both the players play optimally, or if the game ends in a draw.
+###Input:
+First line contains
+T, the number of testcases. Then the testcases follow.
+The first line of each test case contains two space separated integers
+N and
+K, denoting the size of the stack and the set S respectively.
+Next line contains
+N space separated integers
+A
+i
+where
+A
+1
+is the topmost element, denoting the initial arrangement of the stack.
+The last line of each test case contains
+K space separated integers each denoting
+x
+i
+.
+###Output: For each testcase, output "Chef" (without quotes) if Chef wins, "Garry" (without quotes) if Garry wins, otherwise "Draw" (without quotes) in a separate line.
+###Constraints
+1≤T≤1000
+1≤N≤10
+5
+1≤K≤min(100,N)
+0≤A
+i
+≤10
 9
-6 1 7 3 7 1 8 5 7
-Output
-28
-Explanation
-Test Case 1: Furik can decide one of the following numbers: 1, 2, 3, 5, 6. For example, let us assume Furik has decided 3. In the worst case, Rubik may call out 4 numbers, since there are only 5 such numbers.
+1≤x
+i
+≤N
+x
+i
+
+=x
+j
+for all
+i
+
+=j
+A
+i
+
+=A
+j
+for all
+i
+
+=j
+Set
+S contains integer
+1.
+Sum of
+N over all test cases does not exceed
+10
+5
+.
+###Sample Input: 1 3 2 5 7 1 1 2
+###Sample Output: Chef
+###Explanation: Chef can select 2 from the set and draw the top two discs (with integers 5 and 7 written on it) from the stack. Garry cannot select 2 from the set as there is only 1 disc left in the stack. However, he can select 1 from the set and pop the last disc.
+So, Chef's score =
+2
+5
++
+2
+7
+=
+160
+Garry's score =
+2
+1
+=
+2
+Chef wins.

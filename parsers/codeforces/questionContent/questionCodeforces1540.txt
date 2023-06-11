@@ -1,159 +1,134 @@
-D. Ezzat and Grid
-time limit per test2.5 seconds
-memory limit per test256 megabytes
+B. Up the Strip
+time limit per test6 seconds
+memory limit per test128 megabytes
 inputstandard input
 outputstandard output
-Moamen was drawing a grid of
+Note that the memory limit in this problem is lower than in others.
+You have a vertical strip with
 n
-rows and
-10
-9
-columns containing only digits
-0
-and
+cells, numbered consecutively from
 1
-. Ezzat noticed what Moamen was drawing and became interested in the minimum number of rows one needs to remove to make the grid beautiful.
-A grid is beautiful if and only if for every two consecutive rows there is at least one column containing
-1
-in these two rows.
-Ezzat will give you the number of rows
-n
-, and
-m
-segments of the grid that contain digits
-1
-. Every segment is represented with three integers
-i
-,
-l
-, and
-r
-, where
-i
-represents the row number, and
-l
-and
-r
-represent the first and the last column of the segment in that row.
-For example, if
-n=3
-,
-m=6
-, and the segments are
-(1,1,1)
-,
-(1,7,8)
-,
-(2,7,7)
-,
-(2,15,15)
-,
-(3,1,1)
-,
-(3,15,15)
-, then the grid is:
-Your task is to tell Ezzat the minimum number of rows that should be removed to make the grid beautiful.
-Input
-The first line contains two integers
-n
-and
-m
-(
-1≤n,m≤3⋅
-10
-5
-).
-Each of the next
-m
-lines contains three integers
-i
-,
-l
-, and
-r
-(
-1≤i≤n
-,
-1≤l≤r≤
-10
-9
-). Each of these
-m
-lines means that row number
-i
-contains digits
-1
-in columns from
-l
 to
-r
-, inclusive.
-Note that the segments may overlap.
-Output
-In the first line, print a single integer
-k
- — the minimum number of rows that should be removed.
-In the second line print
-k
-distinct integers
-r
+n
+from top to bottom.
+You also have a token that is initially placed in cell
+n
+. You will move the token up until it arrives at cell
 1
-,
-r
+.
+Let the token be in cell
+x>1
+at some moment. One shift of the token can have either of the following kinds:
+Subtraction: you choose an integer
+y
+between
+1
+and
+x−1
+, inclusive, and move the token from cell
+x
+to cell
+x−y
+.
+Floored division: you choose an integer
+z
+between
 2
-,…,
-r
-k
-, representing the rows that should be removed (
-1≤
-r
-i
-≤n
-), in any order.
-If there are multiple answers, print any.
+and
+x
+, inclusive, and move the token from cell
+x
+to cell
+⌊
+x
+z
+⌋
+(
+x
+divided by
+z
+rounded down).
+Find the number of ways to move the token from cell
+n
+to cell
+1
+using one or more shifts, and print it modulo
+m
+. Note that if there are several ways to move the token from one cell to another in one shift, all these ways are considered distinct (check example explanation for a better understanding).
+Input
+The only line contains two integers
+n
+and
+m
+(
+2≤n≤4⋅
+10
+6
+;
+10
+8
+<m<
+10
+9
+;
+m
+is a prime number) — the length of the strip and the modulo.
+Output
+Print the number of ways to move the token from cell
+n
+to cell
+1
+, modulo
+m
+.
 Examples
 input
 Copy
-3 6
-1 1 1
-1 7 8
-2 7 7
-2 15 15
-3 1 1
-3 15 15
+3 998244353
 output
 Copy
-0
+5
 input
 Copy
-5 4
-1 2 3
-2 4 6
-3 3 5
-5 1 1
+5 998244353
 output
 Copy
-3
-2 4 5
+25
+input
+Copy
+42 998244353
+output
+Copy
+793019428
+input
+Copy
+787788 100000007
+output
+Copy
+94810539
 Note
-In the first test case, the grid is the one explained in the problem statement. The grid has the following properties:
-The
-1
--st row and the
-2
--nd row have a common
-1
-in the column
-7
-.
-The
-2
--nd row and the
+In the first test, there are three ways to move the token from cell
 3
--rd row have a common
+to cell
 1
-in the column
-15
+in one shift: using subtraction of
+y=2
+, or using division by
+z=2
+or
+z=3
 .
-As a result, this grid is beautiful and we do not need to remove any row.
-In the second test case, the given grid is as follows:
+There are also two ways to move the token from cell
+3
+to cell
+1
+via cell
+2
+: first subtract
+y=1
+, and then either subtract
+y=1
+again or divide by
+z=2
+.
+Therefore, there are five ways in total.

@@ -1,155 +1,160 @@
-F. The Struggling Contestant
-time limit per test1 second
+H2. Multithreading (Hard Version)
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-To help those contestants who struggle a lot in contests, the headquarters of Codeforces are planning to introduce Division 5. In this new division, the tags of all problems will be announced prior to the round to help the contestants.
-The contest consists of
+The only difference between the two versions of the problem is that there are no updates in the easy version.
+There are
 n
-problems, where the tag of the
-i
--th problem is denoted by an integer
-a
-i
+spools of thread placed on the rim of a circular table. The spools come in two types of thread: the first thread is black and the second thread is white.
+For any two spools of the same color, you can attach them with a thread of that color in a straight line segment. Define a matching as a way to attach spools together so that each spool is attached to exactly one other spool.
+Coloring is an assignment of colors (white and black) to the spools. A coloring is called valid if it has at least one matching. That is if the number of black spools and the number of white spools are both even.
+Given a matching, we can find the number of times some white thread intersects some black thread. We compute the number of pairs of differently colored threads that intersect instead of the number of intersection points, so one intersection point may be counted multiple times if different pairs of threads intersect at the same point. If
+c
+is a valid coloring, let
+f(c)
+denote the minimum number of such intersections out of all possible matchings.
+The circle above is described by the coloring bwbbbwww. After matching the spools as shown, there is one intersection between differently colored threads. It can be proven that it is the minimum possible, so
+f(bwbbbwww)=1
 .
-You want to AK (solve all problems). To do that, you must solve the problems in some order. To make the contest funnier, you created extra limitations on yourself. You do not want to solve two problems consecutively with the same tag since it is boring. Also, you are afraid of big jumps in difficulties while solving them, so you want to minimize the number of times that you solve two problems consecutively that are not adjacent in the contest order.
-Formally, your solve order can be described by a permutation
+You are given a string
+s
+representing an unfinished coloring, with black, white, and uncolored spools. A coloring
+c
+is called
+s
+-reachable if you can achieve it by assigning colors to the uncolored spools of
+s
+without changing the others.
+A coloring
+c
+is chosen uniformly at random among all valid,
+s
+-reachable colorings. Compute the expected value of
+f(c)
+. You should find it by modulo
+998244353
+.
+There will be
+m
+updates to change one character of
+s
+. After each update, you should again compute the expected value of
+f(c)
+.
+We can show that each answer can be written in the form
 p
+q
+where
+p
+and
+q
+are relatively prime integers and
+q≢0(mod998244353)
+. The answer by modulo
+998244353
+is equal to
+(p⋅
+q
+−1
+)
+modulo
+998244353
+.
+Input
+The first line contains two integers
+n
+,
+m
+(
+2≤n≤2⋅
+10
+5
+,
+n
+is even,
+0≤m≤2⋅
+10
+5
+) — the number of spools and the number of updates, respectively.
+The second line contains a string
+s
 of length
 n
-. The cost of a permutation is defined as the number of indices
+— the unfinished coloring of the spools. The
+i
+-th character will be 'w', 'b', or '?', describing if the
+i
+-th spool is white, black, or uncolored, respectively.
+Each of the next
+m
+lines contains an integer
 i
 (
-1≤i<n
-) where
-|
-p
-i+1
-−
-p
-i
-|>1
-. You have the requirement that
-a
-p
-i
-≠
-a
-p
-i+1
-for all
-1≤i<n
-.
-You want to know the minimum possible cost of permutation that satisfies the requirement. If no permutations meet this requirement, you should report about it.
-Input
-The first line contains a single integer
-t
+1≤i≤n
+) — the position of the character in
+s
+to be updated, and a character
+c
 (
-1≤t≤
-10
-4
-) — the number of test cases.
-The first line of the description of each test case contains a single integer
-n
-(
-1≤n≤
-10
-5
-) — the number of problems in the contest.
-The next line contains
-n
-integers
-a
-1
-,
-a
-2
-,…
-a
-n
-(
-1≤
-a
+c∈{w,b,?}
+) — the new color of the spool
 i
-≤n
-) — the tags of the problems.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-5
-.
+after the update.
+It is guaranteed there exists at least one uncolored spool initially and after each update.
 Output
-For each test case, if there are no permutations that satisfy the required condition, print
-−1
-. Otherwise, print the minimum possible cost of a permutation that satisfies the required condition.
-Example
+Print
+m+1
+lines: the expected value of
+f(c)
+initially and after each update. All values should be found by modulo
+998244353
+.
+Examples
 input
 Copy
-4
-6
-2 1 2 3 1 1
-5
-1 1 1 2 2
-8
-7 7 2 7 7 1 8 7
-10
-1 2 3 4 1 1 2 3 4 1
+8 0
+bwbb?www
 output
 Copy
 1
-3
--1
-2
+input
+Copy
+10 3
+???ww?wb??
+4 ?
+5 ?
+2 w
+output
+Copy
+436731905
+218365953
+374341633
+530317313
+input
+Copy
+4 3
+bw?b
+1 w
+2 b
+1 w
+output
+Copy
+0
+0
+1
+1
 Note
-In the first test case, let
-p=[5,4,3,2,1,6]
-. The cost is
-1
-because we jump from
-p
-5
-=1
-to
-p
-6
-=6
-, and
-|6−1|>1
-. This permutation is valid because we don't solve problems with the same tag twice in a row. We cannot find a permutation with a cost smaller than
+The first test corresponds closely to the image. Coloring '?' as 'w' does not create a valid coloring because the number of black spools is odd. Then the only reachable valid coloring is 'bwbbbwww' and
+f(bwbbbwww)=1
+, so the expected value is
 1
 .
-In the second test case, let
-p=[1,5,2,4,3]
-. The cost is
-3
-because
-|
-p
-2
-−
-p
-1
-|>1
-,
-|
-p
-3
-−
-p
-2
-|>1
-, and
-|
-p
-4
-−
-p
-3
-|>1
-. The permutation is valid because we don't solve problems with the same tag twice in a row. We cannot find a permutation with a cost smaller than
-3
-.
-In the third test case, for any order of solving the problems, we will solve two problems with the same tag consecutively, so the answer is
-−1
-.
+In the second test, the string after each update is:
+????w?wb??
+??????wb??
+?w????wb??
+In the third test, the string after each update is:
+ww?b
+wb?b
+wb?b

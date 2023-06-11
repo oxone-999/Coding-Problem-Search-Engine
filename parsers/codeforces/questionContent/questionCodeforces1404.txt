@@ -1,89 +1,63 @@
-C. Two Arrays
-time limit per test1 second
+E. Game with Stones
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given two arrays of integers
-a
+Bob decided to take a break from calculus homework and designed a game for himself.
+The game is played on a sequence of piles of stones, which can be described with a sequence of integers
+s
 1
-,
-a
-2
 ,…,
-a
-n
+s
+k
+, where
+s
+i
+is the number of stones in the
+i
+-th pile. On each turn, Bob picks a pair of non-empty adjacent piles
+i
 and
-b
+i+1
+and takes one stone from each. If a pile becomes empty, its adjacent piles do not become adjacent. The game ends when Bob can't make turns anymore. Bob considers himself a winner if at the end all piles are empty.
+We consider a sequence of piles winning if Bob can start with it and win with some sequence of moves.
+You are given a sequence
+a
 1
-,
-b
-2
 ,…,
-b
+a
 n
-.
-Let's define a transformation of the array
+, count the number of subsegments of
 a
-:
-Choose any non-negative integer
-k
-such that
-0≤k≤n
-.
-Choose
-k
-distinct array indices
-1≤
-i
-1
-<
-i
-2
-<…<
-i
-k
-≤n
-.
-Add
-1
-to each of
+that describe a winning sequence of piles. In other words find the number of segments
+[l,r]
+(
+1≤l≤r≤n
+), such that the sequence
 a
-i
-1
+l
 ,
 a
-i
-2
+l+1
 ,…,
 a
-i
-k
-, all other elements of array
-a
-remain unchanged.
-Permute the elements of array
-a
-in any order.
-Is it possible to perform some transformation of the array
-a
-exactly once, so that the resulting array is equal to
-b
-?
+r
+is winning.
 Input
-The first line contains a single integer
+Each test consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤100
-) — the number of test cases. Descriptions of test cases follow.
+1≤t≤3⋅
+10
+5
+) — the number of test cases. Description of the test cases follows.
 The first line of each test case contains a single integer
 n
 (
-1≤n≤100
-) — the size of arrays
-a
-and
-b
-.
+1≤n≤3⋅
+10
+5
+).
 The second line of each test case contains
 n
 integers
@@ -96,80 +70,61 @@ a
 a
 n
 (
-−100≤
+0≤
 a
 i
-≤100
+≤
+10
+9
 ).
-The third line of each test case contains
+It is guaranteed that the sum of
 n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-−100≤
-b
-i
-≤100
-).
+over all test cases does not exceed
+3⋅
+10
+5
+.
 Output
-For each test case, print "YES" (without quotes) if it is possible to perform a transformation of the array
-a
-, so that the resulting array is equal to
-b
-. Print "NO" (without quotes) otherwise.
-You can print each letter in any case (upper or lower).
+Print a single integer for each test case — the answer to the problem.
 Example
 input
 Copy
-3
-3
--1 1 0
-0 0 2
-1
-0
+6
 2
-5
-1 2 3 4 5
-1 2 3 4 5
+2 2
+3
+1 2 3
+4
+1 1 1 1
+4
+1 2 2 1
+4
+1 2 1 2
+8
+1 2 1 2 1 2 1 2
 output
 Copy
-YES
-NO
-YES
+1
+0
+4
+2
+1
+3
 Note
-In the first test case, we can make the following transformation:
-Choose
-k=2
-.
-Choose
-i
+In the first test case, Bob can't win on subsegments of length
 1
-=1
+, as there is no pair of adjacent piles in an array of length
+1
+.
+In the second test case, every subsegment is not winning.
+In the fourth test case, the subsegment
+[1,4]
+is winning, because Bob can make moves with pairs of adjacent piles:
+(2,3)
 ,
-i
-2
-=2
+(1,2)
+,
+(3,4)
+. Another winning subsegment is
+[2,3]
 .
-Add
-1
-to
-a
-1
-and
-a
-2
-. The resulting array is
-[0,2,0]
-.
-Swap the elements on the second and third positions.
-In the second test case there is no suitable transformation.
-In the third test case we choose
-k=0
-and do not change the order of elements.

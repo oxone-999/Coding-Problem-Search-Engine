@@ -1,140 +1,154 @@
-A. Weird Sum
+C. Tyler and Strings
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Egor has a table of size
-n×m
-, with lines numbered from
-1
-to
-n
-and columns numbered from
-1
-to
+While looking at the kitchen fridge, the little boy Tyler noticed magnets with symbols, that can be aligned into a string
+s
+.
+Tyler likes strings, and especially those that are lexicographically smaller than another string,
+t
+. After playing with magnets on the fridge, he is wondering, how many distinct strings can be composed out of letters of string
+s
+by rearranging them, so that the resulting string is lexicographically smaller than the string
+t
+? Tyler is too young, so he can't answer this question. The alphabet Tyler uses is very large, so for your convenience he has already replaced the same letters in
+s
+and
+t
+to the same integers, keeping that different letters have been replaced to different integers.
+We call a string
+x
+lexicographically smaller than a string
+y
+if one of the followings conditions is fulfilled:
+There exists such position of symbol
 m
-. Each cell has a color that can be presented as an integer from
-1
-to
-10
-5
+that is presented in both strings, so that before
+m
+-th symbol the strings are equal, and the
+m
+-th symbol of string
+x
+is smaller than
+m
+-th symbol of string
+y
 .
-Let us denote the cell that lies in the intersection of the
-r
--th row and the
-c
--th column as
-(r,c)
-. We define the manhattan distance between two cells
-(
-r
-1
-,
-c
-1
-)
+String
+x
+is the prefix of string
+y
 and
-(
-r
-2
-,
-c
-2
-)
-as the length of a shortest path between them where each consecutive cells in the path must have a common side. The path can go through cells of any color. For example, in the table
-3×4
-the manhattan distance between
-(1,2)
-and
-(3,3)
-is
-3
-, one of the shortest paths is the following:
-(1,2)→(2,2)→(2,3)→(3,3)
+x≠y
 .
-Egor decided to calculate the sum of manhattan distances between each pair of cells of the same color. Help him to calculate this sum.
+Because the answer can be too large, print it modulo
+998244353
+.
 Input
 The first line contains two integers
 n
 and
 m
 (
-1≤n≤m
-,
-n⋅m≤100000
-) — number of rows and columns in the table.
-Each of next
+1≤n,m≤200000
+) — the lengths of strings
+s
+and
+t
+respectively.
+The second line contains
 n
-lines describes a row of the table. The
-i
--th line contains
-m
 integers
-c
-i1
+s
+1
 ,
-c
-i2
+s
+2
+,
+s
+3
 ,…,
-c
-im
+s
+n
 (
 1≤
-c
-ij
-≤100000
-) — colors of cells in the
+s
 i
--th row.
+≤200000
+) — letters of the string
+s
+.
+The third line contains
+m
+integers
+t
+1
+,
+t
+2
+,
+t
+3
+,…,
+t
+m
+(
+1≤
+t
+i
+≤200000
+) — letters of the string
+t
+.
 Output
-Print one integer — the the sum of manhattan distances between each pair of cells of the same color.
+Print a single number — the number of strings lexicographically smaller than
+t
+that can be obtained by rearranging the letters in
+s
+, modulo
+998244353
+.
 Examples
 input
 Copy
-2 3
-1 2 3
-3 2 1
-output
-Copy
-7
-input
-Copy
 3 4
-1 1 2 2
-2 1 1 2
-2 2 1 1
+1 2 2
+2 1 2 1
 output
 Copy
-76
+2
 input
 Copy
 4 4
-1 1 2 3
-2 1 1 2
-3 1 2 1
-1 1 2 1
+1 2 3 4
+4 3 2 1
 output
 Copy
-129
-Note
-In the first sample there are three pairs of cells of same color: in cells
-(1,1)
-and
-(2,3)
-, in cells
-(1,2)
-and
-(2,2)
-, in cells
-(1,3)
-and
-(2,1)
-. The manhattan distances between them are
-3
-,
+23
+input
+Copy
+4 3
+1 1 1 2
+1 1 2
+output
+Copy
 1
+Note
+In the first example, the strings we are interested in are
+[122]
 and
-3
-, the sum is
-7
+[212]
+. The string
+[221]
+is lexicographically larger than the string
+[2121]
+, so we don't count it.
+In the second example, all strings count except
+[4321]
+, so the answer is
+4!−1=23
 .
+In the third example, only the string
+[1112]
+counts.

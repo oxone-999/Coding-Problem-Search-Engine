@@ -1,91 +1,39 @@
-Keplers Law
+DDMM or MMDD
 Problem
-Kepler’s Law states that the planets move around the sun in elliptical orbits with the sun at one focus. Kepler's 3rd law is The Law of Periods, according to which:
-The square of the time period of the planet is directly proportional to the cube of the semimajor axis of its orbit.
-You are given the Time periods (
-T
-1
-,T
-2
-) and Semimajor Axes (
-R
-1
-,R
-2
-) of two planets orbiting the same star.
-Please determine if the Law of Periods is satisfied or not, i.e, if the constant of proportionality of both planets is the same.
-Print "Yes" (without quotes) if the law is satisfied, else print "No".
+Chef is confused by all the different formats dates can be written in. Here's a simple problem Chef wants you to solve.
+You are given a date string
+S. The date follows the Gregorian calendar, the one used in most parts of the world.
+Identify whether it is of the form DD/MM/YYYY or MM/DD/YYYY, or if it can be of both forms. Here DD denotes the 2-digit day, MM denotes the 2-digit month and YYYY denotes the 4-digit year.
+It is guaranteed that
+S is a valid date taking at least one of these forms.
+For example,
+21/05/2001 is of the form DD/MM/YYYY and not MM/DD/YYYY.
+10/15/2069 is of the form MM/DD/YYYY and not DD/MM/YYYY.
+05/11/1999 can be of both forms.
 Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of
-T test cases follows.
-Each test case consists a single line of input, containing four space-separated integers
-T
-1
-,T
-2
-,R
-1
-,R
-2
-.
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
+Each test case consists of a single line containing a string of
+10 characters
+S — the date string
+S, which is of the form DD/MM/YYYY or MM/DD/YYYY. It is guaranteed that
+S is a valid date taking at least one of these forms.
 Output Format
-For each test case, output a single line containing one string — "Yes" or "No" (without quotes); the answer to the problem.
-You may print each character of the answer in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
+For each test case, output "BOTH" if the date string satisfies both forms. Otherwise output "DD/MM/YYYY" if it is of the form DD/MM/YYYY, else "MM/DD/YYYY". Note that the output may be case-insensitive. So "DD/MM/YYYY", "dd/mm/yyyy" and so on will be considered the same.
 Constraints
-1≤T≤10
-4
-1≤T
-1
-,T
-2
-≤10
-1≤R
-1
-,R
-2
-≤10
-Subtasks
-Subtask 1(100 points): Original constraints
+1≤T≤2023
+S is of the form DD/MM/YYYY or MM/DD/YYYY
 Sample 1:
 Input
 Output
-3
-1 1 1 1
-1 2 3 4
-1 8 2 8
-Yes
-No
-Yes
+4
+21/05/2001
+10/15/2069
+05/11/1999
+29/02/2024
+DD/MM/YYYY
+MM/DD/YYYY
+BOTH
+DD/MM/YYYY
 Explanation:
-Test Case
-1:
-1
-2
-/1
-3
-=1
-2
-/1
-3
-Test Case
-2:
-1
-2
-/3
-3
-
-=2
-2
-/4
-3
-Test Case
-3:
-1
-2
-/2
-3
-=8
-2
-/8
-3
+Fun fact: 29/02/2024 (read as DD/MM/YYYY) is a leap year day.

@@ -1,32 +1,89 @@
-A Good Set
+Mode of Frequencies
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-A set of integers is called good if there does not exist three distinct elements a, b, c in it such that a + b = c.
-Your task is simple. Just output any good set of n integers. All the elements in this set should be distinct and should lie between 1 and 500, both inclusive.
-Input
-The first line of the input contains an integer T denoting number of test cases. The descriptions of T test cases follow.
-The only line of each test case contains an integer n, denoting the size of the needed good set.
-Output
-For each test case, output a single line containing n integers denoting the elements of the good set, in any order. There can be more than one possible good set, and you can output any one of them.
-Constraints
-1 ≤ T, n ≤ 100
-Subtasks
-Subtask #1 (50 points): 1 ≤ T, n ≤ 10
-Subtask #2 (50 points): original constraints
+Read problem statements in Mandarin Chinese and Russian.
+Chef opted for Bio-Statistics as an Open-Elective course in his university, but soon got bored, and decided to text his friends during lectures. The instructor caught Chef, and decided to punish him, by giving him a special assignment.
+There are
+N numbers in a list
+A=A
+1
+,A
+2
+,…,A
+N
+. Chef needs to find the mode of the frequencies of the numbers. If there are multiple modal values, report the smallest one. In other words, find the frequency of all the numbers, and then find the frequency which has the highest frequency. If multiple such frequencies exist, report the smallest (non-zero) one.
+More formally, for every
+v such that there exists at least one
+i such that
+A
+i
+=v, find the number of
+j such that
+A
+j
+=v, and call that the frequency of
+v, denoted by
+freq(v). Then find the value
+w such that
+freq(v)=w for the most number of
+vs considered in the previous step. If there are multiple values
+w which satisfy this, output the smallest among them.
+As you are one of Chef's friends, help him complete the assignment.
+###Input:
+The first line contains an integer
+T, the number of test cases.
+The first line of each test case contains an integer
+N, the number of values in Chef's assignment.
+The second line of each test case contains
+N space-separated integers,
+A
+i
+, denoting the values in Chef's assignment.
+###Output: For each test case, print the mode of the frequencies of the numbers, in a new line.
+###Constraints
+1≤T≤100
+1≤N≤10000
+1≤A
+i
+≤10
+###Subtasks
+30 points :
+1≤N≤100
+70 points : Original constraints.
 Sample 1:
 Input
 Output
-5
-1
 2
-3
-4
-5
-7
-1 2
-1 2 4
-1 2 4 16
-3 2 15 6 10
+8
+5 9 2 9 7 2 5 3
+9
+5 9 2 9 7 2 5 3 1
+2
+1
 Explanation:
-Example 1 and 2. Any set of size less than or equal to 2 is good by definition.
-Example 3 onwards. For each pair of elements in the set, you can see that their sum doesn't exist in the set.
+Test case 1:
+(2,
+9 and
+5) have frequency
+2, while
+(3 and
+7) have frequency
+1. Three numbers have frequency
+2, while
+2 numbers have frequency
+1. Thus, the mode of the frequencies is
+2.
+Test case 2:
+(2,
+9 and
+5) have frequency
+2, while
+(3,
+1 and
+7) have frequency
+1. Three numbers have frequency
+2, and
+3 numbers have frequency
+1. Since there are two modal values
+1 and
+2, we report the smaller one:
+1.

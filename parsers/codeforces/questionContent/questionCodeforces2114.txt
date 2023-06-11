@@ -1,137 +1,101 @@
-E2. Bitwise Queries (Hard Version)
-time limit per test4 seconds
+B. Toy Blocks
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The only difference between the easy and hard versions is the constraints on the number of queries.
-This is an interactive problem.
-Ridbit has a hidden array
-a
-of
+You are asked to watch your nephew who likes to play with toy blocks in a strange way.
+He has
 n
-integers which he wants Ashish to guess. Note that
-n
-is a power of two. Ashish is allowed to ask three different types of queries. They are of the form
-AND
+boxes and the
 i
-j
-: ask for the bitwise AND of elements
+-th box has
 a
 i
-and
-a
-j
-(1≤i,j≤n
-,
-i≠j)
-OR
+blocks. His game consists of two steps:
+he chooses an arbitrary box
 i
-j
-: ask for the bitwise OR of elements
-a
+;
+he tries to move all blocks from the
 i
-and
-a
-j
-(1≤i,j≤n
-,
-i≠j)
-XOR
+-th box to other boxes.
+If he can make the same number of blocks in each of
+n−1
+other boxes then he will be happy, otherwise, will be sad. Note that your nephew can only move the blocks from the chosen box to the other boxes; he cannot move blocks from the other boxes.
+You don't want to make your nephew sad, so you decided to put several extra blocks into some boxes in such a way that no matter which box
 i
-j
-: ask for the bitwise XOR of elements
-a
-i
-and
-a
-j
-(1≤i,j≤n
-,
-i≠j)
-Can you help Ashish guess the elements of the array?
-In this version, each element takes a value in the range
-[0,n−1]
-(inclusive) and Ashish can ask no more than
-n+1
-queries.
+he chooses he won't be sad. What is the minimum number of extra blocks you need to put?
 Input
-The first line of input contains one integer
+The first line contains a single integer
+t
+(
+1≤t≤1000
+) — the number of test cases.
+The first line of each test case contains the integer
 n
-(4≤n≤
-2
-16
-)
- — the length of the array. It is guaranteed that
+(
+2≤n≤
+10
+5
+) — the number of boxes.
+The second line of each test case contains
 n
-is a power of two.
-Interaction
-To ask a query print a single line containing one of the following (without quotes)
-"AND i j"
-"OR i j"
-"XOR i j"
-where
-i
-and
-j
-(1≤i,j≤n
+integers
+a
+1
 ,
-i≠j)
-denote the indices being queried.
-For each query, you will receive an integer
-x
-whose value depends on the type of query. If the indices queried are invalid or you exceed the number of queries however, you will get
-x=−1
-. In this case, you should terminate the program immediately.
-When you have guessed the elements of the array, print a single line "! " (without quotes), followed by
-n
-space-separated integers  — the elements of the array.
-Guessing the array does not count towards the number of queries asked.
-The interactor is not adaptive. The array
 a
-does not change with queries.
-After printing a query do not forget to output the end of the line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see the documentation for other languages.
-Hacks
-To hack the solution, use the following test format:
-On the first line print a single integer
-n
-(4≤n≤
 2
-16
-)
- — the length of the array. It must be a power of 2. The next line should contain
-n
-space-separated integers in the range
-[0,n−1]
- — the array
+,…,
 a
+n
+(
+0≤
+a
+i
+≤
+10
+9
+) — the number of blocks in each box.
+It's guaranteed that the sum of
+n
+over test cases doesn't exceed
+10
+5
 .
+Output
+For each test case, print a single integer — the minimum number of blocks you need to put. It can be proved that the answer always exists, i. e. the number of blocks is finite.
 Example
 input
 Copy
-4
-
-0
-
-2
-
 3
+3
+3 2 2
+4
+2 2 3 2
+3
+0 3 0
 output
 Copy
-OR 1 2
-
-OR 2 3
-
-XOR 2 4
-
-! 0 0 2 3
+1
+0
+3
 Note
-The array
-a
-in the example is
-[0,0,2,3]
+In the first test case, you can, for example, put one extra block into the first box and make
+a=[4,2,2]
+. If your nephew chooses the box with
+4
+blocks, then we will move two blocks to the second box and two blocks to the third box. If he chooses the box with
+2
+blocks then he will move these two blocks to the other box with
+2
+blocks.
+In the second test case, you don't need to put any extra blocks, since no matter which box your nephew chooses, he can always make other boxes equal.
+In the third test case, you should put
+3
+extra blocks. For example, you can put
+2
+blocks in the first box and
+1
+block in the third box. You'll get array
+a=[2,3,1]
 .

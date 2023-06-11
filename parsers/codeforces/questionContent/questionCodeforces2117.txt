@@ -1,184 +1,137 @@
-C. String Equality
-time limit per test2 seconds
+E2. Bitwise Queries (Hard Version)
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ashish has two strings
+The only difference between the easy and hard versions is the constraints on the number of queries.
+This is an interactive problem.
+Ridbit has a hidden array
 a
-and
-b
-, each of length
+of
 n
-, and an integer
-k
-. The strings only contain lowercase English letters.
-He wants to convert string
-a
-into string
-b
-by performing some (possibly zero) operations on
-a
-.
-In one move, he can either
-choose an index
+integers which he wants Ashish to guess. Note that
+n
+is a power of two. Ashish is allowed to ask three different types of queries. They are of the form
+AND
 i
-(
-1≤i≤n−1
-) and swap
+j
+: ask for the bitwise AND of elements
 a
 i
 and
 a
-i+1
-, or
-choose an index
-i
-(
-1≤i≤n−k+1
-) and if
-a
-i
+j
+(1≤i,j≤n
 ,
+i≠j)
+OR
+i
+j
+: ask for the bitwise OR of elements
 a
-i+1
-,…,
+i
+and
 a
-i+k−1
-are all equal to some character
-c
-(
-c≠
-'z'), replace each one with the next character
-(c+1)
-, that is, 'a' is replaced by 'b', 'b' is replaced by 'c' and so on.
-Note that he can perform any number of operations, and the operations can only be performed on string
+j
+(1≤i,j≤n
+,
+i≠j)
+XOR
+i
+j
+: ask for the bitwise XOR of elements
 a
-.
-Help Ashish determine if it is possible to convert string
+i
+and
 a
-into
-b
-after performing some (possibly zero) operations on it.
+j
+(1≤i,j≤n
+,
+i≠j)
+Can you help Ashish guess the elements of the array?
+In this version, each element takes a value in the range
+[0,n−1]
+(inclusive) and Ashish can ask no more than
+n+1
+queries.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-5
-) — the number of test cases. The description of each test case is as follows.
-The first line of each test case contains two integers
+The first line of input contains one integer
 n
-(
-2≤n≤
-10
-6
-) and
-k
-(
-1≤k≤n
-).
-The second line of each test case contains the string
+(4≤n≤
+2
+16
+)
+ — the length of the array. It is guaranteed that
+n
+is a power of two.
+Interaction
+To ask a query print a single line containing one of the following (without quotes)
+"AND i j"
+"OR i j"
+"XOR i j"
+where
+i
+and
+j
+(1≤i,j≤n
+,
+i≠j)
+denote the indices being queried.
+For each query, you will receive an integer
+x
+whose value depends on the type of query. If the indices queried are invalid or you exceed the number of queries however, you will get
+x=−1
+. In this case, you should terminate the program immediately.
+When you have guessed the elements of the array, print a single line "! " (without quotes), followed by
+n
+space-separated integers  — the elements of the array.
+Guessing the array does not count towards the number of queries asked.
+The interactor is not adaptive. The array
 a
-of length
+does not change with queries.
+After printing a query do not forget to output the end of the line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see the documentation for other languages.
+Hacks
+To hack the solution, use the following test format:
+On the first line print a single integer
 n
-consisting of lowercase English letters.
-The third line of each test case contains the string
-b
-of length
+(4≤n≤
+2
+16
+)
+ — the length of the array. It must be a power of 2. The next line should contain
 n
-consisting of lowercase English letters.
-It is guaranteed that the sum of values
-n
-among all test cases does not exceed
-10
-6
+space-separated integers in the range
+[0,n−1]
+ — the array
+a
 .
-Output
-For each test case, print "Yes" if Ashish can convert
-a
-into
-b
-after some moves, else print "No".
-You may print the letters of the answer in any case (upper or lower).
 Example
 input
 Copy
 4
-3 3
-abc
-bcd
-4 2
-abba
-azza
-2 1
-zz
-aa
-6 2
-aaabba
-ddddcc
+
+0
+
+2
+
+3
 output
 Copy
-No
-Yes
-No
-Yes
+OR 1 2
+
+OR 2 3
+
+XOR 2 4
+
+! 0 0 2 3
 Note
-In the first test case it can be shown that it is impossible to convert
+The array
 a
-into
-b
+in the example is
+[0,0,2,3]
 .
-In the second test case,
-"abba"
-−
-→
-inc
-"acca"
-−
-→
-inc
-…
-−
-→
-inc
-"azza".
-Here "swap" denotes an operation of the first type, and "inc" denotes an operation of the second type.
-In the fourth test case,
-"aaabba"
-−
-→
-−
-−
-swap
-"aaabab"
-−
-→
-−
-−
-swap
-"aaaabb"
-−
-→
-inc
-…
-−
-→
-inc
-"ddaabb"
-−
-→
-inc
-…
-−
-→
-inc
-"ddddbb"
-−
-→
-inc
-…
-−
-→
-inc
-"ddddcc".

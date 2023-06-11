@@ -1,122 +1,157 @@
-C. Complete the MST
-time limit per test3 seconds
-memory limit per test256 megabytes
+E. Tree Calendar
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-As a teacher, Riko Hakozaki often needs to help her students with problems from various subjects. Today, she is asked a programming task which goes as follows.
-You are given an undirected complete graph with
+Yuu Koito and Touko Nanami are newlyweds! On the wedding day, Yuu gifted Touko a directed tree with
 n
-nodes, where some edges are pre-assigned with a positive weight while the rest aren't. You need to assign all unassigned edges with non-negative weights so that in the resulting fully-assigned complete graph the XOR sum of all weights would be equal to
-0
-.
-Define the ugliness of a fully-assigned complete graph the weight of its minimum spanning tree, where the weight of a spanning tree equals the sum of weights of its edges. You need to assign the weights so that the ugliness of the resulting graph is as small as possible.
-As a reminder, an undirected complete graph with
-n
-nodes contains all edges
-(u,v)
-with
-1≤u<v≤n
-; such a graph has
-n(n−1)
-2
-edges.
-She is not sure how to solve this problem, so she asks you to solve it for her.
-Input
-The first line contains two integers
-n
-and
-m
-(
-2≤n≤2⋅
-10
-5
-,
-0≤m≤min(2⋅
-10
-5
-,
-n(n−1)
-2
-−1)
-)  — the number of nodes and the number of pre-assigned edges. The inputs are given so that there is at least one unassigned edge.
-The
-i
--th of the following
-m
-lines contains three integers
+nodes and rooted at
+1
+, and a labeling
+a
+which is some DFS order of the tree. Every edge in this tree is directed away from the root.
+After calling dfs(1) the following algorithm returns
+a
+as a DFS order of a tree rooted at
+1
+:
+
+order := 0
+a := array of length n 
+
+function dfs(u):
+    order := order + 1
+    a[u] := order
+    for all v such that there is a directed edge (u -> v):
+        dfs(v)
+Note that there may be different DFS orders for a given tree.
+Touko likes the present so much she decided to play with it! On each day following the wedding day, Touko performs this procedure once:
+Among all directed edges
+u→v
+such that
+a
 u
-i
-,
+<
+a
 v
-i
-, and
-w
-i
+, select the edge
+u
+′
+→
+v
+′
+with the lexicographically smallest pair
+(
+a
+u
+′
+,
+a
+v
+′
+)
+.
+Swap
+a
+u
+′
+and
+a
+v
+′
+.
+Days have passed since their wedding, and Touko has somehow forgotten which date the wedding was and what was the original labeling
+a
+! Fearing that Yuu might get angry, Touko decided to ask you to derive these two pieces of information using the current labeling.
+Being her good friend, you need to find the number of days that have passed since the wedding, and the original labeling of the tree. However, there is a chance that Touko might have messed up her procedures, which result in the current labeling being impossible to obtain from some original labeling; in that case, please inform Touko as well.
+Input
+The first line of the input contains an integer
+n
+(
+2≤n≤3⋅
+10
+5
+) — the number of nodes on the tree.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+, ...,
+a
+n
 (
 1≤
-u
-i
-,
-v
+a
 i
 ≤n
+, all
+a
+i
+are distinct) — the current labeling of the tree.
+Each of the next
+n−1
+lines contains two integers
+u
+i
+and
+v
+i
+(
+1≤u,v≤n
 ,
 u≠v
-,
-1≤
-w
-i
-<
-2
-30
-), representing the edge from
+), describing an directed edge from
 u
 i
 to
 v
 i
-has been pre-assigned with the weight
-w
-i
-. No edge appears in the input more than once.
-Output
-Print on one line one integer  — the minimum ugliness among all weight assignments with XOR sum equal to
-0
+. The edges form a directed tree rooted at
+1
 .
+Output
+If the current labeling is impossible to arrive at from any DFS order, print NO.
+Else, on the first line, print YES. On the second line, print a single integer denoting the number of days since the wedding. On the third line, print
+n
+numbers space-separated denoting the original labeling of the tree.
+If there are multiple correct outputs, print any. This means: you are allowed to output any pair (DFS order, number of days), such that we get the current configuration from the DFS order you provided in exactly the number of days you provided.
 Examples
 input
 Copy
-4 4
-2 1 14
-1 4 14
-3 2 15
-4 3 8
+7
+4 5 2 1 7 6 3
+1 5
+7 6
+1 2
+2 7
+3 4
+1 3
 output
 Copy
-15
+YES
+5
+1 4 2 3 7 6 5
 input
 Copy
-6 6
-3 6 4
-2 4 1
-4 5 7
-3 4 10
-3 5 1
-5 2 15
+7
+7 6 5 3 1 4 2
+4 3
+2 5
+3 7
+1 4
+7 2
+2 6
 output
 Copy
-0
-input
-Copy
-5 6
-2 3 11
-5 3 7
-1 4 10
-2 4 14
-4 3 8
-2 5 6
-output
-Copy
-6
+NO
 Note
-The following image showcases the first test case. The black weights are pre-assigned from the statement, the red weights are assigned by us, and the minimum spanning tree is denoted by the blue edges.
+The following animation showcases the first sample test case. The white label inside the node represents the index of the node
+i
+, while the boxed orange label represents the value
+a
+i
+.

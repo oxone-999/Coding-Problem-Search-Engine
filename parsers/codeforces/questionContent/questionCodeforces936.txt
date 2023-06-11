@@ -1,157 +1,214 @@
-H. Zigu Zagu
+A. Subtle Substring Subtraction
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have a binary string
-a
-of length
-n
-consisting only of digits
-0
-and
+Alice and Bob are playing a game with strings. There will be
+t
+rounds in the game. In each round, there will be a string
+s
+consisting of lowercase English letters.
+Alice moves first and both the players take alternate turns. Alice is allowed to remove any substring of even length (possibly empty) and Bob is allowed to remove any substring of odd length from
+s
+.
+More formally, if there was a string
+s=
+s
 1
-.
-You are given
-q
-queries. In the
-i
--th query, you are given two indices
-l
-and
-r
-such that
-1≤l≤r≤n
-.
-Let
-s=a[l,r]
-. You are allowed to do the following operation on
 s
-:
-Choose two indices
-x
-and
-y
-such that
-1≤x≤y≤|s|
-. Let
-t
-be the substring
-t=s[x,y]
-. Then for all
-1≤i≤|t|−1
-, the condition
-t
-i
-≠
-t
-i+1
-has to hold. Note that
-x=y
-is always a valid substring.
-Delete the substring
-s[x,y]
-from
+2
+…
 s
-.
-For each of the
-q
-queries, find the minimum number of operations needed to make
-s
-an empty string.
-Note that for a string
-s
-,
-s[l,r]
-denotes the subsegment
+k
+the player can choose a substring
 s
 l
-,
 s
 l+1
-,…,
+…
+s
+r−1
 s
 r
+with length of corresponding parity and remove it. After that the string will become
+s=
+s
+1
+…
+s
+l−1
+s
+r+1
+…
+s
+k
 .
+After the string becomes empty, the round ends and each player calculates his/her score for this round. The score of a player is the sum of values of all characters removed by him/her. The value of
+a
+is
+1
+, the value of
+b
+is
+2
+, the value of
+c
+is
+3
+,
+…
+, and the value of
+z
+is
+26
+. The player with higher score wins the round. For each round, determine the winner and the difference between winner's and loser's scores. Assume that both players play optimally to maximize their score. It can be proved that a draw is impossible.
 Input
-The first line contains two integers
-n
-and
-q
+The first line of input contains a single integer
+t
 (
-1≤n,q≤2⋅
+1≤t≤5⋅
+10
+4
+) denoting the number of rounds.
+Each of the next
+t
+lines contain a single string
+s
+(
+1≤|s|≤2⋅
 10
 5
-)  — the length of the binary string
-a
-and the number of queries respectively.
-The second line contains a binary string
-a
-of length
-n
-(
-a
-i
-∈{0,1}
-).
-Each of the next
-q
-lines contains two integers
-l
-and
-r
-(
-1≤l≤r≤n
-)  — representing the substring of each query.
+) consisting of lowercase English letters, denoting the string used for the round. Here
+|s|
+denotes the length of the string
+s
+.
+It is guaranteed that the sum of
+|s|
+over all rounds does not exceed
+2⋅
+10
+5
+.
 Output
-Print
-q
-lines, the
-i
--th line representing the minimum number of operations needed for the
-i
--th query.
-Examples
+For each round, print a single line containing a string and an integer. If Alice wins the round, the string must be "Alice". If Bob wins the round, the string must be "Bob". The integer must be the difference between their scores assuming both players play optimally.
+Example
 input
 Copy
-5 3
-11011
-2 4
-1 5
-3 5
+5
+aba
+abc
+cba
+n
+codeforces
 output
 Copy
-1
-3
-2
-input
-Copy
-10 3
-1001110110
-1 10
-2 5
-5 10
-output
-Copy
-4
-2
-3
+Alice 2
+Alice 4
+Alice 4
+Bob 14
+Alice 93
 Note
-In the first test case,
-The substring is
-101
-, so we can do one operation to make the substring empty.
-The substring is
-11011
-, so we can do one operation on
-s[2,4]
-to make
-11
-, then use two more operations to make the substring empty.
-The substring is
-011
-, so we can do one operation on
-s[1,2]
-to make
+For the first round,
+"aba"
+−
+→
+−
+−
+Alice
+"aba"
+→
+"a"
+−
+→
+−
+Bob
+"a"
+→
+""
+. Alice's total score is
+1+2=3
+. Bob's total score is
 1
-, then use one more operation to make the substring empty.
+.
+For the second round,
+"abc"
+−
+→
+−
+−
+Alice
+"abc"
+→
+"a"
+−
+→
+−
+Bob
+"a"
+→
+""
+. Alice's total score is
+2+3=5
+. Bob's total score is
+1
+.
+For the third round,
+"cba"
+−
+→
+−
+−
+Alice
+"cba"
+→
+"a"
+−
+→
+−
+Bob
+"a"
+→
+""
+. Alice's total score is
+3+2=5
+. Bob's total score is
+1
+.
+For the fourth round,
+"n"
+−
+→
+−
+−
+Alice
+"n"
+→
+"n"
+−
+→
+−
+Bob
+"n"
+→
+""
+. Alice's total score is
+0
+. Bob's total score is
+14
+.
+For the fifth round,
+"codeforces"
+−
+→
+−
+−
+Alice
+"codeforces"
+→
+""
+. Alice's total score is
+3+15+4+5+6+15+18+3+5+19=93
+. Bob's total score is
+0
+.

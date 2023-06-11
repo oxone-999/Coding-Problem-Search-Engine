@@ -1,86 +1,188 @@
-D. Beautiful Array
+E. Guess the Root
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
+Jury picked a polynomial
+f(x)=
 a
-consisting of
-n
-integers. Beauty of array is the maximum sum of some consecutive subarray of this array (this subarray may be empty). For example, the beauty of the array [10, -5, 10, -4, 1] is 15, and the beauty of the array [-3, -5, -1] is 0.
-You may choose at most one consecutive subarray of
-a
-and multiply all values contained in this subarray by
-x
-. You want to maximize the beauty of array after applying at most one such operation.
-Input
-The first line contains two integers
-n
-and
-x
-(
-1≤n≤3⋅
-10
-5
-,−100≤x≤100
-) — the length of array
-a
-and the integer
-x
-respectively.
-The second line contains
-n
-integers
+0
++
 a
 1
-,
+⋅x+
 a
 2
-,…,
+⋅
+x
+2
++⋯+
 a
-n
-(
-−
-10
-9
-≤
+k
+⋅
+x
+k
+.
+k≤10
+and all
 a
 i
-≤
+are integer numbers and
+0≤
+a
+i
+<
 10
-9
-) — the array
+6
++3
+. It's guaranteed that there is at least one
+i
+such that
 a
+i
+>0
 .
-Output
-Print one integer — the maximum possible beauty of array
-a
-after multiplying all values belonging to some consecutive subarray
+Now jury wants you to find such an integer
 x
+0
+that
+f(
+x
+0
+)≡0mod(
+10
+6
++3)
+or report that there is not such
+x
+0
 .
+You can ask no more than
+50
+queries: you ask value
+x
+q
+and jury tells you value
+f(
+x
+q
+)mod(
+10
+6
++3)
+.
+Note that printing the answer doesn't count as a query.
+Interaction
+To ask a question, print "?
+x
+q
+"
+(0≤
+x
+q
+<
+10
+6
++3)
+. The judge will respond with a single integer
+f(
+x
+q
+)mod(
+10
+6
++3)
+. If you ever get a result of
+−1
+(because you printed an invalid query), exit immediately to avoid getting other verdicts.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+When you are ready to answer, print "!
+x
+0
+" where
+x
+0
+is the answer or
+−1
+if there is no such
+x
+0
+.
+You can ask at most
+50
+questions per test case.
+Hack Format
+To hack, use the following format.
+The only line should contain
+11
+integers
+a
+0
+,
+a
+1
+,…,
+a
+10
+(
+0≤
+a
+i
+<
+10
+6
++3
+,
+max
+0≤i≤10
+a
+i
+>0
+) — corresponding coefficients of the polynomial.
 Examples
 input
 Copy
-5 -2
--3 8 -2 1 -6
-output
-Copy
-22
-input
-Copy
-12 -3
-1 3 3 7 1 3 3 7 1 3 3 7
-output
-Copy
-42
-input
-Copy
-5 10
--1 -2 -3 -4 -5
-output
-Copy
+ 
+1000002
+
 0
+output
+Copy
+? 0
+
+? 1
+
+! 1
+input
+Copy
+ 
+5
+
+2
+
+1
+output
+Copy
+? 2
+
+? 1
+
+? 0
+
+! -1
 Note
-In the first test case we need to multiply the subarray [-2, 1, -6], and the array becomes [-3, 8, 4, -2, 12] with beauty 22 ([-3, 8, 4, -2, 12]).
-In the second test case we don't need to multiply any subarray at all.
-In the third test case no matter which subarray we multiply, the beauty of array will be equal to 0.
+The polynomial in the first sample is
+1000002+
+x
+2
+.
+The polynomial in the second sample is
+1+
+x
+2
+.

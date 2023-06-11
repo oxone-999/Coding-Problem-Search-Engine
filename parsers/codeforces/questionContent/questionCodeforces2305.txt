@@ -1,138 +1,106 @@
-A. Finding Sasuke
+D. Shurikens
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Naruto has sneaked into the Orochimaru's lair and is now looking for Sasuke. There are
-T
-rooms there. Every room has a door into it, each door can be described by the number
+Tenten runs a weapon shop for ninjas. Today she is willing to sell
 n
-of seals on it and their integer energies
-a
+shurikens which cost
 1
 ,
-a
 2
 , ...,
-a
 n
-. All energies
-a
-i
-are nonzero and do not exceed
-100
-by absolute value. Also,
-n
-is even.
-In order to open a door, Naruto must find such
-n
-seals with integer energies
-b
-1
-,
-b
-2
-, ...,
-b
-n
-that the following equality holds:
-a
-1
-⋅
-b
-1
-+
-a
-2
-⋅
-b
-2
-+...+
-a
-n
-⋅
-b
-n
-=0
-. All
-b
-i
-must be nonzero as well as
-a
-i
-are, and also must not exceed
-100
-by absolute value. Please find required seals for every room there.
+ryo (local currency). During a day, Tenten will place the shurikens onto the showcase, which is empty at the beginning of the day. Her job is fairly simple: sometimes Tenten places another shuriken (from the available shurikens) on the showcase, and sometimes a ninja comes in and buys a shuriken from the showcase. Since ninjas are thrifty, they always buy the cheapest shuriken from the showcase.
+Tenten keeps a record for all events, and she ends up with a list of the following types of records:
++ means that she placed another shuriken on the showcase;
+- x means that the shuriken of price
+x
+was bought.
+Today was a lucky day, and all shurikens were bought. Now Tenten wonders if her list is consistent, and what could be a possible order of placing the shurikens on the showcase. Help her to find this out!
 Input
 The first line contains the only integer
-T
-(
-1≤T≤1000
-) standing for the number of rooms in the Orochimaru's lair. The other lines contain descriptions of the doors.
-Each description starts with the line containing the only even integer
 n
 (
-2≤n≤100
-) denoting the number of seals.
-The following line contains the space separated sequence of nonzero integers
-a
+1≤n≤
+10
+5
+) standing for the number of shurikens.
+The following
+2n
+lines describe the events in the format described above. It's guaranteed that there are exactly
+n
+events of the first type, and each price from
 1
-,
-a
-2
-, ...,
-a
+to
 n
-(
-|
-a
-i
-|≤100
-,
-a
-i
-≠0
-) denoting the energies of seals.
+occurs exactly once in the events of the second type.
 Output
-For each door print a space separated sequence of nonzero integers
-b
-1
-,
-b
-2
-, ...,
-b
+If the list is consistent, print "YES". Otherwise (that is, if the list is contradictory and there is no valid order of shurikens placement), print "NO".
+In the first case the second line must contain
 n
-(
-|
-b
-i
-|≤100
-,
-b
-i
-≠0
-) denoting the seals that can open the door. If there are multiple valid answers, print any. It can be proven that at least one answer always exists.
-Example
+space-separated integers denoting the prices of shurikens in order they were placed. If there are multiple answers, print any.
+Examples
 input
 Copy
-2
-2
-1 100
 4
-1 2 3 6
++
++
+- 2
++
+- 3
++
+- 1
+- 4
 output
 Copy
--100 1
-1 1 1 -1
+YES
+4 2 3 1 
+input
+Copy
+1
+- 1
++
+output
+Copy
+NO
+input
+Copy
+3
++
++
++
+- 2
+- 1
+- 3
+output
+Copy
+NO
 Note
-For the first door Naruto can use energies
-[−100,1]
-. The required equality does indeed hold:
-1⋅(−100)+100⋅1=0
-.
-For the second door Naruto can use, for example, energies
-[1,1,1,−1]
-. The required equality also holds:
-1⋅1+2⋅1+3⋅1+6⋅(−1)=0
-.
+In the first example Tenten first placed shurikens with prices
+4
+and
+2
+. After this a customer came in and bought the cheapest shuriken which costed
+2
+. Next, Tenten added a shuriken with price
+3
+on the showcase to the already placed
+4
+-ryo. Then a new customer bought this
+3
+-ryo shuriken. After this she added a
+1
+-ryo shuriken. Finally, the last two customers bought shurikens
+1
+and
+4
+, respectively. Note that the order
+[2,4,3,1]
+is also valid.
+In the second example the first customer bought a shuriken before anything was placed, which is clearly impossible.
+In the third example Tenten put all her shurikens onto the showcase, after which a customer came in and bought a shuriken with price
+2
+. This is impossible since the shuriken was not the cheapest, we know that the
+1
+-ryo shuriken was also there.

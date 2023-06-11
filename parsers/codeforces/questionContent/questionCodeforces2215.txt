@@ -1,133 +1,121 @@
-B. Belted Rooms
+E. Carrots for Rabbits
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-In the snake exhibition, there are
+There are some rabbits in Singapore Zoo. To feed them, Zookeeper bought
 n
-rooms (numbered
-0
-to
-n−1
-) arranged in a circle, with a snake in each room. The rooms are connected by
-n
-conveyor belts, and the
-i
--th conveyor belt connects the rooms
-i
-and
-(i+1)modn
-. In the other words, rooms
-0
-and
+carrots with lengths
+a
 1
 ,
-1
-and
+a
 2
 ,
-…
-,
-n−2
-and
-n−1
-,
-n−1
-and
-0
-are connected with conveyor belts.
-The
-i
--th conveyor belt is in one of three states:
-If it is clockwise, snakes can only go from room
-i
-to
-(i+1)modn
-.
-If it is anticlockwise, snakes can only go from room
-(i+1)modn
-to
-i
-.
-If it is off, snakes can travel in either direction.
-Above is an example with
-4
-rooms, where belts
-0
-and
+a
 3
-are off,
-1
-is clockwise, and
+,…,
+a
+n
+. However, rabbits are very fertile and multiply very quickly. Zookeeper now has
+k
+rabbits and does not have enough carrots to feed all of them. To solve this problem, Zookeeper decided to cut the carrots into
+k
+pieces. For some reason, all resulting carrot lengths must be positive integers.
+Big carrots are very difficult for rabbits to handle and eat, so the time needed to eat a carrot of size
+x
+is
+x
 2
-is anticlockwise.
-Each snake wants to leave its room and come back to it later. A room is returnable if the snake there can leave the room, and later come back to it using the conveyor belts. How many such returnable rooms are there?
+.
+Help Zookeeper split his carrots while minimizing the sum of time taken for rabbits to eat the carrots.
 Input
-Each test contains multiple test cases. The first line contains a single integer
-t
-(
-1≤t≤1000
-): the number of test cases. The description of the test cases follows.
-The first line of each test case description contains a single integer
+The first line contains two integers
 n
-(
-2≤n≤300000
-): the number of rooms.
-The next line of each test case description contains a string
-s
-of length
+and
+k
+(1≤n≤k≤
+10
+5
+)
+: the initial number of carrots and the number of rabbits.
+The next line contains
 n
-, consisting of only '<', '>' and '-'.
-If
-s
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(1≤
+a
 i
-=
-'>', the
-i
--th conveyor belt goes clockwise.
-If
-s
-i
-=
-'<', the
-i
--th conveyor belt goes anticlockwise.
-If
-s
-i
-=
-'-', the
-i
--th conveyor belt is off.
+≤
+10
+6
+)
+: lengths of carrots.
 It is guaranteed that the sum of
-n
-among all test cases does not exceed
-300000
+a
+i
+is at least
+k
 .
 Output
-For each test case, output the number of returnable rooms.
-Example
+Output one integer: the minimum sum of time taken for rabbits to eat carrots.
+Examples
 input
 Copy
-4
-4
--><-
-5
->>>>>
-3
-<--
-2
-<>
+3 6
+5 3 1
 output
 Copy
-3
-5
-3
-0
+15
+input
+Copy
+1 4
+19
+output
+Copy
+91
 Note
-In the first test case, all rooms are returnable except room
+For the first test, the optimal sizes of carrots are
+{1,1,1,2,2,2}
+. The time taken is
+1
 2
-. The snake in the room
++
+1
 2
-is trapped and cannot exit. This test case corresponds to the picture from the problem statement.
-In the second test case, all rooms are returnable by traveling on the series of clockwise belts.
++
+1
+2
++
+2
+2
++
+2
+2
++
+2
+2
+=15
+For the second test, the optimal sizes of carrots are
+{4,5,5,5}
+. The time taken is
+4
+2
++
+5
+2
++
+5
+2
++
+5
+2
+=91
+.

@@ -1,43 +1,31 @@
-C. Elemental Decompress
-time limit per test2 seconds
+D. Lucky Permutation
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of
-n
-integers.
-Find two permutations
+You are given a permutation
 †
 †
 p
-and
-q
 of length
 n
-such that
-max(
+.
+In one operation, you can choose two indices
+1≤i<j≤n
+and swap
 p
 i
-,
-q
-i
-)=
-a
-i
-for all
-1≤i≤n
-or report that such
+with
 p
-and
-q
-do not exist.
+j
+.
+Find the minimum number of operations needed to have exactly one inversion
+‡
+‡
+in the permutation.
 †
 †
-A permutation of length
-n
-is an array consisting of
+A permutation is an array consisting of
 n
 distinct integers from
 1
@@ -56,6 +44,21 @@ n=3
 but there is
 4
 in the array).
+‡
+‡
+The number of inversions of a permutation
+p
+is the number of pairs of indices
+(i,j)
+such that
+1≤i<j≤n
+and
+p
+i
+>
+p
+j
+.
 Input
 The first line contains a single integer
 t
@@ -67,30 +70,30 @@ t
 The first line of each test case contains a single integer
 n
 (
-1≤n≤2⋅
+2≤n≤2⋅
 10
 5
 ).
 The second line of each test case contains
 n
 integers
-a
+p
 1
 ,
-a
+p
 2
 ,…,
-a
+p
 n
 (
 1≤
-a
+p
 i
 ≤n
-) — the array
-a
-.
-It is guaranteed that the total sum of
+). It is guaranteed that
+p
+is a permutation.
+It is guaranteed that the sum of
 n
 over all test cases does not exceed
 2⋅
@@ -98,128 +101,49 @@ over all test cases does not exceed
 5
 .
 Output
-For each test case, if there do not exist
-p
-and
-q
-that satisfy the conditions, output "NO" (without quotes).
-Otherwise, output "YES" (without quotes) and then output
-2
-lines. The first line should contain
-n
-integers
-p
-1
-,
-p
-2
-,…,
-p
-n
-and the second line should contain
-n
-integers
-q
-1
-,
-q
-2
-,…,
-q
-n
-.
-If there are multiple solutions, you may output any of them.
-You can output "YES" and "NO" in any case (for example, strings "yEs", "yes" and "Yes" will be recognized as a positive response).
+For each test case output a single integer — the minimum number of operations needed to have exactly one inversion in the permutation. It can be proven that an answer always exists.
 Example
 input
 Copy
-3
-1
-1
-5
-5 3 4 2 5
+4
 2
-1 1
+2 1
+2
+1 2
+4
+3 4 1 2
+4
+2 4 3 1
 output
 Copy
-YES
-1 
-1 
-YES
-1 3 4 2 5 
-5 2 3 1 4 
-NO
+0
+1
+3
+1
 Note
-In the first test case,
-p=q=[1]
-. It is correct since
-a
-1
-=max(
-p
-1
-,
-q
-1
-)=1
-.
-In the second test case,
-p=[1,3,4,2,5]
-and
-q=[5,2,3,1,4]
-. It is correct since:
-a
-1
-=max(
-p
-1
-,
-q
-1
-)=max(1,5)=5
-,
-a
-2
-=max(
-p
-2
-,
-q
-2
-)=max(3,2)=3
-,
-a
+In the first test case, the permutation already satisfies the condition.
+In the second test case, you can perform the operation with
+(i,j)=(1,2)
+, after that the permutation will be
+[2,1]
+which has exactly one inversion.
+In the third test case, it is not possible to satisfy the condition with less than
 3
-=max(
-p
+operations. However, if we perform
 3
+operations with
+(i,j)
+being
+(1,3)
 ,
-q
-3
-)=max(4,3)=4
-,
-a
-4
-=max(
-p
-4
-,
-q
-4
-)=max(2,1)=2
-,
-a
-5
-=max(
-p
-5
-,
-q
-5
-)=max(5,4)=5
-.
-In the third test case, one can show that no such
-p
-and
-q
-exist.
+(2,4)
+, and
+(3,4)
+in that order, the final permutation will be
+[1,2,4,3]
+which has exactly one inversion.
+In the fourth test case, you can perform the operation with
+(i,j)=(2,4)
+, after that the permutation will be
+[2,1,3,4]
+which has exactly one inversion.

@@ -1,99 +1,190 @@
-C1. Errich-Tac-Toe (Easy Version)
+E. Capitalism
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The only difference between the easy and hard versions is that tokens of type O do not appear in the input of the easy version.
-Errichto gave Monogon the following challenge in order to intimidate him from taking his top contributor spot on Codeforces.
-In a Tic-Tac-Toe grid, there are
+A society can be represented by a connected, undirected graph of
 n
-rows and
-n
-columns. Each cell of the grid is either empty or contains a token. There are two types of tokens: X and O. If there exist three tokens of the same type consecutive in a row or column, it is a winning configuration. Otherwise, it is a draw configuration.
-The patterns in the first row are winning configurations. The patterns in the second row are draw configurations.
-In an operation, you can change an X to an O, or an O to an X. Let
-k
-denote the total number of tokens in the grid. Your task is to make the grid a draw in at most
-⌊
-k
-3
-⌋
-(rounding down) operations.
-You are not required to minimize the number of operations.
-Input
-The first line contains a single integer
-t
-(
-1≤t≤100
-) — the number of test cases.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤300
-) — the size of the grid.
-The following
-n
-lines each contain a string of
-n
-characters, denoting the initial grid. The character in the
+vertices and
+m
+edges. The vertices represent people, and an edge
+(i,j)
+represents a friendship between people
 i
--th row and
+and
 j
--th column is '.' if the cell is empty, or it is the type of token in the cell: 'X' or 'O'.
-It is guaranteed that not all cells are empty.
-In the easy version, the character 'O' does not appear in the input.
-The sum of
-n
-across all test cases does not exceed
-300
 .
+In society, the
+i
+-th person has an income
+a
+i
+. A person
+i
+is envious of person
+j
+if
+a
+j
+=
+a
+i
++1
+. That is if person
+j
+has exactly
+1
+more unit of income than person
+i
+.
+The society is called capitalist if for every pair of friends one is envious of the other. For some friendships, you know which friend is envious of the other. For the remaining friendships, you do not know the direction of envy.
+The income inequality of society is defined as
+max
+1≤i≤n
+a
+i
+−
+min
+1≤i≤n
+a
+i
+.
+You only know the friendships and not the incomes. If it is impossible for this society to be capitalist with the given knowledge, you should report about it. Otherwise, you should find an assignment of incomes in which the society is capitalist, and the income inequality is maximized.
+Input
+The first line contains two integers
+n
+,
+m
+(
+1≤n≤200
+,
+n−1≤m≤2000
+) — the number of people and friendships, respectively.
+The following
+m
+lines describe the friendships. Each friendship is described by three integers
+i
+,
+j
+,
+b
+(
+1≤i,j≤n,i≠j,0≤b≤1
+). This denotes that people
+i
+and
+j
+are friends. If
+b=1
+, we require that person
+i
+is envious of person
+j
+. If
+b=0
+, one friend should be envious of the other in either direction.
+There is at most one friendship between each pair of people. It is guaranteed that if we consider the friendships as undirected edges, the graph is connected.
 Output
-For each test case, print the state of the grid after applying the operations.
-We have proof that a solution always exists. If there are multiple solutions, print any.
-Example
+Print "YES" if it is possible that the society is capitalist, or "NO" otherwise. You can print characters in any case (upper or lower).
+If the answer is "YES", you should print two additional lines. In the first line, print the maximum possible income inequality. On the next line you should print
+n
+integers
+a
+1
+,…,
+a
+n
+(
+0≤
+a
+i
+≤
+10
+6
+), where
+a
+i
+denotes the income of the
+i
+-th person.
+We can prove that if there exists a solution, there exists one where
+0≤
+a
+i
+≤
+10
+6
+for all
+i
+.
+If there exist multiple solutions, print any.
+Examples
 input
 Copy
-3
-3
-.X.
-XXX
-.X.
-6
-XX.XXX
-XXXXXX
-XXX.XX
-XXXXXX
-XX.X.X
-XXXXXX
-5
-XXX.X
-.X..X
-XXX.X
-..X..
-..X..
+6 6
+1 2 0
+3 2 0
+2 5 0
+6 5 1
+6 3 0
+2 4 1
 output
 Copy
-.X.
-XOX
-.X.
-XX.XXO
-XOXXOX
-OXX.XX
-XOOXXO
-XX.X.X
-OXXOXX
-XOX.X
-.X..X
-XXO.O
-..X..
-..X..
+YES
+3
+3 2 1 3 1 0 
+input
+Copy
+4 4
+1 2 1
+2 3 0
+3 4 1
+4 1 1
+output
+Copy
+NO
+input
+Copy
+1 0
+output
+Copy
+YES
+0
+0 
 Note
-In the first test case, there are initially three 'X' consecutive in the second row and the second column. By changing the middle token to 'O' we make the grid a draw, and we only changed
-1≤⌊5/3⌋
-token.
-In the second test case, we change only
-9≤⌊32/3⌋
-tokens, and there does not exist any three 'X' or 'O' consecutive in a row or column, so it is a draw.
-In the third test case, we change only
-3≤⌊12/3⌋
-tokens, and the resulting grid is a draw.
+In the first test, we can show that an income inequality greater than
+3
+is impossible for the given society. In the given answer with income inequality equal to
+3
+:
+Person
+2
+is envious of person
+1
+.
+Person
+3
+is envious of person
+2
+.
+Person
+5
+is envious of person
+2
+.
+Person
+6
+is envious of person
+5
+(the required direction is satisfied).
+Person
+6
+is envious of person
+3
+.
+Person
+2
+is envious of person
+4
+(the required direction is satisfied).
+In the second test, we can show that there is no way to assign incomes to satisfy all requirements.

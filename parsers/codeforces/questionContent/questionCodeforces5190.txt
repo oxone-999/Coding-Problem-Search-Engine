@@ -1,49 +1,30 @@
-E. Surprise me!
-time limit per test8 seconds
+D. Hitchhiking in the Baltic States
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Tired of boring dates, Leha and Noora decided to play a game.
-Leha found a tree with n vertices numbered from 1 to n. We remind you that tree is an undirected graph without cycles. Each vertex v of a tree has a number av written on it. Quite by accident it turned out that all values written on vertices are distinct and are natural numbers between 1 and n.
-The game goes in the following way. Noora chooses some vertex u of a tree uniformly at random and passes a move to Leha. Leha, in his turn, chooses (also uniformly at random) some vertex v from remaining vertices of a tree (v ≠ u). As you could guess there are n(n - 1) variants of choosing vertices by players. After that players calculate the value of a function f(u, v) = φ(au·av) · d(u, v) of the chosen vertices where φ(x) is Euler's totient function and d(x, y) is the shortest distance between vertices x and y in a tree.
-Soon the game became boring for Noora, so Leha decided to defuse the situation and calculate expected value of function f over all variants of choosing vertices u and v, hoping of at least somehow surprise the girl.
-Leha asks for your help in calculating this expected value. Let this value be representable in the form of an irreducible fraction . To further surprise Noora, he wants to name her the value .
-Help Leha!
+Leha and Noora decided to go on a trip in the Baltic States. As you know from the previous problem, Leha has lost his car on the parking of the restaurant. Unfortunately, requests to the watchman didn't helped hacker find the car, so friends decided to go hitchhiking.
+In total, they intended to visit n towns. However it turned out that sights in i-th town are open for visitors only on days from li to ri.
+What to do? Leha proposed to choose for each town i a day, when they will visit this town, i.e any integer xi in interval [li, ri]. After that Noora choses some subsequence of towns id1, id2, ..., idk, which friends are going to visit, that at first they are strictly increasing, i.e idi < idi + 1 is for all integers i from 1 to k - 1, but also the dates of the friends visits are strictly increasing, i.e xidi < xidi + 1 is true for all integers i from 1 to k - 1.
+Please help Leha and Noora in choosing such xi for each town i, and such subsequence of towns id1, id2, ..., idk, so that friends can visit maximal number of towns.
+You may assume, that Leha and Noora can start the trip any day.
 Input
-The first line of input contains one integer number n (2 ≤ n ≤ 2·105)  — number of vertices in a tree.
-The second line contains n different numbers a1, a2, ..., an (1 ≤ ai ≤ n) separated by spaces, denoting the values written on a tree vertices.
-Each of the next n - 1 lines contains two integer numbers x and y (1 ≤ x, y ≤ n), describing the next edge of a tree. It is guaranteed that this set of edges describes a tree.
+The first line contains a single integer n (1 ≤ n ≤ 3·105) denoting the number of towns Leha and Noora intended to visit.
+Each line i of the n subsequent lines contains two integers li, ri (1 ≤ li ≤ ri ≤ 109), denoting that sights in i-th town are open for visitors on any day .
 Output
-In a single line print a number equal to P·Q - 1 modulo 109 + 7.
-Examples
-input
-Copy
-3
-1 2 3
-1 2
-2 3
-output
-Copy
-333333338
+Print a single integer denoting the maximal number of towns, that Leha and Noora can visit.
+Example
 input
 Copy
 5
-5 4 3 1 2
-3 5
+6 6
 1 2
-4 3
-2 5
+3 4
+2 2
+1 4
 output
 Copy
-8
+3
 Note
-Euler's totient function φ(n) is the number of such i that 1 ≤ i ≤ n,and gcd(i, n) = 1, where gcd(x, y) is the greatest common divisor of numbers x and y.
-There are 6 variants of choosing vertices by Leha and Noora in the first testcase:
-u = 1, v = 2, f(1, 2) = φ(a1·a2)·d(1, 2) = φ(1·2)·1 = φ(2) = 1
-u = 2, v = 1, f(2, 1) = f(1, 2) = 1
-u = 1, v = 3, f(1, 3) = φ(a1·a3)·d(1, 3) = φ(1·3)·2 = 2φ(3) = 4
-u = 3, v = 1, f(3, 1) = f(1, 3) = 4
-u = 2, v = 3, f(2, 3) = φ(a2·a3)·d(2, 3) = φ(2·3)·1 = φ(6) = 2
-u = 3, v = 2, f(3, 2) = f(2, 3) = 2
-Expected value equals to . The value Leha wants to name Noora is 7·3 - 1 = 7·333333336 = 333333338 .
-In the second testcase expected value equals to , so Leha will have to surprise Hoora by number 8·1 - 1 = 8 .
+Consider the first example.
+Let's take this plan: let's visit the sight in the second town on the first day, in the third town on the third day and in the fifth town on the fourth. That's would be the optimal answer.

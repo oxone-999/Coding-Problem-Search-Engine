@@ -1,37 +1,155 @@
-Art in Digital Age
+Convert Strings by Flips
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Being a CS student, Ron really don't understand why he has to take a compulsory course called "Art in Digital Age". The objective of this course from what his school said is to help the CS students release the stress by doing something new other from coding/programming. The problem is Ron really love coding and he doesn't care about other stuff. This course even gives him more stress. However, like it or not Ron still need to try his best not to let this course ruins his great GPA. Can you help him with his first assignment which is described below.
-In this assignment, Ron is given an N×N pixels image called sample image. Ron is required to create a copy of the sample image using an simple graphic painting program called SMPaint. Only two types of operation can be used in SMPaint:
-Init: Make the new image with the specific size, all the pixels of the new image are white.
-Paint: User gives 5 integers C, U, D, L, R and SMPaint will change colour to C at all the pixels (x, y) such that (U ≤ x ≤ D and L ≤ y ≤ R). The pixel (x, y) is the pixel at the xth row (from the top, 1-indexed) and the yth column (from the left side, 1-indexed).
-We can see that the Paint operation actually is painting a specific rectangle in the image by one specific colour. The image in the figure 1 can be drawn using 3 calls of the second function if we paint the red rectangle first and then paint two green rectangles. Notice that if a pixel is changed colour several time, it final colour is corresponding to the last time it is painted. This help us save some calls of the second function. For the image in figure 1 we can paint a large green rectangle first and then paint the red rectangle. Your mission is help Ron finish the assignment with using as least as possible number of calls of the second function.
-  Input
-The first line of the input contains integer N. Each of the next N lines contains N integers. The yth number in the xth line represent the colour of the pixel (x, y) in the sample image.
-Output
-The first line of the output must contain integer M that is the number of calls of the second function you need. The next M lines represent the calls to the second function in chronological order. Each line must contain 5 integers which are the values (they must be in this order) C, U, D, L, R for the corresponding call. The following conditions must be held:
-0 ≤ C ≤ 100
-1 ≤ U ≤ D ≤ N
-1 ≤ L ≤ R ≤ N
+This problem is similar to the problem "STRFLIP2". The only difference between them is the number of moves allowed — in this problem, up to
+N moves can be made. In Div. 1 and Div. 2 this problem is worth
+40 points and "STRFLIP2" is worth
+60. In Div. 3 this problem is worth
+100 points and "STRFLIP2" is non-scorable.
+You are given a binary string
+A of length
+N, which we treat as being
+1-indexed.
+In one move, you are allowed to
+Pick a contiguous substring (i.e.
+A[L:R] for some
+1≤L≤R≤N) of
+A that contains at least one '
+0' and at least one '
+1'
+Flip all the characters of the chosen substring (i.e. change every
+0 to
+1 and every
+1 to
+0)
+You are also given a target string
+B of the same length as
+A.
+Determine if it is possible to convert
+A to
+B by applying a sequence of moves as described above.
+If it is possible to convert
+A to
+B, then find a sequence of no more than
+N moves that accomplishes this. It can be shown that whenever it is possible to convert
+A to
+B, then it is possible to do so using no more than
+N moves.
+If there are multiple answers, you can print any of them.
+Input Format
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+Each test case consists of three lines.
+The first line of each test case contains a single integer
+N, the size of the strings.
+The second line of each test case contains
+A, a binary string with
+N characters.
+The third line of each test case contains
+B, a binary string with
+N characters.
+Output Format
+For each test case, print the answer starting from a new line in the following format:
+In the first line, print
+−1 if it is impossible to convert
+A to
+B. Otherwise, print a single non-negative integer
+K — the number of moves that your solution requires.
+Use the next
+K lines to describe your sequence of moves, in the same order they are to be performed.
+The
+i
+th
+of these
+K lines should contain two integers
+L
+i
+and
+R
+i
+, denoting the starting and ending positions of the substring chosen in the
+i
+th
+operation.
+Note that the following conditions must be satisfied:
+0≤K≤N
+1≤L
+i
+≤R
+i
+≤N for each valid
+i
+Each substring
+A[L
+i
+:R
+i
+] must contain at least one '
+0' and one '
+1'.
 Constraints
-1 ≤ N ≤ 1000
-The colours are represented by integers from 0 to 100 where 0 means white colour.
-Example
-Input:
+1≤T≤2000
+20≤N≤10
+3
+The sum of
+N over all testcases does not exceed
+5000
+∣A∣=∣B∣=N
+A and
+B are binary strings, i.e, contain only
+0 and
+1.
+At most
+N moves can be made for each testcase.
+Sample 1:
+Input
+Output
+3
 5
-0 0 0 0 0
-0 1 2 1 0
-0 1 2 1 0
-0 1 2 1 0
-0 0 0 0 0
-Output:
+10110
+00100
+5
+00000
+11111
+1
+00
+00
 2
-1 2 4 2 4
-2 2 4 3 3
-  Scoring & the test data generation
-Your solution will not get point if it performs more than N2 Paint operations or the final image is different with the sample one. Your solution will be marked as Wrong Answer for that two cases.
-If the number of Paint operations does not exceed N2 and the final image is the same as the sample one you will get the score which is equal to the number of Paint operations. Smaller score means your solution is better.
-
-The test data is generated randomly by simulating the process of making an image in SMPaint using no more than 500 Paint operations. But please note that, the value of N is picked manually.
-
-We have 25 official test files. You must correctly solve all test files to receive OK. During the contest, your overall score is the sum of the scores on the first 7 test files. After the contest, all solutions will be rescored by the sum of the scores on the rest 18 test files. Note, that public part of the tests can not contain some border cases. For example, we should say that in all public tests 10 ≤ N holds.
+1 4
+2 3
+-1
+0
+Explanation:
+Note: The sample tests use strings of small lengths just to illustrate the problem, and will not be present in the actual tests. Every string in the actual test files will have a length of at least
+20, as stated by the constraints.
+Test Case
+1: The given string is
+A=10110. Apart from the single character substrings and the substring
+A[3:4]=11, all other substrings are valid first moves.
+The sample output performs moves as follows:
+First, flip the substring
+A[1:4]. Now,
+A=01000.
+Then, flip the substring
+A[2:3]. Now,
+A=00100, which is the target string.
+Note that there are several other valid solutions, and any solution using no more than
+5 moves will be accepted. For example, a sequence of
+3 moves is shown below:
+Flip
+A[1:5], giving
+A=01001
+Flip
+A[4:5], giving
+A=01010
+Flip
+A[2:4], giving
+A=00100
+Test Case 2: The given string
+A=00000 has no substring with both
+0 and
+1, consequently there are no moves possible. Therefore it is impossible to convert this string to
+B=11111.
+Test Case 3: The given string
+A=00 is already equal to
+B and so no moves are required.

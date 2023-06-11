@@ -1,108 +1,153 @@
-C. Add One
+E. Cost Equilibrium
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer
+An array is called beautiful if all the elements in the array are equal.
+You can transform an array using the following steps any number of times:
+Choose two indices
+i
+and
+j
+(
+1≤i,j≤n
+), and an integer
+x
+(
+1≤x≤
+a
+i
+). Let
+i
+be the source index and
+j
+be the sink index.
+Decrease the
+i
+-th element by
+x
+, and increase the
+j
+-th element by
+x
+. The resulting values at
+i
+-th and
+j
+-th index are
+a
+i
+−x
+and
+a
+j
++x
+respectively.
+The cost of this operation is
+x⋅|j−i|
+.
+Now the
+i
+-th index can no longer be the sink and the
+j
+-th index can no longer be the source.
+The total cost of a transformation is the sum of all the costs in step
+3
+.
+For example, array
+[0,2,3,3]
+can be transformed into a beautiful array
+[2,2,2,2]
+with total cost
+1⋅|1−3|+1⋅|1−4|=5
+.
+An array is called balanced, if it can be transformed into a beautiful array, and the cost of such transformation is uniquely defined. In other words, the minimum cost of transformation into a beautiful array equals the maximum cost.
+You are given an array
+a
+1
+,
+a
+2
+,…,
+a
 n
-. You have to apply
-m
-operations to it.
-In a single operation, you must replace every digit
-d
-of the number with the decimal representation of integer
-d+1
-. For example,
-1912
-becomes
-21023
-after applying the operation once.
-You have to find the length of
+of length
 n
-after applying
-m
-operations. Since the answer can be very large, print it modulo
+, consisting of non-negative integers. Your task is to find the number of balanced arrays which are permutations of the given array. Two arrays are considered different, if elements at some position differ. Since the answer can be large, output it modulo
 10
 9
 +7
 .
 Input
 The first line contains a single integer
-t
-(
-1≤t≤2⋅
-10
-5
-) — the number of test cases.
-The only line of each test case contains two integers
 n
 (
 1≤n≤
 10
-9
-) and
-m
-(
-1≤m≤2⋅
-10
 5
-) — the initial number and the number of operations.
+) — the size of the array.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤
+10
+9
+).
 Output
-For each test case output the length of the resulting number modulo
+Output a single integer — the number of balanced permutations modulo
 10
 9
 +7
 .
-Example
+Examples
+input
+Copy
+3
+1 2 3
+output
+Copy
+6
+input
+Copy
+4
+0 4 0 4
+output
+Copy
+2
 input
 Copy
 5
-1912 1
-5 6
-999 1
-88 2
-12 100
+0 11 12 13 14
 output
 Copy
-5
-2
-6
-4
-2115
+120
 Note
-For the first test,
-1912
-becomes
-21023
-after
+In the first example,
+[1,2,3]
+is a valid permutation as we can consider the index with value
+3
+as the source and index with value
 1
-operation which is of length
-5
-.
-For the second test,
-5
-becomes
-21
-after
-6
-operations which is of length
+as the sink. Thus, after conversion we get a beautiful array
+[2,2,2]
+, and the total cost would be
 2
-.
-For the third test,
-999
-becomes
-101010
-after
-1
-operation which is of length
-6
-.
-For the fourth test,
-88
-becomes
-1010
-after
-2
-operations which is of length
-4
-.
+. We can show that this is the only transformation of this array that leads to a beautiful array. Similarly, we can check for other permutations too.
+In the second example,
+[0,0,4,4]
+and
+[4,4,0,0]
+are balanced permutations.
+In the third example, all permutations are balanced.

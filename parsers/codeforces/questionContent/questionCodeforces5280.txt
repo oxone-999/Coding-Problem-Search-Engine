@@ -1,36 +1,40 @@
-A. Bear and Big Brother
+B. Masha and geometric depression
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Bear Limak wants to become the largest of bears, or at least to become larger than his brother Bob.
-Right now, Limak and Bob weigh a and b respectively. It's guaranteed that Limak's weight is smaller than or equal to his brother's weight.
-Limak eats a lot and his weight is tripled after every year, while Bob's weight is doubled after every year.
-After how many full years will Limak become strictly larger (strictly heavier) than Bob?
+Masha really loves algebra. On the last lesson, her strict teacher Dvastan gave she new exercise.
+You are given geometric progression b defined by two integers b1 and q. Remind that a geometric progression is a sequence of integers b1, b2, b3, ..., where for each i > 1 the respective term satisfies the condition bi = bi - 1·q, where q is called the common ratio of the progression. Progressions in Uzhlyandia are unusual: both b1 and q can equal 0. Also, Dvastan gave Masha m "bad" integers a1, a2, ..., am, and an integer l.
+Masha writes all progression terms one by one onto the board (including repetitive) while condition |bi| ≤ l is satisfied (|x| means absolute value of x). There is an exception: if a term equals one of the "bad" integers, Masha skips it (doesn't write onto the board) and moves forward to the next term.
+But the lesson is going to end soon, so Masha has to calculate how many integers will be written on the board. In order not to get into depression, Masha asked you for help: help her calculate how many numbers she will write, or print "inf" in case she needs to write infinitely many integers.
 Input
-The only line of the input contains two integers a and b (1 ≤ a ≤ b ≤ 10) — the weight of Limak and the weight of Bob respectively.
+The first line of input contains four integers b1, q, l, m (-109 ≤ b1, q ≤ 109, 1 ≤ l ≤ 109, 1 ≤ m ≤ 105) — the initial term and the common ratio of progression, absolute value of maximal number that can be written on the board and the number of "bad" integers, respectively.
+The second line contains m distinct integers a1, a2, ..., am (-109 ≤ ai ≤ 109) — numbers that will never be written on the board.
 Output
-Print one integer, denoting the integer number of years after which Limak will become strictly larger than Bob.
+Print the only integer, meaning the number of progression terms that will be written on the board if it is finite, or "inf" (without quotes) otherwise.
 Examples
 input
 Copy
-4 7
-output
-Copy
-2
-input
-Copy
-4 9
+3 2 30 4
+6 14 25 48
 output
 Copy
 3
 input
 Copy
-1 1
+123 1 2143435 4
+123 11 -5453 141245
 output
 Copy
-1
+0
+input
+Copy
+123 1 2143435 4
+54343 -13 6 124
+output
+Copy
+inf
 Note
-In the first sample, Limak weighs 4 and Bob weighs 7 initially. After one year their weights are 4·3 = 12 and 7·2 = 14 respectively (one weight is tripled while the other one is doubled). Limak isn't larger than Bob yet. After the second year weights are 36 and 28, so the first weight is greater than the second one. Limak became larger than Bob after two years so you should print 2.
-In the second sample, Limak's and Bob's weights in next years are: 12 and 18, then 36 and 36, and finally 108 and 72 (after three years). The answer is 3. Remember that Limak wants to be larger than Bob and he won't be satisfied with equal weights.
-In the third sample, Limak becomes larger than Bob after the first year. Their weights will be 3 and 2 then.
+In the first sample case, Masha will write integers 3, 12, 24. Progression term 6 will be skipped because it is a "bad" integer. Terms bigger than 24 won't be written because they exceed l by absolute value.
+In the second case, Masha won't write any number because all terms are equal 123 and this is a "bad" integer.
+In the third case, Masha will write infinitely integers 123.

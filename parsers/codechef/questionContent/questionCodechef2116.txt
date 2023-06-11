@@ -1,53 +1,68 @@
-Addition and Multiplication
+Binary String Game
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-You are given a one dimensional integer array A of length N. You need to maintain the array under Q queries of the following four types. Assume 1-based indexing and M = 109 + 7.
-Query 1 : 1 x y v
-This implies adding v to array A to all the indices from x to y, i.e.,
-for (i = x; i <= y; i++) 
- Ai += v;
- Ai %= M; 
-Query 2 : 2 x y v This implies multiplying the scalar v with the array A for all the indices from x to y, i.e.,
-for (i = x; i <= y; i++) 
-        Ai *= v
-        Ai %= M
-Query 3 : 3 x y v This implies initializing the array A at all the indices from x to y with the value v, i.e.,
-for (i = x; i <= y; i++) 
- Ai = v 
-Query 4 : 4 x y
-This is a report query which needs to find the sum of the values in A from x to y, i.e.,
-sum = 0;
-for (i = x; i <= y; i++)
- sum += Ai
- sum %= M
-Output sum.
-Note: a%b represents the remainder of a when divided by b.
-Input
-First line contains two space separated integers N, Q.
-Next line contains N space separated integers denoting the array A.
-Next Q lines contain queries which can be of any of the above four types.
-Output
-For each query of type 4, output a single integer corresponding to the answer in a single line.
+We define a function
+f on a binary string
+S of length
+N as follows:
+f(S)=∑
+i=1
+N−1
+∣S
+i+1
+−S
+i
+∣.
+JJ and Uttu have a binary string
+S of length
+N and they decide to play a game using it. The rules of the game are as follows:
+JJ starts the game with players making moves in alternate turns thereafter.
+In one move, a player can pick
+L,R such that
+1≤L≤R≤N and flip all the characters in
+S
+L…R
+(Flipping a character means changing 0 to 1 or 1 to 0).
+A player can only make a move if that move increases the value of
+f(S).
+The player who can not make any further moves loses.
+Which player (out of JJ and Uttu) will win the game, assuming that both the players play optimally?
+Input Format
+The first line contains
+T - the number of test cases. Then the test cases follow.
+The first line of each test case contains
+N - the length of the binary string
+S.
+The second line of each test case contains a binary string
+S.
+Output Format
+For each test case, output which player wins the game, whether it's JJ and Uttu will win the game.
+You may print each character of the string in uppercase or lowercase (for example, the strings JJ, Jj and jj will all be treated as identical).
 Constraints
-1 ≤ N ≤ 105
-1 ≤ Q ≤ 105
-1 ≤ Initial value of Ai ≤ 109
-1 ≤ v ≤ 109
-Subtasks
-Subtask 1: Queries are of type 1, 3 and 4. Points - 5.
-Subtask 2: Queries are of type 2, 3 and 4. Points - 5.
-Subtask 3: Queries are of type 1, 2 and 4. Points - 30.
-Subtask 4: All the queries are present. Points - 60.
+1≤T≤100
+1≤N≤2000
 Sample 1:
 Input
 Output
-4 4
-1 2 3 4
-4 1 4
-1 1 3 10
-2 2 4 2
-4 1 4
-10
-69
+3
+5
+10011
+2
+00
+5
+10101
+JJ
+JJ
+Uttu
 Explanation:
-Initial A : [1, 2, 3, 4] Result of first query : 1 + 2 + 3 + 4 = 10 A after second query: [ 11, 12, 13, 4] A after third query : [ 11, 24, 26, 8] Result of fourth query : 11 + 24 + 26 + 8 = 69
+Test case
+1: JJ can perform the following move:
+10
+01
+1→10101. Now Uttu cannot perform any moves and thereby loses.
+Test case
+2: JJ can perform the following move:
+0
+0
+→01. Now Uttu cannot perform any moves and thereby loses.
+Test case
+3: JJ cannot perform any starting moves, thereby he loses.

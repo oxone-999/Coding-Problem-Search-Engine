@@ -1,37 +1,49 @@
-E. Exam Cheating
+D. Police Stations
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Zane and Zane's crush have just decided to date! However, the girl is having a problem with her Physics final exam, and needs your help.
-There are n questions, numbered from 1 to n. Question i comes before question i + 1 (1 ≤ i < n). Each of the questions cannot be guessed on, due to the huge penalty for wrong answers. The girl luckily sits in the middle of two geniuses, so she is going to cheat.
-However, the geniuses have limitations. Each of them may or may not know the answers to some questions. Anyway, it is safe to assume that the answers on their answer sheets are absolutely correct.
-To make sure she will not get caught by the proctor, the girl will glance at most p times, each time looking at no more than k consecutive questions on one of the two geniuses' answer sheet. When the girl looks at some question on an answer sheet, she copies the answer to that question if it is on that answer sheet, or does nothing otherwise.
-Help the girl find the maximum number of questions she can get correct.
+Inzane finally found Zane with a lot of money to spare, so they together decided to establish a country of their own.
+Ruling a country is not an easy job. Thieves and terrorists are always ready to ruin the country's peace. To fight back, Zane and Inzane have enacted a very effective law: from each city it must be possible to reach a police station by traveling at most d kilometers along the roads.
+There are n cities in the country, numbered from 1 to n, connected only by exactly n - 1 roads. All roads are 1 kilometer long. It is initially possible to travel from a city to any other city using these roads. The country also has k police stations located in some cities. In particular, the city's structure satisfies the requirement enforced by the previously mentioned law. Also note that there can be multiple police stations in one city.
+However, Zane feels like having as many as n - 1 roads is unnecessary. The country is having financial issues, so it wants to minimize the road maintenance cost by shutting down as many roads as possible.
+Help Zane find the maximum number of roads that can be shut down without breaking the law. Also, help him determine such roads.
 Input
-The first line contains three integers n, p, and k (1 ≤ n, p ≤ 1, 000, 1 ≤ k ≤ min(n, 50)) — the number of questions, the maximum number of times the girl can glance, and the maximum number of consecutive questions that can be looked at in one time glancing, respectively.
-The second line starts with one integer r (0 ≤ r ≤ n), denoting the number of questions the first genius has answered on his answer sheet. Then follow r integers a1, a2, ..., ar (1 ≤ ai ≤ n) — the answered questions, given in a strictly-increasing order (that is, ai < ai + 1).
-The third line starts with one integer s (0 ≤ s ≤ n), denoting the number of questions the second genius has answered on his answer sheet. Then follow s integers b1, b2, ..., bs (1 ≤ bi ≤ n) — the answered questions, given in a strictly-increasing order (that is, bi < bi + 1).
+The first line contains three integers n, k, and d (2 ≤ n ≤ 3·105, 1 ≤ k ≤ 3·105, 0 ≤ d ≤ n - 1) — the number of cities, the number of police stations, and the distance limitation in kilometers, respectively.
+The second line contains k integers p1, p2, ..., pk (1 ≤ pi ≤ n) — each denoting the city each police station is located in.
+The i-th of the following n - 1 lines contains two integers ui and vi (1 ≤ ui, vi ≤ n, ui ≠ vi) — the cities directly connected by the road with index i.
+It is guaranteed that it is possible to travel from one city to any other city using only the roads. Also, it is possible from any city to reach a police station within d kilometers.
 Output
-Print one integer — the maximum number of questions the girl can answer correctly.
+In the first line, print one integer s that denotes the maximum number of roads that can be shut down.
+In the second line, print s distinct integers, the indices of such roads, in any order.
+If there are multiple answers, print any of them.
 Examples
 input
 Copy
-6 2 3
-3 1 3 6
-4 1 2 5 6
+6 2 4
+1 6
+1 2
+2 3
+3 4
+4 5
+5 6
 output
 Copy
-4
+1
+5
 input
 Copy
-8 3 3
-4 1 3 5 6
-5 2 4 6 7 8
+6 3 2
+1 5 6
+1 2
+1 3
+1 4
+1 5
+5 6
 output
 Copy
-7
+2
+4 5 
 Note
-Let (x, l, r) denote the action of looking at all questions i such that l ≤ i ≤ r on the answer sheet of the x-th genius.
-In the first sample, the girl could get 4 questions correct by performing sequence of actions (1, 1, 3) and (2, 5, 6).
-In the second sample, the girl could perform sequence of actions (1, 3, 5), (2, 2, 4), and (2, 6, 8) to get 7 questions correct.
+In the first sample, if you shut down road 5, all cities can still reach a police station within k = 4 kilometers.
+In the second sample, although this is the only largest valid set of roads that can be shut down, you can print either 4 5 or 5 4 in the second line.

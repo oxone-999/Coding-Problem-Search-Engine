@@ -1,148 +1,118 @@
-F. Foo Fighters
+G. Gold Experience
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-You are given
-n
-objects. Each object has two integer properties:
-va
-l
-i
- — its price — and
-mas
-k
-i
-. It is guaranteed that the sum of all prices is initially non-zero.
-You want to select a positive integer
-s
-. All objects will be modified after that. The
-i
--th object will be modified using the following procedure:
-Consider
-mas
-k
-i
-and
-s
-in binary notation,
-Compute the bitwise AND of
-s
-and
-mas
-k
-i
-(
-s&mas
-k
-i
-),
-If (
-s&mas
-k
-i
-) contains an odd number of ones, replace the
-va
-l
-i
+Consider an undirected graph
+G
 with
-−va
-l
-i
-. Otherwise do nothing with the
-i
--th object.
-You need to find such an integer
-s
-that when the modification above is done the sum of all prices changes sign (if it was negative, it should become positive, and vice-versa; it is not allowed for it to become zero). The absolute value of the sum can be arbitrary.
-Input
-The first line contains a single integer
 n
+vertices. There is a value
+a
+i
+in each vertex.
+Two vertices
+i
+and
+j
+are connected with an edge if and only if
+gcd(
+a
+i
+,
+a
+j
+)>1
+, where
+gcd(x,y)
+denotes the greatest common divisor (GCD) of integers
+x
+and
+y
+.
+Consider a set of vertices. Let's call a vertex in this set fair if it is connected with an edge with all other vertices in this set.
+You need to find a set of
+k
+vertices (where
+k
+is a given integer,
+2⋅k≤n
+) where all vertices are fair or all vertices are not fair. One can show that such a set always exists.
+Input
+The first line contains integers
+n
+and
+k
 (
-1≤n≤3⋅
+6≤2⋅k≤n≤
 10
 5
-) — the number of objects.
-The
-i
--th of next
-n
-lines contains integers
-va
-l
-i
-and
-mas
+) — the number of vertices and parameter
 k
-i
-(
-−
-10
-9
-≤va
-l
-i
-≤
-10
-9
-,
-1≤mas
-k
-i
-≤
-2
-62
-−1
-) — the price of the object and its mask.
-It is guaranteed that the sum of
-va
-l
-i
-is initially non-zero.
-Output
-Print an integer
-s
-(
-1≤s≤
-2
-62
-−1
-), such that if we modify the objects as described above, the sign of the sum of
-va
-l
-i
-changes its sign.
-If there are multiple such
-s
-, print any of them. One can show that there is always at least one valid
-s
 .
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+2≤
+a
+i
+≤
+10
+7
+) — the values in the vertices.
+Output
+Print exactly
+k
+distinct integers — the indices of the vertices in the chosen set in any order.
 Examples
 input
 Copy
-5
-17 206
--6 117
--2 151
-9 93
-6 117
+6 3
+6 15 10 8 14 12
 output
 Copy
-64
+2 4 5
 input
 Copy
-1
-1 1
+8 4
+11 15 10 6 21 15 10 6
 output
 Copy
-1
+5 7 1 2
+input
+Copy
+10 5
+3003 17017 3230 49742 546 41990 17765 570 21945 36465
+output
+Copy
+1 2 4 5 6
 Note
-In the first test sample all objects will change their prices except for the object with mask
-151
+In the first test case, set
+{2,4,5}
+is an example of set where no vertices are fair. The vertex
+2
+does not share an edge with vertex
+4
+since
+gcd(15,8)=1
+. The vertex
+4
+does not share an edge with vertex
+2
+. The vertex
+5
+does not share an edge with vertex
+2
 .
-So their total sum will change its sign: initially
-24
-, after modifications —
-−28
-.
-In the second test sample the only object will change its price. So the total sum will change its sign.
+In the second test case, set
+{8,5,6,4}
+is an example of a set where all vertices are fair.

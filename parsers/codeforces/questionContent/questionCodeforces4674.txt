@@ -1,189 +1,248 @@
-E. May Holidays
-time limit per test5 seconds
+F. Parametric Circulation
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-It's May in Flatland, and there are
-m
-days in this month. Despite the fact that May Holidays are canceled long time ago, employees of some software company still have a habit of taking short or long vacations in May.
-Of course, not all managers of the company like this. There are
-n
-employees in the company that form a tree-like structure of subordination: each employee has a unique integer id
-i
-between
-1
+Vova has recently learned what a circulaton in a graph is. Recall the definition: let
+G=(V,E)
+be a directed graph. A circulation
+f
+is such a collection of non-negative real numbers
+f
+e
+(
+e∈E
+), that for each vertex
+v∈V
+the following conservation condition holds:
+∑
+e∈
+δ
+−
+(v)
+f
+e
+=
+∑
+e∈
+δ
++
+(v)
+f
+e
+∑
+f
+∑
+f
+where
+δ
++
+(v)
+is the set of edges that end in the vertex
+v
+, and
+δ
+−
+(v)
+is the set of edges that start in the vertex
+v
+. In other words, for each vertex the total incoming flow should be equal to the total outcoming flow.
+Let a
+lr
+-circulation be such a circulation
+f
+that for each edge the condition
+l
+e
+≤
+f
+e
+≤
+r
+e
+holds, where
+l
+e
 and
-n
-, and each employee with id
-i
-(except the head manager whose id is 1) has exactly one direct manager with id
-p
-i
-. The structure of subordination is not cyclic, i.e. if we start moving from any employee to his direct manager, then we will eventually reach the head manager. We define that an employee
-u
-is a subordinate of an employee
-v
-, if
-v
-is a direct manager of
-u
-, or the direct manager of
-u
-is a subordinate of
-v
-. Let
-s
-i
-be the number of subordinates the
-i
--th employee has (for example,
-s
-1
-=n−1
-, because all employees except himself are subordinates of the head manager).
-Each employee
-i
-has a bearing limit of
-t
-i
-, which is an integer between
-0
+r
+e
+for each edge
+e∈E
+are two non-negative real numbers denoting the lower and upper bounds on the value of the circulation on this edge
+e
+.
+Vova can't stop thinking about applications of a new topic. Right now he thinks about the following natural question: let the graph be fixed, and each value
+l
+e
 and
-s
-i
-. It denotes the maximum number of the subordinates of the
-i
--th employee being on vacation at the same moment that he can bear. If at some moment strictly more than
+r
+e
+be a linear function of a real variable
 t
-i
-subordinates of the
-i
--th employee are on vacation, and the
-i
--th employee himself is not on a vacation, he becomes displeased.
-In each of the
-m
-days of May exactly one event of the following two types happens: either one employee leaves on a vacation at the beginning of the day, or one employee returns from a vacation in the beginning of the day. You know the sequence of events in the following
-m
-days. Your task is to compute for each of the
-m
-days the number of displeased employees on that day.
+:
+l
+e
+(t)=
+a
+e
+t+
+b
+e
+l
+(
+)
+b
+r
+e
+(t)=
+c
+e
+t+
+d
+e
+(
+)
+d
+Note that
+t
+is the same for all edges.
+Let
+t
+be chosen at random from uniform distribution on a segment
+[0,1]
+. What is the probability of existence of
+lr
+-circulation in the graph?
 Input
 The first line contains two integers
 n
-and
+,
 m
 (
-2≤n,m≤
-10
-5
-) — the number of employees in the company and the number of days in May.
-The second line contains
-n−1
-integers
-p
-2
+1≤n≤1000
 ,
-p
-3
-,…,
-p
-n
+1≤m≤2000
+).
+Each of the next
+m
+lines describes edges of the graph in the format
+u
+e
+,
+v
+e
+,
+a
+e
+,
+b
+e
+,
+c
+e
+,
+d
+e
 (
 1≤
-p
-i
+u
+e
+,
+v
+e
 ≤n
-), denoting the direct managers of employees.
-The third line contains
-n
-integers
-t
-1
 ,
-t
-2
-,…,
-t
-n
-(
-0≤
-t
-i
-≤
-s
-i
-), denoting the bearing limits of empoyees.
-The fourth line contains
-m
-integers
-q
-1
-,
-q
-2
-,…,
-q
-m
-(
-1≤|
-q
-i
-|≤n
-,
-q
-i
-≠0
-), denoting the events. If
-q
-i
-is positive, then the employee with id
-q
-i
-leaves for a vacation starting from this day, if
-q
-i
-is negative, then the employee
 −
-q
-i
-returns from a vacation starting from this day. In the beginning of May no employee is on vacation. It is guaranteed that if some employee leaves for a vacation, he is not on a vacation at the moment and vice versa.
-Output
-Print a sequence of
-m
-integers
+10
+4
+≤
 a
-1
+e
 ,
-a
-2
-,…,
-a
-m
-, where
-a
-i
-is the number of displeased employees on the
-i
--th day.
-Examples
+c
+e
+≤
+10
+4
+,
+0≤
+b
+e
+,
+d
+e
+≤
+10
+4
+), where
+u
+e
+and
+v
+e
+are the startpoint and the endpoint of the edge
+e
+, and the remaining 4 integers describe the linear functions for the upper and lower bound of circulation.
+It is guaranteed that for any
+t∈[0,1]
+and for any edge
+e∈E
+the following condition holds
+0≤
+l
+e
+(t)≤
+r
+e
+(t)≤
+10
+4
+.
+Output
+Print a single real integer — the probability of existence of
+lr
+-circulation in the graph, given that
+t
+is chosen uniformly at random from the segment
+[0,1]
+. Your answer is considered correct if its absolute difference from jury's answer is not greater than
+10
+−6
+.
+Example
 input
 Copy
-7 8
-4 5 1 1 5 5
-0 0 0 1 2 0 0
-2 6 3 7 -2 4 -3 1
+3 3
+1 2 0 3 -4 7
+2 3 -2 5 1 6
+3 1 0 4 0 4
 output
 Copy
-1 1 1 2 2 2 1 0
-input
-Copy
-5 6
-1 2 3 4
-4 0 0 1 0
-1 5 2 3 -5 -1
-output
-Copy
-0 2 1 0 0 0
+0.25
 Note
-In the first sample test after employee with id 2 leaves for a vacation at the first day, the head manager with id 1 becomes displeased as he does not want any of his subordinates to go for a vacation. At the fourth day employee with id 5 becomes displeased as his last remaining employee with id 7 leaves for a vacation. At the fifth day employee with id 2 returns from the vacation, but it does not affect the number of displeased employees as the employees 5 and 1 are still displeased. At the sixth day employee with id 3 returns back from the vacation, preventing the employee with id 5 from being displeased and at the last day the head manager with id 1 leaves for a vacation, leaving the company without the displeased people at all.
+In the first example the conservation condition allows only circulations with equal values
+f
+e
+for all three edges. The value of circulation on the last edge should be
+4
+whatever
+t
+is chosen, so the probability is
+P(4∈[3,−4t+7]  &  4∈[−2t+5,t+6])=0.25
+P
+(
+4
+[
+3
+4
+7
+]
+&
+4
+[
+2
+5
+6
+]
+)
+0.25

@@ -1,25 +1,52 @@
-C. Fifa and Fafa
-time limit per test1 second
+E. Fafa and Ancient Mathematics
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Fifa and Fafa are sharing a flat. Fifa loves video games and wants to download a new soccer game. Unfortunately, Fafa heavily uses the internet which consumes the quota. Fifa can access the internet through his Wi-Fi access point. This access point can be accessed within a range of r meters (this range can be chosen by Fifa) from its position. Fifa must put the access point inside the flat which has a circular shape of radius R. Fifa wants to minimize the area that is not covered by the access point inside the flat without letting Fafa or anyone outside the flat to get access to the internet.
-The world is represented as an infinite 2D plane. The flat is centered at (x1, y1) and has radius R and Fafa's laptop is located at (x2, y2), not necessarily inside the flat. Find the position and the radius chosen by Fifa for his access point which minimizes the uncovered area.
+Ancient Egyptians are known to have understood difficult concepts in mathematics. The ancient Egyptian mathematician Ahmes liked to write a kind of arithmetic expressions on papyrus paper which he called as Ahmes arithmetic expression.
+An Ahmes arithmetic expression can be defined as:
+"d" is an Ahmes arithmetic expression, where d is a one-digit positive integer;
+"(E1 op E2)" is an Ahmes arithmetic expression, where E1 and E2 are valid Ahmes arithmetic expressions (without spaces) and op is either plus ( + ) or minus ( - ).
+For example 5, (1-1) and ((1+(2-3))-5) are valid Ahmes arithmetic expressions.
+On his trip to Egypt, Fafa found a piece of papyrus paper having one of these Ahmes arithmetic expressions written on it. Being very ancient, the papyrus piece was very worn out. As a result, all the operators were erased, keeping only the numbers and the brackets. Since Fafa loves mathematics, he decided to challenge himself with the following task:
+Given the number of plus and minus operators in the original expression, find out the maximum possible value for the expression on the papyrus paper after putting the plus and minus operators in the place of the original erased operators.
 Input
-The single line of the input contains 5 space-separated integers R, x1, y1, x2, y2 (1 ≤ R ≤ 105, |x1|, |y1|, |x2|, |y2| ≤ 105).
+The first line contains a string E (1 ≤ |E| ≤ 104) — a valid Ahmes arithmetic expression. All operators are erased and replaced with '?'.
+The second line contains two space-separated integers P and M (0 ≤ min(P, M) ≤ 100) — the number of plus and minus operators, respectively.
+It is guaranteed that P + M =  the number of erased operators.
 Output
-Print three space-separated numbers xap, yap, r where (xap, yap) is the position which Fifa chose for the access point and r is the radius of its range.
-Your answer will be considered correct if the radius does not differ from optimal more than 10 - 6 absolutely or relatively, and also the radius you printed can be changed by no more than 10 - 6 (absolutely or relatively) in such a way that all points outside the flat and Fafa's laptop position are outside circle of the access point range.
+Print one line containing the answer to the problem.
 Examples
 input
 Copy
-5 3 3 1 1
+(1?1)
+1 0
 output
 Copy
-3.7677669529663684 3.7677669529663684 3.914213562373095
+2
 input
 Copy
-10 5 5 5 15
+(2?(1?2))
+1 1
 output
 Copy
-5.0 5.0 10.0
+1
+input
+Copy
+((1?(5?7))?((6?2)?7))
+3 2
+output
+Copy
+18
+input
+Copy
+((1?(5?7))?((6?2)?7))
+2 3
+output
+Copy
+16
+Note
+The first sample will be (1 + 1)  =  2.
+The second sample will be (2 + (1 - 2))  =  1.
+The third sample will be ((1 - (5 - 7)) + ((6 + 2) + 7))  =  18.
+The fourth sample will be ((1 + (5 + 7)) - ((6 - 2) - 7))  =  16.

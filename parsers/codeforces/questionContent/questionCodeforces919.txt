@@ -1,79 +1,124 @@
-C. Detective Task
+E. Replace With the Previous, Minimize
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp bought a new expensive painting and decided to show it to his
+You are given a string
+s
+of lowercase Latin letters.
+The following operation can be used:
+select one character (from 'a' to 'z') that occurs at least once in the string. And replace all such characters in the string with the previous one in alphabetical order on the loop. For example, replace all 'c' with 'b' or replace all 'a' with 'z'.
+And you are given the integer
+k
+ — the maximum number of operations that can be performed. Find the minimum lexicographically possible string that can be obtained by performing no more than
+k
+operations.
+The string
+a=
+a
+1
+a
+2
+…
+a
 n
-friends. He hung it in his room.
+is lexicographically smaller than the string
+b=
+b
+1
+b
+2
+…
+b
 n
-of his friends entered and exited there one by one. At one moment there was no more than one person in the room. In other words, the first friend entered and left first, then the second, and so on.
-It is known that at the beginning (before visiting friends) a picture hung in the room. At the end (after the
-n
--th friend) it turned out that it disappeared. At what exact moment it disappeared — there is no information.
-Polycarp asked his friends one by one. He asked each one if there was a picture when he entered the room. Each friend answered one of three:
-no (response encoded with 0);
-yes (response encoded as 1);
-can't remember (response is encoded with ?).
-Everyone except the thief either doesn't remember or told the truth. The thief can say anything (any of the three options).
-Polycarp cannot understand who the thief is. He asks you to find out the number of those who can be considered a thief according to the answers.
+if there exists an index
+k
+(
+1≤k≤n
+) such that
+a
+1
+=
+b
+1
+,
+a
+2
+=
+b
+2
+, ...,
+a
+k−1
+=
+b
+k−1
+, but
+a
+k
+<
+b
+k
+.
 Input
-The first number
+The first line contains a single integer
 t
 (
 1≤t≤
 10
 4
-) — the number of test cases in the test.
-The following is a description of test cases.
-The first line of each test case contains one string
-s
-(length does not exceed
-2⋅
+) —the number of test cases in the test.
+This is followed by descriptions of the test cases.
+The first line of each test case contains two integers
+n
+and
+k
+(
+1≤n≤2⋅
 10
 5
-) — a description of the friends' answers, where
+,
+1≤k≤
+10
+9
+) — the size of the string
 s
-i
-indicates the answer of the
-i
--th friend. Each character in the string is either 0 or 1 or ?.
-The given regularity is described in the actual situation. In particular, on the basis of answers, at least one friend can be suspected of stealing a painting.
-It is guaranteed that the sum of string lengths over the entire input data set does not exceed
+and the maximum number of operations that can be performed on the string
+s
+.
+The second line of each test case contains a string
+s
+of length
+n
+consisting of lowercase Latin letters.
+It is guaranteed that the sum
+n
+over all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-Output one positive (strictly more zero) number – the number of people who could steal the picture based on the data shown.
+For each test case, output the lexicographically minimal string that can be obtained from the string
+s
+by performing no more than
+k
+operations.
 Example
 input
 Copy
-8
-0
-1
-1110000
-?????
-1?1??0?0
-0?0???
-??11
-??0??
+4
+3 2
+cba
+4 5
+fgde
+7 5
+gndcafb
+4 19
+ekyv
 output
 Copy
-1
-1
-2
-5
-4
-1
-1
-3
-Note
-In the first case, the answer is
-1
-since we had exactly
-1
-friend.
-The second case is similar to the first.
-In the third case, the suspects are the third and fourth friends (we count from one). It can be shown that no one else could be the thief.
-In the fourth case, we know absolutely nothing, so we suspect everyone.
+aaa
+agaa
+bnbbabb
+aapp

@@ -1,20 +1,34 @@
-F. Lenient Vertex Cover
-time limit per test5 seconds
-memory limit per test512 megabytes
+B. Card Trick
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a simple connected undirected graph, consisting of
+Monocarp has just learned a new card trick, and can't wait to present it to you. He shows you the entire deck of
 n
-vertices and
-m
-edges. The vertices are numbered from
+cards. You see that the values of cards from the topmost to the bottommost are integers
+a
 1
-to
+,
+a
+2
+,…,
+a
 n
-.
-A vertex cover of a graph is a set of vertices such that each edge has at least one of its endpoints in the set.
-Let's call a lenient vertex cover such a vertex cover that at most one edge in it has both endpoints in the set.
-Find a lenient vertex cover of a graph or report that there is none. If there are multiple answers, then print any of them.
+, and all values are different.
+Then he asks you to shuffle the deck
+m
+times. With the
+j
+-th shuffle, you should take
+b
+j
+topmost cards and move them under the remaining
+(n−
+b
+j
+)
+cards without changing the order.
+And then, using some magic, Monocarp tells you the topmost card of the deck. However, you are not really buying that magic. You tell him that you know the topmost card yourself. Can you surprise Monocarp and tell him the topmost card before he shows it?
 Input
 The first line contains a single integer
 t
@@ -23,157 +37,98 @@ t
 10
 4
 ) — the number of testcases.
-The first line of each testcase contains two integers
+The first line of each testcase contains a single integer
 n
-and
-m
 (
-2≤n≤
+2≤n≤2⋅
 10
-6
-;
-n−1≤m≤min(
-10
-6
+5
+) — the number of cards in the deck.
+The second line contains
+n
+pairwise distinct integers
+a
+1
 ,
-n⋅(n−1)
+a
 2
-)
-) — the number of vertices and the number of edges of the graph.
-Each of the next
-m
-lines contains two integers
-v
-and
-u
+,…,
+a
+n
 (
-1≤v,u≤n
-;
-v≠u
-) — the descriptions of the edges.
-For each testcase, the graph is connected and doesn't have multiple edges. The sum of
+1≤
+a
+i
+≤n
+) — the values of the cards.
+The third line contains a single integer
+m
+(
+1≤m≤2⋅
+10
+5
+) — the number of shuffles.
+The fourth line contains
+m
+integers
+b
+1
+,
+b
+2
+,…,
+b
+m
+(
+1≤
+b
+j
+≤n−1
+) — the amount of cards that are moved on the
+j
+-th shuffle.
+The sum of
 n
 over all testcases doesn't exceed
+2⋅
 10
-6
+5
 . The sum of
 m
 over all testcases doesn't exceed
+2⋅
 10
-6
+5
 .
 Output
-For each testcase, the first line should contain YES if a lenient vertex cover exists, and NO otherwise. If it exists, the second line should contain a binary string
-s
-of length
-n
-, where
-s
-i
-=1
-means that vertex
-i
-is in the vertex cover, and
-s
-i
-=0
-means that vertex
-i
-isn't.
-If there are multiple answers, then print any of them.
-Examples
+For each testcase, print a single integer — the value of the card on the top of the deck after the deck is shuffled
+m
+times.
+Example
 input
 Copy
+3
+2
+1 2
+3
+1 1 1
 4
-6 5
-1 3
-2 4
-3 4
-3 5
-4 6
-4 6
-1 2
-2 3
-3 4
-1 4
-1 3
-2 4
-8 11
-1 3
-2 4
-3 5
-4 6
-5 7
-6 8
-1 2
-3 4
-5 6
-7 8
-7 2
-4 5
-1 2
-2 3
-3 4
-1 3
-2 4
+3 1 4 2
+2
+3 1
+5
+2 1 5 4 3
+5
+3 2 1 2 1
 output
 Copy
-YES
-001100
-NO
-YES
-01100110
-YES
-0110
-input
-Copy
-1
-10 15
-9 4
-3 4
-6 4
-1 2
-8 2
-8 3
-7 2
-9 5
-7 8
-5 10
-1 4
-2 10
-5 3
-5 7
-2 9
-output
-Copy
-YES
-0101100100
-input
-Copy
-1
-10 19
-7 9
-5 3
-3 4
-1 6
-9 4
-1 4
-10 5
-7 1
-9 2
-8 3
-7 3
-10 9
-2 10
-9 8
-3 2
-1 5
-10 7
-9 5
-1 2
-output
-Copy
-YES
-1010000011
+2
+3
+3
 Note
-Here are the graphs from the first example. The vertices in the lenient vertex covers are marked red.
+In the first testcase, each shuffle effectively swaps two cards. After three swaps, the deck will be
+[2,1]
+.
+In the second testcase, the second shuffle cancels what the first shuffle did. First, three topmost cards went underneath the last card, then that card went back below the remaining three cards. So the deck remained unchanged from the initial one — the topmost card has value
+3
+.

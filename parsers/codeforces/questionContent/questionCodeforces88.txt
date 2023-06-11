@@ -1,124 +1,168 @@
-B. Grid Reconstruction
+A. Ian Visits Mary
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Consider a
-2×n
-grid, where
-n
-is an even integer. You may place the integers
-1,2,…,2n
-on the grid, using each integer exactly once.
-A path is a sequence of cells achieved by starting at
-(1,1)
-, then repeatedly walking either downwards or to the right, and stopping when
-(2,n)
-is reached. The path should not extend beyond the grid.
-The cost of a path is the alternating sum of the numbers written on the cells in a path. That is, let the numbers written on the cells be
-a
-1
-,
-a
-2
-,…,
-a
-k
-(in the order that it is visited), the cost of the path is
-a
-1
-−
-a
-2
-+
-a
-3
-−
-a
-4
-+…=
-∑
-k
-i=1
-a
-i
-⋅(−1
-)
-i+1
+Ian and Mary are frogs living on lattice points of the Cartesian coordinate plane, with Ian living on
+(0,0)
+and Mary living on
+(a,b)
 .
-Construct a way to place the integers
-1,2,…,2n
-on the grid, such that the minimum cost over all paths from
-(1,1)
-to
-(2,n)
-is maximized. If there are multiple such grids that result in the maximum value, output any of them.
+Ian would like to visit Mary by jumping around the Cartesian coordinate plane. Every second, he jumps from his current position
+(
+x
+p
+,
+y
+p
+)
+to another lattice point
+(
+x
+q
+,
+y
+q
+)
+, such that no lattice point other than
+(
+x
+p
+,
+y
+p
+)
+and
+(
+x
+q
+,
+y
+q
+)
+lies on the segment between point
+(
+x
+p
+,
+y
+p
+)
+and point
+(
+x
+q
+,
+y
+q
+)
+.
+As Ian wants to meet Mary as soon as possible, he wants to jump towards point
+(a,b)
+using at most
+2
+jumps. Unfortunately, Ian is not good at maths. Can you help him?
+A lattice point is defined as a point with both the
+x
+-coordinate and
+y
+-coordinate being integers.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤1000
+1≤t≤500
 ) — the number of test cases. The description of test cases follows.
-The first and the only line of each test case contains a single integer
+The first and only line of each test case contains two integers
+a
+and
+b
+(
+1≤a,b≤
+10
+9
+) — the coordinates of the lattice point where Mary lives.
+Output
+For each test case, print an integer
 n
 (
-2≤n≤
-10
-5
+1≤n≤2
+) on the first line, denoting the number of jumps Ian uses in order to meet Mary. Note that you do not need to minimize the number of jumps.
+On the
+i
+-th line of the next
+n
+lines, print two integers
+0≤
+x
+i
 ,
-n
-is even) — the number of the columns in the grid.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
+y
+i
+≤
 10
-5
-.
-Output
-For each test case, output
-2
-lines, each containing
+9
+separated by a space, denoting Ian's location
+(
+x
+i
+,
+y
+i
+)
+after the
+i
+-th jump.
+x
 n
-integers — the desired grid. If there are multiple solutions, output any of them.
+=a
+,
+y
+n
+=b
+must hold.
+Ian's initial location and his locations after each of the
+n
+jumps need not be distinct.
+If there are multiple solutions, output any.
 Example
 input
 Copy
-3
-2
-4
-6
+8
+3 4
+4 4
+3 6
+2 2
+1 1
+7 3
+2022 2023
+1000000000 1000000000
 output
 Copy
+1
+3 4
+2
 3 2
-1 4
-8 2 6 4
-1 5 3 7
-11 5 9 1 7 3
-6 10 2 8 4 12
+4 4
+2
+5 3
+3 6
+2
+1 0
+2 2
+1
+1 1
+1
+7 3
+1
+2022 2023
+2
+69420420 469696969
+1000000000 1000000000
 Note
-In the first test case, there are only two paths from cell
-(1,1)
-to cell
-(2,2)
-. Their costs are
-3−1+4=6
-and
-3−2+4=5
-. Then the minimum cost is
-5
-, which is the maximum possible value.
-In the second test case, there are four paths from cell
-(1,1)
-to cell
-(2,4)
-. Their costs are
-8−1+5−3+7=16
-,
-8−2+5−3+7=15
-,
-8−2+6−3+7=16
-, and
-8−2+6−4+7=15
-. Then the minimum value is
-15
-, which is the maximum possible value.
+In the first test case:
+(0,0)→(3,4)
+In the second test case:
+(0,0)→(3,2)→(4,4)
+In the third test case:
+(0,0)→(5,3)→(3,6)

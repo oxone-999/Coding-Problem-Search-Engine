@@ -1,45 +1,42 @@
-Sorted Substrings
+Maximum OR Minimum
 Problem
-You have a binary string
-S. You can perform the following operation on
-S:
-Select any substring
-S
-L…R
-(1≤L≤R≤∣S∣) which is sorted in non-decreasing order and remove it from
-S. (Both the left and right halves are concatenated after performing the operation)
-For e.g. if
-S=100011000, we can perform the following operation:
-100
-011
-000→100000
-Find the minimum number of operations required so that the final binary string
-S is sorted in non-decreasing order.
-Note that a substring is formed by deleting some (possibly zero) characters from the beginning and some (possibly zero) characters from the end of the string.
+Alice and Bob are ready to play a new game. Both the players take alternate turns. Alice starts first.
+There are
+N binary numbers written on a blackboard.
+Alice, in her turn, erases any
+2 numbers from the blackboard and writes the bitwise OR of those
+2 numbers on the blackboard.
+Bob, in his turn, erases any
+2 numbers from the blackboard and writes the bitwise AND of those
+2 numbers on the blackboard.
+Note that, after each move, the count of numbers written on the blackboard reduces by
+1.
+Both players play until a single number remains on the blackboard. Alice wants to maximise the remaining number while Bob wants to minimise the remaining number. Find the remaining number if both the players play optimally.
 Input Format
-The first line contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first line of each test case contains an integer
-N — the length of the binary string
-S.
-The second line of each test case contains a binary string
-S of length
-N containing
-0s and
-1s only.
+First line will contain
+T, number of test cases. Then the test cases follow.
+First line of each test case contains of a single integer
+N - the count of numbers written on the blackboard initially.
+Second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…A
+N
+- the numbers written on the blackboard.
 Output Format
-For each test case, output the minimum number of operations required so that the final binary string
-S is sorted in non-decreasing order.
+For each test case, output in a single line, the remaining number, if both the players play optimally.
 Constraints
-1≤T≤10
+1≤T≤1000
+2≤N≤10
 5
-1≤N≤10
-5
-S contains
-0 and
-1 only.
-The sum of
-N over all test cases won't exceed
+0≤A
+i
+≤1
+Sum of
+N over all test cases does not exceed
 2⋅10
 5
 .
@@ -47,27 +44,46 @@ Sample 1:
 Input
 Output
 3
-3
-000
 5
-01110
-2
-10
+1 1 1 1 0
+3
+0 1 0
+4
+0 0 0 0
+1
 0
-1
-1
+0
 Explanation:
 Test case
-1: The binary string is already sorted, so we need no operations.
+1: Alice starts first.
+In the first move, Alice erases
+1 and
+0 and writes
+1∣0=1 on the blackboard. Thus, after this move, the numbers written are
+{1,1,1,1}.
+In the second move, Bob erases
+1 and
+1 and writes
+1&1=1 on the blackboard. Thus, after this move, the numbers written are
+{1,1,1}.
+In the third move, Alice erases
+1 and
+1 and writes
+1∣1=1 on the blackboard. Thus, after this move, the numbers written are
+{1,1}.
+In the fourth move, Bob erases
+1 and
+1 and writes
+1&1=1 on the blackboard. Thus, after this move, the numbers written are
+{1}.
+Thus, the remaining number is
+1.
 Test case
-2: We can use one operation to remove the sorted substring
-S
-2…4
-=111. Thus, the remaining string
-00 is sorted.
+2: It does not matter which two numbers Alice chooses. After the first move, the numbers on the blackboard would be
+{1,0}. Thus, Bob erases these two numbers and writes
+1&0=0.
 Test case
-3: We can use one operation to remove the sorted substring
-S
-2…2
-=0. Thus, the remaining string
-1 is sorted.
+3: In all the moves, both players erase two
+0s and write a single
+0. Thus, the remaining element is
+0.

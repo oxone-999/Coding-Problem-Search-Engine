@@ -1,115 +1,117 @@
-C. Increase and Copy
+F. Number of Subsequences
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Initially, you have the array
-a
-consisting of one element
-1
-(
-a=[1]
-).
-In one move, you can do one of the following things:
-Increase some (single) element of
-a
-by
-1
-(choose some
-i
-from
-1
-to the current length of
-a
-and increase
-a
-i
-by one);
-Append the copy of some (single) element of
-a
-to the end of the array (choose some
-i
-from
-1
-to the current length of
-a
-and append
-a
-i
-to the end of the array).
-For example, consider the sequence of five moves:
-You take the first element
-a
-1
-, append its copy to the end of the array and get
-a=[1,1]
+You are given a string
+s
+consisting of lowercase Latin letters "a", "b" and "c" and question marks "?".
+Let the number of question marks in the string
+s
+be
+k
+. Let's replace each question mark with one of the letters "a", "b" and "c". Here we can obtain all
+3
+k
+possible strings consisting only of letters "a", "b" and "c". For example, if
+s=
+"ac?b?c" then we can obtain the following strings:
+[
+"acabac", "acabbc", "acabcc", "acbbac", "acbbbc", "acbbcc", "accbac", "accbbc", "accbcc"
+]
 .
-You take the first element
-a
-1
-, increase it by
-1
-and get
-a=[2,1]
-.
-You take the second element
-a
-2
-, append its copy to the end of the array and get
-a=[2,1,1]
-.
-You take the first element
-a
-1
-, append its copy to the end of the array and get
-a=[2,1,1,2]
-.
-You take the fourth element
-a
-4
-, increase it by
-1
-and get
-a=[2,1,1,3]
-.
-Your task is to find the minimum number of moves required to obtain the array with the sum at least
-n
-.
-You have to answer
-t
-independent test cases.
-Input
-The first line of the input contains one integer
-t
-(
-1≤t≤1000
-) — the number of test cases. Then
-t
-test cases follow.
-The only line of the test case contains one integer
-n
-(
-1≤n≤
+Your task is to count the total number of subsequences "abc" in all resulting strings. Since the answer can be very large, print it modulo
 10
 9
-) — the lower bound on the sum of the array.
-Output
-For each test case, print the answer: the minimum number of moves required to obtain the array with the sum at least
-n
++7
 .
-Example
+A subsequence of the string
+t
+is such a sequence that can be derived from the string
+t
+after removing some (possibly, zero) number of letters without changing the order of remaining letters. For example, the string "baacbc" contains two subsequences "abc" — a subsequence consisting of letters at positions
+(2,5,6)
+and a subsequence consisting of letters at positions
+(3,5,6)
+.
+Input
+The first line of the input contains one integer
+n
+(3≤n≤200000)
+— the length of
+s
+.
+The second line of the input contains the string
+s
+of length
+n
+consisting of lowercase Latin letters "a", "b" and "c" and question marks"?".
+Output
+Print the total number of subsequences "abc" in all strings you can obtain if you replace all question marks with letters "a", "b" and "c", modulo
+10
+9
++7
+.
+Examples
 input
 Copy
-5
-1
-5
-42
-1337
-1000000000
+6
+ac?b?c
+output
+Copy
+24
+input
+Copy
+7
+???????
+output
+Copy
+2835
+input
+Copy
+9
+cccbbbaaa
 output
 Copy
 0
+input
+Copy
+5
+a???c
+output
+Copy
+46
+Note
+In the first example, we can obtain
+9
+strings:
+"acabac" — there are
+2
+subsequences "abc",
+"acabbc" — there are
+4
+subsequences "abc",
+"acabcc" — there are
+4
+subsequences "abc",
+"acbbac" — there are
+2
+subsequences "abc",
+"acbbbc" — there are
 3
-11
-72
-63244
+subsequences "abc",
+"acbbcc" — there are
+4
+subsequences "abc",
+"accbac" — there is
+1
+subsequence "abc",
+"accbbc" — there are
+2
+subsequences "abc",
+"accbcc" — there are
+2
+subsequences "abc".
+So, there are
+2+4+4+2+3+4+1+2+2=24
+subsequences "abc" in total.

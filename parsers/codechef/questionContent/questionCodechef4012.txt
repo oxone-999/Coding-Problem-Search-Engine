@@ -1,234 +1,255 @@
-Moving Rectangles (Challenge)
+Stack-Queue Sort (Challenge)
 Problem
-Read problem statements in Bengali and Hindi
-Taran and Birju Pandey are good friends. In order to solidify their friendship, Taran sent Birju another challenge problem and asked him to find the best solution. Birju is good at writing stories as well as solving problems, but he is unable to solve this problem. Birju is worried that if he does not solve the problem, Taran might forget their friendship and unleash another war, deadlier than the last one. Therefore, he is asking you for help with this problem.
-This is an interactive problem.
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
 There are
-N rectangles (numbered
+B blocks (numbered
 1 through
-N) in a plane described by Cartesian coordinates
-x and
-y. Initially (at time
-0), each rectangle is moving parallel to one of the coordinate axes with fixed speed
-1 unit per second. You are given the width, height and position of each rectangle, as well as the direction in which it is initially moving.
-You must repeat the following process
-N times:
-Read a string
-S given by the grader. This string is either "REVERSE" or "ROTATE" and describes the operation you should perform on one rectangle. These operations are applied in chronological order, i.e. the current operation is applied after all the previous operations have already been applied.
-Choose one rectangle on which this operation should be applied. Let's denote the number of this rectangle by
-r.
-Choose the second
-s (between
-1 and
-N inclusive) during which this operation should be applied. If an operation is applied during the
-s-th second, it means that is applied strictly between time
-s−1 and time
-s. Since the operations must be performed in chronological order, you may only choose the
-s-th second if all previous operations have been applied during the
-1-st through
-s-th second (inclusive).
-If
-S is "REVERSE", then during the
-s-th second, the direction in which the
-r-th rectangle is currently moving is reversed — it is changed from North to South, from South to North, from West to East or from East to West.
-If
-S is "ROTATE", then during the
-s-th second, the direction in which the
-r-th rectangle is currently moving is rotated by
-90
-∘
-. You must choose the new direction
-dir for this rectangle's velocity. From North to South, you may change the direction to East or West (but not to North or South), and vice versa.
-The rectangles are moving in discrete steps — at the end of each second (after all the operations applied during this second are performed), each rectangle moves by
-1 unit in its currently assigned direction. The rectangles do not move at time
-0, but they move at time
-N.
-Let's assign numbers and coordinates to directions in the following way:
-moving by
-1 unit in direction
-0 (North): the
-y-coordinate increases by
+B) distributed in
+N containers (numbered
+1 through
+N). For each valid
+i, the weight of the
+i-th block is
+W
+i
+kilograms.
+For each container
+i, you should decide if it will be used like a stack or a queue. At any time, a container may contain any sequence of blocks (possibly the empty sequence); let's denote the number of the
+j-th block (indexed from
+1) in the
+i-th container by
+A
+i,j
+.
+A stack is a data structure that stores a sequence of integers
+(X
 1
-moving by
-1 unit in direction
-1 (East): the
-x-coordinate increases by
+,X
+2
+,…,X
+M
+) and supports two types of instructions:
+pop: Remove the last element of the sequence. After this instruction, the sequence becomes
+(X
 1
-moving by
-1 unit in direction
-2 (South): the
-y-coordinate decreases by
+,…,X
+M−1
+); it must be non-empty before this instruction. The return value of this instruction is
+X
+M
+.
+push a: Add an element
+a at the end of the sequence. After this instruction, the sequence becomes
+(X
 1
-moving by
-1 unit in direction
-3 (West): the
-x-coordinate decreases by
+,…,X
+M
+,a).
+Similarly, a queue is a data structure that stores a sequence of integers
+(X
 1
-After
-N seconds (immediately after the rectangles moved at time
-N), consider the sum of common areas of each unordered pair of different rectangles, i.e.
-A=∑
-i=1
-N
-∑
-j=i+1
-N
-area(i,j) where
-area(x,y) denotes the common area, i.e. area of the intersection of rectangles
-x and
-y.
-Can we maximise
-A if we apply the operations optimally? Good luck!
-Interaction
-First, your program should read a line containing a single integer ― the number of test cases
-T. The description of interaction for
-T test cases follows.
-For each test case, you must start by reading a line containing a single integer
-N.
-Then, you must read
-N lines. For each
-i (
-1≤i≤N), the
-i-th of these lines contain five space-separated integers
-v
-x
-,
-v
-y
-,
-d
-x
-,
-d
-y
+,X
+2
+,…,X
+M
+) and supports two types of instructions:
+pop: Remove the first element of the sequence. After this instruction, the sequence becomes
+(X
+2
+,…,X
+M
+); it must be non-empty before this instruction. The return value of this instruction is
+X
+1
+.
+push a: Add an element
+a at the end of the sequence. After this instruction, the sequence becomes
+(X
+1
+,…,X
+M
+,a).
+For each valid
+i, it takes
+C
+i
+⋅w nanoseconds to pop a block with weight
+w from the container
+i and
+D
+i
+⋅w nanoseconds to push a block with weight
+w to the container
+i.
+Using the given data structures, you may perform the following operation at most
+B
+2
+/2 times: choose two containers
+c
+1
 and
-dir describing a rectangle with width
-d
-x
-and height
-d
-y
-moving in direction
-dir. The initial coordinates of this rectangle's vertices are
-(v
-x
-,v
-y
-),
-(v
-x
-+d
-x
-,v
-y
-),
-(v
-x
-,v
-y
-+d
-y
-) and
-(v
-x
-+d
-x
-,v
-y
-+d
-y
-).
-Then, you must perform the following process
-N times:
-Read a line containing a single string
-S.
-If
-S is "REVERSE", print a single line containing two space-separated integers
-r and
-s denoting that the current operation should be applied on the
-r-th rectangle during the
-s-th second.
-If
-S is "ROTATE", print a single line containing three space-separated integers
-r,
-dir and
-s denoting that the current operation should be applied on the
-r-th rectangle during the
-s-th second and the new direction of its velocity becomes
-dir.
-Your output must satisfy the following conditions:
-1≤r,s≤N
-0≤dir≤3
-Don't forget to flush the output after printing each line! Otherwise, the grader will wait for your response forever and the verdict of your submission may be anything except Accepted (which you might not like).
-Test generation
-In each test file,
-T=3; also, integers
+c
+2
+(
+c
+1
+
+=c
+2
+), pop a block from the
+c
+1
+-th container and then push this block to the
+c
+2
+-th container.
+Your task is to sort all the blocks in a single container, i.e. after performing all operations, the sequence of blocks in some container must be
+(1,2,…,B). The time spent performing operations should be as small as possible.
+Input
+The first line of the input contains two space-separated integers
 N and
-MX are chosen manually. Then, for each rectangle:
-v
-x
+B.
+The second line contains
+N space-separated integers
+C
+1
+,C
+2
+,…,C
+N
+.
+The third line contains
+N space-separated integers
+D
+1
+,D
+2
+,…,D
+N
+.
+The fourth line contains
+B space-separated integers
+W
+1
+,W
+2
+,…,W
+B
+.
+The next
+N lines describe the initial distribution of blocks in containers. For each valid
+i, the
+i-th of these lines contains an integer
+M denoting the number of blocks which are initially in the
+i-th container, followed by a space and
+M space-separated integers
+A
+i,1
+,A
+i,2
+,…,A
+i,M
+denoting the sequence of blocks which are initially in this container.
+Output
+First, print a line containing a string with length
+N. For each valid
+i, the
+i-th character of this string should be either 'S' if the
+i-th sequence is used as a stack or 'Q' if it is used as a queue.
+Then, print a line containing a single integer
+Q ― the number of operations to perform.
+Finally, print
+Q lines. Each of these lines should contain two space-separated integers
+c
+1
 and
-v
-y
-are generated uniformly randomly between
-0 and
-10
+c
+2
+describing an operation that pops an element from the
+c
+1
+-th container and pushes it into the
+c
+2
+-th container.
+Constraints
+2≤N≤128
+B=1,024
+1≤C
+i
+,D
+i
+≤50 for each valid
+i
+1≤W
+i
+≤50 for each valid
+i
+0≤M≤B
+1≤A
+i,j
+≤B for each valid
+i,j
+Example Input
+3 4
+1 2 3
+1 2 3
+2 1 4 3
+2 3 2
+1 1
+1 4
+Example Output
+QQS
 4
-inclusive
-d
-x
-and
-d
-y
-are generated uniformly randomly between
-1 and
-MX inclusive
-dir is generated uniformly randomly between
-0 and
-3 inclusive
-S is generated uniformly randomly from the set {"ROTATE", "REVERSE"}
-There are three types of tests:
-type 1: five test files with
-N=500 and
-MX=1000
-type 2: five test files with
-N=1000 and
-MX=100
-type 3: ten test files with
-N=1000 and
-MX=1000
-Scoring
-The score of each test case is computed as
-A⋅10
-5
-/(N
-2
-MX
-2
-). The score of each test file is the sum of scores of all test cases in that file. The score of a submission is the sum of scores of all test files.
-There are twenty test files. During the contest, the displayed score will account for exactly four test files, i.e. your score reflects your submission's performance on 20% (4 out of 20) of the test files. However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to the sum of your program's scores over the other sixteen test files.
-Example
-Grader                          You
-2
-3
-0 0 5 5 0
-1 1 3 4 2
-1 0 2 2 1
-REVERSE
-                                1 1
-ROTATE
-                                3 2 1
-ROTATE
-                                3 3 3
-3
-0 0 5 5 0
-1 1 3 4 2
-1 0 2 2 1
-REVERSE
-                                1 1
-ROTATE
-                                3 2 1
-ROTATE
-                                3 3 3
+1 3
+1 2
+4 2
+4 2
 Explanation
-Both test cases are the same and they are given just to clarify how interaction works if there are multiple test cases.
+The first two containers are used as queues and the third container as a stack. The sequences change as follows:
+Initially:
+(3,2),(1),(4).
+After the first operation:
+(2),(1),(4,3).
+After the second operation:
+(),(1,2),(4,3).
+After the third operation:
+(),(1,2,3),(4).
+After the fourth operation:
+(),(1,2,3,4),().
+Test Generation
+The source code used to generate test data can be downloaded here.
+N can be
+16,
+32,
+64 or
+128.
+All values of
+C
+i
+,
+D
+i
+and
+W
+i
+are chosen uniformly randomly and independently between
+1 and
+50 inclusive.
+A permutation of the integers
+1 through
+B is chosen uniformly randomly. The blocks are pushed to the containers one by one in this order.
+One of the following two initial distribution schemes is chosen:
+All
+B blocks are pushed into the
+1-st container.
+For each block, a container into which it is pushed is chosen uniformly randomly and independently.
+There are eight test files ― one for each possible value of
+N and distribution scheme.
+Scoring
+If your output is invalid (in particular if you attempt to pop an empty container), you do not sort the blocks in a single container or you use more than
+B
+2
+/2 operations, you will receive the Wrong Answer verdict.
+Otherwise, the score of a test file is the number of nanoseconds spent performing your operations. The score of a submission is the sum of scores of all test files. Your goal is to minimise the score of your submission.
+There are eight test files. During the contest, the displayed score will account for exactly four test files, i.e. your score reflects your submission's performance on 50% (4/8) of the test files; However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to include the sum of your program's scores over the other 4 test files.

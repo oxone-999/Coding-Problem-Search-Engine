@@ -1,249 +1,149 @@
-L. Road Construction
-time limit per test2 seconds
+C. Sweets Eating
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-N
-cities in the country of Numbata, numbered from
+Tsumugi brought
+n
+delicious sweets to the Light Music Club. They are numbered from
 1
 to
-N
-. Currently, there is no road connecting them. Therefore, each of these
-N
-cities proposes a road candidate to be constructed.
-City
+n
+, where the
 i
-likes to connect with city
-A
-i
-, so city
-i
-proposes to add a direct bidirectional road connecting city
-i
-and city
-A
-i
-. It is guaranteed that no two cities like to connect with each other. In other words, there is no pair of integers
-i
-and
-j
-where
-A
-i
-=j
-and
-A
-j
-=i
-. It is also guaranteed that any pair of cities are connected by a sequence of road proposals. In other words, if all proposed roads are constructed, then any pair of cities are connected by a sequence of constructed road.
-City
-i
-also prefers the road to be constructed using a specific material. Each material can be represented by an integer (for example,
-0
-for asphalt,
-1
-for wood, etc.). The material that can be used for the road connecting city
-i
-and city
-A
-i
-is represented by an array
-B
-i
-containing
-M
-i
-integers:
-[(
-B
-i
-)
-1
-,(
-B
-i
-)
-2
-,…,(
-B
-i
-)
-M
-i
-]
-. This means that the road connecting city
-i
-and city
-A
-i
-can be constructed with either of the material in
-B
+-th sweet has a sugar concentration described by an integer
+a
 i
 .
-There are
-K
-workers to construct the roads. Each worker is only familiar with one material, thus can only construct a road with a specific material. In particular, the
+Yui loves sweets, but she can eat at most
+m
+sweets each day for health reasons.
+Days are
+1
+-indexed (numbered
+1,2,3,…
+). Eating the sweet
 i
-th
-worker can only construct a road with material
-C
+at the
+d
+-th day will cause a sugar penalty of
+(d⋅
+a
 i
-. Each worker can only construct at most one road. You want to assign each worker to construct a road such that any pair of cities are connected by a sequence of constructed road.
+)
+, as sweets become more sugary with time. A sweet can be eaten at most once.
+The total sugar penalty will be the sum of the individual penalties of each sweet eaten.
+Suppose that Yui chooses exactly
+k
+sweets, and eats them in any order she wants. What is the minimum total sugar penalty she can get?
+Since Yui is an undecided girl, she wants you to answer this question for every value of
+k
+between
+1
+and
+n
+.
 Input
-Input begins with a line containing two integers:
-N
-K
+The first line contains two integers
+n
+and
+m
 (
-3≤N≤2000
-;
-1≤K≤2000
-) representing the number of cities and the number of workers, respectively. The next
-N
-lines each contains several integers:
-A
-i
-M
-i
-(
-B
-i
-)
+1≤m≤n≤200 000
+).
+The second line contains
+n
+integers
+a
 1
 ,
-(
-B
-i
-)
+a
 2
-,
-⋯
-,
-(
-B
-i
-)
-M
-i
+,…,
+a
+n
 (
 1≤
-A
+a
 i
-≤N
-;
-A
-i
-≠i
-;
-1≤
-M
-i
-≤10000
-;
-0≤(
-B
-i
-)
-1
-<(
-B
-i
-)
-2
-<⋯<(
-B
-i
-)
-M
-i
-≤
-10
-9
-) representing the bidirectional road that city
-i
-likes to construct. It is guaranteed that the sum of
-M
-i
-does not exceed
-10000
-. It is also guaranteed that no two cities like to connect with each other and any pair of cities are connected by a sequence of road proposals. The next line contains
-K
-integers:
-C
-i
-(
-0≤
-C
-i
-≤
-10
-9
-) representing the material that is familiarized by the workers.
+≤200 000
+).
 Output
-If it is not possible to assign each worker to construct a road such that any pair of cities are connected by a sequence of constructed road, simply output -1 in a line. Otherwise, for each worker in the same order as input, output in a line two integers (separated by a single space):
-u
-and
-v
-in any order. This means that the worker constructs a direct bidirectional road connecting city
-u
-and
-v
-. If the worker does not construct any road, output "0 0" (without quotes) instead. Each pair of cities can only be assigned to at most one worker. You may output any assignment as long as any pair of cities are connected by a sequence of constructed road.
+You have to output
+n
+integers
+x
+1
+,
+x
+2
+,…,
+x
+n
+on a single line, separed by spaces, where
+x
+k
+is the minimum total sugar penalty Yui can get if she eats exactly
+k
+sweets.
 Examples
 input
 Copy
-4 5
-2 2 1 2
-3 2 2 3
-4 2 3 4
-2 2 4 5
-1 2 3 4 5
+9 2
+6 19 3 4 4 2 6 7 8
 output
 Copy
-1 2
-2 3
-3 4
-0 0
-4 2
+2 5 11 18 30 43 62 83 121
 input
 Copy
-4 5
-2 2 10 20
-3 2 2 3
-4 2 3 4
-2 2 4 5
-1 2 3 4 5
+1 1
+7
 output
 Copy
--1
+7
 Note
-Explanation for the sample input/output #1
-We can assign the workers to construct the following roads:
-The first worker constructs a road connecting city
+Let's analyze the answer for
+k=5
+in the first example. Here is one of the possible ways to eat
+5
+sweets that minimize total sugar penalty:
+Day
 1
-and city
-2
-.
-The second worker constructs a road connecting city
-2
-and city
-3
-.
-The third worker constructs a road connecting city
-3
-and city
+: sweets
+1
+and
 4
-.
-The fourth worker does not construct any road.
-The fifth worker constructs a road connecting city
-4
-and city
+Day
 2
+: sweets
+5
+and
+3
+Day
+3
+: sweet
+6
+Total penalty is
+1⋅
+a
+1
++1⋅
+a
+4
++2⋅
+a
+5
++2⋅
+a
+3
++3⋅
+a
+6
+=6+4+8+6+6=30
+. We can prove that it's the minimum total sugar penalty Yui can achieve if she eats
+5
+sweets, hence
+x
+5
+=30
 .
-Therefore, any pair of cities are now connected by a sequence of constructed road.
-Explanation for the sample input/output #2
-There is no worker that can construct a road connecting city
-1
-, thus city
-1
-is certainly isolated.

@@ -1,104 +1,93 @@
-Special String
+Army of Me
 Problem
-Consider the string of infinite length obtained by repeating abcdefghijklmnopqrstuvwxyz infinitely many times. That is, it looks like abc...xyzabc...xyzabc...
-Let string
-B be the prefix of this string of length
-M. For example,
-if
-M=6,
-B= abcdef
-if
-M=29,
-B= abcdefghijklmnopqrstuvwxyzabc
-Vedansh calls a string
-X special if it contains
-B as a substring. Formally,
-X is special if for some
-1≤L≤R≤∣X∣,
-X
-L…R
-=B.
-Vedansh has string
-S of length
-N (consisting of lowercase Latin letters only). He wants to convert
-S into a special string. To do so he can perform the following operation:
-Pick an
-i such that
-1≤i≤N and delete
-S
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Dr.D has recently been thinking about the phrase "Life is short". He decided to start doing all sorts of exotic stuff he has always wanted to do. But since life is short, he does not have the time to do it all by himself, so he made the Cloninator and used it to create
+N clones of himself (numbered
+1 through
+N) to help him do all the stuff on his hope-to-do-list. Dr.D has already lined up the clones; for each
+i (
+1≤i≤N), the
+i-th clone in the line is the
+P
 i
-. The remaining parts of
-S are concatenated.
-Since Vedansh is lazy, he wants to do this in the minimum number of operations or determine if
-S cannot be converted to a special string. Help Vedansh in doing so.
-Input Format
-The first line of input contains a single integer
-T — the number of test cases. The description of
-T test cases follows.
-Each test case consists of three lines of input
-The first line of each test case contains an integer
-N — the length of the string
-S.
-The second line of each test case contains the string
-S which consists of lowercase Latin letters only.
-The third line of each test case contains an integer
-M — the length of the string
-B whose form is described in the statement.
-Output Format
-For each test case, if
-A can be converted to a special string, output the minimum number of operations to do so. Otherwise output
-−1.
-Constraints
-1≤T≤1000
-1≤M≤N≤10
-6
-S consists of only lowercase Latin letters
-It is guaranteed that the sum of
-N over all test case does not exceed
-10
-6
+-th clone created by Cloninator.
+There are
+Q items on Dr.D's hope-to-do-list, so you should process
+Q queries. For each query, Dr.D wants to choose some parameters
+L and
+R such that
+1≤L≤R≤N and send the clones
+P
+L
+,P
+L+1
+,…,P
+R
+to do an exotic activity. Dr.D waits until these clones finish and come back before proceeding with the next item on his list (the next query), so a clone may be picked multiple times in different queries.
+The strength of a group of clones is the maximum number of clones in that group such that their positions in the line are consecutive and they can be reordered in such a way that their id-s
+P
+i
+also become consecutive (they were created consecutively by the Cloninator). Dr.D is wondering if the groups he selects are strong enough for their tasks. For each query, calculate the strength of the group of clones that Dr.D sends to do an exotic activity.
+Input
+The first line of the input contains two space-separated integers
+N and
+Q.
+The second line contains
+N space-separated integers
+P
+1
+,P
+2
+,…,P
+N
 .
+The next
+Q lines describe queries. Each of these lines contains two space-separated integers
+X and
+Y; the values of
+L and
+R for this query can be calculated as follows:
+Let
+last be the answer to the previous query, or
+0 if this is the first query.
+Calculate
+L=((X+last−1)%N)+1.
+Calculate
+R=((Y+last−1)%N)+1.
+If
+L>R, swap
+L and
+R.
+Output
+For each query, print a single line containing one integer ― the strength of the given group.
+Constraints
+1≤N,Q≤5⋅10
+5
+P
+1
+,P
+2
+,…,P
+N
+form a permutation of
+1,2,…,N.
+1≤X,Y≤N
 Subtasks
+Subtask #1 (21 points):
+N,Q≤5,000
+Subtask #2 (79 points): original constraints
 Sample 1:
 Input
 Output
+7 5
+2 5 4 6 3 7 1
+2 4
+5 2
+1 7
+7 6
+3 2
 3
-9
-ababbdced
-4
-7
-bdcgehx
 5
-6
-acbcbd
-3
-3
--1
 1
-Explanation:
-Test case
-1:
-M=4, so
-B=abcd. We can delete the following characters from
-S:
-ababbdced
-→
-ab
-abcd
-, which has
-B as a substring.
-Test case
-2:
-M=5, so
-B=abcde. It can be shown that
-S can not be converted into a special string.
-Test case
-3:
-M=3, so
-B=abc. We can delete the following characters from
-S:
-acbcbd
-→
-abc
-bd, which has
-B as a substring.
+7
+2

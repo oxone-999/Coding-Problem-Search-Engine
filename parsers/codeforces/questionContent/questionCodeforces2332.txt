@@ -1,135 +1,125 @@
-A. Ahahahahahahahaha
-time limit per test1 second
+D. Discrete Centrifugal Jumps
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alexandra has an even-length array
-a
-, consisting of
-0
-s and
-1
-s. The elements of the array are enumerated from
-1
-to
+There are
 n
-. She wants to remove at most
+beautiful skyscrapers in New York, the height of the
+i
+-th one is
+h
+i
+. Today some villains have set on fire first
+n−1
+of them, and now the only safety building is
 n
-2
-elements (where
-n
-— length of array) in the way that alternating sum of the array will be equal
-0
-(i.e.
-a
-1
-−
-a
-2
-+
-a
-3
-−
-a
-4
-+…=0
-). In other words, Alexandra wants sum of all elements at the odd positions and sum of all elements at the even positions to become equal. The elements that you remove don't have to be consecutive.
-For example, if she has
-a=[1,0,1,0,0,0]
-and she removes
-2
-nd and
-4
-th elements,
-a
-will become equal
-[1,1,0,0]
-and its alternating sum is
-1−1+0−0=0
-.
-Help her!
-Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤
-10
-3
-). Description of the test cases follows.
-The first line of each test case contains a single integer
-n
-(
-2≤n≤
-10
-3
+-th skyscraper.
+Let's call a jump from
+i
+-th skyscraper to
+j
+-th (
+i<j
+) discrete, if all skyscrapers between are strictly lower or higher than both of them. Formally, jump is discrete, if
+i<j
+and one of the following conditions satisfied:
+i+1=j
+max(
+h
+i+1
+,…,
+h
+j−1
+)<min(
+h
+i
 ,
+h
+j
+)
+max(
+h
+i
+,
+h
+j
+)<min(
+h
+i+1
+,…,
+h
+j−1
+)
+.
+At the moment, Vasya is staying on the first skyscraper and wants to live a little longer, so his goal is to reach
 n
-is even)  — length of the array.
+-th skyscraper with minimal count of discrete jumps. Help him with calcualting this number.
+Input
+The first line contains a single integer
+n
+(
+2≤n≤3⋅
+10
+5
+) — total amount of skyscrapers.
 The second line contains
 n
 integers
-a
+h
 1
 ,
-a
+h
 2
 ,…,
-a
+h
 n
 (
-0≤
-a
+1≤
+h
 i
-≤1
-)  — elements of the array.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
+≤
 10
-3
-.
+9
+) — heights of skyscrapers.
 Output
-For each test case, firstly, print
+Print single number
 k
-(
-n
-2
-≤k≤n
-) — number of elements that will remain after removing in the order they appear in
-a
-. Then, print this
-k
-numbers. Note that you should print the numbers themselves, not their indices.
-We can show that an answer always exists. If there are several answers, you can output any of them.
-Example
+— minimal amount of discrete jumps. We can show that an answer always exists.
+Examples
+input
+Copy
+5
+1 3 1 4 5
+output
+Copy
+3
 input
 Copy
 4
-2
-1 0
-2
-0 0
-4
-0 1 1 1
-4
-1 1 0 0
+4 2 2 4
 output
 Copy
 1
-0
-1
-0
+input
+Copy
 2
 1 1
-4
-1 1 0 0
+output
+Copy
+1
+input
+Copy
+5
+100 1 100 1 100
+output
+Copy
+2
 Note
-In the first and second cases, alternating sum of the array, obviously, equals
-0
+In the first testcase, Vasya can jump in the following way:
+1→2→4→5
 .
-In the third case, alternating sum of the array equals
-1−1=0
+In the second and third testcases, we can reach last skyscraper in one jump.
+Sequence of jumps in the fourth testcase:
+1→3→5
 .
-In the fourth case, alternating sum already equals
-1−1+0−0=0
-, so we don't have to remove anything.

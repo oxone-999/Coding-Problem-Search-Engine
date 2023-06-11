@@ -1,151 +1,54 @@
-Maximum Tree Jumps
+A Fence for Byteland
 Problem
-Read problems statements in Mandarin Chinese, Russian, and Bengali as well.
-Some cooking competitions going on to be held in various cities and the Chef wants to participate in them. There are
-N cities numbered from
-1 to
-N and they are connected by
-N−1 roads such that every city is connected to every other city. But traveling is a bit different here. Every city
-i is assigned a travel value,
-A
-i
-. From a city numbered
-X, one can only travel to another city
-Y such that the simple path from
-X to
-Y has exactly
-A
-X
-roads.
-To participate in a city's competition, the Chef just has to visit it. Help the Chef by finding the maximum number of competitions he can participate in if he can start from any city and visit any city multiple times.
-Formally, given a tree in which every node
-i is assigned a value
-A
-i
-, you have to find the maximum number of distinct nodes that can be visited, if we can start from any node and visit any node multiple times. The only condition is that you can only move from node
-i to
-j if the number of edges between
-i and
-j is exactly
-A
-i
-.
-Note: Usually, there is no bound on the stack memory, and is equal to the total memory limit of 1.5 GB. But due to a system configuration issue, the stack limit for C++ is temporarily set to 8MB. So, if you believe that your code requires larger stack limit, please include this in your code.
-Input Format
-The first line contains a single integer
-T, the number of test cases. Then the test cases follow.
-The first line of each test case contains a single integer
-N (
-1≤N≤10
-5
-).
-Next
-N−1 lines contain 2 integers each,
-u
-i
-and
-v
-i
-, denoting a road between cities
-u
-i
-and
-v
-i
-.
-Next line contains
-N space separated integers,
-A
-1
-⋅⋅⋅A
-N
-.
-Output Format
-In a single line, output the maximum number of cities that can be visited, starting from any one and visiting any city any number of times.
-Constraints
-1≤T≤10
-4
-1≤N≤10
-5
-1≤u
-i
-,v
-i
-≤N and
-u
-i
-
-=v
-i
-1≤A
-i
-≤10
-9
-It is guaranteed that the given edges form a tree.
-It is also guaranteed that the sum of
-N for all test cases does not exceed
-2⋅10
-5
-.
-Sample 1:
+Byteland is in turmoil! The citizens of Byteland cannot agree on how many bytes are in a kilobyte. Members of the Decocratic party claim there are 1000 bytes in a kilobyte, and members of the Rebytelican party insist there are 1024 bytes in a kilobyte. The country is on the verge of a civil war. These times call for drastic measures, and Chef has decided the only option is to build a fence separating the citizens based on their opinions. Once the fence is built, the Decocrats should be fully separated from the Rebytelicans. Note that the fence is allowed to pass through the location of a citizen.
+Chef wants your help in designing the fence. Chef will be happy as long as the fence separates the citizens properly, but would prefer a shorter fence. You'll be given a map of the city, and need to produce a polygonal fence that separates the citizens. The polygon must be strictly non-self-intersecting (that is, no two edges may cross, and no vertex may belong to more than two edges). Additionally, one of the following must be true:
+All Decocrats are inside or on the border of the polygon, and all Rebytelicans are outside or on the border of the polygon, or
+All Decocrats are outside or on the border of the polygon, and all Rebytelicans are inside or on the border of the polygon.
 Input
+Input will begin with an integer N, the number of citizens in Byteland. N lines follow with 3 integers each: the x and y coordinates of the citizen, and the number of bytes the citizen believes are in a kilobyte (this will always be either 1000 or 1024).
 Output
-3
+First, output the number of vertices in your polygon. It should be an integer from 3 to 1000, inclusive. Then output the vertices of your polygon in order, x coordinate then y coordinate. All coordinates must be integers with absolute value at most 2000. All vertices must be distinct.
+Just to reiterate, you output will be accepted if and only if all of the following conditions are satisfied:
+Let L be the number of vertices in your polygon. Output must contain exactly 2 * L + 1 integers separated by spaces or line breaks, with first integer in the output equal to L.
+The number of vertices of your polygon (that is L) lies between 3 and 1000, inclusive.
+Coordinates of all vertices of your polygon must be integers with absolute value at most 2000.
+All vertices of your polygon are distinct (which actually follows from the next condition).
+Every two non-consecutive sides of your polygon have no common points considered as closed segments on the plane (it is equivalent formulation of strictly non-self intersecting property of the polygon described above).
+Your polygon separates Decocrats and Rebytelicans as described above (which is, of course, the most important condition).
+Scoring
+Let D be the greatest distance between any two citizens, and P the perimeter of your polygon (the sum of the lengths of all the sides). Your score is then calculated as 10 * P / (D * sqrt(N)). The score of the submission is the average score over all test files. Smaller scores will earn more points.
+Example
+Input:
+16
+1 1 1024
+1 2 1024
+1 3 1024
+1 4 1000
+2 1 1000
+2 2 1000
+2 3 1000
+2 4 1024
+3 1 1000
+3 2 1024
+3 3 1000
+3 4 1000
+4 1 1000
+4 2 1024
+4 3 1024
+4 4 1024
+Output:
 5
-1 3
-3 5
-1 4
-4 2
-1 2 3 3 1
-6
-1 2
-1 3
-2 4
-2 5
-3 6
-1 1 1 1 1 1
-8
-1 5
-1 6
-1 7
-1 8
-1 2
-2 3
+4 1
+3 2
 3 4
-1 2 3 4 5 6 7 8
-5
-6
-4
-Explanation:
-In example case
-1,
-From city
-1, Chef can move only to cities
-3 or
-4.
-From city
-2, Chef can move only to city
-1.
-From city
-3, Chef can move only to city
-2.
-From city
-4, Chef can move only to city
-5.
-From city
-5, Chef can move only to city
-3.
-Chef can follow the path
-1→3→2→1→4→5, and visit every city.
-In example case
-2,
-Chef can follow any path to visit all the vertices eventually. since every
-A
-i
-=
-1.
-In example case
-3,
-Chef can follow the path
-1→2→4→5.
-There are other paths as well, but the maximum number would be 4 only.
+1 4
+2 1
+Explanation
+For this sample output, the Decocrats at (2, 2) and (2, 3) are inside the fence. The Rebytelicans at (1, 1), (1, 2), (1, 3), (4, 2), (4, 3), (4, 4) are outside the fence. Everyone else is on the border of the fence. Here D = 3 * sqrt(2) = 4.2426, P = sqrt(2) + 2 + 2 + sqrt(10) + 2 = 10.5765, and N = 16. The sample output would therefore score 10 * 10.5765 / (4.2426 * sqrt(16)) = 6.2323. Note that this output is optimal for this case. But you can output any polygon satisfying constraints above in order to get Accepted.
+Test Case Generation
+There are two test case generation methods, each making up half of the test cases.
+In the first method, N is chosen randomly between 100 and 200, inclusive. A real value Q is chosen randomly between 0.2 and 0.8, inclusive. Then N distinct points are chosen randomly with x and y coordinates between 1 and 1000, inclusive. Each point will be a Decocrat with probability Q, and a Rebytelican with probability (1-Q).
+In the second method, two integers W and H are chosen randomly between 10 and 14, inclusive. Two integers dW and dH are chosen randomly between 20 and 70, inclusive. A real value Q is chosen randomly between 0.2 and 0.8, inclusive. N is set to W * H, and the N points are generated as (dW*i, dH*j) with i ranging from 1 to W, inclusive, and j ranging from 1 to H, inclusive. Each point will be a Decocrat with probability Q, and a Rebytelican with probability (1-Q).
+Note that example does not satisfy any of these schemes. But it is guaranteed that every official test file will satisfy one of these schemes.
+Hint
+In order to get Accepted you could simply output a polygon having all citizens on its border. It means that your answer will be accepted if, for example, you output some strictly non-self-intersecting polygon such that each citizen lies on its border. Actually, it is even possible to output all citizens in some order to get AC. (All these details on the hint have already contained in the comments.)

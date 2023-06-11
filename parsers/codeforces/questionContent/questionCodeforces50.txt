@@ -1,215 +1,201 @@
-B1. LuoTianyi and the Floating Islands (Easy Version)
+A. LuoTianyi and the Show
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the easy version of the problem. The only difference is that in this version
-k≤min(n,3)
-. You can make hacks only if both versions of the problem are solved.
-Chtholly and the floating islands.
-LuoTianyi now lives in a world with
+There are
 n
-floating islands. The floating islands are connected by
-n−1
-undirected air routes, and any two of them can reach each other by passing the routes. That means, the
+people taking part in a show about VOCALOID. They will sit in the row of seats, numbered
+1
+to
+m
+from left to right.
+The
 n
-floating islands form a tree.
-One day, LuoTianyi wants to meet her friends: Chtholly, Nephren, William, .... Totally, she wants to meet
-k
-people. She doesn't know the exact positions of them, but she knows that they are in pairwise distinct islands. She define an island is good if and only if the sum of the distances
-†
-†
-from it to the islands with
-k
-people is the minimal among all the
-n
-islands.
-Now, LuoTianyi wants to know that, if the
-k
-people are randomly set in
-k
-distinct of the
-n
-islands, then what is the expect number of the good islands? You just need to tell her the expect number modulo
-10
-9
-+7
+people come and sit in order. Each person occupies a seat in one of three ways:
+Sit in the seat next to the left of the leftmost person who is already sitting, or if seat
+1
+is taken, then leave the show. If there is no one currently sitting, sit in seat
+m
 .
-†
-†
-The distance between two islands is the minimum number of air routes you need to take to get from one island to the other.
+Sit in the seat next to the right of the rightmost person who is already sitting, or if seat
+m
+is taken, then leave the show. If there is no one currently sitting, sit in seat
+1
+.
+Sit in the seat numbered
+x
+i
+. If this seat is taken, then leave the show.
+Now you want to know what is the maximum number of people that can take a seat, if you can let people into the show in any order?
 Input
-The first line contains two integers
+Each test consists of multiple test cases. The first line contains a single integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases. The description of test cases follows.
+The first line of each test case contains two integers
 n
 and
-k
+m
 (
-1≤k≤min(n,3),1≤n≤2⋅
+1≤n,m≤
 10
 5
-) — the number of the islands and people respectively.
-Next
-n−1
-lines describe the air routes. The
-i
--th of them contains two integers
-u
-i
-and
-v
-i
-(
-1≤
-u
-i
-,
-v
-i
-≤n,
-u
-i
-≠
-v
-i
-) — the islands connected by the
-i
--th air route.
-Output
-Print a single integer — the expect number of the good islands modulo
-10
-9
-+7
-.
-Formally, let
-M=
-10
-9
-+7
-. It can be shown that the answer can be expressed as an irreducible fraction
-p
-q
-, where
-p
-and
-q
-are integers and
-q≢0
-(
-modM
-). Output the integer equal to
-p⋅
-q
-−1
-modM
-. In other words, output such an integer
+) — the number of people and the number of seats.
+The second line of each test case contains
+n
+integers
 x
-that
-0≤x<M
-and
-x⋅q≡p
+1
+,
+x
+2
+,…,
+x
+n
 (
-modM
-).
-Examples
+−2≤
+x
+i
+≤m
+,
+x
+i
+≠0
+), the
+i
+-th of which describes the way in which the
+i
+-th person occupies a seat:
+If
+x
+i
+=−1
+, then
+i
+-th person takes the seat in the first way.
+If
+x
+i
+=−2
+, then
+i
+-th person takes the seat in the second way.
+If
+x
+i
+>0
+, then the
+i
+-th person takes a seat in the third way, i.e. he wants to sit in the seat with the number
+x
+i
+or leave the show if it is occupied..
+It is guaranteed that sum of
+n
+and the sum of
+m
+over all test cases don't exceed
+10
+5
+.
+Output
+For each test case output a single integer — the maximum number of people who can occupy a seat.
+Example
 input
 Copy
-4 2
+10
+3 10
+5 5 5
+4 6
+1 -2 -2 1
+5 7
+-1 -1 4 -2 -2
+6 7
+5 -2 -2 -2 -2 -2
+6 6
+-1 1 4 5 -1 4
+6 8
+-1 -1 -1 3 -1 -2
+6 7
+5 -1 -2 -2 -2 -2
+3 1
+-2 -2 1
+2 5
+5 -2
 1 2
-2 3
-3 4
+-1
 output
 Copy
-666666674
-input
-Copy
-5 1
-1 2
-2 3
-3 4
-3 5
-output
-Copy
+1
+3
+5
+6
+5
+5
+5
+1
+2
 1
 Note
-In the first example the air routes form the following tree:
-If the people are in the islands
+In the first test case, all the people want to occupy the
+5
+seat, so only
 1
-and
-2
-, then islands
-1
-and
-2
-will be good.
-The sum of the distances from island
-1
-or
-2
-to all the people is
-1+0=1
-, which is the minimal. While the sum of the distances from island
-3
-to all the people is
-2+1=3
-, which is greater than
-1
-.
-Like this, when the people are in island
-1
-and
-3
-, then islands
-1,2
-and
-3
-will be good.
-When the people are in islands
-1
-and
+people can occupy the seat.
+In the second test case, we can let people in order
+1,2,3,4
+, then all but the last person can take a seat.
+In the third test case, we can let people into the show in that order:
+Let the third person in:
+– – – 3 – – –
+Let the fourth person in:
+– – – 3 4 – –
+Let the fifth person in:
+– – – 3 4 5 –
+Let the first person in:
+– – 1 3 4 5 –
+Let the second person in:
+– 2 1 3 4 5 –
+Thus, all
+5
+people took seats.
+In the fifth test case, we can let people into the show in this order:
+Let the fourth person in:
+– – – – 4 –
+Let the third person in:
+– – – 3 4 –
+Let the sixth person in, he'll leave the show because he takes the third seat the third way and has to sit in the
 4
-, then islands
-1,2,3
-and
-4
-will be good.
-When the people are in islands
-2
-and
-3
-, then islands
-2
-and
-3
-will be good.
-When the people are in islands
-2
-and
-4
-, then islands
-2,3
-and
-4
-will be good.
-When the people are in islands
-3
-and
-4
-, then islands
-3
-and
-4
-will be good.
-So the expect of the number of the good islands is
-16
-6
-, which equals to
-666666674
-modulo
-10
-9
-+7
-.
-In the second example the air routes form the following tree:
-There is always the only good island, so the expected number is
+seat, but it's already taken:
+– – – 3 4 –
+Let the fifth person in:
+– – 5 3 4 –
+Let the first person in:
+– 1 5 3 4 –
+Let the second person in:
+2 1 5 3 4 –
+Thus,
+5
+of people took seats.
+In the seventh test case, we can let people into the show in this order:
+Let the third person in:
+3 – – – – – –
+Let the fourth person in:
+3 4 – – – – –
+Let the fifth person in:
+3 4 5 – – – –
+Let the sixth person in:
+3 4 5 6 – – –
+Let the first person in:
+3 4 5 6 1 – –
+Let the second person in, he will leave the show because he occupies the first way, but the
 1
-.
+seat is taken:
+3 4 5 6 1 – –
+Thus,
+5
+people took seats.

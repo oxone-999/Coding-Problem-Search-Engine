@@ -1,39 +1,43 @@
-G. Large Bouquets
+H. Endless Roses Most Beautiful
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A flower shop has got n bouquets, and the i-th bouquet consists of ai flowers. Vasya, the manager of the shop, decided to make large bouquets from these bouquets.
-Vasya thinks that a bouquet is large if it is made of two or more initial bouquets, and there is a constraint: the total number of flowers in a large bouquet should be odd. Each of the initial bouquets can be a part of at most one large bouquet. If an initial bouquet becomes a part of a large bouquet, all its flowers are included in the large bouquet.
-Determine the maximum possible number of large bouquets Vasya can make.
+Arkady decided to buy roses for his girlfriend.
+A flower shop has white, orange and red roses, and the total amount of them is n. Arkady thinks that red roses are not good together with white roses, so he won't buy a bouquet containing both red and white roses. Also, Arkady won't buy a bouquet where all roses have the same color.
+Arkady wants to buy exactly k roses. For each rose in the shop he knows its beauty and color: the beauty of the i-th rose is bi, and its color is ci ('W' for a white rose, 'O' for an orange rose and 'R' for a red rose).
+Compute the maximum possible total beauty of a bouquet of k roses satisfying the constraints above or determine that it is not possible to make such a bouquet.
 Input
-The first line contains a single positive integer n (1 ≤ n ≤ 105) — the number of initial bouquets.
-The second line contains a sequence of integers a1, a2, ..., an (1 ≤ ai ≤ 106) — the number of flowers in each of the initial bouquets.
+The first line contains two integers n and k (1 ≤ k ≤ n ≤ 200 000) — the number of roses in the show and the number of roses Arkady wants to buy.
+The second line contains a sequence of integers b1, b2, ..., bn (1 ≤ bi ≤ 10 000), where bi equals the beauty of the i-th rose.
+The third line contains a string c of length n, consisting of uppercase English letters 'W', 'O' and 'R', where ci denotes the color of the i-th rose: 'W' denotes white, 'O'  — orange, 'R' — red.
 Output
-Print the maximum number of large bouquets Vasya can make.
+Print the maximum possible total beauty of a bouquet of k roses that satisfies the constraints above. If it is not possible to make a single such bouquet, print -1.
 Examples
 input
 Copy
-5
-2 3 4 2 7
+5 3
+4 3 4 1 6
+RROWW
 output
 Copy
-2
+11
 input
 Copy
-6
-2 2 6 8 6 12
+5 2
+10 20 14 20 11
+RRRRR
 output
 Copy
-0
+-1
 input
 Copy
-3
-11 4 10
+11 5
+5 6 3 2 3 4 7 5 4 5 6
+RWOORWORROW
 output
 Copy
-1
+28
 Note
-In the first example Vasya can make 2 large bouquets. For example, the first bouquet can contain the first and the fifth initial bouquets (the total number of flowers is then equal to 9), and the second bouquet can consist of the second and the third initial bouquets (the total number of flowers is then equal to 7). The fourth initial bouquet is unused in this scheme.
-In the second example it is not possible to form a single bouquet with odd number of flowers.
-In the third example Vasya can make one large bouquet. For example, he can make it using all three initial bouquets. The size of the large bouquet is then equal to 11 + 4 + 10 = 25.
+In the first example Arkady wants to buy 3 roses. He can, for example, buy both red roses (their indices are 1 and 2, and their total beauty is 7) and the only orange rose (its index is 3, its beauty is 4). This way the total beauty of the bouquet is 11.
+In the second example Arkady can not buy a bouquet because all roses have the same color.

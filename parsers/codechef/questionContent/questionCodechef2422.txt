@@ -1,52 +1,21 @@
-A-B Game
+Asmany Number Verification
 Problem
-###Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-Two players (let's call them A and B) are playing a game on a row of cells. A cell may contain the character 'A', contain the character 'B' or be empty. Each character may only be moved from a cell
-c
-i
-to a cell
-c
-f
-if cell
-c
-f
-and all cells between
-c
-i
-and
-c
-f
-are currently empty. The leftmost (first) character may only be moved to the right, the second character may only be moved to the left, the next character to the right, and so on. Each character may be moved any number of times, including zero.
-The players alternate turns; player A starts. On each turn, the current player must choose a cell containing their own character ('A' for player A, 'B' for player B) and move it to a different cell. This cell may be chosen arbitrarily as long as all rules described above are satisfied. The first player that cannot move a character loses.
-Note that each character is always moved in a fixed direction, so the game is finite. Determine the winner of the game if both players play optimally.
+Asmany strings are strings of '0's and '1's that have as many 00 as 11. A string such as 00110001 consists of 3 "00" and 1 "11". Of course this is not an Asmany string. 0011, 1100, 000111000111 are Asmany strings. An L'th Asmany number is the number of Asmany strings of length L for all positive integers L.
+For esoteric purposes Chef had an oracle (a device) that was capable of answering whether a number that he entered was an Asmany number. The problem is that his oracle takes too long for large numbers. Him being Chef, he wants to ask the oracle very large numbers! You tell him that you can give him a better oracle (a program) that will tell him what he wants to know in the blink of an eye.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains a single string
-s describing the initial state of the row of cells. Each character of
-s is either 'A', 'B' or '.', denoting a cell containing 'A', a cell containing 'B' or an empty cell respectively.
+The first Line contains a single number T, the number of test cases.
+Each test case contains 1 positive integer N, with not more than 1000 digits.
 Output
-For each test case, print a single line containing the string "A" if player A wins or "B" if player B wins.
+Print YES if N is an Asmany number, NO otherwise.
 Constraints
-1≤T≤10
-5
-1≤∣s∣≤10
-5
-the sum of
-∣s∣ over all test cases does not exceed
-10
-6
-Sample 1:
-Input
-Output
+1 ≤ T ≤ 100
+1 ≤ Number of digits in N ≤ 1000
+Sample Input
+2
 3
-A.B
-A..B
-A..B.A..B
-A
-A
-B
-Explanation:
-Example case 1: Player A can move the first character 'A' one cell to the right. Now, player B cannot move and loses.
-Example case 2: Player A can move the first character two cells to the right (to the cell adjacent to 'B'). Again, player B cannot move and loses.
+4
+Sample Output
+NO
+YES
+Explanation
+4 is an Asmany number. To be precise, it is the 4th Asmany number: There are 4 Asmany strings of length 4. 0011, 1100, 0101, 1010.

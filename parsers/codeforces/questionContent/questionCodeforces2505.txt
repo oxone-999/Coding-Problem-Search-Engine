@@ -1,161 +1,219 @@
-F2. The Hidden Pair (Hard Version)
-time limit per test2 seconds
+D. Grid-00100
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Note that the only difference between the easy and hard version is the constraint on the number of queries. You can make hacks only if all versions of the problem are solved.
-This is an interactive problem.
-You are given a tree consisting of
-n
-nodes numbered with integers from
-1
-to
-n
-. Ayush and Ashish chose two secret distinct nodes in the tree. You need to find out both the nodes. You can make the following query:
-Provide a list of nodes and you will receive a node from that list whose sum of distances to both the hidden nodes is minimal (if there are multiple such nodes in the list, you will receive any one of them). You will also get the sum of distances of that node to the hidden nodes.
-Recall that a tree is a connected graph without cycles. The distance between two nodes is defined as the number of edges in the simple path between them.
-More formally, let's define two hidden nodes as
-s
+A mad scientist Dr.Jubal has made a competitive programming task. Try to solve it!
+You are given integers
+n,k
+. Construct a grid
+A
+with size
+n×n
+consisting of integers
+0
 and
-f
-. In one query you can provide the set of nodes
-{
-a
 1
-,
-a
+. The very important condition should be satisfied: the sum of all elements in the grid is exactly
+k
+. In other words, the number of
+1
+in the grid is equal to
+k
+.
+Let's define:
+A
+i,j
+as the integer in the
+i
+-th row and the
+j
+-th column.
+R
+i
+=
+A
+i,1
++
+A
+i,2
++...+
+A
+i,n
+(for all
+1≤i≤n
+).
+C
+j
+=
+A
+1,j
++
+A
+2,j
++...+
+A
+n,j
+(for all
+1≤j≤n
+).
+In other words,
+R
+i
+are row sums and
+C
+j
+are column sums of the grid
+A
+.
+For the grid
+A
+let's define the value
+f(A)=(max(R)−min(R)
+)
 2
-,…,
-a
-c
-}
-of the tree. As a result, you will get two numbers
-a
-i
++(max(C)−min(C)
+)
+2
+(here for an integer sequence
+X
+we define
+max(X)
+as the maximum value in
+X
 and
-dist(
-a
-i
-,s)+dist(
-a
-i
-,f)
-. The node
-a
-i
-is any node from the provided set, for which the number
-dist(
-a
-i
-,s)+dist(
-a
-i
-,f)
-is minimal.
-You can ask no more than
-11
-queries.
+min(X)
+as the minimum value in
+X
+).
+Find any grid
+A
+, which satisfies the following condition. Among such grids find any, for which the value
+f(A)
+is the minimum possible. Among such tables, you can find any.
 Input
-The first line contains a single integer
+The input consists of multiple test cases. The first line contains a single integer
 t
-(1≤t≤10)
- — the number of test cases. Please note, how the interaction process is organized.
-The first line of each test case consists of a single integer
-n
-(2≤n≤1000)
- — the number of nodes in the tree.
-The next
-n−1
-lines consist of two integers
-u
-,
-v
-(1≤u,v≤n,u≠v)
- — the edges of the tree.
-Interaction
-To ask a query print a single line:
-In the beginning print "? c " (without quotes) where
-c
-(1≤c≤n)
-denotes the number of nodes being queried, followed by
-c
-distinct integers in the range
-[1,n]
- — the indices of nodes from the list.
-For each query, you will receive two integers
-x
-,
-d
- — the node (among the queried nodes) with the minimum sum of distances to the hidden nodes and the sum of distances from that node to the hidden nodes. If the subset of nodes queried is invalid or you exceeded the number of queries then you will get
-x=d=−1
-. In this case, you should terminate the program immediately.
-When you have guessed the hidden nodes, print a single line "! " (without quotes), followed by two integers in the range
-[1,n]
- — the hidden nodes. You can output the hidden nodes in any order.
-After this, you should read a string. If you guess the nodes correctly, you will receive the string "Correct". In this case, you should continue solving the remaining test cases or terminate the program, if all test cases were solved. Otherwise, you will receive the string "Incorrect". In this case, you should terminate the program immediately.
-Guessing the hidden nodes does not count towards the number of queries asked.
-The interactor is not adaptive. The hidden nodes do not change with queries.
-Do not forget to read the string "Correct" / "Incorrect" after guessing the hidden nodes.
-You need to solve each test case before receiving the input for the next test case.
-The limit of
-11
-queries applies to each test case and not to the entire input.
-After printing a query do not forget to output the end of the line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see the documentation for other languages.
-Hacks
-To hack the solution, use the following test format:
-The first line should contain a single integer
+(
+1≤t≤100
+) — the number of test cases. Next
 t
-(1≤t≤10)
- — the number of test cases. The description of the test cases follows.
-The first line of each test case should contain a single integer
+lines contain descriptions of test cases.
+For each test case the only line contains two integers
 n
-(2≤n≤1000)
- — the number of nodes in the tree. The second line should contain two distinct integers in the range
-[1,n]
- — the hidden nodes. The next
-n−1
-lines should contain two integers
-u
 ,
-v
-(1≤u,v≤n,u≠v)
- — the edges of the tree.
+k
+(1≤n≤300,0≤k≤
+n
+2
+)
+.
+It is guaranteed that the sum of
+n
+2
+for all test cases does not exceed
+10
+5
+.
+Output
+For each test case, firstly print the minimum possible value of
+f(A)
+among all tables, for which the condition is satisfied.
+After that, print
+n
+lines contain
+n
+characters each. The
+j
+-th character in the
+i
+-th line should be equal to
+A
+i,j
+.
+If there are multiple answers you can print any.
 Example
 input
 Copy
-1
-3
-1 2
-1 3
-
-1 1
-
-2 3
-
-3 1
-
-3 1
-
-Correct
+4
+2 2
+3 8
+1 0
+4 16
 output
 Copy
-? 1 1
-
-? 1 2
-
-? 1 3
-
-? 2 2 3
-
-! 1 3
+0
+10
+01
+2
+111
+111
+101
+0
+0
+0
+1111
+1111
+1111
+1111
 Note
-The tree from the first test is shown below, and the hidden nodes are
+In the first test case, the sum of all elements in the grid is equal to
+2
+, so the condition is satisfied.
+R
 1
+=1,
+R
+2
+=1
 and
+C
+1
+=1,
+C
+2
+=1
+. Then,
+f(A)=(1−1
+)
+2
++(1−1
+)
+2
+=0
+, which is the minimum possible value of
+f(A)
+.
+In the second test case, the sum of all elements in the grid is equal to
+8
+, so the condition is satisfied.
+R
+1
+=3,
+R
+2
+=3,
+R
 3
+=2
+and
+C
+1
+=3,
+C
+2
+=2,
+C
+3
+=3
+. Then,
+f(A)=(3−2
+)
+2
++(3−2
+)
+2
+=2
+. It can be proven, that it is the minimum possible value of
+f(A)
 .

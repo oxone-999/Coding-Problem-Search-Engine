@@ -1,83 +1,106 @@
-D. Sum
-time limit per test1.5 seconds
-memory limit per test512 megabytes
+A. Kids Seating
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given
+Today the kindergarten has a new group of
 n
-non-decreasing arrays of non-negative numbers.
-Vasya repeats the following operation
-k
-times:
-Selects a non-empty array.
-Puts the first element of the selected array in his pocket.
-Removes the first element from the selected array.
-Vasya wants to maximize the sum of the elements in his pocket.
-Input
-The first line contains two integers
-n
+kids who need to be seated at the dinner table. The chairs at the table are numbered from
+1
+to
+4n
+. Two kids can't sit on the same chair. It is known that two kids who sit on chairs with numbers
+a
 and
-k
+b
 (
-1≤n,k≤3000
-): the number of arrays and operations.
-Each of the next
-n
-lines contain an array. The first integer in each line is
-t
-i
-(
-1≤
-t
-i
-≤
-10
-6
-): the size of the
-i
--th array. The following
-t
-i
-integers
+a≠b
+) will indulge if:
+gcd(a,b)=1
+or,
 a
-i,j
-(
-0≤
+divides
+b
+or
+b
+divides
 a
-i,1
-≤…≤
-a
-i,
-t
-i
-≤
-10
-8
-) are the elements of the
-i
--th array.
-It is guaranteed that
-k≤
-∑
-i=1
-n
-t
-i
-≤
-10
-6
 .
+gcd(a,b)
+ — the maximum number
+x
+such that
+a
+is divisible by
+x
+and
+b
+is divisible by
+x
+.
+For example, if
+n=3
+and the kids sit on chairs with numbers
+2
+,
+3
+,
+4
+, then they will indulge since
+4
+is divided by
+2
+and
+gcd(2,3)=1
+. If kids sit on chairs with numbers
+4
+,
+6
+,
+10
+, then they will not indulge.
+The teacher really doesn't want the mess at the table, so she wants to seat the kids so there are no
+2
+of the kid that can indulge. More formally, she wants no pair of chairs
+a
+and
+b
+that the kids occupy to fulfill the condition above.
+Since the teacher is very busy with the entertainment of the kids, she asked you to solve this problem.
+Input
+The first line contains one integer
+t
+(
+1≤t≤100
+) — the number of test cases. Then
+t
+test cases follow.
+Each test case consists of one line containing an integer
+n
+(
+1≤n≤100
+) — the number of kids.
 Output
-Print one integer: the maximum possible sum of all elements in Vasya's pocket after
-k
-operations.
+Output
+t
+lines, which contain
+n
+distinct integers from
+1
+to
+4n
+ — the numbers of chairs that the kids should occupy in the corresponding test case. If there are multiple answers, print any of them. You can print
+n
+numbers in any order.
 Example
 input
 Copy
-3 3
-2 5 10
-3 1 2 3
-2 1 20
+3
+2
+3
+4
 output
 Copy
-26
+6 4
+4 6 10
+14 10 12 8

@@ -1,185 +1,135 @@
-D. MEX Sequences
-time limit per test2 seconds
-memory limit per test256 megabytes
+F. Tree Coloring
+time limit per test4.5 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Let's call a sequence of integers
-x
-1
-,
-x
-2
-,…,
-x
-k
-MEX-correct if for all
-i
-(
-1≤i≤k
-)
-|
-x
-i
-−MEX(
-x
-1
-,
-x
-2
-,…,
-x
-i
-)|≤1
-holds. Where
-MEX(
-x
-1
-,…,
-x
-k
-)
-is the minimum non-negative integer that doesn't belong to the set
-x
-1
-,…,
-x
-k
-. For example,
-MEX(1,0,1,3)=2
-and
-MEX(2,1,5)=0
-.
-You are given an array
-a
-consisting of
+You are given a rooted tree consisting of
 n
-non-negative integers. Calculate the number of non-empty MEX-correct subsequences of a given array. The number of subsequences can be very large, so print it modulo
+vertices numbered from
+1
+to
+n
+. The root of the tree is the vertex
+1
+.
+You have to color all vertices of the tree into
+n
+colors (also numbered from
+1
+to
+n
+) so that there is exactly one vertex for each color. Let
+c
+i
+be the color of vertex
+i
+, and
+p
+i
+be the parent of vertex
+i
+in the rooted tree. The coloring is considered beautiful if there is no vertex
+k
+(
+k>1
+) such that
+c
+k
+=
+c
+p
+k
+−1
+, i. e. no vertex such that its color is less than the color of its parent by exactly
+1
+.
+Calculate the number of beautiful colorings, and print it modulo
 998244353
 .
-Note: a subsequence of an array
-a
-is a sequence
-[
-a
-i
-1
-,
-a
-i
-2
-,…,
-a
-i
-m
-]
-meeting the constraints
-1≤
-i
-1
-<
-i
-2
-<⋯<
-i
-m
-≤n
-. If two different ways to choose the sequence of indices
-[
-i
-1
-,
-i
-2
-,…,
-i
-m
-]
-yield the same subsequence, the resulting subsequence should be counted twice (i. e. two subsequences are different if their sequences of indices
-[
-i
-1
-,
-i
-2
-,…,
-i
-m
-]
-are not the same).
 Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-5
-) — the number of test cases.
-The first line of each test case contains a single integer
+The first line contains one integer
 n
 (
-1≤n≤5⋅
-10
-5
-).
-The second line contains
-n
-integers
-a
-1
+2≤n≤250000
+) — the number of vertices in the tree.
+Then
+n−1
+lines follow, the
+i
+-th line contains two integers
+x
+i
+and
+y
+i
+(
+1≤
+x
+i
 ,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
+y
 i
 ≤n
-).
-The sum of
-n
-over all test cases doesn't exceed
-5⋅
-10
-5
-.
+;
+x
+i
+≠
+y
+i
+) denoting an edge between the vertex
+x
+i
+and the vertex
+y
+i
+. These edges form a tree.
 Output
-For each test case, print a single integer — the number of non-empty MEX-correct subsequences of a given array, taken modulo
+Print one integer — the number of beautiful colorings, taken modulo
 998244353
 .
-Example
+Examples
 input
 Copy
-4
-3
-0 2 1
-2
-1 0
 5
-0 0 0 0 0
-4
-0 1 2 3
+1 2
+3 2
+4 2
+2 5
 output
 Copy
-4
-2
-31
-7
-Note
-In the first example, the valid subsequences are
-[0]
-,
-[1]
-,
-[0,1]
-and
-[0,2]
-.
-In the second example, the valid subsequences are
-[0]
-and
-[1]
-.
-In the third example, any non-empty subsequence is valid.
+42
+input
+Copy
+5
+1 2
+2 3
+3 4
+4 5
+output
+Copy
+53
+input
+Copy
+20
+20 19
+20 4
+12 4
+5 8
+1 2
+20 7
+3 10
+7 18
+11 8
+9 10
+17 10
+1 15
+11 16
+14 11
+18 10
+10 1
+14 2
+13 17
+20 6
+output
+Copy
+955085064

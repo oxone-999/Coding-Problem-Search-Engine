@@ -1,4 +1,4 @@
-F1. Tree Cutting (Easy Version)
+F2. Tree Cutting (Hard Version)
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
@@ -6,17 +6,32 @@ outputstandard output
 You are given an undirected tree of
 n
 vertices.
-Some vertices are colored blue, some are colored red and some are uncolored. It is guaranteed that the tree contains at least one red vertex and at least one blue vertex.
-You choose an edge and remove it from the tree. Tree falls apart into two connected components. Let's call an edge nice if neither of the resulting components contain vertices of both red and blue colors.
-How many nice edges are there in the given tree?
+Some vertices are colored one of the
+k
+colors, some are uncolored. It is guaranteed that the tree contains at least one vertex of each of the
+k
+colors. There might be no uncolored vertices.
+You choose a subset of exactly
+k−1
+edges and remove it from the tree. Tree falls apart into
+k
+connected components. Let's call this subset of edges nice if none of the resulting components contain vertices of different colors.
+How many nice subsets of edges are there in the given tree? Two subsets are considered different if there is some edge that is present in one subset and absent in the other.
+The answer may be large, so print it modulo
+998244353
+.
 Input
-The first line contains a single integer
+The first line contains two integers
 n
+and
+k
 (
 2≤n≤3⋅
 10
 5
-) — the number of vertices in the tree.
+,
+2≤k≤n
+) — the number of vertices in the tree and the number of colors, respectively.
 The second line contains
 n
 integers
@@ -32,26 +47,16 @@ n
 0≤
 a
 i
-≤2
+≤k
 ) — the colors of the vertices.
-a
-i
-=1
-means that vertex
-i
-is colored red,
-a
-i
-=2
-means that vertex
-i
-is colored blue and
 a
 i
 =0
 means that vertex
 i
-is uncolored.
+is uncolored, any other value means the vertex
+i
+is colored that color.
 The
 i
 -th of the next
@@ -76,13 +81,18 @@ i
 ≠
 u
 i
-) — the edges of the tree. It is guaranteed that the given edges form a tree. It is guaranteed that the tree contains at least one red vertex and at least one blue vertex.
+) — the edges of the tree. It is guaranteed that the given edges form a tree. It is guaranteed that the tree contains at least one vertex of each of the
+k
+colors. There might be no uncolored vertices.
 Output
-Print a single integer — the number of nice edges in the given tree.
+Print a single integer — the number of nice subsets of edges in the given tree. Two subsets are considered different if there is some edge that is present in one subset and absent in the other.
+The answer may be large, so print it modulo
+998244353
+.
 Examples
 input
 Copy
-5
+5 2
 2 0 0 1 2
 1 2
 2 3
@@ -93,46 +103,37 @@ Copy
 1
 input
 Copy
-5
-1 0 0 0 2
-1 2
-2 3
-3 4
-4 5
+7 3
+0 1 0 2 2 3 0
+1 3
+1 4
+1 5
+2 7
+3 6
+4 7
 output
 Copy
 4
-input
-Copy
-3
-1 1 2
-2 3
-1 3
-output
-Copy
-0
 Note
 Here is the tree from the first example:
-The only nice edge is edge
+The only nice subset is edge
 (2,4)
 . Removing it makes the tree fall apart into components
 {4}
 and
 {1,2,3,5}
-. The first component only includes a red vertex and the second component includes blue vertices and uncolored vertices.
+. The first component only includes a vertex of color
+1
+and the second component includes only vertices of color
+2
+and uncolored vertices.
 Here is the tree from the second example:
-Every edge is nice in it.
-Here is the tree from the third example:
-Edge
-(1,3)
-splits the into components
-{1}
+The nice subsets are
+{(1,3),(4,7)}
+,
+{(1,3),(7,2)}
+,
+{(3,6),(4,7)}
 and
-{3,2}
-, the latter one includes both red and blue vertex, thus the edge isn't nice. Edge
-(2,3)
-splits the into components
-{1,3}
-and
-{2}
-, the former one includes both red and blue vertex, thus the edge also isn't nice. So the answer is 0.
+{(3,6),(7,2)}
+.

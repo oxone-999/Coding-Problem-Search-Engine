@@ -1,261 +1,234 @@
-Not a Convex Hull (Challenge)
+Moving Rectangles (Challenge)
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-Be careful!!! You are not allowed to submit this problem more than 99 times!
-Chef has
-N randomly generated points with integer coordinates
-(x
+Read problem statements in Bengali and Hindi
+Taran and Birju Pandey are good friends. In order to solidify their friendship, Taran sent Birju another challenge problem and asked him to find the best solution. Birju is good at writing stories as well as solving problems, but he is unable to solve this problem. Birju is worried that if he does not solve the problem, Taran might forget their friendship and unleash another war, deadlier than the last one. Therefore, he is asking you for help with this problem.
+This is an interactive problem.
+There are
+N rectangles (numbered
+1 through
+N) in a plane described by Cartesian coordinates
+x and
+y. Initially (at time
+0), each rectangle is moving parallel to one of the coordinate axes with fixed speed
+1 unit per second. You are given the width, height and position of each rectangle, as well as the direction in which it is initially moving.
+You must repeat the following process
+N times:
+Read a string
+S given by the grader. This string is either "REVERSE" or "ROTATE" and describes the operation you should perform on one rectangle. These operations are applied in chronological order, i.e. the current operation is applied after all the previous operations have already been applied.
+Choose one rectangle on which this operation should be applied. Let's denote the number of this rectangle by
+r.
+Choose the second
+s (between
+1 and
+N inclusive) during which this operation should be applied. If an operation is applied during the
+s-th second, it means that is applied strictly between time
+s−1 and time
+s. Since the operations must be performed in chronological order, you may only choose the
+s-th second if all previous operations have been applied during the
+1-st through
+s-th second (inclusive).
+If
+S is "REVERSE", then during the
+s-th second, the direction in which the
+r-th rectangle is currently moving is reversed — it is changed from North to South, from South to North, from West to East or from East to West.
+If
+S is "ROTATE", then during the
+s-th second, the direction in which the
+r-th rectangle is currently moving is rotated by
+90
+∘
+. You must choose the new direction
+dir for this rectangle's velocity. From North to South, you may change the direction to East or West (but not to North or South), and vice versa.
+The rectangles are moving in discrete steps — at the end of each second (after all the operations applied during this second are performed), each rectangle moves by
+1 unit in its currently assigned direction. The rectangles do not move at time
+0, but they move at time
+N.
+Let's assign numbers and coordinates to directions in the following way:
+moving by
+1 unit in direction
+0 (North): the
+y-coordinate increases by
 1
-,y
+moving by
+1 unit in direction
+1 (East): the
+x-coordinate increases by
 1
-),(x
-2
-,y
-2
-),…,(x
-N
-,y
-N
-). He asks you to perform the following operation:
-choose up to
-K of these points, i.e. a subsequence
-{(x
-k
-i
-,y
-k
-i
-)}
+moving by
+1 unit in direction
+2 (South): the
+y-coordinate decreases by
+1
+moving by
+1 unit in direction
+3 (West): the
+x-coordinate decreases by
+1
+After
+N seconds (immediately after the rectangles moved at time
+N), consider the sum of common areas of each unordered pair of different rectangles, i.e.
+A=∑
 i=1
-L
-, where
-0≤L≤K
-for each
-1≤i≤L, choose a vector
-(dx
-i
-,dy
-i
-) with integer coordinates such that
-dx
-i
-2
-+dy
-i
-2
-≤R
-2
-add
-(dx
-i
-,dy
-i
-) to
-(x
-k
-i
-,y
-k
-i
-), i.e. change
-(x
-k
-i
-,y
-k
-i
-) to
-(x
-k
-i
-+dx
-i
-,y
-k
-i
-+dy
-i
-), for each valid
-i
-The resulting
-N points must be pairwise distinct.
-Afterwards, you must find a hull containing all
-N points. The hull must be a simple polygon and no three consecutive points on it may lie on the same line, but it does not have to be convex. You should minimise the area of this hull.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
+N
+∑
+j=i+1
+N
+area(i,j) where
+area(x,y) denotes the common area, i.e. area of the intersection of rectangles
+x and
+y.
+Can we maximise
+A if we apply the operations optimally? Good luck!
+Interaction
+First, your program should read a line containing a single integer ― the number of test cases
+T. The description of interaction for
 T test cases follows.
-The first line of each test case contains three space-separated integers
-N,
-K and
-R.
-For each
+For each test case, you must start by reading a line containing a single integer
+N.
+Then, you must read
+N lines. For each
 i (
 1≤i≤N), the
-i-th of the following
-N lines contains two space-separated integers
+i-th of these lines contain five space-separated integers
+v
 x
-i
+,
+v
+y
+,
+d
+x
+,
+d
+y
 and
-y
-i
-.
-Output
-For each test case, print
-N+2 lines.
-The first line should contain a single integer
-M — the number of points on the hull. The second line should contain
-M space-separated integers
-b
-1
-,b
-2
-,…,b
-M
-— the indices of points on the hull in the order in which they appear on its perimeter (in either direction). The following
-N lines should describe the final coordinates of all points; for each valid
-i, the
-i-th of these lines should contain two space-separated integers — the coordinates of the
-i-th point.
-Your answer must satisfy the following conditions:
-3≤M≤N
-the indices
-b
-1
-,b
-2
-,…,b
-M
-are pairwise distinct
-1≤b
-i
-≤N for each valid
-i
-no three consecutive points on the hull lie on the same line
-there are no more than
-K points whose positions on the output are different from their initial positions
-for each valid pair
-i,j (
-i
-
-=j),
+dir describing a rectangle with width
+d
 x
-i
-
-=x
-j
-or
+and height
+d
 y
-i
-
-=y
-j
-— all points on the output are pairwise distinct
-all
-N points are inside or on the perimeter of the hull
-the hull is a simple polygon — no two non-consecutive edges intersect or touch
-Constraints
-T=100
-N∈[50,100,200]
-1≤K≤10
-1≤R≤10,000
-∣x
-i
-∣,∣y
-i
-∣≤10
-5
-for each valid
-i
-all points on the input are pairwise distinct
-Example Input
-2
-6 1 4
-0 0
-2 0
-2 2
-0 2
-1 0
-1 1
-6 1 4
-0 0
-2 0
-2 2
-0 2
-1 0
-1 1
-Example Output
-6
-4 1 5 6 2 3
-0 1
-2 0
-2 2
-0 2
-1 0
-1 1
+moving in direction
+dir. The initial coordinates of this rectangle's vertices are
+(v
+x
+,v
+y
+),
+(v
+x
++d
+x
+,v
+y
+),
+(v
+x
+,v
+y
++d
+y
+) and
+(v
+x
++d
+x
+,v
+y
++d
+y
+).
+Then, you must perform the following process
+N times:
+Read a line containing a single string
+S.
+If
+S is "REVERSE", print a single line containing two space-separated integers
+r and
+s denoting that the current operation should be applied on the
+r-th rectangle during the
+s-th second.
+If
+S is "ROTATE", print a single line containing three space-separated integers
+r,
+dir and
+s denoting that the current operation should be applied on the
+r-th rectangle during the
+s-th second and the new direction of its velocity becomes
+dir.
+Your output must satisfy the following conditions:
+1≤r,s≤N
+0≤dir≤3
+Don't forget to flush the output after printing each line! Otherwise, the grader will wait for your response forever and the verdict of your submission may be anything except Accepted (which you might not like).
+Test generation
+In each test file,
+T=3; also, integers
+N and
+MX are chosen manually. Then, for each rectangle:
+v
+x
+and
+v
+y
+are generated uniformly randomly between
+0 and
+10
 4
-1 2 3 4
-0 0
-2 0
-2 2
-0 2
-1 0
-1 1
-Explanation
-Note that
-T
-
-=100 in the example for clarity; in all real test files,
-T=100.
-Example case 1: We have
-N=6 points
-(0,0),(0,2),(1,1),(1,0),(2,0),(2,2). We can only perform the operation described in the statement with
-K=1 point. If we had
-R≥5, we could change the point
-(2,2) to
-(2−2,2−1)=(0,1) and obtain a set of distinct points
-(0,0),(0,1),(0,2),(1,1),(1,0),(2,0); this set has a hull on
-M=3 points
-(0,0),(0,2),(2,0). However, for
-R=4, we can't move
-(2,2) to
-(2−1,2−1), since there is a point
-(1,1), so the points would not be distinct.
-Therefore, we move
-(0,0) to
-(0+0,0+1)=(0,1). Afterwards, we can build a hull on all six points in the order
-(0,2),(0,1),(1,0),(1,1),(2,0),(2,2).
-The area of this hull and the score for this output is
-3.
-Example case 2: The same input, a different output with score
-4.
+inclusive
+d
+x
+and
+d
+y
+are generated uniformly randomly between
+1 and
+MX inclusive
+dir is generated uniformly randomly between
+0 and
+3 inclusive
+S is generated uniformly randomly from the set {"ROTATE", "REVERSE"}
+There are three types of tests:
+type 1: five test files with
+N=500 and
+MX=1000
+type 2: five test files with
+N=1000 and
+MX=100
+type 3: ten test files with
+N=1000 and
+MX=1000
 Scoring
-Your score for each test case is the area of the resulting hull. Your score for each test file is the sum of scores for all test cases. (For the above example, the score you would obtain is
-3+
-4=
-7.)
-Test Generation Process
-There are twenty test files. All test files are generated in the same way. During the contest, the displayed score will account for exactly two test files, i.e. your score reflects your submission's performance on 10% (1/10) of the test files. However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to the sum of your program's scores over all test files.
-The pseudocode used for generating the tests is given below. Assume that the function rnd.next(l, r) generates a random number uniformly in the range
-l through
-r (both inclusive) and rnd.shuffle(p) randomly shuffles all elements in
-p.
-T := 100
-Ns := []
-for i := 1 to 60:
- Ns.append(50)
-for i := 1 to 30:
- Ns.append(100)
-for i := 1 to 10:
- Ns.append(200)
-rnd.shuffle(Ns)
-for i := 1 to 100:
- N := Ns[i - 1]
- K := rnd.next(1, 10)
- R := rnd.next(1, 10000)
- Points := []
- while size(Points) is less than N:
-  X := rnd.next(-100000, 100000)
-  Y := rnd.next(-100000, 100000)
-  if (X, Y) not in Points:
-   Points.append((X, Y))
+The score of each test case is computed as
+A⋅10
+5
+/(N
+2
+MX
+2
+). The score of each test file is the sum of scores of all test cases in that file. The score of a submission is the sum of scores of all test files.
+There are twenty test files. During the contest, the displayed score will account for exactly four test files, i.e. your score reflects your submission's performance on 20% (4 out of 20) of the test files. However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to the sum of your program's scores over the other sixteen test files.
+Example
+Grader                          You
+2
+3
+0 0 5 5 0
+1 1 3 4 2
+1 0 2 2 1
+REVERSE
+                                1 1
+ROTATE
+                                3 2 1
+ROTATE
+                                3 3 3
+3
+0 0 5 5 0
+1 1 3 4 2
+1 0 2 2 1
+REVERSE
+                                1 1
+ROTATE
+                                3 2 1
+ROTATE
+                                3 3 3
+Explanation
+Both test cases are the same and they are given just to clarify how interaction works if there are multiple test cases.

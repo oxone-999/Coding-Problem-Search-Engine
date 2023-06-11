@@ -1,70 +1,102 @@
-Warriors
+Chef Cooks Permutation
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-You are a warrior and you have to fight
-N enemy warriors (numbered
-1 through
-N) one by one, in any order you choose. You have to win as many of these fights as possible.
-Each warrior has some amount of power, which changes when the warrior fights. For each
-i, the
-i-th enemy warrior has power
-P
-i
-. When you have power
-x and you fight an enemy warrior with power
-y, the following happens:
-if
-x>y, you kill the enemy warrior and your power changes to
-2(x−y)
-otherwise (if
-x≤y), the enemy warrior kills you
-You should answer
-Q queries. In each query, you are given your initial power
-X and you should find the maximum number of warriors you can kill if you are starting with power
-X.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-Q.
-The second line contains
-N space-separated integers
-P
-1
-,P
-2
-,…,P
+Chef is bored cooking his regular dishes, so he decided to cook permutations instead. Since this is his first time cooking permutations, he takes some help.
+Chef has two permutations
+A and
+B, each of size
+N. Chef cooks a permutation
+C of size
 N
+2
+by doing the following:
+for i = 1 to N:
+    for j = 1 to N:
+        C[i + (j-1) * N] = A[i] + (B[j] - 1) * N
+Chef is allowed to make some (maybe
+0) moves on permutation
+C. In one move, Chef can:
+Pick two indices
+1≤i<j≤N
+2
+and swap the elements
+C
+i
+and
+C
+j
 .
-Q lines follow. Each of these lines contains a single integer
-X describing a query.
-Output
-For each query, print a single line containing one integer — the maximum number of warriors you can kill.
+Find the minimum number of moves required to sort permutation
+C in ascending order.
+Input Format
+The first line of the input contains a single integer
+T - the number of test cases. The description of test cases follows.
+The first line of each test case contains an integer
+N - the length of permutations
+A and
+B.
+The second line of each test case contains
+N integers
+A
+1
+,A
+2
+,…,A
+N
+, denoting permutation
+A.
+The third line of each test case contains
+N integers
+B
+1
+,B
+2
+,…,B
+N
+, denoting permutation
+B.
+Output Format
+For each test case, print a single integer representing the number of moves required to sort permutation
+C.
 Constraints
 1≤T≤10
-1≤N,Q≤10
 5
-1≤P
+1≤N≤2⋅10
+5
+1≤A
 i
-≤10
-9
-for each valid
+,B
 i
-1≤X≤10
-9
+≤N
+The sum of
+N over all test cases doesn't exceed
+10
+6
+Subtasks
+Subtask #1 (100 points): original constraints
 Sample 1:
 Input
 Output
-1
-3 4
-1 2 1
-10
+3
+3
+3 1 2
+2 1 3
 2
-3
-1
-3
+1 2
+1 2
 2
-3
+2 1
+2 1
+7
 0
+2
+Explanation:
+In the first test case,
+C=[6,4,5,3,1,2,9,7,8]. Minimum number of moves required to sort permutation
+C are
+7.
+In the second test case,
+C=[1,2,3,4]. The permutation is already sorted, so we need
+0 moves.
+In the third test case,
+C=[4,3,2,1]. We need
+2 moves to sort the permutation.

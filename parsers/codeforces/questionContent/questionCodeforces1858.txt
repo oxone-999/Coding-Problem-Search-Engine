@@ -1,144 +1,162 @@
-D. Tiles for Bathroom
-time limit per test5 seconds
+F. Cupboards Jumps
+time limit per test6 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Kostya is extremely busy: he is renovating his house! He needs to hand wallpaper, assemble furniture throw away trash.
-Kostya is buying tiles for bathroom today. He is standing in front of a large square stand with tiles in a shop. The stand is a square of
-n×n
-cells, each cell of which contains a small tile with color
-c
-i,j
-. The shop sells tiles in packs: more specifically, you can only buy a subsquare of the initial square.
-A subsquare is any square part of the stand, i. e. any set
-S(
+In the house where Krosh used to live, he had
+n
+cupboards standing in a line, the
 i
-0
+-th cupboard had the height of
+h
+i
+. Krosh moved recently, but he wasn't able to move the cupboards with him. Now he wants to buy
+n
+new cupboards so that they look as similar to old ones as possible.
+Krosh does not remember the exact heights of the cupboards, but for every three consecutive cupboards he remembers the height difference between the tallest and the shortest of them. In other words, if the cupboards' heights were
+h
+1
 ,
-j
-0
-,k)={
-c
-i,j
- | 
+h
+2
+,…,
+h
+n
+, then Krosh remembers the values
+w
 i
-0
-≤i<
+=max(
+h
 i
-0
-+k,
-j
-0
-≤j<
-j
-0
-+k}
-with
-1≤
-i
-0
 ,
-j
-0
-≤n−k+1
+h
+i+1
+,
+h
+i+2
+)−min(
+h
+i
+,
+h
+i+1
+,
+h
+i+2
+)
+for all
+1≤i≤n−2
 .
-Kostya still does not know how many tiles he needs, so he considers the subsquares of all possible sizes. He doesn't want his bathroom to be too colorful. Help Kostya to count for each
-k≤n
-the number of subsquares of size
-k×k
-that have at most
-q
-different colors of tiles. Two subsquares are considered different if their location on the stand is different.
+Krosh wants to buy such
+n
+cupboards that all the values
+w
+i
+remain the same. Help him determine the required cupboards' heights, or determine that he remembers something incorrectly and there is no suitable sequence of heights.
 Input
 The first line contains two integers
 n
 and
-q
+C
 (
-1≤n≤1500
+3≤n≤
+10
+6
 ,
-1≤q≤10
-) — the size of the stand and the limit on the number of distinct colors in a subsquare.
-Each of the next
+0≤C≤
+10
+12
+) — the number of cupboards and the limit on possible
+w
+i
+.
+The second line contains
+n−2
+integers
+w
+1
+,
+w
+2
+,…,
+w
+n−2
+(
+0≤
+w
+i
+≤C
+) — the values defined in the statement.
+Output
+If there is no suitable sequence of
 n
-lines contains
+cupboards, print "NO".
+Otherwise print "YES" in the first line, then in the second line print
 n
 integers
-c
-i,j
-(
-1≤
-c
-i,j
-≤
-n
-2
-): the
-j
--th integer in the
-i
--th line is the color of the tile in the cell
-(i,j)
-.
-Output
-For each
-k
-from
+h
+′
 1
-to
+,
+h
+′
+2
+,…,
+h
+′
 n
-print a single integer — the number of subsquares of size
-k×k
-with no more than
-q
-different colors.
+(
+0≤
+h
+′
+i
+≤
+10
+18
+) — the heights of the cupboards to buy, from left to right.
+We can show that if there is a solution, there is also a solution satisfying the constraints on heights.
+If there are multiple answers, print any.
 Examples
 input
 Copy
-3 4
-1 2 3
-4 5 6
-7 8 9
+7 20
+4 8 12 16 20
 output
 Copy
-9
-4
-0
+YES
+4 8 8 16 20 4 0 
 input
 Copy
-4 8
-1 2 3 4
-5 6 7 8
-9 1 2 3
-4 5 6 7
+11 10
+5 7 2 3 4 5 2 1 8
 output
 Copy
-16
-9
-4
-0
+YES
+1 1 6 8 6 5 2 0 0 1 8 
+input
+Copy
+6 9
+1 6 9 0
+output
+Copy
+NO
 Note
-In the first example all colors are distinct. Kostya doesn't want the subsquare have more than
+Consider the first example:
+w
+1
+=max(4,8,8)−min(4,8,8)=8−4=4
+w
+2
+=max(8,8,16)−min(8,8,16)=16−8=8
+w
+3
+=max(8,16,20)−min(8,16,20)=20−8=12
+w
 4
-colors, so he can buy any subsquare of size
-1×1
-or
-2×2
-, but he can't buy a subsquare of size
-3×3
+=max(16,20,4)−min(16,20,4)=20−4=16
+w
+5
+=max(20,4,0)−min(20,4,0)=20−0=20
+There are other possible solutions, for example, the following:
+0,1,4,9,16,25,36
 .
-In the second example there are colors that appear multiple times. Because
-q=8
-, Kostya can buy any subsquare of size
-1×1
-and
-2×2
-, and any subsquare
-3×3
-, because of such subsquare has
-7
-different colors. He can't buy the whole stand
-4×4
-, because there are
-9
-colors.

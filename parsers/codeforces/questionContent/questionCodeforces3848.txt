@@ -1,122 +1,198 @@
-G. Vasya and Maximum Profit
-time limit per test3.5 seconds
+A. Two distinct points
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Vasya got really tired of these credits (from problem F) and now wants to earn the money himself! He decided to make a contest to gain a profit.
-Vasya has
-n
-problems to choose from. They are numbered from
-1
-to
-n
-. The difficulty of the
-i
--th problem is
-d
-i
-. Moreover, the problems are given in the increasing order by their difficulties. The difficulties of all tasks are pairwise distinct. In order to add the
-i
--th problem to the contest you need to pay
-c
-i
-burles to its author. For each problem in the contest Vasya gets
-a
-burles.
-In order to create a contest he needs to choose a consecutive subsegment of tasks.
-So the total earnings for the contest are calculated as follows:
-if Vasya takes problem
-i
-to the contest, he needs to pay
-c
-i
-to its author;
-for each problem in the contest Vasya gets
-a
-burles;
-let
-gap(l,r)=
-max
-l≤i<r
-(
-d
-i+1
-−
-d
-i
-)
-2
-. If Vasya takes all the tasks with indices from
+You are given two segments
+[
 l
-to
+1
+;
 r
-to the contest, he also needs to pay
-gap(l,r)
-. If
-l=r
-then
-gap(l,r)=0
-.
-Calculate the maximum profit that Vasya can earn by taking a consecutive segment of tasks.
-Input
-The first line contains two integers
-n
+1
+]
 and
+[
+l
+2
+;
+r
+2
+]
+on the
+x
+-axis. It is guaranteed that
+l
+1
+<
+r
+1
+and
+l
+2
+<
+r
+2
+. Segments may intersect, overlap or even coincide with each other.
+The example of two segments on the
+x
+-axis.
+Your problem is to find two integers
 a
-(
-1≤n≤3⋅
-10
-5
+and
+b
+such that
+l
+1
+≤a≤
+r
+1
 ,
-1≤a≤
-10
-9
-) — the number of proposed tasks and the profit for a single problem, respectively.
+l
+2
+≤b≤
+r
+2
+and
+a≠b
+. In other words, you have to choose two distinct integer points in such a way that the first point belongs to the segment
+[
+l
+1
+;
+r
+1
+]
+and the second one belongs to the segment
+[
+l
+2
+;
+r
+2
+]
+.
+It is guaranteed that the answer exists. If there are multiple answers, you can print any of them.
+You have to answer
+q
+independent queries.
+Input
+The first line of the input contains one integer
+q
+(
+1≤q≤500
+) — the number of queries.
 Each of the next
-n
-lines contains two integers
-d
+q
+lines contains four integers
+l
+1
+i
+,
+r
+1
+i
+,
+l
+2
 i
 and
-c
+r
+2
 i
 (
 1≤
-d
+l
+1
 i
 ,
-c
+r
+1
+i
+,
+l
+2
+i
+,
+r
+2
 i
 ≤
 10
 9
 ,
-d
+l
+1
 i
 <
-d
-i+1
-).
+r
+1
+i
+,
+l
+2
+i
+<
+r
+2
+i
+) — the ends of the segments in the
+i
+-th query.
 Output
-Print one integer — maximum amount of burles Vasya can earn.
-Examples
+Print
+2q
+integers. For the
+i
+-th query print two integers
+a
+i
+and
+b
+i
+— such numbers that
+l
+1
+i
+≤
+a
+i
+≤
+r
+1
+i
+,
+l
+2
+i
+≤
+b
+i
+≤
+r
+2
+i
+and
+a
+i
+≠
+b
+i
+. Queries are numbered in order of the input.
+It is guaranteed that the answer exists. If there are multiple answers, you can print any.
+Example
 input
 Copy
-5 10
-1 15
-5 3
-6 11
-7 2
-11 22
+5
+1 2 1 2
+2 6 3 4
+2 4 1 3
+1 2 1 3
+1 4 5 8
 output
 Copy
-13
-input
-Copy
-3 5
-1 8
-2 19
-3 11
-output
-Copy
-0
+2 1
+3 4
+3 2
+1 2
+3 7

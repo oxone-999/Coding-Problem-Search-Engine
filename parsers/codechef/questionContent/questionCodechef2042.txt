@@ -1,24 +1,59 @@
-Card Shuffle
+Secret Machine Mania
 Problem
-Chef is organizing an online card game tournament and for this purpose he has to provide a card shuffling software. This software has to simulate the following shuffling process. A stack of N cards is placed face down on the table. Cards in the stack are ordered by value. Topmost card has value 1 and the one on the bottom has value N. To shuffle the cards we repeat the following steps M times:
-take A cards from the top of the deck.
-take another B cards from the top of the deck.
-put the A cards, which you removed in the first step, back on top of the remaining deck.
-take C cards from the deck
-put the B cards, which you're still holding from the second move, card by card on top of the deck.
-finally, return the block of C cards on top
-Note: taking a block of cards from the top of the deck does not change their order. The entire block is removed in a single move and not card by card. The only exception is the fifth move, where you return cards one by one from the top.
-Input
-The first line contains integers N and M. The following M lines describe the moves by integers Ai, Bi, Ci as described in the previous section.
-In the spirit of random card shuffling, all test cases were generated with uniform random distributions to select where to cut the deck of cards.
-Output
-In a single line output the cards in the deck after performing all the moves. Cards should be listed from top of the deck to bottom and separated by spaces.
+The Chef has been hunting for a machine developed to change numbers in a rather peculiar manner. This machine has a fixed number
+c associated with it and a changing number
+X.
+In a single step, the Chef can do the following:
+First, choose any positive integer
+b that is a perfect
+c-th power of some number (that is, there is some positive integer
+n such that
+b=n
+c
+)
+Then, change
+X→
+gcd(b,X)
+lcm(b,X)
+He wants to find the minimum number he can change
+X into by applying these operations alone any number of times (possibly none at all). However, he does not know the exact values of
+X,c for the machine, but he does have
+T guesses for what these values might be. For each of these guesses, compute the minimum number Chef can obtain.
+Input Format
+The first line of input will contain an integer
+T, the number of guesses Chef has for the pair
+(X,c). Then the guesses follow.
+Each guess consists of a single line of input containing two space-separated integers
+X,c.
+Output Format
+For each guess, print on a new line the minimum value that Chef can change
+X into by applying any number of operations (possibly none at all).
 Constraints
-1 <= N, M <= 100 000
+1≤T≤100
+1≤X≤10
+10
+1≤c≤30
 Sample 1:
 Input
 Output
-10 2
-6 2 2
-5 3 6
-1 2 8 7 3 9 6 5 4 10
+3
+1 5
+10 1
+20 4
+1
+1
+20
+Explanation:
+Guess
+1: It can easily be checked that
+X=1 cannot be changed.
+Guess
+2: Choose
+b=10
+1
+and change
+X:10→
+gcd(10,10)
+lcm(10,10)
+=1. This is the minimum possible value of
+X.

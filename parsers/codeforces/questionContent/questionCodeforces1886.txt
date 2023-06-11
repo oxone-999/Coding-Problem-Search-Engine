@@ -1,125 +1,227 @@
-C. Garden of the Sun
-time limit per test1 second
+F. Squares
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are many sunflowers in the Garden of the Sun.
-Garden of the Sun is a rectangular table with
+There are
 n
-rows and
-m
-columns, where the cells of the table are farmlands. All of the cells grow a sunflower on it. Unfortunately, one night, the lightning stroke some (possibly zero) cells, and sunflowers on those cells were burned into ashes. In other words, those cells struck by the lightning became empty. Magically, any two empty cells have no common points (neither edges nor corners).
-Now the owner wants to remove some (possibly zero) sunflowers to reach the following two goals:
-When you are on an empty cell, you can walk to any other empty cell. In other words, those empty cells are connected.
-There is exactly one simple path between any two empty cells. In other words, there is no cycle among the empty cells.
-You can walk from an empty cell to another if they share a common edge.
-Could you please give the owner a solution that meets all her requirements?
-Note that you are not allowed to plant sunflowers. You don't need to minimize the number of sunflowers you remove. It can be shown that the answer always exists.
+squares drawn from left to right on the floor. The
+i
+-th square has three integers
+p
+i
+,
+a
+i
+,
+b
+i
+, written on it. The sequence
+p
+1
+,
+p
+2
+,…,
+p
+n
+forms a permutation.
+Each round you will start from the leftmost square
+1
+and jump to the right. If you are now on the
+i
+-th square, you can do one of the following two operations:
+Jump to the
+i+1
+-th square and pay the cost
+a
+i
+. If
+i=n
+, then you can end the round and pay the cost
+a
+i
+.
+Jump to the
+j
+-th square and pay the cost
+b
+i
+, where
+j
+is the leftmost square that satisfies
+j>i,
+p
+j
+>
+p
+i
+. If there is no such
+j
+then you can end the round and pay the cost
+b
+i
+.
+There are
+q
+rounds in the game. To make the game more difficult, you need to maintain a square set
+S
+(initially it is empty). You must pass through these squares during the round (other squares can also be passed through). The square set
+S
+for the
+i
+-th round is obtained by adding or removing a square from the square set for the
+(i−1)
+-th round.
+For each round find the minimum cost you should pay to end it.
 Input
-The input consists of multiple test cases. The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases. The description of the test cases follows.
 The first line contains two integers
 n
 ,
-m
+q
 (
-1≤n,m≤500
-) — the number of rows and columns.
-Each of the next
+1≤n,q≤2⋅
+10
+5
+)  — the number of squares and the number of rounds.
+The second line contains
 n
-lines contains
-m
-characters. Each character is either 'X' or '.', representing an empty cell and a cell that grows a sunflower, respectively.
-It is guaranteed that the sum of
-n⋅m
-for all test cases does not exceed
-250000
-.
+distinct integers
+p
+1
+,
+p
+2
+,…,
+p
+n
+(
+1≤
+p
+i
+≤n
+). It is guaranteed that the sequence
+p
+1
+,
+p
+2
+,…,
+p
+n
+forms a permutation.
+The third line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+−
+10
+9
+≤
+a
+i
+≤
+10
+9
+).
+The fourth line contains
+n
+integers
+b
+1
+,
+b
+2
+,…,
+b
+n
+(
+−
+10
+9
+≤
+b
+i
+≤
+10
+9
+).
+Then
+q
+lines follow,
+i
+-th of them contains a single integer
+x
+i
+(
+1≤
+x
+i
+≤n
+). If
+x
+i
+was in the set
+S
+on the
+(i−1)
+-th round you should remove it, otherwise, you should add it.
 Output
-For each test case, print
-n
-lines. Each should contain
-m
-characters, representing one row of the table. Each character should be either 'X' or '.', representing an empty cell and a cell with a sunflower, respectively.
-If there are multiple answers, you can print any. It can be shown that the answer always exists.
-Example
+Print
+q
+lines, each of them should contain a single integer  — the minimum cost you should pay to end the corresponding round.
+Examples
 input
 Copy
-5
-3 3
-X.X
-...
-X.X
-4 4
-....
-.X.X
-....
-.X.X
-5 5
-.X...
-....X
-.X...
-.....
-X.X.X
-1 10
-....X.X.X.
-2 2
-..
-..
+3 2
+2 1 3
+10 -5 4
+3 -2 3
+1
+2
 output
 Copy
-XXX
-..X
-XXX
-XXXX
-.X.X
-.X..
-.XXX
-.X...
-.XXXX
-.X...
-.X...
-XXXXX
-XXXXXXXXXX
-..
-..
+6
+8
+input
+Copy
+5 4
+2 1 5 3 4
+6 -5 3 -10 -1
+0 3 2 7 2
+1
+2
+3
+2
+output
+Copy
+-8
+-7
+-7
+-8
 Note
-Let's use
-(x,y)
-to describe the cell on
-x
--th row and
-y
--th column.
-In the following pictures white, yellow, and blue cells stand for the cells that grow a sunflower, the cells lightning stroke, and the cells sunflower on which are removed, respectively.
-In the first test case, one possible solution is to remove sunflowers on
-(1,2)
-,
-(2,3)
-and
-(3,2)
+Let's consider the character
+T
+as the end of a round. Then we can draw two graphs for the first and the second test.
+In the first round of the first test, the set that you must pass through is
+{1}
+. The path you can use is
+1→3→T
+and its cost is
+6
 .
-Another acceptable solution is to remove sunflowers on
-(1,2)
-,
-(2,2)
-and
-(3,2)
-.
-This output is considered wrong because there are 2 simple paths between any pair of cells (there is a cycle). For example, there are 2 simple paths between
-(1,1)
-and
-(3,3)
-.
-(1,1)→(1,2)→(1,3)→(2,3)→(3,3)
-(1,1)→(2,1)→(3,1)→(3,2)→(3,3)
-This output is considered wrong because you can't walk from
-(1,1)
-to
-(3,3)
+In the second round of the first test, the set that you must pass through is
+{1,2}
+. The path you can use is
+1→2→3→T
+and its cost is
+8
 .

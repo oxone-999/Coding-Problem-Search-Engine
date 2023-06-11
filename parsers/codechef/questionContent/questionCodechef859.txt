@@ -1,69 +1,121 @@
-Chef and Secret Ingredients
+Max count of 1
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef recently visited ShareChat Cafe and was highly impressed by the food. Being a food enthusiast, he decided to enquire about the ingredients of each dish.
-There are
-N dishes represented by strings
-S
-1
-,S
-2
-,…,S
-N
-. Each ingredient used for making dishes in ShareChat Cafe is represented by a lowercase English letter. For each valid
-i, the ingredients used to make dish
-i correspond to characters in the string
-S
-i
-(note that ingredients may be used multiple times). A special ingredient is an ingredient which is present in each dish at least once.
-Chef wants to know the number of special ingredients in ShareChat Cafe. Since Chef is too busy with work, can you help him?
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
+You are given a binary string
+S of length
 N.
-N lines follow. For each
-i (
-1≤i≤N), the
-i-th of these lines contains a single string
-S
+You have to construct a binary string
+X, of length
+N, such that:
+For each
+(1≤i<N),
+X
+(i+1)
+=(X
 i
-.
-Output
-For each test case, print a single line containing one integer ― the number of special ingredients in the dishes.
+⊕S
+i
+), where
+⊕ denotes the bitwise XOR operation;
+The count of
+1s in the string
+X is maximised.
+Find the maximum count of
+1 in string
+X.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first line of each test case contains a single integer
+N, the length of the string
+S.
+The second line of each test case contains a binary string
+S.
+Output Format
+For each test case, output on a new line, the maximum count of
+1 in string
+X.
 Constraints
-1≤T≤1,000
-1≤N≤1,000
-1≤∣S
-i
-∣≤200 for each valid
-i
-S
-1
-,S
-2
-,…,S
-N
-contain only lowercase English letters
-The sum of length of strings over all test cases
-≤ 3500000
-Subtasks
-Subtask #1 (100 points): original constraints
+1≤T≤10
+5
+1≤N≤3⋅10
+5
+S consists of
+0 and
+1 only.
+The sum of
+N over all test cases won't exceed
+3⋅10
+5
+.
 Sample 1:
 Input
 Output
-2
 3
-abcaa
-bcbd
-bgc
+4
+0011
+4
+1100
+4
+1010
 3
-quick
-brown
-fox
+3
 2
-0
 Explanation:
-Example case 1: Ingredients 'b' and 'c' are present in all three dishes, so there are two special ingredients.
-Example case 2: No ingredient is common to all three dishes.
+Test case
+1: Conside the string
+X=1110.
+Here,
+X
+2
+=X
+1
+⊕S
+1
+=1⊕0,
+X
+3
+=X
+2
+⊕S
+2
+=1⊕0,
+X
+4
+=X
+3
+⊕S
+3
+=1⊕1. It can be shown that no other value of
+X exists that satisfies the conditions and has more than three
+1s.
+Test case
+2: Conside the string
+X=1011.
+Here,
+X
+2
+=X
+1
+⊕S
+1
+=1⊕1,
+X
+3
+=X
+2
+⊕S
+2
+=0⊕1,
+X
+4
+=X
+3
+⊕S
+3
+=1⊕0. It can be shown that no other value of
+X exists that satisfies the conditions and has more than three
+1s.
+Test case
+3: The string
+X=0110, which has two
+1s.

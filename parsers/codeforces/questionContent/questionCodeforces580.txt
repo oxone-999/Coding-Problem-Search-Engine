@@ -1,166 +1,97 @@
-A. Working Week
+B. Tea with Tangerines
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Your working week consists of
+There are
 n
-days numbered from
-1
-to
-n
-, after day
-n
-goes day
-1
-again. And
-3
-of them are days off. One of the days off is the last day, day
-n
-. You have to decide when the other two are.
-Choosing days off, you pursue two goals:
-No two days should go one after the other. Note that you can't make day
-1
-a day off because it follows day
-n
+pieces of tangerine peel, the
+i
+-th of them has size
+a
+i
+. In one step it is possible to divide one piece of size
+x
+into two pieces of positive integer sizes
+y
+and
+z
+so that
+y+z=x
 .
-Working segments framed by days off should be as dissimilar as possible in duration. More specifically, if the segments are of size
-l
-1
-,
-l
-2
-, and
-l
-3
-days long, you want to maximize
-min(|
-l
-1
-−
-l
-2
-|,|
-l
-2
-−
-l
-3
-|,|
-l
-3
-−
-l
-1
-|)
-.
-Output the maximum value of
-min(|
-l
-1
-−
-l
-2
-|,|
-l
-2
-−
-l
-3
-|,|
-l
-3
-−
-l
-1
-|)
-that can be obtained.
+You want that for each pair of pieces, their sizes differ strictly less than twice. In other words, there should not be two pieces of size
+x
+and
+y
+, such that
+2x≤y
+. What is the minimum possible number of steps needed to satisfy the condition?
 Input
 The first line of the input contains a single integer
 t
 (
-1≤t≤1000
+1≤t≤100
 ) — the number of test cases. The description of test cases follows.
-The only line of each test case contains the integer
+The first line of each test case contains the integer
 n
 (
-6≤n≤
+1≤n≤100
+).
+Then one line follows, containing
+n
+integers
+a
+1
+≤
+a
+2
+≤…≤
+a
+n
+(
+1≤
+a
+i
+≤
 10
-9
+7
 ).
 Output
-For each test case, output one integer — the maximum possible obtained value.
+For each test case, output a single line containing the minimum number of steps.
 Example
 input
 Copy
 3
-6
-10
+5
+1 2 3 4 5
+1
 1033
+5
+600 900 1300 2000 2550
 output
 Copy
+10
 0
-1
-342
+4
 Note
-In the image below you can see the example solutions for the first two test cases. Chosen days off are shown in purple. Working segments are underlined in green.
-In test case
+In the first test case, we initially have a piece of size
 1
-, the only options for days off are days
-2
-,
-3
-, and
-4
-(because
+, so all final pieces must have size
 1
-and
-5
-are next to day
-n
-). So the only way to place them without selecting neighboring days is to choose days
-2
-and
-4
-. Thus,
-l
-1
-=
-l
-2
-=
-l
-3
-=1
-, and the answer
-min(|
-l
-1
-−
-l
-2
-|,|
-l
-2
-−
-l
-3
-|,|
-l
-3
-−
-l
-1
-|)=0
+. The total number of steps is:
+0+1+2+3+4=10
 .
-For test case
+In the second test case, we have just one piece, so we don't need to do anything, and the answer is
+0
+steps.
+In the third test case, one of the possible cut options is:
+600, 900, (600|700), (1000|1000), (1000|1000|550)
+. You can see this option in the picture below. The maximum piece has size
+1000
+, and it is less than
 2
-, one possible way to choose days off is shown. The working segments have the lengths of
-2
-,
-1
-, and
+times bigger than the minimum piece of size
+550
+.
 4
-days. So the minimum difference is
-1=min(1,3,2)=min(|2−1|,|1−4|,|4−2|)
-. It can be shown that there is no way to make it larger.
+steps are done. We can show that it is the minimum possible number of steps.

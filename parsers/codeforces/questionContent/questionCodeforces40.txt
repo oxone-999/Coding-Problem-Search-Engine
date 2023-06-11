@@ -1,67 +1,17 @@
-D. Running Miles
-time limit per test2 seconds
+C. Dreaming of Freedom
+time limit per test2.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There is a street with
+Because to take away a man's freedom of choice, even his freedom to make the wrong choice, is to manipulate him as though he were a puppet and not a person.
+— Madeleine L'Engle
+There are
 n
-sights, with sight number
-i
-being
-i
-miles from the beginning of the street. Sight number
-i
-has beauty
-b
-i
-. You want to start your morning jog
-l
-miles and end it
-r
-miles from the beginning of the street. By the time you run, you will see sights you run by (including sights at
-l
-and
-r
-miles from the start). You are interested in the
-3
-most beautiful sights along your jog, but every mile you run, you get more and more tired.
-So choose
-l
-and
-r
-, such that there are at least
-3
-sights you run by, and the sum of beauties of the
-3
-most beautiful sights minus the distance in miles you have to run is maximized. More formally, choose
-l
-and
-r
-, such that
-b
-i
-1
-+
-b
-i
-2
-+
-b
-i
-3
-−(r−l)
-is maximum possible, where
-i
-1
-,
-i
-2
-,
-i
-3
-are the indices of the three maximum elements in range
-[l,r]
-.
+programmers choosing their favorite algorithm amongst
+m
+different choice options. Before the first round, all
+m
+options are available. In each round, every programmer makes a vote for one of the remaining algorithms. After the round, only the algorithms with the maximum number of votes remain. The voting process ends when there is only one option left. Determine whether the voting process can continue indefinitely or no matter how people vote, they will eventually choose a single option after some finite amount of rounds?
 Input
 The first line contains a single integer
 t
@@ -70,99 +20,49 @@ t
 10
 5
 ) — the number of test cases.
-The first line of each test case contains a single integer
+Each test case consists of a single line containing two integers
 n
+and
+m
 (
-3≤n≤
+1≤n,m≤
 10
-5
-).
-The second line of each test case contains
-n
-integers
-b
-i
-(
-1≤
-b
-i
-≤
-10
-8
-) — beauties of sights
-i
-miles from the beginning of the street.
-It's guaranteed that the sum of all
-n
-does not exceed
-10
-5
-.
+6
+) — the number of people and choice options respectively.
 Output
-For each test case output a single integer equal to the maximum value
-b
-i
-1
-+
-b
-i
-2
-+
-b
-i
-3
-−(r−l)
-for some running range
-[l,r]
-.
+For each test case output "YES" if the programmers will eventually choose a single option, and "NO" otherwise.
+You may print each letter in any case (for example, YES, Yes, yes, yEs will all be recognized as a positive answer).
 Example
 input
 Copy
-4
 5
-5 1 4 2 3
-4
-1 1 1 1
-6
-9 8 7 6 5 4
-7
-100000000 1 100000000 1 100000000 1 100000000
+3 2
+4 2
+5 3
+1000000 1000000
+1 1000000
 output
 Copy
-8
-1
-22
-299999996
+YES
+NO
+YES
+NO
+YES
 Note
-In the first example, we can choose
-l
-and
-r
-to be
+In the first example, there are
+8
+ways people could vote:
+{1|1|1,1|1|2,1|2|1,1|2|2,2|1|1,2|1|2,2|2|1,2|2|2}
+.
+In cases
 1
-and
-5
-. So we visit all the sights and the three sights with the maximum beauty are the sights with indices
-1
+,
+2
 ,
 3
 , and
 5
-with beauties
-5
-,
-4
-, and
-3
-, respectively. So the total value is
-5+4+3−(5−1)=8
-.
-In the second example, the range
-[l,r]
-can be
-[1,3]
-or
-[2,4]
-, the total value is
-1+1+1−(3−1)=1
-.
+, the programmers are left with the first algorithm, and in the remaining cases people are left with the second one, so the voting ends in one round in any case.
+In the second example, the programmers could always vote
+1|1|2|2
+. Both algorithms have the maximum number of votes and remain for the next round, so the voting never ends.

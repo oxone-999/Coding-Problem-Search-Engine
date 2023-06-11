@@ -1,74 +1,36 @@
-Magic Weed
+Jump mission
 Problem
-Faizal and Sultan are having a one-on-one faceoff. Before stepping into the fight, each of them smoked a special kind of weed from Jhalwa. Smoking
-k grams of this weed grants the smoker the ability to resurrect
-k times after dying. Sultan smoked
-M grams of this weed, and Faizal smoked
-N grams.
-However, Faizal was addicted to this kind of weed since his childhood, and so developed a side effect: if Faizal dies and is resurrected, he temporarily loses his ability to resurrect; and only gains it back after killing Sultan at least once (given that he hasn't resurrected
-N times already). Sultan has no such restriction.
-The fight ends whenever one of the two is killed without being able to resurrect. In other words, either Sultan is killed
-M+1 times, or Faizal is killed
-N+1 times, or Faizal is killed twice in a row.
-Any possible fight can be described by the sequence of deaths - for example, with
-N=2 and
-M=2, the string
-FSSFS encodes the fight where:
-First, Sultan kills Faizal. Faizal resurrects, and temporarily loses his ability to resurrect.
-Then, Faizal kills Sultan. Sultan resurrects, and Faizal's resurrection is now active.
-Faizal kills Sultan again. Sultan resurrects.
-Sultan kills Faizal, who resurrects. Now Sultan has no more chances to revive.
-Faizal kills Sultan, who stays dead; and the fight ends.
-Faizal's wife Mohsina is getting anxious about the fight and asks for your help in finding the number of different ways the fight between Faizal and Sultan can end up happening. Because this value can be quite large, compute it modulo
-10
-9
-+7.
-Two fights are considered different if and only if the sequence of deaths corresponding to those fights are different. For example, the sequence
-SF is different from the sequence
-FS and hence these represent different fights.
-Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of
-T test cases follows.
-Each test case consists of a single line of input, containing two space-separated integers
-N and
-M.
-Output Format
-For each test case, output a single line containing the answer - the possible number of fights between Faizal and Sultan, modulo
-10
-9
-+7.
-Constraints
-1≤T≤2000
-0≤N≤10
-5
-0≤M≤10
-5
-Sum of
-N over all test cases will not exceed
-10
-6
-Sum of
-M over all test cases will not exceed
-10
-6
-Sample 1:
+Read problems statements in Mandarin Chinese and Russian
+Chef the chief is participating in a hill jumping competition.
+There are N hills arranged in a row, and each of them is assigned a unique index from 1 to N — the ith hill has an index Pi on it. The height of the ith hill is Hi. Chef starts at the first hill with a goal to reach the Nth hill by jumping over hills from left to right (he is not allowed to jump in the other direction), jumping from ith hill to jth costs (Hj - Hi)2 energy.
+When chief is on the ith hill, he has to prepare a special dish for the community of that hill as a thanks for letting him use their resources. This will cost him Ai energy (some dishes are chief's favorites and preparing it refreshes chef that why Ai may be negative). To make things more challenging for Chef the chief, he is allowed to jump from ith hill to jth if and only if i < j and Pi < Pj.
+Help Chef choose the sequence of jumps that consume the minimum energy possible. (Note that it's possible at any moment that energy consumed is negative.)
 Input
+The first line of input contains a single integer N.
+The second line contains N space-separated integers P1, P2, ... , PN.
+The third line contains N space-separated integers A1, A2, ... , AN.
+The fourth line contains N space-separated integers H1, H2, ... , HN.
 Output
-3
-2 1
-12 6
-6969 8563
-7
-255
-988402422
-Explanation:
-Test Case 1: The death sequences corresponding to the
-7 possible fights are:
-SS
-SFS
-FSS
-FSFS
-FF
-SFF
-FSFF
+Output a single line containing the answer to the problem i.e. the minimal possible amount of consumed energy.
+Constraints
+2 ≤ N ≤ 3 × 105
+P is a permutation of the first N integer numbers
+P1=1 and PN=N
+-109 ≤ Ai ≤ 109
+1 ≤ Hi ≤ 6 × 105
+Subtasks
+Subtask 1 (5 points) : 2 ≤ N ≤ 20
+Subtask 2 (15 points) : 2 ≤ N ≤ 5000
+Subtask 3 (20 points) : 2 ≤ N ≤ 3 × 105, Pi = Hi = i
+Subtask 4 (30 points) : 2 ≤ N ≤ 3 × 105, Hi = i
+Subtask 5 (30 points) : original constraints
+Example
+Input:
+5
+1 4 3 2 5
+0 1 3 0 0
+1 2 3 4 5
+Output:
+10
+Explanation
+Example case 1. jumping from first hill to 4th one then to 5th; the answer will be 0 + 0 + 0 + (4-1)^2 + (5-4)^2 = 10

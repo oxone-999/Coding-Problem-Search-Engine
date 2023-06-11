@@ -1,132 +1,197 @@
-E. FTL
-time limit per test4 seconds
+F. Intersection and Union
+time limit per test5 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Monocarp is playing a video game. In the game, he controls a spaceship and has to destroy an enemy spaceship.
-Monocarp has two lasers installed on his spaceship. Both lasers
-1
-and
-2
-have two values:
-p
+You are given
+n
+segments on the coordinate axis. The
 i
- — the power of the laser;
-t
+-th segment is
+[
+l
 i
- — the reload time of the laser.
-When a laser is fully charged, Monocarp can either shoot it or wait for the other laser to charge and shoot both of them at the same time.
-An enemy spaceship has
-h
-durability and
-s
-shield capacity. When Monocarp shoots an enemy spaceship, it receives
-(P−s)
-damage (i. e.
-(P−s)
-gets subtracted from its durability), where
-P
-is the total power of the lasers that Monocarp shoots (i. e.
-p
+,
+r
 i
-if he only shoots laser
+]
+. Let's denote the set of all integer points belonging to the
 i
+-th segment as
+S
+i
+.
+Let
+A∪B
+be the union of two sets
+A
 and
-p
-1
-+
-p
-2
-if he shoots both lasers at the same time). An enemy spaceship is considered destroyed when its durability becomes
-0
-or lower.
-Initially, both lasers are zero charged.
-What's the lowest amount of time it can take Monocarp to destroy an enemy spaceship?
-Input
-The first line contains two integers
-p
-1
+B
+,
+A∩B
+be the intersection of two sets
+A
 and
-t
-1
-(
-2≤
-p
-1
-≤5000
-;
-1≤
-t
-1
-≤
-10
-12
-) — the power and the reload time of the first laser.
-The second line contains two integers
-p
-2
+B
+, and
+A⊕B
+be the symmetric difference of
+A
 and
-t
-2
-(
-2≤
-p
-2
-≤5000
-;
-1≤
-t
-2
-≤
-10
-12
-) — the power and the reload time of the second laser.
-The third line contains two integers
-h
-and
-s
-(
-1≤h≤5000
-;
-1≤s<min(
-p
+B
+(a set which contains all elements of
+A
+and all elements of
+B
+, except for the ones that belong to both sets).
+Let
+[
+op
 1
 ,
-p
+op
 2
+,…,
+op
+n−1
+]
+be an array where each element is either
+∪
+,
+⊕
+, or
+∩
+. Over all
+3
+n−1
+ways to choose this array, calculate the sum of the following values:
+|(((
+S
+1
+ op
+1
+ S
+2
+) 
+op
+2
+ S
+3
+) 
+op
+3
+ S
+4
+) … 
+op
+n−1
+ S
+n
+|
+|
+(
+(
+(
+S
+S
 )
-) — the durability and the shield capacity of an enemy spaceship. Note that the last constraint implies that Monocarp will always be able to destroy an enemy spaceship.
+S
+)
+S
+)
+S
+|
+In this expression,
+|S|
+denotes the size of the set
+S
+.
+Input
+The first line contains one integer
+n
+(
+2≤n≤3⋅
+10
+5
+).
+Then,
+n
+lines follow. The
+i
+-th of them contains two integers
+l
+i
+and
+r
+i
+(
+0≤
+l
+i
+≤
+r
+i
+≤3⋅
+10
+5
+).
 Output
-Print a single integer — the lowest amount of time it can take Monocarp to destroy an enemy spaceship.
+Print one integer — the sum of
+|(((
+S
+1
+ op
+1
+ S
+2
+) 
+op
+2
+ S
+3
+) 
+op
+3
+ S
+4
+) … 
+op
+n−1
+ S
+n
+|
+over all possible ways to choose
+[
+op
+1
+,
+op
+2
+,…,
+op
+n−1
+]
+. Since the answer can be huge, print it modulo
+998244353
+.
 Examples
 input
 Copy
-5 10
-4 9
-16 1
+4
+3 5
+4 8
+2 2
+1 9
 output
 Copy
-20
+162
 input
 Copy
-10 1
-5000 100000
-25 9
+4
+1 9
+3 5
+4 8
+2 2
 output
 Copy
-25
-Note
-In the first example, Monocarp waits for both lasers to charge, then shoots both lasers at
-10
-, they deal
-(5+4−1)=8
-damage. Then he waits again and shoots lasers at
-20
-, dealing
-8
-more damage.
-In the second example, Monocarp doesn't wait for the second laser to charge. He just shoots the first laser
-25
-times, dealing
-(10−9)=1
-damage each time.
+102

@@ -1,105 +1,124 @@
-Meet over Grid
+Greedy Students
 Problem
-There are
-N people standing on an infinite grid. The coordinates of the
-i
-th
-person is given by
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Rafid is teaching his students plane geometry. Today they are talking about convex polygons. A convex polygon is a simple non-degenerate polygon such that each of its internal angles is strictly smaller than
+180
+∘
+.
+Rafid drew
+N points (numbered
+1 through
+N) on a blackboard (a two-dimensional plane) and told each student to choose some of the points and connect them to obtain a convex polygon. For each valid
+i, the coordinates of the
+i-th point are
 (X
 i
 ,Y
 i
 ).
-In one move, a person can move to any of its adjacent cell. Note that two cells are adjacent if they share an edge.
-A group of size
-M can be formed by selecting any
-M out of the
-N people.
-The cost of such a group is defined as the minimum number of total moves required, such that, all of the selected
-M people, meet at a single cell.
-Find the minimum cost of a group of size
-K.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case lines consists of multiple lines of input:
-The first line of each test case contains two space-separated integers
+There are
+K students (numbered
+1 through
+K). To prevent the students from choosing the same polygon over and over, Rafid told them that they have to choose polygons one by one in the order from student
+1 to student
+K and each student has to choose a set of points which was not chosen by any earlier student. That means they have to choose
+K different sets of points, resulting in
+K different polygons. As a result, some students may end up unable to choose any polygon.
+To encourage the students, Rafid announced that each student will receive a number of candies proportional to the area of this student's polygon. The students are very greedy, so the first student will choose the polygon with the largest area, the second student will choose the polygon with the largest area which does not use the same set of points as the first student's polygon, and so on.
+For each student, help Rafid find the area of the polygon chosen by this student or determine that this student cannot choose a polygon anymore. Note that while there may be many ways in which the students could choose their polygons, their areas are uniquely determined.
+Input
+The first line of the input contains two space-separated integers
 N and
-K — the number of people and the size of the group to meet.
-Each of the next
-N lines contain two space-separated integers
+K.
+N lines follow. For each valid
+i, the
+i-th of these lines contains two space-separated integers
 X
 i
 and
 Y
 i
-— the
-X and
-Y coordinates of the
+.
+Output
+Print a single line containing
+K space-separated integers
+A
+1
+,A
+2
+,…,A
+K
+. For each valid
+i,
+A
 i
-th
-person.
-Output Format
-For each test case, print a single line containing one integer - the minimum cost of a group of size
-K.
+should be twice the area of a polygon chosen by the
+i-th student, or
+−1 if all possible polygons have already been chosen by students before the
+i-th student.
 Constraints
-1≤T≤1000
-1≤K≤N≤1000
-10
-−9
-≤X
+3≤N≤120
+1≤K≤10
+6
+∣X
 i
+∣,∣Y
+i
+∣≤10
+6
+for each valid
+i
+the points
+(X
+1
 ,Y
-i
-≤10
-9
-The sum of
-N over all test cases won't exceed
-1000.
+1
+),(X
+2
+,Y
+2
+),…,(X
+N
+,Y
+N
+) are pairwise distinct
+Subtasks
+Subtask #1 (5 points):
+K=2
+it is possible to form at least
+K convex polygons
+Subtask #2 (15 points):
+K≤1,000
+Subtask #3 (80 points): original constraints
 Sample 1:
 Input
 Output
-2
-5 3
-1 1
-2 2
-2 3
-3 1
-4 1
-8 6
--9 8
-8 5
--5 -5
-2 3
-11 5
-1 1
--12 11
-15 0
-3
-53
+5 15
+0 0
+10 0
+10 10
+0 10
+5 5
+200 100 100 100 100 50 50 50 50 -1 -1 -1 -1 -1 -1
 Explanation:
-Test case
-1: There are
-5 people at positions
-(1,1),(2,2),(2,3),(3,1), and
-(4,1). We need to find the minimum cost of a group of size
-3. Let us consider some groups of size
-3:
-{(1,1),(2,2),(4,1)}: Consider that these
-3 people meet at coordinate
-(2,1). Thus, it takes
-1 move each for person
-1 and
-2 and
-2 moves for person
-3. The cost of this group is this
-1+1+2=4.
-{(1,1),(2,2),(3,1)}: Consider that these
-3 people meet at coordinate
-(2,1). Thus, it takes
-1 move each for person
-1,2, and
-3. The cost of this group is this
-1+1+1=3.
-It can be shown that a lower cost is not possible for any group of size
-3.
+The following figure describes the points and some polygons.
+The first student chooses the largest polygon
+ABCD with area
+100.
+The next four students choose the triangles
+ABC,
+BCD,
+CDA and
+DAB, each with area
+50. Note that for example, the polygon
+AECB is not convex because it has one internal angle equal to
+180
+∘
+.
+The next four students choose the triangles
+AEB,
+BEC,
+CED and
+DEA, each with area
+25.
+There are no more polygons the students can choose, so the remaining six students are left without a polygon.

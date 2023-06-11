@@ -1,124 +1,90 @@
-E. Outermost Maximums
-time limit per test2 seconds
+A. Creep
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Yeri has an array of
-n+2
-non-negative integers :
+Define the score of some binary string
+T
+as the absolute difference between the number of zeroes and ones in it. (for example,
+T=
+010001 contains
+4
+zeroes and
+2
+ones, so the score of
+T
+is
+|4−2|=2
+).
+Define the creepiness of some binary string
+S
+as the maximum score among all of its prefixes (for example, the creepiness of
+S=
+01001 is equal to
+2
+because the score of the prefix
+S[1…4]
+is
+2
+and the rest of the prefixes have a score of
+2
+or less).
+Given two integers
 a
-0
-,
+and
+b
+, construct a binary string consisting of
 a
-1
-,...,
-a
-n
-,
-a
-n+1
-.
-We know that
-a
-0
-=
-a
-n+1
-=0
-.
-She wants to make all the elements of
-a
-equal to zero in the minimum number of operations.
-In one operation she can do one of the following:
-Choose the leftmost maximum element and change it to the maximum of the elements on its left.
-Choose the rightmost maximum element and change it to the maximum of the elements on its right.
-Help her find the minimum number of operations needed to make all elements of
-a
-equal to zero.
+zeroes and
+b
+ones with the minimum possible creepiness.
 Input
 The first line contains a single integer
-n
+t
+(1≤t≤1000)
+ — the number of test cases. The description of the test cases follows.
+The only line of each test case contains two integers
+a
+and
+b
 (
-1≤n≤2⋅
-10
-5
-).
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤n
-).
+1≤a,b≤100
+)  — the numbers of zeroes and ones correspondingly.
 Output
-Print a single integer  — the minimum number of operations needed to make all elements of
+For each test case, print a binary string consisting of
 a
-equal to zero.
-Examples
-input
-Copy
-6
-1 4 2 4 0 2
-output
-Copy
-7
+zeroes and
+b
+ones with the minimum possible creepiness. If there are multiple answers, print any of them.
+Example
 input
 Copy
 5
-1 3 5 4 2
+1 1
+1 2
+5 2
+4 5
+3 7
 output
 Copy
-9
-input
-Copy
-4
-0 0 0 0
-output
-Copy
-0
+10
+011
+0011000
+101010101
+0001111111
 Note
-In the first sample, you get
-⟨1,
+In the first test case, the score of
+S[1…1]
+is
 1
-–
-,2,4,0,2⟩
-by performing the first operation and
-⟨1,4,2,
-2
-–
-,0,2⟩
-by performing the second operation.
-One way to achieve our goal is shown below. (The underlines show the last change.)
-⟨1,4,2,4,0,2⟩→⟨1,4,2,
-2
-–
-,0,2⟩→⟨1,
+, and the score of
+S[1…2]
+is
+0
+.
+In the second test case, the minimum possible creepiness is
 1
-–
-,2,2,0,2⟩→⟨1,1,2,2,0,
-0
-–
-⟩→⟨1,1,2,
-0
-–
-,0,0⟩→⟨1,1,
-0
-–
-,0,0,0⟩→⟨
-0
-–
-,1,0,0,0,0⟩→⟨0,
-0
-–
-,0,0,0,0⟩
-In the third sample each element is already equal to zero so no operations are needed.
+and one of the other answers is 101.
+In the third test case, the minimum possible creepiness is
+3
+and one of the other answers is 0001100.

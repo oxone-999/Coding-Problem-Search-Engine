@@ -1,27 +1,42 @@
-Chef Land
+Shooting on the array
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-You are given an undirected unweighted graph consisting of N nodes and M edges. A pair of nodes u, v is called good if and only if you can go from node u to v and then return back from v to u without using any edge more than once.
-Can you add at most one edge to the graph to make all the pairs of nodes good? Note that the added edge can be between two vertices which are already connected by some edges. However you are not allowed to add self loops.
+You have an array A of length N consisting of positive integers. Let's consider N vertical segments (parallel to y axis) on the plane, the i-th segment connects the points (i, 0) and (i, Ai).
+You have Q queries of following two types:
++ i X : Ai += X
+? i L R : Let's consider R - L+ 1 rays which are parallel to x axis. The j-th ray eminates at point (i - 0.5, L+ j - 1.5) and extends to the right infinitely long parallel to x axis. You have to print the number of the segments that will be shot by some ray. If a ray shoots a segment then it stops at that point and does't extend further.
+Note that all the queries of the second type are independent of each other.
 Input
-First line of the input contains two space separated integers - N (number of nodes) and M (number of edges).
-Each of the next M lines contains two space separated integers x and y, denoting that there is an edge between node x and y.
+The first line of the input contains an integer T denoting the number of tests
+The first line of each test case consists of two space separated integers N, Q .
+The second line contains N space separated denoting the array A.
+Next Q lines contain the description of the queries in the format above.
 Output
-Output "YES" (without quotes) if it possible to make all pairs of node good by adding at most one edge. Output "NO" (without quotes) otherwise.
+After each query of the second type, output in a single line the number of segments that are shot.
 Constraints
-1 ≤ N ≤ 105
-0 ≤ M ≤ 2 * 105
-1 ≤ x, y ≤ N
-It is guaranteed that the graph is connected.
-The given graph may contain multi-edges. It doesn't contain any self loops.
-Example
-Input:
-4 4
-3 2
-3 1
-2 1
-1 4
-Output:
-YES
-Explanation
-We can connect nodes 3 and 4 via an edge. After that all the pair of vertices will be good.
+1 ≤ T ≤ 100
+1 ≤ N ≤ 106
+1 ≤ Q ≤ 105
+0 < X ≤ 10,000
+1 ≤ i ≤ N
+1 ≤ Ai ≤ 109
+1 ≤ L ≤ R ≤ 109
+The sum of N over all testcases does not exceed 106
+The sum of Q over all testcases does not exceed 105
+Subtasks
+Subtask #1 (10 points) : There are only queries of the second type
+Subtask #2 (10 points) : In all queries of the second type i = 1
+Subtask #3 (30 points) : The sum of Q over all testcases does not exceed 104
+Subtask #4 (50 points) : Original constraints
+Sample 1:
+Input
+Output
+1
+6 4
+3 7 2 4 8 7
+? 4 3 9 
+? 3 1 7
++ 6 2
+? 4 3 9
+2
+3
+3

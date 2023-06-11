@@ -1,63 +1,34 @@
-Root the Tree
+Little Elephant and Balance
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-A directed tree is a directed graph such that if all edges were undirected, this graph would be a tree. A rooted directed tree is a directed tree in which there is one vertex (the root, let's denote it by
-r) such that it is possible to reach all vertices of the graph from
-r by moving along the directed edges.
-You are given a directed tree with
-N vertices (numbered
-1 through
-N). You may perform the following operation on it any number of times (including zero):
-Choose some edge which currently exists in the graph.
-Remove this edge.
-Add a new edge in such a way that the graph becomes a directed tree again.
-What is the smallest number of operations which need to be performed in order to make the directed tree rooted?
+A Little Elephant from the Zoo of Lviv likes lucky strings, i.e., the strings that consist only of the lucky digits 4 and 7.
+The Little Elephant calls some string T of the length M balanced if there exists at least one integer X (1 ≤ X ≤ M) such that the number of digits 4 in the substring T[1, X - 1] is equal to the number of digits 7 in the substring T[X, M]. For example, the string S = 7477447 is balanced since S[1, 4] = 7477 has 1 digit 4 and S[5, 7] = 447 has 1 digit 7. On the other hand, one can verify that the string S = 7 is not balanced.
+The Little Elephant has the string S of the length N. He wants to know the number of such pairs of integers (L; R) that 1 ≤ L ≤ R ≤ N and the substring S[L, R] is balanced. Help him to find this number.
+Notes.
+Let S be some lucky string. Then
+|S| denotes the length of the string S;
+S[i] (1 ≤ i ≤ |S|) denotes the ith character of S (the numeration of characters starts from 1);
+S[L, R] (1 ≤ L ≤ R ≤ |S|) denotes the string with the following sequence of characters: S[L], S[L + 1], ..., S[R], and is called a substring of S. For L > R we mean by S[L, R] an empty string.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-Each of the next
-N−1 lines contains two space-separated integers
-u and
-v denoting that there is a directed edge from
-u to
-v in the tree.
+The first line of the input file contains a single integer T, the number of test cases. Each of the following T lines contains one string, the string S for the corresponding test case. The input file does not contain any whitespaces.
 Output
-For each test case, print a single line containing one integer ― the smallest number of operations we need to perform to create a rooted directed tree.
+For each test case output a single line containing the answer for this test case.
 Constraints
-1≤N≤10
-4
-1≤u,v≤N
-the graph described on the input is a directed tree
-the sum of
-N over all test cases does not exceed
-10
-5
-Subtasks
-Subtask #1 (20 points): for each edge,
-u=1 or
-v=1 (the graph is a directed star)
-Subtask #2 (80 points): original constraints
+1 ≤ T ≤ 10
+1 ≤ |S| ≤ 100000
+S consists only of the lucky digits 4 and 7.
 Sample 1:
 Input
 Output
+4
+47
+74
+477
+4747477
+2
 2
 3
-1 2
-3 2
-3
-1 2
-2 3
-1
-0
+23
 Explanation:
-Example case 1: We can delete the edge from vertex
-3 to vertex
-2 and insert an edge from
-3 to
-1. Then, the graph becomes a rooted directed tree with vertex
-3 as the root. However, there are many other possible solutions.
-Example case 2: The graph is already a rooted directed tree; the root is vertex
-1.
+In the first test case balance substrings are S[1, 1] = 4 and S[1, 2] = 47.
+In the second test case balance substrings are S[2, 2] = 4 and S[1, 2] = 74.
+Unfortunately, we can't provide you with the explanations of the third and the fourth test cases. You should figure it out by yourself. Please, don't ask about this in comments.

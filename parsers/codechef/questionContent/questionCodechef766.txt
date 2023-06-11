@@ -1,89 +1,88 @@
-Maximum OR Minimum
+Minimum Sum
 Problem
-Alice and Bob are ready to play a new game. Both the players take alternate turns. Alice starts first.
-There are
-N binary numbers written on a blackboard.
-Alice, in her turn, erases any
-2 numbers from the blackboard and writes the bitwise OR of those
-2 numbers on the blackboard.
-Bob, in his turn, erases any
-2 numbers from the blackboard and writes the bitwise AND of those
-2 numbers on the blackboard.
-Note that, after each move, the count of numbers written on the blackboard reduces by
-1.
-Both players play until a single number remains on the blackboard. Alice wants to maximise the remaining number while Bob wants to minimise the remaining number. Find the remaining number if both the players play optimally.
+You are given an array
+A
+1
+,A
+2
+,…,A
+N
+of length
+N. You can perform the following operation any number of times (possibly 0 times) :
+Choose any two indices
+i and
+j and replace either
+A
+i
+or
+A
+j
+with
+gcd(A
+i
+,A
+j
+).
+Find the minimum possible sum (ie.
+A
+1
++A
+2
++⋯+A
+N
+) that you can achieve, and output that.
 Input Format
-First line will contain
-T, number of test cases. Then the test cases follow.
-First line of each test case contains of a single integer
-N - the count of numbers written on the blackboard initially.
-Second line of each test case contains
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first line of each test case contains an integer
+N - the length of the array
+A.
+The second line of each test case contains
 N space-separated integers
 A
 1
 ,A
 2
-,…A
+,…,A
 N
-- the numbers written on the blackboard.
+.
 Output Format
-For each test case, output in a single line, the remaining number, if both the players play optimally.
+For each test case, output on a new line the minimum sum of the array that can be achieved.
 Constraints
-1≤T≤1000
+1≤T≤100
 2≤N≤10
 5
-0≤A
+1≤A
 i
-≤1
-Sum of
-N over all test cases does not exceed
-2⋅10
+≤10
+9
+The sum of
+N over all test cases won't exceed
+3∗10
 5
 .
 Sample 1:
 Input
 Output
+2
+2
+5 10
 3
-5
-1 1 1 1 0
-3
-0 1 0
-4
-0 0 0 0
-1
-0
-0
+2 2 6
+10
+6
 Explanation:
 Test case
-1: Alice starts first.
-In the first move, Alice erases
-1 and
-0 and writes
-1∣0=1 on the blackboard. Thus, after this move, the numbers written are
-{1,1,1,1}.
-In the second move, Bob erases
-1 and
-1 and writes
-1&1=1 on the blackboard. Thus, after this move, the numbers written are
-{1,1,1}.
-In the third move, Alice erases
-1 and
-1 and writes
-1∣1=1 on the blackboard. Thus, after this move, the numbers written are
-{1,1}.
-In the fourth move, Bob erases
-1 and
-1 and writes
-1&1=1 on the blackboard. Thus, after this move, the numbers written are
-{1}.
-Thus, the remaining number is
-1.
+1: Choose
+i=1,j=2 and replace
+A
+2
+with
+gcd(5,10)=5.
 Test case
-2: It does not matter which two numbers Alice chooses. After the first move, the numbers on the blackboard would be
-{1,0}. Thus, Bob erases these two numbers and writes
-1&0=0.
-Test case
-3: In all the moves, both players erase two
-0s and write a single
-0. Thus, the remaining element is
-0.
+2: Choose
+i=1,j=3 and replace
+A
+3
+with
+gcd(2,6)=2.

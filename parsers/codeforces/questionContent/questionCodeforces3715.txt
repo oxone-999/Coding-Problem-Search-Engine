@@ -1,252 +1,209 @@
-E. Maximize Mex
+F. Dish Shopping
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
 There are
+m
+people living in a city. There are
 n
-students and
-m
-clubs in a college. The clubs are numbered from
-1
-to
-m
-. Each student has a potential
+dishes sold in the city. Each dish
+i
+has a price
 p
 i
-and is a member of the club with index
-c
+, a standard
+s
 i
-. Initially, each student is a member of exactly one club. A technical fest starts in the college, and it will run for the next
-d
-days. There is a coding competition every day in the technical fest.
-Every day, in the morning, exactly one student of the college leaves their club. Once a student leaves their club, they will never join any club again. Every day, in the afternoon, the director of the college will select one student from each club (in case some club has no members, nobody is selected from that club) to form a team for this day's coding competition. The strength of a team is the mex of potentials of the students in the team. The director wants to know the maximum possible strength of the team for each of the coming
-d
-days. Thus, every day the director chooses such team, that the team strength is maximized.
-The mex of the multiset
-S
-is the smallest non-negative integer that is not present in
-S
-. For example, the mex of the
-{0,1,1,2,4,5,9}
-is
-3
-, the mex of
-{1,2,3}
-is
-0
-and the mex of
-∅
-(empty set) is
-0
+and a beauty
+b
+i
+. Each person
+j
+has an income of
+in
+c
+j
+and a preferred beauty
+pre
+f
+j
 .
+A person would never buy a dish whose standard is less than the person's income. Also, a person can't afford a dish with a price greater than the income of the person. In other words, a person
+j
+can buy a dish
+i
+only if
+p
+i
+≤in
+c
+j
+≤
+s
+i
+.
+Also, a person
+j
+can buy a dish
+i
+, only if
+|
+b
+i
+−pre
+f
+j
+|≤(in
+c
+j
+−
+p
+i
+)
+. In other words, if the price of the dish is less than the person's income by
+k
+, the person will only allow the absolute difference of at most
+k
+between the beauty of the dish and his/her preferred beauty.
+Print the number of dishes that can be bought by each person in the city.
 Input
 The first line contains two integers
 n
 and
 m
 (
-1≤m≤n≤5000
-), the number of students and the number of clubs in college.
+1≤n≤
+10
+5
+,
+1≤m≤
+10
+5
+), the number of dishes available in the city and the number of people living in the city.
 The second line contains
 n
 integers
 p
-1
-,
-p
-2
-,…,
-p
-n
+i
 (
-0≤
+1≤
 p
 i
-<5000
-), where
-p
-i
-is the potential of the
-i
--th student.
+≤
+10
+9
+), the price of each dish.
 The third line contains
 n
 integers
-c
-1
-,
-c
-2
-,…,
-c
-n
+s
+i
 (
 1≤
-c
+s
 i
-≤m
-), which means that
+≤
+10
+9
+), the standard of each dish.
+The fourth line contains
+n
+integers
+b
 i
--th student is initially a member of the club with index
+(
+1≤
+b
+i
+≤
+10
+9
+), the beauty of each dish.
+The fifth line contains
+m
+integers
+in
 c
+j
+(
+1≤in
+c
+j
+≤
+10
+9
+), the income of every person.
+The sixth line contains
+m
+integers
+pre
+f
+j
+(
+1≤pre
+f
+j
+≤
+10
+9
+), the preferred beauty of every person.
+It is guaranteed that for all integers
+i
+from
+1
+to
+n
+, the following condition holds:
+p
+i
+≤
+s
 i
 .
-The fourth line contains an integer
-d
-(
-1≤d≤n
-), number of days for which the director wants to know the maximum possible strength of the team.
-Each of the next
-d
-lines contains an integer
-k
-i
-(
-1≤
-k
-i
-≤n
-), which means that
-k
-i
--th student lefts their club on the
-i
--th day. It is guaranteed, that the
-k
-i
--th student has not left their club earlier.
 Output
-For each of the
-d
-days, print the maximum possible strength of the team on that day.
+Print
+m
+integers, the number of dishes that can be bought by every person living in the city.
 Examples
 input
 Copy
-5 3
-0 1 2 2 0
-1 2 2 3 2
-5
-3
-2
-4
-5
-1
+3 3
+2 1 3
+2 4 4
+2 1 1
+2 2 3
+1 2 4
 output
 Copy
-3
-1
-1
-1
-0
+1 2 0 
 input
 Copy
-5 3
-0 1 2 2 1
-1 3 2 3 2
-5
-4
-2
-3
-5
-1
+4 3
+1 2 1 1
+3 3 1 3
+2 1 3 2
+1 1 3
+1 2 1
 output
 Copy
-3
-2
-2
-1
-0
-input
-Copy
-5 5
-0 1 2 4 5
-1 2 3 4 5
-4
-2
-3
-5
-4
-output
-Copy
-1
-1
-1
-1
+0 2 3 
 Note
-Consider the first example:
-On the first day, student
-3
-leaves their club. Now, the remaining students are
-1
-,
+In the first example, the first person can buy dish
 2
-,
-4
+, the second person can buy dishes
+1
 and
-5
-. We can select students
-1
-,
 2
+and the third person can buy no dishes.
+In the second example, the first person can buy no dishes, the second person can buy dishes
+1
 and
 4
-to get maximum possible strength, which is
-3
-. Note, that we can't select students
+, and the third person can buy dishes
 1
 ,
 2
 and
-5
-, as students
-2
-and
-5
-belong to the same club. Also, we can't select students
-1
-,
-3
-and
 4
-, since student
-3
-has left their club.
-On the second day, student
-2
-leaves their club. Now, the remaining students are
-1
-,
-4
-and
-5
-. We can select students
-1
-,
-4
-and
-5
-to get maximum possible strength, which is
-1
-.
-On the third day, the remaining students are
-1
-and
-5
-. We can select students
-1
-and
-5
-to get maximum possible strength, which is
-1
-.
-On the fourth day, the remaining student is
-1
-. We can select student
-1
-to get maximum possible strength, which is
-1
-.
-On the fifth day, no club has students and so the maximum possible strength is
-0
 .

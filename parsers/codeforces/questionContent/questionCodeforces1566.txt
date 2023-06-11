@@ -1,62 +1,57 @@
-F. Pairwise Modulo
-time limit per test4 seconds
-memory limit per test256 megabytes
+I. Stairs
+time limit per test10 seconds
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-You have an array
-a
-consisting of
-n
-distinct positive integers, numbered from
+For a permutation
+p
+of numbers
 1
-to
+through
 n
-. Define
-p
-k
-as
-p
-k
-=
-∑
-1≤i,j≤k
+, we define a stair array
+a
+as follows:
 a
 i
-mod
-a
-j
-,
-∑
-mod
-where
-xmody
-denotes the remainder when
-x
-is divided by
-y
-. You have to find and print
-p
-1
-,
-p
-2
-,…,
-p
-n
+is length of the longest segment of permutation which contains position
+i
+and is made of consecutive values in sorted order:
+[x,x+1,…,y−1,y]
+or
+[y,y−1,…,x+1,x]
+for some
+x≤y
+. For example, for permutation
+p=[4,1,2,3,7,6,5]
+we have
+a=[1,3,3,3,3,3,3]
 .
+You are given the stair array
+a
+. Your task is to calculate the number of permutations which have stair array equal to
+a
+. Since the number can be big, compute it modulo
+998244353
+. Note that this number can be equal to zero.
 Input
-The first line contains
+The first line of input contains integer
 n
-— the length of the array (
-2≤n≤2⋅
+(
+1≤n≤
 10
 5
-).
-The second line contains
+)  — the length of a stair array
+a
+.
+The second line of input contains
 n
-space-separated distinct integers
+integers
 a
 1
+,
+a
+2
 ,…,
 a
 n
@@ -64,43 +59,47 @@ n
 1≤
 a
 i
-≤3⋅
-10
-5
-,
-a
-i
-≠
-a
-j
-if
-i≠j
+≤n
 ).
 Output
-Print
-n
-integers
-p
-1
-,
-p
-2
-,…,
-p
-n
+Print the number of permutations which have stair array equal to
+a
+. Since the number can be big, compute it modulo
+998244353
 .
 Examples
 input
 Copy
-4
-6 2 7 3
+6
+3 3 3 1 1 1
 output
 Copy
-0 2 12 22
+6
 input
 Copy
-3
-3 2 1
+7
+4 4 4 4 3 3 3
 output
 Copy
-0 3 5
+6
+input
+Copy
+1
+1
+output
+Copy
+1
+input
+Copy
+8
+2 2 2 2 2 2 1 1
+output
+Copy
+370
+input
+Copy
+4
+3 2 3 1
+output
+Copy
+0

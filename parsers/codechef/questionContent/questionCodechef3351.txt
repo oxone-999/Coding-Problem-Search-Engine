@@ -1,133 +1,101 @@
-Range Array
+Series Sum
 Problem
-Read problem statements in Mandarin, Bengali, Russian, and Vietnamese as well.
-Chef has an array
-A of length
-N. Chef constructs the range-array
-A
-L,R
-as follows:
-First, Chef considers the subarray
-A
-L
-,A
-L+1
-,...,A
-R
-.
-Then Chef removes the integers that do not belong to the range
-[L,R] from the subarray to finally create the range-array
-A
-L,R
-.
-For example, consider the array
-A=[1,3,2,4], then the range-arrays are:
-A
-1,1
-=[1],A
-1,2
-=[1],A
-1,3
-=[1,3,2],A
-1,4
-=[1,3,2,4],
-A
-2,2
-=[],
-A
-2,3
-=[3,2],
-A
-2,4
-=[3,2,4] and so on.
-Chef is given a permutation
-A
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+You are given
+N integers
+a
 1
-,A
+,a
 2
-,…,A
+,…,a
 N
-of length
-N. A pair of integers
-(L,R)(1≤L≤R≤N) is called good if all the elements in the range array
-A
-L,R
-are sorted in increasing order. In case, a range array is an empty list, it is considered to be sorted. Chef tries to find the number of good pairs
-(L,R), but fails. Can you help him?
-Input Format
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
+. Let's define functions
+f and
+g:
+f(x,k)=(x+a
+1
+)
+k
++(x+a
+2
+)
+k
++⋯+(x+a
+N
+)
+k
+g(t,k)=f(0,k)+f(1,k)+⋯+f(t,k)
+You are also given integers
+T and
+K. Calculate
+g(T,i) modulo
+10
+9
++7 for each
+i between
+0 and
+K inclusive.
+Input
+The first line of the input contains three space-separated integers
+N,
+K and
+T.
 The second line contains
-N space-separated integer
-A
+N space-separated integers
+a
 1
-,A
+,a
 2
-,…,A
+,…,a
 N
 .
-Output Format
-For each test case, print a single line containing one integer - the number of good pairs.
+Output
+Print a single line containing
+K+1 space-separated integers — the values of
+g(T,0),g(T,1),…,g(T,K) modulo
+10
+9
++7.
 Constraints
-1≤T≤10
-3
 1≤N≤10
 5
-1≤A
+1≤K≤5⋅10
+4
+1≤T≤10
+18
+0≤a
 i
-≤N
-A
-1
-,A
-2
-,…,A
-N
-is a permutation.
-Sum of
-N over all test cases does not exceed
-5⋅10
-5
-.
+<10
+9
++7
 Subtasks
-Subtask 1 (5 points):
-1≤T≤20
-1≤N≤100
-Sum of
-N over all test cases does not exceed
-200.
-Subtask 2 (20 points):
-1≤T≤20
-1≤N≤2500
-Sum of
-N over all test cases does not exceed
-2500.
-Subtask 3 (75 points):
-Original constraints
+Subtask #1 (10 points):
+N=1
+Subtask #2 (10 points):
+a
+i
+=a
+1
+i
+modulo
+10
+9
++7 for each valid
+i
+Subtask #3 (10 points):
+a
+i
+=a
+1
++i−1 modulo
+10
+9
++7 for each valid
+i
+Subtask #4 (70 points): original constraints
 Sample 1:
 Input
 Output
-3
-2
-2 1
-3 
-1 2 3
-4
-1 3 2 4
-2
-6
-6
-Explanation:
-Test case
-1: The range arrays are
-A
-1,1
-=[],A
-2,2
-=[],A
-1,2
-=[2,1]. The first two of them are empty lists and hence sorted.
-Test case
-2: Elements in all the six range arrays are sorted in increasing order.
+2 3 4
+0 1
+10 25 85 325

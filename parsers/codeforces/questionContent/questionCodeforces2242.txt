@@ -1,89 +1,57 @@
-M. Milutin's Plums
-time limit per test1 second
-memory limit per test1024 megabytes
+M. Ancient Language
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-As you all know, the plum harvesting season is on! Little Milutin had his plums planted in an orchard that can be represented as an
-n
-by
-m
-matrix. While he was harvesting, he wrote the heights of all trees in a matrix of dimensions
-n
-by
-m
-.
-At night, when he has spare time, he likes to perform various statistics on his trees. This time, he is curious to find out the height of his lowest tree. So far, he has discovered some interesting properties of his orchard. There is one particular property that he thinks is useful for finding the tree with the smallest heigh.
-Formally, let
-L(i)
-be the leftmost tree with the smallest height in the
-i
--th row of his orchard. He knows that
-L(i)≤L(i+1)
-for all
-1≤i≤n−1
-. Moreover, if he takes a submatrix induced by any subset of rows and any subset of columns,
-L(i)≤L(i+1)
-will hold for all
-1≤i≤
-n
-′
-−1
-, where
-n
-′
-is the number of rows in that submatrix.
-Since the season is at its peak and he is short on time, he asks you to help him find the plum tree with minimal height.
+While exploring the old caves, researchers found a book, or more precisely, a stash of mixed pages from a book. Luckily, all of the original pages are present and each page contains its number. Therefore, the researchers can reconstruct the book.
+After taking a deeper look into the contents of these pages, linguists think that this may be some kind of dictionary. What's interesting is that this ancient civilization used an alphabet which is a subset of the English alphabet, however, the order of these letters in the alphabet is not like the one in the English language.
+Given the contents of pages that researchers have found, your task is to reconstruct the alphabet of this ancient civilization using the provided pages from the dictionary.
 Input
-This problem is interactive.
-The first line of input will contain two integers
+First-line contains two integers:
 n
 and
-m
-, representing the number of rows and the number of columns in Milutin's orchard. It is guaranteed that
-1≤n,m≤
+k
+(
+1≤n,k≤
 10
-6
+3
+) — the number of pages that scientists have found and the number of words present at each page. Following
+n
+groups contain a line with a single integer
+p
+i
+(
+0≤n<
+10
+3
+) — the number of
+i
+-th page, as well as
+k
+lines, each line containing one of the strings (up to
+100
+characters) written on the page numbered
+p
+i
 .
-The following lines will contain the answers to your queries.
 Output
-Once you know have found the minimum value
-r
-, you should print !
-r
-to the standard output.
-Interaction
-Your code is allowed to query for an entry
-(i,j)
-of a matrix (i.e. get the height of the tree which is in the
-i
--th row and
-j
--th column). The query should be formatted as ?
-i
-j
-, so that
-1≤i≤n
-and
-1≤j≤m
-.
-You may assume that the entries of the matrix will be integers between
-1
-and
-10
-9
-.
-Your solution should use not more than
-4⋅(n+m)
-queries.
-This is an interactive problem. You have to use a flush operation right after printing each line. For example, in C++ you should use the function fflush(stdout), in Java — System.out.flush(), in Pascal — flush(output) and in Python — sys.stdout.flush().
+Output a string representing the reconstructed alphabet of this ancient civilization. If the book found is not a dictionary, output "IMPOSSIBLE" without quotes. In case there are multiple solutions, output any of them.
 Example
 input
 Copy
-5 5
-13 15 10 9 15
-15 17 12 11 17
-10 12 7 6 12
-17 19 14 13 19
-16 18 13 12 18
+3 3
+2
+b
+b
+bbac
+0
+a
+aca
+acba
+1
+ab
+c
+ccb
 output
 Copy
+acb

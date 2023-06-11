@@ -1,56 +1,33 @@
-String Query
+Chef and Function
 Problem
-Hey, you've got a new mission! This time your client ask you to write a editor and it should run fast! However the client's request is somehow strange, but they give a lot of money so your boss ask you to finish it as fast as possible.
-This editor deal with a string S. And the length |S| of the string S would never be smaller than 10. This editor must support the following 7 operations quickly. Here the string would be indexed starting at 0.
-INSERT_LEFT c : insert character c at the beginning of S
-INSERT_RIGHT c : insert character c at the end of S
-INSERT_MIDDLE c : insert character c at the middle of S (before the (|S| div 2)-th character)
-DELETE_LEFT : delete the first character of S
-DELETE_RIGHT : delete the last character of S
-DELETE_MIDDLE : delete the middle character of S (the (|S| div 2)-th character)
-QUERY q : print how many times the string q occur in S. (overlap is allowed)
-Here div means integer division, that is, |S| div 2 = floor(|S| / 2).
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+Chef has a sequence A containing N integers A1, A2, ..., AN and an integer K.
+For each pair (l, r) such that 1 ≤ l ≤ r ≤ N, Chef defines functions MIN(l, r) = min(al, al+1, ..., ar) and XOR(l, r) = al xor al+1 xor ... xor ar. Then, Chef defines a function f(l, r) = MIN(l, r) ∙ XOR(l, r).
+Chef wants to know the K-th smallest possible value of f(l, r). Formally, consider a sorted array of all N(N+1)/2 possible values of f(l, r) for all possible pairs (l, r); Chef wants to know the K-th element of this array after it's sorted.
+Help Chef!
 Input
-The first line of input contains the initial string SInit. The second line contains one integer Q, denoting the number of operations. Then each of the next Q lines contains an operation with the format mentioned above.
+The first line of each test case contains two space-separated integers N and K.
+The second line contains N space-separated integers A1, A2, ..., AN.
 Output
-For each QUERY operation, print the answer in a line.
+For each test case, print a single line containing one integer — the K-th smallest value of f(l, r).
 Constraints
-1 ≤ Q ≤ 150000 (1.5 * 105)
-|SInit| = 10
-SInit, q contain only lower Latin letters ('a'-'z').
-c is a lower Latin letter ('a'-'z').
-The total length of the string q over all the queries does not exceed 1500000 (1.5 * 106).
-The DELETE_LEFT, DELETE_RIGHT, DELETE_MIDDLE operations do not appear when |S| = 10.
-Example
-Input:
-bbabaaaaab
-12
-INSERT_MIDDLE b
-INSERT_LEFT b
-INSERT_MIDDLE b
-INSERT_MIDDLE b
-INSERT_RIGHT a
-INSERT_LEFT a
-INSERT_MIDDLE b
-INSERT_LEFT a
-INSERT_MIDDLE a
-QUERY bbaaa
-DELETE_MIDDLE
-DELETE_MIDDLE
-Output:
-1
-Explanation
-In the sample, the string |S| will be changed as follows:
-bbabaaaaab (SInit)
-bbababaaaab (after INSERT_MIDDLE b)
-bbbababaaaab (after INSERT_LEFT b)
-bbbababbaaaab (after INSERT_MIDDLE b)
-bbbababbbaaaab (after INSERT_MIDDLE b)
-bbbababbbaaaaba (after INSERT_RIGHT a)
-abbbababbbaaaaba (after INSERT_LEFT a)
-abbbababbbbaaaaba (after INSERT_MIDDLE b)
-aabbbababbbbaaaaba (after INSERT_LEFT a)
-aabbbabababbbaaaaba (after INSERT_MIDDLE a)
-aabbbababbbbaaaaba (after DELETE_MIDDLE)
-aabbbababbbaaaaba (after DELETE_MIDDLE)
-For QUERY bbaaa, this string occurs once. It is shown in boldface type.
+1 ≤ N ≤ 50,000
+1 ≤ K ≤ N ∙ (N+1) / 2
+1 ≤ Ai ≤ 50,000 for each valid i
+Subtasks
+Subtask #1 (10 points):
+1 ≤ N ≤ 100
+1 ≤ Ai ≤ 100 for each valid i
+Subtask #2 (20 points):
+1 ≤ N ≤ 10,000
+1 ≤ Ai ≤ 100 for each valid i
+Subtask #3 (30 points):
+1 ≤ N ≤ 30,000
+1 ≤ Ai ≤ 30,000 for each valid i
+Subtask #4 (40 points): original constraints
+Sample 1:
+Input
+Output
+4 7
+1 3 6 4
+9

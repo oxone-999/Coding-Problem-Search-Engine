@@ -1,103 +1,67 @@
-F. Timber
+E. Rearrange Brackets
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There is a beautiful alley with trees in front of a shopping mall. Unfortunately, it has to go to make space for the parking lot.
-The trees on the alley all grow in a single line. There are
-n
-spots for trees, index
-0
-is the shopping mall, index
-n+1
-is the road and indices from
-1
-to
-n
-are the spots for trees. Some of them are taken — there grow trees of the same height
+A regular bracket sequence is a bracket sequence that can be transformed into a correct arithmetic expression by inserting characters "1" and "+" between the original characters of the sequence. For example:
+bracket sequences "()()" and "(())" are regular (the resulting expressions are: "(1)+(1)" and "((1+1)+1)");
+bracket sequences ")(", "(" and ")" are not.
+You are given a regular bracket sequence. In one move, you can remove a pair of adjacent brackets such that the left one is an opening bracket and the right one is a closing bracket. Then concatenate the resulting parts without changing the order. The cost of this move is the number of brackets to the right of the right bracket of this pair.
+The cost of the regular bracket sequence is the smallest total cost of the moves required to make the sequence empty.
+Actually, you are not removing any brackets. Instead, you are given a regular bracket sequence and an integer
 k
-. No more than one tree grows in each spot.
-When you chop down a tree in the spot
-x
-, you can make it fall either left or right. If it falls to the left, it takes up spots from
-x−k
-to
-x
-, inclusive. If it falls to the right, it takes up spots from
-x
-to
-x+k
-, inclusive.
-Let
-m
-trees on the alley grow in some spots
-x
-1
-,
-x
-2
-,…,
-x
-m
-. Let an alley be called unfortunate if all
-m
-trees can be chopped down in such a way that:
-no tree falls on the shopping mall or the road;
-each spot is taken up by no more than one fallen tree.
-Calculate the number of different unfortunate alleys with
-m
-trees of height
+. You can perform the following operation at most
 k
-. Two alleys are considered different if there is a spot
-y
-such that a tree grows in
-y
-on the first alley and doesn't grow in
-y
-on the second alley.
-Output the number modulo
-998244353
-.
+times:
+extract some bracket from the sequence and insert it back at any position (between any two brackets, at the start or at the end; possibly, at the same place it was before).
+After all operations are performed, the bracket sequence has to be regular. What is the smallest possible cost of the resulting regular bracket sequence?
 Input
-The only line contains three integers
-n,m
-and
+The first line contains a single integer
+t
+(
+1≤t≤
+10
+4
+) — the number of testcases.
+The first line of each testcase contains a single integer
 k
 (
-1≤m,k≤n≤3⋅
+0≤k≤5
+) — the maximum number of operations you can perform.
+The second line contains a non-empty regular bracket sequence, it consists only of characters '(' and ')'.
+The total length of the regular bracket sequences over all testcases doesn't exceed
+2⋅
 10
 5
-) — the number of spots for the trees, the number of trees and the height of each tree.
-Output
-Print a single integer — the number of different unfortunate alleys with
-m
-trees of height
-k
-, modulo
-998244353
 .
-Examples
+Output
+For each testcase, print a single integer — the smallest possible cost of the regular bracket sequence after you perform at most
+k
+operations on it.
+Example
 input
 Copy
-6 1 4
-output
-Copy
-4
-input
-Copy
-5 2 2
+7
+0
+()
+0
+(())
+1
+(())
+5
+()
+1
+(()()(()))
+2
+((())()(()())((())))
+3
+((())()(()())((())))
 output
 Copy
 0
-input
-Copy
-6 2 2
-output
-Copy
+1
+0
+0
+1
 4
-input
-Copy
-15 3 2
-output
-Copy
-311
+2

@@ -1,99 +1,106 @@
-Faulty System
+Random OR
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-The Ministry of Transportation has recently developed an electronic system for management of roads within states. The system allows opening and closing roads remotely. The Ministry has decided to test the system in two states (let's call them A and B); to simplify the configuration of the system for testing, these states were chosen in such a way that the following restriction holds: each state consists of
-N cities (numbered
-1 through
-N) and
-M bidirectional roads (numbered
-1 through
-M) connecting them.
-During the testing, the system was discovered to be faulty - it merged the two configurations into one and assumed that it is managing a single state with
-N cities and
-M roads. When the system was issued a command to open (or close) a road with number
-i in one of the states, it would open (or close) both the road with number
-i in state A and the road with number
-i in state B.
-Let's call a state connected if it is possible to reach each of the
-N cities in this state from all other cities using only open roads. If the system worked correctly, for each state, it would be enough to open
-N−1 suitable roads in order to make it connected, while after the error, it became a much harder task to make both states connected at the same time.
-Currently, all roads are closed. Please help the Ministry of Transportation determine the smallest number of commands to open a road that should be issued in the system in order to make both states A and B connected.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
+Chef is playing a game, which he starts with a score of
+S=0. He also has an integer
+N.
+In one move, Chef does the following:
+Uniformly randomly pick an integer
+X between
+0 and
+2
+N
+−1 (inclusive of both ends)
+Update his score as
+S→S∣X, where
+∣ denotes the bitwise OR operation
+For example, if Chef's current score is
+S=6 and he picks
+X=10, his new score is
+6∣10=14.
+Chef stops when his score
+S becomes equal to
+2
+N
+−1. What is the expected number of moves Chef performs?
+Output the answer modulo
+10
+9
++7. That is, the answer can be expressed as a fraction
+P/Q, where
+gcd(Q,10
+9
++7)=1. Print
+P⋅Q
+−1
+(mod 10
+9
++7), where
+Q
+−1
+denotes the modular multiplicative inverse of
+Q with respect to
+10
+9
++7.
+Input Format
+The first line of input contains an integer
+T, denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-M.
-The following
-M lines describe the roads in the state A. Each of these lines contains two space-separated integers
-u and
-v denoting that cities
-u and
-v in the state A are connected by a road.
-The last
-M lines describe the roads in the state B in the same format.
-Output
-For each test case, print a single line containing one integer ― the smallest number of roads that should be opened in order to make both states A and B connected.
+Each test case contains a single integer
+N.
+Output Format
+For each test case, output on a new line the expected number of moves Chef performs, modulo
+10
+9
++7.
 Constraints
-1≤T≤1,000
-1≤N,M≤300
-1≤u,v≤N
-u
-
-=v
-there are at most
-5 test cases with
-M>50
-there is at most one road between each pair of cities in each state
+1≤T≤100
+1≤N≤3⋅10
+5
+Sum of
+N over all test cases do not exceed
+3⋅10
+5
 Subtasks
-Subtask #1 (10 points):
-N,M≤20
-there are at most
-5 test cases with
-M>10
-Subtask #2 (50 points):
-T≤100
-N,M≤100
-Subtask #3 (40 points): original constraints
+Subtask 1 (30 points):
+1≤N≤10
+3
+Sum of
+N over all test cases doesn't exceed
+10
+3
+Subtask 2 (70 points):
+Original constraints
 Sample 1:
 Input
 Output
+3
+1
 2
-5 7
-3 5
-1 2
-1 5
-2 3
-4 5
-1 4
-2 5
-2 5
-3 5
-1 4
-3 4
-2 3
-1 2
-4 5
-6 6
-4 6
-1 5
-1 3
-1 2
-2 4
-1 4
-1 3
-3 5
-1 5
-3 6
-2 5
-4 6
-4
-6
+100
+2
+666666674
+328238032
 Explanation:
-Example case 1: It is sufficient to open roads
-1,
-2,
-3 and
-6 to make both states connected. The open and closed roads are depicted in the following figure.
-Example case 2: The only way to make both states connected is to open all roads.
+Test case
+1: In each move, Chef chooses either
+0 or
+1, each with a probability of
+1/2. The game ends as soon as Chef chooses
+1. Thus, the probability that the game takes exactly
+k moves is
+2
+−k
+.
+The required expected value is then
+k=1
+∑
+∞
+k⋅2
+−k
+, which equals
+2.
+Test case
+2: In each move, Chef chooses an integer in
+[0,3]. The answer is
+8/3.

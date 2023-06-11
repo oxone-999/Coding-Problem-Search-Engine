@@ -1,195 +1,86 @@
-E. Tree
-time limit per test1.5 seconds
+A. Sasha and His Trip
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a tree with
+Sasha is a very happy guy, that's why he is always on the move. There are
 n
-nodes and
-q
-queries.
-Every query starts with three integers
-k
-,
-m
-and
-r
-, followed by
-k
-nodes of the tree
-a
+cities in the country where Sasha lives. They are all located on one straight line, and for convenience, they are numbered from
 1
-,
-a
-2
-,…,
-a
-k
-. To answer a query, assume that the tree is rooted at
-r
-. We want to divide the
-k
-given nodes into at most
-m
-groups such that the following conditions are met:
-Each node should be in exactly one group and each group should have at least one node.
-In any group, there should be no two distinct nodes such that one node is an ancestor (direct or indirect) of the other.
-You need to output the number of ways modulo
-10
-9
-+7
-for every query.
+to
+n
+in increasing order. The distance between any two adjacent cities is equal to
+1
+kilometer. Since all roads in the country are directed, it's possible to reach the city
+y
+from the city
+x
+only if
+x<y
+.
+Once Sasha decided to go on a trip around the country and to visit all
+n
+cities. He will move with the help of his car, Cheetah-2677. The tank capacity of this model is
+v
+liters, and it spends exactly
+1
+liter of fuel for
+1
+kilometer of the way. At the beginning of the journey, the tank is empty. Sasha is located in the city with the number
+1
+and wants to get to the city with the number
+n
+. There is a gas station in each city. In the
+i
+-th city, the price of
+1
+liter of fuel is
+i
+dollars. It is obvious that at any moment of time, the tank can contain at most
+v
+liters of fuel.
+Sasha doesn't like to waste money, that's why he wants to know what is the minimum amount of money is needed to finish the trip if he can buy fuel in any city he wants. Help him to figure it out!
 Input
 The first line contains two integers
 n
 and
-q
-(
-1≤n,q≤
-10
-5
-) — the number of vertices in the tree and the number of queries, respectively.
-Each of the next
-n−1
-lines contains two integers
-u
-and
 v
 (
-1≤u,v≤n,u≠v
-), denoting an edge connecting vertex
-u
-and vertex
-v
-. It is guaranteed that the given graph is a tree.
-Each of the next
-q
-lines starts with three integers
-k
+2≤n≤100
 ,
-m
-and
-r
-(
-1≤k,r≤n
-,
-1≤m≤min(300,k)
-) — the number of nodes, the maximum number of groups and the root of the tree for the current query, respectively. They are followed by
-k
-distinct integers
-a
-1
-,
-a
-2
-,…,
-a
-k
-(
-1≤
-a
-i
-≤n
-), denoting the nodes of the current query.
-It is guaranteed that the sum of
-k
-over all queries does not exceed
-10
-5
-.
+1≤v≤100
+)  — the number of cities in the country and the capacity of the tank.
 Output
-Print
-q
-lines, where the
-i
--th line contains the answer to the
-i
--th query.
+Print one integer — the minimum amount of money that is needed to finish the trip.
 Examples
 input
 Copy
-7 2
-5 4
-2 6
-5 3
-1 2
-7 5
-4 6
-3 3 2 7 4 3
-3 1 4 6 2 1
-output
-Copy
-2
-0
-input
-Copy
-7 2
-4 7
-2 5
-4 1
-5 1
-5 6
-4 3
-3 3 2 7 1 4
-2 1 6 3 2
-output
-Copy
-1
-1
-input
-Copy
-5 2
-3 5
-4 5
 4 2
-1 4
-2 2 3 1 2
-2 2 4 5 4
 output
 Copy
-2
-1
-Note
-Consider the first example.
-In the first query, we have to divide the three given nodes (
-7
-,
 4
-and
-3
-), into the maximum of three groups assuming that the tree is rooted at
-2
-. When the tree is rooted at
-2
-,
-4
-is an ancestor of both
-3
-and
-7
-. So we can't put all the nodes into one group. There is only
-1
-way to divide the given nodes into two groups, which are
-[4]
-and
-[3,7]
-. Also, there is only one way to divide the given nodes into three groups, which are
-[7]
-,
-[4]
-and
-[3]
-. So, there are total
-2
-ways to divide the given nodes into a maximum of three groups.
-In the second query, when the tree is rooted at
-4
-,
+input
+Copy
+7 6
+output
+Copy
 6
-is an ancestor of
+Note
+In the first example, Sasha can buy
 2
-and
+liters for
 2
-is an ancestor of
+dollars (
 1
-. So, we can't put all the given nodes into one group.
+dollar per liter) in the first city, drive to the second city, spend
+1
+liter of fuel on it, then buy
+1
+liter for
+2
+dollars in the second city and then drive to the
+4
+-th city. Therefore, the answer is
+1+1+2=4
+.
+In the second example, the capacity of the tank allows to fill the tank completely in the first city, and drive to the last city without stops in other cities.

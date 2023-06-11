@@ -1,133 +1,79 @@
-Max-digit Tree
+Tokens On A Tree
 Problem
-###Read problems statements Hindi , Vietnamese , Mandarin Chinese , Russian and Bengali as well.
-You have a tree with
-N vertices (numbered
-1 through
-N) rooted at vertex
-1. Each vertex contains a decimal digit; let's denote the digit in vertex
-i by
-d
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given a rooted tree with
+N nodes numbered
+1,2,…,N. Node
+1 is the root node. Some of the nodes have a token in them. In one move, you can choose a non-root node that has a token, but its parent doesn't, and move the token from this node to its parent. What is the maximum number of moves you can make?
+Note: When a token is moved out of a node, the node becomes empty, and other tokens will be able to move there.
+###Input
+The first line contains an integer
+T, the number of test cases. Each test case contains three lines.
+The first line of each test case contains an integer
+N, the number of nodes in the tree.
+The second line contains a string
+s of length
+N. The character
+s
 i
-.
-A subtree is a non-empty subgraph satisfying the following condition: for any vertex
-v, if
-v belongs to subtree
-S, then the parent of
-v also belongs to
-S. Note that each subtree contains the root. The vertices in any subtree
-S are sorted in DFS-order, i.e. using the following algorithm:
-let's denote a current vertex by
-c; initially, the current vertex is the root
-when processing vertex
-c:
-c is the next vertex in DFS-order
-consider all sons of
-c which belong to
-S, sorted in increasing order
-for each of these sons, change the current vertex
-c to that son and process it recursively
-For any subtree
-S with
-k vertices, we define the digit string
-D(S) as a string with length
-k; for each valid
-i, the
-i-th character of this string is the digit in the
-i-th vertex of
-S (in DFS-order).
-D(S) may also be considered an integer in decimal representation.
-Let's define
-maxDigit(x) as the largest decimal digit in a positive integer
-x. Consider the following infinite recurrent sequence
-a:
-a
-1
-=1
-a
-n
-=a
-n−1
-+maxDigit(a
-n−1
-) for each
-n>1
-For example, the first few members of this sequence are
-1,2,4,8,16,22.
-Next, let's call a subtree
-S good if
-D(S) occurs in sequence
-a. You should find the number of good subtrees of the given tree. Since this number may be large, compute it modulo
-10
-9
-+7.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-Each of the following
-N−1 lines contains two space-separated integers
-u and
-v denoting an edge between vertices
-u and
-v.
-The last line contains
-N space-separated integers
-d
-1
-,d
+is
+1 if node has a token, and
+0 otherwise.
+The third line contains
+N−1 space separated integers,
+p
 2
-,…,d
+,p
+3
+,…p
 N
-.
-Output
-For each test case, print a single line containing one integer — the number of good subtrees modulo
+, where
+p
+i
+is the parent of node
+i.
+###Output For each test case, print the maximum number of moves that can be made on a new line.
+###Constraints
+1≤N≤10
+6
+For each valid
+i,
+1≤p
+i
+<i.
+The sum of
+N over all test cases doesn't exceed
 10
-9
-+7.
-Constraints
-1≤T≤10
-1≤N≤500
-1≤u,v≤N
-the graph described on the input is a tree
-0≤d
-i
-≤9 for each valid
-i
-d
-1
-
-=0
-the sum of
-N over all test cases does not exceed
-500
-Subtasks
-Subtask #1 (20 points):
-d
-i
-=2 for each valid
-i
-Subtask #2 (80 points): original constraints
+6
+.
+###Subtasks
+Subtask 1 (13 points):
+T≤10,N≤17.
+Subtask 2 (18 points): The sum of
+N over all test cases doesn't exceed
+2000.
+Subtask 3 (41 points): The sum of
+N over all test cases doesn't exceed
+10
+5
+.
+Subtask 4 (28 points): No additional constraints.
 Sample 1:
 Input
 Output
 2
-3
-1 2
-2 3
-1 6 4
 5
-1 2
-1 3
-2 4
-3 5
-2 2 2 2 2
-3
-6
+01010
+1 1 3 3
+5
+10101
+1 1 3 3
+2
+0
 Explanation:
-Example case 1: All valid subtrees are good (their digit strings are
-1,
-16 and
-164).
+In the first test case, you can first move a token from node
+4 to node
+3, and then move a token from node
+2 to node
+1.
+In the second test case, there are no possible valid moves.

@@ -1,88 +1,120 @@
-B. The String Has a Target
+A. We Need the Zero
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string
-s
-. You can apply this operation to the string exactly once: choose index
+There is an array
+a
+consisting of non-negative integers. You can choose an integer
+x
+and denote
+b
 i
-and move character
-s
+=
+a
 i
-to the beginning of the string (removing it at the old position). For example, if you apply the operation with index
-i=4
-to the string "abaacd" with numbering from
+⊕x
+for all
+1≤i≤n
+, where
+⊕
+denotes the bitwise XOR operation. Is it possible to choose such a number
+x
+that the value of the expression
+b
 1
-, you get the string "aabacd". What is the lexicographically minimal
-†
-†
-string you can obtain by this operation?
-†
-†
-A string
-a
-is lexicographically smaller than a string
+⊕
 b
-of the same length if and only if the following holds:
-in the first position where
-a
-and
+2
+⊕…⊕
 b
-differ, the string
-a
-has a letter that appears earlier in the alphabet than the corresponding letter in
-b
-.
+n
+equals
+0
+?
+It can be shown that if a valid number
+x
+exists, then there also exists
+x
+such that (
+0≤x<
+2
+8
+).
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
-10
-4
+1≤t≤1000
 ). The description of the test cases follows.
-The first line of each test case contains a single integer
+The first line of the test case contains one integer
 n
 (
 1≤n≤
 10
-5
-) — the length of the string.
-The second line of each test case contains the string
-s
-of length
+3
+) — the length of the array
+a
+.
+The second line of the test case contains
 n
-, consisting of lowercase English letters.
+integers — array
+a
+(
+0≤
+a
+i
+<
+2
+8
+).
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
 10
-5
+3
 .
 Output
-For each test case, on a separate line print the lexicographically smallest string that can be obtained after applying the operation to the original string exactly once.
+For each set test case, print the integer
+x
+(
+0≤x<
+2
+8
+) if it exists, or
+−1
+otherwise.
 Example
 input
 Copy
-4
-3
-cba
-4
-acac
 5
-abbcb
+3
+1 2 5
+3
+1 2 3
 4
-aaba
+0 1 2 3
+4
+1 2 2 3
+1
+1
 output
 Copy
-acb
-aacc
-abbcb
-aaab
+6
+0
+3
+-1
+1
 Note
-In the first test case, you need to move the last character to the beginning.
-In the second case, you need to move the second letter "a".
-In the third set you need to apply the operation with
-i=1
-, then the string will not change.
+In the first test case, after applying the operation with the number
+6
+the array
+b
+becomes
+[7,4,3]
+,
+7⊕4⊕3=0
+.
+There are other answers in the third test case, such as the number
+0
+.

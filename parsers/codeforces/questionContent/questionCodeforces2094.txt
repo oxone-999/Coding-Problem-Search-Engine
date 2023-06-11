@@ -1,151 +1,79 @@
-F. Array Partition
-time limit per test2 seconds
+C. Ping-pong
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-consisting of
-n
-integers.
-Let
-min(l,r)
-be the minimum value among
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-and
-max(l,r)
-be the maximum value among
-a
-l
-,
-a
-l+1
-,…,
-a
-r
-.
-Your task is to choose three positive (greater than
-0
-) integers
+Alice and Bob play ping-pong with simplified rules.
+During the game, the player serving the ball commences a play. The server strikes the ball then the receiver makes a return by hitting the ball back. Thereafter, the server and receiver must alternately make a return until one of them doesn't make a return.
+The one who doesn't make a return loses this play. The winner of the play commences the next play. Alice starts the first play.
+Alice has
 x
-,
+stamina and Bob has
 y
-and
-z
-such that:
-x+y+z=n
-;
-max(1,x)=min(x+1,x+y)=max(x+y+1,n)
-.
-In other words, you have to split the array
-a
-into three consecutive non-empty parts that cover the whole array and the maximum in the first part equals the minimum in the second part and equals the maximum in the third part (or determine it is impossible to find such a partition).
-Among all such triples (partitions), you can choose any.
-You have to answer
-t
-independent test cases.
+. To hit the ball (while serving or returning) each player spends
+1
+stamina, so if they don't have any stamina, they can't return the ball (and lose the play) or can't serve the ball (in this case, the other player serves the ball instead). If both players run out of stamina, the game is over.
+Sometimes, it's strategically optimal not to return the ball, lose the current play, but save the stamina. On the contrary, when the server commences a play, they have to hit the ball, if they have some stamina left.
+Both Alice and Bob play optimally and want to, firstly, maximize their number of wins and, secondly, minimize the number of wins of their opponent.
+Calculate the resulting number of Alice's and Bob's wins.
 Input
-The first line of the input contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤2⋅
+1≤t≤
 10
 4
-) — the number of test cases. Then
-t
-test cases follow.
-The first line of the test case contains one integer
-n
-(
-3≤n≤2⋅
-10
-5
-) — the length of
-a
-.
-The second line of the test case contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-9
-), where
-a
-i
-is the
-i
--th element of
-a
-.
-It is guaranteed that the sum of
-n
-does not exceed
-2⋅
-10
-5
-(
-∑n≤2⋅
-10
-5
-).
-Output
-For each test case, print the answer: NO in the only line if there is no such partition of
-a
-that satisfies the conditions from the problem statement. Otherwise, print YES in the first line and three integers
+) — the number of test cases.
+The first and only line of each test case contains two integers
 x
-,
-y
 and
-z
+y
 (
-x+y+z=n
-) in the second line.
-If there are several answers, you can print any.
+1≤x,y≤
+10
+6
+) — Alice's and Bob's initial stamina.
+Output
+For each test case, print two integers — the resulting number of Alice's and Bob's wins, if both of them play optimally.
 Example
 input
-Copy
-6
-11
-1 2 3 3 3 4 4 3 4 2 1
-8
-2 9 1 7 3 9 4 1
-9
-2 1 4 2 4 3 3 1 2
-7
-4 2 1 1 4 1 4
-5
-1 1 1 1 1
-7
-4 3 4 3 3 3 4
+3
+1 1
+2 1
+1 7
 output
-Copy
-YES
-6 1 4
-NO
-YES
-2 5 2
-YES
-4 1 2
-YES
-1 1 3
-YES
-2 1 4
+0 1
+1 1
+0 7
+Note
+In the first test case, Alice serves the ball and spends
+1
+stamina. Then Bob returns the ball and also spends
+1
+stamina. Alice can't return the ball since she has no stamina left and loses the play. Both of them ran out of stamina, so the game is over with
+0
+Alice's wins and
+1
+Bob's wins.
+In the second test case, Alice serves the ball and spends
+1
+stamina. Bob decides not to return the ball — he loses the play but saves stamina. Alice, as the winner of the last play, serves the ball in the next play and spends
+1
+more stamina. This time, Bob returns the ball and spends
+1
+stamina. Alice doesn't have any stamina left, so she can't return the ball and loses the play. Both of them ran out of stamina, so the game is over with
+1
+Alice's and
+1
+Bob's win.
+In the third test case, Alice serves the ball and spends
+1
+stamina. Bob returns the ball and spends
+1
+stamina. Alice ran out of stamina, so she can't return the ball and loses the play. Bob, as a winner, serves the ball in the next
+6
+plays. Each time Alice can't return the ball and loses each play. The game is over with
+0
+Alice's and
+7
+Bob's wins.

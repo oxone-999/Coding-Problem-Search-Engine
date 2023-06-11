@@ -1,80 +1,119 @@
-Triple-tree decomposition
+Valet Parking
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-Kefaa has developed a novel decomposition of a tree. He claims that this decomposition solves many difficult problems related to trees. However, he doesn't know how to find it quickly, so he asks you to help him.
-You are given a tree with
-N vertices numbered
-1 through
-N. Let's denote an edge between vertices
-u and
-v by
-(u,v). The triple-tree decomposition is a partition of edges of the tree into unordered triples of edges
-(a,b),(a,c),(a,d) such that
-a
-
-=b
-
-=c
-
-=d. Each edge must belong to exactly one triple.
-Help Kefaa with this problem — find a triple-tree decomposition of the given tree or determine that no such decomposition exists.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-Each of the following
-N−1 lines contains two space-separated integers
-u and
-v describing an edge between vertices
-u and
-v of the tree.
-Output
-For each test case, print a line containing the string "YES" if a triple-tree decomposition of the given tree exists or "NO" otherwise.
-If it exists, print
+Read problems statements in Mandarin Chinese, Russian, and Bengali as well.
+Your friend works as a valet where
+N cars show up in a shift. The
+i-th car will arrive
+T
+i
+seconds after the current moment, and the car can wait for at most
+Y
+i
+seconds. That is, your friend can only start parking the car from time
+T
+i
+to
+T
+i
++Y
+i
+(inclusive).
+Additionally, it takes
+X
+i
+time to park the
+i-th car, which means he cannot park any other cars for
+X
+i
+seconds starting from the time he starts parking the
+i-th car. It is known that no driver would like to wait for more time than it takes to park his car, so that
+Y
+i
+<X
+i
+for all
+i. The driver of the
+i-th car will pay
+A
+i
+coins as a tip to your friend if his car is parked. Note that he can start parking the next car immediately after he finishes parking the previous car.
+Your friend has asked you what will be the maximize possible earnings if he optimally chooses which cars to park and at what times.
+###Input:
+The first line contains one single integer
+N
+(1≤N≤3⋅10
+5
+)
+− the number of cars.
+The second line contains
+N integers
+T
+1
+,T
+2
+,…,T
+n
+− the time (in seconds) at which
+i-th car arrives.
+The third line contains
+N integers
+X
+1
+,X
+2
+,…,X
+n
+− the time (in seconds) required to park the
+i-th car.
+The fourth line contains
+N integers
+Y
+1
+,Y
+2
+,…,Y
+n
+− the maximum time (in seconds) for which the
+i-th car can wait.
+The fifth line contains
+N integers
+A
+1
+,A
+2
+,…,A
+n
+− the tip which the
+i-th car driver gives after the car is parked.
+###Output: Print a single integer
+− the answer to the problem.
+###Constraints
+1≤N≤3⋅10
+5
+1≤T
+i
+≤4⋅10
 3
-N−1
-more lines describing a decomposition.
-Each of these lines should contain four space-separated integers
-a,
-b,
-c and
-d describing a triple of edges
-(a,b),(a,c),(a,d).
-If more than one triple-tree decomposition exists, you may output any one.
-Constraints
-1≤T≤100
-2≤N≤2⋅10
-5
-1≤u,v≤N
-the sum of
-N over all test cases does not exceed
-2⋅10
-5
-Subtasks
-Subtask #1 (20 points):
-2≤N≤10
-Subtask #2 (30 points):
-2≤N≤5000 and the sum of
-N overall testcases doesn't exceed
-5000
-Subtask #3 (50 points): original constraints
+0≤Y
+i
+<X
+i
+≤4⋅10
+3
+1≤A
+i
+≤10
+9
 Sample 1:
 Input
 Output
-2
-4
-1 2
-1 3
-1 4
-7
-1 2
-2 3
-1 4
-4 5
-1 6
-6 7
-YES
-1 2 3 4
-NO
+3
+5 8 11
+3 10 4
+1 0 1
+11 13 5
+24
+Explanation:
+It is optimal to start parking the first car at
+5 seconds. We finish parking at
+8 seconds, and immediately start parking the second car.

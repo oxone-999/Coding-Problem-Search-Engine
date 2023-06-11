@@ -1,108 +1,36 @@
-Dream and the Multiverse
+Euler Totient Function Extended
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Dream abstracts the fabric of spacetime as a directed rooted tree (arborescence) with
-N nodes (numbered
-1 through
-N). Node
-1 is the root and for each
-i (
-1≤i≤N−1), the parent of node
-i+1 is
-f
-i
-. All edges of this tree are directed away from the root.
-Then, Dream employs a magical superpower and adds
-M directed edges to this tree in such a way that the resulting directed graph remains acyclic (a DAG).
-Let's call a node of this DAG an event and further call a simple path on this DAG an era. Dream considers a pair of events
-(i,j) to be plausible if there is an era whose first event is
-i and last event is
-j. Note that
-i<j does not have to hold for a plausible pair.
-Dream now wants you to answer
-Q queries. In each query, he gives you two positive integers
-l and
-r, where
-l≤r, and he wishes to know the number of plausible pairs of events
-(i,j) such that
-l≤i<j≤r.
+Read problems statements in Mandarin Chinese and Russian.
+Euler totient function (denoted by phi(N)) for a positive integer N is defined as number of positive integers less than or equal N that are coprime to N
+Let's generalize this concept of Euler totient function. For positive integer N let's write out the integers that are less than or equal to N and are coprime to N. We'll get a list of integers of the form A1, A2, ..., AM, where M = phi(N). Let's denote EK(N) = A1K + A2K+...+AMK. This way we obtain something more general version of Euler totient function, in particular, E0(N) = phi(N) for every positive integer N.
+Your task is to calculate EK(N). As answer could be large, print your answer modulo 109+7
 Input
-The first line of the input contains two space-separated integers
-N and
-M.
-The second line contains
-N−1 space-separated integers
-f
-1
-,f
-2
-,…,f
-N−1
-.
-M lines follow. Each of these lines contains two space-separated integers
-u and
-v describing an additional edge from node
-u to node
-v.
-The following line contains a single integer
-Q.
-Q lines follow. Each of these lines contains two space-separated integers
-l and
-r describing a query.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains two space separated integers N and K.
 Output
-For each query, print a single line containing one integer ― the number of plausible pairs
-(i,j) such that
-l≤i<j≤r.
+For each test case, output a single line containing the answer to the problem i.e. the value of EK(N) modulo 109+7.
 Constraints
-2≤N≤3⋅10
-5
-1≤Q≤3⋅10
-5
-0≤M≤20
-1≤f
-i
-≤N for each valid
-i
-1≤u,v≤N
-the graph described on the input is acyclic
-1≤l≤r≤N
-Subtasks
-Subtask #1 (10 points): the graph is a line ― that is,
-M=0 and there is a permutation
-p
-1
-,p
-2
-,…,p
-N
-such that
-p
-1
-=1 and nodes
-p
-1
-,p
-2
-,…,p
-N
-form a directed path in the tree
-Subtask #2 (20 points):
-M=0
-Subtask #3 (30 points):
-N,Q≤2⋅10
-5
-Subtask #4 (40 points): original constraints
+1 ≤ T ≤ 128
+Subtask 1 (7 points):
+1 ≤ N ≤ 104
+0 ≤ K ≤ 104
+Subtask 2 (10 points):
+1 ≤ N ≤ 1012
+K = 0
+Subtask 3 (28 points):
+1 ≤ N ≤ 1012
+K = 1
+Subtask 4 (55 points):
+1 ≤ N ≤ 1012
+0 ≤ K ≤ 256
 Sample 1:
 Input
 Output
-8 2
-1 2 5 1 4 3 3
-2 4
-4 7
-3
-4 6
-5 7
-1 8
 2
-2
-18
+10 1
+7 0
+20
+6
+Explanation:
+Example case 1. The numbers that are coprime to 10 are 1, 3, 7, 9. Their sum is 20.
+Example case 2. 7 is a prime number, so any integer that is less than 7 is coprime to it.

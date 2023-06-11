@@ -1,175 +1,21 @@
-Rocket Pack
+Forces in the crystal
 Problem
-Chef's robot starts from the coordinate
-(0,0) and wishes to reach to the coordinate
-(N,M).
-The initial energy of the robot is
-0. There are
-K batteries kept at some of the coordinates such that picking up the
-i
-th
-battery costs
-C
-i
-units, and, on picking the
-i
-th
-battery, the current energy of the robot becomes
-E
-i
-.
-Note that one coordinate can have multiple batteries but the robot can pick at most one battery out of those.
-For example, if the robot reaches a certain coordinate with energy
-A and there are two batteries with energy
-B
-1
-and
-B
-2
-on that coordinate, the robot may choose at most one battery out of these. On choosing the first battery, the energy of the robot becomes
-B
-1
-(not
-A+B
-1
-).
-The robot can walk in all the four directions as follows:
-Move up: Moving from coordinate
-(X,Y) to
-(X,Y+1), the robot loses
-1 unit of energy.
-Move down: Moving from coordinate
-(X,Y) to
-(X,Y−1), the robot gains
-1 unit of energy.
-Move right: Moving from coordinate
-(X,Y) to
-(X+1,Y), the robot loses
-1 unit of energy.
-Move left: Moving from coordinate
-(X,Y) to
-(X−1,Y), the robot gains
-1 unit of energy.
-Find the minimum cost to reach
-(N,M) if the robot maintains a non-negative energy throughout the journey (including the destination).
-Input Format
-The first line of input contains a single integer 
-T, the number of test cases. The description of the test cases follows.
-Each test cases consists of two lines of input.
-The first line contains three positive integers
-N,M, and
-K, the coordinates of the destination and the number of batteries.
-Next
-K lines have four space-separated integers each:
-X
-i
-,Y
-i
-,C
-i
-,E
-i
-. The
-i
-th
-line indicates that the coordinate
-(X
-i
-,Y
-i
-) has a battery with cost
-C
-i
-and energy
-E
-i
-.
-The input data guarantees that the robot can reach the destination.
-Output Format
-For each test case, output a single integer, the minimum cost from
-(0,0) to
-(N,M).
-Constraints
-1≤T≤10
-1≤K≤10
-5
-0≤X
-i
-,Y
-i
-≤2∗10
-9
-1≤N,M,C
-i
-,E
-i
-≤2∗10
-9
-The sum of
-K over all test cases won't exceed
-10
-5
-.
-Sample 1:
+Suppose that we have a crystalline triangular grid of atoms. Atoms are arranged on a regular grid, and each atom has six neighbors (unless it lies on the boundary of crystal). Each atom has an electric charge of q, and can be polarized in only one of two directions: up or down (the laws of physics in Byteland are somewhat surprising!). If two atoms are neighbors and share the same polarization, then a destructive force against the crystal occurs, whose value is equal to q1*q2. We can choose the polarization for each atom, and we would like to minimize total force working against the crystal, i.e., the sum of values of all the individual forces.
 Input
+First, 1000≤n≤2000, the size of input. Then n lines with n numbers in each follow. In the x-th line, 1≤x≤n, the y-th number, 1≤y≤n, is the charge of the atom with coordinates in the crystal equal to (x,y) if x is odd, (x,y+1/2) otherwise. For any atom at coordinates (x,y), the coordinates of the neighbors are assumed to be the following (as long as they appear in the crystal): (x-1,y-1/2),(x-1,y+1/2),(x,y-1),(x,y+1),(x+1,y-1/2),(x+1,y+1/2). Each charge q is in the range 0.1≤q≤1.
 Output
-2
-5 5 3
-0 0 10 10
-0 0 2 4
-2 2 1 1
-5 5 4
-0 0 10 10
-0 0 2 4
-2 2 1 1
-4 1 3 5
-10
-6
-Explanation:
-Test case
-1: Use the first battery with cost
-10. Thus, at coordinate
-(0,0), the energy of the robot becomes
-10 units. The robot can traverse the path :
-(0,0)−(0,1)−…−(0,5)−(1,5)−…−(5,5). It can be shown that the robot cannot reach the destination in less than
-10 units cost.
-Test case
-2:
-Use the
-2
-nd
-battery: At coordinate
-(0,0), robot picks the 
-2
-nd
-battery and the energy of the robot becomes
-4 units. The robot can move to coordinate
-(2,2) using this energy. On reaching
-(2,2), robot's energy is
-0.
-Use the
+For each atom given at input, output 0 or 1 depending on whether the polarization of the atom should be directed up or down.
+Score
+The score of your program is equal to the value of the force acting on the crystal. The program is tested multiple times for different data sets, and the results are averaged.
+Example
+Input:
 3
-rd
-battery: At coordinate
-(2,2), robot picks the
-3
-rd
-battery and the energy of the robot becomes
-1 unit. The robot can move from
-(2,2) to
-(2,1) and gain
-1 unit of energy. Thus, it has
-2 units of energy now. It can now move from
-(2,1) to
-(4,1) using this energy.
-Use the
-4
-th
-battery: At coordinate
-(4,1), robot picks the
-4
-th
-battery and the energy of the robot becomes
-5 units. The robot can now move from
-(4,1) to
-(5,5).
+1 2 3
+4 5 6
+7 8 9
+Output:
+0 0 0
+0 0 0
+0 0 1
+Score:
+269 = (12+14+23+25+24+36+35+45+47+48+56+58+7*8)

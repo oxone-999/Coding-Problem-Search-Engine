@@ -1,175 +1,165 @@
-D. Pairs
+F. My Beautiful Madness
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You have
-2n
-integers
-1,2,…,2n
-. You have to redistribute these
-2n
-elements into
-n
-pairs. After that, you choose
-x
-pairs and take minimum elements from them, and from the other
-n−x
-pairs, you take maximum elements.
-Your goal is to obtain the set of numbers
-{
+You are given a tree. We will consider simple paths on it. Let's denote path between vertices
+a
+and
 b
+as
+(a,b)
+. Let
+d
+-neighborhood of a path be a set of vertices of the tree located at a distance
+≤d
+from at least one vertex of the path (for example,
+0
+-neighborhood of a path is a path itself). Let
+P
+be a multiset of the tree paths. Initially, it is empty. You are asked to maintain the following queries:
+1
+u
+v
+ — add path
+(u,v)
+into
+P
+(
+1≤u,v≤n
+).
+2
+u
+v
+ — delete path
+(u,v)
+from
+P
+(
+1≤u,v≤n
+). Notice that
+(u,v)
+equals to
+(v,u)
+. For example, if
+P={(1,2),(1,2)}
+, than after query
+2
+2
 1
 ,
-b
-2
-,…,
-b
-n
-}
-as the result of taking elements from the pairs.
-What is the number of different
-x
--s (
-0≤x≤n
-) such that it's possible to obtain the set
-b
-if for each
-x
-you can choose how to distribute numbers into pairs and from which
-x
-pairs choose minimum elements?
+P={(1,2)}
+.
+3
+d
+ — if intersection of all
+d
+-neighborhoods of paths from
+P
+is not empty output "Yes", otherwise output "No" (
+0≤d≤n−1
+).
 Input
-The first line contains a single integer
-t
-(
-1≤t≤1000
-) — the number of test cases.
-The first line of each test case contains the integer
+The first line contains two integers
 n
-(
+and
+q
+ — the number of vertices in the tree and the number of queries, accordingly (
 1≤n≤2⋅
 10
 5
-).
-The second line of each test case contains
-n
-integers
-b
-1
 ,
-b
-2
-,…,
-b
-n
-(
-1≤
-b
-1
-<
-b
-2
-<⋯<
-b
-n
-≤2n
-) — the set you'd like to get.
-It's guaranteed that the sum of
-n
-over test cases doesn't exceed
-2⋅
+2≤q≤2⋅
 10
 5
-.
-Output
-For each test case, print one number — the number of different
+).
+Each of the following
+n−1
+lines contains two integers
 x
--s such that it's possible to obtain the set
-b
-.
-Example
+i
+and
+y
+i
+ — indices of vertices connected by
+i
+-th edge (
+1≤
+x
+i
+,
+y
+i
+≤n
+).
+The following
+q
+lines contain queries in the format described in the statement.
+It's guaranteed that:
+for a query
+2
+u
+v
+, path
+(u,v)
+(or
+(v,u)
+) is present in
+P
+,
+for a query
+3
+d
+,
+P≠∅
+,
+there is at least one query of the third type.
+Output
+For each query of the third type output answer on a new line.
+Examples
 input
 Copy
-3
-1
-1
-5
-1 4 5 9 10
-2
-3 4
+1 4
+1 1 1
+1 1 1
+2 1 1
+3 0
 output
 Copy
-1
-3
-1
-Note
-In the first test case,
-x=1
-is the only option: you have one pair
-(1,2)
-and choose the minimum from this pair.
-In the second test case, there are three possible
-x
--s. If
-x=1
-, then you can form the following pairs:
-(1,6)
-,
-(2,4)
-,
-(3,5)
-,
-(7,9)
-,
-(8,10)
-. You can take minimum from
-(1,6)
-(equal to
-1
-) and the maximum elements from all other pairs to get set
-b
-.
-If
-x=2
-, you can form pairs
-(1,2)
-,
-(3,4)
-,
-(5,6)
-,
-(7,9)
-,
-(8,10)
-and take the minimum elements from
-(1,2)
-,
-(5,6)
-and the maximum elements from the other pairs.
-If
-x=3
-, you can form pairs
-(1,3)
-,
-(4,6)
-,
-(5,7)
-,
-(2,9)
-,
-(8,10)
-and take the minimum elements from
-(1,3)
-,
-(4,6)
-,
-(5,7)
-.
-In the third test case,
-x=0
-is the only option: you can form pairs
-(1,3)
-,
-(2,4)
-and take the maximum elements from both of them.
+Yes
+input
+Copy
+5 3
+1 2
+1 3
+3 4
+4 5
+1 1 2
+1 5 5
+3 1
+output
+Copy
+No
+input
+Copy
+10 6
+1 2
+2 3
+3 4
+4 7
+7 10
+2 5
+5 6
+6 8
+8 9
+1 9 9
+1 9 8
+1 8 5
+3 0
+3 1
+3 2
+output
+Copy
+No
+Yes
+Yes

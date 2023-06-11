@@ -1,157 +1,99 @@
-D. Maximum Subarray
+C. Maximum Set
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-1
-,
-a
-2
-,…,
-a
-n
-, consisting of
-n
-integers. You are also given two integers
-k
+A set of positive integers
+S
+is called beautiful if, for every two integers
+x
 and
+y
+from this set, either
 x
-.
-You have to perform the following operation exactly once: add
+divides
+y
+or
+y
+divides
 x
-to the elements on exactly
-k
-distinct positions, and subtract
-x
-from all the others.
-For example, if
-a=[2,−1,2,3]
-,
-k=1
-,
-x=2
-, and we have picked the first element, then after the operation the array
-a=[4,−3,0,1]
-.
-Let
-f(a)
-be the maximum possible sum of a subarray of
-a
-. The subarray of
-a
-is a contiguous part of the array
-a
-, i. e. the array
-a
-i
-,
-a
-i+1
-,…,
-a
-j
-for some
-1≤i≤j≤n
-. An empty subarray should also be considered, it has sum
-0
-.
-Let the array
-a
-′
-be the array
-a
-after applying the aforementioned operation. Apply the operation in such a way that
-f(
-a
-′
-)
-is the maximum possible, and print the maximum possible value of
-f(
-a
-′
-)
+(or both).
+You are given two integers
+l
+and
+r
+. Consider all beautiful sets consisting of integers not less than
+l
+and not greater than
+r
+. You have to print two numbers:
+the maximum possible size of a beautiful set where all elements are from
+l
+to
+r
+;
+the number of beautiful sets consisting of integers from
+l
+to
+r
+with the maximum possible size.
+Since the second number can be very large, print it modulo
+998244353
 .
 Input
-The first line contains a single integer
+The first line contains one integer
 t
 (
-1≤t≤
+1≤t≤2⋅
 10
 4
 ) — the number of test cases.
-The first line of each test case contains three integers
-n
-,
-k
+Each test case consists of one line containing two integers
+l
 and
-x
+r
 (
-1≤n≤2⋅
+1≤l≤r≤
 10
-5
-;
-0≤k≤min(20,n)
-;
-−
-10
-9
-≤x≤
-10
-9
+6
 ).
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−
-10
-9
-≤
-a
-i
-≤
-10
-9
-).
-The sum of
-n
-over all test cases doesn't exceed
-2⋅
-10
-5
-.
 Output
-For each test case, print one integer — the maximum possible value of
-f(
-a
-′
-)
+For each test case, print two integers — the maximum possible size of a beautiful set consisting of integers from
+l
+to
+r
+, and the number of such sets with maximum possible size. Since the second number can be very large, print it modulo
+998244353
 .
 Example
 input
 Copy
 4
-4 1 2
-2 -1 2 3
-2 2 3
--1 2
-3 0 5
-3 2 4
-6 2 -8
-4 -1 9 -3 7 -8
+3 11
+13 37
+1 22
+4 100
 output
 Copy
-5
-7
-0
-44
+2 4
+2 6
+5 1
+5 7
+Note
+In the first test case, the maximum possible size of a beautiful set with integers from
+3
+to
+11
+is
+2
+. There are
+4
+such sets which have the maximum possible size:
+{3,6}
+;
+{3,9}
+;
+{4,8}
+;
+{5,10}
+.

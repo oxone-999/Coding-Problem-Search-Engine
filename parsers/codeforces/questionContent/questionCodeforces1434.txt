@@ -1,139 +1,103 @@
-E1. Permutation Minimization by Deque
+F. Array Stabilization (AND version)
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-In fact, the problems E1 and E2 do not have much in common. You should probably think of them as two separate problems.
-A permutation
-p
-of size
-n
-is given. A permutation of size
-n
-is an array of size
-n
-in which each integer from
+You are given an array
+a[0…n−1]=[
+a
+0
+,
+a
 1
-to
+,…,
+a
+n−1
+]
+of zeroes and ones only. Note that in this problem, unlike the others, the array indexes are numbered from zero, not from one.
+In one step, the array
+a
+is replaced by another array of length
 n
-occurs exactly once. For example,
-[1,4,3,2]
-and
-[4,2,1,3]
-are correct permutations while
-[1,2,4]
-and
-[1,2,2]
-are not.
-Let us consider an empty deque (double-ended queue). A deque is a data structure that supports adding elements to both the beginning and the end. So, if there are elements
-[1,5,2]
-currently in the deque, adding an element
-4
-to the beginning will produce the sequence
-[4,1,5,2]
-, and adding same element to the end will produce
-[1,5,2,4]
+according to the following rules:
+First, a new array
+a
+→d
+is defined as a cyclic shift of the array
+a
+to the right by
+d
+cells. The elements of this array can be defined as
+a
+→d
+i
+=
+a
+(i+n−d)modn
+, where
+(i+n−d)modn
+is the remainder of integer division of
+i+n−d
+by
+n
 .
-The elements of the permutation are sequentially added to the initially empty deque, starting with
-p
-1
-and finishing with
-p
-n
-. Before adding each element to the deque, you may choose whether to add it to the beginning or the end.
-For example, if we consider a permutation
-p=[3,1,2,4]
-, one of the possible sequences of actions looks like this:
-1. add
-3
-to the end of the deque: deque has a sequence
-[3]
-in it;
-2. add
-1
-to the beginning of the deque: deque has a sequence
-[1,3]
-in it;
-3. add
-2
-to the end of the deque: deque has a sequence
-[1,3,2]
-in it;
-4. add
-4
-to the end of the deque: deque has a sequence
-[1,3,2,4]
-in it;
-Find the lexicographically smallest possible sequence of elements in the deque after the entire permutation has been processed.
-A sequence
-[
-x
-1
+It means that the whole array
+a
+→d
+can be represented as a sequence
+a
+→d
+=[
+a
+n−d
 ,
-x
-2
+a
+n−d+1
 ,…,
-x
-n
-]
-is lexicographically smaller than the sequence
-[
-y
-1
+a
+n−1
 ,
-y
-2
+a
+0
+,
+a
+1
 ,…,
-y
-n
+a
+n−d−1
 ]
-if there exists such
-i≤n
-that
-x
-1
-=
-y
-1
-,
-x
-2
-=
-y
-2
-,
-…
-,
-x
-i−1
-=
-y
-i−1
-and
-x
+d
+Then each element of the array
+a
 i
-<
-y
+is replaced by
+a
 i
-. In other words, if the sequences
-x
+&
+a
+→d
+i
+, where
+&
+is a logical "AND" operator.
+For example, if
+a=[0,0,1,1]
 and
-y
-have some (possibly empty) matching prefix, and the next element of the sequence
-x
-is strictly smaller than the corresponding element of the sequence
-y
-. For example, the sequence
-[1,3,2,4]
-is smaller than the sequence
-[1,3,4,2]
-because after the two matching elements
-[1,3]
-in the start the first sequence has an element
-2
-which is smaller than the corresponding element
-4
-in the second sequence.
+d=1
+, then
+a
+→d
+=[1,0,0,1]
+and the value of
+a
+after the first step will be
+[0&1,0&0,1&0,1&1]
+, that is
+[0,0,0,1]
+.
+The process ends when the array stops changing. For a given array
+a
+, determine whether it will consist of only zeros at the end of the process. If yes, also find the number of steps the process will take before it finishes.
 Input
 The first line contains an integer
 t
@@ -143,63 +107,165 @@ t
 The next
 2t
 lines contain descriptions of the test cases.
-The first line of each test case description contains an integer
+The first line of each test case description contains two integers:
 n
 (
-1≤n≤2⋅
+1≤n≤
 10
-5
-) — permutation size. The second line of the description contains
+6
+) — array size and
+d
+(
+1≤d≤n
+) — cyclic shift offset. The second line of the description contains
 n
 space-separated integers
-p
+a
 i
 (
-1≤
-p
+0≤
+a
 i
-≤n
-; all
-p
-i
-are all unique) — elements of the permutation.
+≤1
+) — elements of the array.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
-2⋅
 10
-5
+6
 .
 Output
 Print
 t
-lines, each line containing the answer to the corresponding test case. The answer to a test case should contain
-n
-space-separated integer numbers — the elements of the lexicographically smallest permutation that is possible to find in the deque after executing the described algorithm.
+lines, each line containing the answer to the corresponding test case. The answer to a test case should be a single integer — the number of steps after which the array will contain only zeros for the first time. If there are still elements equal to
+1
+in the array after the end of the process, print -1.
 Example
 input
 Copy
 5
-4
-3 1 2 4
-3
-3 2 1
-3
-3 1 2
-2
-1 2
-2
 2 1
+0 1
+3 2
+0 1 0
+5 2
+1 1 0 1 0
+4 2
+0 1 0 1
+1 1
+0
 output
 Copy
-1 3 2 4 
-1 2 3 
-1 3 2 
-1 2 
-1 2 
+1
+1
+3
+-1
+0
 Note
-One of the ways to get a lexicographically smallest permutation
-[1,3,2,4]
-from the permutation
-[3,1,2,4]
-(the first sample test case) is described in the problem statement.
+In the third sample test case the array will change as follows:
+At the beginning
+a=[1,1,0,1,0]
+, and
+a
+→2
+=[1,0,1,1,0]
+. Their element-by-element "AND" is equal to
+[1&1,1&0,0&1,1&1,0&0]=[1,0,0,1,0]
+[
+1
+&
+1
+1
+&
+0
+0
+&
+1
+1
+&
+1
+0
+&
+0
+]
+[
+1
+0
+0
+1
+0
+]
+Now
+a=[1,0,0,1,0]
+, then
+a
+→2
+=[1,0,1,0,0]
+. Their element-by-element "AND" equals to
+[1&1,0&0,0&1,1&0,0&0]=[1,0,0,0,0]
+[
+1
+&
+1
+0
+&
+0
+0
+&
+1
+1
+&
+0
+0
+&
+0
+]
+[
+1
+0
+0
+0
+0
+]
+And finally, when
+a=[1,0,0,0,0]
+we get
+a
+→2
+=[0,0,1,0,0]
+. Their element-by-element "AND" equals to
+[1&0,0&0,0&1,0&0,0&0]=[0,0,0,0,0]
+[
+1
+&
+0
+0
+&
+0
+0
+&
+1
+0
+&
+0
+0
+&
+0
+]
+[
+0
+0
+0
+0
+0
+]
+Thus, the answer is
+3
+steps.
+In the fourth sample test case, the array will not change as it shifts by
+2
+to the right, so each element will be calculated as
+0&0
+or
+1&1
+thus not changing its value. So the answer is -1, the array will never contain only zeros.

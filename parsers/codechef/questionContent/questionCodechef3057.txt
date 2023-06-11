@@ -1,111 +1,130 @@
-Binary Movements
+Danya and Different Values
 Problem
 Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-"Out of 6 billion humans, the troublemakers are just a handful." - Dalai Lama
-Nikitasha and Mansi are best friends. They have a binary sequence
-A
-1
-,A
-2
-,…,A
-N
-(each element of this sequence is
-0 or
-1). Their friend Sakshi always finds ways to trouble them. This time, Sakshi altered their sequence by performing the following operation
-Z times:
-Create a new sequence
-B
-1
-,B
-2
-,…,B
-N
-. Initially,
-A
+Danya has a rooted tree with
+N nodes (numbered
+1 through
+N). Node
+1 is the root and for each
+i (
+2≤i≤N), the parent of the
+i-th node is
+p
 i
-=B
+. For each valid
+i, the
+i-th node also has a value
+a
 i
-for each valid
-i.
-For each valid
-i such that
-A
-i
-=0 and
-A
-i+1
-=1, swap
-B
-i
-and
-B
-i+1
-, i.e. set
-B
-i
-=1 and
-B
-i+1
-=0. Note that the order of swaps does not matter.
-Replace the sequence
-A by the sequence
-B.
-Now, Sakshi challenges Nikitasha And Mansi to find the altered sequence (the resulting sequence
-A after
-Z steps). Help Nikitasha and Mansi find this sequence.
+.
+Danya really loves his tree and wants to play with it. You should answer his
+Q queries. In each query:
+You are given two integers
+X and
+D.
+Consider the set
+S of all nodes
+v that lie in the subtree of node
+X (including
+X) such that the distance between
+X and
+v does not exceed
+D.
+The answer to this query is the number of different values
+a
+v
+among all
+v∈S.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-Z.
+The first line of each test case contains a single integer
+N.
 The second line contains
-N space-separated integers
-A
-1
-,A
+N−1 space-separated integers
+p
 2
-,…,A
+,p
+3
+,…,p
 N
 .
+The third line contains
+N space-separated integers
+a
+1
+,a
+2
+,…,a
+N
+.
+The fourth line contains a single integer
+Q.
+Q lines follow. Each of these lines contains two space-separated integers
+x and
+d describing a query; the parameters
+X and
+D can be computed in the following way:
+Let's denote the answer to the previous query by
+ans (
+ans=0 if this is the first query).
+Then,
+X=x⊕ans and
+D=d⊕ans, where
+⊕ denotes the bitwise XOR operator.
 Output
-For each test case, print a single line containing
-N space-separated integers — the altered sequence.
+For each query, print a single line containing one integer ― the answer to the query.
 Constraints
-1≤T≤1,000
-1≤N,Z≤10
-6
-0≤A
+1≤T≤5
+1≤N≤2⋅10
+5
+1≤p
 i
-≤1 for each valid
+≤i−1 for each valid
 i
-the sum of
-N over all test cases does not exceed
-10
-6
+1≤a
+i
+≤N for each valid
+i
+1≤Q≤2⋅10
+5
+0≤x,d≤4⋅10
+5
+1≤X≤N
+0≤D≤N
 Subtasks
-Subtask #1 (10 points):
-1≤N,Z≤3,000
-the sum of
-N over all test cases does not exceed
-3,000
-Subtask #2 (90 points): original constraints
+Subtask #1 (16 points):
+N,Q≤1,000
+Subtask #2 (24 points): the tree is a bamboo, i.e.
+p
+i
+=i−1 for each valid
+i
+Subtask #3 (60 points): original constraints
 Sample 1:
 Input
 Output
-2
-6 2
-0 1 1 0 1 1
-4 4
-0 1 0 1
-1 1 0 1 1 0 
-1 1 0 0
-Explanation:
-Example case 1: After the first step, the sequence becomes
-(1,0,1,1,0,1). After the second step, it becomes
-(1,1,0,1,1,0).
-Example case 2: After the first step, the sequence becomes
-(1,0,1,0). After the second step, the sequence becomes
-(1,1,0,0). Applying more steps does not alter the sequence anymore, so after the third and fourth step, the sequence remains
-(1,1,0,0).
+1
+11
+1 2 2 2 4 4 1 8 8 10
+5 3 2 3 1 1 2 4 1 2 3
+9
+2 1
+1 1
+2 3
+0 0
+2 1
+4 6
+13 4
+11 1
+13 4
+3
+3
+1
+3
+5
+5
+3
+4
+1

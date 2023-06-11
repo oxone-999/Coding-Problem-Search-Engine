@@ -1,81 +1,138 @@
-E1. LCM Sum (easy version)
-time limit per test3.5 seconds
-memory limit per test512 megabytes
+F. Triameter
+time limit per test4.5 seconds
+memory limit per test768 megabytes
 inputstandard input
 outputstandard output
-We are sum for we are many
-Some Number
-This version of the problem differs from the next one only in the constraint on
-t
-. You can make hacks only if both versions of the problem are solved.
-You are given two positive integers
-l
-and
-r
+ — What is my mission?
+ — To count graph diameters.
+You and Your Submission
+A tree is a connected undirected graph without cycles. A weighted tree has a weight assigned to each edge. The degree of a vertex is the number of edges connected to this vertex.
+You are given a weighted tree with
+n
+vertices, each edge has a weight of
+1
+. Let
+L
+be the set of vertices with degree equal to
+1
 .
-Count the number of distinct triplets of integers
-(i,j,k)
-such that
-l≤i<j<k≤r
-and
-lcm(i,j,k)≥i+j+k
-.
-Here
-lcm(i,j,k)
-denotes the least common multiple (LCM) of integers
+You have to answer
+q
+independent queries. In the
 i
-,
-j
-, and
-k
+-th query:
+You are given a positive integer
+x
+i
+.
+For all
+u,v∈L
+such that
+u<v
+, add edge
+(u,v)
+with weight
+x
+i
+to the graph (initially the given tree).
+Find the diameter of the resulting graph.
+The diameter of a graph is equal to
+max
+1≤u<v≤n
+d(u,v)
+, where
+d(u,v)
+is the length of the shortest path between vertex
+u
+and vertex
+v
 .
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
+The first line contains a single integer
+n
 (
-1≤t≤5
-). Description of the test cases follows.
-The only line for each test case contains two integers
-l
-and
-r
-(
-1≤l≤r≤2⋅
+3≤n≤
 10
-5
-,
-l+2≤r
+6
 ).
+The second line contains
+n−1
+integers
+p
+2
+,
+p
+3
+,…,
+p
+n
+(
+1≤
+p
+i
+<i
+) indicating that there is an edge between vertices
+i
+and
+p
+i
+. It is guaranteed that the given edges form a tree.
+The third line contains a single integer
+q
+(
+1≤q≤10
+).
+The fourth line contains
+q
+integers
+x
+1
+,
+x
+2
+,…,
+x
+q
+(
+1≤
+x
+i
+≤n
+). All
+x
+i
+are distinct.
 Output
-For each test case print one integer — the number of suitable triplets.
-Example
+Print
+q
+integers in a single line — the answers to the queries.
+Examples
 input
 Copy
-5
-1 4
-3 5
-8 86
-68 86
-6 86868
+4
+1 2 2
+4
+1 2 3 4
 output
 Copy
+1 2 2 2 
+input
+Copy
+7
+1 2 3 4 2 1
+7
+2 1 3 7 5 6 4
+output
+Copy
+3 3 4 5 5 5 4 
+input
+Copy
 3
+1 2
 1
-78975
-969
-109229059713337
+1
+output
+Copy
+1 
 Note
-In the first test case, there are
-3
-suitable triplets:
-(1,2,3)
-,
-(1,3,4)
-,
-(2,3,4)
-.
-In the second test case, there is
-1
-suitable triplet:
-(3,4,5)
-.
+The graph in the first test after adding the edges:

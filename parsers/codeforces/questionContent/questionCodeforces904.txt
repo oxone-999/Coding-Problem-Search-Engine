@@ -1,157 +1,218 @@
-B. Tokitsukaze and Meeting
-time limit per test1 second
+D. Tokitsukaze and Permutations
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Tokitsukaze is arranging a meeting. There are
-n
-rows and
-m
-columns of seats in the meeting hall.
-There are exactly
-n⋅m
-students attending the meeting, including several naughty students and several serious students. The students are numerated from
+Tokitsukaze has a permutation
+p
+. She performed the following operation to
+p
+exactly
+k
+times: in one operation, for each
+i
+from
 1
 to
-n⋅m
-. The students will enter the meeting hall in order. When the
+n−1
+in order, if
+p
 i
--th student enters the meeting hall, he will sit in the
-1
--st column of the
-1
--st row, and the students who are already seated will move back one seat. Specifically, the student sitting in the
+>
+p
+i+1
+, swap
+p
+i
+,
+p
+i+1
+. After exactly
+k
+times of operations, Tokitsukaze got a new sequence
+a
+, obviously the sequence
+a
+is also a permutation.
+After that, Tokitsukaze wrote down the value sequence
+v
+of
+a
+on paper. Denote the value sequence
+v
+of the permutation
+a
+of length
+n
+as
+v
+i
+=
+∑
+i−1
+j=1
+[
+a
+i
+<
+a
 j
--th (
-1≤j≤m−1
-) column of the
+]
+, where the value of
+[
+a
 i
--th row will move to the
-(j+1)
--th column of the
+<
+a
+j
+]
+define as if
+a
 i
--th row, and the student sitting in
-m
--th column of the
-i
--th row will move to the
+<
+a
+j
+, the value is
 1
--st column of the
-(i+1)
--th row.
-For example, there is a meeting hall with
-2
-rows and
-2
-columns of seats shown as below:
-There will be
-4
-students entering the meeting hall in order, represented as a binary string "1100", of which '0' represents naughty students and '1' represents serious students. The changes of seats in the meeting hall are as follows:
-Denote a row or a column good if and only if there is at least one serious student in this row or column. Please predict the number of good rows and columns just after the
+, otherwise is
+0
+(in other words,
+v
 i
--th student enters the meeting hall, for all
+is equal to the number of elements greater than
+a
 i
+that are to the left of position
+i
+). Then Tokitsukaze went out to work.
+There are three naughty cats in Tokitsukaze's house. When she came home, she found the paper with the value sequence
+v
+to be bitten out by the cats, leaving several holes, so that the value of some positions could not be seen clearly. She forgot what the original permutation
+p
+was. She wants to know how many different permutations
+p
+there are, so that the value sequence
+v
+of the new permutation
+a
+after exactly
+k
+operations is the same as the
+v
+written on the paper (not taking into account the unclear positions).
+Since the answer may be too large, print it modulo
+998244353
 .
 Input
-The first contains a single positive integer
+The first line contains a single integer
 t
 (
-1≤t≤10000
-) — the number of test cases.
-For each test case, the first line contains two integers
+1≤t≤1000
+) — the number of test cases. Each test case consists of two lines.
+The first line contains two integers
 n
-,
-m
+and
+k
 (
-1≤n,m≤
+1≤n≤
 10
 6
 ;
-1≤n⋅m≤
-10
-6
-), denoting there are
+0≤k≤n−1
+) — the length of the permutation and the exactly number of operations.
+The second line contains
 n
-rows and
-m
-columns of seats in the meeting hall.
-The second line contains a binary string
-s
-of length
-n⋅m
-, consisting only of zeros and ones. If
-s
+integers
+v
+1
+,
+v
+2
+,…,
+v
+n
+(
+−1≤
+v
 i
-equal to '0' represents the
+≤i−1
+) — the value sequence
+v
+.
+v
 i
--th student is a naughty student, and
-s
+=−1
+means the
 i
-equal to '1' represents the
-i
--th student is a serious student.
+-th position of
+v
+can't be seen clearly.
 It is guaranteed that the sum of
-n⋅m
+n
 over all test cases does not exceed
 10
 6
 .
 Output
-For each test case, print a single line with
-n⋅m
-integers — the number of good rows and columns just after the
-i
--th student enters the meeting hall.
+For each test case, print a single integer — the number of different permutations modulo
+998244353
+.
 Example
 input
 Copy
 3
-2 2
-1100
-4 2
-11001101
-2 4
-11001101
+5 0
+0 1 2 3 4
+5 2
+-1 1 2 0 0
+5 2
+0 1 1 0 0
 output
 Copy
-2 3 4 3
-2 3 4 3 5 4 6 5
-2 3 3 3 4 4 4 5
+1
+6
+6
 Note
-The first test case is shown in the statement.
-After the
-1
--st student enters the meeting hall, there are
+In the first test case, only permutation
+p=[5,4,3,2,1]
+satisfies the constraint condition.
+In the second test case, there are
+6
+permutations satisfying the constraint condition, which are:
+[3,4,5,2,1]
+→
+[3,4,2,1,5]
+→
+[3,2,1,4,5]
+[3,5,4,2,1]
+→
+[3,4,2,1,5]
+→
+[3,2,1,4,5]
+[4,3,5,2,1]
+→
+[3,4,2,1,5]
+→
+[3,2,1,4,5]
+[4,5,3,2,1]
+→
+[4,3,2,1,5]
+→
+[3,2,1,4,5]
+[5,3,4,2,1]
+→
+[3,4,2,1,5]
+→
+[3,2,1,4,5]
+[5,4,3,2,1]
+→
+[4,3,2,1,5]
+→
+[3,2,1,4,5]
+So after exactly
 2
-good rows and columns: the
-1
--st row and the
-1
--st column.
-After the
-2
--nd student enters the meeting hall, there are
-3
-good rows and columns: the
-1
--st row, the
-1
--st column and the
-2
--nd column.
-After the
-3
--rd student enters the meeting hall, the
-4
-rows and columns are all good.
-After the
-4
--th student enters the meeting hall, there are
-3
-good rows and columns: the
-2
--nd row, the
-1
--st column and the
-2
--nd column.
+times of swap they will all become
+a=[3,2,1,4,5]
+, whose value sequence is
+v=[0,1,2,0,0]
+.

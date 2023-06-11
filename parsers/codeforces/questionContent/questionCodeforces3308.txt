@@ -1,128 +1,154 @@
-H. Road Repair in Treeland
-time limit per test3 seconds
+I. Unusual Graph
+time limit per test5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-cities and
-n−1
-two-way roads in Treeland. Each road connects a pair of different cities. From any city you can drive to any other, moving only along the roads. Cities are numbered from
-1
-to
-n
-. Yes, of course, you recognized an undirected tree in this description.
-The government plans to repair all the roads. Each road will be repaired by some private company. In total, the country has
-10
-6
-private companies that are numbered from
-1
-to
-10
-6
-. It is possible that some companies will not repair roads at all, and some will repair many roads.
-To simplify the control over the work of private companies, the following restriction was introduced: for each city, we calculate the number of different companies that repair roads that have this city at one end. This number for each city should not exceed
-2
-. In other words, for each city, there should be no more than two different companies that repair roads related to this city.
-The National Anti-Corruption Committee of Treeland raises concerns that all (or almost all) of the work will go to one private company. For this reason, the committee requires that roads be distributed among companies in such a way as to minimize the value of
-r
-. For each company, we calculate the number of roads assigned to it, the maximum among all companies is called the number
-r
-.
-Help the government find such a way to distribute all roads among companies in the required way.
-Input
-The first line contains an integer
-t
-(
-1≤t≤1000
-) — the number of input cases in the input. Next, the input cases themselves are given. The first line of each test case set contains an integer
-n
-(
-2≤n≤3000
-) — the number of cities in Treeland. Next, in the
-n−1
-lines the roads are written: a line contains two integers
-x
-i
-,
-y
-i
-(
-1≤
-x
-i
-,
-y
-i
-≤n
-), indicating that the
-i
--th road connects the cities
-x
-i
-and
-y
-i
-.
-It is guaranteed that the sum of all values
-n
-for all test cases in the input does not exceed
-3000
-.
-Output
-Print the answers for all
-t
-test cases in the input. Each test case must begin with a line that contains
-r
-— the minimum possible number of roads assigned to the most used company. Next, in the next line print
-n−1
-the number
-c
+Ivan on his birthday was presented with array of non-negative integers
+a
 1
 ,
-c
+a
 2
 ,…,
-c
-n−1
+a
+n
+. He immediately noted that all
+a
+i
+satisfy the condition
+0≤
+a
+i
+≤15
+.
+Ivan likes graph theory very much, so he decided to transform his sequence to the graph.
+There will be
+n
+vertices in his graph, and vertices
+u
+and
+v
+will present in the graph if and only if binary notations of integers
+a
+u
+and
+a
+v
+are differ in exactly one bit (in other words,
+a
+u
+⊕
+a
+v
+=
+2
+k
+for some integer
+k≥0
+. Where
+⊕
+is Bitwise XOR).
+A terrible thing happened in a couple of days, Ivan forgot his sequence
+a
+, and all that he remembers is constructed graph!
+Can you help him, and find any sequence
+a
+1
+,
+a
+2
+,…,
+a
+n
+, such that graph constructed by the same rules that Ivan used will be the same as his graph?
+Input
+The first line of input contain two integers
+n,m
+(
+1≤n≤500,0≤m≤
+n(n−1)
+2
+): number of vertices and edges in Ivan's graph.
+Next
+m
+lines contain the description of edges:
+i
+-th line contain two integers
+u
+i
+,
+v
+i
 (
 1≤
-c
+u
 i
-≤
-10
-6
-), where
-c
+,
+v
 i
-indicates the company to repair the
+≤n;
+u
 i
--th road. If there are several optimal assignments, print any of them.
-Example
+≠
+v
+i
+), describing undirected edge connecting vertices
+u
+i
+and
+v
+i
+in the graph.
+It is guaranteed that there are no multiple edges in the graph. It is guaranteed that there exists some solution for the given graph.
+Output
+Output
+n
+space-separated integers,
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤15
+).
+Printed numbers should satisfy the constraints: edge between vertices
+u
+and
+v
+present in the graph if and only if
+a
+u
+⊕
+a
+v
+=
+2
+k
+for some integer
+k≥0
+.
+It is guaranteed that there exists some solution for the given graph. If there are multiple possible solutions, you can output any.
+Examples
 input
 Copy
-3
-3
+4 4
 1 2
 2 3
-6
-1 2
-1 3
-1 4
-1 5
-1 6
-7
-3 1
-1 4
-4 6
-5 1
-2 4
-1 7
+3 4
+4 1
 output
 Copy
-1
-10 20
-3
-1 1 1 2 2 
-2
-11 11 12 13 12 13
+0 1 0 1 
+input
+Copy
+3 0
+output
+Copy
+0 0 0 

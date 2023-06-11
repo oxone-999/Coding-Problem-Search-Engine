@@ -1,158 +1,73 @@
-C. Make Good
-time limit per test2 seconds
-memory limit per test256 megabytes
+F. Awesome Substrings
+time limit per test8 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Let's call an array
-a
+Let's call a binary string
+s
+awesome, if it has at least
 1
-,
+symbol 1 and length of the string is divisible by the number of 1 in it. In particular, 1, 1010, 111 are awesome, but 0, 110, 01010 aren't.
+You are given a binary string
+s
+. Count the number of its awesome substrings.
+A string
 a
-2
-,…,
+is a substring of a string
+b
+if
 a
-m
-of nonnegative integer numbers good if
-a
-1
-+
-a
-2
-+⋯+
-a
-m
-=2⋅(
-a
-1
-⊕
-a
-2
-⊕⋯⊕
-a
-m
-)
-, where
-⊕
-denotes the bitwise XOR operation.
-For example, array
-[1,2,3,6]
-is good, as
-1+2+3+6=12=2⋅6=2⋅(1⊕2⊕3⊕6)
-. At the same time, array
-[1,2,1,3]
-isn't good, as
-1+2+1+3=7≠2⋅1=2⋅(1⊕2⊕1⊕3)
-.
-You are given an array of length
-n
-:
-a
-1
-,
-a
-2
-,…,
-a
-n
-. Append at most
-3
-elements to it to make it good. Appended elements don't have to be different. It can be shown that the solution always exists under the given constraints. If there are different solutions, you are allowed to output any of them. Note that you don't have to minimize the number of added elements!. So, if an array is good already you are allowed to not append elements.
+can be obtained from
+b
+by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
+The first line contains the string
+s
 (
-1≤t≤10000
-). The description of the test cases follows.
-The first line of each test case contains a single integer
-n
-(1≤n≤
-10
-5
-)
- — the size of the array.
-The second line of each test case contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤
-10
-9
-) — the elements of the array.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-5
-.
+1≤|s|≤200000
+) consisting only of zeros and ones.
 Output
-For each test case, output two lines.
-In the first line, output a single integer
+Output a single number — the number of awesome substrings of
 s
-(
-0≤s≤3
-) — the number of elements you want to append.
-In the second line, output
-s
-integers
-b
-1
-,…,
-b
-s
-(
-0≤
-b
-i
-≤
-10
-18
-) — the elements you want to append to the array.
-If there are different solutions, you are allowed to output any of them.
-Example
+.
+Examples
 input
 Copy
-3
-4
-1 2 3 6
-1
-8
-2
-1 1
+111
+output
+Copy
+6
+input
+Copy
+01010
+output
+Copy
+10
+input
+Copy
+0000
 output
 Copy
 0
-
-2
-4 4
-3
-2 6 2
+input
+Copy
+1111100000
+output
+Copy
+25
 Note
-In the first test case of the example, the sum of all numbers is
-12
-, and their
-⊕
-is
-6
-, so the condition is already satisfied.
-In the second test case of the example, after adding
-4,4
-, the array becomes
-[8,4,4]
-. The sum of numbers in it is
-16
-,
-⊕
-of numbers in it is
-8
-.
+In the first sample, all substrings of
+s
+are awesome.
+In the second sample, we have the following awesome substrings of
+s
+: 1 (
+2
+times), 01 (
+2
+times), 10 (
+2
+times), 010 (
+2
+times), 1010, 0101
+In the third sample, no substring is awesome.

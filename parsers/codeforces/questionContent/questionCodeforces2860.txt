@@ -1,80 +1,161 @@
-B. Longest Palindrome
-time limit per test1 second
-memory limit per test256 megabytes
+E. 1-Trees and Queries
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Returning back to problem solving, Gildong is now studying about palindromes. He learned that a palindrome is a string that is the same as its reverse. For example, strings "pop", "noon", "x", and "kkkkkk" are palindromes, while strings "moon", "tv", and "abab" are not. An empty string is also a palindrome.
-Gildong loves this concept so much, so he wants to play with it. He has
+Gildong was hiking a mountain, walking by millions of trees. Inspired by them, he suddenly came up with an interesting idea for trees in data structures: What if we add another edge in a tree?
+Then he found that such tree-like graphs are called 1-trees. Since Gildong was bored of solving too many tree problems, he wanted to see if similar techniques in trees can be used in 1-trees as well. Instead of solving it by himself, he's going to test you by providing queries on 1-trees.
+First, he'll provide you a tree (not 1-tree) with
 n
-distinct strings of equal length
-m
-. He wants to discard some of the strings (possibly none or all) and reorder the remaining strings so that the concatenation becomes a palindrome. He also wants the palindrome to be as long as possible. Please help him find one.
-Input
-The first line contains two integers
-n
-and
-m
-(
-1≤n≤100
+vertices, then he will ask you
+q
+queries. Each query contains
+5
+integers:
+x
 ,
-1≤m≤50
-) — the number of strings and the length of each string.
-Next
+y
+,
+a
+,
+b
+, and
+k
+. This means you're asked to determine if there exists a path from vertex
+a
+to
+b
+that contains exactly
+k
+edges after adding a bidirectional edge between vertices
+x
+and
+y
+. A path can contain the same vertices and same edges multiple times. All queries are independent of each other; i.e. the added edge in a query is removed in the next query.
+Input
+The first line contains an integer
 n
-lines contain a string of length
-m
-each, consisting of lowercase Latin letters only. All strings are distinct.
+(
+3≤n≤
+10
+5
+), the number of vertices of the tree.
+Next
+n−1
+lines contain two integers
+u
+and
+v
+(
+1≤u,v≤n
+,
+u≠v
+) each, which means there is an edge between vertex
+u
+and
+v
+. All edges are bidirectional and distinct.
+Next line contains an integer
+q
+(
+1≤q≤
+10
+5
+), the number of queries Gildong wants to ask.
+Next
+q
+lines contain five integers
+x
+,
+y
+,
+a
+,
+b
+, and
+k
+each (
+1≤x,y,a,b≤n
+,
+x≠y
+,
+1≤k≤
+10
+9
+) – the integers explained in the description. It is guaranteed that the edge between
+x
+and
+y
+does not exist in the original tree.
 Output
-In the first line, print the length of the longest palindrome string you made.
-In the second line, print that palindrome. If there are multiple answers, print any one of them. If the palindrome is empty, print an empty line or don't print this line at all.
-Examples
+For each query, print "YES" if there exists a path that contains exactly
+k
+edges from vertex
+a
+to
+b
+after adding an edge between vertices
+x
+and
+y
+. Otherwise, print "NO".
+You can print each letter in any case (upper or lower).
+Example
 input
 Copy
-3 3
-tab
-one
-bat
+5
+1 2
+2 3
+3 4
+4 5
+5
+1 3 1 2 2
+1 4 1 3 2
+1 4 1 3 3
+4 2 3 3 9
+5 2 3 3 9
 output
 Copy
-6
-tabbat
-input
-Copy
-4 2
-oo
-ox
-xo
-xx
-output
-Copy
-6
-oxxxxo
-input
-Copy
-3 5
-hello
-codef
-orces
-output
-Copy
-0
-input
-Copy
-9 4
-abab
-baba
-abcd
-bcde
-cdef
-defg
-wxyz
-zyxw
-ijji
-output
-Copy
-20
-ababwxyzijjizyxwbaba
+YES
+YES
+NO
+YES
+NO
 Note
-In the first example, "battab" is also a valid answer.
-In the second example, there can be 4 different valid answers including the sample output. We are not going to provide any hints for what the others are.
-In the third example, the empty string is the only valid palindrome string.
+The image below describes the tree (circles and solid lines) and the added edges for each query (dotted lines).
+Possible paths for the queries with "YES" answers are:
+1
+-st query:
+1
+–
+3
+–
+2
+2
+-nd query:
+1
+–
+2
+–
+3
+4
+-th query:
+3
+–
+4
+–
+2
+–
+3
+–
+4
+–
+2
+–
+3
+–
+4
+–
+2
+–
+3

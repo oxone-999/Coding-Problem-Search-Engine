@@ -1,116 +1,104 @@
-B. Beautiful Sequence
-time limit per test1 second
+D2. Beautiful Bracket Sequence (hard version)
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-An integer sequence is called beautiful if the difference between any two consecutive numbers is equal to
-1
-. More formally, a sequence
-s
-1
-,
-s
-2
-,…,
-s
+This is the hard version of this problem. The only difference is the limit of
 n
-is beautiful if
-|
-s
-i
-−
-s
-i+1
-|=1
-for all
-1≤i≤n−1
-.
-Trans has
-a
-numbers
-0
-,
-b
-numbers
-1
-,
-c
-numbers
-2
-and
-d
-numbers
-3
-. He wants to construct a beautiful sequence using all of these
-a+b+c+d
-numbers.
-However, it turns out to be a non-trivial task, and Trans was not able to do it. Could you please help Trans?
-Input
-The only input line contains four non-negative integers
-a
-,
-b
-,
-c
-and
-d
-(
-0<a+b+c+d≤
+- the length of the input string. In this version,
+1≤n≤
 10
-5
-).
-Output
-If it is impossible to construct a beautiful sequence satisfying the above constraints, print "NO" (without quotes) in one line.
-Otherwise, print "YES" (without quotes) in the first line. Then in the second line print
-a+b+c+d
-integers, separated by spaces — a beautiful sequence. There should be
-a
-numbers equal to
-0
-,
-b
-numbers equal to
-1
-,
-c
-numbers equal to
-2
-and
-d
-numbers equal to
-3
+6
 .
-If there are multiple answers, you can print any of them.
+Let's define a correct bracket sequence and its depth as follow:
+An empty string is a correct bracket sequence with depth
+0
+.
+If "s" is a correct bracket sequence with depth
+d
+then "(s)" is a correct bracket sequence with depth
+d+1
+.
+If "s" and "t" are both correct bracket sequences then their concatenation "st" is a correct bracket sequence with depth equal to the maximum depth of
+s
+and
+t
+.
+For a (not necessarily correct) bracket sequence
+s
+, we define its depth as the maximum depth of any correct bracket sequence induced by removing some characters from
+s
+(possibly zero). For example: the bracket sequence
+s=
+"())(())" has depth
+2
+, because by removing the third character we obtain a correct bracket sequence "()(())" with depth
+2
+.
+Given a string
+a
+consists of only characters '(', ')' and '?'. Consider all (not necessarily correct) bracket sequences obtained by replacing all characters '?' in
+a
+by either '(' or ')'. Calculate the sum of all the depths of all these bracket sequences. As this number can be large, find it modulo
+998244353
+.
+Hacks in this problem can be done only if easy and hard versions of this problem was solved.
+Input
+The only line contains a non-empty string consist of only '(', ')' and '?'. The length of the string is at most
+10
+6
+.
+Output
+Print the answer modulo
+998244353
+in a single line.
 Examples
 input
 Copy
-2 2 2 1
+??
 output
 Copy
-YES
-0 1 0 1 2 3 2
+1
 input
 Copy
-1 2 3 4
+(?(?))
 output
 Copy
-NO
-input
-Copy
-2 2 2 3
-output
-Copy
-NO
+9
 Note
-In the first test, it is easy to see, that the sequence is beautiful because the difference between any two consecutive numbers is equal to
-1
-. Also, there are exactly two numbers, equal to
+In the first test case, we can obtain
+4
+bracket sequences by replacing all characters '?' with either '(' or ')':
+"((". Its depth is
 0
-,
+;
+"))". Its depth is
+0
+;
+")(". Its depth is
+0
+;
+"()". Its depth is
 1
-,
-2
-and exactly one number, equal to
-3
 .
-It can be proved, that it is impossible to construct beautiful sequences in the second and third tests.
+So, the answer is
+1=0+0+0+1
+.
+In the second test case, we can obtain
+4
+bracket sequences by replacing all characters '?' with either '(' or ')':
+"(((())". Its depth is
+2
+;
+"()()))". Its depth is
+2
+;
+"((()))". Its depth is
+3
+;
+"()(())". Its depth is
+2
+.
+So, the answer is
+9=2+2+3+2
+.

@@ -1,183 +1,192 @@
-C. Kamil and Making a Stream
+D. Konrad and Company Evaluation
 time limit per test4 seconds
-memory limit per test768 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Kamil likes streaming the competitive programming videos. His MeTube channel has recently reached
-100
-million subscribers. In order to celebrate this, he posted a video with an interesting problem he couldn't solve yet. Can you help him?
-You're given a tree — a connected undirected graph consisting of
+Konrad is a Human Relations consultant working for VoltModder, a large electrical equipment producer. Today, he has been tasked with evaluating the level of happiness in the company.
+There are
 n
-vertices connected by
-n−1
-edges. The tree is rooted at vertex
+people working for VoltModder, numbered from
 1
-. A vertex
-u
-is called an ancestor of
-v
-if it lies on the shortest path between the root and
-v
-. In particular, a vertex is an ancestor of itself.
-Each vertex
-v
-is assigned its beauty
-x
-v
-— a non-negative integer not larger than
-10
-12
-. This allows us to define the beauty of a path. Let
-u
-be an ancestor of
-v
-. Then we define the beauty
-f(u,v)
-as the greatest common divisor of the beauties of all vertices on the shortest path between
-u
-and
-v
-. Formally, if
-u=
-t
-1
-,
-t
-2
-,
-t
-3
-,…,
-t
-k
-=v
-are the vertices on the shortest path between
-u
-and
-v
-, then
-f(u,v)=gcd(
-x
-t
-1
-,
-x
-t
-2
-,…,
-x
-t
-k
-)
-. Here,
-gcd
-denotes the greatest common divisor of a set of numbers. In particular,
-f(u,u)=gcd(
-x
-u
-)=
-x
-u
-.
-Your task is to find the sum
-∑
-u is an ancestor of v
-f(u,v).
-∑
-f
-(
-)
-As the result might be too large, please output it modulo
-10
-9
-+7
-.
-Note that for each
-y
-,
-gcd(0,y)=gcd(y,0)=y
-. In particular,
-gcd(0,0)=0
-.
-Input
-The first line contains a single integer
+to
 n
-(
-2≤n≤100000
-) — the number of vertices in the tree.
-The following line contains
-n
-integers
-x
-1
-,
-x
-2
-,…,
-x
-n
-(
-0≤
-x
+. Each employee earns a different amount of money in the company — initially, the
 i
-≤
-10
-12
-). The value
-x
+-th person earns
+i
+rubles per day.
+On each of
+q
+following days, the salaries will be revised. At the end of the
+i
+-th day, employee
 v
-denotes the beauty of vertex
-v
-.
-The following
-n−1
-lines describe the edges of the tree. Each of them contains two integers
-a,b
-(
-1≤a,b≤n
+i
+will start earning
+n+i
+rubles per day and will become the best-paid person in the company. The employee will keep his new salary until it gets revised again.
+Some pairs of people don't like each other. This creates a great psychological danger in the company. Formally, if two people
+a
+and
+b
+dislike each other and
+a
+earns more money than
+b
+, employee
+a
+will brag about this to
+b
+. A dangerous triple is a triple of three employees
+a
 ,
-a≠b
-) — the vertices connected by a single edge.
-Output
-Output the sum of the beauties on all paths
-(u,v)
-such that
-u
-is ancestor of
-v
-. This sum should be printed modulo
-10
-9
-+7
+b
+and
+c
+, such that
+a
+brags to
+b
+, who in turn brags to
+c
+. If
+a
+dislikes
+b
+, then
+b
+dislikes
+a
 .
+At the beginning of each day, Konrad needs to evaluate the number of dangerous triples in the company. Can you help him do it?
+Input
+The first line contains two integers
+n
+and
+m
+(
+1≤n≤100000
+,
+0≤m≤100000
+) — the number of employees in the company and the number of pairs of people who don't like each other. Each of the following
+m
+lines contains two integers
+a
+i
+,
+b
+i
+(
+1≤
+a
+i
+,
+b
+i
+≤n
+,
+a
+i
+≠
+b
+i
+) denoting that employees
+a
+i
+and
+b
+i
+hate each other (that is,
+a
+i
+dislikes
+b
+i
+and
+b
+i
+dislikes
+a
+i
+). Each such relationship will be mentioned exactly once.
+The next line contains an integer
+q
+(
+0≤q≤100000
+) — the number of salary revisions. The
+i
+-th of the following
+q
+lines contains a single integer
+v
+i
+(
+1≤
+v
+i
+≤n
+) denoting that at the end of the
+i
+-th day, employee
+v
+i
+will earn the most.
+Output
+Output
+q+1
+integers. The
+i
+-th of them should contain the number of dangerous triples in the company at the beginning of the
+i
+-th day.
 Examples
 input
 Copy
-5
-4 5 6 0 8
-1 2
-1 3
-1 4
 4 5
+1 2
+2 4
+1 3
+3 4
+2 3
+2
+2
+3
 output
 Copy
-42
+4
+3
+2
 input
 Copy
-7
-0 2 3 0 0 0 0
+3 3
 1 2
+2 3
 1 3
-2 4
-2 5
-3 6
-3 7
+5
+1
+2
+2
+1
+3
 output
 Copy
-30
+1
+1
+1
+1
+1
+1
 Note
-The following figure shows all
-10
-possible paths for which one endpoint is an ancestor of another endpoint. The sum of beauties of all these paths is equal to
-42
-:
+Consider the first sample test. The
+i
+-th row in the following image shows the structure of the company at the beginning of the
+i
+-th day. A directed edge from
+a
+to
+b
+denotes that employee
+a
+brags to employee
+b
+. The dangerous triples are marked by highlighted edges.

@@ -1,65 +1,154 @@
-Sticks
+Binary Puzzle
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-Chef and his little brother are playing with sticks. Initially, Chef has
-N sticks with lengths
-A
-1
-,A
-2
-,…,A
-N
-. He should give his little brother at least
-K of these sticks. Afterwards, Chef's brother should choose four sticks and use them to form a rectangle (a square is also a rectangle). Chef does not want his brother to break any of the sticks, so each of the chosen sticks should be one side of the rectangle.
-Chef's little brother wants the rectangle he makes to have the maximum possible area, while Chef wants it to have the minimum possible area. Therefore, Chef wants to choose the sticks to give his brother in such a way that they cannot be used to form a rectangle; if it's impossible, then he wants to choose the sticks in such a way that the maximum area of a rectangle his little brother can form is minimum possible.
-Can you find the area of the resulting rectangle (or determine that it won't be possible to form any) if both Chef and his little brother play optimally?
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
+Salmon is playing a game!
+He is given two integers
 N and
-K.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
+K. His goal is to output
+K pairs
+(x
+i
+,y
+i
+). He creates a function
+f such that
+f(x
+i
+)=y
+i
+and
+f is undefined for all other values of
+x. His pairs must then meet the following conditions:
+All
+x
+i
+are distinct.
+All
+y
+i
+are distinct.
+All
+x
+i
+,y
+i
+are in the range
+[0,2
 N
-.
-Output
-For each test case, print a single line containing one integer — the area of the resulting rectangle or
-−1 if Chef can give his brother sticks that cannot be used to form any rectangle.
-Constraints
-1≤T≤100
-1≤N≤10
-5
-0≤K≤N
-the sum of
-N over all test cases does not exceed
-10
-5
-1≤A
+−1] and are integers.
+f(f(x
 i
-≤10
-9
-for each valid
+)) is defined for all
+i.
+Let
+H(x) be the number of set bits in the binary representation of
+x. Then,
+H(x
 i
-Sample 1:
+)
+
+=H(f(f(x
+i
+))) for all
+i.
+Unfortunately, Salmon is unable to solve this. Help Salmon win the game!
+If there are multiple correct solutions, you may output any one of them. It can be proven that a solution exists for all
+N and
+K that meet constraints.
 Input
+The first line input contains a single integer
+T denoting the number of testcases
+Each of the next
+T lines contains two space-separated integers
+N and
+K respectively.
 Output
+Output
+K lines for each testcase.
+The
+i-th line of a testcase should contain two space-separated integers:
+x
+i
+and
+y
+i
+, following the given constraints.
+Constraints
+1≤T≤2
+15
+3≤N≤18
+3≤K≤2
+N
+The sum of
 2
-7 6
-1 2 3 1 2 2 1
-5 4
-1 2 1 2 3
+N
+over all testcases doesn't exceed
 2
--1
-Explanation:
-Example case 1: Chef should give his brother all sticks except one. Regardless of the length of that one stick, Chef's brother can choose sticks with lengths
-1,2,1,2 to create a rectangle with area
-1⋅2=2.
-Example case 2: If Chef gives his brother sticks with lengths
-2,1,2,3, then there is no way to form a rectangle.
+18
+Subtasks
+Subtask 1 [20 points]:
+K≤8
+Subtask 2 [40 points]:
+K=2
+N
+Subtask 3 [40 points]: No additional constraints.
+Sample Input
+2
+3 7
+4 6
+Sample Output
+5 3
+1 7
+0 4
+2 5
+3 1
+4 2 
+7 0
+1 10
+10 14
+15 1
+14 13
+5 15
+13 5
+Explanation
+In the answer to the first testcase, there are 7 pairs.
+x
+i
+and
+y
+i
+are all in the range
+[0,2
+3
+−1], which is the range
+[0,7]. All values of
+x
+i
+are distinct, and all values of
+y
+i
+are distinct. However, note that some integers appear in both lists. For example, 5 appears both as
+x
+1
+and as
+y
+4
+. This is allowed. For all
+x
+i
+,
+f(f(x
+i
+)) is defined and
+H(f(f(x
+i
+)))
+
+=H(x
+i
+). For example,
+f(f(7))=4.
+H(7)=3, but
+H(4)=1. Therefore,
+H(f(f(7)))
+
+=H(7), as desired.

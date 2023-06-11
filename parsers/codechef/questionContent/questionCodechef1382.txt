@@ -1,37 +1,41 @@
-Bon Appetit
+Houses and Restaurants
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Our chef has recently opened a new restaurant with a unique style. The restaurant is divided into K compartments (numbered from 1 to K) and each compartment can be occupied by at most one customer.
-Each customer that visits the restaurant has a strongly preferred compartment p (1 ≤ p ≤ K), and if that compartment is already occupied, then the customer simply leaves. Now obviously, the chef wants to maximize the total number of customers that dine at his restaurant and so he allows (or disallows) certain customers so as to achieve this task. You are to help him with this.
-Given a list of N customers with their arrival time, departure time and the preferred compartment, you need to calculate the maximum number of customers that can dine at the restaurant.
+There is a city where people are fond of visiting restaurants. In fact, any building in this town is either a house or a restaurant. There are N buildings in the city and they are conveniently numerated by integer numbers from 1 to N. To move from some building to others there are M two-way roads. Each road connects two buildings. It is possible that there are several roads that connect the same pair of buildings, but there won't be a road that connects a building to itself. Chef wants to make the ways to his restaurants more interesting. To do that he is going to decorate some roads. Each road has its own integer cost of decorating. Some costs may be negative. If the cost is negative Chef will get some reward for decorating this road. Now Chef doesn't have much money so he wants to decorate roads in such a way that from each house, at least one restaurant is reachable using only decorated roads. The total cost of decorated roads should be minimal. So, your task is to help him to calculate the minimal cost of any satisfactory subset. It might be negative if Chef's rewards for decorating some roads are greater than his spent money.
 Input
-The first line contains an integer T denoting the number of test cases. Each of the next T lines contains two integers N and K , the number of customers that plan to visit the chef's restaurant and the number of compartments the restaurant is divided into respectively. Each of the next N lines contains three integers si, fi and pi , the arrival time, departure time and the strongly preferred compartment of the ith customer respectively.
-Note that the ith customer wants to occupy the pith compartment from [si, fi) i.e the ith customer leaves just before fi so that another customer can occupy that compartment from fi onwards.
+There first line of input contains an integer T - the number of test cases.
+Then T test cases follow. For each test case there will be integers N and M - the number of buildings and the number of roads.
+Then a string of N letter follows. I-th symbol of this string is "R" if the corresponding building is a restaurant and "H" if it is a house.
+Then there are M lines. Each line consists of three integers - Xi Yi Zi. They describe a road that connects buildings Xi and Yi with the cost of decorating equal to Zi.
 Output
-For every test case, print in a single line the maximum number of customers that dine at the restaurant.
+For each test case output the minimal cost of any satisfactory subset of roads.
 Constraints
-1 ≤ T ≤ 30
-0 ≤ N ≤ 105
-1 ≤ K ≤ 109
-0 ≤ si < fi ≤ 109
-1 ≤ pi ≤ K
+2<=N<=100000
+1<=M<=400000
+-20000<=Zi<=20000
+Sum over all N in a single input file will not exceed 200000.
+Sum over all M in a single input file will not exceed 400000.
+It is guaranteed that you can reach every building from any other building.
+There is at least one restaurant in the city.
 Sample 1:
 Input
 Output
-2
+3
+3 5
+HHR
+1 2 3
+1 2 5
+1 3 10
+3 2 -1
+3 1 7
+2 2
+RR
+1 2 1
+2 1 2
 3 3
-1 3 1
-4 6 2
-7 10 3
-4 2
-10 100 1
-100 200 2
-150 500 2
-200 300 2
-3
-3
-Explanation:
-Example case 1.
-All three customers want different compartments and hence all 3 can be accommodated.
-Example case 2.
-If we serve the 1st, 2nd and 4th customers, then we can get a maximum of 3.
+HRR
+1 2 1
+1 3 2
+2 3 3
+2
+0
+1

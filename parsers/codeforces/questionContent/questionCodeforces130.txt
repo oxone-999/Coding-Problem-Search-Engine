@@ -1,133 +1,100 @@
-B. Playing in a Casino
-time limit per test2 seconds
+A. Lucky Numbers
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Galaxy Luck, a well-known casino in the entire solar system, introduces a new card game.
-In this game, there is a deck that consists of
-n
-cards. Each card has
-m
-numbers written on it. Each of the
-n
-players receives exactly one card from the deck.
-Then all players play with each other in pairs, and each pair of players plays exactly once. Thus, if there are, for example, four players in total, then six games are played: the first against the second, the first against the third, the first against the fourth, the second against the third, the second against the fourth and the third against the fourth.
-Each of these games determines the winner in some way, but the rules are quite complicated, so we will not describe them here. All that matters is how many chips are paid out to the winner. Let the first player's card have the numbers
-a
-1
-,
-a
-2
-,…,
-a
-m
-, and the second player's card —
-b
-1
-,
-b
-2
-,…,
-b
-m
-. Then the winner of the game gets
-|
-a
-1
-−
-b
-1
-|+|
-a
-2
-−
-b
-2
-|+⋯+|
-a
-m
-−
-b
-m
-|
-chips from the total pot, where
-|x|
-denotes the absolute value of
+Olympus City recently launched the production of personal starships. Now everyone on Mars can buy one and fly to other planets inexpensively.
+Each starship has a number —some positive integer
 x
-.
-To determine the size of the total pot, it is necessary to calculate the winners' total winnings for all games. Since there can be many cards in a deck and many players, you have been assigned to write a program that does all the necessary calculations.
+. Let's define the luckiness of a number
+x
+as the difference between the largest and smallest digits of that number. For example,
+142857
+has
+8
+as its largest digit and
+1
+as its smallest digit, so its luckiness is
+8−1=7
+. And the number
+111
+has all digits equal to
+1
+, so its luckiness is zero.
+Hateehc is a famous Martian blogger who often flies to different corners of the solar system. To release interesting videos even faster, he decided to buy himself a starship. When he came to the store, he saw starships with numbers from
+l
+to
+r
+inclusively. While in the store, Hateehc wanted to find a starship with the luckiest number.
+Since there are a lot of starships in the store, and Hateehc can't program, you have to help the blogger and write a program that answers his question.
 Input
-Each test consists of several test cases. The first line contains one integer
+The first line contains an integer
 t
 (
-1≤t≤1000
-) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains two integers
-n
-and
-m
-(
-1≤n⋅m≤3⋅
-10
-5
-) — the number of cards in the deck and the count of numbers on the one card.
+1≤t≤10000
+) —the number of test cases.
 Each of the following
-n
-lines of the test case set contains
-m
-integers
-c
-i,j
+t
+lines contains a description of the test case. The description consists of two integers
+l
+and
+r
 (
-1≤
-c
-i,j
-≤
+1≤l≤r≤
 10
 6
-) — a description of the
-i
--th card.
-It is guaranteed that the total
-n⋅m
-in all tests does not exceed
-3⋅
-10
-5
-.
+) — the largest and smallest numbers of the starships in the store.
 Output
-For each test case, print one number — the total amount of winnings from all games.
+Print
+t
+lines, one line for each test case, containing the luckiest starship number in the store.
+If there are several ways to choose the luckiest number, output any of them.
 Example
 input
 Copy
-3
-3 5
-1 4 2 8 5
-7 9 2 1 4
-3 8 5 3 1
-1 4
-4 15 1 10
-4 3
-1 2 3
-3 2 1
-1 2 1
-4 2 7
+5
+59 63
+42 49
+15 15
+53 57
+1 100
 output
 Copy
-50
-0
-31
+60
+49
+15
+57
+90
 Note
-Consider the first test case.
-In the game between the first and second player, the winner receives
-|1−7|+|4−9|+|2−2|+|8−1|+|5−4|=19
-chips.
-In the game between the first and third player, the winner receives
-|1−3|+|4−8|+|2−5|+|8−3|+|5−1|=18
-in chips.
-In the game between the second and third player, the winner receives
-|7−3|+|9−8|+|2−5|+|1−3|+|4−1|=13
-chips.
-The total is
-19+18+13=50
-chips.
+Let's look at two test examples:
+the luckiness of the number
+59
+is
+9−5=4
+;
+the luckiness of
+60
+equals
+6−0=6
+;
+the luckiness of
+61
+equals
+6−1=5
+;
+the luckiness of
+62
+equals
+6−2=4
+;
+the luckiness of
+63
+is
+6−3=3
+.
+Thus, the luckiest number is
+60
+.
+In the fifth test example, the luckiest number is
+90
+.

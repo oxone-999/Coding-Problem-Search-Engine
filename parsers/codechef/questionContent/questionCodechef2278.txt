@@ -1,35 +1,87 @@
-Subarray LCM
+Min Max Equality
 Problem
-Read problems statements in English, Mandarin Chinese and Russian as well.
-Given an array A1,A2...AN, you have to print the size of the largest contiguous subarray such that LCM of all integers in that subarray is equal to the product of all integers in that subarray.
-Formally,
-For a subarray Ai,Ai+1...Aj where 1 ≤ i < j ≤ N to be valid: LCM(Ai,Ai+1...Aj) should be equal to Ai*Ai+1*...*Aj. You have to print the size of the largest valid subarray.
-If no subarray satisfies output -1.
-Note:A single element is not considered a subarray according to definition in this problem.
-Input
-First line contains T, the number of testcases. Each testcase consists of N in one line followed by N integers in next line.
-Output
-For each testcase, print the required answer in one line.
+Chef found an array
+A of
+N elements. He defines a subarray as bad if the maximum element of the subarray is equal to the minimum element of the subarray.
+More formally, a subarray
+[L,R]
+(1≤L≤R≤N) is bad if
+max(A
+L
+,A
+L+1
+,…,A
+R
+)=min(A
+L
+,A
+L+1
+,...,A
+R
+).
+Chef is allowed to change at most
+K elements of the array.
+Find the minimum number of bad subarrays Chef can obtain after changing at most
+K elements of the array.
+Input Format
+First line will contain
+T, the number of test cases. Then the test cases follow.
+Each test case contains two lines of input, the first line contains two space-separated integers
+N and
+K - the number of elements in the array and the maximum number of elements Chef can change respectively.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+- the initial array.
+Output Format
+For each test case, output the minimum number of bad subarrays Chef can obtain after changing at most
+K elements of the array.
 Constraints
-1 ≤ T ≤ 50
-2 ≤ N ≤ 105
-1 ≤ Ai ≤ 106
-Example
-Input:
-3
-2
-7 2
+1≤T≤3⋅10
 4
-2 2 3 4
+1≤N≤10
+5
+1≤K≤N
+1≤A
+i
+≤10
+9
+Sum of
+N over all test cases does not exceed
+3⋅10
+5
+.
+Sample 1:
+Input
+Output
 3
-2 2 4
-Output:
-2
-2
--1
-Explanation
-Example case 1.LCM(2,7)=2*7. Therefore, subarray A1 to A2 satisfies.
-Example case 2.The subarrays A2 to A3 and A3 to A4 are the maximum size possible.
-Example case 3.No subarray will satisfy.
-Warning: Use fast input/output. Large input files. Solutions may not pass in slower languages.
-Update: Time limit for python=10s
+3 1
+1 2 3
+4 2
+3 3 3 1
+5 1
+1 1 1 1 1
+3
+4
+7
+Explanation:
+Test case
+1: The minimum number of bad subarrays Chef can obtain is
+3. Chef does not need to perform any operations. The subarrays where the maximum element is equal to the minimum element are
+[1,1],[2,2], and
+[3,3] where
+[L,R] denotes the subarray starting at index
+L and ending at index
+R.
+Test case
+2: The minimum number of bad subarrays Chef can obtain is
+4. Chef can perform
+2 operations and change the array to
+[2,4,3,1]. The subarrays where the maximum element is equal to the minimum element are
+[1,1],[2,2],[3,3], and
+[4,4].

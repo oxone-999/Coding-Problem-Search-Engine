@@ -1,45 +1,25 @@
-Chef and Sets
+Magic Hull
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Chef passed all the exams. This month was really tiring. So, he decided to relax for a little bit. Well, there is no better way to relax than to play with sets of numbers.
-Chef loves to solve problems about sets. That does not mean that he is any good at it. Anyway, he opened his favorite problemset archive, and there he found a task that he thinks is best suited to him.
-Problem description
-You are given N sets and Q queries. Initially, each set consists only of a single element. The sets are indexed from 1 to N, and the ith set contains the number i. Each query may be one of the following two types.
-UNION a b - merge the ath and the bth. The new set will hold the index N + number of union operations before this one + 1. Also, after this operation, the ath set and the bth set will no longer exist.
-GET a k - find the kth smallest element in the set indexed a
-Please help our dear Chef! :)
+You are given a set of N two-dimensional non-zero vectors (X1, Y1), (X2, Y2), ..., (XN, YN) with integer coordinates. You can choose no more than 6 vectors from this set to form a non-strictly convex polygon that have sides equal to these vectors (see paragraph below for more detailed explanation). Non-strictly convex polygon is the polygon that can have flat angles (angles of 180 degrees). You can select each vector several times if needed. Your goal is to maximize the area of this polygon. It is guaranteed that at least one such convex polygon can be constructed.
+How exactly we construct a polygon from the given sequence of vectors? Suppose you've chosen the sequence of vectors (U1, V1), (U2, V2), ..., (UK, VK), where 3 ≤ K ≤ 6. Each vector here should be equal to one of the given N vectors but some vectors in this sequence can coincide. At first, you take some point (A1, B1) at the plane as the first vertex of your polygon. Then you put your first vector (U1, V1) to this point to obtain the second vertex (A2, B2) = (A1 + U1, B1 + V1). Next you take the second vector and put it to the second vertex to obtain the third vertex and so on. Finally, at the last step you put vector (UK, VK) to the Kth vertex (AK, BK) to obtain the point (AK + 1, BK + 1) = (AK + UK, BK + VK) that should coincide with the first vertex (A1, B1), otherwise we should reject this sequence of vectors. Hence in the end we obtain a polygon with vertexes (A1, B1), (A2, B2), ..., (AK, BK). If this polygon is simple (without self-intersections) and non-strictly convex, we should consider its area as the candidate for the answer. By self-intersection we mean that either some non-consecutive sides (considered with their ends) have common point or two consecutive sides have more than one common point.
 Input
-The first line of the input contains two integers N and Q denoting the number of sets in the very beginning and the number of queries. Each of the next Q lines contains one query per line - either UNION a b" or GET a k.
+The first line of the input file contains an integer N, the number of the given vectors. Each of the following N lines contains two space separated integers Xi, Yi, coordinates of the corresponding vector.
 Output
-For each query of second type (i.e. GET) output the number that you've found.
+In the only line of the output file print the maximal possible area of the convex polygon that can be constructed by the rules described in the problem statement with exactly one digit after the decimal point.
 Constraints
-1 ≤ N ≤ 105
-1 ≤ Q ≤ 2 * 105.
-All the queries are valid, that is, for any query GET i p, the ith set exists, and has a size of at least p; and for any query UNION a b, the sets indexed as a as well as b exist.
-Subtask 1 (35 points): 1 ≤ N, Q ≤ 500
-Subtask 2 (65 points): 1 ≤ N ≤ 105, 1 ≤ Q ≤ 2 * 105
+3 ≤ N ≤ 150
+|Xi|, |Yi| ≤ 1000000
+All vectors are non-zero: |Xi| + |Yi| > 0
+There exists at least one sequence of at most 6 vectors from this set that forms a convex polygon.
 Example
 Input:
-7 8
-UNION 1 2
-UNION 8 3
-GET 4 1
-UNION 4 5
-GET 10 2
-GET 9 3
-GET 9 2
-GET 9 1
-Output:
 4
-5
-3
-2
-1
-  Explanation
-Initially, the sets are: {1}, {2}, {3}, {4}, {5}, {6}, {7}.
-After the first query: {}, {}, {3}, {4}, {5}, {6}, {7}, {1, 2}.
-After the second query the configuration of sets is: {}, {}, {}, {4}, {5}, {6}, {7}, {}, {1, 2, 3}.
-The third query: the set {4} contains only one number so the answer is 4
-The configuration of sets after the fourth query: {}, {}, {}, {}, {}, {6}, {7}, {}, {1, 2, 3}, {4, 5}
-The fifth query: the second smallest element in {4, 5} is 5.
-For queries 6, 7, 8, the set is {1, 2, 3}.
+3 0
+-1 1
+-1 0
+-1 -1
+
+Output:
+2.0
+Explanation
+The only non-strictly convex polygon you can construct from these vectors by the rules described in the problem statement is the isosceles trapezoid that has height of length 1 and bases of length 1 and 3. It has area 2.0.

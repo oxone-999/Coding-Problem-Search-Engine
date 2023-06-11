@@ -1,39 +1,100 @@
-Sereja and Ways in the Cube
+Santa Delivering Problem
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Sereja has a cube A of N x N x N cells. The the cell at position (X, Y, Z) contains a number A[X][Y][Z]. You have to to find a sequence of cells (X[1], Y[1], Z[1]), (X[2], Y[2], Z[2]), ..., (X[K], Y[K], Z[K]) (triples of integers between 1 and N) satisfying the following properties:
-The first cell lies on the front side, i.e. X[1] = 1.
-Each pair of consecutive cells in the sequence are adjacent. Here, we say two cells (X, Y, Z), (X', Y', Z') are adjacent if |X-X'| + |Y-Y'| + |Z-Z'| = 1.
-Two non-consecutive cells in the sequence are not adjacent. That is, if i and j are two indices into the sequence with i+2 ≤ j then |X[i]-X[j]| + |Y[i]-Y[j]| + |Z[i]-Z[j]| ≠ 1.
-No two cells in the sequence are the same.
-Help Sereja, find such a sequence that maximize the sum of the numbers stored at the cells in the sequence.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+In Chefland the ChefSanta gets a list of what children ask from him every year. On Christmas Eve, the ChefSanta delivers the presents to the children. This year, after Santa finished delivering all the presents, he realized that he used last year’s list. Now he starts thinking about how he could fix this. We know that
+Santa has an infinite amount of every kind of present at home
+Santa's reindeer can fly, so he doesn't need roads
+Santa has a bag which has a maximum capacity; this capacity is given
+Santa can leave an infinite amount of presents at every child's house at any moment except the end
+At the end, the Santa has to go to his house, and every house should contain just the present the child from this house wished for.
+Santa would like to minimize the total distance that he needs to travel to fix things. Can you help him?
+You are not required to find the optimal solution. However, the better your solution is, the more you will get points
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains integer N. Then N blocks of input follow where each block consists of N lines, each containing N integers. The X-th number in the Y-th line of Z-th block is the value A[X][Y][Z].
+The first line contains T the number of test cases.
+The next lines contain the descriptions of each test case.
+The first line of each test case contains five space-separated integers N, G, B, X, Y, where N is the number of children in Chefland, G is the number of different presents, B is Santa's bag volume and X, Y are Santa's house coordinates.
+The next line contains G integers P1, ..., PG denoting the volume of each present.
+The i-th of the next N lines contains four space-separated integers Xi, Yi, Ki, Li, where Xi, Yi are the coordinates of the i-th child's house, Ki is last year's present id and Li is this year's present id.
 Output
-The first line of output for each test case should contain number K - the number of cells in the sequence. The next K lines should contain three space-separated integers: the X,Y,Z indices of the cell.
+For each test case (in the order given in the input) the output consists of a sequence of commands for Santa (one command per line).
+You can give the following commands to Santa:
+0 — end of the communication
+1 K — travel to XK, YK, where K=0 means travel to Santa's house
+2 K — put one of the presents of type PK to the bag
+3 K — take one of the presents of type PK out from the bag
 Constraints
-1 ≤ T ≤ 10
-1 ≤ N ≤ 50
--1000000 ≤ A[i][j][k] ≤ 1000000
-  Example
+T = 3
+N = 500
+10 ≤ G ≤ 50
+50 ≤ B ≤ 200
+1 ≤ Pi ≤ 20
+0 ≤ X, Y, Xi, Yi ≤ 10000
+1 ≤ Ki, Li ≤ G
+Ki != Li
+The coordinates of houses of all children and Santa's house are pairwise distinct.
+Example
 Input:
 1
-2
+3 3 10 0 0
+3 5 7
+1 0 2 1 
+0 1 3 2
+1 1 1 3
+Output:
 1 1
+2 2
+1 3
+2 1
+1 2
+3 2
+2 3
+1 3
+3 3
 1 1
-1 1
-1 1
-output:
-4
-1 1 1
-1 1 2
-1 2 2
-2 2 2
-  Test generation
-Each test will contain T=10 test cases and N will always be equal to 50. There will be three types of tests:
-Every number in the cube will be from the set {1, 0, -1000000}. The cube will be generated in the following way. Originally it will be filled with only 1s. Then a randomly-chosen 5% of the positions will be filled with 0. Finally, while less than 20% of the cube consists of -1000000 entries, some subcube will be filled with -1000000 entries.
-Every number in cube will be from the set {10000, 1000, 100, 1, 0, -1000000}. This will be generated in the same way as previous test, but originally all numbers are random positives number from the set.
-80% of numbers are positive numbers from the interval [1, 1000000]. 20% are randomly chosen from the set {-1, -10, -100, -1000, -10000, -100000, -1000000}.
+3 1
+1 0
+0
+  Explanation:
+start with empty bag from 0, 0
+
+1 1 <--- score: 1
+2 2 <--- doesn't affect the score, Santa's bag contains 2
+1 3 <--- score: 2
+2 1 <--- doesn't affect the score, Santa's bag contains 1, 2
+1 2 <--- score: 3
+3 2 <--- doesn't affect the score, Santa's bag contains 1
+2 3 <--- doesn't affect the score, Santa's bag contains 1, 3
+1 3 <--- score: 4
+3 3 <--- doesn't affect the score, Santa's bag contains 1
+1 1 <--- score: 5
+3 1 <--- doesn't affect the score, Santa's bag became empty
+1 0 <--- score: 6
+0 <--- communication end
+
+Another possible output:
+
+start with empty bag from 0, 0
+
+2 1 <--- doesn't affect the score, Santa's bag contains 1
+1 1 <--- score: 1
+3 1 <--- doesn't affect the score, Santa's bag became empty
+2 2 <--- doesn't affect the score, Santa's bag contains 2
+1 2 <--- score: 2.4142
+3 2 <--- doesn't affect the score, Santa's bag became empty
+2 3 <--- doesn't affect the score, Santa's bag contains 3
+1 3 <--- score: 3.4142
+3 3 <--- doesn't affect the score, Santa's bag became empty
+2 1 <--- doesn't affect the score, Santa's bag contains 3
+1 0 <--- score: 4.4142
+0 <--- communication end
 Scoring
-For each test case, let S be the sum of values on the selected path. Let W be the average value of positive numbers inside of the cube. Lets Sum be the sum of the values max(S/W, 1) among all test cases. Lets Best be the maximum value of Sum among all participants. Your displayed score will be Sum/Best.
+The score for each test case is the (Euclidean) distance traveled by Santa. Your total score will be the sum of your scores over all the test cases in all the test files. There will be 10 official test files. During the contest you will be able to get your score on the first 2 test files. After the contest the score for the full test set will be shown.
+Test Case Generation
+When we say a number is chosen from (a,b), it means an integer number chosen randomly and uniformly between a and b inclusive.
+T is 3 (except sample)
+N is 500
+G is chosen from (10, 50)
+B is chosen from (50, 200)
+Every coordinate is chosen uniquely from (0, 10000).
+We choose a minP from (1, 5), and maxP from (5, 20). Every Pi is chosen from (minP, maxP).
+For each i, distinct Ki and Li are chosen from (1, G).

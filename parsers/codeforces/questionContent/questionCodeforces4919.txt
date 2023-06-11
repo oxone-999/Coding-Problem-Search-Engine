@@ -1,38 +1,30 @@
-C. Strange Game On Matrix
+B. Balanced Substring
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ivan is playing a strange game.
-He has a matrix a with n rows and m columns. Each element of the matrix is equal to either 0 or 1. Rows and columns are 1-indexed. Ivan can replace any number of ones in this matrix with zeroes. After that, his score in the game will be calculated as follows:
-Initially Ivan's score is 0;
-In each column, Ivan will find the topmost 1 (that is, if the current column is j, then he will find minimum i such that ai, j = 1). If there are no 1's in the column, this column is skipped;
-Ivan will look at the next min(k, n - i + 1) elements in this column (starting from the element he found) and count the number of 1's among these elements. This number will be added to his score.
-Of course, Ivan wants to maximize his score in this strange game. Also he doesn't want to change many elements, so he will replace the minimum possible number of ones with zeroes. Help him to determine the maximum possible score he can get and the minimum possible number of replacements required to achieve that score.
+You are given a string s consisting only of characters 0 and 1. A substring [l, r] of s is a string slsl + 1sl + 2... sr, and its length equals to r - l + 1. A substring is called balanced if the number of zeroes (0) equals to the number of ones in this substring.
+You have to determine the length of the longest balanced substring of s.
 Input
-The first line contains three integer numbers n, m and k (1 ≤ k ≤ n ≤ 100, 1 ≤ m ≤ 100).
-Then n lines follow, i-th of them contains m integer numbers — the elements of i-th row of matrix a. Each number is either 0 or 1.
+The first line contains n (1 ≤ n ≤ 100000) — the number of characters in s.
+The second line contains a string s consisting of exactly n characters. Only characters 0 and 1 can appear in s.
 Output
-Print two numbers: the maximum possible score Ivan can get and the minimum number of replacements required to get this score.
+If there is no non-empty balanced substring in s, print 0. Otherwise, print the length of the longest balanced substring.
 Examples
 input
 Copy
-4 3 2
-0 1 0
-1 0 1
-0 1 0
-1 1 1
+8
+11010111
 output
 Copy
-4 1
+4
 input
 Copy
-3 2 1
-1 0
-0 1
-0 0
+3
+111
 output
 Copy
-2 0
+0
 Note
-In the first example Ivan will replace the element a1, 2.
+In the first example you can choose the substring [3, 6]. It is balanced, and its length is 4. Choosing the substring [2, 5] is also possible.
+In the second example it's impossible to find a non-empty balanced substring.

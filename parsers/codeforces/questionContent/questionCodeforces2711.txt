@@ -1,107 +1,122 @@
-C. Kaavi and Magic Spell
-time limit per test2 seconds
+E2. Chiori and Doll Picking (hard version)
+time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Kaavi, the mysterious fortune teller, deeply believes that one's fate is inevitable and unavoidable. Of course, she makes her living by predicting others' future. While doing divination, Kaavi believes that magic spells can provide great power for her to see the future.
- Kaavi has a string
-T
-of length
+This is the hard version of the problem. The only difference between easy and hard versions is the constraint of
 m
-and all the strings with the prefix
-T
-are magic spells. Kaavi also has a string
-S
-of length
+. You can make hacks only if both versions are solved.
+Chiori loves dolls and now she is going to decorate her bedroom!
+ As a doll collector, Chiori has got
 n
-and an empty string
-A
-.
-During the divination, Kaavi needs to perform a sequence of operations. There are two different operations:
-Delete the first character of
-S
-and add it at the front of
-A
-.
-Delete the first character of
-S
-and add it at the back of
-A
-.
-Kaavi can perform no more than
+dolls. The
+i
+-th doll has a non-negative integer value
+a
+i
+(
+a
+i
+<
+2
+m
+,
+m
+is given). Chiori wants to pick some (maybe zero) dolls for the decoration, so there are
+2
 n
-operations. To finish the divination, she wants to know the number of different operation sequences to make
-A
-a magic spell (i.e. with the prefix
-T
-). As her assistant, can you help her? The answer might be huge, so Kaavi only needs to know the answer modulo
+different picking ways.
+Let
+x
+be the bitwise-xor-sum of values of dolls Chiori picks (in case Chiori picks no dolls
+x=0
+). The value of this picking way is equal to the number of
+1
+-bits in the binary representation of
+x
+. More formally, it is also equal to the number of indices
+0≤i<m
+, such that
+⌊
+x
+2
+i
+⌋
+is odd.
+Tell her the number of picking ways with value
+i
+for each integer
+i
+from
+0
+to
+m
+. Due to the answers can be very huge, print them by modulo
 998244353
 .
-Two operation sequences are considered different if they are different in length or there exists an
-i
-that their
-i
--th operation is different.
-A substring is a contiguous sequence of characters within a string. A prefix of a string
-S
-is a substring of
-S
-that occurs at the beginning of
-S
-.
 Input
-The first line contains a string
-S
-of length
+The first line contains two integers
 n
-(
-1≤n≤3000
-).
-The second line contains a string
-T
-of length
+and
 m
 (
-1≤m≤n
-).
-Both strings contain only lowercase Latin letters.
+1≤n≤2⋅
+10
+5
+,
+0≤m≤53
+)  — the number of dolls and the maximum value of the picking way.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+<
+2
+m
+)  — the values of dolls.
 Output
-The output contains only one integer  — the answer modulo
+Print
+m+1
+integers
+p
+0
+,
+p
+1
+,…,
+p
+m
+ —
+p
+i
+is equal to the number of picking ways with value
+i
+by modulo
 998244353
 .
 Examples
 input
 Copy
-abab
-ba
+4 4
+3 5 8 14
 output
 Copy
-12
+2 2 6 6 0 
 input
 Copy
-defineintlonglong
-signedmain
+6 7
+11 45 14 9 19 81
 output
 Copy
-0
-input
-Copy
-rotator
-rotator
-output
-Copy
-4
-input
-Copy
-cacdcdbbbb
-bdcaccdbbb
-output
-Copy
-24
-Note
-The first test:
-The red ones are the magic spells. In the first operation, Kaavi can either add the first character "a" at the front or the back of
-A
-, although the results are the same, they are considered as different operations. So the answer is
-6×2=12
-.
+1 2 11 20 15 10 5 0 

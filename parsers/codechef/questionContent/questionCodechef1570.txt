@@ -1,77 +1,139 @@
-Find A, B, C
+Check Mate
 Problem
-Chef has
-3 hidden numbers
-A,B, and
-C such that
-0≤A,B,C≤N.
-Let
-f be a function such that
-f(i)=(A⊕i)+(B⊕i)+(C⊕i). Here
-⊕ denotes the bitwise XOR operation.
-Given the values of
-f(0),f(1),…,f(N), determine the values of
-A,B, and
-C.
-It is guaranteed that at least one tuple exists for the given input. If there are multiple valid tuples of
-A,B,C, print any one.
+You are given a standard
+8×8 chessboard which has exactly
+3 pieces placed on it -
+2 black rooks and
+1 white king. The rows are numbered
+1 to
+8 from bottom to top, and the columns are numbered
+1 to
+8 from left to right. The cell at the intersection of the
+i-th column and
+j-th row is denoted
+(i,j) (like the coordinate system on the
+xy-plane).
+Is it possible for the white king to be checkmated by the rooks in exactly one move? It is guaranteed that the initial position of pieces is such that the white king is not under check.
+Note that in the given situation, black moves first.
+Assume that all the chess rules are to be followed:
+Each square can contain at most one piece.
+Rooks can only travel in straight lines along the row or column they are placed at, and can't jump over other pieces.
+The King can move to any of its
+8 adjacent squares.
+A piece can't capture a piece of the same color as itself.
+After a black makes a move, the white king can capture a rook if it's present on any of the
+8 adjacent squares and not protected by the other rook.
+The king is said to be in checkmate if the king is currently under check and there exists no legal move with the king to escape from the check.
+Stalemate is considered as a draw for both sides.
+For a more detailed explanation of the moves of pieces, along with images, please click here.
+Note: The input and output are large, so use fast input-output methods.
+In C++, either use printf and scanf, or add the line ios::sync_with_stdio(0); cin.tie(0); to the beginning of main to speed up cin and cout. Also, do not use endl, only use '\n'.
+In python3/pypy3, add the lines
+import sys
+input = sys.stdin.readline
+to the beginning of your code and then use input as you would normally do
+In Java, use BufferedReader and PrintWriter
 Input Format
 The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains a single integer
-N denoting the upper bound on the values of
-A,B,C.
-Next line contains
-N+1 space-separated integers denoting
-f(0),f(1),…,f(N).
+T, denoting the number of test cases. The description of
+T test cases follows.
+Each test case contains three lines of input.
+The first line contains two space-separated integers
+x
+k
+and
+y
+k
+, the row and column respectively in which white king is placed.
+The second line contains two space-separated integers
+x
+1
+and
+y
+1
+, the row and column respectively in which the first black rook is placed.
+The third line contains two space-separated integers
+x
+2
+and
+y
+2
+, the row and column respectively in which the second black rook is placed.
 Output Format
-For each test case, output on a new line, three space-separated integers, the values of
-A,B, and
-C. If there are multiple valid tuples of
-A,B,C, print any one.
+For each test case, output a single line containing the answer: "YES" if it's possible to checkmate the king in one move and "NO" if not.
+You may print each character of the string in uppercase or lowercase (for example, the strings "yEs", "yes", "Yes" and "YES" will all be treated as identical).
 Constraints
-1≤T≤2⋅10
-4
-2≤N≤10
+1≤T≤1.6⋅10
 5
-Sum of
-N over all test cases does not exceed
-2⋅10
-5
+1≤x
+k
+,y
+k
+,x
+1
+,y
+1
+,x
+2
+,y
+2
+≤8
+Initially the king is not under check, i.e,
+x
+k
+
+=x
+1
+and
+x
+k
+
+=x
+2
+and
+y
+k
+
+=y
+1
+and
+y
+k
+
+=y
+2
 .
+No two pieces overlap.
+Subtasks
+Subtask #1 (100 points): Original constraints
 Sample 1:
 Input
 Output
-3
-2
-0 3 6
-2
-4 7 2
-5
-9 6 11 8 13 10
-0 0 0
-2 0 2
-1 3 5
+4
+1 1
+8 2
+7 3
+1 8
+8 2
+8 3
+1 1
+8 2
+2 3
+1 1
+8 8
+8 2
+YES
+NO
+NO
+NO
 Explanation:
-Test case
-1: The tuple
-A=0,B=0,C=0 satisfies as:
-f(0)=0⊕0+0⊕0+0⊕0=0.
-f(1)=0⊕1+0⊕1+0⊕1=3.
-f(2)=0⊕2+0⊕2+0⊕2=6.
-Test case
-2: The tuple
-A=2,B=0,C=2 satisfies as:
-f(0)=2⊕0+0⊕0+2⊕0=4.
-f(1)=2⊕1+0⊕1+2⊕1=7.
-f(2)=2⊕2+0⊕2+2⊕2=2.
-Test case
-3: The tuple
-A=1,B=3,C=5 satisfies as:
-f(0)=1⊕0+3⊕0+5⊕0=9.
-f(1)=1⊕1+3⊕1+5⊕1=6.
-f(2)=1⊕2+3⊕2+5⊕2=11.
-f(3)=1⊕3+3⊕3+5⊕3=8.
-f(4)=1⊕4+3⊕4+5⊕4=13.
-f(5)=1⊕5+3⊕5+5⊕5=10.
+Test Case
+1: The second rook can be moved to
+(7,1), thus checkmating the king.
+Test Case
+2 and
+3: No possible move exists to checkmate the king. The following images describe why checkmating is impossible in test case
+2:
+Test Case
+4: The game can end in a stalemate if the first rook is moved to
+(2,8), but there exists no move to checkmate the king.

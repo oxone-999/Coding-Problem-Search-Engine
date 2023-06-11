@@ -1,42 +1,38 @@
-B. Bitwise Formula
-time limit per test3 seconds
-memory limit per test512 megabytes
+E. Hanoi Factory
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Bob recently read about bitwise operations used in computers: AND, OR and XOR. He have studied their properties and invented a new game.
-Initially, Bob chooses integer m, bit depth of the game, which means that all numbers in the game will consist of m bits. Then he asks Peter to choose some m-bit number. After that, Bob computes the values of n variables. Each variable is assigned either a constant m-bit number or result of bitwise operation. Operands of the operation may be either variables defined before, or the number, chosen by Peter. After that, Peter's score equals to the sum of all variable values.
-Bob wants to know, what number Peter needs to choose to get the minimum possible score, and what number he needs to choose to get the maximum possible score. In both cases, if there are several ways to get the same score, find the minimum number, which he can choose.
+Of course you have heard the famous task about Hanoi Towers, but did you know that there is a special factory producing the rings for this wonderful game? Once upon a time, the ruler of the ancient Egypt ordered the workers of Hanoi Factory to create as high tower as possible. They were not ready to serve such a strange order so they had to create this new tower using already produced rings.
+There are n rings in factory's stock. The i-th ring has inner radius ai, outer radius bi and height hi. The goal is to select some subset of rings and arrange them such that the following conditions are satisfied:
+Outer radiuses form a non-increasing sequence, i.e. one can put the j-th ring on the i-th ring only if bj ≤ bi.
+Rings should not fall one into the the other. That means one can place ring j on the ring i only if bj > ai.
+The total height of all rings used should be maximum possible.
 Input
-The first line contains two integers n and m, the number of variables and bit depth, respectively (1 ≤ n ≤ 5000; 1 ≤ m ≤ 1000).
-The following n lines contain descriptions of the variables. Each line describes exactly one variable. Description has the following format: name of a new variable, space, sign ":=", space, followed by one of:
-Binary number of exactly m bits.
-The first operand, space, bitwise operation ("AND", "OR" or "XOR"), space, the second operand. Each operand is either the name of variable defined before or symbol '?', indicating the number chosen by Peter.
-Variable names are strings consisting of lowercase Latin letters with length at most 10. All variable names are different.
+The first line of the input contains a single integer n (1 ≤ n ≤ 100 000) — the number of rings in factory's stock.
+The i-th of the next n lines contains three integers ai, bi and hi (1 ≤ ai, bi, hi ≤ 109, bi > ai) — inner radius, outer radius and the height of the i-th ring respectively.
 Output
-In the first line output the minimum number that should be chosen by Peter, to make the sum of all variable values minimum possible, in the second line output the minimum number that should be chosen by Peter, to make the sum of all variable values maximum possible. Both numbers should be printed as m-bit binary numbers.
+Print one integer — the maximum height of the tower that can be obtained.
 Examples
 input
 Copy
-3 3
-a := 101
-b := 011
-c := ? XOR b
+3
+1 5 1
+2 6 2
+3 7 3
 output
 Copy
-011
-100
+6
 input
 Copy
-5 1
-a := 1
-bb := 0
-cx := ? OR a
-d := ? XOR ?
-e := d AND bb
+4
+1 2 1
+1 3 3
+4 6 2
+5 7 1
 output
 Copy
-0
-0
+4
 Note
-In the first sample if Peter chooses a number 0112, then a = 1012, b = 0112, c = 0002, the sum of their values is 8. If he chooses the number 1002, then a = 1012, b = 0112, c = 1112, the sum of their values is 15.
-For the second test, the minimum and maximum sum of variables a, bb, cx, d and e is 2, and this sum doesn't depend on the number chosen by Peter, so the minimum Peter can choose is 0.
+In the first sample, the optimal solution is to take all the rings and put them on each other in order 3, 2, 1.
+In the second sample, one can put the ring 3 on the ring 4 and get the tower of height 3, or put the ring 1 on the ring 2 and get the tower of height 4.

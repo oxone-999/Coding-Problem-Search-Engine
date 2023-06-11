@@ -1,106 +1,82 @@
-D. Shurikens
+A. Prison Break
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Tenten runs a weapon shop for ninjas. Today she is willing to sell
+There is a prison that can be represented as a rectangular matrix with
 n
-shurikens which cost
-1
+rows and
+m
+columns. Therefore, there are
+n⋅m
+prison cells. There are also
+n⋅m
+prisoners, one in each prison cell. Let's denote the cell in the
+i
+-th row and the
+j
+-th column as
+(i,j)
+.
+There's a secret tunnel in the cell
+(r,c)
+, that the prisoners will use to escape! However, to avoid the risk of getting caught, they will escape at night.
+Before the night, every prisoner is in his own cell. When night comes, they can start moving to adjacent cells. Formally, in one second, a prisoner located in cell
+(i,j)
+can move to cells
+(i−1,j)
 ,
-2
-, ...,
-n
-ryo (local currency). During a day, Tenten will place the shurikens onto the showcase, which is empty at the beginning of the day. Her job is fairly simple: sometimes Tenten places another shuriken (from the available shurikens) on the showcase, and sometimes a ninja comes in and buys a shuriken from the showcase. Since ninjas are thrifty, they always buy the cheapest shuriken from the showcase.
-Tenten keeps a record for all events, and she ends up with a list of the following types of records:
-+ means that she placed another shuriken on the showcase;
-- x means that the shuriken of price
-x
-was bought.
-Today was a lucky day, and all shurikens were bought. Now Tenten wonders if her list is consistent, and what could be a possible order of placing the shurikens on the showcase. Help her to find this out!
+(i+1,j)
+,
+(i,j−1)
+, or
+(i,j+1)
+, as long as the target cell is inside the prison. They can also choose to stay in cell
+(i,j)
+.
+The prisoners want to know the minimum number of seconds needed so that every prisoner can arrive to cell
+(r,c)
+if they move optimally. Note that there can be any number of prisoners in the same cell at the same time.
 Input
-The first line contains the only integer
-n
-(
-1≤n≤
+The first line contains an integer
+t
+(1≤t≤
 10
-5
-) standing for the number of shurikens.
-The following
-2n
-lines describe the events in the format described above. It's guaranteed that there are exactly
+4
+)
+, the number of test cases.
+Each of the next
+t
+lines contains four space-separated integers
 n
-events of the first type, and each price from
-1
-to
-n
-occurs exactly once in the events of the second type.
+,
+m
+,
+r
+,
+c
+(
+1≤r≤n≤
+10
+9
+,
+1≤c≤m≤
+10
+9
+).
 Output
-If the list is consistent, print "YES". Otherwise (that is, if the list is contradictory and there is no valid order of shurikens placement), print "NO".
-In the first case the second line must contain
-n
-space-separated integers denoting the prices of shurikens in order they were placed. If there are multiple answers, print any.
-Examples
-input
-Copy
-4
-+
-+
-- 2
-+
-- 3
-+
-- 1
-- 4
-output
-Copy
-YES
-4 2 3 1 
-input
-Copy
-1
-- 1
-+
-output
-Copy
-NO
+Print
+t
+lines, the answers for each test case.
+Example
 input
 Copy
 3
-+
-+
-+
-- 2
-- 1
-- 3
+10 10 1 1
+3 5 2 4
+10 2 5 1
 output
 Copy
-NO
-Note
-In the first example Tenten first placed shurikens with prices
+18
 4
-and
-2
-. After this a customer came in and bought the cheapest shuriken which costed
-2
-. Next, Tenten added a shuriken with price
-3
-on the showcase to the already placed
-4
--ryo. Then a new customer bought this
-3
--ryo shuriken. After this she added a
-1
--ryo shuriken. Finally, the last two customers bought shurikens
-1
-and
-4
-, respectively. Note that the order
-[2,4,3,1]
-is also valid.
-In the second example the first customer bought a shuriken before anything was placed, which is clearly impossible.
-In the third example Tenten put all her shurikens onto the showcase, after which a customer came in and bought a shuriken with price
-2
-. This is impossible since the shuriken was not the cheapest, we know that the
-1
--ryo shuriken was also there.
+6

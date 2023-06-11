@@ -1,47 +1,51 @@
-X-24 and his SUBSET code
+Bear and Digit Virus
 Problem
-  X-24 - the clone of Logan has evil plans, and this time he has decided to reduce Logan to ashes. He has a subset code which can cause havoc, and Logan must know what it is to curb X-24's actions.
-After musing for a long time, Logan finally deduced the subset code.
-Let's say there are N targets of the subset code. Each target has some value associated with it.
-Logan can carry out the following operation any number of times ( even 0 times )
-Logan can choose a particular subset of those N targets (even no element) ( let's say X elements ), and decrease the value of those elements by an integer K1, and also increases the value of rest of the targets ( remaining N-X elements ) by another healing integer K2.
-Laura advises Logan to anyhow convert value of at least Y targets to Z if he wants to stop the destruction.
-Help Logan in determining if the destruction can be stopped or not
-  Input
-You are provided with T test cases.
-First line of each test case contains an integer N.
-Second line contains N space separated integers- Arr[ ]
-Third line has 4 integers - K1, K2, Z, Y
-  Output
-For each test case, print "YES" or "NO" (without quotes) as per the condition stated above.
-  Constraints
-1 ≤ T ≤ 10
-1 ≤ N ≤ 105
-1 ≤ Arr[i] ≤ 4*109
-1 ≤ K1,K2 ≤ 4*109
-1 ≤ Z ≤ 4*109
-1 ≤ Y ≤ N
-GCD(K1,K2)=1
-  Example
-Input:
-2
-5
-3 5 6 9 10
-1 2 5 3
-2
-1 2
-1 2 2 2
-Output:
-YES
-NO
-  Explanation
-In the first test case, we need to convert atleast 3 elements into 5.
-One possible set of operations can be like this -
-Decrease subset { 9 } by 1 and increase rest of the elements by 2.
-The new values - { 5, 7, 8, 8, 12 }
-Decrease subset { 8,8 } by 1 and increase rest of the elements by 2.
-The new values - { 7, 9, 7, 7, 14 }
-Decrease subset { 7,7,7 } by 1 and increase rest of the elements by 2.
-The new values - { 6,11, 6, 6, 16 }
-Decrease subset { 6,6,6 } by 1 and increase rest of the elements by 2.
-The new values - { 5,13, 5, 5, 18 }
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+There are 10 types of viruses — one type with strength 0, one type with strength 1, and so on, up to the last type with strength 9.
+Limak examines the behavior of a row of N viruses, indexed 1 through N. The initial situation is represented by a string S that consists of N digits, denoting the strengths of the viruses.
+Stronger viruses will slowly defeat the weaker ones and convert them into their own type. While it's easy for a very strong virus to defeat a very weak one, the distance between them is an obstacle. Formally, we say that a virus with index x affects (tries to attack) a virus with index y (1 ≤ x, y ≤ N) if and only if:
+strength(x) - strength(y) ≥ |x - y|
+For example, a virus with strength 8 affects a virus with strength 5 if and only if the distance between them (the absolute difference between indices) is at most 3. Also, a virus always affects itself. Note that a virus can never affect stronger viruses.
+In one second, simultaneously, each virus V is replaced with a virus whose type is the strongest among all the viruses that were affecting V at that moment.
+Limak wants to know when this process will stop, i.e. when all N viruses will have the same type. It can be proved that such a situation must happen eventually. Can you help Limak and compute the number of seconds after which the process will stop?
+Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The only line of each test case contains one string S, consisting of digits '0' through '9'. We have let N denote the length of S.
+Output
+For each test case, output a single line containing one integer — the number of seconds the process will last (after which all N viruses will have the same type).
+Constraints
+1 ≤ T ≤ 3
+1 ≤ N ≤ 150,000
+Subtasks
+Subtask #1 (20 points): 1 ≤ N ≤ 50
+Subtask #2 (30 points): It's guaranteed that the answer won't exceed 10.
+Subtask #3 (10 points): S contains digits '0' and '1' only.
+Subtask #4 (40 points): Original constraints.
+Sample 1:
+Input
+Output
+3
+555755555
+311110000000000
+07788000744
+3
+6
+4
+Explanation:
+Test case 1. In the string 555755555, the virus with index 4 (the one with strength 7) affects two viruses to the left, and two viruses to the right, i.e. viruses with indices 2, 3, 5 and 6. These four viruses will be changed to strength 7 after the first second. The new string will be 577777555.
+In the next second, viruses with indices 1, 7 and 8 will be changed, and the string will become 777777775.
+Finally, in the third second, the last virus will be changed to strength 7 as well. The process stops after 3 seconds in total.
+Test case 2. The string changes in the following way:
+311110000000000 initially
+333111000000000 after 1 second
+333331100000000 after 2 seconds
+333333330000000 after 3 seconds
+333333333330000 after 4 seconds
+333333333333330 after 5 seconds
+333333333333333 after 6 seconds
+Test case 3. The string changes in the following way:
+07788000744 initially
+87888888777 after 1 second
+88888888877 after 2 seconds
+88888888887 after 3 seconds
+88888888888 after 4 seconds

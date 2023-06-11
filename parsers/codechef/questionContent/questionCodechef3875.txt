@@ -1,170 +1,146 @@
-AP On Trees
+Parity Fun
 Problem
-You are given a tree with
-N nodes, where the
-i
-th
-node has a value
+Chef has
+N numbers written on his board. He wants only one number to remain on the board and so he devises a special tactic to do so.
+He randomly picks up
+2 numbers written on the board say
+A and
+B respectively. He erases both of them from the board and writes a new number on the board which equals -
+A−B if parity of
 A
-i
-associated to it.
-You need to answer
-Q queries. Each query is of the form:
-X
-Y : Given two nodes
-X and
-Y
-(1≤X,Y≤N), find the length of the longest arithmetic progression formed using the values of nodes on the shortest path between
-X and
-Y.
-More formally, let there be
-M nodes on the shortest path between nodes
-X and
-Y, and
-G denote the shortest path from node
-X to node
-Y, where
-G
-1
-=X,
-G
-M
-=Y, and there exists an edge between nodes
-G
-i
-and
-G
-i+1
-for all
-(1≤i<M).
-Let
-B denote the array
-[A
-G
-1
-,A
-G
-2
-,…,A
-G
-M
-]. Find the length of the longest subarray of
-B which is an arithmetic progression.
+= parity of
+B
+A+B if parity of
+A
+
+= parity of
+B
+Here parity refers to remainder obtained when a number is divided by
+2.
+Notice that the total numbers on the board reduced by
+1 after
+1 such operation. After a finite number of operations there would only be
+1 number remaining on the board.
+Chef is interested in knowing how many different final numbers he could end up with.
 Input Format
-The first line of input will contain a single integer
-N, denoting the number of nodes in the tree.
-The second line contains
+The first line contains a single integer
+N denoting the amount of numbers initially present on the board.
+The second line consists of
 N space-separated integers
 A
 1
 ,A
 2
-,…,A
+,...,A
 N
-, the values assigned to each node.
-Next
-N−1 lines contains
-2 space-separated integers
-u and
-v denoting edge between nodes
-u and
-v.
-Next line contains
-Q, the number of queries.
-Next
-Q lines contain
-2 space-separated integers
-X and
-Y.
+denoting the numbers written on the board initially.
 Output Format
-For each query, print the length of the longest arithmetic progression formed using the values of nodes on the shortest path between
-X and
-Y.
+For each testcase, output a single integer denoting the number of possible final numbers on the board.
 Constraints
-1≤N,Q≤2⋅10
-5
+2≤N≤100
 1≤A
 i
-≤10
-9
-1≤u
-i
-,v
-i
-≤N
+≤100
 Sample 1:
 Input
 Output
-10
-1 3 6 3 5 4 5 4 6 4
-1 2
-2 3
-1 4
-4 5
-6 3
-7 3
-8 5
-9 5
-10 7
-5
-9 10
-6 5
-8 4
-7 2
-6 8
-3
-3
 2
+3 7
 2
-3
 Explanation:
-The tree looks like:
-Query
-1: The shortest path between nodes
-9 and
-10 is
-[9,5,4,1,2,3,7,10]. The corresponding array
-B=[A
-9
-,A
-5
-,A
+The possible final outcomes here would be
+4 and
+−4.
+{3,7}
+A=7,B=3
+A−B
+{4}
+{3,7}
+A=3,B=7
+A−B
+{−4}
+Sample 2:
+Input
+Output
 4
-,A
-1
-,A
-2
-,A
-3
-,A
+2 7 6 3
 7
-,A
-10
-]=[6,5,3,1,3,6,5,4].
-The longest subarray of
-B which is also an arithmetic progression are
-[5,3,1] and
-[6,5,4]. Thus, the length of the longest subarray is
-3.
-Query
-2: The shortest path between nodes
-6 and
-5 is
-[6,3,2,1,4,5]. The corresponding array
-B=[A
-6
-,A
-3
-,A
-2
-,A
-1
-,A
-4
-,A
-5
-]=[4,6,3,1,3,5].
-The longest subarray of
-B which is also an arithmetic progression is
-[1,3,5]. Thus, the length of the longest subarray is
-3.
+Explanation:
+The possible final outcomes here would be
+−12,
+−8,
+−4,
+0,
+4,
+8 and
+12.
+{2,7,6,3}
+A=7,B=6
+A+B
+{2,3,13}
+A=2,B=13
+A+B
+{3,15}
+A=3,B=15
+A−B
+{−12}
+{2,7,6,3}
+A=6,B=2
+A−B
+{4,7,3}
+A=3,B=7
+A−B
+{4,−4}
+A=−4,B=4
+A−B
+{−8}
+{2,7,6,3}
+A=3,B=2
+A+B
+{7,6,5}
+A=5,B=6
+A+B
+{7,11}
+A=7,B=11
+A−B
+{−4}
+{2,7,6,3}
+A=6,B=2
+A−B
+{4,7,3}
+A=7,B=3
+A−B
+{4,4}
+A=4,B=4
+A−B
+{0}
+{2,7,6,3}
+A=3,B=2
+A+B
+{7,6,5}
+A=5,B=6
+A+B
+{7,11}
+A=11,B=7
+A−B
+{4}
+{2,7,6,3}
+A=6,B=2
+A−B
+{4,7,3}
+A=3,B=7
+A−B
+{4,−4}
+A=4,B=−4
+A−B
+{8}
+{2,7,6,3}
+A=7,B=6
+A+B
+{2,3,13}
+A=2,B=13
+A+B
+{3,15}
+A=15,B=3
+A−B
+{12}

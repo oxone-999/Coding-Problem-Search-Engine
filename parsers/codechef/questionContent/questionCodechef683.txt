@@ -1,54 +1,28 @@
-Carvans
+The Morning Commute
 Problem
-Most problems on CodeChef highlight chef's love for food and cooking but little is known about his love for racing sports. He is an avid Formula 1 fan. He went to watch this year's Indian Grand Prix at New Delhi. He noticed that one segment of the circuit was a long straight road. It was impossible for a car to overtake other cars on this segment. Therefore, a car had to lower down its speed if there was a slower car in front of it. While watching the race, Chef started to wonder how many cars were moving at their maximum speed.
-Formally, you're given the maximum speed of N cars in the order they entered the long straight segment of the circuit. Each car prefers to move at its maximum speed. If that's not possible because of the front car being slow, it might have to lower its speed. It still moves at the fastest possible speed while avoiding any collisions. For the purpose of this problem, you can assume that the straight segment is infinitely long.
-Count the number of cars which were moving at their maximum speed on the straight segment.
+The Chef commutes to work every day using the city's underground metro. The schedule for the trains has recently been changed and he wants to know how long it will take to travel from the station nearest to his house and the station nearest to his restaurant.
+The Chef doesn't want to change the route he took before, so he simply has to find out how long it will take to reach his restaurant along his usual route. This route is given by a sequence of stations s0, s1, ..., sn where s0 is the station where the Chef enters the metro and sn is the station where the Chef exits the metro.
+Trains are scheduled to run between every two consecutive stations si-1 and si. Such a schedule is specified by three integers xi, li, and fi. This means that the first train on this line starts operating at time xi. The time it takes this train to travel from si-1 and si is exactly li units. Finally, a train departs from station si-1 every fi minutes following the previous train. That is, a train departs at time xi, xi+fi, xi+2fi, and so on.
+The Chef is very experienced at navigating the metro so the time it takes him to transfer between trains at a given station is essentially zero. Thus, if the Chef arrives at a station, say si, the moment that the train from si to si+1 is scheduled to depart, he skillfully hops on this next train. However, if the Chef arrives when no train to si+1 is scheduled to depart, he must wait until the scheduled departure time.
+Help the Chef figure out how long it will take him to travel from station s0 to station sn. You may assume that the Chef is already at station s0 at time 0.
 Input
-The first line of the input contains a single integer T denoting the number of test cases to follow. Description of each test case contains 2 lines. The first of these lines contain a single integer N, the number of cars. The second line contains N space separated integers, denoting the maximum speed of the cars in the order they entered the long straight segment.
+The first line consists of a single integer denoting the number of test cases (at most 50). Each test case begins with a line containing a single integer n between 1 and 1000 indicating the number of lines the Chef must traverse (so there are n+1 stations s0, s1, ..., sn). The next n lines describe the train schedules between stations, one per line. The i'th such line gives the values xi, li, and fi for the train that travels between stations si-1 and si.
+The xi values will be between 0 and 1000 and the li and fi values will be between 1 and 1000.
 Output
-For each test case, output a single line containing the number of cars which were moving at their maximum speed on the segment.
-Constraints
-1 ≤ T ≤ 100
-1 ≤ N ≤ 10,000
-All speeds are distinct positive integers that fit in a 32 bit signed integer.
-Each input file will not be larger than 4 MB (4,000,000,000 bytes) in size.
-WARNING! The input files are very large. Use faster I/O.
+For each test case you are to output a single integer denoting the minimum time t for which the Chef can reach station sn using the given route. Remember, the Chef starts at s0 at time 0.
 Sample 1:
 Input
 Output
 3
-1
-10
-3
-8 3 6
+2
+0 4 7
+0 6 5
+2
+0 1 2
+6 2 10
+2
+1 2 3
+0 2 3
+11
+8
 5
-4 5 1 2 3
-1
-2
-2
-Explanation:
-Test case
-1: There is only
-1 car. Thus, it can move at its maximum speed.
-Test case
-2: The first car moves at speed
-8. The second car can move at speed
-3 without colliding with the first car. For the third car, if it moves at speed
-6, it would collide with the second car after some finite amount of time. The maximum speed at which the third car can move avoiding any collision is
-3. Thus,
-2 cars can move at their maximum speed.
-Test case
-3: Following are the maximum speeds of all the cars.
-The first car moves at a maximum speed of
-4.
-The maximum speed at which the second car can move without colliding is
-4.
-The third car can move at its maximum speed which is
-1.
-The maximum speed at which the fourth car can move without colliding is
-1.
-The maximum speed at which the fifth car can move without colliding is
-1.
-Thus, two cars can move at their maximum speed. These cars are car
-1 and
-3.

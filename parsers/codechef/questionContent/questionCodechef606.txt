@@ -1,35 +1,75 @@
-Version Control System
+Coronavirus Spread
 Problem
-Read problems statements in Mandarin Chinese and Russian as well.
-A version control system(VCS) is a repository of files, often the files for the source code of computer programs, with monitored access. Every change made to the source is tracked, along with who made the change, why they made it, and references to problems fixed, or enhancements introduced, by the change.
-Version control systems are essential for any form of distributed, collaborative development. Whether it is the history of a wiki page or large software development project, the ability to track each change as it was made, and to reverse changes when necessary can make all the difference between a well managed and controlled process and an uncontrolled ‘first come, first served’ system. It can also serve as a mechanism for due diligence for software projects.
-In this problem we'll consider a simplified model of a development project. Let's suppose, that there are N source files in the project. All the source files are distinct and numbered from 1 to N.
-A VCS, that is used for maintaining the project, contains two sequences of source files. The first sequence contains the source files, that are ignored by the VCS. If a source file is not in the first sequence, then it's considered to be unignored. The second sequence contains the source files, that are tracked by the VCS. If a source file is not in the second sequence, then it's considered to be untracked. A source file can either be or not be in any of these two sequences.
-Your task is to calculate two values: the number of source files of the project, that are both tracked and ignored, and the number of source files of the project, that are both untracked and unignored.
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+There are
+N people on a street (numbered
+1 through
+N). For simplicity, we'll view them as points on a line. For each valid
+i, the position of the
+i-th person is
+X
+i
+.
+It turns out that exactly one of these people is infected with the virus COVID-19, but we do not know which one. The virus will spread from an infected person to a non-infected person whenever the distance between them is at most
+2. If we wait long enough, a specific set of people (depending on the person that was infected initially) will become infected; let's call the size of this set the final number of infected people.
+Your task is to find the smallest and largest value of the final number of infected people, i.e. this number in the best and in the worst possible scenario.
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of the test case description contains three integers N, M and K denoting the number of source files in the project, the number of ignored source files and the number of tracked source files.
-The second line contains M distinct integers denoting the sequence A of ignored source files. The sequence is strictly increasing.
-The third line contains K distinct integers denoting the sequence B of tracked source files. The sequence is strictly increasing.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains
+N space-seperated integers
+X
+1
+,X
+2
+,…,X
+N
+.
 Output
-For each test case, output a single line containing two integers: the number of the source files, that are both tracked and ignored, and the number of the source files, that are both untracked and unignored.
+For each test case, print a single line containing two space-separated integers ― the minimum and maximum possible final number of infected people.
 Constraints
-1 ≤ T ≤ 100
-1 ≤ M, K ≤ N ≤ 100
-1 ≤ A1 < A2 < ... < AM ≤ N
-1 ≤ B1 < B2 < ... < BK ≤ N
+1≤T≤2,000
+2≤N≤8
+0≤X
+i
+≤10 for each valid
+i
+X
+1
+<X
+2
+<…<X
+N
+Subtasks
+Subtask #1 (10 points):
+N≤3
+Subtask #2 (90 points): original constraints
 Sample 1:
 Input
 Output
+3
 2
-7 4 6
-1 4 6 7
-1 2 3 4 6 7
-4 2 2
-1 4
-3 4
-4 1
+3 6
+3
+1 3 5
+5
+1 2 5 6 7
 1 1
+3 3
+2 3
 Explanation:
-In the first test case, the source files {1, 4, 6, 7} are both tracked and ignored, the source file {5} is both untracked and unignored.
-In the second test case, the source file {4} is both tracked and ignored, the source file {2} is both untracked and unignored.
+Example case 1: The distance between the two people is
+3, so the virus cannot spread and at the end, there will always be only one infected person.
+Example case 2: The distance between each two adjacent people is
+2, so all of them will eventually get infected.
+Example case 3:
+In one of the best possible scenarios, the person at the position
+1 is infected initially and the virus will also infect the person at the position
+2.
+In one of the worst possible scenarios, the person at the position
+5 is infected initially and the virus will also infect the people at the positions
+6 and
+7.

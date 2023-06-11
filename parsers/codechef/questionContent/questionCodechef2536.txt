@@ -1,111 +1,59 @@
-Mercury Poisoning
+Funny gnomes
 Problem
-Kim has broken in to the base, but after walking in circles, perplexed by the unintelligible base design of the JSA, he has found himself in a large, empty, and pure white, room.
-The room is a grid with
-H∗W cells, divided into
-H rows and
-W columns. The cell
-(i,j) is at height
-A[i][j]. Unfortunately, his advanced sense of smell has allowed him to sense a mercury leak, probably brought in by Jishnu to end his meddling. The mercury leak has a power (which determines what height the mercury can reach before dissipating into harmless quantities) and a source cell. It spreads from cells it has already reached to other cells in the four cardinal directions: north, south, east, and west. (That is, the mercury can spread up, down, right, or left in the grid, but not diagonally.) Mercury can only spread to a cell if the cell's height is strictly less than the power value.
-Unfortunately, Kim does not exactly know the starting cell or the power value of the mercury leak. However, his impressive brain has determined that it must be one of
-Q (power, starting cell) combinations. For each combination, he wants to find out how many cells are dangerous for him to go to: that is, how many cells will eventually be reached by the mercury. This will help him determine a suitable cell to stay in and slowly fix the leak from above.
-Can you help Kim achieve this objective?
-Note: If the starting cell's height is not less than the power level, the mercury immediately dissipates. So, in this case, output 0.
-###Input:
-First line will contain
-T, number of testcases. Then the testcases follow.
-The first line in each testcase contains three integers,
-H,
-W, and
-Q.
-On the
-2nd to
-(H+1)th lines of each testcase: The
-(i+1)th line contains
-W space-separated integers, representing the heights of the cells on the
-ith row of the grid.
-On the
-(H+2)th to
-(H+Q+1)th lines of each testcase: The
-(i+H+1)th line contains 3 space-separated integers,
-r[i],
-c[i], and
-p[i], which represents a (power, starting cell) combination. For this specific combination, the mercury leak originates on the cell
-(r[i],c[i]) and has power
-p[i].
-Output:
-For each testcase, output
-Q lines, with each line containing one integer. The
-ith line should output the number of dangerous cells, given that the leak originated on cell
-(r[i],c[i]) with power
-p[i], as defined in the input. Read the sample and sample explanation for more details.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Kekocity's population consist of N gnomes numbered with unique ids from 1 to N. As they are very joyful gnomes, they usually send jokes to their friends right after they get any (even if they knew it before) via their social network named as Mybeard. Mybeard became popular in the city because of message auto-deletion. It takes exactly one minute to read and resend joke to mates.
+Mayor of Kekocity, Mr. Shaikhinidin, is interested in understanding how the jokes are spread. He gives you database of Mybeard social network, and wants you to answer some queries on it.
+You will be given a list of friends for every gnome and M queries of the following type: Who will receive a message with joke after exactly K minutes, if the creator of joke was gnome with id x?
+Input
+The first line contains a single integer N denoting the number of gnomes.
+The next N lines contain the the matrix g[N][N]. Each of the i-th line, will contain N space separated integers - j-th of those will denote g[i][j]. If gnome j is friend of gnome i, then g[i][j] is 1. Otherwise it will be zero. Plese note that the friendship relationship is not bidirectional, i.e. it might happen that g[i][j] may not be equal to g[j][i]. Also one can be friend of itself also, i.e. g[i][i] may be equal to 1.
+The next line contains a single integer M denoting the number of queries. The next M lines contain two integers k and x described above.
+Output
+For each query, output two lines.
+In the first line, output how many gnomes will know the joke after k minutes.
+In the second line, print these ids (numbering) of these gnomes in increasing order. If no one will know the joke after K minutes, then print -1 in this line.
 Constraints
-1≤T≤2
-1≤H≤1000
-1≤W≤1000
-1≤Q≤2∗10
-5
-1≤r[i]≤H for all
-i
-1≤c[i]≤W for all
-i
-0≤A[i][j]≤10
-9
-for all
-(i,j)
-0≤p[i]≤10
-9
-for all
-i.
+1 ≤ N ≤ 500
+1 ≤ M ≤ 500
+0 ≤ k ≤ 109
+1 ≤ x ≤ N
+0 ≤ g[i][j] ≤ 1
 Subtasks
-10 points :
-A[i][j]= constant
-k for all
-(i,j) (the heights of all cells are equal).
-20 points :
-H=1,
-Q≤1000.
-30 points:
-r[i]= constant
-x,
-c[i]= constant
-y for all
-i (the starting cell is fixed).
-40 points: No additional constraints.
-Sample Input:
+Subtask #1 : (10 points)
+1 ≤ N ≤ 50
+1 ≤ M ≤ 50
+0 ≤ k ≤ 50
+
+Subtask #2 : (15 points)
+Original constraints
+Every gnome has exactly one friend (for every i there is exactly one j such that g[i][j] = 1. Note that j can be equal to i)
+
+Subtask #3 : (30 points)
+1 ≤ N ≤ 75
+1 ≤ M ≤ 75
+0 ≤ k ≤ 109
+
+Subtask #4 : (45 points)
+Original constraints
+Example
+Input:
+5
+0 1 0 0 0
+0 0 1 1 0
+1 0 0 0 0
+0 0 0 1 0
+0 0 0 0 0
+4
+3 1
+10000 1
+0 5
+1 5
+Output:
+2
+1 4
+2
+2 4
 1
-5 5 3
-4 3 9 7 2
-8 6 5 2 8
-1 7 3 4 3
-2 2 4 5 6
-9 9 9 9 9
-3 4 6
-3 2 5
-1 4 9
-Sample Output:
-10
+5
 0
-19
-EXPLANATION:
-For the first query, the cell
-(3,4) has height 4. The mercury can reach the following cells:
-(2,3),
-(2,4),
-(3,1),
-(3,3),
-(3,4),
-(3,5),
-(4,1),
-(4,2),
-(4,3),
-(4,4), for a total of 10. Note that it cannot reach cell
-(4,5) because the height (6) is equal to the power value (6).
-For the second query, the cell
-(3,2) has height 7. Since the power value of 5 is less than or equal to the height of 7, the mercury immediately dissipates and so it reaches 0 cells.
-For the third query, the mercury can reach all cells except the bottom row and the cell
-(1,3).
-Note that
-(x,y) means the cell on the
-x-th row and
-y-th column.
+-1

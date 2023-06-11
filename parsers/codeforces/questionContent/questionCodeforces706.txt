@@ -1,138 +1,154 @@
-F. Triameter
-time limit per test4.5 seconds
-memory limit per test768 megabytes
+B. Optimal Reduction
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
- — What is my mission?
- — To count graph diameters.
-You and Your Submission
-A tree is a connected undirected graph without cycles. A weighted tree has a weight assigned to each edge. The degree of a vertex is the number of edges connected to this vertex.
-You are given a weighted tree with
+Consider an array
+a
+of
 n
-vertices, each edge has a weight of
-1
-. Let
-L
-be the set of vertices with degree equal to
+positive integers.
+You may perform the following operation:
+select two indices
+l
+and
+r
+(
+1≤l≤r≤n
+), then
+decrease all elements
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+by
 1
 .
-You have to answer
-q
-independent queries. In the
-i
--th query:
-You are given a positive integer
-x
-i
-.
-For all
-u,v∈L
-such that
-u<v
-, add edge
-(u,v)
-with weight
-x
-i
-to the graph (initially the given tree).
-Find the diameter of the resulting graph.
-The diameter of a graph is equal to
-max
-1≤u<v≤n
-d(u,v)
-, where
-d(u,v)
-is the length of the shortest path between vertex
-u
-and vertex
-v
+Let's call
+f(a)
+the minimum number of operations needed to change array
+a
+into an array of
+n
+zeros.
+Determine if for all permutations
+†
+†
+b
+of
+a
+,
+f(a)≤f(b)
+is true.
+†
+†
+An array
+b
+is a permutation of an array
+a
+if
+b
+consists of the elements of
+a
+in arbitrary order. For example,
+[4,2,3,4]
+is a permutation of
+[3,2,4,4]
+while
+[1,2,2]
+is not a permutation of
+[1,2,3]
 .
 Input
 The first line contains a single integer
-n
+t
 (
-3≤n≤
+1≤t≤
 10
-6
-).
+4
+) — the number of test cases.
+The first line of each test case contains a single integer
+n
+(
+1≤n≤
+10
+5
+) — the length of the array
+a
+.
 The second line contains
-n−1
+n
 integers
-p
-2
+a
+1
 ,
-p
-3
+a
+2
 ,…,
-p
+a
 n
 (
 1≤
-p
+a
 i
-<i
-) indicating that there is an edge between vertices
-i
-and
-p
-i
-. It is guaranteed that the given edges form a tree.
-The third line contains a single integer
-q
-(
-1≤q≤10
-).
-The fourth line contains
-q
-integers
-x
-1
-,
-x
-2
-,…,
-x
-q
-(
-1≤
-x
-i
-≤n
-). All
-x
-i
-are distinct.
+≤
+10
+9
+) — description of the array
+a
+.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+5
+.
 Output
-Print
-q
-integers in a single line — the answers to the queries.
-Examples
-input
-Copy
-4
-1 2 2
-4
-1 2 3 4
-output
-Copy
-1 2 2 2 
-input
-Copy
-7
-1 2 3 4 2 1
-7
-2 1 3 7 5 6 4
-output
-Copy
-3 3 4 5 5 5 4 
+For each test case, print "YES" (without quotes) if for all permutations
+b
+of
+a
+,
+f(a)≤f(b)
+is true, and "NO" (without quotes) otherwise.
+You can output "YES" and "NO" in any case (for example, strings "yEs", "yes" and "Yes" will be recognized as a positive response).
+Example
 input
 Copy
 3
-1 2
-1
-1
+4
+2 3 5 4
+3
+1 2 3
+4
+3 1 3 2
 output
 Copy
-1 
+YES
+YES
+NO
 Note
-The graph in the first test after adding the edges:
+In the first test case, we can change all elements to
+0
+in
+5
+operations. It can be shown that no permutation of
+[2,3,5,4]
+requires less than
+5
+operations to change all elements to
+0
+.
+In the third test case, we need
+5
+operations to change all elements to
+0
+, while
+[2,3,3,1]
+only needs
+3
+operations.

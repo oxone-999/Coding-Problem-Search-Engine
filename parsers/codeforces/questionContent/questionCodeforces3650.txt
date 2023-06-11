@@ -1,114 +1,85 @@
-A. Stock Arbitraging
-time limit per test1 second
+B. Tiling Challenge
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Welcome to Codeforces Stock Exchange! We're pretty limited now as we currently allow trading on one stock, Codeforces Ltd. We hope you'll still be able to make profit from the market!
-In the morning, there are
+One day Alice was cleaning up her basement when she noticed something very curious: an infinite set of wooden pieces! Each piece was made of five square tiles, with four tiles adjacent to the fifth center tile:
+By the pieces lay a large square wooden board. The board is divided into
 n
-opportunities to buy shares. The
-i
--th of them allows to buy as many shares as you want, each at the price of
-s
-i
-bourles.
-In the evening, there are
-m
-opportunities to sell shares. The
-i
--th of them allows to sell as many shares as you want, each at the price of
-b
-i
-bourles. You can't sell more shares than you have.
-It's morning now and you possess
-r
-bourles and no shares.
-What is the maximum number of bourles you can hold after the evening?
+2
+cells arranged into
+n
+rows and
+n
+columns. Some of the cells are already occupied by single tiles stuck to it. The remaining cells are free.
+Alice started wondering whether she could fill the board completely using the pieces she had found. Of course, each piece has to cover exactly five distinct cells of the board, no two pieces can overlap and every piece should fit in the board entirely, without some parts laying outside the board borders. The board however was too large for Alice to do the tiling by hand. Can you help determine if it's possible to fully tile the board?
 Input
-The first line of the input contains three integers
-n,m,r
-(
-1≤n≤30
-,
-1≤m≤30
-,
-1≤r≤1000
-) — the number of ways to buy the shares on the market, the number of ways to sell the shares on the market, and the number of bourles you hold now.
-The next line contains
-n
-integers
-s
-1
-,
-s
-2
-,…,
-s
+The first line of the input contains a single integer
 n
 (
-1≤
-s
+3≤n≤50
+) — the size of the board.
+The following
+n
+lines describe the board. The
 i
-≤1000
-);
-s
+-th line (
+1≤i≤n
+) contains a single string of length
+n
+. Its
+j
+-th character (
+1≤j≤n
+) is equal to "." if the cell in the
 i
-indicates the opportunity to buy shares at the price of
-s
-i
-bourles.
-The following line contains
-m
-integers
-b
-1
-,
-b
-2
-,…,
-b
-m
-(
-1≤
-b
-i
-≤1000
-);
-b
-i
-indicates the opportunity to sell shares at the price of
-b
-i
-bourles.
+-th row and the
+j
+-th column is free; it is equal to "#" if it's occupied.
+You can assume that the board contains at least one free cell.
 Output
-Output a single integer — the maximum number of bourles you can hold after the evening.
+Output YES if the board can be tiled by Alice's pieces, or NO otherwise. You can print each letter in any case (upper or lower).
 Examples
 input
 Copy
-3 4 11
-4 2 5
-4 4 5 4
+3
+#.#
+...
+#.#
 output
 Copy
-26
+YES
 input
 Copy
-2 2 50
-5 7
-4 2
+4
+##.#
+#...
+####
+##.#
 output
 Copy
-50
+NO
+input
+Copy
+5
+#.###
+....#
+#....
+###.#
+#####
+output
+Copy
+YES
+input
+Copy
+5
+#.###
+....#
+#....
+....#
+#..##
+output
+Copy
+NO
 Note
-In the first example test, you have
-11
-bourles in the morning. It's optimal to buy
-5
-shares of a stock at the price of
-2
-bourles in the morning, and then to sell all of them at the price of
-5
-bourles in the evening. It's easy to verify that you'll have
-26
-bourles after the evening.
-In the second example test, it's optimal not to take any action.
+The following sketches show the example boards and their tilings if such tilings exist:

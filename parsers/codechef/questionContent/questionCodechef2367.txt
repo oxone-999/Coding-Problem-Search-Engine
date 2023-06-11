@@ -1,36 +1,119 @@
-Chef and Queries
+Coordinate Compression 
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-As part of his daily job, Chef has to solve problems involving sets. Till now, Chef has been using inefficient methods to solve his set related problem, wasting a lot of his precious time. He has agreed to pay you a lot of money for solving the following problem for him efficiently.
-First, Chef needs to perform Q operations on a set. Each operation is either:
-1. Add a number to the set (if this number is NOT already present in the set).
-2. Erase a number from the set (if this number exists in the set).
-Then, he needs to find the sum of all elements of the set after performing these Q queries. Your job is to find this sum for him quickly.
+Read problems statements in Hindi, Mandarin chinese , Russian and Vietnamese as well.
+You are given a sequence of integers
+A
+1
+,A
+2
+,…,A
+N
+. For an integer
+K, let's define a
+K-compressed sequence
+B
+1
+,B
+2
+,…,B
+N
+as follows:
+for each valid
+i,
+B
+i
+is a positive integer
+for each valid
+i, if there are exactly
+X numbers smaller than or equal to
+A
+i
+in the subsequence
+A
+max(1,i−K)
+,…,A
+min(N,i+K)
+, then there must be exactly
+X numbers smaller than or equal to
+B
+i
+in the subsequence
+B
+max(1,i−K)
+,…,B
+min(N,i+K)
+B
+1
++B
+2
++⋯+B
+N
+is minimum possible
+You may notice that for
+K=N−1 or
+K=N, this becomes the well-known technique of coordinate compression.
+For example, consider the sequence
+A=[4,2,8,1,4,3,8,1]. If we choose
+K=1, then the
+K-compressed sequence will be
+B=[2,1,2,1,2,1,2,1]. The sum of its elements is
+12, which is the minimum.
+For a given integer
+S, find the number of values of
+K (
+0≤K≤N) such that the sum of elements of the
+K-compressed sequence does not exceed
+S.
 Input
-The first line of input contains four integers — Q, S1, A, B. S1 is the first number in the operations. A and B are special constants explained later.
-Every operation Si is represented by a single integer. If Si is odd, then it represents the first operation, otherwise the second type, and in both of them the integer you have to add/delete equals [Si / 2], where [] is the greatest integer (or floor) function.
-Si = (A*Si-1 + B) mod 232 when i > 1.
-Note: In this problem, the time limit is very tight. Using built-in data structures, such as set/unordered_set in C++ or TreeSet/HashSet in Java, may lead to a Time Limit Exceed verdict.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+S.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
 Output
-Output a single line containing a single integer — sum of elements in the set after Q queries.
+For each test case, print a single line containing one integer — the number of values of
+K such that the sum of the compressed sequence is
+≤S.
 Constraints
-1 ≤ Q ≤ 107
-1 ≤ S1, A, B ≤ 109
-Example
-Input:
-5 1 1 1
-
-Output:
-3
-Input:
-10000000 777777777 777777777 777777777
-
-Output:
-5362358669068782
+1≤T≤3
+1≤N≤10
+5
+1≤S≤10
+9
+0≤A
+i
+≤10
+9
+for each valid
+i
+Subtasks
+Subtask #1 (10 points):
+1≤N≤100
+Subtask #2 (30 points):
+1≤N≤1,000
+Subtask #3 (60 points): original constraints
+Sample 1:
+Input
+Output
+2
+4 8
+2 7 1 12
+8 20
+4 2 8 1 4 3 8 1
+2
+4
 Explanation:
-The sequence {Si} is 1, 2, 3, 4, 5:
-Operation 1, 1 mod 2 = 1, add number [1 / 2] = 0 to set, sum is 0.
-Operation 2, 2 mod 2 = 0, erase number [2 / 2] = 1 from set, 1 is not in set, so nothing happens, sum is 0.
-Operation 3, 3 mod 2 = 1, add number [3 / 2] = 1 to set, sum is 1.
-Operation 4, 4 mod 2 = 0, erase number [4 / 2] = 2 from set, 2 is not in set, so nothing happens, sum is 1.
-Operation 5, 5 mod 2 = 1, add number [5 / 2] = 2 to set, sum is 3.
+Example case 1: The possible values of
+K are
+0 and
+1.

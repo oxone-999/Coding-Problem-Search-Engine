@@ -1,171 +1,146 @@
-B. Big Vova
-time limit per test1 second
+E. Egor in the Republic of Dagestan
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alexander is a well-known programmer. Today he decided to finally go out and play football, but with the first hit he left a dent on the new Rolls-Royce of the wealthy businessman Big Vova. Vladimir has recently opened a store on the popular online marketplace "Zmey-Gorynych", and offers Alex a job: if he shows his programming skills by solving a task, he'll work as a cybersecurity specialist. Otherwise, he'll be delivering some doubtful products for the next two years.
-You're given
+Egor is a famous Russian singer, rapper, actor and blogger, and finally he decided to give a concert in the sunny Republic of Dagestan.
+There are
 n
-positive integers
-a
+cities in the republic, some of them are connected by
+m
+directed roads without any additional conditions. In other words, road system of Dagestan represents an arbitrary directed graph. Egor will arrive to the city
 1
-,
-a
-2
-,…,
-a
+, travel to the city
 n
-. Using each of them exactly at once, you're to make such sequence
-b
+by roads along some path, give a concert and fly away.
+As any famous artist, Egor has lots of haters and too annoying fans, so he can travel only by safe roads. There are two types of the roads in Dagestan, black and white: black roads are safe at night only, and white roads — in the morning. Before the trip Egor's manager's going to make a schedule: for each city he'll specify it's color, black or white, and then if during the trip they visit some city, the only time they can leave it is determined by the city's color: night, if it's black, and morning, if it's white. After creating the schedule Egor chooses an available path from
 1
-,
-b
-2
-,…,
-b
+to
 n
-that sequence
-c
+, and for security reasons it has to be the shortest possible.
+Egor's manager likes Dagestan very much and wants to stay here as long as possible, so he asks you to make such schedule that there would be no path from
 1
-,
-c
-2
-,…,
-c
+to
 n
-is lexicographically maximal, where
-c
-i
-=GCD(
-b
-1
-,…,
-b
-i
-)
-- the greatest common divisor of the first
-i
-elements of
-b
-.
-Alexander is really afraid of the conditions of this simple task, so he asks you to solve it.
-A sequence
-a
-is lexicographically smaller than a sequence
-b
-if and only if one of the following holds:
-a
-is a prefix of
-b
-, but
-a≠b
-;
-in the first position where
-a
-and
-b
-differ, the sequence
-a
-has a smaller element than the corresponding element in
-b
-.
+or the shortest path's length would be greatest possible.
+A path is one city or a sequence of roads such that for every road (excluding the first one) the city this road goes from is equal to the city previous road goes into. Egor can move only along paths consisting of safe roads only.
+The path length is equal to the number of roads in it. The shortest path in a graph is a path with smallest length.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
+The first line contains two integers
+n
+,
+m
+(
+1≤n≤500000
+,
+0≤m≤500000
+) — the number of cities and the number of roads.
+The
+i
+-th of next
+m
+lines contains three integers —
+u
+i
+,
+v
+i
+and
 t
-(
-1≤t≤
-10
-3
-). Description of the test cases follows.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤
-10
-3
-)  — the length of the sequence
-a
-.
-The second line of each test case contains
-n
-integers
-a
-1
-,…,
-a
-n
+i
 (
 1≤
-a
+u
 i
-≤
-10
-3
-)  — the sequence
-a
-.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-3
-.
+,
+v
+i
+≤n
+,
+t
+i
+∈{0,1}
+) — numbers of cities connected by road and its type, respectively (
+0
+— night road,
+1
+— morning road).
 Output
-For each test case output the answer in a single line  — the desired sequence
-b
-. If there are multiple answers, print any.
-Example
+In the first line output the length of the desired path (or
+−1
+, if it's possible to choose such schedule that there's no path from
+1
+to
+n
+).
+In the second line output the desired schedule — a string of
+n
+digits, where
+i
+-th digit is
+0
+, if the
+i
+-th city is a night one, and
+1
+if it's a morning one.
+If there are multiple answers, print any.
+Examples
 input
 Copy
-7
-2
-2 5
-4
-1 8 2 3
-3
-3 8 9
-5
-64 25 75 100 50
-1
-42
-6
-96 128 88 80 52 7
-5
-2 4 8 16 17
+3 4
+1 2 0
+1 3 1
+2 3 0
+2 3 1
 output
 Copy
-5 2 
-8 2 1 3 
-9 3 8 
-100 50 25 75 64 
-42 
-128 96 80 88 52 7 
-17 2 4 8 16 
-Note
-In the first test case of the example, there are only two possible permutations
-b
- —
-[2,5]
-and
-[5,2]
-: for the first one
-c=[2,1]
-, for the second one
-c=[5,1]
-.
-In the third test case of the example, number
-9
-should be the first in
-b
-, and
-GCD(9,3)=3
-,
-GCD(9,8)=1
-, so the second number of
-b
-should be
+2
+011
+input
+Copy
+4 8
+1 1 0
+1 3 0
+1 3 1
+3 2 0
+2 1 0
+3 4 1
+2 4 0
+2 4 1
+output
+Copy
 3
-.
-In the seventh test case of the example, first four numbers pairwise have a common divisor (a power of two), but none of them can be the first in the optimal permutation
-b
-.
+1101
+input
+Copy
+5 10
+1 2 0
+1 3 1
+1 4 0
+2 3 0
+2 3 1
+2 5 0
+3 4 0
+3 4 1
+4 2 1
+4 5 0
+output
+Copy
+-1
+11111
+Note
+For the first sample, if we paint city
+1
+white, the shortest path is
+1→3
+. Otherwise, it's
+1→2→3
+regardless of other cities' colors.
+For the second sample, we should paint city
+3
+black, and there are both black and white roads going from
+2
+to
+4
+. Note that there can be a road connecting a city with itself.

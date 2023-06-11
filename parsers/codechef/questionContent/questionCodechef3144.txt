@@ -1,40 +1,97 @@
-Chef and LCS
+Picking Fruit for Chefs
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Recently, Chef learned how to solve the Longest common subsequence problem. Being a fan of Ekta Kapoor1, he really likes problems which require finding something kth. Please help him solve one such problem he encountered.
-Chef wants to know the lexicographically kth longest common subsequence of any two given strings A and B. In other words, let L be the length of LCS(A, B), S be the sorted set of all common sequences of A and B with length L, you should find Sk. Keep in mind that all elements of a set are distinct.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+The chefs are making fruit salads today! There are
+k chefs in total, each making a different type of salad. However, the chefs have run out of fruit, so they sent
+m workers to pick fruit for them.
+Some workers are fast, but some are really slow. Specifically, for each worker, we know two integers
+a and
+b, which mean that this worker can pick between
+a and
+b units of fruit today (inclusive). There are
+n groups of workers; all workers in each group have the same
+a,b.
+The workers don't care about the number of units of fruit they pick, so they choose these numbers randomly. A worker with parameters
+a,
+b will choose an integer between
+a and
+b uniformly randomly and pick this number of units of fruit today.
+If the number of units of fruit picked by all workers together at the end of the day is
+S, the chefs define the goodness of the day as
+F(S)=S
+k
+for some reason. They would like you to find the expected value of
+F. It can be proven that this expected value can be written as a fraction
+P/Q, where
+P≥0 and
+Q>0 are coprime integers. You should calculate
+P⋅Q
+−1
+modulo
+998244353, where
+Q
+−1
+denotes the modular inverse of
+Q modulo
+998244353. (It is guaranteed that this inverse exists and is unique.)
 Input
-The first line of input contains two integers n and k. The second line contains the string A, and the third contains the string B. Lengths of both A and B equal n.
+The first line of the input contains two space-separated integers
+k and
+m.
+The second line contains a single integer
+n.
+Each of the following
+n lines contains three space-separated integers
+A,
+B and
+C denoting a group of workers; there are
+C workers in this group, with
+a=A and
+b=B for each of them.
 Output
-Output lexicographically kth longest common subsequence. If such a sequence doesn't exist, output -1.
+Print a single line containing one integer - the value of
+P⋅Q
+−1
+modulo
+998244353.
 Constraints
-1 ≤ n ≤ 1000
-1 ≤ k ≤ 109
-Each character of A and B is a lowercase Latin letter.
-Example
-Input:
-3 3
-abc
-cba
-
-Output:
-c
-Input:
-5 5
-abcba
-bacab
-
-Output:
--1
-Input:
+1≤n⋅k≤10
+5
+1≤A≤B≤10
+9
+1≤C<998244353
+the sum of all
+C is equal to
+m
+Subtasks
+Subtask #1 (20 points):
+n,k≤50
+Subtask #2 (30 points):
+n,k≤200
+Subtask #3 (50 points): original constraints
+Sample 1:
+Input
+Output
 2 2
-aa
-ab
-
-Output:
--1
+2
+1 1 1
+1 2 1
+499122183
 Explanation:
-Example case 1. L = LCS(A, B) = 1. There are three common sequences with length L, S = {"a", "b", "c"}. Answer is "c".
-Example case 2. L = LCS(A, B) = 3. There are four common sequences with length L, S = {"aca", "acb", "bca", "bcb"}. Answer is "-1".
-Example case 3. L = LCS(A, B) = 1. There is only one distinct common sequence with length L, S = {"a"}. Answer is "-1".
-Note: 1Chef is not really a fan of Ekta Kapoor.
+There are two workers. The first worker always picks
+1 unit of fruit. The second worker can pick
+1 or
+2 units. If he picks
+1 unit,
+S=2 and
+F=4. If he picks
+2 units,
+S=3 and
+F=9. Each situation happens with probability
+1/2, so the expected value is
+4/2+9/2=13/2. This means
+P=13 and
+Q=2, so
+Q
+−1
+=499122177.

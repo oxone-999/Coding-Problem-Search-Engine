@@ -1,96 +1,94 @@
-C. Dušan's Railway
+F. Coins
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-As you may already know, Dušan is keen on playing with railway models. He has a big map with cities that are connected with railways. His map can be seen as a graph where vertices are cities and the railways connecting them are the edges. So far, the graph corresponding to his map is a tree. As you already know, a tree is a connected acyclic undirected graph.
-He is curious to find out whether his railway can be optimized somehow. He wants to add so-called shortcuts, which are also railways connecting pairs of cities. This shortcut will represent the railways in the unique path in the tree between the pair of cities it connects. Since Dušan doesn't like repeating the railways, he has also defined good paths in his newly obtained network (notice that after adding the shortcuts, his graph is no more a tree). He calls a path good, if no edge appears more than once, either as a regular railway edge or as an edge represented by some shortcut (Every shortcut in a good path has length 1, but uses up all the edges it represents - they can't appear again in that path). Having defined good paths, he defines good distance between two cities to be the length of the shortest good path between them. Finally, the shortcutting diameter of his network is the largest good distance between any two cities.
-Now he is curious to find out whether it is possible to achieve shortcutting diameter less or equal than
-k
-, while adding as few shortcuts as possible.
-Your solution should add no more than
-10⋅n
-shortcuts.
+A famous gang of pirates, Sea Dogs, has come back to their hideout from one of their extravagant plunders. They want to split their treasure fairly amongst themselves, that is why You, their trusted financial advisor, devised a game to help them:
+All of them take a sit at their round table, some of them with the golden coins they have just stolen. At each iteration of the game if one of them has equal or more than 2 coins, he is eligible to the splitting and he gives one coin to each pirate sitting next to him. If there are more candidates (pirates with equal or more than 2 coins) then You are the one that chooses which one of them will do the splitting in that iteration. The game ends when there are no more candidates eligible to do the splitting.
+Pirates can call it a day, only when the game ends. Since they are beings with a finite amount of time at their disposal, they would prefer if the game that they are playing can end after finite iterations, and if so, they call it a good game. On the other hand, if no matter how You do the splitting, the game cannot end in finite iterations, they call it a bad game. Can You help them figure out before they start playing if the game will be good or bad?
 Input
-The first line in the standard input contains an integer
+The first line of input contains two integer numbers
 n
+and
+k
 (
 1≤n≤
 10
-4
-), representing the number of the cities in Dušan's railway map, and an integer k (
-3≤k≤n
-) representing the shortcutting diameter that he wants to achieve.
-Each of the following
-n−1
-lines will contain two integers
-u
+9
+,
+0≤k≤2⋅
+10
+5
+), where
+n
+denotes total number of pirates and
+k
+is the number of pirates that have any coins.
+The next
+k
+lines of input contain integers
+a
 i
 and
-v
+b
 i
 (
 1≤
-u
+a
 i
+≤n
 ,
-v
+1≤
+b
 i
-≤n,
-u
+≤
+10
+9
+), where
+a
 i
-≠
-v
-i
-), meaning that there is a railway between cities
-u
-i
+denotes the index of the pirate sitting at the round table (
+n
 and
-v
+1
+are neighbours) and
+b
 i
-.
+the total number of coins that pirate
+a
+i
+has at the start of the game.
 Output
-The first line of the output should contain a number
-t
-representing the number of the shortcuts that were added.
-Each of the following
-t
-lines should contain two integers
-u
-i
-and
-v
-i
-, signifying that a shortcut is added between cities
-u
-i
-and
-v
-i
-.
-Example
+Print
+1
+if the game is a good game: There is a way to do the splitting so the game ends after finite number of iterations.
+Print
+−1
+if the game is a bad game: No matter how You do the splitting the game does not end in finite number of iterations.
+Examples
 input
 Copy
-10 3
+4 2
 1 2
-2 3
-3 4
-4 5
-5 6
-6 7
-7 8
-8 9
-9 10
+2 2
 output
 Copy
-8
-3 7
-3 5
-3 6
-3 1
-7 9
-7 10
-7 4
-7 5
+1
+input
+Copy
+6 2
+2 3
+4 1
+output
+Copy
+1
+input
+Copy
+3 2
+1 1
+2 2
+output
+Copy
+-1
 Note
-Notice that adding a shortcut between all cities and city 1 will make a graph theoretic diameter become 2. On the other hand, the paths obtained that way might not be good, since some of the edges might get duplicated. In the example, adding a shortcut between all cities and city 1 doesn't create a valid solution, because for cities 5 and 10 the path that uses shortcuts 5-1 and 1-10 is not valid because it uses edges 1-2, 2-3, 3-4, 4-5 twice.
+In the third example the game has no end, because You always only have only one candidate, after whose splitting you end up in the same position as the starting one.

@@ -1,172 +1,156 @@
-E. Long Permutation
-time limit per test4 seconds
-memory limit per test256 megabytes
+C. Team-Building
+time limit per test3 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-A permutation is a sequence of integers from
-1
-to
+The new academic year has started, and Berland's university has
 n
-of length
-n
-containing each number exactly once. For example,
-[1]
-,
-[4,3,5,1,2]
-,
-[3,2,1]
- — are permutations, and
-[1,1]
-,
-[4,3,1]
-,
-[2,3,4]
- — no.
-Permutation
-a
-is lexicographically smaller than permutation
-b
-(they have the same length
-n
-), if in the first index
-i
-in which they differ,
-a[i]<b[i]
-. For example, the permutation
-[1,3,2,4]
-is lexicographically smaller than the permutation
-[1,3,4,2]
-, because the first two elements are equal, and the third element in the first permutation is smaller than in the second.
-The next permutation for a permutation
-a
-of length
-n
- — is the lexicographically smallest permutation
-b
-of length
-n
-that lexicographically larger than
-a
-. For example:
-for permutation
-[2,1,4,3]
-the next permutation is
-[2,3,1,4]
-;
-for permutation
-[1,2,3]
-the next permutation is
-[1,3,2]
-;
-for permutation
-[2,1]
-next permutation does not exist.
-You are given the number
-n
- — the length of the initial permutation. The initial permutation has the form
-a=[1,2,…,n]
-. In other words,
-a[i]=i
-(
-1≤i≤n
-).
-You need to process
-q
-queries of two types:
-1
-l
-r
-: query for the sum of all elements on the segment
-[l,r]
-. More formally, you need to find
-a[l]+a[l+1]+…+a[r]
-.
-2
-x
-:
-x
-times replace the current permutation with the next permutation. For example, if
-x=2
-and the current permutation has the form
-[1,3,4,2]
-, then we should perform such a chain of replacements
-[1,3,4,2]→[1,4,2,3]→[1,4,3,2]
-.
-For each query of the
-1
--st type output the required sum.
+first-year students. They are divided into
+k
+academic groups, however, some of the groups might be empty. Among the students, there are
+m
+pairs of acquaintances, and each acquaintance pair might be both in a common group or be in two different groups.
+Alice is the curator of the first years, she wants to host an entertaining game to make everyone know each other. To do that, she will select two different academic groups and then divide the students of those groups into two teams. The game requires that there are no acquaintance pairs inside each of the teams.
+Alice wonders how many pairs of groups she can select, such that it'll be possible to play a game after that. All students of the two selected groups must take part in the game.
+Please note, that the teams Alice will form for the game don't need to coincide with groups the students learn in. Moreover, teams may have different sizes (or even be empty).
 Input
-The first line contains two integers
+The first line contains three integers
 n
+,
+m
+and
+k
 (
-2≤n≤2⋅
-10
-5
-) and
-q
-(
-1≤q≤2⋅
-10
-5
-), where
+1≤n≤500000
+;
+0≤m≤500000
+;
+2≤k≤500000
+) — the number of students, the number of pairs of acquaintances and the number of groups respectively.
+The second line contains
 n
- — the length of the initial permutation, and
-q
- — the number of queries.
-The next
-q
-lines contain a single query of the
-1
--st or
-2
--nd type. The
-1
--st type query consists of three integers
+integers
+c
 1
 ,
-l
+c
+2
+,…,
+c
+n
+(
+1≤
+c
+i
+≤k
+), where
+c
+i
+equals to the group number of the
+i
+-th student.
+Next
+m
+lines follow. The
+i
+-th of them contains two integers
+a
+i
 and
-r
-(1≤l≤r≤n)
-, the
-2
--nd type query consists of two integers
-2
+b
+i
+(
+1≤
+a
+i
+,
+b
+i
+≤n
+), denoting that students
+a
+i
 and
-x
-(1≤x≤
-10
-5
-)
-.
-It is guaranteed that all requests of the
-2
--nd type are possible to process.
+b
+i
+are acquaintances. It's guaranteed, that
+a
+i
+≠
+b
+i
+, and that no (unordered) pair is mentioned more than once.
 Output
-For each query of the
-1
--st type, output on a separate line one integer — the required sum.
-Example
+Print a single integer — the number of ways to choose two different groups such that it's possible to select two teams to play the game.
+Examples
 input
 Copy
-4 4
-1 2 4
-2 3
-1 1 2
-1 3 4
+6 8 3
+1 1 2 2 3 3
+1 3
+1 5
+1 6
+2 5
+2 6
+3 4
+3 5
+5 6
 output
 Copy
-9
-4
-6
+2
+input
+Copy
+4 3 3
+1 1 2 2
+1 2
+2 3
+3 4
+output
+Copy
+3
+input
+Copy
+4 4 2
+1 1 1 2
+1 2
+2 3
+3 1
+1 4
+output
+Copy
+0
+input
+Copy
+5 5 2
+1 2 1 2 1
+1 2
+2 3
+3 4
+4 5
+5 1
+output
+Copy
+0
 Note
-Initially, the permutation has the form
-[1,2,3,4]
-. Queries processing is as follows:
-2+3+4=9
-;
-[1,2,3,4]→[1,2,4,3]→[1,3,2,4]→[1,3,4,2]
-;
-1+3=4
-;
-4+2=6
+The acquaintances graph for the first example is shown in the picture below (next to each student there is their group number written).
+In that test we can select the following groups:
+Select the first and the second groups. For instance, one team can be formed from students
+1
+and
+4
+, while other team can be formed from students
+2
+and
+3
+.
+Select the second and the third group. For instance, one team can be formed
+3
+and
+6
+, while other team can be formed from students
+4
+and
+5
+.
+We can't select the first and the third group, because there is no way to form the teams for the game.
+In the second example, we can select any group pair. Please note, that even though the third group has no students, we still can select it (with some other group) for the game.

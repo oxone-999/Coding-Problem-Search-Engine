@@ -1,105 +1,94 @@
-PerMEXuation
+Different Neighbours
 Problem
-You are given an integer
-N and a (
-0-indexed) binary string
-A having length
-N+1.
-Find any permutation
-P of
-0,1,2,...,N−1 (or determine that it does not exist) that satisfies the following conditions for all
-i (
-0≤i≤N):
-if
-A
-i
-=0: No contiguous segment of
-P has
-mex equal to
-i
-if
-A
-i
-=1: There exists at least one contiguous segment of
-P that has
-mex equal to
-i
-If multiple permutations exist that satisfy the given conditions, print any.
-Note:
-mex of a segment is the smallest non-negative number that does not occur in that segment.
-Input Format
-The first line contains the number of test cases
-T. Description of the test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line of each test case contains the binary string
-A of length
-N+1.
-Output Format
-For each test case print :
-Yes if there exists a permutation
-P that satisfies the conditions described in the statement, followed by the permutation
-P in the next line (If multiple permutations exist that satisfy the given conditions, print any).
-No otherwise.
-You may print each character of
-Yes and
-No in uppercase or lowercase (for example,
-yes,
-yEs,
-YES will be considered identical).
+###Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given an empty grid with
+N rows (numbered
+1 through
+N) and
+M columns (numbered
+1 through
+M). You should fill this grid with integers in a way that satisfies the following rules:
+For any three cells
+c
+1
+,
+c
+2
+and
+c
+3
+such that
+c
+1
+shares a side with
+c
+2
+and another side with
+c
+3
+, the integers written in cells
+c
+2
+and
+c
+3
+are distinct.
+Let's denote the number of different integers in the grid by
+K; then, each of these integers should lie between
+1 and
+K inclusive.
+K should be minimum possible.
+Find the minimum value of
+K and a resulting (filled) grid. If there are multiple solutions, you may find any one.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains two space-separated integers
+N and
+M.
+Output
+For each test case, print
+N+1 lines.
+The first line should contain a single integer — the minimum
+K.
+Each of the following
+N lines should contain
+M space-separated integers between
+1 and
+K inclusive. For each valid
+i,j, the
+j-th integer on the
+i-th line should denote the number in the
+i-th row and
+j-th column of the grid.
 Constraints
-1≤T≤10
-4
-2≤N≤3⋅10
+1≤T≤500
+1≤N,M≤50
+the sum of
+N⋅M over all test cases does not exceed
+7⋅10
 5
-∣A∣=N+1
-It is guaranteed that the sum of
-N over all test cases does not exceed
-3⋅10
-5
-.
+Subtasks
+Subtask #1 (100 points): original constraints
 Sample 1:
 Input
 Output
-4
 2
-111
-5
-110100
-5
-110101
-7
-11100111
-Yes
-0 1
-No
-Yes
-0 2 1 4 3
-Yes
-0 1 3 4 2 5 6
+1 1
+2 3
+1
+1
+3
+1 1 2
+2 3 3
 Explanation:
-Test case-1: One of the possible permutations satisfying the given conditions is [
-0,1] because:
-mex([1])=0. Therefore the condition is satisfied for
-i=0.
-mex([0])=1. Therefore the condition is satisfied for
-i=1.
-mex([0,1])=2. Therefore the condition is satisfied for
-i=2.
-Test case-2: It can be proven that no permutation exists that satisfies the given conditions.
-Test case-3: One of the possible permutations satisfying the given conditions is [
-0,2,1,4,3] because:
-mex([2])=0. Therefore the condition is satisfied for
-i=0.
-mex([0,2])=1. Therefore the condition is satisfied for
-i=1.
-There does not exist any segment with
-mex=2. Therefore the condition is satisfied for
-i=2.
-mex([0,2,1])=3. Therefore the condition is satisfied for
-i=3.
-There does not exist any segment with
-mex=4. Therefore the condition is satisfied for
-i=4.
-mex([0,2,1,4,3])=5. Therefore the condition is satisfied for
-i=5.
+Example case 1: There is only one cell in the grid, so the only valid way to fill it is to write
+1 in this cell. Note that we cannot use any other integer than
+1.
+Example case 2: For example, the integers written in the neighbours of cell
+(2,2) are
+1,
+2 and
+3; all these numbers are pairwise distinct and the integer written inside the cell
+(2,2) does not matter. Note that there are pairs of neighbouring cells with the same integer written in them, but this is OK.

@@ -1,117 +1,184 @@
-Lulymp
+Finding Sum
 Problem
-Once in the magic city of Lulympus, students were preparing for the final stage of Lulympiad, the national team selection for the IOI. After solving 3SAT in polynomial time complexity, learning the 4D convex hull trick and many other trivial techniques, Chef Lulus AKed the "Baraj Seniori" and decided to take a break and solve the following trivial problem:
-You are given a positive integer
-N. Let
-P be the set of all permutations of length
-N. Find the value of the following expression:
-∑
-p∈P
+You are given two integers
+N and
+M.
+Find the sum of
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+, over all pairs of arrays
+A and
+B such that
+A and
+B consists of
+N elements
+A
+i
+and
+B
+i
+are integers, where
+0≤A
+i
+,B
+i
+≤M
 ∑
 i=1
 N
-gcd(p
-1
-,p
-2
-,…,p
+A
 i
-).
-Here
-gcd(p
-1
-,p
-2
-,…,p
+=∑
+i=1
+N
+B
 i
-) denotes their greatest common divisor.
-Since the answer can be large, print it modulo
-MOD.
+=M
+Since the sum might be large, please print it modulo
+998244353.
 Input Format
-The first and only line of input contains two integers
-N,
-MOD - the parameters defined in the statement.
+The first line of input contains a single integer
+T, denoting the number of test cases.
+The only line of each test case contains two positive integers
+N and
+M, the number of elements of
+A and the sum of elements of
+A respectively.
 Output Format
-Print one integer, the value of
-∑
-p∈P
-∑
-i=1
-N
-gcd(p
-1
-,p
-2
-,…,p
-i
-) modulo
-MOD.
+For each test case, output on a new line the required sum modulo
+998244353.
 Constraints
-1≤N≤10
-6
+1≤T≤10
+3
+1≤N≤5⋅10
+2
+1≤M≤10
+5
+The sum of
+M over all test cases won't exceed
 10
-8
-≤MOD≤10
-9
-MOD is a prime number
+5
+.
 Sample 1:
 Input
 Output
-2 100001029
-5
-Explanation:
-Test case 1:
-P={[1,2],[2,1]}.
-For
-p=[1,2],
-∑
-i=1
-N
-gcd(p
-1
-,p
-2
-,…,p
-i
-)=gcd(1)+gcd(1,2)=1+1=2
-For
-p=[2,1],
-∑
-i=1
-N
-gcd(p
-1
-,p
-2
-,…,p
-i
-)=gcd(2)+gcd(2,1)=2+1=3
-Therefore
-∑
-p∈P
-∑
-i=1
-N
-gcd(p
-1
-,p
-2
-,…,p
-i
-)=2+3=5.
-Sample 2:
-Input
-Output
-3 100000921
+4
+1 5
+2 3
+3 1
+343 343
+0
+160
 24
+46648820
 Explanation:
-The permutations of length 3 are
-[1,2,3]
-[1,3,2]
-[2,1,3]
-[2,3,1]
-[3,1,2]
-[3,2,1]
-The first permutation contributes with
-gcd(1)+gcd(1,2)+gcd(1,2,3)=3. Similarly for all permutations summing the contributions we get
-24.
+Testcase 3: There are 9 pairs of
+(A,B) which fit all the constraints:
+([1,0,0],[1,0,0]).
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+=0
+([0,1,0],[0,1,0]).
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+=0
+([0,0,1],[0,0,1]).
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+=0
+([1,0,0],[0,1,0]).
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+=4
+([1,0,0],[0,0,1]).
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+=4
+([0,1,0],[1,0,0]).
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+=4
+([0,1,0],[0,0,1]).
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+=4
+([0,0,1],[1,0,0]).
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+=4
+([0,0,1],[0,1,0]).
+(∑
+i=1
+N
+∣A
+i
+−B
+i
+∣)
+2
+=4
+The total sum of these is
+24, which is the answer.

@@ -1,30 +1,173 @@
-Counting The Important Pairs
+Expected Difference
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-[a simple graph is an undirected graph that has no loops (edges connected at both ends to the same vertex) and no more than one edge between any two different vertices.]
--Retrieved from http://en.wikipedia.org/wiki/Graph_(mathematics)
-The road system at Byteland can be seen as a simple graph in which the vertices represented by the cities and the edges represented by the roads connected two different cities. Besides, the road system is connected it means people can travel between any two cities. It is decided by the president that two roads will be concurrently upgraded in the next month. Since it may take a couple of weeks to get the work done, two roads should be chosen so that the connectivity of the system is hold during the up-gradation process. More clearly, people still can go between any pair of cities without using that two roads.
-Which roads should be upgraded is not decided yet. There may be no way to choose such a two roads or may be many ways. Your mission is counting how many pair of roads cannot be chosen. Notice that two roads must be different and we consider only un-ordered pair ((1, 2) is the same as (2,1)).
-Input
-The first line of the input contains two integers N M which are the number of cities and roads respectively. Each line in the next M contains two integers u v which means there is a road connects the uth city to the vth city.
-Output
-Output a single line contains the number of way that two roads cannot be chosen for upgradation.
+Alice initially had
+X stones. She divides the
+X stones into
+N piles where the
+i
+th
+pile contains
+A
+i
+stones.
+Now, she randomly selects a subset of piles
+S such that every subset has an equal probability of getting selected.
+After selecting the subset, for every
+1≤i≤N,
+If
+i∈S, Alice colours all the stones in the
+i
+th
+pile RED.
+If
+i∈
+/
+S, Alice colours all the stones in the
+i
+th
+pile BLUE.
+Let the total number of RED coloured stones be
+R and the number of BLUE coloured stones be
+B. Alice now wonders what the expected value of
+∣R−B∣ is. Can you help Alice? Output the answer modulo
+998244353.
+Note that,
+∣x∣ denotes the absolute value of
+x. For example,
+∣−4∣=4 and
+∣7∣=7.
+Input Format
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
+The first line of each test case contains two integers
+X and
+N — the total number of stones and the number of piles of stones.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+denoting the number of stones in each pile.
+Output Format
+For each test case, output the expected value of
+∣R−B∣ modulo
+998244353.
+Formally, let
+M=998244353. It can be shown that the answer can be expressed as an irreducible fraction
+q
+p
+, where
+p and
+q are integers and
+q
+
+≡0(modM). Output the integer equal to
+p⋅q
+−1
+modM. In other words, output such an integer
+x that
+0≤x<M and
+x⋅q≡p(modM).
 Constraints
-1 ≤ N ≤ 100,000
-1 ≤ M ≤ 300,000
-1 ≤ u, v ≤ N
-u ≠ v
-There is at most one road between any two cities.
-Example
-Input:
-5 6
-1 2
-2 3
-1 3
-3 4
-4 5
-3 5
-Output:
-6
-Explanation
-There are 5 cities and 6 roads (numbered from 1 to 6). There are 6 pairs of roads cannot be chosen which are (1, 2), (1, 3), (2, 3), (4, 5), (4, 6) and (5, 6).
+1≤T≤1000
+1≤N≤X≤3⋅10
+5
+1≤A
+i
+≤X
+A
+1
++A
+2
++…+A
+N
+=X
+Sum of
+X over all test cases does not exceed
+3⋅10
+5
+.
+Sum of
+N over all test cases does not exceed
+3⋅10
+5
+.
+Sample 1:
+Input
+Output
+3
+2 2
+1 1
+4 3
+2 1 1
+14 4
+2 5 6 1
+1
+2
+499122183
+Explanation:
+Test Case
+1:
+If
+S=[], then colouring of piles is:
+A=[1,1], so
+∣R−B∣=2
+If
+S=[1], then colouring of piles is:
+A=[1,1], so
+∣R−B∣=0
+If
+S=[2], then colouring of piles is:
+A=[1,1], so
+∣R−B∣=0
+If
+S=[1,2], then colouring of piles is:
+A=[1,1], so
+∣R−B∣=2
+Therefore expected value of
+∣R−B∣=1.
+Test Case
+2:
+If
+S=[], then colouring of piles is:
+A=[2,1,1], so
+∣R−B∣=4
+If
+S=[1], then colouring of piles is:
+A=[2,1,1], so
+∣R−B∣=0
+If
+S=[2], then colouring of piles is:
+A=[2,1,1], so
+∣R−B∣=2
+If
+S=[3], then colouring of piles is:
+A=[2,1,1], so
+∣R−B∣=2
+If
+S=[1,2], then colouring of piles is:
+A=[2,1,1], so
+∣R−B∣=2
+If
+S=[2,3], then colouring of piles is:
+A=[2,1,1], so
+∣R−B∣=0
+If
+S=[1,3], then colouring of piles is:
+A=[2,1,1], so
+∣R−B∣=2
+If
+S=[1,2,3], then colouring of piles is:
+A=[2,1,1], so
+∣R−B∣=4
+Therefore the expected value of
+∣R−B∣=2
+Test Case
+3: In this case the expected value of
+∣R−B∣=
+16
+104
+≡499122183(mod998244353)

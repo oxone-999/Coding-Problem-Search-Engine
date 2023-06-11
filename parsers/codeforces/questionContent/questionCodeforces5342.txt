@@ -1,41 +1,45 @@
-F. Pens And Days Of Week
-time limit per test3 seconds
+D. Lie or Truth
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Stepan has n pens. Every day he uses them, and on the i-th day he uses the pen number i. On the (n + 1)-th day again he uses the pen number 1, on the (n + 2)-th — he uses the pen number 2 and so on.
-On every working day (from Monday to Saturday, inclusive) Stepan spends exactly 1 milliliter of ink of the pen he uses that day. On Sunday Stepan has a day of rest, he does not stend the ink of the pen he uses that day.
-Stepan knows the current volume of ink in each of his pens. Now it's the Monday morning and Stepan is going to use the pen number 1 today. Your task is to determine which pen will run out of ink before all the rest (that is, there will be no ink left in it), if Stepan will use the pens according to the conditions described above.
+Vasya has a sequence of cubes and exactly one integer is written on each cube. Vasya exhibited all his cubes in a row. So the sequence of numbers written on the cubes in the order from the left to the right equals to a1, a2, ..., an.
+While Vasya was walking, his little brother Stepan played with Vasya's cubes and changed their order, so now the sequence of numbers written on the cubes became equal to b1, b2, ..., bn.
+Stepan said that he swapped only cubes which where on the positions between l and r, inclusive, and did not remove or add any other cubes (i. e. he said that he reordered cubes between positions l and r, inclusive, in some way).
+Your task is to determine if it is possible that Stepan said the truth, or it is guaranteed that Stepan deceived his brother.
 Input
-The first line contains the integer n (1 ≤ n ≤ 50 000) — the number of pens Stepan has.
-The second line contains the sequence of integers a1, a2, ..., an (1 ≤ ai ≤ 109), where ai is equal to the number of milliliters of ink which the pen number i currently has.
+The first line contains three integers n, l, r (1 ≤ n ≤ 105, 1 ≤ l ≤ r ≤ n) — the number of Vasya's cubes and the positions told by Stepan.
+The second line contains the sequence a1, a2, ..., an (1 ≤ ai ≤ n) — the sequence of integers written on cubes in the Vasya's order.
+The third line contains the sequence b1, b2, ..., bn (1 ≤ bi ≤ n) — the sequence of integers written on cubes after Stepan rearranged their order.
+It is guaranteed that Stepan did not remove or add other cubes, he only rearranged Vasya's cubes.
 Output
-Print the index of the pen which will run out of ink before all (it means that there will be no ink left in it), if Stepan will use pens according to the conditions described above.
-Pens are numbered in the order they are given in input data. The numeration begins from one.
-Note that the answer is always unambiguous, since several pens can not end at the same time.
+Print "LIE" (without quotes) if it is guaranteed that Stepan deceived his brother. In the other case, print "TRUTH" (without quotes).
 Examples
 input
 Copy
-3
-3 3 3
+5 2 4
+3 4 2 3 1
+3 2 3 4 1
 output
 Copy
-2
+TRUTH
 input
 Copy
-5
-5 4 5 4 4
+3 1 2
+1 2 3
+3 1 2
 output
 Copy
-5
+LIE
+input
+Copy
+4 2 4
+1 1 1 1
+1 1 1 1
+output
+Copy
+TRUTH
 Note
-In the first test Stepan uses ink of pens as follows:
-on the day number 1 (Monday) Stepan will use the pen number 1, after that there will be 2 milliliters of ink in it;
-on the day number 2 (Tuesday) Stepan will use the pen number 2, after that there will be 2 milliliters of ink in it;
-on the day number 3 (Wednesday) Stepan will use the pen number 3, after that there will be 2 milliliters of ink in it;
-on the day number 4 (Thursday) Stepan will use the pen number 1, after that there will be 1 milliliters of ink in it;
-on the day number 5 (Friday) Stepan will use the pen number 2, after that there will be 1 milliliters of ink in it;
-on the day number 6 (Saturday) Stepan will use the pen number 3, after that there will be 1 milliliters of ink in it;
-on the day number 7 (Sunday) Stepan will use the pen number 1, but it is a day of rest so he will not waste ink of this pen in it;
-on the day number 8 (Monday) Stepan will use the pen number 2, after that this pen will run out of ink.
-So, the first pen which will not have ink is the pen number 2.
+In the first example there is a situation when Stepan said the truth. Initially the sequence of integers on the cubes was equal to [3, 4, 2, 3, 1]. Stepan could at first swap cubes on positions 2 and 3 (after that the sequence of integers on cubes became equal to [3, 2, 4, 3, 1]), and then swap cubes in positions 3 and 4 (after that the sequence of integers on cubes became equal to [3, 2, 3, 4, 1]).
+In the second example it is not possible that Stepan said truth because he said that he swapped cubes only between positions 1 and 2, but we can see that it is guaranteed that he changed the position of the cube which was on the position 3 at first. So it is guaranteed that Stepan deceived his brother.
+In the third example for any values l and r there is a situation when Stepan said the truth.

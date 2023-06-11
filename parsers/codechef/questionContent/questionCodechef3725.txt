@@ -1,116 +1,160 @@
-Palindrome Love
+Alice Potter and Wingardium Leviosa
 Problem
-It's Valentine's Month, and so Chef wants to gift a string to Chefina. He knows that Chefina likes palindromic strings. Chef has a string
-S consisting of digits from
-0 to
-9. He wants to convert this to a palindrome by performing zero or more operations, where an operation is defined as follows:
-Pick any digit and replace all of its occurrences with any other digit.
-For example, if
-S=12123, in one move it can be turned into
-14143 or
-12128, but not
-32123.
-You are also given
-N integers
-cost
+Alice wants to clean up the mess in her room. She has
+N objects in her room, numbered from
+1 to
+N.
+Each object must be in its place. In other words,
+i
+th
+object should be in the
+i
+th
+location.
+Currently, the object with the index
+P
+i
+is in the
+i
+th
+location.
+To move the objects, Alice can use the spell Wingardium Leviosa. To perform it:
+She needs to specify
+N different indices
+K
 1
-,cost
+,K
 2
-,…,cost
+,…,K
 N
-, where the cost of performing an operation that replaces
-X characters is
-cost
-X
-.
-Your task is to help Chef minimize the cost of converting his string to a palindrome.
+(1≤K
+i
+≤N).
+The object that was at location
+K
+1
+will move to location
+K
+2
+, the object that was at location
+K
+2
+will move to location
+K
+3
+,
+… , the object that was at location
+K
+N−1
+will move to location
+K
+N
+, the object that was at location
+K
+N
+will move to location
+K
+1
+(all of these happen simultaneously).
+Your task is to help Alice move all the objects to their places by using the spell Wingardium Leviosa at most
+4 times or to inform her that it is impossible.
 Input Format
 The first line of the input contains a single integer
-T, denoting the number of test cases. The description of
-T test cases follows.
-Each test case consists of
-3 lines of input.
-The first line of each test case contains a single integer
-N, denoting the length of the string.
-The second line of each test case contains a string of length
-N, consisting of only the digits
-0 to
-9.
-The third line of each test case contains
-N space-separated integers, denoting the cost array.
-Output Format
-For each test case, output on a new line the answer — the minimum cost to convert the string to a palindrome.
-Constraints
-1≤T≤10
-3
-1≤N≤10
-5
-S contains only the digits
-0 to
-9
-1≤cost
+N — the number of items.
+The second line contains
+N integers
+P
+1
+,P
+2
+,…,P
+N
+—
+P
 i
-≤10
-5
-The sum of
-N over all test cases doesn't exceed
-2⋅10
-5
+is the index of the item that is initially located in the
+i
+th
+location.
+Output Format
+If it is possible to move all the items to their places by using the spell Wingardium Leviosa at most
+4 times, then:
+In the first line print the number
+M
+(0≤M≤4) — the number of spells to be used.
+Next, print
+M lines of spell descriptions. A spell description is
+N numbers
+K
+1
+,K
+2
+,…,K
+N
+(1≤K
+i
+≤N), all
+K
+i
+have to be distinct.
+If there are multiple correct answers, print any of them. Note that you do not need to minimise
+M.
+Otherwise, print a single integer
+−1.
+Constraints
+1≤N≤10
+6
+1≤P
+i
+≤N, all
+P
+i
+are distinct
 Sample 1:
 Input
 Output
-4
-4
-7572
-5 1 4 3
 3
-010
-1 3 2
-6
-437022
-5 1 3 2 1 1
-4
-1112
-4 2 3 5
-5
-0
-7
+1 2 3
 3
+1 2 3 
+1 2 3 
+2 3 1
 Explanation:
-Test case
-1: Replace all occurrences of
-7 with
-2 and then replace all occurrences of
-2 with
-5, making the final string
-5555. The cost of doing this is
-1+4=5.
-Test case
-2: The cost is
-0 since the given string is already a palindrome.
-Test case
-3: We perform the following operations:
-Replace
-2 with
-0 with a cost of
-1.
-Replace
-0 with
-3 with a cost of
-3.
-Replace
-3 with
-4 with a cost of
-2.
-Replace
-4 with
-7 with a cost of
-1.
-Therefore, the total cost is
-1+3+2+1=7.
-Test case
-4: We can replace all occurrences of
-1 with
-2, incurring a total cost of
-3.
-In all the examples above, it can be shown that it is not possible to convert the string to a palindrome at a lower cost.
+After the first spell, the indices of objects at corresponding locations becomes
+[3,1,2].
+After the second spell, the indices of objects at corresponding locations becomes
+[2,3,1].
+After the third spell, the indices of objects at corresponding locations becomes
+[1,2,3].
+Thus, all objects are at their places.
+Note that all objects were in their places at the start, so
+M=0 would also be a correct output.
+Sample 2:
+Input
+Output
+4
+3 4 1 2
+4
+1 3 2 4 
+1 2 3 4 
+2 1 3 4 
+2 3 4 1
+Explanation:
+After the first spell, the indices of objects at corresponding locations becomes
+[2,1,3,4].
+After the second spell, the indices of objects at corresponding locations becomes
+[4,2,1,3].
+After the third spell, the indices of objects at corresponding locations becomes
+[2,3,4,1].
+After the fourth operation, the indices of objects at corresponding locations becomes
+[1,2,3,4].
+Thus, all objects are at their places.
+Sample 3:
+Input
+Output
+5
+4 1 5 2 3
+-1
+Explanation:
+It is not possible to move all objects to their places in at most
+4 spells.

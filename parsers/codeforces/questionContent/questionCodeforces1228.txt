@@ -1,93 +1,64 @@
-E. MEX and Increments
+G. Unusual Minesweeper
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Dmitry has an array of
-n
-non-negative integers
-a
-1
+Polycarp is very fond of playing the game Minesweeper. Recently he found a similar game and there are such rules.
+There are mines on the field, for each the coordinates of its location are known (
+x
+i
 ,
-a
-2
-,…,
-a
-n
-.
-In one operation, Dmitry can choose any index
-j
-(
-1≤j≤n
-) and increase the value of the element
-a
-j
-by
-1
-. He can choose the same index
-j
-multiple times.
-For each
+y
 i
-from
-0
-to
-n
-, determine whether Dmitry can make the
-MEX
-of the array equal to exactly
-i
-. If it is possible, then determine the minimum number of operations to do it.
-The
-MEX
-of the array is equal to the minimum non-negative integer that is not in the array. For example, the
-MEX
-of the array
-[3,1,0]
-is equal to
-2
-, and the array
-[3,3,1,4]
-is equal to
-0
-.
+). Each mine has a lifetime in seconds, after which it will explode. After the explosion, the mine also detonates all mines vertically and horizontally at a distance of
+k
+(two perpendicular lines). As a result, we get an explosion on the field in the form of a "plus" symbol ('+'). Thus, one explosion can cause new explosions, and so on.
+Also, Polycarp can detonate anyone mine every second, starting from zero seconds. After that, a chain reaction of explosions also takes place. Mines explode instantly and also instantly detonate other mines according to the rules described above.
+Polycarp wants to set a new record and asks you to help him calculate in what minimum number of seconds all mines can be detonated.
 Input
-The first line of input data contains a single integer
+The first line of the input contains an integer
 t
 (
 1≤t≤
 10
 4
-) — the number of test cases in the input.
-The descriptions of the test cases follow.
-The first line of the description of each test case contains a single integer
+) — the number of test cases in the test.
+An empty line is written in front of each test suite.
+Next comes a line that contains integers
 n
+and
+k
 (
 1≤n≤2⋅
 10
 5
-) — the length of the array
-a
-.
-The second line of the description of each test case contains
-n
-integers
-a
-1
 ,
-a
-2
-,…,
-a
+0≤k≤
+10
+9
+) — the number of mines and the distance that hit by mines during the explosion, respectively.
+Then
 n
-(
-0≤
-a
+lines follow, the
 i
-≤n
-) — elements of the array
-a
-.
+-th of which describes the
+x
+and
+y
+coordinates of the
+i
+-th mine and the time until its explosion (
+−
+10
+9
+≤x,y≤
+10
+9
+,
+0≤timer≤
+10
+9
+). It is guaranteed that all mines have different coordinates.
 It is guaranteed that the sum of the values
 n
 over all test cases in the test does not exceed
@@ -96,56 +67,75 @@ over all test cases in the test does not exceed
 5
 .
 Output
-For each test case, output
-n+1
-integer —
-i
--th number is equal to the minimum number of operations for which you can make the array
-MEX
-equal to
-i
-(
-0≤i≤n
-), or -1 if this cannot be done.
+Print
+t
+lines, each of the lines must contain the answer to the corresponding set of input data  — the minimum number of seconds it takes to explode all the mines.
 Example
 input
 Copy
-5
 3
-0 1 3
-7
-0 1 2 3 4 3 2
-4
-3 0 0 0
-7
-4 6 2 3 5 0 5
-5
-4 0 1 0 4
+
+5 0
+0 0 1
+0 1 4
+1 0 2
+1 1 3
+2 2 9
+
+5 2
+0 0 1
+0 1 4
+1 0 2
+1 1 3
+2 2 9
+
+6 1
+1 -1 3
+0 -1 9
+0 1 7
+-1 0 1
+-1 1 9
+-1 -1 7
 output
 Copy
-1 1 0 -1 
-1 1 2 2 1 0 2 6 
-3 0 1 4 3 
-1 0 -1 -1 -1 -1 -1 -1 
-2 1 0 2 -1 -1 
-Note
-In the first set of example inputs,
-n=3
-:
-to get
-MEX=0
-, it is enough to perform one increment:
-a
-1
-++;
-to get
-MEX=1
-, it is enough to perform one increment:
-a
 2
-++;
-MEX=2
-for a given array, so there is no need to perform increments;
-it is impossible to get
-MEX=3
-by performing increments.
+1
+0
+Note
+Picture from examples
+First example:
+0
+second: we explode a mine at the cell
+(2,2)
+, it does not detonate any other mine since
+k=0
+.
+1
+second: we explode the mine at the cell
+(0,1)
+, and the mine at the cell
+(0,0)
+explodes itself.
+2
+second: we explode the mine at the cell
+(1,1)
+, and the mine at the cell
+(1,0)
+explodes itself.
+Second example:
+0
+second: we explode a mine at the cell
+(2,2)
+we get:
+1
+second: the mine at coordinate
+(0,0)
+explodes and since
+k=2
+the explosion detonates mines at the cells
+(0,1)
+and
+(1,0)
+, and their explosions detonate the mine at the cell
+(1,1)
+and there are no mines left on the field.

@@ -1,139 +1,86 @@
-B. Integers Have Friends
-time limit per test2 seconds
+D2. Gregor and the Odd Cows (Hard)
+time limit per test6 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-British mathematician John Littlewood once said about Indian mathematician Srinivasa Ramanujan that "every positive integer was one of his personal friends."
-It turns out that positive integers can also be friends with each other! You are given an array
-a
-of distinct positive integers.
-Define a subarray
-a
-i
-,
-a
-i+1
-,…,
-a
-j
-to be a friend group if and only if there exists an integer
-m≥2
-such that
-a
-i
-modm=
-a
-i+1
-modm=…=
-a
-j
-modm
-, where
-xmody
-denotes the remainder when
-x
-is divided by
-y
-.
-Your friend Gregor wants to know the size of the largest friend group in
-a
-.
+This is the hard version of the problem. The only difference from the easy version is that in this version the coordinates can be both odd and even.
+There are
+n
+fence-posts at distinct coordinates on a plane. It is guaranteed that no three fence posts lie on the same line.
+There are an infinite number of cows on the plane, one at every point with integer coordinates.
+Gregor is a member of the Illuminati, and wants to build a triangular fence, connecting
+3
+distinct existing fence posts. A cow strictly inside the fence is said to be enclosed. If there are an odd number of enclosed cows and the area of the fence is an integer, the fence is said to be interesting.
+Find the number of interesting fences.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤2⋅
-10
-4
-).
-Each test case begins with a line containing the integer
+The first line contains the integer
 n
 (
-1≤n≤2⋅
-10
-5
-), the size of the array
-a
-.
-The next line contains
+3≤n≤6000
+), the number of fence posts which Gregor can choose to form the vertices of a fence.
+Each of the next
 n
-positive integers
-a
-1
-,
-a
-2
-,…,
-a
-n
+line contains two integers
+x
+and
+y
 (
-1≤
-a
-i
-≤
+0≤x,y≤
 10
-18
-), representing the contents of the array
-a
-. It is guaranteed that all the numbers in
-a
-are distinct.
-It is guaranteed that the sum of
-n
-over all test cases is less than
-2⋅
-10
-5
-.
+7
+, where
+(x,y)
+is the coordinate of a fence post. All fence posts lie at distinct coordinates. No three fence posts are on the same line.
 Output
-Your output should consist of
-t
-lines. Each line should consist of a single integer, the size of the largest friend group in
-a
-.
-Example
+Print a single integer, the number of interesting fences. Two fences are considered different if they are constructed with a different set of three fence posts.
+Examples
+input
+Copy
+3
+0 0
+2 0
+0 4
+output
+Copy
+1
 input
 Copy
 4
-5
-1 5 2 4 6
-4
-8 2 5 10
-2
-1000 2000
-8
-465 55 3 54 234 12 45 78
+1 8
+0 6
+5 2
+5 6
 output
 Copy
-3
-3
-2
-6
+1
+input
+Copy
+10
+170 59
+129 54
+5 98
+129 37
+58 193
+154 58
+24 3
+13 138
+136 144
+174 150
+output
+Copy
+29
 Note
-In the first test case, the array is
-[1,5,2,4,6]
-. The largest friend group is
-[2,4,6]
-, since all those numbers are congruent to
-0
-modulo
-2
-, so
-m=2
-.
-In the second test case, the array is
-[8,2,5,10]
-. The largest friend group is
-[8,2,5]
-, since all those numbers are congruent to
-2
-modulo
-3
-, so
-m=3
-.
-In the third case, the largest friend group is
-[1000,2000]
-. There are clearly many possible values of
-m
-that work.
+In the first example, there is only
+1
+fence. That fence is interesting since its area is
+4
+and there is
+1
+enclosed cow, marked in red.
+In the second example, there are
+4
+possible fences. Only one of them is interesting however. That fence has an area of
+8
+and
+5
+enclosed cows.

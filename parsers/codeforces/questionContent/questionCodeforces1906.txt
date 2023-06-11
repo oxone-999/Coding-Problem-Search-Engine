@@ -1,175 +1,140 @@
-I. Ruler Of The Zoo
-time limit per test3 seconds
-memory limit per test256 megabytes
+C. Maximum width
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-After realizing that Zookeeper is just a duck, the animals have overthrown Zookeeper. They now have to decide a new ruler among themselves through a fighting tournament of the following format:
-Initially, animal
-0
-is king, while everyone else queues up with animal
-1
-at the front of the queue and animal
-n−1
-at the back. The animal at the front of the queue will challenge the king to a fight, and the animal with greater strength will win the fight. The winner will become king, while the loser joins the back of the queue.
-An animal who wins
-3
-times consecutively will be crowned ruler for the whole zoo. The strength of each animal depends on how many consecutive fights he won. Animal
-i
-has strength
-A
-i
-with
-0
-consecutive win,
-B
-i
-with
-1
-consecutive win, and
-C
-i
-with
-2
-consecutive wins. Initially, everyone has
-0
-consecutive win.
-For all animals,
-A
-i
->
-B
-i
+Your classmate, whom you do not like because he is boring, but whom you respect for his intellect, has two strings:
+s
+of length
+n
 and
-C
-i
->
-B
-i
-. Also, the values of
-A
-i
-,
-B
-i
-,
-C
-i
-are distinct (all
-3n
-values are pairwise different).
-In other words, an animal who is not a king has strength
-A
-i
-. A king usually has a strength of
-B
-i
-or
-C
-i
-. The exception is on the first turn, the first king (animal
-0
-) has strength
-A
-i
+t
+of length
+m
 .
-Who is the new ruler, and after how many fights? Or will it end up that animals fight forever with no one ending up as ruler?
+A sequence
+p
+1
+,
+p
+2
+,…,
+p
+m
+, where
+1≤
+p
+1
+<
+p
+2
+<…<
+p
+m
+≤n
+, is called beautiful, if
+s
+p
+i
+=
+t
+i
+for all
+i
+from
+1
+to
+m
+. The width of a sequence is defined as
+max
+1≤i<m
+(
+p
+i+1
+−
+p
+i
+)
+.
+Please help your classmate to identify the beautiful sequence with the maximum width. Your classmate promised you that for the given strings
+s
+and
+t
+there is at least one beautiful sequence.
 Input
-The first line contains one integer
+The first input line contains two integers
 n
-(
-4≤n≤6000
-) — number of the animals.
-i
--th of the next
-n
-lines contains
-3
-integers
-A
-i
-,
-B
-i
 and
-C
-i
+m
 (
-0≤
-A
-i
-,
-B
-i
-,
-C
-i
-≤
+2≤m≤n≤2⋅
 10
-9
-).
-It is guaranteed that
-A
-i
->
-B
-i
+5
+) — the lengths of the strings
+s
 and
-C
-i
->
-B
-i
-, and that all values of
-A
-i
-,
-B
-i
-and
-C
-i
-are distinct.
+t
+.
+The following line contains a single string
+s
+of length
+n
+, consisting of lowercase letters of the Latin alphabet.
+The last line contains a single string
+t
+of length
+m
+, consisting of lowercase letters of the Latin alphabet.
+It is guaranteed that there is at least one beautiful sequence for the given strings.
 Output
-Output two integers in a single line. The first is the index of the animal that will become ruler, and the second is the number of fights passed until some animal becomes the ruler.
-If the animals will fight for infinitely long, output -1 -1 instead.
+Output one integer — the maximum width of a beautiful sequence.
 Examples
 input
 Copy
-4
-5 1 2
-10 8 11
-9 0 3
-7 4 6
+5 3
+abbbc
+abc
 output
 Copy
--1 -1
+3
 input
 Copy
-5
-11 7 12
-8 6 14
-2 1 10
-13 0 9
-5 3 4
+5 2
+aaaaa
+aa
 output
 Copy
-1 7
+4
+input
+Copy
+5 5
+abcdf
+abcdf
+output
+Copy
+1
+input
+Copy
+2 2
+ab
+ab
+output
+Copy
+1
 Note
-The following describes the sequence of events for the second sample. Note that in fight
-1
-, the king (animal
-0
-) has strength
-A
-0
-. The tournament ends at fight
-7
-as animal
-1
-wins fight
-5
-,
-6
+In the first example there are two beautiful sequences of width
+3
+: they are
+{1,2,5}
 and
-7
+{1,4,5}
+.
+In the second example the beautiful sequence with the maximum width is
+{1,5}
+.
+In the third example there is exactly one beautiful sequence — it is
+{1,2,3,4,5}
+.
+In the fourth example there is exactly one beautiful sequence — it is
+{1,2}
 .

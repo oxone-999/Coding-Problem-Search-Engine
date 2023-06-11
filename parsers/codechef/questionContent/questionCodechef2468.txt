@@ -1,92 +1,118 @@
-Maximum Subsequence Sum
+Ball Sequence
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-Chef has a machine which he uses to rotate sequences. If he puts a sequence
-S
-1
-,S
-2
-,…,S
-N
-into the machine, it produces the sequence
-S
-2
-,S
-3
-,…,S
-N
-,S
-1
-, i.e. the first element of the sequence is moved to the end.
-Chef is definitely not a newbie ― he knows about trivial things like finding the maximum sum of a contiguous subsequence. Therefore, he now made a difficult problem to challenge himself:
-You are given a sequence
+There is an infinite line of people, with person numbered
+(i+1) standing on the right of person numbered
+i. Chef can do
+2 types of operations to this line of people:
+Type
+1: Give a ball to the person number
+1.
+If there exists a person with two balls, they drop one ball and give the other ball to the person on their right, and this repeats until everyone has at most
+1 ball.
+Type
+2: Everyone gives their ball to the person on their left simultaneously. Since there is no one to the left of person
+1, they would drop their original ball if they have one.
+Chef gives a total of
+N instructions, out of which
+K instructions are of type
+2.
+Each instruction is numbered from
+1 to
+N. The indices of instructions of type
+2 are given by the array
 A
 1
 ,A
 2
 ,…,A
-N
-. For each
-k (
-0≤k≤N−1), consider the sequence produced by inserting it into the machine repeatedly
-k times (i.e. inserting
-A into the machine and replacing
-A by the sequence it produces,
-k times); find the maximum sum of a non empty contiguous subsequence of this sequence.
-However, to solve this problem, Chef needs the help of a pro. Solve it for him.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
+K
+. The rest operations are of type
+1.
+Find the number of balls that have been dropped by the end of all the instructions.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains two space-separated integers
+N and
+K — the total number of operations and number of operations of type
+2.
+The next line contains the array
+K space-separated integers
 A
 1
 ,A
 2
 ,…,A
-N
-.
-Output
-For each test case, print a single line containing
-N space-separated integers. For each valid
-i, the
-i-th of these integers should denote the largest sum of a non empty contiguous subsequence of the sequence produced by the machine after
-i−1 repeated insertions.
+K
+- the indices of instructions of type
+2.
+Output Format
+For each test case, output on a new line the number of balls that have been dropped by the end of all the instructions.
 Constraints
 1≤T≤100
-1≤N≤5⋅10
-5
-∣A
-i
-∣≤10
+1≤N≤10
 9
-for each valid
-i
-the sum of
-N over all test cases does not exceed
-5⋅10
+1≤K≤10
 5
+1≤A
+i
+≤N for each
+1≤i≤M
+A
+1
+<A
+2
+<⋯<A
+K
+The sum of
+K over all test cases won't exceed
+10
+5
+.
 Sample 1:
 Input
 Output
+3
+5 2
+3 4
+1 1
 1
-4
--5 4 1 2
-7 7 4 5
+1000000000 5
+271832455 357062697 396505195 580082912 736850926
+2
+0
+999999980
 Explanation:
-Example case 1:
-After zero insertions,
-A=[−5,4,1,2]. The contiguous subsequence with the maximum sum is
-A=[4,1,2].
-After one insertion,
-A=[4,1,2,−5]. The contiguous subsequence with the maximum sum is
-A=[4,1,2].
-After two insertions,
-A=[1,2,−5,4]. The contiguous subsequence with the maximum sum is
-A=[4].
-After three insertions,
-A=[2,−5,4,1]. The contiguous subsequence with the maximum sum is
-A=[4,1].
+Test case
+1: The operations are performed as follows:
+Type
+1: Only person
+1 has a ball. Till now,
+0 balls dropped.
+Type
+1: Person
+1 has
+2 balls. So he drops
+1 ball and passes
+1 to its right. Now, only person
+2 has a ball. Till now,
+1 ball dropped.
+Type
+2: Person
+2 passes the ball to its left. Now, only person
+1 has a ball. Till now,
+1 ball dropped.
+Type
+2: Person
+1 drops the ball. Till now,
+2 balls dropped.
+Type
+1: Only person
+1 has a ball. Till now,
+2 balls dropped.
+In total,
+2 balls are dropped.
+Test case
+2: Only one operation occurs which is of type
+2, so no balls are dropped.

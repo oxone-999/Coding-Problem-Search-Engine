@@ -1,31 +1,45 @@
-D. Lucky Permutation
-time limit per test1 second
-memory limit per test256 megabytes
+E. Partial Sorting
+time limit per test1.5 seconds
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-You are given a permutation
+Consider a permutation
 †
 †
 p
 of length
+3n
+. Each time you can do one of the following operations:
+Sort the first
+2n
+elements in increasing order.
+Sort the last
+2n
+elements in increasing order.
+We can show that every permutation can be made sorted in increasing order using only these operations. Let's call
+f(p)
+the minimum number of these operations needed to make the permutation
+p
+sorted in increasing order.
+Given
 n
-.
-In one operation, you can choose two indices
-1≤i<j≤n
-and swap
+, find the sum of
+f(p)
+over all
+(3n)!
+permutations
 p
-i
-with
-p
-j
+of size
+3n
 .
-Find the minimum number of operations needed to have exactly one inversion
-‡
-‡
-in the permutation.
+Since the answer could be very large, output it modulo a prime
+M
+.
 †
 †
-A permutation is an array consisting of
+A permutation of length
+n
+is an array consisting of
 n
 distinct integers from
 1
@@ -44,106 +58,73 @@ n=3
 but there is
 4
 in the array).
-‡
-‡
-The number of inversions of a permutation
-p
-is the number of pairs of indices
-(i,j)
-such that
-1≤i<j≤n
-and
-p
-i
->
-p
-j
-.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases. The description of test cases follows.
-The first line of each test case contains a single integer
+The only line of input contains two numbers
 n
+and
+M
 (
-2≤n≤2⋅
+1≤n≤
 10
-5
-).
-The second line of each test case contains
-n
-integers
-p
-1
+6
 ,
-p
-2
-,…,
-p
-n
-(
-1≤
-p
-i
-≤n
-). It is guaranteed that
-p
-is a permutation.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
 10
-5
-.
+8
+≤M≤
+10
+9
+). It is guaranteed that
+M
+is a prime number.
 Output
-For each test case output a single integer — the minimum number of operations needed to have exactly one inversion in the permutation. It can be proven that an answer always exists.
-Example
+Output the answer modulo
+M
+.
+Examples
 input
 Copy
-4
-2
-2 1
-2
-1 2
-4
-3 4 1 2
-4
-2 4 3 1
+1 100009067
 output
 Copy
-0
-1
-3
-1
+9
+input
+Copy
+2 100000357
+output
+Copy
+1689
+input
+Copy
+69 999900997
+output
+Copy
+193862705
 Note
-In the first test case, the permutation already satisfies the condition.
-In the second test case, you can perform the operation with
-(i,j)=(1,2)
-, after that the permutation will be
-[2,1]
-which has exactly one inversion.
-In the third test case, it is not possible to satisfy the condition with less than
+In the first test case, all the permutations are:
+[1,2,3]
+, which requires
+0
+operations;
+[1,3,2]
+, which requires
+1
+operation;
+[2,1,3]
+, which requires
+1
+operation;
+[2,3,1]
+, which requires
+2
+operations;
+[3,1,2]
+, which requires
+2
+operations;
+[3,2,1]
+, which requires
 3
-operations. However, if we perform
-3
-operations with
-(i,j)
-being
-(1,3)
-,
-(2,4)
-, and
-(3,4)
-in that order, the final permutation will be
-[1,2,4,3]
-which has exactly one inversion.
-In the fourth test case, you can perform the operation with
-(i,j)=(2,4)
-, after that the permutation will be
-[2,1,3,4]
-which has exactly one inversion.
+operations.
+Therefore, the answer is
+0+1+1+2+2+3=9
+.

@@ -1,35 +1,30 @@
-Task for Alexey
+Chef and Pick Digit
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Alexey is trying to develop a program for a very simple microcontroller. It makes readings from various sensors over time, and these readings must happen at specific regular times. Unfortunately, if two of these readings occur at the same time, the microcontroller freezes and must be reset.
-There are N different sensors that read data on a regular basis. For each i from 1 to N, the reading from sensor i will occur every Ai milliseconds with the first reading occurring exactly Ai milliseconds after the microcontroller is powered up. Each reading takes precisely one millisecond on Alexey's microcontroller.
-Alexey wants to know when the microcontroller will freeze after he turns it on.
+Read problems statements in mandarin chinese, russian and vietnamese as well.
+Chef likes to play with big numbers. Today, he has a big positive integer N. He can select any two digits from this number (the digits can be same but their positions should be different) and orders them in any one of the two possible ways. For each of these ways, he creates a two digit number from it (might contain leading zeros). Then, he will pick a character corresponding to the ASCII value equal to this number, i.e. the number 65 corresponds to 'A', 66 to 'B' and so on till 90 for 'Z'. Chef is only interested in finding which of the characters in the range 'A' to 'Z' can possibly be picked this way.
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line contains single integer N denoting the number of sensors.
-The second line contains N space-separated integers A1, A2, ..., AN denoting frequency of measurements. Namely, sensor i will be read every Ai milliseconds with the first reading occurring Ai milliseconds after the microcontroller is first turned on.
+The first line of the input contains an integer T denoting the number of test cases.
+The first line of the input contains an integer N.
 Output
-For each test case, output a single line containing the number of milliseconds until the microcontroller freezes.
-  Constraints
+For each test case, output a string containing characters Chef can pick in sorted order If the resulting size of string is zero, you should output a new line.
+Constraints
 1 ≤ T ≤ 10
-2 ≤ N ≤ 500
-1 ≤ Ai ≤ 109
-  Subtasks
-Subtask #1 (10 points) 1 ≤ T ≤ 10, 2 ≤ N ≤ 9, 1 ≤ Ai ≤ 500 Subtask #2 (20 points) 1 ≤ T ≤ 10, 2 ≤ N ≤ 500, 1 ≤ Ai ≤ 1000 Subtask #3 (70 points) original constraints
+1 ≤ N ≤ 10100000
+Subtasks
+Subtask #1 (40 points) N ≤ 1010
+Subtask #2 (60 points) Original Constraints
 Sample 1:
 Input
 Output
-3
-3
-2 3 5
 4
-1 8 7 11
-4
-4 4 5 6
-6
-7
-4
+65
+566
+11
+1623455078
+A
+AB
+ACDFGHIJKLNPQRSTUVW
 Explanation:
-Case 1: in 6 milliseconds, the third reading will be attempted from the 1st sensor and the second reading will be attempted from the 2nd sensor.
-Case 2: in 7 milliseconds the seventh reading will be attempted from the 1st sensor and the first reading will be attempted from the 3rd sensor.
-Case 3: in 4 milliseconds, the first readings from the first two sensors will be attempted.
+Example case 1. Chef can pick digits 6 and 5 and create integers 56 and 65. The integer 65 corresponds to 'A'.
+Example case 2. Chef can pick digits 6 and 5 and create 'A' as it equals 65. He can pick 6 and 6 (they are picked from position 2 and position 3, respectively) to create 'B' too. Hence answer is "AB".
+Example case 3. It's not possible to create any character from 'A' to 'Z'. Hence, we just print a new line.

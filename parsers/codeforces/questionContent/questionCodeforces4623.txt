@@ -1,38 +1,46 @@
-C. Lock Puzzle
-time limit per test2 seconds
+A. Olympiad
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Welcome to another task about breaking the code lock! Explorers Whitfield and Martin came across an unusual safe, inside of which, according to rumors, there are untold riches, among which one can find the solution of the problem of discrete logarithm!
-Of course, there is a code lock is installed on the safe. The lock has a screen that displays a string of n lowercase Latin letters. Initially, the screen displays string s. Whitfield and Martin found out that the safe will open when string t will be displayed on the screen.
-The string on the screen can be changed using the operation «shift x». In order to apply this operation, explorers choose an integer x from 0 to n inclusive. After that, the current string p = αβ changes to βRα, where the length of β is x, and the length of α is n - x. In other words, the suffix of the length x of string p is reversed and moved to the beginning of the string. For example, after the operation «shift 4» the string «abcacb» will be changed with string «bcacab », since α = ab, β = cacb, βR = bcac.
-Explorers are afraid that if they apply too many operations «shift», the lock will be locked forever. They ask you to find a way to get the string t on the screen, using no more than 6100 operations.
+The recent All-Berland Olympiad in Informatics featured n participants with each scoring a certain amount of points.
+As the head of the programming committee, you are to determine the set of participants to be awarded with diplomas with respect to the following criteria:
+At least one participant should get a diploma.
+None of those with score equal to zero should get awarded.
+When someone is awarded, all participants with score not less than his score should also be awarded.
+Determine the number of ways to choose a subset of participants that will receive the diplomas.
 Input
-The first line contains an integer n, the length of the strings s and t (1 ≤ n ≤ 2 000).
-After that, there are two strings s and t, consisting of n lowercase Latin letters each.
+The first line contains a single integer n (1 ≤ n ≤ 100) — the number of participants.
+The next line contains a sequence of n integers a1, a2, ..., an (0 ≤ ai ≤ 600) — participants' scores.
+It's guaranteed that at least one participant has non-zero score.
 Output
-If it is impossible to get string t from string s using no more than 6100 operations «shift», print a single number  - 1.
-Otherwise, in the first line output the number of operations k (0 ≤ k ≤ 6100). In the next line output k numbers xi corresponding to the operations «shift xi» (0 ≤ xi ≤ n) in the order in which they should be applied.
+Print a single integer — the desired number of ways.
 Examples
 input
 Copy
-6
-abacbb
-babcba
+4
+1 3 3 2
 output
 Copy
-4
-6 3 2 3
+3
 input
 Copy
 3
-aba
-bba
+1 1 1
 output
 Copy
--1
-In the first example, after applying the operations, the string on the screen will change as follows:
-abacbb bbcaba
-bbcaba ababbc
-ababbc cbabab
-cbabab babcba
+1
+input
+Copy
+4
+42 0 0 42
+output
+Copy
+1
+Note
+There are three ways to choose a subset in sample case one.
+Only participants with 3 points will get diplomas.
+Participants with 2 or 3 points will get diplomas.
+Everyone will get a diploma!
+The only option in sample case two is to award everyone.
+Note that in sample case three participants with zero scores cannot get anything.

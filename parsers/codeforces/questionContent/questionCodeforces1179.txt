@@ -1,105 +1,113 @@
-F. A Random Code Problem
-time limit per test3 seconds
-memory limit per test512 megabytes
+B. Not Sitting
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer array
-a
-0
-,
-a
-1
-,…,
-a
-n−1
-, and an integer
+Rahul and Tina are looking forward to starting their new year at college. As they enter their new classroom, they observe the seats of students are arranged in a
+n×m
+grid. The seat in row
+r
+and column
+c
+is denoted by
+(r,c)
+, and the distance between two seats
+(a,b)
+and
+(c,d)
+is
+|a−c|+|b−d|
+.
+As the class president, Tina has access to exactly
 k
-. You perform the following code with it:
-long long ans = 0; // create a 64-bit signed variable which is initially equal to 0
-for(int i = 1; i <= k; i++)
-{
-  int idx = rnd.next(0, n - 1); // generate a random integer between 0 and n - 1, both inclusive
-                                // each integer from 0 to n - 1 has the same probability of being chosen
-  ans += a[idx];
-  a[idx] -= (a[idx] % i);
-}
-Your task is to calculate the expected value of the variable ans after performing this code.
-Note that the input is generated according to special rules (see the input format section).
+buckets of pink paint. The following process occurs.
+First, Tina chooses exactly
+k
+seats in the classroom to paint with pink paint. One bucket of paint can paint exactly one seat.
+After Tina has painted
+k
+seats in the previous step, Rahul chooses where he sits. He will not choose a seat that has been painted pink due to his hatred of the colour pink.
+After Rahul has chosen his seat, Tina chooses a seat for herself. She can choose any of the seats, painted or not, other than the one chosen by Rahul.
+Rahul wants to choose a seat such that he sits as close to Tina as possible. However, Tina wants to sit as far away from Rahul as possible due to some complicated relationship history that we couldn't fit into the statement!
+Now, Rahul wonders for
+k=0,1,…,n⋅m−1
+, if Tina has
+k
+buckets of paint, how close can Rahul sit to Tina, if both Rahul and Tina are aware of each other's intentions and they both act as strategically as possible? Please help satisfy Rahul's curiosity!
 Input
-The only line contains six integers
+The input consists of multiple test cases. The first line contains an integer
+t
+(
+1≤t≤5⋅
+10
+4
+) — the number of test cases. The description of the test cases follows.
+The first line of each test case contains two integers
 n
 ,
-a
-0
-,
-x
-,
-y
-,
-k
-and
-M
+m
 (
-1≤n≤
+2≤n⋅m≤
 10
-7
-;
-1≤
-a
-0
-,x,y<M≤998244353
-;
-1≤k≤17
-).
-The array
-a
-in the input is constructed as follows:
-a
-0
-is given in the input;
-for every
-i
-from
-1
-to
-n−1
-, the value of
-a
-i
-can be calculated as
-a
-i
-=(
-a
-i−1
-⋅x+y)modM
+5
+) — the number of rows and columns of seats in the classroom.
+The sum of
+n⋅m
+across all test cases does not exceed
+10
+5
 .
 Output
-Let the expected value of the variable ans after performing the code be
-E
-. It can be shown that
-E⋅
-n
-k
-is an integer. You have to output this integer modulo
-998244353
+For each test case, output
+n⋅m
+ordered integers — the distance between Rahul and Tina if both of them act optimally for every
+k∈[0,n⋅m−1]
 .
-Examples
+Example
 input
 Copy
-3 10 3 5 13 88
+2
+4 3
+1 2
 output
 Copy
-382842030
-input
-Copy
-2 15363 270880 34698 17 2357023
-output
-Copy
-319392398
+3 3 4 4 4 4 4 4 5 5 5 5 
+1 1 
 Note
-The array in the first example test is
-[10,35,22]
-. In the second example, it is
-[15363,1418543]
+One possible sequence of choices for the first testcase where Tina has
+k=3
+buckets of paints is as follows.
+Tina paints the seats at positions
+(1,2)
+,
+(2,2)
+,
+(3,2)
+with pink paint. Rahul chooses the seat at
+(3,1)
+after which Tina chooses to sit at
+(1,3)
+.
+Therefore, the distance between Tina and Rahul is
+|3−1|+|1−3|=4
+, and we can prove that this is indeed the minimum possible distance under the given constraints. There may be other choices of seats which lead to the same answer as well.
+For
+k=0
+in the first test case, Rahul can decide to sit at
+(2,2)
+and Tina can decide to sit at
+(4,3)
+so the distance between them would be
+|2−4|+|2−3|=3
+.
+Below are pictorial representations of the
+k=3
+and
+k=0
+cases for the first test case.
+A possible seating arrangement for
+k=3
+.
+A possible seating arrangement for
+k=0
 .

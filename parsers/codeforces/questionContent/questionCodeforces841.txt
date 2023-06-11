@@ -1,174 +1,104 @@
-B. Array Decrements
-time limit per test1 second
+D. Black and White Stripe
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Kristina has two arrays
-a
-and
-b
-, each containing
+You have a stripe of checkered paper of length
 n
-non-negative integers. She can perform the following operation on array
-a
-any number of times:
-apply a decrement to each non-zero element of the array, that is, replace the value of each element
-a
-i
-such that
-a
-i
->0
-with the value
-a
-i
-−1
-(
-1≤i≤n
-). If
-a
-i
-was
-0
-, its value does not change.
-Determine whether Kristina can get an array
-b
-from an array
-a
-in some number of operations (probably zero). In other words, can she make
-a
-i
-=
-b
-i
-after some number of operations for each
-1≤i≤n
-?
-For example, let
-n=4
-,
-a=[3,5,4,1]
-and
-b=[1,3,2,0]
-. In this case, she can apply the operation twice:
-after the first application of the operation she gets
-a=[2,4,3,0]
-;
-after the second use of the operation she gets
-a=[1,3,2,0]
-.
-Thus, in two operations, she can get an array
-b
-from an array
-a
-.
+. Each cell is either white or black.
+What is the minimum number of cells that must be recolored from white to black in order to have a segment of
+k
+consecutive black cells on the stripe?
+If the input data is such that a segment of
+k
+consecutive black cells already exists, then print 0.
 Input
-The first line of the input contains an integer
+The first line contains an integer
 t
 (
 1≤t≤
 10
 4
-) —the number of test cases in the test.
-The descriptions of the test cases follow.
-The first line of each test case contains a single integer
+) — the number of test cases.
+Next, descriptions of
+t
+test cases follow.
+The first line of the input contains two integers
 n
+and
+k
 (
-1≤n≤5⋅
+1≤k≤n≤2⋅
 10
-4
-).
-The second line of each test case contains exactly
+5
+). The second line consists of the letters 'W' (white) and 'B' (black). The line length is
 n
-non-negative integers
-a
-1
-,
-a
-2
-,…,
-a
+.
+It is guaranteed that the sum of values
 n
-(
-0≤
-a
-i
-≤
-10
-9
-).
-The third line of each test case contains exactly
-n
-non-negative integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-0≤
-b
-i
-≤
-10
-9
-).
-It is guaranteed that the sum of
-n
-values over all test cases in the test does not exceed
+does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case, output on a separate line:
-YES, if by doing some number of operations it is possible to get an array
-b
-from an array
-a
-;
-NO otherwise.
-You can output YES and NO in any case (for example, strings yEs, yes, Yes and YES will be recognized as a positive response).
+For each of
+t
+test cases print an integer — the minimum number of cells that need to be repainted from white to black in order to have a segment of
+k
+consecutive black cells.
 Example
 input
 Copy
-6
 4
-3 5 4 1
-1 3 2 0
-3
-1 2 1
-0 1 0
-4
-5 3 7 2
-1 1 1 1
-5
-1 2 3 4 5
-1 2 3 4 6
-1
-8
-0
-1
-4
-6
+5 3
+BBWBW
+5 5
+BBWBW
+5 1
+BBWBW
+1 1
+W
 output
 Copy
-YES
-YES
-NO
-NO
-YES
-NO
+1
+2
+0
+1
 Note
-The first test case is analyzed in the statement.
-In the second test case, it is enough to apply the operation to array
-a
-once.
-In the third test case, it is impossible to get array
-b
-from array
-a
-.
+In the first test case,
+s
+="BBWBW" and
+k=3
+. It is enough to recolor
+s
+3
+and get
+s
+="BBBBW". This string contains a segment of length
+k=3
+consisting of the letters 'B'.
+In the second test case of the example
+s
+="BBWBW" and
+k=5
+. It is enough to recolor
+s
+3
+and
+s
+5
+and get
+s
+="BBBBB". This string contains a segment of length
+k=5
+consisting of the letters 'B'.
+In the third test case of the example
+s
+="BBWBW" and
+k=1
+. The string
+s
+already contains a segment of length
+k=1
+consisting of the letters 'B'.

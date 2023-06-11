@@ -1,114 +1,76 @@
-H. Function Composition
-time limit per test0.5 seconds
+C. Periodic integer number
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-We are definitely not going to bother you with another generic story when Alice finds about an array or when Alice and Bob play some stupid game. This time you'll get a simple, plain text.
-First, let us define several things. We define function
-F
-on the array
+Alice became interested in periods of integer numbers. We say positive
+X
+integer number is periodic with length
+L
+if there exists positive integer number
+P
+with
+L
+digits such that
+X
+can be written as
+PPPP…P
+. For example:
+X=123123123
+is periodic number with length
+L=3
+and
+L=9
+X=42424242
+is periodic number with length
+L=2,L=4
+and
+L=8
+X=12345
+is periodic number with length
+L=5
+For given positive period length
+L
+and positive integer number
 A
-such that
-F(i,1)=A[i]
-and
-F(i,m)=A[F(i,m−1)]
-for
-m>1
-. In other words, value
-F(i,m)
-represents composition
-A[...A[i]]
-applied
-m
-times.
-You are given an array of length
-N
-with non-negative integers. You are expected to give an answer on
-Q
-queries. Each query consists of two numbers –
-m
-and
-y
-. For each query determine how many
-x
-exist such that
-F(x,m)=y
-.
+, Alice wants to find smallest integer number
+X
+strictly greater than
+A
+that is periodic with length L.
 Input
-The first line contains one integer
-N
-(1≤N≤2⋅
+First line contains one positive integer number
+L (1≤L≤
 10
 5
 )
-– the size of the array
-A
-. The next line contains
-N
-non-negative integers – the array
-A
-itself
-(1≤
-A
-i
-≤N)
-. The next line contains one integer
-Q
-(1≤Q≤
+representing length of the period. Second line contains one positive integer number
+A (1≤A≤
 10
-5
+100000
 )
-– the number of queries. Each of the next
-Q
-lines contain two integers
-m
-and
-y
-(1≤m≤
-10
-18
-,1≤y≤N)
 .
 Output
-Output exactly
-Q
-lines with a single integer in each that represent the solution. Output the solutions in the order the queries were asked in.
-Example
+One positive integer number representing smallest positive number that is periodic with length
+L
+and is greater than
+A
+.
+Examples
 input
 Copy
-10
-2 3 1 5 6 4 2 10 7 7
-5
-10 1
-5 7
-10 6
-1 1
-10 8
+3
+123456
 output
 Copy
+124124
+input
+Copy
 3
-0
-1
-1
-0
+12345
+output
+Copy
+100100
 Note
-For the first query we can notice that
-F(3,10)=1, F(9,10)=1
-and
-F(10,10)=1
-.
-For the second query no
-x
-satisfies condition
-F(x,5)=7
-.
-For the third query
-F(5,10)=6
-holds.
-For the fourth query
-F(3,1)=1.
-For the fifth query no
-x
-satisfies condition
-F(x,10)=8
-.
+In first example 124124 is the smallest number greater than 123456 that can be written with period L = 3 (P = 124).
+In the second example 100100 is the smallest number greater than 12345 with period L = 3 (P=100)

@@ -1,166 +1,142 @@
-F. Mashtali: a Space Oddysey
-time limit per test1 second
+H. Squid Game
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Lee was planning to get closer to Mashtali's heart to proceed with his evil plan(which we're not aware of, yet), so he decided to beautify Mashtali's graph. But he made several rules for himself. And also he was too busy with his plans that he didn't have time for such minor tasks, so he asked you for help.
-Mashtali's graph is an undirected weighted graph with
-n
-vertices and
+After watching the new over-rated series Squid Game, Mashtali and Soroush decided to hold their own Squid Games! Soroush agreed to be the host and will provide money for the winner's prize, and Mashtali became the Front Man!
 m
-edges with weights equal to either
-1
-or
+players registered to play in the games to win the great prize, but when Mashtali found out how huge the winner's prize is going to be, he decided to kill eliminate all the players so he could take the money for himself!
+Here is how evil Mashtali is going to eliminate players:
+There is an unrooted tree with
+n
+vertices. Every player has
 2
-. Lee wants to direct the edges of Mashtali's graph so that it will be as beautiful as possible.
-Lee thinks that the beauty of a directed weighted graph is equal to the number of its Oddysey vertices. A vertex
+special vertices
+x
+i
+and
+y
+i
+.
+In one operation, Mashtali can choose any vertex
 v
-is an Oddysey vertex if
-|
-d
-+
-(v)−
-d
-−
-(v)|=1
-, where
-d
-+
-(v)
-is the sum of weights of the outgoing from
+of the tree. Then, for each remaining player
+i
+he finds a vertex
+w
+on the simple path from
+x
+i
+to
+y
+i
+, which is the closest to
 v
-edges, and
-d
-−
-(v)
-is the sum of the weights of the incoming to
-v
-edges.
-Find the largest possible beauty of a graph that Lee can achieve by directing the edges of Mashtali's graph. In addition, find any way to achieve it.
-Note that you have to orient each edge.
+. If
+w≠
+x
+i
+and
+w≠
+y
+i
+, player
+i
+will be eliminated.
+Now Mashtali wondered: "What is the minimum number of operations I should perform so that I can remove every player from the game and take the money for myself?"
+Since he was only thinking about the money, he couldn't solve the problem by himself and asked for your help!
 Input
-The first line contains two integers
+The first line contains
+2
+integer
 n
 and
 m
-(1≤n≤
-10
-5
-;1≤m≤
+(1≤n,m≤3⋅
 10
 5
 )
- — the numbers of vertices and edges in the graph.
-The
+ — the number of vertices of the tree and the number of players.
+The second line contains
+n−1
+integers
+pa
+r
+2
+,pa
+r
+3
+,…,pa
+r
+n
+(1≤pa
+r
 i
--th line of the following
-m
-lines contains three integers
-u
-i
-,
-v
+<i)
+ — denoting an edge between node
 i
 and
-w
+pa
+r
+i
+.
+The
+i
+-th of the following
+m
+lines contains two integers
+x
+i
+and
+y
 i
 (1≤
-u
+x
 i
 ,
-v
+y
 i
-≤n;
-u
+≤n,
+x
 i
 ≠
-v
+y
 i
-;
-w
+)
+ — the special vertices of the
 i
-∈{1,2})
- — the endpoints of the
-i
--th edge and its weight.
-Note that the graph doesn't have to be connected, and it might contain multiple edges.
+-th player.
 Output
-In the first line print a single integer — the maximum beauty of the graph Lee can achieve.
-In the second line print a string of length
-m
-consisting of
-1
-s and
-2
-s — directions of the edges.
-If you decide to direct the
-i
--th edge from vertex
-u
-i
-to vertex
-v
-i
-,
-i
--th character of the string should be
-1
-. Otherwise, it should be
-2
+Print the minimum number of operations Mashtali has to perform.
+If there is no way for Mashtali to eliminate all the players, print
+−1
 .
 Examples
 input
 Copy
-6 7
-1 2 1
-1 3 2
-2 3 2
-1 4 1
-4 5 1
-2 5 2
-2 6 2
+6 3
+1 1 1 4 4
+1 5
+3 4
+2 6
 output
 Copy
 2
-1212212
 input
 Copy
-6 7
-1 2 2
-1 3 2
-2 3 2
-1 4 2
-4 5 2
-2 5 2
-2 6 2
+5 3
+1 1 3 3
+1 2
+1 4
+1 5
 output
 Copy
-0
-1212212
-input
-Copy
-6 7
-1 2 1
-1 3 1
-2 3 1
-1 4 1
-4 5 1
-2 5 1
-2 6 1
-output
-Copy
-2
-1212212
+-1
 Note
 Explanation for the first sample:
-vertices
-2
-and
-5
-are Oddyseys.
-Explanation for the third sample:
-vertices
+In the first operation, Mashtali can choose vertex
 1
-and
+and eliminate players with colors red and blue. In the second operation, he can choose vertex
 6
-are Oddyseys.
+and eliminate the player with orange color.
+In the second sample, Mashtali can't eliminate the first player.

@@ -1,150 +1,127 @@
-C. Slay the Dragon
+E. Coloring
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Recently, Petya learned about a new game "Slay the Dragon". As the name suggests, the player will have to fight with dragons. To defeat a dragon, you have to kill it and defend your castle. To do this, the player has a squad of
-n
-heroes, the strength of the
-i
--th hero is equal to
-a
-i
-.
-According to the rules of the game, exactly one hero should go kill the dragon, all the others will defend the castle. If the dragon's defense is equal to
-x
-, then you have to send a hero with a strength of at least
-x
-to kill it. If the dragon's attack power is
-y
-, then the total strength of the heroes defending the castle should be at least
-y
-.
-The player can increase the strength of any hero by
+A matrix of size
+n×m
+, such that each cell of it contains either
+0
+or
 1
-for one gold coin. This operation can be done any number of times.
-There are
-m
-dragons in the game, the
-i
--th of them has defense equal to
-x
-i
-and attack power equal to
-y
-i
-. Petya was wondering what is the minimum number of coins he needs to spend to defeat the
-i
--th dragon.
-Note that the task is solved independently for each dragon (improvements are not saved).
-Input
-The first line contains a single integer
-n
-(
-2≤n≤2⋅
-10
-5
-) — number of heroes.
-The second line contains
-n
-integers
-a
-1
-,
-a
+, is considered beautiful if the sum in every contiguous submatrix of size
+2×2
+is exactly
 2
-,…,
-a
+, i. e. every "square" of size
+2×2
+contains exactly two
+1
+'s and exactly two
+0
+'s.
+You are given a matrix of size
+n×m
+. Initially each cell of this matrix is empty. Let's denote the cell on the intersection of the
+x
+-th row and the
+y
+-th column as
+(x,y)
+. You have to process the queries of three types:
+x
+y
+−1
+— clear the cell
+(x,y)
+, if there was a number in it;
+x
+y
+0
+— write the number
+0
+in the cell
+(x,y)
+, overwriting the number that was there previously (if any);
+x
+y
+1
+— write the number
+1
+in the cell
+(x,y)
+, overwriting the number that was there previously (if any).
+After each query, print the number of ways to fill the empty cells of the matrix so that the resulting matrix is beautiful. Since the answers can be large, print them modulo
+998244353
+.
+Input
+The first line contains three integers
 n
-(
-1≤
-a
-i
-≤
-10
-12
-), where
-a
-i
-is the strength of the
-i
--th hero.
-The third line contains a single integer
+,
 m
+and
+k
 (
-1≤m≤2⋅
+2≤n,m≤
+10
+6
+;
+1≤k≤3⋅
 10
 5
-) — the number of dragons.
-The next
-m
-lines contain two integers each,
+) — the number of rows in the matrix, the number of columns, and the number of queries, respectively.
+Then
+k
+lines follow, the
+i
+-th of them contains three integers
 x
 i
-and
+,
 y
+i
+,
+t
 i
 (
 1≤
 x
 i
-≤
-10
-12
-;1≤
+≤n
+;
+1≤
 y
 i
-≤
-10
-18
-) — defense and attack power of the
+≤m
+;
+−1≤
+t
 i
--th dragon.
+≤1
+) — the parameters for the
+i
+-th query.
 Output
-Print
-m
-lines,
-i
--th of which contains a single integer — the minimum number of coins that should be spent to defeat the
-i
--th dragon.
+For each query, print one integer — the number of ways to fill the empty cells of the matrix after the respective query, taken modulo
+998244353
+.
 Example
 input
 Copy
-4
-3 6 2 3
-5
-3 12
-7 9
-4 14
-1 10
-8 7
+2 2 7
+1 1 1
+1 2 1
+2 1 1
+1 1 0
+1 2 -1
+2 1 -1
+1 1 -1
 output
 Copy
+3
 1
-2
-4
 0
+1
 2
-Note
-To defeat the first dragon, you can increase the strength of the third hero by
-1
-, then the strength of the heroes will be equal to
-[3,6,3,3]
-. To kill the dragon, you can choose the first hero.
-To defeat the second dragon, you can increase the forces of the second and third heroes by
-1
-, then the strength of the heroes will be equal to
-[3,7,3,3]
-. To kill the dragon, you can choose a second hero.
-To defeat the third dragon, you can increase the strength of all the heroes by
-1
-, then the strength of the heroes will be equal to
-[4,7,3,4]
-. To kill the dragon, you can choose a fourth hero.
-To defeat the fourth dragon, you don't need to improve the heroes and choose a third hero to kill the dragon.
-To defeat the fifth dragon, you can increase the strength of the second hero by
-2
-, then the strength of the heroes will be equal to
-[3,8,2,3]
-. To kill the dragon, you can choose a second hero.
+3
+6

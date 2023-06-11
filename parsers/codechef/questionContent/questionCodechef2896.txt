@@ -1,72 +1,98 @@
-Nice Subsets
+Counting Subsequences
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-A good number is a positive integer which is not divisible by the cube (third power) of any prime. For example,
-2,
-3,
-25=5⋅5,
-63=7⋅9 and
-2057=11⋅11⋅17 are good numbers, but
-8=2⋅2⋅2,
-9317=7⋅11⋅11⋅11 and
-2401=7⋅7⋅7⋅7 are not good numbers.
-A pair of positive integers
-(x,y) is special if
-x⋅y is a good number. A set of positive integers is nice if each pair of different integers from this set is special. In particular, the empty set is nice.
-You are given a set of integers
-{A
-1
-,A
-2
-,…,A
-N
-}. Find the number of nice subsets of this set.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
+An array of size
+M is called good, if, for each pair of integers
+(i,j)
+(1≤i<j≤M):
 A
+i
+∣A
+j
+=(A
+i
+⊕A
+j
+)+A
+j
+, where
+∣ denotes bitwise OR operator and
+⊕ denotes bitwise XOR operator.
+Note that an array having a single element
+(M=1) is also good.
+You are given a permutation
+P of size
+N. Find the number of good subsequences of the given permutation. Since the answer can be huge, print it modulo
+10
+9
++7.
+A permutation of size
+N contains each integer from
+1 to
+N exactly once.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first line of each test case contains an integer
+N - the length of the permutation
+P.
+The second line of each test case contains
+N space-separated integers
+P
 1
-,A
+,P
 2
-,…,A
+,…,P
 N
 .
-Output
-For each test case, print a single line containing one integer — the number of nice subsets.
+Output Format
+For each test case, output on a new line, the number of good subsequences of
+P, modulo
+10
+9
++7.
 Constraints
-1≤T≤10
-1≤N≤40
-1≤A
+1≤T≤2500
+1≤N≤10
+5
+1≤P
 i
-≤10
-8
-for each valid
-i
-A
-1
-,A
-2
-,…,A
-N
-are pairwise distinct
+≤N
+P is guaranteed to be a permutation.
+The sum of
+N over all test cases won't exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
 4
 3
 1 2 3
-1
-8
+4
+3 4 2 1
+4
+2 3 4 1
 5
-5 1 4 2 3
-2
-81 3
-8
-2
-24
+4 5 2 1 3
 3
+6
+5
+6
+Explanation:
+Test case
+1: The good subsequences of permutation
+P=[1,2,3] are
+{[1],[2],[3]}.
+Test case
+2: The good subsequences of permutation
+P=[3,4,2,1] are
+{[3],[4],[2],[1],[3,2],[3,1]}.
+In the subarray
+[3,2],
+3∣2=3. Also,
+3⊕2+2=1+2=3.
+In the subarray
+[3,1],
+3∣1=3. Also,
+3⊕1+1=2+1=3.

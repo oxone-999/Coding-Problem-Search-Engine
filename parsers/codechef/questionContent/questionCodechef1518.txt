@@ -1,87 +1,104 @@
-Chef and Pepperoni Pizza
+The Promised Land
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-Chef has a pepperoni pizza in the shape of a
-N×N grid; both its rows and columns are numbered
-1 through
-N. Some cells of this grid have pepperoni on them, while some do not. Chef wants to cut the pizza vertically in half and give the two halves to two of his friends. Formally, one friend should get everything in the columns
-1 through
-N/2 and the other friend should get everything in the columns
-N/2+1 through
-N.
-Before doing that, if Chef wants to, he may choose one row of the grid and reverse it, i.e. swap the contents of the cells in the
-i-th and
-N+1−i-th column in this row for each
-i (
-1≤i≤N/2).
-After the pizza is cut, let's denote the number of cells containing pepperonis in one half by
-p
-1
-and their number in the other half by
-p
-2
-. Chef wants to minimise their absolute difference. What is the minimum value of
-∣p
-1
-−p
-2
-∣?
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-N lines follow. For each
-i (
-1≤i≤N), the
-i-th of these lines contains a string with length
-N describing the
-i-th row of the grid; this string contains only characters '1' (denoting a cell with pepperonis) and '0' (denoting a cell without pepperonis).
-Output
-For each test case, print a single line containing one integer — the minimum absolute difference between the number of cells with pepperonis in the half-pizzas given to Chef's friends.
+Years after the Ishval Civil War, the Ishvalan refugees have now found a safe place for themselves which is a rectangular piece of land, surrounded by fences.
+The land can be thought of as a 2d grid which extends
+N units vertically and
+M units horizontally. It is divided into
+N horizontal rows, which are numbered from
+1 to
+N, as you move from top to bottom and into
+M vertical columns numbered from
+1 to
+M, from left to right.
+There are
+X rivers flowing in a horizontal direction, each flowing in a different row and covering the entire row. Similarly, there are
+Y rivers flowing in a vertical direction, each flowing in a different column and covering the entire column.
+The people want to build houses of dimensions
+S×S on the remaining land.
+What is the maximum number of houses of the given dimensions that could be built on the remaining land, such that no part of any house is in a river and no two houses overlap?
+Input:
+The first line contains
+T, the number of test cases. Then the test cases follow.
+For each test case, the first line contains
+N and
+M.
+Then the second line contains
+X ,
+Y and
+S denoting the number of rivers flowing horizontally, number of rivers flowing vertically and the dimension of the house.
+The next line contains
+X integers
+x
+i
+denoting the indices of rows in which river flows horizontally.
+The next line contains
+Y integers
+y
+i
+denoting the indices of columns in which the river flows vertically.
+Note:
+x
+i
+and
+y
+i
+are given in increasing order.
+When
+X or
+Y are zero, the line containing
+x
+i
+and
+y
+i
+is skipped respectively in the input (instead of a blank line).
+Output:
+For each test case, print a single line containing the maximum number of houses that can be built.
 Constraints
-1≤T≤1,000
-2≤N≤1,000
-N is even
-the sum of
-N⋅N over all test cases does not exceed
-2⋅10
-6
+1≤T≤100
+1≤N,M≤10
+4
+0≤X≤N
+0≤Y≤M
+1≤S≤min(N,M)
+1≤x
+i
+≤N
+1≤y
+j
+≤M
+x
+i
+>x
+i−1
+for all
+2≤i≤X
+y
+i
+>y
+i−1
+for all
+2≤i≤Y
 Sample 1:
 Input
 Output
 2
+7 8
+1 2 2
+5
+4 8
+6 5
+2 0 1
+1 4
 6
-100000
-100000
-100000
-100000
-010010
-001100
-4
-0011
-1100
-1110
-0001
-2
-0
+20
 Explanation:
-Example case 1: Initially,
-∣p
-1
-−p
-2
-∣=4, but if Chef reverses any one of the first four rows from "100000" to "000001",
-∣p
-1
-−p
-2
-∣ becomes
-2.
-Example case 2: Initially,
-∣p
-1
-−p
-2
-∣=0. We cannot make that smaller by reversing any row.
+The given figure corresponds to the first test case.
+7 8
+1 2 2
+5
+4 8
+![](https://codechef_shared.s3.amazonaws.com/download/HYC/External_contest_images/DCOD2019/image6.png =480x420)
+As shown in the figure, the maximum number of houses of dimension
+2×2 that could be built on the remaining land is
+6.

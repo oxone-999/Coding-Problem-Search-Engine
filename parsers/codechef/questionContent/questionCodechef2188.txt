@@ -1,36 +1,52 @@
-The Best Tower
+Fibonacci Queries
 Problem
-ByteTel, the largest mobile operator in Byteland, would like to find a place to construct a cellphone tower. There are N important places in Byteland that need to be considered.
-These N buildings can be represented by N points in a 2D plane. The cellphone tower can be represented by a circle, and in order to construct the tower, ByteTel needs to specify its center and radius.
-Moreover, the center of the tower cannot be outside the secure area, which is also a circle.
-ByteTel wants to find a center and radius for the tower such that the total squared distance between each of the building and the tower is as small as possible.
-The distance between a point and a circle is defined to be the difference between the distance from the circle's center to the point and the circle's radius.
-Your task is to help ByteTel find a center and radius for their cellphone tower.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef's love for Fibonacci numbers helps him to design following interesting problem.
+He defines a function F for an array S as follows:
+where
+Si denotes a non-empty subset of multiset S.
+sum(Si) denotes the sum of all element of multiset Si.
+Fibonacci(x) denotes the xth Fibonacci number.
+Given an array A consisting of N elements. Chef asked you to process following two types of queries on this array accurately and efficiently.
+C X Y: Change the value of Xth element of array to Y i.e AX = Y.
+Q L R: Compute function F over the subarray defined by the elements of array A in the range L to R, both inclusive.
+Please see the Note section if you need details regarding Fibonacci function.
 Input
-The first line contains a number t (about 10), which is the number of test case. Each test case has the following form.
-The first line contains three numbers (Xs, Ys) and Rs, specifying the secure circle.
-The second line contains N, the number of buildings (1 ≤ N ≤ 100).
-Each line in the next N lines contain two numbers which are the coordinates of a building.
-All coordinates are integer and are between 0 and 10000 (inclusive).
+First line of input contains 2 space separated integer N and M denoting the size of array A and the number of queries to be performed. Next line of input contains N space separated integers denoting the elements of array A. Each of next M lines of input contains a query having one of the mentioned two types.
 Output
-For each test case, output 3 numbers (X,Y) and R, rounded to 3 decimal digits, which are the center and radius of the cellphone tower.
-Scoring
-For each test case, your score is d/D in which:
-d is the total square distance between each of the building and the tower your program has found
-D is the total square distance between each of the building and the secure circle's center.
-Your program's score is the sum of each test case's score, the lower the better.
+For each query of type Q, output the value of function F for the given range of array A.
+Constraints
+1 ≤ N, M ≤ 105
+1 ≤ Ai, Y ≤ 109
+1 ≤ L, R, X ≤ N
+type = {'C', 'Q'}
+Subtasks
+Subtask 1 (20 points) : 1 ≤ N, M ≤ 1000, 1 ≤ Ai, Y ≤ 106, type = { 'Q' }
+Subtask 2 (20 points) : 1 ≤ N, M ≤ 50000, 1 ≤ Ai, Y ≤ 109, type = { 'C', Q' }
+Subtask 3 (30 points) : 1 ≤ N, M ≤ 105, 1 ≤ Ai, Y ≤ 109, type = { 'Q' }
+Subtask 4 (30 points) : 1 ≤ N, M ≤ 105, 1 ≤ Ai, Y ≤ 109, type = { 'C', Q' }
 Example
-Input:
-1
-
-1 1 4
+Input
+3 5
+1 2 3
+Q 1 2
+Q 2 3
+C 1 2
+Q 1 2
+Q 1 3
+Output
+4
+8
 5
-3 -2
-2 1
-5 3
-4 3
-4 -1
-
-Output:
-4.000 1.000 2.000
-The sample output's score is 0.023444. The secure circle is red and the tower is yellow.
+30
+Explanation:
+Q1 : F = Fibonacci(1) + Fibonacci(2) + Fibonacci(1+2) = 4 % 1000000007 = 4
+Q2 : F = Fibonacci(2) + Fibonacci(3) + Fibonacci(2+3) = 8 % 1000000007 = 8
+Q3 : A = {2, 2, 3}
+Q4 : F = Fibonacci(2) + Fibonacci(2) + Fibonacci(2+2) = 5 % 1000000007 = 5
+Q5 : F = Fibonacci(2) + Fibonacci(2) + Fibonacci(3) + Fibonacci(2+2) + Fibonacci(2+3) + Fibonacci(2+3) + Fibonacci(2+2+3) = 30 % 1000000007 = 30
+Note
+FibonacciK denotes the Kth Fibonacci number. Fibonacci series is defined as follows:
+For 1 ≤ K ≤ 2, FibonacciK = 1
+Otherwise, FibonacciK = FibonacciK-1 + FibonacciK-2
+Please check this link for more details about Fibonacci numbers.

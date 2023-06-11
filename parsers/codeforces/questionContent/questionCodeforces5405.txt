@@ -1,58 +1,37 @@
-E. Radio stations
+C. Two strings
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-In the lattice points of the coordinate line there are n radio stations, the i-th of which is described by three integers:
-xi — the coordinate of the i-th station on the line,
-ri — the broadcasting range of the i-th station,
-fi — the broadcasting frequency of the i-th station.
-We will say that two radio stations with numbers i and j reach each other, if the broadcasting range of each of them is more or equal to the distance between them. In other words min(ri, rj) ≥ |xi - xj|.
-Let's call a pair of radio stations (i, j) bad if i < j, stations i and j reach each other and they are close in frequency, that is, |fi - fj| ≤ k.
-Find the number of bad pairs of radio stations.
+You are given two strings a and b. You have to remove the minimum possible number of consecutive (standing one after another) characters from string b in such a way that it becomes a subsequence of string a. It can happen that you will not need to remove any characters at all, or maybe you will have to remove all of the characters from b and make it empty.
+Subsequence of string s is any such string that can be obtained by erasing zero or more characters (not necessarily consecutive) from string s.
 Input
-The first line contains two integers n and k (1 ≤ n ≤ 105, 0 ≤ k ≤ 10) — the number of radio stations and the maximum difference in the frequencies for the pair of stations that reach each other to be considered bad.
-In the next n lines follow the descriptions of radio stations. Each line contains three integers xi, ri and fi (1 ≤ xi, ri ≤ 109, 1 ≤ fi ≤ 104) — the coordinate of the i-th radio station, it's broadcasting range and it's broadcasting frequency. No two radio stations will share a coordinate.
+The first line contains string a, and the second line — string b. Both of these strings are nonempty and consist of lowercase letters of English alphabet. The length of each string is no bigger than 105 characters.
 Output
-Output the number of bad pairs of radio stations.
+On the first line output a subsequence of string a, obtained from b by erasing the minimum number of consecutive characters.
+If the answer consists of zero characters, output «-» (a minus sign).
 Examples
 input
 Copy
-3 2
-1 3 10
-3 2 5
-4 10 8
+hi
+bob
 output
 Copy
-1
+-
 input
 Copy
-3 3
-1 3 10
-3 2 5
-4 10 8
+abca
+accepted
 output
 Copy
-2
+ac
 input
 Copy
-5 1
-1 3 2
-2 2 4
-3 2 1
-4 2 1
-5 3 3
+abacaba
+abcdcba
 output
 Copy
-2
-input
-Copy
-5 1
-1 5 2
-2 5 4
-3 5 1
-4 5 1
-5 5 3
-output
-Copy
-5
+abcba
+Note
+In the first example strings a and b don't share any symbols, so the longest string that you can get is empty.
+In the second example ac is a subsequence of a, and at the same time you can obtain it by erasing consecutive symbols cepted from string b.

@@ -1,65 +1,166 @@
-Dynamic Trees and Queries
+Chef and Recipes
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Given a directed tree with N nodes. You need to process M queries.
-Each node has a key and a value, a node is referenced by its key. N nodes have keys from 0 to N-1. Root always has the key equal to 0. Queries can be of the following 4 types:
-1. Given a key of a node present in the tree, append a child node to it. The new node gets the smallest never-used positive integer as its key. The value of the new node will be given in the input.
-2. Given a key of a node(call it A) present in the tree. Add value to the value of all the nodes present in the subtree rooted at A.
-3. Given a key of a node(call it A) present in the tree. Remove the subtree rooted at A from the tree.
-4. Given a key of a node(call it A) present in the tree. Output the sum of values of all the nodes in subtree rooted at A.
-Input is encoded:
-Keys in M Queries of the input are encoded in the following way:
-Let SPECIAL = 0 initially. Whenever a query of the type 4 occurs, SPECIAL is updated to the result of that query. All the keys given in queries are encoded, in order to decode them you need to add SPECIAL to it.
-That is, you are given encoded_key as input, to get key use the formula key = SPECIAL + encoded_key.
-Input
-First line of input has N, the number of nodes.
-Second line has N integers, the values of given N nodes respectively.
-Then, N-1 lines follow, each has two integers u, v. which specifies an edge from u to v.
-Next line contains a single integer M, the number of queries.
-Each query consists of 2 lines, First line has the the type of query, second line is as follows:
-For queries 1 and 2, there are two integers, first one represents the key of a node in tree, second one represents the value.
-For queries 3 and 4, there is a single integer, which represents the key of a node in tree.
-Output
-For each query of type 4, output the required answer.
-Constraints
-1 ≤ N ≤ 10^5
-1 ≤ M ≤ 10^5
-0 ≤ u < N
-0 ≤ v < N, u is not equal to v
-All the keys in the input are valid
-If the type of the query is 3, the the key is nonzero.
-All the rest numbers in the input are in the range [-1000, 1000]
-Example
-Input:
-2
-10 20
-0 1
-4
-4
-0
+###Read problems statements Hindi , Vietnamese , Mandarin Chinese , Russian and Bengali as well.
+Chef is making
+N atomic soups numbered
+1 through
+N. Each soup is either a base atomic soup or a composition of other atomic soups. For each valid
+i, if soup
+i is not a base soup, one unit of this soup is made by mixing together one unit of soup
+c
+i,1
+, one unit of soup
+c
+i,2
+, and so on to one unit of soup
+c
+i,P
+i
+. Note that these
+P
+i
+soup units are not necessarily from distinct soups and that we obtain only
+1 unit of soup by mixing
+P
+i
+units.
+Due to their structure, two units of the same base atomic soup always cancel out and vanish when mixed together. Therefore, we define the base decomposition of a soup as the set of all base atomic soups that need to be used an odd number of times when making the resulting soup (i.e. a base soup
+b belongs to the base decomposition if we need to use an odd number of units of soup
+b in total). The base decomposition of a sequence of atomic soups is the base decomposition of the soup created by mixing together one unit of each of these soups.
+You should answer
+Q queries. In each query, you are given a sequence of Chef's soups
+s
 1
--30 5
+,s
 2
--30 1
+,…,s
+K
+; you must decide whether it is possible to choose two disjoint subsequences (one of which may be empty) of this sequence which have the same base decomposition. Two subsequences are disjoint if there is no index
+i such that each subsequence contains soup
+s
+i
+.
+Input
+The first line of the input contains a single integer
+N.
+N lines follow. For each
+i (
+1≤i≤N), the
+i-th of these lines contains an integer
+P
+i
+; if
+P
+i
+
+=0, it is followed by a space and
+P
+i
+space-separated integers
+c
+i,1
+,c
+i,2
+,…,c
+i,P
+i
+.
+The next line contains a single integer
+Q.
+The following
+Q lines describe queries. Each of these lines contains an integer
+K followed by a space and
+K space-separated integers
+s
+1
+,s
+2
+,…,s
+K
+.
+Output
+Print a single line containing a string with length
+Q. For each valid
+i, the
+i-th character of this string should be '1' if it is possible to choose required subsequences in the
+i-th query or '0' otherwise.
+Constraints
+1≤N,Q≤2⋅10
 4
--30
-Output:
-30
-38
-Explanation
-Query #1
-type = 4 encoded_key = 0
-Initially SPECIAL = 0
-key = encoded_key + SPECIAL = 0
-value at 0 + value at 1 = 10 + 20 = 30 is the answer
-Now SPECIAL is updated to 30
-Query #2
-type = 1 encoded_key = -30 value = 5
-SPECIAL = 30
-key = encoded_key + SPECIAL = -30 + 30 = 0
-So we add a child node(with the key = 2) to the node with the key 0, the child node gets the value of 5
-
-EDITS MADE:
-Firstly, sorry for the mistake.
-Old : Let SPECIAL = 0 initially. Whenever a query of the type 4 occurs, SPECIAL is increased by the result of that query.
-New : Let SPECIAL = 0 initially. Whenever a query of the type 4 occurs, SPECIAL is updated to the result of that query.
+1≤K≤30
+1≤c
+i,j
+<i for each valid
+i,j
+1≤s
+i
+≤N for each valid
+i
+P
+1
++P
+2
++…+P
+N
+≤5⋅10
+5
+Subtasks
+Subtask #1 (13 points):
+1≤N≤100
+1≤K≤6
+Subtask #2 (22 points):
+1≤N≤500
+Subtask #3 (65 points): original constraints
+Sample 1:
+Input
+Output
+8
+0
+0
+2 1 2
+0
+3 1 2 4
+3 2 2 3
+2 2 4
+2 1 4
+5
+3 3 4 5
+4 2 4 1 5
+3 1 2 4
+4 2 4 3 1
+4 6 7 8 5
+11011
+Explanation:
+Soups
+1,
+2 and
+4 are base atomic soups. The base decompositions of the other soups are:
+soup
+3:
+{1,2}
+soup
+5:
+{1,2,4}
+soup
+6:
+{1,2} (two units of soup
+2 cancel out)
+soup
+7:
+{2,4}
+soup
+8:
+{1,4}
+For the first query, we can choose subsequences
+[3,4] and
+[5]. The base decomposition of subsequence
+{3,4} is
+{1,2,4}, which is the same as the base decomposition of soup
+5.
+For the last query, we can choose subsequences
+[6,8] and
+[7]. The base decomposition of each subsequence is
+{2,4}, because two units of soup
+1 cancel out. You may notice that the chosen subsequences do not form a partition of all
+K given soups, since soup
+5 was not used at all.

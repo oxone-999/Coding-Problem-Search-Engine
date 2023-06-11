@@ -1,261 +1,128 @@
-C. Where is the Pizza?
-time limit per test1 second
+E. Hemose on the Tree
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-While searching for the pizza, baby Hosssam came across two permutations
-a
-and
-b
-of length
+After the last regional contest, Hemose and his teammates finally qualified to the ICPC World Finals, so for this great achievement and his love of trees, he gave you this problem as the name of his team "Hemose 3al shagra" (Hemose on the tree).
+You are given a tree of
 n
-.
-Recall that a permutation is an array consisting of
+vertices where
 n
-distinct integers from
-1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
+is a power of
 2
-appears twice in the array) and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
-Baby Hosssam forgot about the pizza and started playing around with the two permutations. While he was playing with them, some elements of the first permutation got mixed up with some elements of the second permutation, and to his surprise those elements also formed a permutation of size
-n
-.
-Specifically, he mixed up the permutations to form a new array
-c
-in the following way.
-For each
-i
-(
-1≤i≤n
-), he either made
-c
-i
-=
-a
-i
-or
-c
-i
-=
-b
-i
-.
-The array
-c
-is a permutation.
-You know permutations
-a
-,
-b
-, and values at some positions in
-c
-. Please count the number different permutations
-c
-that are consistent with the described process and the given values. Since the answer can be large, print it modulo
-10
-9
-+7
-.
-It is guaranteed that there exists at least one permutation
-c
-that satisfies all the requirements.
+. You have to give each node and edge an integer value in the range
+[1,2n−1]
+(inclusive), where all the values are distinct.
+After giving each node and edge a value, you should select some root for the tree such that the maximum cost of any simple path starting from the root and ending at any node or edge is minimized.
+The cost of the path between two nodes
+u
+and
+v
+or any node
+u
+and edge
+e
+is defined as the bitwise XOR of all the node's and edge's values between them, including the endpoints (note that in a tree there is only one simple path between two nodes or between a node and an edge).
 Input
-The first line contains an integer
+The first line contains a single integer
 t
 (
-1≤t≤
+1≤t≤5⋅
 10
-5
-) — the number of test cases.
+4
+) — the number of test cases. Then
+t
+test cases follow.
 The first line of each test case contains a single integer
-n
+p
 (
-1≤n≤
-10
-5
-) — the length of the permutations.
-The next line contains
+1≤p≤17
+), where
 n
-distinct integers
-a
-1
-,
-a
+(the number of vertices in the tree) is equal to
 2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤n
-) — the first permutation.
-The next line contains
-n
-distinct integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-1≤
-b
-i
-≤n
-) — the second permutation.
-The next line contains
-n
-distinct integers
-d
-1
-,
-d
-2
-,…,
-d
-n
-(
-d
-i
-is either
-0
-,
-a
-i
-, or
-b
-i
-) — the description of the known values of
-c
-. If
-d
-i
-=0
-, then there are no requirements on the value of
-c
-i
-. Otherwise, it is required that
-c
-i
-=
-d
-i
+p
 .
-It is guaranteed that there exists at least one permutation
-c
-that satisfies all the requirements.
+Each of the next
+n−1
+lines contains two integers
+u
+and
+v
+(
+1≤u,v≤n
+) meaning that there is an edge between the vertices
+u
+and
+v
+in the tree.
+It is guaranteed that the given graph is a tree.
 It is guaranteed that the sum of
 n
-over all test cases does not exceed
-5⋅
+over all test cases doesn't exceed
+3⋅
 10
 5
 .
 Output
-For each test case, print the number of possible permutations
-c
-, modulo
-10
-9
-+7
-.
+For each test case on the first line print the chosen root.
+On the second line, print
+n
+integers separated by spaces, where the
+i
+-th integer represents the chosen value for the
+i
+-th node.
+On the third line, print
+n−1
+integers separated by spaces, where the
+i
+-th integer represents the chosen value for the
+i
+-th edge. The edges are numerated in the order of their appearance in the input data.
+If there are multiple solutions, you may output any.
 Example
 input
 Copy
-9
-7
-1 2 3 4 5 6 7
-2 3 1 7 6 5 4
-2 0 1 0 0 0 0
-1
-1
-1
-0
-6
-1 5 2 4 6 3
-6 5 3 1 4 2
-6 0 0 0 0 0
-8
-1 6 4 7 2 3 8 5
-3 2 8 1 4 5 6 7
-1 0 0 7 0 3 0 5
-10
-1 8 6 2 4 7 9 3 10 5
-1 9 2 3 4 10 8 6 7 5
-1 9 2 3 4 10 8 6 7 5
-7
-1 2 3 4 5 6 7
-2 3 1 7 6 5 4
-0 0 0 0 0 0 0
-5
-1 2 3 4 5
-1 2 3 4 5
-0 0 0 0 0
-5
-1 2 3 4 5
-1 2 3 5 4
-0 0 0 0 0
+2
+2
+1 2
+2 3
+3 4
 3
-1 2 3
-3 1 2
-0 0 0
+1 2
+2 3
+3 4
+1 5
+1 6
+5 7
+5 8
 output
 Copy
-4
-1
-2
-2
-1
-8
-1
-2
-2
+3
+5 1 3 6
+4 2 7
+5
+1 2 8 11 4 13 9 15
+6 14 3 7 10 5 12
 Note
-In the first test case, there are
+The tree in the first test case with the weights of all nodes and edges is shown in the picture.
+The costs of all paths are:
+3
+;
+3⊕7=4
+;
+3⊕7⊕6=2
+;
+3⊕2=1
+;
+3⊕2⊕1=0
+;
+3⊕2⊕1⊕4=4
+;
+3⊕2⊕1⊕4⊕5=1
+.
+The maximum cost of all these paths is
 4
-distinct permutation that can be made using the process:
-[2,3,1,4,5,6,7]
-,
-[2,3,1,7,6,5,4]
-,
-[2,3,1,4,6,5,7]
-,
-[2,3,1,7,5,6,4]
-.
-In the second test case, there is only one distinct permutation that can be made using the process:
-[1]
-.
-In the third test case, there are
-2
-distinct permutation that can be made using the process:
-[6,5,2,1,4,3]
-,
-[6,5,3,1,4,2]
-.
-In the fourth test case, there are
-2
-distinct permutation that can be made using the process:
-[1,2,8,7,4,3,6,5]
-,
-[1,6,4,7,2,3,8,5]
-.
-In the fifth test case, there is only one distinct permutation that can be made using the process:
-[1,9,2,3,4,10,8,6,7,5]
-.
+. We can show that it is impossible to assign the values and choose the root differently to achieve a smaller maximum cost of all paths.
+The tree in the second test case:

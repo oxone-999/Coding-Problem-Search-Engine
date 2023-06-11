@@ -1,99 +1,162 @@
-C. Phase Shift
-time limit per test3 seconds
+D. Meta-set
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There was a string
-s
-which was supposed to be encrypted. For this reason, all
-26
-lowercase English letters were arranged in a circle in some order, afterwards, each letter in
-s
-was replaced with the one that follows in clockwise order, in that way the string
-t
-was obtained.
-You are given a string
-t
-. Determine the lexicographically smallest string
-s
-that could be a prototype of the given string
-t
-.
-A string
-a
-is lexicographically smaller than a string
-b
-of the same length if and only if:
-in the first position where
-a
-and
-b
-differ, the string
-a
-has a letter, that appears earlier in the alphabet than the corresponding letter in
-b
-.
-Input
-The first line of the input contains a single integer
-t
-(
-1≤t≤3⋅
-10
-4
-) — the number of test cases. The description of test cases follows.
-The first line of each test case contains one integer
+You like the card board game "Set". Each card contains
+k
+features, each of which is equal to a value from the set
+{0,1,2}
+. The deck contains all possible variants of cards, that is, there are
+3
+k
+different cards in total.
+A feature for three cards is called good if it is the same for these cards or pairwise distinct. Three cards are called a set if all
+k
+features are good for them.
+For example, the cards
+(0,0,0)
+,
+(0,2,1)
+, and
+(0,1,2)
+form a set, but the cards
+(0,2,2)
+,
+(2,1,2)
+, and
+(1,2,0)
+do not, as, for example, the last feature is not good.
+A group of five cards is called a meta-set, if there is strictly more than one set among them. How many meta-sets there are among given
 n
+distinct cards?
+Input
+The first line of the input contains two integers
+n
+and
+k
 (
 1≤n≤
 10
-5
-) — the length of the string
-t
-.
-The next line contains the string
-t
-of the length
+3
+,
+1≤k≤20
+) — the number of cards on a table and the number of card features. The description of the cards follows in the next
 n
-, containing lowercase English letters.
-It is guaranteed that the sum of
-n
-over all test cases doesn't exceed
-2⋅
-10
-5
-.
+lines.
+Each line describing a card contains
+k
+integers
+c
+i,1
+,
+c
+i,2
+,…,
+c
+i,k
+(
+0≤
+c
+i,j
+≤2
+) — card features. It is guaranteed that all cards are distinct.
 Output
-For each test case, output a single line containing the lexicographically smallest string
-s
-which could be a prototype of
-t
-.
-Example
+Output one integer — the number of meta-sets.
+Examples
 input
 Copy
-5
-1
-a
-2
-ba
-10
-codeforces
-26
-abcdefghijklmnopqrstuvwxyz
-26
-abcdefghijklmnopqrstuvwxzy
+8 4
+0 0 0 0
+0 0 0 1
+0 0 0 2
+0 0 1 0
+0 0 2 0
+0 1 0 0
+1 0 0 0
+2 2 0 0
 output
 Copy
-b
-ac
-abcdebfadg
-bcdefghijklmnopqrstuvwxyza
-bcdefghijklmnopqrstuvwxyaz
+1
+input
+Copy
+7 4
+0 0 0 0
+0 0 0 1
+0 0 0 2
+0 0 1 0
+0 0 2 0
+0 1 0 0
+0 2 0 0
+output
+Copy
+3
+input
+Copy
+9 2
+0 0
+0 1
+0 2
+1 0
+1 1
+1 2
+2 0
+2 1
+2 2
+output
+Copy
+54
+input
+Copy
+20 4
+0 2 0 0
+0 2 2 2
+0 2 2 1
+0 2 0 1
+1 2 2 0
+1 2 1 0
+1 2 2 1
+1 2 0 1
+1 1 2 2
+1 1 0 2
+1 1 2 1
+1 1 1 1
+2 1 2 0
+2 1 1 2
+2 1 2 1
+2 1 1 1
+0 1 1 2
+0 0 1 0
+2 2 0 0
+2 0 0 2
+output
+Copy
+0
 Note
-In the first test case, we couldn't have the string "a", since the letter a would transit to itself. Lexicographically the second string "b" is suitable as an answer.
-In the second test case, the string "aa" is not suitable, since a would transit to itself. "ab" is not suitable, since the circle would be closed with
+Let's draw the cards indicating the first four features. The first feature will indicate the number of objects on a card:
+1
+,
 2
-letters, but it must contain all
-26
-. The next string "ac" is suitable.
-Below you can see the schemes for the first three test cases. The non-involved letters are skipped, they can be arbitrary placed in the gaps.
+,
+3
+. The second one is the color: red, green, purple. The third is the shape: oval, diamond, squiggle. The fourth is filling: open, striped, solid.
+You can see the first three tests below. For the first two tests, the meta-sets are highlighted.
+In the first test, the only meta-set is the five cards
+(0000, 0001, 0002, 0010, 0020)
+. The sets in it are the triples
+(0000, 0001, 0002)
+and
+(0000, 0010, 0020)
+. Also, a set is the triple
+(0100, 1000, 2200)
+which does not belong to any meta-set.
+In the second test, the following groups of five cards are meta-sets:
+(0000, 0001, 0002, 0010, 0020)
+,
+(0000, 0001, 0002, 0100, 0200)
+,
+(0000, 0010, 0020, 0100, 0200)
+.
+In there third test, there are
+54
+meta-sets.

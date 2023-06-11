@@ -1,27 +1,15 @@
-One Dimensional Game of Life
+The Gray-Similar Code
 Problem
-In Conway's Game of Life, cells in a grid are used to simulate biological cells. Each cell is considered to be either alive or dead. At each step of the simulation each cell's current status and number of living neighbors is used to determine the status of the cell during the following step of the simulation.
-In this one-dimensional version, there are N cells numbered 0 through N-1. The number of cells does not change at any point in the simulation. Each cell i is adjacent to cells i-1 and i+1. Here, the indices are taken modulo N meaning cells 0 and N-1 are also adjacent to eachother. At each step of the simulation, cells with exactly one living neighbor change their status (alive cells become dead, dead cells become alive). For example, if we represent dead cells with a '0' and living cells with a '1', consider the state with 8 cells:
-01100101
-Cells 0 and 6 have two living neighbors.
-Cells 1, 2, 3, and 4 have one living neighbor.
-Cells 5 and 7 have no living neighbors.
-Thus, at the next step of the simulation, the state would be:
-00011101
-Given some state of the game, your task is to determine the state immediately preceding it. In some cases there may be more than one answer or no possible answer.
+The Gray code (see wikipedia for more details) is a well-known concept. One of its important properties is that every two adjacent numbers have exactly one different digit in their binary representation.
+In this problem, we will give you n non-negative integers in a sequence A[1..n] (0<=A[i]<2^64), such that every two adjacent integers have exactly one different digit in their binary representation, similar to the Gray code.
+Your task is to check whether there exist 4 numbers A[i1], A[i2], A[i3], A[i4] (1 <= i1 < i2 < i3 < i4 <= n) out of the given n numbers such that A[i1] xor A[i2] xor A[i3] xor A[i4] = 0. Here xor is a bitwise operation which is same as ^ in C, C++, Java and xor in Pascal.
 Input
-Input will begin with an integer T<100, the number of test cases. Each test case consists of a single line, with between 3 and 50 characters, inclusive. Each character will be either '0' or '1'. Each '0' represents a dead cell, and each '1' represents an alive cell.
+First line contains one integer n (4<=n<=100000). Second line contains n space seperated non-negative integers denoting the sequence A.
 Output
-For each test case, output the state of the game that precedes the given state. If there is no possible solution, print "No solution" (quotes for clarity only). If there are multiple possible solutions, print "Multiple solutions" (quotes for clarity only).
+Output “Yes” (quotes exclusive) if there exist four distinct indices i1, i2, i3, i4 such that A[i1] xor A[i2] xor A[i3] xor A[i4] = 0. Otherwise, output "No" (quotes exclusive) please.
 Sample 1:
 Input
 Output
-4
-00011101
-000
-000001
-11110
-01100101
-Multiple solutions
-No solution
-10010
+5
+1 0 2 3 7
+Yes

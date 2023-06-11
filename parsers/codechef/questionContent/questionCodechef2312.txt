@@ -1,58 +1,37 @@
-Alternating Diameter
+Cylinder
 Problem
-Chef stumbled upon
-B black nodes and
-W white nodes and now wants to construct a tree using them.
-Chef is bamboozled by the total number of trees that can be constructed using these nodes. To reduce this count, Chef considered only those trees which have at least one diameter that has alternating colors i.e. a black node is followed by a white node and a white node is followed by a black node.
-Help Chef in finding out the tree with the minimum possible diameter among all the trees that satisfies the above condition. If no tree satisfies the above conditions, print
-−1. If multiple trees satisfies the above condition, print any.
-Input Format
-The first line contains a single integer
-T - the number of test cases. Then the test cases follow.
-The first and only line of each test case contains two space separated integers
-B,W representing the number of black and white nodes respectively.
-Output Format
-If a tree can be constructed that fulfils all the requirements then
-In the first line, output a string of length
-B+W in which the
-i
-th
-character (1-based indexing) is either W or B denoting the colour of the
-i
-th
-node as black or white respectively.
-In the following
-B+W−1 lines, output two integers
-U and
-V denoting an edge between
-U
-th
-and
-V
-th
-node.
-If no tree fulfils the requirements print -1 in a single line.
-Constraints
-1≤T≤100
-0≤B,W≤1000
-1≤B+W≤1000
-Sample 1:
+Chef wants to make a steel container. The container should be of cylindrical form and should have as large volume as possible. He has a rectangular steel sheet of the size W × H for this. His plan is the following:
+At first he cuts the sheet into two rectangular sheets by horizontal or vertical cut.
+Then he takes one of the obtained sheets and cuts out two equal non-overlapping circles from it. Let the radius of each circle be R.
+Finally he cuts out the rectangular sheet of the size 2πR × A for maximal possible A from the second sheet, with sizes parallel to the sides of the second sheet. He will use it as a lateral surface of the container. Namely, he rolls up the obtained sheet along the side 2πR to obtain the lateral surface of cylinder.
+Thus, Chef obtains the cylindrical container of height A and radius R, having bottom and top made from steel.
+Chef is aware of your advanced math abilities and asks you for help to find the optimal container. Output the maximum volume of the container that could be achieved by the above scheme.
 Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. The only line of each test case contains two space-separated integers W and H.
 Output
+For each test case, output a single line containing the maximum volume of the container. Your answer will be considered as correct if it has a relative error less than 10−11. More formally, if the correct output is A and your output is B, your output will be considered as correct if and only if |A − B| ≤ 10−11 * A.
+Constrains
+1 ≤ T ≤ 400000 (4 * 105)
+1 ≤ W ≤ 999999 (106 − 1)
+1 ≤ H ≤ 999999 (106 − 1)
+Example
+Input:
 3
-1 1
-0 2
-1 2
-WB
-2 1
--1
-WBW
-1 2
+4 4
 2 3
-Explanation:
-Test case
-1: The tree has only one path between the nodes
-1 and
-2 which is the diameter and also alternating in color. The checker will handle multiple possible answers so you can also swap the colors of the node to achieve the same result.
-Test case
-2: There is only one tree possible and its diameter would consist of all white nodes only. Therefore there is no tree which satisfies the given conditions.
+1 6
+Output:
+3.471819240663
+0.824190535860
+0.785398163397
+Explanation
+In all examples blue circles are top and bottom of container. Yellow rectangle is used to create lateral surface. Namely, we roll up it along the direction of blue arrow to match green borders.
+Example case 1:
+
+R ≅ 0.63662, A ≅ 2.72676.
+Example case 2:
+
+R ≅ 0.36218, A = 2.
+Example case 3:
+
+R = 0.5, A = 1.

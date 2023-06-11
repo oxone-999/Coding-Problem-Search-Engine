@@ -1,100 +1,40 @@
-Rearrange Ranges
+Chef and LCS
 Problem
-Let
-f([x
-1
-,x
-2
-,⋯,x
-k
-]) be the minimum number of subarrays such that each
-x
-i
-belongs to exactly one subarray, and it's possible to arrange the subarrays in a way that makes
-x increasing. For example,
-f([5,4,1,2,3])=3 since we can divide
-x into three subarrays:
-[5],[4],[1,2,3] then rearrange them to
-[1,2,3],[4],[5].
-You are given a permutation
-P of length
-N. You are also given
-Q queries of the form
-L,R. For each query, find the value of
-f([P
-L
-,P
-L+1
-,⋯,P
-R
-]).
-Input Format
-The first line contains two space-separated integers,
-N and
-Q.
-The second line contains a permutation
-P of length
-N, represented by
-N space-separated integers
-P
-1
-,P
-2
-,…,P
-N
-.
-The
-i-th line of the next
-Q lines contains two integers,
-L and
-R.
-Output Format
-For each query, print the answer to the subarray on a new line.
-Constraints
-1≤N,Q≤5⋅10
-5
-1≤P
-i
-≤N
-P is a permutation
-1≤L≤R≤N
-Subtasks
-Subtask 1 (10 points):
-1≤N,Q≤10
-3
-Subtask 2 (30 points):
-1≤N,Q≤5⋅10
-4
-Subtask 3 (60 points):
-1≤N,Q≤5⋅10
-5
-Sample 1:
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Recently, Chef learned how to solve the Longest common subsequence problem. Being a fan of Ekta Kapoor1, he really likes problems which require finding something kth. Please help him solve one such problem he encountered.
+Chef wants to know the lexicographically kth longest common subsequence of any two given strings A and B. In other words, let L be the length of LCS(A, B), S be the sorted set of all common sequences of A and B with length L, you should find Sk. Keep in mind that all elements of a set are distinct.
 Input
+The first line of input contains two integers n and k. The second line contains the string A, and the third contains the string B. Lengths of both A and B equal n.
 Output
-6 4
-5 1 3 2 4 6
-1 2
-2 3
-1 5
-3 6
-2
-1
-5
-3
+Output lexicographically kth longest common subsequence. If such a sequence doesn't exist, output -1.
+Constraints
+1 ≤ n ≤ 1000
+1 ≤ k ≤ 109
+Each character of A and B is a lowercase Latin letter.
+Example
+Input:
+3 3
+abc
+cba
+
+Output:
+c
+Input:
+5 5
+abcba
+bacab
+
+Output:
+-1
+Input:
+2 2
+aa
+ab
+
+Output:
+-1
 Explanation:
-Test case
-1: Divide the subarray
-[5,1] into
-[5] and
-[1].
-Test case
-2: The subarray
-[1,3] is already sorted, no need to divide it further
-Test case
-3: Divide the subarray into
-[5],[1],[3],[2] and
-[4].
-Test case
-4: Divide the subarray into
-[3],[2] and
-[4,6].
+Example case 1. L = LCS(A, B) = 1. There are three common sequences with length L, S = {"a", "b", "c"}. Answer is "c".
+Example case 2. L = LCS(A, B) = 3. There are four common sequences with length L, S = {"aca", "acb", "bca", "bcb"}. Answer is "-1".
+Example case 3. L = LCS(A, B) = 1. There is only one distinct common sequence with length L, S = {"a"}. Answer is "-1".
+Note: 1Chef is not really a fan of Ekta Kapoor.

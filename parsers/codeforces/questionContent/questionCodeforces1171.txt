@@ -1,104 +1,133 @@
-B. Peculiar Movie Preferences
-time limit per test2 seconds
-memory limit per test512 megabytes
+D1. Game on Sum (Easy Version)
+time limit per test3 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Mihai plans to watch a movie. He only likes palindromic movies, so he wants to skip some (possibly zero) scenes to make the remaining parts of the movie palindromic.
-You are given a list
-s
-of
+This is the easy version of the problem. The difference is the constraints on
 n
-non-empty strings of length at most
-3
-, representing the scenes of Mihai's movie.
-A subsequence of
-s
-is called awesome if it is non-empty and the concatenation of the strings in the subsequence, in order, is a palindrome.
-Can you help Mihai check if there is at least one awesome subsequence of
-s
-?
-A palindrome is a string that reads the same backward as forward, for example strings "z", "aaa", "aba", "abccba" are palindromes, but strings "codeforces", "reality", "ab" are not.
-A sequence
-a
-is a non-empty subsequence of a non-empty sequence
-b
-if
-a
-can be obtained from
-b
-by deletion of several (possibly zero, but not all) elements.
+,
+m
+and
+t
+. You can make hacks only if all versions of the problem are solved.
+Alice and Bob are given the numbers
+n
+,
+m
+and
+k
+, and play a game as follows:
+The game has a score that Alice tries to maximize, and Bob tries to minimize. The score is initially
+0
+. The game consists of
+n
+turns. Each turn, Alice picks a real number from
+0
+to
+k
+(inclusive) which Bob either adds to or subtracts from the score of the game. But throughout the game, Bob has to choose to add at least
+m
+out of the
+n
+turns.
+Bob gets to know which number Alice picked before deciding whether to add or subtract the number from the score, and Alice gets to know whether Bob added or subtracted the number for the previous turn before picking the number for the current turn (except on the first turn since there was no previous turn).
+If Alice and Bob play optimally, what will the final score of the game be?
 Input
 The first line of the input contains a single integer
 t
 (
-1≤t≤100
+1≤t≤1000
 ) — the number of test cases. The description of test cases follows.
-The first line of each test case contains a single integer
+Each test case consists of a single line containing the three integers,
 n
+,
+m
+, and
+k
 (
-1≤n≤
+1≤m≤n≤2000,0≤k<
 10
-5
-) — the number of scenes in the movie.
-Then follows
-n
-lines, the
-i
--th of which containing a single non-empty string
-s
-i
-of length at most
-3
-, consisting of lowercase Latin letters.
+9
++7
+) — the number of turns, how many of those turns Bob has to add, and the biggest number Alice can choose, respectively.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
-10
-5
+2000
 .
 Output
-For each test case, print "YES" if there is an awesome subsequence of
-s
-, or "NO" otherwise (case insensitive).
+For each test case output a single integer number — the score of the optimal game modulo
+10
+9
++7
+.
+Formally, let
+M=
+10
+9
++7
+. It can be shown that the answer can be expressed as an irreducible fraction
+p
+q
+, where
+p
+and
+q
+are integers and
+q≢0(modM)
+. Output the integer equal to
+p⋅
+q
+−1
+modM
+. In other words, output such an integer
+x
+that
+0≤x<M
+and
+x⋅q≡p(modM)
+.
 Example
 input
 Copy
-6
-5
-zx
-ab
-cc
-zx
-ba
-2
-ab
-bad
-4
-co
-def
-orc
-es
-3
-a
-b
-c
-3
-ab
-cd
-cba
-2
-ab
-ab
+7
+3 3 2
+2 1 10
+6 3 10
+6 4 10
+100 1 1
+4 4 0
+69 4 20
 output
 Copy
-YES
-NO
-NO
-YES
-YES
-NO
+6
+5
+375000012
+500000026
+958557139
+0
+49735962
 Note
-In the first test case, an awesome subsequence of
-s
-is
-[ab,cc,ba]
+In the first test case, the entire game has
+3
+turns, and since
+m=3
+, Bob has to add in each of them. Therefore Alice should pick the biggest number she can, which is
+k=2
+, every turn.
+In the third test case, Alice has a strategy to guarantee a score of
+75
+8
+≡375000012(mod
+10
+9
++7)
+.
+In the fourth test case, Alice has a strategy to guarantee a score of
+45
+2
+≡500000026(mod
+10
+9
++7)
+.

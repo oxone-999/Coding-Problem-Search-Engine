@@ -1,211 +1,193 @@
-F. Chemistry Lab
-time limit per test2 seconds
+G. Guess the String
+time limit per test6 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Monocarp is planning on opening a chemistry lab. During the first month, he's going to distribute solutions of a certain acid.
-First, he will sign some contracts with a local chemistry factory. Each contract provides Monocarp with an unlimited supply of some solution of the same acid. The factory provides
+This is an interactive problem. You have to use flush operation right after printing each line. For example, in C++ you should use the function fflush(stdout), in Java or Kotlin — System.out.flush(), and in Python — sys.stdout.flush().
+The jury has a string
+s
+consisting of characters 0 and/or 1. The first character of this string is 0. The length of this string is
 n
-contract options, numbered from
-1
+. You have to guess this string. Let's denote
+s[l..r]
+as the substring of
+s
+from
+l
 to
-n
-. The
-i
--th solution has a concentration of
-x
-i
-%
-, the contract costs
-w
-i
-burles, and Monocarp will be able to sell it for
-c
-i
-burles per liter.
-Monocarp is expecting
-k
-customers during the first month. Each customer will buy a liter of a
-y%
--solution, where
-y
-is a real number chosen uniformly at random from
-0
-to
-100
-independently for each customer. More formally, the probability of number
-y
-being less than or equal to some
-t
-is
-P(y≤t)=
-t
-100
-.
-Monocarp can mix the solution that he signed the contracts with the factory for, at any ratio. More formally, if he has contracts for
-m
-solutions with concentrations
-x
+r
+(i. e.
+s[l..r]
+is the string
+s
+l
+s
+l+1
+…
+s
+r
+).
+Let the prefix function of the string
+s
+be an array
+[
+p
 1
 ,
-x
+p
 2
 ,…,
-x
-m
-, then, for these solutions, he picks their volumes
-a
+p
+n
+]
+, where
+p
+i
+is the greatest integer
+j∈[0,i−1]
+such that
+s[1..j]=s[i−j+1..i]
+. Also, let the antiprefix function of the string
+s
+be an array
+[
+q
 1
 ,
-a
+q
 2
 ,…,
-a
-m
-so that
-∑
-i=1
-m
-a
+q
+n
+]
+, where
+q
 i
-=1
-(exactly
+is the greatest integer
+j∈[0,i−1]
+such that
+s[1..j]
+differs from
+s[i−j+1..i]
+in every position.
+For example, for the string 011001, its prefix function is
+[0,0,0,1,1,2]
+, and its antiprefix function is
+[0,1,1,2,3,4]
+.
+You can ask queries of two types to guess the string
+s
+:
 1
-since each customer wants exactly one liter of a certain solution).
-The concentration of the resulting solution is
-∑
-i=1
-m
-x
 i
-⋅
-a
+— "what is the value of
+p
 i
-. The price of the resulting solution is
-∑
-i=1
-m
-c
+?";
+2
 i
-⋅
-a
+— "what is the value of
+q
 i
-.
-If Monocarp can obtain a solution of concentration
-y%
-, then he will do it while maximizing its price (the cost for the customer). Otherwise, the customer leaves without buying anything, and the price is considered equal to
+?".
+You have to guess the string by asking no more than
+789
+queries. Note that giving the answer does not count as a query.
+In every test and in every test case, the string
+s
+is fixed beforehand.
+Interaction
+Initially, the jury program sends one integer
+t
+(
+1≤t≤100
+) — the number of test cases.
+At the start of each test case, the jury program sends one integer
+n
+(
+2≤n≤1000
+) — the length of the string.
+After that, your program can submit queries to the jury program by printing one of the following lines (do not forget to flush the output after printing a line!):
+1
+i
+— the query "what is the value of
+p
+i
+?";
+2
+i
+— the query "what is the value of
+q
+i
+?".
+For every query, the jury prints one integer on a separate line. It is either:
+the answer for your query, if the query is correct and you haven't exceeded the query limit;
+or the integer
+−1
+, if your query is incorrect (for example, the constraint
+1≤i≤n
+is not met) or if you have asked too many queries while processing the current test case.
+To submit the answer, your program should send a line in the following format (do not forget to flush the output after printing a line!):
 0
-.
-Monocarp wants to sign some contracts with a factory (possibly, none or all of them) so that the expected profit is maximized — the expected total price of the sold solutions for all
-k
-customers minus the total cost of signing the contracts from the factory.
-Print the maximum expected profit Monocarp can achieve.
-Input
-The first line contains two integers
+s
+, where
+s
+is a sequence of
 n
-and
-k
-(
-1≤n≤5000
-;
-1≤k≤
-10
-5
-) — the number of contracts the factory provides and the number of customers.
-The
-i
--th of the next
-n
-lines contains three integers
-x
-i
-,
-w
-i
-and
-c
-i
-(
-0≤
-x
-i
-≤100
-;
-1≤
-w
-i
-≤
-10
-9
-;
-1≤
-c
-i
-≤
-10
-5
-) — the concentration of the solution, the cost of the contract and the cost per liter for the customer, for the
-i
--th contract.
-Output
-Print a single real number — the maximum expected profit Monocarp can achieve.
-Your answer is considered correct if its absolute or relative error does not exceed
-10
-−6
-.
-Formally, let your answer be
-a
-, and the jury's answer be
-b
-. Your answer is accepted if and only if
-|a−b|
-max(1,|b|)
-≤
-10
-−6
-.
-Examples
+characters 0 and/or 1.
+If your guess is correct, the jury program will print one integer
+1
+on a separate line, indicating that you may proceed to the next test case (or terminate the program, if it was the last test case) and that the number of queries you have asked is reset. If it is not correct, the jury program will print one integer
+−1
+on a separate line.
+After your program receives
+−1
+as the answer, it should immediately terminate. This will lead to your submission receiving the verdict "Wrong Answer". If your program does not terminate, the verdict of your submission is undefined.
+Example
 input
 Copy
-2 10
-0 10 20
-100 15 20
+2 // 2 test cases
+6 // n = 6
+
+0 // p[3] = 0
+
+1 // q[2] = 1
+
+4 // q[6] = 4
+
+1 // p[4] = 1
+
+1 // answer is correct
+5 // n = 5
+
+1 // p[2] = 1
+
+2 // q[4] = 2
+
+2 // q[5] = 2
+
+1 // answer is correct
 output
 Copy
-175.000000000000000
-input
-Copy
-2 10
-0 100 20
-100 150 20
-output
-Copy
-0.000000000000000
-input
-Copy
-6 15
-79 5 35
-30 13 132
-37 3 52
-24 2 60
-76 18 14
-71 17 7
-output
-Copy
-680.125000000000000
-input
-Copy
-10 15
-46 11 11
-4 12 170
-69 2 130
-2 8 72
-82 7 117
-100 5 154
-38 9 146
-97 1 132
-0 12 82
-53 1 144
-output
-Copy
-2379.400000000000000
+1 3      // what is p[3]?
+
+2 2      // what is q[2]?
+
+2 6      // what is q[6]?
+
+1 4      // what is p[4]?
+
+0 011001 // the guess is 011001
+
+
+1 2      // what is p[2]?
+
+2 4      // what is q[4]?
+
+2 5      // what is q[5]?
+
+0 00111  // the guess is 00111
+Note
+The example contains one possible way of interaction in a test where
+t=2
+, and the strings guessed by the jury are 011001 and 00111. Note that everything after the // sign is a comment that explains which line means what in the interaction. The jury program won't print these comments in the actual problem, and you shouldn't print them. The empty lines are also added for your convenience, the jury program won't print them, and your solution should not print any empty lines.

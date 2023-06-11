@@ -1,141 +1,174 @@
-G. Unusual Minesweeper
+A. Equal or Not Equal
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp is very fond of playing the game Minesweeper. Recently he found a similar game and there are such rules.
-There are mines on the field, for each the coordinates of its location are known (
-x
-i
+You had
+n
+positive integers
+a
+1
 ,
-y
-i
-). Each mine has a lifetime in seconds, after which it will explode. After the explosion, the mine also detonates all mines vertically and horizontally at a distance of
-k
-(two perpendicular lines). As a result, we get an explosion on the field in the form of a "plus" symbol ('+'). Thus, one explosion can cause new explosions, and so on.
-Also, Polycarp can detonate anyone mine every second, starting from zero seconds. After that, a chain reaction of explosions also takes place. Mines explode instantly and also instantly detonate other mines according to the rules described above.
-Polycarp wants to set a new record and asks you to help him calculate in what minimum number of seconds all mines can be detonated.
+a
+2
+,…,
+a
+n
+arranged in a circle. For each pair of neighboring numbers (
+a
+1
+and
+a
+2
+,
+a
+2
+and
+a
+3
+, ...,
+a
+n−1
+and
+a
+n
+, and
+a
+n
+and
+a
+1
+), you wrote down: are the numbers in the pair equal or not.
+Unfortunately, you've lost a piece of paper with the array
+a
+. Moreover, you are afraid that even information about equality of neighboring elements may be inconsistent. So, you are wondering: is there any array
+a
+which is consistent with information you have about equality or non-equality of corresponding pairs?
 Input
-The first line of the input contains an integer
+The first line contains a single integer
 t
 (
-1≤t≤
-10
-4
-) — the number of test cases in the test.
-An empty line is written in front of each test suite.
-Next comes a line that contains integers
+1≤t≤1000
+) — the number of test cases. Next
+t
+cases follow.
+The first and only line of each test case contains a non-empty string
+s
+consisting of characters E and/or N. The length of
+s
+is equal to the size of array
 n
 and
-k
+2≤n≤50
+. For each
+i
+from
+1
+to
+n
+:
+if
+s
+i
+=
+E then
+a
+i
+is equal to
+a
+i+1
 (
-1≤n≤2⋅
-10
-5
-,
-0≤k≤
-10
-9
-) — the number of mines and the distance that hit by mines during the explosion, respectively.
-Then
+a
 n
-lines follow, the
+=
+a
+1
+for
+i=n
+);
+if
+s
 i
--th of which describes the
-x
-and
-y
-coordinates of the
+=
+N then
+a
 i
--th mine and the time until its explosion (
-−
-10
-9
-≤x,y≤
-10
-9
-,
-0≤timer≤
-10
-9
-). It is guaranteed that all mines have different coordinates.
-It is guaranteed that the sum of the values
+is not equal to
+a
+i+1
+(
+a
 n
-over all test cases in the test does not exceed
-2⋅
-10
-5
-.
+≠
+a
+1
+for
+i=n
+).
 Output
-Print
-t
-lines, each of the lines must contain the answer to the corresponding set of input data  — the minimum number of seconds it takes to explode all the mines.
+For each test case, print YES if it's possible to choose array
+a
+that are consistent with information from
+s
+you know. Otherwise, print NO.
+It can be proved, that if there exists some array
+a
+, then there exists an array
+a
+of positive integers with values less or equal to
+10
+9
+.
 Example
 input
 Copy
-3
-
-5 0
-0 0 1
-0 1 4
-1 0 2
-1 1 3
-2 2 9
-
-5 2
-0 0 1
-0 1 4
-1 0 2
-1 1 3
-2 2 9
-
-6 1
-1 -1 3
-0 -1 9
-0 1 7
--1 0 1
--1 1 9
--1 -1 7
+4
+EEE
+EN
+ENNEENE
+NENN
 output
 Copy
-2
-1
-0
+YES
+NO
+YES
+YES
 Note
-Picture from examples
-First example:
-0
-second: we explode a mine at the cell
-(2,2)
-, it does not detonate any other mine since
-k=0
-.
+In the first test case, you can choose, for example,
+a
 1
-second: we explode the mine at the cell
-(0,1)
-, and the mine at the cell
-(0,0)
-explodes itself.
+=
+a
 2
-second: we explode the mine at the cell
-(1,1)
-, and the mine at the cell
-(1,0)
-explodes itself.
-Second example:
-0
-second: we explode a mine at the cell
-(2,2)
-we get:
+=
+a
+3
+=5
+.
+In the second test case, there is no array
+a
+, since, according to
+s
 1
-second: the mine at coordinate
-(0,0)
-explodes and since
-k=2
-the explosion detonates mines at the cells
-(0,1)
-and
-(1,0)
-, and their explosions detonate the mine at the cell
-(1,1)
-and there are no mines left on the field.
+,
+a
+1
+is equal to
+a
+2
+, but, according to
+s
+2
+,
+a
+2
+is not equal to
+a
+1
+.
+In the third test case, you can, for example, choose array
+a=[20,20,4,50,50,50,20]
+.
+In the fourth test case, you can, for example, choose
+a=[1,3,3,7]
+.

@@ -1,103 +1,74 @@
-Unique Substring
+Chef and Big Matrix
 Problem
-Well, before Chef could counter attack, Dr Doof showed his innocent face which moved Chef. Moreover, on hearing his complete story, Chef took pity on him and decided to befriend him. He even decided to play a game with him. The game goes as follows:
-Chef gives Dr Doof a string
-S of length
-N consisting only of lowercase Latin letters and asks him to study the string carefully.
-A substring of a string is a contiguous subsequence of that string. We denote the substring of string
-S starting from the
-l
-th
-character and ending with the
-r
-th
-character as
-S[l,r]. So, strings chef and odech are substrings of string codechef, but string codee is not.
-Chef defines a substring to be unique if it occurs in the whole string
-S exactly once.
-After Dr Doof studies the string, Chef asks him
-Q queries of the form -
-L
-R
-K.
-For each query, you have to find the lexicographically smallest unique substring of length atleast
-K in
-[L,R], or say that there is no unique substring in this range. Formally, the answer to each query is two integers
-l and
-r such that:
-L≤l≤r≤R
-r−l+1≥K
-S[l,r] is the lexicographically smallest unique substring satisfying conditions
-1 and
-2.
-String
-p is lexicographically smaller than string
-q, if
-p is a prefix of
-q not equal to
-q or there exists an index
-i, such that
-p
-i
-<
-q
-i
-and for all
-j < i,p
-j
-= q
-j
-. For example, abc is lexicographically smaller than abcd , abd is lexicographically smaller than abec.
-This time, you have to help the poor Dr Doof answer the queries as he doesn't want to lose his new friend. If there is no unique substring
-S[l,r] satisfying the above conditions, print two space separated integers:
-−1
-−1.
-###Input:
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains a single string
-S.
-The third line contains a single integer
-Q.
-Q lines follow. Each of these lines contains three space-separated integers
-L
-R
-K describing a query.
-###Output: For each query, print a single line containing two space separated integers
-l and
-r ― the answer to the query.
-###Constraints
-1≤T≤10
-5
-2≤N≤5×10
-5
-1≤Q≤5×10
-5
-1≤L≤R≤N
-1≤K≤R−L+1
-The sum of
-N over all test cases does not exceed
-5×10
-5
-The sum of
-Q over all test cases does not exceed
-5×10
-5
-###Sample Input: 1 5 abcab 4 1 3 2 2 5 3 3 4 1 4 5 1
-###Sample Output: 1 3 2 4 3 3 -1 -1
-###Explanation:
-Query
-1: The unique substrings in
-[1,3] are c, abc and bc. abc is the lexicographically smallest unique substring of length atleast 2.
-Query
-2: The unique substrings in
-[2,5] are bc, bca, bcab, c, ca and cab. bca is the lexicographically smallest unique substring of length atleast 3.
-Query
-3: The unique substrings in
-[3,4] are c and ca. c is the lexicographically smallest unique substring of length atleast 1.
-Query
-4: None of the substrings in
-[4,5] are unique.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef has a rectangular table consisting of N rows and M columns. Rows are numbered by integers from 1 to N from top to bottom and columns are numbered from 1 to M from left to right. Let (x, y) denote the cell corresponding to xth row and yth column.
+Chef has two bunnies, both initially at the cell (1, 1). He wants them to get to the cell (N, M). Each of the bunny can move from some cell (x, y) to cell (x+1, y) or cell (x, y+1). As bunnies do not really like each other, they do not want to meet along their ways, except at the start (1,1) and end (N, M) cells.
+Also, there are exactly C cells in the table containing a carrot. When a bunny goes through such a cell, he eats this carrot. As Chef also wants to eat carrots, he wants that both the bunnies cumulatively don't eat more than D carrots.
+Find out number of ways in which bunnies can get from cell (1, 1) to cell (N, M) satisfying the above conditions. As answer could be large, please output your answer modulo MOD.
+Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains five space-separated integers N, M, C, D and MOD denoting the sizes of table, the number of cells with a carrot, the maximum number of carrots that can be eaten by bunnies and the modulo.
+Each of next C lines contains two space-separated integers xi and yi denoting the coordinates of the cell with a carrot.
+Output
+For each test case, output a single line containing the numbers of ways bunnies can get from cell (1,1) to cell (N, M) modulo MOD.
+Constraints
+2 ≤ N, M ≤ 105
+0 ≤ D ≤ C ≤ min{200, N * M - 2}
+1 ≤ xi ≤ N
+1 ≤ yi ≤ M
+1 ≤ MOD ≤ 109
+It's guaranteed that there is no carrot in cells (1, 1) and (N, M)
+Subtasks
+Subtask #1 (7 pts)
+1 ≤ T ≤ 100
+2 ≤ N, M ≤ 5
+TL = 2s
+Subtask #2 (11 pts)
+1 ≤ T ≤ 10
+2 ≤ N, M, C ≤ 60
+TL = 2s
+Subtask #3 (13 pts)
+1 ≤ T ≤ 10
+C = 0
+TL = 2s
+Subtask #4 (19 pts)
+1 ≤ T ≤ 5
+0 ≤ C ≤ 100
+TL = 10s
+Subtask #5 (23 pts)
+1 ≤ T ≤ 5
+0 ≤ C ≤ 100
+TL = 2s
+Subtask #6 (27 pts)
+1 ≤ T ≤ 5
+TL = 2s
+Sample 1:
+Input
+Output
+4
+2 3 0 0 10
+2 3 1 0 16
+2 1
+3 3 1 0 7
+2 2
+2 2 2 1 11
+1 2
+2 1
+1
+0
+1
+0
+Explanation:
+Example case 1.
+***
+***
+In this case there is only one variant how bunnies can get from the cell (1,1) to the cell (2, 3).
+First bunny - (1, 1) -> (2, 1) -> (2, 2) -> (2. 3) and the second bunny - (1, 1) -> (1, 2) -> (1, 3) -> (2, 3).
+Example case 2.
+***
+x**
+In this example there are no two nonintersecting ways without cells with carrot. Therefore the answer is 0.
+Example case 4.
+*x
+x*
+In this case there is only one variant how bunnies can move. First bunny - (1, 1) -> (2, 1) -> (2, 2) and the second bunny - (1, 1) -> (1, 2) -> (2, 2). But in this case, in total, bunnies will eat two carrots(when only one carrot is allowed). Therefore the answer is 0.

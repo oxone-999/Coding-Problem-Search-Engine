@@ -1,209 +1,269 @@
-C. Hidden Permutations
-time limit per test1 second
+E. New School
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem.
-The jury has a permutation
-p
-of length
+You have decided to open a new school. You have already found
 n
-and wants you to guess it. For this, the jury created another permutation
-q
-of length
+teachers and
+m
+groups of students. The
+i
+-th group of students consists of
+k
+i
+≥2
+students. You know age of each teacher and each student. The ages of teachers are
+a
+1
+,
+a
+2
+,…,
+a
 n
-. Initially,
-q
-is an identity permutation (
-q
+and the ages of students of the
 i
-=i
-for all
-i
-).
-You can ask queries to get
-q
-i
-for any
-i
-you want. After each query, the jury will change
-q
-in the following way:
-At first, the jury will create a new permutation
-q
-′
-of length
-n
-such that
-q
-′
-i
-=
-q
-p
-i
-for all
+-th group are
+b
+i,1
+,
+b
+i,2
+,…,
+b
+i,
+k
 i
 .
-Then the jury will replace permutation
-q
-with pemutation
-q
-′
+To start lessons you should assign the teacher to each group of students. Such assignment should satisfy the following requirements:
+To each group exactly one teacher assigned.
+To each teacher at most
+1
+group of students assigned.
+The average of students' ages in each group doesn't exceed the age of the teacher assigned to this group.
+The average of set
+x
+1
+,
+x
+2
+,…,
+x
+k
+of
+k
+integers is
+x
+1
++
+x
+2
++…+
+x
+k
+k
 .
-You can make no more than
-2n
-queries in order to quess
-p
-.
+Recently you have heard that one of the students will refuse to study in your school. After this, the size of one group will decrease by
+1
+while all other groups will remain unchanged.
+You don't know who will refuse to study. For each student determine if you can start lessons in case of his refusal.
+Note, that it is not guaranteed that it is possible to start lessons before any refusal.
 Input
-The first line of input contains a single integer
+The first line contains a single integer
 t
 (
 1≤t≤1000
 ) — the number of test cases.
-Interaction
-Interaction in each test case starts after reading the single integer
+The first line of each test case contains two integers
 n
-(
-1≤n≤
-10
-4
-) — the length of permutations
-p
 and
-q
-.
-To get the value of
-q
+m
+(
+1≤m≤n≤
+10
+5
+) — the number of teachers and the number of groups of students.
+The second line of each test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
 i
-, output the query in the format
-?
+≤
+10
+5
+) — the ages of teachers.
+The next
+2m
+lines contains descriptions of groups.
+The first line of description of group contains a single integer
+k
 i
 (
-1≤i≤n
-). After that you will receive the value of
-q
+2≤
+k
 i
-.
-You can make at most
-2n
-queries. After the incorrect query you will receive
-0
-and you should exit immediately to get Wrong answer verdict.
-When you will be ready to determine
-p
-, output
-p
-in format
-!
-p
-1
-p
-2
-…
-p
-n
-. After this you should go to the next test case or exit if it was the last test case. Printing the permutation is not counted as one of
-2n
-queries.
-After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-It is guaranteed that the sum of
+≤
+10
+5
+) — the number of students in this group.
+The second line of description of group contains
+k
+i
+integers
+b
+i,1
+,
+b
+i,2
+,…,
+b
+i,
+k
+i
+(
+1≤
+b
+i,j
+≤
+10
+5
+) — the ages of students of this group.
+It is guaranteed that the total sum of
 n
 over all test cases doesn't exceed
 10
-4
-. The interactor is not adaptive in this problem.
-Hacks:
-To hack, use the following format:
-The first line contains the single integer
-t
- — the number of test cases.
-The first line of each test case contains the single integer
-n
- — the length of the permutations
-p
+5
+and that the total sum of
+k
+1
++
+k
+2
++…+
+k
+m
+over all test cases doesn't exceed
+2⋅
+10
+5
+Output
+For each test case output string of symbols
+0
 and
-q
-. The second line of each test case contains
-n
-integers
-p
+1
+of length
+k
+1
++
+k
+2
++…+
+k
+m
+. The
+i
+-th symbol of this string should be equals
+1
+if it is possible to start lessons in case of the
+i
+-th student refuse and it should be equals
+0
+otherwise.
+Students are numbered by integers from
+1
+to
+k
+1
++
+k
+2
++…+
+k
+m
+in the order they appear in the input. Thus, students of the
+1
+-st group are numbered by integers
 1
 ,
-p
 2
-,…,
-p
-n
- — the hidden permutation for this test case.
+,
+…
+,
+k
+1
+, students of the
+2
+-nd group are numbered by integers
+k
+1
++1
+,
+k
+1
++2
+,
+…
+,
+k
+1
++
+k
+2
+and so on.
 Example
 input
 Copy
 2
-4
-
+1 1
+30
 3
-
+25 16 37
+4 2
+9 12 12 6
 2
-
-1
-
-4
-
-2
-
-4
-
-4
+4 5
+3
+111 11 11
 output
 Copy
-? 3
-
-? 2
-
-? 4
-
-! 4 2 1 3
-
-? 2
-
-? 3
-
-? 2
-
-! 1 3 4 2
+101
+00100
 Note
-In the first test case the hidden permutation
-p=[4,2,1,3]
-.
-Before the first query
-q=[1,2,3,4]
-so answer for the query will be
-q
+In the first test case there is one group of students with average age
+25+16+37
 3
-=3
-.
-Before the second query
-q=[4,2,1,3]
-so answer for the query will be
-q
+=26
+and one teacher with age
+30
+. There exists only one assignment that allows to start lessons.
+If the student with age
+16
+will refuse to study, the average age of students in this group will become
+25+37
 2
-=2
-.
-Before the third query
-q=[3,2,4,1]
-so answer for the query will be
-q
-4
-=1
-.
-In the second test case the hidden permutation
-p=[1,3,4,2]
-.
-Empty strings are given only for better readability. There will be no empty lines in the testing system.
+=31
+so there won't be any assignment that allows to start lessons.
+In the second test case it is impossible to start lessons initially. However, if the
+3
+-rd student with age
+111
+will refuse to study, the average ages of groups will become
+4+5
+2
+=4.5
+and
+11+11
+2
+=11
+correspondingly. Then it is possible to assing the first group to the first teacher and the second group to the third teacher.

@@ -1,289 +1,152 @@
-G. New Year and the Factorisation Collaboration
-time limit per test6 seconds
+H. New Year and the Tricolore Recreation
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Integer factorisation is hard. The RSA Factoring Challenge offered
-$100000
-for factoring RSA-
-1024
-, a
-1024
--bit long product of two prime numbers. To this date, nobody was able to claim the prize. We want you to factorise a
-1024
--bit number.
-Since your programming language of choice might not offer facilities for handling large integers, we will provide you with a very simple calculator.
-To use this calculator, you can print queries on the standard output and retrieve the results from the standard input. The operations are as follows:
-+ x y where
-x
-and
-y
-are integers between
-0
-and
-n−1
-. Returns
-(x+y)modn
-.
-- x y where
-x
-and
-y
-are integers between
-0
-and
-n−1
-. Returns
-(x−y)modn
-.
-* x y where
-x
-and
-y
-are integers between
-0
-and
-n−1
-. Returns
-(x⋅y)modn
-.
-/ x y where
-x
-and
-y
-are integers between
-0
-and
-n−1
-and
-y
-is coprime with
+Alice and Bob play a game on a grid with
 n
-. Returns
-(x⋅
-y
-−1
-)modn
-where
-y
-−1
-is multiplicative inverse of
-y
-modulo
-n
-. If
-y
-is not coprime with
-n
-, then
-−1
-is returned instead.
-sqrt x where
-x
-is integer between
-0
-and
-n−1
-coprime with
-n
-. Returns
-y
-such that
-y
-2
-modn=x
-. If there are multiple such integers, only one of them is returned. If there are none,
-−1
-is returned instead.
-^ x y where
-x
-and
-y
-are integers between
-0
-and
-n−1
-. Returns
-x
-y
-modn
-.
-Find the factorisation of
-n
-that is a product of between
-2
-and
-10
-distinct prime numbers, all of form
-4x+3
-for some integer
-x
-.
-Because of technical issues, we restrict number of requests to
-100
-.
+rows and infinitely many columns. In each row, there are three tokens, blue, white and red one. Before the game starts and after every move, the following two conditions must hold:
+Any two tokens are not in the same cell.
+In each row, the blue token is to the left of the white token, and the red token is to the right of the white token.
+First, they pick a positive integer
+f
+, whose value is valid for the whole game. Second, the starting player is chosen and makes his or her first turn. Then players take alternating turns. The player who is unable to make a move loses.
+During a move, a player first selects an integer
+k
+that is either a prime number or a product of two (not necessarily distinct) primes. The smallest possible values of
+k
+are thus
+2,3,4,5,6,7,9,10,11,13,14,15,17,19,…
+. Furthermore,
+k
+must not be equal to the previously picked integer
+f
+. Each turn, a move is performed in exactly one of the rows.
+If it is Alice's turn, she chooses a single blue token and moves it
+k
+cells to the right. Alternatively, she may move both the blue and the white token in the same row by the same amount
+k
+to the right.
+On the other hand, Bob selects a single red token and moves it
+k
+cells to the left. Similarly, he may also move the white and the red token in the corresponding row by
+k
+to the left.
+Note that Alice may never move a red token, while Bob may never move a blue one. Remember that after a move, the two conditions on relative positions of the tokens must still hold.
+Both players play optimally. Given the initial state of the board, determine who wins for two games: if Alice starts and if Bob starts.
 Input
-The only line contains a single integer
+The first line contains a two integers
 n
- (
-21≤n≤
-2
-1024
-). It is guaranteed that
-n
-is a product of between
-2
 and
+f
+ (
+1≤n≤
 10
-distinct prime numbers, all of form
-4x+3
-for some integer
-x
-.
-Output
-You can print as many queries as you wish, adhering to the time limit (see the Interaction section for more details).
-When you think you know the answer, output a single line of form ! k p_1 p_2 ... p_k, where
-k
-is the number of prime factors of
-n
-, and
-p
-i
-are the distinct prime factors. You may print the factors in any order.
-Hacks input
-For hacks, use the following format:.
-The first should contain
-k
-(
-2≤k≤10
-) — the number of prime factors of
-n
-.
-The second should contain
-k
-space separated integers
-p
-1
+5
 ,
-p
-2
-,…,
-p
-k
-(
-21≤n≤
-2
-1024
-) — the prime factors of
+2≤f≤2⋅
+10
+5
+) — the number of rows and the forbidden move, respectively.
+Each of the next
 n
-. All prime factors have to be of form
-4x+3
-for some integer
-x
-. They all have to be distinct.
-Interaction
-After printing a query do not forget to output end of line and flush the output. Otherwise you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-The number of queries is not limited. However, your program must (as always) fit in the time limit. The run time of the interactor is also counted towards the time limit. The maximum runtime of each query is given below.
-+ x y — up to
-1
-ms.
-- x y — up to
-1
-ms.
-* x y — up to
-1
-ms.
-/ x y — up to
-350
-ms.
-sqrt x — up to
-80
-ms.
-^ x y — up to
-350
-ms.
-Note that the sample input contains extra empty lines so that it easier to read. The real input will not contain any empty lines and you do not need to output extra empty lines.
-Example
+lines contains three integers
+b
+i
+,
+w
+i
+,
+r
+i
+ (
+−
+10
+5
+≤
+b
+i
+<
+w
+i
+<
+r
+i
+≤
+10
+5
+) — the number of column in which the blue, white and red token lies in the
+i
+-th row, respectively.
+Output
+Output two lines.
+The first line should contain the name of the winner when Alice starts, and the second line should contain the name of the winner when Bob starts.
+Examples
 input
 Copy
-21
-
-7
-
-17
-
-15
-
-17
-
-11
-
--1
-
-15
-
+1 6
+0 3 9
 output
 Copy
-+ 12 16
-
-- 6 10
-
-* 8 15
-
-/ 5 4
-
-sqrt 16
-
-sqrt 5
-
-^ 6 12
-
-! 2 3 7
+Alice
+Bob
+input
+Copy
+1 2
+0 3 9
+output
+Copy
+Alice
+Bob
+input
+Copy
+10 133
+-248 -193 -187
+97 101 202
+-72 67 91
+23 89 215
+-129 -108 232
+-223 -59 236
+-99 86 242
+-137 -109 -45
+-105 173 246
+-44 228 243
+output
+Copy
+Bob
+Alice
 Note
-We start by reading the first line containing the integer
-n=21
-. Then, we ask for:
-(12+16)mod21=28mod21=7
-.
-(6−10)mod21=−4mod21=17
-.
-(8⋅15)mod21=120mod21=15
-.
-(5⋅
-4
-−1
-)mod21=(5⋅16)mod21=80mod21=17
-.
-Square root of
-16
-. The answer is
-11
-, as
-(11⋅11)mod21=121mod21=16
-. Note that the answer may as well be
-10
-.
-Square root of
-5
-. There is no
-x
-such that
-x
+The first example is as follows:
+When Alice starts, she can win by moving the blue and white token to right by
 2
-mod21=5
-, so the output is
-−1
+cells, getting into position
+2 5 9
+. Regardless of what Bob does, Alice will have one more move and then the game is over. For instance, he can move both the red and white token by
+2
+cells to the left, reaching state
+2 3 7
+. Alice can then move blue and white token by
+2
+to move into
+4 5 7
+, where no more moves are possible.
+If Bob starts, he gains enough advantage to win. For instance, he may move the red token by
+3
+to the left, getting into position
+0 3 6
+. Alice can, for example, move the blue token by
+2
+, which is countered by Bob by moving the red token by
+2
+. The game ends in position
+2 3 4
 .
-(
-6
-12
-)mod21=2176782336mod21=15
-.
-We conclude that our calculator is working, stop fooling around and realise that
-21=3⋅7
-.
+In the second example, it is forbidden to move by
+2
+, but this doesn't stop Alice from winning! She can move the blue and white token by
+4
+, getting into position
+4 7 9
+. Now Bob has no move, since moving by
+2
+is forbidden.

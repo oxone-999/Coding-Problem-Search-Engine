@@ -1,117 +1,209 @@
-A. Stable Arrangement of Rooks
+C. Hidden Permutations
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have an
-n×n
-chessboard and
-k
-rooks. Rows of this chessboard are numbered by integers from
-1
-to
+This is an interactive problem.
+The jury has a permutation
+p
+of length
 n
-from top to bottom and columns of this chessboard are numbered by integers from
-1
-to
+and wants you to guess it. For this, the jury created another permutation
+q
+of length
 n
-from left to right. The cell
-(x,y)
-is the cell on the intersection of row
-x
-and collumn
-y
-for
-1≤x≤n
-and
-1≤y≤n
+. Initially,
+q
+is an identity permutation (
+q
+i
+=i
+for all
+i
+).
+You can ask queries to get
+q
+i
+for any
+i
+you want. After each query, the jury will change
+q
+in the following way:
+At first, the jury will create a new permutation
+q
+′
+of length
+n
+such that
+q
+′
+i
+=
+q
+p
+i
+for all
+i
 .
-The arrangement of rooks on this board is called good, if no rook is beaten by another rook.
-A rook beats all the rooks that shares the same row or collumn with it.
-The good arrangement of rooks on this board is called not stable, if it is possible to move one rook to the adjacent cell so arrangement becomes not good. Otherwise, the good arrangement is stable. Here, adjacent cells are the cells that share a side.
-Such arrangement of
-3
-rooks on the
-4×4
-chessboard is good, but it is not stable: the rook from
-(1,1)
-can be moved to the adjacent cell
-(2,1)
-and rooks on cells
-(2,1)
-and
-(2,4)
-will beat each other.
-Please, find any stable arrangement of
-k
-rooks on the
-n×n
-chessboard or report that there is no such arrangement.
+Then the jury will replace permutation
+q
+with pemutation
+q
+′
+.
+You can make no more than
+2n
+queries in order to quess
+p
+.
 Input
-The first line contains a single integer
+The first line of input contains a single integer
 t
 (
-1≤t≤100
+1≤t≤1000
 ) — the number of test cases.
-The first line of each test case contains two integers
+Interaction
+Interaction in each test case starts after reading the single integer
 n
-,
-k
 (
-1≤k≤n≤40
-) — the size of the chessboard and the number of rooks.
-Output
-If there is a stable arrangement of
-k
-rooks on the
-n×n
-chessboard, output
-n
-lines of symbols . and R. The
-j
--th symbol of the
-i
--th line should be equals R if and only if there is a rook on the cell
-(i,j)
-in your arrangement.
-If there are multiple solutions, you may output any of them.
-If there is no stable arrangement, output
-−1
+1≤n≤
+10
+4
+) — the length of permutations
+p
+and
+q
 .
+To get the value of
+q
+i
+, output the query in the format
+?
+i
+(
+1≤i≤n
+). After that you will receive the value of
+q
+i
+.
+You can make at most
+2n
+queries. After the incorrect query you will receive
+0
+and you should exit immediately to get Wrong answer verdict.
+When you will be ready to determine
+p
+, output
+p
+in format
+!
+p
+1
+p
+2
+…
+p
+n
+. After this you should go to the next test case or exit if it was the last test case. Printing the permutation is not counted as one of
+2n
+queries.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+It is guaranteed that the sum of
+n
+over all test cases doesn't exceed
+10
+4
+. The interactor is not adaptive in this problem.
+Hacks:
+To hack, use the following format:
+The first line contains the single integer
+t
+ — the number of test cases.
+The first line of each test case contains the single integer
+n
+ — the length of the permutations
+p
+and
+q
+. The second line of each test case contains
+n
+integers
+p
+1
+,
+p
+2
+,…,
+p
+n
+ — the hidden permutation for this test case.
 Example
 input
 Copy
-5
-3 2
-3 3
-1 1
-5 2
-40 33
+2
+4
+
+3
+
+2
+
+1
+
+4
+
+2
+
+4
+
+4
 output
 Copy
-..R
-...
-R..
--1
-R
-.....
-R....
-.....
-....R
-.....
--1
+? 3
+
+? 2
+
+? 4
+
+! 4 2 1 3
+
+? 2
+
+? 3
+
+? 2
+
+! 1 3 4 2
 Note
-In the first test case, you should find stable arrangement of
-2
-rooks on the
-3×3
-chessboard. Placing them in cells
-(3,1)
-and
-(1,3)
-gives stable arrangement.
-In the second test case it can be shown that it is impossbile to place
+In the first test case the hidden permutation
+p=[4,2,1,3]
+.
+Before the first query
+q=[1,2,3,4]
+so answer for the query will be
+q
 3
-rooks on the
-3×3
-chessboard to get stable arrangement.
+=3
+.
+Before the second query
+q=[4,2,1,3]
+so answer for the query will be
+q
+2
+=2
+.
+Before the third query
+q=[3,2,4,1]
+so answer for the query will be
+q
+4
+=1
+.
+In the second test case the hidden permutation
+p=[1,3,4,2]
+.
+Empty strings are given only for better readability. There will be no empty lines in the testing system.

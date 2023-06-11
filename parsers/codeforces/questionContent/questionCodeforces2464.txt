@@ -1,119 +1,241 @@
-F1. Chess Strikes Back (easy version)
+B. Universal Solution
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Note that the difference between easy and hard versions is that in hard version unavailable cells can become available again and in easy version can't. You can make hacks only if all versions are solved.
-Ildar and Ivan are tired of chess, but they really like the chessboard, so they invented a new game. The field is a chessboard
-2n×2m
-: it has
-2n
-rows,
-2m
-columns, and the cell in row
-i
-and column
-j
-is colored white if
-i+j
-is even, and is colored black otherwise.
-The game proceeds as follows: Ildar marks some of the white cells of the chessboard as unavailable, and asks Ivan to place
-n×m
-kings on the remaining white cells in such way, so that there are no kings attacking each other. A king can attack another king if they are located in the adjacent cells, sharing an edge or a corner.
-Ildar would like to explore different combinations of cells. Initially all cells are marked as available, and then he has
-q
-queries. In each query he marks a cell as unavailable. After each query he would like to know whether it is possible to place the kings on the available cells in a desired way. Please help him!
-Input
-The first line of input contains three integers
+Recently, you found a bot to play "Rock paper scissors" with. Unfortunately, the bot uses quite a simple algorithm to play: he has a string
+s=
+s
+1
+s
+2
+…
+s
 n
-,
-m
-,
-q
+of length
+n
+where each letter is either R, S or P.
+While initializing, the bot is choosing a starting index
+pos
 (
-1≤n,m,q≤200000
-) — the size of the board and the number of queries.
-q
-lines follow, each of them contains a description of a query: two integers
+1≤pos≤n
+), and then it can play any number of rounds. In the first round, he chooses "Rock", "Scissors" or "Paper" based on the value of
+s
+pos
+:
+if
+s
+pos
+is equal to R the bot chooses "Rock";
+if
+s
+pos
+is equal to S the bot chooses "Scissors";
+if
+s
+pos
+is equal to P the bot chooses "Paper";
+In the second round, the bot's choice is based on the value of
+s
+pos+1
+. In the third round — on
+s
+pos+2
+and so on. After
+s
+n
+the bot returns to
+s
+1
+and continues his game.
+You plan to play
+n
+rounds and you've already figured out the string
+s
+but still don't know what is the starting index
+pos
+. But since the bot's tactic is so boring, you've decided to find
+n
+choices to each round to maximize the average number of wins.
+In other words, let's suggest your choices are
+c
+1
+c
+2
+…
+c
+n
+and if the bot starts from index
+pos
+then you'll win in
+win(pos)
+rounds. Find
+c
+1
+c
+2
+…
+c
+n
+such that
+win(1)+win(2)+⋯+win(n)
+n
+is maximum possible.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤1000
+) — the number of test cases.
+Next
+t
+lines contain test cases — one per line. The first and only line of each test case contains string
+s=
+s
+1
+s
+2
+…
+s
+n
+(
+1≤n≤2⋅
+10
+5
+;
+s
 i
-and
-j
-, denoting a white cell
-(i,j)
-on the board (
-1≤i≤2n
-,
-1≤j≤2m
-,
-i+j
-is even) that becomes unavailable. It's guaranteed, that each cell
-(i,j)
-appears in input at most once.
-Output
-Output
-q
-lines,
-i
--th line should contain answer for a board after
-i
-queries of Ildar. This line should contain "YES" if it is possible to place the kings on the available cells in the desired way, or "NO" otherwise.
-Examples
-input
-Copy
-1 3 3
-1 1
-1 5
-2 4
-output
-Copy
-YES
-YES
-NO
-input
-Copy
-3 2 7
-4 2
-6 4
-1 3
-2 2
-2 4
-4 4
-3 1
-output
-Copy
-YES
-YES
-NO
-NO
-NO
-NO
-NO
-Note
-In the first example case after the second query only cells
-(1,1)
-and
-(1,5)
-are unavailable. Then Ivan can place three kings on cells
-(2,2)
-,
-(2,4)
-and
-(2,6)
+∈{R,S,P}
+) — the string of the bot.
+It's guaranteed that the total length of all strings in one test doesn't exceed
+2⋅
+10
+5
 .
-After the third query three cells
-(1,1)
+Output
+For each test case, print
+n
+choices
+c
+1
+c
+2
+…
+c
+n
+to maximize the average number of wins. Print them in the same manner as the string
+s
+.
+If there are multiple optimal answers, print any of them.
+Example
+input
+Copy
+3
+RRRR
+RSP
+S
+output
+Copy
+PPPP
+RSP
+R
+Note
+In the first test case, the bot (wherever it starts) will always choose "Rock", so we can always choose "Paper". So, in any case, we will win all
+n=4
+rounds, so the average is also equal to
+4
+.
+In the second test case:
+if bot will start from
+pos=1
+, then
+(
+s
+1
 ,
-(1,5)
-and
-(2,4)
-are unavailable, so there remain only 3 available cells:
-(2,2)
+c
+1
+)
+is draw,
+(
+s
+2
 ,
-(1,3)
-and
-(2,6)
-. Ivan can not put 3 kings on those cells, because kings on cells
-(2,2)
-and
-(1,3)
-attack each other, since these cells share a corner.
+c
+2
+)
+is draw and
+(
+s
+3
+,
+c
+3
+)
+is draw, so
+win(1)=0
+;
+if bot will start from
+pos=2
+, then
+(
+s
+2
+,
+c
+1
+)
+is win,
+(
+s
+3
+,
+c
+2
+)
+is win and
+(
+s
+1
+,
+c
+3
+)
+is win, so
+win(2)=3
+;
+if bot will start from
+pos=3
+, then
+(
+s
+3
+,
+c
+1
+)
+is lose,
+(
+s
+1
+,
+c
+2
+)
+is lose and
+(
+s
+2
+,
+c
+3
+)
+is lose, so
+win(3)=0
+;
+The average is equal to
+0+3+0
+3
+=1
+and it can be proven that it's the maximum possible average.
+A picture from Wikipedia explaining "Rock paper scissors" game:

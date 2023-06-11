@@ -1,149 +1,46 @@
-D. Strange Device
-time limit per test1 second
+G. Subset with Zero Sum
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This problem is interactive.
-We have hidden an array
-a
-of
+You are given
 n
-pairwise different numbers (this means that no two numbers are equal). You can get some information about this array using a new device you just ordered on Amazon.
-This device can answer queries of the following form: in response to the positions of
-k
-different elements of the array, it will return the position and value of the
-m
--th among them in the ascending order.
-Unfortunately, the instruction for the device was lost during delivery. However, you remember
-k
-, but don't remember
-m
-. Your task is to find
-m
-using queries to this device.
-You can ask not more than
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
-queries.
-Note that the array
+, such that for each
+1≤i≤n
+holds
+i−n≤
 a
-and number
-m
-are fixed before the start of the interaction and don't depend on your queries. In other words, interactor is not adaptive.
-Note that you don't have to minimize the number of queries, and you don't need to guess array
-a
-. You just have to guess
-m
+i
+≤i−1
 .
+Find some nonempty subset of these integers, whose sum is equal to
+0
+. It can be shown that such a subset exists under given constraints. If there are several possible subsets with zero-sum, you can find any of them.
 Input
-The first line contains two integers
-n
-and
-k
+Each test contains multiple test cases. The first line contains the number of test cases
+t
 (
-1≤k<n≤500
-) — the length of the array and the number of the elements in the query.
-It is guaranteed that number
-m
-satisfies
-1≤m≤k
-, elements
-a
-1
-,
-a
-2
-,…,
-a
-n
-of the array satisfy
-0≤
-a
-i
-≤
+1≤t≤
 10
-9
-, and all of them are different.
-Interaction
-You begin the interaction by reading
+6
+). The description of the test cases follows.
+The first line of each test case contains a single integer
 n
-and
-k
-.
-To ask a question about elements on positions
-x
-1
-,
-x
-2
-,…,
-x
-k
-, in a separate line output
-?
-x
-1
-x
-2
-x
-3
-...
-x
-k
-Numbers in the query have to satisfy
-1≤
-x
-i
-≤n
-, and all
-x
-i
-have to be different. Don't forget to 'flush', to get the answer.
-In response, you will receive two integers
-pos
-and
-a
-pos
- — the position in the array
-a
-of the
-m
--th in ascending order element among
-a
-x
-1
-,
-a
-x
-2
-,…,
-a
-x
-k
-, and the element on this position.
-In case your query is invalid or you asked more than
-n
-queries, the program will print
-−1
-and will finish interaction. You will receive a Wrong answer verdict. Make sure to exit immediately to avoid getting other verdicts.
-When you determine
-m
-, output
-!
-m
-After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-Hack format
-For the hacks use the following format:
-The first line has to contain three integers
-n,k,m
 (
-1≤m≤k<n≤500
-) — the length of the array, number of elements in the query, and which in the ascending order number the device returns.
-In the next line output
+1≤n≤
+10
+6
+).
+The second line of each test case contains
 n
 integers
 a
@@ -155,35 +52,86 @@ a
 a
 n
 (
-0≤
+i−n≤
 a
 i
-≤
+≤i−1
+).
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
 10
-9
-) — the elements of the array. They have to be pairwise different.
+6
+.
+Output
+For each test case, output two lines.
+In the first line, output
+s
+(
+1≤s≤n
+) — the number of elements in your subset.
+In the second line, output
+s
+integers
+i
+1
+,
+i
+2
+,…,
+i
+s
+(
+1≤
+i
+k
+≤n
+). All integers have to be pairwise different, and
+a
+i
+1
++
+a
+i
+2
++⋯+
+a
+i
+s
+has to be equal to
+0
+. If there are several possible subsets with zero-sum, you can find any of them.
 Example
 input
 Copy
-4 3
-4 9
-4 9
-4 9
-1 2
+2
+5
+0 1 2 3 4
+4
+-3 1 1 1
 output
 Copy
-? 2 3 4
-? 1 3 4
-? 1 2 4
-? 1 2 3
-! 3
+1
+1 
+4
+1 4 3 2 
 Note
-In the example,
-n=4
-,
-k=3
-,
-m=3
-,
-a=[2,0,1,9]
+In the first example, we get sum is
+a
+1
+=0
+.
+In the second example, we get sum is
+a
+1
++
+a
+4
++
+a
+3
++
+a
+2
+=0
 .

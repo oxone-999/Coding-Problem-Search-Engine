@@ -1,43 +1,103 @@
-IPL and RCB
+Palindrome Flipping
 Problem
-It's IPL time and as usual RCB are finding it tough to qualify for playoffs. RCB needs a minimum of
-X more points to qualify for playoffs in their remaining
-Y matches. A win, tie and loss in a match will yield
-2,1,0 points respectively to a team.
-You being a true RCB supporter want to find the minimum number of matches RCB needs to win to qualify for playoffs. It is guaranteed that RCB will qualify for playoffs if they win all their remaining
-Y matches.
-###Input:
-First line will contain
-T, number of testcases. Then the testcases follow.
-Each testcase contains of a single line of input, two space separated integers
-X,Y
-###Output:
-For each testcase, output in a single line the minimum number of matches RCB must win to qualify for playoffs.
-###Constraints :
-1≤T≤10000
-1≤X≤100
-1≤Y≤100
-1≤X≤2⋅Y
+Chef has a binary string
+S of length
+N.
+In one operation, Chef can:
+Select two indices
+i and
+j
+(1≤i,j≤N,i
+
+=j) and flip
+S
+i
+and
+S
+j
+. (i.e. change
+0 to
+1 and
+1 to
+0)
+For example, if
+S=10010 and chef applys operation on
+i=1 and
+j=3 then:
+1
+0
+0
+10→00110.
+Find if it is possible to convert
+S to a palindrome by applying the above operation any (possibly zero) number of times.
+Note: A string is called a palindrome if it reads the same backwards and forwards, for e.g.
+10001 and
+0110 are palindromic strings.
+Input Format
+The first line contains a single integer
+T — the number of test cases. Then the test cases follow.
+The first line of each test case contains an integer
+N — the length of the binary string
+S.
+The second line of each test case contains a binary string
+S of length
+N containing
+0s and
+1s only.
+Output Format
+For each test case, output YES if it is possible to convert
+S to a palindrome. Otherwise, output NO.
+You can print each character of the string in uppercase or lowercase. For example, the strings YES, yes, Yes, and yEs are all considered the same.
+Constraints
+1≤T≤10
+5
+1≤N≤10
+5
+S contains
+0 and
+1 only.
+Sum of
+N over all test cases does not exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
+3
+6
+101011
 2
-10 5
-1 5
-5
-0
+01
+7
+1110000
+YES
+NO
+YES
 Explanation:
-In first case
-X=10 and
-Y=5, so RCB needs
-10 points from remaining
-5 matches to qualify for playoffs. It is only possible if they win all their remaining
-5 matches.
-In second case
-X=1 and
-Y=5, so RCB needs
-1 points from their remaining
-5 matches to qualify for playoffs. It can be done if they tie any one of their
-5 matches and lose the remaining
-4. So they need to win
-0 matches.
+Test case 1: We can perform the following operation:
+Select
+i=3 and
+j=5. Then
+10
+1
+0
+1
+1→100001, which is a palindrome.
+Test case 2: It can be proven that we can not make
+S a palindrome using the given operation.
+Test case 3: We can perform the following operations:
+Select
+i=4 and
+j=5. Then
+111
+0
+0
+00→1111100
+Select
+i=6 and
+j=7. Then
+11111
+0
+0
+→1111111, which is a palindrome.

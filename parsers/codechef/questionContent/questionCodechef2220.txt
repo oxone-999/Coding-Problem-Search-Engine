@@ -1,37 +1,122 @@
-Knapsack Problem
+Too Mean
 Problem
-Read problems statements in Mandarin Chinese and Russian as well.
-Mike takes part in programming contests. His favourite topic is dynamic programming(DP). As he said, that he likes problems on DP, because "you spend a lot of time on thinking and a little time on coding".
-In this problem you are to solve a version of the knapsack problem(link), one of the most famous examples of DP problem.
-You are given N items, each has two parameters: a weight and a cost. Let's define M as the sum of the weights of all the items.
-Your task is to determine the most expensive cost of a knapsack, which capacity equals to 1, 2, ..., M. A cost of a knapsack equals to the sum of the costs of all the elements of the knapsack. Also, when you have a knapsack with a capacity is equal to C, then you can fill it with items, whose sum of weights is not greater than C.
-Input
-The first line of the input contains one integer N, denoting the number of the items.
-The next N lines contain two integers W and C each, denoting the weight and the cost of the corresponding item.
-Output
-For each capacity C (1 ≤ C ≤ M) of the knapsack, output a single integer - the most expensive cost for that capacity.
+You are given an array
+A of length
+N.
+You have to partition the elements of the array into some subsequences such that:
+Each element
+A
+i
+(1≤i≤N) belongs to exactly one subsequence.
+The mean of the mean of subsequences is maximised.
+Formally, let
+S
+1
+,S
+2
+,…,S
+K
+denote
+K subsequences of array
+A such that each element
+A
+i
+(1≤i≤N) belongs to exactly one subsequence
+S
+j
+(1≤j≤K).
+Let
+X
+j
+(1≤j≤K) denote the mean of the elements of subsequence
+S
+j
+. You need to maximise the value
+K
+∑
+j=1
+K
+X
+j
+.
+Print the maximum value. The answer is considered correct if the relative error is less than
+10
+−6
+.
+Input Format
+First line will contain
+T, number of test cases. Then the test cases follow.
+First line of each test case consists of a single integer
+N - denoting the length of array
+A.
+Second line of each test case consists of
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+- denoting the array
+A.
+Output Format
+For each test case, output in a single line, the maximum possible mean of mean of subsequences. The answer is considered correct if the relative error is less than
+10
+−6
+.
 Constraints
-3 ≤ N ≤ 100000;
-1 ≤ W ≤ 2, for each item;
-1 ≤ C ≤ 109, for each item.
-Example
-Input:
+1≤T≤1000
+2≤N≤10
 5
-1 1
-2 2
-2 3
-2 4
-2 5
-Output:
-1 5 6 9 10 12 13 14 15
-Explanations
-In the test case, M equals to 9.
-For C = 1, it's optimal to choose {1} items;
-For C = 2, it's optimal to choose {5} items;
-For C = 3, it's optimal to choose {1, 5} items;
-For C = 4, it's optimal to choose {4, 5} items;
-For C = 5, it's optimal to choose {1, 4, 5} items;
-For C = 6, it's optimal to choose {3, 4, 5} items;
-For C = 7, it's optimal to choose {1, 3, 4, 5} items;
-For C = 8, it's optimal to choose {2, 3, 4, 5} items;
-For C = 9, it's optimal to choose {1, 2, 3, 4, 5} items.
+1≤A
+i
+≤10
+6
+Sum of
+N over all test cases does not exceed
+3⋅10
+5
+.
+Sample 1:
+Input
+Output
+3
+2
+10 20
+3
+1 2 3
+5
+50 50 50 50 50
+15
+2.25
+50
+Explanation:
+Test Case
+1: We can partition the array in
+2 ways -
+({10},{20}) or
+({10,20}). In both cases, mean of mean of subsequences comes out to be
+15.
+Test Case
+2: The optimal partition is
+({1,2},{3}).
+Mean of first subsequence
+=
+2
+1+2
+=1.5.
+Mean of second subsequence
+=
+1
+3
+=3.
+Thus, mean of mean of subsequences is
+2
+1.5+3
+=
+2
+4.5
+=2.25.
+Test Case
+3: Any partition will yield the mean of mean of subsequences as
+50.

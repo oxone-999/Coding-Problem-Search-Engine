@@ -1,183 +1,91 @@
-Yet Another Tree Problem
+Xor Array
 Problem
-Nayra doesn't like stories of people receiving random trees as birthday presents, but this time she received a tree as a present for her own birthday! After struggling for a day trying to figure out what to do with this tree, she asked Aryan for help. He gave her this problem.
-You are given a tree with
-N vertices and weighted edges. It is rooted at vertex
-1.
-Define
-g(u,v) to be the maximum weight of an edge on the shortest path between vertex
-u and vertex
-v in this tree.
-Just calculating
-g(u,v) is too easy, so you have to process
-Q queries.
-In each query, you are given
-K distinct vertices
-v
-1
-,v
-2
-,…,v
-K
-. You have to compute the sum of the
-g-values of each pair of vertices among these
-K, i.e, the value
-∑
-i=1
-K−1
-∑
-j=i+1
-K
-g(v
+You are given an array
+A consisting of
+N distinct positive integers.
+In one operation, you can:
+Choose a non-negative integer
+X;
+For all
+(1≤i≤N), set
+A
 i
-,v
-j
-)
-Note: The input and output are large, so use fast input-output methods.
+:=A
+i
+⊕X, where
+⊕ denotes the bitwise XOR operation.
+Find the maximum possible length of the longest strictly increasing subarray after performing the given operation exactly once.
+Note:
+An array
+P is a subarray of an array
+Q if
+P can be obtained from
+Q by deletion of several (possibly zero or all) elements from the beginning and several (possibly zero or all) elements from the end.
+The longest strictly increasing subarray of
+Q is the longest (having most elements) subarray of
+Q which is sorted in strictly increasing order.
 Input Format
-The first line of input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-Q, denoting the number of vertices in the tree and the number of queries respectively.
-The second line contains
-N−1 space-separated integers
-P
-2
-,P
-3
-,…,P
-N
-, where
-P
-i
-is the parent of vertex
-i.
-The third line contains
-N−1 space-separated integers
-W
-2
-,W
-3
-,…,W
-N
-, where
-W
-i
-is the weight of the edge between vertices
-i and
-P
-i
-.
-The next
-Q lines contain queries you will have to answer. The description of
-Q queries follows.
-The
-i-th line contains an integer
-K
-i
-followed by
-K
-i
-distinct space-separated integers
-v
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of input:
+The first line of each test case contains
+N - the size of the array.
+The next line contains
+N space-separated integers,
+A
 1
-,v
+,A
 2
-,…,v
-K
-i
-, where
-K
-i
-is the number of vertices in this query and
-v
-1
-,v
-2
-,…v
-K
-i
-denote the vertices themselves.
+,…A
+N
+, the elements of the array
+A.
 Output Format
-For each test, print one line containing
-Q space-separated integers. The
-i-th of these integers should be the answer to the
-i-th query.
+For each test case, output on a new line, the maximum possible length of the longest strictly increasing subarray after performing the given operation exactly once.
 Constraints
-1≤T≤3
-10≤N≤10
+1≤T≤1000
+1≤N≤10
 5
-1≤P
+1≤A
 i
-<i
-1≤W
-i
-≤5⋅10
+<2
+30
+Elements of array
+A are distinct.
+The sum of
+N over all test cases won't exceed
+10
 6
-1≤Q≤3⋅10
-4
-10≤K
-i
-≤N
-1≤v
-i
-≤N
-All
-v
-i
-present in a single query are distinct
-It is guaranteed that the sum of
-K
-i
-over all queries over all test cases in a single test file does not exceed
-1.5⋅10
-6
-It is guaranteed that the sum of
-Q over all test cases in a single test file does not exceed
-3⋅10
-4
+.
 Sample 1:
 Input
 Output
-1
-10 1
-1 2 2 3 5 4 4 8 8
-20 30 40 50 60 70 80 90 100
-10 1 4 5 6 2 3 7 8 9 10
-3300
-Sample 2:
-Input
-Output
-1
-10 2
-1 2 2 3 5 4 4 8 8
-20 30 40 50 60 70 80 90 100
-4 1 4 5 6
-4 2 3 7 8
-320 410
+3
+3
+3 2 5
+4
+10 20 30 40
+5
+14 11 9 3 7
+3
+4
+4
 Explanation:
-In the second sample:
-Let's look at different values of
-g(u,v) for this tree.
-For the first query,
-g(1,4)=40,
-g(1,5)=50,
-g(1,6)=60,
-g(4,5)=50,
-g(4,6)=60,
-g(5,6)=60. The sum of all these values is
-320.
-For the second query,
-g(2,3)=30,
-g(2,7)=70,
-g(2,8)=80,
-g(3,7)=70,
-g(3,8)=80,
-g(7,8)=80. The sum of all these values is
-410.
-Note: The second sample does not satisfy the constraint
-K
-i
-≥10, so it won't be present in the actual test data. It's added here only for illustration.
+Test case
+1: Choose
+X=1. Thus the elements of the array become
+[3⊕1,2⊕1,5⊕1]=[2,3,4]. Thus, the longest strictly increasing subarray is
+[2,3,4] having length
+3.
+Test case
+2: Choose
+X=0. Thus the elements of the array become
+[10⊕0,20⊕0,30⊕0,40⊕0]=[10,20,30,40]. Thus, the longest strictly increasing subarray is
+[10,20,30,40] having length
+4.
+Test case
+3: Choose
+X=15. Thus the elements of the array become
+[14⊕15,11⊕15,9⊕15,3⊕15,7⊕15]=[1,4,6,12,8]. Thus, the longest strictly increasing subarray is
+[1,4,6,12] having length
+4.

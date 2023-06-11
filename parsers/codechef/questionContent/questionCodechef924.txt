@@ -1,56 +1,33 @@
-N Triplets
+Chef and Walking on the rectangle 
 Problem
-Alice is still not satisfied with Bob's math skills so she gave him a new challenge.
-Given a positive integer
-N, find any
-3 distinct positive integers
-A,B,C such that:
-The product of any two of these
-3 integers is a divisor of
-N.
-The product of all three integers is a multiple of
-N.
-If multiple solutions exist, you may print any of them.
-Print
-−1 if no solution exists.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-The first and only line of each test case contains a single integer,
-N.
-Output Format
-For each test case, output on a new line three space-separated integers satisfying the given condition.
-Print
-−1 if the answer does not exist.
+Chef likes rectangles. Among all possible rectangles, he loves rectangles that can be drawn like a grid, such that they have N rows and M columns. Grids are common in Byteland. Hence, Chef has drawn such a rectangle and plans on moving around in it.
+The rows of the rectangle are labeled from 1 to N from top to bottom. The columns of the rectangle are labeled form 1 to M from left to right. Thus, the cell in the top left can be denoted by (1,1). The 5th cell from the left in the 4th row form the top can be denoted by (4,5). The bottom right cell can be denoted as (N,M).
+Chef wants to move from the cell in the top left to the cell in the bottom right. In each move, Chef may only move one cell right, or one cell down. Also, Chef is not allowed to move to any cell outside the boundary of the rectangle.
+Of course, there are many ways for Chef to move from (1,1) to (N,M). Chef has a curious sport. While going from (1,1) to (N,M), he drops a stone on each of the cells he steps on, except the cells (1,1) and (N,M). Also, Chef repeats this game exactly K times.
+Let us say he moved from (1,1) to (N,M), exactly K times. At the end of all the K journeys, let the number of stones, in the cell with the maximum number of stones, be equal to S. Chef wants to know what is the smallest possible value for S.
+Input
+The first line contains single integer T, the number of test cases. Each of the next T lines contains 3 integers N, M and K, respectivily.
+Output
+For each test case, output the smallest value possible for S, if the Chef chooses the K paths smartly.
 Constraints
-1≤T≤100
-1≤N≤10
-9
+1 ≤ T ≤ 100
+1 ≤ N, M, K ≤ 70
 Sample 1:
 Input
 Output
 3
-30
-24
-3
-2 3 5
-2 6 4
--1
+2 2 1
+3 3 2
+1 5 12
+1
+1
+12
 Explanation:
-Test case
-1: We have
-A=2,B=3,C=5. They satisfy all the conditions:
-AB=6,AC=10,BC=15 are all divisors of
-N=30
-ABC=30 is a multiple of
-N=30
-Test case
-2: We have
-A=2,B=6,C=4. They satisfy all the conditions:
-AB=12,AC=8,BC=24 are all divisors of
-N=24
-ABC=48 is a multiple of
-N=24
-Test case
-3: It can be shown that no three positive integers
-A,B,C satisfy the conditions.
+Test Case 1: Chef may choose any way. The maximum value on any cell would be 1.
+Test Case 2: If Chef selects two paths that have a common cell, such as
+(1,1)->(1,2)->(2,2)->(3,2)->(3,3)
+(1,1)->(2,1)->(2,2)->(3,2)->(3,3)
+Then the value of S will be equal to 2, since the number of stones in (2,2) and (3,2) is equal to 2. But, if Chef selects two paths which do not have any common cells, such as
+(1,1)->(1,2)->(1,3)->(2,3)->(3,3)
+(1,1)->(2,1)->(3,1)->(3,2)->(3,3)
+Then the value of S will be equal to 1.

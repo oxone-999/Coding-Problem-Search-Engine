@@ -1,254 +1,157 @@
-K. Knitting Batik
+M. Managing Telephone Poles
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Mr. Chanek wants to knit a batik, a traditional cloth from Indonesia. The cloth forms a grid
+Mr. Chanek's city can be represented as a plane. He wants to build a housing complex in the city.
+There are some telephone poles on the plane, which is represented by a grid
 a
-with size
-n×m
-. There are
-k
-colors, and each cell in the grid can be one of the
-k
-colors.
-Define a sub-rectangle as an ordered pair of two cells
-((
-x
-1
-,
-y
-1
-),(
-x
-2
-,
-y
-2
-))
-, denoting the top-left cell and bottom-right cell (inclusively) of a sub-rectangle in
+of size
+(n+1)×(m+1)
+. There is a telephone pole at
+(x,y)
+if
 a
-. Two sub-rectangles
-((
-x
-1
-,
-y
-1
-),(
-x
-2
-,
-y
-2
-))
-and
-((
-x
-3
-,
-y
-3
-),(
-x
-4
-,
-y
-4
-))
-have the same pattern if and only if the following holds:
-they have the same width (
-x
-2
-−
-x
-1
-=
-x
-4
-−
-x
-3
-);
-they have the same height (
-y
-2
-−
-y
-1
-=
-y
-4
-−
-y
-3
-);
-for every pair
-(i,j)
-where
-0≤i≤
-x
-2
-−
-x
-1
-and
-0≤j≤
-y
-2
-−
-y
-1
-, the color of cells
+x,y
+=1
+.
+For each point
+(x,y)
+, define
+S(x,y)
+as the square of the Euclidean distance between the nearest pole and
+(x,y)
+. Formally, the square of the Euclidean distance between two points
 (
 x
 1
-+i,
+,
 y
 1
-+j)
+)
 and
 (
 x
-3
-+i,
-y
-3
-+j)
-are equal.
-Count the number of possible batik color combinations, such that the subrectangles
-((
-a
-x
+2
 ,
-a
 y
-),(
-a
+2
+)
+is
+(
 x
-+r−1,
-a
+2
+−
+x
+1
+)
+2
++(
 y
-+c−1))
+2
+−
+y
+1
+)
+2
+.
+To optimize the building plan, the project supervisor asks you the sum of all
+S(x,y)
+for each
+0≤x≤n
 and
-((
-b
-x
-,
-b
-y
-),(
-b
-x
-+r−1,
-b
-y
-+c−1))
-have the same pattern.
-Output the answer modulo
-10
-9
-+7
+0≤y≤m
+. Help him by finding the value of
+∑
+n
+x=0
+∑
+m
+y=0
+S(x,y)
 .
 Input
-The first line contains five integers
+The first line contains two integers
 n
-,
+and
 m
-,
-k
-,
-r
-, and
-c
 (
-1≤n,m≤
-10
-9
-,
-1≤k≤
-10
-9
-,
-1≤r≤min(
-10
-6
-,n)
-,
-1≤c≤min(
-10
-6
-,m)
-) — the size of the batik, the number of colors, and size of the sub-rectangle.
-The second line contains four integers
+0≤n,m<2000
+) — the size of the grid.
+Then
+(n+1)
+lines follow, each containing
+(m+1)
+integers
 a
-x
-,
-a
-y
-,
-b
-x
-, and
-b
-y
+i,j
 (
-1≤
+0≤
 a
-x
-,
-b
-x
-≤n
-,
-1≤
-a
-y
-,
-b
-y
-≤m
-) — the top-left corners of the first and second sub-rectangle. Both of the sub-rectangles given are inside the grid (
-1≤
-a
-x
-+r−1
-,
-b
-x
-+r−1≤n
-,
-1≤
-a
-y
-+c−1
-,
-b
-y
-+c−1≤m
-).
+i,j
+≤1
+) — the grid denoting the positions of telephone poles in the plane. There is at least one telephone pole in the given grid.
 Output
-Output an integer denoting the number of possible batik color combinations modulo
-10
-9
-+7
+Output an integer denoting the value of
+∑
+n
+x=0
+∑
+m
+y=0
+S(x,y)
 .
 Examples
 input
 Copy
-3 3 2 2 2
-1 1 2 2
+2 2
+101
+000
+000
 output
 Copy
-32
+18
 input
 Copy
-4 5 170845 2 2
-1 4 3 1
+5 4
+10010
+00000
+01000
+00001
+00100
+00010
 output
 Copy
-756680455
+36
 Note
-The following are all
-32
-possible color combinations in the first example.
+In the first example, the nearest telephone pole for the points
+(0,0)
+,
+(1,0)
+,
+(2,0)
+,
+(0,1)
+,
+(1,1)
+, and
+(2,1)
+is at
+(0,0)
+. While the nearest telephone pole for the points
+(0,2)
+,
+(1,2)
+, and
+(2,2)
+is at
+(0,2)
+. Thus,
+∑
+n
+x=0
+∑
+m
+y=0
+S(x,y)=(0+1+4)+(1+2+5)+(0+1+4)=18
+.

@@ -1,150 +1,164 @@
-C. Increase Subarray Sums
+E. Expand the Path
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
+Consider a grid of size
+n×n
+. The rows are numbered top to bottom from
 1
-,
-a
-2
-,…,
-a
-n
-, consisting of
-n
-integers. You are also given an integer value
-x
-.
-Let
-f(k)
-be the maximum sum of a contiguous subarray of
-a
-after applying the following operation: add
-x
-to the elements on exactly
-k
-distinct positions. An empty subarray should also be considered, it has sum
-0
-.
-Note that the subarray doesn't have to include all of the increased elements.
-Calculate the maximum value of
-f(k)
-for all
-k
-from
-0
 to
 n
-independently.
+, the columns are numbered left to right from
+1
+to
+n
+.
+The robot is positioned in a cell
+(1,1)
+. It can perform two types of moves:
+D — move one cell down;
+R — move one cell right.
+The robot is not allowed to move outside the grid.
+You are given a sequence of moves
+s
+ — the initial path of the robot. This path doesn't lead the robot outside the grid.
+You are allowed to perform an arbitrary number of modifications to it (possibly, zero). With one modification, you can duplicate one move in the sequence. That is, replace a single occurrence of D with DD or a single occurrence of R with RR.
+Count the number of cells such that there exists at least one sequence of modifications that the robot visits this cell on the modified path and doesn't move outside the grid.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤5000
+1≤t≤
+10
+4
 ) — the number of testcases.
-The first line of the testcase contains two integers
-n
-and
-x
-(
-1≤n≤5000
-;
-0≤x≤
-10
-5
-) — the number of elements in the array and the value to add.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
+The first line of each testcase contains the single integer
 n
 (
-−
+2≤n≤
 10
-5
-≤
-a
-i
-≤
-10
-5
-).
-The sum of
-n
+8
+) — the number of rows and columns in the grid.
+The second line of each testcase contains a non-empty string
+s
+, consisting only of characters D and R, — the initial path of the robot. This path doesn't lead the robot outside the grid.
+The total length of strings
+s
 over all testcases doesn't exceed
-5000
+2⋅
+10
+5
 .
 Output
-For each testcase, print
-n+1
-integers — the maximum value of
-f(k)
-for all
-k
-from
-0
-to
-n
-independently.
+For each testcase, print a single integer — the number of cells such that there exists at least one sequence of modifications that the robot visits this cell on the modified path and doesn't move outside the grid.
 Example
 input
 Copy
 3
-4 2
-4 1 3 2
-3 5
--2 -7 -1
-10 2
--6 -1 -2 4 -6 -1 -4 4 -5 -4
+4
+RD
+5
+DRDRDRDR
+3
+D
 output
 Copy
-10 12 14 16 18
-0 4 4 5
-4 6 6 7 7 7 7 8 8 8 8
+13
+9
+3
 Note
-In the first testcase, it doesn't matter which elements you add
-x
-to. The subarray with the maximum sum will always be the entire array. If you increase
-k
-elements by
-x
+In the first testcase, it's enough to consider the following modified paths:
+RD
+→
+RRD
+→
+RRRD
+→
+RRRDD
+→
+RRRDDD — this path visits cells
+(1,1)
 ,
-k⋅x
-will be added to the sum.
-In the second testcase:
-For
-k=0
-, the empty subarray is the best option.
-For
-k=1
-, it's optimal to increase the element at position
-3
-. The best sum becomes
-−1+5=4
-for a subarray
-[3,3]
+(1,2)
+,
+(1,3)
+,
+(1,4)
+,
+(2,4)
+,
+(3,4)
+and
+(4,4)
+;
+RD
+→
+RRD
+→
+RRDD
+→
+RRDDD — this path visits cells
+(1,1)
+,
+(1,2)
+,
+(1,3)
+,
+(2,3)
+,
+(3,3)
+and
+(4,3)
+;
+RD
+→
+RDD
+→
+RDDD — this path visits cells
+(1,1)
+,
+(1,2)
+,
+(2,2)
+,
+(3,2)
+and
+(4,2)
 .
-For
-k=2
-, it's optimal to increase the element at position
-3
-and any other element. The best sum is still
-4
-for a subarray
-[3,3]
+Thus, the cells that are visited on at least one modified path are:
+(1,1)
+,
+(1,2)
+,
+(1,3)
+,
+(1,4)
+,
+(2,2)
+,
+(2,3)
+,
+(2,4)
+,
+(3,2)
+,
+(3,3)
+,
+(3,4)
+,
+(4,2)
+,
+(4,3)
+and
+(4,4)
 .
-For
-k=3
-, you have to increase all elements. The best sum becomes
-(−2+5)+(−7+5)+(−1+5)=5
-for a subarray
-[1,3]
+In the second testcase, there is no way to modify the sequence without moving the robot outside the grid. So the only visited cells are the ones that are visited on the path DRDRDRDR.
+In the third testcase, the cells that are visited on at least one modified path are:
+(1,1)
+,
+(2,1)
+and
+(3,1)
 .
+Here are the cells for all testcases:

@@ -1,195 +1,82 @@
-Counting Is Fun
+Blackjack
 Problem
-Consider two binary arrays
-A and
-B, each of size
-N and a permutation
-†
-†
-P of length
-N.
-You will make two new arrays
-C and
-D, each of size
-N, such that:
-C
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef is playing a card game called Blackjack. He starts with a deck of
+N cards (numbered
+1 through
+N), where for each valid
+i, the
+i-th card has an integer
+A
 i
-=A
-P
-i
-(
-1≤i≤N)
-D
-i
-=B
-P
-i
-(
-1≤i≤N)
-Let us define:
-The score of the permutation
-P as
-min(LNDS(C),LNDS(D)), where
-LNDS(X) gives the length of longest non-decreasing subsequence
-‡
-‡
-of
-X.
-F(A,B) as the maximum score over all possible
-N! permutations
-P.
-Find
-∑
-x∈S
-∑
-y∈S
-F(x,y), where
-S contains all binary arrays of size
-N(∣S∣=2
+written on it. Then he starts dealing the cards one by one in the order from card
+1 to card
+N. Chef wins if at some moment in time, the sum of all the cards dealt so far is between
+X and
+Y inclusive; if this never happens, Chef loses.
+We want Chef to win the game, so without him noticing, we will swap some pairs of cards (possibly none) before the game starts. Find the smallest number of swaps we need so that Chef would win the game, or determine that it is impossible to make Chef win.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains three space-separated integers
+N,
+X and
+Y.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
 N
-).
-Since sum might be large, please print it modulo
-998244353.
-†
-†
-A permutation of length
-N consists of all integers from
-1 to
-N exactly once. For example,
-[4,2,3,1] is a permutation, while
-[1,2,2] is not a permutation.
-‡
-‡
-A sequence
-A is a subsequence of a sequence
-B if
-A can be obtained from
-B by deletion of several (possibly, zero or all) elements. For example,
-[3,1] is a subsequence of
-[3,2,1],
-[4,3,1] and
-[3,1], but not
-[1,3,3,7] and
-[3,10,4].
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-The only line of each test case contains a single integer
-N, where
-N should be the length of the binary arrays.
-Output Format
-For each test case, output on a new line, the sum modulo
-998244353.
-Constraints
-1≤T≤1000
-1≤N≤2000
-The sum of
-N over all test cases won't exceed
-2⋅10
-3
 .
+Output
+For each test case, print a single line containing one integer ― the smallest required number of swaps or
+−1 if Chef cannot win.
+Constraints
+1≤T≤100
+1≤N,X,Y≤10
+3
+X≤Y
+1≤A
+i
+≤10
+3
+for each valid
+i
+the sum of
+N over all test cases does not exceed
+10
+4
+Subtasks
+Subtask #1 (22 points): Chef can win if we make up to
+2 swaps
+Subtask #2 (34 points):
+1≤N,X,Y≤400
+1≤A
+i
+≤400 for each valid
+i
+the sum of
+N over all test cases does not exceed
+4,000
+Subtask #3 (44 points): original constraints
 Sample 1:
 Input
 Output
-5
-1
-2
 3
-4
-343
-4
-30
-174
-914
-857794275
+3 4 5
+1 2 3
+3 3 4
+1 2 3
+2 20 30
+40 10
+1
+0
+-1
 Explanation:
-Test case
-1:
-F(0,0)=1
-F(0,1)=1
-F(1,0)=1
-F(1,1)=1
-Test case
-2:
-S=[00,01,10,11]. So we have
-16 pairs of
-(x,y).
-F(00,00)=2
-F(00,10)=2
-F(00,01)=2
-F(00,11)=2
-F(10,00)=2
-F(10,10)=2
-F(10,01)=1
-F(10,11)=2
-F(01,00)=2
-F(01,10)=1
-F(01,01)=2
-F(01,11)=2
-F(11,00)=2
-F(11,10)=2
-F(11,01)=2
-F(11,11)=2
-To get maximum score for pair
-(11,10), we can take
-P=[2,1].
-Now
-C=[1,1] and
-D=[0,1]. Thus, maximum score is
-2.
-Test case
-3:
-S=[000,001,010,011,100,101,110,111].
-Consider
-A=001,B=110, and a random
-P=[2,3,1]. Thus,
-C and
-D can be generated as :
-C=A
-P
-1
-A
-P
-2
-A
-P
-3
-=A
-2
-A
-3
-A
-1
-=010.
-The longest non-decreasing subsequence are
-00 or
-01, each having length
-2.
-D=B
-P
-1
-B
-P
-2
-B
-P
-3
-=B
-2
-B
-3
-B
-1
-=101.
-The longest non-decreasing subsequence is
-01, having length
-2.
-Thus, score of
-P=[2,3,1] is
-2 over
-A=001 and
-B=110. Similarly, we find the sores of all permutations of length
-3 over
-A and
-B and set
-F(A,B) as maximum out of those.
+Example case 1: We can swap the last card with one of the first two cards.
+Example case 2: No swaps are necessary, Chef wins after dealing the first two cards.
+Example case 3: The order of the cards in the deck does not matter, Chef cannot win.

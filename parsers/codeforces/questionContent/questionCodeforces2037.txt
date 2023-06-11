@@ -1,163 +1,202 @@
-G. Hobbits
-time limit per test1 second
+J. Road Reform
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-The hobbits Frodo and Sam are carrying the One Ring to Mordor. In order not to be spotted by orcs, they decided to go through the mountains.
-The mountain relief can be represented as a polyline with
+There are
 n
-points
-(
+cities and
+m
+bidirectional roads in Berland. The
+i
+-th road connects the cities
 x
 i
-,
-y
-i
-)
-, numbered from
-1
-to
-n
-(
-x
-i
-<
-x
-i+1
-for
-1≤i≤n−1
-). Hobbits start their journey at the point
-(
-x
-1
-,
-y
-1
-)
-and should reach the point
-(
-x
-n
-,
-y
-n
-)
-to complete their mission.
-The problem is that there is a tower with the Eye of Sauron, which watches them. The tower is located at the point
-(
-x
-n
-,
-y
-n
-)
-and has the height
-H
-, so the Eye is located at the point
-(
-x
-n
-,
-y
-n
-+H)
-. In order to complete the mission successfully, the hobbits have to wear cloaks all the time when the Sauron Eye can see them, i. e. when there is a direct line from the Eye to the hobbits which is not intersected by the relief.
-The hobbits are low, so their height can be considered negligibly small, but still positive, so when a direct line from the Sauron Eye to the hobbits only touches the relief, the Eye can see them.
-The Sauron Eye can't see hobbits when they are in the left position, but can see them when they are in the right position.
-The hobbits do not like to wear cloaks, so they wear them only when they can be spotted by the Eye. Your task is to calculate the total distance the hobbits have to walk while wearing cloaks.
-Input
-The first line of the input contains two integers
-n
 and
-H
+y
+i
+, and has the speed limit
+s
+i
+. The road network allows everyone to get from any city to any other city.
+The Berland Transport Ministry is planning a road reform.
+First of all, maintaining all
+m
+roads is too costly, so
+m−(n−1)
+roads will be demolished in such a way that the remaining
+(n−1)
+roads still allow to get to any city from any other city. Formally, the remaining roads should represent an undirected tree.
+Secondly, the speed limits on the remaining roads might be changed. The changes will be done sequentially, each change is either increasing the speed limit on some road by
+1
+, or decreasing it by
+1
+. Since changing the speed limit requires a lot of work, the Ministry wants to minimize the number of changes.
+The goal of the Ministry is to have a road network of
+(n−1)
+roads with the maximum speed limit over all roads equal to exactly
+k
+. They assigned you the task of calculating the minimum number of speed limit changes they have to perform so the road network meets their requirements.
+For example, suppose the initial map of Berland looks like that, and
+k=7
+:
+Then one of the optimal courses of action is to demolish the roads
+1
+–
+4
+and
+3
+–
+4
+, and then decrease the speed limit on the road
+2
+–
+3
+by
+1
+, so the resulting road network looks like that:
+Input
+The first line contains one integer
+t
+(
+1≤t≤1000
+) — the number of test cases.
+The first line of each test case contains three integers
+n
+,
+m
+and
+k
 (
 2≤n≤2⋅
 10
 5
 ;
-1≤H≤
+n−1≤m≤min(2⋅
 10
-4
-) — the number of vertices in polyline and the tower height.
-The next
-n
-lines contain two integers
+5
+,
+n(n−1)
+2
+)
+;
+1≤k≤
+10
+9
+) — the number of cities, the number of roads and the required maximum speed limit, respectively.
+Then
+m
+lines follow. The
+i
+-th line contains three integers
 x
 i
 ,
 y
 i
-each (
-0≤
+and
+s
+i
+(
+1≤
 x
 i
-≤4⋅
-10
-5
-;
-0≤
+,
 y
 i
-≤
-10
-4
-) — the coordinates of the polyline vertices. It is guaranteed that
+≤n
+;
 x
 i
-<
-x
-i+1
-for
-1≤i≤n−1
-.
-Output
-Print one real number — the total distance the hobbits have to walk while wearing cloaks. Your answer will be considered correct if its absolute or relative error does not exceed
-10
-−6
-— formally, if your answer is
-a
-, and the jury's answer is
-b
-, your answer will be accepted if
-|a−b|
-max(1,b)
+≠
+y
+i
+;
+1≤
+s
+i
 ≤
 10
-−6
+9
+) — the cities connected by the
+i
+-th road and the speed limit on it, respectively. All roads are bidirectional.
+The road network in each test case is connected (that is, it is possible to reach any city from any other city by traveling along the road), and each pair of cities is connected by at most one road.
+The sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+. Similarly, the sum of
+m
+over all test cases does not exceed
+2⋅
+10
+5
 .
-Examples
+Output
+For each test case, print one integer — the minimum number of changes the Ministry has to perform so that the maximum speed limit among the remaining
+(n−1)
+roads is exactly
+k
+.
+Example
 input
 Copy
-6 10
-10 40
-20 10
-25 30
-30 15
-50 15
-65 30
+4
+4 5 7
+4 1 3
+1 2 5
+2 3 8
+2 4 1
+3 4 4
+4 6 5
+1 2 1
+1 3 1
+1 4 2
+2 4 1
+4 3 1
+3 2 1
+3 2 10
+1 2 8
+1 3 10
+5 5 15
+1 2 17
+3 1 15
+2 3 10
+1 4 14
+2 5 8
 output
 Copy
-70.4034587602
-input
-Copy
-9 5
-0 0
-5 10
-15 10
-20 0
-25 11
-30 0
-35 10
-50 10
-60 5
-output
-Copy
-27.2787986124
-input
-Copy
-2 10000
-0 10000
-400000 0
-output
-Copy
-400124.9804748512
+1
+3
+0
+0
+Note
+The explanation for the example test:
+The first test case is described in the problem statement.
+In the second test case, the road network initially looks like that:
+The Ministry can demolish the roads
+1
+–
+2
+,
+3
+–
+2
+and
+3
+–
+4
+, and then increase the speed limit on the road
+1
+–
+4
+three times.
+In the third test case, the road network already meets all the requirements.
+In the fourth test case, it is enough to demolish the road
+1
+–
+2
+so the resulting road network meets the requirements.

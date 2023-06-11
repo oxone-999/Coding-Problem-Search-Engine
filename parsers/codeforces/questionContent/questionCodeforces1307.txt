@@ -1,33 +1,11 @@
-F. MEX counting
-time limit per test4 seconds
+A. Divide and Multiply
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-For an array
-c
-of nonnegative integers,
-MEX(c)
-denotes the smallest nonnegative integer that doesn't appear in it. For example,
-MEX([0,1,3])=2
-,
-MEX([42])=0
-.
-You are given integers
-n,k
-, and an array
-[
-b
-1
-,
-b
-2
-,…,
-b
+William has array of
 n
-]
-.
-Find the number of arrays
-[
+numbers
 a
 1
 ,
@@ -36,108 +14,135 @@ a
 ,…,
 a
 n
-]
-, for which the following conditions hold:
-0≤
+. He can perform the following sequence of operations any number of times:
+Pick any two items from array
 a
 i
-≤n
-for each
-i
-for each
-i
-from
-1
-to
-n
-.
-|MEX([
+and
 a
-1
-,
+j
+, where
 a
+i
+must be a multiple of
 2
-,…,
 a
 i
-])−
-b
+=
+a
 i
-|≤k
-for each
-i
-from
-1
-to
-n
-.
-As this number can be very big, output it modulo
-998244353
-.
+2
+a
+j
+=
+a
+j
+⋅2
+Help William find the maximal sum of array elements, which he can get by performing the sequence of operations described above.
 Input
-The first line of the input contains two integers
-n,k
+Each test contains multiple test cases. The first line contains the number of test cases
+t
 (
-1≤n≤2000
-,
-0≤k≤50
-).
-The second line of the input contains
+1≤t≤
+10
+4
+). Description of the test cases follows.
+The first line of each test case contains an integer
+n
+(1≤n≤15)
+, the number of elements in William's array.
+The second line contains
 n
 integers
-b
+a
 1
 ,
-b
+a
 2
 ,…,
-b
+a
 n
-(
-−k≤
-b
+(1≤
+a
 i
-≤n+k
-) — elements of the array
-b
-.
+<16)
+, the contents of William's array.
 Output
-Output a single integer — the number of arrays which satisfy the conditions from the statement, modulo
-998244353
+For each test case output the maximal sum of array elements after performing an optimal sequence of operations.
+Example
+input
+Copy
+5
+3
+6 4 2
+5
+1 2 3 4 5
+1
+10
+3
+2 3 4
+15
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+output
+Copy
+50
+46
+10
+26
+35184372088846
+Note
+In the first example test case the optimal sequence would be:
+Pick
+i=2
+and
+j=1
+. After performing a sequence of operations
+a
+2
+=
+4
+2
+=2
+and
+a
+1
+=6⋅2=12
+, making the array look as: [12, 2, 2].
+Pick
+i=2
+and
+j=1
+. After performing a sequence of operations
+a
+2
+=
+2
+2
+=1
+and
+a
+1
+=12⋅2=24
+, making the array look as: [24, 1, 2].
+Pick
+i=3
+and
+j=1
+. After performing a sequence of operations
+a
+3
+=
+2
+2
+=1
+and
+a
+1
+=24⋅2=48
+, making the array look as: [48, 1, 1].
+The final answer
+48+1+1=50
 .
-Examples
-input
-Copy
-4 0
-0 0 0 0
-output
-Copy
-256
-input
-Copy
-4 1
-0 0 0 0
-output
-Copy
-431
-input
-Copy
-4 1
-0 0 1 1
-output
-Copy
-509
-input
-Copy
-5 2
-0 0 2 2 0
-output
-Copy
-6546
-input
-Copy
-3 2
--2 0 4
-output
-Copy
-11
+In the third example test case there is no way to change the sum of elements, so the answer is
+10
+.

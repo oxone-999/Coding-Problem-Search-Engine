@@ -1,130 +1,33 @@
-Chef Thanos Wants Perfect Balance
+A Study in Bake Street
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef Thanos has an undirected simple graph with
-N vertices (numbered
-1 through
-N) and
-M edges (numbered
-1 through
-M). For each valid
-i, the
-i-th edge connects vertices
-u
-i
-and
-v
-i
-. Chef Thanos wants to colour the edges in red and green so that the graph would be perfectly balanced, which means that for each vertex, the number of red edges incident to it must be equal to the number of green edges incident to it.
-Obviously, Chef Thanos does not want to leave any edges colourless, but he immediately realised that in such a case, it generally may be impossible to make the graph perfectly balanced, so he decided to colour some of the edges yellow instead, so that it is always possible.
-Since Chef Thanos hates the colour yellow, his satisfaction with the graph will be greater when he uses fewer yellow edges. Can you help him choose how to colour the edges so that you remain in the surviving half of humanity?
+Read problems statements in mandarin chinese, russian and vietnamese as well.
+Chef Ada is not just a Chef but also a detective. Currently she is investigating a massive murdering case in Bake Street.
+Bake Street is composed of n buildings in a straight line. They are numbered from 1 to n, as you move from left to right. The i-th building is at position xi and has height hi. The buildings are so thin that we can consider them as vertical segments. The murderer climbed to the top of one of the buildings and shot at all the buildings to the right, which had a lesser height than the building on which he was, and which were in his line of sight.
+Ada is interested in the rightmost building that was shot by the murderer. Since we don't know the building from which the murderer was shooting, your task is to calculate it for every possible initial position.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-M.
-M lines follow. For each valid
-i, the
-i-th of these lines contains two space-separated integers
-u
-i
-and
-v
-i
-.
+The first line of input contains one number T, the number of test cases. T test cases follows. The first line of each test case contains an integer n, the number of buildings. The next n lines contains two integers xi, hi. the position and height of the i-th building.
 Output
-Print
-M lines. For each valid
-i, the
-i-th of these lines should contain the integer
-0 if you want the
-i-th edge to be yellow,
-1 if you want it to be red or
-−1 if you want it to be green.
+For each testcase print n integers: ai, the rightmost building shot at, if the murderer started at building i. If the murderer didn't shoot to any building, print -1.
 Constraints
-1≤N≤10
-5
-0≤M≤3⋅10
-5
-1≤u
-i
-,v
-i
-≤N for each valid
-i
-the graph does not contain any self-loops or parallel edges, but it can be disconnected
-the sum of
-N over all the test cases does not exceed
-3⋅10
-5
-the sum of
-M over all the test cases does not exceed
-9⋅10
-5
-Scoring
-If your output is invalid or you do not colour the graph in a perfectly balanced way, you will receive the Wrong Answer verdict and 0 points. Otherwise:
-For each test case, let's define
-R=Y/N, where
-Y is the number of yellow edges you used to colour a graph with
-N vertices. We then take the maximum of
-R across all test cases and denote it by
-R
-max
-.
-If
-R
-max
-≥3, you will receive 0 points because you used too many yellow edges (but you will still receive the Accepted verdict).
-If
-2≤R
-max
-<3, you will receive 20 points.
-If
-1.5≤R
-max
-<2, you will receive 40 points.
-If
-R
-max
-<1.5, you will receive 100 points.
-Note that you do not have to use the smallest number of yellow edges.
-Example Input
-2
-5 6
-1 2
-2 3
-3 1
-3 4
-4 5
-5 3
-6 9
-1 2
-1 3
-1 4
-2 3
-2 4
-3 4
-3 6
-4 5
-5 6
-Example Output
--1
+1 ≤ n ≤ 105
+1 ≤ xi, hi ≤ 106
+xi < xi+1, for all 1 ≤ i < n
+No two different buildings are of the same height
+The sum of n over all test cases is at most 5 * 105
+Sample 1:
+Input
+Output
 1
-1
--1
-1
--1
--1
-1
-0
-0
-1
--1
-0
-0
-0
-Explanation
-Example case 1: The graph can be perfectly balanced without using any yellow edges.
-Example case 2: The first colouring in the figure below corresponds to the output. Note, again, that you do not have to completely minimise the number of yellow edges, so even though the second colouring is also perfectly balanced and uses fewer yellow edges, both of them would receive 100 points.
+7
+1 130
+65 110
+120 40
+160 60
+240 100
+280 65
+320 30
+5 5 -1 -1 7 7 -1
+Explanation:
+The lines of shooting are shown in the figure above.
+From building 1, buildings 2 and 5 are shot. As the rightmost is building 5, that is the answer for building 1. Note that from building 1 is not possible to shoot at building 4 (dotted line) because building 2 obstructs the line of sight.
+From building 2, buildings 3, 4 and 5 are shot. From building 3 and 4, no building is shot at. Hence the third and fourth outputs are -1.

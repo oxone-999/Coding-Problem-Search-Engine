@@ -1,88 +1,148 @@
-The Malaysian Flight Search
+Chef and War with Taran (Challenge)
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Problem description.
-Malaysia Airlines Flight MH370 disappeared on March 8th with 239 people aboard. After a lot of theories and extensive search, the Prime Minister of Malaysia declared that the flight was crashed in the Indian Ocean.
-After gathering information, the area where the Black Box is present has been identified. The Black Box has a signal transmitter which responds to a special kind of signal.
-We have search planes which can go to a particular location, and send the special kind of signal in all directions to a certain range. If the Black Box receives that signal, it will respond back.
-As the location of crash is very far from nearest land and the cost to operate planes are high, Officials would like to minimize the total cost of this search operation. You are to write a program to help them
-For the purpose of this problem, we consider 2-D coordinate system, forget about the depth of Indian Ocean and the following are true:
-We have many planes with us, each plane is defined by 3 variables (I, R, C). I is the unique id of the plane. R is the range it can transmit the special signal. C is the amount of Rupees (Yes, we are operating from India) required for one unit of travel.
-All the planes are present at (0,0).
-Same plane can be used any number of times.
-All the distances we consider in this problem are Manhattan distance. Distance between (a,b) and (c,d) is abs(a-c)+abs(b-d).
-Given the plane id, and coordinates (x,y) from where it has to transmit the special signal, the plane moves from (0,0) to (x,y), transmits the signal, records the reply from Black Box if any, and returns to (0,0)
-Cost of above operation would be sum of costs for (0,0) to (x,y) and (x,y) to (0,0), i.e, 2*(x+y)*C Rupees
-Black Box at position (a,b) responds to special signal from a plane at (x,y) with range r if abs(a-x) + abs(b-y) <= r
-We always have a plane with R = 0.
-The Black Box need not be present inside the search area. It is possible that the Officials got wrong search area. Note that the Black Box can still respond to special signals.
-This is an Interactive Problem, you will be given details of all available planes, and description of area inside which the Black Box is expected to be present. You need to issue commands of the form (I, x, y) which means that you would like to send plane with id I to position (x, y) and give the special signal. The automated judge will respond with "yes" or "no", "yes" if the Black Box responded, "no" otherwise.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+Technology has advanced so much that it is now common for everyone to have robots do their work. Codechef is still the popular choice of competitive programming platform, the reason being great quality of problems.
+One fine day, Taran decided to gain access to all problems by beating Master Chef of Codechef in a robot war.
+There are
+N types of robots numbered
+1 through
+N with an infinite supply for each type. If two robots of different types fight, one of them wins and the other loses; you are given a matrix
+M with size
+N×N, where for each valid
+i,j, a robot of type
+i wins against a robot of type
+j if
+M
+ij
+=1. If two robots of the same type fight, the result is a draw.
+Chef will buy
+N robots in total and Taran will also buy
+N robots in total. Both Taran and Chef can buy any number of robots of each type, including zero. Taran cleverly decided to buy his robots only after knowing the
+N robots bought by Chef, so that his chances of winning are maximized.
+After buying the robots, the war begins. It happens in
+N turns; two robots fight in each turn, one of them is Chef's and the other is Taran's. For the first
+A turns, Chef chooses his robot as well as Taran's robot which will fight in the current turn. For the next
+B turns, Taran chooses his robot as well as Chef’s robot that will fight against each other. At the end of a turn, both robots are completely destroyed and can't be used again.
+Since Master Chef trusts his talented programmers, you were asked to fight against Taran to save their problems for future contests. Your goal is to maximize the number of turns when your robot won a fight.
+P.S.: After seeing this problem, Taran decided to befriend Master Chef instead. The problems are safe now.
 Input
-First line of input contains n, the number of coordinate points that are present on the search area boundary.
-Following n lines contain 2-D coordinates. Note that all the points on the boundary are given in the input. The boundary walls are always parallel to either of X-axis or Y-axis.
-Next line of input contains m, the number of planes available.
-Following m lines contains 2 integers R and C. Each plane is given Id in input order starting from 0. So the first plane has Id 0, and the last plane has Id m-1.
-Output
-To give a command, print 3 integers I x y as defined above.
-To stop the search and report answer, print 3 integers -1 x y where (x,y) is the location of the Malaysia Airlines Flight MH370
-If the Flight is not present in the search area, print -1 -1 -1.
-Special
-Attention: the program should clear the output buffer after printing each line. It can be done using fflush(stdout) command or by setting the proper type of buffering at the beginning of the execution - setlinebuf(stdout). Failure to flush the output buffer will result in Time Limit Exceeded verdict.
-For example, at C/C++ you could use the following routines:
-bool SendPlane(int id, int x, int y) {
-    printf("%d %d %d\n", id, x, y);
-    fflush(stdout);
-    char temp[4];
-    scanf("%s", temp);
-    return temp[0]=='y';
-}
-Sample Input/Output
-NOTE : This sample input/output does not follow constrains
-in: 4
-in: 1 1
-in: 1 2
-in: 2 2
-in: 2 1
-in: 2
-in: 0 100
-in: 1 200
-out: 0 1 1
-in: no
-out: 0 2 2
-in: no
-out: 0 1 2
-in: yes
-out: -1 1 2
-Explanation
-The search area is a square of unit lenght with bottom left corner at (1,1). The missing flight is located at (1,2). We took all the input. Then issued the plane 0 to go to (1, 1). Special judge returned "no". Finally we issued the plane 0 to go to (1, 2) and special judge gave "yes". So we found the missing flight. we then output the same by giving command "-1 1 2". Score will be 2*(1+1)*100 + 2*(2+2)*100 + 2*(1+2)*100 = 1800/4 = 450.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains three space-separated integers
+N,
+A and
+B.
+For each
+i (
+1≤i≤N), the
+i-th of the following
+N lines contains
+N space-separated integers
+M
+i1
+,M
+i2
+,…,M
+iN
+.
+Interaction
+After reading the input, you should print a line containing
+N integers. For each valid
+i, the
+i-th of these integers denotes the number of robots of type
+i you bought.
+Afterwards, you should read a line containing
+N integers describing Taran's robots in the same format.
+Then the war begins. For each of the first
+A turns, you should print a line containing two space-separated integers
+x and
+y, where
+x is the type of the robot fighting for Chef and
+y is the type of robot fighting for Taran.
+For each of the next
+B turns, the judge will print a line containing two space-separated integers
+x and
+y, describing the robots fighting in this turn in the same format.
+You are not allowed to buy less or more robots than
+N or to choose (neither for Chef nor for Taran) a robot of a type such that there are no robots of this type remaining. If you do that, the verdict of your submission will be Wrong answer and interaction will terminate immediately. Also, remember to flush the output after printing each line, or the judge will wait for your response forever and the verdict of your submission will be Time Limit Exceeded.
+It is to be noted that first, you have to read input for first test case, followed by interaction for the first test case, then input for second test case and its interaction and so on.
 Constraints
-Search Area:
-1000 ≤ n ≤ 5000
-Distance from (0,0) to any point in the search area ≤ 100000
-100000 ≤ Number of Integer Coordinate points inside the search area ≤ 200000
-You can always enclose the whole search area in a 1024*1024 square
-See test data generation for more details.
-Planes:
-40 ≤ m ≤ 50
-0 ≤ R ≤ 600
-100 ≤ C ≤ 10000
-Test Data Generation
-Search Area:
-Step 1 : A square of size 1000*1000 is taken, number of points inside are 10^6.
-Step 2 : A rectangle of size w*h is taken such that w and h are less than 400. Now this rectangle is placed on some random boundary point of the initial square. All the points that fall into this rectangle are removed from initial set of points.
-Step 3 : Step 2 is repeated until atmost 200000 points are left. Then it is continued until a random condition fails.
-Step 4 : Now we are left with at most 200000 points. This points define the search area, but in input only the points that lie on boundary are given.
-Sample Graph : Click Here
-Planes:
-Refer constrains section for details about m, R, C. m and C are randomly chosen. Details about generation of R will not be disclosed.We always have a plane with R = 0
-Missing flight:
-With 0.65 probability the flight is kept inside the search area.
-Position is close to boundary points and is randomly chosen with probability 1 (always) given that it is outside the search area
+T=5
+N=1,000
+0≤A,B≤N
+1≤A+B≤N
+N is divisible by
+A+B
+0≤M
+ij
+≤1 for each valid
+i,j
+M
+ij
++M
+ji
+=1 for each valid
+i
+
+=j
+M
+ii
+=0 for each valid
+i
 Scoring
-For all the issued commands of the form I x y, I has to be valid id, (x,y) must be a coordinate point inside the search area (On the boundary points are also valid). Not satisfying this constrains will result in Wrong Answer.
-For the command of the form -1 x y, If (x,y) is outside the search area, or there is no Flight at (x,y), it will result in Wrong Answer.
-For the command of the form -1 -1 -1, If the fligh is actually present inside the search area, it will result in Wrong Answer.
-Let Cost be the total cost of the Search operation. Now score for that test file is Cost/Number Of Coordinate points inside search area. It will show as Wrong answer if Cost is greater than 4*10^12 or number of commands issued is greater than 5*10^5.
-EDITS MADE
-Old :It will show as Wrong answer if Cost is greater than 10^9 or number of commands issued is greater than 5*10^5.
-New :It will show as Wrong answer if Cost is greater than 4*10^12 or number of commands issued is greater than 5*10^5.
+Your score for each test case is the number of fights won by your robots. Your score for each test file is the sum of your scores for all test cases.
+Test Generation Plan
+There are twenty test files. During the contest, the displayed score will account for exactly four test files, i.e. your score reflects your submission's performance on 20% (4 out of 20) of the test files. However, if your program gets a non-AC verdict on any test file, your submission's verdict will be non-AC. In other words, an AC verdict denotes that your program runs successfully on all the test files. After the end of the contest, your score will be changed to the sum of your program's scores over the other sixteen test files.
+The matrix
+M is generated randomly. There are four types of tests:
+type 1:
+A=B=250
+type 2:
+A and
+B are integers chosen uniformly randomly in the range
+[0,10] such that
+A+B=10
+type 3:
+A and
+B are integers chosen uniformly randomly in the range
+[0,100] such that
+A+B=100
+type 4:
+A and
+B are integers chosen uniformly randomly in the range
+[0,1000] such that
+A+B=1000
+Example
+1
+5 3 2
+0 1 1 0 0
+0 0 1 0 1
+0 0 0 1 1
+1 1 0 0 0
+1 0 0 1 0
+
+Interaction
+
+User                                            Judge
+
+2 0 2 1 0
+                                                1 1 2 0 1
+1 2
+4 1
+1 3
+                                                3 3
+                                                3 5
+Explanation
+Note that the example test does not satisfy the constraints on
+T and
+N for clarity. These constraints will hold for all real tests. Also note that the judge's interaction may vary, this example only shows one possible way the interaction could go.
+The player chose 2 robots of the 1st type, 2 robots of the 3rd type and 1 robot of the 4th type.
+The judge chose 2 robots of the 3rd type and 1 robot each of types 1, 2 and 5.
+The matches went as follows:
+The player chose a robot of the 1st type against Taran's robot of the 2nd type and gained a point.
+The player chose a robot of the 4th type against Taran's robot of the 1st type and gained another point.
+The player chose a robot of the 1st type against Taran's robot of the 3rd type and gained one more point.
+The judge chose the player's robot of the 3rd type against the judge's remaining robot of the 3rd type. The player gained no points.
+The judge chose the player's robot of the 3rd type against the judge's robot of the 5th type. The player gained one point.
+The player's score for this test case is 4.

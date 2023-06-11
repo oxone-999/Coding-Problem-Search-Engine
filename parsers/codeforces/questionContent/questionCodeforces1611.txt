@@ -1,191 +1,106 @@
-A. AquaMoon and Two Arrays
-time limit per test1 second
-memory limit per test256 megabytes
+B. Alphabetical Strings
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-AquaMoon and Cirno are playing an interesting game with arrays. Cirno has prepared two arrays
-a
-and
-b
-, both consist of
+A string
+s
+of length
 n
-non-negative integers. AquaMoon can perform the following operation an arbitrary number of times (possibly zero):
-She chooses two indices
-i
-and
-j
 (
-1≤i,j≤n
-), then decreases the
+1≤n≤26
+) is called alphabetical if it can be obtained using the following algorithm:
+first, write an empty string to
+s
+(i.e. perform the assignment
+s
+ := "");
+then perform the next step
+n
+times;
+at the
 i
--th element of array
-a
-by
-1
-, and increases the
-j
--th element of array
-a
-by
-1
-. The resulting values at
+-th step take
 i
--th and
-j
--th index of array
-a
-are
-a
+-th lowercase letter of the Latin alphabet and write it either to the left of the string
+s
+or to the right of the string
+s
+(i.e. perform the assignment
+s
+ := 
+c+s
+or
+s
+ := 
+s+c
+, where
+c
+is the
 i
-−1
-and
-a
-j
-+1
-, respectively. Each element of array
-a
-must be non-negative after each operation. If
-i=j
-this operation doesn't change the array
-a
-.
-AquaMoon wants to make some operations to make arrays
-a
-and
-b
-equal. Two arrays
-a
-and
-b
-are considered equal if and only if
-a
-i
-=
-b
-i
-for all
-1≤i≤n
-.
-Help AquaMoon to find a sequence of operations that will solve her problem or find, that it is impossible to make arrays
-a
-and
-b
-equal.
-Please note, that you don't have to minimize the number of operations.
+-th letter of the Latin alphabet).
+In other words, iterate over the
+n
+first letters of the Latin alphabet starting from 'a' and etc. Each time we prepend a letter to the left of the string
+s
+or append a letter to the right of the string
+s
+. Strings that can be obtained in that way are alphabetical.
+For example, the following strings are alphabetical: "a", "ba", "ab", "bac" and "ihfcbadeg". The following strings are not alphabetical: "z", "aa", "ca", "acb", "xyz" and "ddcba".
+From the given string, determine if it is alphabetical.
 Input
-The input consists of multiple test cases. The first line contains a single integer
+The first line contains one integer
 t
 (
-1≤t≤100
-) — the number of test cases.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤100
-).
-The second line of each test case contains
-n
-integers
-a
+1≤t≤
+10
+4
+) — the number of test cases. Then
+t
+test cases follow.
+Each test case is written on a separate line that contains one string
+s
+. String
+s
+consists of lowercase letters of the Latin alphabet and has a length between
 1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤100
-). The sum of all
-a
-i
-does not exceed
-100
-.
-The third line of each test case contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-0≤
-b
-i
-≤100
-). The sum of all
-b
-i
-does not exceed
-100
-.
-Output
-For each test case print "-1" on the only line if it is impossible to make two arrays equal with some sequence of operations.
-Otherwise, print an integer
-m
-(
-0≤m≤100
-) in the first line — the number of operations. Then print
-m
-lines, each line consists of two integers
-i
 and
-j
-— the indices you choose for the operation.
-It can be proven that if it is possible to make two arrays equal with some sequence of operations, there exists a sequence with
-m≤100
-.
-If there are multiple possible solutions, you can print any.
+26
+, inclusive.
+Output
+Output
+t
+lines, each of them must contain the answer to the corresponding test case. Output YES if the given string
+s
+is alphabetical and NO otherwise.
+You can output YES and NO in any case (for example, strings yEs, yes, Yes and YES will be recognized as a positive answer).
 Example
 input
 Copy
-4
-4
-1 2 3 4
-3 1 2 4
-2
-1 3
-2 1
-1
-0
-0
-5
-4 3 2 1 0
-0 1 2 3 4
+11
+a
+ba
+ab
+bac
+ihfcbadeg
+z
+aa
+ca
+acb
+xyz
+ddcba
 output
 Copy
-2
-2 1
-3 1
--1
-0
-6
-1 4
-1 4
-1 5
-1 5
-2 5
-2 5
+YES
+YES
+YES
+YES
+YES
+NO
+NO
+NO
+NO
+NO
+NO
 Note
-In the first example, we do the following operations:
-i=2
-,
-j=1
-:
-[1,2,3,4]→[2,1,3,4]
-;
-i=3
-,
-j=1
-:
-[2,1,3,4]→[3,1,2,4]
-;
-In the second example, it's impossible to make two arrays equal.
+The example contains test cases from the main part of the condition.

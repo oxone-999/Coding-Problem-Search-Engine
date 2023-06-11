@@ -1,31 +1,64 @@
-B. Settlement of Guinea Pigs
+A. Likes
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Dasha loves guinea pigs very much. In this regard, she decided to settle as many guinea pigs at home as possible and developed a plan for the next
+Nikita recently held a very controversial round, after which his contribution changed very quickly.
+The announcement hung on the main page for
 n
-days. Every day, she will either buy a new guinea pig or call a doctor to examine all her pets.
-Unfortunately, the store where she was going to buy guinea pigs does not understand them. Therefore, it cannot determine their gender. Dasha can't do it either. The only one who can help is a doctor.
-To keep guinea pigs, aviaries are needed. Dasha plans to buy them in the same store. Unfortunately, only one species is sold there — a double aviary. No more than two guinea pigs can live in it.
-Since Dasha does not want to cause moral injury to her pets — she will not settle two guinea pigs of different genders in one aviary.
-Help Dasha calculate how many aviaries in the worst case you need to buy so that you can be sure that at no moment of time do two guinea pigs of different genders live in the same aviary.
-As part of this task, we believe that guinea pigs have only two genders — male and female.
+seconds. In the
+i
+th second
+|
+a
+i
+|
+th person either liked or removed the like (Nikita was lucky in this task and there are no dislikes). If
+a
+i
+>0
+, then the
+a
+i
+th person put a like. If
+a
+i
+<0
+, then the person
+−
+a
+i
+removed the like. Each person put and removed the like no more than once. A person could not remove a like if he had not put it before.
+Since Nikita's contribution became very bad after the round, he wanted to analyze how his contribution changed while the announcement was on the main page. He turned to the creator of the platform with a request to give him the sequence
+a
+1
+,
+a
+2
+,…,
+a
+n
+. But due to the imperfection of the platform, the sequence
+a
+was shuffled.
+You are given a shuffled sequence of
+a
+that describes user activity. You need to tell for each moment from
+1
+to
+n
+what the maximum and minimum number of likes could be on the post at that moment.
 Input
 The first line of input data contains one number
 t
 (
-1⩽t⩽
-10
-5
-) — the number of input data sets.
-The first line of each input data set contains one number
+1⩽t⩽1000
+) — the number of test cases.
+In the first line of test case, one number is given
 n
 (
-1⩽n⩽
-10
-5
-) — the number of days Dasha has a plan for.
+1⩽n⩽100
+) — the number of seconds during which Nikita's announcement hung on the main page.
 The next line contains
 n
 numbers
@@ -41,87 +74,65 @@ b
 b
 n
 (
-1⩽
+1⩽|
 b
 i
-⩽2
-) — Dasha's plan. If
+|⩽n
+) — mixed array
+a
+. It is guaranteed that there exists such a permutation of
 b
-i
-=1
-, then on the
-i
-th day, Dasha will buy a new guinea pig. If
-b
-i
-=2
-, then on the
-i
-th day, a doctor will come to Dasha and help determine the sex of all guinea pigs that Dasha already has.
+that it is a correct sequence of events described in the condition.
 It is guaranteed that the sum of
 n
-for all input data sets does not exceed
+for all input test cases does not exceed
 10
-5
+4
 .
 Output
-For each set of input data, output one number — the minimum number of aviaries Dasha needs to buy so that no matter what the genders of the pigs turn out to be, we can settle them so that at no point in time do two guinea pigs of different genders live together.
+For each test case, output two lines, each of which contains
+n
+numbers.
+In the first line, for each test case, output the maximum number of likes that Nikita could have at the announcement at the
+i
+th second.
+In the second line, for each test case, output the minimum number of likes that Nikita could have at the announcement at the
+i
+th second.
 Example
 input
 Copy
-6
-3
-1 1 1
-3
-2 2 2
 5
-1 1 1 2 1
-10
-1 2 1 2 1 2 1 2 1 2
-20
-1 2 1 1 1 1 1 2 1 2 1 2 2 1 1 1 1 1 1 1
-20
-2 1 1 2 1 1 2 1 2 2 1 1 1 2 2 1 1 1 1 2
+3
+1 2 -2
+2
+1 -1
+6
+4 3 -1 2 1 -2
+5
+4 2 -2 1 3
+7
+-1 6 -4 3 2 4 1
 output
 Copy
-3
-0
-3
-4
-12
-9
+1 2 1 
+1 0 1 
+1 0 
+1 0 
+1 2 3 4 3 2 
+1 0 1 0 1 2 
+1 2 3 4 3 
+1 0 1 2 3 
+1 2 3 4 5 4 3 
+1 0 1 0 1 2 3 
 Note
-In the first set of input data, Dasha needs to put each guinea pig in a separate enclosure, since she does not know their gender.
-In the second set of input data, Dasha will buy
-0
-guinea pigs, which means she will need
-0
-aviaries.
-In the third set of input data, you even need
-3
-aviaries to put each guinea pig in a separate aviary before the doctor arrives at the
-4
-th day. When she finds out their gender, at least two guinea pigs will be of the same gender and they can be placed in one aviary, and the third in another aviary. Thus, she will have one free aviary in which she can settle a new guinea pig. So answer is
-3
+In the first test case, the maximum values are reached with the following permutation:
+1,2,−2
+. And the minimum values for such:
+2,−2,1
 .
-In the fourth set of input data, we show that
-4
-is the optimal answer.
-To begin with, we note that the first four guinea pigs can be placed one at a time in an aviary. Then a doctor will come and determine their gender. Among these four guinea pigs there will be at least one pair of the same gender, because: either male guinea pigs are at least
-2
-, or they are not more than
-1
-, which means that the female is at least
-3
-. Now we can put this couple in one aviary, and the other two in separate ones. We will have one more empty aviary where we can put a new pig.
-Now let's show that the answer is at least
-4
-. Let's say that among the first
-4
-guinea pigs,
-3
-are female and
-1
-is male. We need at least
-3
-aviaries to settle them. Then, when we buy a new guinea pig, we will need another aviary in which we will put it, since we do not know its gender.
+In the third test case, all maximal values are reached with the following permutation:
+4,2,3,1,−1,−2
+. And the minimum values for the next permutation:
+2,−2,1,−1,3,4
+.

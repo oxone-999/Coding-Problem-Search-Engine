@@ -1,137 +1,142 @@
-B. Array Cloning Technique
-time limit per test1 second
+D. GCD Guess
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of
+This is an interactive problem.
+There is a positive integer
+1≤x≤
+10
+9
+that you have to guess.
+In one query you can choose two positive integers
+a≠b
+. As an answer to this query you will get
+gcd(x+a,x+b)
+, where
+gcd(n,m)
+is the greatest common divisor of the numbers
 n
-integers. Initially there is only one copy of the given array.
-You can do operations of two types:
-Choose any array and clone it. After that there is one more copy of the chosen array.
-Swap two elements from any two copies (maybe in the same copy) on any positions.
-You need to find the minimal number of operations needed to obtain a copy where all elements are equal.
+and
+m
+.
+To guess one hidden number
+x
+you are allowed to make no more than
+30
+queries.
 Input
-The input consists of multiple test cases. The first line contains a single integer
+The first line of input contains a single integer
 t
 (
-1≤t≤
+1≤t≤1000
+) denoting the number of test cases.
+The integer
+x
+that you have to guess satisfies the constraints: (
+1≤x≤
 10
-4
-) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains a single integer
-n
-(
-1≤n≤
+9
+).
+Interaction
+The hidden number
+x
+is fixed before the start of the interaction and does not depend on your queries.
+To guess each
+x
+you can make no more than
+30
+queries in the following way:
+"? a b" (
+1≤a,b≤2⋅
 10
-5
-) — the length of the array
-a
-.
-The second line of each test case contains
-n
-integers
-a
-1
+9
 ,
-a
-2
-,…,
-a
-n
+a≠b
+).
+For this query you will get
+gcd(x+a,x+b)
+.
+When you know
+x
+, print a single line in the following format.
+"! x" (
+1≤x≤
+10
+9
+).
+After that continue to solve the next test case.
+If you ask more than
+30
+queries for one
+x
+or make an invalid query, the interactor will terminate immediately and your program will receive verdict Wrong Answer.
+After printing each query do not forget to output end of line and flush the output buffer. Otherwise, you will get the Idleness limit exceeded verdict. To do flush use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+Read documentation for other languages.
+Hacks
+To use hacks, use the following format of tests:
+The first line should contain a single integer
+t
 (
-−
+1≤t≤1000
+) — the number of test cases.
+The first and only line of each test case should contain a single integer
+x
+(
+1≤x≤
 10
 9
-≤
-a
-i
-≤
-10
-9
-) — the elements of the array
-a
-.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-5
-.
-Output
-For each test case output a single integer — the minimal number of operations needed to create at least one copy where all elements are equal.
+) denoting the integer
+x
+that should be guessed.
 Example
 input
 Copy
-6
-1
-1789
-6
-0 1 3 3 7 0
 2
--1000000000 1000000000
-4
-4 3 2 1
-5
-2 5 7 6 3
-7
-1 1 1 1 1 1 1
+
+1
+
+8
+
+
+1
 output
 Copy
-0
-6
-2
-5
-7
-0
+? 1 2
+
+? 12 4
+
+! 4
+? 2000000000 1999999999
+
+! 1000000000
 Note
-In the first test case all elements in the array are already equal, that's why the answer is
-0
+The first hidden number is
+4
+, that's why the answers for the queries are:
+"? 1 2" —
+gcd(4+1,4+2)=gcd(5,6)=1
 .
-In the second test case it is possible to create a copy of the given array. After that there will be two identical arrays:
-[ 0 1 3 3 7 0 ]
-and
-[ 0 1 3 3 7 0 ]
-After that we can swap elements in a way so all zeroes are in one array:
-[ 0 
-0
-–
- 0
-–
- 3 7 0 ]
-and
-[ 
-1
-–
- 1 3 3 7 
-3
-–
- ]
-Now let's create a copy of the first array:
-[ 0 0 0 3 7 0 ]
-,
-[ 0 0 0 3 7 0 ]
-and
-[ 1 1 3 3 7 3 ]
-Let's swap elements in the first two copies:
-[ 0 0 0 
-0
-–
- 0
-–
- 0 ]
-,
-[ 
-3
-–
- 7
-–
- 0 3 7 0 ]
-and
-[ 1 1 3 3 7 3 ]
+"? 12 4" —
+gcd(4+12,4+4)=gcd(16,8)=8
 .
-Finally, we made a copy where all elements are equal and made
-6
-operations.
-It can be proven that no fewer operations are enough.
+The second hidden number is
+10
+9
+, that's why the answer for the query is:
+"? 2000000000 1999999999" —
+gcd(3⋅
+10
+9
+,3⋅
+10
+9
+−1)=1
+.
+These queries are made only for understanding the interaction and are not enough for finding the true
+x
+.

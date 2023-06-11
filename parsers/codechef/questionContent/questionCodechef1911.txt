@@ -1,28 +1,40 @@
-Alok-nath and His Sanskars
+Skiing
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Alok-nath is man of equality. He needs your help to divide his “sanskars” evenly amongst all his followers. By doing this, Alok-nath can create equality amongst his followers and he'll be called a true “sanskari”.
-Alok-nath has N sanskars, and K followers. Each sanskar is given a numerical value which shows its intensity.
-Your task is to determine whether it is possible to allocate all the sanskars to followers in such a way that the sum of intensities of the sanskars allocated to each follower is equal. Note : A sanskar can be allocated to only one of the followers.
-Input
-The first line of the input contains an integer T, denoting the number of test cases. Then T test cases follow. The first line of each case contains two integers N and K, with N denoting the number of sanskars and K denoting the number of followers. In the next line are N space separated integers denoting the intensities of each sanskar.
+Read problems statements in Russian and Vietnamese as well.
+Chef and Hasan went for skiing in a rectangular field, the field can be represented as a grid of N rows and M columns, rows are numbered from 1 to N starting from top, columns are numbered from 1 to M starting from left, each cell has a a number representing the height of the snow on this particular part of the field.
+after skiing for a while in the field they decided to play a game, first hasan has to choose a set of cells S not necessarily adjacent and show this set to Chef.
+after that, Chef has to choose exactly one cell d not necessarily from set S and tell it to Hasan.
+finally, Hasan has to choose one cell from set S and start skiing from that cell and try to reach cell d that the chef just chose, if he couldn't then Chef wins, otherwise Hasan wins.
+When Hasan is skiing, he can move from one cell to another iff both cells are adjacent (they share a side) and the height of destination cell is not more than the height of current cell.
+it's obvious that it's easy for Hasan to win this game, because he can simply choose all cells to be in set S, but he want the set S to have minimum number of cells to prove that he is very skilled in skiing.
+knowing that both players play optimally, please help Hasan to find minimum number of cells to be in set S to guarantee the winning for him.
+  Input
+First line contains integer T donating the number of test-cases.
+First line of each test-case contains two integers n and m donating the number of rows and columns respectively.
+Each of the following n lines contains m numbers donating the heights of the field
 Output
-For each test case, output "yes" if it is possible to divide his sanskars equally amongst his followers; otherwise output "no" (without quotes).
+For each test-case output a single line containing a single integer donating minimum number of cells has to be in set S so that Hasan guarantee winning
 Constraints
-1 ≤ T ≤ 10
-1 ≤ N ≤ 21
-1 ≤ K ≤ 8
-Subtask #1 (20 points) : 0 ≤ intensity of sanskar ≤ 10^5
-Subtask #2 (80 points) : 0 ≤ intensity of sanskar ≤ 10^10
-Sample 1:
+Should contain all the constraints on the input data that you may have. Format it like:
+1 ≤ T ≤ 100
+1 ≤ N, M ≤ 1,000
+1 ≤ sum of N in all test-cases ≤ 1,000
+1 ≤ sum of M in all test-cases ≤ 1,000
+1 ≤ height of snow ≤ 1,000,000,000
+  Sample 1:
 Input
 Output
 2
-5 3
-1 2 4 5 6
-5 3
-1 2 4 5 7
-yes
-no
+3 3
+1 2 2
+2 1 1
+2 1 1
+3 3
+3 2 2
+2 1 1
+2 1 1
+2
+1
 Explanation:
-In the first case, sanskars can be allocated as follows, each follower receiving a total intensity of 6: {1,5}, {2,4}, {6}.
+Example case 1. Hasan has to select at least two cells to be in S so that he guarantee he can reach all other cells starting from anyone of them, example of cells to choose (2,1) and (1,2)
+Example case 2. if Hasan chose cell (1,1) to be in S then he can reach any cell starting from it and thus guarantee winning

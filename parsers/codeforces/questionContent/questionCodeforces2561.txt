@@ -1,142 +1,73 @@
-A. Johnny and Ancient Computer
+B. Subsequence Hate
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Johnny has recently found an ancient, broken computer. The machine has only one register, which allows one to put in there one variable. Then in one operation, you can shift its bits left or right by at most three positions. The right shift is forbidden if it cuts off some ones. So, in fact, in one operation, you can multiply or divide your number by
-2
-,
-4
-or
-8
-, and division is only allowed if the number is divisible by the chosen divisor.
-Formally, if the register contains a positive integer
-x
-, in one operation it can be replaced by one of the following:
-x⋅2
-x⋅4
-x⋅8
-x/2
-, if
-x
-is divisible by
-2
-x/4
-, if
-x
-is divisible by
-4
-x/8
-, if
-x
-is divisible by
-8
-For example, if
-x=6
-, in one operation it can be replaced by
-12
-,
-24
-,
-48
-or
-3
-. Value
-6
-isn't divisible by
-4
-or
-8
-, so there're only four variants of replacement.
-Now Johnny wonders how many operations he needs to perform if he puts
+Shubham has a binary string
+s
+. A binary string is a string containing only characters "0" and "1".
+He can perform the following operation on the string any amount of times:
+Select an index of the string, and flip the character at that index. This means, if the character was "0", it becomes "1", and vice versa.
+A string is called good if it does not contain "010" or "101" as a subsequence  — for instance, "1001" contains "101" as a subsequence, hence it is not a good string, while "1000" doesn't contain neither "010" nor "101" as subsequences, so it is a good string.
+What is the minimum number of operations he will have to perform, so that the string becomes good? It can be shown that with these operations we can make any string good.
+A string
 a
-in the register and wants to get
+is a subsequence of a string
 b
-at the end.
+if
+a
+can be obtained from
+b
+by deletion of several (possibly, zero or all) characters.
 Input
-The input consists of multiple test cases. The first line contains an integer
+The first line of the input contains a single integer
 t
-(
-1≤t≤1000
-) — the number of test cases. The following
+(1≤t≤100)
+ — the number of test cases.
+Each of the next
 t
-lines contain a description of test cases.
-The first and only line in each test case contains integers
-a
-and
-b
-(
-1≤a,b≤
-10
-18
-) — the initial and target value of the variable, respectively.
-Output
-Output
-t
-lines, each line should contain one integer denoting the minimum number of operations Johnny needs to perform. If Johnny cannot get
-b
-at the end, then write
-−1
+lines contains a binary string
+s
+(1≤|s|≤1000)
 .
+Output
+For every string, output the minimum number of operations required to make it good.
 Example
 input
 Copy
-10
-10 5
-11 44
-17 21
-1 1
-96 3
-2 128
-1001 1100611139403776
-1000000000000000000 1000000000000000000
-7 1
-10 8
+7
+001
+100
+101
+010
+0
+1
+001100
 output
 Copy
+0
+0
 1
 1
--1
+0
 0
 2
-2
-14
-0
--1
--1
 Note
-In the first test case, Johnny can reach
+In test cases
+1
+,
+2
+,
 5
-from
-10
-by using the shift to the right by one (i.e. divide by
-2
-).
-In the second test case, Johnny can reach
-44
-from
-11
-by using the shift to the left by two (i.e. multiply by
-4
-).
-In the third test case, it is impossible for Johnny to reach
-21
-from
-17
-.
-In the fourth test case, initial and target values are equal, so Johnny has to do
-0
-operations.
-In the fifth test case, Johnny can reach
+,
+6
+no operations are required since they are already good strings.
+For the
 3
-from
-96
-by using two shifts to the right: one by
-2
-, and another by
-3
-(i.e. divide by
+rd test case: "001" can be achieved by flipping the first character  — and is one of the possible ways to get a good string.
+For the
 4
-and by
-8
-).
+th test case: "000" can be achieved by flipping the second character  — and is one of the possible ways to get a good string.
+For the
+7
+th test case: "000000" can be achieved by flipping the third and fourth characters  — and is one of the possible ways to get a good string.

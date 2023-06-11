@@ -1,152 +1,89 @@
-Secret Mission
+Valentine Vex
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chefland is a country with
-N cities (numbered
-1 through
-N) connected by
-M bidirectional roads. Chef is on a mission to spread a secret recipe of a Rogan Josh dish. Chef has a sequence
+Alice and Bob play a game on an array of
+N integers. They alternate moves, with Alice making the first move.
+The rules are as follows:
+On their first move, a player can pick any element in the array, add its value to their score, and then remove it from the array.
+On a move that is not their first move, the player should pick an element with the opposite parity of the element chosen on their previous move, add its value to their score, and then remove it from the array.
+If a player cannot make a move, either because the array is empty or it doesn't contain an element of the parity they need, the player skips their turn.
+The game ends when both players are unable to move.
+Note that the parity of an element chosen by a player depends only on the parity of their own previously chosen element — it does not depend on what their opponent last chose.
+Determine the optimal score of Alice if both players play optimally, each attempting to maximize their own score. If there are multiple ways to obtain maximum score for themselves, the players will adopt a strategy that will maximize the score of their opponent whilst obtaining their maximum score themselves.
+Note that it is not necessary to use all the elements in the array.
+Also note that when a player skips a turn, the parity that he needs in the next move remains same as that of the current move.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases. Then the test cases follow.
+Each test case consists of two lines of input.
+The first line of each test case contains one integer
+N — the size of the array
 A
-1
-,A
-2
-,…,A
-K
-and he must visit cities in the following way: he starts in the city
-A
-1
-, travels to the city
-A
-2
-, then travels from there to the city
-A
-3
-and so on until he reaches the city
-A
-K
-. Note that a city may appear in
-A multiple times, but
-A
-i
-
-=A
-i+1
-for each valid
-i. When travelling between two cities, Chef always follows one of the shortest paths between them (but not necessarily the same one if he travels between them again).
-The government is trying to track which cities are targeted by Chef. However, they do not know the sequence
-A. Instead, they have tracked Chef's movement as a sequence
-B
-1
-,B
-2
-,…,B
-L
-of cities visited by Chef during his mission. Formally,
-B
-1
-=A
-1
-is the city where Chef starts, then for each valid
-i, he moves from the city
-B
-i
-to the city
-B
-i+1
-using the direct road between them and finally, he ends his mission in the city
-B
-L
-=A
-K
-; Chef's sequence
-A is a subsequence of
-B, since the sequence
-B also contains all shortest paths which Chef followed. It is guaranteed that there is a direct road between cities
-B
-i
-and
-B
-i+1
-for each valid
-i.
-Help the government of Chefland find the minimum possible number of targeted cities, i.e. the minimum possible value of
-K for a sequence
-A that corresponds to the given sequence
-B, or determine that no such sequence
-A exists.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains three space-separated integers
-N,
-M and
-L.
-The second line contains
-L space-separated integers
-B
-1
-,B
-2
-,…,B
-L
-.
-Each of the following
-M lines contains three space-separated integers
-u,
-v and
-w describing a road between cities
-u and
-v with length
-w.
-Output
-For each test case, print a single line containing one integer ― the minimum possible
-K, or
-−1 if a valid sequence
-A does not exist.
+The second line of each test case contains
+N space-separated integers, denoting the array elements.
+Output Format
+For each test case, output on a new line the optimal score achieved by Alice.
 Constraints
-1≤T≤10
-2≤N≤200
-1≤M≤N⋅(N−1)/2
-2≤L≤10,000
-1≤u,v≤N
-u
-
-=v
-1≤w≤10
+1≤T≤2⋅10
+4
+2≤N≤10
+5
+1≤Ai≤10
 6
-there is at most one direct road between each pair of cities
-for each valid
-i, there is a direct road between cities
-B
-i
-and
-B
-i+1
-Subtasks
-Subtask #1 (50 points):
-w=1
-Subtask #2 (50 points): original constraints
+Sum of
+N across all test cases won't exceed
+2⋅10
+5
 Sample 1:
 Input
 Output
 3
-3 3 6
-1 2 3 1 2 3
-1 2 1
-2 3 1
-3 1 1
-4 4 9
-1 2 3 4 1 2 3 4 1
-1 2 1
-2 3 1
-3 4 1
-4 1 1
-3 3 2
-1 2
-1 2 3
-2 3 1
-3 1 1
+4
+1 2 3 4
+3
+45 10 53
 6
+7 5 2 2 6 2
 5
--1
+55
+15
+Explanation:
+Test case
+1: Under optimal play, Alice's maximum score is
+5. One sequence of moves leading to this score is:
+On her first move, Alice picks
+4.
+On his first move, Bob picks
+3.
+On her second move, Alice must choose an odd number, since she previously picked an even number. So, Alice's only choice is to pick
+1.
+On his second move, Bob picks
+2, since he must choose an even number and it is the only one left.
+Alice's score is thus
+4+1=5. Note that this is not the only optimal strategy — however, any other strategy where both players play optimally will still lead to Alice having a score of
+5.
+Test case
+2: Alice's strategy is as follows:
+On her first move, Alice picks
+10.
+On his first move, Bob picks
+53.
+Finally, Alice picks
+45, ending up with a score of
+10+45=55.
+Note that if Alice picks either
+53 or
+45 on her first move, Bob will pick
+10 on his move. This leaves Alice unable to make a move, so she skips her turn and Bob picks the remaining number, leaving Alice with a score strictly smaller than
+55.
+Test case
+3: Alice picks
+6,7, and
+2 for a score of
+15, while Bob picks
+2,5, and
+2 for a score of
+9. Note that Bob can also achieve a score of
+9 by picking
+7 and
+2 and then skipping his third move, but he won't do this because it would lead to Alice only reaching a score of
+13 — as mentioned earlier, a player attempts to maximize their own score, and then maximize their opponent's score.

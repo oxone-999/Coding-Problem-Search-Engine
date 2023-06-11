@@ -1,111 +1,254 @@
-F. Bracket Insertion
+E. Rectangle Shrinking
 time limit per test4 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Vika likes playing with bracket sequences. Today she wants to create a new bracket sequence using the following algorithm. Initially, Vika's sequence is an empty string, and then she will repeat the following actions
-n
-times:
-Choose a place in the current bracket sequence to insert new brackets uniformly at random. If the length of the current sequence is
-k
-, then there are
-k+1
-such places: before the first bracket, between the first and the second brackets,
-…
-, after the
-k
--th bracket. In particular, there is one such place in an empty bracket sequence.
-Choose string "()" with probability
-p
-or string ")(" with probability
-1−p
-and insert it into the chosen place. The length of the bracket sequence will increase by
+You have a rectangular grid of height
 2
-.
-A bracket sequence is called regular if it is possible to obtain a correct arithmetic expression by inserting characters '+' and '1' into it. For example, sequences "(())()", "()", and "(()(()))" are regular, while ")(", "(()", and "(()))(" are not.
-Vika wants to know the probability that her bracket sequence will be a regular one at the end. Help her and find this probability modulo
-998244353
-(see Output section).
-Input
-The only line contains two integers
+and width
+10
+9
+consisting of unit cells. There are
 n
-and
-q
- (
-1≤n≤500
+rectangles placed on this grid, and the borders of these rectangles pass along cell borders. The
+i
+-th rectangle covers all cells in rows from
+u
+i
+to
+d
+i
+inclusive and columns from
+l
+i
+to
+r
+i
+inclusive (
+1≤
+u
+i
+≤
+d
+i
+≤2
 ;
-0≤q≤
+1≤
+l
+i
+≤
+r
+i
+≤
+10
+9
+). The initial rectangles can intersect, be nested, and coincide arbitrarily.
+You should either remove each rectangle, or replace it with any of its non-empty subrectangles. In the latter case, the new subrectangle must lie inside the initial rectangle, and its borders must still pass along cell borders. In particular, it is allowed for the subrectangle to be equal to the initial rectangle.
+After that replacement, no two (non-removed) rectangles are allowed to have common cells, and the total area covered with the new rectangles must be as large as possible.
+Illustration for the first test case. The initial rectangles are given at the top, the new rectangles are given at the bottom. Rectangle number
+4
+is removed.
+Input
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤
 10
 4
-). Here
+). The description of the test cases follows.
+The first line of each test case contains a single integer
 n
-is equal to the number of bracket insertion operations, and the probability that Vika chooses string "()" on every step of the algorithm is equal to
-p=q⋅
+ (
+1≤n≤2⋅
 10
-−4
+5
+) — the number of rectangles.
+Each of the next
+n
+lines contains four integers
+u
+i
+,
+l
+i
+,
+d
+i
+,
+r
+i
+ (
+1≤
+u
+i
+≤
+d
+i
+≤2
+;
+1≤
+l
+i
+≤
+r
+i
+≤
+10
+9
+) — the coordinates of cells located in the top-left and the bottom-right corners of the rectangle, respectively.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
 .
 Output
-Print the probability that Vika's final bracket sequence will be regular, modulo
-998244353
+For each test case, first print an integer
+s
+ — the largest possible covered by new rectangles area. Then print
+n
+lines with your solution to cover this area.
+In the
+i
+-th of these lines print four integers
+u
+′
+i
+,
+l
+′
+i
+,
+d
+′
+i
+,
+r
+′
+i
+. If you remove the
+i
+-th rectangle, print
+u
+′
+i
+=
+l
+′
+i
+=
+d
+′
+i
+=
+r
+′
+i
+=0
+. Otherwise, these numbers denote the new coordinates of the top-left and the bottom-right corners of the
+i
+-th rectangle, satisfying
+u
+i
+≤
+u
+′
+i
+≤
+d
+′
+i
+≤
+d
+i
+;
+l
+i
+≤
+l
+′
+i
+≤
+r
+′
+i
+≤
+r
+i
 .
-Formally, let
-M=998244353
-. It can be shown that the answer can be expressed as an irreducible fraction
-p
-q
-, where
-p
-and
-q
-are integers and
-q≢0(modM)
-. Output the integer equal to
-p⋅
-q
-−1
-modM
-. In other words, output such an integer
-x
-that
-0≤x<M
-and
-x⋅q≡p(modM)
-.
-Examples
+If there are multiple solutions, print any.
+Example
 input
 Copy
-1 7500
+8
+5
+1 2 2 4
+2 4 2 8
+1 4 2 7
+1 2 1 2
+1 9 1 10
+2
+1 1 1 10
+1 5 1 15
+2
+1 1 1 10
+1 1 1 10
+5
+1 3 1 7
+1 3 1 8
+1 1 1 4
+1 2 1 7
+1 10 1 11
+2
+1 1 2 10
+1 5 1 8
+2
+1 5 2 10
+1 2 1 7
+2
+1 5 2 10
+2 2 2 15
+5
+2 6 2 7
+1 4 2 5
+1 5 1 9
+1 7 2 10
+1 2 1 6
 output
 Copy
-249561089
-input
-Copy
-2 6000
-output
-Copy
-519087064
-input
-Copy
-5 4000
-output
-Copy
-119387743
+15
+1 2 2 4
+2 5 2 8
+1 5 1 7
+0 0 0 0
+1 9 1 10
+15
+1 1 1 10
+1 11 1 15
+10
+1 1 1 10
+0 0 0 0
+10
+0 0 0 0
+1 8 1 8
+1 1 1 4
+1 5 1 7
+1 10 1 11
+20
+1 1 2 10
+0 0 0 0
+15
+1 5 2 10
+1 2 1 4
+20
+1 5 1 10
+2 2 2 15
+16
+2 6 2 6
+2 4 2 5
+0 0 0 0
+1 7 2 10
+1 2 1 6
 Note
-In the first example, Vika will get a regular bracket sequence () with probability
-p=
-3
-4
-, and she will get an irregular bracket sequence )( with probability
-1−p=
-1
-4
-. The sought probability is
-3
-4
-, and
-249561089⋅4≡3(mod998244353)
-.
-In the second example, the sought probability is
-11
-25
-.
+The picture in the statement illustrates the first test case.

@@ -1,135 +1,189 @@
-C. Double Lexicographically Minimum
-time limit per test2 seconds
+B. Equalize by Divide
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string
-s
-. You can reorder the characters to form a string
-t
-. Define
-t
-max
-to be the lexicographical maximum of
-t
-and
-t
-in reverse order.
-Given
-s
-determine the lexicographically minimum value of
-t
-max
-over all reorderings
-t
-of
-s
+You are given an array
+a
+1
+,
+a
+2
+,…,
+a
+n
+of positive integers.
+You can make this operation multiple (possibly zero) times:
+Choose two indices
+i
+,
+j
+(
+1≤i,j≤n
+,
+i≠j
+).
+Assign
+a
+i
+:=⌈
+a
+i
+a
+j
+⌉
+. Here
+⌈x⌉
+denotes
+x
+rounded up to the smallest integer
+≥x
 .
-A string
-a
-is lexicographically smaller than a string
-b
-if and only if one of the following holds:
-a
-is a prefix of
-b
-, but
-a≠b
-;
-in the first position where
-a
-and
-b
-differ, the string
-a
-has a letter that appears earlier in the alphabet than the corresponding letter in
-b
-.
+Is it possible to make all array elements equal by some sequence of operations (possibly empty)? If yes, print any way to do it in at most
+30n
+operations.
+It can be proven, that under the problem constraints, if some way exists to make all elements equal, there exists a way with at most
+30n
+operations.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤
-10
-5
+1≤t≤1000
 ) — the number of test cases. Descriptions of test cases follow.
-The first and only line of each test case contains a string
-s
+The first line of each test case description contains a single integer
+n
 (
-1≤|s|≤
-10
-5
+1≤n≤100
 ).
-s
-consists of only lowercase English letters.
-It is guaranteed that the sum of
-|s|
-over all test cases does not exceed
+The second line of each test case description contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
 10
-5
+9
+).
+It is guaranteed, that the sum of
+n
+for all test cases does not exceed
+1000
 .
 Output
-For each test case print the lexicographically minimum value of
-t
-max
-over all reorderings
-t
-of
-s
-.
+For each test case print a single integer
+q
+(
+−1≤q≤30n
+). If
+q=−1
+, there is no solution, otherwise
+q
+is equal to the number of operations.
+If
+q≥0
+, on the next
+q
+lines print two integers
+i
+,
+j
+(
+1≤i,j≤n
+,
+i≠j
+) — descriptions of operations.
+If there are multiple solutions, you can print any.
 Example
 input
 Copy
-12
-a
-aab
-abb
-abc
-aabb
-aabbb
-aaabb
-abbb
-abbbb
-abbcc
-eaga
-ffcaba
+10
+1
+100
+3
+1 1 1
+2
+2 1
+2
+5 5
+3
+4 3 2
+4
+3 3 4 4
+2
+2 100
+5
+5 3 6 7 8
+6
+3 3 80 3 8 3
+4
+19 40 19 55
 output
 Copy
-a
-aba
-bab
-bca
-abba
-abbba
-ababa
-bbab
-bbabb
-bbcca
-agea
-acffba
+0
+0
+-1
+0
+2
+1 3
+2 1
+4
+3 1
+4 2
+1 3
+2 4
+6
+2 1
+2 1
+2 1
+2 1
+2 1
+2 1
+8
+5 2
+4 2
+3 2
+1 3
+1 3
+2 1
+4 1
+5 1
+4
+5 1
+3 1
+3 1
+3 1
+9
+4 2
+2 1
+1 2
+1 2
+3 2
+3 2
+1 4
+2 4
+3 4
 Note
-For the first test case, there is only one reordering of
-s
-, namely "a".
-For the second test case, there are three reorderings of
-s
+In the first and second, fourth test cases all numbers are equal, so it is possible to do nothing.
+In the third test case, it is impossible to make all numbers equal.
+In the fifth test case:
+[4,3,2]→[2,3,2]→[2,2,2]
 .
-t=aab
-:
-t
-max
-=max(aab,baa)=baa
-t=aba
-:
-t
-max
-=max(aba,aba)=aba
-t=baa
-:
-t
-max
-=max(baa,aab)=baa
-The lexicographical minimum of
-t
-max
-over all cases is "aba".
+In the sixth test case:
+[3,3,4,4]→[3,3,2,4]→[3,3,2,2]→[2,3,2,2]→[2,2,2,2]
+.
+Here the red numbers are
+i
+indices (that will be assigned), blue numbers are
+j
+indices.

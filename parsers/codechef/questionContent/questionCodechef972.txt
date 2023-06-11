@@ -1,98 +1,74 @@
-GCD operations
+Dense Bracket Sequence
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Consider a sequence
-A
-1
-,A
-2
-,…,A
-N
-, where initially,
-A
-i
-=i for each valid
-i. You may perform any number of operations on this sequence (including zero). In one operation, you should choose two valid indices
-i and
-j, compute the greatest common divisor of
-A
-i
-and
-A
-j
-(let's denote it by
-g), and change both
-A
-i
-and
-A
-j
-to
-g.
-You are given a sequence
-B
-1
-,B
-2
-,…,B
-N
-. Is it possible to obtain this sequence, i.e. change
-A to
-B, using the given operations?
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
+A bracket sequence
+S is called dense if one of the following is true:
+S is empty.
+S=(X) where
+X is dense.
+You are given a bracket sequence
+S. What is the minimum number of brackets you must remove to make it dense?
+Input Format
+The first line of input will contain a single integer
+T, the number of test cases. The description of the
 T test cases follows.
-The first line of each test case contains a single integer
+The first line of each test case contains one integer
+N, denoting the length of the bracket sequence.
+The second line of each test case contains the bracket sequence
+S of length
 N.
-The second line contains
-N space-separated integers
-B
-1
-,B
-2
-,…,B
-N
-.
-Output
-For each test case, print a single line containing the string "YES" if it is possible to obtain
-A=B or "NO" if it is impossible.
+Output Format
+For each test case, output on a new line the minimum number of brackets you must remove from
+S to make it dense.
 Constraints
-1≤N≤10
+1≤T≤2⋅10
 4
-1≤B
-i
-≤i for each valid
-i
-the sum of
-N over all test cases does not exceed
-10
+1≤N≤3⋅10
 5
-Subtasks
-Subtask #1 (10 points):
-N≤4
-Subtask #2 (20 points): there is at most one valid index
-p such that
-B
-p
-
-=p
-Subtask #3 (70 points): original constraints
+The sum of
+N over all test cases does not exceed
+3⋅10
+5
 Sample 1:
 Input
 Output
-2
-3
-1 2 2
 4
-1 2 3 2
-NO
-YES
+8
+()(())()
+6
+((()))
+10
+()()()()()
+8
+((()))()
+2
+0
+4
+2
 Explanation:
-Example case 1: We cannot make the third element of the sequence
-(1,2,3) become
-2.
-Example case 2: We can perform one operation with
-(i,j)=(2,4), which changes the sequence
-(1,2,3,4) to
-(1,2,3,2).
+Test case
+1: Remove the
+2
+nd
+and
+7
+th
+bracket to obtain ((())), which is dense.
+Test case
+2: The given bracket sequence is already dense.
+Test case
+3: Remove the
+2
+nd
+,
+4
+th
+,
+7
+th
+, and
+9
+th
+bracket to obtain ((())), which is dense.
+Test case
+4: Remove the last
+2 brackets to obtain ((())).

@@ -1,106 +1,228 @@
-Random OR
+Chef and Sums
 Problem
-Chef is playing a game, which he starts with a score of
-S=0. He also has an integer
-N.
-In one move, Chef does the following:
-Uniformly randomly pick an integer
-X between
-0 and
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef gave you a sequence of integers
+a
+1
+,a
 2
+,…,a
 N
-−1 (inclusive of both ends)
-Update his score as
-S→S∣X, where
-∣ denotes the bitwise OR operation
-For example, if Chef's current score is
-S=6 and he picks
-X=10, his new score is
-6∣10=14.
-Chef stops when his score
-S becomes equal to
+and
+3 integers
+K,
+m and
+x. Let's define the following functions:
+G(i
+1
+,…,i
+K
+)=gcd(a
+i
+1
+,…,a
+i
+K
+)
+S
+x
+(i
+1
+,…,i
+K
+)=a
+i
+1
+x
++a
+i
 2
+x
++…+a
+i
+K
+x
+P
+m
+(i
+1
+,…,i
+K
+)=(a
+i
+1
+⋅a
+i
+2
+⋅…⋅a
+i
+K
+)
+m
+W(T)=smallestprimedivisorofP
+1
+(T)
+Chef wants you to compute the sum of
+G(T)⋅W(T)⋅S
+x
+(T)⋅P
+m
+(T) over all
+K-tuples of indices
+T=(i
+1
+,i
+2
+,…,i
+K
+) such that
+i
+j
+∈{1,2,…,N} for each valid
+j (there are
 N
-−1. What is the expected number of moves Chef performs?
-Output the answer modulo
-10
-9
-+7. That is, the answer can be expressed as a fraction
-P/Q, where
-gcd(Q,10
-9
-+7)=1. Print
-P⋅Q
-−1
-(mod 10
-9
-+7), where
-Q
-−1
-denotes the modular multiplicative inverse of
-Q with respect to
+K
+of these
+K-tuples). Since this sum could be enormous, compute it modulo
 10
 9
 +7.
-Input Format
-The first line of input contains an integer
-T, denoting the number of test cases. The description of
-T test cases follows.
-Each test case contains a single integer
-N.
-Output Format
-For each test case, output on a new line the expected number of moves Chef performs, modulo
+Input
+The first line of the input contains four space-separated integers
+N,
+K,
+m and
+x.
+The second line contains
+N space-separated integers
+a
+1
+,a
+2
+,…,a
+N
+.
+Output
+Print a single line containing one integer
+∑
+T
+G(T)⋅W(T)⋅S
+x
+(T)⋅P
+m
+(T) modulo
 10
 9
 +7.
 Constraints
-1≤T≤100
-1≤N≤3⋅10
-5
-Sum of
-N over all test cases do not exceed
-3⋅10
-5
-Subtasks
-Subtask 1 (30 points):
 1≤N≤10
-3
-Sum of
-N over all test cases doesn't exceed
-10
-3
-Subtask 2 (70 points):
-Original constraints
+6
+1≤K,m,x≤10
+18
+2≤a
+i
+≤10
+6
+for each valid
+i
+Subtasks
+Subtask #1 (5 points):
+N≤10
+K≤6
+Subtask #2 (20 points): for each valid
+i,
+a
+i
+is even
+Subtask #3 (75 points): original constraints
 Sample 1:
 Input
 Output
-3
-1
-2
-100
-2
-666666674
-328238032
+3 2 1 1
+2 3 4
+2414
 Explanation:
-Test case
-1: In each move, Chef chooses either
-0 or
-1, each with a probability of
-1/2. The game ends as soon as Chef chooses
-1. Thus, the probability that the game takes exactly
-k moves is
+Example case 1: We have
+N
+K
+=3
 2
-−k
-.
-The required expected value is then
-k=1
-∑
-∞
-k⋅2
-−k
-, which equals
-2.
-Test case
-2: In each move, Chef chooses an integer in
-[0,3]. The answer is
-8/3.
+=9 possible pairs
+T of indices. The corresponding summands are:
+T=(1,1):
+gcd(2,2)⋅(2
+1
++2
+1
+)⋅(2⋅2)
+1
+⋅2=64
+T=(1,2):
+gcd(2,3)⋅(2
+1
++3
+1
+)⋅(2⋅3)
+1
+⋅2=60
+T=(1,3):
+gcd(2,4)⋅(2
+1
++4
+1
+)⋅(2⋅4)
+1
+⋅2=192
+T=(2,1):
+gcd(3,2)⋅(3
+1
++2
+1
+)⋅(3⋅2)
+1
+⋅2=60
+T=(2,2):
+gcd(3,3)⋅(3
+1
++3
+1
+)⋅(3⋅3)
+1
+⋅3=486
+T=(2,3):
+gcd(3,4)⋅(3
+1
++4
+1
+)⋅(3⋅4)
+1
+⋅2=168
+T=(3,1):
+gcd(4,2)⋅(4
+1
++2
+1
+)⋅(4⋅2)
+1
+⋅2=192
+T=(3,2):
+gcd(4,3)⋅(4
+1
++3
+1
+)⋅(4⋅3)
+1
+⋅2=168
+T=(3,3):
+gcd(4,4)⋅(4
+1
++4
+1
+)⋅(4⋅4)
+1
+⋅2=1024
+Their sum modulo
+10
+9
++7 is
+2414.

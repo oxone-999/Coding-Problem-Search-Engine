@@ -1,61 +1,114 @@
-G. Unequal Adjacent Elements
-time limit per test2 seconds
+A. Absolute Maximization
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
 You are given an array
 a
-consisting of
+of length
 n
-positive integers.
-Find any permutation
-p
-of
-[1,2,…,n]
-such that:
-p
-i−2
-<
-p
+. You can perform the following operation several (possibly, zero) times:
+Choose
 i
-for all
-i
-, where
-3≤i≤n
-, and
+,
+j
+,
+b
+: Swap the
+b
+-th digit in the binary representation of
 a
-p
-i−1
-≠
+i
+and
 a
-p
-i
-for all
-i
-, where
-2≤i≤n
+j
 .
-Or report that no such permutation exists.
+Find the maximum possible value of
+max(a)−min(a)
+.
+In a binary representation, bits are numbered from right (least significant) to left (most significant). Consider that there are an infinite number of leading zero bits at the beginning of any binary representation.
+For example, swap the
+0
+-th bit for
+4=
+100
+2
+and
+3=
+11
+2
+will result
+101
+2
+=5
+and
+10
+2
+=2
+. Swap the
+2
+-nd bit for
+4=
+100
+2
+and
+3=
+11
+2
+will result
+000
+2
+=
+0
+2
+=0
+and
+111
+2
+=7
+.
+Here,
+max(a)
+denotes the maximum element of array
+a
+and
+min(a)
+denotes the minimum element of array
+a
+.
+The binary representation of
+x
+is
+x
+written in base
+2
+. For example,
+9
+and
+6
+written in base
+2
+are
+1001
+and
+110
+, respectively.
 Input
-Each test contains multiple test cases. The first line contains a single integer
+The first line contains a single integer
 t
 (
-1≤t≤
-10
-5
-) — the number of test cases. The description of the test cases follows.
+1≤t≤128
+) — the number of testcases.
 The first line of each test case contains a single integer
 n
 (
-3≤n≤3⋅
-10
-5
-) — the length of the array
+3≤n≤512
+) — the length of array
 a
 .
 The second line of each test case contains
 n
-space-separated integers
+integers
 a
 1
 ,
@@ -65,58 +118,61 @@ a
 a
 n
 (
-1≤
+0≤
 a
 i
-≤n
-) — representing the array
+<1024
+) — the elements of array
 a
 .
-It is guaranteed that the sum of
+It's guaranteed that the sum of
 n
-over all test cases does not exceed
-3⋅
-10
-5
+over all testcases does not exceed
+512
 .
 Output
-For each test case, output "NO" if no such permutation exists, otherwise output "YES" in the first line and print the permutation
-p
-in the next line.
-In case there are multiple permutations, print any one of them.
-You can output "YES" and "NO" in any case (for example, the strings "yEs", "yes", "Yes" and "YES" will be recognized as a positive response).
+For each testcase, print one integer — the maximum possible value of
+max(a)−min(a)
+.
 Example
 input
 Copy
 4
 3
-1 2 1
+1 0 1
 4
-1 2 3 4
-3
-1 1 1
+5 5 5 5
+5
+1 2 3 4 5
 7
-1 2 1 1 3 1 4
+20 85 100 41 76 49 36
 output
 Copy
-YES
-1 2 3
-YES
-3 1 4 2
-NO
-YES
-1 2 3 5 4 7 6
+1
+0
+7
+125
 Note
-In the first test case,
-p=[1,2,3]
-is the only permutation of
-[1,2,3]
-that satisfy the given constraints.
-In the second test case,
-[1,3,2,4]
+In the first example, it can be shown that we do not need to perform any operations — the maximum value of
+max(a)−min(a)
+is
+1−0=1
+.
+In the second example, no operation can change the array — the maximum value of
+max(a)−min(a)
+is
+5−5=0
+.
+In the third example, initially
+a=[1,2,3,4,5]
+, we can perform one operation taking
+i=2
 ,
-[2,1,4,3]
-and some other permutations are also acceptable.
-In the third test case, it can be proved that there does not exist any permutation of
-[1,2,3]
-satisfying the given constraints.
+j=5
+,
+b=1
+. The array now becomes
+a=[1,0,3,4,7]
+. It can be shown that any further operations do not lead to a better answer — therefore the answer is
+max(a)−min(a)=7−0=7
+.

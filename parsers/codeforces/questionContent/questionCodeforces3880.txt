@@ -1,59 +1,33 @@
-F. Trucks and Cities
+G. (Zero XOR Subset)-less
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-cities along the road, which can be represented as a straight line. The
-i
--th city is situated at the distance of
+You are given an array
 a
-i
-kilometers from the origin. All cities are situated in the same direction from the origin. There are
-m
-trucks travelling from one city to another.
-Each truck can be described by
-4
-integers: starting city
-s
-i
-, finishing city
-f
-i
-, fuel consumption
-c
-i
-and number of possible refuelings
-r
-i
-. The
-i
--th truck will spend
-c
-i
-litres of fuel per one kilometer.
-When a truck arrives in some city, it can be refueled (but refueling is impossible in the middle of nowhere). The
-i
--th truck can be refueled at most
-r
-i
-times. Each refueling makes truck's gas-tank full. All trucks start with full gas-tank.
-All trucks will have gas-tanks of the same size
-V
-litres. You should find minimum possible
-V
-such that all trucks can reach their destinations without refueling more times than allowed.
-Input
-First line contains two integers
-n
-and
-m
-(
-2≤n≤400
+1
 ,
-1≤m≤250000
-) — the number of cities and trucks.
+a
+2
+,…,
+a
+n
+of integer numbers.
+Your task is to divide the array into the maximum number of segments in such a way that:
+each element is contained in exactly one segment;
+each segment contains at least one element;
+there doesn't exist a non-empty subset of segments such that bitwise XOR of the numbers from them is equal to
+0
+.
+Print the maximum number of segments the array can be divided into. Print -1 if no suitable division exists.
+Input
+The first line contains a single integer
+n
+(
+1≤n≤2⋅
+10
+5
+) — the size of the array.
 The second line contains
 n
 integers
@@ -66,137 +40,110 @@ a
 a
 n
 (
-1≤
-a
-i
-≤
-10
-9
-,
-a
-i
-<
-a
-i+1
-) — positions of cities in the ascending order.
-Next
-m
-lines contains
-4
-integers each. The
-i
--th line contains integers
-s
-i
-,
-f
-i
-,
-c
-i
-,
-r
-i
-(
-1≤
-s
-i
-<
-f
-i
-≤n
-,
-1≤
-c
-i
-≤
-10
-9
-,
 0≤
-r
+a
 i
-≤n
-) — the description of the
-i
--th truck.
+≤
+10
+9
+).
 Output
-Print the only integer — minimum possible size of gas-tanks
-V
-such that all trucks can reach their destinations.
-Example
+Print the maximum number of segments the array can be divided into while following the given constraints. Print -1 if no suitable division exists.
+Examples
 input
 Copy
-7 6
-2 5 7 10 14 15 17
-1 3 10 0
-1 7 12 7
-4 5 13 3
-4 7 10 1
-4 7 10 1
-1 5 11 2
+4
+5 5 7 2
 output
 Copy
-55
+2
+input
+Copy
+3
+1 2 3
+output
+Copy
+-1
+input
+Copy
+3
+3 1 10
+output
+Copy
+3
 Note
-Let's look at queries in details:
-the
-1
--st truck must arrive at position
+In the first example
+2
+is the maximum number. If you divide the array into
+{[5],[5,7,2]}
+, the XOR value of the subset of only the second segment is
+5⊕7⊕2=0
+.
+{[5,5],[7,2]}
+has the value of the subset of only the first segment being
+5⊕5=0
+. However,
+{[5,5,7],[2]}
+will lead to subsets
+{[5,5,7]}
+of XOR
 7
-from
+,
+{[2]}
+of XOR
 2
-without refuelling, so it needs gas-tank of volume at least
-50
+and
+{[5,5,7],[2]}
+of XOR
+5⊕5⊕7⊕2=5
 .
-the
-2
--nd truck must arrive at position
-17
-from
-2
-and can be refueled at any city (if it is on the path between starting point and ending point), so it needs gas-tank of volume at least
-48
-.
-the
+Let's take a look at some division on
 3
--rd truck must arrive at position
-14
-from
-10
-, there is no city between, so it needs gas-tank of volume at least
-52
-.
-the
-4
--th truck must arrive at position
-17
-from
-10
-and can be refueled only one time: it's optimal to refuel at
+segments —
+{[5],[5,7],[2]}
+. It will produce subsets:
+{[5]}
+, XOR
 5
--th city (position
-14
-) so it needs gas-tank of volume at least
-40
-.
-the
+;
+{[5,7]}
+, XOR
+2
+;
+{[5],[5,7]}
+, XOR
+7
+;
+{[2]}
+, XOR
+2
+;
+{[5],[2]}
+, XOR
+7
+;
+{[5,7],[2]}
+, XOR
+0
+;
+{[5],[5,7],[2]}
+, XOR
 5
--th truck has the same description, so it also needs gas-tank of volume at least
-40
-.
-the
-6
--th truck must arrive at position
-14
-from
-2
-and can be refueled two times: first time in city
-2
+;
+As you can see, subset
+{[5,7],[2]}
+has its XOR equal to
+0
+, which is unacceptable. You can check that for other divisions of size
+3
 or
-3
-and second time in city
 4
-so it needs gas-tank of volume at least
-55
+, non-empty subset with
+0
+XOR always exists.
+The second example has no suitable divisions.
+The third example array can be divided into
+{[3],[1],[10]}
+. No subset of these segments has its XOR equal to
+0
 .

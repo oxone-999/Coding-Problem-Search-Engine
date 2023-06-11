@@ -1,58 +1,81 @@
-G. Optimizer
+A. Reachable Numbers
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let's analyze a program written on some strange programming language. The variables in this language have names consisting of
+Let's denote a function
+f(x)
+in such a way: we add
 1
 to
-4
-characters, and each character is a lowercase or an uppercase Latin letter, or a digit. There is an extra constraint that the first character should not be a digit.
-There are four types of operations in the program, each denoted by one of the characters: $, ^, # or &.
-Each line of the program has one of the following formats:
-<lvalue>=<rvalue>, where <lvalue> and <rvalue> are valid variable names;
-<lvalue>=<arg1><op><arg2>, where <lvalue>, <arg1> and <arg2> are valid variable names, and <op> is an operation character.
-The program is executed line-by-line, and the result of execution is stored in a variable having the name res. If res is never assigned in the program, then the result will be equal to the value of res before running the program.
-Two programs are called equivalent if no matter which operations do characters $, ^, # and & denote (but, obviously, performing the same operation on the same arguments gives the same result) and which values do variables have before execution of program, the value of res after running the first program is equal to the value of res after running the second program (the programs are executed independently).
-You are given a program consisting of
+x
+, then, while there is at least one trailing zero in the resulting number, we remove that zero. For example,
+f(599)=6
+:
+599+1=600→60→6
+;
+f(7)=8
+:
+7+1=8
+;
+f(9)=1
+:
+9+1=10→1
+;
+f(10099)=101
+:
+10099+1=10100→1010→101
+.
+We say that some number
+y
+is reachable from
+x
+if we can apply function
+f
+to
+x
+some (possibly zero) times so that we get
+y
+as a result. For example,
+102
+is reachable from
+10098
+because
+f(f(f(10098)))=f(f(10099))=f(101)=102
+; and any number is reachable from itself.
+You are given a number
 n
-lines. Your task is to write a program consisting of minimum possible number of lines that is equivalent to the program you are given.
+; your task is to count how many different numbers are reachable from
+n
+.
 Input
 The first line contains one integer
 n
 (
-1≤n≤1000
-) — the number of lines in the program.
-Then
-n
-lines follow — the program itself. Each line corresponds to the format described in the statement and has no extra whitespaces.
+1≤n≤
+10
+9
+).
 Output
-In the first line print
-k
-— the minimum number of lines in the equivalent program.
-Then print
-k
-lines without any whitespaces — an equivalent program having exactly
-k
-lines, in the same format it is described in the statement.
+Print one integer: the number of different numbers that are reachable from
+n
+.
 Examples
 input
 Copy
-4
-c=aa#bb
-d12=c
-res=c^d12
-tmp=aa$c
+1098
 output
 Copy
-2
-aaaa=aa#bb
-res=aaaa^aaaa
+20
 input
 Copy
-2
-max=aaaa$bbbb
-min=bbbb^aaaa
+10
 output
 Copy
-0
+19
+Note
+The numbers that are reachable from
+1098
+are:
+1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,1098,1099
+.

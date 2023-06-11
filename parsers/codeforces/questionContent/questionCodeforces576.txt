@@ -1,108 +1,48 @@
-E. House Planning
-time limit per test3 seconds
+F. Pebbles and Beads
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
+There are two currencies: pebbles and beads. Initially you have
+a
+pebbles,
+b
+beads.
 There are
 n
-houses in your city arranged on an axis at points
-h
-1
-,
-h
-2
-,…,
-h
-n
-. You want to build a new house for yourself and consider two options where to place it: points
-p
-1
-and
-p
-2
-.
-As you like visiting friends, you have calculated in advance the distances from both options to all existing houses. More formally, you have calculated two arrays
-d
-1
-,
-d
-2
-:
-d
-i,j
-=|
-p
+days, each day you can exchange one currency for another at some exchange rate.
+On day
 i
+, you can exchange
 −
-h
-j
-|
-, where
-|x|
-defines the absolute value of
-x
-.
-After a long time of inactivity you have forgotten the locations of the houses
-h
-and the options
 p
-1
-,
-p
-2
-. But your diary still keeps two arrays —
-d
-1
-,
-d
-2
-, whose authenticity you doubt. Also, the values inside each array could be shuffled, so values at the same positions of
-d
-1
-and
-d
-2
-may correspond to different houses. Pay attention, that values from one array could not get to another, in other words, all values in the array
-d
-1
-correspond the distances from
-p
-1
-to the houses, and in the array
-d
-2
- — from
-p
-2
-to the houses.
-Also pay attention, that the locations of the houses
-h
 i
-and the considered options
+≤x≤
 p
-j
-could match. For example, the next locations are correct:
-h={1,0,3,3}
-,
-p={1,1}
-, that could correspond to already shuffled
-d
-1
-={0,2,1,2}
-,
-d
-2
-={2,2,1,0}
-.
-Check whether there are locations of houses
-h
-and considered points
+i
+pebbles for
+−
+q
+i
+≤y≤
+q
+i
+beads or vice versa. It's allowed not to perform an exchange at all. Meanwhile, if you perform an exchange, the proportion
+x⋅
+q
+i
+=−y⋅
 p
-1
-,
-p
-2
-, for which the founded arrays of distances would be correct. If it is possible, find appropriate locations of houses and considered options.
+i
+must be fulfilled. Fractional exchanges are allowed.
+You can perform no more than one such exchange in one day. The numbers of pebbles and beads you have must always remain non-negative.
+Please solve the following
+n
+problems independently: for each day
+i
+, output the maximum number of pebbles that you can have at the end of day
+i
+if you perform exchanges optimally.
 Input
 The first line of the input contains a single integer
 t
@@ -111,130 +51,112 @@ t
 10
 3
 ) — the number of test cases. The description of test cases follows.
-The first line of each test case contains one integer
+The first line of each test case contains three integers
 n
+,
+a
+and
+b
 (
-1≤n≤
+1≤n≤300000
+,
+0≤a,b≤
 10
-3
-) — the length of arrays
-d
+9
+) — the number of days and the initial number of pebbles and beads respectively.
+The second line of each test case contains
+n
+integers:
+p
 1
 ,
-d
+p
 2
-.
-The next two lines contain
+,…,
+p
 n
-integers each: arrays
-d
-1
-and
-d
-2
 (
-0≤
-d
-i,j
+1≤
+p
+i
 ≤
 10
 9
-) respectively.
+).
+The third line of each test case contains
+n
+integers:
+q
+1
+,
+q
+2
+,…,
+q
+n
+(
+1≤
+q
+i
+≤
+10
+9
+).
 It is guaranteed that the sum of
 n
 over all test cases doesn't exceed
-2⋅
-10
-3
+300000
 .
 Output
-For each test case, output a single line "NO" if there is no answer.
-Otherwise output three lines. The first line must contain "YES". In the second line, print
+Output
 n
-integers
-h
-1
-,
-h
-2
-,…,
-h
-n
-. In the third line print two integers
-p
-1
-,
-p
-2
-.
-It must be satisfied that
-0≤
-h
-i
-,
-p
-1
-,
-p
-2
-≤2⋅
+numbers — the maximum number of pebbles at the end of each day.
+Your answer is considered correct if its absolute or relative error does not exceed
 10
-9
-. We can show that if there is an answer, then there is one satisfying these constraints.
-If there are several answers, output any of them.
+−6
+.
+Formally, let your answer be
+a
+, and the jury's answer be
+b
+. Your answer is accepted if and only if
+|a−b|
+max(1,|b|)
+≤
+10
+−6
+.
 Example
 input
 Copy
-4
-1
-5
-5
-2
-10 12
-5 20
-2
-10 33
-26 69
-4
-0 2 1 2
-2 2 1 0
+3
+2 6 0
+2 3
+4 2
+3 0 6
+4 2 10
+2 3 10
+1 10 10
+33
+1000
 output
 Copy
-YES
-5 
-0 10
-NO
-YES
-0 43 
-33 69
-YES
-1 0 3 3
-1 1
-Note
-In the image below you can see the sample solutions. Planned houses are shown in bright colours: pink and purple. Existing houses are dim.
-In test case
-1
-, the first planned house is located at point
-0
-, the second at point
-10
-. The existing house is located at point
-5
-and is at a distance of
-5
-from both planned houses.
-It can be shown that there is no answer for test case
-2
-.
-In test case
-3
-, the planned houses are located at points
-33
-and
-69
-.
-Note that in test case
+6
+8
 4
-, both plans are located at point
+6
+9.000000
+10.33
+Note
+In the image below you can see the solutions for the first two test cases. In each line there is an optimal sequence of actions for each day.
+In the first test case, the optimal strategy for the first day is to do no action at all, as we can only decrease the number of pebbles. The optimal strategy for the second day is at first to exchange
 1
-, where one of the existing houses is located at the same time. It is a correct placement.
+pebble for
+2
+beads, which is a correct exchange, since
+1⋅4=2⋅2
+, and then to exchange
+2
+beads for
+3
+pebbles.

@@ -1,145 +1,97 @@
-F. Make Them Similar
-time limit per test4 seconds
-memory limit per test1024 megabytes
+B. Obtain Two Zeroes
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let's call two numbers similar if their binary representations contain the same number of digits equal to
-1
-. For example:
-2
-and
-4
-are similar (binary representations are
-10
-and
-100
-);
-1337
-and
-4213
-are similar (binary representations are
-10100111001
-and
-1000001110101
-);
-3
-and
-2
-are not similar (binary representations are
-11
-and
-10
-);
-42
-and
-13
-are similar (binary representations are
-101010
-and
-1101
-).
-You are given an array of
-n
-integers
+You are given two integers
 a
-1
-,
-a
-2
-, ...,
-a
-n
-. You may choose a non-negative integer
+and
+b
+. You may perform any number of operations on them (possibly zero).
+During each operation you should choose any positive integer
 x
-, and then get another array of
-n
-integers
-b
-1
+and set
+a:=a−x
 ,
-b
-2
-, ...,
-b
-n
-, where
-b
-i
-=
+b:=b−2x
+or
+a:=a−2x
+,
+b:=b−x
+. Note that you may choose different values of
+x
+in different operations.
+Is it possible to make
 a
-i
-⊕x
-(
-⊕
-denotes bitwise XOR).
-Is it possible to obtain an array
+and
 b
-where all numbers are similar to each other?
+equal to
+0
+simultaneously?
+Your program should answer
+t
+independent test cases.
 Input
 The first line contains one integer
-n
+t
 (
-2≤n≤100
-).
-The second line contains
-n
-integers
+1≤t≤100
+) — the number of test cases.
+Then the test cases follow, each test case is represented by one line containing two integers
 a
-1
-,
-a
-2
-, ...,
-a
-n
-(
-0≤
-a
-i
-≤
-2
-30
-−1
+and
+b
+for this test case (
+0≤a,b≤
+10
+9
 ).
 Output
-If it is impossible to choose
-x
-so that all elements in the resulting array are similar to each other, print one integer
-−1
+For each test case print the answer to it — YES if it is possible to make
+a
+and
+b
+equal to
+0
+simultaneously, and NO otherwise.
+You may print every letter in any case you want (so, for example, the strings yEs, yes, Yes and YES will all be recognized as positive answer).
+Example
+input
+Copy
+3
+6 9
+1 1
+1 2
+output
+Copy
+YES
+NO
+YES
+Note
+In the first test case of the example two operations can be used to make both
+a
+and
+b
+equal to zero:
+choose
+x=4
+and set
+a:=a−x
+,
+b:=b−2x
+. Then
+a=6−4=2
+,
+b=9−8=1
+;
+choose
+x=1
+and set
+a:=a−2x
+,
+b:=b−x
+. Then
+a=2−2=0
+,
+b=1−1=0
 .
-Otherwise, print any non-negative integer not exceeding
-2
-30
-−1
-that can be used as
-x
-so that all elements in the resulting array are similar.
-Examples
-input
-Copy
-2
-7 2
-output
-Copy
-1
-input
-Copy
-4
-3 17 6 0
-output
-Copy
-5
-input
-Copy
-3
-1 2 3
-output
-Copy
--1
-input
-Copy
-3
-43 12 12
-output
-Copy
-1073709057

@@ -1,75 +1,97 @@
-A. Little Artem
-time limit per test1 second
+D. Challenges in school №41
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Young boy Artem tries to paint a picture, and he asks his mother Medina to help him. Medina is very busy, that's why she asked for your help.
-Artem wants to paint an
-n×m
-board. Each cell of the board should be colored in white or black.
-Lets
-B
-be the number of black cells that have at least one white neighbor adjacent by the side. Let
-W
-be the number of white cells that have at least one black neighbor adjacent by the side. A coloring is called good if
-B=W+1
-.
-The first coloring shown below has
-B=5
-and
-W=4
-(all cells have at least one neighbor with the opposite color). However, the second coloring is not good as it has
-B=4
-,
-W=4
-(only the bottom right cell doesn't have a neighbor with the opposite color).
-Please, help Medina to find any good coloring. It's guaranteed that under given constraints the solution always exists. If there are several solutions, output any of them.
-Input
-Each test contains multiple test cases.
-The first line contains the number of test cases
-t
-(
-1≤t≤20
-). Each of the next
-t
-lines contains two integers
-n,m
-(
-2≤n,m≤100
-) — the number of rows and the number of columns in the grid.
-Output
-For each test case print
+There are
 n
-lines, each of length
-m
-, where
+children, who study at the school №41. It is well-known that they are good mathematicians. Once at a break, they arranged a challenge for themselves. All children arranged in a row and turned heads either to the left or to the right.
+Children can do the following: in one second several pairs of neighboring children who are looking at each other can simultaneously turn the head in the opposite direction. For instance, the one who was looking at the right neighbor turns left and vice versa for the second child. Moreover, every second at least one pair of neighboring children performs such action. They are going to finish when there is no pair of neighboring children who are looking at each other.
+You are given the number
+n
+, the initial arrangement of children and the number
+k
+. You have to find a way for the children to act if they want to finish the process in exactly
+k
+seconds. More formally, for each of the
+k
+moves, you need to output the numbers of the children who turn left during this move.
+For instance, for the configuration shown below and
+k=2
+children can do the following steps:
+At the beginning, two pairs make move:
+(1,2)
+and
+(3,4)
+. After that, we receive the following configuration:
+At the second move pair
+(2,3)
+makes the move. The final configuration is reached. Good job.
+It is guaranteed that if the solution exists, it takes not more than
+n
+2
+"headturns".
+Input
+The first line of input contains two integers
+n
+and
+k
+(
+2≤n≤3000
+,
+1≤k≤3000000
+)  — the number of children and required number of moves.
+The next line contains a string of length
+n
+and consists only of characters L and R, where L means that the child looks to the left and R means that the child looks to the right.
+Output
+If there is no solution, print a single line with number
+−1
+.
+Otherwise, output
+k
+lines. Each line has to start with a number
+n
 i
--th line is the
+(
+1≤
+n
 i
--th row of your colored matrix (cell labeled with 'B' means that the cell is black, and 'W' means white). Do not use quotes.
-It's guaranteed that under given constraints the solution always exists.
-Example
+≤
+n
+2
+)  — the number of pairs of children, who turn at this move. After that print
+n
+i
+distinct integers  — the numbers of the children who will turn left during this move.
+After performing all "headturns", there can't be a pair of two neighboring children looking at each other.
+If there are many solutions, print any of them.
+Examples
 input
 Copy
-2
-3 2
-3 3
+2 1
+RL
 output
 Copy
-BW
-WB
-BB
-BWB
-BWW
-BWB
+1 1 
+input
+Copy
+2 1
+LR
+output
+Copy
+-1
+input
+Copy
+4 2
+RLRL
+output
+Copy
+2 1 3 
+1 2
 Note
-In the first testcase,
-B=3
-,
-W=2
-.
-In the second testcase,
-B=5
-,
-W=4
-. You can see the coloring in the statement.
+The first sample contains a pair of children who look at each other. After one move, they can finish the process.
+In the second sample, children can't make any move. As a result, they can't end in
+k>0
+moves.
+The third configuration is described in the statement.

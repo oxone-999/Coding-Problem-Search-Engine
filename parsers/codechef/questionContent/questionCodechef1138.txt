@@ -1,159 +1,83 @@
-Divisible by A_i
+Median Minimization
 Problem
-You are given an array
-A consisting of
-N positive integers.
-Suppose
-F(B,X) gives the minimum positive integer
-Y such that:
-X divides
-Y⋅B
+JJ loves playing with medians. He has an array
+A of length
+N (
+N is odd). He wants to partition the array
+A into two non-empty subsets
+P and
+Q such that the value of
+∣median(P)−median(Q)∣ is as small as possible. (Note that each
+A
 i
-for all
-(1≤i≤∣B∣).
-Find the value of
-F(A,A
-i
-) for all
-(1≤i≤N).
+must belong to either subset
+P or subset
+Q).
+Help him find this minimum value of
+∣median(P)−median(Q)∣.
+As a reminder, the median of a subset
+X of size
+N is the element which occupies the
+⌊
+2
+N+1
+⌋
+th
+position after we sort the elements in non-decreasing order. For example,
+median([3,1,4])=3,
+median([3,1,4,2])=2. (Here
+⌊x⌋ denotes the largest integer which does not exceed
+x).
 Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases.
-Each test case consists of two lines of input.
+The first line contains
+T - the number of test cases. Then the test cases follow.
 The first line of each test case contains an integer
-N — the length of the array
+N - the size of the array
 A.
 The second line of each test case contains
-N space-separated integers
+N space separated integers
 A
 1
 ,A
 2
 ,…,A
 N
-representing the array
+denoting the array
 A.
 Output Format
-For each test case, print
-N space-separated integers where the
-i
-th
-integer denotes the value
-F(A,A
-i
-).
+Output the minimum value of
+∣median(P)−median(Q)∣.
 Constraints
-1≤T≤10
-5
-1≤N≤5⋅10
-5
+1≤T≤100
+3≤N≤999
 1≤A
 i
 ≤10
-6
-The sum of
-N over all test cases won't exceed
-5⋅10
-5
-.
+9
+N is odd.
 Sample 1:
 Input
 Output
-2
-2
-1 2
 3
-2 2 2
-1 2
-1 1 1
+5
+2 7 4 8 2
+3
+1 2 3
+5
+1 1 1 1 1
+2
+1
+0
 Explanation:
 Test case
-1: Given
-A=[1,2]
-F(A,A
-1
-)=F(A,1)=1: Here
-X=1 and
-Y=1 as
-X=1 divides both
-Y⋅A
-1
-=1 and
-Y⋅A
-2
-=2.
-F(A,A
-2
-)=F(A,2)=2: Here
-X=2 and
-Y=2 as
-X=2 divides both
-Y⋅A
-1
-=2 and
-Y⋅A
-2
-=4.
-Note that the values of
-Y are minimum possible for both
-F(A,A
-1
-) and
-F(A,A
-2
-).
+1: We can divide the array into following two subsets:
+P=[2,8],Q=[7,4,2], which has
+∣median(P)−median(Q)∣=∣2−4∣=2. It can be proven that the answer can not be improved further.
 Test case
-2: Given
-A=[2,2,2]
-F(A,A
-1
-)=F(A,2)=1: Here
-X=2 and
-Y=1 as
-X=1 divides
-Y⋅A
-1
-=2,Y⋅A
-2
-=2, and
-Y⋅A
-3
-=2.
-F(A,A
-2
-)=F(A,2)=1: Here
-X=2 and
-Y=1 as
-X=1 divides
-Y⋅A
-1
-=2,Y⋅A
-2
-=2, and
-Y⋅A
-3
-=2.
-F(A,A
-3
-)=F(A,2)=1: Here
-X=2 and
-Y=1 as
-X=1 divides
-Y⋅A
-1
-=2,Y⋅A
-2
-=2, and
-Y⋅A
-3
-=2.
-Note that the values of
-Y are minimum possible for
-F(A,A
-1
-),F(A,A
-2
-), and
-F(A,A
-3
-).
+2: We can divide the array into following two subsets:
+P=[1,3],Q=[2], which has
+∣median(P)−median(Q)∣=∣1−2∣=1. It can be proven that the answer can not be improved further.
+Test case
+3: Observe that, for any partition of the array into any two non-empty subsets, the median of both the subsets will be
+1. Therefore the answer is
+∣1−1∣=0.

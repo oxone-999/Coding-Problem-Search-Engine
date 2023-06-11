@@ -1,40 +1,20 @@
-E. Lost Array
-time limit per test1.5 seconds
-memory limit per test256 megabytes
+F2. Falling Sand (Hard Version)
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem.
-Note: the XOR-sum of an array
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
+This is the hard version of the problem. The difference between the versions is the constraints on
 a
 i
-≤
-10
-9
-) is defined as
-a
-1
-⊕
-a
-2
-⊕…⊕
-a
+. You can make hacks only if all versions of the problem are solved.
+Little Dormi has recently received a puzzle from his friend and needs your help to solve it.
+The puzzle consists of an upright board with
 n
-, where
-⊕
-denotes the bitwise XOR operation.
-Little Dormi received an array of
-n
-integers
+rows and
+m
+columns of cells, some empty and some filled with blocks of sand, and
+m
+non-negative integers
 a
 1
 ,
@@ -42,168 +22,60 @@ a
 2
 ,…,
 a
-n
-for Christmas. However, while playing with it over the winter break, he accidentally dropped it into his XOR machine, and the array got lost.
-The XOR machine is currently configured with a query size of
-k
-(which you cannot change), and allows you to perform the following type of query: by giving the machine
-k
-distinct indices
-x
-1
-,
-x
-2
-,…,
-x
-k
-, it will output
-a
-x
-1
-⊕
-a
-x
-2
-⊕…⊕
-a
-x
-k
-.
-As Little Dormi's older brother, you would like to help him recover the XOR-sum of his array
-a
-1
-,
-a
-2
-,…,
-a
-n
-by querying the XOR machine.
-Little Dormi isn't very patient, so to be as fast as possible, you must query the XOR machine the minimum number of times to find the XOR-sum of his array. Formally, let
-d
-be the minimum number of queries needed to find the XOR-sum of any array of length
-n
-with a query size of
-k
-. Your program will be accepted if you find the correct XOR-sum in at most
-d
-queries.
-Lastly, you also noticed that with certain configurations of the machine
-k
-and values of
-n
-, it may not be possible to recover the XOR-sum of Little Dormi's lost array. If that is the case, you should report it as well.
-The array
-a
-1
-,
-a
-2
-,…,
-a
-n
-is fixed before you start querying the XOR machine and does not change with the queries.
-Input
-The only line of input contains the integers
-n
-and
-k
+m
 (
-1≤n≤500
-,
-1≤k≤n
-), the length of the lost array and the configured query size of the XOR machine.
-Elements of the original array satisfy
-1≤
+0≤
 a
 i
-≤
-10
-9
+≤n
+). In this version of the problem,
+a
+i
+will always be not greater than the number of blocks of sand in column
+i
 .
-It can be proven that that if it is possible to recover the XOR sum under the given constraints, it can be done in at most
-500
-queries. That is,
-d≤500
-.
-After taking
-n
-and
-k
-, begin interaction.
-Output
-If it is impossible to recover the XOR-sum of the array, output
-−1
-immediately after taking
-n
-and
-k
-. Do not begin interaction.
-Otherwise, when your program finds the XOR-sum of the lost array
-a
-1
+When a cell filled with a block of sand is disturbed, the block of sand will fall from its cell to the sand counter at the bottom of the column (each column has a sand counter). While a block of sand is falling, other blocks of sand that are adjacent at any point to the falling block of sand will also be disturbed and start to fall. Specifically, a block of sand disturbed at a cell
+(i,j)
+will pass through all cells below and including the cell
+(i,j)
+within the column, disturbing all adjacent cells along the way. Here, the cells adjacent to a cell
+(i,j)
+are defined as
+(i−1,j)
 ,
-a
-2
-,…,
-a
-n
-, report the answer in the following format: "! x", where
-x
-is the XOR sum of the array
-a
-1
+(i,j−1)
 ,
+(i+1,j)
+, and
+(i,j+1)
+(if they are within the grid). Note that the newly falling blocks can disturb other blocks.
+In one operation you are able to disturb any piece of sand. The puzzle is solved when there are at least
 a
-2
-,…,
-a
-n
-, and terminate your program normally immediately after flushing the output stream.
-Note that answering does not count as a query.
-Interaction
-Each query is made in the format "? b", where
-b
-is an array of exactly
-k
-distinct integers from
+i
+blocks of sand counted in the
+i
+-th sand counter for each column from
 1
 to
-n
-denoting the indices of the elements in the lost array that you want to query the XOR sum of.
-You will then receive an integer
-x
-, the XOR sum of the queried elements. It can be proven that
-0≤x≤2⋅
-10
-9
-will always be true.
-After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-If at any point you make an invalid query or try to make more than
-500
-queries (which is the hard limit), the interaction will terminate immediately and give you a Wrong Answer verdict. Note that if you exceed
-d
-queries, the interaction will continue normally unless you also exceed the
-500
-query hard limit, though you will still receive a Wrong Answer verdict either way.
-Hacks
-To hack a solution, use the following format.
-The first line contains the integers
+m
+.
+You are now tasked with finding the minimum amount of operations in order to solve the puzzle. Note that Little Dormi will never give you a puzzle that is impossible to solve.
+Input
+The first line consists of two space-separated positive integers
 n
 and
-k
+m
 (
-1≤n≤500
-,
-1≤k≤n
+1≤n⋅m≤400000
 ).
-The second line contains the the array
+Each of the next
+n
+lines contains
+m
+characters, describing each row of the board. If a character on a line is '.', the corresponding cell is empty. If it is '#', the cell contains a block of sand.
+The final line contains
+m
+non-negative integers
 a
 1
 ,
@@ -211,95 +83,74 @@ a
 2
 ,…,
 a
-n
+m
 (
-1≤
+0≤
 a
 i
-≤
-10
-9
-).
+≤n
+) — the minimum amount of blocks of sand that needs to fall below the board in each column. In this version of the problem,
+a
+i
+will always be not greater than the number of blocks of sand in column
+i
+.
+Output
+Print one non-negative integer, the minimum amount of operations needed to solve the puzzle.
 Examples
 input
 Copy
-5 3
-
-4
-
-0
-
-1
+5 7
+#....#.
+.#.#...
+#....#.
+#....##
+#.#....
+4 1 1 1 0 3 1
 output
 Copy
-? 1 2 3
-
-? 2 3 5
-
-? 4 1 5
-
-! 7
+3
 input
 Copy
-3 2
+3 3
+#.#
+#..
+##.
+3 1 1
 output
 Copy
--1
+1
+input
+Copy
+7 5
+.#..#
+#....
+..##.
+..##.
+..###
+..#..
+#.##.
+0 0 2 4 2
+output
+Copy
+1
 Note
-In the first example interaction, the array
-a
+For example
 1
-,
-a
-2
-,…,
-a
-n
-is
-2,1,7,5,6
-and its XOR-sum is
-7
-.
-The first query made asks for indices
-1,2,3
-, so the response is
-a
-1
-⊕
-a
-2
-⊕
-a
+, by disturbing both blocks of sand on the first row from the top at the first and sixth columns from the left, and the block of sand on the second row from the top and the fourth column from the left, it is possible to have all the required amounts of sand fall in each column. It can be proved that this is not possible with fewer than
 3
-=2⊕1⊕7=4
-.
-The second query made asks for indices
-2,3,5
-, so the response is
-a
-2
-⊕
-a
+operations, and as such the answer is
 3
-⊕
-a
-5
-=1⊕7⊕6=0
-.
-The third query made asks for indices
-4,1,5
-, so the response is
-a
-4
-⊕
-a
+. Here is the puzzle from the first example.
+For example
+2
+, by disturbing the cell on the top row and rightmost column, one can cause all of the blocks of sand in the board to fall into the counters at the bottom. Thus, the answer is
 1
-⊕
-a
-5
-=5⊕2⊕6=1
-. Note that the indices may be output in any order.
-Additionally, even though three queries were made in the example interaction, it is just meant to demonstrate the interaction format and does not necessarily represent an optimal strategy.
-In the second example interaction, there is no way to recover the XOR-sum of Little Dormi's array no matter what is queried, so the program immediately outputs
-−1
-and exits.
+. Here is the puzzle from the second example.
+For example
+3
+, by disturbing the cell on the top row and rightmost column, it is possible to have all the required amounts of sand fall in each column. It can be proved that this is not possible with fewer than
+1
+operation, and as such the answer is
+1
+. Here is the puzzle from the third example.

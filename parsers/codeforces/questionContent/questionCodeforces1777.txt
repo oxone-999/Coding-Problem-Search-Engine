@@ -1,35 +1,58 @@
-B. AGAGA XOOORRR
+D. Cut
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Baby Ehab is known for his love for a certain operation. He has an array
+This time Baby Ehab will only cut and not stick. He starts with a piece of paper with an array
 a
 of length
 n
-, and he decided to keep doing the following operation on it:
-he picks
-2
-adjacent elements; he then removes them and places a single integer in their place: their bitwise XOR. Note that the length of the array decreases by one.
-Now he asks you if he can make all elements of the array equal. Since babies like to make your life harder, he requires that you leave at least
-2
-elements remaining.
-Input
-The first line contains an integer
-t
-(
-1≤t≤15
-) — the number of test cases you need to solve.
-The first line of each test case contains an integers
-n
-(
-2≤n≤2000
-) — the number of elements in the array
+written on it, and then he does the following:
+he picks a range
+(l,r)
+and cuts the subsegment
 a
-.
-The second line contains
+l
+,
+a
+l+1
+,…,
+a
+r
+out, removing the rest of the array.
+he then cuts this range into multiple subranges.
+to add a number theory spice to it, he requires that the elements of every subrange must have their product equal to their least common multiple (LCM).
+Formally, he partitions the elements of
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+into contiguous subarrays such that the product of every subarray is equal to its LCM. Now, for
+q
+independent ranges
+(l,r)
+, tell Baby Ehab the minimum number of subarrays he needs.
+Input
+The first line contains
+2
+integers
 n
-space-separated integers
+and
+q
+(
+1≤n,q≤
+10
+5
+) — the length of the array
+a
+and the number of queries.
+The next line contains
+n
+integers
 a
 1
 ,
@@ -41,41 +64,68 @@ a
 a
 n
 (
-0≤
+1≤
 a
 i
-<
-2
-30
+≤
+10
+5
 ) — the elements of the array
 a
 .
-Output
-If Baby Ehab can make all elements equal while leaving at least
+Each of the next
+q
+lines contains
 2
-elements standing, print "YES". Otherwise, print "NO".
+integers
+l
+and
+r
+(
+1≤l≤r≤n
+) — the endpoints of this query's interval.
+Output
+For each query, print its answer on a new line.
 Example
 input
 Copy
-2
-3
-0 2 2
-4
-2 3 1 10
+6 3
+2 3 10 7 5 14
+1 6
+2 4
+3 5
 output
 Copy
-YES
-NO
+3
+1
+2
 Note
-In the first sample, he can remove the first
+The first query asks about the whole array. You can partition it into
+[2]
+,
+[3,10,7]
+, and
+[5,14]
+. The first subrange has product and LCM equal to
 2
-elements,
-0
+. The second has product and LCM equal to
+210
+. And the third has product and LCM equal to
+70
+. Another possible partitioning is
+[2,3]
+,
+[10,7]
+, and
+[5,14]
+.
+The second query asks about the range
+(2,4)
+. Its product is equal to its LCM, so you don't need to partition it further.
+The last query asks about the range
+(3,5)
+. You can partition it into
+[10,7]
 and
-2
-, and replace them by
-0⊕2=2
-. The array will be
-[2,2]
-, so all the elements are equal.
-In the second sample, there's no way to make all the elements equal.
+[5]
+.

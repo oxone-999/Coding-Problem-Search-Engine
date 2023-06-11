@@ -1,104 +1,42 @@
-Copy and Push Back
+Beautiful Garland
 Problem
-Anton loves creating strings!
-Anton now wants to create a string
-S following some specific rules. They are as follows:
-Initially,
-S is empty. Then, Anton can perform two types of operations on
-S:
-Choose a lowercase Latin character (an element of
-{a,b,c,…,z}) and append it to
-S. For example, if currently
-S=clap, Anton can turn it into one of
-{clapa,clapb,…,clapz}.
-Append a copy of
-S to itself. For example, if currently
-S=clap, Anton can turn it into
-clapclap.
-However, Anton doesn't want to perform operation
-1 twice in a row.
-You are given a string
-A consisting of the lowercase Latin alphabet. Is it possible for Anton to create
-A using his operations any number of times?
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of two lines of input.
-The first line of each test case contains a single integer
-N, the length of the string
-A.
-The second line of each test case contains a string
-A of length
-N.
-Output Format
-For each test case, output on a new line the answer — YES if Anton can create
-A using his operations, and NO otherwise.
-Each character of the output may be printed in either uppercase or lowercase. For example, the strings YES, yes, and YeS will all be treated as identical.
+###Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
+There is a garland — a cyclic rope with red and green flowers on it in some order. The sequence of flower colours is described by a string
+s; since the rope is cyclic, each two consecutive flowers are adjacent and the first and last flower are also adjacent.
+The garland is beautiful if there is no pair of adjacent flowers with identical colours.
+You want the garland to be beautiful. To achieve that, you may perform the following operation at most once:
+Make two cuts on the rope (not intersecting the flowers), splitting the garland into two parts.
+Reverse one of these two parts.
+Tie together corresponding endpoints of the two parts, creating one whole garland again.
+Can you find out whether it is possible to make the garland beautiful?
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains a single string
+s describing the garland. Each character of
+s is either 'R' or 'G', denoting a red or green flower respectively.
+Output
+For each test case, print a single line containing the string "yes" if the garland can be made beautiful or "no" otherwise.
 Constraints
 1≤T≤10
 5
-1≤N≤10
-6
-A consists of only lowercase Latin characters
-The sum of
-N across all test cases won't exceed
+2≤∣s∣≤10
+5
+the sum of
+∣s∣ over all test cases does not exceed
 10
 6
 Sample 1:
 Input
 Output
-4
-2
-ab
 3
-oof
-6
-aabaab
-5
-eevee
-NO
-YES
-YES
-NO
+RG
+RRGG
+RR
+yes
+yes
+no
 Explanation:
-Test case
-1: Anton can create
-a by starting from the empty string and appending
-a using operation
-1. However, there is no way to create
-ab — the only way to do so is to use operation
-1 again and append
-b; but this is not allowed.
-Test case
-2: Anton can create
-oof from the empty string as follows:
-Use operation
-1 to append
-o. The current string is
-o.
-Use operation
-2 to append the string to itself. The current string is
-oo.
-Use operation
-1 to append
-f. The string is now
-oof, as required.
-Test case
-3:
-aabaab can be created as follows:
-Append
-a to the empty string. The current string is
-a.
-Use operation
-2. The current string is
-aa.
-Append
-b with operation
-1. The current string is
-aab.
-Use operation
-2. The current string is
-aabaab, and we are done.
-Test case
-4: It can be shown that no sequence of operations will allow Anton to create the string
-eevee.
+Example case 1: The garland is already beautiful.
+Example case 2: We can cut the garland between flowers 1 and 2 and between flowers 3 and 4. After reversing the part containing flowers 2 and 3 and rejoining, we obtain "RGRG".

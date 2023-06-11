@@ -1,172 +1,58 @@
-E. Impressionism
-time limit per test2 seconds
+A. Chip Game
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Burenka has two pictures
-a
-and
-b
-, which are tables of the same size
+Burenka and Tonya are playing an old Buryat game with a chip on a board of
 n×m
-. Each cell of each painting has a color — a number from
-0
-to
-2⋅
-10
-5
-, and there are no repeating colors in any row or column of each of the two paintings, except color
-0
-.
-Burenka wants to get a picture
-b
-from the picture
-a
-. To achieve her goal, Burenka can perform one of
-2
-operations: swap any two rows of
-a
-or any two of its columns. Tell Burenka if she can fulfill what she wants, and if so, tell her the sequence of actions.
-The rows are numbered from
-1
-to
-n
-from top to bottom, the columns are numbered from
-1
-to
-m
-from left to right.
+cells.
+At the beginning of the game, the chip is located in the lower left corner of the board. In one move, the player can move the chip to the right or up by any odd number of cells (but you cannot move the chip both to the right and up in one move). The one who cannot make a move loses.
+Burenka makes the first move, the players take turns. Burenka really wants to win the game, but she is too lazy to come up with a strategy, so you are invited to solve the difficult task of finding it. Name the winner of the game (it is believed that Burenka and Tonya are masters of playing with chips, so they always move in the optimal way).
+Chip's starting cell is green, the only cell from which chip can't move is red. if the chip is in the yellow cell, then blue cells are all options to move the chip in one move.
 Input
-The first line contains two integers
+The first line contains one integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases. The following is a description of the input data sets.
+The only line of each test case contains two integers
 n
 and
 m
 (
-1≤n⋅m≤2⋅
+1≤n,m≤
 10
-5
-) — the sizes of the table.
-The
-i
--th of the next
-n
-lines contains
-m
-integers
-a
-i,1
-,
-a
-i,2
-,…,
-a
-i,m
-(
-0≤
-a
-i,j
-≤2⋅
-10
-5
-) — the colors of the
-i
--th row of picture
-a
-. It is guaranteed that there are no identical colors in the same row or column, except color
-0
-.
-The
-i
--th of the following
-n
-lines contains
-m
-integers
-b
-i,1
-,
-b
-i,2
-,…,
-b
-i,m
-(
-0≤
-b
-i,j
-≤2⋅
-10
-5
-) — the colors of the
-i
--th row of picture
-b
-. It is guaranteed that there are no identical colors in the same row or column, except color
-0
-.
+9
+) — the dimensions of the game board.
 Output
-In the first line print the number
-−1
-if it is impossible to achieve what Burenka wants, otherwise print the number of actions in your solution
-k
-(
-0≤k≤2⋅
-10
+For each test case print a single line — the name of the winner of the game ("Burenka" or "Tonya").
+Example
+input
+Copy
+6
+1 1
+1 4
+5 6
+2 2
+6 3
+999999999 1000000000
+output
+Copy
+Tonya
+Burenka
+Burenka
+Tonya
+Burenka
+Burenka
+Note
+In the first case, Burenka has no move, so Tonya wins.
+In the second case, Burenka can move
+3
+cells to the right, after which Tony will not be able to make a move, which means that Burenka wins.
+In the third case, Burenka can move
 5
-). It can be proved that if a solution exists, then there exists a solution where
-k≤2⋅
-10
-5
-.
-In the next
-k
-lines print the operations. First print the type of the operation (
-1
-— swap rows,
-2
-— columns), and then print the two indices of rows or columns to which the operation is applied.
-Note that you don't have to minimize the number of operations.
-Examples
-input
-Copy
-3 3
-1 0 2
-0 0 0
-2 0 1
-2 0 1
-0 0 0
-1 0 2
-output
-Copy
-1
-1 1 3
-input
-Copy
-4 4
-0 0 1 2
-3 0 0 0
-0 1 0 0
-1 0 0 0
-2 0 0 1
-0 3 0 0
-0 1 0 0
-0 0 1 0
-output
-Copy
-4
-1 3 4
-2 3 4
-2 2 3
-2 1 2
-input
-Copy
-3 3
-1 2 0
-0 0 0
-0 0 0
-1 0 0
-2 0 0
-0 0 0
-output
-Copy
--1
+squares to the right. Then we can say that we have a game on a board of
+1×5
+cells, and Tonya is the first player. In such game the second player wins, so in the original one Burenka will win.

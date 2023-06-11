@@ -1,125 +1,134 @@
-A. Directional Increase
-time limit per test1 second
+C. Keshi in Search of AmShZ
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-We have an array of length
+AmShZ has traveled to Italy from Iran for the Thom Yorke concert. There are
 n
-. Initially, each element is equal to
-0
-and there is a pointer located on the first element.
-We can do the following two kinds of operations any number of times (possibly zero) in any order:
-If the pointer is not on the last element, increase the element the pointer is currently on by
+cities in Italy indexed from
 1
-. Then move it to the next element.
-If the pointer is not on the first element, decrease the element the pointer is currently on by
+to
+n
+and
+m
+directed roads indexed from
 1
-. Then move it to the previous element.
-But there is one additional rule. After we are done, the pointer has to be on the first element.
-You are given an array
-a
-. Determine whether it's possible to obtain
-a
-after some operations or not.
+to
+m
+. Initially, Keshi is located in the city
+1
+and wants to go to AmShZ's house in the city
+n
+. Since Keshi doesn't know the map of Italy, AmShZ helps him to see each other as soon as possible.
+In the beginning of each day, AmShZ can send one of the following two messages to Keshi:
+AmShZ sends the index of one road to Keshi as a blocked road. Then Keshi will understand that he should never use that road and he will remain in his current city for the day.
+AmShZ tells Keshi to move. Then, Keshi will randomly choose one of the cities reachable from his current city and move there. (city
+B
+is reachable from city
+A
+if there's an out-going road from city
+A
+to city
+B
+which hasn't become blocked yet). If there are no such cities, Keshi will remain in his current city.
+Note that AmShZ always knows Keshi's current location.
+AmShZ and Keshi want to find the smallest possible integer
+d
+for which they can make sure that they will see each other after at most
+d
+days. Help them find
+d
+.
 Input
-The first line contains a single integer
-t
-(1≤t≤1000)
- — the number of test cases. The description of the test cases follows.
-The first line of each test case contains a single integer
+The first line of the input contains two integers
 n
-(1≤n≤2⋅
+and
+m
+(2≤n≤2⋅
+10
+5
+,1≤m≤2⋅
 10
 5
 )
- — the size of array
-a
-.
-The second line of each test case contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-−
-10
-9
-≤
-a
+ — the number of cities and roads correspondingly.
+The
 i
-≤
-10
-9
-) — elements of the array.
-It is guaranteed that the sum of
-n
-over all test cases doesn't exceed
-2⋅
-10
-5
+-th line of the following
+m
+lines contains two integers
+v
+i
+and
+u
+i
+(1≤
+v
+i
+,
+u
+i
+≤n,
+v
+i
+≠
+u
+i
+)
+, denoting a directed road going from city
+v
+i
+to city
+u
+i
 .
+It is guaranteed that there is at least one route from city
+1
+to city
+n
+. Note that there may be more than one road between a pair of cities in each direction.
 Output
-For each test case, print "Yes" (without quotes) if it's possible to obtain
-a
-after some operations, and "No" (without quotes) otherwise.
-You can output "Yes" and "No" in any case (for example, strings "yEs", "yes" and "Yes" will be recognized as a positive response).
-Example
+Output the smallest possible integer
+d
+to make sure that AmShZ and Keshi will see each other after at most
+d
+days.
+Examples
 input
 Copy
-7
-2
-1 0
-4
-2 -1 -1 0
-4
-1 -4 3 0
-4
-1 -1 1 -1
-5
-1 2 3 4 -10
-7
-2 -1 1 -2 0 0 0
-1
-0
+2 1
+1 2
 output
 Copy
-No
-Yes
-No
-No
-Yes
-Yes
-Yes
-Note
-In the first test case we can obtain the array after some operations, but the pointer won't be on the first element.
-One way of obtaining the array in the second test case is shown below.
-⟨
-0
-–
-,0,0,0⟩→⟨1,
-0
-–
-,0,0⟩→⟨
 1
-–
-,−1,0,0⟩→⟨2,
-−1
-–
-–
-–
-,0,0⟩→⟨2,0,
-0
-–
-,0⟩→⟨2,
-0
-–
-,−1,0⟩→⟨
+input
+Copy
+4 4
+1 2
+1 4
+2 4
+1 4
+output
+Copy
 2
-–
-,−1,−1,0⟩
+input
+Copy
+5 7
+1 2
+2 3
+3 5
+1 4
+4 3
+4 5
+3 1
+output
+Copy
+4
+Note
+In the first sample, it's enough for AmShZ to send the second type of message.
+In the second sample, on the first day, AmShZ blocks the first road. So the only reachable city from city
+1
+will be city
+4
+. Hence on the second day, AmShZ can tell Keshi to move and Keshi will arrive at AmShZ's house.
+It's also possible for AmShZ to tell Keshi to move for two days.

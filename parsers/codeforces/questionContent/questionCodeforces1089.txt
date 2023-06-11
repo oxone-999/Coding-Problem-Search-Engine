@@ -1,128 +1,165 @@
-D. Weight the Tree
+F. Playing Around the Table
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a tree of
+There are
 n
-vertices numbered from
+players, numbered from
 1
 to
 n
-. A tree is a connected undirected graph without cycles.
-For each
-i=1,2,…,n
-, let
-w
+sitting around a round table. The
+(i+1)
+-th player sits to the right of the
 i
-be the weight of the
+-th player for
+1≤i<n
+, and the
+1
+-st player sits to the right of the
+n
+-th player.
+There are
+n
+2
+cards, each of which has an integer between
+1
+and
+n
+written on it. For each integer from
+1
+to
+n
+, there are exactly
+n
+cards having this number.
+Initially, all these cards are distributed among all the players, in such a way that each of them has exactly
+n
+cards. In one operation, each player chooses one of his cards and passes it to the player to his right. All these actions are performed simultaneously.
+Player
 i
--th vertex. A vertex is called good if its weight is equal to the sum of the weights of all its neighbors.
-Initially, the weights of all nodes are unassigned. Assign positive integer weights to each vertex of the tree, such that the number of good vertices in the tree is maximized. If there are multiple ways to do it, you have to find one that minimizes the sum of weights of all vertices in the tree.
+is called solid if all his cards have the integer
+i
+written on them. Their objective is to reach a configuration in which everyone is solid. Find a way to do it using at most
+(
+n
+2
+−n)
+operations. You do not need to minimize the number of operations.
 Input
-The first line contains one integer
+The first line contains a single integer
 n
 (
-2≤n≤2⋅
-10
-5
-) — the number of vertices in the tree.
-Then,
-n−1
-lines follow. Each of them contains two integers
-u
-and
-v
-(
-1≤u,v≤n
-) denoting an edge between vertices
-u
-and
-v
-. It is guaranteed that the edges form a tree.
-Output
-In the first line print two integers  — the maximum number of good vertices and the minimum possible sum of weights for that maximum.
-In the second line print
+2≤n≤100
+).
+Then
+n
+lines follow. The
+i
+-th of them contains
 n
 integers
-w
+c
 1
 ,
-w
+c
 2
 ,…,
-w
+c
 n
 (
 1≤
-w
+c
+j
+≤n
+) — the initial cards of the
 i
-≤
-10
-9
-)  — the corresponding weight assigned to each vertex. It can be proven that there exists an optimal solution satisfying these constraints.
-If there are multiple optimal solutions, you may print any.
+-th player.
+It is guaranteed that for each integer
+i
+from
+1
+to
+n
+, there are exactly
+n
+cards having the number
+i
+.
+Output
+In the first line print an integer
+k
+(
+0≤k≤(
+n
+2
+−n)
+) — the numbers of operations you want to make.
+Then
+k
+lines should follow. In the
+i
+-th of them print
+n
+integers
+d
+1
+,
+d
+2
+,…,
+d
+n
+(
+1≤
+d
+j
+≤n
+) where
+d
+j
+is the number written on the card which
+j
+-th player passes to the player to his right in the
+i
+-th operation.
+We can show that an answer always exists under the given constraints. If there are multiple answers, print any.
 Examples
 input
 Copy
-4
-1 2
-2 3
-2 4
-output
-Copy
-3 4
-1 1 1 1 
-input
-Copy
-3
-1 2
-1 3
-output
-Copy
-2 3
-1 1 1 
-input
-Copy
 2
-1 2
-output
-Copy
-2 2
-1 1
-input
-Copy
-9
-3 4
-7 6
 2 1
-8 3
-5 6
-1 8
-8 6
-9 6
+1 2
 output
 Copy
-6 11
-1 1 1 1 1 1 1 3 1 
+1
+2 1 
+input
+Copy
+3
+1 1 1
+2 2 2
+3 3 3
+output
+Copy
+6
+1 2 3
+3 1 2
+2 3 1
+1 2 3
+3 1 2
+2 3 1
 Note
-This is the tree for the first test case:
-In this case, if you assign a weight of
-1
-to each vertex, then the good vertices (which are painted black) are
-1
-,
-3
-and
-4
-. It impossible to assign weights so that all vertices are good vertices. The minimum sum of weights in this case is
-1+1+1+1=4
-, and it is impossible to have a lower sum because the weights have to be positive integers.
-This is the tree for the second test case:
-In this case, if you assign a weight of
-1
-to each vertex, then the good vertices (which are painted black) are
+In the first test case, if the first player passes a card with number
 2
-and
-3
-. It can be proven that this is an optimal assignment.
+and the second player passes a card with number
+1
+, then the first player has two cards with number
+1
+and the second player has two cards with number
+2
+. Then, after making this operation, both players are solid.
+In the second test case,
+0
+operations would be enough too. Note that you do not need to minimize the number of operations.

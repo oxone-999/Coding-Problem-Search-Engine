@@ -1,116 +1,105 @@
-B. Building Forest Trails
-time limit per test3 seconds
+D. Dragon Curve
+time limit per test5 seconds
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-There are
+A dragon curve is a self-similar fractal curve. In this problem, it is a curve that consists of straight-line segments of the same length connected at right angles. A simple way to construct a dragon curve is as follows: take a strip of paper, fold it in half
 n
-villages lying equidistant on a circle in the middle of a thick, impassable forest. From ancient times, it was impossible to move from one village to another, but technical progress has changed a lot. Now, there is a technology to build passable trails in the forest.
-The building process consists of
-m
-events. Each event is either building a trail or querying if two villages are connected. Trails are built as straight lines connecting two villages. After a trail is built, anybody can walk along the trail from one village to another.
-Moreover, if two trails cross, anybody can turn at the intersection, and if other trails leave a village you have just reached, they can also be used to walk along. So, for example, if villages are numbered
-1
-to
-6
-in the order around the circle, and there are trails
-1
-to
+times in the same direction, then partially unfold it such that the segments are joined at right angles. This is illustrated here:
+In this example, a dragon curve of order
 3
+is constructed. In general, a dragon curve of a higher order will have a dragon curve of a lower order as its prefix. This allows us to define a dragon curve of infinite order, which is the limit of dragon curves of a finite order as the order approaches infinity.
+Consider four dragon curves of infinite order. Each starts at the origin (the point
+(0,0)
+), and the length of each segment is
+2
+–
+√
+. The first segments of the curves end at the points
+(1,1)
+,
+(−1,1)
+,
+(−1,−1)
+and
+(1,−1)
+, respectively. The first turn of each curve is left (that is, the second segment of the first curve ends at the point
+(0,2)
+). In this case, every segment is a diagonal of an axis-aligned unit square with integer coordinates, and it can be proven that there is exactly one segment passing through every such square.
+Given a point
+(x,y)
+, your task is to find on which of the four curves lies the segment passing through the square with the opposite corners at
+(x,y)
+and
+(x+1,y+1)
+, as well as the position of that segment on that curve. The curves are numbered
+1
+through
+4
+. Curve
+1
+goes through
+(1,1)
 ,
 2
-to
-4
+through
+(−1,1)
+,
+3
+through
+(−1,−1)
 , and
 4
-to
-6
-, then all villages, except the
-5
--th, are reachable from the
+through
+(1,−1)
+. The segments are numbered starting with
 1
--st village.
-Given a list of
-m
-events, for each query, find if two given villages are reachable from each other at that moment.
+.
 Input
-The first line contains two integers
+The first line contains an integer
 n
 (
-2≤n≤2⋅
+1≤n≤2⋅
 10
 5
-) and
-m
-(
-1≤m≤3⋅
-10
-5
-) — the number of villages and the number of events respectively.
-Next
-m
-lines contain events. Each event description consists of three integers
-e
-(
-e
-is
-1
-or
-2
-),
-v
-(
-1≤v≤n
-), and
-u
-(
-1≤u≤n
-,
-u≠v
-). If
-e=1
-, then the event is building a trail between villages
-v
-and
-u
-. If
-e=2
-, then the event is a query if the villages
-v
-and
-u
-are connected. It is guaranteed that each trail is built at most once.
-Villages are numbered
-1
-to
+) — the number of test cases.
+Each of the following
 n
-in clockwise order around the circle.
+lines contains two integers
+x
+and
+y
+(
+−
+10
+9
+≤x,y≤
+10
+9
+) — the coordinates.
 Output
-For each query print one character '0' if villages are not reachable, and '1' if villages are reachable from each other. Print answers for all queries as a single string in one line.
-Examples
+For each test case, print a line containing two integers — the first is the index of the curve (an integer between
+1
+and
+4
+, inclusive), and the second is the position on the curve (the first segment has the position 
+1
+).
+Example
 input
 Copy
-6 9
-1 1 3
-1 4 6
-2 3 4
-1 2 4
-2 1 2
-2 1 3
-2 1 4
-2 6 1
-2 5 3
+5
+0 0
+-2 0
+-7 -7
+5 -9
+9 9
 output
 Copy
-011110
-input
-Copy
-2 5
-2 1 2
-2 2 1
-1 1 2
-2 1 2
-2 2 1
-output
-Copy
-0011
+1 1
+2 2
+3 189
+4 186
+2 68
+Note
+You can use this illustration to debug your solution:

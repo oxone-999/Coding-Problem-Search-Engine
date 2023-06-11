@@ -1,219 +1,187 @@
-C. Pair Programming
-time limit per test2 seconds
+F. Array Stabilization (GCD version)
+time limit per test4 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Monocarp and Polycarp are learning new programming techniques. Now they decided to try pair programming.
-It's known that they have worked together on the same file for
-n+m
-minutes. Every minute exactly one of them made one change to the file. Before they started, there were already
-k
-lines written in the file.
-Every minute exactly one of them does one of two actions: adds a new line to the end of the file or changes one of its lines.
-Monocarp worked in total for
-n
-minutes and performed the sequence of actions
-[
+You are given an array of positive integers
+a=[
 a
-1
+0
 ,
 a
-2
+1
 ,…,
 a
-n
+n−1
 ]
-. If
-a
-i
-=0
-, then he adds a new line to the end of the file. If
-a
-i
->0
-, then he changes the line with the number
-a
-i
-. Monocarp performed actions strictly in this order:
-a
-1
-, then
-a
-2
-, ...,
-a
-n
-.
-Polycarp worked in total for
-m
-minutes and performed the sequence of actions
-[
-b
-1
-,
-b
-2
-,…,
-b
-m
-]
-. If
-b
-j
-=0
-, then he adds a new line to the end of the file. If
-b
-j
->0
-, then he changes the line with the number
-b
-j
-. Polycarp performed actions strictly in this order:
-b
-1
-, then
-b
-2
-, ...,
-b
-m
-.
-Restore their common sequence of actions of length
-n+m
-such that all actions would be correct — there should be no changes to lines that do not yet exist. Keep in mind that in the common sequence Monocarp's actions should form the subsequence
-[
-a
-1
-,
-a
-2
-,…,
-a
-n
-]
-and Polycarp's — subsequence
-[
-b
-1
-,
-b
-2
-,…,
-b
-m
-]
-. They can replace each other at the computer any number of times.
-Let's look at an example. Suppose
-k=3
-. Monocarp first changed the line with the number
-2
-and then added a new line (thus,
-n=2,a=[2,0]
-). Polycarp first added a new line and then changed the line with the number
-5
-(thus,
-m=2,b=[0,5]
+(
+n≥2
 ).
-Since the initial length of the file was
-3
-, in order for Polycarp to change line number
-5
-two new lines must be added beforehand. Examples of correct sequences of changes, in this case, would be
-[0,2,0,5]
+In one step, the array
+a
+is replaced with another array of length
+n
+, in which each element is the greatest common divisor (GCD) of two neighboring elements (the element itself and its right neighbor; consider that the right neighbor of the
+(n−1)
+-th element is the
+0
+-th element).
+Formally speaking, a new array
+b=[
+b
+0
+,
+b
+1
+,…,
+b
+n−1
+]
+is being built from array
+a=[
+a
+0
+,
+a
+1
+,…,
+a
+n−1
+]
+such that
+b
+i
+=gcd(
+a
+i
+,
+a
+(i+1)modn
+)
+, where
+gcd(x,y)
+is the greatest common divisor of
+x
 and
-[2,0,0,5]
-. Changes
-[0,0,5,2]
-(wrong order of actions) and
-[0,5,2,0]
-(line
-5
-cannot be edited yet) are not correct.
+y
+, and
+xmody
+is the remainder of
+x
+dividing by
+y
+. In one step the array
+b
+is built and then the array
+a
+is replaced with
+b
+(that is, the assignment
+a
+:=
+b
+is taking place).
+For example, if
+a=[16,24,10,5]
+then
+b=[gcd(16,24)
+,
+gcd(24,10)
+,
+gcd(10,5)
+,
+gcd(5,16)]
+=[8,2,5,1]
+. Thus, after one step the array
+a=[16,24,10,5]
+will be equal to
+[8,2,5,1]
+.
+For a given array
+a
+, find the minimum number of steps after which all values
+a
+i
+become equal (that is,
+a
+0
+=
+a
+1
+=⋯=
+a
+n−1
+). If the original array
+a
+consists of identical elements then consider the number of steps is equal to
+0
+.
 Input
 The first line contains an integer
 t
 (
-1≤t≤1000
+1≤t≤
+10
+4
 ). Then
 t
-test cases follow. Before each test case, there is an empty line.
-Each test case contains three lines. The first line contains three integers
-k
-,
+test cases follow.
+Each test case contains two lines. The first line contains an integer
 n
-,
-m
 (
-0≤k≤100
-,
-1≤n,m≤100
-) — the initial number of lines in file and lengths of Monocarp's and Polycarp's sequences of changes respectively.
-The second line contains
+2≤n≤2⋅
+10
+5
+) — length of the sequence
+a
+. The second line contains
 n
 integers
 a
-1
+0
 ,
 a
-2
+1
 ,…,
 a
-n
+n−1
 (
-0≤
+1≤
 a
 i
-≤300
+≤
+10
+6
 ).
-The third line contains
-m
-integers
-b
-1
-,
-b
-2
-,…,
-b
-m
-(
-0≤
-b
-j
-≤300
-).
+It is guaranteed that the sum of
+n
+over all test cases doesn't exceed
+2⋅
+10
+5
+.
 Output
-For each test case print any correct common sequence of Monocarp's and Polycarp's actions of length
-n+m
-or -1 if such sequence doesn't exist.
+Print
+t
+numbers — answers for each test case.
 Example
 input
 Copy
 5
-
-3 2 2
-2 0
-0 5
-
-4 3 2
-2 0 5
-0 6
-
-0 2 2
-1 0
-2 3
-
-5 4 4
-6 0 8 0
-0 7 0 9
-
-5 4 1
-8 7 8 0
-0
+4
+16 24 10 5
+4
+42 42 42 42
+3
+4 6 4
+5
+1 2 3 4 5
+6
+9 9 27 9 9 63
 output
 Copy
-2 0 0 5 
-0 2 0 6 5 
--1
-0 6 0 7 0 8 0 9
--1
+3
+0
+2
+1
+1

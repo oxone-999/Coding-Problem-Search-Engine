@@ -1,69 +1,96 @@
-C. Book Reading
-time limit per test1 second
+D1. Equalizing by Division (easy version)
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp is reading a book consisting of
+The only difference between easy and hard versions is the number of elements in the array.
+You are given an array
+a
+consisting of
 n
-pages numbered from
-1
-to
-n
-. Every time he finishes the page with the number divisible by
-m
-, he writes down the last digit of this page number. For example, if
-n=15
-and
-m=5
-, pages divisible by
-m
-are
-5,10,15
-. Their last digits are
-5,0,5
-correspondingly, their sum is
-10
+integers. In one move you can choose any
+a
+i
+and divide it by
+2
+rounding down (in other words, in one move you can set
+a
+i
+:=⌊
+a
+i
+2
+⌋
+).
+You can perform such an operation any (possibly, zero) number of times with any
+a
+i
 .
-Your task is to calculate the sum of all digits Polycarp has written down.
-You have to answer
-q
-independent queries.
+Your task is to calculate the minimum possible number of operations required to obtain at least
+k
+equal numbers in the array.
+Don't forget that it is possible to have
+a
+i
+=0
+after some operations, thus the answer always exists.
 Input
-The first line of the input contains one integer
-q
-(
-1≤q≤1000
-) — the number of queries.
-The following
-q
-lines contain queries, one per line. Each query is given as two integers
+The first line of the input contains two integers
 n
 and
-m
+k
 (
-1≤n,m≤
+1≤k≤n≤50
+) — the number of elements in the array and the number of equal numbers required.
+The second line of the input contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤2⋅
 10
-16
-) — the number of pages in the book and required divisor, respectively.
+5
+), where
+a
+i
+is the
+i
+-th element of
+a
+.
 Output
-For each query print the answer for it — the sum of digits written down by Polycarp.
-Example
+Print one integer — the minimum possible number of operations required to obtain at least
+k
+equal numbers in the array.
+Examples
 input
 Copy
-7
-1 1
-10 1
-100 3
-1024 14
-998244353 1337
-123 144
-1234312817382646 13
+5 3
+1 2 2 4 5
 output
 Copy
 1
-45
-153
-294
-3359835
+input
+Copy
+5 3
+1 2 3 4 5
+output
+Copy
+2
+input
+Copy
+5 3
+1 2 3 3 3
+output
+Copy
 0
-427262129093995

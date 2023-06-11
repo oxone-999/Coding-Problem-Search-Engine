@@ -1,101 +1,142 @@
-B. Elimination
-time limit per test1 second
-memory limit per test512 megabytes
+C. Xor Tree
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There is a famous olympiad, which has more than a hundred participants. The Olympiad consists of two stages: the elimination stage, and the final stage. At least a hundred participants will advance to the final stage. The elimination stage in turn consists of two contests.
-A result of the elimination stage is the total score in two contests, but, unfortunately, the jury lost the final standings and has only standings for the first and for the second contest separately.
-In each contest, the participants are ranked by their point score in non-increasing order. When two participants have a tie (earned the same score), they are ranked by their passport number (in accordance with local regulations, all passport numbers are distinct).
-In the first contest, the participant on the 100-th place scored
-a
-points. Also, the jury checked all participants from the 1-st to the 100-th place (inclusive) in the first contest and found out that all of them have at least
+For a given sequence of distinct non-negative integers
+(
 b
-points in the second contest.
-Similarly, for the second contest, the participant on the 100-th place has
-c
-points. And the jury checked that all the participants from the 1-st to the 100-th place (inclusive) have at least
-d
-points in the first contest.
-After two contests, all participants are ranked by their total score in two contests in non-increasing order. When participants have the same total score, tie-breaking with passport numbers is used. The cutoff score to qualify to the final stage is the total score of the participant on the 100-th place.
-Given integers
-a
+1
 ,
 b
+2
+,…,
+b
+k
+)
+we determine if it is good in the following way:
+Consider a graph on
+k
+nodes, with numbers from
+b
+1
+to
+b
+k
+written on them.
+For every
+i
+from
+1
+to
+k
+: find such
+j
+(
+1≤j≤k
 ,
-c
+j≠i
+), for which
+(
+b
+i
+⊕
+b
+j
+)
+is the smallest among all such
+j
+, where
+⊕
+denotes the operation of bitwise XOR (https://en.wikipedia.org/wiki/Bitwise_operation#XOR). Next, draw an undirected edge between vertices with numbers
+b
+i
+and
+b
+j
+in this graph.
+We say that the sequence is good if and only if the resulting graph forms a tree (is connected and doesn't have any simple cycles).
+It is possible that for some numbers
+b
+i
+and
+b
+j
+, you will try to add the edge between them twice. Nevertheless, you will add this edge only once.
+You can find an example below (the picture corresponding to the first test case).
+Sequence
+(0,1,5,2,6)
+is not good as we cannot reach
+1
+from
+5
+.
+However, sequence
+(0,1,5,2)
+is good.
+You are given a sequence
+(
+a
+1
 ,
-d
-, please help the jury determine the smallest possible value of the cutoff score.
+a
+2
+,…,
+a
+n
+)
+of distinct non-negative integers. You would like to remove some of the elements (possibly none) to make the remaining sequence good. What is the minimum possible number of removals required to achieve this goal?
+It can be shown that for any sequence, we can remove some number of elements, leaving at least
+2
+, so that the remaining sequence is good.
 Input
-You need to process
-t
-test cases.
-The first line contains an integer
-t
+The first line contains a single integer
+n
 (
-1≤t≤3025
-) — the number of test cases. Then descriptions of
-t
-test cases follow.
-The first line of each test case contains four integers
+2≤n≤200,000
+) — length of the sequence.
+The second line contains
+n
+distinct non-negative integers
 a
+1
 ,
-b
-,
-c
-,
-d
+a
+2
+,…,
+a
+n
 (
-0≤a,b,c,d≤9
-;
-d≤a
-;
-b≤c
-).
-One can show that for any test case satisfying the constraints above, there is at least one olympiad scenario possible.
+0≤
+a
+i
+≤
+10
+9
+) — the elements of the sequence.
 Output
-For each test case print a single integer — the smallest possible cutoff score in some olympiad scenario satisfying the given information.
-Example
+You should output exactly one integer — the minimum possible number of elements to remove in order to make the remaining sequence good.
+Examples
 input
 Copy
-2
-1 2 2 1
-4 8 9 2
+5
+0 1 5 2 6
 output
 Copy
-3
-12
-Note
-For the first test case, consider the following olympiad scenario: there are
-101
-participants in the elimination stage, each having
 1
-point for the first contest and
+input
+Copy
+7
+6 9 8 7 3 5 2
+output
+Copy
 2
-points for the second contest. Hence the total score of the participant on the 100-th place is
-3
-.
-For the second test case, consider the following olympiad scenario:
-there are
-50
-participants with points
-5
+Note
+Note that numbers which you remove don't impact the procedure of telling whether the resulting sequence is good.
+It is possible that for some numbers
+b
+i
 and
-9
-for the first and second contest respectively;
-50
-participants with points
-4
-and
-8
-for the first and second contest respectively;
-and
-50
-participants with points
-2
-and
-9
-for the first and second contest respectively.
-Hence the total point score of the participant on the 100-th place is
-12
-.
+b
+j
+, you will try to add the edge between them twice. Nevertheless, you will add this edge only once.

@@ -1,196 +1,224 @@
-B. Integers Shop
-time limit per test2 seconds
+D. The Winter Hike
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The integers shop sells
-n
-segments. The
-i
--th of them contains all integers from
-l
-i
+Circular land is an
+2n×2n
+grid. Rows of this grid are numbered by integers from
+1
 to
-r
-i
-and costs
-c
-i
-coins.
-Tomorrow Vasya will go to this shop and will buy some segments there. He will get all integers that appear in at least one of bought segments. The total cost of the purchase is the sum of costs of all segments in it.
-After shopping, Vasya will get some more integers as a gift. He will get integer
+2n
+from top to bottom and columns of this grid are numbered by integers from
+1
+to
+2n
+from left to right. The cell
+(x,y)
+is the cell on the intersection of row
 x
-as a gift if and only if all of the following conditions are satisfied:
-Vasya hasn't bought
-x
-.
-Vasya has bought integer
-l
-that is less than
-x
-.
-Vasya has bought integer
-r
-that is greater than
-x
-.
-Vasya can get integer
-x
-as a gift only once so he won't have the same integers after receiving a gift.
-For example, if Vasya buys segment
-[2,4]
+and column
+y
 for
-20
-coins and segment
-[7,8]
-for
-22
-coins, he spends
-42
-coins and receives integers
-2,3,4,7,8
-from these segments. He also gets integers
-5
+1≤x≤2n
 and
-6
-as a gift.
-Due to the technical issues only the first
-s
-segments (that is, segments
-[
-l
-1
-,
-r
-1
-],[
-l
-2
-,
-r
-2
-],…,[
-l
-s
-,
-r
-s
-]
-) will be available tomorrow in the shop.
-Vasya wants to get (to buy or to get as a gift) as many integers as possible. If he can do this in differents ways, he selects the cheapest of them.
-For each
-s
-from
-1
-to
+1≤y≤2n
+.
+There are
 n
-, find how many coins will Vasya spend if only the first
-s
-segments will be available.
+2
+of your friends in the top left corner of the grid. That is, in each cell
+(x,y)
+with
+1≤x,y≤n
+there is exactly one friend. Some of the other cells are covered with snow.
+Your friends want to get to the bottom right corner of the grid. For this in each cell
+(x,y)
+with
+n+1≤x,y≤2n
+there should be exactly one friend. It doesn't matter in what cell each of friends will be.
+You have decided to help your friends to get to the bottom right corner of the grid.
+For this, you can give instructions of the following types:
+You select a row
+x
+. All friends in this row should move to the next cell in this row. That is, friend from the cell
+(x,y)
+with
+1≤y<2n
+will move to the cell
+(x,y+1)
+and friend from the cell
+(x,2n)
+will move to the cell
+(x,1)
+.
+You select a row
+x
+. All friends in this row should move to the previous cell in this row. That is, friend from the cell
+(x,y)
+with
+1<y≤2n
+will move to the cell
+(x,y−1)
+and friend from the cell
+(x,1)
+will move to the cell
+(x,2n)
+.
+You select a column
+y
+. All friends in this column should move to the next cell in this column. That is, friend from the cell
+(x,y)
+with
+1≤x<2n
+will move to the cell
+(x+1,y)
+and friend from the cell
+(2n,y)
+will move to the cell
+(1,y)
+.
+You select a column
+y
+. All friends in this column should move to the previous cell in this column. That is, friend from the cell
+(x,y)
+with
+1<x≤2n
+will move to the cell
+(x−1,y)
+and friend from the cell
+(1,y)
+will move to the cell
+(2n,y)
+.
+Note how friends on the grid border behave in these instructions.
+Example of applying the third operation to the second column. Here, colorful circles denote your friends and blue cells are covered with snow.
+You can give such instructions any number of times. You can give instructions of different types. If after any instruction one of your friends is in the cell covered with snow he becomes ill.
+In order to save your friends you can remove snow from some cells before giving the first instruction:
+You can select the cell
+(x,y)
+that is covered with snow now and remove snow from this cell for
+c
+x,y
+coins.
+You can do this operation any number of times.
+You want to spend the minimal number of coins and give some instructions to your friends. After this, all your friends should be in the bottom right corner of the grid and none of them should be ill.
+Please, find how many coins you will spend.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤1000
+1≤t≤100
 ) — the number of test cases.
 The first line of each test case contains the single integer
 n
 (
-1≤n≤
-10
-5
-) — the number of segments in the shop.
-Each of next
-n
-lines contains three integers
-l
-i
-,
-r
-i
+1≤n≤250
+).
+Each of the next
+2n
+lines contains
+2n
+integers
+c
+i,1
 ,
 c
-i
+i,2
+,…,
+c
+i,2n
 (
-1≤
-l
-i
-≤
-r
-i
-≤
-10
-9
-,1≤
+0≤
 c
-i
+i,j
 ≤
 10
 9
-) — the ends of the
-i
--th segments and its cost.
-It is guaranteed that the total sum of
+) — costs of removing snow from cells. If
+c
+i,j
+=0
+for some
+i,j
+than there is no snow in cell
+(i,j)
+. Otherwise, cell
+(i,j)
+is covered with snow.
+It is guaranteed that
+c
+i,j
+=0
+for
+1≤i,j≤n
+.
+It is guaranteed that the sum of
 n
 over all test cases doesn't exceed
-2⋅
-10
-5
+250
 .
 Output
-For each test case output
-n
-integers: the
-s
--th (
-1≤s≤n
-) of them should be the number of coins Vasia will spend in the shop if only the first
-s
-segments will be available.
+For each test case output one integer — the minimal number of coins you should spend.
 Example
 input
 Copy
-3
+4
+1
+0 8
+1 99
 2
-2 4 20
-7 8 22
+0 0 0 0
+0 0 0 0
+9 9 2 2
+9 9 9 9
 2
-5 11 42
-5 11 42
-6
-1 4 4
-5 8 9
-7 8 7
-2 10 252
-1 11 271
-1 10 1
+0 0 4 2
+0 0 2 4
+4 2 4 2
+2 4 2 4
+4
+0 0 0 0 0 0 0 2
+0 0 0 0 0 0 2 0
+0 0 0 0 0 2 0 0
+0 0 0 0 2 0 0 0
+0 0 0 2 2 0 2 2
+0 0 2 0 1 6 2 1
+0 2 0 0 2 4 7 4
+2 0 0 0 2 0 1 6
 output
 Copy
-20
+100
+22
+14
 42
-42
-42
-4
-13
-11
-256
-271
-271
 Note
-In the first test case if
-s=1
-then Vasya can buy only the segment
-[2,4]
+In the first test case you can remove snow from the cells
+(2,1)
+and
+(2,2)
 for
-20
-coins and get
+100
+coins. Then you can give instructions
+All friends in the first collum should move to the previous cell. After this, your friend will be in the cell
+(2,1)
+.
+All friends in the second row should move to the next cell. After this, your friend will be in the cell
+(2,2)
+.
+In the second test case you can remove all snow from the columns
 3
-integers.
-The way to get
-7
-integers for
-42
-coins in case
-s=2
-is described in the statement.
-In the second test case note, that there can be the same segments in the shop.
+and
+4
+for
+22
+coins. Then you can give instructions
+All friends in the first row should move to the next cell.
+All friends in the first row should move to the next cell.
+All friends in the second row should move to the next cell.
+All friends in the second row should move to the next cell.
+All friends in the third column should move to the next cell.
+All friends in the third column should move to the next cell.
+All friends in the fourth column should move to the next cell.
+All friends in the fourth column should move to the next cell.
+It can be shown that none of the friends will become ill and that it is impossible to spend less coins.

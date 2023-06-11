@@ -1,101 +1,109 @@
-Chef and Same Old Recurrence 2
+Sorted Distances
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-Chef has started learning to solve dynamic programming problems recently. He has practiced on a lot of problems already, so he wants to try his hands on the hardest problems in this domain.
-Chef only likes the interesting part of solving dynamic programming problems — specifically, he just likes to divide a problem into beautiful subproblems which consist of solving recurrences; he finds actually solving these recurrences quite boring. Since you are Chef's assistant, your job is solving this boring part for Chef.
-Let's define a recurrent sequence
-{dp(k)}
-k=1
-∞
-with parametres
-A,
-B and
-K as follows:
-dp(1)=K
-for
-n>1,
-dp(n)=A⋅dp(n−1)+B⋅
-i=1
-∑
-n−1
-dp(i)⋅dp(n−i)
-Chef would like you to find the sum
-i=L
-∑
-R
-dp(i)
+MoEngage has given you an array
+A consisting of
+N positive integers.
+You should perform
+Q queries of the following two types:
+1
+i
+X : Set
+A
+i
+to
+X.
 2
-. Since this number can be very large, compute it modulo
-10
-9
-+7. He wants to do this for
-Q pairs of
-L and
-R.
-Input
-The first line of the input contains four space-separated integers
-N,
-K,
-A and
-B.
-The second line of the input contains
-Q.
-The next
-Q lines contains two space-separated integers
-L and
-R.
-Output
-For every query print a single line containing one integer — the sum
-i=L
-∑
+L
+R : Find the minimum non-negative integer
+K such that the sequence
+[∣A
+L
+−K∣,∣A
+L+1
+−K∣,…,∣A
+R−1
+−K∣,∣A
 R
-dp(i)
+−K∣] is sorted in non-decreasing order. Print
+−1 if no such
+K exists.
+For each query of type
+2, output the minimum non-negative integer
+K satisfying the constraint, or
+−1 if there isn't any.
+Input Format
+The first line contains two integers
+N,Q.
+The second line contains
+N space-separated integers
+A
+1
+,A
 2
-modulo
-10
-9
-+7.
+,…,A
+N
+.
+Then, the
+i
+th
+of the next
+Q lines contains three integers describing the queries
+1
+i
+X or
+2
+L
+R.
+Output Format
+For each query of type
+2, output the minimum integer
+K satisfying the constraint, or
+−1 if there isn't any in a new line.
 Constraints
-1≤N≤10
-7
-1≤Q≤5⋅10
-4
-1≤L≤R≤N
-1≤B,K≤10
-9
-+7
-0≤A≤10
-9
-+7
-Subtasks
-Subtask #1 (5 points):
-N≤5,000
-Subtask #2 (10 points):
-N≤10
+1≤N,Q≤2⋅10
 5
-Subtask #3 (10 points):
-N≤10
-6
-A=0
-Subtask #4 (25 points): original constraints
-Example Input
-4 1 2 1
+0≤A
+i
+,X≤10
+9
+1≤L≤R≤N
+Sample 1:
+Input
+Output
+5 7
+5 3 2 6 0
+2 1 5
+1 2 7
+2 1 5
+1 4 2
+2 1 5
+1 2 5
+2 1 2
+4
+-1
+5
+0
+Explanation:
+In the first query, selecting
+K=4 makes the sequence
+[∣A
+1
+−K∣,∣A
 2
-4 4
-1 4
-Example Output
-3249
-3403
-Explanation
-The first four terms of this sequence are:
-dp(1)=1
-dp(2)=2⋅dp(1)+dp(1)⋅dp(1)=3
-dp(3)=2⋅dp(2)+dp(1)⋅dp(2)+dp(2)⋅dp(1)=12
-dp(4)=2⋅dp(3)+dp(1)⋅dp(3)+dp(2)⋅dp(2)+dp(3)⋅dp(1)=57
-The answers for first and second query are:
-(dp(4)⋅dp(4))%(10
-9
-+7)=3249
-(dp(1)⋅dp(1)+dp(2)⋅dp(2)+dp(3)⋅dp(3)+dp(4)⋅dp(4))%(10
-9
-+7)=3403
+−K∣,∣A
+3
+−K∣,∣A
+4
+−K∣,∣A
+5
+−K∣]=[1,1,2,2,4]. This sequence is sorted in non-decreasing order. Also, there exists no value of
+K less than
+4 satisfying this.
+In the second query, change
+A
+2
+=7. After the second query, the array
+A becomes
+[5,7,2,6,0].
+In the third query, there exists no value of
+K satisfying the constraints.

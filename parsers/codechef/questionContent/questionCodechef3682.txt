@@ -1,132 +1,109 @@
-Crazy Row
+The Chosen One
 Problem
-There are strings of infinite length
-S
-0
-,S
+"You know Walter, sometimes it doesn't hurt to have someone watching your back"
+The Hitmen twins of the Juarez Cartel, Leonel and Marco Salamanca, often known as the "Cousins", have set off from Mexico in search of Walter White. They come across an informant, who only agrees to help them if they solve his puzzle of interesting numbers.
+There are
+N interesting numbers
+A
 1
-,S
+,
+A
 2
-,… consisting of zeros and ones.
-The first string has the following form:
-S
-0
-= ...00000001111111... (the leftmost one is located at position
-1, and the rightmost zero is located at position
-0).
-For
-i≥1, the string
-S
-i
-is defined as follows:
-S
-i,j
-=S
-i−1,j−1
-⊕S
-i−1,j
-⊕S
-i−1,j+1
-
-where
-⊕ denotes the bitwise XOR operation.
-The first five strings are shown below:
-S
-0
-= ...00000001111111...
-S
-1
-= ...00000010111111...
-S
-2
-= ...00000110011111...
-S
-3
-= ...00001001101111...
-S
-4
-= ...00011110000111...
-You are given
-N queries of the form
-L,R,K. For each query, find the value of
-i=L
-∑
-R
-S
-K,i
-.
-In other words, find the number of ones in the substring
-[L,R] of string
-S
+,
+...
+A
+N consisting of integers from
+1 to
+N.
+The task is to find
 K
-.
-Input Format
-The first line contains a single integer
-N — the number of queries.
-Each of the next
-N lines contain three space-separated integers
-L,
-R, and
-K — the parameters of the query.
-Output Format
-For each query, print in a separate line, one integer — the desired value.
-Constraints
-1≤N≤10
-5
-,
-−10
-18
-≤L≤R≤10
-18
-,
-0≤K≤10
-18
-,
-The sum of the values
-(R−L+1) for all queries does not exceed
-10
-7
-.
-Sample 1:
-Input
-Output
-2
-0 2 0
-0 2 2
-2
+th smallest
+GCD among all
+GCD
+(
+A
+i,
+A
+j
+) for each
+(i,j), such that
+1≤i<j≤N.
+Print the
+K
+th smallest
+GCD and also find any pair having the resultant
+GCD (print their indices).
+###Input:
+The first line will contain
+T, number of testcases.
+T testcases follow :
+The first line of each testcase contains two space-separated integers
+N,K.
+The second line of each testcase contains
+N space-separated integers
+A
 1
-Explanation:
-Query
-1:
-S
-0
-= ...00000001111111.... Thus the substring
-[0,2] in
-S
-0
-is
-011.
-The number of ones in the substring is
+,
+A
+2
+, ...,$$A
+N.
+###Output: For each test case, print two lines. On the first line, print the
+K
+th smallest
+GCD. On the second line, print any pair of indices
+(x,y) such that
+x !=
+y and
+GCD
+(
+A
+x,
+A
+y
+) =
+K
+th smallest
+GCD.
+###Constraints
+1≤T≤10
+4
+2≤N≤10
+6
+1≤K≤(N∗(N−1))/2
+1≤A
+i
+≤N
+The sum of
+N over all test cases does not exceed
+10
+6
+###Sample Input: 2 5 8 2 4 4 1 3 5 7 2 4 4 1 3
+###Sample Output: 2 1 2 1 4 5
+###EXPLANATION:
+For Test Case 1 :
+K
+th smallest
+GCD is
+2, and
+GCD
+(
+A
+1 ,
+A
+2
+) =
 2.
-Query
-2:
-S
-2
-= ...00000110011111.... Thus the substring
-[0,2] in
-S
-2
-is
-100.
-The number of ones in the substring is
+For Test Case 2 :
+K
+th smallest
+GCD is
+1, and
+GCD
+(
+A
+4 ,
+A
+5
+) =
 1.
-Sample 2:
-Input
-Output
-3
--2 1 3
--5 6 3
--5 6 4
-2
-6
-6

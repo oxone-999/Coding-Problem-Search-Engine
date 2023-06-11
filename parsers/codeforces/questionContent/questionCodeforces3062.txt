@@ -1,147 +1,112 @@
-F. Beautiful Fibonacci Problem
-time limit per test1 second
+E. Beautiful Mirrors
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The well-known Fibonacci sequence
-F
-0
-,
-F
+Creatnx has
+n
+mirrors, numbered from
 1
-,
-F
-2
-,…
-is defined as follows:
-F
-0
-=0,
-F
-1
-=1
-.
-For each
-i≥2
-:
-F
+to
+n
+. Every day, Creatnx asks exactly one mirror "Am I beautiful?". The
 i
-=
-F
-i−1
-+
-F
-i−2
-.
-Given an increasing arithmetic sequence of positive integers with
-n
-elements:
-(a,a+d,a+2⋅d,…,a+(n−1)⋅d)
-.
-You need to find another increasing arithmetic sequence of positive integers with
-n
-elements
-(b,b+e,b+2⋅e,…,b+(n−1)⋅e)
-such that:
-0<b,e<
-2
-64
-,
+-th mirror will tell Creatnx that he is beautiful with probability
+p
+i
+100
 for all
-0≤i<n
-, the decimal representation of
-a+i⋅d
-appears as substring in the last
-18
-digits of the decimal representation of
-F
-b+i⋅e
-(if this number has less than
-18
-digits, then we consider all its digits).
+1≤i≤n
+.
+Creatnx asks the mirrors one by one, starting from the
+1
+-st mirror. Every day, if he asks
+i
+-th mirror, there are two possibilities:
+The
+i
+-th mirror tells Creatnx that he is beautiful. In this case, if
+i=n
+Creatnx will stop and become happy, otherwise he will continue asking the
+i+1
+-th mirror next day;
+In the other case, Creatnx will feel upset. The next day, Creatnx will start asking from the
+1
+-st mirror again.
+You need to calculate the expected number of days until Creatnx becomes happy.
+This number should be found by modulo
+998244353
+. Formally, let
+M=998244353
+. It can be shown that the answer can be expressed as an irreducible fraction
+p
+q
+, where
+p
+and
+q
+are integers and
+q≢0(modM)
+. Output the integer equal to
+p⋅
+q
+−1
+modM
+. In other words, output such an integer
+x
+that
+0≤x<M
+and
+x⋅q≡p(modM)
+.
 Input
-The first line contains three positive integers
+The first line contains one integer
 n
-,
-a
-,
-d
 (
-1≤n,a,d,a+(n−1)⋅d<
+1≤n≤2⋅
 10
-6
+5
+) — the number of mirrors.
+The second line contains
+n
+integers
+p
+1
+,
+p
+2
+,…,
+p
+n
+(
+1≤
+p
+i
+≤100
 ).
 Output
-If no such arithmetic sequence exists, print
-−1
-.
-Otherwise, print two integers
-b
-and
-e
-, separated by space in a single line (
-0<b,e<
-2
-64
-).
-If there are many answers, you can output any of them.
+Print the answer modulo
+998244353
+in a single line.
 Examples
 input
 Copy
-3 1 1
+1
+50
 output
 Copy
-2 1
+2
 input
 Copy
-5 1 2
+3
+10 20 50
 output
 Copy
-19 5
+112
 Note
-In the first test case, we can choose
-(b,e)=(2,1)
-, because
-F
-2
-=1,
-F
-3
-=2,
-F
-4
-=3
-.
-In the second test case, we can choose
-(b,e)=(19,5)
-because:
-F
-19
-=4181
-contains
+In the first test, there is only one mirror and it tells, that Creatnx is beautiful with probability
 1
-;
-F
-24
-=46368
-contains
-3
-;
-F
-29
-=514229
-contains
-5
-;
-F
-34
-=5702887
-contains
-7
-;
-F
-39
-=63245986
-contains
-9
+2
+. So, the expected number of days until Creatnx becomes happy is
+2
 .

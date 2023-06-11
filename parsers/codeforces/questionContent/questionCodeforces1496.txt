@@ -1,108 +1,91 @@
-F. One-Four Overload
+B. Chess Tournament
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alice has an empty grid with
+A chess tournament will be held soon, where
 n
-rows and
-m
-columns. Some of the cells are marked, and no marked cells are adjacent to the edge of the grid. (Two squares are adjacent if they share a side.)
-Alice wants to fill each cell with a number such that the following statements are true:
-every unmarked cell contains either the number
-1
-or
-4
-;
-every marked cell contains the sum of the numbers in all unmarked cells adjacent to it (if a marked cell is not adjacent to any unmarked cell, this sum is
-0
-);
-every marked cell contains a multiple of
-5
-.
-Alice couldn't figure it out, so she asks Bob to help her. Help Bob find any such grid, or state that no such grid exists.
+chess players will take part. Every participant will play one game against every other participant. Each game ends in either a win for one player and a loss for another player, or a draw for both players.
+Each of the players has their own expectations about the tournament, they can be one of two types:
+a player wants not to lose any game (i. e. finish the tournament with zero losses);
+a player wants to win at least one game.
+You have to determine if there exists an outcome for all the matches such that all the players meet their expectations. If there are several possible outcomes, print any of them. If there are none, report that it's impossible.
 Input
-The first line of input contains two integers
-n
-and
-m
+The first line contains a single integer
+t
 (
-1≤n,m≤500
-) — the number of rows and the number of columns in the grid, respectively.
-Then
+1≤t≤200
+) — the number of test cases.
+The first line of each test case contains one integer
 n
-lines follow, each containing
-m
-characters. Each of these characters is either '.' or 'X' — an unmarked and a marked cell, respectively. No marked cells are adjacent to the edge of the grid.
+(
+2≤n≤50
+) — the number of chess players.
+The second line contains the string
+s
+(
+|s|=n
+;
+s
+i
+∈{1,2}
+). If
+s
+i
+=1
+, then the
+i
+-th player has expectations of the first type, otherwise of the second type.
 Output
-Output "'NO" if no suitable grid exists. Otherwise, output "'YES"'. Then output
+For each test case, print the answer in the following format:
+In the first line, print NO if it is impossible to meet the expectations of all players.
+Otherwise, print YES, and the matrix of size
+n×n
+in the next
 n
-lines of
-m
-space-separated integers — the integers in the grid.
-Examples
+lines.
+The matrix element in the
+i
+-th row and
+j
+-th column should be equal to:
++, if the
+i
+-th player won in a game against the
+j
+-th player;
+-, if the
+i
+-th player lost in a game against the
+j
+-th player;
+=, if the
+i
+-th and
+j
+-th players' game resulted in a draw;
+X, if
+i=j
+.
+Example
 input
 Copy
-5 5
-.....
-.XXX.
-.X.X.
-.XXX.
-.....
+3
+3
+111
+2
+21
+4
+2122
 output
 Copy
 YES
-4 1 4 4 1
-4 5 5 5 1
-4 5 1 5 4
-1 5 5 5 4
-1 4 4 1 4
-input
-Copy
-5 5
-.....
-.XXX.
-.XXX.
-.XXX.
-.....
-output
-Copy
+X==
+=X=
+==X
 NO
-input
-Copy
-3 2
-..
-..
-..
-output
-Copy
 YES
-4 1
-4 1
-1 4
-input
-Copy
-9 9
-.........
-.XXXXX.X.
-.X...X...
-.X.XXXXX.
-.X.X.X.X.
-.X.XXX.X.
-.X.....X.
-.XXXXXXX.
-.........
-output
-Copy
-YES
-4 4 4 1 4 1 4 1 4
-1 5 5 5 5 5 4 10 1
-4 5 1 4 1 5 4 4 4
-4 5 1 5 5 0 5 5 1
-4 5 1 5 4 5 1 5 4
-4 5 1 5 5 5 4 5 1
-1 5 4 4 1 1 4 5 1
-4 5 5 5 5 5 5 5 4
-1 1 1 1 4 4 1 1 4
-Note
-It can be shown that no such grid exists for the second test.
+X--+
++X++
++-X-
+--+X

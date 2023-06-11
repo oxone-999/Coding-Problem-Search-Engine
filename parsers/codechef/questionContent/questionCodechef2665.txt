@@ -1,109 +1,106 @@
-College Admissions
+Cell Shell
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-College admissions are starting and Chef has also recently completed his high school. There are
-N colleges, numbered from
-1 to
-N, and they are ranked from
-1 to
-N. Each college has only a single seat left. To apply for the colleges, every student has to give a common exam, the result of which decides their destiny, i.e, the student having best rank (scoring max marks) gets to choose the college of their preference first.
-Each student has a list of colleges that they like. They will want to get to the best-ranked college from their list. If they can't get into it, they will want to get into the second-ranked college from among their list, and so on.
-If the single vacant seat of a college gets filled, the admission for that year is closed in that college. Then, the people who have applied for that college have to look for a lower-ranked college in their preference list provided that it still has vacancies.
-Given information about
-M students, about their marks scored in the exam (given as ranks) and the id’s of the college they are applying for, find which college Chef will land into given that he is the student with
-id=1.
-Every student tries to get into the highest-ranked college on his list which has a vacancy and if not possible to get into any of the colleges on his list, he won’t join any college this year.
-###Input:
-First line will contain
-T, number of testcases. Then the testcases follow.
-Each testcase contains
-M+3 lines of input.
-First line contains
-2 space separated integers
-N,
-M, the total number of colleges, and total number of students respectively.
-Second line contain
-N distinct space separated integers
-R
-i
-, rank of the
-i
-th
-college. Here
-1 denotes a higher rank and
-N denotes a lower rank.
-Third line contains
-M distinct space separated integers
-S
-i
-, the rank of the
-i
-th
-student in the exam. Here
-1 denotes a higher rank, i.e, maximum marks scored and
-M denotes a lower rank, i.e, minimum marks scored.
-Next
-M lines contain
-K+1 space separated integers which the first integer
-K is the number of colleges
-i
-th
-student will apply to and the next
-K integers describe the same.
-###Output: For each testcase, output in a single line the college in which Chef applies and
-0 if he won't be joining any college this year.
-###Constraints
-1≤N,M≤5∗10
-4
-R is the permutation of integers from
-[1,N]
-S is the permutation of integers from
-[1,M]
-Sum of
-N over all tests is atmost
-3∗10
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+There is a checkered field with
+10
 5
-Sum of
-M over all tests is atmost
-3.5∗10
+rows (numbered
+1 through
+10
 5
-Sum of
-K over all students over all tests is atmost
-1.5∗10
-6
-Every student applies to atleast
-1 college and all the applied colleges are different.
-Note: Language multiplier for
-Java is
-3 and for
-python is
-5 and its recommended to use Fast Input-Output for this problem.
-Sample 1:
+) and
+10
+5
+columns (numbered
+1 through
+10
+5
+).
+N different cells in this field (numbered
+1 through
+N) are marked; for each valid
+i, the coordinates of the
+i-th marked cell are
+(x
+i
+,y
+i
+).
+A set of cells is suitable if it meets the following conditions:
+All marked cells belong to this set.
+For any two cells
+a and
+b belonging to this set, there is a path between them with length
+∣x
+a
+−x
+b
+∣+∣y
+a
+−y
+b
+∣ which only visits cells in this set. Each pair of consecutive cells in a path must have a common side.
+You need to find the smallest possible size of a suitable set of cells, as well as the number of sets with this smallest size. Since the number of sets may be very large, compute it modulo
+10
+9
++7.
 Input
+The first line of the input contains two space-separated integers
+N and
+T.
+N lines follow. For each valid
+i, the
+i-th of these lines contains two space-separated integers
+x
+i
+and
+y
+i
+.
 Output
-3
+If
+T=0, print a single line containing one integer ― the smallest size of a suitable set.
+If
+T=1, print a single line containing two space-separated integers ― the smallest size of a suitable set and the number of sets with this size modulo
+10
+9
++7.
+Constraints
+1≤N≤10
+5
+0≤T≤1
+1≤x
+i
+,y
+i
+≤10
+5
+for each valid
+i
+Subtasks
+Subtask #1 (10 points):
+T=1
+x
+i
+≤5 for each valid
+i
+y
+i
+≤4 for each valid
+i
+Subtask #2 (30 points):
+T=0
+Subtask #3 (60 points): original constraints
+Example Input
+6 1
+3 3
+4 3
+1 1
+5 4
+5 2
 2 2
-2 1
-1 2
-2 1 2
-2 1 2
-1 2
-1
-2 1
-1 1
-1 1
-2 1
-1 2
-1
-2 2 1
-2
-0
-1
-Explanation:
-Case 1: Here since Chef has the highest rank, he gets to choose the highest rank college in his preference list first, that is college with
-id=2.
-Case 2: Here since there is only
-1 college and Chef stood second, he won't be able to apply to any of the colleges this year, so we print
-id=0.
-Case 3: Here since Chef is the only student and thus has the highest rank, he gets to choose the highest rank college in his preference list first, that is college with
-id=1.
+Example Output
+10 2
+Explanation
+The two suitable sets with the smallest size
+10 are

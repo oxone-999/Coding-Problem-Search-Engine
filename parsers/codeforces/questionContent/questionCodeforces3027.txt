@@ -1,123 +1,119 @@
-H. Number of Components
-time limit per test8 seconds
+B. Blocks
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Suppose that we have an array of
+There are
 n
-distinct numbers
-a
-1
-,
-a
-2
-,…,
-a
-n
-. Let's build a graph on
-n
-vertices as follows: for every pair of vertices
-i<j
-let's connect
-i
-and
-j
-with an edge, if
-a
-i
-<
-a
-j
-. Let's define weight of the array to be the number of connected components in this graph. For example, weight of array
-[1,4,2]
-is
-1
-, weight of array
-[5,4,3]
-is
-3
-.
-You have to perform
-q
-queries of the following form — change the value at some position of the array. After each operation, output the weight of the array. Updates are not independent (the change stays for the future).
+blocks arranged in a row and numbered from left to right, starting from one. Each block is either black or white.
+You may perform the following operation zero or more times: choose two adjacent blocks and invert their colors (white block becomes black, and vice versa).
+You want to find a sequence of operations, such that they make all the blocks having the same color. You don't have to minimize the number of operations, but it should not exceed
+3⋅n
+. If it is impossible to find such a sequence of operations, you need to report it.
 Input
-The first line contains two integers
+The first line contains one integer
 n
-and
-q
 (
-1≤n,q≤5⋅
-10
-5
-) — the size of the array and the number of queries.
-The second line contains
+2≤n≤200
+) — the number of blocks.
+The second line contains one string
+s
+consisting of
 n
+characters, each character is either "W" or "B". If the
+i
+-th character is "W", then the
+i
+-th block is white. If the
+i
+-th character is "B", then the
+i
+-th block is black.
+Output
+If it is impossible to make all the blocks having the same color, print
+−1
+.
+Otherwise, print an integer
+k
+(
+0≤k≤3⋅n
+) — the number of operations. Then print
+k
 integers
-a
+p
 1
 ,
-a
+p
 2
 ,…,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-6
-) — the initial array.
-Each of the next
-q
-lines contains two integers
-pos
-and
-x
-(
-1≤pos≤n
-,
-1≤x≤
-10
-6
-,x≠
-a
-pos
-). It means that you have to make
-a
-pos
-=x
-.
-It's guaranteed that at every moment of time, all elements of the array are different.
-Output
-After each query, output the weight of the array.
-Example
+p
+k
+(1≤
+p
+j
+≤n−1)
+, where
+p
+j
+is the position of the left block in the pair of blocks that should be affected by the
+j
+-th operation.
+If there are multiple answers, print any of them.
+Examples
 input
 Copy
-5 3
-50 40 30 20 10
-1 25
-3 45
-1 48
+8
+BWWWWWWB
 output
 Copy
 3
-3
+6 2 4
+input
+Copy
 4
+BWBB
+output
+Copy
+-1
+input
+Copy
+5
+WWWWW
+output
+Copy
+0
+input
+Copy
+3
+BWB
+output
+Copy
+2
+2 1 
 Note
-After the first query array looks like
-[25,40,30,20,10]
-, the weight is equal to
+In the first example, it is possible to make all blocks black in
 3
-.
-After the second query array looks like
-[25,40,45,20,10]
-, the weight is still equal to
+operations. Start with changing blocks
+6
+and
+7
+, so the sequence is "BWWWWBBB". Then change blocks
+2
+and
 3
-.
-After the third query array looks like
-[48,40,45,20,10]
-, the weight is equal to
+, so the sequence is "BBBWWBB". And finally, change blocks
 4
-.
+and
+5
+, so all blocks are black.
+It is impossible to make all colors equal in the second example.
+All blocks are already white in the third example.
+In the fourth example it is possible to make all blocks white in two operations: first operation is to change blocks
+2
+and
+3
+(so the sequence is "BBW"), and then change blocks
+1
+and
+2
+(so all blocks are white).

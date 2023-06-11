@@ -1,130 +1,131 @@
-A. Two Subsequences
-time limit per test2 seconds
+A. Di-visible Confusion
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string
-s
-. You need to find two non-empty strings
+YouKn0wWho has an integer sequence
 a
-and
-b
-such that the following conditions are satisfied:
-Strings
+1
+,
 a
-and
-b
-are both subsequences of
-s
-.
-For each index
+2
+,…,
+a
+n
+. He will perform the following operation until the sequence becomes empty: select an index
 i
-, character
-s
+such that
+1≤i≤|a|
+and
+a
 i
-of string
-s
-must belong to exactly one of strings
+is not divisible by
+(i+1)
+, and erase this element from the sequence. Here
+|a|
+is the length of sequence
 a
-or
-b
+at the moment of operation. Note that the sequence
+a
+changes and the next operation is performed on this changed sequence.
+For example, if
+a=[3,5,4,5]
+, then he can select
+i=2
+, because
+a
+2
+=5
+is not divisible by
+i+1=3
+. After this operation the sequence is
+[3,4,5]
 .
-String
-a
-is lexicographically minimum possible; string
-b
-may be any possible string.
-Given string
-s
-, print any valid
-a
-and
-b
-.
-Reminder:
-A string
-a
-(
-b
-) is a subsequence of a string
-s
-if
-a
-(
-b
-) can be obtained from
-s
-by deletion of several (possibly, zero) elements. For example, "dores", "cf", and "for" are subsequences of "codeforces", while "decor" and "fork" are not.
-A string
-x
-is lexicographically smaller than a string
-y
-if and only if one of the following holds:
-x
-is a prefix of
-y
-, but
-x≠y
-;
-in the first position where
-x
-and
-y
-differ, the string
-x
-has a letter that appears earlier in the alphabet than the corresponding letter in
-y
-.
+Help YouKn0wWho determine if it is possible to erase the whole sequence using the aforementioned operation.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
+The first line contains a single integer
 t
 (
-1≤t≤1000
-). Description of the test cases follows.
-The first and only line of each test case contains one string
-s
+1≤t≤10000
+)  — the number of test cases.
+The first line of each test case contains a single integer
+n
 (
-2≤|s|≤100
-where
-|s|
-means the length of
-s
-). String
-s
-consists of lowercase Latin letters.
-Output
-For each test case, print the strings
+1≤n≤
+10
+5
+).
+The second line of each test case contains
+n
+integers
 a
-and
-b
-that satisfy the given conditions. If there are multiple answers, print any.
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
+10
+9
+).
+It is guaranteed that the sum of
+n
+over all test cases doesn't exceed
+3⋅
+10
+5
+.
+Output
+For each test case, print "YES" (without quotes) if it is possible to erase the whole sequence using the aforementioned operation, print "NO" (without quotes) otherwise. You can print each letter in any register (upper or lower).
 Example
 input
 Copy
+5
 3
-fc
-aaaa
-thebrightboiler
+1 2 3
+1
+2
+2
+7 7
+10
+384836991 191890310 576823355 782177068 404011431 818008580 954291757 160449218 155374934 840594328
+8
+6 69 696 69696 696969 6969696 69696969 696969696
 output
 Copy
-c f
-a aaa
-b therightboiler
+YES
+NO
+YES
+YES
+NO
 Note
-In the first test case, there are only two choices: either
-a=
-f and
-b=
-c or
-a=
-c and
-b=
-f. And
-a=
-c is lexicographically smaller than
-a=
-f.
-In the second test case, a is the only character in the string.
-In the third test case, it can be proven that b is the lexicographically smallest subsequence of
-s
-. The second string can be of two variants; one of them is given here.
+In the first test case, YouKn0wWho can perform the following operations (the erased elements are underlined):
+[1,
+2
+–
+,3]→[
+1
+–
+,3]→[
+3
+–
+]→[].
+In the second test case, it is impossible to erase the sequence as
+i
+can only be
+1
+, and when
+i=1
+,
+a
+1
+=2
+is divisible by
+i+1=2
+.

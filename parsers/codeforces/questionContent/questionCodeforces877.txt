@@ -1,196 +1,118 @@
-B. AND Sorting
+D. Circular Spanning Tree
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a permutation
-p
-of integers from
-0
+There are
+n
+nodes arranged in a circle numbered from
+1
 to
+n
+in the clockwise order. You are also given a binary string
+s
+of length
+n
+.
+Your task is to construct a tree on the given
+n
+nodes satisfying the two conditions below or report that there such tree does not exist:
+For each node
+i
+(1≤i≤n)
+, the degree of node is even if
+s
+i
+=0
+and odd if
+s
+i
+=1
+.
+No two edges of the tree intersect internally in the circle. The edges are allowed to intersect on the circumference.
+Note that all edges are drawn as straight line segments. For example, edge
+(u,v)
+in the tree is drawn as a line segment connecting
+u
+and
+v
+on the circle.
+A tree on
+n
+nodes is a connected graph with
 n−1
-(each of them occurs exactly once). Initially, the permutation is not sorted (that is,
-p
-i
->
-p
-i+1
-for at least one
-1≤i≤n−1
-).
-The permutation is called
-X
--sortable for some non-negative integer
-X
-if it is possible to sort the permutation by performing the operation below some finite number of times:
-Choose two indices
-i
-and
-j
-(1≤i<j≤n)
-such that
-p
-i
-&
-p
-j
-=X
-.
-Swap
-p
-i
-and
-p
-j
-.
-Here
-&
-denotes the bitwise AND operation.
-Find the maximum value of
-X
-such that
-p
-is
-X
--sortable. It can be shown that there always exists some value of
-X
-such that
-p
-is
-X
--sortable.
+edges.
 Input
 The input consists of multiple test cases. The first line contains a single integer
 t
-(1≤t≤
+(1≤t≤2⋅
 10
 4
 )
- — the number of test cases. Description of test cases follows.
+ — the number of test cases. Description of the test cases follows.
 The first line of each test case contains a single integer
 n
 (2≤n≤2⋅
 10
 5
 )
- — the length of the permutation.
-The second line of each test case contains
+ — the number of nodes.
+The second line of each test case contains a binary string
+s
+of length
 n
-integers
-p
-1
-,
-p
-2
-,...,
-p
-n
-(
-0≤
-p
-i
-≤n−1
-, all
-p
-i
-are distinct)  — the elements of
-p
-. It is guaranteed that
-p
-is not sorted.
+.
 It is guaranteed that the sum of
 n
-over all cases does not exceed
+over all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case output a single integer — the maximum value of
-X
-such that
-p
-is
-X
--sortable.
+For each test case, if there does not exist a tree that satisfies the given conditions, then output "NO" (without quotes), otherwise output "YES" followed by the description of tree.
+You can output each letter in any case (for example, "YES", "Yes", "yes", "yEs", "yEs" will be recognized as a positive answer).
+If there exists a tree, then output
+n−1
+lines, each containing two integers
+u
+and
+v
+(1≤u,v≤n,u≠v)
+denoting an edge between
+u
+and
+v
+in the tree. If there are multiple possible answers, output any.
 Example
 input
 Copy
+3
 4
-4
-0 1 3 2
+0110
 2
-1 0
-7
-0 1 2 3 5 6 4
-5
-0 3 2 1 4
+10
+6
+110110
 output
 Copy
-2
-0
-4
-1
+YES
+2 1
+3 4
+1 4
+NO
+YES
+2 3
+1 2
+5 6
+6 2
+3 4
 Note
-In the first test case, the only
-X
-for which the permutation is
-X
--sortable are
-X=0
+In the first test case, the tree looks as follows:
+In the second test case, there is only one possible tree with an edge between
+1
 and
-X=2
-, maximum of which is
 2
-.
-Sorting using
-X=0
-:
-Swap
-p
-1
-and
-p
-4
-,
-p=[2,1,3,0]
-.
-Swap
-p
-3
-and
-p
-4
-,
-p=[2,1,0,3]
-.
-Swap
-p
-1
-and
-p
-3
-,
-p=[0,1,2,3]
-.
-Sorting using
-X=2
-:
-Swap
-p
-3
-and
-p
-4
-,
-p=[0,1,2,3]
-.
-In the second test case, we must swap
-p
-1
-and
-p
-2
-which is possible only with
-X=0
-.
+, and it does not satisfy the degree constraints.
+In the third test case,
+The tree on the left satisfies the degree constraints but the edges intersect internally, therefore it is not a valid tree, while the tree on the right is valid.

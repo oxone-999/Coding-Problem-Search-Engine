@@ -1,137 +1,100 @@
-C. Sum of Cubes
+E. Accidental Victory
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a positive integer
-x
-. Check whether the number
-x
-is representable as the sum of the cubes of two positive integers.
-Formally, you need to check if there are two integers
+A championship is held in Berland, in which
+n
+players participate. The player with the number
+i
+has
 a
-and
-b
+i
 (
-1≤a,b
-) such that
 a
-3
-+
-b
-3
-=x
-.
+i
+≥1
+) tokens.
+The championship consists of
+n−1
+games, which are played according to the following rules:
+in each game, two random players with non-zero tokens are selected;
+the player with more tokens is considered the winner of the game (in case of a tie, the winner is chosen randomly);
+the winning player takes all of the loser's tokens;
+The last player with non-zero tokens is the winner of the championship.
+All random decisions that are made during the championship are made equally probable and independently.
 For example, if
-x=35
-, then the numbers
-a=2
-and
-b=3
-are suitable (
-2
-3
-+
-3
-3
-=8+27=35
-). If
-x=4
-, then no pair of numbers
-a
-and
-b
-is suitable.
+n=4
+,
+a=[1,2,4,3]
+, then one of the options for the game (there could be other options) is:
+during the first game, the first and fourth players were selected. The fourth player has more tokens, so he takes the first player's tokens. Now
+a=[0,2,4,4]
+;
+during the second game, the fourth and third players were selected. They have the same number of tokens, but in a random way, the third player is the winner. Now
+a=[0,2,8,0]
+;
+during the third game, the second and third players were selected. The third player has more tokens, so he takes the second player's tokens. Now
+a=[0,0,10,0]
+;
+the third player is declared the winner of the championship.
+Championship winners will receive personalized prizes. Therefore, the judges want to know in advance which players have a chance of winning, i.e have a non-zero probability of winning the championship. You have been asked to find all such players.
 Input
 The first line contains one integer
 t
 (
-1≤t≤100
+1≤t≤
+10
+4
 ) — the number of test cases. Then
 t
 test cases follow.
-Each test case contains one integer
-x
+The first line of each test case consists of one positive integer
+n
 (
-1≤x≤
+1≤n≤2⋅
 10
-12
-).
-Please note, that the input for some test cases won't fit into
-32
--bit integer type, so you should use at least
-64
--bit integer type in your programming language.
+5
+) — the number of players in the championship.
+The second line of each test case contains
+n
+positive integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
+10
+9
+) — the number of tokens the players have.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+.
 Output
-For each test case, output on a separate line:
-"YES" if
-x
-is representable as the sum of the cubes of two positive integers.
-"NO" otherwise.
-You can output "YES" and "NO" in any case (for example, the strings yEs, yes, Yes and YES will be recognized as positive).
+For each test case, print the number of players who have a nonzero probability of winning the championship. On the next line print the numbers of these players in increasing order. Players are numbered starting from one in the order in which they appear in the input.
 Example
 input
 Copy
-7
-1
 2
 4
-34
-35
-16
-703657519796
+1 2 4 3
+5
+1 1 1 1 1
 output
 Copy
-NO
-YES
-NO
-NO
-YES
-YES
-YES
-Note
-The number
-1
-is not representable as the sum of two cubes.
-The number
-2
-is represented as
-1
 3
-+
-1
-3
-.
-The number
-4
-is not representable as the sum of two cubes.
-The number
-34
-is not representable as the sum of two cubes.
-The number
-35
-is represented as
-2
-3
-+
-3
-3
-.
-The number
-16
-is represented as
-2
-3
-+
-2
-3
-.
-The number
-703657519796
-is represented as
-5779
-3
-+
-7993
-3
-.
+2 3 4 
+5
+1 2 3 4 5 

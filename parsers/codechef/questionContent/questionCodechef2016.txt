@@ -1,49 +1,29 @@
-Chairs
+Odd Binomial Coefficients
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-There are N chairs placed in circular order. Some of the chairs are empty while others have a child sitting in it. You are required to change the places of the children so that all the children sit next to each other (i.e. they form a connected segment). You can do that by doing the following operation a number of times:
-Choose a child and tell him to walk around the circle in clockwise order or anti-clockwise order until he finds the first empty chair, and tell him to sit there.
-What is the minimum number of operations required to make all children sit next to each other?
+If P(x) is a polynomial in x with integer coefficients, let W(P(x)) = number of odd coefficients of P(x).
+Given a1, a2, ... , am, find W( (1+x)a1 + (1+x)a2 + ... + (1+x)am ).
 Input
-The first line contains T, the number of test-cases.
-The first line of each test-case contains N, the number of chairs.
-The second line of each test-case contains a binary string of length N. If the i-th character is 1 then the i-th chair has a child initially. Otherwise (i.e. the i-th character is 0) it's empty.
+First line contains TC, the number of test cases.
+Each test case consists of a single line in the format:
+m a1 a2 ... am
+Limits
+1 <= m <= 15
+0 <= ai < 260
+1 <= TC <= 1000
 Output
-For each test case, output a single line containing a single integer donating minimum number of operations needed.
-Constraints
-1 ≤ T ≤ 5,000
-1 ≤ sum of N in all test-cases ≤ 106
-at least one chair will be occupied
+Output one line per test case, the value W( (1+x)a1 + (1+x)a2 + ... + (1+x)am ).
 Sample 1:
 Input
 Output
-1
-8
-10001010
+4
+1 1
+1 3
+2 1 3
+3 1 2 3
+2
+4
+2
 2
 Explanation:
-The initial configuration is:
-       
-                 1
-              0    0
-           1          0
-              0    0
-                  1
-We can tell the child who is boldened to move counter-clockwise, and the new configuration will be:
-       
-                 0
-              1    0
-           1          0
-              0    0
-                  1
-because he has moved to the first empty chair on his way.
-Now, we again tell him to move counter-clockwise, and now the new configuration will be:
-       
-                 0
-              0    0
-           1          0
-              1    0
-                  1
-because he moved counter-clockwise, found an occupied chair, and hence kept moving. The next chair was vacant, and he sat down there.
-Note that, in this example, we moved the same child twice, but this need not be the case. We can move different children in different moves.
-You can check that this is the best we can do, and 2 is the minimum.
+(1+x) + (1+x)3 = 2 + 4x + 3x2 + x3. Hence the output for "2 1 3" is 2. (2 odd coefficients)
+(1+x) + (1+x)2 + (1+x)3 = 3 + 6x + 4x2 + x3. Hence the output for "3 1 2 3" is 2.

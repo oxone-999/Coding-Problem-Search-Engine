@@ -1,182 +1,236 @@
-I. PermutationForces
-time limit per test5 seconds
-memory limit per test1024 megabytes
+B. A Perfectly Balanced String?
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have a permutation
-p
-of integers from
-1
-to
-n
-.
-You have a strength of
+Let's call a string
 s
-and will perform the following operation some times:
-Choose an index
-i
+perfectly balanced if for all possible triplets
+(t,u,v)
 such that
-1≤i≤|p|
-and
-|i−
-p
-i
-|≤s
-.
-For all
-j
-such that
-1≤j≤|p|
-and
-p
-i
-<
-p
-j
-, update
-p
-j
-to
-p
-j
-−1
-.
-Delete the
-i
--th element from
-p
-. Formally, update
-p
-to
-[
-p
-1
-,…,
-p
-i−1
-,
-p
-i+1
-,…,
-p
-n
-]
-.
-It can be shown that no matter what
-i
-you have chosen,
-p
-will be a permutation of integers from
-1
-to
-|p|
-after all operations.
-You want to be able to transform
-p
-into the empty permutation. Find the minimum strength
+t
+is a non-empty substring of
 s
-that will allow you to do so.
+and
+u
+and
+v
+are characters present in
+s
+, the difference between the frequencies of
+u
+and
+v
+in
+t
+is not more than
+1
+.
+For example, the strings "aba" and "abc" are perfectly balanced but "abb" is not because for the triplet ("bb",'a','b'), the condition is not satisfied.
+You are given a string
+s
+consisting of lowercase English letters only. Your task is to determine whether
+s
+is perfectly balanced or not.
+A string
+b
+is called a substring of another string
+a
+if
+b
+can be obtained by deleting some characters (possibly
+0
+) from the start and some characters (possibly
+0
+) from the end of
+a
+.
 Input
 The first line of input contains a single integer
-n
+t
 (
-1≤n≤5⋅
+1≤t≤2⋅
+10
+4
+) denoting the number of testcases.
+Each of the next
+t
+lines contain a single string
+s
+(
+1≤|s|≤2⋅
 10
 5
-)  — the length of the permutation
-p
-.
-The second line of input conatains
-n
-integers
-p
-1
-,
-p
-2
-,…,
-p
-n
-(
-1≤
-p
-i
-≤n
-)  — the elements of the permutation
-p
-.
-It is guaranteed that all elements in
-p
-are distinct.
-Output
-Print the minimum strength
-s
-required.
-Examples
-input
-Copy
-3
-3 2 1
-output
-Copy
-1
-input
-Copy
-1
-1
-output
-Copy
-0
-input
-Copy
+), consisting of lowercase English letters.
+It is guaranteed that the sum of
+|s|
+over all testcases does not exceed
+2⋅
 10
-1 8 4 3 7 10 6 5 9 2
+5
+.
+Output
+For each test case, print "YES" if
+s
+is a perfectly balanced string, and "NO" otherwise.
+You may print each letter in any case (for example, "YES", "Yes", "yes", "yEs" will all be recognized as positive answer).
+Example
+input
+Copy
+5
+aba
+abb
+abc
+aaaaa
+abcba
 output
 Copy
-1
+YES
+NO
+YES
+YES
+NO
 Note
-In the first test case, the minimum
-s
-required is
+Let
+f
+t
+(c)
+represent the frequency of character
+c
+in string
+t
+.
+For the first testcase we have
+t
+f
+t
+(a)
+f
+t
+(b)
+a
 1
-.
-Here is how we can transform
-p
-into the empty permutation with
-s=1
-:
-In the first move, you can only choose
-i=2
-as choosing any other value of
-i
-will result in
-|i−
-p
-i
-|≤s
-being false. With
-i=2
-,
-p
-will be changed to
-[2,1]
-.
-In the second move, you choose
-i=1
-, then
-p
-will be changed to
-[1]
-.
-In the third move, you choose
-i=1
-, then
-p
-will be changed to
-[ ]
-.
-It can be shown that with
-s=0
-, it is impossible to transform
-p
-into the empty permutation.
+0
+ab
+1
+1
+aba
+2
+1
+b
+0
+1
+ba
+1
+1
+It can be seen that for any substring
+t
+of
+s
+, the difference between
+f
+t
+(a)
+and
+f
+t
+(b)
+is not more than
+1
+. Hence the string
+s
+is perfectly balanced.
+For the second testcase we have
+t
+f
+t
+(a)
+f
+t
+(b)
+a
+1
+0
+ab
+1
+1
+abb
+1
+2
+b
+0
+1
+bb
+0
+2
+It can be seen that for the substring
+t=bb
+, the difference between
+f
+t
+(a)
+and
+f
+t
+(b)
+is
+2
+which is greater than
+1
+. Hence the string
+s
+is not perfectly balanced.
+For the third testcase we have
+t
+f
+t
+(a)
+f
+t
+(b)
+f
+t
+(c)
+a
+1
+0
+0
+ab
+1
+1
+0
+abc
+1
+1
+1
+b
+0
+1
+0
+bc
+0
+1
+1
+c
+0
+0
+1
+It can be seen that for any substring
+t
+of
+s
+and any two characters
+u,v∈{a,b,c}
+, the difference between
+f
+t
+(u)
+and
+f
+t
+(v)
+is not more than
+1
+. Hence the string
+s
+is perfectly balanced.

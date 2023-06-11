@@ -1,76 +1,82 @@
-Chef in Fantasy League
+Chef and Mean  
 Problem
 Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef is going to start playing Fantasy Football League (FFL) this season. In FFL, each team consists of exactly
-15 players:
-2 goalkeepers,
-5 defenders,
-5 midfielders and
-3 forwards. Chef has already bought
-13 players; he is only missing one defender and one forward.
-There are
-N available players (numbered
+Chef has invested his savings into
+N coins (numbered
 1 through
 N). For each valid
 i, the
-i-th player is either a defender or a forward and has a price
-P
+i-th coin has value
+A
 i
-. The sum of prices of all players in a team must not exceed
-100 dollars and the players Chef bought already cost him
-S dollars.
-Can you help Chef determine if he can complete the team by buying one defender and one forward in such a way that he does not exceed the total price limit?
+. Chef does not want to know how much money he has, so he remembers the mean value of the coins instead of the sum of their values.
+A waiter from Chef's restaurant plans to steal exactly one of Chef's coins, but he does not want Chef to know about this, so he can only steal a coin if the arithmetic mean of all remaining coins is the same as the original arithmetic mean of all coins. Since the waiter is not good at mathematics, can you help him complete his plan?
+You have to determine whether it is possible to steal some coin and if it is possible, choose the coin the waiter should steal. If there are multiple coins that can be stolen, choose the one with the smallest number.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-S.
+The first line of each test case contains a single integer
+N.
 The second line contains
 N space-separated integers
-P
+A
 1
-,P
+,A
 2
-,…,P
+,…,A
 N
 .
-The last line contains
-N space-separated integers. For each valid
-i, the
-i-th of these integers is
-0 if the
-i-th player is a defender or
-1 if the
-i-th player is a forward.
 Output
-For each test case, print a single line containing the string "yes" if it is possible to build a complete team or "no" otherwise (without quotes).
+For each test case, print a single line. If the waiter cannot steal any coin, this line should contain the string "Impossible" (without quotes). Otherwise, it should contain the number of the coin he should steal.
 Constraints
-1≤T≤100
-1≤N≤100
-13≤S≤100
-1≤P
+1≤T≤10
+2≤N≤10
+5
+1≤A
 i
-≤100 for each valid
+≤10
+9
+for each valid
 i
 Subtasks
-Subtask #1 (100 points): original constraints
+Subtask #1 (30 points):
+2≤N≤10
+3
+1≤A
+i
+≤10
+3
+for each valid
+i
+A
+1
++A
+2
++…+A
+N
+≤10
+9
+Subtask #2 (70 points): original constraints
 Sample 1:
 Input
 Output
-2
-4 90
-3 8 6 5
-0 1 1 0
-4 90
-5 7 6 5
-0 1 1 0
-yes
-no
+3
+5
+1 2 3 4 5
+4
+5 4 3 6
+10
+1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
+3
+Impossible
+1
 Explanation:
-Example case 1: If Chef buys the
-1-st and
-3-rd player, the total price of his team is
-90+9=99, which is perfectly fine. There is no other valid way to pick two players.
-Example case 2: Chef cannot buy two players in such a way that all conditions are satisfied.
+Example case 1: Stealing the third coin does not change the mean. Initially, it is
+(1+2+3+4+5)/5=3 and after stealing this coin, it is still
+(1+2+4+5)/4=3.
+Example case 2: It is not possible to steal any coin without changing the mean.
+Example case 3: The mean is always
+10
+9
+, both initially and after removing any coin, so each coin can be stolen. In that case, we should choose the first coin.

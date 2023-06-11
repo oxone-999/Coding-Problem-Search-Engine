@@ -1,120 +1,103 @@
-Slingshot
+Good Arrangement
 Problem
-You are given a
-N×M matrix
-A, filled with distinct numbers. You can start at any cell. If you are currently at cell
-(x
+An array
+B=[B
 1
-,y
+,B
+2
+,B
+3
+,…,B
+N
+] is called a good array if the following condition holds for every
+1≤i≤N:
+B
+i
+is either the maximum or the minimum element in the subarray
+[B
 1
-), then you can jump to any other cell
-(x
+,B
 2
-,y
-2
-), if and only if the following two conditions are satisfied:
-A
-x
-2
-,y
-2
->A
-x
-1
-,y
-1
-Manhattan distance between
-A
-x
-2
-,y
-2
-and
-A
-x
-1
-,y
-1
->S. Formally,
-∣x
-1
-−x
-2
-∣+∣y
-1
-−y
-2
-∣>S.
-Let
-V be the set of the cells visited by you.
-Maximize the value of
-∑
-(x,y)∈V
- A
-x,y
+,…,B
+i
+].
+You are given an array
+A containing
+N integers. Find the number of its distinct rearrangements that are good.
+Two rearrangements
+B and
+C are considered different if there exists an index
+i such that
+B
+i
+
+=C
+i
 .
+In particular,
+A=[1,2,2] has three distinct rearrangements:
+[1,2,2],[2,1,2],[2,2,1].
+Since the answer can be very large, print it modulo
+10
+9
++7.
 Input Format
-The first line of the input contains the number
-T - the number of test cases. Then the test cases follow.
-The first line of each test case contains three integers
-N,M,S - the parameters defined in the statement.
-Then
-N lines follow, with
-M integers in each line.
-Each of the next
-N lines contains
-M integers, where the
-j-th integer in
-i-th line is equal to
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test case contains a single integer
+N — the size of the array.
+The second line contains
+N space-separated integers
 A
-i,j
-Output Format
-For each testcase output the maximum possible value of
-∑
-(x,y)∈V
- A
-x,y
+1
+,A
+2
+,A
+3
+,…,A
+N
 .
+Output Format
+For each test case, output on a new line the number of good rearrangements, modulo
+10
+9
++7.
 Constraints
-1≤N,M≤1000
-0≤S≤N+M−2.
-1≤A
-i,j
+1≤T≤1000
+1≤N≤10
+6
+0≤A
+i
 ≤10
 9
-.
-It's guaranteed that all
-A
-i,j
-are distinct.
-It's guaranteed that sum of
-N×M over all test cases doesn't exceed
+The sum of
+N over all test cases won't exceed
 10
 6
 .
 Sample 1:
 Input
 Output
+3
+3
+1 2 3
+4
+4 3 8 3
 2
-3 2 2
-1 2
-4 5
-7 8
-2 2 0
-100 99
-98 97
-9
-394
+1 1
+4
+7
+1
 Explanation:
-Test case-1: It is optimal start at cell
-(1,1), then jump to cell
-(3,2). Therefore answer is
-A
-1,1
-+A
-3,2
-=1+8=9.
-Test case-2: It is optimal to start at
-(2,2) and follow this path:
-(2,2)→(2,1)→(1,2)→(1,1). Therefore answer is the sum of all the four cells
-=394.
+Test case
+1: The good rearrangements are:
+[1,2,3],
+[2,1,3],
+[3,2,1],
+[2,3,1].
+Test case
+2: The good rearrangements are:
+[3,3,4,8],[3,4,8,3],[3,4,3,8],[4,8,3,3],[4,3,8,3],[4,3,3,8],[8,4,3,3].
+[3,3,8,4] for example is not a good rearrangement, because
+4 is neither the maximum nor the minimum of all the elements before it.

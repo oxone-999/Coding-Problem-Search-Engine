@@ -1,119 +1,77 @@
-Priya and Parity
+Substring Probability
 Problem
-There are
-N cities number from
-1 to
-N each city is having a weight of
-w
-i
-and they are connected through
-M bidirectional roads between them. Let the parity of a city
-c
-i
-be even if the number of set bits in its binary representation of
-w
-i
-is even and odd otherwise.
-You are given
-Q queries, each query can be of two types:
-1
-K - print the size of largest connected group of cities in which parity of each city is odd after XOR with
-K.
-2
-K - print the size of largest connected group of cities in which parity of each city is even after XOR with
-K.
-A group of cities is said to be connected if we can go from one city of the group to any other city of the group without passing through any city that is not in the group. A group with one city is considered as connected.
-###Input:
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given two strings
+P and
+Q. Consider some uniformly randomly and independently chosen non-empty prefix
+X and non-empty suffix
+Y of
+P. A string
+Z is formed by concatenating
+X and
+Y in this order. Find the probability that
+Z is a substring of
+Q.
+It can be shown that the answer can be represented as a fraction
+U/V, where
+U and
+V are non-negative integers and
+V is coprime with
+998,244,353. You should compute
+U⋅V
+−1
+modulo
+998,244,353, where
+V
+−1
+denotes the multiplicative inverse of
+V modulo
+998,244,353.
+Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first line input of each test case contains two space-separated integers
-N and
-M.
-The second line contains
-N space-separated integers denoting
-w
-i
-.
-The next
-M lines contain two space-separated integers
-U
-i
-and
-V
-i
-, each denoting a bidirectional edge between the cities
-U
-i
-and
-V
-i
-.
-The next
-Q lines describe each query in the format given above.
-###Output:
-For each query of type
-1 - print the size of largest connected group of cities in which parity of each city is odd after XOR with
-K.
-For each query of type
-2- print the size of largest connected group of cities in which parity of each city is even after XOR with
-K.
-###Constraints
-1≤T≤5
-1≤N≤2×10
-5
-1≤M≤min(2×10
-5
-,
-2
-N×(N−1)
-)
-1≤w
-i
-,K≤10
-9
-1≤U
-i
-,V
-i
-≤N for each valid i
-1≤Q≤10
-5
-the graph contains no duplicate edges or self-loops
-###Sample Input:
+The first line of each test case contains a single string
+P.
+The second line contains a single string
+Q.
+Output
+For each test case, print a single line containing one integer
+U⋅V
+−1
+modulo
+998,244,353.
+Constraints
+1≤T≤10
+1≤∣P∣,∣Q∣≤100,000
+P and
+Q contain only lowercase English letters
+Subtasks
+Subtask #1 (25 points):
+∣P∣,∣Q∣≤2,000
+Subtask #2 (75 points): original constraints
+Sample 1:
+Input
+Output
 1
-6 6
-6 4 10 7 5 5
-3 4
-5 1
-5 6
-3 6
-1 4
-5 3
-4
-1 6
-1 8
-1 7
-2 6
-###Sample Output:
-1
-4
-4
-4
-###Explanation:
-Query 1 - The size of the largest connected group of cities in which parity of each city is odd after XOR with
-6 is equal to
-1. Since the parity of the city,
-2 and
-4 is odd after XOR with
-6, but
-2 is not connected with
-4. Therefore the answer is equal to
-1.
-Query 2 - The size of the largest connected group of cities in which parity of each city is odd after XOR with
-8 is equal to
-4 because, after XOR with
-8, cities
-1,5,3,6 have odd parity. Therefore the answer is equal to
-4.
-Similarly, you can find the answer for other queries.
+abac
+aacabc
+811073537
+Explanation:
+Example case 1: There are
+4 possible prefixes
+X and
+4 suffixes
+Y. The only combinations that result in a string
+Z that is a substring of
+Q are:
+X = "a",
+Y = "ac"
+X = "a",
+Y = "c"
+X = "ab",
+Y = "c"
+The probability that
+Z is a substring of
+Q is
+3/16.

@@ -1,115 +1,68 @@
-F1. Flying Sort (Easy Version)
+C. Even Picture
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is an easy version of the problem. In this version, all numbers in the given array are distinct and the constraints on
+Leo Jr. draws pictures in his notebook with checkered sheets (that is, each sheet has a regular square grid printed on it). We can assume that the sheets are infinitely large in any direction.
+To draw a picture, Leo Jr. colors some of the cells on a sheet gray. He considers the resulting picture beautiful if the following conditions are satisfied:
+The picture is connected, that is, it is possible to get from any gray cell to any other by following a chain of gray cells, with each pair of adjacent cells in the path being neighbours (that is, sharing a side).
+Each gray cell has an even number of gray neighbours.
+There are exactly
 n
-are less than in the hard version of the problem.
-You are given an array
-a
-of
+gray cells with all gray neighbours. The number of other gray cells can be arbitrary (but reasonable, so that they can all be listed).
+Leo Jr. is now struggling to draw a beautiful picture with a particular choice of
 n
-integers (there are no equals elements in the array). You can perform the following operations on array elements:
-choose any index
-i
-(
-1≤i≤n
-) and move the element
-a[i]
-to the begin of the array;
-choose any index
-i
-(
-1≤i≤n
-) and move the element
-a[i]
-to the end of the array.
-For example, if
-n=5
-,
-a=[4,7,2,3,9]
-, then the following sequence of operations can be performed:
-after performing the operation of the first type to the second element, the array
-a
-will become
-[7,4,2,3,9]
-;
-after performing the operation of the second type to the second element, the array
-a
-will become
-[7,2,3,9,4]
-.
-You can perform operations of any type any number of times in any order.
-Find the minimum total number of operations of the first and second type that will make the
-a
-array sorted in non-decreasing order. In other words, what is the minimum number of operations that must be performed so the array satisfies the inequalities
-a[1]≤a[2]≤…≤a[n]
-.
+. Help him, and provide any example of a beautiful picture.
+To output cell coordinates in your answer, assume that the sheet is provided with a Cartesian coordinate system such that one of the cells is chosen to be the origin
+(0,0)
+, axes
+0x
+and
+0y
+are orthogonal and parallel to grid lines, and a unit step along any axis in any direction takes you to a neighbouring cell.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤100
-) — the number of test cases in the test. Then
-t
-test cases follow.
-Each test case starts with a line containing an integer
+The only line contains a single integer
 n
 (
-1≤n≤3000
-) — length of the array
-a
+1≤n≤500
+) — the number of gray cells with all gray neighbours in a beautiful picture.
+Output
+In the first line, print a single integer
+k
+ — the number of gray cells in your picture. For technical reasons,
+k
+should not exceed
+5⋅
+10
+5
 .
-Then follow
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤
+Each of the following
+k
+lines should contain two integers — coordinates of a gray cell in your picture. All listed cells should be distinct, and the picture should satisdfy all the properties listed above. All coordinates should not exceed
 10
 9
-) — an array that needs to be sorted by the given operations. All numbers in the given array are distinct.
-The sum of
-n
-for all test cases in one test does not exceed
-3000
+by absolute value.
+One can show that there exists an answer satisfying all requirements with a small enough
+k
 .
-Output
-For each test case output one integer — the minimum total number of operations of the first and second type, which will make the array sorted in non-decreasing order.
 Example
 input
 Copy
 4
-5
-4 7 2 3 9
-5
-3 5 8 1 7
-5
-1 4 5 7 12
-4
-0 2 1 3
 output
 Copy
-2
-2
-0
-2
+12
+1 0
+2 0
+0 1
+1 1
+2 1
+3 1
+0 2
+1 2
+2 2
+3 2
+1 3
+2 3
 Note
-In the first test case, you first need to move 3, and then 2 to the beginning of the array. Therefore, the desired sequence of operations:
-[4,7,2,3,9]→[3,4,7,2,9]→[2,3,4,7,9]
-.
-In the second test case, you need to move the 1 to the beginning of the array, and the 8 — to the end. Therefore, the desired sequence of operations:
-[3,5,8,1,7]→[1,3,5,8,7]→[1,3,5,7,8]
-.
-In the third test case, the array is already sorted.
+The answer for the sample is pictured below:

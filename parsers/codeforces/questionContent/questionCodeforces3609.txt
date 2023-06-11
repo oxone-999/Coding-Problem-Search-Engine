@@ -1,81 +1,99 @@
-A. Reachable Numbers
-time limit per test1 second
+B. Long Number
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let's denote a function
-f(x)
-in such a way: we add
+You are given a long decimal number
+a
+consisting of
+n
+digits from
 1
 to
-x
-, then, while there is at least one trailing zero in the resulting number, we remove that zero. For example,
-f(599)=6
-:
-599+1=600→60→6
-;
-f(7)=8
-:
-7+1=8
-;
-f(9)=1
-:
-9+1=10→1
-;
-f(10099)=101
-:
-10099+1=10100→1010→101
-.
-We say that some number
-y
-is reachable from
-x
-if we can apply function
+9
+. You also have a function
 f
+that maps every digit from
+1
 to
-x
-some (possibly zero) times so that we get
-y
-as a result. For example,
-102
-is reachable from
-10098
-because
-f(f(f(10098)))=f(f(10099))=f(101)=102
-; and any number is reachable from itself.
-You are given a number
-n
-; your task is to count how many different numbers are reachable from
-n
+9
+to some (possibly the same) digit from
+1
+to
+9
 .
+You can perform the following operation no more than once: choose a non-empty contiguous subsegment of digits in
+a
+, and replace each digit
+x
+from this segment with
+f(x)
+. For example, if
+a=1337
+,
+f(1)=1
+,
+f(3)=5
+,
+f(7)=3
+, and you choose the segment consisting of three rightmost digits, you get
+1553
+as the result.
+What is the maximum possible number you can obtain applying this operation no more than once?
 Input
 The first line contains one integer
 n
 (
-1≤n≤
+1≤n≤2⋅
 10
+5
+) — the number of digits in
+a
+.
+The second line contains a string of
+n
+characters, denoting the number
+a
+. Each character is a decimal digit from
+1
+to
 9
+.
+The third line contains exactly
+9
+integers
+f(1)
+,
+f(2)
+, ...,
+f(9)
+(
+1≤f(i)≤9
 ).
 Output
-Print one integer: the number of different numbers that are reachable from
-n
-.
+Print the maximum number you can get after applying the operation described in the statement no more than once.
 Examples
 input
 Copy
-1098
+4
+1337
+1 2 5 4 6 6 3 1 9
 output
 Copy
-20
+1557
 input
 Copy
-10
+5
+11111
+9 8 7 6 5 4 3 2 1
 output
 Copy
-19
-Note
-The numbers that are reachable from
-1098
-are:
-1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,1098,1099
-.
+99999
+input
+Copy
+2
+33
+1 1 1 1 1 1 1 1 1
+output
+Copy
+33

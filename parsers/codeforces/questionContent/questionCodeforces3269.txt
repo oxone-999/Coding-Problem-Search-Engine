@@ -1,83 +1,171 @@
-C. Jumping Transformers
-time limit per test4 seconds
+E. Product Tuples
+time limit per test8 seconds
 memory limit per test128 megabytes
 inputstandard input
 outputstandard output
-You, the mighty Blackout, are standing in the upper-left
-(0,0)
-corner of
-N
-x
-M
-matrix. You must move either right or down each second.
-There are
-K
-transformers jumping around the matrix in the following way. Each transformer starts jumping from position
-(x,y)
-, at time
-t
-, and jumps to the next position each second. The
-x
--axes grows downwards, and
-y
--axes grows to the right. The order of jumping positions is defined as
-(x,y),(x+d,y−d),(x+d,y),(x,y+d)
-, and is periodic. Before time
-t
-transformer is not in the matrix.
-You want to arrive to the bottom-right corner
-(N−1,M−1)
-, while slaying transformers and losing the least possible amount of energy. When you meet the transformer (or more of them) in the matrix field, you must kill them all, and you lose the sum of the energy amounts required to kill each transformer.
-After the transformer is killed, he of course stops jumping, falls into the abyss and leaves the matrix world. Output minimum possible amount of energy wasted.
-Input
-In the first line, integers
-N
+While roaming the mystic areas of Stonefalls, in order to drop legendary loot, an adventurer was given a quest as follows. He was given an array
+A=
+a
+1
 ,
-M
-(
-1≤N,M≤500
-), representing size of the matrix, and
+a
+2
+,...,
+a
+N
+of length
+N
+, and a number
 K
+.
+Define array
+B
+as
+B(q,A)=
+{
+q−
+a
+1
+,q−
+a
+2
+,...,q−
+a
+N
+}. Define function
+F
+as
+F(B,K)
+being sum of products of all
+K
+-tuples of elements in array
+B
+. For example, if the array
+B
+is
+[2,3,4,5]
+, and with
+K=3
+, sum of products of all 3-tuples is
+F(B,3)=2∗3∗4+2∗3∗5+3∗4∗5+2∗4∗5
+F
 (
-0≤K≤5∗
-10
+B
+3
+)
+2
+3
+4
+2
+3
 5
-) , the number of jumping transformers.
-In next
-K
-lines, for each transformer, numbers
-x
+3
+4
+5
+2
+4
+5
+He was then given a number Q, number of queries of two types:
+Type 1: Given
+q
 ,
-y
-,
+i
+, and
 d
+calculate
+F(B(q,A),K)
+where we make change to initial array as
+A[i]=d
+.
+Type 2: Given
+q
+,
+L
+,
+R
+, and
+d
+calculate
+F(B(q,A),K)
+where we make change to initial array as
+A[i]=A[i]+d
+for all
+i
+in range
+[L,R]
+inclusive.
+All changes are temporarily made to initial array, and don't propagate to following queries. Help the adventurer calculate the answer to a quest, and finally get that loot!
+Input
+In the first two lines, numbers
+N
 (
-d≥1
-),
-t
+1≤N≤2∗
+10
+4
+) and
+K
 (
-0≤t≤N+M−2
-), and
-e
+1≤K≤N
+), the length of initial array
+A
+, and tuple size, followed by
+a
+1
+,
+a
+2
+,
+a
+3
+,…,
+a
+N
 (
-0≤e≤
+0≤
+a
+i
+≤
 10
 9
-), representing starting coordinates of transformer, jumping positions distance in pattern described above, time when transformer starts jumping, and energy required to kill it.
-It is guaranteed that all 4 of jumping points of the transformers are within matrix coordinates
+) , elements of array
+A
+, in the next line. Then follows number
+Q
+(
+Q≤10
+), number of queries. In the next
+Q
+lines come queries of the form:
+1 q i d, for type 1,
+2 q L R d, for type 2,
+as explained above (
+0≤q,d≤
+10
+9
+,1≤i,L,R≤N
+)
 Output
-Print single integer, the minimum possible amount of energy wasted, for Blackout to arrive at bottom-right corner.
+Print
+Q
+lines, the answers to queries, modulo
+998244353
+.
 Example
 input
 Copy
-3 3 5
-0 1 1 0 7
-1 1 1 0 10
-1 1 1 1 2
-1 1 1 2 2
-0 1 1 2 3
+5
+2
+1 2 3 4 5
+3
+1 6 1 1
+1 6 5 2
+2 6 2 3 1
 output
 Copy
-9
+85
+127
+63
 Note
-If Blackout takes the path from (0, 0) to (2, 0), and then from (2, 0) to (2, 2) he will need to kill the first and third transformer for a total energy cost of 9. There exists no path with less energy value.
+In the first query array A = [1, 2, 3, 4, 5], B = [5, 4, 3, 2, 1], sum of products of 2-tuples = 85.
+In second query array A = [1, 2, 3, 4, 2], B = [5, 4, 3, 2, 4], sum of products of 2-tuples = 127
+In third query array A = [1, 3, 4, 4, 5], B = [5, 3, 2, 2, 1], sum of products of 2-tuples = 63

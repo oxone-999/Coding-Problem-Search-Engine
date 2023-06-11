@@ -1,58 +1,34 @@
-Maximal crosses
+Chef and squares
 Problem
-On the matrix A sized n×n, some cells were marked by crosses (X). For each cell (i,j) (with i – the row index, j – the column index), we define B(i,j) as the maximal number of continuous crosses “going across” the cell (i,j) in the same horizontal, vertical or diagonal; B(i,j)=0 if A(i,j) is empty ( '.' ). [ Empty cells are marked by '.'] .
-Clarification:
-Continuous crosses going across cell (i,j) in horizontal direction = x1 + x2 - 1
-where x1 = highest possible x such that
-          j + x - 1<= n and A(i, j ... j + x - 1) are all 'X'
-and x2 = highest possible x such that
-          j - x + 1 > 0 and A(i, j - x + 1...j) are all 'X'
-
-Similarily we can extend the definition for vertical and diagonal directions.
-Task
-Given matrix A as input, calculate matrix B.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+  Chef has finished his freshman year in college. As a present, his parents gave him a new problem to solve:
+Chef has to fill a K x K square grid of integers in a certain way. Let us say that such a grid is valid if:
+Each cell contains an integer from 1 and K (inclusive).
+No integer appears twice in the same row or the same column.
+Let F(K) be maximum possible distance between the center of the square and the closest cell that contains 1, among all possible squares with the side length K.
+Here, we use the following notions:
+The distance between cell (x, y) and (i, j) is equal to |x-i|+|y-j|.
+The center of a K x K square is cell ((K+1)/2, (K+1)/2) for odd K.
 Input
-The first line contains the integer n.
-Then follow n lines , each containing n characters. The j-th character of the i-th line represents the cell (i,j) of the matrix A, with A(i,j)='X' if it contains a cross, or A(i,j)='.' if it is empty.
-Output
-Output n lines, each contains n integers, the j-th integer of the i-th line shows the value of B(i,j).
-(Each integer on a same line must be separated by exactly one space character)
-Limitations
-0
+The first line of input contains a single integer T denoting the number of test cases.
+Each test case consists of a single line containing a single odd integer K.
+  Output
+For each test case, print K lines each consisting of K space separated integers giving some square grid where the distance from the center of the grid to the nearest 1 is exactly F(K). If there's more than 1 possible answer output any of them.
+  Constraints
+Ki is odd.
+Subtask #1 (10 points) :
+1 ≤ T ≤ 50
+1 ≤ Ki≤ 5
+Subtask #1 (90 points) :
+1 ≤ T ≤ 10
+1 ≤ Ki < 400
 Sample 1:
 Input
 Output
-10
-..X....XX.
-XX.X..XX.X
-.....XX..X
-.XXX..X.X.
-.....X..XX
-....X....X
-X.X....XX.
-.X...X.X.X
-X.X..X....
-..XXXXX.XX
-0 0 2 0 0 0 0 3 3 0
-2 2 0 2 0 0 3 3 0 2
-0 0 0 0 0 3 3 0 0 2
-0 3 3 3 0 0 3 0 2 0
-0 0 0 0 0 3 0 0 2 2
-0 0 0 0 3 0 0 0 0 3
-4 0 3 0 0 0 0 2 3 0
-0 4 0 0 0 3 0 3 0 2
-3 0 4 0 0 3 0 0 0 0
-0 0 5 5 5 5 5 0 2 2
-Explanation:
-Cell
-(0,0): The cell is empty, thus
-B(0,0)=0.
-Cell
-(0,2): The maximum number of continuous crosses are present diagonally to the bottom left and bottom right. The maximum number of crosses is
-2.
-Cell
-(0,8): The maximum number of continuous crosses are present diagonally to the bottom left. The maximum number of crosses is
-3.
-Cell
-(9,2): The maximum number of continuous crosses is present to the right. The maximum number of crosses is
-5.
+2
+1
+3
+1
+3 2 1
+1 3 2
+2 1 3

@@ -1,213 +1,121 @@
-F. Jog Around The Graph
+C. Social Distance
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a simple weighted connected undirected graph, consisting of
+Polycarp and his friends want to visit a new restaurant. The restaurant has
 n
-vertices and
-m
-edges.
-A path in the graph of length
-k
-is a sequence of
-k+1
-vertices
-v
-1
-,
-v
-2
-,…,
-v
-k+1
-such that for each
-i
-(1≤i≤k)
-the edge
-(
-v
-i
-,
-v
-i+1
-)
-is present in the graph. A path from some vertex
-v
-also has vertex
-v
-1
-=v
-. Note that edges and vertices are allowed to be included in the path multiple times.
-The weight of the path is the total weight of edges in it.
-For each
-i
-from
+tables arranged along a straight line. People are already sitting at some tables. The tables are numbered from
 1
 to
-q
-consider a path from vertex
-1
-of length
-i
-of the maximum weight. What is the sum of weights of these
-q
-paths?
-Answer can be quite large, so print it modulo
-10
-9
-+7
-.
-Input
-The first line contains a three integers
 n
-,
-m
-,
-q
-(
-2≤n≤2000
-;
-n−1≤m≤2000
-;
-m≤q≤
-10
-9
-) — the number of vertices in the graph, the number of edges in the graph and the number of lengths that should be included in the answer.
-Each of the next
-m
-lines contains a description of an edge: three integers
-v
-,
-u
-,
-w
-(
-1≤v,u≤n
-;
-1≤w≤
-10
-6
-) — two vertices
-v
+in the order from left to right. The state of the restaurant is described by a string of length
+n
+which contains characters "1" (the table is occupied) and "0" (the table is empty).
+Restaurant rules prohibit people to sit at a distance of
+k
+or less from each other. That is, if a person sits at the table number
+i
+, then all tables with numbers from
+i−k
+to
+i+k
+(except for the
+i
+-th) should be free. In other words, the absolute difference of the numbers of any two occupied tables must be strictly greater than
+k
+.
+For example, if
+n=8
 and
-u
-are connected by an undirected edge with weight
-w
-. The graph contains no loops and no multiple edges. It is guaranteed that the given edges form a connected graph.
+k=2
+, then:
+strings "10010001", "10000010", "00000000", "00100000" satisfy the rules of the restaurant;
+strings "10100100", "10011001", "11111111" do not satisfy to the rules of the restaurant, since each of them has a pair of "1" with a distance less than or equal to
+k=2
+.
+In particular, if the state of the restaurant is described by a string without "1" or a string with one "1", then the requirement of the restaurant is satisfied.
+You are given a binary string
+s
+that describes the current state of the restaurant. It is guaranteed that the rules of the restaurant are satisfied for the string
+s
+.
+Find the maximum number of free tables that you can occupy so as not to violate the rules of the restaurant. Formally, what is the maximum number of "0" that can be replaced by "1" such that the requirement will still be satisfied?
+For example, if
+n=6
+,
+k=1
+,
+s=
+ "100010", then the answer to the problem will be
+1
+, since only the table at position
+3
+can be occupied such that the rules are still satisfied.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases in the test. Then
+t
+test cases follow.
+Each test case starts with a line containing two integers
+n
+and
+k
+(
+1≤k≤n≤2⋅
+10
+5
+) — the number of tables in the restaurant and the minimum allowed distance between two people.
+The second line of each test case contains a binary string
+s
+of length
+n
+consisting of "0" and "1" — a description of the free and occupied tables in the restaurant. The given string satisfy to the rules of the restaurant — the difference between indices of any two "1" is more than
+k
+.
+The sum of
+n
+for all test cases in one test does not exceed
+2⋅
+10
+5
+.
 Output
-Print a single integer — the sum of the weights of the paths from vertex
-1
-of maximum weights of lengths
-1,2,…,q
-modulo
-10
-9
-+7
+For each test case output one integer — the number of tables that you can occupy so as not to violate the rules of the restaurant. If additional tables cannot be taken, then, obviously, you need to output
+0
 .
-Examples
+Example
 input
 Copy
-7 8 25
-1 2 1
-2 3 10
-3 4 2
-1 5 2
-5 6 7
-6 4 15
-5 3 1
-1 7 3
+6
+6 1
+100010
+6 2
+000000
+5 1
+10101
+3 1
+001
+2 2
+00
+1 1
+0
 output
 Copy
-4361
-input
-Copy
-2 1 5
-1 2 4
-output
-Copy
-60
-input
-Copy
-15 15 23
-13 10 12
-11 14 12
-2 15 5
-4 10 8
-10 2 4
-10 7 5
-3 10 1
-5 6 11
-1 13 8
-9 15 4
-4 2 9
-11 15 1
-11 12 14
-10 8 12
-3 6 11
-output
-Copy
-3250
-input
-Copy
-5 10 10000000
-2 4 798
-1 5 824
-5 2 558
-4 1 288
-3 4 1890
-3 1 134
-2 3 1485
-4 5 284
-3 5 1025
-1 2 649
-output
-Copy
-768500592
-Note
-Here is the graph for the first example:
-Some maximum weight paths are:
-length
 1
-: edges
-(1,7)
- — weight
-3
-;
-length
 2
-: edges
-(1,2),(2,3)
- — weight
-1+10=11
-;
-length
-3
-: edges
-(1,5),(5,6),(6,4)
- — weight
-2+7+15=24
-;
-length
-4
-: edges
-(1,5),(5,6),(6,4),(6,4)
- — weight
-2+7+15+15=39
-;
-…
-So the answer is the sum of
-25
-terms:
-3+11+24+39+…
-In the second example the maximum weight paths have weights
-4
-,
-8
-,
-12
-,
-16
-and
-20
-.
+0
+1
+1
+1
+Note
+The first test case is explained in the statement.
+In the second test case, the answer is
+2
+, since you can choose the first and the sixth table.
+In the third test case, you cannot take any free table without violating the rules of the restaurant.

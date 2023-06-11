@@ -1,43 +1,45 @@
-Chef and Divisor Tree
+Chef and Square Set
 Problem
 Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Chef has defined a new type of rooted tree - divisor tree. In this tree, every node has a positive integer written on it. It follows some rules:
-The root can have any positive integer written on it.
-Suppose a node has the integer A written on it, and suppose A has k proper divisors. [Note: Proper divisors of an integer are all its divisors except the integer itself. 1 has no proper divisor] Then this node will have exactly k child nodes, and each of A's proper divisors will be written on exactly one of the child nodes. For example, a node with number 12 written on it would have children with the numbers 1, 2, 3, 4, and 6 written on them.
-You can observe that the nodes have 1 written on them, if and only if, they are leaves.
-The score of a path in this tree is defined as the sum of degrees of all of the nodes in the path. The Score of the tree is defined as the maximum score of a path from the root to one of the leaves.
-You are given two integers A, B. You want to find the sum of Scores of all the divisor trees which have n written on their root, where A ≤ n ≤ B.
+Chef is teaching his students about properties of integers. Today he is teaching them about numbers which are squares of some number, e.g. 1, 4, 9, 16, 25 etc. These numbers are said perfect squares.
+He gave his students the following task as homework. He gives an array a consisting of n positive integers. He calls the array w0w if for every pair of indices i, j, the product ai * aj is a perfect square.
+Chef wants you to make this array w0w. For achieving this, you can pick any integer ai and can multiply it by any prime number. You can perform this operation several times, even multiple times on the same number. Find out the minimum number of operations that you will require.
 Input
-The only line of the input contains two space separated integers A and B respectively.
+The first line of the input contains an integer T denoting the number of the test cases.
+The first line of each test case will contain an integer n denoting number of elements in array a.
+The next line will contain n space separated integers denoting elements of array a.
 Output
-Output a single integer corresponding to the answer of the problem.
+For each test case, output a single integer corresponding to minimum number of operations required to make array w0w.
 Constraints
-1 ≤ A ≤ B ≤ 1012
-B - A < 105
+1 ≤ T, n, ai ≤ 106
+1 ≤ Sum of n over all test cases in a single test file ≤ 106
 Subtasks
-Subtask #1 (10 points):
-1 ≤ A ≤ B ≤ 50
-Subtask #2 (25 points):
-1 ≤ A ≤ B ≤ 106
-B - A < 105
-Subtask #3 (25 points):
-A = B
-Subtask #4 (40 points):
-Original constraints.
+Subtask #1: (10 points)
+1 ≤ T, n, ai ≤ 105
+ai is prime.
+1 ≤ Sum of n over all test cases in a single test file ≤ 105
+Subtask #2: (20 points)
+1 ≤ T, n, ai ≤ 106
+ai is prime.
+1 ≤ Sum of n over all test cases in a single test file ≤ 106
+Subtask #3: (30 points)
+1 ≤ T, n, ai ≤ 105
+1 ≤ Sum of n over all test cases in a single test file ≤ 105
+Subtask #4: (40 points)
+Original Constraints
 Sample 1:
 Input
 Output
-11 12
-14
-Sample 2:
-Input
-Output
-932451 935212
-101245
+3
+3
+2 2 2
+3
+1 2 2
+3
+2 4 6
+0
+1
+2
 Explanation:
-Input 1.
-Here we have, A = 11 and B = 12.
-The Score of the divisor tree which has 12 written on its root is 12. This because the path 12 -> 6 -> 3 -> 1 (look at the figure below) has sum of the degrees of all nodes in it = 5 + 4 + 2 + 1 = 12. This is the maximum score of a path among all paths from root to the leaves. Hence, the Score of this tree is 12.
-Note that in the figure, the nodes are denoted by (value written on it, degree of node), and the leaves are marked green.
-You can find that the score of divisor tree which has 11 written on its root is 2.
-Hence, answer will be 12 + 2 = 14.
+Example case 1. If you multiply any pair of integers in the array, the product is 4, which is square. So, the array is w0w already.
+Example case 2. You can multiply the first number by 2, then the array will become w0w. So the minimum number of operations required will be 1.

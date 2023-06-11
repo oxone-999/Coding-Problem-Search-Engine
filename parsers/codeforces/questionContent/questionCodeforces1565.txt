@@ -1,68 +1,60 @@
-G. Common Divisor Graph
-time limit per test4 seconds
+A. Cherry
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Consider a sequence of distinct integers
+You are given
+n
+integers
 a
 1
+,
+a
+2
 ,…,
 a
 n
-, each representing one node of a graph. There is an edge between two nodes if the two values are not coprime, i. e. they have a common divisor greater than
-1
-.
-There are
-q
-queries, in each query, you want to get from one given node
+. Find the maximum value of
+max(
 a
-s
-to another
-a
-t
-. In order to achieve that, you can choose an existing value
-a
-i
-and create new value
-a
-n+1
-=
-a
-i
-⋅(1+
-a
-i
-)
-, with edges to all values that are not coprime with
-a
-n+1
-. Also,
-n
-gets increased by
-1
-. You can repeat that operation multiple times, possibly making the sequence much longer and getting huge or repeated values. What's the minimum possible number of newly created nodes so that
-a
-t
-is reachable from
-a
-s
-?
-Queries are independent. In each query, you start with the initial sequence
-a
-given in the input.
-Input
-The first line contains two integers
-n
-and
-q
-(
-2≤n≤150000
+l
 ,
-1≤q≤300000
-) — the size of the sequence and the number of queries.
-The second line contains
+a
+l+1
+,…,
+a
+r
+)⋅min(
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+)
+over all pairs
+(l,r)
+of integers for which
+1≤l<r≤n
+.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤10000
+)  — the number of test cases.
+The first line of each test case contains a single integer
 n
-distinct integers
+(
+2≤n≤
+10
+5
+).
+The second line of each test case contains
+n
+integers
 a
 1
 ,
@@ -72,156 +64,114 @@ a
 a
 n
 (
-2≤
+1≤
 a
 i
 ≤
 10
 6
-,
-a
-i
-≠
-a
-j
-if
-i≠j
 ).
-The
-j
--th of the following
-q
-lines contains two distinct integers
-s
-j
-and
-t
-j
-(
-1≤
-s
-j
-,
-t
-j
-≤n
-,
-s
-j
-≠
-t
-j
-) — indices of nodes for
-j
--th query.
+It is guaranteed that the sum of
+n
+over all test cases doesn't exceed
+3⋅
+10
+5
+.
 Output
-Print
-q
-lines. The
-j
--th line should contain one integer: the minimum number of new nodes you create in order to move from
-a
-s
-j
-to
-a
-t
-j
-.
-Examples
+For each test case, print a single integer  — the maximum possible value of the product from the statement.
+Example
 input
 Copy
-3 3
-2 10 3
-1 2
-1 3
-2 3
-output
-Copy
-0
-1
-1
-input
-Copy
-5 12
-3 8 7 6 25
-1 2
-1 3
-1 4
-1 5
-2 1
-2 3
-2 4
-2 5
-3 1
-3 2
-3 4
-3 5
-output
-Copy
-0
-1
-0
-1
-0
-1
-0
-1
-1
-1
-1
+4
+3
+2 4 3
+4
+3 2 3 1
 2
-Note
-In the first example, you can first create new value
-2⋅3=6
-or
-10⋅11=110
-or
-3⋅4=12
-. None of that is needed in the first query because you can already get from
-a
-1
-=2
-to
-a
-2
-=10
-.
-In the second query, it's optimal to first create
+69 69
 6
-or
+719313 273225 402638 473783 804745 323328
+output
+Copy
 12
-. For example, creating
 6
-makes it possible to get from
+4761
+381274500335
+Note
+Let
+f(l,r)=max(
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+)⋅min(
+a
+l
+,
+a
+l+1
+,…,
+a
+r
+)
+.
+In the first test case,
+f(1,2)=max(
 a
 1
-=2
-to
+,
 a
-3
-=3
-with a path
-(2,6,3)
+2
+)⋅min(
+a
+1
+,
+a
+2
+)=max(2,4)⋅min(2,4)=4⋅2=8
 .
-In the last query of the second example, we want to get from
+f(1,3)=max(
+a
+1
+,
+a
+2
+,
 a
 3
-=7
-to
+)⋅min(
 a
-5
-=25
-. One way to achieve that is to first create
-6⋅7=42
-and then create
-25⋅26=650
-. The final graph has seven nodes and it contains a path from
+1
+,
+a
+2
+,
 a
 3
-=7
-to
+)=max(2,4,3)⋅min(2,4,3)=4⋅2=8
+.
+f(2,3)=max(
 a
-5
-=25
+2
+,
+a
+3
+)⋅min(
+a
+2
+,
+a
+3
+)=max(4,3)⋅min(4,3)=4⋅3=12
+.
+So the maximum is
+f(2,3)=12
+.
+In the second test case, the maximum is
+f(1,2)=f(1,3)=f(2,3)=6
 .

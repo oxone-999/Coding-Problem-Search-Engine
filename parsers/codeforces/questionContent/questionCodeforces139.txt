@@ -1,74 +1,126 @@
-A. Plus or Minus
-time limit per test1 second
-memory limit per test256 megabytes
+F2. GCD Master (hard version)
+time limit per test3 seconds
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-You are given three integers
+This is the hard version of the problem. The only difference between the two versions is the constraint on
+m
+. You can make hacks only if both versions of the problem are solved.
+You are given an array
 a
+of length
+n
+and two integers
+m
+and
+k
+. Each element in
+a
+satisfies
+1≤
+a
+i
+≤m
+.
+In one operation, you choose two indices
+i
+and
+j
+such that
+1≤i<j≤|a|
+, then append
+gcd(
+a
+i
 ,
-b
-, and
-c
-such that exactly one of these two equations is true:
-a+b=c
-a−b=c
-Output + if the first equation is true, and - otherwise.
+a
+j
+)
+to the back of the array and delete
+a
+i
+and
+a
+j
+from the array. Note that the length of the array decreases by one after this operation.
+Find the maximum possible sum of the array after performing exactly
+k
+operations.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤162
-) — the number of test cases.
-The description of each test case consists of three integers
-a
+1≤t≤
+10
+5
+) — the number of test cases. The description of test cases follows.
+The first line of each test case contains three integers
+n
 ,
-b
-,
-c
+m
+and
+k
 (
-1≤a,b≤9
+2≤n≤
+10
+6
+;
+1≤m≤9⋅
+10
+18
+;
+1≤k≤n−1
+).
+The second line of each test case contains
+n
+integers
+a
+1
 ,
-−8≤c≤18
-). The additional constraint on the input: it will be generated so that exactly one of the two equations will be true.
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤m
+).
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+6
+.
 Output
-For each test case, output either + or - on a new line, representing the correct equation.
+For each test case, output the maximum possible sum of the array after performing
+k
+operations optimally.
 Example
 input
 Copy
-11
-1 2 3
-3 2 1
-2 9 -7
-3 4 7
-1 1 2
-1 1 0
-3 3 6
-9 9 18
-9 9 0
-1 9 -8
-1 9 10
+4
+3 8 1
+4 7 8
+5 114514 2
+7 2 4 1 6
+3 1919810 2
+2 3 3
+3 9000000000000000000 1
+9000000000000000000 9000000000000000000 9000000000000000000
 output
 Copy
-+
--
--
-+
-+
--
-+
-+
--
--
-+
+11
+14
+1
+18000000000000000000
 Note
-In the first test case,
-1+2=3
+In the first test case, the best way is to choose
+i=1
+,
+j=3
+in the first operation. The final sequence is
+[7,4]
 .
-In the second test case,
-3−2=1
-.
-In the third test case,
-2−9=−7
-. Note that
-c
-can be negative.

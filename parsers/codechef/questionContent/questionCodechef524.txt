@@ -1,70 +1,71 @@
-Fit in Data Type
+Multiple Choice Exam
 Problem
-Chef wants to store some important numerical data on his personal computer. He is using a new data type that can store values only from
-0 till
-N both inclusive. If this data type receives a value greater than
-N then it is cyclically converted to fit into the range
-0 to
-N. For example:
-Value
-N+1 will be stored as
-0.
-Value
-N+2 will be stored as
-1.
-and so on...
-Given
-X, the value chef wants to store in this new data type. Determine what will be the actual value in memory after storing
-X.
-Input Format
-First line will contain
-T, number of testcases. Then the testcases follow.
-Each testcase contains a single line of input, two space separated integers
-N,X - the maximum value a data type can store and the value Chef wants to store in the data type respectively.
-Output Format
-For each testcase, output in a single line the value which will be actually stored in memory.
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+Chef is taking a cooking exam. The exam consists of
+N multiple-choice questions numbered
+1 through
+N. In each question, Chef may choose one out of four choices: A, B, C and D, or leave the question unanswered.
+Answering a question correctly gives Chef
+1 point. Not answering a question or answering it incorrectly gives him
+0 points. However, there is a penalty for wrong answers. Specifically, the questions are graded one by one from question
+1 to question
+N; for each
+i (
+1≤i≤N−1), if Chef answered the
+i-th question incorrectly, his answer to the next question (the
+(i+1)-th question) is discarded without being graded. If an answer is discarded, Chef gets
+0 points for it automatically, but even if it was wrong, the next answer is not discarded. There is no penalty for answering the last question incorrectly or for not answering some questions.
+You are given the correct answers to all
+N questions and Chef's answers. Calculate the total number of points Chef scored on the exam.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains a single string
+S with length
+N. For each valid
+i, the
+i-th character of this string denotes the correct answer to the
+i-th question.
+The third line contains a single string
+U with length
+N. For each valid
+i, the
+i-th character of this string is 'N' if Chef did not answer the
+i-th question; otherwise, it denotes Chef's answer to this question.
+Output
+For each test case, print a single line containing one integer — Chef's score.
 Constraints
-1≤T≤3000
-1≤N≤50
-0≤X≤50
+1≤T≤100
+1≤N≤100
+S contains only characters 'A', 'B', 'C', 'D'
+U contains only characters 'A', 'B', 'C', 'D', 'N'
 Sample 1:
 Input
 Output
-5
-15 0
-15 10
-11 12
-27 37
-50 49
-0
-10
-0
-9
-49
+3
+6
+ABCDAB
+ABCDAB
+8
+DDCABCCA
+DNCBBBBA
+3
+CDD
+NDC
+6
+3
+1
 Explanation:
-Test Case
-1: The data type can store values from
-0 to
-15. If we try to put
-0 in this data type, then the stored value will be the same, that is
-0.
-Test Case
-2: The data type can store values from
-0 to
-15. If we try to put
-10 in this data type, then the stored value will be the same, that is
-10.
-Test Case
-3: The data type can store values from
-0 to
-11. If we try to put
-12 in this data type, then the stored value will cyclically come back to
-0. Hence the output is
-0.
-Test Case
-4: The data type can store values from
-0 to
-27. If we try to put
-37 in this data type, then the stored value will cyclically convert to
-9. Hence the output is
-9.
+Example case 1: Chef's answers were all correct, so he got a full score.
+Example case 2: Chef did not answer question
+2 and he answered questions
+4 and
+6 incorrectly, which resulted in discarding answers to questions
+5 and
+7. Note that even though Chef's answer to question
+7 was wrong, it was discarded, so it did not result in discarding his answer to question
+8.
+Example case 3: Chef did not answer the first question and he answered the last question incorrectly, but there is no penalty for that.

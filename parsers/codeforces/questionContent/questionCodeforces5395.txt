@@ -1,31 +1,36 @@
-B. Code obfuscation
-time limit per test2 seconds
-memory limit per test512 megabytes
+B. Timofey and cubes
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Kostya likes Codeforces contests very much. However, he is very disappointed that his solutions are frequently hacked. That's why he decided to obfuscate (intentionally make less readable) his code before upcoming contest.
-To obfuscate the code, Kostya first looks at the first variable name used in his program and replaces all its occurrences with a single symbol a, then he looks at the second variable name that has not been replaced yet, and replaces all its occurrences with b, and so on. Kostya is well-mannered, so he doesn't use any one-letter names before obfuscation. Moreover, there are at most 26 unique identifiers in his programs.
-You are given a list of identifiers of some program with removed spaces and line breaks. Check if this program can be a result of Kostya's obfuscation.
+Young Timofey has a birthday today! He got kit of n cubes as a birthday present from his parents. Every cube has a number ai, which is written on it. Timofey put all the cubes in a row and went to unpack other presents.
+In this time, Timofey's elder brother, Dima reordered the cubes using the following rule. Suppose the cubes are numbered from 1 to n in their order. Dima performs several steps, on step i he reverses the segment of cubes from i-th to (n - i + 1)-th. He does this while i ≤ n - i + 1.
+After performing the operations Dima went away, being very proud of himself. When Timofey returned to his cubes, he understood that their order was changed. Help Timofey as fast as you can and save the holiday — restore the initial order of the cubes using information of their current location.
 Input
-In the only line of input there is a string S of lowercase English letters (1 ≤ |S| ≤ 500) — the identifiers of a program with removed whitespace characters.
+The first line contains single integer n (1 ≤ n ≤ 2·105) — the number of cubes.
+The second line contains n integers a1, a2, ..., an ( - 109 ≤ ai ≤ 109), where ai is the number written on the i-th cube after Dima has changed their order.
 Output
-If this program can be a result of Kostya's obfuscation, print "YES" (without quotes), otherwise print "NO".
+Print n integers, separated by spaces — the numbers written on the cubes in their initial order.
+It can be shown that the answer is unique.
 Examples
 input
 Copy
-abacaba
+7
+4 3 7 6 9 1 2
 output
 Copy
-YES
+2 3 9 6 7 1 4
 input
 Copy
-jinotega
+8
+6 1 4 2 5 6 9 2
 output
 Copy
-NO
+2 1 6 2 5 4 9 6
 Note
-In the first sample case, one possible list of identifiers would be "number string number character number string number". Here how Kostya would obfuscate the program:
-replace all occurences of number with a, the result would be "a string a character a string a",
-replace all occurences of string with b, the result would be "a b a character a b a",
-replace all occurences of character with c, the result would be "a b a c a b a",
-all identifiers have been replaced, thus the obfuscation is finished.
+Consider the first sample.
+At the begining row was [2, 3, 9, 6, 7, 1, 4].
+After first operation row was [4, 1, 7, 6, 9, 3, 2].
+After second operation row was [4, 3, 9, 6, 7, 1, 2].
+After third operation row was [4, 3, 7, 6, 9, 1, 2].
+At fourth operation we reverse just middle element, so nothing has changed. The final row is [4, 3, 7, 6, 9, 1, 2]. So the answer for this case is row [2, 3, 9, 6, 7, 1, 4].

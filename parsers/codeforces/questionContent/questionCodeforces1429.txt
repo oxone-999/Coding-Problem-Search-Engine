@@ -1,148 +1,148 @@
-B. Mathematics Curriculum
-time limit per test2 seconds
+D. Subsequence
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let
-c
+Alice has an integer sequence
+a
+of length
+n
+and all elements are different. She will choose a subsequence of
+a
+of length
+m
+, and defines the value of a subsequence
+a
+b
 1
 ,
-c
+a
+b
 2
 ,…,
-c
-n
-be a permutation of integers
-1,2,…,n
-. Consider all subsegments of this permutation containing an integer
-x
-. Given an integer
+a
+b
 m
-, we call the integer
-x
-good if there are exactly
+as
+∑
+i=1
 m
-different values of maximum on these subsegments.
-Cirno is studying mathematics, and the teacher asks her to count the number of permutations of length
-n
-with exactly
-k
-good numbers.
-Unfortunately, Cirno isn't good at mathematics, and she can't answer this question. Therefore, she asks you for help.
-Since the answer may be very big, you only need to tell her the number of permutations modulo
-p
+(m⋅
+a
+b
+i
+)−
+∑
+i=1
+m
+∑
+j=1
+m
+f(min(
+b
+i
+,
+b
+j
+),max(
+b
+i
+,
+b
+j
+)),
+m
+m
+m
+where
+f(i,j)
+denotes
+min(
+a
+i
+,
+a
+i+1
+,…,
+a
+j
+)
 .
-A permutation is an array consisting of
-n
-distinct integers from
-1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
-2
-appears twice in the array) and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
+Alice wants you to help her to maximize the value of the subsequence she choose.
 A sequence
-a
-is a subsegment of a sequence
-b
+s
+is a subsequence of a sequence
+t
 if
-a
+s
 can be obtained from
-b
-by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end.
+t
+by deletion of several (possibly, zero or all) elements.
 Input
-The first line contains four integers
-n,m,k,p
+The first line contains two integers
+n
+and
+m
 (
-1≤n≤100,1≤m≤n,1≤k≤n,1≤p≤
-10
-9
+1≤m≤n≤4000
+).
+The second line contains
+n
+distinct integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+<
+2
+31
 ).
 Output
-Output the number of permutations modulo
-p
-.
+Print the maximal value Alice can get.
 Examples
 input
 Copy
-4 3 2 10007
+6 4
+15 2 18 12 13 4
 output
 Copy
-4
+100
 input
 Copy
-6 4 1 769626776
+11 5
+9 3 7 1 8 12 10 20 15 18 5
 output
 Copy
-472
+176
 input
 Copy
-66 11 9 786747482
+1 1
+114514
 output
 Copy
-206331312
+0
 input
 Copy
-99 30 18 650457567
+2 1
+666 888
 output
 Copy
-77365367
+0
 Note
-In the first test case, there are four permutations:
-[1,3,2,4]
-,
-[2,3,1,4]
-,
-[4,1,3,2]
-and
-[4,2,3,1]
+In the first example, Alice can choose the subsequence
+[15,2,18,13]
+, which has the value
+4⋅(15+2+18+13)−(15+2+2+2)−(2+2+2+2)−(2+2+18+12)−(2+2+12+13)=100
+. In the second example, there are a variety of subsequences with value
+176
+, and one of them is
+[9,7,12,20,18]
 .
-Take permutation
-[1,3,2,4]
-as an example:
-For number
-1
-, all subsegments containing it are:
-[1]
-,
-[1,3]
-,
-[1,3,2]
-and
-[1,3,2,4]
-, and there're three different maxima
-1
-,
-3
-and
-4
-.
-Similarly, for number
-3
-, there're two different maxima
-3
-and
-4
-. For number
-2
-, there're three different maxima
-2
-,
-3
-and
-4
-. And for number
-4
-, there're only one, that is
-4
-itself.

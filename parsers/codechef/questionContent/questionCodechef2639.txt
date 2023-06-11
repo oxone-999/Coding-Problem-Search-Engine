@@ -1,102 +1,61 @@
-Golomb Sequence
+Mex Subsequence
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-The Golomb sequence
-G
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+Ridbit is given an array
+a
 1
-,G
+,a
 2
-,… is a non-decreasing integer sequence such that for each positive integer
-n,
-G
-n
-is the number of occurrences of
-n in this sequence. The first few elements of
-G are
-[1,2,2,3,3,4,4,4,5,…]. Do you know the recurrence relation for the Golomb sequence? It is
-G
-1
-=1 and
-G
-n+1
-=1+G
-n+1−G
-G
-n
-for each
-n≥1. A self-describing sequence, isn't it?
-Mr. Strange wants to learn CP, so he asked Chef, who is one of the best competitive programmers in the world, to teach him. Chef decided to test his ability by giving him the following task.
-Find the sum of squares of the
-L-th through
-R-th term of the Golomb sequence, i.e.
-S=∑
-i=L
-R
-G
-i
-2
-. Since the sum can be quite large, compute it modulo
-10
-9
-+7.
-Can you help Mr. Strange carry out this task given to him by his teacher?
+,…,a
+N
+. He needs to find the number of ways to divide the array into contiguous subarrays such that:
+Each element of the sequence
+a belongs to exactly one of the subarrays.
+There is an integer
+m such that the MEX of every subarray is equal to
+m. The MEX of a sequence is the smallest non-negative integer which does not occur in this sequence.
+Help Ridbit with this task.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first and only line of each test case contains two space-separated integers
-L and
-R.
+The first line of each test case contains a single integer
+N.
+The second line contains
+N space-separated integers
+a
+1
+,a
+2
+,…,a
+N
+.
 Output
-For each test case, print a single line containing one integer
-S modulo
+For each test case, print a single line containing one integer ― the number of ways to divide the sequence, modulo
 10
 9
 +7.
 Constraints
 1≤T≤10
-5
-1≤L≤R≤10
-10
-Subtasks
-Subtask #1 (50 points):
-T≤10
-2
-R≤10
-9
-Subtask #2 (50 points): original constraints
+1≤N≤100,000
+0≤a
+i
+≤N for each valid
+i
 Sample 1:
 Input
 Output
+2
+6
+1 0 0 1 0 1
 3
-1 5
-2 4
-100 100
-27
-17
-441
+1 2 3
+5
+4
 Explanation:
-Example case 1:
-1
-2
-+2
-2
-+2
-2
-+3
-2
-+3
-2
-=27
-Example case 2:
-2
-2
-+2
-2
-+3
-2
-=17
-Example case 3:
-21
-2
-=441
+Example case 1: The five valid ways to divide the sequence are:
+[1,0,0,1,0,1]
+[1,0],[0,1,0,1]
+[1,0,0],[1,0,1]
+[1,0,0,1],[0,1]
+[1,0],[0,1],[0,1]

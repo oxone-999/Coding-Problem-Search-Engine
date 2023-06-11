@@ -1,230 +1,187 @@
-D. Finding Zero
+F. Fibonacci Additions
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem.
-We picked an array of whole numbers
-a
+One of my most productive days was throwing away 1,000 lines of code.
+— Ken Thompson
+Fibonacci addition is an operation on an array
+X
+of integers, parametrized by indices
+l
+and
+r
+. Fibonacci addition increases
+X
+l
+by
+F
 1
-,
-a
+, increases
+X
+l+1
+by
+F
 2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤
-10
-9
-) and concealed exactly one zero in it! Your goal is to find the location of this zero, that is, to find
-i
-such that
-a
-i
-=0
+, and so on up to
+X
+r
+which is increased by
+F
+r−l+1
 .
-You are allowed to make several queries to guess the answer. For each query, you can think up three distinct indices
-i,j,k
-, and we will tell you the value of
-max(
-a
+F
 i
-,
-a
-j
-,
-a
-k
-)−min(
-a
+denotes the
 i
+-th Fibonacci number (
+F
+1
+=1
 ,
-a
-j
+F
+2
+=1
 ,
-a
-k
-)
-. In other words, we will tell you the difference between the maximum and the minimum number among
-a
+F
 i
-,
-a
-j
+=
+F
+i−1
++
+F
+i−2
+for
+i>2
+), and all operations are performed modulo
+MOD
+.
+You are given two arrays
+A
 and
-a
-k
-.
-You are allowed to make no more than
-2⋅n−2
-queries, and after that you have two tries to guess where the zero is. That is, you have to tell us two numbers
-i
+B
+of the same length. We will ask you to perform several Fibonacci additions on these arrays with different parameters, and after each operation you have to report whether arrays
+A
 and
-j
-and you win if
-a
-i
-=0
-or
-a
-j
-=0
+B
+are equal modulo
+MOD
 .
-Can you guess where we hid the zero?
-Note that the array in each test case is fixed beforehand and will not change during the game. In other words, the interactor is not adaptive.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
+The first line contains 3 numbers
+n
+,
+q
+and
+MOD
 (
-1≤t≤500
-). Description of the test cases follows.
-The first and only line of each test case contains an integer
-n
-(
-4≤n≤1000
-) — the length of the array that we picked.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-3000
-.
-Interaction
-For each test case, the interaction starts with reading
-n
-.
-To make a query, print "?
-i
-j
-k
-" (without quotes,
-1≤i,j,k≤n
-, indices must be distinct). Then you should read our response from standard input, that is,
-max(
-a
-i
-,
-a
-j
-,
-a
-k
-)−min(
-a
-i
-,
-a
-j
-,
-a
-k
-)
-.
-If the response is
-−1
-, it means your program has made an invalid query or has run out of tries. Your program must terminate immediately after reading
-−1
-, and you will get a verdict Wrong answer. Otherwise you may get any verdict, because the program will continue reading from the closed stream. Note that if the query is correct, the answer will never be
-−1
-because
-max(
-a
-i
-,
-a
-j
-,
-a
-k
-)−min(
-a
-i
-,
-a
-j
-,
-a
-k
-)≥0
-.
-To give the final answer, print "!
-i
-j
-" (without the quotes). Printing the same number twice (that is,
-i=j
-) is allowed. Note that giving this answer is not counted towards the limit of
-2⋅n−2
-queries. After that, your program must continue to solve the remaining test cases, or exit if all test cases have been solved.
-After printing a query, don't forget to output line feed and flush the output buffer. Otherwise you will get the verdict Idleness limit exceeded. To flush the buffer, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-Read documentation for other languages.
-Hacks
-The first line must contain an integer
-t
-(
-1≤t≤500
-) — the count of test cases.
-The first line of each test case must contain an integer
-n
-(
-4≤n≤1000
-) — the length of the hidden array.
-The second line of each test case must contain
-n
-integers separated by spaces —
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-0≤
-a
-i
-≤
+1≤n,q≤3⋅
+10
+5
+,1≤MOD≤
 10
 9
-). There must also be exactly one zero in this array.
-The sum of
++7
+) — the length of the arrays, the number of operations, and the number modulo which all operations are performed.
+The second line contains
 n
-over all test cases must not exceed
-3000
+numbers — array
+A
+(
+0≤
+A
+i
+<MOD
+).
+The third line also contains
+n
+numbers — array
+B
+(
+0≤
+B
+i
+<MOD
+).
+The next
+q
+lines contain character
+c
+and two numbers
+l
+and
+r
+(
+1≤l≤r≤n
+) — operation parameters. If
+c
+is "A", Fibonacci addition is to be performed on array
+A
+, and if it is is "B", the operation is to be performed on
+B
 .
-Example
+Output
+After each operation, print "YES" (without quotes) if the arrays are equal and "NO" otherwise. Letter case does not matter.
+Examples
 input
 Copy
-1
-
-4
-
-2
-
-3
-
-3
-
-2
+3 5 3
+2 2 1
+0 0 0
+A 1 3
+A 1 3
+B 1 1
+B 2 2
+A 3 3
 output
 Copy
-? 1 2 3
-
-? 2 3 4
-
-? 3 4 1
-
-? 4 1 2
-
-! 2 3
+YES
+NO
+NO
+NO
+YES
+input
+Copy
+5 3 10
+2 5 0 3 5
+3 5 8 2 5
+B 2 3
+B 3 4
+A 1 2
+output
+Copy
+NO
+NO
+YES
 Note
-Array from sample:
-[1,2,0,3]
+Explanation of the test from the condition:
+Initially
+A=[2,2,1]
+,
+B=[0,0,0]
+.
+After operation "A 1 3":
+A=[0,0,0]
+,
+B=[0,0,0]
+(addition is modulo 3).
+After operation "A 1 3":
+A=[1,1,2]
+,
+B=[0,0,0]
+.
+After operation "B 1 1":
+A=[1,1,2]
+,
+B=[1,0,0]
+.
+After operation "B 2 2":
+A=[1,1,2]
+,
+B=[1,1,0]
+.
+After operation "A 3 3":
+A=[1,1,0]
+,
+B=[1,1,0]
 .

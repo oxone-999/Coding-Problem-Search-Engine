@@ -1,168 +1,114 @@
-D. 505
-time limit per test1 second
+B. Omkar and Infinity Clock
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A binary matrix is called good if every even length square sub-matrix has an odd number of ones.
-Given a binary matrix
+Being stuck at home, Ray became extremely bored. To pass time, he asks Lord Omkar to use his time bending power: Infinity Clock! However, Lord Omkar will only listen to mortals who can solve the following problem:
+You are given an array
 a
-consisting of
+of
 n
-rows and
-m
-columns, determine the minimum number of cells you need to change to make it good, or report that there is no way to make it good at all.
-All the terms above have their usual meanings — refer to the Notes section for their formal definitions.
+integers. You are also given an integer
+k
+. Lord Omkar wants you to do
+k
+operations with this array.
+Define one operation as the following:
+Set
+d
+to be the maximum value of your array.
+For every
+i
+from
+1
+to
+n
+, replace
+a
+i
+with
+d−
+a
+i
+.
+The goal is to predict the contents in the array after
+k
+operations. Please help Ray determine what the final sequence will look like!
 Input
-The first line of input contains two integers
-n
-and
-m
+Each test contains multiple test cases. The first line contains the number of cases
+t
 (
-1≤n≤m≤
-10
-6
-and
-n⋅m≤
-10
-6
-)  — the number of rows and columns in
-a
-, respectively.
-The following
+1≤t≤100
+). Description of the test cases follows.
+The first line of each test case contains two integers
 n
-lines each contain
-m
-characters, each of which is one of 0 and 1. If the
-j
--th character on the
-i
--th line is 1, then
+and
+k
+(
+1≤n≤2⋅
+10
+5
+,1≤k≤
+10
+18
+) – the length of your array and the number of operations to perform.
+The second line of each test case contains
+n
+integers
 a
-i,j
-=1
-. Similarly, if the
-j
--th character on the
-i
--th line is 0, then
+1
+,
 a
-i,j
-=0
+2
+,...,
+a
+n
+(−
+10
+9
+≤
+a
+i
+≤
+10
+9
+)
+– the initial contents of your array.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
 .
 Output
-Output the minimum number of cells you need to change to make
+For each case, print the final version of array
 a
-good, or output
-−1
-if it's not possible at all.
-Examples
+after
+k
+operations described above.
+Example
 input
 Copy
-3 3
-101
-001
-110
+3
+2 1
+-199 192
+5 19
+5 -1 4 2 0
+1 2
+69
 output
 Copy
-2
-input
-Copy
-7 15
-000100001010010
-100111010110001
-101101111100100
-010000111111010
-111010010100001
-000011001111101
-111111011010011
-output
-Copy
--1
+391 0
+0 6 1 3 5
+0
 Note
-In the first case, changing
-a
-1,1
-to
-0
-and
-a
-2,2
-to
-1
-is enough.
-You can verify that there is no way to make the matrix in the second case good.
-Some definitions —
-A binary matrix is one in which every element is either
-1
-or
-0
+In the first test case the array changes as follows:
+Initially, the array is
+[−199,192]
 .
-A sub-matrix is described by
-4
-parameters —
-r
-1
-,
-r
-2
-,
-c
-1
-, and
-c
-2
-; here,
-1≤
-r
-1
-≤
-r
-2
-≤n
-and
-1≤
-c
-1
-≤
-c
-2
-≤m
+d=192
 .
-This sub-matrix contains all elements
-a
-i,j
-that satisfy both
-r
-1
-≤i≤
-r
-2
-and
-c
-1
-≤j≤
-c
-2
-.
-A sub-matrix is, further, called an even length square if
-r
-2
-−
-r
-1
-=
-c
-2
-−
-c
-1
-and
-r
-2
-−
-r
-1
-+1
-is divisible by
-2
+After the operation, the array becomes
+[d−(−199),d−192]=[391,0]
 .

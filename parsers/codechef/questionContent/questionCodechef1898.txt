@@ -1,97 +1,107 @@
-Gold Mining
+Partition the Graph
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef and Chefu are working as gold miners. There are a total of
-N gold mines, numbered
+###Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given a tree
+G with
+N vertices numbered
 1 through
-N. For each valid
-i, the
-i-th gold mine contains
-G
-i
-gold in total; if only Chef worked in it, it would take him
-A
-i
-days to completely mine it, while if only Chefu worked in it, it would take him
-B
-i
-days.
-Each of our miners may only work in one mine at a time, but they may decide to start working in another mine at any time (even in the middle of some day), any number of times. They also choose the mines to work in independently from each other and they may work in the same mine at the same time. Mining gold is a continuous process, i.e. if a miner works for
-t days (where
-t is a real number) in a mine where this miner has mining speed
-g gold per day, then he will mine
-g⋅t gold. Obviously, it is impossible to work in a mine after no gold remains in it. For example, if a gold mine contains
-30 gold and Chef needs
-2 days to completely mine it, but he spends
-1 day in it, then he will mine
-15 gold; if Chefu needs
-1 day to completely mine the same gold mine, and both Chef and Chefu start working in this mine at the same time, it will be empty after
-2/3 days ― Chefu will mine
-20 gold, while Chef will mine
-10 gold.
-At each point of time, both Chef and Chefu know the gold mine in which the other miner is working. Each of them wants to gather the maximum amount of gold for himself. Find the amounts of gold the miners will have if they both act optimally.
+N. It is guaranteed that
+N is even.
+For a positive integer
+k, let's define a graph
+H
+k
+as follows:
+H
+k
+has
+N vertices numbered
+1 through
+N.
+For each edge
+(u,v) in
+G, there is an edge
+(u,v) in
+H
+k
+too.
+For each pair of vertices
+(u,v) in
+G such that their distance is at most
+k, there is an edge
+(u,v) in
+H
+k
+.
+We call a graph good if its vertices can be split into two sets
+U and
+V satisfying the following:
+Each vertex appears in exactly one set;
+∣U∣=∣V∣=N/2.
+Let
+E be the set of edges
+(u,v) such that
+u∈U and
+v∈V. It is possible to reach any vertex from any other vertex using only the edges in
+E.
+Your task is to find the minimum value of
+k such that
+H
+k
+is a good graph, and one possible way to partition vertices of this graph
+H
+k
+into the sets
+U and
+V defined above. If there are multiple solutions, you may find any one.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
 The first line of each test case contains a single integer
 N.
-N lines follow. For each valid
-i, the
-i-th of these lines contains three space-separated integers
-G
-i
-,
-A
-i
-and
-B
-i
-.
+Each of the next
+N−1 lines contains two space-separated integers
+u and
+v denoting an edge between vertices
+u and
+v in
+G.
 Output
-For each test case, print a single line containing two space-separated real numbers ― the amount of gold mined by Chef and the amount of gold mined by Chefu. Your answer will be considered correct if the absolute or relative error of each amount of gold does not exceed
-10
-−6
-.
+For each test case, print three lines.
+The first line should contain a single integer — the minimum value of
+k.
+The second line should contain
+N/2 space-separated integers — the numbers of vertices in your set
+U.
+The third line should also contain
+N/2 space-separated integers — the numbers of vertices in your set
+V.
 Constraints
-1≤T≤1,000
-1≤N≤10
-5
-1≤G
-i
-≤10
-5
-for each valid
-i
-1≤A
-i
-≤10
-5
-for each valid
-i
-1≤B
-i
-≤10
-5
-for each valid
-i
-the sum of
-N over all test cases does not exceed
-10
-6
+1≤T≤100
+2≤N≤10,000
+N is even
+1≤u,v≤N
+the graph on the input is a tree
 Subtasks
-Subtask #1 (50 points):
-N≤2
-Subtask #2 (50 points): original constraints
+25 points:
+1≤N≤200
+75 points: no extra constraints
 Sample 1:
 Input
 Output
 2
+2
+1 2
+6
+1 2
+1 3
+3 4
+3 5
+3 6
 1
-30 2 1
-3
-10 1 1
-20 2 2
-30 3 3
-10.00000 20.00000
-30.00000 30.00000
+1
+2
+2
+1 3 5
+2 4 6

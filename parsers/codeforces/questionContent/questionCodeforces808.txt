@@ -1,177 +1,141 @@
-E. Ambiguous Dominoes
-time limit per test8 seconds
-memory limit per test256 megabytes
+B. NIT Destroys the Universe
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Polycarp and Monocarp are both solving the same puzzle with dominoes. They are given the same set of
+For a collection of integers
+S
+, define
+mex(S)
+as the smallest non-negative integer that does not appear in
+S
+.
+NIT, the cleaver, decides to destroy the universe. He is not so powerful as Thanos, so he can only destroy the universe by snapping his fingers several times.
+The universe can be represented as a 1-indexed array
+a
+of length
 n
-dominoes, the
-i
--th of which contains two numbers
-x
-i
+. When NIT snaps his fingers, he does the following operation on the array:
+He selects positive integers
+l
 and
-y
-i
-. They are also both given the same
-m
-by
-k
-grid of values
-a
-ij
+r
 such that
-m⋅k=2n
-.
-The puzzle asks them to place the
-n
-dominoes on the grid in such a way that none of them overlap, and the values on each domino match the
+1≤l≤r≤n
+. Let
+w=mex({
 a
-ij
-values that domino covers. Dominoes can be rotated arbitrarily before being placed on the grid, so the domino
-(
-x
-i
+l
 ,
-y
+a
+l+1
+,…,
+a
+r
+})
+. Then, for all
+l≤i≤r
+, set
+a
 i
-)
-is equivalent to the domino
-(
-y
-i
-,
-x
-i
-)
+to
+w
 .
-They have both solved the puzzle, and compared their answers, but noticed that not only did their solutions not match, but none of the
-n
-dominoes were in the same location in both solutions! Formally, if two squares were covered by the same domino in Polycarp's solution, they were covered by different dominoes in Monocarp's solution. The diagram below shows one potential
+We say the universe is destroyed if and only if for all
+1≤i≤n
+,
 a
-grid, along with the two players' solutions.
-Polycarp and Monocarp remember the set of dominoes they started with, but they have lost the grid
-a
-. Help them reconstruct one possible grid
-a
-, along with both of their solutions, or determine that no such grid exists.
+i
+=0
+holds.
+Find the minimum number of times NIT needs to snap his fingers to destroy the universe. That is, find the minimum number of operations NIT needs to perform to make all elements in the array equal to
+0
+.
 Input
-The first line contains a single integer
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤
+10
+4
+). Description of the test cases follows.
+The first line of each test case contains one integer
 n
 (
-1≤n≤3⋅
+1≤n≤
 10
 5
 ).
-The
-i
--th of the next
+The second line of each test case contains
 n
-lines contains two integers
-x
-i
-and
-y
-i
-(
-1≤
-x
-i
-,
-y
-i
-≤2n
-).
-Output
-If there is no solution, print a single integer
-−1
-.
-Otherwise, print
-m
-and
-k
-, the height and width of the puzzle grid, on the first line of output. These should satisfy
-m⋅k=2n
-.
-The
-i
--th of the next
-m
-lines should contain
-k
-integers, the
-j
--th of which is
+integers
 a
-ij
-.
-The next
-m
-lines describe Polycarp's solution. Print
-m
-lines of
-k
-characters each. For each square, if it is covered by the upper half of a domino in Polycarp's solution, it should contain a "U". Similarly, if it is covered by the bottom, left, or right half of a domino, it should contain "D", "L", or "R", respectively.
-The next
-m
-lines should describe Monocarp's solution, in the same format as Polycarp's solution.
-If there are multiple answers, print any.
-Examples
-input
-Copy
 1
-1 2
-output
-Copy
--1
-input
-Copy
+,
+a
 2
-1 1
-1 2
-output
-Copy
-2 2
-
-2 1
-1 1
-
-LR
-LR
-
-UU
-DD
+,
+…
+,
+a
+n
+(
+0≤
+a
+i
+≤
+10
+9
+).
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+.
+Output
+For each test case, print one integer — the answer to the problem.
+Example
 input
 Copy
-10
-1 3
-1 1
-2 1
-3 4
-1 5
-1 5
-3 1
-2 4
-3 3
-4 1
+4
+4
+0 0 0 0
+5
+0 1 2 3 4
+7
+0 2 3 0 1 2 0
+1
+1000000000
 output
 Copy
-4 5
-
-1 2 5 1 5
-3 4 1 3 1
-1 2 4 4 1
-1 3 3 3 1
-
-LRULR
-LRDLR
-ULRLR
-DLRLR
-
-UULRU
-DDUUD
-LRDDU
-LRLRD
+0
+1
+2
+1
 Note
-Extra blank lines are added to the output for clarity, but are not required.
-The third sample case corresponds to the image from the statement.
+In the first test case, we do
+0
+operations and all elements in the array are already equal to
+0
+.
+In the second test case, one optimal way is doing the operation with
+l=2
+,
+r=5
+.
+In the third test case, one optimal way is doing the operation twice, respectively with
+l=4
+,
+r=4
+and
+l=2
+,
+r=6
+.
+In the fourth test case, one optimal way is doing the operation with
+l=1
+,
+r=1
+.

@@ -1,146 +1,179 @@
-E. Egor in the Republic of Dagestan
-time limit per test2 seconds
+C. Discrete Acceleration
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Egor is a famous Russian singer, rapper, actor and blogger, and finally he decided to give a concert in the sunny Republic of Dagestan.
-There are
-n
-cities in the republic, some of them are connected by
-m
-directed roads without any additional conditions. In other words, road system of Dagestan represents an arbitrary directed graph. Egor will arrive to the city
+There is a road with length
+l
+meters. The start of the road has coordinate
+0
+, the end of the road has coordinate
+l
+.
+There are two cars, the first standing at the start of the road and the second standing at the end of the road. They will start driving simultaneously. The first car will drive from the start to the end and the second car will drive from the end to the start.
+Initially, they will drive with a speed of
 1
-, travel to the city
+meter per second. There are
 n
-by roads along some path, give a concert and fly away.
-As any famous artist, Egor has lots of haters and too annoying fans, so he can travel only by safe roads. There are two types of the roads in Dagestan, black and white: black roads are safe at night only, and white roads — in the morning. Before the trip Egor's manager's going to make a schedule: for each city he'll specify it's color, black or white, and then if during the trip they visit some city, the only time they can leave it is determined by the city's color: night, if it's black, and morning, if it's white. After creating the schedule Egor chooses an available path from
+flags at different coordinates
+a
 1
-to
+,
+a
+2
+,…,
+a
 n
-, and for security reasons it has to be the shortest possible.
-Egor's manager likes Dagestan very much and wants to stay here as long as possible, so he asks you to make such schedule that there would be no path from
+. Each time when any of two cars drives through a flag, the speed of that car increases by
 1
-to
-n
-or the shortest path's length would be greatest possible.
-A path is one city or a sequence of roads such that for every road (excluding the first one) the city this road goes from is equal to the city previous road goes into. Egor can move only along paths consisting of safe roads only.
-The path length is equal to the number of roads in it. The shortest path in a graph is a path with smallest length.
+meter per second.
+Find how long will it take for cars to meet (to reach the same coordinate).
 Input
-The first line contains two integers
-n
-,
-m
-(
-1≤n≤500000
-,
-0≤m≤500000
-) — the number of cities and the number of roads.
-The
-i
--th of next
-m
-lines contains three integers —
-u
-i
-,
-v
-i
-and
+The first line contains one integer
 t
-i
 (
-1≤
-u
-i
-,
-v
-i
-≤n
-,
-t
-i
-∈{0,1}
-) — numbers of cities connected by road and its type, respectively (
-0
-— night road,
-1
-— morning road).
-Output
-In the first line output the length of the desired path (or
-−1
-, if it's possible to choose such schedule that there's no path from
-1
-to
-n
-).
-In the second line output the desired schedule — a string of
-n
-digits, where
-i
--th digit is
-0
-, if the
-i
--th city is a night one, and
-1
-if it's a morning one.
-If there are multiple answers, print any.
-Examples
-input
-Copy
-3 4
-1 2 0
-1 3 1
-2 3 0
-2 3 1
-output
-Copy
-2
-011
-input
-Copy
-4 8
-1 1 0
-1 3 0
-1 3 1
-3 2 0
-2 1 0
-3 4 1
-2 4 0
-2 4 1
-output
-Copy
-3
-1101
-input
-Copy
-5 10
-1 2 0
-1 3 1
-1 4 0
-2 3 0
-2 3 1
-2 5 0
-3 4 0
-3 4 1
-4 2 1
-4 5 0
-output
-Copy
--1
-11111
-Note
-For the first sample, if we paint city
-1
-white, the shortest path is
-1→3
-. Otherwise, it's
-1→2→3
-regardless of other cities' colors.
-For the second sample, we should paint city
-3
-black, and there are both black and white roads going from
-2
-to
+1≤t≤
+10
 4
-. Note that there can be a road connecting a city with itself.
+): the number of test cases.
+The first line of each test case contains two integers
+n
+,
+l
+(
+1≤n≤
+10
+5
+,
+1≤l≤
+10
+9
+): the number of flags and the length of the road.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+in the increasing order (
+1≤
+a
+1
+<
+a
+2
+<…<
+a
+n
+<l
+).
+It is guaranteed that the sum of
+n
+among all test cases does not exceed
+10
+5
+.
+Output
+For each test case print a single real number: the time required for cars to meet.
+Your answer will be considered correct, if its absolute or relative error does not exceed
+10
+−6
+. More formally, if your answer is
+a
+and jury's answer is
+b
+, your answer will be considered correct if
+|a−b|
+max(1,b)
+≤
+10
+−6
+.
+Example
+input
+Copy
+5
+2 10
+1 9
+1 10
+1
+5 7
+1 2 3 4 6
+2 1000000000
+413470354 982876160
+9 478
+1 10 25 33 239 445 453 468 477
+output
+Copy
+3.000000000000000
+3.666666666666667
+2.047619047619048
+329737645.750000000000000
+53.700000000000000
+Note
+In the first test case cars will meet in the coordinate
+5
+.
+The first car will be in the coordinate
+1
+in
+1
+second and after that its speed will increase by
+1
+and will be equal to
+2
+meters per second. After
+2
+more seconds it will be in the coordinate
+5
+. So, it will be in the coordinate
+5
+in
+3
+seconds.
+The second car will be in the coordinate
+9
+in
+1
+second and after that its speed will increase by
+1
+and will be equal to
+2
+meters per second. After
+2
+more seconds it will be in the coordinate
+5
+. So, it will be in the coordinate
+5
+in
+3
+seconds.
+In the second test case after
+1
+second the first car will be in the coordinate
+1
+and will have the speed equal to
+2
+meters per second, the second car will be in the coordinate
+9
+and will have the speed equal to
+1
+meter per second. So, they will meet after
+9−1
+2+1
+=
+8
+3
+seconds. So, the answer is equal to
+1+
+8
+3
+=
+11
+3
+.

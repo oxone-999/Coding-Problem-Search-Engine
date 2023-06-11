@@ -1,36 +1,33 @@
-Adding Fractions
+Healthy dinner party
 Problem
-You have discovered a new way to add fractions ! Now, the result of adding fractions a/b and c/d is (a + c)/(b + d). Similarly the result of adding 3 fractions a/b, c/d, e/f is (a + c + e)/(b + d + f), and so on. You are given a list of N fractions a_1/b_1, a_2/b_2,...,a_N/b_N. You wonder what for each fraction i is the maximum fraction that you can obtain by adding together some continuous fractions in the list (possibly 1) starting at i ?
-For example, let N = 4 and the fractions be 1/1, 4/3, 10/1 and 5/4. The maximum fraction you can obtain by starting at index 1 is 3/1 (1/1 + 4/3 + 10/1). Similarly, the maximum fraction you can obtain by starting at index 2 is 7/2 (4/3 + 10/1). By starting at index 3, the maximum sum you can obtain is 10/1 itself, and by starting at index 4, you can obtain sum 5/4.
-Input :
-The first line contains T the number of test cases. T test cases follow. The first line of each test case contains N. Each of the next N lines contains a fraction given in the form "a_i/b_i". A blank line seperates two test cases.
-Output :
-For each test case, output N lines. The ith line contains the maximum fraction you can obtain by adding continuous fractions in the list starting at index i. The numerator and denominator of any fraction you output should have gcd 1. Output a blank line after each test case.
-Constraints :
-1 <= T <= 5
-1 <= n <= 100000
-1 <= a_k,b_k <= 100000
+The Chef is having a dinner party and invited over all his friends. His guests being fairly health conscious have exact protein requirements, and The Chef wishes to oblige them all.
+The Chef will cook dishes for each individual guest using the ingredients in his kitchen. Each ingredient has a specific amount of protein. The complete dish will have a protein content value equal to the sum of the protein contents of the individual ingredients. To cook a dish, The Chef can use any of the ingredients which appear on his shelf, but only in the order which they appear on the shelf. The same ingredient may appear multiple times, and can also be used as many times as it appears.
+There are multiple ways to choose ingredients following the rules given above. However, The Chef is only interested in choosing the set of ingredients that appear first in a lexicographically ordered list of ingredients which satisfy the protein constraints. Your job is to write a program that helps The Chef figure out which dish to serve!
+Input
+The first line of input contains t, the number of guests invited by The Chef (about 200).
+Each test consists of three lines:
+The first line consists of one integer 1 <= k <= 26 (the number of unique ingredients on the shelf) and than k space-separated positive integers from the set {1, 2, ... ,15} describing the protein content for each ingredient in an alphabetically sorted list of unique ingredients. (the first protein value corresponds with ingredient a, the second corresponds with the protein value for ingredient b, and so on).
+The second line contains L - a sequence of lower-case letters of the Latin alphabet (at most 1000) which signify the name of the ingredient.
+The third line contains one positive integer S which specifies the exact protein requirement of this guest (1 < S < 500).
+Output
+For each testcase either output the sequence of ingredients as described above, or the word 'IMPOSSIBLE' if no such subsequence exists.
 Sample 1:
 Input
 Output
+3
+5 12 1 12 4 4
+acccdadceb
 2
-4
-1/1
-4/3
-10/1
-5/4
-5
-1/3
-3/1
-2/5
-5/6
-6/5
-3/1
-7/2
-10/1
-5/4
-1/1
-3/1
-13/16
-1/1
-6/5
+3 5 4 6
+abcbacbabcc
+15
+2 3 4
+baba
+7
+IMPOSSIBLE
+aaa
+ab
+Explanation:
+For the first guest we have five ingredients: a, b, c, d, e with protein values 12 1 12 4 4 respectively. To achieve a total protein value equal to 2 we need two ingredients b. But there is only one, thus the answer is IMPOSSIBLE.
+For the second guest we can achieve a total protein value of 15 with the ingredients taken as: abc, bca, acb, cab, cba, bac, or aaa. Of these, the first according to lexicographic order is aaa.
+For the third guest, out of the two possibilities, ab is the correct answer.

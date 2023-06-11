@@ -1,90 +1,137 @@
-D. Zookeeper and The Infinite Zoo
-time limit per test3 seconds
+G. Switch and Flip
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There is a new attraction in Singapore Zoo: The Infinite Zoo.
-The Infinite Zoo can be represented by a graph with an infinite number of vertices labeled
-1,2,3,…
-. There is a directed edge from vertex
-u
-to vertex
-u+v
-if and only if
-u&v=v
-, where
-&
-denotes the bitwise AND operation. There are no other edges in the graph.
-Zookeeper has
-q
-queries. In the
+There are
+n
+coins labeled from
+1
+to
+n
+. Initially, coin
+c
 i
--th query she will ask you if she can travel from vertex
-u
+is on position
 i
-to vertex
-v
+and is facing upwards ((
+c
+1
+,
+c
+2
+,…,
+c
+n
+)
+is a permutation of numbers from
+1
+to
+n
+). You can do some operations on these coins.
+In one operation, you can do the following:
+Choose
+2
+distinct indices
 i
-by going through directed edges.
+and
+j
+.
+Then, swap the coins on positions
+i
+and
+j
+.
+Then, flip both coins on positions
+i
+and
+j
+. (If they are initially faced up, they will be faced down after the operation and vice versa)
+Construct a sequence of at most
+n+1
+operations such that after performing all these operations the coin
+i
+will be on position
+i
+at the end, facing up.
+Note that you do not need to minimize the number of operations.
 Input
 The first line contains an integer
-q
+n
 (
-1≤q≤
+3≤n≤2⋅
 10
 5
-) — the number of queries.
-The
-i
--th of the next
-q
-lines will contain two integers
-u
-i
+) — the number of coins.
+The second line contains
+n
+integers
+c
+1
 ,
-v
-i
+c
+2
+,…,
+c
+n
 (
 1≤
-u
+c
 i
+≤n
 ,
-v
+c
 i
-<
-2
-30
-) — a query made by Zookeeper.
+≠
+c
+j
+for
+i≠j
+).
 Output
-For the
-i
--th of the
+In the first line, output an integer
 q
-queries, output "YES" in a single line if Zookeeper can travel from vertex
-u
+(0≤q≤n+1)
+— the number of operations you used.
+In the following
+q
+lines, output two integers
 i
-to vertex
-v
-i
-. Otherwise, output "NO".
-You can print your answer in any case. For example, if the answer is "YES", then the output "Yes" or "yeS" will also be considered as correct answer.
-Example
+and
+j
+(1≤i,j≤n,i≠j)
+— the positions you chose for the current operation.
+Examples
+input
+Copy
+3
+2 1 3
+output
+Copy
+3
+1 3
+3 2
+3 1
 input
 Copy
 5
-1 4
-3 6
-1 6
-6 2
-5 5
+1 2 3 4 5
 output
 Copy
-YES
-YES
-NO
-NO
-YES
+0
 Note
-The subgraph on vertices
-1,2,3,4,5,6
-is shown below.
+Let coin
+i
+facing upwards be denoted as
+i
+and coin
+i
+facing downwards be denoted as
+−i
+.
+The series of moves performed in the first sample changes the coins as such:
+[   2,   1,   3]
+[−3,   1,−2]
+[−3,   2,−1]
+[   1,   2,   3]
+In the second sample, the coins are already in their correct positions so there is no need to swap.

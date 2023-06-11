@@ -1,87 +1,49 @@
-C. Segment tree or Fenwick?
-time limit per test2.5 seconds
+F. Keep talking and nobody explodes – easy
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
 This is an unusual problem in an unusual contest, here is the announcement: http://codeforces.com/blog/entry/73543
-You are given an array
-A
-of length
-n
-, initially filled with zeros. You need to process
-q
-queries to the array, each of one of the following types:
-1 x y: you need to assign
-A
+You have the safe lock which consists of 5 decimal digits. If you rotate some digit, it increases by one, except 9 which becomes 0.
+Initially, the lock contains number
 x
-=y
-;
-2 l r: you need to print
-∑
-i=l
-r
-A
-i
-.
-Furthermore, there are
-T
-independent tests you need to process.
+. To unlock the safe you must do the following operations in order (and be careful, don't mix up if and else statements).
+If sum of digits on positions 1 and 4 is greater than 10, rotate digit on position 1 by 3 times, else rotate digit on position 4 by 8 times.
+If sum of digits on positions 3 and 2 is greater than 8, rotate digit on position 4 by 9 times, else rotate digit on position 5 by 8 times.
+If digit on position 3 is odd, rotate digit on position 3 by 3 times, else rotate digit on position 3 by 4 times.
+If digit on position 5 is greater than digit on position 2, rotate digit on position 4 by 1 times, else rotate digit on position 2 by 7 times.
+If digit on position 1 is odd, rotate digit on position 1 by 3 times, else rotate digit on position 3 by 5 times.
+If digit on position 4 is odd, rotate digit on position 4 by 7 times, else rotate digit on position 1 by 9 times.
+If digit on position 4 is greater than digit on position 1, rotate digit on position 4 by 9 times, else rotate digit on position 4 by 2 times.
+If digit on position 1 is greater than digit on position 3, rotate digit on position 2 by 1 times, else rotate digit on position 3 by 1 times.
+If digit on position 5 is greater than digit on position 3, rotate digit on position 4 by 5 times, else rotate digit on position 5 by 8 times.
+If sum of digits on positions 1 and 3 is greater than 8, rotate digit on position 4 by 5 times, else rotate digit on position 2 by 5 times.
+If digit on position 1 is greater than digit on position 4, rotate digit on position 4 by 3 times, else rotate digit on position 2 by 3 times.
+If sum of digits on positions 3 and 1 is greater than 9, rotate digit on position 2 by 9 times, else rotate digit on position 2 by 2 times.
+If sum of digits on positions 4 and 3 is greater than 10, rotate digit on position 4 by 7 times, else rotate digit on position 5 by 7 times.
+If digit on position 3 is greater than digit on position 2, rotate digit on position 3 by 2 times, else rotate digit on position 4 by 6 times.
+If digit on position 1 is greater than digit on position 3, rotate digit on position 1 by 9 times, else rotate digit on position 2 by 9 times.
+If digit on position 3 is odd, rotate digit on position 3 by 9 times, else rotate digit on position 1 by 5 times.
+If sum of digits on positions 3 and 5 is greater than 9, rotate digit on position 3 by 4 times, else rotate digit on position 3 by 9 times.
+If digit on position 3 is greater than digit on position 1, rotate digit on position 5 by 1 times, else rotate digit on position 5 by 7 times.
+If digit on position 1 is greater than digit on position 3, rotate digit on position 2 by 9 times, else rotate digit on position 4 by 6 times.
+If sum of digits on positions 2 and 3 is greater than 10, rotate digit on position 2 by 2 times, else rotate digit on position 3 by 6 times.
 Input
-The first line contains an integer
-T
-(
-1≤T≤
-10
-5
-) — the number of test cases.
-Each test case description starts with two integers
-n,q
-(
-1≤n,q≤
-10
-5
-) — the length of the array and the number of queries. The following
-q
-lines contain the description of queries:
-1 x y
-(
-1≤x≤n
-,
-0≤y≤
-10
-9
-) for queries of the first type and
-2 l r
-(
-1≤l≤r≤n
-) for queries of the second type.
-It is guaranteed that the sum of
-n
-as well as the sum of
-q
-does not exceed
-10
-6
-.
+Input contains single number
+x
+consisting of exactly 5 digits, leading zeroes are allowed.
 Output
-For each query of the second type print its result on a separate line.
-Example
+Output the number after applying all operations.
+Examples
 input
 Copy
-2
-6 5
-2 1 6
-1 3 2
-2 2 4
-1 6 3
-2 1 6
-5 3
-1 3 7
-1 1 4
-2 1 5
+00000
 output
 Copy
-0
-2
-5
-11
+61376
+input
+Copy
+12345
+output
+Copy
+07769

@@ -1,88 +1,113 @@
-B. Planet Lapituletti
-time limit per test2 seconds
+E. Enormous XOR
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The time on the planet Lapituletti goes the same way it goes on Earth but a day lasts
-h
-hours and each hour lasts
-m
-minutes. The inhabitants of that planet use digital clocks similar to earth ones. Clocks display time in a format HH:MM (the number of hours in decimal is displayed first, then (after the colon) follows the number of minutes in decimal; the number of minutes and hours is written with leading zeros if needed to form a two-digit number). Hours are numbered from
-0
+You are given two integers
+l
+and
+r
+in binary representation. Let
+g(x,y)
+be equal to the bitwise XOR of all integers from
+x
 to
-h−1
-and minutes are numbered from
-0
-to
-m−1
+y
+inclusive (that is
+x⊕(x+1)⊕⋯⊕(y−1)⊕y
+). Let's define
+f(l,r)
+as the maximum of all values of
+g(x,y)
+satisfying
+l≤x≤y≤r
 .
-That's how the digits are displayed on the clock. Please note that digit
-1
-is placed in the middle of its position.
-A standard mirror is in use on the planet Lapituletti. Inhabitants often look at the reflection of the digital clocks in the mirror and feel happy when what you see on the reflected clocks is a valid time (that means that you see valid digits in the reflection and this time can be seen on the normal clocks at some moment of a day).
-The image of the clocks in the mirror is reflected against a vertical axis.
-The reflection is not a valid time.
-The reflection is a valid time with
-h=24
-,
-m=60
-. However, for example, if
-h=10
-,
-m=60
-, then the reflection is not a valid time.
-An inhabitant of the planet Lapituletti begins to look at a mirrored image of the clocks at some time moment
-s
-and wants to know the nearest future time moment (which can possibly happen on the next day), when the reflected clock time is valid.
-It can be shown that with any
-h
-,
-m
-,
-s
-such a moment exists. If the reflected time is correct at the moment the inhabitant began to look at the clock, that moment is considered the nearest.
-You are asked to solve the problem for several test cases.
+Output
+f(l,r)
+.
 Input
 The first line contains a single integer
-T
+n
 (
-1≤T≤100
-) — the number of test cases.
-The next
-2⋅T
-lines contain the description of test cases. The description of each test case consists of two lines.
-The first line of a test case contains two integers
-h
-,
-m
+1≤n≤
+10
+6
+) — the length of the binary representation of
+r
+.
+The second line contains the binary representation of
+l
+— a string of length
+n
+consisting of digits
+0
+and
+1
 (
-1≤h,m≤100
+0≤l<
+2
+n
 ).
-The second line contains the start time
-s
-in the described format HH:MM.
+The third line contains the binary representation of
+r
+— a string of length
+n
+consisting of digits
+0
+and
+1
+(
+0≤r<
+2
+n
+).
+It is guaranteed that
+l≤r
+. The binary representation of
+r
+does not contain any extra leading zeros (if
+r=0
+, the binary representation of it consists of a single zero). The binary representation of
+l
+is preceded with leading zeros so that its length is equal to
+n
+.
 Output
-For each test case output in a separate line the nearest moment in format HH:MM when the reflected time is correct.
-Example
+In a single line output the value of
+f(l,r)
+for the given pair of
+l
+and
+r
+in binary representation without extra leading zeros.
+Examples
 input
 Copy
-5
-24 60
-12:21
-24 60
-23:59
-90 80
-52:26
-1 100
-00:01
-10 10
-04:04
+7
+0010011
+1111010
 output
 Copy
-12:21
-00:00
-52:28
-00:00
-00:00
+1111111
+input
+Copy
+4
+1010
+1101
+output
+Copy
+1101
 Note
-In the second test case it is not hard to show that the reflection of 23:59 is incorrect, while the reflection of the moment 00:00 on the next day is correct.
+In sample test case
+l=19
+,
+r=122
+.
+f(x,y)
+is maximal and is equal to
+127
+, with
+x=27
+,
+y=100
+, for example.

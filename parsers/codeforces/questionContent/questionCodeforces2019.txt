@@ -1,175 +1,107 @@
-E. Strange Permutation
-time limit per test3 seconds
+B. Strange List
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alice had a permutation
-p
-1
-,
-p
-2
-,…,
-p
+You have given an array
+a
+of length
 n
-. Unfortunately, the permutation looked very boring, so she decided to change it and choose some non-overlapping subranges of this permutation and reverse them. The cost of reversing a single subrange
-[l,r]
-(elements from position
-l
-to position
-r
-, inclusive) is equal to
-r−l
-, and the cost of the operation is the sum of costs of reversing individual subranges. Alice had an integer
-c
-in mind, so she only considered operations that cost no more than
-c
-.
-Then she got really bored, and decided to write down all the permutations that she could possibly obtain by performing exactly one operation on the initial permutation. Of course, Alice is very smart, so she wrote down each obtainable permutation exactly once (no matter in how many ways it can be obtained), and of course the list was sorted lexicographically.
-Now Bob would like to ask Alice some questions about her list. Each question is in the following form: what is the
-i
--th number in the
-j
--th permutation that Alice wrote down? Since Alice is too bored to answer these questions, she asked you to help her out.
+and an integer
+x
+to a brand new robot. What the robot does is the following: it iterates over the elements of the array, let the current element be
+q
+. If
+q
+is divisible by
+x
+, the robot adds
+x
+copies of the integer
+q
+x
+to the end of the array, and moves on to the next element. Note that the newly added elements could be processed by the robot later. Otherwise, if
+q
+is not divisible by
+x
+, the robot shuts down.
+Please determine the sum of all values of the array at the end of the process.
 Input
-The first line contains a single integer
+The first input line contains a single integer
 t
 (
-1≤t≤30
+1≤t≤100
 ) — the number of test cases.
-The first line of each test case contains three integers
+The first line of each test case contains two integers
 n
-,
-c
-,
-q
+and
+x
 (
-1≤n≤3⋅
-10
-4
-,
-1≤c≤4
-,
-1≤q≤3⋅
+1≤n≤
 10
 5
-) — the length of the permutation, the maximum cost of the operation, and the number of queries.
-The next line of each test case contains
-n
-integers
-p
+,
+2≤x≤
+10
+9
+) — the length of the array and the value which is used by the robot.
+The next line contains integers
+a
 1
 ,
-p
+a
 2
-,…,
-p
+, ...,
+a
 n
 (
 1≤
-p
+a
 i
-≤n
-,
-p
-i
-≠
-p
-j
-if
-i≠j
-), describing the initial permutation.
-The following
-q
-lines describe the queries. Each of them contains two integers
-i
-and
-j
-(
-1≤i≤n
-,
-1≤j≤
+≤
 10
-18
-), denoting parameters of this query.
+9
+) — the initial values in the array.
 It is guaranteed that the sum of values
 n
 over all test cases does not exceed
-3⋅
-10
-5
-, and the sum of values
-q
-over all test cases does not exceed
-3⋅
 10
 5
 .
 Output
-For each query output the answer for this query, or
-−1
-if
-j
--th permutation does not exist in her list.
-Examples
+For each test case output one integer — the sum of all elements at the end of the process.
+Example
 input
 Copy
 2
-3 1 9
-1 2 3
-1 1
-2 1
-3 1
 1 2
-2 2
-3 2
-1 3
-2 3
-3 3
-6 4 4
-6 5 4 3 1 2
-1 1
-3 14
-1 59
-2 6
+12
+4 2
+4 6 8 2
 output
 Copy
-1
-2
-3
-1
-3
-2
-2
-1
-3
-1
-4
--1
-5
-input
-Copy
-1
-12 4 2
-1 2 3 4 5 6 7 8 9 10 11 12
-2 20
-2 21
-output
-Copy
-2
-2
+36
+44
 Note
-In the first test case, Alice wrote down the following permutations:
-[1,2,3]
-,
-[1,3,2]
-,
-[2,1,3]
+In the first test case the array initially consists of a single element
+[12]
+, and
+x=2
+. After the robot processes the first element, the array becomes
+[12,6,6]
+. Then the robot processes the second element, and the array becomes
+[12,6,6,3,3]
+. After the robot processes the next element, the array becomes
+[12,6,6,3,3,3,3]
+, and then the robot shuts down, since it encounters an element that is not divisible by
+x=2
+. The sum of the elements in the resulting array is equal to
+36
 .
-Note that, for a permutation
-[3,2,1]
-Alice would have to reverse the whole array, and it would cost her
-2
-, which is greater than the specified value
-c=1
-. The other two permutations can not be obtained by performing exactly one operation described in the problem statement.
+In the second test case the array initially contains integers
+[4,6,8,2]
+, and
+x=2
+. The resulting array in this case looks like
+[4,6,8,2,2,2,3,3,4,4,1,1,1,1,1,1]
+.

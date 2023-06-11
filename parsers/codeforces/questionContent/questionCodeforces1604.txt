@@ -1,187 +1,139 @@
-F. Array Stabilization (GCD version)
-time limit per test4 seconds
-memory limit per test512 megabytes
+B. Integers Have Friends
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array of positive integers
-a=[
+British mathematician John Littlewood once said about Indian mathematician Srinivasa Ramanujan that "every positive integer was one of his personal friends."
+It turns out that positive integers can also be friends with each other! You are given an array
 a
-0
+of distinct positive integers.
+Define a subarray
+a
+i
 ,
 a
-1
+i+1
 ,…,
 a
-n−1
-]
-(
-n≥2
-).
-In one step, the array
-a
-is replaced with another array of length
-n
-, in which each element is the greatest common divisor (GCD) of two neighboring elements (the element itself and its right neighbor; consider that the right neighbor of the
-(n−1)
--th element is the
-0
--th element).
-Formally speaking, a new array
-b=[
-b
-0
-,
-b
-1
-,…,
-b
-n−1
-]
-is being built from array
-a=[
-a
-0
-,
-a
-1
-,…,
-a
-n−1
-]
+j
+to be a friend group if and only if there exists an integer
+m≥2
 such that
-b
-i
-=gcd(
 a
 i
-,
+modm=
 a
-(i+1)modn
-)
+i+1
+modm=…=
+a
+j
+modm
 , where
-gcd(x,y)
-is the greatest common divisor of
-x
-and
-y
-, and
 xmody
-is the remainder of
+denotes the remainder when
 x
-dividing by
+is divided by
 y
-. In one step the array
-b
-is built and then the array
-a
-is replaced with
-b
-(that is, the assignment
-a
-:=
-b
-is taking place).
-For example, if
-a=[16,24,10,5]
-then
-b=[gcd(16,24)
-,
-gcd(24,10)
-,
-gcd(10,5)
-,
-gcd(5,16)]
-=[8,2,5,1]
-. Thus, after one step the array
-a=[16,24,10,5]
-will be equal to
-[8,2,5,1]
 .
-For a given array
+Your friend Gregor wants to know the size of the largest friend group in
 a
-, find the minimum number of steps after which all values
-a
-i
-become equal (that is,
-a
-0
-=
-a
-1
-=⋯=
-a
-n−1
-). If the original array
-a
-consists of identical elements then consider the number of steps is equal to
-0
 .
 Input
-The first line contains an integer
+Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
+1≤t≤2⋅
 10
 4
-). Then
-t
-test cases follow.
-Each test case contains two lines. The first line contains an integer
+).
+Each test case begins with a line containing the integer
 n
 (
-2≤n≤2⋅
+1≤n≤2⋅
 10
 5
-) — length of the sequence
+), the size of the array
 a
-. The second line contains
+.
+The next line contains
 n
-integers
-a
-0
-,
+positive integers
 a
 1
+,
+a
+2
 ,…,
 a
-n−1
+n
 (
 1≤
 a
 i
 ≤
 10
-6
-).
+18
+), representing the contents of the array
+a
+. It is guaranteed that all the numbers in
+a
+are distinct.
 It is guaranteed that the sum of
 n
-over all test cases doesn't exceed
+over all test cases is less than
 2⋅
 10
 5
 .
 Output
-Print
+Your output should consist of
 t
-numbers — answers for each test case.
+lines. Each line should consist of a single integer, the size of the largest friend group in
+a
+.
 Example
 input
 Copy
-5
 4
-16 24 10 5
-4
-42 42 42 42
-3
-4 6 4
 5
-1 2 3 4 5
-6
-9 9 27 9 9 63
+1 5 2 4 6
+4
+8 2 5 10
+2
+1000 2000
+8
+465 55 3 54 234 12 45 78
 output
 Copy
 3
-0
+3
 2
-1
-1
+6
+Note
+In the first test case, the array is
+[1,5,2,4,6]
+. The largest friend group is
+[2,4,6]
+, since all those numbers are congruent to
+0
+modulo
+2
+, so
+m=2
+.
+In the second test case, the array is
+[8,2,5,10]
+. The largest friend group is
+[8,2,5]
+, since all those numbers are congruent to
+2
+modulo
+3
+, so
+m=3
+.
+In the third case, the largest friend group is
+[1000,2000]
+. There are clearly many possible values of
+m
+that work.

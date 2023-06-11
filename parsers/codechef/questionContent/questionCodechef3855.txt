@@ -1,113 +1,35 @@
-Cherry and Squares
+Inverse Binomial Coefficient
 Problem
-Cherry has a matrix
-A consisting of
-N rows and
-M columns, filled with lowercase English letters.
-You are asked
-Q queries. Each query is provided by four integers
-x
+The binomial coefficient C(N, K) is defined as N! / K! / (N − K)! for 0 ≤ K ≤ N.
+Here N! = 1 * 2 * ... * N for N ≥ 1, and 0! = 1.
+You are given integers n and R.
+You need to find the smallest K in the range {0, 1, ..., 2n − 1}, for which C(2n − 1, K) mod 2n = R.
+Here A mod B denotes the remainder of the division of A by B. If no such K exists output -1.
+Input
+The first line of the input contains an integer T, denoting the number of test cases.
+The description of T test cases follows.
+The only line of each test case contains two space-separated integers n and R.
+Output
+For each test case output the answer on the separate line.
+Constraints
+1 ≤ T ≤ 100
+1 ≤ n ≤ 120
+0 ≤ R < 2n
+Example
+Input:
+4
+1 0
+1 1
+3 7
+4 3
+
+Output:
+-1
+0
 1
-,
-y
-1
-,
-x
-2
-,
-y
-2
-which define the rectangle, where (
-x
-1
-,
-y
-1
-) stands for the coordinates of the top left cell of the rectangle, while (
-x
-2
-,
-y
-2
-) stands for the coordinates of the bottom right cell. The answer to the query is the size of the maximum square, that is located fully inside the query rectangle such that :
-The characters of each row should be in non-decreasing order.
-The characters of each column should be in non-decreasing order.
-Note:
-x
-1
-represents the row number while
-y
-1
-represents the column number.
-###Input:
-The first line of the input contains two integers
-N and
-M — the number of rows and the number of columns in the matrix.
-Each of the next
-N lines contains a string of
-M lowercase English letters denoting one row of the matrix.
-Next line contains an integer
-Q — the number of queries.
-Then follow
-Q lines with queries descriptions. Each of them contains four integers
-x
-1
-,
-y
-1
-,
-x
-2
-,
-y
-2
-— coordinates of the up left and bottom right cells of the query rectangle.
-###Output:
-Print
-Q lines. The
-i-th of them should contain the maximum size of the square for the
-i-th query.
-###Constraints
-1≤N,M≤500
-1≤Q≤10
-5
-1≤x
-1
-≤x
-2
-≤N
-1≤y
-1
-≤y
-2
-≤M
-###Sample Input:
-4 4
-aaaa
-bbaa
-cdef
-wxyz
-3
-1 1 4 4
-1 2 2 3
-3 1 4 4
-###Sample Output:
-2
-1
-2
-###Explanation:
-Example Case 1:
-Query 1: The maximum size square that lies inside the query rectangle is 2. One of the such squares is:
-[
-aa
-bb
-]
-Query 2: The maximum size square that lies inside the query rectangle is 1. One of the such square is:
-[
-a
-]
-Query 3: The maximum size square that lies inside the query rectangle is 2. One of the such square is:
-[
-de
-xy
-]
+7
+Explanation
+Example case 1. We have C(1, 0) = C(1, 1) = 1. Hence C(1, K) mod 2 ≠ 0 for all K. Therefore, the answer is -1.
+Example case 2. Since C(1, 0) mod 2 = 1, the answer is 0.
+Example case 3. Since C(7, 0) mod 8 = 1 ≠ 7 and C(7, 1) mod 8 = 7 mod 8 = 7, the answer is 1.
+Example case 4. Here C(15, 7) mod 16 = 15! / 7! / 8! mod 16 = 6435 mod 16 = 3. It can be shown that for all smaller values of K we have C(15, K) mod 16 ≠ 3. Therefore, the answer is 7.

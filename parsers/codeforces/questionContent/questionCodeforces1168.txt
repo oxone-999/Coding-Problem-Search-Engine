@@ -1,139 +1,145 @@
-D2. Game on Sum (Hard Version)
-time limit per test3 seconds
+F. Spaceship Crisis Management
+time limit per test8 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the hard version of the problem. The difference is the constraints on
+NASA (Norwegian Astronaut Stuff Association) is developing a new steering system for spaceships. But in its current state, it wouldn't be very safe if the spaceship would end up in a bunch of space junk. To make the steering system safe, they need to answer the following:
+Given the target position
+t=(0,0)
+, a set of
 n
-,
-m
-and
-t
-. You can make hacks only if all versions of the problem are solved.
-Alice and Bob are given the numbers
-n
-,
-m
-and
-k
-, and play a game as follows:
-The game has a score that Alice tries to maximize, and Bob tries to minimize. The score is initially
-0
-. The game consists of
-n
-turns. Each turn, Alice picks a real number from
-0
-to
-k
-(inclusive) which Bob either adds to or subtracts from the score of the game. But throughout the game, Bob has to choose to add at least
-m
-out of the
-n
-turns.
-Bob gets to know which number Alice picked before deciding whether to add or subtract the number from the score, and Alice gets to know whether Bob added or subtracted the number for the previous turn before picking the number for the current turn (except on the first turn since there was no previous turn).
-If Alice and Bob play optimally, what will the final score of the game be?
+pieces of space junk
+l
+described by line segments
+li=((aix,aiy),(bix,biy))
+, and a starting position
+s=(sx,sy)
+, is there a direction such that floating in that direction from the starting position would lead to the target position?
+When the spaceship hits a piece of space junk, what happens depends on the absolute difference in angle between the floating direction and the line segment,
+θ
+:
+If
+θ<45∘
+, the spaceship slides along the piece of space junk in the direction that minimizes the change in angle, and when the spaceship slides off the end of the space junk, it continues floating in the direction it came in (before hitting the space junk).
+If
+θ≥45∘
+, the spaceship stops, because there is too much friction to slide along the space junk.
+You are only given the set of pieces of space junk once, and the target position is always
+(0,0)
+, but there are
+q
+queries, each with a starting position
+sj=(sjx,sjy)
+.
+Answer the above question for each query.
 Input
-The first line of the input contains a single integer
-t
-(
-1≤t≤
-10
-5
-) — the number of test cases. The description of test cases follows.
-Each test case consists of a single line containing the three integers,
+The first line contains the the integer
 n
+(
+1≤n≤1500
+).
+Then follows
+n
+lines, the
+i
+-th of which containing the
+4
+integers
+aix
 ,
-m
+aiy
+,
+bix
 , and
-k
+biy
 (
-1≤m≤n≤
-10
-6
-,0≤k<
-10
-9
-+7
-) — the number of turns, how many of those turns Bob has to add, and the biggest number Alice can choose, respectively.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-10
-6
+|aix|,|aiy|,|bix|,|biy|≤1000
+).
+Then follows a line containing the integer
+q
+(
+1≤q≤1000
+).
+Then follows
+q
+lines, the
+j
+-th of which containing the
+2
+integers
+sjx
+and
+sjy
+(
+|sjx|,|sjy|≤1000
+).
+It is guaranteed that none of the segments in
+l
+cross or touch, that
+t
+is not on any segment in
+l
+, that
+sj
+is not on any segment in
+l
+, and that
+s≠t
 .
 Output
-For each test case output a single integer number — the score of the optimal game modulo
-10
-9
-+7
-.
-Formally, let
-M=
-10
-9
-+7
-. It can be shown that the answer can be expressed as an irreducible fraction
-p
-q
-, where
-p
-and
-q
-are integers and
-q≢0(modM)
-. Output the integer equal to
-p⋅
-q
-−1
-modM
-. In other words, output such an integer
-x
-that
-0≤x<M
-and
-x⋅q≡p(modM)
-.
+For each query
+sj
+print an answer. If there exists a direction such that floating from
+sj
+in that direction, possibly sliding along some pieces of space junk, leads to
+t
+, print "YES". Otherwise, print "NO" (case insensitive).
 Example
 input
 Copy
-7
-3 3 2
-2 1 10
-6 3 10
-6 4 10
-100 1 1
-4 4 0
-69 4 20
+3
+0 1 2 4
+1 3 -1 6
+0 -1 1 -1
+14
+-2 10
+-1 10
+0 10
+1 10
+2 10
+3 10
+4 10
+5 10
+6 10
+-1 -2
+0 -2
+1 -2
+2 -2
+3 -2
 output
 Copy
-6
-5
-375000012
-500000026
-958557139
-0
-49735962
+YES
+YES
+YES
+YES
+YES
+NO
+NO
+NO
+YES
+YES
+NO
+NO
+NO
+YES
 Note
-In the first test case, the entire game has
+The blue cross represents the target location, and the other blue line segments represent the space junk.
+Green dots represent starting locations where the answer is yes, and red dots represent starting locations where the answer is no.
+The yellow lines are possible paths to the target location for the
 3
-turns, and since
-m=3
-, Bob has to add in each of them. Therefore Alice should pick the biggest number she can, which is
-k=2
-, every turn.
-In the third test case, Alice has a strategy to guarantee a score of
-75
-8
-≡375000012(mod
-10
-9
-+7)
-.
-In the fourth test case, Alice has a strategy to guarantee a score of
-45
-2
-≡500000026(mod
-10
-9
-+7)
-.
+rd and
+14
+th queries.
+The black line is a possible path from the starting location in the
+6
+th query, but it barely misses the target location.

@@ -1,204 +1,215 @@
-I. Treasure Hunt
-time limit per test2 seconds
+H. Codeforces Scoreboard
+time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Define the beauty value of a sequence
-b
-1
-,
-b
-2
-,…,
-b
-c
-as the maximum value of
-∑
-i=1
-q
-b
-i
-+
-∑
-i=s
-t
-b
-i
-, where
-q
-,
-s
-,
-t
-are all integers and
-s>q
-or
-t≤q
-. Note that
-b
-i
-=0
-when
-i<1
-or
-i>c
-,
-∑
-i=s
-t
-b
-i
-=0
-when
-s>t
-.
-For example, when
-b=[−1,−2,−3]
-, we may have
-q=0
-,
-s=3
-,
-t=2
-so the beauty value is
-0+0=0
-. And when
-b=[−1,2,−3]
-, we have
-q=s=t=2
-so the beauty value is
-1+2=3
-.
-You are given a sequence
-a
-of length
+You are participating in a Codeforces Round with
 n
-, determine the sum of the beauty value of all non-empty subsegments
-a
-l
+problems.
+You spend exactly one minute to solve each problem, the time it takes to submit a problem can be ignored. You can only solve at most one problem at any time. The contest starts at time
+0
+, so you can make your first submission at any time
+t≥1
+minutes. Whenever you submit a problem, it is always accepted.
+The scoring of the
+i
+-th problem can be represented by three integers
+k
+i
 ,
+b
+i
+, and
 a
-l+1
-,…,
+i
+. If you solve it at time
+t
+minutes, you get
+max(
+b
+i
+−
+k
+i
+⋅t,
 a
-r
-(
-1≤l≤r≤n
-) of the sequence
-a
-.
-Print the answer modulo
-998244353
-.
+i
+)
+points.
+Your task is to choose an order to solve all these
+n
+problems to get the maximum possible score. You can assume the contest is long enough to solve all problems.
 Input
 Each test contains multiple test cases. The first line contains an integer
-T
+t
 (
-1≤T≤
+1≤t≤
 10
 4
 ) — the number of test cases.
-The first line contains an integer
+The first line of each test case contains one integer
 n
 (
-1≤n≤
+1≤n≤2⋅
 10
-6
-) — the length of
-a
-.
-The second line contains
+5
+) — the number of problems.
+The
 n
-integers
-a
-1
+lines follow, the
+i
+-th of them contains three integers
+k
+i
+,
+b
+i
 ,
 a
-2
-,…,
-a
-n
+i
 (
-−
-10
-6
-≤
+1≤
+k
+i
+,
+b
+i
+,
 a
 i
 ≤
 10
-6
-) — the given sequence.
+9
+;
+a
+i
+<
+b
+i
+), denoting that you get the score of
+max(
+b
+i
+−
+k
+i
+⋅t,
+a
+i
+)
+if you solve the
+i
+-th task at time
+t
+minutes.
 It's guaranteed that the sum of
 n
 does not exceed
+2⋅
 10
-6
+5
 .
 Output
-For each test case, print a line containing a single integer — the answer modulo
-998244353
-.
+For each test case, print a line containing a single integer — the maximum score you can get.
 Example
 input
 Copy
 4
-7
-80 59 100 -52 -86 -62 75
+4
+10000 1000000000 2006
+10000 1000000000 9999
+2 999991010 1010
+1000000000 1000000000 999999999
+6
+1 8 1
+9 29 4
+2 14 3
+4 13 1
+2 19 5
+10 12 5
 8
--48 -14 -26 43 -41 34 13 55
-1
-74
-20
-56 -60 62 13 88 -48 64 36 -10 19 94 25 -69 88 87 79 -70 74 -26 59
+4 10 1
+4 19 8
+1 14 3
+4 15 6
+2 9 6
+1 11 10
+2 19 12
+4 19 14
+10
+5 12 7
+5 39 12
+2 39 11
+3 23 15
+5 30 11
+3 17 13
+5 29 14
+3 17 11
+3 36 18
+3 9 8
 output
 Copy
-5924
-2548
-148
-98887
+3999961003
+53
+78
+180
 Note
-In the second test case, for the subsequence
-[−26,43,−41,34,13]
-, when
-q=5
-,
-s=2
-,
-t=5
-,
-∑
-i=1
-q
-b
-i
-+
-∑
-i=s
-t
-b
-i
-=23+49=72
-.
-In the third test case, there is only one non-empty consecutive subsequence
-[74]
-. When
-q=1
-,
-s=1
-,
-t=1
-,
-∑
-i=1
-q
-b
-i
-+
-∑
-i=s
-t
-b
-i
-=148
+In the second test case, the points for all problems at each minute are listed below.
+Time
+1
+2
+3
+4
+5
+6
+Problem
+1
+7
+6
+5
+4
+3
+2
+Problem
+2
+20
+11
+4
+4
+4
+4
+Problem
+3
+12
+10
+8
+6
+4
+3
+Problem
+4
+9
+5
+1
+1
+1
+1
+Problem
+5
+17
+15
+13
+11
+9
+7
+Problem
+6
+5
+5
+5
+5
+5
+5
+The points displayed in red denote one of the optimal orders with the score
+53
 .

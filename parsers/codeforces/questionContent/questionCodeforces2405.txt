@@ -1,118 +1,220 @@
-C. Omkar and Waterslide
+F. Omkar and Landslide
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Omkar is building a waterslide in his water park, and he needs your help to ensure that he does it as efficiently as possible.
-Omkar currently has
+Omkar is standing at the foot of Celeste mountain. The summit is
 n
-supports arranged in a line, the
-i
--th of which has height
-a
-i
-. Omkar wants to build his waterslide from the right to the left, so his supports must be nondecreasing in height in order to support the waterslide. In
+meters away from him, and he can see all of the mountains up to the summit, so for all
+1≤j≤n
+he knows that the height of the mountain at the point
+j
+meters away from himself is
+h
+j
+meters. It turns out that for all
+j
+satisfying
+1≤j≤n−1
+,
+h
+j
+<
+h
+j+1
+(meaning that heights are strictly increasing).
+Suddenly, a landslide occurs! While the landslide is occurring, the following occurs: every minute, if
+h
+j
++2≤
+h
+j+1
+, then one square meter of dirt will slide from position
+j+1
+to position
+j
+, so that
+h
+j+1
+is decreased by
 1
-operation, Omkar can do the following: take any contiguous subsegment of supports which is nondecreasing by heights and add
+and
+h
+j
+is increased by
 1
-to each of their heights.
-Help Omkar find the minimum number of operations he needs to perform to make his supports able to support his waterslide!
-An array
-b
-is a subsegment of an array
-c
-if
-b
-can be obtained from
-c
-by deletion of several (possibly zero or all) elements from the beginning and several (possibly zero or all) elements from the end.
-An array
-b
+. These changes occur simultaneously, so for example, if
+h
+j
++2≤
+h
+j+1
+and
+h
+j+1
++2≤
+h
+j+2
+for some
+j
+, then
+h
+j
+will be increased by
 1
 ,
-b
-2
-,…,
-b
-n
-is called nondecreasing if
-b
-i
-≤
-b
-i+1
-for every
-i
-from
+h
+j+2
+will be decreased by
 1
-to
-n−1
-.
+, and
+h
+j+1
+will be both increased and decreased by
+1
+, meaning that in effect
+h
+j+1
+is unchanged during that minute.
+The landslide ends when there is no
+j
+such that
+h
+j
++2≤
+h
+j+1
+. Help Omkar figure out what the values of
+h
+1
+,…,
+h
+n
+will be after the landslide ends. It can be proven that under the given constraints, the landslide will always end in finitely many minutes.
+Note that because of the large amount of input, it is recommended that your code uses fast IO.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤100
-). Description of the test cases follows.
-The first line of each test case contains an integer
+The first line contains a single integer
 n
 (
-1≤n≤2⋅
+1≤n≤
 10
-5
-) — the number of supports Omkar has.
-The second line of each test case contains
+6
+).
+The second line contains
 n
 integers
-a
+h
 1
 ,
-a
+h
 2
-,...,
-a
+,…,
+h
 n
-(0≤
-a
-i
+satisfying
+0≤
+h
+1
+<
+h
+2
+<⋯<
+h
+n
 ≤
 10
-9
-)
- — the heights of the supports.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-.
+12
+ — the heights.
 Output
-For each test case, output a single integer — the minimum number of operations Omkar needs to perform to make his supports able to support his waterslide.
+Output
+n
+integers, where the
+j
+-th integer is the value of
+h
+j
+after the landslide has stopped.
 Example
 input
 Copy
-3
 4
-5 3 2 5
-5
-1 2 3 5 3
-3
-1 1 1
+2 6 7 8
 output
 Copy
-3
-2
-0
+5 5 6 7
 Note
-The subarray with which Omkar performs the operation is bolded.
-In the first test case:
-First operation:
-[5,3,2,5]→[5,3,3,5]
-Second operation:
-[5,3,3,5]→[5,4,4,5]
-Third operation:
-[5,4,4,5]→[5,5,5,5]
-In the third test case, the array is already nondecreasing, so Omkar does
-0
-operations.
+Initially, the mountain has heights
+2,6,7,8
+.
+In the first minute, we have
+2+2≤6
+, so
+2
+increases to
+3
+and
+6
+decreases to
+5
+, leaving
+3,5,7,8
+.
+In the second minute, we have
+3+2≤5
+and
+5+2≤7
+, so
+3
+increases to
+4
+,
+5
+is unchanged, and
+7
+decreases to
+6
+, leaving
+4,5,6,8
+.
+In the third minute, we have
+6+2≤8
+, so
+6
+increases to
+7
+and
+8
+decreases to
+7
+, leaving
+4,5,7,7
+.
+In the fourth minute, we have
+5+2≤7
+, so
+5
+increases to
+6
+and
+7
+decreases to
+6
+, leaving
+4,6,6,7
+.
+In the fifth minute, we have
+4+2≤6
+, so
+4
+increases to
+5
+and
+6
+decreases to
+5
+, leaving
+5,5,6,7
+.
+In the sixth minute, nothing else can change so the landslide stops and our answer is
+5,5,6,7
+.

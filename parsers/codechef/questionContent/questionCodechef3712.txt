@@ -1,54 +1,42 @@
-Pawn Chess
+Chef and Guard Towers
 Problem
-Read problem statement in Mandarin chinese and Vietnamese.
-After winning the Candidates Tournament, Suzumo is intensively training for his upcoming match against Magus Cartesian.
-In order to improve his calculation skills, Suzumo invented a new game, which he named PawnChess. PawnChess is a two-player game played on a row of
-N cells. Its rules are as follows:
-Initially, some pawns are placed in some cells; each pawn is either black or white. There may be at most one pawn in each cell at any time. For each white pawn, all the pawns that are to the left of this pawn are also white.
-Let's call the players White and Black. Each player may only move pawns of their colour. The players alternate turns; White moves first.
-In White's turn, White must move one pawn one cell to the right (if the pawn was in cell
-i, it is moved to cell
-i+1). Similarly, in Black's turn, Black must move one pawn one cell to the left (from cell
-i to cell
-i−1). It is not allowed to move a pawn outside of the row of cells or to move a pawn to a cell which already contains a pawn with the same colour.
-If a pawn
-P is moved to an empty cell, nothing happens. If it is moved to a cell containing a pawn
-R with the opposite colour, the pawn
-R is captured — removed from the game, and
-P is placed in the cell which previously contained
-R.
-The winner of the game is the player that captures all the pieces of their opponent. Note that as long as there is at least one black and at least one white pawn, each player can make a move.
-Given the initial configuration of the game board, help Suzumo determine the winner of the game. Assume that both players play optimally.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef holds all his secret recipes inside his house. For this reason, Chef wants to make his house secure. To do so, Chef wants to install guard towers in his house.
+Unfortunately, due to high costs, Chef can only activate 3 guard towers each night. Chef considers his house safe if the triangle formed by these 3 guard towers as vertices strictly contains his house. Chef's house is located at (0, 0).
+On the ith day, Chef plans to install a guard tower at location (xi, yi). Chef wants to know how effective each installation is. Specifically, after every installation, Chef wants to know the number of subsets of 3 guard towers he can activate so that his house becomes safe. Please help him answer this question!
+This is an online problem, so you won't get the next point unless you answer the question first. Don't forget to flush the output after every print statement. Please see the note section for details about how to flush the standard output.!
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains a single string
-S with length
-N describing the game board. Each character in
-S is '.', 'W' or 'B' denoting an empty cell, a white pawn and a black pawn respectively.
+The first line of input contains a single integer N. The next N lines describe the points.
+The ith line contains two integers xi and yi denoting the location of Chef's ith guard tower, (xi, yi).
 Output
-For each test case, print a single line containing the string "W" if White wins the game or "B" if Black wins.
+Output N lines. The ith line must contain a single integer, the answer to Chef's question after the ith installation.
 Constraints
-2≤N≤128
-there is at least one white pawn and at least one black pawn
-all pawns to the left of a white pawn are always white
-the sum of
-N over all test cases is at most
-5⋅10
-5
-Sample 1:
-Input
-Output
+|xi|, |yi| ≤ 106
+The points are distinct.
+(xi, yi) ≠ (0, 0)
+Subtasks
+Subtask #1: (11 points) 3 ≤ N ≤ 1000
+Subtask #2: (24 points) 3 ≤ N ≤ 12000
+Subtask #3: (65 points) 3 ≤ N ≤ 400000
+Example
+Input:
+6
+2 3
+3 2
+-1 -1
+3 3
+4 1
+5 5
+Output:
+0
+0
+1
+1
 2
-W..B
-WW.B
-W
-B
-Explanation:
-Example case 2: One possible sequence of moves is as follows:
-WW.B
-W.WB
-W.B.
-.WB.
-.B..
+2
+Explanation
+After the first and second installations, there aren't enough guard towers for Chef to choose from.
+After the third and fourth installations, there is one set of guard towers that make Chef's house safe: {(2, 3), (3, 2), (-1, -1)}.
+After the fifth and sixth installations, there are two sets of guard towers that make Chef's house safe: {(2, 3), (3, 2), (-1, -1)} and {(2, 3), (4, 1), (-1, -1)}.
+Note
+You can flush the standard output in C++ by writing fflush(stdout). In Java, you can do that by System.out.flush(). Please read the documentations of a particular language for more details.

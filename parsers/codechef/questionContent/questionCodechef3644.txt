@@ -1,200 +1,119 @@
-Maximal Prefix After Flip
+Twice GCD Thrice LCM
 Problem
-You are given an array
-A consisting of
-N integers.
-For each
-K from
-0 to
-N find the maximum prefix sum of
-A after changing the sign of at most
-K elements of the array.
-Formally:
-Let
-F(A) denote the maximum prefix sum of an array
-A of length
-N (including an empty array for which prefix sum is
-0). Thus,
-F(A) =
-max(0, max
-1≤i≤N
-∑
-j=1
+This is an interactive problem.
+Eren and Mikasa are playing a game. Mikasa has a sequence
+A of
+N positive integers.
+Eren needs to find the values of all elements of this sequence to win the game.
+Eren may ask at most
+3⋅N questions to Mikasa. Each question can be one of two types:
+Type
+1: Eren gives Mikasa two distinct integers
+i and
+j
+(1≤i,j≤N) and Mikasa responds with
+gcd(A
 i
-A
+,A
 j
 ).
-Let
-G(K) denote the maximum possible value of
-F(A) after applying the following operation at most
-K times:
-Choose an index
+Type
+2: Eren gives Mikasa three distinct integers
+i,
+j, and
+k
+(1≤i,j,k≤N) and Mikasa responds with
+lcm(A
 i
-(1≤i≤N) and change the sign of
-i
-th
-element of array, i.e., set
-A
-i
-= −A
-i
-.
-For each
-K from
-0 to
-N, find
-G(K).
-Input Format
-The first line contains a single integer
-T - the number of test cases. Then the test cases follow.
-The first line of each test case contains an integer
-N - the size of the array
+,A
+j
+,A
+k
+).
+Help Eren find the sequence
 A.
-The second line of each test case contains
-N space-separated integers
-A
+Note that,
+gcd stands for greatest common divisor and
+lcm stands for least common multiple.
+闘え (Fight) !!!
+Interaction
+First, you should read a line containing a single integer
+T, denoting the number of test cases.
+For each test case, you should start by reading a line containing a single integer
+N, denoting the number of elements in the sequence
+A.
+To ask a question:
+Type
+1: Print a line containing three space-separated integers
+1,i, and
+j
+(1≤i,j≤N,i
+
+=j). Then, you must read a line containing a single integer: the answer to your question or
+−1 if the question is invalid or you asked more than
+3⋅N questions.
+Type
+2: Print a line containing four space-separated integers
+2,i,j, and
+k
+(1≤i,j,k≤N,i
+
+=j,j
+
+=k,i
+
+=k). Then, you must read a line containing a single integer: the answer to your question or
+−1 if the question is invalid or you asked more than
+3⋅N questions.
+To finish solving a test case, you should print a single line containing
+N+1 space-separated integers
+3,A
 1
-,
-A
+,A
 2
-,
-…,
-A
+,…,A
 N
-denoting the array
-A.
-Output Format
-For each test case, output the
-N+1 integers
-G(0),G(1),…,G(N) - the maximum prefix sum of
-A after changing the sign of at most
-K elements.
+. Then, you must read a line containing a single integer:
+1 if your output is correct or
+−1 if it is incorrect.
+Note that when you receive an answer
+−1, you should immediately terminate your program to receive a Wrong Answer verdict; otherwise, you may receive any verdict.
+Don't forget to flush the output after printing each line!
+Also note that Judge Error usually means that Interactive Judge was waiting for user input and User’s code didn’t give it, and so the resulting Time Limit Exceeded is shown as Judge Error.
+You can read more about Interactive problems here.
 Constraints
-1≤T≤10
-5
-1≤N≤10
-5
-−10
-9
-≤A
+1≤T≤100
+4≤N≤100
+1≤A
 i
 ≤10
-9
-The sum of
-N over all test cases doesn't exceed
-10
-5
-.
-Sample 1:
-Input
-Output
+6
+Sample Interaction
+1
 4
-5
--3 4 -2 -3 1
-3
--8 -5 -2
+                1 1 2
 1
-2
-10
--10 -8 -4 -12 -19 -13 -17 -1 -10 -1
-1 7 9 13 13 13
-0 8 13 15
-2 2
-0 10 18 29 45 59 75 84 92 94 95
-Explanation:
-Test case
-1:
-For
-K=0: Maximum prefix sum with
-0 changes is
-−3+4=1.
-For
-K=1: Maximum prefix sum with
-1 change is
-3+4=7. Note that we changed
-A
-1
-from
-−3 to
-3.
-For
-K=2: Maximum prefix sum with
-2 change is
-3+4+2=9. Note that we changed
-A
-1
-from
-−3 to
-3 and
-A
-3
-from
-−2 to
-2.
-For
-K=3,4, and
-5: Maximum prefix sum is
-3+4+2+3+1=13. Note that we changed
-A
-1
-from
-−3 to
-3,
-A
-3
-from
-−2 to
-2, and
-A
+                2 1 2 3
 4
-from
-−3 to
-3.
-Test case
-2:
-For
-K=0: Maximum prefix sum with
-0 changes is
-0 where we choose an empty prefix.
-For
-K=1: Maximum prefix sum with
-1 changes is
-8. We change the value of
-A
-1
-from
-−8 to
-8.
-For
-K=2: Maximum prefix sum with
-2 changes is
-8+5=13. We change the value of
-A
-1
-from
-−8 to
-8 and
-A
+                1 2 3
 2
-from
-−5 to
-5.
-For
-K=3: Maximum prefix sum with
-3 changes is
-8+5+2=15. We change the value of
-A
+                3 1 2 4 3
 1
-from
-−8 to
-8,
-A
+Consider the sequence
+A=[1,2,4,3].
+Thus,
+gcd(A
+1
+,A
 2
-from
-−5 to
-5, and
-A
+)=1,lcm(A
+1
+,A
+2
+,A
 3
-from
-−2 to
-2.
+)=4,gcd(A
+2
+,A
+3
+)=2.

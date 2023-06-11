@@ -1,137 +1,82 @@
-E1. Close Tuples (easy version)
+A. Dungeon
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the easy version of this problem. The only difference between easy and hard versions is the constraints on
-k
-and
-m
-(in this version
-k=2
-and
-m=3
-). Also, in this version of the problem, you DON'T NEED to output the answer by modulo.
-You are given a sequence
+You are playing a new computer game in which you have to fight monsters. In a dungeon you are trying to clear, you met three monsters; the first of them has
 a
-of length
-n
-consisting of integers from
+health points, the second has
+b
+health points, and the third has
+c
+.
+To kill the monsters, you can use a cannon that, when fired, deals
 1
-to
-n
-. The sequence may contain duplicates (i.e. some elements can be equal).
-Find the number of tuples of
-m=3
-elements such that the maximum number in the tuple differs from the minimum by no more than
-k=2
-. Formally, you need to find the number of triples of indices
-i<j<z
-such that
-max(
-a
-i
+damage to the selected monster. Every
+7
+-th (i. e. shots with numbers
+7
 ,
-a
-j
+14
 ,
-a
-z
-)−min(
-a
-i
-,
-a
-j
-,
-a
-z
-)≤2.
-(
-)
-min
-(
-)
-2.
-For example, if
-n=4
-and
-a=[1,2,4,3]
-, then there are two such triples (
-i=1,j=2,z=4
-and
-i=2,j=3,z=4
-). If
-n=4
-and
-a=[1,1,1,1]
-, then all four possible triples are suitable.
+21
+etc.) cannon shot is enhanced and deals
+1
+damage to all monsters, not just one of them. If some monster's current amount of health points is
+0
+, it can't be targeted by a regular shot and does not receive damage from an enhanced shot.
+You want to pass the dungeon beautifully, i. e., kill all the monsters with the same enhanced shot (i. e. after some enhanced shot, the health points of each of the monsters should become equal to
+0
+for the first time). Each shot must hit a monster, i. e. each shot deals damage to at least one monster.
 Input
 The first line contains a single integer
 t
 (
-1≤t≤2⋅
+1≤t≤
 10
-5
-) — the number of test cases. Then
-t
-test cases follow.
-The first line of each test case contains an integer
-n
-(
-1≤n≤2⋅
-10
-5
-) — the length of the sequence
+4
+) — the number of test cases.
+Each test case consists of a single line that contains three integers
 a
-.
-The next line contains
-n
-integers
-a
-1
 ,
-a
-2
-,…,
-a
-n
+b
+and
+c
 (
-1≤
-a
-i
-≤n
-) — the sequence
-a
-.
-It is guaranteed that the sum of
-n
-for all test cases does not exceed
-2⋅
+1≤a,b,c≤
 10
-5
-.
+8
+) — the number of health points each monster has.
 Output
-Output
-t
-answers to the given test cases. Each answer is the required number of triples of elements, such that the maximum value in the triple differs from the minimum by no more than
-2
-. Note that in difference to the hard version of the problem, you don't need to output the answer by modulo. You must output the exact value of the answer.
+For each test case, print YES if you can kill all the monsters with the same enhanced shot. Otherwise, print NO. You may print each letter in any case (for example, YES, Yes, yes, yEs will all be recognized as positive answer).
 Example
 input
 Copy
-4
-4
-1 2 4 3
-4
-1 1 1 1
-1
-1
-10
-5 6 1 3 2 9 8 1 2 4
+3
+3 2 4
+1 1 1
+10 1 7
 output
 Copy
+YES
+NO
+NO
+Note
+In the first test case, you can do as follows:
+1
+-th shot to the first monster,
 2
+-th shot to the second monster,
+3
+-th shot to the third monster,
 4
-0
-15
+-th shot to the first monster,
+5
+-th shot to the third monster,
+6
+-th shot to the third monster, and
+7
+-th enhanced shot will kill all the monsters.
+In the second test case, you can't kill monsters with the same enhanced shot, because the total number of health points of monsters is
+3
+, and you will kill them in the first 3 shots.

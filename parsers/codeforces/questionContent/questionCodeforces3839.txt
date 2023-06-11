@@ -1,66 +1,184 @@
-B. Sasha and One More Name
-time limit per test1 second
+C. Sasha and a Patient Friend
+time limit per test1.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Reading books is one of Sasha's passions. Once while he was reading one book, he became acquainted with an unusual character. The character told about himself like that: "Many are my names in many countries. Mithrandir among the Elves, Tharkûn to the Dwarves, Olórin I was in my youth in the West that is forgotten, in the South Incánus, in the North Gandalf; to the East I go not."
-And at that moment Sasha thought, how would that character be called in the East? In the East all names are palindromes. A string is a palindrome if it reads the same backward as forward. For example, such strings as "kazak", "oo" and "r" are palindromes, but strings "abb" and "ij" are not.
-Sasha believed that the hero would be named after one of the gods of the East. As long as there couldn't be two equal names, so in the East people did the following: they wrote the original name as a string on a piece of paper, then cut the paper minimum number of times
-k
-, so they got
-k+1
-pieces of paper with substrings of the initial string, and then unite those pieces together to get a new string. Pieces couldn't be turned over, they could be shuffled.
-In this way, it's possible to achive a string abcdefg from the string f|de|abc|g using
+Fedya and Sasha are friends, that's why Sasha knows everything about Fedya.
+Fedya keeps his patience in an infinitely large bowl. But, unlike the bowl, Fedya's patience isn't infinite, that is why let
+v
+be the number of liters of Fedya's patience, and, as soon as
+v
+becomes equal to
+0
+, the bowl will burst immediately. There is one tap in the bowl which pumps
+s
+liters of patience per second. Notice that
+s
+can be negative, in that case, the tap pumps out the patience. Sasha can do different things, so he is able to change the tap's speed. All actions that Sasha does can be represented as
+q
+queries. There are three types of queries:
+"1 t s"  — add a new event, means that starting from the
+t
+-th second the tap's speed will be equal to
+s
+.
+"2 t"  — delete the event which happens at the
+t
+-th second. It is guaranteed that such event exists.
+"3 l r v" — Sasha wonders: if you take all the events for which
+l≤t≤r
+and simulate changes of Fedya's patience from the very beginning of the
+l
+-th second till the very beginning of the
+r
+-th second inclusive (the initial volume of patience, at the beginning of the
+l
+-th second, equals to
+v
+liters) then when will be the moment when the bowl will burst. If that does not happen, then the answer will be
+−1
+.
+Since Sasha does not want to check what will happen when Fedya's patience ends, and he has already come up with the queries, he is asking you to help him and find the answer for each query of the
 3
-cuts (by swapping papers with substrings f and abc). The string cbadefg can't be received using the same cuts.
-More formally, Sasha wants for the given palindrome
-s
-find such minimum
-k
-, that you can cut this string into
-k+1
-parts, and then unite them in such a way that the final string will be a palindrome and it won't be equal to the initial string
-s
-. It there is no answer, then print "Impossible" (without quotes).
+-rd type.
+It is guaranteed that at any moment of time, there won't be two events which happen at the same second.
 Input
-The first line contains one string
-s
+The first line contans one integer
+q
 (
-1≤|s|≤5000
-) — the initial name, which consists only of lowercase Latin letters. It is guaranteed that
+1≤q≤
+10
+5
+)  — the number of queries.
+Each of the next
+q
+lines have one of the following formats:
+1 t s (
+1≤t≤
+10
+9
+,
+−
+10
+9
+≤s≤
+10
+9
+), means that a new event is added, which means that starting from the
+t
+-th second the tap's speed will be equal to
 s
-is a palindrome.
+.
+2 t (
+1≤t≤
+10
+9
+), means that the event which happens at the
+t
+-th second must be deleted. Guaranteed that such exists.
+3 l r v (
+1≤l≤r≤
+10
+9
+,
+0≤v≤
+10
+9
+), means that you should simulate the process from the very beginning of the
+l
+-th second till the very beginning of the
+r
+-th second inclusive, and to say when will the bowl burst.
+It is guaranteed that
+t
+,
+s
+,
+l
+,
+r
+,
+v
+in all the queries are integers.
+Also, it is guaranteed that there is at least one query of the
+3
+-rd type, and there won't be a query of the
+1
+-st type with such
+t
+, that there already exists an event which happens at that second
+t
+.
 Output
-Print one integer
-k
- — the minimum number of cuts needed to get a new name, or "Impossible" (without quotes).
+For each query of the
+3
+-rd type, print in a new line the moment when the bowl will burst or print
+−1
+if it won't happen.
+Your answer will be considered correct if it's absolute or relative error does not exceed
+10
+−6
+.
+Formally, let your answer be
+a
+, and the jury's answer be
+b
+. Your answer is accepted if and only if
+|a−b|
+max(1,|b|)
+≤
+10
+−6
+.
 Examples
 input
 Copy
-nolon
+6
+1 2 1
+1 4 -3
+3 1 6 1
+3 1 6 3
+3 1 6 4
+3 1 6 5
 output
 Copy
-2
+5
+5.666667
+6
+-1
 input
 Copy
-otto
+10
+1 2 2
+1 4 4
+1 7 -10
+3 2 4 1
+3 5 6 0
+3 1 15 1
+2 4
+3 1 15 1
+1 8 1
+3 1 15 1
 output
 Copy
-1
+-1
+5
+8.7
+8.1
+-1
 input
 Copy
-qqqq
+5
+1 1000 9999999
+1 2000 -9999
+3 1000 2000 0
+2 1000
+3 1000 2002 1
 output
 Copy
-Impossible
-input
-Copy
-kinnikkinnik
-output
-Copy
-1
+1000
+2000.0001
 Note
-In the first example, you can cut the string in those positions: no|l|on, and then unite them as follows on|l|no. It can be shown that there is no solution with one cut.
-In the second example, you can cut the string right in the middle, and swap peaces, so you get toot.
-In the third example, you can't make a string, that won't be equal to the initial one.
-In the fourth example, you can cut the suffix nik and add it to the beginning, so you get nikkinnikkin.
+In the first example all the queries of the
+3
+-rd type cover all the events, it's simulation is following:

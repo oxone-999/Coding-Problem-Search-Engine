@@ -1,129 +1,182 @@
-D1. The World Is Just a Programming Task (Easy Version)
+B2. Books Exchange (hard version)
 time limit per test1 second
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an easier version of the problem. In this version,
-n≤500
-.
-Vasya is an experienced developer of programming competitions' problems. As all great minds at some time, Vasya faced a creative crisis. To improve the situation, Petya gifted him a string consisting of opening and closing brackets only. Petya believes, that the beauty of the bracket string is a number of its cyclical shifts, which form a correct bracket sequence.
-To digress from his problems, Vasya decided to select two positions of the string (not necessarily distinct) and swap characters located at this positions with each other. Vasya will apply this operation exactly once. He is curious what is the maximum possible beauty he can achieve this way. Please help him.
-We remind that bracket sequence
-s
-is called correct if:
-s
-is empty;
-s
-is equal to "(
-t
-)", where
-t
-is correct bracket sequence;
-s
-is equal to
-t
-1
-t
-2
-, i.e. concatenation of
-t
-1
-and
-t
-2
-, where
-t
-1
-and
-t
-2
-are correct bracket sequences.
-For example, "(()())", "()" are correct, while ")(" and "())" are not.
-The cyclical shift of the string
-s
-of length
+The only difference between easy and hard versions is constraints.
+There are
 n
-by
-k
-(
-0≤k<n
-) is a string formed by a concatenation of the last
-k
-symbols of the string
-s
-with the first
-n−k
-symbols of string
-s
-. For example, the cyclical shift of string "(())()" by
-2
-equals "()(())".
-Cyclical shifts
+kids, each of them is reading a unique book. At the end of any day, the
 i
-and
-j
-are considered different, if
-i≠j
-.
-Input
-The first line contains an integer
+-th kid will give his book to the
+p
+i
+-th kid (in case of
+i=
+p
+i
+the kid will give his book to himself). It is guaranteed that all values of
+p
+i
+are distinct integers from
+1
+to
 n
-(
-1≤n≤500
-), the length of the string.
-The second line contains a string, consisting of exactly
-n
-characters, where each of the characters is either "(" or ")".
-Output
-The first line should contain a single integer — the largest beauty of the string, which can be achieved by swapping some two characters.
-The second line should contain integers
-l
+(i.e.
+p
+is a permutation). The sequence
+p
+doesn't change from day to day, it is fixed.
+For example, if
+n=6
 and
-r
-(
-1≤l,r≤n
-) — the indices of two characters, which should be swapped in order to maximize the string's beauty.
-In case there are several possible swaps, print any of them.
-Examples
-input
-Copy
-10
-()()())(()
-output
-Copy
-5
-8 7
-input
-Copy
-12
-)(()(()())()
-output
-Copy
+p=[4,6,1,3,5,2]
+then at the end of the first day the book of the
+1
+-st kid will belong to the
 4
-5 10
+-th kid, the
+2
+-nd kid will belong to the
+6
+-th kid and so on. At the end of the second day the book of the
+1
+-st kid will belong to the
+3
+-th kid, the
+2
+-nd kid will belong to the
+2
+-th kid and so on.
+Your task is to determine the number of the day the book of the
+i
+-th child is returned back to him for the first time for every
+i
+from
+1
+to
+n
+.
+Consider the following example:
+p=[5,1,2,4,3]
+. The book of the
+1
+-st kid will be passed to the following kids:
+after the
+1
+-st day it will belong to the
+5
+-th kid,
+after the
+2
+-nd day it will belong to the
+3
+-rd kid,
+after the
+3
+-rd day it will belong to the
+2
+-nd kid,
+after the
+4
+-th day it will belong to the
+1
+-st kid.
+So after the fourth day, the book of the first kid will return to its owner. The book of the fourth kid will return to him for the first time after exactly one day.
+You have to answer
+q
+independent queries.
+Input
+The first line of the input contains one integer
+q
+(
+1≤q≤1000
+) — the number of queries. Then
+q
+queries follow.
+The first line of the query contains one integer
+n
+(
+1≤n≤2⋅
+10
+5
+) — the number of kids in the query. The second line of the query contains
+n
+integers
+p
+1
+,
+p
+2
+,…,
+p
+n
+(
+1≤
+p
+i
+≤n
+, all
+p
+i
+are distinct, i.e.
+p
+is a permutation), where
+p
+i
+is the kid which will get the book of the
+i
+-th kid.
+It is guaranteed that
+∑n≤2⋅
+10
+5
+(sum of
+n
+over all queries does not exceed
+2⋅
+10
+5
+).
+Output
+For each query, print the answer on it:
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+, where
+a
+i
+is the number of the day the book of the
+i
+-th child is returned back to him for the first time in this query.
+Example
 input
 Copy
 6
-)))(()
+5
+1 2 3 4 5
+3
+2 3 1
+6
+4 6 2 1 5 3
+1
+1
+4
+3 4 1 2
+5
+5 1 2 4 3
 output
 Copy
-0
-1 1
-Note
-In the first example, we can swap
-7
--th and
-8
--th character, obtaining a string "()()()()()". The cyclical shifts by
-0,2,4,6,8
-of this string form a correct bracket sequence.
-In the second example, after swapping
-5
--th and
-10
--th character, we obtain a string ")(())()()(()". The cyclical shifts by
-11,7,5,3
-of this string form a correct bracket sequence.
-In the third example, swap of any two brackets results in
-0
-cyclical shifts being correct bracket sequences.
+1 1 1 1 1 
+3 3 3 
+2 3 3 2 1 3 
+1 
+2 2 2 2 
+4 4 4 1 4 

@@ -1,43 +1,39 @@
-F. Mobile Communications
+G. Large Bouquets
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A sum of p rubles is charged from Arkady's mobile phone account every day in the morning. Among the following m days, there are n days when Arkady will top up the account: in the day di he will deposit ti rubles on his mobile phone account. Arkady will always top up the account before the daily payment will be done. There will be no other payments nor tops up in the following m days.
-Determine the number of days starting from the 1-st to the m-th such that the account will have a negative amount on it after the daily payment (i. e. in evening). Initially the account's balance is zero rubles.
+A flower shop has got n bouquets, and the i-th bouquet consists of ai flowers. Vasya, the manager of the shop, decided to make large bouquets from these bouquets.
+Vasya thinks that a bouquet is large if it is made of two or more initial bouquets, and there is a constraint: the total number of flowers in a large bouquet should be odd. Each of the initial bouquets can be a part of at most one large bouquet. If an initial bouquet becomes a part of a large bouquet, all its flowers are included in the large bouquet.
+Determine the maximum possible number of large bouquets Vasya can make.
 Input
-The first line contains three integers n, p and m (1 ≤ n ≤ 100 000, 1 ≤ p ≤ 109, 1 ≤ m ≤ 109, n ≤ m) — the number of days Arkady will top up the account, the amount of the daily payment, and the number of days you should check.
-The i-th of the following n lines contains two integers di and ti (1 ≤ di ≤ m, 1 ≤ ti ≤ 109) — the index of the day when Arkady will make the i-th top up, and the amount he will deposit on this day. It is guaranteed that the indices of the days are distinct and are given in increasing order, i. e. di > di - 1 for all i from 2 to n.
+The first line contains a single positive integer n (1 ≤ n ≤ 105) — the number of initial bouquets.
+The second line contains a sequence of integers a1, a2, ..., an (1 ≤ ai ≤ 106) — the number of flowers in each of the initial bouquets.
 Output
-Print the number of days from the 1-st to the m-th such that the account will have a negative amount on it after the daily payment.
+Print the maximum number of large bouquets Vasya can make.
 Examples
 input
 Copy
-3 6 7
-2 13
-4 20
-7 9
+5
+2 3 4 2 7
 output
 Copy
-3
+2
 input
 Copy
-5 4 100
-10 70
-15 76
-21 12
-30 100
-67 85
+6
+2 2 6 8 6 12
 output
 Copy
-26
+0
+input
+Copy
+3
+11 4 10
+output
+Copy
+1
 Note
-In the first example the balance will change as following (remember, initially the balance is zero):
-in the first day 6 rubles will be charged, the balance in the evening will be equal to  - 6;
-in the second day Arkady will deposit 13 rubles, then 6 rubles will be charged, the balance in the evening will be equal to 1;
-in the third day 6 rubles will be charged, the balance in the evening will be equal to  - 5;
-in the fourth day Arkady will deposit 20 rubles, then 6 rubles will be charged, the balance in the evening will be equal to 9;
-in the fifth day 6 rubles will be charged, the balance in the evening will be equal to 3;
-in the sixth day 6 rubles will be charged, the balance in the evening will be equal to  - 3;
-in the seventh day Arkady will deposit 9 rubles, then 6 rubles will be charged, the balance in the evening will be equal to 0.
-Thus, in the end of the first, third and sixth days the balance will be negative in the end of the day.
+In the first example Vasya can make 2 large bouquets. For example, the first bouquet can contain the first and the fifth initial bouquets (the total number of flowers is then equal to 9), and the second bouquet can consist of the second and the third initial bouquets (the total number of flowers is then equal to 7). The fourth initial bouquet is unused in this scheme.
+In the second example it is not possible to form a single bouquet with odd number of flowers.
+In the third example Vasya can make one large bouquet. For example, he can make it using all three initial bouquets. The size of the large bouquet is then equal to 11 + 4 + 10 = 25.

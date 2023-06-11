@@ -1,126 +1,90 @@
-A. Long Beautiful Integer
+D. Invertation in Tournament
 time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer
-x
-of
-n
-digits
-a
-1
-,
-a
-2
-,…,
-a
-n
-, which make up its decimal notation in order from left to right.
-Also, you are given a positive integer
-k<n
-.
-Let's call integer
-b
-1
-,
-b
-2
-,…,
-b
-m
-beautiful if
-b
+You are given a tournament — complete directed graph.
+In one operation you can pick any vertex
+v
+and change the direction of all edges with
+v
+on one of the ends (i.e all edges
+u→v
+change their orientation to
+v→u
+and vice versa).
+You want to make the tournament strongly connected with the smallest possible number of such operations if it is possible.
+Also, if it is possible, you need to find the number of ways to make this number of operations to make graph strongly connected (two ways are different if for some
 i
-=
-b
-i+k
-for each
+vertex that we chose on
 i
-, such that
-1≤i≤m−k
-.
-You need to find the smallest beautiful integer
-y
-, such that
-y≥x
+-th operation in one way is different from vertex that we chose on
+i
+-th operation in another way). You only need to find this value modulo
+998244353
 .
 Input
-The first line of input contains two integers
-n,k
-(
-2≤n≤200000,1≤k<n
-): the number of digits in
-x
-and
-k
-.
-The next line of input contains
-n
-digits
-a
-1
-,
-a
-2
-,…,
-a
+The first line of input contains one integer
 n
 (
-a
-1
-≠0
-,
-0≤
-a
+3≤n≤2000
+): the number of vertices in the tournament.
+Following
+n
+lines contain a description of the given tournament, each of them contains a binary string of length
+n
+. If
+j
+-th character of
 i
-≤9
-): digits of
-x
+-th string is equal to '1', then the graph has an edge
+i→j
+.
+It is guaranteed that there are no edges
+i→i
+and the graph has exactly one edge among
+i→j
+and
+j→i
+for different
+i
+and
+j
 .
 Output
-In the first line print one integer
-m
-: the number of digits in
-y
-.
-In the next line print
-m
-digits
-b
-1
-,
-b
-2
-,…,
-b
-m
-(
-b
-1
-≠0
-,
-0≤
-b
-i
-≤9
-): digits of
-y
+If it is not possible to convert tournament to strongly connected with the given operations, output "-1".
+Otherwise, output two integers: the smallest number of operations that you need to make the given graph strongly connected and the number of ways to do this number of operations to make graph strongly connected, modulo
+998244353
 .
 Examples
 input
 Copy
-3 2
-353
+3
+010
+001
+100
 output
 Copy
-3
-353
+0 1
 input
 Copy
-4 2
-1234
+4
+0010
+1000
+0100
+1110
 output
 Copy
-4
-1313
+-1
+input
+Copy
+6
+010000
+001000
+100000
+111001
+111100
+111010
+output
+Copy
+2 18

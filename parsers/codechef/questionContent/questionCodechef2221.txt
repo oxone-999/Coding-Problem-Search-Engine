@@ -1,125 +1,50 @@
-Blade Master
+Mountain Holidays 2
 Problem
-Loda and Maelk are legendary ChefCraft players. They have played so many games that this number doesn't fit in
-a standard 32-bit integer type. Today Loda and Maelk are going to sort the things out and find out who is the
-greatest ChefCraft player ever. So the great fight is coming. There are a lot of different heroes you may
-choose to play ChefCraft. Obviously every hero has his pros and cons. Loda perfectly plays Blade Master. His
-main skill is to make mirror images of himself to spoof the enemy.
-
-As every other popular game ChefCraft is played on a rectangular grid which consists of N rows and
-M columns. Rows of the grid are numbered by integers from 1 to N. So the upper row of the
-grid has number 1 and the lower row has number N. The same holds for columns. They are numbered
-by integers from 1 to M such that the most left column has number 1 while the most right
-column has number M.
-
-At the beginning of the game the only Blade Master's image stands on some starting cell (Sx, Sy) where
-1 ≤ Sx ≤ N and 1 ≤ Sy ≤ M. Then Loda makes T moves. Maelk knows how the
-distribution of images on the grid changes after each Loda's move. This happens according to the following
-rules.
-
-1. If there is an image standing on the cell (i, j) then the new images appear by the next
-rules:
-
-Let F(i, j) be the total number of images in the "cross" of the cell (i, j). The "cross" of
-the cell (i, j) is union of all cells in the i-th row of the grid and in the j-th column
-of the grid. So N + M − 1 cells belongs to the "cross".
-Let X = F(i, j) mod 6, that is X is the remainder of the division of F(i, j) by
-6.
-For every possible value of X we have following values: D1, D2, P1 and
-P2.
-D1 and D2 may be equal to one of the 4 values ['U', 'R', 'D', 'L'] and mean
-some two directions. Here 'U' means up, 'R' means right, 'D' means
-down and 'L' means left.
-P1 and P2 are integer numbers.
-New mirror images will appear at every cell in the direction D1 with the period P1 starting
-from cell (i, j) and in the direction D2 with the period P2 also starting from the cell
-(i, j). Of course, no images will appear out of the grid. For example, if D1 = 'U' and P1 =
-2 then images appear at the cells (i − 2, j), (i − 4, j), (i − 6, j), and so
-on.
-Loda always use the same values for D1 and D2. Namely,
-D1 = 'U', D2 = 'D' for X = 0,
-D1 = 'L', D2 = 'R' for X = 1,
-D1 = 'U', D2 = 'R' for X = 2,
-D1 = 'R', D2 = 'D' for X = 3,
-D1 = 'D', D2 = 'L' for X = 4,
-D1 = 'L', D2 = 'U' for X = 5.
-But values P1 and P2 may vary for different games. But once chosen they will be the same for
-all moves.
-
-2. Appearing of new mirror images happens immediately.
-
-3. Whenever there is more than one image at the cell they start one on one fights. In each fight two
-images participate and both die. So if the number of images in the cell was even than all images will
-disappear in the end, otherwise exactly one image will remain at this cell.
-
-Now Maelk wants to choose his hero in order to win the fight. The most important thing he needs to know for
-this is how the number of images changes during Loda's moves. So he asks you for help. Denote by C(t)
-the number of images on the grid after the t-th Loda's move for t from 1 to T. For
-convenience we denote C(0) = 1 with meaning that 0-th move is the putting of the only Blade
-Master's image at the starting cell. Maelk wants you to calculate the sum C(0) + C(1) + ... + C(T).
-Since Maelk doesn't know what to expect from Loda he would like to know the answer for several values of
-T. As you remember the total number of games played by Maelk and Loda at ChefCraft doesn't fit in a
-standard 32-bit integer type. Of course, the same can hold for the number of moves in their final fight. Since
-Maelk plays ChefCraft the whole life he is not strong in math and can't calculate such large sums. So let's
-help him to win the final fight and become the only ChefCraft master ever.
+Read problems statements in Mandarin Chinese and Russian.
+Let’s remember the problem Mountain holidays (MOU1H). The story of Mountain holidays is the following. Some time ago, Chef discovered that more and more people have started climbing mountains every day. So he decided to build a restaurant in the Ukrainian resort Bukovel (Carpathian Mountains). But there are many places to choose, so he wants to choose the best one.
+By your great helps, Chef could find to the best place to build a restaurant, now Chef becomes rich. Now he wants to build a restaurant in the next mountain. Similar to previous one, the next mountain is described by a sequence of N points. Here the points are numbered from 1 to N, and the height of point k is denoted by Hk. Every two adjacent points of the mountain are connected by a segment.
+For example, the mountain described by N = 9, H = [0, 2, 1, 2, 1, 3, 0, 1, 0] is like a following:
+       /\
+  /\/\/  \
+ /        \/\
+In the mountain, all of the tourists will go from the point 1 to point N.
+For comfort of the tourists, Chef has bought teleports too. Using a teleport, a tourist can be transferred from point i to point j, for all i < j. Of course, tourists can also walk from point i to point i+1 on foot.
+Now Chef wants to calculate the attractiveness of the mountain, as the number of the different climbs.
+A climb is defined by the nonempty sequence (p1, p1+1), (p2, p2+1), ..., (ps, ps+1) of the moves on foot , where pk+1 ≤ pk+1 for k = 1, 2, ..., s − 1.
+Two climbs, say (p1, p1+1), (p2, p2+1), ..., (ps, ps+1) and (q1, q1+1), (q2, q2+1), ..., (qt, qt+1) are different if and only if
+s ≠ t or
+There exists at least one k such that 1 ≤ k < min(s, t) and Hpk+1 – Hpk ≠ Hqk+1 – Hqk.
+You are given the array H, find the number of the different climbs that exist on the mountain. Since the answer can be very large, output it modulo 109+9 = 1000000009.
 Input
-The first line of the input contains three space separated integers N, M and Q. Here
-N and M are sizes of the grid described above and Q is the number of Maelk's queries. The
-second line contains two space separated integers Sx and Sy, row index and column index of the
-starting position of the first image. Each of the following six lines contains two space separated integers,
-the values P1 and P2 for the corresponding X, that is, i-th line among these six
-lines contains values P1 and P2 for X = i − 1. Each of the following Q
-lines contains a single integer T, the number of Loda's moves for the corresponding Maelk's query.
+The first line of input contains T, denoting the number of test cases. Then T test cases follow.
+The first line of each test case contains an integer N, denoting the number of points on the mountain. On second line of each test case, there are N space-separated integers H1, H2, ..., HN, denoting the height of each point.
 Output
-For every Maelk's query output on a separate line the numbers of images Maelk will see during Loda's move.
-Constrains
-N and M are positive
-N • M ≤ 34
-1 ≤ Sx ≤ N
-1 ≤ Sy ≤ M
-1 ≤ P1, P2 ≤ max{N, M}
-1 ≤ Q ≤ 100
-1 ≤ T ≤ 1016
-Example
-Input:
-3 3 3
-1 1
-1 1
-1 1
-1 1
-1 1
-1 1
-1 1
-1
-2
+For each test case, output an integer denoting the number of the different climbs modulo 109+9 = 1000000009.
+Constraints
+1 ≤ T ≤ 100000, that is, 1 ≤ T ≤ 105
+2 ≤ N ≤ 1000000, that is, 2 ≤ N ≤ 106
+Sum of N over all test cases in one file will be at most 1000000 = 106
+-2000000 ≤ Hk ≤ 2000000, that is, −2 × 106 ≤ Hk ≤ 2 × 106
+Sample
+Input
 3
-
-Output:
-4
-12
-17
+6
+1 2 3 4 5 6
+9
+0 2 1 2 1 3 0 1 0
+7
+0 5 -5 5 -5 4 -4
+Output
+5
+199
+55
 Explanation
-The initial grid looks as follows:
-100
-000
-000
-Here '1' represents a cell with an image and '0' represents a free cell.
-
-After the first move grid is
-111
-000
-000
-
-After the second move grid is
-101
-111
-111
-
-Finally, after the third move we have
-011
-101
-010
-
-So after the first move Maelk will see 3 images, after the second move – 8 images and
-after the third move – 5 images. Hence the answers for T = 1, 2, 3 are 1 + 3 = 4,
-1 + 3 + 8 = 12 and 1 + 3 + 8 + 5 = 17 respectively.
+In the first test case, since height increases by one for each move on foot, there will be one unique climb for each length. So there are 5 climbs with length 1, 2, ..., 5. Here length means the number of moves by foot.
+We can get the following 5 distinct climbs.
+(1, 2)
+(1, 2), (2, 3)
+(1, 2), (2, 3), (3, 4)
+(1, 2), (2, 3), (3, 4), (4, 5)
+(1, 2), (2, 3), (3, 4), (4, 5), (5, 6)
+The second test case is taken from the problem statement.
+Warning: The input and output can be large. Please don't use a slow input/output method.

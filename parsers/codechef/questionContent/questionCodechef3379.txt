@@ -1,25 +1,110 @@
-Martial Arts
+Princess and Dragons
 Problem
-Chef somehow strayed away from kitchen and got involved in martial arts. He isn't in the right shape to get into fights but he is qualified enough to be a coach in the local gym. He's just been put in charge of organizing an upcoming tournament.
-There will be two teams of N fighters participating in the tournament. We will refer to the Chef's team as home team. The other one will be guest team. As the organizer, Chef has to assign all fighters to N fights. One contestant from each team will take part in a fight and the judges will award certain number of points to each fighter's team according to their performance. Team's final score is equivalent to the sum of points which the contestants earned in their fights. Chef has to assign every fighter to exactly one fight.
-Chef knows all participants very well and wants to assign pairs in such way that will maximize the difference between home and guest team's score. Let's say that home team will score H and guest team G points. Chef wants to maximize H-G. If he can do that in multiple ways, he would then like to maximize H.
-However, he is not the only one with a hidden agenda. After the pairs are announced, guest coach can make up an excuse that one of his contestants got injured. This means that this contestant's fight won't take place and therefore won't contribute to team scores. When deciding whether to cancel some fight and which fight should that be, the guest coach has a similar goal as Chef. His primary goal is to maximize G-H and secondary to maximize G.
-Chef is stunned by guest coach's tactic and asks for your help to organize fights optimally.
+Read problems statements in Hindi, Mandarin chinese , Russian and Vietnamese as well.
+There are
+N dragons in Wonderland (numbered
+1 through
+N). Each dragon lives in one of
+N caves, which are located in a single row and numbered
+1 through
+N in the order from left to right. Let's denote the strength of the
+i-th dragon by
+S
+i
+.
+Also, a beautiful princess lives in Wonderland. Many princes would like to marry her. But the princess feels self-sufficient, so she doesn't want to get married. She loves living in dragon caves and talking to dragons.
+One day, the princess heard that a new prince is travelling to Wonderland to propose to her. She doesn't want to even see the prince — instead, she's going to choose some cave to live in and assign exactly one dragon to each cave to protect her from the prince.
+Let's denote the cave the princess chose by
+F and the strength of the dragon inhabiting the
+i-th cave after the princess assigns the dragons to caves by
+X
+i
+. The prince will start his journey near some cave
+V and move straight towards cave
+F, fighting the dragons in all caves between
+V and
+F (both inclusive). The prince initially has strength
+P; by defeating a dragon with strength
+X, the prince's strength decreases by
+X. If the prince's strength becomes non-positive at any time, he dies.
+The princess does not know the cave the prince will choose to start from. Therefore, she wants to assign the dragons to caves in such a way that the number of caves the prince can start from and die while going to the princess (possibly after defeating all dragons) is maximum possible. Help the princess calculate this number for each possible choice of her cave
+F.
 Input
-The first line contains the number of contestants N in each team. The following N lines describe all possible pairings of contestants. j-th element in i-th line is of the form "Ai,j:Bi,j" which means that home team would get Ai,j points and guest team Bi,j points if i-th contestant from home team fights against the j-th from guest team.
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+P denoting the number of dragons and the strength of the prince.
+The second line contains
+N space-separated integers
+S
+1
+,S
+2
+,…,S
+N
+denoting the strengths of the dragons.
 Output
-Output the number of points H scored by home team and the number of points G scored by guest team in an optimally conducted tournament. Separate them by a single space.
+For each test case, print a single line containing
+N space-separated integers. For each valid
+i, the
+i-th of these integers should denote the number of starting caves for the prince such that the prince dies if the princess stays in the
+i-th cave.
 Constraints
-1 ≤ N ≤ 100
-0 ≤ Ai,j, Bi,j < 1012
-Example
-Input:
-3
-10:7 0:20 6:5
-5:5 0:10 8:10
-0:0 50:0 100:0
-
-Output:
-18 17
-Explanation
-Chef will pair contestants in the following way: (1,1), (2,3), (3,2). Coach of the guest team will cancel the last fight (3,2) which would earn home team 50 points. This way the final score is 18 points for home team and 17 points for guest team.
+1≤T≤10
+1≤N≤10
+5
+1≤P≤10
+5
+1≤S
+i
+≤10
+5
+for each valid
+i
+Subtasks
+Subtask #1 (10 points):
+N≤8
+Subtask #2 (10 points):
+N≤20
+Subtask #3 (20 points):
+N,P≤2,000
+S
+i
+≤2,000 for each valid
+i
+Subtask #4 (20 points):
+N,P≤20,000
+S
+i
+≤20,000 for each valid
+i
+Subtask #5 (40 points): original constraints
+Sample 1:
+Input
+Output
+2
+3 4
+2 1 2
+4 5
+1 1 1 1
+2 1 2
+0 0 0 0
+Explanation:
+Example case 1:
+If
+F=1, the optimal sequence
+X is
+[2,2,1]. Then, if the prince starts at the second or third cave, he will die while going to the princess, so the answer is 2.
+If
+F=2, the optimal sequence
+X is again
+[2,2,1]; the prince will die if he starts near the first cave.
+If
+F=3, the optimal sequence
+X is
+[1,2,2]; the prince will die if he starts near the first or second cave.
+On the contrary, if
+X=[2,1,2] for
+F=2, the prince would be able to reach the princess starting from any cave, so this is not an optimal assignment of dragons.

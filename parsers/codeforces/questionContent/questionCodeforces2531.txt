@@ -1,57 +1,51 @@
-C. Social Distance
+F2. Flying Sort (Hard Version)
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp and his friends want to visit a new restaurant. The restaurant has
+This is a hard version of the problem. In this version, the given array can contain equal elements and the constraints on
 n
-tables arranged along a straight line. People are already sitting at some tables. The tables are numbered from
-1
-to
+are greater than in the easy version of the problem.
+You are given an array
+a
+of
 n
-in the order from left to right. The state of the restaurant is described by a string of length
-n
-which contains characters "1" (the table is occupied) and "0" (the table is empty).
-Restaurant rules prohibit people to sit at a distance of
-k
-or less from each other. That is, if a person sits at the table number
+integers (the given array can contain equal elements). You can perform the following operations on array elements:
+choose any index
 i
-, then all tables with numbers from
-i−k
-to
-i+k
-(except for the
+(
+1≤i≤n
+) and move the element
+a[i]
+to the begin of the array;
+choose any index
 i
--th) should be free. In other words, the absolute difference of the numbers of any two occupied tables must be strictly greater than
-k
-.
+(
+1≤i≤n
+) and move the element
+a[i]
+to the end of the array.
 For example, if
-n=8
-and
-k=2
-, then:
-strings "10010001", "10000010", "00000000", "00100000" satisfy the rules of the restaurant;
-strings "10100100", "10011001", "11111111" do not satisfy to the rules of the restaurant, since each of them has a pair of "1" with a distance less than or equal to
-k=2
-.
-In particular, if the state of the restaurant is described by a string without "1" or a string with one "1", then the requirement of the restaurant is satisfied.
-You are given a binary string
-s
-that describes the current state of the restaurant. It is guaranteed that the rules of the restaurant are satisfied for the string
-s
-.
-Find the maximum number of free tables that you can occupy so as not to violate the rules of the restaurant. Formally, what is the maximum number of "0" that can be replaced by "1" such that the requirement will still be satisfied?
-For example, if
-n=6
+n=5
 ,
-k=1
-,
-s=
- "100010", then the answer to the problem will be
-1
-, since only the table at position
-3
-can be occupied such that the rules are still satisfied.
+a=[4,7,2,2,9]
+, then the following sequence of operations can be performed:
+after performing the operation of the first type to the second element, the array
+a
+will become
+[7,4,2,2,9]
+;
+after performing the operation of the second type to the second element, the array
+a
+will become
+[7,2,2,9,4]
+.
+You can perform operations of any type any number of times in any order.
+Find the minimum total number of operations of the first and second type that will make the
+a
+array sorted in non-decreasing order. In other words, what is the minimum number of operations must be performed so the array satisfies the inequalities
+a[1]≤a[2]≤…≤a[n]
+.
 Input
 The first line contains a single integer
 t
@@ -62,22 +56,34 @@ t
 ) — the number of test cases in the test. Then
 t
 test cases follow.
-Each test case starts with a line containing two integers
+Each test case starts with a line containing an integer
 n
-and
-k
 (
-1≤k≤n≤2⋅
+1≤n≤2⋅
 10
 5
-) — the number of tables in the restaurant and the minimum allowed distance between two people.
-The second line of each test case contains a binary string
-s
-of length
-n
-consisting of "0" and "1" — a description of the free and occupied tables in the restaurant. The given string satisfy to the rules of the restaurant — the difference between indices of any two "1" is more than
-k
+) — the size of the array
+a
 .
+Then follow
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤
+10
+9
+) — an array that needs to be sorted by the given operations. The given array can contain equal elements.
 The sum of
 n
 for all test cases in one test does not exceed
@@ -86,36 +92,45 @@ for all test cases in one test does not exceed
 5
 .
 Output
-For each test case output one integer — the number of tables that you can occupy so as not to violate the rules of the restaurant. If additional tables cannot be taken, then, obviously, you need to output
-0
-.
+For each test case output one integer — the minimum total number of operations of the first and second type, which will make the array sorted in non-decreasing order.
 Example
 input
 Copy
-6
-6 1
-100010
-6 2
-000000
-5 1
-10101
-3 1
-001
-2 2
-00
-1 1
-0
+9
+5
+4 7 2 2 9
+5
+3 5 8 1 7
+5
+1 2 2 4 5
+2
+0 1
+3
+0 1 0
+4
+0 1 0 0
+4
+0 1 0 1
+4
+0 1 0 2
+20
+16 15 1 10 0 14 0 10 3 9 2 5 4 5 17 9 10 20 0 9
 output
 Copy
-1
 2
+2
+0
 0
 1
 1
 1
+1
+16
 Note
-The first test case is explained in the statement.
-In the second test case, the answer is
-2
-, since you can choose the first and the sixth table.
-In the third test case, you cannot take any free table without violating the rules of the restaurant.
+In the first test case, you first need to move two 2, to the beginning of the array. Therefore, the desired sequence of operations:
+[4,7,2,2,9]→[2,4,7,2,9]→[2,2,4,7,9]
+.
+In the second test case, you need to move the 1 to the beginning of the array, and the 8 — to the end. Therefore, the desired sequence of operations:
+[3,5,8,1,7]→[1,3,5,8,7]→[1,3,5,7,8]
+.
+In the third test case, the array is already sorted.

@@ -1,88 +1,49 @@
-Fast forward travelling
+Xor Queries
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-Gritukan likes to take cyclic trips around the world. There are
-N countries numbered
-1 through
-N in the world. Before starting his travels, Gritukan chooses a permutation
-P of all
-N countries. Then, he visits all countries (some countries may be visited multiple times) using the following algorithm:
-for each
-v from
-1 to
-N inclusive:
-travel to country
-v
-travel from country
-v to country
-P
-v
-, then from country
-P
-v
-to country
-P
-P
-v
-, and so on until he reaches country
-v again; let's call this sequence of visited countries a cyclic route
-(Each country appears at most once in a cyclic route. It is also possible for a route to contain only one country if
-v=P
-v
-, in which case Gritukan's travel along this route consists of staying in country
-v.)
-Unfortunately, Gritukan does not remember the routes he took. He only remembers a sequence
-A
-1..N
-with the following meaning: for each country
-v, the number of cyclic routes which contained this country is
-A
-v
-. Given the sequence
-A, Gritukan asks you to calculate the number of permutations
-P consistent with this sequence, modulo
-998244353 (it's prime).
+Read problems statements in Mandarin Chinese and Russian.
+Given an initially empty integer array (1-indexed) and some queries:
+Type 0: Add the integer number x at the end of the array.
+Type 1: On the interval L..R find a number y, to maximize (x xor y).
+Type 2: Delete last k numbers in the array
+Type 3: On the interval L..R, count the number of integers less than or equal to x.
+Type 4: On the interval L..R, find the kth smallest integer (kth order statistic).
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+The first line contains a single integer M denoting number of queries.
+The following M lines contain queries, form of queries is as follows.
+Query type 0 has the form "0 x".
+Query type 1 has the form "1 L R x".
+Query type 2 has the form "2 k".
+Query type 3 has the form "3 L R x".
+Query type 4 has the form "4 L R k".
+Note that, there will be no invalid query in the input.
 Output
-For each test case, print a single line containing one integer — the number of possible permutations modulo
-998244353 (it's prime).
+For each Query of type 1, 3 and 4 output the result in a single line.
 Constraints
-1≤T≤100
-1≤N≤10
-6
-1≤A
-i
-≤N for each valid
-i
-the sum of
-N over all test cases does not exceed
-10
-6
+Let N denote numbers of elements in before executing the query.
+1 ≤ M ≤ 5 * 105
+1 ≤ x ≤ 5 * 105
+1 ≤ L ≤ R ≤ N
+For query type 2, 1 ≤ k ≤ N and for query type 4, k ≤ R-L+1
 Subtasks
-Subtask #1 (40 points):
-1≤N≤5000
-Subtask #2 (60 points): original constraints
-Sample 1:
-Input
-Output
+Subtask #1 (40 points): 1 ≤ M ≤ 5 * 104
+Subtask #2: (60 points): 1 ≤ M ≤ 5 * 105
+Example
+Input:
+10
+0 8
+4 1 1 1
+0 2
+1 2 2 7
+1 2 2 7
+0 1
+3 2 2 2
+1 1 2 3
+3 1 3 5
+0 6
+Output:
+8
 2
-6
-1 1 1 1 1 1
-6
-6 6 6 6 6 6
+2
 1
-120
+8
+2

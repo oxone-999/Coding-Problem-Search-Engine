@@ -1,61 +1,139 @@
-Expected move
+Unstable Subarray
 Problem
-You are given a fair coin and two integers
-X and
+You are given an array
+A of size
 N.
-You repeatedly flip the coin and perform the following operation based on the result:
-If it lands on heads, then
-X will increase by
-1. However, if
-X=N then
-X will not change.
-If it lands on tails,
-X will decrease by
-1.
-You stop as soon as the value of
-X becomes
-1.
-Find the expected number of coin flips.
-Note that it is guaranteed that under the given constraints, the answer is an integer and does not exceed
-2⋅10
-18
+We define the function
+f(l,r)=∑
+i=l
+r−1
+(A
+i
+−A
+i+1
+), where
+1≤l≤r≤N.
+Note that
+f(i,i) is defined as
+0.
+A subarray
+A[l,r] is considered unstable if
+f(l,r)
+
+=(A
+r
+−A
+l
+).
+Count the number of unstable subarrays in the array.
+Note that the subarray
+A[l,r] consists of
+A
+l
+,A
+(l+1)
+,…,A
+(r−1)
+,A
+r
+.
 Input Format
-The first line contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first and only line of each test case contains two space separated integers
-X and
-N.
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test case contains a single integer
+N — the number of elements in the array.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+— the elements of the array.
 Output Format
-For each testcase, output the expected number of coin flips.
+For each test case, output on a new line, the count of unstable subarrays.
 Constraints
 1≤T≤10
 5
-1≤X≤N≤10
+1≤N≤10
+5
+0≤A
+i
+≤10
 9
+The sum of
+N over all test cases won't exceed
+5⋅10
+5
+.
 Sample 1:
 Input
 Output
+3
+3
+10 20 30
 4
-1 3
-2 2
-12 12
-568 57800
-0
-2
-132
-65223144
+1 2 1 2
+5
+1 2 3 4 5
+3
+4
+10
 Explanation:
-In the first test case,
-X is already
-1. So, the expected number of coin flip in this case is
-0.
-In the second test case, if the coin lands on head,
-X will not change because
-X is equal to
-N here. Whenever the coin lands on tail,
-X will decrease by
-1 and the game ends as
-X becomes
-1. The expected number of coin flips to get the first tail is
-2. So, the answer for the case is
-2.
+Test case
+1: There are
+3 unstable subarrays:
+A[1,2]: Here
+f(1,2)=10−20=−10 and
+A
+2
+−A
+1
+=10.
+A[1,3]: Here
+f(1,3)=(10−20)+(20−30)=−10−10=−20 and
+A
+3
+−A
+1
+=20.
+A[2,3]: Here
+f(2,3)=20−30=−10 and
+A
+3
+−A
+2
+=10.
+Test case
+2: There are
+4 unstable subarrays:
+A[1,2]: Here
+f(1,2)=1−2=−1 and
+A
+2
+−A
+1
+=1.
+A[1,4]: Here
+f(1,4)=(1−2)+(2−1)+(1−2)=−1+1−1=−1 and
+A
+4
+−A
+1
+=1.
+A[2,3]: Here
+f(2,3)=2−1=1 and
+A
+3
+−A
+2
+=−1.
+A[3,4]: Here
+f(3,4)=1−2=−1 and
+A
+4
+−A
+3
+=1.

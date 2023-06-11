@@ -1,113 +1,97 @@
-The Secret Recipe
+Intersection Matrix
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-N people (numbered
-1 through
-N) are trying to catch Chef because he has a secret recipe for the most delicious biryani ever. Chef does not have a number.
-The chase starts at time
-t=0 and takes place on a circular road with length
-L. Positions on the road are described by one real-valued coordinate; for each real number
-x, position
-x+L is the same as position
-x. Chef's initial position is
-X
-c
-=0 and for each valid
-i, the initial position of the
-i-th person is
-X
-i
-.
-Chef's maximum velocity is
-V
-c
-and for each valid
-i, the maximum velocity of the
-i-th person is
-V
-i
-. At each moment in time, any person (including Chef) with maximum velocity
-V may choose any velocity
-v (a real number) between
-−V and
-V inclusive, possibly different at different moments in time, independently from all other people and this person's velocity at all other moments in time. All people move continuously — for any very small time difference
-Δt, a person at a position
-x and with a velocity
-v at time
-t is approximately at the position
-x+v⋅Δt at time
-t+Δt.
-When Chef is at the same position as one of the
-N people at the same moment in time, he is considered caught and the chase ends. It can be proved that Chef is unable to keep escaping forever; formally, there is a real number
-T
-u
-such that Chef can always be caught at a finite time which does not exceed
-T
-u
-, regardless of his choices.
-The
-N people want to catch Chef at the smallest possible time, while Chef wants to maximise the time when he will be caught. Find the time at which Chef gets caught if all people act optimally.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains three space-separated integers
-N,
-L and
-V
-c
-.
-The second line contains
-N space-separated integers
-X
+You are given a matrix
+A with
+N rows and
+M columns. We can select some non-empty subset of rows and some non-empty subset of columns of the given matrix and add all the elements which occur at the intersection of selected rows and columns. This value is called the happiness of the selected rows and columns. For example, let the matrix be the following:
 1
-,X
 2
-,…,X
-N
-.
-The third line contains
-N space-separated integers
-V
-1
-,V
-2
-,…,V
-N
-.
-Output
-For each test case, print a single line containing one real number — the time when Chef gets caught. Your answer will be considered correct if its absolute or relative error does not exceed
-10
-−6
-.
-Constraints
-1≤T≤1,000
-2≤N≤10
+3
+7
 5
-2≤L≤10
 6
-1≤X
-i
-≤L−1 for each valid
-i
-1≤V
-i
-≤10
-6
-for each valid
-i
-1≤V
-c
-≤10
-6
-the sum of
-N over all test cases does not exceed
-10
-6
-Example Input
+2
 1
-3 10 2
-2 5 6
-3 1 1
-Example Output
-1.50000000000
+2
+Let rows be numbered
+1 to
+N from top to bottom and columns numbered
+1 to
+M from left to right. If we select rows
+1 and
+3 and columns
+1 and
+2, we get a happiness of
+1+2+2+1=6.
+We are also given an integer
+B. We need to tell the number of ways to select some non-empty subset of rows and some non-empty subset of columns so that their happiness is
+B. Since the answer can be large, find it modulo
+10
+9
++7.
+###Input
+The first line contains an integer
+T, the number of test cases.
+The first line of each test case contains three integers
+N,
+M and
+B - the number of rows, the number of columns, and the intended happiness, respectively.
+Each of the next
+N lines of the test case contains
+M space-separated integers. The
+j-th element in the
+i-th line represents the element
+A[i][j] in the
+i-th row and
+j-th column.
+###Output For each test case, output in a separate line, the number of ways to select some non-empty subset of rows and some non-empty subset of columns so that their happiness is
+B, modulo
+10
+9
++7.
+###Constraints
+1≤T≤3
+1≤N⋅M≤200
+1≤A[i][j],B≤10
+5
+###Subtasks Subtask #1 (15 points):
+1≤N⋅M≤10
+Subtask #2 (25 points):
+1≤N⋅M≤40
+Subtask #3 (35 points):
+1≤N⋅M≤144
+Subtask #4 (25 points):
+original constraints
+Sample 1:
+Input
+Output
+1
+ 3 3 6
+ 1 2 3
+ 7 5 6
+ 2 1 2
+4
+Explanation:
+There are
+4 ways to select subsets of rows and columns to get happiness equal to
+6.
+Select rows
+{1,3} and columns
+{1,2}. The elements at the intersections are
+{1,2,2,1}. So, the happiness is
+1+2+2+1=6.
+Select rows
+{1} and columns
+{1,2,3}. The elements at the intersections are
+{1,2,3}. So, the happiness is
+1+2+3=6.
+Select rows
+{2} and columns
+{3}. The elements at the intersections are
+{6}. So, the happiness is
+6.
+Select rows
+{2,3} and columns
+{2}. The elements at the intersections are
+{5,1}. So, the happiness is
+5+1=6.

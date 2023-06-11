@@ -1,49 +1,47 @@
-G. Three Occurrences
-time limit per test5 seconds
-memory limit per test512 megabytes
+C. Killjoy
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-consisting of
+A new agent called Killjoy invented a virus COVID-2069 that infects accounts on Codeforces. Each account has a rating, described by an integer (it can possibly be negative or very large).
+Killjoy's account is already infected and has a rating equal to
+x
+. Its rating is constant. There are
 n
-integers. We denote the subarray
-a[l..r]
-as the array
-[
+accounts except hers, numbered from
+1
+to
+n
+. The
+i
+-th account's initial rating is
 a
-l
-,
-a
-l+1
-,…,
-a
-r
-]
-(
-1≤l≤r≤n
-).
-A subarray is considered good if every integer that occurs in this subarray occurs there exactly thrice. For example, the array
-[1,2,2,2,1,1,2,2,2]
-has three good subarrays:
-a[1..6]=[1,2,2,2,1,1]
-;
-a[2..4]=[2,2,2]
-;
-a[7..9]=[2,2,2]
-.
-Calculate the number of good subarrays of the given array
-a
-.
+i
+. Any infected account (initially the only infected account is Killjoy's) instantly infects any uninfected account if their ratings are equal. This can happen at the beginning (before any rating changes) and after each contest. If an account is infected, it can not be healed.
+Contests are regularly held on Codeforces. In each contest, any of these
+n
+accounts (including infected ones) can participate. Killjoy can't participate. After each contest ratings are changed this way: each participant's rating is changed by an integer, but the sum of all changes must be equal to zero. New ratings can be any integer.
+Find out the minimal number of contests needed to infect all accounts. You can choose which accounts will participate in each contest and how the ratings will change.
+It can be proven that all accounts can be infected in some finite number of contests.
 Input
-The first line contains one integer
+The first line contains a single integer
+t
+(1≤t≤100)
+ — the number of test cases. The next
+2t
+lines contain the descriptions of all test cases.
+The first line of each test case contains two integers
 n
+and
+x
 (
-1≤n≤5⋅
+2≤n≤
 10
-5
-).
-The second line contains
+3
+,
+−4000≤x≤4000
+) — the number of accounts on Codeforces and the rating of Killjoy's account.
+The second line of each test case contains
 n
 integers
 a
@@ -51,38 +49,39 @@ a
 ,
 a
 2
-, ...,
+,…,
 a
 n
-(
-1≤
+(−4000≤
 a
 i
-≤n
-).
+≤4000)
+ — the ratings of other accounts.
 Output
-Print one integer — the number of good subarrays of the array
-a
-.
-Examples
+For each test case output the minimal number of contests needed to infect all accounts.
+Example
 input
-Copy
-9
-1 2 2 2 1 1 2 2 2
-output
 Copy
 3
-input
-Copy
-10
-1 2 3 4 1 2 3 1 2 3
-output
-Copy
-0
-input
-Copy
-12
-1 2 3 4 3 4 2 1 3 4 2 1
+2 69
+68 70
+6 4
+4 4 4 4 4 4
+9 38
+-21 83 50 -59 -77 15 -71 -78 20
 output
 Copy
 1
+0
+2
+Note
+In the first test case it's possible to make all ratings equal to
+69
+. First account's rating will increase by
+1
+, and second account's rating will decrease by
+1
+, so the sum of all changes will be equal to zero.
+In the second test case all accounts will be instantly infected, because all ratings (including Killjoy's account's rating) are equal to
+4
+.

@@ -1,86 +1,130 @@
-Mathison and the cubic tree
+Max Graph
 Problem
-Read problems statements in mandarin chinese, russian and vietnamese as well.
-After playing board games, buying letters, and shuffling decks, Mathison has finally decided to study. He opens his favorite book, CLRS, and decides to solve a graph problem. The problem is described below and you can find it by its number, 25.1-11, on page 693 (3rd edition only).
-You are given a tree with N nodes where each node has a value associated with it.
-Define PROD(u, v) to be the product of all values on the path from node u to node v.
-The problem is to find the longest path (u, v) such that PROD(u, v) is a cubic number (i.e. there is some natural number k such that k3 = PROD(u, v)).
-Mathison has no idea how to solve this problem so he asks you for help!
-Given T instances of this task, can you find the answer for each one of them so Mathison can proceed to the next chapter?
-Input
-The first line contains the number of tests, T.
-The description of a test starts with one line that contains the number of nodes, N.
-The second line contains N space-separated integers, representing the values of the nodes.
-Each of the following N-1 lines contain a single pair of integers u, v, representing an edge from u to v.
-Output
-The output file must contain T lines, each one containing the answer (i.e. the longest path that generates a cubic number) for the corresponding test. If there's no such path then output -1 instead.
+Given an array
+A of size
+N, construct a simple (i.e, without self-loops and multiedges) strongly connected directed graph with
+N nodes where
+A
+i
+denotes the colour of
+i
+th
+node.
+The graph should satisfy the following properties:
+If
+A
+i
+=A
+j
+, then nodes
+i and
+j should have the same outdegree.
+If
+A
+i
+=A
+j
+, neither of the edges
+i→j and
+j→i should exist.
+If the edge
+u→v exists, then the edge
+v→u cannot exist.
+Under the above conditions, the number of edges should be maximized.
+Note:
+It is guaranteed that
+A contains at least
+2 distinct elements.
+If
+A contains
+K distinct elements, they will be the integers
+0,1,2,…,K−1.
+Find any graph that satisfies the above conditions.
+If no such graph exists, print
+−1 instead.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test consists of a single integer
+N, denoting the number of nodes in the graph.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+, where
+A
+i
+denotes the colour of
+i-th node.
+Output Format
+For each test case,
+If no valid graph exists, output
+−1 on a new line.
+Otherwise, first output on a new line
+M: the maximum number of edges in such a graph.
+Then, output
+M lines, each containing two space-separated integers
+u and
+v, denoting an edge from
+u to
+v.
 Constraints
-1 ≤ T ≤ 5000
-1 ≤ N ≤ 100,000 (i.e. 105)
-1 ≤ valuex ≤ 1,000,000 (i.e. 106)
-Subtaks
-Subtask #1 (10 points):
-1 ≤ T ≤ 5000
-1 ≤ N ≤ 10
-All values are ≤ 50
-TL = 1s
-Subtask #2 (25 points):
-1 ≤ T ≤ 50
-1 ≤ N ≤ 300
-TL = 2s
-Subtask #3 (25 points):
-The sum of all Ns is ≤ 300,000
-All values are ≤ 150
-TL = 3.5s
-Subtask #4 (40 points):
-The sum of all Ns is ≤ 300,000
-Original constraints for N and valuex.
-TL = 4.5s
+1≤T≤100
+1≤N≤1000
+0≤A
+i
+<K, where
+K is the number of distinct elements in
+A.
+The sum of
+N over all test cases won't exceed
+1000.
 Sample 1:
 Input
 Output
-4
-10
-525 1210 15 6 40 22 441 35 220 121
-2 1
-1 3
-7 3
-2 5
-2 4
-5 8
-6 5
-9 5
-9 10
 3
-2 3 5
+4
+1 0 1 0
+5
+0 1 2 3 4
+3
+0 1 1
+4
+1 2
+3 4
+4 1
+2 3
+10
 1 2
 2 3
-5
-2 4 2 2 8
-1 2
-1 3
+2 4
+2 5
+3 1
 3 4
-5 4
-2
-125 3
-1 2
-3
+3 5
+4 1
+4 5
+5 1
 -1
-4
-1
 Explanation:
-First test
-
-
-There is only one path that generates a cubic number: 2 ? 5 ? 9; 1210 × 40 × 220 = 10648000 = 2203
-There are 3 nodes in this path so the answer is 3.
-
-Second test
-There is no path that generates a cubic number so the answer is -1.
-
-Third test
-There are two paths that generate a cubic number: 1 ? 2 and 1 ? 3 ? 4 ? 5.
-The second one is longer so the answer is 4.
-
-Fourth test
-There is only one path that generates a cubic number and it contains only one node.
+Test case
+1: Nodes
+1 and
+3 are colored
+1, and nodes
+2 and
+4 are colored
+0.
+The out degree of nodes
+[1,3] is
+1 and out degree of nodes
+[2,4] is also
+1, and the graph is strongly connected.
+Test case
+2: Every node has a distinct color, so those conditions are automatically satisfied.
+10 edges is also the maximum possible number of edges such a graph can have.

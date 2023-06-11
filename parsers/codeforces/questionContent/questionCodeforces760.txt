@@ -1,100 +1,218 @@
-B. ICPC Balloons
-time limit per test1 second
+D. Double Strings
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-In an ICPC contest, balloons are distributed as follows:
-Whenever a team solves a problem, that team gets a balloon.
-The first team to solve a problem gets an additional balloon.
-A contest has 26 problems, labelled
-A
-,
-B
-,
-C
-, ...,
-Z
-. You are given the order of solved problems in the contest, denoted as a string
+You are given
+n
+strings
 s
-, where the
-i
--th character indicates that the problem
+1
+,
+s
+2
+,…,
+s
+n
+of length at most
+8
+.
+For each string
 s
 i
-has been solved by some team. No team will solve the same problem twice.
-Determine the total number of balloons that the teams received. Note that some problems may be solved by none of the teams.
+, determine if there exist two strings
+s
+j
+and
+s
+k
+such that
+s
+i
+=
+s
+j
++
+s
+k
+. That is,
+s
+i
+is the concatenation of
+s
+j
+and
+s
+k
+. Note that
+j
+can be equal to
+k
+.
+Recall that the concatenation of strings
+s
+and
+t
+is
+s+t=
+s
+1
+s
+2
+…
+s
+p
+t
+1
+t
+2
+…
+t
+q
+, where
+p
+and
+q
+are the lengths of strings
+s
+and
+t
+respectively. For example, concatenation of "code" and "forces" is "codeforces".
 Input
-The first line of the input contains an integer
+The first line contains a single integer
 t
 (
-1≤t≤100
-) — the number of testcases.
-The first line of each test case contains an integer
+1≤t≤
+10
+4
+) — the number of test cases.
+The first line of each test case contains a single integer
 n
 (
-1≤n≤50
-) — the length of the string.
-The second line of each test case contains a string
-s
-of length
+1≤n≤
+10
+5
+) — the number of strings.
+Then
 n
-consisting of uppercase English letters, denoting the order of solved problems.
+lines follow, the
+i
+-th of which contains non-empty string
+s
+i
+of length at most
+8
+, consisting of lowercase English letters. Among the given
+n
+strings, there may be equal (duplicates).
+The sum of
+n
+over all test cases doesn't exceed
+10
+5
+.
 Output
-For each test case, output a single integer — the total number of balloons that the teams received.
+For each test case, output a binary string of length
+n
+. The
+i
+-th bit should be
+1
+if there exist two strings
+s
+j
+and
+s
+k
+where
+s
+i
+=
+s
+j
++
+s
+k
+, and
+0
+otherwise. Note that
+j
+can be equal to
+k
+.
 Example
 input
 Copy
-6
 3
-ABA
-1
-A
-3
-ORZ
 5
-BAAAA
-4
-BKPT
-10
-CODEFORCES
+abab
+ab
+abc
+abacb
+c
+3
+x
+xx
+xxx
+8
+codeforc
+es
+codes
+cod
+forc
+forces
+e
+code
 output
 Copy
-5
-2
-6
-7
-8
-17
+10100
+011
+10100101
 Note
-In the first test case,
-5
-balloons are given out:
-Problem
-A
-is solved. That team receives
-2
-balloons: one because they solved the problem, an an additional one because they are the first team to solve problem
-A
-.
-Problem
-B
-is solved. That team receives
-2
-balloons: one because they solved the problem, an an additional one because they are the first team to solve problem
-B
-.
-Problem
-A
-is solved. That team receives only
+In the first test case, we have the following:
+s
 1
-balloon, because they solved the problem. Note that they don't get an additional balloon because they are not the first team to solve problem
-A
-.
-The total number of balloons given out is
-2+2+1=5
-.
-In the second test case, there is only one problem solved. The team who solved it receives
+=
+s
 2
-balloons: one because they solved the problem, an an additional one because they are the first team to solve problem
-A
++
+s
+2
+, since
+abab=ab+ab
+. Remember that
+j
+can be equal to
+k
+.
+s
+2
+is not the concatenation of any two strings in the list.
+s
+3
+=
+s
+2
++
+s
+5
+, since
+abc=ab+c
+.
+s
+4
+is not the concatenation of any two strings in the list.
+s
+5
+is not the concatenation of any two strings in the list.
+Since only
+s
+1
+and
+s
+3
+satisfy the conditions, only the first and third bits in the answer should be
+1
+, so the answer is
+10100
 .

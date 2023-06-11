@@ -1,94 +1,70 @@
-Gun Distribution
+MEX-ception
 Problem
-The fight between Sardar Khan and Sultan to control Wasseypur is getting very intensifying. Sultan has asked Ramadhir to supply him with automatic guns in an attempt to dominate the battlefield. The Sardar family must also buy automatic guns or risk annihilation.
-The gun merchant Sardar is buying guns from has
-N guns in stock, the
-i-th of which has type
-A
-i
-. He sells these guns according to the following peculiar rules:
-Only one person can buy guns at a time.
-For all
-1<i≤N, he will sell the
-i-th gun only if the
-(i−1)-th gun has already been sold to somebody. The first gun can be sold directly with no restriction.
-Once some guns are sold to a person and they leave, they will not be allowed to come back in later and purchase any more guns.
-As a result, any buyer can only own a consecutive set of guns - if the first unsold gun when they enter has index
-L, they can only buy guns
-L,L+1,L+2,…,R where
-L≤R≤N, and the choice of
-R is left to them.
-Sardar Khan wants his lackeys to visit the gun merchant and buy all the guns. The intimidation power of a lackey is the number of distinct types of guns in his possession. The total intimidation power Sardar Khan gets from his lackeys is the product of all of their individual intimidation powers (to ensure this value is non-zero, only consider the product over all lackeys who purchase at least one weapon from this merchant). Sardar can send as few or as many lackeys to the merchant as he likes, as long as every weapon is purchased by at least one of them.
-Sardar obviously would like to maximize his intimidation power. Find out what this maximum value is, given that his lackeys buy guns optimally. The answer can be large, so print it modulo
-10
-9
-+7.
-Input Format
-The first line of input contains a single integer
-T, denoting the number of test cases. The description of
-T lines follows.
-The first line of each test case contains a single integer
-N, the number of guns the merchant has for sale.
-The second line of each test case contains
-N space-separated integers,
-A
-1
-,A
-2
-,…,A
-N
-; where
-A
-i
-is the type of the
-i-th gun.
-Output Format
-For each test case, output a single line containing one integer - the maximum intimidation power Sardhar can achieve, modulo
-10
-9
-+7.
-Constraints
-1≤T≤10
-5
-2≤N≤2⋅10
-5
-0≤A
-i
-≤10
-9
-Sum of
-N over all test cases is less than or equal to
-2⋅10
-5
-Sample 1:
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+You are given two integers
+N and
+M. You have to construct a matrix with
+N rows and
+M columns. Consider a multiset
+S which contains
+N+M integers: for each row and each column of this matrix, the MEX of the elements of this row/column belongs to
+S. Then, in the matrix you construct, the MEX of
+S must be maximum possible.
+Note: The MEX of a multiset of integers is the smallest non-negative integer that is not present in this multiset. For example,
+MEX({4,9,0,1,1,5})=2 and
+MEX({1,2,3})=0.
 Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains two space-separated integers
+N and
+M.
 Output
-2
-7
-1 1 1 2 3 4 9
+For each test case, print
+N lines. For each
+i (
+1≤i≤N), the
+i-th of these lines should contain
+M space-separated integers ― the elements in the
+i-th row of your matrix. Each element of the matrix must be non-negative and must not exceed
 10
-1 2 3 3 3 4 4 5 6 9
-6
-24
-Explanation:
-Test Case 1
-The first lackey buys the guns
-(1,1). The second lackey buys
-(1,2) and the third lackey buys
-(3,4,9). The number of unique guns the lackeys now have are
-1,2,3 respectively.
-The total intimidation power Sardar Khan gets is
-1⋅2⋅3=6.
-Another possible distribution achieving the same value is
-(1,1,1,2) and
-(3,4,9) which requires only
-2 lackeys.
-It can be verified that there is no way to achieve a higher value.
-  Test Case 2
-The first lackey buys the guns
-(1,2,3). The second lackey buys
-(3,3,4) and the third lackey buys
-(4,5,6,9). The number of unique guns the lackeys now have are
-3,2,4 respectively.
-The total intimidation power Sardar Khan gets is
-3⋅2⋅4=24.
+9
+.
+If there are multiple solutions, you may find any one of them.
+Constraints
+1≤T≤400
+1≤N,M≤100
+the sum of
+N⋅M over all test cases does not exceed
+10
+5
+Example Input
+2
+3 3
+4 2
+Example Output
+9 1 0
+1 0 2
+7 5 8
+2 2
+3 0
+1 1
+0 1
+Explanation
+Example case 1: The MEXs of the rows
+{9,1,0},
+{1,0,2} and
+{7,5,8} are
+2,
+3 and
+0 respectively. The MEXs of the columns
+{9,1,7},
+{1,0,5} and
+{0,2,8} are
+0,
+2 and
+1 respectively. Therefore, the multiset which contains the MEX of each row and each column is
+S={0,0,1,2,2,3} and
+MEX(S)=4. We can show that this is the largest MEX that can be obtained for a
+3×3 matrix.

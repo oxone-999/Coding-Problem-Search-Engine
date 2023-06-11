@@ -1,233 +1,242 @@
-C. Primitive Primes
-time limit per test1.5 seconds
+F. Battalion Strength
+time limit per test5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-It is Professor R's last class of his teaching career. Every time Professor R taught a class, he gave a special problem for the students to solve. You being his favourite student, put your heart into solving it one last time.
-You are given two polynomials
-f(x)=
-a
-0
-+
-a
-1
-x+⋯+
-a
-n−1
-x
-n−1
-and
-g(x)=
-b
-0
-+
-b
-1
-x+⋯+
-b
-m−1
-x
-m−1
-, with positive integral coefficients. It is guaranteed that the cumulative GCD of the coefficients is equal to
-1
-for both the given polynomials. In other words,
-gcd(
-a
-0
-,
-a
-1
-,…,
-a
-n−1
-)=gcd(
-b
-0
-,
-b
-1
-,…,
-b
-m−1
-)=1
-. Let
-h(x)=f(x)⋅g(x)
-. Suppose that
-h(x)=
-c
-0
-+
-c
-1
-x+⋯+
-c
-n+m−2
-x
-n+m−2
-.
-You are also given a prime number
-p
-. Professor R challenges you to find any
-t
-such that
-c
-t
-isn't divisible by
-p
-. He guarantees you that under these conditions such
-t
-always exists. If there are several such
-t
-, output any of them.
-As the input is quite large, please use fast input reading methods.
-Input
-The first line of the input contains three integers,
+There are
 n
-,
-m
-and
+officers in the Army of Byteland. Each officer has some power associated with him. The power of the
+i
+-th officer is denoted by
 p
-(
-1≤n,m≤
-10
-6
-,2≤p≤
+i
+. As the war is fast approaching, the General would like to know the strength of the army.
+The strength of an army is calculated in a strange way in Byteland. The General selects a random subset of officers from these
+n
+officers and calls this subset a battalion.(All
+2
+n
+subsets of the
+n
+officers can be chosen equally likely, including empty subset and the subset of all officers).
+The strength of a battalion is calculated in the following way:
+Let the powers of the chosen officers be
+a
+1
+,
+a
+2
+,…,
+a
+k
+, where
+a
+1
+≤
+a
+2
+≤⋯≤
+a
+k
+. The strength of this battalion is equal to
+a
+1
+a
+2
++
+a
+2
+a
+3
++⋯+
+a
+k−1
+a
+k
+. (If the size of Battalion is
+≤1
+, then the strength of this battalion is
+0
+).
+The strength of the army is equal to the expected value of the strength of the battalion.
+As the war is really long, the powers of officers may change. Precisely, there will be
+q
+changes. Each one of the form
+i
+x
+indicating that
+p
+i
+is changed to
+x
+.
+You need to find the strength of the army initially and after each of these
+q
+updates.
+Note that the changes are permanent.
+The strength should be found by modulo
 10
 9
-),  —
++7
+. Formally, let
+M=
+10
+9
++7
+. It can be shown that the answer can be expressed as an irreducible fraction
+p/q
+, where
+p
+and
+q
+are integers and
+q≢0modM
+). Output the integer equal to
+p⋅
+q
+−1
+modM
+. In other words, output such an integer
+x
+that
+0≤x<M
+and
+x⋅q≡pmodM
+).
+Input
+The first line of the input contains a single integer
 n
-and
-m
-are the number of terms in
-f(x)
-and
-g(x)
-respectively (one more than the degrees of the respective polynomials) and
-p
-is the given prime number.
-It is guaranteed that
-p
-is prime.
+(
+1≤n≤3⋅
+10
+5
+)  — the number of officers in Byteland's Army.
 The second line contains
 n
 integers
-a
-0
-,
-a
+p
 1
+,
+p
+2
 ,…,
-a
-n−1
+p
+n
 (
 1≤
-a
+p
 i
 ≤
 10
 9
-) —
-a
-i
-is the coefficient of
-x
-i
-in
-f(x)
-.
-The third line contains
-m
-integers
-b
-0
-,
-b
-1
-,…,
-b
-m−1
+).
+The third line contains a single integer
+q
 (
-1≤
-b
+1≤q≤3⋅
+10
+5
+)  — the number of updates.
+Each of the next
+q
+lines contains two integers
 i
-≤
+and
+x
+(
+1≤i≤n
+,
+1≤x≤
 10
 9
-)  —
-b
+), indicating that
+p
 i
-is the coefficient of
+is updated to
 x
-i
-in
-g(x)
 .
 Output
-Print a single integer
-t
-(
-0≤t≤n+m−2
-)  — the appropriate power of
-x
-in
-h(x)
-whose coefficient isn't divisible by the given prime
-p
-. If there are multiple powers of
-x
-that satisfy the condition, print any.
+In the first line output the initial strength of the army.
+In
+i
+-th of the next
+q
+lines, output the strength of the army after
+i
+-th update.
 Examples
 input
 Copy
-3 2 2
-1 1 2
+2
+1 2
+2
+1 2
 2 1
 output
 Copy
+500000004
 1
+500000004
 input
 Copy
-2 2 999999937
-2 1
-3 1
+4
+1 2 3 4
+4
+1 5
+2 5
+3 5
+4 5
 output
 Copy
-2
+625000011
+13
+62500020
+375000027
+62500027
 Note
-In the first test case,
-f(x)
-is
+In first testcase, initially, there are four possible battalions
+{} Strength =
+0
+{
+1
+} Strength =
+0
+{
 2
-x
+} Strength =
+0
+{
+1,2
+} Strength =
 2
-+x+1
-and
-g(x)
-is
-x+2
-, their product
-h(x)
-being
+So strength of army is
+0+0+0+2
+4
+=
+1
 2
-x
-3
-+5
-x
+After changing
+p
+1
+to
 2
-+3x+2
-, so the answer can be 1 or 2 as both 3 and 5 aren't divisible by 2.
-In the second test case,
-f(x)
-is
-x+2
-and
-g(x)
-is
-x+3
-, their product
-h(x)
-being
-x
+, strength of battallion {
+1,2
+} changes to
+4
+, so strength of army becomes
+1
+.
+After changing
+p
 2
-+5x+6
-, so the answer can be any of the powers as no coefficient is divisible by the given prime.
+to
+1
+, strength of battalion {
+1,2
+} again becomes
+2
+, so strength of army becomes
+1
+2
+.

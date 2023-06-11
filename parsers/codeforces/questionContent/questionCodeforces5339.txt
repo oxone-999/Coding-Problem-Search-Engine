@@ -1,51 +1,37 @@
-I. Composing Of String
-time limit per test2 seconds
+G. Perfectionist Arkadiy
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Stepan has a set of n strings. Also, he has a favorite string s.
-Stepan wants to do the following. He will take some strings of his set and write them down one after another. It is possible that he will take some strings more than once, and will not take some of them at all.
-Your task is to determine the minimum number of strings in the set which Stepan needs to take and write so that the string s appears as a subsequence in the resulting written down string.
-For example, in the string "abcd" strings "ad", "acd", "abcd" appear as subsequences, and strings "ba", "abdc" don't appear as subsequences.
+Arkadiy has lots square photos with size a × a. He wants to put some of them on a rectangular wall with size h × w.
+The photos which Arkadiy will put on the wall must form a rectangular grid and the distances between neighboring vertically and horizontally photos and also the distances between outside rows and columns of photos to the nearest bound of the wall must be equal to x, where x is some non-negative real number. Look on the picture below for better understanding of the statement.
+Arkadiy haven't chosen yet how many photos he would put on the wall, however, he want to put at least one photo. Your task is to determine the minimum value of x which can be obtained after putting photos, or report that there is no way to put positive number of photos and satisfy all the constraints. Suppose that Arkadiy has enough photos to make any valid arrangement according to the constraints.
+Note that Arkadiy wants to put at least one photo on the wall. The photos should not overlap, should completely lie inside the wall bounds and should have sides parallel to the wall sides.
 Input
-The first line contains the integer n (1 ≤ n ≤ 50) — the number of strings in Stepan's set.
-The next n lines contain n non-empty strings consisting of lowercase letters of the English alphabet. The length of each of these strings does not exceed 50 symbols. It is possible that some strings from Stepan's set are the same.
-The next line contains the non-empty string s, consisting of lowercase letters of the English alphabet — Stepan's favorite string. The length of this string doesn't exceed 2500 symbols.
+The first line contains three integers a, h and w (1 ≤ a, h, w ≤ 109) — the size of photos and the height and the width of the wall.
 Output
-Print the minimum number of strings which Stepan should take from the set and write them down one after another so that the string s appears as a subsequence in the resulting written down string. Each string from the set should be counted as many times as Stepan takes it from the set.
-If the answer doesn't exsist, print -1.
+Print one non-negative real number — the minimum value of x which can be obtained after putting the photos on the wall. The absolute or the relative error of the answer must not exceed 10 - 6.
+Print -1 if there is no way to put positive number of photos and satisfy the constraints.
 Examples
 input
 Copy
-3
-a
-aa
-a
-aaa
+2 18 13
 output
 Copy
-2
+0.5
 input
 Copy
-4
-ab
-aab
-aa
-bb
-baaab
+4 4 4
 output
 Copy
-3
+0
 input
 Copy
-2
-aaa
-bbb
-aaacbbb
+3 4 3
 output
 Copy
 -1
 Note
-In the first test, Stepan can take, for example, the third and the second strings from the set, write them down, and get exactly his favorite string.
-In the second example Stepan can take, for example, the second, the third and again the second strings from the set and write them down. Then he will get a string "aabaaaab", in which his favorite string "baaab" is a subsequence.
-In the third test Stepan can not get his favorite string, because it contains the letter "c", which is not presented in any of the strings in the set.
+In the first example Arkadiy can put 7 rows of photos with 5 photos in each row, so the minimum value of x equals to 0.5.
+In the second example Arkadiy can put only 1 photo which will take the whole wall, so the minimum value of x equals to 0.
+In the third example there is no way to put positive number of photos and satisfy the constraints described in the statement, so the answer is -1.

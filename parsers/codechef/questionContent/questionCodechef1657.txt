@@ -1,132 +1,32 @@
-Positive Spewing
+K-Unique Sequence
 Problem
-A circular array of length
-N is defined as follows:
-N integers
-A
-1
-,A
-2
-,…,A
-N
-are placed in a circle in such a way that for each
-1≤i<N,
-A
-i
-and
-A
-i+1
-are adjacent, and
-A
-1
-and
-A
-N
-are also adjacent.
-You are given a circular array
-A of length
-N. At the end of each second, the following changes are executed in the array: If
-A
-i
->0 then the elements which are adjacent to
-A
-i
-, will get incremented by
-1, for all
-1≤i≤N.
-For example, consider the array
-A=[0,0,0,2,0,0,0,5].
-Initially
-A
-4
-and
-A
-8
-are greater than zero. So after one second,
-A
-3
-,
-A
-5
-,
-A
-1
-and
-A
-7
-will get incremented by
-1. Hence the array will become
-A=[1,0,1,2,1,0,1,5].
-After two seconds, the array becomes
-A=[2,2,2,4,2,2,2,7]. Note that the value of
-A
-4
-has become
-4, because both,
-A
-3
-and
-A
-5
-were greater than zero after one second.
-What will be the sum of elements present in the array
-A after
-K seconds?
-Input Format
-The first line will contain
-T, number of testcases. Then
-T testcases follow.
-The first line of each testcase contains 2 space separated integers
-N and
-K.
-The second line of each testcase line contains
-N integers
-A
-1
-,A
-2
-,…,A
-N
-.
-Output Format
-For each testcase, output in a single line containing the sum of the all the elements present in the array
-A after
-K seconds.
+A sequence of N integers is called K-unique if, when it is split into N/K subsequences of K contiguous elements, each subsequence consists of K distinct integers.
+For example, consider this sequence of 6 integers.
+(2, 10, 2, 8, 3, 6)
+This sequence is 2-unique, because when you split it into 3 subsequences each of 2 contiguous elements as below,
+(2, 10), (2, 8), (3, 6),
+each subsequence consists of 2 distinct integers.
+You are given a sequence of N integers, and a positive integer K. Find a permutation of the sequence that is K-unique.
+Input
+The first line contains a single integer T, the number of test cases. T test cases follow. The first line of each test case contains two integers N and K. The next line contains a sequence of N integers ai, where ai is the i-th element of the sequence.
+Output
+For each test case, output a single line containing a permutation of the sequence that is K-unique. The elements of the sequence should be separated by a single space. If there are several solutions, output the lexicographically smallest one. If there is no solution, output -1.
 Constraints
-1≤T≤10
-4
-3≤N≤10
-5
-0≤A
-i
-≤10
-6
-0≤K≤10
-9
-Sum of
-N over all test cases does not exceed
-10
-6
-.
+1 <= T <= 5
+1 <= N <= 50000
+1<= K<= N
+N will be divisible by K
+0 <= ai <= 1000000000
 Sample 1:
 Input
 Output
-4
-6 1
-0 1 0 1 0 0
-3 0
-0 1 2
-8 2
-0 0 0 2 0 0 0 5
-3 10
-1 2 3
-6
 3
-23
-66
-Explanation:
-Test Case 1: After one second, the array will become
-A=[1,1,2,1,1,0]. So the sum of elements present in the array is =
-1+1+2+1+1+0=6.
-Test Case 2: No change will be executed in the array as
-K=0. So the required sum will be equal to 3.
+1 1
+42
+4 2
+4 7 7 7
+6 2
+2 10 2 8 3 6
+42
+-1
+2 3 2 6 8 10

@@ -1,106 +1,99 @@
-H. Hidden Fortress
+J. Bob's Beautiful Array
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem!
-As part of your contribution in the Great Bubble War, you have been tasked with finding the newly built enemy fortress. The world you live in is a giant
-10
-9
-×
-10
-9
-grid, with squares having both coordinates between
-1
-and
-10
-9
-.
-You know that the enemy base has the shape of a rectangle, with the sides parallel to the sides of the grid. The people of your world are extremely scared of being at the edge of the world, so you know that the base doesn't contain any of the squares on the edges of the grid (the
-x
-or
-y
-coordinate being
-1
-or
-10
-9
-).
-To help you locate the base, you have been given a device that you can place in any square of the grid, and it will tell you the manhattan distance to the closest square of the base. The manhattan distance from square
-(a,b)
-to square
-(p,q)
-is calculated as
-|a−p|+|b−q|
-. If you try to place the device inside the enemy base, you will be captured by the enemy. Because of this, you need to make sure to never place the device inside the enemy base.
-Unfortunately, the device is powered by a battery and you can't recharge it. This means that you can use the device at most
-40
-times.
+Bob really likes playing with arrays of numbers. That's why for his birthday, his friends bought him a really interesting machine – an array beautifier.
+The array beautifier takes an array
+A
+consisting of
+N
+integers, and it outputs a new array
+B
+of length N that it constructed based on the array given to it. The array beautifier constructs the new array in the following way: it takes two numbers at different indices from the original array and writes their sum to the end of the new array. It does this step
+N
+times - resulting in an output array of length
+N
+. During this process, the machine can take the same index multiple times in different steps.
+Bob was very excited about the gift that his friends gave him, so he put his favorite array in the machine. However, when the machine finished, Bob was not happy with the resulting array. He misses his favorite array very much, and hopes to get it back.
+Given the array that the machine outputted, help Bob find an array that could be the original array that he put in the machine. Sometimes the machine makes mistakes, so it is possible that no appropriate input array exists for the array it has outputted. In such case, let Bob know that his array is forever lost.
 Input
-The input contains the answers to your queries.
-Interaction
-Your code is allowed to place the device on any square in the grid by writing "?
+The first line contains one positive integer
+N
+(
+2≤N≤
+10
+3
+) – the length of Bob's array.
+The second line contains
+N
+integers
+B
+1
+,
+B
+2
+, ...,
+B
+N
+(
+1≤
+B
 i
-j
-"
-(1≤i,j≤
+≤
+10
+6
+) – the elements of the array the machine outputted.
+Output
+If an appropriate input array exists, print "YES", followed by the input array
+A
+1
+,
+A
+2
+, ...,
+A
+N
+(
+−
 10
 9
-)
-. In return, it will recieve the manhattan distance to the closest square of the enemy base from square
-(i,j)
-or
-−1
-if the square you placed the device on is inside the enemy base or outside the grid.
-If you recieve
-−1
-instead of a positive number, exit immidiately and you will see the wrong answer verdict. Otherwise, you can get an arbitrary verdict because your solution will continue to read from a closed stream.
-Your solution should use no more than
-40
-queries.
-Once you are sure where the enemy base is located, you should print "!
-x
-y
-p
-q
-"
-(1≤x≤p≤
+≤
+A
+i
+≤
 10
 9
-,1≤y≤q≤
-10
-9
-)
-, where
-(x,y)
-is the square inside the enemy base with the smallest
-x
-and
-y
-coordinates, and
-(p,q)
-is the square inside the enemy base with the largest
-x
-and
-y
-coordinates. Note that answering doesn't count as one of the 40 queries.
-After printing a query or printing the answer, do not forget to output end of line and flush the output. Otherwise, you will get idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-See the documentation for other languages.
-Example
+) in the next line. Otherwise, print "NO".
+Examples
 input
 Copy
-1
-1
 2
-1
+5 5
 output
 Copy
-? 2 2
-? 5 5
-? 4 7
-? 1 5
-! 2 3 4 5
+YES
+2 3
+input
+Copy
+3
+1 2 3
+output
+Copy
+YES
+0 1 2
+input
+Copy
+3
+2 4 5
+output
+Copy
+NO
+input
+Copy
+4
+1 3 5 7
+output
+Copy
+YES
+6 -3 4 1

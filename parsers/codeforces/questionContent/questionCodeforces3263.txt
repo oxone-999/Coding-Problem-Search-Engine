@@ -1,98 +1,98 @@
-I. The Light Square
-time limit per test2 seconds
+G. Harvester
+time limit per test0.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-For her birthday Alice received an interesting gift from her friends – The Light Square. The Light Square game is played on an
-N×N
-lightbulbs square board with a magical lightbulb bar of size
-N×1
-that has magical properties. At the start of the game some lights on the square board and magical bar are turned on. The goal of the game is to transform the starting light square board pattern into some other pattern using the magical bar without rotating the square board. The magical bar works as follows:
-It can be placed on any row or column
-The orientation of the magical lightbulb must be left to right or top to bottom for it to keep its magical properties
-The entire bar needs to be fully placed on a board
-The lights of the magical bar never change
-If the light on the magical bar is the same as the light of the square it is placed on it will switch the light on the square board off, otherwise it will switch the light on
-The magical bar can be used an infinite number of times
-Alice has a hard time transforming her square board into the pattern Bob gave her. Can you help her transform the board or let her know it is impossible? If there are multiple solutions print any.
+It is Bubble Cup finals season and farmer Johnny Bubbles must harvest his bubbles. The bubbles are in a rectangular bubblefield formed of
+N
+x
+M
+square parcels divided into
+N
+rows and
+M
+columns. The parcel in
+i
+th
+row and
+j
+th
+column yields
+A
+i,j
+bubbles.
+Johnny Bubbles has available a very special self-driving bubble harvester that, once manually positioned at the beginning of a row or column, automatically harvests all the bubbles in that row or column. Once the harvester reaches the end of the row or column it stops and must be repositioned. The harvester can pass through any parcel any number of times, but it can collect bubbles from the parcel only once.
+Johnny is very busy farmer, so he is available to manually position the harvester at most four times per day. Johnny is also impatient, so he wants to harvest as many bubbles as possible on the first day.
+Please help Johnny to calculate what is the maximum number of bubbles he can collect on the first day.
 Input
-The first line contains one positive integer number
-N (1≤N≤2000)
-representing the size of the square board.
-The next
+The first line contains two integers
 N
-lines are strings of length
+and
+M
+(
+1
+≤
 N
-consisting of 1's and 0's representing the initial state of the square board starting from the top row. If the character in a string is 1 it means the light is turned on, otherwise it is off.
-The next
+,
+M
+≤
 N
-lines are strings of length
-N
-consisting of 1's and 0's representing the desired state of the square board starting from the top row that was given to Alice by Bob.
-The last line is one string of length
-N
-consisting of 1's and 0's representing the pattern of the magical bar in a left to right order.
-Output
-Transform the instructions for Alice in order to transform the square board into the pattern Bob gave her. The first line of the output contains an integer number
-M (0≤M≤
+*
+M
+≤
 10
 5
-) representing the number of times Alice will need to apply the magical bar.
-The next
+) - the bubblefield size.
+Each of the next
+N
+lines contains
 M
-lines are of the form "col
-X
-" or "row
-X
-", where
-X
-is
+integers. The
+j
+th
+element in the
+i
+th
+line is
+A
+i,j
+(
 0
--based index of the matrix, meaning the magical bar should be applied to either row
-X
-or column
-X
-. If there is no solution, print only -1. In case of multiple solutions print any correct one.
+≤
+a
+i,j
+≤
+10
+9
+) — the yield of the parcel located in the
+i
+th
+row and the
+j
+th
+column.
+Output
+Output contains one integer number - maximum number of the bubbles Johnny can harvest on the first day.
 Examples
 input
 Copy
-2
-11
-11
-00
-01
-11
+2 2
+1 2
+3 4
 output
 Copy
--1
+10
 input
 Copy
-2
-10
-00
-00
-00
-10
+5 5
+0 9 2 7 0
+9 0 3 0 5
+0 8 0 3 1
+6 7 4 3 9
+3 6 4 1 0
 output
 Copy
-1
-row 0
-input
-Copy
-3
-110
-011
-100
-100
-011
-100
-100
-output
-Copy
-3
-row 0
-col 0
-col 1
+80
 Note
-Example 1: It is impossible to transform square board from one format to another
-Example 2: Magic bar can be applied on first row or column.
+In the first example, farmer Johnny can harvest all the bubbles by positioning the harvester on the first and the second row.
+In the second example, one way Johnny can harvest maximum number of bubbles is to position the harvester in the second row, the fourth row, the second column and the fourth column.

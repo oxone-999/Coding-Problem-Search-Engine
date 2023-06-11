@@ -1,68 +1,58 @@
-Joining Date
+N Buttons 1 Bulb
 Problem
-N candidates (numbered from
-1 to
-N) join Chef's firm. The first
-5 candidates join on the first day, and then, on every subsequent day, the next
-5 candidates join in.
-For example, if there are
-12 candidates, candidates numbered
-1 to
-5 will join on day
-1, candidates numbered
-6 to
-10 on day
-2 and the remaining
-2 candidates will join on day
-3.
-Candidate numbered
-K decided to turn down his offer and thus, Chef adjusts the position by shifting up all the higher numbered candidates. This leads to a change in the joining day of some of the candidates.
-Help Chef determine the number of candidates who will join on a different day than expected.
+Kulyash stays in room that has a single bulb and
+N buttons. The bulb is initially on.
+The initial states of the buttons are stored in a binary string
+S of length
+N — if
+S
+i
+is
+0, the
+i-th button is off, and if
+S
+i
+is
+1, the
+i-th button is on. If Kulyash toggles any single button then the state of the bulb reverses i.e. the bulb lights up if it was off and vice versa.
+Kulyash has toggled some buttons and the final states of the buttons are stored in another binary string
+R of length
+N. He asks you to determine the final state of the bulb.
 Input Format
-First line will contain
-T, number of test cases. Then the test cases follow.
-Each test case contains of a single line of input, two space-separated integers
-N and
-K denoting the number of candidates and the candidate who turned down the offer.
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of three lines of input.
+The first line of each test case contains an integer
+N — the number of buttons.
+The second line of each test case contains a binary string
+S — the initial states of the buttons.
+The third line of each test case contains a binary string
+R — the final states of the buttons.
 Output Format
-For each test case, output a single integer denoting the number of candidates whose joining day will be changed.
+For each test case, output on a new line the final state of the bulb (
+0 for off and
+1 for on).
 Constraints
-1≤T≤1000
-2≤N≤1000
-1≤K≤N
+1≤T≤100
+1≤N≤100
+S and
+R are binary strings, i.e, contain only the characters
+0 and
+1.
 Sample 1:
 Input
 Output
-4
-7 3
-6 6
-2 1
-14 2
-1
-0
-0
 2
+3
+000
+001
+2
+00
+11
+0
+1
 Explanation:
 Test case
-1: The original joining day of each candidate is given as
-[1,1,1,1,1,2,2] but as candidate
-3 turns down his offer, the new joining days are now
-[1,1,NA,1,1,1,2]. Candidate numbered
-6 is the only one to have his joining day changed.
+1: All the buttons are initially off and finally the state of only one button has changed so the state of the bulb reverses once i.e. it turns off.
 Test case
-2: The original joining day of each candidate is given as
-[1,1,1,1,1,2] but as candidate
-6 turns down his offer, the new joining days are now
-[1,1,1,1,1,NA]. No candidate got his joining day changed.
-Test case
-3: The original joining day of each candidate is given as
-[1,1] but as candidate
-1 turns down his offer, the new joining days are now
-[NA,1]. No candidate got his joining day changed.
-Test case
-4: The original joining day of each candidate is given as
-[1,1,1,1,1,2,2,2,2,2,3,3,3,3] but as candidate
-2 turns down his offer, the new joining days are now
-[1,NA,1,1,1,1,2,2,2,2,2,3,3,3]. Candidate numbered
-6 and
-11 are the only ones to have their joining days changed.
+2: All the buttons are initially off and finally the states of two buttons have changed so the state of the bulb reverses twice i.e. it remains on.

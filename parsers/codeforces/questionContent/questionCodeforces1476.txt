@@ -1,132 +1,221 @@
-D. Bridge Club
+F. Stations
 time limit per test2.5 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are currently
+There are
 n
-hot topics numbered from
-0
+cities in a row numbered from
+1
 to
-n−1
-at your local bridge club and
-2
 n
-players numbered from
-0
-to
-2
-n
-−1
-. Each player holds a different set of views on those
-n
-topics, more specifically, the
+.
+The cities will be building broadcasting stations. The station in the
 i
--th player holds a positive view on the
+-th city has height
+h
+i
+and range
+w
+i
+. It can broadcast information to city
 j
--th topic if
-i & 
-2
-j
->0
-, and a negative view otherwise. Here
-&
-denotes the bitwise AND operation.
-You are going to organize a bridge tournament capable of accommodating at most
+if the following constraints are met:
+i≤j≤
+w
+i
+, and
+for each
 k
-pairs of players (bridge is played in teams of two people). You can select teams arbitrarily while each player is in at most one team, but there is one catch: two players cannot be in the same pair if they disagree on
-2
-or more of those
-n
-topics, as they would argue too much during the play.
-You know that the
+such that
+i<k≤j
+, the following condition holds:
+h
+k
+<
+h
 i
--th player will pay you
-a
+.
+In other words, the station in city
 i
-dollars if they play in this tournament. Compute the maximum amount of money that you can earn if you pair the players in your club optimally.
+can broadcast information to city
+j
+if
+j≥i
+,
+j
+is in the range of
+i
+-th station, and
+i
+is strictly highest on the range from
+i
+to
+j
+(including city
+j
+).
+At the beginning, for every city
+i
+,
+h
+i
+=0
+and
+w
+i
+=i
+.
+Then
+q
+events will take place. During
+i
+-th event one of the following will happen:
+City
+c
+i
+will rebuild its station so that its height will be strictly highest among all stations and
+w
+c
+i
+will be set to
+g
+i
+.
+Let
+b
+j
+be the number of stations that can broadcast information to city
+j
+. Print the sum of
+b
+j
+over all
+j
+satisfying
+l
+i
+≤j≤
+r
+i
+.
+Your task is to react to all events and print answers to all queries.
 Input
 The first line contains two integers
 n
-,
-k
+and
+q
 (
-1≤n≤20
-,
-1≤k≤200
-) — the number of hot topics and the number of pairs of players that your tournament can accommodate.
-The second line contains
-2
-n
-integers
-a
-0
-,
-a
-1
-,…,
-a
-2
-n
-−1
+1≤n,q≤2⋅
+10
+5
+) — number of cities and number of events.
+Then
+q
+lines follow. The
+i
+-th line begins with an integer
+p
+i
 (
-0≤
-a
+p
+i
+=1
+or
+p
+i
+=2
+).
+If
+p
+i
+=1
+a station will be rebuilt. Then two integers
+c
+i
+and
+g
+i
+(
+1≤
+c
 i
 ≤
-10
-6
-) — the amounts of money that the players will pay to play in the tournament.
+g
+i
+≤n
+) follow — the city in which the station is rebuilt and its new broadcasting range.
+If
+p
+i
+=2
+you are given a query. Then two integers
+l
+i
+and
+r
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤n
+) follow — the range of cities in the query.
 Output
-Print one integer: the maximum amount of money that you can earn if you pair the players in your club optimally under the above conditions.
+For each query, print in a single line the sum of
+b
+j
+over the given interval.
 Examples
 input
 Copy
-3 1
-8 3 5 7 1 10 3 2
+1 3
+2 1 1
+1 1 1
+2 1 1
 output
 Copy
-13
-input
-Copy
-2 3
-7 4 5 7
-output
-Copy
-23
-input
-Copy
-3 2
-1 9 1 5 7 8 1 1
-output
-Copy
-29
-Note
-In the first example, the best we can do is to pair together the
-0
--th player and the
-2
--nd player resulting in earnings of
-8+5=13
-dollars. Although pairing the
-0
--th player with the
-5
--th player would give us
-8+10=18
-dollars, we cannot do this because those two players disagree on
-2
-of the
-3
-hot topics.
-In the second example, we can pair the
-0
--th player with the
 1
--st player and pair the
-2
--nd player with the
-3
--rd player resulting in earnings of
-7+4+5+7=23
-dollars.
+1
+input
+Copy
+5 10
+1 3 4
+2 3 5
+1 1 5
+2 1 5
+1 4 5
+2 2 4
+1 2 3
+2 1 3
+1 5 5
+2 2 5
+output
+Copy
+4
+10
+5
+4
+5
+Note
+In the first test case, only station
+1
+reaches city
+1
+before and after it is rebuilt.
+In the second test case, after each rebuild, the array
+b
+looks as follows:
+[1,1,1,2,1]
+;
+[1,2,2,3,2]
+;
+[1,2,2,1,2]
+;
+[1,1,2,1,2]
+;
+[1,1,2,1,1]
+.

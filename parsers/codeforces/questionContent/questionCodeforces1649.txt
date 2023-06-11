@@ -1,56 +1,53 @@
-C. Number of Pairs
+F. Interesting Function
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-of
-n
-integers. Find the number of pairs
-(i,j)
-(
-1≤i<j≤n
-) where the sum of
-a
-i
-+
-a
-j
-is greater than or equal to
+You are given two integers
 l
-and less than or equal to
+and
 r
-(that is,
-l≤
-a
-i
-+
-a
-j
-≤r
-).
-For example, if
-n=3
-,
-a=[5,1,2]
-,
-l=4
+, where
+l<r
+. We will add
+1
+to
+l
+until the result is equal to
+r
+. Thus, there will be exactly
+r−l
+additions performed. For each such addition, let's look at the number of digits that will be changed after it.
+For example:
+if
+l=909
+, then adding one will result in
+910
 and
-r=7
-, then two pairs are suitable:
-i=1
+2
+digits will be changed;
+if you add one to
+l=9
+, the result will be
+10
 and
-j=2
-(
-4≤5+1≤7
-);
-i=1
+2
+digits will also be changed;
+if you add one to
+l=489999
+, the result will be
+490000
 and
-j=3
-(
-4≤5+2≤7
-).
+5
+digits will be changed.
+Changed digits always form a suffix of the result written in the decimal system.
+Output the total number of changed digits, if you want to get
+r
+from
+l
+, adding
+1
+each time.
 Input
 The first line contains an integer
 t
@@ -61,72 +58,32 @@ t
 ). Then
 t
 test cases follow.
-The first line of each test case contains three integers
-n,l,r
+Each test case is characterized by two integers
+l
+and
+r
 (
-1≤n≤2⋅
-10
-5
-,
-1≤l≤r≤
-10
-9
-) — the length of the array and the limits on the sum in the pair.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
+1≤l<r≤
 10
 9
 ).
-It is guaranteed that the sum of
-n
-overall test cases does not exceed
-2⋅
-10
-5
-.
 Output
-For each test case, output a single integer — the number of index pairs
-(i,j)
-(
-i<j
-), such that
-l≤
-a
-i
-+
-a
-j
-≤r
-.
+For each test case, calculate the total number of changed digits if you want to get
+r
+from
+l
+, adding one each time.
 Example
 input
 Copy
 4
-3 4 7
-5 1 2
-5 5 8
-5 1 2 4 3
-4 100 1000
-1 1 1 1
-5 9 13
-2 5 5 1 1
+1 9
+9 10
+10 20
+1 1000000000
 output
 Copy
+8
 2
-7
-0
-1
+11
+1111111110

@@ -1,162 +1,152 @@
-B. Once in a casino
-time limit per test1 second
+C. Compress String
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-One player came to a casino and found a slot machine where everything depends only on how he plays. The rules follow.
-A positive integer
+Suppose you are given a string
+s
+of length
+n
+consisting of lowercase English letters. You need to compress it using the smallest possible number of coins.
+To compress the string, you have to represent
+s
+as a concatenation of several non-empty strings:
+s=
+t
+1
+t
+2
+…
+t
+k
+. The
+i
+-th of these strings should be encoded with one of the two ways:
+if
+|
+t
+i
+|=1
+, meaning that the current string consists of a single character, you can encode it paying
 a
-is initially on the screen. The player can put a coin into the machine and then add
+coins;
+if
+t
+i
+is a substring of
+t
 1
-to or subtract
-1
-from any two adjacent digits. All digits must remain from
-0
-to
-9
-after this operation, and the leading digit must not equal zero. In other words, it is forbidden to add
-1
-to
-9
-, to subtract
-1
-from
-0
-and to subtract
-1
-from the leading
-1
-. Once the number on the screen becomes equal to
+t
+2
+…
+t
+i−1
+, then you can encode it paying
 b
-, the player wins the jackpot.
-a
-and
-b
-have the same number of digits.
-Help the player to determine the minimal number of coins he needs to spend in order to win the jackpot and tell how to play.
+coins.
+A string
+x
+is a substring of a string
+y
+if
+x
+can be obtained from
+y
+by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
+So your task is to calculate the minimum possible number of coins you need to spend in order to compress the given string
+s
+.
 Input
-The first line contains a single integer
+The first line contains three positive integers, separated by spaces:
 n
-(
-2≤n≤
-10
-5
-) standing for the length of numbers
-a
-and
-b
-.
-The next two lines contain numbers
-a
-and
-b
-, each one on a separate line (
-10
-n−1
-≤a,b<
-10
-n
-).
-Output
-If it is impossible to win the jackpot, print a single integer
-−1
-.
-Otherwise, the first line must contain the minimal possible number
-c
-of coins the player has to spend.
-min(c,
-10
-5
-)
-lines should follow,
-i
--th of them containing two integers
-d
-i
-and
-s
-i
-(
-1≤
-d
-i
-≤n−1
 ,
-s
-i
-=±1
-) denoting that on the
-i
--th step the player should add
-s
-i
-to the
-d
-i
--th and
+a
+and
+b
 (
-d
-i
-+1)
--st digits from the left (e. g.
-d
-i
-=1
-means that two leading digits change while
-d
-i
-=n−1
-means that there are two trailing digits which change).
-Please notice that the answer may be very big and in case
-c>
-10
-5
-you should print only the first
-10
-5
-moves. Your answer is considered correct if it is possible to finish your printed moves to win the jackpot in the minimal possible number of coins. In particular, if there are multiple ways to do this, you can output any of them.
+1≤n,a,b≤5000
+) — the length of the string, the cost to compress a one-character string and the cost to compress a string that appeared before.
+The second line contains a single string
+s
+, consisting of
+n
+lowercase English letters.
+Output
+Output a single integer — the smallest possible number of coins you need to spend to compress
+s
+.
 Examples
 input
 Copy
-3
-223
-322
+3 3 1
+aba
 output
 Copy
-2
-1 1
-2 -1
+7
 input
 Copy
-2
-20
-42
+4 1 1
+abcd
 output
 Copy
-2
-1 1
-1 1
+4
 input
 Copy
-2
-35
-44
+4 10 1
+aaaa
 output
 Copy
--1
+12
 Note
-In the first example, we can make a +1 operation on the two first digits, transforming number
-223
-into
-333
-, and then make a -1 operation on the last two digits, transforming
-333
-into
-322
+In the first sample case, you can set
+t
+1
+=
+'a',
+t
+2
+=
+'b',
+t
+3
+=
+'a' and pay
+3+3+1=7
+coins, since
+t
+3
+is a substring of
+t
+1
+t
+2
 .
-It's also possible to do these operations in reverse order, which makes another correct answer.
-In the last example, one can show that it's impossible to transform
-35
-into
-44
+In the second sample, you just need to compress every character by itself.
+In the third sample, you set
+t
+1
+=
+t
+2
+=
+'a',
+t
+3
+=
+'aa' and pay
+10+1+1=12
+coins, since
+t
+2
+is a substring of
+t
+1
+and
+t
+3
+is a substring of
+t
+1
+t
+2
 .

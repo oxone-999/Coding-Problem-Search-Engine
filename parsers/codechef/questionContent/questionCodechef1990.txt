@@ -1,36 +1,33 @@
-Ciel and Map
+Congruent triangles
 Problem
-Tomya is a girl. She loves Chef Ciel very much.
-Tomya writes a tetragon (see the below Notes 1 for details) in her map. The map has N points, whose coordinate are (Xi, Yi), denoting Ciel's restaurants. Each vertex of the tetragon written by Tomya is one of the Ciel's restaurants.
-Tomya doesn't show her tetragon in the map, but she says that she draws a long segment. To guess her tetragon, please tell the maximum length of a segment which can be one of the sides in her tetragon. (See Notes 2 for the definition of length)
-Notes 1:
-A tetragon means a polygon with 4 sides.
-A tetragon must be simple, that is, the boundary of the tetragon does not cross itself.
-A tetragon does not have to be convex.
-
-Notes 2:
-The length of a segment is defined as the Euclidean distance between the endpoints. That is, the length of the segment (x1, y1) - (x2, y2) is the square root of (x1 - x2)2 + (y1 - y2)2.
+After learning about congruent triangles in his recent mathematics lesson, Johnny has become very excited. He has even invented an interesting counting problem involving congruent triangles!
+Recall that two triangles are congruent if their corresponding sides are equal in length and their corresponding angles are equal in size. A lattice triangle is a triangle such that the coordinates of all its vertices are integers. Johnny's problem can now be described as follows:
+You are given an integer M and a lattice triangle ABC all of whose vertices (A, B, and C) are inside rectangle RM. RM is the rectangle having (0,0) as its bottom-left corner and (M,M) as its top-right corner. In other words, 0 ≤ xA, yA, xB, yB, xC, yC ≤ M. The problem is to count the number of lattice triangles congruent to ABC also having all their vertices inside the rectangle RM.
+Could you help Johnny write a program to solve this problem?
 Input
-The first line contains an integer T, the number of test cases. Then T test cases follow. The first line of each test case contains an integers N. Then next N lines follow. The i-th line contains 2 integers denoting Xi and Yi.
+The first line contains t, the number of test cases (about 10). Then t test cases follow. Each test case has the following form:
+The first line contains two numbers M and K (1 ≤ M ≤ 1000, 1 ≤ K ≤ 1000). K is the number of given triangles.
+Each line in the next K lines contains 6 integers xA, yA, xB, yB, xC, yC (0 ≤ xA, yA, xB, yB, xC, yC ≤ M) describing a triangle ABC. It is guaranteed that ABC is always a triangle (i.e., non-degenerate).
+The input for successive test cases is separated by a blank line.
 Output
-For each test case, print the maximum length of a segment which can be one of sides in her tetragon. This value must have an absolute error no more than 0.000001 (10-6).
-Constraints
-1 ≤ T ≤ 1250
-4 ≤ N ≤ 1000
-1 ≤ Xi, Yi ≤ 5000
-The sum of N in one test file does not exceed 5000.
-No three points (Xi, Yi), (Xj, Yj), (Xk, Yk) lie in the same line (1 ≤ i < j < k ≤ N)
+For each test case, output a line containing the string "Case #T:" where T should be replaced by the corresponding test case number.
+Then, K lines should follow, each line containing the number of triangles having vertices inside the rectangle RM, congruent to the corresponding triangle given in the input.
+Print a blank line after each test case.
 Sample 1:
 Input
 Output
-1
-6
-3 1
-5 2
-3 3
-6 3
-6 6
-5 6
-5.8309518948
+2
+2 2
+0 0 0 2 2 0
+0 0 1 1 2 0
+3 2
+0 0 0 2 2 0
+0 0 1 1 2 0
+Case #1:
+4
+8
+Case #2:
+16
+24
 Explanation:
-The below figure denotes one of the valid tetragons for the sample input. The red segment is the longest segment which can be one of the sides in her tetragon.
+The 8 triangles congruent to the second triangle (in the first test case) are presented in the following figure:

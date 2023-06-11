@@ -1,126 +1,38 @@
-Sort Permutation
+Ciel Numbers III
 Problem
-You are given a permutation
-P of length
-N.
-You can perform the following operation on
-P:
-Select two distinct indices
-i and
-j
-(1≤i,j≤N) and swap the elements
-P
-i
-and
-P
-j
-.
-The cost of the operation is
-abs(i−j).
-The total cost is defined as the sum of costs of all operations performed. Find the minimum total cost to sort the permutation in increasing order and the order of operations required to do so.
-Note:
-A permutation consists of all elements from
-1 to
-N exactly once.
-You do not need to minimise the number of operations required to sort the array. The number of operations can lie in the range
-[0,N
-2
-].
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains an integer
-N — the length of the permutation.
-The next line contains
-N space-separated integers, the elements of permutation
-P.
-Output Format
-For each test case:
-In the first line, output minimum total cost to sort the permutation in increasing order.
-In the next line, output an integer
-K
-(0≤K≤N
-2
-), denoting the number of operations required to sort the permutation.
-The next
-K lines contain two space-separated integers
-i and
-j, denoting the operation.
-If there are multiple ways to sort the permutation using minimum total cost, print any.
-Constraints
-1≤T≤100
-2≤N≤500
-P is a permutation of length
-N.
-The sum of
-N over all test cases won't exceed
-500.
-Sample 1:
+Tomya is a girl. She loves Chef Ciel very much.
+Tomya also loves Ciel numbers. The definition of Ciel numbers are following.
+Ciel numbers are defined as the positive integers k such that d(k, 8) ≥ d(k, 5) ≥ d(k, 3) and d(k, i) = 0 for all i = 0, 1, 2, 4, 6, 7, 9, where d(k, i) denotes the number of the digit i in the decimal representation of the integer k. For example, the first few Ciel numbers are 8, 58, 85, 88, 358, 385, 538, 583, 588, 835, 853, 858, 885, 888, ....
+Now Tomya defines the x-pseudo Ciel numbers as follows for non-negative integers x:
+A positive integer k is a 0-pseudo Ciel numbers if and only if k is a Ciel number.
+For x ≥ 1, a positive integer k is a x-pseudo Ciel numbers if and only if
+k is not a y-pseudo Ciel number for all 0 ≤ y < x
+and, there exists a (x-1)-pseudo Ciel number s such that s have the same number of digits as k and exactly one digit differ from k in their decimal notations.
+For example,
+583, 58588, 355388, and 5358388 are 0-pseudo Ciel numbers, and
+523, 58558, 355308, and 5354388 are 1-pseudo Ciel numbers, and
+123, 55558, 353308, and 5314388 are 2-pseudo Ciel numbers, and
+124, 55555, 333308, and 1314388 are 3-pseudo Ciel numbers.
+In this problem, your task is to find the largest x-pseudo Ciel number less than or equal to N.
 Input
+The first line contains an integer T, the number of test cases. Then T test cases follow. Each test case contains 2 integers x and N in one line.
 Output
-3
-3
-1 3 2
-4
-1 2 3 4
-4
-2 1 4 3
+For each test case, print the largest x-pseudo Ciel number less than or equal to N. If there are no such numbers, print "-1" (excluding quotes).
+Constraints
+1 ≤ T ≤ 10000 (104)
+0 ≤ x ≤ 1000000000 (109)
+1 ≤ N < 10100000
+The sum of the length of N in one judge input file does not exceed 1000000 (106).
+Sample Input
+5
+0 58600
+2 128
+1 5354389
+1 1
+2 1
+Sample Output
+58588
+128
+5354388
 1
-1
-2 3
-0
-0
-2
-2
-1 2
-3 4
-Explanation:
-Test case
-1: The minimum total cost to sort the permutation is
-1. We can sort the permutation using
-1 operation:
-Operation
-1: Choose
-i=2 and
-j=3 and swap
-P
-2
-and
-P
-3
-. The cost of this operation is
-abs(2−3)=1. The updated permutation is
-[1,2,3], which is sorted.
-Test case
-2: The permutation is already sorted. Thus, we require
-0 cost and
-0 operations to sort the permutation.
-Test case
-3: The minimum total cost to sort the permutation is
-2. We can sort the permutation using
-2 operation:
-Operation
-1: Choose
-i=1 and
-j=2 and swap
-P
-1
-and
-P
-1
-. The cost of this operation is
-abs(1−2)=1. The updated permutation is
-[1,2,4,3].
-Operation
-2: Choose
-i=3 and
-j=4 and swap
-P
-3
-and
-P
-4
-. The cost of this operation is
-abs(3−4)=1. The updated permutation is
-[1,2,3,4], which is sorted.
+-1

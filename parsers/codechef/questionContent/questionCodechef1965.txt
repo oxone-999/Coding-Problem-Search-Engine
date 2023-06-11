@@ -1,29 +1,82 @@
-Rectangles of Love
+String Game
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Today is the planned day tor Thik and Ayvak's wedding. Kark is infatuated with Ayvak. He offers to play a game with Thik. Whosoever wins, will get to marry Ayvak. Ayvak, who values games of chance over all the other things in life, agrees to this.
-Kark sets up an N by M grid (N rows, M columns), labelled from left to right and top to bottom consecutively with numbers from 1 to M*N, with 1 at the top left corner and M*N at the bottom right corner. For example, a labelled 3 by 6 grid looks as follows:
-Kark has already painted K unit squares of the grid with a heart each. Next, Thik randomly picks a rectangle with sides on the grid lines, and having a positive area, with each valid rectangle having an equal probability of being chosen. Three distinct possibilities for Thik's rectangle in the 3 by 6 grid are shown below:
-The nine different rectangles in a 2 by 2 grid are shown below:
-If Thik's rectangle contains at least half of the hearts, Thik gets to marry Ayvak. Otherwise, Kark will marry Ayvak. Kark wants to know whether or not he has an advantage here, so he wants to know the expected value of the number of hearts a randomly chosen rectangle will cover. I'm sure that you have a good heart, so please, cover this job for him.
-Input
-The first line of input contains one integer T, the number of test cases.
-For each test case, the first line contains 3 space-separated integers N, M, K, as described in the problem statement. The next line contains K space-separated integers, each a single number from 1 to M*N, representing a square that is painted with a heart. It is guaranteed that all K integers are distinct.
-Output
-Output T lines, each containing a single real number, containing the expected number of hearts that a randomly chosen rectangle will contain. The answer will be considered correct if its relative or absolute error does not exceed 10-6.
+Alice and Bob are playing a game on a binary string
+S of length
+N.
+Alice and Bob alternate turns, with Alice going first. On their turn, the current player must choose any index
+1≤i<∣S∣ such that
+S
+i
+
+=S
+i+1
+and erase either
+S
+i
+or
+S
+i+1
+from the string. This reduces the length of
+S by one, and the remaining parts of
+S are concatenated in the same order.
+The player who is unable to make a move loses.
+Determine the winner if both players play optimally.
+Input Format
+The first line of input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N, the length of the string.
+The second line contains the binary string
+S of length
+N.
+Output Format
+For each test case output
+Alice if Alice wins the game, otherwise output
+Bob. The output is not case-sensitive, so for example "Bob", "boB" and "Bob" are all considered equivalent.
 Constraints
-1 ≤ T ≤ 5 1 ≤ N, M ≤ 107 1 ≤ K ≤ 105 Each of the K integers representing a heart are between 1 and N*M, inclusive. All K integers are distinct.
-Subtasks
-Subtask 1 (15 points) :
-1 ≤ N, M ≤ 10
-1 ≤ K ≤ N * M
-Subtask 2 (85 points) : no additional constraints
+1≤T≤1000
+2≤N≤10
+5
+S is a binary string
+Sum of
+N over all test cases does not exceed
+2⋅10
+5
+.
 Sample 1:
 Input
 Output
-1
-2 2 2
-1 2
-0.8888888888888888
+3
+4
+1111
+3
+110
+4
+1010
+Bob
+Alice
+Bob
 Explanation:
-There are a total of 9 possible rectangles Thik could draw, shown in the figure above, and grid squares 1 and 2 are painted with a heart. The top row of possible selections (shown in the figure) contain 1, 0, 1, 2, and 2 hearts (from left to right), and the bottom row of possible selections (in the figure) contain 1, 0, 1, and 0 hearts. Therefore, 3/9 of the time 0 hearts are contained in the rectangle, 4/9 of the times 1 heart is contained in the rectangle, and 2/9 of the time 2 hearts are contained in the rectangle. The expected value is then 0 * 3/9 + 1 * 4/9 + 2 * 2/9 = 8/9.
+Test Case
+1: There is no such index
+i such that
+S
+i
+
+=S
+i+1
+. So, Alice does not have any move and loses, making Bob the winner.
+Test Case
+2: Alice can choose
+i=2 (because
+S
+2
+=1 and
+S
+3
+=0) and remove
+S
+3
+. After this move, the remaining string is "
+11". Bob now has no moves and thus loses.

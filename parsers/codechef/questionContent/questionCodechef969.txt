@@ -1,64 +1,107 @@
-Chef and Adventures
+Magical Planks
 Problem
-###Read problems statements Hindi ,Bengali , Mandarin chinese , Russian and Vietnamese as well.
-Mysterious Chefland... Recently, Chef realised that Discuss, the educational system of Chefland, is out of date. Therefore, he is trying to find ways to update the infrastructure in the country. One possible way is to move all materials from Discuss to Discourse.
-Chef will have access to Discourse if his knowledge and power become exactly equal to
-N and
-M respectively. Initially, he has power
-1 and knowledge
-1.
-Chef can perform actions of the following types to improve his skills:
-solve a problem — increase his knowledge by
-X
-do a push-up — increase his power by
-Y
-install ShareChat to keep in touch with friends — increase both knowledge and power by
-1
-Chef can only install ShareChat at most once. The remaining actions may be performed any number of times and the actions may be performed in any order.
-Help Chef find out whether it is possible to move from Discuss to Discourse.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains four space-separated integers
-N,
-M,
-X and
-Y.
-Output
-For each test case, print a single line containing the string "Chefirnemo" if it is possible to reach the required knowledge and power or "Pofik" if it is impossible.
+Ryan is a boy from a small town, who has been given a task by his father. He has
+N wooden planks, numbered from
+1 to
+N, which are colored either black or white.
+His task is to color all planks the same color! But there is some magic in the winds of his small town. Whenever he colors the
+i
+th
+( plank which has the color
+S
+i
+) to a color
+P then following events happen:
+if
+2≤i≤N and
+S
+i
+=S
+i−1
+, then color of
+(i−1)
+th
+plank changes to
+P.
+if
+1≤i≤N−1 and
+S
+i
+=S
+i+1
+, then color of
+(i+1)
+th
+plank changes to
+P.
+Now this process continues for the newly colored planks also. If none of the neighbors have same color, then nothing happens to the neighbors.
+Suppose Ryan has planks which have their coloring :
+BBWWWB If Ryan colors the fourth plank( whose color is
+W ) to color
+B, then the finally the planks would be colored as following:
+BBBBBB
+Ryan can choose any one of the
+N planks and change its color as many times as he wants. Determine the minimum number of times Ryan has to paint a plank such that all planks get the same color at the end.
+Input Format
+First line will contain
+T, number of testcases. Then the testcases follow.
+The first line of each test case consists of an integer
+N the number of planks
+Second line of each test case consists of a string
+S of size
+N,where the
+i th character denotes the color of plank
+i
+Output Format
+For each testcase, output a single integer denoting the minimum number of times Ryan has to paint a single plank such that all planks get the same color at the end.
 Constraints
-1≤T≤1,000
-1≤N,M,X,Y≤10
-9
-Subtasks
-Subtask #1 (30 points):
-1≤N,M,X,Y≤100
-Subtask #2 (70 points): original constraints
+1≤T≤10
+5
+1≤N≤10
+5
+S consists only of characters
+B and
+W
+The sum of
+N over all cases doesn't exceed
+10
+5
+.
 Sample 1:
 Input
 Output
+4
+6
+BBWWWB
 5
-2 2 1 2
-11 10 5 9
-11 11 5 9
-12 11 5 9
-1 2 1 100
-Chefirnemo
-Chefirnemo
-Pofik
-Chefirnemo
-Pofik
+WWBWB
+2
+BB
+9
+WWBBBBBWW
+1
+2
+0
+1
 Explanation:
-Example case 2: We add
-Y=9 once to the power to get power
-10. We add
-X=5 twice to the knowledge to get knowledge
-11.
-Example case 3: We can see that it is impossible to reach power
-M=11 no matter which or how many operations we do. Note that the ShareChat operation will increase both knowledge and power by
-1, and hence it will still be impossible to attain the given values of knowledge and power at the same time.
-Example case 4: We can reach knowledge
-11 and power
-10 like in example case 2, the only difference is that we also use the ShareChat operation to increase both by
-1.
+Test case 1: The first test case is already described in the question.
+Test case 2: Ryan can paint the third plank to
+W. After doing so the color string of planks become
+WWWWB. Then he can again paint the third plank to the color
+B. After doing so the string goes through following transitions:
+The color of third plank changes to
+B. ( The string becomes
+WWBWB )
+The color of second and fourth plank changes to
+B. ( The string becomes
+WBBBB )
+The color of first plank changes to
+B. ( The string becomes
+BBBBB )
+Finally, all planks have same color.
+Test case 3: All planks have the same color.
+Test case 4: Ryan can paint any of the planks numbered from
+3 to
+7 to
+W, and all these planks will be colored to
+W!

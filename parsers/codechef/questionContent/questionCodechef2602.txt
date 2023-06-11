@@ -1,105 +1,105 @@
-The Delicious Cake
+Beautiful Subsequence
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-It is Chefina's birthday and Chef wants to prepare a cake for her. He has
-N points
-(X
-1
-,Y
-1
-),(X
-2
-,Y
-2
-),…,(X
-N
-,Y
-N
-) in a 2D plane, and a candle which he wants to place at some point in this plane.
-The cake is made up of a non-negative number of layers. Chef considers the deliciousness of the cake to be equal to the number of layers in the cake. A layer is a simple polygon whose vertices are some of Chef's
-N points. It is not required for each of Chef's points to belong to a layer. Furthermore, the layers must satisfy the following conditions:
-For each layer, the candle must lie strictly inside it.
-Each of Chef's
-N points that lies strictly inside some layer must belong to some other layer or be the candle point.
-No two layers may touch or intersect.
-The layers must be chosen in such a way that the deliciousness of the cake is maximum possible.
-Now, Chef is wondering about how the deliciousness of the cake depends on where he places the candle. You should answer
-Q queries. In each query, you are given a point
-p=(x,y) where Chef wants to place the candle and you have to find the deliciousness of the cake.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-Q.
-N lines follow. For each valid
-i, the
-i-th of these lines contains two space-separated integers
-X
+Read problems statements in Mandarin Chinese, Russian, Vietnamese and Bengali as well.
+An array
+A consisting of
+N integers is called
+K-beautiful if it holds the following property: The number of adjacent indices with different values is at most
+K. More formally, there are at most
+K indices
+i (
+1≤i<N) such that
+A
 i
-and
-Y
-i
+
+=A
+i+1
+. Note that according to this definition, if an array
+A is
+K-beautiful, then
+A is also
+(K+1)-beautiful.
+You are given an array
+A consisting of
+N integers and an integer
+K. Find the length of the longest
+K-beautiful subsequence of
+A, where a subsequence is defined below.
+For example, consider the array
+A=[1,1,2,3,2,4]. The subsequences
+[1,1] and
+[1,1,2] are
+1-beautiful, and the subsequences
+[1,2,3] and
+[1,2,2,4] are
+2-beautiful.
+Note: A sequence
+a is a subsequence of a sequence
+b if
+a can be obtained from
+b by deletion of several (possibly, zero) elements. For example,
+[3,1] is a subsequence of
+[3,2,1] and
+[4,3,1], but not a subsequence of
+[1,3,3,7] and
+[3,10,4].
+Input Format
+The first line contains an integer
+T - the number of test cases. Then
+T test cases follow.
+The first line of each test case contains two integers
+N,
+K - the length of array
+A and the parameter for a beautiful sequence.
+The second line of each testcase contains
+N integers
+A
+1
+,…,A
+N
 .
-Each of the following
-Q lines contains two space-separated integers
-x and
-y describing a query.
-Output
-For each query, print a single line containing one integer ― the deliciousness of the cake.
+Output Format
+For each test case, output the maximum possible length of a
+K-beautiful subsequence of
+A.
 Constraints
 1≤T≤100
-1≤N≤5,000
-1≤Q≤2,000
-∣X
+1≤N≤10
+3
+1≤K≤10
+3
+1≤A
 i
-∣,∣Y
-i
-∣≤10
-9
-for each valid
-i
-∣x∣,∣y∣≤10
-9
-the sum of
-N over all test cases does not exceed
-5,000
-the sum of
-Q over all test cases does not exceed
-2,000
-Subtasks
-Subtask #1 (15 points):
-N≤12
-Subtask #2 (20 points): for each valid
-i,
-X
-i
-=0 or
-Y
-i
-=0
-Subtask #3 (65 points): original constraints
+≤10
+3
 Sample 1:
 Input
 Output
-1
-6 2
-0 0
-6 0
-3 4
-2 1
+4
 4 1
-3 3
-6 6
-3 3
-0
-1
+1 1 2 3
+9 2
+1 2 3 2 4 5 6 7 5
+5 5
+1 1 1 1 1
+10 1
+1 2 1 2 1 2 1 2 1 2
+3
+5
+5
+6
 Explanation:
-Example case 1:
-In the first query,
-p=(6,6). The cake cannot have any layers, so its deliciousness is
-0.
-In the second query,
-p=(3,3). The cake can have only one layer, e.g. a triangle with vertices
-(2,1),(4,1),(3,4). Other choices of this layer are also possible, but the cake can never have more than one layer.
+Test Case 1 : You can either choose
+[1,1,2] or
+[1,1,3] as a subsequence. Both of the subsequences are
+1-beautiful. So the maximum length of a
+1-beautiful subsequence is
+3.
+Test Case 2 : It is optimal to choose the subsequence
+[1,2,2,5,5]. So the maximum length of a
+2-beautiful subsequence is
+5.
+Test Case 3 : You can choose the entire array as a subsequence because the given array is
+K-beautiful for any
+K≥0, which includes
+K=5.

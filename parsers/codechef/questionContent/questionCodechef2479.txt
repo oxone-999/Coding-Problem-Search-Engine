@@ -1,114 +1,24 @@
-Up for a Game
+Misinterpretation 2
 Problem
-Chef is again playing a game with his best friend Garry. As usual, the rules of this game are extremely strange and uncommon.
-First, they are given a stack of
-N discs. Each disc has a distinct, non-negative integer written on it. The players exchange turns to make a move. Before the start of the game, they both agree upon a set of positive integers
-S of size
-K. It is guaranteed that S contains the integer
-1. In a move, a player can select any value
-x from
-S and pop exactly
-x elements from the top of the stack. The game ends when there are no discs remaining. Chef goes first.
-Scoring: For every disc a player pops, his score increases by
-2
-p
-where
-p is the integer written on the disc. For example, if a player pops the discs, with integers
-p
-1
-,p
-2
-,p
+Chef's brother likes to put words in Chef's mouth. Chef hates it about him of course. He has decided to become extremely careful about what he speaks. Fortunately, he knows how his brother transforms the words, that Chef uses. He has decided to use only those words which remain the same even after his brother's transformation!
+
+If Chef speaks an N letter word, his brother moves all the letters which are at even positions (assuming, numbering of positions starts from 1), to the beginning of the word; and the rest of the letters follow as they appeared in the word, e.g. abdef becomes beadf; cdcd becomes ddcc.
+
+Chef wants to know how many words he can use, provided that the length of each word is between L and R inclusive and each word is composed of lowercase letters of the English alphabet. They use an ancient language in Byteland, which allows all possible words within the above definition!
+Input
+The first line contains a positive integer T, the number of test cases. In the following lines, T test cases follow. Every test case is a single line that contains two space separated positive integers, L and R. L is lower bound and R is upper bound for the length of the word that Chef wants to use.
+Output
+For each test case, print the number of words with length between L and R inclusive that Chef can use; that is, number of words, which remain the same after brother's transformation. Since the result can be quite large, output the result modulo 1000000007.
+Constraints
+1 <= T <= 5
+1 <= L <= R <= 1010
+R - L <= 50000
+Sample input
 3
-,…,p
-m
-written on it, during the entire course of the game, then his total score will be
-2
-p
-1
-+2
-p
-2
-+2
-p
-3
-+⋯+2
-p
-m
-.
-The player with higher score wins the game. Determine the winner if both the players play optimally, or if the game ends in a draw.
-###Input:
-First line contains
-T, the number of testcases. Then the testcases follow.
-The first line of each test case contains two space separated integers
-N and
-K, denoting the size of the stack and the set S respectively.
-Next line contains
-N space separated integers
-A
-i
-where
-A
-1
-is the topmost element, denoting the initial arrangement of the stack.
-The last line of each test case contains
-K space separated integers each denoting
-x
-i
-.
-###Output: For each testcase, output "Chef" (without quotes) if Chef wins, "Garry" (without quotes) if Garry wins, otherwise "Draw" (without quotes) in a separate line.
-###Constraints
-1≤T≤1000
-1≤N≤10
-5
-1≤K≤min(100,N)
-0≤A
-i
-≤10
-9
-1≤x
-i
-≤N
-x
-i
-
-=x
-j
-for all
-i
-
-=j
-A
-i
-
-=A
-j
-for all
-i
-
-=j
-Set
-S contains integer
-1.
-Sum of
-N over all test cases does not exceed
-10
-5
-.
-###Sample Input: 1 3 2 5 7 1 1 2
-###Sample Output: Chef
-###Explanation: Chef can select 2 from the set and draw the top two discs (with integers 5 and 7 written on it) from the stack. Garry cannot select 2 from the set as there is only 1 disc left in the stack. However, he can select 1 from the set and pop the last disc.
-So, Chef's score =
-2
-5
-+
-2
-7
-=
-160
-Garry's score =
-2
-1
-=
-2
-Chef wins.
+1 5
+6 7
+45 50
+Sample output
+1430
+18252
+871229844

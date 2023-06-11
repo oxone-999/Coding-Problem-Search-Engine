@@ -1,125 +1,157 @@
-E. Staircases
+G. The Sum of Good Numbers
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a matrix, consisting of
-n
-rows and
-m
-columns. The rows are numbered top to bottom, the columns are numbered left to right.
-Each cell of the matrix can be either free or locked.
-Let's call a path in the matrix a staircase if it:
-starts and ends in the free cell;
-visits only free cells;
-has one of the two following structures:
-the second cell is
-1
-to the right from the first one, the third cell is
-1
-to the bottom from the second one, the fourth cell is
-1
-to the right from the third one, and so on;
-the second cell is
-1
-to the bottom from the first one, the third cell is
-1
-to the right from the second one, the fourth cell is
-1
-to the bottom from the third one, and so on.
-In particular, a path, consisting of a single cell, is considered to be a staircase.
-Here are some examples of staircases:
-Initially all the cells of the matrix are free.
-You have to process
-q
-queries, each of them flips the state of a single cell. So, if a cell is currently free, it makes it locked, and if a cell is currently locked, it makes it free.
-Print the number of different staircases after each query. Two staircases are considered different if there exists such a cell that appears in one path and doesn't appear in the other path.
-Input
-The first line contains three integers
-n
-,
-m
-and
-q
-(
-1≤n,m≤1000
-;
-1≤q≤
-10
-4
-) — the sizes of the matrix and the number of queries.
-Each of the next
-q
-lines contains two integers
+Let's call a positive integer good if there is no digit 0 in its decimal representation.
+For an array of a good numbers
+a
+, one found out that the sum of some two neighboring elements is equal to
 x
-and
-y
+(i.e.
+x=
+a
+i
++
+a
+i+1
+for some
+i
+).
+x
+had turned out to be a good number as well.
+Then the elements of the array
+a
+were written out one after another without separators into one string
+s
+. For example, if
+a=[12,5,6,133]
+, then
+s=1256133
+.
+You are given a string
+s
+and a number
+x
+. Your task is to determine the positions in the string that correspond to the adjacent elements of the array that have sum
+x
+. If there are several possible answers, you can print any of them.
+Input
+The first line contains the string
+s
 (
-1≤x≤n
-;
-1≤y≤m
-) — the description of each query.
+2≤|s|≤5⋅
+10
+5
+).
+The second line contains an integer
+x
+(
+2≤x<
+10
+200000
+).
+An additional constraint on the input: the answer always exists, i.e you can always select two adjacent substrings of the string
+s
+so that if you convert these substrings to integers, their sum is equal to
+x
+.
 Output
-Print
-q
-integers — the
+In the first line, print two integers
+l
+1
+,
+r
+1
+, meaning that the first term of the sum (
+a
 i
--th value should be equal to the number of different staircases after
-i
-queries. Two staircases are considered different if there exists such a cell that appears in one path and doesn't appear in the other path.
+) is in the string
+s
+from position
+l
+1
+to position
+r
+1
+.
+In the second line, print two integers
+l
+2
+,
+r
+2
+, meaning that the second term of the sum (
+a
+i+1
+) is in the string
+s
+from position
+l
+2
+to position
+r
+2
+.
 Examples
 input
 Copy
-2 2 8
-1 1
-1 1
+1256133
+17
+output
+Copy
+1 2
+3 3
+input
+Copy
+9544715561
+525
+output
+Copy
+2 3
+4 6
+input
+Copy
+239923
+5
+output
+Copy
 1 1
 2 2
-1 1
-1 2
-2 1
-1 1
-output
-Copy
-5
-10
-5
-2
-5
-3
-1
-0
 input
 Copy
-3 4 10
-1 4
-1 2
-2 3
-1 2
-2 3
-3 2
-1 3
-3 4
-1 3
-3 1
+1218633757639
+976272
 output
 Copy
-49
-35
-24
-29
-49
-39
-31
-23
-29
-27
-input
-Copy
-1000 1000 2
-239 634
-239 634
-output
-Copy
-1332632508
-1333333000
+2 7
+8 13
+Note
+In the first example
+s[1;2]=12
+and
+s[3;3]=5
+,
+12+5=17
+.
+In the second example
+s[2;3]=54
+and
+s[4;6]=471
+,
+54+471=525
+.
+In the third example
+s[1;1]=2
+and
+s[2;2]=3
+,
+2+3=5
+.
+In the fourth example
+s[2;7]=218633
+and
+s[8;13]=757639
+,
+218633+757639=976272
+.

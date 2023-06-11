@@ -1,219 +1,223 @@
-C1. Balanced Removals (Easier)
-time limit per test1 second
+D. Balanced Playlist
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-This is an easier version of the problem. In this version,
-n≤2000
-.
-There are
+Your favorite music streaming platform has formed a perfectly balanced playlist exclusively for you. The playlist consists of
 n
-distinct points in three-dimensional space numbered from
+tracks numbered from
 1
 to
 n
-. The
+. The playlist is automatic and cyclic: whenever track
 i
--th point has coordinates
-(
-x
-i
-,
-y
-i
-,
-z
-i
-)
-. The number of points
+finishes playing, track
+i+1
+starts playing automatically; after track
 n
-is even.
-You'd like to remove all
-n
-points using a sequence of
-n
-2
-snaps. In one snap, you can remove any two points
-a
-and
-b
-that have not been removed yet and form a perfectly balanced pair. A pair of points
-a
-and
-b
-is perfectly balanced if no other point
-c
-(that has not been removed yet) lies within the axis-aligned minimum bounding box of points
-a
-and
-b
+goes track
+1
 .
-Formally, point
-c
-lies within the axis-aligned minimum bounding box of points
+For each track
+i
+, you have estimated its coolness
 a
-and
-b
-if and only if
-min(
+i
+. The higher
+a
+i
+is, the cooler track
+i
+is.
+Every morning, you choose a track. The playlist then starts playing from this track in its usual cyclic fashion. At any moment, you remember the maximum coolness
 x
-a
-,
+of already played tracks. Once you hear that a track with coolness strictly less than
 x
-b
-)≤
-x
-c
-≤max(
-x
-a
-,
-x
-b
-)
-,
-min(
-y
-a
-,
-y
-b
-)≤
-y
-c
-≤max(
-y
-a
-,
-y
-b
-)
-, and
-min(
-z
-a
-,
-z
-b
-)≤
-z
-c
-≤max(
-z
-a
-,
-z
-b
-)
-. Note that the bounding box might be degenerate.
-Find a way to remove all points in
-n
 2
-snaps.
+(no rounding) starts playing, you turn off the music immediately to keep yourself in a good mood.
+For each track
+i
+, find out how many tracks you will listen to before turning off the music if you start your morning with track
+i
+, or determine that you will never turn the music off. Note that if you listen to the same track several times, every time must be counted.
 Input
 The first line contains a single integer
 n
 (
-2≤n≤2000
-;
-n
-is even), denoting the number of points.
-Each of the next
-n
-lines contains three integers
-x
-i
-,
-y
-i
-,
-z
-i
-(
-−
+2≤n≤
 10
-8
-≤
-x
-i
-,
-y
-i
-,
-z
-i
-≤
-10
-8
-), denoting the coordinates of the
-i
--th point.
-No two points coincide.
-Output
-Output
+5
+), denoting the number of tracks in the playlist.
+The second line contains
 n
-2
-pairs of integers
+integers
 a
-i
+1
 ,
-b
-i
+a
+2
+,…,
+a
+n
 (
 1≤
 a
 i
-,
-b
-i
-≤n
-), denoting the indices of points removed on snap
-i
-. Every integer between
-1
-and
+≤
+10
+9
+), denoting coolnesses of the tracks.
+Output
+Output
 n
-, inclusive, must appear in your output exactly once.
-We can show that it is always possible to remove all points. If there are many solutions, output any of them.
+integers
+c
+1
+,
+c
+2
+,…,
+c
+n
+, where
+c
+i
+is either the number of tracks you will listen to if you start listening from track
+i
+or
+−1
+if you will be listening to music indefinitely.
 Examples
 input
 Copy
-6
-3 1 0
-0 3 0
-2 2 0
-1 0 0
-1 3 0
-0 1 0
+4
+11 5 2 7
 output
 Copy
-3 6
-5 1
-2 4
+1 1 3 2
 input
 Copy
-8
-0 1 1
-1 0 1
-1 1 0
-1 1 1
-2 2 2
-3 2 2
-2 3 2
-2 2 3
+4
+3 2 5 3
 output
 Copy
-4 5
-1 6
-2 7
-3 8
-Note
-In the first example, here is what points and their corresponding bounding boxes look like (drawn in two dimensions for simplicity, as all points lie on
-z=0
-plane). Note that order of removing matters: for example, points
-5
-and
-1
-don't form a perfectly balanced pair initially, but they do after point
+5 4 3 6
+input
+Copy
 3
-is removed.
+4 3 6
+output
+Copy
+-1 -1 -1
+Note
+In the first example, here is what will happen if you start with...
+track
+1
+: listen to track
+1
+, stop as
+a
+2
+<
+a
+1
+2
+.
+track
+2
+: listen to track
+2
+, stop as
+a
+3
+<
+a
+2
+2
+.
+track
+3
+: listen to track
+3
+, listen to track
+4
+, listen to track
+1
+, stop as
+a
+2
+<
+max(
+a
+3
+,
+a
+4
+,
+a
+1
+)
+2
+.
+track
+4
+: listen to track
+4
+, listen to track
+1
+, stop as
+a
+2
+<
+max(
+a
+4
+,
+a
+1
+)
+2
+.
+In the second example, if you start with track
+4
+, you will listen to track
+4
+, listen to track
+1
+, listen to track
+2
+, listen to track
+3
+, listen to track
+4
+again, listen to track
+1
+again, and stop as
+a
+2
+<
+max(
+a
+4
+,
+a
+1
+,
+a
+2
+,
+a
+3
+,
+a
+4
+,
+a
+1
+)
+2
+. Note that both track
+1
+and track
+4
+are counted twice towards the result.

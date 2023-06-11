@@ -1,103 +1,65 @@
-B. Two Arrays
+C. Mortal Kombat Tower
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-RedDreamer has an array
-a
-consisting of
+You and your friend are playing the game Mortal Kombat XI. You are trying to pass a challenge tower. There are
 n
-non-negative integers, and an unlucky integer
-T
-.
-Let's denote the misfortune of array
-b
-having length
-m
-as
-f(b)
-— the number of pairs of integers
-(i,j)
-such that
-1≤i<j≤m
-and
-b
+bosses in this tower, numbered from
+1
+to
+n
+. The type of the
 i
-+
-b
-j
-=T
-. RedDreamer has to paint each element of
+-th boss is
 a
-into one of two colors, white and black (for each element, the color is chosen independently), and then create two arrays
-c
-and
-d
-so that all white elements belong to
-c
-, and all black elements belong to
-d
-(it is possible that one of these two arrays becomes empty). RedDreamer wants to paint the elements in such a way that
-f(c)+f(d)
-is minimum possible.
-For example:
-if
-n=6
-,
-T=7
-and
-a=[1,2,3,4,5,6]
-, it is possible to paint the
-1
--st, the
-4
--th and the
-5
--th elements white, and all other elements black. So
-c=[1,4,5]
-,
-d=[2,3,6]
-, and
-f(c)+f(d)=0+0=0
-;
-if
-n=3
-,
-T=6
-and
-a=[3,3,3]
-, it is possible to paint the
-1
--st element white, and all other elements black. So
-c=[3]
-,
-d=[3,3]
-, and
-f(c)+f(d)=0+1=1
+i
+. If the
+i
+-th boss is easy then its type is
+a
+i
+=0
+, otherwise this boss is hard and its type is
+a
+i
+=1
 .
-Help RedDreamer to paint the array optimally!
+During one session, either you or your friend can kill one or two bosses (neither you nor your friend can skip the session, so the minimum number of bosses killed during one session is at least one). After your friend session, your session begins, then again your friend session begins, your session begins, and so on. The first session is your friend's session.
+Your friend needs to get good because he can't actually kill hard bosses. To kill them, he uses skip points. One skip point can be used to kill one hard boss.
+Your task is to find the minimum number of skip points your friend needs to use so you and your friend kill all
+n
+bosses in the given order.
+For example: suppose
+n=8
+,
+a=[1,0,1,1,0,1,1,1]
+. Then the best course of action is the following:
+your friend kills two first bosses, using one skip point for the first boss;
+you kill the third and the fourth bosses;
+your friend kills the fifth boss;
+you kill the sixth and the seventh bosses;
+your friend kills the last boss, using one skip point, so the tower is completed using two skip points.
+You have to answer
+t
+independent test cases.
 Input
-The first line contains one integer
+The first line of the input contains one integer
 t
 (
-1≤t≤1000
+1≤t≤2⋅
+10
+4
 ) — the number of test cases. Then
 t
 test cases follow.
-The first line of each test case contains two integers
+The first line of the test case contains one integer
 n
-and
-T
 (
-1≤n≤
+1≤n≤2⋅
 10
 5
-,
-0≤T≤
-10
-9
-) — the number of elements in the array and the unlucky integer, respectively.
-The second line contains
+) — the number of bosses. The second line of the test case contains
 n
 integers
 a
@@ -105,67 +67,56 @@ a
 ,
 a
 2
-, ...,
+,…,
 a
 n
 (
 0≤
 a
 i
-≤
-10
-9
-) — the elements of the array.
-The sum of
-n
-over all test cases does not exceed
-10
-5
-.
-Output
-For each test case print
-n
-integers:
-p
-1
-,
-p
-2
-, ...,
-p
-n
-(each
-p
-i
-is either
-0
-or
-1
-) denoting the colors. If
-p
-i
-is
-0
-, then
+≤1
+), where
 a
 i
-is white and belongs to the array
-c
-, otherwise it is black and belongs to the array
-d
-.
-If there are multiple answers that minimize the value of
-f(c)+f(d)
-, print any of them.
+is the type of the
+i
+-th boss.
+It is guaranteed that the sum of
+n
+does not exceed
+2⋅
+10
+5
+(
+∑n≤2⋅
+10
+5
+).
+Output
+For each test case, print the answer: the minimum number of skip points your friend needs to use so you and your friend kill all
+n
+bosses in the given order.
 Example
 input
 Copy
-2
-6 7
-1 2 3 4 5 6
-3 6
-3 3 3
+6
+8
+1 0 1 1 0 1 1 1
+5
+1 1 1 1 0
+7
+1 1 1 1 0 0 1
+6
+1 1 1 1 1 1
+1
+1
+1
+0
 output
 Copy
-1 0 0 1 1 0 
-1 0 0
+2
+2
+2
+2
+1
+0

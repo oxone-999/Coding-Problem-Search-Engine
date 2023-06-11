@@ -1,89 +1,21 @@
-Independent Set
+Sines Sum Queries
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given a graph
-G with
-N vertices (numbered
-1 through
-N) and
-M edges. You should partition the vertices of
-G into two sets
-A and
-B such that:
-each vertex of
-G belongs to exactly one of these sets
-A is non-empty
-A is an independent set in
-G, i.e. for each pair of vertices
-u,v∈A,
-G does not contain an edge
-(u,v)
-for each vertex
-a∈A and each vertex
-b∈B, there is an edge
-(a,b) in
-G
-Find the number of such partitions
-(A,B). Also, give an example of one of these partitions or determine that no such partition exists.
-Two partitions are considered different if there is a vertex that is in the set
-A in one partition and in the set
-B in the other partition.
+You are given a sequence of integers A0, A1, ..., AN-1. Initially Ai=i for all i. You need to perform some strange queries with it. Each query has the form "L R D" where 0 <= L <= R < N and D is an integer. If D=0 then you need to find the sum of sines of the numbers AL, AL+1, ..., AR that is sin AL + ... + sin AR. Otherwise you need to add D to the numbers AL, AL+1, ..., AR.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-M.
-Each of the next
-M lines contains two space-separated integers
-u and
-v denoting that vertices
-u and
-v are connected by an edge.
+The first line contains two positive integers N and Q. Here, N <= 109 is the length of the initial sequence and Q <= 100000 is the number of queries you need to perform with it. The next Q lines describe queries, one per line. The i'th such line contains three integers L, R and D. Here 0 <= L <= R < N and -10000 <= D <= 10000.
 Output
-For each test case, print two lines.
-The first of these lines should contain a single integer — the number of partitions satisfying the given conditions.
-The second line should contain a single string with length
-N. If there are no partitions satisfying the given conditions, each character of this string should be '0'. Otherwise, this string should describe one such partition — for each valid
-i, the
-i-th character should be '1' if vertex
-i belongs to
-A or '0' if it belongs to
-B.
-Constraints
-1≤T≤5⋅10
-5
-1≤N,M≤5⋅10
-5
-1≤u,v≤N
-there are no self-loops or duplicate edges in the graph
-the sum of
-N over all test cases does not exceed
-5⋅10
-5
-the sum of
-M over all test cases does not exceed
-5⋅10
-5
-Subtasks
-Subtask #1 (30 points):
-N,M,T≤100
-Subtask #2 (70 points): original constraints
-Sample 1:
-Input
-Output
-1
-5 7
-1 3
-1 4
-1 5
-2 3
-2 4
-2 5
-3 4
-1
-11000
-Explanation:
-Example case 1: The only possible partition satisfying the given conditions is
-A={1,2},B={3,4,5}.
+The output consists of answers for all queries where D=0. For each such query you must produce a line with the corresponding sines sum. Answers within an absolute error of 10-6 will be accepted.
+Example
+Input:
+5 6
+0 4 0
+0 2 1
+3 4 2
+0 4 0
+2 3 -1
+1 4 0
+
+Output:
+1.1350859
+0.65354865
+0.782376860

@@ -1,114 +1,129 @@
-E. Text Editor
-time limit per test2 seconds
+A. Round Down the Price
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You wanted to write a text
-t
-consisting of
-m
-lowercase Latin letters. But instead, you have written a text
-s
-consisting of
-n
-lowercase Latin letters, and now you want to fix it by obtaining the text
-t
-from the text
-s
-.
-Initially, the cursor of your text editor is at the end of the text
-s
-(after its last character). In one move, you can do one of the following actions:
-press the "left" button, so the cursor is moved to the left by one position (or does nothing if it is pointing at the beginning of the text, i. e. before its first character);
-press the "right" button, so the cursor is moved to the right by one position (or does nothing if it is pointing at the end of the text, i. e. after its last character);
-press the "home" button, so the cursor is moved to the beginning of the text (before the first character of the text);
-press the "end" button, so the cursor is moved to the end of the text (after the last character of the text);
-press the "backspace" button, so the character before the cursor is removed from the text (if there is no such character, nothing happens).
-Your task is to calculate the minimum number of moves required to obtain the text
-t
-from the text
-s
-using the given set of actions, or determine it is impossible to obtain the text
-t
-from the text
-s
-.
-You have to answer
-T
-independent test cases.
-Input
-The first line of the input contains one integer
-T
-(
-1≤T≤5000
-) — the number of test cases. Then
-T
-test cases follow.
-The first line of the test case contains two integers
-n
+At the store, the salespeople want to make all prices round.
+In this problem, a number that is a power of
+10
+is called a round number. For example, the numbers
+10
+0
+=1
+,
+10
+1
+=10
+,
+10
+2
+=100
+are round numbers, but
+20
+,
+110
 and
+256
+are not round numbers.
+So, if an item is worth
+m
+bourles (the value of the item is not greater than
+10
+9
+), the sellers want to change its value to the nearest round number that is not greater than
+m
+. They ask you: by how many bourles should you decrease the value of the item to make it worth exactly
+10
+k
+bourles, where the value of
+k
+ — is the maximum possible (
+k
+ — any non-negative integer).
+For example, let the item have a value of
+178
+-bourles. Then the new price of the item will be
+100
+, and the answer will be
+178−100=78
+.
+Input
+The first line of input data contains a single integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases .
+Each test case is a string containing a single integer
 m
 (
-1≤m≤n≤5000
-) — the length of
-s
-and the length of
-t
-, respectively.
-The second line of the test case contains the string
-s
-consisting of
-n
-lowercase Latin letters.
-The third line of the test case contains the string
-t
-consisting of
-m
-lowercase Latin letters.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-5000
-(
-∑n≤5000
-).
+1≤m≤
+10
+9
+) — the price of the item.
 Output
-For each test case, print one integer — the minimum number of moves required to obtain the text
-t
-from the text
-s
-using the given set of actions, or -1 if it is impossible to obtain the text
-t
-from the text
-s
-in the given test case.
+For each test case, output on a separate line a single integer
+d
+(
+0≤d<m
+) such that if you reduce the cost of the item by
+d
+bourles, the cost of the item will be the maximal possible round number. More formally:
+m−d=
+10
+k
+, where
+k
+ — the maximum possible non-negative integer.
 Example
 input
 Copy
-6
-9 4
-aaaaaaaaa
-aaaa
-7 3
-abacaba
-aaa
-5 4
-aabcd
-abcd
-4 2
-abba
-bb
-6 4
-baraka
-baka
-8 7
-question
-problem
+7
+1
+2
+178
+20
+999999999
+9000
+987654321
 output
 Copy
-5
-6
+0
+1
+78
+10
+899999999
+8000
+887654321
+Note
+In the example:
+1−0=
+10
+0
+,
+2−1=
+10
+0
+,
+178−78=
+10
+2
+,
+20−10=
+10
+1
+,
+999999999−899999999=
+10
+8
+,
+9000−8000=
+10
 3
-4
-4
--1
+,
+987654321−887654321=
+10
+8
+.
+Note that in each test case, we get the maximum possible round number.

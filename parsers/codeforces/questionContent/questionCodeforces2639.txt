@@ -1,149 +1,109 @@
-D. Alice, Bob and Candies
-time limit per test2 seconds
+A. Most Unstable Array
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
+You are given two integers
 n
-candies in a row, they are numbered from left to right from
-1
-to
-n
-. The size of the
-i
--th candy is
-a
-i
-.
-Alice and Bob play an interesting and tasty game: they eat candy. Alice will eat candy from left to right, and Bob — from right to left. The game ends if all the candies are eaten.
-The process consists of moves. During a move, the player eats one or more sweets from her/his side (Alice eats from the left, Bob — from the right).
-Alice makes the first move. During the first move, she will eat
-1
-candy (its size is
-a
-1
-). Then, each successive move the players alternate — that is, Bob makes the second move, then Alice, then again Bob and so on.
-On each move, a player counts the total size of candies eaten during the current move. Once this number becomes strictly greater than the total size of candies eaten by the other player on their previous move, the current player stops eating and the move ends. In other words, on a move, a player eats the smallest possible number of candies such that the sum of the sizes of candies eaten on this move is strictly greater than the sum of the sizes of candies that the other player ate on the previous move. If there are not enough candies to make a move this way, then the player eats up all the remaining candies and the game ends.
-For example, if
-n=11
 and
-a=[3,1,4,1,5,9,2,6,5,3,5]
-, then:
-move 1: Alice eats one candy of size
-3
-and the sequence of candies becomes
-[1,4,1,5,9,2,6,5,3,5]
-.
-move 2: Alice ate
-3
-on the previous move, which means Bob must eat
-4
-or more. Bob eats one candy of size
-5
-and the sequence of candies becomes
-[1,4,1,5,9,2,6,5,3]
-.
-move 3: Bob ate
-5
-on the previous move, which means Alice must eat
-6
-or more. Alice eats three candies with the total size of
-1+4+1=6
-and the sequence of candies becomes
-[5,9,2,6,5,3]
-.
-move 4: Alice ate
-6
-on the previous move, which means Bob must eat
-7
-or more. Bob eats two candies with the total size of
-3+5=8
-and the sequence of candies becomes
-[5,9,2,6]
-.
-move 5: Bob ate
-8
-on the previous move, which means Alice must eat
-9
-or more. Alice eats two candies with the total size of
-5+9=14
-and the sequence of candies becomes
-[2,6]
-.
-move 6 (the last): Alice ate
-14
-on the previous move, which means Bob must eat
-15
-or more. It is impossible, so Bob eats the two remaining candies and the game ends.
-Print the number of moves in the game and two numbers:
+m
+. You have to construct the array
 a
-— the total size of all sweets eaten by Alice during the game;
-b
-— the total size of all sweets eaten by Bob during the game.
+of length
+n
+consisting of non-negative integers (i.e. integers greater than or equal to zero) such that the sum of elements of this array is exactly
+m
+and the value
+∑
+i=1
+n−1
+|
+a
+i
+−
+a
+i+1
+|
+is the maximum possible. Recall that
+|x|
+is the absolute value of
+x
+.
+In other words, you have to maximize the sum of absolute differences between adjacent (consecutive) elements. For example, if the array
+a=[1,3,2,5,5,0]
+then the value above for this array is
+|1−3|+|3−2|+|2−5|+|5−5|+|5−0|=2+1+3+0+5=11
+. Note that this example doesn't show the optimal answer but it shows how the required value for some array is calculated.
+You have to answer
+t
+independent test cases.
 Input
-The first line contains an integer
+The first line of the input contains one integer
 t
 (
-1≤t≤5000
-) — the number of test cases in the input. The following are descriptions of the
+1≤t≤
+10
+4
+) — the number of test cases. Then
 t
-test cases.
-Each test case consists of two lines. The first line contains an integer
+test cases follow.
+The only line of the test case contains two integers
 n
+and
+m
 (
-1≤n≤1000
-) — the number of candies. The second line contains a sequence of integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
+1≤n,m≤
+10
+9
+) — the length of the array and its sum correspondingly.
+Output
+For each test case, print the answer — the maximum possible value of
+∑
+i=1
+n−1
+|
 a
 i
-≤1000
-) — the sizes of candies in the order they are arranged from left to right.
-It is guaranteed that the sum of the values of
-n
-for all sets of input data in a test does not exceed
-2⋅
-10
-5
-.
-Output
-For each set of input data print three integers — the number of moves in the game and the required values
+−
 a
-and
-b
+i+1
+|
+for the array
+a
+consisting of
+n
+non-negative integers with the sum
+m
 .
 Example
 input
 Copy
-7
-11
-3 1 4 1 5 9 2 6 5 3 5
-1
-1000
-3
-1 1 1
-13
-1 2 3 4 5 6 7 8 9 10 11 12 13
-2
-2 1
-6
-1 1 1 1 1 1
-7
-1 1 1 1 1 1 1
+5
+1 100
+2 2
+5 5
+2 1000000000
+1000000000 1000000000
 output
 Copy
-6 23 21
-1 1000 0
-2 1 2
-6 45 46
-2 2 1
-3 4 2
-4 4 3
+0
+2
+10
+1000000000
+2000000000
+Note
+In the first test case of the example, the only possible array is
+[100]
+and the answer is obviously
+0
+.
+In the second test case of the example, one of the possible arrays is
+[2,0]
+and the answer is
+|2−0|=2
+.
+In the third test case of the example, one of the possible arrays is
+[0,2,0,3,0]
+and the answer is
+|0−2|+|2−0|+|0−3|+|3−0|=10
+.

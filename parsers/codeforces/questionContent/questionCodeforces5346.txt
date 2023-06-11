@@ -1,54 +1,43 @@
-B. Significant Cups
-time limit per test3 seconds
+F. Test Data Generation
+time limit per test5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Stepan is a very experienced olympiad participant. He has n cups for Physics olympiads and m cups for Informatics olympiads. Each cup is characterized by two parameters — its significance ci and width wi.
-Stepan decided to expose some of his cups on a shelf with width d in such a way, that:
-there is at least one Physics cup and at least one Informatics cup on the shelf,
-the total width of the exposed cups does not exceed d,
-from each subjects (Physics and Informatics) some of the most significant cups are exposed (i. e. if a cup for some subject with significance x is exposed, then all the cups for this subject with significance greater than x must be exposed too).
-Your task is to determine the maximum possible total significance, which Stepan can get when he exposes cups on the shelf with width d, considering all the rules described above. The total significance is the sum of significances of all the exposed cups.
+Test data generation is not an easy task! Often, generating big random test cases is not enough to ensure thorough testing of solutions for correctness.
+For example, consider a problem from an old Codeforces round. Its input format looks roughly as follows:
+The first line contains a single integer n (1 ≤ n ≤ maxn) — the size of the set. The second line contains n distinct integers a1, a2, ..., an (1 ≤ ai ≤ maxa) — the elements of the set in increasing order.
+If you don't pay attention to the problem solution, it looks fairly easy to generate a good test case for this problem. Let n = maxn, take random distinct ai from 1 to maxa, sort them... Soon you understand that it's not that easy.
+Here is the actual problem solution. Let g be the greatest common divisor of a1, a2, ..., an. Let x = an / g - n. Then the correct solution outputs "Alice" if x is odd, and "Bob" if x is even.
+Consider two wrong solutions to this problem which differ from the correct one only in the formula for calculating x.
+The first wrong solution calculates x as x = an / g (without subtracting n).
+The second wrong solution calculates x as x = an - n (without dividing by g).
+A test case is interesting if it makes both wrong solutions output an incorrect answer.
+Given maxn, maxa and q, find the number of interesting test cases satisfying the constraints, and output it modulo q.
 Input
-The first line contains three integers n, m and d (1 ≤ n, m ≤ 100 000, 1 ≤ d ≤ 109) — the number of cups for Physics olympiads, the number of cups for Informatics olympiads and the width of the shelf.
-Each of the following n lines contains two integers ci and wi (1 ≤ ci, wi ≤ 109) — significance and width of the i-th cup for Physics olympiads.
-Each of the following m lines contains two integers cj and wj (1 ≤ cj, wj ≤ 109) — significance and width of the j-th cup for Informatics olympiads.
+The only line contains three integers maxn, maxa and q (1 ≤ maxn ≤ 30 000; maxn ≤ maxa ≤ 109; 104 ≤ q ≤ 105 + 129).
 Output
-Print the maximum possible total significance, which Stepan can get exposing cups on the shelf with width d, considering all the rules described in the statement.
-If there is no way to expose cups on the shelf, then print 0.
+Output a single integer — the number of test cases which satisfy the constraints and make both wrong solutions output an incorrect answer, modulo q.
 Examples
 input
 Copy
-3 1 8
-4 2
-5 5
-4 2
-3 2
+3 6 100000
 output
 Copy
-8
+4
 input
 Copy
-4 3 12
-3 4
-2 4
-3 5
-3 4
-3 5
-5 2
-3 4
+6 21 100129
 output
 Copy
-11
+154
 input
 Copy
-2 2 2
-5 3
-6 3
-4 2
-8 1
+58 787788 50216
 output
 Copy
-0
+46009
 Note
-In the first example Stepan has only one Informatics cup which must be exposed on the shelf. Its significance equals 3 and width equals 2, so after Stepan exposes it, the width of free space on the shelf becomes equal to 6. Also, Stepan must expose the second Physics cup (which has width 5), because it is the most significant cup for Physics (its significance equals 5). After that Stepan can not expose more cups on the shelf, because there is no enough free space. Thus, the maximum total significance of exposed cups equals to 8.
+In the first example, interesting test cases look as follows:
+
+1              1              1              3
+2              4              6              2 4 6

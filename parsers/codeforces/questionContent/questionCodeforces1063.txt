@@ -1,166 +1,112 @@
-C. Fault-tolerant Network
-time limit per test2 seconds
-memory limit per test256 megabytes
+E. Sum of Matchings
+time limit per test4 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-There is a classroom with two rows of computers. There are
-n
-computers in each row and each computer has its own grade. Computers in the first row has grades
-a
-1
-,
-a
-2
-,…,
-a
-n
-and in the second row —
-b
-1
-,
-b
-2
-,…,
-b
-n
+Let's denote the size of the maximum matching in a graph
+G
+as
+MM(G)
 .
-Initially, all pairs of neighboring computers in each row are connected by wire (pairs
-(i,i+1)
-for all
-1≤i<n
-), so two rows form two independent computer networks.
-Your task is to combine them in one common network by connecting one or more pairs of computers from different rows. Connecting the
-i
--th computer from the first row and the
-j
--th computer from the second row costs
-|
-a
-i
-−
-b
-j
-|
+You are given a bipartite graph. The vertices of the first part are numbered from
+1
+to
+n
+, the vertices of the second part are numbered from
+n+1
+to
+2n
+. Each vertex's degree is
+2
 .
-You can connect one computer to several other computers, but you need to provide at least a basic fault tolerance: you need to connect computers in such a way that the network stays connected, despite one of its computer failing. In other words, if one computer is broken (no matter which one), the network won't split in two or more parts.
-That is the minimum total cost to make a fault-tolerant network?
+For a tuple of four integers
+(l,r,L,R)
+, where
+1≤l≤r≤n
+and
+n+1≤L≤R≤2n
+, let's define
+G
+′
+(l,r,L,R)
+as the graph which consists of all vertices of the given graph that are included in the segment
+[l,r]
+or in the segment
+[L,R]
+, and all edges of the given graph such that each of their endpoints belongs to one of these segments. In other words, to obtain
+G
+′
+(l,r,L,R)
+from the original graph, you have to remove all vertices
+i
+such that
+i∉[l,r]
+and
+i∉[L,R]
+, and all edges incident to these vertices.
+Calculate the sum of
+MM(G(l,r,L,R))
+over all tuples of integers
+(l,r,L,R)
+having
+1≤l≤r≤n
+and
+n+1≤L≤R≤2n
+.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases. Next
-t
-cases follow.
-The first line of each test case contains the single integer
+The first line contains one integer
 n
 (
-3≤n≤2⋅
-10
-5
-) — the number of computers in each row.
-The second line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
+2≤n≤1500
+) — the number of vertices in each part.
+Then
+2n
+lines follow, each denoting an edge of the graph. The
+i
+-th line contains two integers
+x
+i
+and
+y
+i
 (
 1≤
-a
+x
 i
-≤
-10
-9
-) — the grades of computers in the first row.
-The third line contains
-n
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
-(
-1≤
-b
+≤n
+;
+n+1≤
+y
 i
-≤
-10
-9
-) — the grades of computers in the second row.
-It's guaranteed that the total sum of
-n
-doesn't exceed
-2⋅
-10
-5
-.
+≤2n
+) — the endpoints of the
+i
+-th edge.
+There are no multiple edges in the given graph, and each vertex has exactly two incident edges.
 Output
-For each test case, print a single integer — the minimum total cost to make a fault-tolerant network.
+Print one integer — the sum of
+MM(G(l,r,L,R))
+over all tuples of integers
+(l,r,L,R)
+having
+1≤l≤r≤n
+and
+n+1≤L≤R≤2n
+.
 Example
 input
 Copy
-2
-3
-1 10 1
-20 4 25
-4
-1 1 1 1
-1000000000 1000000000 1000000000 1000000000
+5
+4 6
+4 9
+2 6
+3 9
+1 8
+5 10
+2 7
+3 7
+1 10
+5 8
 output
 Copy
-31
-1999999998
-Note
-In the first test case, it's optimal to connect four pairs of computers:
-computer
-1
-from the first row with computer
-2
-from the second row: cost
-|1−4|=3
-;
-computer
-3
-from the first row with computer
-2
-from the second row: cost
-|1−4|=3
-;
-computer
-2
-from the first row with computer
-1
-from the second row: cost
-|10−20|=10
-;
-computer
-2
-from the first row with computer
-3
-from the second row: cost
-|10−25|=15
-;
-In total,
-3+3+10+15=31
-.
-In the second test case, it's optimal to connect
-1
-from the first row with
-1
-from the second row, and
-4
-from the first row with
-4
-from the second row.
+314

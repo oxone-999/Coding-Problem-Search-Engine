@@ -1,111 +1,153 @@
-B. Sum of Two Numbers
+A. One and Two
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The sum of digits of a non-negative integer
+You are given a sequence
 a
-is the result of summing up its digits together when written in the decimal system. For example, the sum of digits of
-123
-is
-6
-and the sum of digits of
-10
-is
 1
-. In a formal way, the sum of digits of
-a=
-∑
-i=0
-∞
+,
 a
-i
-⋅
-10
-i
-, where
-0≤
+2
+,…,
 a
-i
-≤9
-, is defined as
-∑
-i=0
-∞
-a
-i
-.
-Given an integer
 n
-, find two non-negative integers
-x
-and
-y
-which satisfy the following conditions.
-x+y=n
-, and
-the sum of digits of
-x
-and the sum of digits of
-y
-differ by at most
+. Each element of
+a
+is
 1
+or
+2
 .
-It can be shown that such
-x
-and
-y
-always exist.
+Find out if an integer
+k
+exists so that the following conditions are met.
+1≤k≤n−1
+, and
+a
+1
+⋅
+a
+2
+⋅…⋅
+a
+k
+=
+a
+k+1
+⋅
+a
+k+2
+⋅…⋅
+a
+n
+.
+If there exist multiple
+k
+that satisfy the given condition, print the smallest.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤10000
-).
-Each test case consists of a single integer
+1≤t≤100
+). Description of the test cases follows.
+The first line of each test case contains one integer
 n
 (
-1≤n≤
-10
-9
-)
+2≤n≤1000
+).
+The second line of each test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤2
+).
 Output
-For each test case, print two integers
-x
-and
-y
+For each test case, if there is no such
+k
+, print
+−1
 .
-If there are multiple answers, print any.
+Otherwise, print the smallest possible
+k
+.
 Example
 input
 Copy
-5
-1
-161
-67
-1206
-19
+3
+6
+2 2 1 2 1 2
+3
+1 2 1
+4
+1 1 1 1
 output
 Copy
-1 0
-67 94
-60 7
-1138 68
-14 5
+2
+-1
+1
 Note
-In the second test case, the sum of digits of
-67
-and the sum of digits of
-94
-are both
-13
-.
-In the third test case, the sum of digits of
-60
-is
+For the first test case,
+k=2
+satisfies the condition since
+a
+1
+⋅
+a
+2
+=
+a
+3
+⋅
+a
+4
+⋅
+a
+5
+⋅
+a
 6
-, and the sum of digits of
-7
-is
-7
+=4
+.
+k=3
+also satisfies the given condition, but the smallest should be printed.
+For the second test case, there is no
+k
+that satisfies
+a
+1
+⋅
+a
+2
+⋅…⋅
+a
+k
+=
+a
+k+1
+⋅
+a
+k+2
+⋅…⋅
+a
+n
+For the third test case,
+k=1
+,
+2
+, and
+3
+satisfy the given condition, so the answer is
+1
 .

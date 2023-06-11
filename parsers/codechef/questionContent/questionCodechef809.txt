@@ -1,27 +1,112 @@
-Granama Recipes
+Careless Chef
 Problem
-Chef has learned a new technique for comparing two recipes. A recipe contains a list of ingredients in increasing order of the times they will be processed. An ingredient is represented by a letter 'a'-'z'. The i-th letter in a recipe denotes the i-th ingredient. An ingredient can be used multiple times in a recipe.
-The technique is as follows. Compare two recipes by comparing their respective lists. If the sets of ingredients used in both recipes are equal and each ingredient is used the same number of times in both of them (processing order does not matter), they are declared as granama recipes. ("granama" is the Chef-ian word for "similar".)
-Chef took two recipes he invented yesterday. He wanted to compare them using the technique. Unfortunately, Chef forgot to keep track of the number of times each ingredient has been used in a recipe. He only compared the ingredients but NOT their frequencies. More precisely, Chef considers two recipes as granama if there are no ingredients which are used in one recipe and not used in the other recipe.
-Your task is to report whether Chef has correctly classified the two recipes (as granama or not granama) although he forgot to keep track of the frequencies.
-Input
-The first line of the input contains a single integer T denoting the number of test cases. The description for T test cases follows. Each test case consists of a single line containing two space-separated strings R and S denoting the two recipes.
-Output
-For each test case, output a single line containing "YES" (quotes for clarity) if Chef correctly classified the two recipes as granama or not granama. Otherwise, output a single line containing "NO" (quotes for clarity) if Chef declared two recipes as granama when they actually are not.
+Chef has a sequence of integers
+A of length
+N. He creates another sequence
+B of length
+2⋅N using sequence
+A. Initially,
+B is empty. Chef performs the following process.
+For each element
+A
+i
+(1≤i≤N) of
+A:
+Choose any arbitrary integer
+k (Note that the value of
+k can be different for different elements).
+Add
+A
+i
+−k and
+A
+i
++k to
+B.
+Chef then shuffles the sequence
+B randomly after this process.
+Since Chef is careless, he lost both
+A and
+B and now only vaguely remembers the elements of
+B. Chef would like to know if the sequence
+B (which he vaguely remembers) can be correct or not. Can you help him?
+Formally, you are provided with a sequence
+B of size
+2⋅N. You are required to tell if the provided sequence can be achieved from any sequence
+A of size
+N using the given process or not.
+Input Format
+The first line of the input contains a single integer
+T - the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line of each test case contains
+2⋅N space-separated integers
+B
+1
+,B
+2
+,…,B
+2⋅N
+.
+Output Format
+For each test case, print YES if the provided sequence
+B can be achieved from any sequence
+A of size
+N using the given process. Otherwise, print NO.
+You may print each character of YES and NO in uppercase or lowercase (for example, the strings yEs, yes, Yes and YES will be treated identical).
 Constraints
-1 ≤ T ≤ 100
-1 ≤ |R|, |S| ≤ 1000
+1≤T≤10
+4
+1≤N≤10
+5
+∣B∣=2⋅N
+−10
+5
+≤B
+i
+≤10
+5
+It is guaranteed that the sum of
+N over all test cases does not exceed
+2⋅10
+5
 Sample 1:
 Input
 Output
 3
-alex axle
-paradise diapers
-alice bob
+1
+1 1
+2
+16 2 2022 2001
+2
+2 4 -2 4
 YES
 NO
 YES
 Explanation:
-Example case 1: Chef declared them as granama recipes. They are actually granama because the sets of ingredients and the number of times each ingredient has been used are equal. The Chef got it right!
-Example case 2: Chef declared them as granama recipes because both sets of ingredients are equal. But they are NOT granama since ingredient 'a' has been used twice in the first recipe but only once in the second. The Chef was incorrect!
-Example case 3: Chef declare them as not granama. They are not granama as the sets of ingredients are different. Hence, the Chef was right!
+Test case
+1: The given sequence
+B can be generated using
+A=[1] with
+k=0 for
+A
+1
+.
+Test case
+2: There doesn't exist any sequence
+A which can generate the given sequence
+B by simulating the given process.
+Test case
+3: The given sequence
+B can be generated using
+A=[4,0] with
+k=0 for
+A
+1
+and
+k=−2 for
+A
+2
+.

@@ -1,36 +1,72 @@
-Kingdom Unity
+Return of the Gargoyle King
 Problem
-The Kingdom of Bytelandia has N cities, numbered from 0 to N−1. There are M bidirectional roads, each of which connects two different cities. The road network in the kingdom is such that people of any city can reach any other city they desired through the road network. This is called having unity in the kingdom. Bytelandia is very famous for its unity. The people are united and familiar with each other. The king of Bytelandia is also very proud of this fact.
-But, some people just want to watch the world burn. Dr. Bobo is one of such people. He is very wicked. He doesn't like unity of Bytelandia. He has a chemical missile to spread diseases. He plans to attack one of the cities of Bytelandia.
-The king's secret intelligence service became aware of Dr. Bobo's wicked plan and informed the king about it. The king could not catch Dr. Bobo hence he is a genius. So the king planned the rescue mission with his own defense system. The scientists of Bytelandia have made one kind of shields which can protect an entire city from the attack of Dr. Bobo's missile. The shield will not affect the road network, in the sense that a citizen can still travel on the roads connected to a protected city. But the shields are very very expensive to build.
-The king also has a team of brilliant doctors, who have already discovered the cure for the disease which the missile will spread. But they can only handle one city at a time. The king has planned his rescue mission as follows:
-If a shielded city is attacked by the missile, then no one is harmed. If a city without a shield is attacked, all the roads connected to that city will be closed to prevent the disease from spreading to the other cities. Then, the doctors will begin to cure each citizen of that city and as a precautionary measure, none of those citizens are allowed to leave the city until each and every of them is cured. It will take a very long time to cure an entire city.
-Taking a long time to cure an attacked city will affect the road network of the kingdom. The roads which are closed due to the attack can not be used until the affected city is entirely cured. This would have an adverse affect on the kingdom's unity, which the king would never want, especially at the time of crisis because in that case Dr. Bobo would have achieved his evil goal of dividing the people.
-The king can make as many shields as he wants but as we know, they are very expensive. So, he would let a city be attacked and then be cured by his doctors rather than pay to plant a shield over a city, as long as it will not affect the unity of the remaining kingdom. That is, city x must be protected by the shield if there exists a pair of cities (except city x) such that people cannot come and go between these cities when the roads connected city x are closed. He doesn't want to make unnecessary shields. He wants you to find the minimum amount of money that is needed to make the shields to prevent Mr. Bobo from succeeding in his evil plan.
-Input
-First line of input contains an integer T, denoting the number of test cases. Then T test cases follow. First line of each test case contains 3 space-separated integers N, M, and K, denoting number of cities, the number of bidirectional roads, and the cost to make one shield, respectively. Then M lines follow each containing 2 space-separated integers A and B, denoting that there is a road between city A and city B.
-Output
-For each test case, output the minimum amount of money required to fulfill the king's requirements and protect unity of his kingdom.
-Constraints
-1 ≤ T ≤ 1500
-2 ≤ N ≤ 3000
-N−1 ≤ M ≤ N*(N−1)/2)
-0 ≤ A, B ≤ N−1, A ≠ B
-1 ≤ K ≤ 1000
-The road network has unity
-No two roads connect the same pair of cities
-The sum of N in one test file does not exceed 3000
+There has been yet another murder in the Shady city of Riverdale. This murder is being investigated by none other than the Riverdale's Finest- Jughead Jones & Betty Cooper. This murder has been done exactly in the same manner as all the murders happening since the return of the deadly game Gargoyle &Griffins. Betty has decided to put an end to these murders, so they decide to interrogate each and every person in the neighbourhood.
+As they don't know these people personally they want to first get to know about their character i.e whether a particular person is a
+Truth−speaking−person or a
+False−speaking−person. Jughead devises a strategy of interrogating the civilians.
+Jughead decides that they will collect statements from all the people in the neighbourhood about every other person living in the neighbourhood. Each person speaks a statement in form of an array consisting of
+T and
+F, which tells us what he thinks about the
+ith person. Let there be
+N people living in the neighbourhood. So if a person
+i is giving his/her statement, he/her will always call himself/herself a True person i.e
+Statement[i]=T. So Jughead says that they will select the
+maximum
+number of people that maybe speaking the truth such that their statements don't contradict and then interrogate them further about the murder. Help them pick the max no. of Truth speaking people.
+Note- A person speaking
+falsely doesn't mean that the complement of his statement would be the
+truth. If a person is declared
+false(i.e not included in the set) after Betty and Jughead pick their set of truth speaking people with non-contradicting statements, the person declared false might not be speaking
+falsely about anyone(except saying he himself is a
+true speaking person which contradicts with the selected statements) but since the selected Set of statements feels him to be a
+false speaking person he won't be included in the set.
+But if a person is tagged as
+truth speaking person then their Statement must be entirely correct and should not contradict with the chosen set of
+truth speaking people. All
+truth speaking people mentioned in the selected statements should be part of the set and all the people declared
+false in the statements shouldn't be part of the set. See example for clarity.
+###Input:
+First line will contain
+N, the number of people in the neighbourhood. Then the Statements of
+ith person follow.
+Each Statement contains a single line of input, an array of length
+N consisting of
+T and
+F.
+###Output: Print a single line denoting the maximum no. of people that might be speaking the truth.
+###Constraints
+1≤N≤1000
+Statement
+i
+[i]=T
 Sample 1:
 Input
 Output
-1
-7 6 5
-0 1
-1 2
-3 4
-2 4
-2 6
-5 2
-15
+5
+T T F F F
+T T F F F
+T T T F F
+F F F T T
+F F F T T
+2
 Explanation:
-In the sample, the cities 1, 2, and 4 must be protected by the shields.
+In Sample 1 We can consider the
+1st and
+2nd person to be speaking the truth. We can also consider the
+4th and the
+5th person to be speaking the truth.
+Note: we cannot select
+1st
+2nd and
+3rd person because the
+1st and the second person have labelled the 3rd person as a false speaking person, therefore if we select all 3 contradiction will arise.
+Sample 2:
+Input
+Output
+3
+T T T
+T T T
+F F T
+1
+Explanation:
+In sample 2 Set contains only the 3rd person

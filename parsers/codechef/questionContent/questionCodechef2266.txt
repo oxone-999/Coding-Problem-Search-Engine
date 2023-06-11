@@ -1,119 +1,50 @@
-Coin Denominations
+Algebra Score
 Problem
-You are given an integer
-C and an array
-A =
-A
-1
-,A
-2
-,…,A
+Pankhuri hates Algebra. Doesn't matter how hard she tries, she always fails to get good marks in her assessments. One of her marked assessments has been recently returned. She noticed that this time, the professor has only given per question marks and filled the total marks section with an expression consisting of +,- operations rather than a calculated number. For example - if there were 3 questions and she was awarded 10 marks in first question while 6 and 2 marks were deducted in second and third questions, then the professor would have written 10-6-2 in the total marks section.
+Pankhuri might not be good at algebra but she is very smart. She came up with a brilliant idea. She plans to insert parentheses
+( or
+) at some places in the expression to create a valid bracket expression which evaluates to the maximum possible value. For example in the above scenario, she could create the expression 10-(6-2) which evaluates to 6 unlike the original expression which evaluates to 4. But the expression given to her is very long and she is not able to figure out the maximum marks that she can get.
+Given an expression of
+N numbers and N-1 operators (either + or -) between them. We can enclose parts of the expression in parentheses to form any valid expression. What is the maximum value of the resulting expression?
+###Input
+First line contains a single integer
+T - the number of test cases.
+For each testcase,
+First line contains a single integer
+N. The second line contains the expression.
+The input format is of the following form.
 N
-which has distinct positive integers. It is guaranteed that
-A
-i
-≤C for
-1≤i≤N. You have an infinite supply of coins of denomination
-A
-i
-for
-1≤i≤N. You have another array
-W=W
+a
 1
-,W
-2
-,…W
-N
-. This denotes that a single coin of denomination
-A
-i
-has a weight of
-W
-i
-.
-You are given
-M queries:
-Q
+o
 1
-,Q
+a
 2
-,…,Q
-M
-. You need to get a collection of coins, such that their values add up to exactly
-Q
-i
-(ie. sum of denominations), and the sum of their weights is minimized. Output this minimum weight, or say that it is impossible to get exactly a sum of
-Q
-i
-. As the minimum weight could be huge, output it module
-10
-9
-+7.
-###Input:
-The first line of the input contains three integers:
-N,
-C and
-M.
-The i-th of the next
-N lines contains two numbers
-A
-i
-and
-W
-i
-, which have been described above.
-The i-th of the next
-M lines contains a single integer:
-Q
-i
-.
-###Output:
-M lines, each of which should contain a single integer. If it is possible to achieve the queried value, then your output should be the remainder when the minimum total weight is divided by
-10
-9
-+7.
-If it is not possible to achieve the exact value in the query, print
-−1. Note that we do not take modulo anything here.
+o
+2
+a
+3
+o
+3
+.. o
+n−1
+a
+n
+###Output For each testcase, print a line containing a single integer representing the maximum value of the expression.
 ###Constraints
-1≤N≤C≤100
-1≤M≤10
-6
-1≤A
-i
-≤C
-A
-i
-
-=A
-j
-, if
-i
-
-=j
-1≤W
+1≤T≤10
+1≤N≤200
+1≤a
 i
 ≤10
 9
-1≤Q
+o
 i
-≤10
-18
-###Subtasks
-12 points :
-1≤Q
-i
-≤10
-6
-88 points : No further constraints.
-###Sample Input: 3 100 2 2 50 8 1 3 40 9 7
-###Sample Output: 120 140
-###Explanation: You can get a total value of
-9 by taking three coins of denomination
-3. Their total weight comes to
-3∗40=120. You can check that you cannot do better than this.
-You can get a total value of
-7 by taking two coins of denomination
-2 and one coin of denomination
-3 (
-(2∗2)+3=7). Their total weight comes to
-(2∗50)+40=140. You can check that you cannot do better than this.
+is
++ or
+−
+###Sample Input 3 3 8 - 1 - 25 2 38 + 20 4 40 - 8 - 1 + 25
+###Sample Output 32 58 58
+###Explanation Test 1: 8 - ( 1 - 25 ) = 32
+Test 2: 38 + 20 = 58
+Test 3: 40 - ( 8 - ( 1 + 25 ) ) = 58

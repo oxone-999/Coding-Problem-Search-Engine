@@ -1,135 +1,150 @@
-B. Multiply by 2, divide by 6
-time limit per test1 second
+E1. Reading Books (easy version)
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer
+Easy and hard versions are actually different problems, so read statements of both problems completely and carefully.
+Summer vacation has started so Alice and Bob want to play and joy, but... Their mom doesn't think so. She says that they have to read some amount of books before all entertainments. Alice and Bob will read each book together to end this exercise faster.
+There are
 n
-. In one move, you can either multiply
-n
-by two or divide
-n
-by
-6
-(if it is divisible by
-6
-without the remainder).
-Your task is to find the minimum number of moves needed to obtain
+books in the family library. The
+i
+-th book is described by three integers:
+t
+i
+— the amount of time Alice and Bob need to spend to read it,
+a
+i
+(equals
 1
-from
+if Alice likes the
+i
+-th book and
+0
+if not), and
+b
+i
+(equals
+1
+if Bob likes the
+i
+-th book and
+0
+if not).
+So they need to choose some books from the given
 n
-or determine if it's impossible to do that.
-You have to answer
+books in such a way that:
+Alice likes at least
+k
+books from the chosen set and Bob likes at least
+k
+books from the chosen set;
+the total reading time of these books is minimized (they are children and want to play and joy as soon a possible).
+The set they choose is the same for both Alice an Bob (it's shared between them) and they read all books together, so the total reading time is the sum of
 t
-independent test cases.
+i
+over all books that are in the chosen set.
+Your task is to help them and find any suitable set of books or determine that it is impossible to find such a set.
 Input
-The first line of the input contains one integer
-t
+The first line of the input contains two integers
+n
+and
+k
 (
-1≤t≤2⋅
+1≤k≤n≤2⋅
+10
+5
+).
+The next
+n
+lines contain descriptions of books, one description per line: the
+i
+-th line contains three integers
+t
+i
+,
+a
+i
+and
+b
+i
+(
+1≤
+t
+i
+≤
 10
 4
-) — the number of test cases. Then
+,
+0≤
+a
+i
+,
+b
+i
+≤1
+), where:
 t
-test cases follow.
-The only line of the test case contains one integer
-n
-(
-1≤n≤
-10
-9
-).
+i
+— the amount of time required for reading the
+i
+-th book;
+a
+i
+equals
+1
+if Alice likes the
+i
+-th book and
+0
+otherwise;
+b
+i
+equals
+1
+if Bob likes the
+i
+-th book and
+0
+otherwise.
 Output
-For each test case, print the answer — the minimum number of moves needed to obtain
-1
-from
-n
-if it's possible to do that or -1 if it's impossible to obtain
-1
-from
-n
-.
-Example
+If there is no solution, print only one integer -1. Otherwise print one integer
+T
+— the minimum total reading time of the suitable set of books.
+Examples
 input
 Copy
-7
-1
-2
-3
-12
-12345
-15116544
-387420489
+8 4
+7 1 1
+2 1 1
+4 0 1
+8 1 1
+1 0 1
+1 1 1
+1 0 1
+3 0 0
 output
 Copy
-0
+18
+input
+Copy
+5 2
+6 0 0
+9 0 0
+1 0 1
+2 1 1
+5 1 0
+output
+Copy
+8
+input
+Copy
+5 3
+3 0 0
+2 1 0
+3 1 0
+5 0 1
+3 0 1
+output
+Copy
 -1
-2
--1
--1
-12
-36
-Note
-Consider the sixth test case of the example. The answer can be obtained by the following sequence of moves from the given integer
-15116544
-:
-Divide by
-6
-and get
-2519424
-;
-divide by
-6
-and get
-419904
-;
-divide by
-6
-and get
-69984
-;
-divide by
-6
-and get
-11664
-;
-multiply by
-2
-and get
-23328
-;
-divide by
-6
-and get
-3888
-;
-divide by
-6
-and get
-648
-;
-divide by
-6
-and get
-108
-;
-multiply by
-2
-and get
-216
-;
-divide by
-6
-and get
-36
-;
-divide by
-6
-and get
-6
-;
-divide by
-6
-and get
-1
-.

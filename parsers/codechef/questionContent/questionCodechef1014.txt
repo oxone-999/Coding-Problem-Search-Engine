@@ -1,48 +1,33 @@
-CAO Stage-1
+Harrenhal
 Problem
-Problem Statement
-Past
-In the year of 2048, the Virtual Reality Massively Multiplayer Online Role-Playing Game (VRMMORPG), Code Art Online (CAO), is released. With the Chef Gear, a virtual reality helmet that stimulates the user's five senses via their brain, players can experience and control their in-game characters with their minds.
-On August the 2nd, 2048, all the players log in for the first time, and subsequently discover that they are unable to log out. They are then informed by Code Master, the creator of CAO, that if they wish to be free, they must reach the second stage of the game.
-Kirito is a known star player of CAO. You have to help him log out.
-Present
-Stage 1
-A map is described by a 2D grid of cells. Each cell is either labelled as a # or a ^. # denotes a wall. A monster exists in a cell if the cell is not a wall and the cell is a centre of Prime-Cross (CPC).
-Let L be the number of contiguous ^ to the left of X, in the same row as X.
-R be the number of contiguous ^ to the right of X, in the same row as X.
-T be the number of contiguous ^ above X, in the same column as X.
-B be the number of contiguous ^ below X, in the same column as X.
-A cell X is said to be a CPC if there exists a prime number P such that P ≤ minimum of [L, R, T, B].
-Note: While computing L, R, T, B for a cell X, you should not count the ^ of the cell X.
-Given a map, you have to tell Kirito the number of cells where monsters exist.
-Future
-If you are done with this task, go help Kirito with Stage 2 :-)
+Read problems statements in Mandarin Chinese and Russian.
+Harrenhal is the largest castle in the Seven Kingdoms and is the seat of House Whent in the Riverlands, on the north shore of the Gods Eye lake. Since the War of Conquest, however, it has become a dark and ruinous place.
+(c) A Wiki of Ice and Fire
+Now Harrenhal is too dangerous since it's a nice place for bandits to hide, or even for rebels to start planning overthrowing of the king. So, the current Lord of the Seven Kingdoms has decided, that it's time to completely ruin the castle. For that puposes, he's planning to send some military troops.
+In this problem we assume, that Harrenhal can be described as a string H, which consists only of symbols 'a' and 'b'. Harrenhal is completely ruined if and only if the length of H is equal to zero.
+So, how to make H empty? Send a military troop! When a military troop of the king reach the castle, they delete some palindromic subsequence S of H. For example, let H = 'abbabaab'. Then the current military troop can choose S = 'ababa'(Let's make symbols of S bold in H: 'abbabaab'). After deleting S, H will be equal to 'bab'. Military troops are free to choose any possible palindromic subsequence of H.
+Your task is pretty simple: determine the minimal number of military troops, that the Lord of the Seven Kingdoms has to send in order to ruin Harrenhal.
+Note
+Maybe, some of you aren't familiar with definitions from the statement. Here're some articles that could help you to understand the problem correctly:
+Subsequence: http://en.wikipedia.org/wiki/Subsequence
+Palindrome: http://en.wikipedia.org/wiki/Palindrome
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. Each case starts with a line containing two space separated integers R, C denoting the number of rows and columns in the map respectively. The next R lines contain C characters each, describing the map.
+The first line of the input contains an integer T, denoting the number of test cases.
+The next T lines contain a string H each, denoting the string, that describes the current state of Harrenhal for the corresponding test cases.
+It's guaranteed, that each H consists only of symbols 'a' and 'b'.
 Output
-For each test case, output a single line containing the number of cells where monsters exist.
+The output should contain exactly T lines. i'th line of the output should contain the only integer: the minimal number of military troops, that the Lord of the Seven Kingdoms has to send in order to ruin Harrenhal for the corresponding test cases.
 Constraints
-1 ≤ T ≤ 100
-1 ≤ R ≤ 50
-1 ≤ C ≤ 50
+1 ≤ |H| ≤ 100000, for each H.
+Subtask 1(30 points): each H in the input is a palindrome, 1 ≤ T ≤ 6;
+Subtask 2(70 points): 1 ≤ T ≤ 9.
 Sample 1:
 Input
 Output
-2
-5 5
-^^^^^
-^^^^^
-^^^^#
-^^^^^
-^^^^^
-5 7
-^^#^^^^
-^^#^#^#
-#^^^^^^
-^^#^^#^
-^^^^^^^
-0
 1
+abbabaab
+2
 Explanation:
-Example case 1. There is no cell for which minimum of L, R, T, B is greater than some prime P.
-Example case 2. The cell at [3, 4], (1-based indexing) is the only CPC.
+There're multiple ways to ruin Harrenhal in the example test. Let's consider one of them.
+The first troop can delete S = 'ababa'('abbabaab'). After that, H = 'bab'.
+The second troop can delete S = 'bab'('bab'). After that, H is empty and that's it.

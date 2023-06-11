@@ -1,96 +1,152 @@
-A. Cancel the Trains
+D. Checkpoints
 time limit per test1 second
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Gildong's town has a train system that has
-100
-trains that travel from the bottom end to the top end and
-100
-trains that travel from the left end to the right end. The trains starting from each side are numbered from
+Gildong is developing a game consisting of
+n
+stages numbered from
 1
 to
-100
-, respectively, and all trains have the same speed. Let's take a look at the picture below.
-The train system can be represented as coordinates on a 2D plane. The
-i
--th train starting at the bottom end is initially at
-(i,0)
-and will be at
-(i,T)
-after
-T
-minutes, and the
-i
--th train starting at the left end is initially at
-(0,i)
-and will be at
-(T,i)
-after
-T
-minutes. All trains arrive at their destinations after
-101
-minutes.
-However, Gildong found that some trains scheduled to depart at a specific time, simultaneously, are very dangerous. At this time,
 n
-trains are scheduled to depart from the bottom end and
-m
-trains are scheduled to depart from the left end. If two trains are both at
-(x,y)
-at the same time for some
-x
-and
-y
-, they will crash into each other. Therefore, he is asking you to find the minimum number of trains that should be cancelled to prevent all such crashes.
+. The player starts the game from the
+1
+-st stage and should beat the stages in increasing order of the stage number. The player wins the game after beating the
+n
+-th stage.
+There is at most one checkpoint on each stage, and there is always a checkpoint on the
+1
+-st stage. At the beginning of the game, only the checkpoint on the
+1
+-st stage is activated, and all other checkpoints are deactivated. When the player gets to the
+i
+-th stage that has a checkpoint, that checkpoint is activated.
+For each try of a stage, the player can either beat the stage or fail the stage. If they beat the
+i
+-th stage, the player is moved to the
+i+1
+-st stage. If they fail the
+i
+-th stage, the player is moved to the most recent checkpoint they activated, and they have to beat the stages after that checkpoint again.
+For example, assume that
+n=4
+and the checkpoints are on the
+1
+-st and
+3
+-rd stages. The player starts at the
+1
+-st stage. If they fail on the
+1
+-st stage, they need to retry the
+1
+-st stage because the checkpoint on the
+1
+-st stage is the most recent checkpoint they activated. If the player beats the
+1
+-st stage, they're moved to the
+2
+-nd stage. If they fail it, they're sent back to the
+1
+-st stage again. If they beat both the
+1
+-st stage and the
+2
+-nd stage, they get to the
+3
+-rd stage and the checkpoint on the
+3
+-rd stage is activated. Now whenever they fail on the
+3
+-rd stage, or the
+4
+-th stage after beating the
+3
+-rd stage, they're sent back to the
+3
+-rd stage. If they beat both the
+3
+-rd stage and the
+4
+-th stage, they win the game.
+Gildong is going to build the stages to have equal difficulty. He wants you to find any series of stages and checkpoints using at most
+2000
+stages, where the expected number of tries over all stages is exactly
+k
+, for a player whose probability of beating each stage is exactly
+1
+2
+.
 Input
 Each test contains one or more test cases. The first line contains the number of test cases
 t
 (
-1≤t≤100
+1≤t≤50
 ).
-Each test case contains three lines. The first line of each test case consists of two integers
-n
-and
-m
+Each test case contains exactly one line. The line consists of a single integer
+k
 (
-1≤n,m≤100
-) — the number of trains scheduled to depart from the bottom end, and the number of trains scheduled to depart from the left end, respectively.
-The second line of each test case contains
-n
-integers. Each integer is a train number that is scheduled to start from the bottom end. The numbers are given in strictly increasing order, and are between
+1≤k≤
+10
+18
+) — the expected number of tries over all stages Gildong wants to set for a player whose probability of beating each stage is exactly
 1
-and
-100
-, inclusive.
-The third line of each test case contains
-m
-integers. Each integer is a train number that is scheduled to start from the left end. The numbers are given in strictly increasing order, and are between
-1
-and
-100
-, inclusive.
+2
+.
 Output
-For each test case, print a single integer: the minimum number of trains that should be canceled in order to prevent all crashes.
+For each test case, print
+−1
+if it's impossible to construct such a series of stages and checkpoints using at most
+2000
+stages.
+Otherwise, print two lines. The first line should contain a single integer
+n
+(
+1≤n≤2000
+) – the number of stages. The second line should contain
+n
+integers, where the
+i
+-th integer represents whether the
+i
+-th stage has a checkpoint. The
+i
+-th integer should be
+0
+if the
+i
+-th stage doesn't have a checkpoint, and
+1
+if it has a checkpoint. Note that the first integer must be
+1
+according to the description.
 Example
 input
 Copy
-3
-1 2
+4
 1
-3 4
-3 2
-1 3 4
-2 4
-9 14
-2 7 16 28 33 57 59 86 99
-3 9 14 19 25 26 28 35 41 59 85 87 99 100
+2
+8
+12
 output
 Copy
-0
+-1
 1
-3
+1
+4
+1 1 1 1
+5
+1 1 0 1 1
 Note
-In the first case, we can show that there will be no crashes if the current schedule is followed. Therefore, the answer is zero.
-In the second case, at
-T=4
-, there will be a crash, as can be seen in the picture below. We can prove that after canceling one of these trains, the remaining trains will not crash. Therefore, the answer is one.
+In the first and the second case, we can see that the 'easiest' series of stages is to have
+1
+stage with a checkpoint. This already requires
+2
+tries in expectation, so it is impossible to make it to require only
+1
+try.
+In the third case, it takes
+2
+tries in expectation to beat each stage, and the player can always retry that stage without falling back to one of the previous stages if they fail it. Therefore the total expected number of tries is
+8
+. Note that there exists an answer with fewer stages, but you are not required to minimize the number of stages used.

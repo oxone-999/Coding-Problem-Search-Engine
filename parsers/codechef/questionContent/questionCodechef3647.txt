@@ -1,70 +1,239 @@
-MEX-ception
+String Power
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-You are given two integers
-N and
-M. You have to construct a matrix with
-N rows and
-M columns. Consider a multiset
-S which contains
-N+M integers: for each row and each column of this matrix, the MEX of the elements of this row/column belongs to
-S. Then, in the matrix you construct, the MEX of
-S must be maximum possible.
-Note: The MEX of a multiset of integers is the smallest non-negative integer that is not present in this multiset. For example,
-MEX({4,9,0,1,1,5})=2 and
-MEX({1,2,3})=0.
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef has been recently studying strings and probabilities and he came up with a problem for you.
+Consider an alphabet with
+N characters (denoted by
+c
+1
+,c
+2
+,…,c
+N
+). For each valid
+i, the character
+c
+i
+has a power
+a
+i
+; the power of a string that contains only characters from this alphabet is the sum of their powers (if a character occurs multiple times, its power also occurs in the sum multiple times). For example, the power of a string
+c
+1
+c
+2
+c
+3
+is
+a
+1
++a
+2
++a
+3
+and the power of a string
+c
+1
+c
+2
+c
+1
+is
+2⋅a
+1
++a
+2
+.
+Also, for each valid
+i, you are given two parameters
+p
+i
+and
+B
+i
+, where
+p
+i
+is a non-negative integer and
+B
+i
+∈{0,1}. For an integer
+K, we can construct a random string
+S with length
+K in the following way:
+Define
+R=
+i=1
+∑
+N
+p
+i
+.
+First, each of the
+K characters of
+S is chosen independently. For each valid
+i and
+j, the
+i-th character of
+S is
+c
+j
+with probability
+p
+j
+/R.
+Then, for each valid
+i, we compute the number of occurrences of
+c
+i
+in
+S and if the parity of this number of occurrences (i.e. its remainder modulo
+2) is different from
+B
+i
+, we discard the string
+S and try to construct a new random string
+S from the beginning.
+Otherwise (if the parities of occurrences of all characters match the sequence
+B), we have constructed the random string
+S.
+All parameters are chosen in such a way that there is at least one string we can generate without discarding it. In particular,
+R>0.
+What is the expected value of the power of the constructed string
+S? You need to answer
+Q queries. In each query, you are given a different value of
+K and you should find the expected power.
+For each query, it can be proved that the expected power can be represented as a fraction
+Q
+P
+, where
+P and
+Q are non-negative integers and
+Q is coprime with
+998,244,353. You need to compute
+P⋅Q
+−1
+modulo
+998,244,353, where
+Q
+−1
+denotes the multiplicative inverse of
+Q modulo
+998,244,353.
 Input
 The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains two space-separated integers
-N and
-M.
-Output
-For each test case, print
-N lines. For each
-i (
-1≤i≤N), the
-i-th of these lines should contain
-M space-separated integers ― the elements in the
-i-th row of your matrix. Each element of the matrix must be non-negative and must not exceed
-10
-9
+N.
+N lines follow. For each valid
+i, the
+i-th of these lines contains three space-separated integers
+a
+i
+,
+p
+i
+and
+B
+i
 .
-If there are multiple solutions, you may find any one of them.
+The next line contains a single integer
+Q.
+Q lines follow. Each of these lines contains a single integer
+K describing a query.
+Output
+For each query, print a single line containing one integer
+P⋅Q
+−1
+modulo
+998,244,353.
 Constraints
-1≤T≤400
-1≤N,M≤100
-the sum of
-N⋅M over all test cases does not exceed
-10
-5
-Example Input
+1≤N≤2,000
+1≤a
+i
+≤4⋅10
+8
+for each valid
+i
+0≤p
+i
+≤2,000 for each valid
+i
+1≤R≤2,000
+B
+i
+∈{0,1} for each valid
+i
+1≤Q≤2⋅10
+4
+1≤K≤4⋅10
+8
+Subtasks
+Subtask #1 (2 points, time limit 1 second):
+N,K≤15
+Subtask #2 (8 points, time limit 1.5 seconds):
+K≤2,000
+Q≤10
+4
+Subtask #3 (10 points, time limit 1.5 seconds):
+N,R≤400
+Subtask #4 (80 points, time limit 2.5 seconds): original constraints
+Sample 1:
+Input
+Output
 2
-3 3
-4 2
-Example Output
-9 1 0
-1 0 2
-7 5 8
-2 2
-3 0
-1 1
-0 1
-Explanation
-Example case 1: The MEXs of the rows
-{9,1,0},
-{1,0,2} and
-{7,5,8} are
-2,
-3 and
-0 respectively. The MEXs of the columns
-{9,1,7},
-{1,0,5} and
-{0,2,8} are
-0,
-2 and
-1 respectively. Therefore, the multiset which contains the MEX of each row and each column is
-S={0,0,1,2,2,3} and
-MEX(S)=4. We can show that this is the largest MEX that can be obtained for a
-3×3 matrix.
+1 1 0
+2 2 1
+2
+1
+3
+2
+855638022
+Explanation:
+In the first query, we can only generate the one-character string
+c
+2
+. Therefore, the expected power is
+2.
+In the second query, we can generate the following strings:
+c
+1
+c
+1
+c
+2
+with power
+4 and probability
+2/14
+c
+1
+c
+2
+c
+1
+with power
+4 and probability
+2/14
+c
+2
+c
+1
+c
+1
+with power
+4 and probability
+2/14
+c
+2
+c
+2
+c
+2
+with power
+6 and probability
+8/14
+The expected power is therefore
+2+2+2+8
+2⋅4+2⋅4+2⋅4+8⋅6
+=
+7
+36
+=855,638,022.

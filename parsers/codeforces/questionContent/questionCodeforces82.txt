@@ -1,94 +1,163 @@
-F. Entangled Substrings
-time limit per test2 seconds
-memory limit per test256 mebibytes
+E. Half-sum
+time limit per test4 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Quantum entanglement is when two particles link together in a certain way no matter how far apart they are in space.
-You are given a string
-s
-. A pair of its non-empty substrings
-(a,b)
-is called entangled if there is a (possibly empty) link string
-c
-such that:
-Every occurrence of
+You're given a multiset of non-negative integers
+{
 a
-in
-s
-is immediately followed by
-cb
-;
-Every occurrence of
-b
-in
-s
-is immediately preceded by
-ac
-.
-In other words,
-a
-and
-b
-occur in
-s
-only as substrings of
-acb
-. Compute the total number of entangled pairs of substrings of
-s
-.
-A string
-a
-is a substring of a string
-b
-if
-a
-can be obtained from
-b
-by the deletion of several (possibly zero or all) characters from the beginning and several (possibly zero or all) characters from the end.
-Input
-The first and only line contains a string
-s
-of lowercase English letters (
-1≤|s|≤
-10
-5
-) — the string for which you should count pairs of entangled substrings.
-Output
-Output a single integer, the number of entangled pairs of substrings of
-s
-.
-Examples
-input
-Copy
-abba
-output
-Copy
 1
+,
+a
+2
+,…,
+a
+n
+}
+.
+In one step you take two elements
+x
+and
+y
+of the multiset, remove them and insert their mean value
+x+y
+2
+back into the multiset.
+You repeat the step described above until you are left with only two numbers
+A
+and
+B
+. What is the maximum possible value of their absolute difference
+|A−B|
+?
+Since the answer is not an integer number, output it modulo
+10
+9
++7
+.
+Input
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤100
+). Description of the test cases follows.
+The first line of each test case contains a single integer
+n
+(
+2≤n≤
+10
+6
+) — the size of the multiset.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤
+10
+9
+) — the elements of the multiset.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+6
+.
+Output
+For each test case, output a single integer, the answer to the problem modulo
+10
+9
++7
+.
+Formally, let
+M=
+10
+9
++7
+. It can be shown that the answer can be expressed as an irreducible fraction
+p
+q
+, where
+p
+and
+q
+are integers and
+q≢0(modM)
+. Output the integer equal to
+p⋅
+q
+−1
+modM
+. In other words, output an integer
+x
+such that
+0≤x<M
+and
+x⋅q≡p(modM)
+.
+Example
 input
-Copy
-abacaba
-output
-Copy
-0
-input
-Copy
-abcabcabcabc
-output
 Copy
 5
-input
-Copy
-adamant
+2
+7 3
+4
+1 2 10 11
+3
+1 2 3
+6
+64 32 64 16 64 0
+4
+1 1 1 1
 output
 Copy
-82
+4
+9
+500000005
+59
+0
 Note
-In the first example, the only entangled pair is (ab,ba). For this pair, the corresponding link string
-c
-is empty, as they only occur as substrings of the whole string abba, which doesn't have any characters between ab and ba.
-In the second example, there are no entangled pairs.
-In the third example, the entangled pairs are (a,b), (b,c), (a,c), (a,bc), and (ab,c). For most pairs, the corresponding link string
-c
-is empty, except for the pair (a,c), for which the link string
-c
-is b, as a and c only occur as substrings of the string abc.
+In the first case, you can't do any operations, so the answer is
+|7−3|=4
+.
+In the second case, one of the optimal sequence of operations:
+Substitute
+1
+and
+2
+with
+1.5
+;
+Substitute
+10
+and
+11
+with
+10.5
+;
+The difference between
+1.5
+and
+10.5
+is
+9
+.
+In the third case, the exact answer is
+3
+2
+, and
+500000005⋅2≡3(mod
+10
+9
++7)
+.

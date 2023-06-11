@@ -1,112 +1,81 @@
-K Increment Palindrome
+Paragraph Formatting
 Problem
-Chef has an array
-A of size
-N and an integer
-K. He can perform the following operation on
-A any number of times:
-Select any
-K distinct indices
-i
-1
-,i
-2
-,…,i
-K
-and increment the array elements at these
-K indices by
-1.
-Formally, set
-A
-i
-j
-:=A
-i
-j
-+1 for all
-1≤j≤K.
-For example, if
-A=[3,2,8,4,6] and we select the indices
-2,3,5, then
-A becomes
-[3,2+1,8+1,4,6+1] i.e.
-[3,3,9,4,7].
-Determine if Chef can make the array
-A palindromic by applying the given operation any number of times.
-Note: An array is called palindrome if it reads the same backwards and forwards, for e.g.
-[4,10,10,4] and
-[7,1,7] are palindromic arrays.
-Input Format
-The first line contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first line of each test case contains two integers
-N and
-K — the size of the array
-A and the parameter mentioned in the statement.
-The second line of each test case contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-denoting the array
-A.
-Output Format
-For each test case, output YES if we can make
-A palindromic by applying the given operation. Otherwise, output NO.
-You may print each character of YES and NO in uppercase or lowercase (for example, yes, yEs, Yes will be considered identical).
+Johnny is developing some word processing software. Right now, he has to deal with the problem of formatting a paragraph. Johnny has formulated the problem as follows.
+There are N words in a paragraph, in which the ith word has ai characters. Each line of the paragraph can hold at most M characters. For simplicity, we assume that every two consecutive words in a line are separated by exactly one whitespace and we disregard punctuation marks.
+The text editor always uses a simple greedy algorithm to break the paragraph into lines. The algorithm puts as many words in a line as possible, then moving on to the next line to do the same until there are no more words left to be placed.
+Johnny needs to write a program that, given the description of the words in a paragraph, is able to process the following two operations:
+Return the line number of a specified word
+Replace one word with another one
+Since the number of words in a paragraph can be huge, Johnny needs to find an efficient algorithm to process the above queries. Please help him!
+Input
+The first line contains t, the number of test cases (about 50). Then t test cases follow. Each test case has the following form:
+The first line contains a number M, the maximum number of characters that can be put in a line.
+The second line contains a number N, the number of words in the given paragraph.
+The third line contains N numbers a1, a2, ..., aN, the lengths of the words in the paragraph.
+The next lines contain the description of the queries, one query in a line. Each query can be of one of the following 3 types:
+I i - Ask for the line number of the ith word.
+C i l - Replace the ith word by a new word of length l (1 ≤ l ≤ M).
+E - Signal the end of the description of the queries.
+Note that the line numbers and the word indexes are counted from 1.
+Output
+For each test case, the first line of output should contain the string "Case #T:" where T should be replaced by the corresponding test case number.
+For every 'I' query in the test case, print the correct line number of the word being queried.
+Print a blank line after each test case.
 Constraints
-1≤T≤10
-5
-1≤K≤N≤10
-5
-1≤A
-i
-≤10
-6
-Sum of
-N over all test cases does not exceed
-2⋅10
-5
-.
+1 ≤ N ≤ 50000
+1 ≤ M ≤ 100000
+1 ≤ ai ≤ M
+The number of lines in each paragraph never exceeds 200.
+The number of queries in each test case does not exceed 10000.
 Sample 1:
 Input
 Output
+2
 4
-5 3
-2 4 5 4 2
-6 1
-4 5 5 4 6 4
-6 2
-4 5 5 4 6 4
-4 2
-1 2 3 3
-YES
-YES
-YES
-NO
+2
+1 2
+I 2
+C 2 3
+I 2
+E
+6
+5
+1 5 4 5 6
+I 2
+I 4
+I 5
+C 4 1
+I 4
+I 5
+C 2 1
+C 3 2
+C 5 4
+I 5
+I 3
+E
+Case #1:
+1
+2
+Case #2:
+2
+4
+5
+3
+4
+2
+1
 Explanation:
-Test case
-1: The given array
-A is already palindromic.
-Test case
-2: We can apply the following operations:
-Select index
-[4]:
-A becomes
-[4,5,5,5,6,4]
-Select index
-[2]:
-A becomes
-[4,6,5,5,6,4]
-Test case
-3: We can apply the following operations:
-Select index
-[2,4]:
-A becomes
-[4,6,5,5,6,4]
-Test case
-4: It can be proven that
-A can not be converted into a palindrome using the given operations.
+In the following description of the second exemplary test case, we use the digit i to denote a character of the ith word. Note that each line can hold at most 6 characters. Initially, the paragraph has the following form:
+1
+22222
+3333
+44444
+555555
+After replacing the 4thword with a one-character word, the paragraph becomes:
+1
+22222
+3333 4
+555555
+After the last 3 replacements, the paragraph becomes:
+1 2 33
+4 5555

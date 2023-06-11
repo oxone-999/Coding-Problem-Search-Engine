@@ -1,51 +1,105 @@
-B. Broken Keyboard
-time limit per test1 second
-memory limit per test512 megabytes
+C. Card Guessing
+time limit per test15 seconds
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Recently, Mishka started noticing that his keyboard malfunctions — maybe it's because he was playing rhythm games too much. Empirically, Mishka has found out that every other time he presses a key, it is registered as if the key was pressed twice. For example, if Mishka types text, the first time he presses a key, exactly one letter is printed; the second time he presses a key, two same letters are printed; the third time he presses a key, one letter is printed; the fourth time he presses a key, two same letters are printed, and so on. Note that the number of times a key was pressed is counted for the whole keyboard, not for each key separately. For example, if Mishka tries to type the word osu, it will be printed on the screen as ossu.
-You are given a word consisting of
+Consider a deck of cards. Each card has one of
+4
+suits, and there are exactly
 n
-lowercase Latin letters. You have to determine if it can be printed on Mishka's keyboard or not. You may assume that Mishka cannot delete letters from the word, and every time he presses a key, the new letter (or letters) is appended to the end of the word.
+cards for each suit — so, the total number of cards in the deck is
+4n
+. The deck is shuffled randomly so that each of
+(4n)!
+possible orders of cards in the deck has the same probability of being the result of shuffling. Let
+c
+i
+be the
+i
+-th card of the deck (from top to bottom).
+Monocarp starts drawing the cards from the deck one by one. Before drawing a card, he tries to guess its suit. Monocarp remembers the suits of the
+k
+last cards, and his guess is the suit that appeared the least often among the last
+k
+cards he has drawn. So, while drawing the
+i
+-th card, Monocarp guesses that its suit is the suit that appears the minimum number of times among the cards
+c
+i−k
+,
+c
+i−k+1
+,…,
+c
+i−1
+(if
+i≤k
+, Monocarp considers all previously drawn cards, that is, the cards
+c
+1
+,
+c
+2
+,…,
+c
+i−1
+). If there are multiple suits that appeared the minimum number of times among the previous cards Monocarp remembers, he chooses a random suit out of those for his guess (all suits that appeared the minimum number of times have the same probability of being chosen).
+After making a guess, Monocarp draws a card and compares its suit to his guess. If they match, then his guess was correct; otherwise it was incorrect.
+Your task is to calculate the expected number of correct guesses Monocarp makes after drawing all
+4n
+cards from the deck.
 Input
-The first line of the input contains one integer
-t
-(
-1≤t≤100
-) — the number of test cases.
-The first line of the test case contains one integer
+The first (and only) line contains two integers
 n
 (
-1≤n≤100
-) — the length of the word.
-The second line of the test case contains a string
-s
-consisting of
-n
-lowercase Latin letters — the word that should be checked.
+1≤n≤500
+) and
+k
+(
+1≤k≤4⋅n
+).
 Output
-For each test case, print YES if the word
-s
-can be printed on Mishka's keyboard, and NO otherwise.
-Example
+Let the expected value you have to calculate be an irreducible fraction
+x
+y
+. Print one integer — the value of
+x⋅
+y
+−1
+mod998244353
+, where
+y
+−1
+is the inverse to
+y
+(i. e. an integer such that
+y⋅
+y
+−1
+mod998244353=1
+).
+Examples
 input
 Copy
-4
-4
-ossu
-2
-aa
-6
-addonn
-3
-qwe
+1 1
 output
 Copy
-YES
-NO
-YES
-NO
-Note
-In the first test case, Mishka can type the word as follows: press o (one letter o appears at the end of the word), then presses s (two letters s appear at the end of the word), and, finally, press u (one letter appears at the end of the word, making the resulting word ossu).
-In the second test case, Mishka can try typing the word as follows: press a (one letter a appears at the end of the word). But if he tries to press a one more time, two letters a will appear at the end of the word, so it is impossible to print the word using his keyboard.
-In the fourth test case, Mishka has to start by pressing q. Then, if he presses w, two copies of w will appear at the end of the word, but the third letter should be e instead of w, so the answer is NO.
+748683266
+input
+Copy
+3 2
+output
+Copy
+567184295
+input
+Copy
+2 7
+output
+Copy
+373153250
+input
+Copy
+2 8
+output
+Copy
+373153250

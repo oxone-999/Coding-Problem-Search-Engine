@@ -1,55 +1,56 @@
-Odd Split
+Xor Counting
 Problem
-For an array
-B consisting of distinct integers, its number of inversions is equal to the number of pairs
-(i,j) with
-1≤i<j≤M such that
-B
-i
->B
-j
-, where
-M is the size of
-B. If this number is odd, we will call array
-B odd. Otherwise, we will call it even.
-Let's call a permutation
-P of integers from
-1 to
-K good, if there exists a way to split it into two subsequences, each of which is odd.
-For example, we can split
-[5,1,3,2,6,4] into subsequences
-[5,3,2] and
-[1,6,4], both of which are odd. There is no such split for the permutation
-[1,2,4,3,5,6].
-For each
-K from
-1 to
-N, find the number of permutations of integers from
-1 to
-K, which are good. As this number may be very high, output each number modulo some prime
-P.
-Input Format
-The only line of the input contains two integers
-N,P.
-Output Format
-Print
-N space-separated integers, the
-K
-th
-of which is the number of permutations of integers from
-1 to
-K which are good. Output all values modulo
-P.
-Constraints
-1≤N≤10
-6
-10
-8
-≤P≤10
-9
-P is prime
-Sample 1:
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+Find the number of sequences with
+K elements which satisfy the following conditions:
+Each element is an integer between
+L and
+R inclusive.
+The bitwise XOR of all elements is between
+A and
+B inclusive.
+Since the number of sequences satisfying the given conditions can be quite large, compute it modulo
+998,244,353.
 Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains five space-separated integers
+L,
+R,
+A,
+B and
+K.
 Output
-6 998244353
-0 0 0 12 95 671
+For each test case, print a single line containing one integer — the number of valid sequences modulo
+998,244,353.
+Constraints
+1≤T≤10
+0≤L≤R<2
+60
+0≤A≤B<2
+60
+1≤K≤50
+Example Input
+3
+26 54 18 34 1
+3 5 4 7 2
+2 9 0 100 3
+Example Output
+9
+4
+512
+###EXPLANATION: In the first testcase, we have to choose one integer in
+[26,54]∩[18,34]=[26,34]. So, there are 9 ways.
+In the second testcase, we have to choose two integers in
+[3,5] with bitwise xor in
+[4,7]. There are 4 possible ways:
+3⊕4=7
+3⊕5=6
+4⊕3=7
+5⊕3=6.
+In the third testcase all
+8
+3
+possible sequences are valid, hence the answer is
+512.

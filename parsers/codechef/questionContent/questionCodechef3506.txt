@@ -1,59 +1,95 @@
-So Close Yet So Far
+The Kingdom of Ererraveth
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Takaki Tono is a Computer Programmer in Tokyo. His boss at work shows him an online puzzle, which if solved would earn the solver a full expense paid trip to Los Angeles, California. Takaki really wants to solve this, as the love of his life, Akari, lives in Los Angeles and he hasn't met her since four years. Upon reading the puzzle he realizes that it is a query based problem. The problem is as follows :-
-You are given a Tree T with N nodes numbered from 1 to N, with each node numbered z having a positive integer Az written on it. This integer denotes the value of the node. You have to process Q queries, of the following forms :-
-1) C x y : Report the closest two values in the unique path from x to y i.e compute min(|Ap - Aq|) where p and q are two distinct nodes on the unique path from x to y.
-2) F x y : Report the farthest two values in the unique path from x to y i.e. compute max(|Ap - Aq|) where p and q are two distinct nodes on the unique path from x to y.
-It is also mentioned that x is not equal to y in any query and that no two nodes have the same value printed on them. Also, |x| denotes the absolute value of x.
-Takaki is perplexed and requires your help to solve this task? Can you help him out?
-Input
-The first line of the input contains an integer N denoting the number of nodes in tree T.
-The second line comprises N space separated integers denoting A, where the i-th integer denotes Ai.
-The next N-1 lines each comprise two space separated integers u and v, denoting that node u and node v are connected by an edge. It is guaranteed that the final graph will be a connected tree.
-The next line contains a single integer Q, denoting number of queries.
-The next Q lines comprise the queries. Each such line is of the format C x y or F x y.
-Output
-For each query, print the required output as mentioned above.
-Constraints
-2 ≤ N ≤ 35000
-1 ≤ Ai ≤ 109
-1 ≤ Q ≤ 35000
-1 ≤ u, v ≤ N
-No two nodes have the same value printed on them.
-x is not equal to y in any query.
-Subtasks
-Subtasks
-Subtask #1 (15 points)
-N, Q ≤ 1000
-Subtask #2 (20 points)
-Only Type F queries are present.
-Subtask #3 (65 points)
-Original constraints
-Example
-Input:
-5
-1 2 7 4 5
-1 2
-2 3
-2 4
-2 5
-7
-C 1 5
-F 1 5
-C 2 4
-C 1 2
-F 1 3
-F 3 4
-F 2 4
-Output:
-1
-4
+The kingdom of Ererraveth has
+N cities and
+N−1 roads. A single road connects 2 cities. From any city it is possible to reach all other cities via the roads. It can be deduced that there is a unique path between any 2 cities. Each city is labeled with a unique number
+1 to
+N. The city where the royal palace is located is assigned number
+1.
+The evil prince Drach who was once banished is planning to return and claim the empire for himself. First, he will capture the royal palace. Next, he will have his revenge on the lords of the cities. To punish a city, he will simply destroy all roads that connect it to its neighbouring cities, and the city will slowly starve.
+However, there are
+K cities whose lords have supported Drach in the past. Let's call these good cities. Drach will ensure that all good cities remain connected via roads to his royal palace. Thus any city which is not good but lies on the path from the royal palace to a good city will be spared. But if the lord of any good city is removed from his post by the time Drach is back, he will no longer consider it a good city.
+Let
+G be the set of potentially good cities with
+∣G∣=K, and
+G
+′
+be a subset of
+G. Drach wants to know the number of roads he will have to destroy if
+G
+′
+be the set of good cities, i.e. if all cities in
+G
+′
+remain connected to his palace in city
+1 and all cities that are not essential for the above are punished. You will need to calculate the bitwise XOR-sum of the results for all the
 2
+K
+possible subsets
+G
+′
+.
+###Input:
+The first line contains
+N, the number of cities.
+N−1 lines follow. Each line contains two integers
+u and
+v denoting that city
+u and
+v are connected via a road.
+The next line contains
+K, the number of potentially good cities
+The next line contains the
+K potentially good cities
+G
 1
-6
-5
+,G
 2
-Explanation
-Given below is the tree corresponding to the sample input. Each node has two numbers written in it.
-The first number represents the node index and the second number indicates node value.
+,...G
+K
+.
+###Output:
+Output in a single line the XOR-sum of the number of roads Drach needs to destroy for each subset
+G
+′
+of
+G if
+G
+′
+is considered the set of good cities.
+###Constraints
+1≤N≤10
+5
+1≤K≤min(27,N−1)
+2≤G
+i
+≤N
+All
+G
+i
+are distinct
+###Sample Input: 7 1 2 1 3 1 4 2 5 3 6 3 7 2 2 7
+###Sample Output: 4
+###Explanation:
+For
+G
+′
+={},
+6 roads need to be destroyed.
+For
+G
+′
+={2},
+5 roads need to be destroyed.
+For
+G
+′
+={7},
+4 roads need to be destroyed.
+For
+G
+′
+={2,7},
+3 roads need to be destroyed.
+So the answer is
+6⊕5⊕4⊕3=4.

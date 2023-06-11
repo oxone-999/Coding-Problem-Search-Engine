@@ -1,56 +1,91 @@
-Laddu
+Cops and the Thief Devu
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-You might have heard about our new goodie distribution program aka the "Laddu Accrual System". This problem is designed to give you a glimpse of its rules. You can read the page once before attempting the problem if you wish, nonetheless we will be providing all the information needed here itself.
-Laddu Accrual System is our new goodie distribution program. In this program, we will be distributing Laddus in place of goodies for your winnings and various other activities (described below), that you perform on our system. Once you collect enough number of Laddus, you can then redeem them to get yourself anything from a wide range of CodeChef goodies.
-Let us know about various activities and amount of laddus you get corresponding to them.
-Contest Win (CodeChef’s Long, Cook-Off, LTIME, or any contest hosted with us) : 300 + Bonus (Bonus = 20 - contest rank). Note that if your rank is > 20, then you won't get any bonus.
-Top Contributor on Discuss : 300
-Bug Finder : 50 - 1000 (depending on the bug severity). It may also fetch you a CodeChef internship!
-Contest Hosting : 50
-You can do a checkout for redeeming laddus once a month. The minimum laddus redeemable at Check Out are 200 for Indians and 400 for the rest of the world.
-You are given history of various activities of a user. The user has not redeemed any of the its laddus accrued.. Now the user just wants to redeem as less amount of laddus he/she can, so that the laddus can last for as long as possible. Find out for how many maximum number of months he can redeem the laddus.
+Read problems statements in Mandarin Chinese and Russian as well.
+There are 100 houses located on a straight line. The first house is numbered 1 and the last one is numbered 100. Some M houses out of these 100 are occupied by cops.
+Thief Devu has just stolen PeePee's bag and is looking for a house to hide in.
+PeePee uses fast 4G Internet and sends the message to all the cops that a thief named Devu has just stolen her bag and ran into some house.
+Devu knows that the cops run at a maximum speed of x houses per minute in a straight line and they will search for a maximum of y minutes. Devu wants to know how many houses are safe for him to escape from the cops. Help him in getting this information.
 Input
-The first line of input contains a single integer T denoting number of test cases
-For each test case:
-First line contains an integer followed by a string denoting activities, origin respectively, where activities denotes number of activities of the user, origin denotes whether the user is Indian or the rest of the world. origin can be "INDIAN" or "NON_INDIAN".
-For each of the next activities lines, each line contains an activity.
-An activity can be of four types as defined above.
-Contest Win : Input will be of form of CONTEST_WON rank, where rank denotes the rank of the user.
-Top Contributor : Input will be of form of TOP_CONTRIBUTOR.
-Bug Finder : Input will be of form of BUG_FOUND severity, where severity denotes the severity of the bug.
-Contest Hosting : Input will be of form of CONTEST_HOSTED.
+First line contains T, the number of test cases to follow.
+First line of each test case contains 3 space separated integers: M, x and y.
+For each test case, the second line contains M space separated integers which represent the house numbers where the cops are residing.
 Output
-For each test case, find out the maximum number of months for which the user can redeem the laddus accrued.
+For each test case, output a single line containing the number of houses which are safe to hide from cops.
 Constraints
-1 ≤ T, activities ≤ 100
-1 ≤ rank ≤ 5000
-50 ≤ severity ≤ 1000
-Subtasks
-There is only a single subtask with 100 points.
+1 ≤ T ≤ 104
+1 ≤ x, y, M ≤ 10
 Sample 1:
 Input
 Output
-2
-4 INDIAN
-CONTEST_WON 1
-TOP_CONTRIBUTOR
-BUG_FOUND 100
-CONTEST_HOSTED
-4 NON_INDIAN
-CONTEST_WON 1
-TOP_CONTRIBUTOR
-BUG_FOUND 100
-CONTEST_HOSTED
 3
-1
+4 7 8
+12 52 56 8
+2 10 2
+21 75
+2 5 8
+10 51
+0
+18
+9
 Explanation:
-In the first example,
-For winning contest with rank 1, user gets 300 + 20 - 1 = 319 laddus.
-For top contributor, user gets 300 laddus.
-For finding a bug with severity of 100, user gets 100 laddus.
-For hosting a contest, user gets 50 laddus.
-So, overall user gets 319 + 300 + 100 + 50 = 769 laddus. Now, the user is an Indian user, he can redeem only 200 laddus per month. So, for first three months, he will redeem 200 * 3 = 600 laddus. The remaining 169 laddus, he can not redeem as he requires at least 200 laddues in a month to redeem.
-So, answer is 3.
-In the second example, user is a non-Indian user, he can redeem 400 laddues per month. So, in the first month, he will redeem 400 laddus. The remaining 369 laddus, he can not redeem as he requires at least 400 laddues in a month to redeem.
-So, answer is 1.
+Test case
+1: Based on the speed, each cop can cover
+56 houses on each side. These houses are:
+Cop in house
+12 can cover houses
+1 to
+11 if he travels left and houses
+13 to
+68 if he travels right. Thus, this cop can cover houses numbered
+1 to
+68.
+Cop in house
+52 can cover houses
+1 to
+51 if he travels left and houses
+53 to
+100 if he travels right. Thus, this cop can cover houses numbered
+1 to
+100.
+Cop in house
+56 can cover houses
+1 to
+55 if he travels left and houses
+57 to
+100 if he travels right. Thus, this cop can cover houses numbered
+1 to
+100.
+Cop in house
+8 can cover houses
+1 to
+7 if he travels left and houses
+9 to
+64 if he travels right. Thus, this cop can cover houses numbered
+1 to
+64.
+Thus, there is no house which is not covered by any of the cops.
+Test case
+2: Based on the speed, each cop can cover
+20 houses on each side. These houses are:
+Cop in house
+21 can cover houses
+1 to
+20 if he travels left and houses
+22 to
+41 if he travels right. Thus, this cop can cover houses numbered
+1 to
+41.
+Cop in house
+75 can cover houses
+55 to
+74 if he travels left and houses
+76 to
+95 if he travels right. Thus, this cop can cover houses numbered
+55 to
+95.
+Thus, the safe houses are house number
+42 to
+54 and
+96 to
+100. There are
+18 safe houses.

@@ -1,86 +1,175 @@
-A. Game of Life
-time limit per test1 second
+C. Compression and Expansion
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-William really likes the cellular automaton called "Game of Life" so he decided to make his own version. For simplicity, William decided to define his cellular automaton on an array containing
-n
-cells, with each cell either being alive or dead.
-Evolution of the array in William's cellular automaton occurs iteratively in the following way:
-If the element is dead and it has exactly
+William is a huge fan of planning ahead. That is why he starts his morning routine by creating a nested list of upcoming errands.
+A valid nested list is any list which can be created from a list with one item "1" by applying some operations. Each operation inserts a new item into the list, on a new line, just after one of existing items
+a
 1
-alive neighbor in the current state of the array, then on the next iteration it will become alive. For an element at index
-i
-the neighbors would be elements with indices
-i−1
-and
-i+1
-. If there is no element at that index, it is considered to be a dead neighbor.
-William is a humane person so all alive elements stay alive.
-Check the note section for examples of the evolution.
-You are given some initial state of all elements and you need to help William find the state of the array after
-m
-iterations of evolution.
+.
+a
+2
+.
+a
+3
+.⋯.
+a
+k
+and can be one of two types:
+Add an item
+a
+1
+.
+a
+2
+.
+a
+3
+.⋯.
+a
+k
+.1
+(starting a list of a deeper level), or
+Add an item
+a
+1
+.
+a
+2
+.
+a
+3
+.⋯.(
+a
+k
++1)
+(continuing the current level).
+Operation can only be applied if the list does not contain two identical items afterwards. And also, if we consider every item as a sequence of numbers, then the sequence of items should always remain increasing in lexicographical order. Examples of valid and invalid lists that are shown in the picture can found in the "Notes" section.
+When William decided to save a Word document with the list of his errands he accidentally hit a completely different keyboard shortcut from the "Ctrl-S" he wanted to hit. It's not known exactly what shortcut he pressed but after triggering it all items in the list were replaced by a single number: the last number originally written in the item number.
+William wants you to help him restore a fitting original nested list.
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
-10
-3
+1≤t≤10
 ). Description of the test cases follows.
-The first line of each test case contains two integers
+The first line of each test case contains a single integer
 n
-and
-m
 (
-2≤n≤
+1≤n≤
 10
 3
-,1≤m≤
-10
-9
-), which are the total number of cells in the array and the number of iterations.
-The second line of each test case contains a string of length
+), which is the number of lines in the list.
+Each of the next
 n
-made up of characters "0" and "1" and defines the initial state of the array. "1" means a cell is alive and "0" means it is dead.
-It is guaranteed that the sum of
+lines contains a single integer
+a
+i
+(
+1≤
+a
+i
+≤n
+), which is what remains of William's nested list.
+It is guaranteed that in each test case at least one fitting list exists.
+It is guaranteed that the sum of values
 n
-over all test cases does not exceed
+across all test cases does not exceed
 10
-4
+3
 .
 Output
-In each test case output a string of length
+For each test case output
 n
-, made up of characters "0" and "1"  — the state of the array after
-m
-iterations of evolution.
+lines which represent a valid nested list, which could become the data provided to you by William.
+If there are multiple answers, print any.
 Example
 input
 Copy
+2
 4
-11 3
-01000000001
-10 2
-0110100101
-5 2
-10101
-3 100
-000
+1
+1
+2
+3
+9
+1
+1
+1
+2
+2
+1
+2
+1
+2
 output
 Copy
-11111001111
-1110111101
-10101
-000
+1
+1.1
+1.2
+1.3
+1
+1.1
+1.1.1
+1.1.2
+1.2
+1.2.1
+2
+2.1
+2.2
 Note
-Sequence of iterations of evolution for the first test case
-01000000001  — initial state
-11100000011  — first iteration of evolution
-11110000111  — second iteration of evolution
-11111001111  — third iteration of evolution
-Sequence of iterations of evolution for the second test case
-0110100101  — initial state
-1110111101  — first iteration of evolution
-1110111101  — second iteration of evolution
+In the second example test case one example of a fitting list is:
+1
+1.1
+1.1.1
+1.1.2
+1.2
+1.2.1
+2
+2.1
+2.2
+This list can be produced by using the sequence of operations shown below:
+Original list with a single item
+1
+.
+Insert item
+2
+by using the insertion operation of the second type after item
+1
+.
+Insert item
+1.1
+by using the insertion operation of the first type after item
+1
+.
+Insert item
+1.2
+by using the insertion operation of the second type after item
+1.1
+.
+Insert item
+1.1.1
+by using the insertion operation of the first type after item
+1.1
+.
+Insert item
+1.1.2
+by using the insertion operation of the second type after item
+1.1.1
+.
+Insert item
+1.2.1
+by using the insertion operation of the first type after item
+1.2
+.
+Insert item
+2.1
+by using the insertion operation of the first type after item
+2
+.
+Insert item
+2.2
+by using the insertion operation of the second type after item
+2.1
+.

@@ -1,132 +1,134 @@
-B. Patchouli's Magical Talisman
+A. Lex String
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-She is skilled in all kinds of magics, and is keen on inventing new one.
-—Perfect Memento in Strict Sense
-Patchouli is making a magical talisman. She initially has
+Kuznecov likes art, poetry, and music. And strings consisting of lowercase English letters.
+Recently, Kuznecov has found two strings,
+a
+and
+b
+, of lengths
 n
-magical tokens. Their magical power can be represented with positive integers
+and
+m
+respectively. They consist of lowercase English letters and no character is contained in both strings.
+Let another string
+c
+be initially empty. Kuznecov can do the following two types of operations:
+Choose any character from the string
 a
-1
-,
+, remove it from
 a
-2
-,…,
-a
-n
+, and add it to the end of
+c
 .
-Patchouli may perform the following two operations on the tokens.
-Fusion: Patchouli chooses two tokens, removes them, and creates a new token with magical power equal to the sum of the two chosen tokens.
-Reduction: Patchouli chooses a token with an even value of magical power
-x
-, removes it and creates a new token with magical power equal to
-x
-2
+Choose any character from the string
+b
+, remove it from
+b
+, and add it to the end of
+c
 .
-Tokens are more effective when their magical powers are odd values. Please help Patchouli to find the minimum number of operations she needs to make magical powers of all tokens odd values.
+But, he can not do more than
+k
+operations of the same type in a row. He must perform operations until either
+a
+or
+b
+becomes empty. What is the lexicographically smallest possible value of
+c
+after he finishes?
+A string
+x
+is lexicographically smaller than a string
+y
+if and only if one of the following holds:
+x
+is a prefix of
+y
+, but
+x≠y
+;
+in the first position where
+x
+and
+y
+differ, the string
+x
+has a letter that appears earlier in the alphabet than the corresponding letter in
+y
+.
 Input
-Each test contains multiple test cases.
-The first line contains a single integer
+There are several test cases in the input data. The first line contains a single integer
 t
 (
-1≤t≤
-10
-3
-) — the number of test cases. The description of the test cases follows.
-For each test case, the first line contains one integer
+1≤t≤100
+) — the number of test cases. This is followed by the test cases description.
+The first line of each test case contains three integers
 n
-(
-1≤n≤2⋅
-10
-5
-) — the initial number of tokens.
-The second line contains
-n
-intergers
-a
-1
 ,
-a
-2
-,…,
-a
-n
+m
+, and
+k
 (
-1≤
+1≤n,m,k≤100
+) — parameters from the statement.
+The second line of each test case contains the string
 a
-i
-≤
-10
-9
-) — the initial magical power of the
+of length
 n
-tokens.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
 .
+The third line of each test case contains the string
+b
+of length
+m
+.
+The strings contain only lowercase English letters. It is guaranteed that no symbol appears in
+a
+and
+b
+simultaneously.
 Output
-For each test case, print a single integer — the minimum number of operations Patchouli needs to make all tokens have an odd value of magical power.
-It can be shown that under such restrictions the required sequence of operations exists.
+In each test case, output a single string
+c
+ — the answer to the problem.
 Example
 input
 Copy
-4
-2
-1 9
 3
-1 1 2
-3
-2 4 8
-3
-1049600 33792 1280
+6 4 2
+aaaaaa
+bbbb
+5 9 3
+caaca
+bedededeb
+7 7 1
+noskill
+wxhtzdy
 output
 Copy
-0
-1
-3
-10
+aabaabaa
+aaabbcc
+dihktlwlxnyoz
 Note
-Test case 1:
+In the first test case, it is optimal to take two 'a's from the string
 a
-consists solely of odd numbers initially.
-Test case 2:
-Choose the tokens with magical power of
-1
-and
-2
-and perform Fusion. Now
-a=[1,3]
-, both are odd numbers.
-Test case 3:
-Choose the tokens with magical power of
-2
-and
-8
-and perform Fusion. Now
-a=[4,10]
-.
-Choose the token with magical power of
-10
-and perform Reduction. Now
-a=[4,5]
-.
-Choose the tokens with magical power of
-4
-and
-5
-and perform Fusion. Now
-a=[9]
-, and
-9
-is an odd number.
-It can be shown that you can not make all the magical powers odd numbers in less than
-3
-moves, so the answer is
-3
-.
+and add them to the string
+c
+. Then it is forbidden to take more characters from
+a
+, hence one character 'b' from the string
+b
+has to be taken. Following that logic, we end up with
+c
+being 'aabaabaa' when string
+a
+is emptied.
+In the second test case it is optimal to take as many 'a's from string
+a
+as possible, then take as many 'b's as possible from string
+b
+. In the end, we take two 'c's from the string
+a
+emptying it.

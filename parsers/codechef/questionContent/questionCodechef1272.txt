@@ -1,88 +1,112 @@
-OR-thodox Distinction
+K-Subarrays
 Problem
-Read problems statements in Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-You are given an integer sequence
+You are given an array
+A of
+N positive integers. Let
+G be the gcd of all the numbers in the array
+A.
+You have to find if there exist
+K non-empty, non-intersecting subarrays of
+A for which the arithmetic mean of the gcd of those
+K subarrays equals
+G.
+Formally, let
+g
+1
+,g
+2
+,…,g
+K
+be the gcd of those
+K chosen subarrays, then,
+K
+(g
+1
++g
+2
++....+g
+K
+)
+=G should follow.
+If there exist
+K such subarrays, output YES, otherwise output NO.
+Note: Two subarrays are non-intersecting if there exists no index
+i, such that,
+A
+i
+is present in both the subarrays.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains two space-separated integers — the number of integers in the array
+A and the integer
+K, respectively.
+The next line contains
+N space-separated positive integers
 A
 1
 ,A
 2
 ,…,A
 N
-. For any pair of integers
-(l,r) such that
-1≤l≤r≤N, let's define
-OR(l,r) as
-A
-l
-∨A
-l+1
-∨…∨A
-r
-. Here,
-∨ is the bitwise OR operator.
-In total, there are
-2
-N(N+1)
-possible pairs
-(l,r), i.e.
-2
-N(N+1)
-possible values of
-OR(l,r). Determine if all these values are pairwise distinct.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
-Output
-For each test case, print a single line containing the string "YES" if all values of
-OR(l,r) are pairwise distinct or "NO" otherwise (without quotes).
+, the elements of the array
+A.
+Output Format
+For each test case, if there exist
+K such subarrays, output YES, otherwise output NO.
+You may print each character of the string in uppercase or lowercase (for example, the strings YES, yEs, yes, and yeS will all be treated as identical).
 Constraints
-1≤T≤300
-1≤N≤10
+1≤T≤1000
+1≤N≤2⋅10
 5
-0≤A
+1≤K≤N
+1≤A
 i
-≤10
-18
-for each valid
-i
-the sum of
-N over all test cases does not exceed
-3⋅10
+≤2⋅10
 5
+The sum of
+N over all test cases won't exceed
+4⋅10
+5
+.
 Sample 1:
 Input
 Output
 4
-3
-1 2 7
-2
-1 2
-3
-6 5 8
-5
-12 32 45 23 47
+6 4
+2 2 3 3 2 2
+1 1
+1
+5 3
+1 2 3 4 5
+4 3
+6 12 18 24
 NO
 YES
 YES
 NO
 Explanation:
-Example case 1: The values of
-OR(l,r) are
-1,2,7,3,7,7 (corresponding to the contiguous subsequences
-[1],[2],[7],[1,2],[2,7],[1,2,7] respectively). We can see that these values are not pairwise distinct.
-Example case 2: The values of
-OR(l,r) are
-1,2,3 (corresponding to the contiguous subsequences
-[1],[2],[1,2] respectively) and they are pairwise distinct.
+Test case
+1: It is impossible to find
+4 non-empty, non-intersecting subarrays which satisfy the given condition.
+Test case
+2: There is only one element in the array. Here,
+G=1 and, for the subarray
+[1],
+g=1. Thus, it is possible to satisfy the conditions.
+Test case
+3: Here,
+G=gcd(1,2,3,4,5)=1. We can choose
+3 non-empty, non-intersecting subarrays
+{[1],[2,3],[4,5]} where
+gcd(1)=1,
+gcd(2,3)=1, and
+gcd(4,5)=1. Thus, the arithmetic mean =
+3
+(1+1+1)
+=1. Hence, we can have
+3 such subarrays.
+Test case
+4: It is impossible to find
+3 non-empty, non-intersecting subarrays which satisfy the given condition.

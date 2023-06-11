@@ -1,127 +1,75 @@
-Counting Is Fun
+Morosoph Todd
 Problem
-Suppose
-f(X,Y,Z) denotes the number of arrays
-A of length
-X such that:
-1≤A
-i
-≤Y, for all
-(1≤i≤X);
-There are at most
-Z values of
-i
-(2≤i≤X) such that
+"Say my Name".
+Todd Alquist is being taught the process of cooking methamphetamine, but to see whether he's really capable of learning it, Walt gives him a problem to solve. Since he can't solve it, he asks you for help.
+You are given a tree with
+N vertices (numbered
+1 through
+N), rooted at the vertex
+1. There is an integer written at each vertex; for each valid
+i, the value of vertex
+i is
 A
+i.There also exists a special integer
+K.
+Choose any leaf node, denoted by
+X, and go down a simple path from
+root to
+X.
+Let
+S denote the set of all nodes lying on the simple path from
+root to
+X.
+For all
 i
-=A
-i−1
-. In other words, for at most
-Z indices, the element at a given index is equal to the previous element.
-You are given an integer
-M and
-Q queries. The
-i
-th
-query is of the form:
-N
-i
-K
-i
-: Given integers
-N
-i
-and
-K
-i
-, find the value
-f(N
-i
-,M,K
-i
+ϵ
+S, choose an integer
+D
+ϵ
+[2
+A[i]−1
+,2
+A[i]
 ).
-Since output might be too large, print it modulo
-998244353.
-Input Format
-The first line of input contains a single integer
-M.
-The second line of input contains an integer
-Q, the number of queries.
-Each of the next
-Q lines contains two integers
-N
-i
-and
-K
-i
-.
-Output Format
-Print
-Q lines, where, in the
-i
-th
-line, print a single integer
-f(N
-i
-,M,K
-i
-), the answer for
-i
-th
-query modulo
-998244353.
-Constraints
-2≤M≤10
-3
-1≤Q≤10
-5
-2≤N
-i
-≤10
-5
-0≤K
-i
-≤N
-i
-−1
-Sample 1:
-Input
-Output
+Informally, for every node
+i lying on the simple path from
+root to
+X, you have to choose an integer
+D such that
 2
-3
-3 2
-3 1
-3 0
-8
-6
-2
-Explanation:
-Suppose
-g(A) gives number of indices
-i
-(2≤i≤∣A∣) such that
-A
-i
-=A
-i−1
+A[i]−1
+≤D<2
+A[i]
 .
-Arrays
-A having:
-g(A)=0:
-[1,2,1],
-[2,1,2].
-g(A)=1:
-[1,1,2],
-[2,1,1],
-[1,2,2],
-[2,2,1]
-g(A)=2:
-[1,1,1],
-[2,2,2]
-Now we can answer queries easily.
-Query 1:
-f(3,2,2)=g(0)+g(1)+g(2)=8
-Query 2:
-f(3,2,1)=g(0)+g(1)=6
-Query 3:
-f(3,2,0)=g(0)=2
+You now have to perform one of the two following operations :
+1. Bitwise XOR of all chosen integers.
+2. Bitwise AND of all chosen integers.
+You have to determine whether you can choose the values in such a way that after performing one of the given operations you can get an integer equal to
+K.
+Note : A leaf is a node of the tree without any child nodes.
+Determine if it is possible to obtain the value
+K by performing the given operations.
+###Input:
+First line will contain
+T, number of testcases. Then the testcases follow.
+First line of each testcase contains two space separated integers
+N,K denoting the number of nodes and the value of the special integer .
+N−1 lines follow , each line contains two space separated integers
+u,v denoting an edge between
+u and
+v.
+A single line follows containing
+N space separated integers denoting the value of nodes.
+###Output: For each testcase, output in a single line "YES"(without quotes) or "NO"(without quotes).
+###Constraints
+1≤T≤10000
+2≤N≤5∗10
+5
+1≤K≤10
+18
+1≤u,v≤N
+1≤A[i]≤64
+Sum of
+N over all test cases does not exceed 1e6. ###Sample Input: 1 6 85 1 2 2 3 2 4 4 5 3 6 3 5 4 7 1 9
+###Sample Output: YES
+###EXPLANATION: There are two leaf nodes, 5 and 6 considering path from root to 5 we have nodes 1->2->4->5 we can select the values 5,26,75,1 and perform operation 1 that is XOR of all numbers to get 85

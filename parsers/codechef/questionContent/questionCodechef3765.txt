@@ -1,54 +1,50 @@
-Paths
+Ciel and Random Walk
 Problem
-Chef lives in Treeland which, as the name implies, is shaped like a tree.
-Chef's home, his school, and the playground where he likes to play are located on three different vertices in this tree. Chef tells you that every morning he walks across
-x edges on the simple path from his home to his school. In the afternoon, he walks along the simple path from his school to the playground crossing
-y edges. And in the evening, he walks back home across
-z edges on the simple path from the playground to his home.
-You have a map of Treeland where each vertex is labelled from
-1 to
-n. Find the number of triplets
-(a,b,c) such that vertices
-a,b,c could be Chef's home, his school and the playground respectively. If there is no such triplet, Chef may have miscounted some edges and you should output
-0.
+Today, Ciel's restaurant is closed. Ciel is bored, so she decides to take a walk randomly.
+This town has N intersections and M one way roads. The i-th road connects from the Ai-th intersection to the Bi-th intersection. Ciel is in the 1st intersection now, and Ciel's house is in the N-th intersection.
+If Ciel is in the i-th intersection, she will take a walk as follows:
+If i = N, her walk is ended.
+Otherwise, she chooses an integer k such that Ak = i uniformly randomly, she walks along the k-th road.
+On the way, S intersections have beautiful flowers. Let the F1-th intersection, the F2-th intersection, ..., and the FS-th intersection have beautiful flowers. Can you tell the probability that Ciel last sees the flowers in the Fi-th intersection? That is to say, can you tell the probability that she visits the Fi-th intersection, then she goes to N-th intersection without visiting other intersections having beautiful flowers?
 Input
-The first line contains
-t, the number of test cases.
-t cases follow.
-The first line of each test case contains four integers
-n,x,y,z.
-n−1 lines follow, each with a pair of integers
-u and
-v denoting that there is an edge between
-u and
-v.
+The first line contains 3 integers N, M and S. Then, next line has S integers F1, F2, ..., FS. Next M lines have 2 integers each, Ai and Bi.
 Output
-For each testcase, output a single line containing the number of triplets which satisfy Chef's description.
+An output should contain S lines. In the i-th line, print the probability that Ciel last sees beautiful flowers at the Fi-th intersection. These values must have an absolute error no more than 10-6.
 Constraints
-1≤t≤1000
-3≤n≤10
-5
-1≤x,y,z≤n−1
-Sum of
-n over all test cases does not exceed
-10
-5
-.
-Sample Input
-2
-7 4 3 3
+1 ≤ S < N ≤ 30
+1 ≤ F1 < F2 < ... < FS < N
+Ai ≠ Bi
+If i ≠ j and Ai = Aj, then Bi ≠ Bj
+For each 1 ≤ i < N, Ciel can go from the i-th intersection to the N-th intersection, directly or indirectly.
+Sample Input 1
+4 6 3
+1 2 3
 1 2
-2 3
-3 4
-4 5
-3 6
-3 7
-3 2 2 2
-1 2
+2 1
 1 3
-Sample Output
-4
+3 1
+2 4
+3 4
+Sample Output 1
 0
-Explanation
-Case 1: There are 4 possibilities as illustrated below. Consider the orange vertex as Chef's home, the green vertex as Chef's school, and the blue vertex as the playground.
-Case 2: There are no triplets that satisfy Chef's description.
+0.5
+0.5
+Sample Input 2
+4 6 1
+2
+1 2
+2 1
+1 3
+3 1
+2 4
+3 4
+Sample Output 2
+0.6666666666667
+Sample Input 3
+2 1 1
+1
+1 2
+Sample Output 3
+1
+Notes
+The sum of output values can be less than 1, because Ciel may go back to her house without seeing beautiful flowers.

@@ -1,42 +1,76 @@
-Counting Terms
+Guess the Prime!
 Problem
-When the Chef is not busy with cooking delicious foods, one of his favorite pastime is to solve mathematical problem. But as you know, he is not very good with programming. So when he fails to solve a problem he usually asks John to write a program that will solve it.
-Recently the chef became interested in finding the expansion of (x1+x2+....+xk)n. Specifically he is more interested in number of terms in it. Being unable to solve the problem he asked John for help. The conversation between John and chef goes as
-Chef: Can you write a program that will calculate f(n,k)= number of terms in (x1+x2+....+xk)n ?
-John: That is a very easy problem.
-Chef: Oh, really? Then calculate the sum over (i=0 to n) (f(i,k))
-John: That is also an easy problem.
-Chef: Then go finish it. And did I mention that I am calculating modulo a prime number p.
-John: What?
-Chef: Say k=2, n=4, p=3. Then (x1+x2)4 %3 = (x14+4 x13 x2+6 x12 x22+ 4 x1 x23 + x24) %3 = (x14+ x13 x2 + x1 x23 + x24) %3. So if p=3 then f(4,2)=4.
-John: OK, I am doing it.
-As John started to solve the problem he realized it is not that easy. Now he asked you, his best friend, for help.
-As the answer can be quite large print the output modulo 1000003.
-Input
-Input file starts with a line containing a number T. T lines follow each describing a test case. Each test case consists of a line containing three space separated integers n, k, p.
-Output
-Output T lines, each line containing the Sum over (i=0 to n) f(i,k) for the given prime p modulo 1000003.
-Limit:
-1<=T<=10000
-0<=n<=10^15
-1<=k<=10^15
-1<=p<=100
-p prime number
-Sample 1:
-Input
-Output
-7
-10 2 2
-10 2 3
-10 3 2
-10 3 3
-4 2 3
-3 2 3
-0 2 2
-37
-42
-85
-112
-12
-8
-1
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+This is an interactive problem.
+Shef chose some prime number
+P between
+2 and
+10
+9
+inclusive. You want to guess it.
+Before that, you may ask Shef at most
+M questions, since he is quite busy. In each question, you tell Shef an integer
+x (
+1≤x≤10
+9
+) and Shef tells you
+x
+2
+modulo
+P. At the end, you guess Shef's prime
+P and he tells you if your guess was correct.
+However, Shef will sometimes cheat: he can change his prime any number of times during the game (even after you tell him your guess), but only in such a way that all his answers to your previous questions remain correct.
+Show Shef that you can always guess the correct prime, even if he tries to cheat!
+Interaction
+First, you should read a line containing a single integer
+T denoting the number of test cases. The description of interaction for
+T test cases follows.
+For each test case, you should start by asking questions (possibly none).
+To ask a question, print a line containing two space-separated integers
+1 and
+x.
+Then, you must read a line containing a single integer.
+If this integer is
+−1, your query was invalid or you asked too many queries, and you should immediately terminate your program to receive the Wrong Answer verdict. Otherwise, you may receive any verdict.
+Otherwise, this integer denotes Shef's answer to your query.
+When you think you know Shef's prime
+P, print a line containing two space-separated integers
+2 and
+P.
+Then, you must read a line containing a single string "Yes" or "No". If this string is "Yes", you should continue solving the remaining test cases. Otherwise, your answer was incorrect and you should immediately terminate your program to receive the Wrong Answer verdict.
+Don't forget to flush the output after printing each line!
+Constraints
+1≤T≤1,000
+1≤x≤10
+9
+Subtasks
+Subtask #1 (10 points):
+M=10
+Shef chooses
+P in advance and does not cheat
+Subtask #2 (20 points):
+M=5
+Shef chooses
+P in advance and does not cheat
+Subtask #3 (70 points):
+M=2
+Example
+You           Grader
+              2
+1 3
+              0
+2 3
+              Yes
+1 10
+              2
+1 3
+              2
+2 7
+              Yes
+Explanation
+Example case 2: Shef's first answer is
+2 because
+10
+2
+=100≡2 modulo
+7.

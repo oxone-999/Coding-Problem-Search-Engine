@@ -1,101 +1,147 @@
-D1. Beautiful Bracket Sequence (easy version)
-time limit per test2 seconds
+F. Beautiful Fibonacci Problem
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the easy version of this problem. The only difference is the limit of
-n
-- the length of the input string. In this version,
-1≤n≤2000
-. The hard version of this challenge is not offered in the round for the second division.
-Let's define a correct bracket sequence and its depth as follow:
-An empty string is a correct bracket sequence with depth
+The well-known Fibonacci sequence
+F
 0
-.
-If "s" is a correct bracket sequence with depth
-d
-then "(s)" is a correct bracket sequence with depth
-d+1
-.
-If "s" and "t" are both correct bracket sequences then their concatenation "st" is a correct bracket sequence with depth equal to the maximum depth of
-s
-and
-t
-.
-For a (not necessarily correct) bracket sequence
-s
-, we define its depth as the maximum depth of any correct bracket sequence induced by removing some characters from
-s
-(possibly zero). For example: the bracket sequence
-s=
-"())(())" has depth
+,
+F
+1
+,
+F
 2
-, because by removing the third character we obtain a correct bracket sequence "()(())" with depth
+,…
+is defined as follows:
+F
+0
+=0,
+F
+1
+=1
+.
+For each
+i≥2
+:
+F
+i
+=
+F
+i−1
++
+F
+i−2
+.
+Given an increasing arithmetic sequence of positive integers with
+n
+elements:
+(a,a+d,a+2⋅d,…,a+(n−1)⋅d)
+.
+You need to find another increasing arithmetic sequence of positive integers with
+n
+elements
+(b,b+e,b+2⋅e,…,b+(n−1)⋅e)
+such that:
+0<b,e<
 2
-.
-Given a string
-a
-consists of only characters '(', ')' and '?'. Consider all (not necessarily correct) bracket sequences obtained by replacing all characters '?' in
-a
-by either '(' or ')'. Calculate the sum of all the depths of all these bracket sequences. As this number can be large, find it modulo
-998244353
-.
-Hacks in this problem in the first division can be done only if easy and hard versions of this problem was solved.
+64
+,
+for all
+0≤i<n
+, the decimal representation of
+a+i⋅d
+appears as substring in the last
+18
+digits of the decimal representation of
+F
+b+i⋅e
+(if this number has less than
+18
+digits, then we consider all its digits).
 Input
-The only line contains a non-empty string consist of only '(', ')' and '?'. The length of the string is at most
-2000
-.
+The first line contains three positive integers
+n
+,
+a
+,
+d
+(
+1≤n,a,d,a+(n−1)⋅d<
+10
+6
+).
 Output
-Print the answer modulo
-998244353
-in a single line.
+If no such arithmetic sequence exists, print
+−1
+.
+Otherwise, print two integers
+b
+and
+e
+, separated by space in a single line (
+0<b,e<
+2
+64
+).
+If there are many answers, you can output any of them.
 Examples
 input
 Copy
-??
+3 1 1
 output
 Copy
-1
+2 1
 input
 Copy
-(?(?))
+5 1 2
 output
 Copy
-9
+19 5
 Note
-In the first test case, we can obtain
+In the first test case, we can choose
+(b,e)=(2,1)
+, because
+F
+2
+=1,
+F
+3
+=2,
+F
 4
-bracket sequences by replacing all characters '?' with either '(' or ')':
-"((". Its depth is
-0
-;
-"))". Its depth is
-0
-;
-")(". Its depth is
-0
-;
-"()". Its depth is
+=3
+.
+In the second test case, we can choose
+(b,e)=(19,5)
+because:
+F
+19
+=4181
+contains
 1
-.
-So, the answer is
-1=0+0+0+1
-.
-In the second test case, we can obtain
-4
-bracket sequences by replacing all characters '?' with either '(' or ')':
-"(((())". Its depth is
-2
 ;
-"()()))". Its depth is
-2
-;
-"((()))". Its depth is
+F
+24
+=46368
+contains
 3
 ;
-"()(())". Its depth is
-2
-.
-So, the answer is
-9=2+2+3+2
+F
+29
+=514229
+contains
+5
+;
+F
+34
+=5702887
+contains
+7
+;
+F
+39
+=63245986
+contains
+9
 .

@@ -1,73 +1,74 @@
-F. Cyclic Shifts Sorting
-time limit per test2 seconds
+C. Element Extermination
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
 You are given an array
 a
-consisting of
+of length
 n
-integers.
-In one move, you can choose some index
+, which initially is a permutation of numbers from
+1
+to
+n
+. In one operation, you can choose an index
 i
 (
-1≤i≤n−2
-) and shift the segment
-[
+1≤i<n
+) such that
 a
 i
-,
+<
 a
 i+1
-,
-a
-i+2
-]
-cyclically to the right (i.e. replace the segment
-[
+, and remove either
 a
 i
-,
+or
 a
 i+1
-,
+from the array (after the removal, the remaining parts are concatenated).
+For example, if you have the array
+[1,3,2]
+, you can choose
+i=1
+(since
 a
-i+2
-]
-with
-[
+1
+=1<
 a
-i+2
-,
-a
-i
-,
-a
-i+1
-]
-).
-Your task is to sort the initial array by no more than
-n
 2
-such operations or say that it is impossible to do that.
-You have to answer
-t
-independent test cases.
+=3
+), then either remove
+a
+1
+which gives the new array
+[3,2]
+, or remove
+a
+2
+which gives the new array
+[1,2]
+.
+Is it possible to make the length of this array equal to
+1
+with these operations?
 Input
-The first line of the input contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤100
-) — the number of test cases. Then
-t
-test cases follow.
-The first line of the test case contains one integer
+1≤t≤2⋅
+10
+4
+)  — the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single integer
 n
 (
-3≤n≤500
-) — the length of
-a
-. The second line of the test case contains
+2≤n≤3⋅
+10
+5
+)  — the length of the array.
+The second line of each test case contains
 n
 integers
 a
@@ -75,76 +76,47 @@ a
 ,
 a
 2
-,…,
+, ...,
 a
 n
 (
 1≤
 a
 i
-≤500
-), where
+≤n
+,
 a
 i
-is the
-i
--th element
-a
-.
+are pairwise distinct) — elements of the array.
 It is guaranteed that the sum of
 n
-does not exceed
-500
+over all test cases doesn't exceed
+3⋅
+10
+5
 .
 Output
-For each test case, print the answer: -1 on the only line if it is impossible to sort the given array using operations described in the problem statement, or the number of operations
-ans
-on the first line and
-ans
-integers
-id
-x
-1
-,id
-x
-2
-,…,id
-x
-ans
-(
-1≤id
-x
-i
-≤n−2
-), where
-id
-x
-i
-is the index of left border of the segment for the
-i
--th operation. You should print indices in order of performing operations.
+For each test case, output on a single line the word "YES" if it is possible to reduce the array to a single element using the aforementioned operation, or "NO" if it is impossible to do so.
 Example
 input
 Copy
-5
-5
-1 2 3 4 5
-5
-5 4 3 2 1
-8
-8 4 5 2 3 6 7 3
-7
-5 2 1 6 4 7 3
+4
+3
+1 2 3
+4
+3 1 2 4
+3
+2 3 1
 6
-1 2 3 3 6 4
+2 4 6 1 3 5
 output
 Copy
-0
-
-6
-3 1 3 2 2 3 
-13
-2 1 1 6 4 2 4 3 3 4 4 6 6 
--1
-4
-3 3 4 4 
+YES
+YES
+NO
+YES
+Note
+For the first two test cases and the fourth test case, we can operate as follow (the bolded elements are the pair chosen for that operation):
+[1,2,3]→[1,2]→[1]
+[3,1,2,4]→[3,1,4]→[3,4]→[4]
+[2,4,6,1,3,5]→[4,6,1,3,5]→[4,1,3,5]→[4,1,5]→[4,5]→[4]

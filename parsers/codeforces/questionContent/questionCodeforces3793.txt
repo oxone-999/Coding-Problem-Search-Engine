@@ -1,91 +1,193 @@
-B. Emotes
-time limit per test1 second
+C. Magic Ship
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-emotes in very popular digital collectible card game (the game is pretty famous so we won't say its name). The
-i
--th emote increases the opponent's happiness by
-a
-i
-units (we all know that emotes in this game are used to make opponents happy).
-You have time to use some emotes only
-m
-times. You are allowed to use any emotion once, more than once, or not use it at all. The only restriction is that you cannot use the same emote more than
-k
-times in a row (otherwise the opponent will think that you're trolling him).
-Note that two emotes
-i
-and
-j
+You a captain of a ship. Initially you are standing in a point
 (
-i≠j
-) such that
-a
-i
-=
-a
-j
-are considered different.
-You have to make your opponent as happy as possible. Find the maximum possible opponent's happiness.
-Input
-The first line of the input contains three integers
-n,m
-and
-k
-(
-2≤n≤2⋅
-10
-5
-,
-1≤k≤m≤2⋅
-10
-9
-) — the number of emotes, the number of times you can use emotes and the maximum number of times you may use the same emote in a row.
-The second line of the input contains
-n
-integers
-a
+x
 1
 ,
-a
-2
-,…,
-a
-n
+y
+1
+)
+(obviously, all positions in the sea can be described by cartesian plane) and you want to travel to a point
 (
-1≤
-a
-i
+x
+2
+,
+y
+2
+)
+.
+You know the weather forecast — the string
+s
+of length
+n
+, consisting only of letters U, D, L and R. The letter corresponds to a direction of wind. Moreover, the forecast is periodic, e.g. the first day wind blows to the side
+s
+1
+, the second day —
+s
+2
+, the
+n
+-th day —
+s
+n
+and
+(n+1)
+-th day —
+s
+1
+again and so on.
+Ship coordinates change the following way:
+if wind blows the direction U, then the ship moves from
+(x,y)
+to
+(x,y+1)
+;
+if wind blows the direction D, then the ship moves from
+(x,y)
+to
+(x,y−1)
+;
+if wind blows the direction L, then the ship moves from
+(x,y)
+to
+(x−1,y)
+;
+if wind blows the direction R, then the ship moves from
+(x,y)
+to
+(x+1,y)
+.
+The ship can also either go one of the four directions or stay in place each day. If it goes then it's exactly 1 unit of distance. Transpositions of the ship and the wind add up. If the ship stays in place, then only the direction of wind counts. For example, if wind blows the direction U and the ship moves the direction L, then from point
+(x,y)
+it will move to the point
+(x−1,y+1)
+, and if it goes the direction U, then it will move to the point
+(x,y+2)
+.
+You task is to determine the minimal number of days required for the ship to reach the point
+(
+x
+2
+,
+y
+2
+)
+.
+Input
+The first line contains two integers
+x
+1
+,
+y
+1
+(
+0≤
+x
+1
+,
+y
+1
 ≤
 10
 9
-), where
-a
-i
-is value of the happiness of the
-i
--th emote.
+) — the initial coordinates of the ship.
+The second line contains two integers
+x
+2
+,
+y
+2
+(
+0≤
+x
+2
+,
+y
+2
+≤
+10
+9
+) — the coordinates of the destination point.
+It is guaranteed that the initial coordinates and destination point coordinates are different.
+The third line contains a single integer
+n
+(
+1≤n≤
+10
+5
+) — the length of the string
+s
+.
+The fourth line contains the string
+s
+itself, consisting only of letters U, D, L and R.
 Output
-Print one integer — the maximum opponent's happiness if you use emotes in a way satisfying the problem statement.
+The only line should contain the minimal number of days required for the ship to reach the point
+(
+x
+2
+,
+y
+2
+)
+.
+If it's impossible then print "-1".
 Examples
 input
 Copy
-6 9 2
-1 3 3 7 4 2
+0 0
+4 6
+3
+UUU
 output
 Copy
-54
+5
 input
 Copy
-3 1000000000 1
-1000000000 987654321 1000000000
+0 3
+0 0
+3
+UDD
 output
 Copy
-1000000000000000000
+3
+input
+Copy
+0 0
+0 1
+1
+L
+output
+Copy
+-1
 Note
-In the first example you may use emotes in the following sequence:
-4,4,5,4,4,5,4,4,5
+In the first example the ship should perform the following sequence of moves: "RRRRU". Then its coordinates will change accordingly:
+(0,0)
+→
+(1,1)
+→
+(2,2)
+→
+(3,3)
+→
+(4,4)
+→
+(4,6)
+.
+In the second example the ship should perform the following sequence of moves: "DD" (the third day it should stay in place). Then its coordinates will change accordingly:
+(0,3)
+→
+(0,3)
+→
+(0,1)
+→
+(0,0)
+.
+In the third example the ship can never reach the point
+(0,1)
 .

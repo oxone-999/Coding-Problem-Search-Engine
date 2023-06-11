@@ -1,46 +1,103 @@
-C. Recover an RBS
-time limit per test2 seconds
+E. XOR Tree
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A bracket sequence is a string containing only characters "(" and ")". A regular bracket sequence (or, shortly, an RBS) is a bracket sequence that can be transformed into a correct arithmetic expression by inserting characters "1" and "+" between the original characters of the sequence. For example:
-bracket sequences "()()" and "(())" are regular (the resulting expressions are: "(1)+(1)" and "((1+1)+1)");
-bracket sequences ")(", "(" and ")" are not.
-There was an RBS. Some brackets have been replaced with question marks. Is it true that there is a unique way to replace question marks with brackets, so that the resulting sequence is an RBS?
+You are given a tree consisting of
+n
+vertices. A number is written on each vertex; the number on vertex
+i
+is equal to
+a
+i
+.
+Recall that a simple path is a path that visits each vertex at most once. Let the weight of the path be the bitwise XOR of the values written on vertices it consists of. Let's say that a tree is good if no simple path has weight
+0
+.
+You can apply the following operation any number of times (possibly, zero): select a vertex of the tree and replace the value written on it with an arbitrary positive integer. What is the minimum number of times you have to apply this operation in order to make the tree good?
 Input
-The first line contains a single integer
-t
+The first line contains one integer
+n
 (
-1≤t≤5⋅
-10
-4
-) — the number of testcases.
-The only line of each testcase contains an RBS with some brackets replaced with question marks. Each character is either '(', ')' or '?'. At least one RBS can be recovered from the given sequence.
-The total length of the sequences over all testcases doesn't exceed
-2⋅
+1≤n≤2⋅
 10
 5
-.
+) — the number of vertices.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+, ...,
+a
+n
+(
+1≤
+a
+i
+<
+2
+30
+) — the numbers written on vertices.
+Then
+n−1
+lines follow, each containing two integers
+x
+and
+y
+(
+1≤x,y≤n;x≠y
+) denoting an edge connecting vertex
+x
+with vertex
+y
+. It is guaranteed that these edges form a tree.
 Output
-For each testcase, print "YES" if the way to replace question marks with brackets, so that the resulting sequence is an RBS, is unique. If there is more than one way, then print "NO".
-Example
+Print a single integer — the minimum number of times you have to apply the operation in order to make the tree good.
+Examples
+input
+Copy
+6
+3 2 1 3 2 1
+4 5
+3 4
+1 4
+2 1
+6 1
+output
+Copy
+2
+input
+Copy
+4
+2 1 1 1
+1 2
+1 3
+1 4
+output
+Copy
+0
 input
 Copy
 5
-(?))
-??????
-()
-??
-?(?)()?)
+2 2 2 2 2
+1 2
+2 3
+3 4
+4 5
 output
 Copy
-YES
-NO
-YES
-YES
-NO
+2
 Note
-In the first testcase, the only possible original RBS is "(())".
-In the second testcase, there are multiple ways to recover an RBS.
-In the third and the fourth testcases, the only possible original RBS is "()".
-In the fifth testcase, the original RBS can be either "((()()))" or "(())()()".
+In the first example, it is enough to replace the value on the vertex
+1
+with
+13
+, and the value on the vertex
+4
+with
+42
+.

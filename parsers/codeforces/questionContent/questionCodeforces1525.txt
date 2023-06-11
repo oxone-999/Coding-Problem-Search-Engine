@@ -1,75 +1,118 @@
-C. Infinity Table
-time limit per test1 second
+E. Polycarp and String Transformation
+time limit per test3.0 s
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp has found a table having an infinite number of rows and columns. The rows are numbered from
-1
-, starting from the topmost one. The columns are numbered from
-1
-, starting from the leftmost one.
-Initially, the table hasn't been filled and Polycarp wants to fix it. He writes integers from
-1
-and so on to the table as follows.
-The figure shows the placement of the numbers from
-1
-to
-10
-. The following actions are denoted by the arrows.
-The leftmost topmost cell of the table is filled with the number
-1
-. Then he writes in the table all positive integers beginning from
-2
-sequentially using the following algorithm.
-First, Polycarp selects the leftmost non-filled cell in the first row and fills it. Then, while the left neighbor of the last filled cell is filled, he goes down and fills the next cell. So he goes down until the last filled cell has a non-filled neighbor to the left (look at the vertical arrow going down in the figure above).
-After that, he fills the cells from the right to the left until he stops at the first column (look at the horizontal row in the figure above). Then Polycarp selects the leftmost non-filled cell in the first row, goes down, and so on.
-A friend of Polycarp has a favorite number
-k
-. He wants to know which cell will contain the number. Help him to find the indices of the row and the column, such that the intersection of the row and the column is the cell containing the number
-k
+Polycarp has a string
+s
+. Polycarp performs the following actions until the string
+s
+is empty (
+t
+is initially an empty string):
+he adds to the right to the string
+t
+the string
+s
+, i.e. he does
+t=t+s
+, where
+t+s
+is a concatenation of the strings
+t
+and
+s
+;
+he selects an arbitrary letter of
+s
+and removes from
+s
+all its occurrences (the selected letter must occur in the string
+s
+at the moment of performing this action).
+Polycarp performs this sequence of actions strictly in this order.
+Note that after Polycarp finishes the actions, the string
+s
+will be empty and the string
+t
+will be equal to some value (that is undefined and depends on the order of removing).
+E.g. consider
+s
+="abacaba" so the actions may be performed as follows:
+t
+="abacaba", the letter 'b' is selected, then
+s
+="aacaa";
+t
+="abacabaaacaa", the letter 'a' is selected, then
+s
+="c";
+t
+="abacabaaacaac", the letter 'c' is selected, then
+s
+="" (the empty string).
+You need to restore the initial value of the string
+s
+using only the final value of
+t
+and find the order of removing letters from
+s
 .
 Input
 The first line contains one integer
-t
+T
 (
-1≤t≤100
-) — the number of test cases. Then
-t
-test cases follow.
-Each test case consists of one line containing one integer
-k
-(
-1≤k≤
+1≤T≤
 10
-9
-) which location must be found.
+4
+) — the number of test cases. Then
+T
+test cases follow.
+Each test case contains one string
+t
+consisting of lowercase letters of the Latin alphabet. The length of
+t
+doesn't exceed
+5⋅
+10
+5
+. The sum of lengths of all strings
+t
+in the test cases doesn't exceed
+5⋅
+10
+5
+.
 Output
-For each test case, output in a separate line two integers
-r
-and
-c
-(
-r,c≥1
-) separated by spaces — the indices of the row and the column containing the cell filled by the number
-k
-, respectively.
+For each test case output in a separate line:
+−1
+, if the answer doesn't exist;
+two strings separated by spaces. The first one must contain a possible initial value of
+s
+. The second one must contain a sequence of letters — it's in what order one needs to remove letters from
+s
+to make the string
+t
+. E.g. if the string "bac" is outputted, then, first, all occurrences of the letter 'b' were deleted, then all occurrences of 'a', and then, finally, all occurrences of 'c'. If there are multiple solutions, print any one.
 Example
 input
 Copy
 7
-11
-14
-5
-4
-1
-2
-1000000000
+abacabaaacaac
+nowyouknowthat
+polycarppoycarppoyarppyarppyrpprppp
+isi
+everywherevrywhrvryhrvrhrvhv
+haaha
+qweqeewew
 output
 Copy
-2 4
-4 3
-1 3
-2 1
-1 1
-1 2
-31623 14130
+abacaba bac
+-1
+polycarp lcoayrp
+is si
+everywhere ewyrhv
+-1
+-1
+Note
+The first test case is considered in the statement.

@@ -1,124 +1,109 @@
-C. Yet Another Array Restoration
-time limit per test1 second
+F. Subsequences of Length Two
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-We have a secret array. You don't know this array and you have to restore it. However, you know some facts about this array:
-The array consists of
-n
-distinct positive (greater than
-0
-) integers.
-The array contains two elements
-x
+You are given two strings
+s
 and
-y
-(these elements are known for you) such that
-x<y
-.
-If you sort the array in increasing order (such that
-a
-1
-<
-a
-2
-<…<
-a
-n
-), differences between all adjacent (consecutive) elements are equal (i.e.
-a
-2
-−
-a
-1
-=
-a
-3
-−
-a
-2
-=…=
-a
-n
-−
-a
-n−1
-)
-.
-It can be proven that such an array always exists under the constraints given below.
-Among all possible arrays that satisfy the given conditions, we ask you to restore one which has the minimum possible maximum element. In other words, you have to minimize
-max(
-a
-1
-,
-a
-2
-,…,
-a
-n
-)
-.
-You have to answer
 t
-independent test cases.
+consisting of lowercase Latin letters. The length of
+t
+is
+2
+(i.e. this string consists only of two characters).
+In one move, you can choose any character of
+s
+and replace it with any lowercase Latin letter. More formally, you choose some
+i
+and replace
+s
+i
+(the character at the position
+i
+) with some character from 'a' to 'z'.
+You want to do no more than
+k
+replacements in such a way that maximizes the number of occurrences of
+t
+in
+s
+as a subsequence.
+Recall that a subsequence is a sequence that can be derived from the given sequence by deleting zero or more elements without changing the order of the remaining elements.
 Input
-The first line of the input contains one integer
-t
-(
-1≤t≤100
-) — the number of test cases. Then
-t
-test cases follow.
-The only line of the test case contains three integers
+The first line of the input contains two integers
 n
-,
-x
 and
-y
+k
 (
-2≤n≤50
+2≤n≤200
 ;
-1≤x<y≤50
-) — the length of the array and two elements that are present in the array, respectively.
+0≤k≤n
+) — the length of
+s
+and the maximum number of moves you can make. The second line of the input contains the string
+s
+consisting of
+n
+lowercase Latin letters. The third line of the input contains the string
+t
+consisting of two lowercase Latin letters.
 Output
-For each test case, print the answer:
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-9
-), where
-a
-i
-is the
-i
--th element of the required array. If there are several answers, you can print any (it also means that the order of elements doesn't matter).
-It can be proven that such an array always exists under the given constraints.
-Example
+Print one integer — the maximum possible number of occurrences of
+t
+in
+s
+as a subsequence if you replace no more than
+k
+characters in
+s
+optimally.
+Examples
 input
 Copy
-5
-2 1 49
-5 20 50
-6 20 50
-5 3 8
-9 13 22
+4 2
+bbaa
+ab
 output
 Copy
-1 49 
-20 40 30 50 10
-26 32 20 38 44 50 
-8 23 18 13 3 
-1 10 13 4 19 22 25 16 7 
+3
+input
+Copy
+7 3
+asddsaf
+sd
+output
+Copy
+10
+input
+Copy
+15 6
+qwertyhgfdsazxc
+qa
+output
+Copy
+16
+input
+Copy
+7 2
+abacaba
+aa
+output
+Copy
+15
+Note
+In the first example, you can obtain the string "abab" replacing
+s
+1
+with 'a' and
+s
+4
+with 'b'. Then the answer is
+3
+.
+In the second example, you can obtain the string "ssddsdd" and get the answer
+10
+.
+In the fourth example, you can obtain the string "aaacaaa" and get the answer
+15
+.

@@ -1,27 +1,75 @@
-Average of Pairs
+Hail XOR
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-You are given an integer sequence
-A with length
-N.
-Find the number of (unordered) pairs of elements such that the average of these two elements is also present in the sequence. Formally, find the number of pairs
-(i,j) such that
-1≤i<j≤N and there is an index
-k (
-1≤k≤N) for which
-2A
-k
-=A
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given a sequence
+A
+1
+,A
+2
+,…,A
+N
+and you have to perform the following operation exactly
+X times:
+Choose two integers
+i and
+j such that
+1≤i<j≤N.
+Choose a non-negative integer
+p.
+Change
+A
 i
-+A
+to
+A
+i
+⊕2
+p
+, and change
+A
 j
-holds.
+to
+A
+j
+⊕2
+p
+, where
+⊕ denotes bitwise XOR.
+Find the lexicographically smallest sequence which can be obtained by performing this operation exactly
+X times.
+A sequence
+B
+1
+,B
+2
+,…,B
+N
+is said to be lexicographically smaller than a sequence
+C
+1
+,C
+2
+,…,C
+N
+if there is an index
+i such that
+B
+i
+<C
+i
+and for each valid
+j<i,
+B
+j
+=C
+j
+.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains a single integer
-N.
+The first line of each test case contains two space-separated integers
+N and
+X.
 The second line contains
 N space-separated integers
 A
@@ -32,50 +80,85 @@ A
 N
 .
 Output
-For each test case, print a single line containing one integer — the number of valid pairs
-(i,j).
+For each test case, print a single line containing
+N space-separated integers ― the lexicographically smallest obtainable sequence.
 Constraints
 1≤T≤10
-1≤N≤10
+2≤N≤10
 5
-∣A
+1≤X≤10
+9
+1≤A
 i
-∣≤10
-3
+≤10
+9
 for each valid
 i
 Subtasks
 Subtask #1 (30 points):
-1≤N≤10
-3
-Subtask #2 (70 points):
-1≤N≤10
-5
+N≤100
+Subtask #2 (70 points): original constraints
 Sample 1:
 Input
 Output
-3
-2
-2 2
-3
-2 1 3
-6
-4 2 5 1 3 5
 1
-1
-7
+3 3
+2 2 3
+0 0 3
 Explanation:
-Example case 1: We can take
-k for
-A
-k
-to be either 1 or 2, since
-A
-k
-=2 either way. Since the problem asks for unordered pairs,
-(1,2) is the only possible valid pair (the same as
-(2,1)). Hence, the answer is 1.
-Example case 2: We see that
+Example case 1: The original sequence is
+(2,2,3). Consider the following three operations:
+Choose
+i=1,
+j=2 and
+p=1. Then,
 A
 1
-=2=(1+3)/2. No other valid pair exists.
+changes from
+2 to
+2⊕2
+1
+=0 and similarly,
+A
+2
+changes from
+2 to
+2⊕2
+1
+=0. Now the sequence is
+(0,0,3).
+Next, choose
+i=1,
+j=2 and
+p=1. Then,
+A
+1
+changes to
+0⊕2
+1
+=2 and
+A
+2
+changes to
+0⊕2
+1
+=2. The sequence is
+(2,2,3).
+Next, again choose
+i=1,
+j=2 and
+p=1. Then,
+A
+1
+changes to
+2⊕2
+1
+=0 and
+A
+2
+changes to
+2⊕2
+1
+=0. The sequence is
+(0,0,3) again.
+We can check that after exactly 3 operations, this is the lexicographically smallest sequence we can obtain.

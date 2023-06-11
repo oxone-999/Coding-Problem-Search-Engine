@@ -1,44 +1,31 @@
-Primitive Queries
+Sereja and Stones
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Given a tree T consisting of N nodes and Q queries on it. Each node v have some value Cv assigned to it. The queries can be of two types:
-1 u v - find number of distinct numbers on path between u and v
-2 v y - assign the value y to the node with index v.
-
-All the indices in the queries are 1-based.
+Sereja has N boxes and M stones. There is a parameter energy associated with each empty box, denoted by Ei. He wants to move each stone into some box. After moving all the stones into the boxes, he wants to compute the total energy of box/stone system. For that he believes that a contribution of box into energy of the system can be computed as follows. If box i contains s stones and there are total k boxes out there containing more than s stones, then contribution of box i into the system of energy will be given by Ei × k.
+Sereja wants the box/stone system to be most stable, i.e. it should have least possible energy. Find out minimum possible energy of this system.
 Input
-The first line of input contains two integers N and Q denoting the number of elements in T, and the number of queries to be executed.
-The second line of input contains N integers denoting the assigned values C to T.
-Each of the next N - 1 lines contains two integersu and v nodes which connected by edge.
-Each of the next Q lines contains one query. All the numbers in input are integers.
+First line of the input contains an integer T denoting the number of test cases. T tests follow.
+First line of each test case contains two space separated integers N and M.
+Next line contains N space separated integers denoting the array E.
 Output
-For each query of type 1, output the answer to the query in a single line.
+For each test case output a single integer corresponding to the answer of the problem.
 Constraints
-1 ≤ N, Q ≤ 105
-0 ≤ Ci, y ≤ 109
-1 ≤ u, v ≤ N
+1 ≤ T ≤ 7
+7 ≤ N, M ≤ 77777
+7 ≤ E[i] ≤ 77
 Subtasks
-Subtask 1: QxN ≤ 2*107, Points - 23, TL = 2 sec
-Subtask 2: Original constraints. Points - 77, TL = 6 sec
-Sample 1:
-Input
-Output
-6 7
-1 2 3 4 5 6
-1 2
-1 3
+Subtask #1: (20 points) 7 ≤ N ≤ 77, 7 ≤ M ≤ 777
+Subtask #2: (30 points) 7 ≤ N, M ≤ 777
+Subtask #3: (50 points) original constraints
+Example
+Input:
+2
 2 4
-2 5
-3 6
-1 5 6
-2 5 6
-1 1 5
-1 5 6
-2 1 6
-1 5 6
-1 2 6
-5
-3
-4
-3
-3
+7 8
+4 6
+7 7 10 10
+Output:
+0
+21
+Explanation
+In test case 1, there are 2 boxes and 4 stones. The energy of two empty boxes are 7 and 8 respectively. You can put 2 stones into each of the box. Contribution of both the boxes into the energy of the system will be zero. So, the answer will be zero.
+In test case 2, there are 4 boxes and 6 stones. You can distribute the stones into boxes as follows, [0, 2, 2, 2]. Contribution of the first box into total energy will be equal to 7 * 3 and that of rest of the boxes will be zero. So, overall energy will be 21. You can enumerate all possible distributions of the stones into boxes and see that you can't obtain a system with less energy than this.

@@ -1,106 +1,52 @@
-B. Points on Plane
+A. Garland
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a two-dimensional plane, and you need to place
-n
-chips on it.
-You can place a chip only at a point with integer coordinates. The cost of placing a chip at the point
-(x,y)
-is equal to
-|x|+|y|
-(where
-|a|
-is the absolute value of
-a
-).
-The cost of placing
-n
-chips is equal to the maximum among the costs of each chip.
-You need to place
-n
-chips on the plane in such a way that the Euclidean distance between each pair of chips is strictly greater than
-1
-, and the cost is the minimum possible.
+You have a garland consisting of
+4
+colored light bulbs, the color of the
+i
+-th light bulb is
+s
+i
+.
+Initially, all the light bulbs are turned off. Your task is to turn all the light bulbs on. You can perform the following operation any number of times: select a light bulb and switch its state (turn it on if it was off, and turn it off if it was on). The only restriction on the above operation is that you can apply the operation to a light bulb only if the previous operation was applied to a light bulb of a different color (the first operation can be applied to any light bulb).
+Calculate the minimum number of operations to turn all the light bulbs on, or report that this is impossible.
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
 1≤t≤
 10
 4
-) — the number of test cases. Next
-t
-cases follow.
-The first and only line of each test case contains one integer
-n
-(
-1≤n≤
-10
-18
-) — the number of chips you need to place.
+) — the number of test cases.
+The single line of each test case contains
+s
+ — a sequence of
+4
+characters, where each character is a decimal digit. The
+i
+-th character denotes the color of the
+i
+-th light bulb.
 Output
-For each test case, print a single integer — the minimum cost to place
-n
-chips if the distance between each pair of chips must be strictly greater than
-1
-.
+For each test case, print one integer — the minimum number of operations to turn all the light bulbs on. If it is impossible to turn all the bulbs on, print -1.
 Example
 input
 Copy
-4
-1
 3
-5
-975461057789971042
+9546
+0000
+3313
 output
 Copy
-0
-1
-2
-987654321
+4
+-1
+6
 Note
-In the first test case, you can place the only chip at point
-(0,0)
-with total cost equal to
-0+0=0
-.
-In the second test case, you can, for example, place chips at points
-(−1,0)
-,
-(0,1)
-and
-(1,0)
-with costs
-|−1|+|0|=1
-,
-|0|+|1|=1
-and
-|0|+|1|=1
-. Distance between each pair of chips is greater than
-1
-(for example, distance between
-(−1,0)
-and
-(0,1)
-is equal to
-2
-–
-√
-). The total cost is equal to
-max(1,1,1)=1
-.
-In the third test case, you can, for example, place chips at points
-(−1,−1)
-,
-(−1,1)
-,
-(1,1)
-,
-(0,0)
-and
-(0,2)
-. The total cost is equal to
-max(2,2,2,0,2)=2
-.
+In the first example, all the colors are different, so you can just turn all the bulbs on in
+4
+operations.
+In the second example, it is impossible to turn all the bulbs on, because after you switch one light bulb, it is impossible to turn the others on.
+In the third example, you can proceed as follows: turn the first light bulb on, turn the third light bulb on, turn the fourth light bulb on, turn the third light bulb off, turn the second light bulb on, turn the third light bulb on.

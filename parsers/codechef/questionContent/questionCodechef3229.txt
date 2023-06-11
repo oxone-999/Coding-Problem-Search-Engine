@@ -1,70 +1,81 @@
-Robots Again
+Count Subsequences
 Problem
-###Read problems statements Mandarin , Bengali , Hindi , Russian and Vietnamese as well.
-You are given a string
-s with length
-N describing a row of cells numbered
-1 through
-N. Each character of this string is either a digit ('0' through '9', inclusive) or a dot ('.'). For each
-i (
-1≤i≤N), if the
-i-th character of
-s is '.', the
-i-th cell is empty; if this character is the digit
-d, the
-i-th cell contains a robot that is able to move in a fixed range — between cells
-max(1,i−d) and
-min(N,i+d) inclusive.
-When you start a robot and provide it with a direction (left or right), it starts moving in that direction. In one step, a robot can move one cell to the left or right. The robot keeps moving in the chosen direction until it reaches the last cell in its range, at which point it starts moving in the opposite direction (this may happen before the robot's first step, in which case it immediately starts moving in the opposite direction) until it reaches the other end of its range, when it again reverses direction and keeps moving, etc. This way, a lone robot would move forever. Assume that a robot can turn around instantly.
-You are a robot operator. You want to determine an initial direction for each robot (either to the left or to the right, not necessarily the same for each robot) in such a way that after they are all started at the same time, a collision between two robots never happens, no matter how long they keep moving. A collision between two robots happens if they occupy the same cell in some step. Note that the robots are allowed to cross each other's paths, i.e. a collision does not happen if there are two robots in cells
-x and
-x+1 in some step, but in the next step, the robot from cell
-x moves to cell
-x+1 and the robot from cell
-x+1 moves to cell
-x.
-Find out if it is possible to assign initial directions to robots in such a way.
+###Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
+Let's call an integer sequence nice if the sum of its elements is divisible by a given integer
+K. You are given an integer sequence
+A
+1
+,A
+2
+,…,A
+N
+. Hasan wanted to find the number of nice subsequences of this sequence. However, this problem is too easy, so Hasan decided to add an extra constraint.
+For an arbitrary non-empty sequence of indices
+i
+1
+<i
+2
+<…<i
+L
+, let's call a subsequence
+A
+i
+1
+,A
+i
+2
+,…,A
+i
+L
+very nice if it is nice and
+i
+L
+−i
+1
+≥W. Help Hasan and find the number of very nice subsequences. Since this number may be very large, compute it modulo
+10
+9
++7.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first and only line of each test case contains a single string
-s.
+The first line of each test case contains three space-separated integers
+N,
+K and
+W.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
 Output
-For each test case, print a single line containing the string "safe" if a valid assignment of directions exists or "unsafe" otherwise (without quotes).
+For each test case, print a single line containing one integer — the number of very nice subsequences modulo
+10
+9
++7.
 Constraints
-1≤T≤5∗10
-4
-1≤N≤5∗10
-4
-s contains only characters '.' and '0' through '9'
+1≤T≤1,000
+1≤N≤10
+5
+2≤K≤50
+0≤W≤N−1
+0≤A
+i
+≤K−1 for each valid
+i
 the sum of
 N over all test cases does not exceed
-3∗10
+3⋅10
 5
-Subtasks
-Subtask #1 (30 points):
-1≤T≤10
-2
-1≤N≤10
-2
-The sum of
-N over all test cases does not exceed
-3∗10
-2
-Subtask #2 (70 points): original constraints
 Sample 1:
 Input
 Output
-3
-1.1
-2..1.
-1..2
-unsafe
-safe
-safe
-Explanation:
-Example case 1: Whatever directions you provide to the robots, they will both move to cell
-2 in the first step.
-Example case 2: If both robots are directed to the right, they will never collide with each other.
-Example case 3: Whatever directions you provide to the robots, they will keep crossing each other's paths, but will never collide.
+1
+6 3 3
+1 1 1 1 1 1
+17

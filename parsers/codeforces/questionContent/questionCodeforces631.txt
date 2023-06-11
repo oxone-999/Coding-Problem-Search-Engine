@@ -1,115 +1,29 @@
-B. Mainak and Interesting Sequence
-time limit per test1 second
+D. Edge Split
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Mainak has two positive integers
+You are given a connected, undirected and unweighted graph with
 n
-and
+vertices and
 m
+edges. Notice the limit on the number of edges:
+m≤n+2
 .
-Mainak finds a sequence
-a
+Let's say we color some of the edges red and the remaining edges blue. Now consider only the red edges and count the number of connected components in the graph. Let this value be
+c
 1
-,
-a
+. Similarly, consider only the blue edges and count the number of connected components in the graph. Let this value be
+c
 2
-,…,
-a
-n
-of
-n
-positive integers interesting, if for all integers
-i
-(
-1≤i≤n
-), the bitwise XOR of all elements in
-a
-which are strictly less than
-a
-i
-is
-0
-. Formally if
-p
-i
-is the bitwise XOR of all elements in
-a
-which are strictly less than
-a
-i
-, then
-a
-is an interesting sequence if
-p
-1
-=
-p
-2
-=…=
-p
-n
-=0
 .
-For example, sequences
-[1,3,2,3,1,2,3]
-,
-[4,4,4,4]
-,
-[25]
-are interesting, whereas
-[1,2,3,4]
-(
-p
-2
-=1≠0
-),
-[4,1,1,2,4]
-(
-p
-1
-=1⊕1⊕2=2≠0
-),
-[29,30,30]
-(
-p
-2
-=29≠0
-) aren't interesting.
-Here
-a⊕b
-denotes bitwise XOR of integers
-a
-and
-b
-.
-Find any interesting sequence
-a
-1
-,
-a
-2
-,…,
-a
-n
-(or report that there exists no such sequence) such that the sum of the elements in the sequence
-a
-is equal to
-m
-, i.e.
-a
+Find an assignment of colors to the edges such that the quantity
+c
 1
 +
-a
+c
 2
-…+
-a
-n
-=m
-.
-As a reminder, the bitwise XOR of an empty sequence is considered to be
-0
-.
+is minimised.
 Input
 Each test contains multiple test cases. The first line contains a single integer
 t
@@ -118,93 +32,117 @@ t
 10
 5
 ) — the number of test cases. Description of the test cases follows.
-The first line and the only line of each test case contains two integers
+The first line of each test case contains two integers
 n
 and
 m
 (
-1≤n≤
+2≤n≤2⋅
 10
 5
+;
+n−1≤m≤min(n+2,
+n⋅(n−1)
+2
+)
+) — the number of vertices and the number of edges respectively.
+m
+lines follow. The
+i
+-th line contains two integers
+u
+i
+and
+v
+i
+(
+1≤
+u
+i
 ,
-1≤m≤
-10
-9
-) — the length of the sequence and the sum of the elements.
+v
+i
+≤n
+,
+u
+i
+≠
+v
+i
+) denoting that the
+i
+-th edge goes between vertices
+u
+i
+and
+v
+i
+. The input is guaranteed to have no multiple edges or self loops. The graph is also guaranteed to be connected.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
 10
-5
+6
+. It is guaranteed that the sum of
+m
+over all test cases does not exceed
+2⋅
+10
+6
 .
 Output
-For each test case, if there exists some interesting sequence, output "Yes" on the first line, otherwise output "No". You may print each letter in any case (for example, "YES", "Yes", "yes", "yEs" will all be recognized as positive answer).
-If the answer is "Yes", output
-n
-positive integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-a
+For each test case, output a binary string of length
+m
+. The
 i
-≥1
-), forming an interesting sequence such that
-a
-1
-+
-a
-2
-…+
-a
-n
-=m
-. If there are multiple solutions, output any.
+-th character of the string should be 1 if the
+i
+-th edge should be colored red, and 0 if it should be colored blue. If there are multiple ways to assign colors to edges that give the minimum answer, you may output any.
 Example
 input
 Copy
 4
+5 7
+1 2
+2 3
+3 4
+4 5
+5 1
 1 3
-6 12
+3 5
+4 4
+1 2
+2 3
+1 4
+3 4
+6 7
+1 2
+1 3
+3 4
+4 5
+1 4
+5 6
+6 2
 2 1
-3 6
+1 2
 output
 Copy
-Yes
-3
-Yes
-1 3 2 2 3 1
-No
-Yes
-2 2 2
-Note
-In the first test case,
-[3]
-is the only interesting sequence of length
-1
-having sum
-3
-.
-In the third test case, there is no sequence of length
-2
-having sum of elements equal to
-1
-, so there is no such interesting sequence.
-In the fourth test case,
-p
-1
-=
-p
-2
-=
-p
-3
-=0
-, because bitwise XOR of an empty sequence is
+0111010
+1001
+0001111
 0
-.
+Note
+The corresponding graph of the first test case is:
+c
+1
++
+c
+2
+=1+2=3
+The corresponding graph of the second test case is:
+c
+1
++
+c
+2
+=2+2=4

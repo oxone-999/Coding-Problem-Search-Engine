@@ -1,61 +1,164 @@
-B. Letters Rearranging
-time limit per test1 second
+C. Mishka and the Last Exam
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string
-s
-consisting only of lowercase Latin letters.
-You can rearrange all letters of this string as you wish. Your task is to obtain a good string by rearranging the letters of the given string or report that it is impossible to do it.
-Let's call a string good if it is not a palindrome. Palindrome is a string which is read from left to right the same as from right to left. For example, strings "abacaba", "aa" and "z" are palindromes and strings "bba", "xd" are not.
-You have to answer
-t
-independent queries.
-Input
-The first line of the input contains one integer
-t
-(
-1≤t≤100
-) — number of queries.
-Each of the next
-t
-lines contains one string. The
+Mishka is trying really hard to avoid being kicked out of the university. In particular, he was doing absolutely nothing for the whole semester, miraculously passed some exams so that just one is left.
+There were
+n
+classes of that subject during the semester and on
 i
--th line contains a string
-s
+-th class professor mentioned some non-negative integer
+a
 i
-consisting only of lowercase Latin letter. It is guaranteed that the length of
-s
-i
-is from
+to the students. It turned out, the exam was to tell the whole sequence back to the professor.
+Sounds easy enough for those who attended every class, doesn't it?
+Obviously Mishka didn't attend any classes. However, professor left some clues on the values of
+a
+to help out students like Mishka:
+a
+was sorted in non-decreasing order (
+a
 1
-to
-1000
-(inclusive).
+≤
+a
+2
+≤⋯≤
+a
+n
+);
+n
+was even;
+the following sequence
+b
+, consisting of
+n
+2
+elements, was formed and given out to students:
+b
+i
+=
+a
+i
++
+a
+n−i+1
+.
+Professor also mentioned that any sequence
+a
+, which produces sequence
+b
+with the presented technique, will be acceptable.
+Help Mishka to pass that last exam. Restore any sorted sequence
+a
+of non-negative integers, which produces sequence
+b
+with the presented technique. It is guaranteed that there exists at least one correct sequence
+a
+, which produces the given sequence
+b
+.
+Input
+The first line contains a single integer
+n
+(
+2≤n≤2⋅
+10
+5
+) — the length of sequence
+a
+.
+n
+is always even.
+The second line contains
+n
+2
+integers
+b
+1
+,
+b
+2
+,…,
+b
+n
+2
+(
+0≤
+b
+i
+≤
+10
+18
+) — sequence
+b
+, where
+b
+i
+=
+a
+i
++
+a
+n−i+1
+.
+It is guaranteed that there exists at least one correct sequence
+a
+, which produces the given sequence
+b
+.
 Output
 Print
-t
-lines. In the
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
 i
--th line print the answer to the
+≤
+10
+18
+) in a single line.
+a
+1
+≤
+a
+2
+≤⋯≤
+a
+n
+should be satisfied.
+b
 i
--th query: -1 if it is impossible to obtain a good string by rearranging the letters of
-s
+=
+a
 i
-and any good string which can be obtained from the given one (by rearranging the letters) otherwise.
-Example
++
+a
+n−i+1
+should be satisfied for all valid
+i
+.
+Examples
 input
 Copy
-3
-aa
-abacaba
-xdd
+4
+5 6
 output
 Copy
--1
-abaacba
-xdd
-Note
-In the first query we cannot rearrange letters to obtain a good string.
-Other examples (not all) of correct answers to the second query: "ababaca", "abcabaa", "baacaba".
-In the third query we can do nothing to obtain a good string.
+2 3 3 3
+input
+Copy
+6
+2 1 2
+output
+Copy
+0 0 1 1 1 2 

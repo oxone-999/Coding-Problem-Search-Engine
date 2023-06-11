@@ -1,191 +1,209 @@
-F. Almost Sorted
-time limit per test2 seconds
+A. Joey Takes Money
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a permutation
-p
-of length
-n
-and a positive integer
-k
-. Consider a permutation
-q
-of length
-n
-such that for any integers
-i
-and
-j
-, where
-1≤i<j≤n
-, we have
-p
-q
-i
-≤
-p
-q
-j
-+k.
-k
-Find the minimum possible number of inversions in a permutation
-q
-.
-A permutation is an array consisting of
-n
-distinct integers from
-1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
-2
-appears twice in the array) and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
-An inversion in a permutation
+Joey is low on money. His friend Chandler wants to lend Joey some money, but can't give him directly, as Joey is too proud of himself to accept it. So, in order to trick him, Chandler asks Joey to play a game.
+In this game, Chandler gives Joey an array
 a
-is a pair of indices
-i
-and
-j
-(
-1≤i,j≤n
-) such that
-i<j
-, but
-a
-i
->
-a
-j
-.
-Input
-The first line contains two integers
-n
-and
-k
-(
-1≤n≤5000
-,
-1≤k≤8
-).
-The second line contains
-n
-distinct integers
-p
 1
 ,
-p
+a
 2
 ,…,
-p
+a
+n
+(
+n≥2
+) of positive integers (
+a
+i
+≥1
+).
+Joey can perform the following operation on the array any number of times:
+Take two indices
+i
+and
+j
+(
+1≤i<j≤n)
+.
+Choose two integers
+x
+and
+y
+(
+x,y≥1
+) such that
+x⋅y=
+a
+i
+⋅
+a
+j
+.
+Replace
+a
+i
+by
+x
+and
+a
+j
+by
+y
+.
+In the end, Joey will get the money equal to the sum of elements of the final array.
+Find the maximum amount of money
+ans
+Joey can get but print
+2022⋅ans
+. Why multiplied by
+2022
+? Because we are never gonna see it again!
+It is guaranteed that the product of all the elements of the array
+a
+doesn't exceed
+10
+12
+.
+Input
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤4000
+). Description of the test cases follows.
+The first line of each test case contains a single integer
+n
+(
+2≤n≤50
+) — the length of the array
+a
+.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
 n
 (
 1≤
-p
+a
 i
-≤n
+≤
+10
+6
+) — the array itself.
+It's guaranteed that the product of all
+a
+i
+doesn't exceed
+10
+12
+(i. e.
+a
+1
+⋅
+a
+2
+⋅…⋅
+a
+n
+≤
+10
+12
 ).
 Output
-Print the minimum possible number of inversions in the permutation
-q
+For each test case, print the maximum money Joey can get multiplied by
+2022
 .
-Examples
+Example
 input
 Copy
-1 1
-1
+3
+3
+2 3 2
+2
+1 3
+3
+1000000 1000000 1
 output
 Copy
-0
-input
-Copy
-3 1
-2 3 1
-output
-Copy
-1
-input
-Copy
-5 2
-5 4 3 2 1
-output
-Copy
-6
-input
-Copy
-10 3
-5 8 6 10 2 7 4 1 9 3
-output
-Copy
-18
+28308
+8088
+2022000000004044
 Note
-In the first example, the only permutation is
-q=[1]
-(
-0
-inversions). Then
-p
-q
-1
-=1
+In the first test case, Joey can do the following:
+He chooses
+i=1
+and
+j=2
+(so he has
+a[i]⋅a[j]=6
+), chooses
+x=6
+and
+y=1
+and makes
+a[i]=6
+and
+a[j]=1
 .
-In the second example, the only permutation with
+[2,3,2]
+−
+→
+−
+−
+−
+−
+x=6,y=1
+i=1,j=2
+[6,1,2]
+i
+=
 1
-inversion is
-q=[1,3,2]
-. Then
-p
-q
-1
-=2
-,
-p
-q
+j
+=
 2
-=1
-,
-p
-q
-3
-=3
+He chooses
+i=1
+and
+j=3
+(so he has
+a[i]⋅a[j]=12
+), chooses
+x=12
+and
+y=1
+and makes
+a[i]=12
+and
+a[j]=1
 .
-In the third example, one of the possible permutations with
-6
-inversions is
-q=[3,4,5,1,2]
-. Then
-p
-q
+[6,1,2]
+−
+→
+−
+−
+−
+−
+−
+x=12,y=1
+i=1,j=3
+[12,1,1]
+i
+=
 1
-=3
-,
-p
-q
-2
-=2
-,
-p
-q
+j
+=
 3
-=1
-,
-p
-q
-4
-=5
-,
-p
-q
-5
-=4
+The sum is
+14
+which is the maximum of all possible sums. The answer is
+2022⋅14=28308
 .

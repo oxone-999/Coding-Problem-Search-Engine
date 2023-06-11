@@ -1,81 +1,34 @@
-Flip the Prefix
+Distribute idlis Equally
 Problem
-You are given a binary string
-S of length
-N and an integer
-K. You can perform the following operation on the string:
-Select a prefix of the string
-S and flip all the characters of the prefix. A flip corresponds to changing
-0 to
-1 and vice-versa.
-Find the minimum number of operations required to obtain a substring of length
-K such that all characters of the substring are
-1.
-Note:
-A prefix is obtained by deleting some (possibly zero) characters from the end of the string.
-A substring is obtained by deleting some (possibly zero) characters from the beginning of the string and some (possibly zero) characters from the end of the string.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains two space-separated integers
-N and
-K — the length of the string and the length length of substring containing all
-1s we want to achieve.
-The next line contains the binary string
-S.
-Output Format
-For each test case, output on a new line, the minimum number of operations required to obtain a substring of length
-K such that all characters of the substring are
-1.
-Constraints
-1≤T≤2000
-1≤K≤N≤3⋅10
-5
-S consists of
-0 and
-1 only.
-The sum of
-N over all test cases won't exceed
-3⋅10
-5
-.
+Did you know that Chwee kueh, a cuisine of Singapore, means water rice cake ? Its a variety of the most popular South Indian savory cake, only that we call it here idli :). The tastiest idlis are made in Chennai, by none other than our famous chef, Dexter Murugan. Being very popular, he is flown from Marina to Miami, to serve idlis in the opening ceremony of icpc world finals ( which is happening right now ! ).
+There are N students and they are initially served with some idlis. Some of them are angry because they got less idlis than some other. Dexter decides to redistribute the idlis so they all get equal number of idlis finally. He recollects his father's code, "Son, if you ever want to redistribute idlis, follow this method. While there are two persons with unequal number of idlis, repeat the following step. Select two persons A and B, A having the maximum and B having the minimum number of idlis, currently. If there are multiple ways to select A (similarly B), select any one randomly. Let A and B have P and Q number of idlis respectively and R = ceil( ( P - Q ) / 2 ), Transfer R idlis from A to B."
+Given the initial number of idlis served to each student, find the number of times Dexter has to repeat the above step. If he can not distribute idlis equally by following the above method, print -1.
+Notes
+ceil(x) is the smallest integer that is not less than x.
+
+Input
+First line contains an integer T ( number of test cases, around 20 ). T cases follows. Each case starts with an integer N ( 1 <= N <= 3000 ). Next line contains an array A of N integers separated by spaces, the initial number of idlis served ( 0 <= A[i] <= N )
+Output
+For each case, output the number of times Dexter has to repeat the given step to distribute idlis equally or -1 if its not possible.
+
+
+Note:There are multiple test sets, and the judge shows the sum of the time taken over all test sets of your submission, if Accepted. Time limit on each test set is 3 sec
 Sample 1:
 Input
 Output
 3
-3 3
-000
-4 2
-0110
-5 3
-10101
-1
-0
+4
+1 2 2 3
 2
+1 2
+7
+1 2 3 4 5 6 7
+1
+-1
+3
 Explanation:
-Test case
-1: We need to obtain a substring containing three
-1s. Using one operation, we can select the prefix
-S[1,3] and flip all the characters in the prefix. Thus, the string becomes
-111.
-Test case
-2: The string already contains a substring having two
-1s. Thus, we do not need any operation.
-Test case
-3: We need to obtain a substring containing three
-1s. We can do so using
-2 operations:
-Operation
-1: Select the prefix
-S[1,4] and flip all characters in the prefix. Thus, the string becomes
-01011.
-Operation
-2: Select the prefix
-S[1,3] and flip all characters in the prefix. Thus, the string becomes
-10111.
-Thus, we have a substring
-S[3,5] of length
-3 where all characters of the substring are
-1. It can be shown that we cannot obtain such substring using less than
-2 operations.
+Case 1 : { 1, 2, 2, 3}. Maximum 3, Minimum 1. R = ceil((3-1)/2) = 1. Transfer 1 idli from person having 3 idlis to the person having 1 idli. Each of them has 2 idlis now, so just 1 step is enough.
+
+Case 2 : {1,2} R = ceil((2-1)/2) = 1. {1,2} -> {2,1} -> {1,2} .... they can never get equal idlis :(
+
+Case 3 : Sorted arrays, in the order encountered {1, 2, 3, 4, 5, 6, 7} -> {2, 3, 4, 4, 4, 5, 6} -> {3, 4, 4, 4, 4, 4, 5} -> {4, 4, 4, 4, 4, 4, 4}

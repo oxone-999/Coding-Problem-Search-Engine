@@ -1,80 +1,148 @@
-Gamer
+Palindrome Swaps
 Problem
-Read problem statements in Russian
-In a game, you can choose when to enter and exit, but you can only do this exactly once. Choosing to enter and exit the game at time
-l and
-r respectively will cost you
-k⋅(r−l) coins.
-The game has
-n items. Item
-i is valued at
-v
+Chef has
+N strings. Each string
+S
 i
-coins. You can only collect item
-v
+has length
+M and consists only of lowercase english letters.
+Chef likes palindromes, and would like each
+S
 i
-if you are in the game during the whole time period of
-[x
+to be a palindrome. To achieve this, he can perform the following move:
+Pick an index
+i such that
+1≤i<N and an index
+j such that
+1≤j≤M.
+Then, swap the
+j
+th
+character of string
+S
 i
-,y
+with the
+j
+th
+character of string
+S
+i+1
+.
+Informally, Chef can swap the
+j
+th
+character of any two consecutive strings.
+Find the minimum number of moves required to make every string a palindrome. Print
+−1 if it is not possible to achieve this.
+Input Format
+The first line of input contains a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains two space-separated integers
+N and
+M, denoting the number of strings and their length, respectively.
+The
 i
-]; that is,
-l≤x
-i
-≤y
-i
-≤r. Your profit after the game is the total value of the items collected minus the cost of entering and exiting the game.
-You want to enter and exit the game so that your profit is maximized. Find that maximized profit.
-###Input:
-The first line contains two integers,
-n and
-k.
-Then,
-n lines follow. The
-i-th line of these contains three integers,
-x
-i
-,y
-i
-,v
+th
+of the next
+N lines contains the string
+S
 i
 .
-###Output: Print a single line containing the maximized profit.
-###Constraints
-1≤n≤10
+Output Format
+Print a single integer on a new line as the answer to each test case: the minimum number of swaps needed to make every
+S
+i
+a palindrome, or
+−1 if this is not possible.
+Constraints
+1≤T≤5⋅10
 5
-1≤v
+1≤N,M≤5⋅10
+5
+Each
+S
 i
-,k≤10
-9
-−10
-9
-≤x
-i
-,y
-i
-≤10
-9
-x
-i
-≤y
-i
-###Subtasks: Subtask #1 (15 points):
-n≤20
-Subtask #2 (25 points):
-n≤1000
-Subtask #3 (60 points): original constraints
+contains only lowercase english letters.
+The sum of
+N×M across all test cases won't exceed
+5⋅10
+5
+.
 Sample 1:
 Input
 Output
-3 2
- 1 3 3
- 1 2 5
- 4 7 1
 4
+3 2
+ac
+ba
+cb
+2 3
+xkx
+ptp
+4 4
+abaa
+baba
+baab
+aabb
+4 4
+abaa
+baba
+baab
+aaab
+2
+0
+-1
+3
 Explanation:
-It is optimal to enter at time
-1 and exit at time
-3 to get item number
-1 and
-2.
+Test case
+1: Chef can make all the strings palindromes in two operations:
+First, swap the second characters of
+S
+1
+and
+S
+2
+. Now, the strings are
+{aa, bc, cb}
+Then, swap the first characters of
+S
+2
+and
+S
+3
+. Now, the strings are
+{aa, bb, cc}, which are all palindromes.
+Test case
+2: Both strings are already palindromes.
+Test case
+3: It can be shown that it's impossible to make all
+4 strings simultaneously palindromes.
+Test case
+4: One optimal sequence of operations is as follows:
+Swap the first characters of
+S
+3
+and
+S
+4
+. Now, the strings are
+{abaa, baba, aaab, baab}.
+Swap the second characters of
+S
+1
+and
+S
+2
+. Now, the strings are
+{aaaa, bbba, aaab, baab}.
+Swap the fourth characters of
+S
+2
+and
+S
+3
+. Now, the strings are
+{aaaa, bbbb, aaaa, baab}.
+Thus, the final strings are all palindromes. It can be proven that we cannot achieve all palindromes in less than
+3 moves.

@@ -1,9 +1,9 @@
-C. Even Number Addicts
+D. Permutation Addicts
 time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Alice and Bob are playing a game on a sequence
+Given a permutation
 a
 1
 ,
@@ -12,26 +12,226 @@ a
 ,…,
 a
 n
-of length
+of integers from
+1
+to
 n
-. They move in turns and Alice moves first.
-In the turn of each player, he or she should select an integer and remove it from the sequence. The game ends when there is no integer left in the sequence.
-Alice wins if the sum of her selected integers is even; otherwise, Bob wins.
-Your task is to determine who will win the game, if both players play optimally.
+, and a threshold
+k
+with
+0≤k≤n
+, you compute a sequence
+b
+1
+,
+b
+2
+,…,
+b
+n
+as follows.
+For every
+1≤i≤n
+in increasing order, let
+x=
+a
+i
+.
+If
+x≤k
+, set
+b
+x
+to the last element
+a
+j
+(
+1≤j<i
+) that
+a
+j
+>k
+. If no such element
+a
+j
+exists, set
+b
+x
+=n+1
+.
+If
+x>k
+, set
+b
+x
+to the last element
+a
+j
+(
+1≤j<i
+) that
+a
+j
+≤k
+. If no such element
+a
+j
+exists, set
+b
+x
+=0
+.
+Unfortunately, after the sequence
+b
+1
+,
+b
+2
+,…,
+b
+n
+has been completely computed, the permutation
+a
+1
+,
+a
+2
+,…,
+a
+n
+and the threshold
+k
+are discarded.
+Now you only have the sequence
+b
+1
+,
+b
+2
+,…,
+b
+n
+. Your task is to find any possible permutation
+a
+1
+,
+a
+2
+,…,
+a
+n
+and threshold
+k
+that produce the sequence
+b
+1
+,
+b
+2
+,…,
+b
+n
+. It is guaranteed that there exists at least one pair of permutation
+a
+1
+,
+a
+2
+,…,
+a
+n
+and threshold
+k
+that produce the sequence
+b
+1
+,
+b
+2
+,…,
+b
+n
+.
+A permutation of integers from
+1
+to
+n
+is a sequence of length
+n
+which contains all integers from
+1
+to
+n
+exactly once.
 Input
 Each test contains multiple test cases. The first line contains an integer
 t
 (
-1≤t≤100
+1≤t≤
+10
+5
 ) — the number of test cases. The following lines contain the description of each test case.
 The first line of each test case contains an integer
 n
 (
-1≤n≤100
-), indicating the length of the sequence.
+1≤n≤
+10
+5
+), indicating the length of the permutation
+a
+.
 The second line of each test case contains
 n
 integers
+b
+1
+,
+b
+2
+,…,
+b
+n
+(
+0≤
+b
+i
+≤n+1
+), indicating the elements of the sequence
+b
+.
+It is guaranteed that there exists at least one pair of permutation
+a
+1
+,
+a
+2
+,…,
+a
+n
+and threshold
+k
+that produce the sequence
+b
+1
+,
+b
+2
+,…,
+b
+n
+.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+5
+.
+Output
+For each test case, output the threshold
+k
+(
+0≤k≤n
+) in the first line, and then output the permutation
 a
 1
 ,
@@ -41,37 +241,285 @@ a
 a
 n
 (
-−
-10
-9
-≤
+1≤
 a
 i
-≤
-10
-9
-), indicating the elements of the sequence.
-Output
-For each test case, output "Alice" (without quotes) if Alice wins and "Bob" (without quotes) otherwise.
+≤n
+) in the second line such that the permutation
+a
+1
+,
+a
+2
+,…,
+a
+n
+and threshold
+k
+produce the sequence
+b
+1
+,
+b
+2
+,…,
+b
+n
+. If there are multiple solutions, you can output any of them.
 Example
 input
 Copy
-4
 3
-1 3 5
 4
-1 3 5 7
-4
-1 2 3 4
-4
-10 20 30 40
+5 3 1 2
+6
+7 7 7 3 3 3
+6
+4 4 4 0 0 0
 output
 Copy
-Alice
-Alice
-Bob
-Alice
+2
+1 3 2 4
+3
+1 2 3 4 5 6
+3
+6 5 4 3 2 1
 Note
-In the first and second test cases, Alice always selects two odd numbers, so the sum of her selected numbers is always even. Therefore, Alice always wins.
-In the third test case, Bob has a winning strategy that he always selects a number with the same parity as Alice selects in her last turn. Therefore, Bob always wins.
-In the fourth test case, Alice always selects two even numbers, so the sum of her selected numbers is always even. Therefore, Alice always wins.
+For the first test case, permutation
+a=[1,3,2,4]
+and threshold
+k=2
+will produce sequence
+b
+as follows.
+When
+i=1
+,
+x=
+a
+i
+=1≤k
+, there is no
+a
+j
+(
+1≤j<i
+) that
+a
+j
+>k
+. Therefore,
+b
+1
+=n+1=5
+.
+When
+i=2
+,
+x=
+a
+i
+=3>k
+, the last element
+a
+j
+that
+a
+j
+≤k
+is
+a
+1
+. Therefore,
+b
+3
+=
+a
+1
+=1
+.
+When
+i=3
+,
+x=
+a
+i
+=2≤k
+, the last element
+a
+j
+that
+a
+j
+>k
+is
+a
+2
+. Therefore,
+b
+2
+=
+a
+2
+=3
+.
+When
+i=4
+,
+x=
+a
+i
+=4>k
+, the last element
+a
+j
+that
+a
+j
+≤k
+is
+a
+3
+. Therefore,
+b
+4
+=
+a
+3
+=2
+.
+Finally, we obtain sequence
+b=[5,3,1,2]
+.
+For the second test case, permutation
+a=[1,2,3,4,5,6]
+and threshold
+k=3
+will produce sequence
+b
+as follows.
+When
+i=1,2,3
+,
+a
+i
+≤k
+, there is no
+a
+j
+(
+1≤j<i
+) that
+a
+j
+>k
+. Therefore,
+b
+1
+=
+b
+2
+=
+b
+3
+=n+1=7
+.
+When
+i=4,5,6
+,
+a
+i
+>k
+, the last element
+a
+j
+that
+a
+j
+≤k
+is
+a
+3
+. Therefore,
+b
+4
+=
+b
+5
+=
+b
+6
+=
+a
+3
+=3
+.
+Finally, we obtain sequence
+b=[7,7,7,3,3,3]
+.
+For the third test case, permutation
+a=[6,5,4,3,2,1]
+and threshold
+k=3
+will produce sequence
+b
+as follows.
+When
+i=1,2,3
+,
+a
+i
+>k
+, there is no
+a
+j
+(
+1≤j<i
+) that
+a
+j
+≤k
+. Therefore,
+b
+4
+=
+b
+5
+=
+b
+6
+=0
+.
+When
+i=4,5,6
+,
+a
+i
+≤k
+, the last element
+a
+j
+that
+a
+j
+>k
+is
+a
+3
+. Therefore,
+b
+1
+=
+b
+2
+=
+b
+3
+=
+a
+3
+=4
+.
+Finally, we obtain sequence
+b=[4,4,4,0,0,0]
+.

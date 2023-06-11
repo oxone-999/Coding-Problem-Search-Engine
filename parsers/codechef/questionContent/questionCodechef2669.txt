@@ -1,91 +1,103 @@
-Maximum Possible Sweetness
+Profitable Paths
 Problem
-Read problem statements in Russian and Mandarin Chinese.
-Chef goes to a candy store that sells
-N different candies. For each candy, we know its price and sweetness. Chef has
-D dollars and can take a maximum of
-2 candies, one in each hand. Find the maximum total sweetness he can buy under the given constraints.
-NOTE: Since the input-output is large, prefer using fast input-output methods.
-Input Format
-The first line contains an integer
-T, the number of test cases. Then the test cases follow.
-Each test case contains three lines of input.
-First line will contain 2 space separated integers
-N and
-D, the number of different candies and the amount of money Chef has.
-Second line contains
-N space separated integers
-P
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+You are given a tree with
+N vertices (numbered
+1 through
+N) and a sequence of integers
+A
 1
-,P
+,A
 2
-,…,P
+,…,A
 N
-, where
-P
-i
-is the price of the
-i
-th
-candy.
-Third line contains
-N space separated integers
-S
+. You may choose an arbitrary permutation
+p
 1
-,S
+,p
 2
-,…,S
+,…,p
 N
-, where
-S
+of the integers
+1 through
+N. Then, for each vertex
+i, you should assign the value
+A
+p
 i
-is the sweetness of the
-i
-th
-candy.
-Output Format
-For each testcase, output in a single line, the maximum total sweetness Chef can buy with the money he has, and with at most two candies.
-Constraints
-1≤T≤2.5∗10
-5
-1≤N≤10
-5
-1≤D≤10
+to this vertex.
+The profit of a path between two vertices
+u and
+v is the sum of the values assigned to the vertices on that path (including
+u and
+v).
+Let's consider only (undirected) paths that start at a leaf and end at a different leaf. Calculate the maximum possible value of the sum of profits of all such paths. Since this value could be very large, compute it modulo
+10
 9
-1≤P
-i
-,S
++7.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+Each of the following
+N−1 lines contains two space-separated integers
+u and
+v denoting that vertices
+u and
+v are connected by an edge.
+Output
+For each test case, print a single line containing one integer — the maximum sum of profits, modulo
+10
+9
++7.
+Constraints
+1≤T≤1,000
+1≤N≤300,000
+1≤A
 i
 ≤10
 9
-Sum
-N over all testcases is atmost
-10
-6
-.
+for each valid
+i
+the sum of
+N over all test cases does not exceed
+5⋅10
+5
 Sample 1:
 Input
 Output
-3
-2 10
-1 2 
-2 1 
-5 7
-1 2 3 4 5
-1 2 3 4 5
-5 7
-6 6 6 6 6
-5 4 3 2 1
-3
-7
+2
+4
+1 2 3 4
+1 2
+2 3
+2 4
 5
+1 2 3 4 5
+1 2
+2 3
+3 4
+4 5
+24
+15
 Explanation:
-TestCase
-1: Chef can collect both the candies available with the money he has.
-TestCase
-2: Chef can collect candies at index
-[2,5] or
-[3,4]. In both cases, he will get the total sweetness of
-7.
-TestCase
-3: Since the price of all candies is the same, it's always optimal to choose the candies with maximum sweetness. Also, in this case, no more than one candy can be chosen.
+Example case 1:
+(1,4,2,3) is one of the possible permutations that give the optimal answer. Then, the profits of paths between pairs of vertices
+(1,3),
+(1,4) and
+(3,4) are
+7,
+8 and
+9 respectively.
+Example case 2: Here, any permutation could be chosen.

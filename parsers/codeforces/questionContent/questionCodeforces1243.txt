@@ -1,159 +1,206 @@
-C. Paprika and Permutation
-time limit per test1 second
+D2. Too Many Impostors (hard version)
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Paprika loves permutations. She has an array
-a
+This is an interactive problem. The only difference between the easy and hard version is the limit on number of questions.
+There are
+n
+players labelled from
 1
+to
+n
+. It is guaranteed that
+n
+is a multiple of
+3
+.
+Among them, there are
+k
+impostors and
+n−k
+crewmates. The number of impostors,
+k
+, is not given to you. It is guaranteed that
+n
+3
+<k<
+2n
+3
+.
+In each question, you can choose three distinct integers
+a
 ,
-a
-2
-,…,
-a
-n
-. She wants to make the array a permutation of integers
-1
-to
-n
-.
-In order to achieve this goal, she can perform operations on the array. In each operation she can choose two integers
-i
+b
+,
+c
 (
-1≤i≤n
-) and
-x
-(
-x>0
-), then perform
+1≤a,b,c≤n
+) and ask: "Among the players labelled
 a
-i
-:=
-a
-i
-modx
-(that is, replace
-a
-i
-by the remainder of
-a
-i
-divided by
-x
-). In different operations, the chosen
-i
+,
+b
 and
-x
-can be different.
-Determine the minimum number of operations needed to make the array a permutation of integers
+c
+, are there more impostors or more crewmates?" You will be given the integer
+0
+if there are more impostors than crewmates, and
 1
-to
-n
-. If it is impossible, output
-−1
-.
-A permutation is an array consisting of
-n
-distinct integers from
-1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
-2
-appears twice in the array) and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
+otherwise.
+Find the number of impostors
+k
+and the indices of players that are impostors after asking at most
+n+6
+questions.
+The jury is adaptive, which means the indices of impostors may not be fixed beforehand and can depend on your questions. It is guaranteed that there is at least one set of impostors which fulfills the constraints and the answers to your questions at any time.
 Input
-Each test contains multiple test cases. The first line contains a single integer
+Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
-10
-4
-) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains an integer
+1≤t≤100
+). Description of the test cases follows.
+The first and only line of each test case contains a single integer
 n
 (
-1≤n≤
+6≤n<
 10
-5
-).
-The second line of each test case contains
-n
-integers
-a
-1
+4
 ,
-a
-2
-,…,
-a
 n
-. (
-1≤
-a
-i
-≤
-10
-9
-).
+is a multiple of
+3
+) — the number of players.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
 2⋅
 10
-5
+4
 .
-Output
-For each test case, output the minimum number of operations needed to make the array a permutation of integers
-1
-to
+Interaction
+For each test case, the interaction starts with reading
 n
-, or
+.
+Then you are allowed to make at most
+n+6
+questions in the following way:
+"? a b c" (
+1≤a,b,c≤n
+,
+a
+,
+b
+and
+c
+are pairwise distinct).
+After each one, you should read an integer
+r
+, which is equal to
+0
+if there are more impostors than crewmates among players labelled
+a
+,
+b
+and
+c
+, and equal to
+1
+otherwise.
+Answer
 −1
-if it is impossible.
+instead of
+0
+or
+1
+means that you made an invalid query. Exit immediately after receiving
+−1
+and you will see Wrong answer verdict. Otherwise you can get an arbitrary verdict because your solution will continue to read from a closed stream.
+When you have found the indices of all impostors, print a single line "! " (without quotes), followed by the number of impostors
+k
+, followed by
+k
+integers representing the indices of the impostors. Please note that you must print all this information on the same line.
+After printing the answer, your program must then continue to solve the remaining test cases, or exit if all test cases have been solved.
+After printing the queries and answers do not forget to output end of line and flush the output buffer. Otherwise, you will get the Idleness limit exceeded verdict. To do flush use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+Read documentation for other languages.
+Hacks
+You cannot make hacks in this problem.
 Example
 input
 Copy
-4
 2
-1 7
-3
-1 5 4
-4
-12345678 87654321 20211218 23571113
+6
+
+0
+
+1
+
 9
-1 2 3 4 18 19 5 6 7
+
+1
 output
 Copy
-1
--1
-4
-2
+? 1 2 3
+
+? 3 4 5
+
+! 3 4 1 2
+
+? 7 1 9
+
+! 4 2 3 6 8
 Note
-For the first test, the only possible sequence of operations which minimizes the number of operations is:
-Choose
-i=2
-,
-x=5
-. Perform
-a
-2
-:=
-a
-2
-mod5=2
-.
-For the second test, it is impossible to obtain a permutation of integers from
+Explanation for example interaction (note that this example only exists to demonstrate the interaction procedure and does not provide any hint for the solution):
+For the first test case:
+Question "? 1 2 3" returns
+0
+, so there are more impostors than crewmates among players
 1
-to
-n
+,
+2
+and
+3
+.
+Question "? 3 4 5" returns
+1
+, so there are more crewmates than impostors among players
+3
+,
+4
+and
+5
+.
+Outputting "! 3 4 1 2" means that one has found all the impostors, by some miracle. There are
+k=3
+impostors. The players who are impostors are players
+4
+,
+1
+and
+2
+.
+For the second test case:
+Question "? 7 1 9" returns
+1
+, so there are more crewmates than impostors among players
+7
+,
+1
+and
+9
+.
+Outputting "! 4 2 3 6 8" means that one has found all the impostors, by some miracle. There are
+k=4
+impostors. The players who are impostors are players
+2
+,
+3
+,
+6
+and
+8
 .

@@ -1,177 +1,216 @@
-C. Mark and His Unfinished Essay
+E. Mark and Professor Koro
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-One night, Mark realized that there is an essay due tomorrow. He hasn't written anything yet, so Mark decided to randomly copy-paste substrings from the prompt to make the essay.
-More formally, the prompt is a string
-s
-of initial length
+After watching a certain anime before going to sleep, Mark dreams of standing in an old classroom with a blackboard that has a sequence of
 n
-. Mark will perform the copy-pasting operation
-c
-times. Each operation is described by two integers
-l
-and
-r
-, which means that Mark will append letters
-s
-l
-s
-l+1
-…
-s
-r
-to the end of string
-s
-. Note that the length of
-s
-increases after this operation.
-Of course, Mark needs to be able to see what has been written. After copying, Mark will ask
+positive integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+on it.
+Then, professor Koro comes in. He can perform the following operation:
+select an integer
+x
+that appears at least
+2
+times on the board,
+erase those
+2
+appearances, and
+write
+x+1
+on the board.
+Professor Koro then asks Mark the question, "what is the maximum possible number that could appear on the board after some operations?"
+Mark quickly solves this question, but he is still slower than professor Koro. Thus, professor Koro decides to give Mark additional challenges. He will update the initial sequence of integers
 q
-queries: given an integer
+times. Each time, he will choose positive integers
 k
-, determine the
+and
+l
+, then change
+a
 k
--th letter of the final string
-s
-.
+to
+l
+. After each update, he will ask Mark the same question again.
+Help Mark answer these questions faster than Professor Koro!
+Note that the updates are persistent. Changes made to the sequence
+a
+will apply when processing future updates.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤1000
-) — the number of test cases.
-The first line of each test case contains three integers
+The first line of the input contains two integers
 n
-,
-c
-, and
+and
 q
 (
-1≤n≤2⋅
+2≤n≤2⋅
 10
 5
 ,
-1≤c≤40
-, and
-1≤q≤
+1≤q≤2⋅
 10
-4
-) — the length of the initial string
-s
-, the number of copy-pasting operations, and the number of queries, respectively.
-The second line of each test case contains a single string
-s
-of length
+5
+) — the length of the sequence
+a
+and the number of updates, respectively.
+The second line contains
 n
-. It is guaranteed that
-s
-only contains lowercase English letters.
-The following
-c
-lines describe the copy-pasting operation. Each line contains two integers
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤2⋅
+10
+5
+)
+Then,
+q
+lines follow, each consisting of two integers
+k
+and
 l
-and
-r
 (
-1≤l≤r≤
-10
-18
-). It is also guaranteed that
-r
-does not exceed the current length of
-s
-.
-The last
-q
-lines of each test case describe the queries. Each line contains a single integer
-k
-(
-1≤k≤
-10
-18
-). It is also guaranteed that
-k
-does not exceed the final length of
-s
-.
-It is guaranteed that the sum of
-n
-and
-q
-across all test cases does not exceed
-2⋅
+1≤k≤n
+,
+1≤l≤2⋅
 10
 5
-and
-10
-4
-, respectively.
-Output
-For each query, print the
+), telling to update
+a
 k
--th letter of the final string
-s
+to
+l
 .
-Example
+Output
+Print
+q
+lines. The
+i
+-th line should consist of a single integer — the answer after the
+i
+-th update.
+Examples
 input
 Copy
-2
-4 3 3
-mark
-1 4
-5 7
-3 8
-1
-10
-12
-7 3 3
-creamii
+5 4
+2 2 2 4 5
 2 3
-3 4
-2 9
-9
-11
-12
+5 3
+4 1
+1 4
 output
 Copy
-m
-a
-r
-e
-a
-r
+6
+5
+4
+5
+input
+Copy
+2 1
+200000 1
+2 200000
+output
+Copy
+200001
 Note
-In the first test case, the copy-paste process is as follows.
-The first step is pasting string
-mark
-at the end, yielding the string
-markmark
+In the first example test, the program must proceed through
+4
+updates.
+The sequence after the first update is
+[2,3,2,4,5]
+. One sequence of operations that achieves the number
+6
+the following.
+Initially, the blackboard has numbers
+[2,3,2,4,5]
 .
-The second step is pasting string
-mar
-at the end, yielding the string
-markmarkmar
+Erase two copies of
+2
+and write
+3
+, yielding
+[3,4,5,3]
 .
-The third step is pasting string
-rkmark
-at the end, yielding the string
-markmarkmarrkmark
+Erase two copies of
+3
+and write
+4
+, yielding
+[4,5,4]
 .
-In the second test case, the copy-paste process is as follows.
-The first step is pasting string
-re
-at the end, yielding the string
-creamiire
+Erase two copies of
+4
+and write
+5
+, yielding
+[5,5]
 .
-The second step is pasting string
-ea
-at the end, yielding the string
-creamiireea
+Erase two copies of
+5
+and write
+6
+, yielding
+[6]
 .
-The third step is pasting string
-reamiire
-at the end, yielding the string
-creamiireeareamiire
+Then, in the second update, the array is changed to
+[2,3,2,4,3]
+. This time, Mark cannot achieve
+6
+. However, one sequence that Mark can use to achieve
+5
+is shown below.
+Initially, the blackboard has
+[2,3,2,4,3]
+.
+Erase two copies of
+2
+and write
+3
+, yielding
+[3,4,3,3]
+.
+Erase two copies of
+3
+and write
+4
+, yielding
+[3,4,4]
+.
+Erase two copies of
+4
+and write
+5
+, yielding
+[3,5]
+.
+In the third update, the array is changed to
+[2,3,2,1,3]
+. One way to achieve
+4
+is shown below.
+Initially, the blackboard has
+[2,3,2,1,3]
+.
+Erase two copies of
+3
+and write
+4
+, yielding
+[2,2,1,4]
 .

@@ -1,30 +1,101 @@
-Ciel and Battle Arena
+Chef and Same Old Recurrence 2
 Problem
-Chef Ciel bought a new video game for guests to kill time until their orders arrive. In this game, you are a fighter in a battle arena, and you will fight against a fighter called Shindannin. In Japan, many people believe that the next day will be a happy day if they beat Shindannin, otherwise the next day will be an unhappy day.
-Let's start by defintions of some variables. VA and VB denote your initial HP (health points) and Shindannin's initial HP respectively. SA and SB denote your strength and Shindannin's strength respectively. MA denotes your initial MP (magical points), which is used when you use a skill. Note that only you can use a skill in the battle.
-In each turn, the battle will go on as follows:
-Firstly, you can use a skill as many times as you like as long as your MP is positive. If you use a skill, your HP and Shindannin's HP are decreased by half and your MP is decreased by 1. If HP becomes a non-integer, HP will be rounded up to the nearest integer. To be more precise, new HP will be ceil(old HP / 2).
-Next, an integer s is chosen in [0, SA] uniformly randomly, and an integer t is chosen in [0, SB] uniformly randomly.
-Then, your HP is decresed by t, and Shindannin's HP is decreased by s simultaneously.
-If both fighter have positive HP, next turn will occur.
-When a fighter's HP is down to zero or a negative integer, this fighter loses. If both fighters' HP is down to zero or negative integer simultaneously, you will fight against Shindannin again with the same conditions, that is, HP and MP are recovered completely before next battle. There is no limit on the number of rematches. If you fight optimally, what is your winning percentage?
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+Chef has started learning to solve dynamic programming problems recently. He has practiced on a lot of problems already, so he wants to try his hands on the hardest problems in this domain.
+Chef only likes the interesting part of solving dynamic programming problems — specifically, he just likes to divide a problem into beautiful subproblems which consist of solving recurrences; he finds actually solving these recurrences quite boring. Since you are Chef's assistant, your job is solving this boring part for Chef.
+Let's define a recurrent sequence
+{dp(k)}
+k=1
+∞
+with parametres
+A,
+B and
+K as follows:
+dp(1)=K
+for
+n>1,
+dp(n)=A⋅dp(n−1)+B⋅
+i=1
+∑
+n−1
+dp(i)⋅dp(n−i)
+Chef would like you to find the sum
+i=L
+∑
+R
+dp(i)
+2
+. Since this number can be very large, compute it modulo
+10
+9
++7. He wants to do this for
+Q pairs of
+L and
+R.
 Input
-An input contains 5 integers VA, VB, SA, SB and MA.
+The first line of the input contains four space-separated integers
+N,
+K,
+A and
+B.
+The second line of the input contains
+Q.
+The next
+Q lines contains two space-separated integers
+L and
+R.
 Output
-Print the maximum winning percentage you can achieve. This value must have an absolute error no more than 10-6.
+For every query print a single line containing one integer — the sum
+i=L
+∑
+R
+dp(i)
+2
+modulo
+10
+9
++7.
 Constraints
-1 ≤ VA, VB ≤ 100
-1 ≤ SA, SB ≤ 100
-0 ≤ MA ≤ 5
-Sample Input 1
-5 5 3 3 0
-Sample Output 1
-0.5
-Sample Input 2
-5 5 3 3 1
-Sample Output 2
-0.58886609097948
-Sample Input 3
-58 85 8 13 0
-Sample Output 3
-0.00011046536069
+1≤N≤10
+7
+1≤Q≤5⋅10
+4
+1≤L≤R≤N
+1≤B,K≤10
+9
++7
+0≤A≤10
+9
++7
+Subtasks
+Subtask #1 (5 points):
+N≤5,000
+Subtask #2 (10 points):
+N≤10
+5
+Subtask #3 (10 points):
+N≤10
+6
+A=0
+Subtask #4 (25 points): original constraints
+Example Input
+4 1 2 1
+2
+4 4
+1 4
+Example Output
+3249
+3403
+Explanation
+The first four terms of this sequence are:
+dp(1)=1
+dp(2)=2⋅dp(1)+dp(1)⋅dp(1)=3
+dp(3)=2⋅dp(2)+dp(1)⋅dp(2)+dp(2)⋅dp(1)=12
+dp(4)=2⋅dp(3)+dp(1)⋅dp(3)+dp(2)⋅dp(2)+dp(3)⋅dp(1)=57
+The answers for first and second query are:
+(dp(4)⋅dp(4))%(10
+9
++7)=3249
+(dp(1)⋅dp(1)+dp(2)⋅dp(2)+dp(3)⋅dp(3)+dp(4)⋅dp(4))%(10
+9
++7)=3403

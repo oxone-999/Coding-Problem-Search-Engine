@@ -1,44 +1,29 @@
-Alien Chefs
+Find a Subsequence
 Problem
-The aliens living in outer space are very advanced in technology, intelligence and everything, except one, and that is Cooking. Each year they spend millions of dollars in research, to crack famous recipes prepared by humans.
-Recently they came to know about Khana-Academy, a non-profit organization streaming free cooking lesson videos on earth. There are N recipes, numbered 1 to N, and the video of the ith recipe is live in the time interval [Si, Ei]. An alien can visit earth but can not survive for more than just a small moment (earth is so advanced in pollution). An alien visits the earth at an integer time t and instantly downloads the complete video of all the lessons that are live at that moment of time t and leaves earth immediately. You are given the visiting times of a small group of K aliens. Find the number of different recipes aliens can learn by watching the downloaded videos. Not just one group of aliens, there are Q such groups, so you have to find the answer for each of these Q groups.
+Given an array A of N integers A[0], A[1], ..., A[N-1] and a string B which is a permutation of "12345".
+You have to find a subsequence of 5 elements from A having distinct values such that their relative order is same as B.
+Meaning that, if (i0, i1, i2, i3, i4) are the indexes of such a subsequence (0 <= i0 < i1 < i2 < i3 < i4 < N) then:
+A[i0] is the B[0]-th smallest element among the 5 numbers.
+A[i1] is the B[1]-th smallest element among the 5 numbers.
+A[i2] is the B[2]-th smallest element among the 5 numbers.
+A[i3] is the B[3]-th smallest element among the 5 numbers.
+A[i4] is the B[4]-th smallest element among the 5 numbers.
 Input
-The first line has an integer N. Each of the following N lines has two integers Si Ei. The next line has an integer Q, the number of groups. Each of the following Q lines has information of a group of aliens. The first integer is K, the number of aliens in that group, followed by K integers in the same line, the integer visiting times t of the aliens.
-
-1 ≤ N ≤ 100000 (105)
-1 ≤ Q ≤ 5000 (5 · 103)
-1 ≤ K ≤ 20
-1 ≤ Si, Ei, t ≤ 1000000000 (109)
-Si < Ei
-
+The first line of input contains T(<=60) which is the number of tests cases. The first line of each test case will be an integer N (5<=N<=1000) and a string B containing a permutation of "12345". Next line will contain N integers A[0], A[1], ..., A[N-1]. Each of them will be between -109 and +109 (inclusive).
 Output
-For each of the Q groups, output the number of different recipes that group of aliens can learn by watching the downloaded videos.
+For each test case output five space separated integers in ascending order which are the indexes (i0, i1, i2, i3, i4) of a five length subsequence described before. You may output any solution. If there is no solution just output "-1" without quotes.
 Example
 Input:
-4
-1 4
-3 10
-2 6
-5 8
-3
-1 5
-2 2 6
-3 1 10 9
+2
+7 32145
+6 17 5 3 13 8 10
+7 12345
+10 20 30 40 40 20 10
 
 Output:
-3
-4
-2
+0 2 3 5 6
+-1
 
-Explanation:
-Given videos of 4 recipes in the following closed intervals.
-1. [ 1 , 4 ]
-2. [ 3 , 10 ]
-3. [ 2 , 6 ]
-4. [ 5 , 8 ]
 
-In the first query, only one alien arrives at t = 5 and can download 3 recipes 2, 3, 4.
-
-In the second query, two aliens arrive at t = 2 and 6. They can learn all the 4 recipes.
-
-In the third query, three aliens arrive at t = 1, 10 and 9. They can learn only two recipes, 1 and 2.
+Explanation of 1st sample: {0, 2, 3, 5, 6} is a valid solution because the values of those indexes {6, 5, 3, 8, 10} will have ranks {3, 2, 1, 4, 5} after sorting. But {0, 2, 3, 4, 5} is not a solution as the values {6, 5, 3, 13, 8} will have ranks {3, 2, 1, 5, 4} after sorting.
+Explanation of 2nd sample: There is no five length subsequence in the array that will have ranks {1, 2, 3, 4, 5} after sorting.

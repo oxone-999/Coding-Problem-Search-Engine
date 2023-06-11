@@ -1,40 +1,42 @@
-Make It Zero 2
+Chef and New Game
 Problem
-Aleksandra is the most popular girl in the city. Each boy can only dream about dating her. Other girls want to be like her.
-Aleksandra is going to find herself a boyfriend. Of course such a beauty needs someone special. That's why she is going to announce a quiz. Even you can try your chances at this. Apart from boys, the girl also loves math. That's why this quiz is going to be mathematical.
-She has two matrixes with N rows and M columns each. Let Pi,j and Ai,j be the jth element of the ith row of the first and second matrixes respectively. She likes 0, that's why she is going to get rid of all non zero numbers in the second matrix. In each turn she may choose five integers:
-1 ≤ x1 ≤ x2 ≤ N
-1 ≤ y1 ≤ y2 ≤ M
-0 ≤ k ≤ 10000
-and after this, for all pairs (i,j) such that:
-x1 ≤ i ≤ x2
-y1 ≤ j ≤ y2
-she does the following:
-Ai,j = (k + Ai,j) modulo Pi,j
-It takes her a lot of turns to do this. That's why she gives this problem to all boys in the city and promises to go for a date with the one who will solve this task with the fewest number of moves.
-It is your chance to walk with such a wonderful girl. Just use it!
-Input
-The first line contains two space-separated integers N and M, denoting the size of the matrix. Then the ith line of the next N lines contains M space-separated integers Pi,1, Pi,2, ..., Pi,M. After matrix P, matrix A is given in the same format.
-Output
-In the first line, print the integer Q (0 ≤ Q ≤ N * M), denoting the number of the moves for erasing all non zero numbers from the second matrix. In the ith line of the next Q lines, print 5 space-separated integers x1, y1, x2, y2, k, denoting the information about submatrix chosen at the ith move.
-Note: Your solution will be judged as wrong answer if Q is larger then N*M.
-Constraints for the official judge data
-66 ≤ N, M ≤ 99
-1 ≤ Pi,j ≤ 10
-0 ≤ Ai,j < Pi,j
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef has found a new game and now he wants you to help him to get as much points as possible.
+Rules of the game: There are different types of game pieces - geometric shapes composed of some amount of square blocks. In the picture below you can see all the types of figures and enumeration.
+The playing field is 10 cells width and 10 cells height. On each step of the game you are given exactly three game pieces. After that you need to put each of them to the game field such that after your move no two figures on the field are overlapped(you cannot rotate figures). If your move results in one or more horizontal or/and vertical lines of 10 units without gaps, those lines disappear. Notice that you put these three figures one by one and if you place the first figure and there are some lines ready to disappear, then they will disappear and only after that you place other figures.
+The game ends when you can't put no more figures on the game field.
+  Input
+Each line of input contains three integers figure1, figure2 , figure3 denoting the type of the figures appeared on this step. If the game has ended - in the next line of input will be "-1 -1 -1".
+Interaction with the judge
+In each step you should read from the standard input all information about figures that appear in this step. After receiving this input, you should print one line containing nine space-separated parameters id1, r1, c1, id2, r2, c2, id3, r3 and c3. Integers {id1, id2, id3} is the permutation of {1, 2, 3} and denote the order in which you will put these three figures. Integer ri denotes the number of the row of the lowest block of idith figure after you put it and ci denotes the number of the column of the leftmost block of idith figure after you put it. The rows are numbered from 1 to 10 from top to bottom and columns are numbered from 1 to 10 from left to right. Remember to flush the output after every line you print.
+To finish the game(if you don't know where to put figures or it's impossible to put some figures) you need to output "-1" for figures you don't know where to put. For example, if on some move you don't know how to place all three figures, you need to output nine '-1"s as describing of all three figures. But if you can place, for example, only second figure, you need to output next numbers: "2 r1 c1 -1 -1 -1 -1 -1 -1". When judge reads "-1"s as describing of some figure, it means that the game ends at this step and then judge will output only "-1 -1 -1" as sign of finishing the game.
+Constraints
+1 ≤ figurei ≤ 19
+Total amount of steps of the game does not exceed 5 * 104
+Scoring
+For each test case, your score will be the sum of areas(amount of square blocks figure consists) of figures that you correctly place in the playing field. Your goal is to maximise this score.
+Also there are some bonuses: if after your move exactly x row(s) and y column(s) will disappear - your score for this test will be increased by x2 + y2 + 5 * x *y and by 500 if after your move the field will be empty.
+Your total score for the problem will be the sum of scores on all the test cases.
+Your solution will be tested only on 20% of the test files during the contest and will be re-judged against 100% after the end of competition.
+The game ends when you output "-1"s as describing of placing some figure(what means you want to finish the game) or total number of moves reached 5 * 104. In both cases the judge will output "-1 -1 -1" as a sing of finishing of the game.
+You will get WA verdict if you output incorrect data or some figures overlap. Incorrect data means that there is no way to put this figure at the place you output or you output completely incorrect data: idi ∉ {1, 2, 3}, {id1, id2, id3} is not the permutation of {1, 2, 3}, r ∉ [1..10] or c ∉ [1..10].
+If you passed all 5 * 104 steps of the game, the next line of input will be "-1 -1 -1" and your result will be the score you got.
+Test data generation
+For each test file the probabilities of appearing each figure are manually chosen.
 Example
 Input:
-2 2
-1 2
-2 3
-0 1
-1 1
+8 3 11
+6 14 12
+5 10 11
+5 7 11
+16 19 1
+-1 -1 -1
 Output:
-2
-1 1 2 2 1
-2 2 2 2 1
-Scoring
-For each test file, your score is calculated as 100 × Q / (N × M). Then the total your score is defined as the average of your score for the test files (see the next paragraph, for more details). The aim for this problem is to minimize the total your score.
-We have 40 official test files. You must correctly solve all test files to receive accepted. During the contest, the scores of the last 30 test files are 0, that is, the total your score is calculated by only the first 10 tests. After the contest, all solutions will be rescored by the average of the scores of the all 40 test files, and it will be the final score.
-Test generation
-In the official test file, N and M are choosing uniformly and randomly from [66, 99]. Each Pi,j is chosen randomly from 1 to 10 inclusive. Then each Ai,j is chosen randomly from [0, Pi,j − 1].
+3 6 5 2 2 2 1 10 8
+1 4 8 2 6 1 3 7 2
+1 5 8 3 4 8 2 6 8
+3 9 8 2 10 7 1 1 6
+3 10 8 2 8 3 -1 -1 -1
+Explanation
+In this test case your score will be 74 = 66 (for areas of figures) + 8 (bonus score).
+On the fifth move the player decided to finish the game and output three "-1"s as the describing of placing the last figure on this move.

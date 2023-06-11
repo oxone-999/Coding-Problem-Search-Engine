@@ -1,62 +1,32 @@
-Red-blue Trees
+Permute Digits
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-In a red-blue tree, each vertex is either red or blue and adjacent vertices always have different colours.
-You are given a tree with
-N vertices (numbered
-1 through
-N). It is not necessarily a red-blue tree, but its vertices are still coloured red and blue. You may perform the following operation any number of times (including zero): choose two adjacent vertices and swap their colours.
-Find the smallest number of operations required to transform the tree into a red-blue tree or determine that it is impossible.
+You are given three positive integers A, B and C written in base X <= 10 without leading zeros. In how many ways you can permute the digits of A and permute the digits of B such that their sum will be equal to C (in base X of course)? Leading zeros after permutation are allowed. So for example for A=101 written in some base all possible ways to permute its digits are: 011, 101, 110.
+
+Remark. For positive integer A and base X >= 2 the digits of A in base X are uniquely determined by the equality A = Ak * Xk + Ak-1 * Xk - 1 + ... + A1 * X + A0 and inequalities 0 <= A0, A1, ..., Ak < X and Ak > 0 . Then A is written as 0...0AkAk-1...A1A0 in base X. Here an arbitrary non-negative number of leading zeros is allowed. If there are no leading zeros we say that A is written in canonical form.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-N−1 lines follow. Each of these lines contains two space-separated integers
-u and
-v denoting that vertices
-u and
-v are connected by an edge.
-The last line contains a string
-S with length
-N. For each valid
-i, the
-i-th character of this string is either '0' if the
-i-th vertex is initially red or '1' if it is initially blue.
+The first line contains a single integer T, the number of test cases. T test cases follow. The only line of each test case contains four space separated positive integers X, A, B and C, where A, B, C is written in base X without leading zeros (that is in canonical form).
 Output
-Print a single line containing one integer ― the smallest number of operations or
-−1 if it is impossible to transform the tree into a red-blue tree.
+For each test case, output a single line containing the number of possible permutations of digits of A and B such that their sum is equal to C.
 Constraints
-1≤T≤100
-1≤N≤100,000
-1≤u,v≤N
-S contains only characters '0' and '1'
-the sum of
-N over all test cases does not exceed
-10
-6
-Sample 1:
-Input
-Output
-1 
-7 
-1 2 
-1 3 
-2 4 
-2 5 
-3 6 
-3 7 
-0010010
-3
-Explanation:
-Example case 1: We can perform the following operations:
-Swap the colours of vertices
-1 and
-3; the string of colours becomes "1000010".
-Swap the colours of vertices
-1 and
-2; the string of colours becomes "0100010".
-Swap the colours of vertices
-6 and
-3; the string of colours becomes "0110000", so the tree is a red-blue tree.
+1 <= T <= 10
+2 <= X <= 10
+1 <= len(A), len(B), len(C) <= 80/X
+where len(N) stands for the number of digits of number N when it is written in base X in canonical form.
+Example
+Input:
+5
+2 10 10 11
+3 2 2 11
+10 101 12 23
+10 10 100 1000
+10 43716 70251864 71130699
+
+Output:
+2
+1
+1
+0
+4
+Explanation
+In the first case the appropriate ways are 01+10=11 and 10+01=11.
+In the third case the only appropriate way is 011+12=23.

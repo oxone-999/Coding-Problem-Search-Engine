@@ -1,105 +1,101 @@
-C. Card Guessing
-time limit per test15 seconds
-memory limit per test1024 megabytes
+D. Watch the Videos
+time limit per test1 second
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Consider a deck of cards. Each card has one of
-4
-suits, and there are exactly
+Monocarp wants to watch
 n
-cards for each suit — so, the total number of cards in the deck is
-4n
-. The deck is shuffled randomly so that each of
-(4n)!
-possible orders of cards in the deck has the same probability of being the result of shuffling. Let
-c
+videos. Each video is only one minute long, but its size may be arbitrary. The
 i
-be the
+-th video has the size
+a
 i
--th card of the deck (from top to bottom).
-Monocarp starts drawing the cards from the deck one by one. Before drawing a card, he tries to guess its suit. Monocarp remembers the suits of the
-k
-last cards, and his guess is the suit that appeared the least often among the last
-k
-cards he has drawn. So, while drawing the
+megabytes. All videos are published on the Internet. A video should be downloaded before it can be watched. Monocarp has poor Internet connection — it takes exactly
+1
+minute to download
+1
+megabyte of data, so it will require
+a
 i
--th card, Monocarp guesses that its suit is the suit that appears the minimum number of times among the cards
-c
-i−k
-,
-c
-i−k+1
-,…,
-c
-i−1
-(if
-i≤k
-, Monocarp considers all previously drawn cards, that is, the cards
-c
+minutes to download the
+i
+-th video.
+Monocarp's computer has a hard disk of
+m
+megabytes. The disk is used to store the downloaded videos. Once Monocarp starts the download of a video of size
+s
+, the
+s
+megabytes are immediately reserved on a hard disk. If there are less than
+s
+megabytes left, the download cannot be started until the required space is freed. Each single video can be stored on the hard disk, since
+a
+i
+≤m
+for all
+i
+. Once the download is started, it cannot be interrupted. It is not allowed to run two or more downloads in parallel.
+Once a video is fully downloaded to the hard disk, Monocarp can watch it. Watching each video takes exactly
+1
+minute and does not occupy the Internet connection, so Monocarp can start downloading another video while watching the current one.
+When Monocarp finishes watching a video, he doesn't need it on the hard disk anymore, so he can delete the video, instantly freeing the space it occupied on a hard disk. Deleting a video takes negligible time.
+Monocarp wants to watch all
+n
+videos as quickly as possible. The order of watching does not matter, since Monocarp needs to watch all of them anyway. Please calculate the minimum possible time required for that.
+Input
+The first line contains two integers
+n
+and
+m
+(
+1≤n≤2⋅
+10
+5
+;
+1≤m≤
+10
+9
+) — the number of videos Monocarp wants to watch and the size of the hard disk, respectively.
+The second line contains
+n
+integers
+a
 1
 ,
-c
+a
 2
 ,…,
-c
-i−1
-). If there are multiple suits that appeared the minimum number of times among the previous cards Monocarp remembers, he chooses a random suit out of those for his guess (all suits that appeared the minimum number of times have the same probability of being chosen).
-After making a guess, Monocarp draws a card and compares its suit to his guess. If they match, then his guess was correct; otherwise it was incorrect.
-Your task is to calculate the expected number of correct guesses Monocarp makes after drawing all
-4n
-cards from the deck.
-Input
-The first (and only) line contains two integers
+a
 n
 (
-1≤n≤500
-) and
-k
-(
-1≤k≤4⋅n
-).
+1≤
+a
+i
+≤m
+) — the sizes of the videos.
 Output
-Let the expected value you have to calculate be an irreducible fraction
-x
-y
-. Print one integer — the value of
-x⋅
-y
-−1
-mod998244353
-, where
-y
-−1
-is the inverse to
-y
-(i. e. an integer such that
-y⋅
-y
-−1
-mod998244353=1
-).
+Print one integer — the minimum time required to watch all
+n
+videos.
 Examples
 input
 Copy
-1 1
+5 6
+1 2 3 4 5
 output
 Copy
-748683266
+16
 input
 Copy
-3 2
+5 5
+1 2 3 4 5
 output
 Copy
-567184295
+17
 input
 Copy
-2 7
+4 3
+1 3 2 3
 output
 Copy
-373153250
-input
-Copy
-2 8
-output
-Copy
-373153250
+12

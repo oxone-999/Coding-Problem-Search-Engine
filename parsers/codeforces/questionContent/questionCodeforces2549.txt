@@ -1,139 +1,197 @@
-D. Ehab's Last Corollary
+C. Rotation Matching
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Given a connected undirected graph with
+After the mysterious disappearance of Ashish, his two favourite disciples Ishika and Hriday, were each left with one half of a secret message. These messages can each be represented by a permutation of size
 n
-vertices and an integer
-k
-, you have to either:
-either find an independent set that has exactly
-⌈
-k
-2
-⌉
-vertices.
-or find a simple cycle of length at most
-k
+. Let's call them
+a
+and
+b
 .
-An independent set is a set of vertices such that no two of them are connected by an edge. A simple cycle is a cycle that doesn't contain any vertex twice.
-I have a proof that for any input you can always solve at least one of these problems, but it's left as an exercise for the reader.
-Input
-The first line contains three integers
+Note that a permutation of
 n
-,
-m
-, and
-k
-(
-3≤k≤n≤
-10
-5
-,
-n−1≤m≤2⋅
-10
-5
-) — the number of vertices and edges in the graph, and the parameter
-k
-from the statement.
-Each of the next
-m
-lines contains two integers
-u
-and
-v
-(
-1≤u,v≤n
-) that mean there's an edge between vertices
-u
-and
-v
-. It's guaranteed that the graph is connected and doesn't contain any self-loops or multiple edges.
-Output
-If you choose to solve the first problem, then on the first line print
+elements is a sequence of numbers
+a
 1
-, followed by a line containing
-⌈
+,
+a
+2
+,…,
+a
+n
+, in which every number from
+1
+to
+n
+appears exactly once.
+The message can be decoded by an arrangement of sequence
+a
+and
+b
+, such that the number of matching pairs of elements between them is maximum. A pair of elements
+a
+i
+and
+b
+j
+is said to match if:
+i=j
+, that is, they are at the same index.
+a
+i
+=
+b
+j
+His two disciples are allowed to perform the following operation any number of times:
+choose a number
 k
-2
-⌉
-distinct integers not exceeding
-n
-, the vertices in the desired independent set.
-If you, however, choose to solve the second problem, then on the first line print
-2
-, followed by a line containing one integer,
+and cyclically shift one of the permutations to the left or right
+k
+times.
+A single cyclic shift to the left on any permutation
 c
-, representing the length of the found cycle, followed by a line containing
+is an operation that sets
 c
-distinct integers not exceeding
+1
+:=
+c
+2
+,
+c
+2
+:=
+c
+3
+,…,
+c
 n
-, the vertices in the desired cycle, in the order they appear in the cycle.
+:=
+c
+1
+simultaneously. Likewise, a single cyclic shift to the right on any permutation
+c
+is an operation that sets
+c
+1
+:=
+c
+n
+,
+c
+2
+:=
+c
+1
+,…,
+c
+n
+:=
+c
+n−1
+simultaneously.
+Help Ishika and Hriday find the maximum number of pairs of elements that match after performing the operation any (possibly zero) number of times.
+Input
+The first line of the input contains a single integer
+n
+(1≤n≤2⋅
+10
+5
+)
+ — the size of the arrays.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+, ...,
+a
+n
+(1≤
+a
+i
+≤n)
+— the elements of the first permutation.
+The third line contains
+n
+integers
+b
+1
+,
+b
+2
+, ...,
+b
+n
+(1≤
+b
+i
+≤n)
+— the elements of the second permutation.
+Output
+Print the maximum number of matching pairs of elements after performing the above operations some (possibly zero) times.
 Examples
 input
 Copy
-4 4 3
-1 2
-2 3
-3 4
-4 1
+5
+1 2 3 4 5
+2 3 4 5 1
+output
+Copy
+5
+input
+Copy
+5
+5 4 3 2 1
+1 2 3 4 5
 output
 Copy
 1
-1 3 
 input
 Copy
-4 5 3
-1 2
-2 3
-3 4
-4 1
-2 4
+4
+1 3 2 4
+4 2 3 1
 output
 Copy
 2
-3
-2 3 4 
-input
-Copy
-4 6 3
-1 2
-2 3
-3 4
-4 1
-1 3
-2 4
-output
-Copy
-2
-3
-1 2 3 
-input
-Copy
-5 4 5
-1 2
-1 3
-2 4
-2 5
-output
-Copy
-1
-1 4 5 
 Note
-In the first sample:
-Notice that printing the independent set
-{2,4}
-is also OK, but printing the cycle
-1−2−3−4
-isn't, because its length must be at most
-3
+For the first case:
+b
+can be shifted to the right by
+k=1
+. The resulting permutations will be
+{1,2,3,4,5}
+and
+{1,2,3,4,5}
 .
-In the second sample:
-Notice that printing the independent set
-{1,3}
-or printing the cycle
-2−1−4
-is also OK.
-In the third sample:
-In the fourth sample:
+For the second case: The operation is not required. For all possible rotations of
+a
+and
+b
+, the number of matching pairs won't exceed
+1
+.
+For the third case:
+b
+can be shifted to the left by
+k=1
+. The resulting permutations will be
+{1,3,2,4}
+and
+{2,3,1,4}
+. Positions
+2
+and
+4
+have matching pairs of elements. For all possible rotations of
+a
+and
+b
+, the number of matching pairs won't exceed
+2
+.

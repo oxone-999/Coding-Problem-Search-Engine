@@ -1,53 +1,135 @@
-Chef and Cake
+Gears
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-The Chef once decided to prepare some nice dishes on his birthday. There are N items kept on his shelf linearly from position 1 to N. Taste of the i-th item is denoted by a integer Ai.
-He wants to make Q dishes. A dish will be made using some ingredients in the continuous range AL, AL + 1, , , AR (1-base indexing). Quality of the dish will be determined by the ingredient with minimum taste.
-Chef wants help of his assistant Rupsa to find out sum and product of qualities of the dishes. As product of the qualities of the dishes could be very large, print it modulo 109 + 7. Also, you are given an integer K and you are assured that for each dish, the size of continuous range of the ingredients (i.e. R - L + 1) will always lie between K and 2 * K, both inclusive.
-Method of generation of Array A
-You are given non-negative integer parameters a, b, c, d, e, f, r, s, t, m, A[1]
-for x = 2 to N:
- if(t^x mod s  <= r)        // Here t^x signifies "t to the power of x"
-  A[x] = (a*A[x-1]^2 + b*A[x-1] + c) mod m
- else
-  A[x] = (d*A[x-1]^2 + e*A[x-1] + f) mod m
-Method of generation of range of ingredients for Q dishes
-You are given non-negative integer parameters L1, La, Lc, Lm, D1, Da, Dc, Dm
-for i = 1 to Q:
- L1 = (La * L1 + Lc) mod Lm;
- D1 = (Da * D1 + Dc) mod Dm; 
- L = L1 + 1;
- R = min(L + K - 1 + D1, N);
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+You are given
+N gears numbered
+1 through
+N. For each valid
+i, gear
+i has
+A
+i
+teeth. In the beginning, no gear is connected to any other. Your task is to process
+M queries and simulate the gears' mechanism. There are three types of queries:
+Type 1: Change the number of teeth of gear
+X to
+C.
+Type 2: Connect two gears
+X and
+Y.
+Type 3: Find the speed of rotation of gear
+Y if gear
+X rotates with speed
+V.
+It is known that if gear
+i is directly connected to gear
+j and gear
+i rotates with speed
+V, then gear
+j will rotate with speed
+−VA
+i
+/A
+j
+, where the sign of rotation speed denotes the direction of rotation (so minus here denotes rotation in the opposite direction). You may also notice that gears can be blocked in some cases. This happens when some gear would have to rotate in different directions. If a gear is connected to any blocked gear, it is also blocked. For example, if three gears are connected to each other, this configuration can not rotate at all, and if we connect a fourth gear to these three, it will also be blocked and not rotate.
 Input
-The first line contains three integers N, K and Q.
-The second line contains the integers a, b, c, d, e, f, r, s, t, m, and A[1].
-Then third line contains the integers L1, La, Lc, Lm, D1, Da, Dc, and Dm
+The first line of the input contains two space-separated integers
+N and
+M.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+The following
+M lines describe queries. Each of these lines begins with an integer
+T denoting the type of the current query.
+If
+T=1, it is followed by a space and two space-separated integers
+X and
+C.
+If
+T=2, it is followed by a space and two space-separated integers
+X and
+Y.
+If
+T=3, it is followed by a space and three space-separated integers
+X,
+Y and
+V.
 Output
-Output two space separated integers:
-The sum of qualities of the dishes.
-The product of qualities of the dishes modulo 109+7.
+For each query of type 3, print a single line containing two integers separated by a slash '/' — the numerator and denominator of the rotation speed of the given gear expressed as an irreducible fraction (even if this speed is an integer), or
+0 if the gear does not rotate at all.
 Constraints
-1 ≤ N, Q ≤ 107
-1 ≤ K ≤ N
-0 ≤ a, b, c, d, e, f, r, s, t, m, A[1] ≤ 109+7
-1 ≤ Lm ≤ N - K + 1
-1 ≤ Dm ≤ K + 1
-1 ≤ La, Lc ≤ Lm
-1 ≤ Da, Dc ≤ Dm
-1 ≤ L1 ≤ N
-1 ≤ D1 ≤ K
-Sub tasks
-Subtask #1: 1 ≤ N, Q ≤ 1000 (10 points)
-Subtask #2: 1 ≤ Q ≤ 104 (20 points)
-Subtask #3: original constraints (70 points)
+1≤N≤10
+5
+1≤M≤2⋅10
+5
+6≤A
+i
+≤10
+6
+for each valid
+i
+1≤X,Y≤N
+1≤C,V≤10
+6
+Subtasks
+Subtask #1 (30 points):
+N≤2,000
+M≤5,000
+Subtask #2 (70 points): original constraints
 Sample 1:
 Input
 Output
-4 2 1
-1 1 1 1 1 1 1 1 1 100 1 
-1 1 1 3 1 1 1 2
-13 13
+4 10
+6 8 10 13
+3 1 2 2
+2 1 2
+3 1 2 3
+2 2 3
+1 1 7
+3 1 3 10
+2 3 1
+3 1 3 2
+2 1 4
+3 1 4 6
+0
+-9/4
+7/1
+0
+0
 Explanation:
-The array A comes out to be {1, 3, 13, 83} and the first dish has L = 3 and R = 4. The minimum in this range is 13, thus the sum and product both are 13 and hence the answer.
-Note
-Multiplier for C# and Java have been reduced to 1.5 instead of 2.
+For the first query of type 3, there are no connections between gears, so the answer is
+0.
+For the second query of type 3, we can calculate the rotation speed using the formula
+−3⋅
+8
+6
+=
+4
+−9
+.
+For the third query of type 3, we can use the formula twice, so the speed of the second gear is
+−10⋅
+8
+7
+=−
+4
+35
+, and the speed of the third gear is
+−(−
+4
+35
+)
+10
+8
+=
+1
+7
+.
+For the last query of type 3, all gears are blocked.

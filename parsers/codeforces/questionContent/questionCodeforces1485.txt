@@ -1,124 +1,203 @@
-E. Fix the String
-time limit per test2 seconds
+G. A Battle Against a Dragon
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A regular bracket sequence is a bracket sequence that can be transformed into a correct arithmetic expression by inserting characters "1" and "+" between the original characters of the sequence. For example:
-bracket sequences "()()" and "(())" are regular (the resulting expressions are: "(1)+(1)" and "((1+1)+1)");
-bracket sequences ")(", "(" and ")" are not.
-You are given two strings
-s
-and
-a
-, the string
-s
-has length
+A squad of
 n
-, the string
-a
-has length
-n−3
-. The string
-s
-is a bracket sequence (i. e. each element of this string is either an opening bracket character or a closing bracket character). The string
-a
-is a binary string (i. e. each element of this string is either 1 or 0).
-The string
-a
-imposes some constraints on the string
-s
-: for every
+warriors is defending a castle from a dragon attack. There are
+m
+barricades between the castle and the dragon.
+The warriors are numbered from
+1
+to
+n
+. The
 i
-such that
-a
+-th warrior knows
+k
 i
-is 1, the string
-s
-i
-s
-i+1
-s
-i+2
-s
-i+3
-should be a regular bracket sequence. Characters of
+attacks: the
+j
+-th of them deals
 a
-equal to 0 don't impose any constraints.
-Initially, the string
-s
-may or may not meet these constraints. You can perform the following operation any number of times: replace some character of
-s
-with its inverse (i. e. you can replace an opening bracket with a closing bracket, or vice versa).
-Determine if it is possible to change some characters in
-s
-so that it meets all of the constraints, and if it is possible, calculate the minimum number of characters to be changed.
+i,j
+damage to the dragon and can only be applied if there are exactly
+b
+i,j
+barricades between the castle and the dragon.
+The warriors make turns one after another, starting from warrior
+1
+. After warrior
+n
+makes his turn, the total damage to the dragon is calculated. The
+i
+-th warrior performs exactly one of three possible moves in his turn:
+destroys one barricade (if there are any left);
+deploys one of his
+k
+i
+attacks;
+skips a turn.
+The total damage is the sum of damages dealt by the warriors who chose to deploy their attacks in their turn. What is the maximum total damage the warriors can deal to the dragon?
 Input
-The first line contains one integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases.
-Each test case consists of three lines. The first line contains one integer
+The first line contains two integers
 n
+and
+m
 (
-4≤n≤2⋅
+1≤n,m≤3⋅
 10
 5
-). The second line contains the string
-s
-, consisting of exactly
-n
-characters; each character of
-s
-is either '(' or ')'. The third line contains the string
+) — the number of warriors and the initial number of barricades.
+Then the descriptions of attacks for each warrior follow. The
+i
+-th description consists of three lines.
+The first line contains a single integer
+k
+i
+(
+1≤
+k
+i
+≤m+1
+) — the number of attacks the
+i
+-th warrior knows.
+The second line contains
+k
+i
+integers
 a
-, consisting of exactly
-n−3
-characters; each character of
+i,1
+,
 a
-is either '1' or '0'.
-Additional constraint on the input: the sum of
-n
-over all test cases does not exceed
-2⋅
+i,2
+,…,
+a
+i,
+k
+i
+(
+1≤
+a
+i,j
+≤
+10
+9
+) — the damage of each attack.
+The third line contains
+k
+i
+integers
+b
+i,1
+,
+b
+i,2
+,…,
+b
+i,
+k
+i
+(
+0≤
+b
+i,j
+≤m
+) — the required number of barricades for each attack.
+b
+i,j
+for the
+i
+-th warrior are pairwise distinct. The attacks are listed in the increasing order of the barricades requirement, so
+b
+i,1
+<
+b
+i,2
+<⋯<
+b
+i,
+k
+i
+.
+The sum of
+k
+i
+over all warriors doesn't exceed
+3⋅
 10
 5
 .
 Output
-For each test case, print one integer: the minimum number of characters that need to be changed in
-s
-, or
-−1
-if it is impossible.
-Example
+Print a single integer — the maximum total damage the warriors can deal to the dragon.
+Examples
 input
 Copy
-6
-4
-))((
+2 4
 1
+2
 4
-))((
-0
-4
-()()
-0
-6
-))(()(
-101
-6
-))(()(
-001
-5
-(((((
-11
+2
+10 5
+3 4
 output
 Copy
-2
-0
-0
-4
+10
+input
+Copy
+3 3
 1
--1
+1
+0
+1
+20
+2
+1
+100
+3
+output
+Copy
+100
+input
+Copy
+2 1
+2
+10 10
+0 1
+2
+30 20
+0 1
+output
+Copy
+30
+Note
+In the first example, the optimal choice is the following:
+warrior
+1
+destroys a barricade, now there are
+3
+barricades left;
+warrior
+2
+deploys his first attack (he can do it because
+b
+1,1
+=3
+, which is the current number of barricades).
+The total damage is
+10
+.
+If the first warrior used his attack or skipped his turn, then the second warrior would only be able to deploy his second attack. Thus, the total damage would be
+2+5=7
+or
+5
+.
+In the second example, the first warrior skips his move, the second warrior skips his move and the third warrior deploys his only attack.
+In the third example, two equivalent options are:
+both warriors deploy their second attacks;
+the first warrior destroys one barricade and the second warrior deploys his first attack.
+Both options yield
+30
+total damage.

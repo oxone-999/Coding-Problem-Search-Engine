@@ -1,161 +1,139 @@
-D. Count GCD
+E. Bracket Cost
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given two integers
-n
-and
-m
-and an array
-a
-of
-n
-integers. For each
-1≤i≤n
-it holds that
-1≤
-a
-i
-≤m
+Daemon Targaryen decided to stop looking like a Metin2 character. He turned himself into the most beautiful thing, a bracket sequence.
+For a bracket sequence, we can do two kind of operations:
+Select one of its substrings
+†
+†
+and cyclic shift it to the right. For example, after a cyclic shift to the right, "(())" will become ")(()";
+Insert any bracket, opening '(' or closing ')', wherever you want in the sequence.
+We define the cost of a bracket sequence as the minimum number of such operations to make it balanced
+‡
+‡
 .
-Your task is to count the number of different arrays
-b
+Given a bracket sequence
+s
 of length
 n
-such that:
-1≤
-b
-i
-≤m
-for each
-1≤i≤n
-, and
-gcd(
-b
-1
-,
-b
+, find the sum of costs across all its
+n(n+1)
 2
-,
+non-empty substrings. Note that for each substring we calculate the cost independently.
+†
+†
+A string
+a
+is a substring of a string
 b
-3
-,...,
+if
+a
+can be obtained from
 b
-i
-)=
-a
-i
-for each
-1≤i≤n
-.
-Here
-gcd(
-a
+by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
+‡
+‡
+A sequence of brackets is called balanced if one can turn it into a valid math expression by adding characters
++
+and
 1
-,
-a
-2
-,…,
-a
-i
-)
-denotes the greatest common divisor (GCD) of integers
-a
-1
-,
-a
-2
-,…,
-a
-i
-.
-Since this number can be too large, print it modulo
-998244353
-.
+. For example, sequences "(())()", "()", and "(()(()))" are balanced, while ")(", "(()", and "(()))(" are not.
 Input
-Each test consist of multiple test cases. The first line contains a single integer
+Each test consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤100
+1≤t≤
+10
+5
 ) — the number of test cases. The description of test cases follows.
-The first line of each test case contains two integers
+The first line of each test case contains a single integer
 n
-and
-m
 (
 1≤n≤2⋅
 10
 5
-,
-1≤m≤
-10
-9
-) — the length of the array
-a
-and the maximum possible value of the element.
-The second line of each test case contains
+) — the length of the bracket sequence.
+The second line of each test case contains a string
+s
+, consisting only of characters '(' and ')', of length
 n
-integers
-a
-1
-,
-a
-2
-,…,
-a
+— the bracket sequence.
+It is guaranteed that sum of
 n
-(
-1≤
-a
-i
-≤m
-) — the elements of the array
-a
-.
-It is guaranteed that the sum of
-n
-across all test cases doesn't exceed
+across all test cases does not exceed
 2⋅
 10
 5
 .
 Output
-For each test case, print a single integer — the number of different arrays satisfying the conditions above. Since this number can be large, print it modulo
-998244353
+For each test case, print a single integer — the sum of costs of all substrings of
+s
 .
 Example
 input
 Copy
 5
-3 5
-4 2 1
-2 1
-1 1
-5 50
-2 3 5 2 3
-4 1000000000
-60 30 1 1
-2 1000000000
-1000000000 2
+1
+)
+4
+)()(
+3
+())
+5
+(((((
+10
+)(())))())
 output
 Copy
-3
 1
-0
-595458194
-200000000
+9
+6
+35
+112
 Note
-In the first test case, the possible arrays
-b
-are:
-[4,2,1]
-;
-[4,2,3]
-;
-[4,2,5]
+In the first test case, there is the only substring ")". Its cost is
+1
+because we can insert '(' to the beginning of this substring and get a string "()", that is a balanced string.
+In the second test case, the cost of each substring of length one is
+1
+. The cost of a substring ")(" is
+1
+because we can cyclically shift it to right and get a string "()". The cost of strings ")()" and "()(" is
+1
+because its enough to insert one bracket to each of them. The cost of substring ")()(" is
+1
+because we can cyclically shift it to right and get a string "()()". So there are
+4+2+2+1=9
+substring of cost
+1
+and
+1
+substring of cost
+0
+. So the sum of the costs is
+9
 .
-In the second test case, the only array satisfying the demands is
-[1,1]
+In the third test case,
+"(", the cost is
+1
+;
+"()", the cost is
+0
+;
+"())", the cost is
+1
+;
+")", the cost is
+1
+;
+"))", the cost is
+2
+;
+")", the cost is
+1
 .
-In the third test case, it can be proven no such array exists.
+So the sum of the costs is
+6
+.

@@ -1,38 +1,103 @@
-Palindromeness
+Unique Substring
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Let us define the palindromeness of a string in the following way:
-If the string is not a palindrome, its' palindromeness is zero.
-The palindromeness of an one-letter string is 1.
-The palindromness of a string S of the length greater than one is 1 + "palindromeness of the string that is formed by the first [|S|/2] symbols of S".
-Let us consider some examples for better understanding:
-The palindromeness of the string zxqfd is 0, since the string is not a palindrome.
-The palindromeness of the string a is 1, by definition.
-The palindromeness of the string aa is 2, beucase for "aa" we get 1 + palindromeness of "a", that is one, so we get 2.
-The palindromeness of the string abacaba is 3.
-You are given a string S. Find the sum of the palindromenesses of all the non empty substrings of S (i.e. S[i..j], where i <= j). In other words, you have to calculate the sum of palindromenesses of N * (N + 1) / 2 substrings of S, where N is the length of S.
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first and only line of every test case contains a single string S for the corresponding test case.
-Output
-For each test case, output a single line containing an integer corresponding to the answer to the problem.
-Constraints
-1 ≤ T ≤ 3
-S consists only of lower-case Latin letters.
-Subtask 1 (15 points):
-1 ≤ |S| ≤ 100
-Subtask 2 (23 points):
-1 ≤ |S| ≤ 1000
-Subtask 3 (62 points):
-1 ≤ |S| ≤ 105
-Sample 1:
-Input
-Output
-2
-zxqfd
-aba
+Well, before Chef could counter attack, Dr Doof showed his innocent face which moved Chef. Moreover, on hearing his complete story, Chef took pity on him and decided to befriend him. He even decided to play a game with him. The game goes as follows:
+Chef gives Dr Doof a string
+S of length
+N consisting only of lowercase Latin letters and asks him to study the string carefully.
+A substring of a string is a contiguous subsequence of that string. We denote the substring of string
+S starting from the
+l
+th
+character and ending with the
+r
+th
+character as
+S[l,r]. So, strings chef and odech are substrings of string codechef, but string codee is not.
+Chef defines a substring to be unique if it occurs in the whole string
+S exactly once.
+After Dr Doof studies the string, Chef asks him
+Q queries of the form -
+L
+R
+K.
+For each query, you have to find the lexicographically smallest unique substring of length atleast
+K in
+[L,R], or say that there is no unique substring in this range. Formally, the answer to each query is two integers
+l and
+r such that:
+L≤l≤r≤R
+r−l+1≥K
+S[l,r] is the lexicographically smallest unique substring satisfying conditions
+1 and
+2.
+String
+p is lexicographically smaller than string
+q, if
+p is a prefix of
+q not equal to
+q or there exists an index
+i, such that
+p
+i
+<
+q
+i
+and for all
+j < i,p
+j
+= q
+j
+. For example, abc is lexicographically smaller than abcd , abd is lexicographically smaller than abec.
+This time, you have to help the poor Dr Doof answer the queries as he doesn't want to lose his new friend. If there is no unique substring
+S[l,r] satisfying the above conditions, print two space separated integers:
+−1
+−1.
+###Input:
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line contains a single string
+S.
+The third line contains a single integer
+Q.
+Q lines follow. Each of these lines contains three space-separated integers
+L
+R
+K describing a query.
+###Output: For each query, print a single line containing two space separated integers
+l and
+r ― the answer to the query.
+###Constraints
+1≤T≤10
 5
+2≤N≤5×10
 5
-Explanation:
-Example case 1: There is no palindrome that occurs as the substring of zxqfd and has the length more than 1. The individual characters are palindromes of the palindromeness of 1.
-Example case 2: The palindromeness of aba is 2 and the sum of the palindromenesses of single characters is 3.
+1≤Q≤5×10
+5
+1≤L≤R≤N
+1≤K≤R−L+1
+The sum of
+N over all test cases does not exceed
+5×10
+5
+The sum of
+Q over all test cases does not exceed
+5×10
+5
+###Sample Input: 1 5 abcab 4 1 3 2 2 5 3 3 4 1 4 5 1
+###Sample Output: 1 3 2 4 3 3 -1 -1
+###Explanation:
+Query
+1: The unique substrings in
+[1,3] are c, abc and bc. abc is the lexicographically smallest unique substring of length atleast 2.
+Query
+2: The unique substrings in
+[2,5] are bc, bca, bcab, c, ca and cab. bca is the lexicographically smallest unique substring of length atleast 3.
+Query
+3: The unique substrings in
+[3,4] are c and ca. c is the lexicographically smallest unique substring of length atleast 1.
+Query
+4: None of the substrings in
+[4,5] are unique.

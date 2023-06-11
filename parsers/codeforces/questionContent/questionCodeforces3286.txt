@@ -1,90 +1,208 @@
-E. Marbles
-time limit per test4 seconds
+F. Radio Stations
+time limit per test7 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Monocarp has arranged
+In addition to complaints about lighting, a lot of complaints about insufficient radio signal covering has been received by Bertown city hall recently.
 n
-colored marbles in a row. The color of the
+complaints were sent to the mayor, all of which are suspiciosly similar to each other: in the
 i
--th marble is
-a
+-th complaint, one of the radio fans has mentioned that the signals of two radio stations
+x
 i
-. Monocarp likes ordered things, so he wants to rearrange marbles in such a way that all marbles of the same color form a contiguos segment (and there is only one such segment for each color).
-In other words, Monocarp wants to rearrange marbles so that, for every color
-j
-, if the leftmost marble of color
-j
-is
-l
--th in the row, and the rightmost marble of this color has position
-r
-in the row, then every marble from
-l
+and
+y
+i
+are not covering some parts of the city, and demanded that the signal of at least one of these stations can be received in the whole city.
+Of cousre, the mayor of Bertown is currently working to satisfy these complaints. A new radio tower has been installed in Bertown, it can transmit a signal with any integer power from
+1
 to
+M
+(let's denote the signal power as
+f
+). The mayor has decided that he will choose a set of radio stations and establish a contract with every chosen station. To establish a contract with the
+i
+-th station, the following conditions should be met:
+the signal power
+f
+should be not less than
+l
+i
+, otherwise the signal of the
+i
+-th station won't cover the whole city;
+the signal power
+f
+should be not greater than
 r
-has color
-j
-.
-To achieve his goal, Monocarp can do the following operation any number of times: choose two neighbouring marbles, and swap them.
-You have to calculate the minimum number of operations Monocarp has to perform to rearrange the marbles. Note that the order of segments of marbles having equal color does not matter, it is only required that, for every color, all the marbles of this color form exactly one contiguous segment.
+i
+, otherwise the signal will be received by the residents of other towns which haven't established a contract with the
+i
+-th station.
+All this information was already enough for the mayor to realise that choosing the stations is hard. But after consulting with specialists, he learned that some stations the signals of some stations may interfere with each other: there are
+m
+pairs of stations (
+u
+i
+,
+v
+i
+) that use the same signal frequencies, and for each such pair it is impossible to establish contracts with both stations. If stations
+x
+and
+y
+use the same frequencies, and
+y
+and
+z
+use the same frequencies, it does not imply that
+x
+and
+z
+use the same frequencies.
+The mayor finds it really hard to analyze this situation, so he hired you to help him. You have to choose signal power
+f
+and a set of stations to establish contracts with such that:
+all complaints are satisfied (formally, for every
+i∈[1,n]
+the city establishes a contract either with station
+x
+i
+, or with station
+y
+i
+);
+no two chosen stations interfere with each other (formally, for every
+i∈[1,m]
+the city does not establish a contract either with station
+u
+i
+, or with station
+v
+i
+);
+for each chosen station, the conditions on signal power are met (formally, for each chosen station
+i
+the condition
+l
+i
+≤f≤
+r
+i
+is met).
 Input
-The first line contains one integer
+The first line contains
+4
+integers
 n
-(2≤n≤4⋅
+,
+p
+,
+M
+and
+m
+(
+2≤n,p,M,m≤4⋅
 10
 5
-)
-— the number of marbles.
-The second line contains an integer sequence
-a
-1
-,
-a
-2
-,…,
-a
+) — the number of complaints, the number of radio stations, maximum signal power and the number of interfering pairs, respectively.
+Then
 n
-(1≤
-a
+lines follow, which describe the complains. Each line contains two integers
+x
 i
-≤20)
-, where
-a
+and
+y
 i
-is the color of the
+(
+1≤
+x
 i
--th marble.
+<
+y
+i
+≤p
+) — the indices of the radio stations mentioned in the
+i
+-th complaint). All complaints are distinct.
+Then
+p
+lines follow, which describe the radio stations. Each line contains two integers
+l
+i
+and
+r
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤M
+) — the constrains on signal power that should be satisfied if the city establishes a contract with the
+i
+-th station.
+Then
+m
+lines follow, which describe the pairs of interfering radio stations. Each line contains two integers
+u
+i
+and
+v
+i
+(
+1≤
+u
+i
+<
+v
+i
+≤p
+) — the indices of interfering radio stations. All these pairs are distinct.
 Output
-Print the minimum number of operations Monocarp has to perform to achieve his goal.
+If it is impossible to choose signal power and a set of stations to meet all conditions, print
+−1
+.
+Otherwise print two integers
+k
+and
+f
+in the first line — the number of stations in the chosen set and the chosen signal power, respectively. In the second line print
+k
+distinct integers from
+1
+to
+p
+— the indices of stations to establish contracts with (in any order). If there are multiple answers, print any of them; you don't have to minimize/maximize the number of chosen stations, and the same applies to signal power.
 Examples
 input
 Copy
-7
-3 4 2 3 4 2 2
+2 4 4 2
+1 3
+2 3
+1 4
+1 2
+3 4
+1 4
+1 2
+3 4
 output
 Copy
-3
+2 3
+1 3 
 input
 Copy
-5
-20 1 14 10 2
+2 4 4 2
+1 3
+2 4
+1 2
+1 2
+3 4
+3 4
+1 2
+3 4
 output
 Copy
-0
-input
-Copy
-13
-5 5 4 4 3 5 7 6 5 4 4 6 5
-output
-Copy
-21
-Note
-In the first example three operations are enough. Firstly, Monocarp should swap the third and the fourth marbles, so the sequence of colors is
-[3,4,3,2,4,2,2]
-. Then Monocarp should swap the second and the third marbles, so the sequence is
-[3,3,4,2,4,2,2]
-. And finally, Monocarp should swap the fourth and the fifth marbles, so the sequence is
-[3,3,4,4,2,2,2]
-.
-In the second example there's no need to perform any operations.
+-1

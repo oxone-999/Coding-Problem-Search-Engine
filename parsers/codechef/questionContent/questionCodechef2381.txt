@@ -1,40 +1,133 @@
-The Kingdom of Exodiastaan
+Chef and His Dish
 Problem
-There was a kingdom 'Exodistaan' ruled by 'JonSnow'. The kingdom was divided into
-n x
-m cities. The cities are arranged in a grid, with
-n rows of
-m cities each. Now the ruler 'JonSnow' had a list of enemies (not exceeding 10). The enemies want Exodistaan for themselves, as it is quite popular. Their strategy was to first attack the cities row-wise and then attack column-wise. The enemies attacked the rows and were able to capture some continuous segments of cities in some rows. Each row was attacked by at most one enemy. Now they want to attack columns and all the columns which have maximum number of distinct rulers will be attacked first. 'JonSnow' is busy in preparing for the war. You have to help him which columns will be attacked and what is the maximum number of distinct rulers (including 'JonSnow').
-###Input:
-The first line contains three integers
-n,m,k.
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef is experimenting in his kitchen. He has
+N spices (numbered
+0 through
+N−1) with types
+S
+0
+,S
+1
+,…,S
+N−1
+.
+You should answer
+Q queries. Each query is described by two integers
+L and
+R. In each query, Chef wants to use the spices
+S
+L
+,S
+L+1
+,…,S
+R
+in some order to make a dish. However, he has no clue about the order in which he should use them to make a perfect dish, so he wants to try all possible orders (sequences created by permuting these
+R−L+1 spices) to find out. Tell Chef the number of distinct orders (sequences) of spices he needs to try. Since this number can be very large, compute it modulo
+10
+9
++7.
+Two sequences of spices are considered different if there is a valid index
+i such that the type of the
+i-th spice in one sequence is different from the type of the
+i-th spice used in the other sequence.
+Note that the input is encoded so that you have to answer the queries online.
+Input
+The first line of the input contains two space-separated integers
+N and
+Q.
+The next line contains
+N space-separated integers
+S
+0
+,S
+1
+,S
+2
+,…,S
+N−1
+.
 Each of the next
-k lines contains 4 values
-i,l,r,S. This means that in row
-i, cities from column
-l to column
-r both inclusive have been captured by enemy
-S.
-###Output: Print 2 space separated integers
-A and
-B, where:
-A is the number of columns which will be attacked.
-B is the maximum number of distinct rulers in the columns.
-###Constraints
-1≤n,m≤10
+Q lines contains four space-separated integers
+L
+1
+,
+L
+2
+,
+R
+1
+and
+R
+2
+describing a query. The parameters
+L and
+R can be calculated in the following way:
+Let's denote the answer to the previous query by
+a; for the first query,
+a=0.
+Calculate
+L=(L
+1
+⋅a+L
+2
+)%N and
+R=(R
+1
+⋅a+R
+2
+)%N.
+Then, if
+L>R, swap
+L and
+R.
+Output
+For each query, print a single line containing one integer — the number of distinct orders of spices modulo
+10
+9
++7.
+Constraints
+1≤N,Q≤3⋅10
 5
-1≤k≤n
-1≤l≤r≤m
-1≤ length of
-S≤10
-The number of distinct enemies do not exceed
-10.
-###Sample Input: 4 4 3 1 2 3 Lannister 2 1 2 Bolton 4 1 1 Lannister
-###Sample Output: 2 3
-###Explanation:
-The matrix is as follows -
-JonSnow     Lannister   Lannister    JonSnow
-Bolton    Bolton    JonSnow      JonSnow
-JonSnow     JonSnow     JonSnow      JonSnow
-Lannister   JonSnow     JonSnow      JonSnow
-The first and second Columns have 3 rulers each - {JonSnow, Bolton, Lannister}. And that is the maximum possible. Since there are two column with maximum distinct rulers, the first integer in the output is 2. And since the maximum number of rulers in a single column is 3, the second output is 3.
+1≤S
+i
+≤10
+9
+for each valid
+i
+0≤L
+1
+,L
+2
+,R
+1
+,R
+2
+≤N−1
+Subtasks
+Subtask #1 (10 points):
+1≤N,Q≤10
+3
+Subtask #2 (40 points):
+1≤N,Q≤10
+5
+L
+1
+=R
+1
+=0
+Subtask #3 (30 points):
+1≤N,Q≤10
+5
+Subtask #4 (20 points): original constraints
+Sample 1:
+Input
+Output
+5 3
+1 2 3 7 10
+1 1 1 1
+2 1 3 4
+0 0 0 4
+1
+2
+120

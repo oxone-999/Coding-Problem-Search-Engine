@@ -1,42 +1,107 @@
-Bear and Row 01
+Romantic Reversals
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Limak is a little polar bear. He is playing a video game and he needs your help.
-There is a row with N cells, each either empty or occupied by a soldier, denoted by '0' and '1' respectively. The goal of the game is to move all soldiers to the right (they should occupy some number of rightmost cells).
-The only possible command is choosing a soldier and telling him to move to the right as far as possible. Choosing a soldier takes 1 second, and a soldier moves with the speed of a cell per second. The soldier stops immediately if he is in the last cell of the row or the next cell is already occupied. Limak isn't allowed to choose a soldier that can't move at all (the chosen soldier must move at least one cell to the right).
-Limak enjoys this game very much and wants to play as long as possible. In particular, he doesn't start a new command while the previously chosen soldier moves. Can you tell him, how many seconds he can play at most?
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The only line of each test case contains a string S describing the row with N cells. Each character is either '0' or '1', denoting an empty cell or a cell with a soldier respectively.
-Output
-For each test case, output a single line containing one integer — the maximum possible number of seconds Limak will play the game.
+Alice initially has a string
+S of length
+N, and she decides to modify it! Her modification consists of
+K steps numbered from
+1 to
+K. In the
+i-th step, Alice reverses the prefix of length
+i of
+S.
+For example, suppose Alice starts with
+S=abferty, and she modifies it via
+3 steps, then:
+After the first step,
+abferty→S=abferty
+After the second step,
+abferty→S=baferty
+After the third step,
+baferty→S=faberty So after
+3 steps, her string becomes
+S=faberty.
+After performing her
+K-step modification, Alice ends up with the string
+S
+′
+. Now she challenges you to find the original string
+S. Can you do it?
+Input Format
+The first line of the input contains a single integer
+T - the number of test cases. The test cases then follow.
+The first line of the test case contains two space-separated integers
+N and
+K - the length of the string and the number of steps in Alice's modification.
+The second line of the test case contains
+S
+′
+- the final string obtained after the modification.
+Output Format
+For each test case, output the original string
+S.
 Constraints
-1 ≤ T ≤ 5
-1 ≤ N ≤ 105 (N denotes the length of the string S)
+1≤T≤1000
+1≤N≤10
+6
+1≤K≤N
+∣S
+′
+∣=N
+S
+′
+contains only lowercase alphabets
+Sum of
+N overall cases does not exceed
+10
+6
+.
 Subtasks
-Subtask #1 (25 points): 1 ≤ N ≤ 10
-Subtask #2 (25 points): 1 ≤ N ≤ 2000
-Subtask #3 (50 points): Original constraints.
+Subtask
+1 (30 points):
+1≤N⋅K≤2000
+Subtask
+2 (70 points): Original constraints
 Sample 1:
 Input
 Output
-4
-10100
-1100001
-000000000111
-001110100011010
-8
-10
-0
-48
+3
+7 3
+faberty
+7 5
+bbaaaba
+4 4
+zxwy
+abferty
+aababba
+wxyz
 Explanation:
-Test case 1. The initial string is 10100. There are N = 5 cells. There is one soldier in the first cell, and one soldier in the third cell. The following scenario maximizes the total time:
-Limak chooses the soldier in the first cell. This soldier can move only one cell to the right. It takes 1 second to choose a soldier and 1 second for a soldier to move to the next cell (2 seconds in total). The string is 01100 now.
-Limak has only one choice. He must choose the soldier in the third cell because the other soldier can't move at all (the soldier in the second cell can't move to the right because the next cell is already occupied). Choosing a soldier takes 1 second. The chosen soldier moves from the third cell to the fifth cell, which takes 2 seconds. This operation takes 1 + 2 = 3 seconds in total. The string is 01001 now.
-Limak has only one choice again. Since the soldier in the last row can't move further to the right, the soldier in the second cell must be chosen. He will move 2 cells to the right. This operation takes 1 + 2 = 3 seconds in total. The string become 00011 and the game is over.
-The total time is 2 + 3 + 3 = 8.
-Test case 2. The initial string is 1100001. There is only one possible scenario:
-1100001 is changed to 1000011 in 5 seconds (1 second to choose a soldier and 4 seconds for the soldier to move 4 cells to the right).
-1000011 is changed to 0000111 in 5 seconds.
-The total time is 5 + 5 = 10 seconds.
-Test case 3. The game is over immediately because all soldiers occupy rightmost cells already. The answer is 0.
+Test case
+2: The modification steps from
+S to
+S
+′
+is as follow:
+1-st step:
+aababba→S=aababba
+2-nd step:
+aababba→S=aababba
+3-rd step:
+aababba→S=baaabba
+4-th step:
+baaabba→S=aaabbba
+5-th step:
+aaabbba→S=bbaaaba
+Test case
+3: The modification steps from
+S to
+S
+′
+is as follow:
+1-st step:
+wxyz→S=wxyz
+2-nd step:
+wxyz→S=xwyz
+3-rd step:
+xwyz→S=ywxz
+4-th step:
+ywxz→S=zxwy

@@ -1,36 +1,65 @@
-C. Teodor is not a liar!
-time limit per test1 second
+E. Coins Exhibition
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Young Teodor enjoys drawing. His favourite hobby is drawing segments with integer borders inside his huge [1;m] segment. One day Teodor noticed that picture he just drawn has one interesting feature: there doesn't exist an integer point, that belongs each of segments in the picture. Having discovered this fact, Teodor decided to share it with Sasha.
-Sasha knows that Teodor likes to show off so he never trusts him. Teodor wants to prove that he can be trusted sometimes, so he decided to convince Sasha that there is no such integer point in his picture, which belongs to each segment. However Teodor is lazy person and neither wills to tell Sasha all coordinates of segments' ends nor wills to tell him their amount, so he suggested Sasha to ask him series of questions 'Given the integer point xi, how many segments in Fedya's picture contain that point?', promising to tell correct answers for this questions.
-Both boys are very busy studying and don't have much time, so they ask you to find out how many questions can Sasha ask Teodor, that having only answers on his questions, Sasha can't be sure that Teodor isn't lying to him. Note that Sasha doesn't know amount of segments in Teodor's picture. Sure, Sasha is smart person and never asks about same point twice.
+Arkady and Kirill visited an exhibition of rare coins. The coins were located in a row and enumerated from left to right from 1 to k, each coin either was laid with its obverse (front) side up, or with its reverse (back) side up.
+Arkady and Kirill made some photos of the coins, each photo contained a segment of neighboring coins. Akrady is interested in obverses, so on each photo made by him there is at least one coin with obverse side up. On the contrary, Kirill is interested in reverses, so on each photo made by him there is at least one coin with its reverse side up.
+The photos are lost now, but Arkady and Kirill still remember the bounds of the segments of coins each photo contained. Given this information, compute the remainder of division by 109 + 7 of the number of ways to choose the upper side of each coin in such a way, that on each Arkady's photo there is at least one coin with obverse side up, and on each Kirill's photo there is at least one coin with reverse side up.
 Input
-First line of input contains two integer numbers: n and m (1 ≤ n, m ≤ 100 000) — amount of segments of Teodor's picture and maximal coordinate of point that Sasha can ask about.
-ith of next n lines contains two integer numbers li and ri (1 ≤ li ≤ ri ≤ m) — left and right ends of ith segment in the picture. Note that that left and right ends of segment can be the same point.
-It is guaranteed that there is no integer point, that belongs to all segments.
+The first line contains three integers k, n and m (1 ≤ k ≤ 109, 0 ≤ n, m ≤ 105) — the total number of coins, the number of photos made by Arkady, and the number of photos made by Kirill, respectively.
+The next n lines contain the descriptions of Arkady's photos, one per line. Each of these lines contains two integers l and r (1 ≤ l ≤ r ≤ k), meaning that among coins from the l-th to the r-th there should be at least one with obverse side up.
+The next m lines contain the descriptions of Kirill's photos, one per line. Each of these lines contains two integers l and r (1 ≤ l ≤ r ≤ k), meaning that among coins from the l-th to the r-th there should be at least one with reverse side up.
 Output
-Single line of output should contain one integer number k – size of largest set (xi, cnt(xi)) where all xi are different, 1 ≤ xi ≤ m, and cnt(xi) is amount of segments, containing point with coordinate xi, such that one can't be sure that there doesn't exist point, belonging to all of segments in initial picture, if he knows only this set(and doesn't know n).
+Print the only line — the number of ways to choose the side for each coin modulo 109 + 7 = 1000000007.
 Examples
 input
 Copy
-2 4
-1 2
-3 4
+5 2 2
+1 3
+3 5
+2 2
+4 5
 output
 Copy
-4
+8
 input
 Copy
-4 6
+5 3 2
 1 3
-2 3
-4 6
-5 6
+2 2
+3 5
+2 2
+4 5
 output
 Copy
-5
+0
+input
+Copy
+60 5 7
+1 3
+50 60
+1 60
+30 45
+20 40
+4 5
+6 37
+5 18
+50 55
+22 27
+25 31
+44 45
+output
+Copy
+732658600
 Note
-First example shows situation where Sasha can never be sure that Teodor isn't lying to him, because even if one knows cnt(xi) for each point in segment [1;4], he can't distinguish this case from situation Teodor has drawn whole [1;4] segment.
-In second example Sasha can ask about 5 points e.g. 1, 2, 3, 5, 6, still not being sure if Teodor haven't lied to him. But once he knows information about all points in [1;6] segment, Sasha can be sure that Teodor haven't lied to him.
+In the first example the following ways are possible ('O' — obverse, 'R' — reverse side):
+OROOR,
+ORORO,
+ORORR,
+RROOR,
+RRORO,
+RRORR,
+ORROR,
+ORRRO.
+In the second example the information is contradictory: the second coin should have obverse and reverse sides up at the same time, that is impossible. So, the answer is 0.

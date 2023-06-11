@@ -1,70 +1,53 @@
-E. Two Arrays
+B. Party
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given two arrays of integers
-a
-1
-,
-a
-2
-,…,
-a
+A club plans to hold a party and will invite some of its
 n
-and
-b
-1
-,
-b
-2
-,…,
-b
-m
+members. The
+n
+members are identified by the numbers
+1,2,…,n
+. If member
+i
+is not invited, the party will gain an unhappiness value of
+a
+i
 .
-Alice and Bob are going to play a game. Alice moves first and they take turns making a move.
-They play on a grid of size
-n×m
-(a grid with
-n
-rows and
+There are
 m
-columns). Initially, there is a rook positioned on the first row and first column of the grid.
-During her/his move, a player can do one of the following two operations:
-Move the rook to a different cell on the same row or the same column of the current cell. A player cannot move the rook to a cell that has been visited
-1000
-times before (i.e., the rook can stay in a certain cell at most
-1000
-times during the entire game). Note that the starting cell is considered to be visited once at the beginning of the game.
-End the game immediately with a score of
-a
-r
-+
-b
-c
-, where
-(r,c)
-is the current cell (i.e., the rook is on the
-r
--th row and
-c
--th column).
-Bob wants to maximize the score while Alice wants to minimize it. If they both play this game optimally, what is the final score of the game?
+pairs of friends among the
+n
+members. As per tradition, if both people from a friend pair are invited, they will share a cake at the party. The total number of cakes eaten will be equal to the number of pairs of friends such that both members have been invited.
+However, the club's oven can only cook two cakes at a time. So, the club demands that the total number of cakes eaten is an even number.
+What is the minimum possible total unhappiness value of the party, respecting the constraint that the total number of cakes eaten is even?
 Input
-The first line contains two integers
+Each test contains multiple test cases. The first line contains the number of test cases
+t
+(
+1≤t≤
+10
+4
+). The description of the test cases follows.
+The first line of each test case contains two integers
 n
 and
 m
 (
-1≤n,m≤2⋅
+1≤n≤
 10
 5
-) — the length of the arrays
-a
-and
-b
-(which coincide with the number of rows and columns of the grid).
-The second line contains the
+,
+0≤m≤min(
+10
+5
+,
+n(n−1)
+2
+)
+) — the number of club members and pairs of friends.
+The second line of each test case contains
 n
 integers
 a
@@ -76,74 +59,123 @@ a
 a
 n
 (
-1≤
+0≤
 a
 i
-≤5⋅
+≤
 10
-8
-).
-The third line contains the
+4
+) — the unhappiness value array.
+Each of the next
 m
-integers
-b
-1
-,
-b
-2
-,…,
-b
-n
+lines contains two integers
+x
+and
+y
 (
-1≤
-b
-i
-≤5⋅
+1≤x,y≤n
+,
+x≠y
+) indicating that
+x
+and
+y
+are friends. Each unordered pair
+(x,y)
+appears at most once in each test case.
+It is guaranteed that both the sum of
+n
+and the sum of
+m
+over all test cases do not exceed
 10
-8
-).
+5
+.
 Output
-Print a single line containing the final score of the game.
-Examples
+For each test case, print a line containing a single integer – the minimum possible unhappiness value of a valid party.
+Example
 input
-Copy
-2 1
-3 2
-2
-output
 Copy
 4
-input
-Copy
+1 0
+1
+3 1
+2 1 3
+1 3
+5 5
+1 2 3 4 5
+1 2
+1 3
+1 4
+1 5
+2 3
+5 5
+1 1 1 1 1
+1 2
+2 3
+3 4
 4 5
-235499701 451218171 355604420 132973458
-365049318 264083156 491406845 62875547 175951751
+5 1
 output
 Copy
-531556171
-Note
-In the first test case, Alice moves the rook to
-(2,1)
-and Bob moves the rook to
-(1,1)
-. This process will repeat for
-999
-times until finally, after Alice moves the rook, Bob cannot move it back to
-(1,1)
-because it has been visited
-1000
-times before. So the final score of the game is
-a
+0
 2
-+
-b
-1
-=4
-.
-In the second test case, the final score of the game is
-a
 3
-+
-b
-5
+2
+Note
+In the first test case, all members can be invited. So the unhappiness value is
+0
 .
+In the second test case, the following options are possible:
+invite
+1
+and
+2
+(
+0
+cakes eaten, unhappiness value equal to
+3
+);
+invite
+2
+and
+3
+(
+0
+cakes eaten, unhappiness value equal to
+2
+);
+invite only
+1
+(
+0
+cakes eaten, unhappiness value equal to
+4
+);
+invite only
+2
+(
+0
+cakes eaten, unhappiness value equal to
+5
+);
+invite only
+3
+(
+0
+cakes eaten, unhappiness value equal to
+3
+);
+invite nobody (
+0
+cakes eaten, unhappiness value equal to
+6
+).
+The minimum unhappiness value is achieved by inviting
+2
+and
+3
+.
+In the third test case, inviting members
+3,4,5
+generates a valid party with the minimum possible unhappiness value.

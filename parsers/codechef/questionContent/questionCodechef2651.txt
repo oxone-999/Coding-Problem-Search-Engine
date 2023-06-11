@@ -1,127 +1,36 @@
-Two-lane Road
+Compressed String
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef works as a cook in a restaurant. Each morning, he has to drive down a straight road with length
-K to reach the restaurant from his home. Let's describe this road using a coordinate
-X; the position of Chef's home is
-X=0 and the position of the restaurant is
-X=K.
-The road has exactly two lanes (numbered
-1 and
-2), but there are
-N obstacles (numbered
-1 through
-N) on it. For each valid
-i, the
-i-th obstacle blocks the lane
-L
-i
-at the position
-X=X
-i
-and does not block the other lane.
-When driving, Chef cannot pass through an obstacle. He can switch lanes in zero time at any integer
-X-coordinate which does not coincide with the
-X-coordinate of any obstacle. However, whenever he switches lanes, he cannot switch again until driving for at least
-D units of distance, and he can travel only in the direction of increasing
-X. Chef can start driving in any lane he wants. He can not switch lanes at non-integer
-X-coordinate.
-Sometimes, it is impossible to reach the restaurant without stopping at an obstacle. Find the maximum possible distance Chef can travel before he has to reach an obstacle which is in the same lane as him. If he can avoid all obstacles and reach the restaurant, the answer is
-K.
+After the first chemistry lesson, Ron realized that the simplest way to compress a string of Latin characters is to write it down as a list of pairs of character and integer. This is done by writing each segment of identical characters as the character and the length of the segment. For example the string s = "AABBBCCCC" can be compressed as [ ('A', 2), ('B', 3), ('C', 4) ]. In compressed notation, two consecutive pairs cannot have same character. For example [('A', 2), ('A', 4)] is invalid and its correct representation is [('A', 6)]. Ron has written down a string in compressed notation, and he wants to count the number of sub-strings (a segment of consecutive characters) of the original string that are palindromes.
+Recall that a palindrome is a non-empty string that reads the same backward as forward. Two sub-strings are considered to be different if they have different lengths or start at different positions in the original string.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains three space-separated integers
-N,
-K and
-D.
-The second line contains
-N space-separated integers
-X
-1
-,X
-2
-,…,X
-N
-.
-The third line contains
-N space-separated integers
-L
-1
-,L
-2
-,…,L
-N
-.
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+Each test case gives a string in compressed notation. The first line of each test case contains an integer K, the number of (character, integer) pairs in compressed notation. Each of the next K lines contains a single character, followed by a space, followed by a positive integer, the ith line being the ith pair in the list.
 Output
-For each test case, print a single line containing one integer ― the maximum distance Chef can travel.
+For each test case, output a single line containing the corresponding answer.
 Constraints
-1≤T≤1,000
-1≤N≤10
-5
-2≤K≤10
-9
-1≤D≤10
-9
-1≤X
-i
-≤K−1 for each valid
-i
-X
-i
-<X
-i+1
-for each valid
-i
-1≤L
-i
-≤2 for each valid
-i
-the sum of
-N over all test cases does not exceed
-10
+1 ≤ T ≤ 10,000(104)
+1 ≤ K ≤ 100,000(105)
+Each character is an upper-case Latin character, i.e. 'A' through 'Z'.
+The length of the original string does not exceed 1,000,000,000(109)
+The sum of the Ks over all test cases will not exceed 1,000,000(106)
+Example
+Input:
+3
+2
+A 2
+B 2
+3
+A 2
+B 1
+A 2
+1
+A 11
+
+Output:
 6
-Subtasks
-Subtask #1 (100 points): original constraints
-Sample 1:
-Input
-Output
-4
-2 10 20
-4 7
-1 2
-4 15 20
-4 6 9 13
-1 2 2 1
-5 10 1
-1 3 5 7 9
-1 2 1 2 1
-2 10 2
-4 5
-1 2
-10
-13
-10
-5
-Explanation:
-Example case 1: Chef can start in lane
-2 and switch to lane
-1 at the position
-X=6, then continue until reaching the restaurant.
-Example case 2: Chef can start in lane
-2 and switch to lane
-1 at
-X=5. However, he cannot avoid the obstacle at
-X=13, because he has not driven for at least
-20 units since the last switch.
-Example case 3: Chef should start in lane
-2 and then switch lanes at the positions
-X=2,
-X=4,
-X=6 and
-X=8. This way, he can reach the restaurant.
-Example case 4: Chef can start in lane
-2 but he cannot escape the second obstacle at
-X=5 since the first obstacle at
-X=4 doesn't give enough space for Chef to switch lanes.
+9
+66
+Explanation
+Example case 1: The original string is AABB so the sub-strings (represented by positions of the first and the last character) which are palindromes are (1, 1), (1, 2), (2, 2), (3, 3), (3, 4) and (4, 4).
+Example case 2: The original string is AABAA. The sub-strings that are palindromes are the 4 sub-strings A, the 2 sub-strings AA and the sub-strings B, ABA and AABAA. Together, they make 9 palindromes.
+Example case 3: The original string is A repeated 11 times, so all the sub-strings are palindromes.

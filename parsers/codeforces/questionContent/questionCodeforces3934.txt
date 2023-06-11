@@ -1,88 +1,109 @@
-C. Prefixes and Suffixes
-time limit per test1 second
+D1. Great Vova Wall (Version 1)
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Ivan wants to play a game with you. He picked some string
-s
-of length
+Vova's family is building the Great Vova Wall (named by Vova himself). Vova's parents, grandparents, grand-grandparents contributed to it. Now it's totally up to Vova to put the finishing touches.
+The current state of the wall can be respresented by a sequence
+a
+of
 n
-consisting only of lowercase Latin letters.
-You don't know this string. Ivan has informed you about all its improper prefixes and suffixes (i.e. prefixes and suffixes of lengths from
+integers, with
+a
+i
+being the height of the
+i
+-th part of the wall.
+Vova can only use
+2×1
+bricks to put in the wall (he has infinite supply of them, however).
+Vova can put bricks horizontally on the neighboring parts of the wall of equal height. It means that if for some
+i
+the current height of part
+i
+is the same as for part
+i+1
+, then Vova can put a brick there and thus increase both heights by 1. Obviously, Vova can't put bricks in such a way that its parts turn out to be off the borders (to the left of part
 1
-to
-n−1
-), but he didn't tell you which strings are prefixes and which are suffixes.
-Ivan wants you to guess which of the given
-2n−2
-strings are prefixes of the given string and which are suffixes. It may be impossible to guess the string Ivan picked (since multiple strings may give the same set of suffixes and prefixes), but Ivan will accept your answer if there is at least one string that is consistent with it. Let the game begin!
+of the wall or to the right of part
+n
+of it).
+The next paragraph is specific to the version 1 of the problem.
+Vova can also put bricks vertically. That means increasing height of any part of the wall by 2.
+Vova is a perfectionist, so he considers the wall completed when:
+all parts of the wall has the same height;
+the wall has no empty spaces inside it.
+Can Vova complete the wall using any amount of bricks (possibly zero)?
 Input
-The first line of the input contains one integer number
+The first line contains a single integer
 n
 (
-2≤n≤100
-) — the length of the guessed string
-s
-.
-The next
-2n−2
-lines are contain prefixes and suffixes, one per line. Each of them is the string of length from
-1
-to
-n−1
-consisting only of lowercase Latin letters. They can be given in arbitrary order.
-It is guaranteed that there are exactly
-2
-strings of each length from
-1
-to
-n−1
-. It is also guaranteed that these strings are prefixes and suffixes of some existing string of length
+1≤n≤2⋅
+10
+5
+) — the number of parts in the wall.
+The second line contains
 n
-.
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
+10
+9
+) — the initial heights of the parts of the wall.
 Output
-Print one string of length
-2n−2
-— the string consisting only of characters 'P' and 'S'. The number of characters 'P' should be equal to the number of characters 'S'. The
-i
--th character of this string should be 'P' if the
-i
--th of the input strings is the prefix and 'S' otherwise.
-If there are several possible answers, you can print any.
+Print "YES" if Vova can complete the wall using any amount of bricks (possibly zero).
+Print "NO" otherwise.
 Examples
 input
 Copy
 5
-ba
-a
-abab
-a
-aba
-baba
-ab
-aba
+2 1 1 2 5
 output
 Copy
-SPPSPSPS
+YES
 input
 Copy
 3
-a
-aa
-aa
-a
+4 5 3
 output
 Copy
-PPSS
+YES
 input
 Copy
 2
-a
-c
+10 10
 output
 Copy
-PS
+YES
+input
+Copy
+3
+1 2 3
+output
+Copy
+NO
 Note
-The only string which Ivan can guess in the first example is "ababa".
-The only string which Ivan can guess in the second example is "aaa". Answers "SPSP", "SSPP" and "PSPS" are also acceptable.
-In the third example Ivan can guess the string "ac" or the string "ca". The answer "SP" is also acceptable.
+In the first example Vova can put a brick on parts 2 and 3 to make the wall
+[2,2,2,2,5]
+and then put 3 bricks on parts 1 and 2 and 3 bricks on parts 3 and 4 to make it
+[5,5,5,5,5]
+.
+In the second example Vova can put a brick vertically on part 3 to make the wall
+[4,5,5]
+, then horizontally on parts 2 and 3 to make it
+[4,6,6]
+and then vertically on part 1 to make it
+[6,6,6]
+.
+In the third example the wall is already complete.

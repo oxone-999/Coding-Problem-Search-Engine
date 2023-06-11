@@ -1,243 +1,164 @@
-D. Coffee Varieties (hard version)
+A. Even But Not Even
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the hard version of the problem. You can find the easy version in the Div. 2 contest. Both versions only differ in the number of times you can ask your friend to taste coffee.
-This is an interactive problem.
-You're considering moving to another city, where one of your friends already lives. There are
-n
-cafés in this city, where
-n
-is a power of two. The
-i
--th café produces a single variety of coffee
-a
-i
-.
-As you're a coffee-lover, before deciding to move or not, you want to know the number
-d
-of distinct varieties of coffees produced in this city.
-You don't know the values
-a
-1
-,…,
-a
-n
-. Fortunately, your friend has a memory of size
-k
-, where
-k
-is a power of two.
-Once per day, you can ask him to taste a cup of coffee produced by the café
-c
-, and he will tell you if he tasted a similar coffee during the last
-k
-days.
-You can also ask him to take a medication that will reset his memory. He will forget all previous cups of coffee tasted. You can reset his memory at most
-30 000
-times.
-More formally, the memory of your friend is a queue
-S
-. Doing a query on café
-c
-will:
-Tell you if
-a
-c
-is in
-S
-;
-Add
-a
-c
-at the back of
-S
-;
-If
-|S|>k
-, pop the front element of
-S
-.
-Doing a reset request will pop all elements out of
-S
-.
-Your friend can taste at most
-3
-n
+Let's define a number ebne (even but not even) if and only if its sum of digits is divisible by
 2
-2k
-cups of coffee in total. Find the diversity
-d
-(number of distinct values in the array
-a
-).
-Note that asking your friend to reset his memory does not count towards the number of times you ask your friend to taste a cup of coffee.
-In some test cases the behavior of the interactor is adaptive. It means that the array
-a
-may be not fixed before the start of the interaction and may depend on your queries. It is guaranteed that at any moment of the interaction, there is at least one array
-a
-consistent with all the answers given so far.
+but the number itself is not divisible by
+2
+. For example,
+13
+,
+1227
+,
+185217
+are ebne numbers, while
+12
+,
+2
+,
+177013
+,
+265918
+are not. If you're still unsure what ebne numbers are, you can look at the sample notes for more clarification.
+You are given a non-negative integer
+s
+, consisting of
+n
+digits. You can delete some digits (they are not necessary consecutive/successive) to make the given number ebne. You cannot change the order of the digits, that is, after deleting the digits the remaining digits collapse. The resulting number shouldn't contain leading zeros. You can delete any number of digits between
+0
+(do not delete any digits at all) and
+n−1
+.
+For example, if you are given
+s=
+222373204424185217171912 then one of possible ways to make it ebne is: 222373204424185217171912
+→
+2237344218521717191. The sum of digits of 2237344218521717191 is equal to
+70
+and is divisible by
+2
+, but number itself is not divisible by
+2
+: it means that the resulting number is ebne.
+Find any resulting number that is ebne. If it's impossible to create an ebne number from the given number report about it.
 Input
-The first line contains two integers
-n
-and
-k
+The input consists of multiple test cases. The first line contains a single integer
+t
 (
-1≤k≤n≤1024
-,
-k
-and
+1≤t≤1000
+)  — the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single integer
 n
-are powers of two).
+(
+1≤n≤3000
+)  — the number of digits in the original number.
+The second line of each test case contains a non-negative integer number
+s
+, consisting of
+n
+digits.
 It is guaranteed that
-3
+s
+does not contain leading zeros and the sum of
 n
-2
-2k
-≤15 000
+over all test cases does not exceed
+3000
 .
-Interaction
-You begin the interaction by reading
-n
-and
-k
-.
-To ask your friend to taste a cup of coffee produced by the café
-c
-, in a separate line output
-?
-c
-Where
-c
-must satisfy
-1≤c≤n
-. Don't forget to flush, to get the answer.
-In response, you will receive a single letter Y (yes) or N (no), telling you if variety
-a
-c
-is one of the last
-k
-varieties of coffee in his memory.
-To reset the memory of your friend, in a separate line output the single letter R in upper case. You can do this operation at most
-30 000
-times.
-When you determine the number
-d
-of different coffee varieties, output
-!
-d
-In case your query is invalid, you asked more than
-3
-n
-2
-2k
-queries of type ? or you asked more than
-30 000
-queries of type R, the program will print the letter E and will finish interaction. You will receive a Wrong Answer verdict. Make sure to exit immediately to avoid getting other verdicts.
-After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-Hack format
-The first line should contain the word fixed
-The second line should contain two integers
-n
-and
-k
-, separated by space (
-1≤k≤n≤1024
-,
-k
-and
-n
-are powers of two).
-It must hold that
-3
-n
-2
-2k
-≤15 000
-.
-The third line should contain
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-, separated by spaces (
-1≤
-a
-i
-≤n
-).
-Examples
+Output
+For each test case given in the input print the answer in the following format:
+If it is impossible to create an ebne number, print "-1" (without quotes);
+Otherwise, print the resulting number after deleting some, possibly zero, but not all digits. This number should be ebne. If there are multiple answers, you can print any of them. Note that answers with leading zeros or empty strings are not accepted. It's not necessary to minimize or maximize the number of deleted digits.
+Example
 input
 Copy
-4 2
-N
-N
-Y
-N
-N
-N
-N
-output
-Copy
-? 1
-? 2
-? 3
-? 4
-R
-? 4
-? 1
-? 2
-! 3
-input
-Copy
-8 8
-N
-N
-N
-N
-Y
-Y
-output
-Copy
-? 2
-? 6
-? 4
-? 5
-? 2
-? 5
-! 6
-Note
-In the first example, the array is
-a=[1,4,1,3]
-. The city produces
-3
-different varieties of coffee (
-1
-,
-3
-and
 4
-).
-The successive varieties of coffee tasted by your friend are
-1,4,1,3,3,1,4
-(bold answers correspond to Y answers). Note that between the two ? 4 asks, there is a reset memory request R, so the answer to the second ? 4 ask is N. Had there been no reset memory request, the answer to the second ? 4 ask is Y.
-In the second example, the array is
-a=[1,2,3,4,5,6,6,6]
-. The city produces
+4
+1227
+1
+0
 6
-different varieties of coffee.
-The successive varieties of coffee tasted by your friend are
-2,6,4,5,2,5
-.
+177013
+24
+222373204424185217171912
+output
+Copy
+1227
+-1
+17703
+2237344218521717191
+Note
+In the first test case of the example,
+1227
+is already an ebne number (as
+1+2+2+7=12
+,
+12
+is divisible by
+2
+, while in the same time,
+1227
+is not divisible by
+2
+) so we don't need to delete any digits. Answers such as
+127
+and
+17
+will also be accepted.
+In the second test case of the example, it is clearly impossible to create an ebne number from the given number.
+In the third test case of the example, there are many ebne numbers we can obtain by deleting, for example,
+1
+digit such as
+17703
+,
+77013
+or
+17013
+. Answers such as
+1701
+or
+770
+will not be accepted as they are not ebne numbers. Answer
+013
+will not be accepted as it contains leading zeroes.
+Explanation:
+1+7+7+0+3=18
+. As
+18
+is divisible by
+2
+while
+17703
+is not divisible by
+2
+, we can see that
+17703
+is an ebne number. Same with
+77013
+and
+17013
+;
+1+7+0+1=9
+. Because
+9
+is not divisible by
+2
+,
+1701
+is not an ebne number;
+7+7+0=14
+. This time,
+14
+is divisible by
+2
+but
+770
+is also divisible by
+2
+, therefore,
+770
+is not an ebne number.
+In the last test case of the example, one of many other possible answers is given. Another possible answer is: 222373204424185217171912
+→
+22237320442418521717191 (delete the last digit).

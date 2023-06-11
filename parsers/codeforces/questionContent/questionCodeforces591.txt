@@ -1,39 +1,69 @@
-B. Rule of League
+C. Parity Shuffle Sorting
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There is a badminton championship in which
+You are given an array
+a
+with
 n
-players take part. The players are numbered from
+non-negative integers. You can apply the following operation on it.
+Choose two indices
+l
+and
+r
+(
+1≤l<r≤n
+).
+If
+a
+l
++
+a
+r
+is odd, do
+a
+r
+:=
+a
+l
+. If
+a
+l
++
+a
+r
+is even, do
+a
+l
+:=
+a
+r
+.
+Find any sequence of at most
+n
+operations that makes
+a
+non-decreasing. It can be proven that it is always possible. Note that you do not have to minimize the number of operations.
+An array
+a
 1
-to
+,
+a
+2
+,…,
+a
+n
+is non-decreasing if and only if
+a
+1
+≤
+a
+2
+≤…≤
+a
 n
 .
-The championship proceeds as follows: player
-1
-and player
-2
-play a game, then the winner and player
-3
-play a game, and then the winner and player
-4
-play a game, and so on. So,
-n−1
-games are played, and the winner of the last game becomes the champion. There are no draws in the games.
-You want to find out the result of championship. Currently, you only know the following information:
-Each player has either won
-x
-games or
-y
-games in the championship.
-Given
-n
-,
-x
-, and
-y
-, find out if there is a result that matches this information.
 Input
 The first line contains one integer
 t
@@ -42,71 +72,125 @@ t
 10
 5
 ) — the number of test cases.
-The only line of each test case contains three integers
+Each test case consists of two lines. The first line of each test case contains one integer
 n
-,
-x
-,
-y
 (
-2≤n≤
+1≤n≤
 10
 5
+) — the length of the array.
+The second line of each test case contains
+n
+integers
+a
+1
 ,
-0≤x,y<n
-).
+a
+2
+,…,
+a
+n
+(
+0≤
+a
+i
+≤
+10
+9
+)  — the array itself.
 It is guaranteed that the sum of
 n
 over all test cases doesn't exceed
-2⋅
 10
 5
 .
 Output
-Print the answer for each test case, one per line. If there is no result that matches the given information about
-n
-,
-x
-,
-y
-, print
-−1
-. Otherwise, print
-n−1
-space separated integers, where the
+For each test case, print one integer
+m
+(
+0≤m≤n
+), the number of operations, in the first line.
+Then print
+m
+lines. Each line must contain two integers
+l
 i
--th integer is the player number of the winner of the
+,
+r
 i
--th game.
-If there are multiple valid results, print any.
+, which are the indices you chose in the
+i
+-th operation (
+1≤
+l
+i
+<
+r
+i
+≤n
+).
+If there are multiple solutions, print any of them.
 Example
 input
 Copy
+3
+2
+7 8
 5
-5 2 0
-8 1 2
-3 0 0
-2 0 1
-6 3 0
+1 1000000000 3 0 5
+1
+0
 output
 Copy
-1 1 4 4
--1
--1
-2 
--1
-Note
-In the first test case, player
-1
-and player
-4
-won
-x
-times, player
+0
 2
-and player
+3 4
+1 2
+0
+Note
+In the second test case,
+a
+changes like this:
+Select indices
 3
-won
-y
-times.
-In the second, third, and fifth test cases, no valid result exists.
+and
+4
+.
+a
+3
++
+a
+4
+=3
+is odd, so do
+a
+4
+:=
+a
+3
+.
+a=[1,1000000000,3,3,5]
+now.
+Select indices
+1
+and
+2
+.
+a
+1
++
+a
+2
+=1000000001
+is odd, so do
+a
+2
+:=
+a
+1
+.
+a=[1,1,3,3,5]
+now, and it is non-decreasing.
+In the first and third test cases,
+a
+is already non-decreasing.

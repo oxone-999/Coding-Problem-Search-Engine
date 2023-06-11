@@ -1,130 +1,99 @@
-Buckets Full of Candies
+Distinct Sequence
 Problem
-Today is your birthday. You have decided to give away candies to your friends.
-You have
-N friends and
-M candies. Suppose the
-1
-st
-friend has
-L buckets,
-2
-nd
-has
-L+1 buckets,
-3
-rd
-has
-L+2 buckets, and so on — in general, the
-i
-th
-friend has
-L+i−1 buckets.
-You start distributing candies from the
-N
-th
-friend and go towards the
-1
-st
-friend.
-For each friend, you put the maximum number of candies in each bucket such that all the buckets for that friend have an equal number of candies in them. Now, you take the remaining candies, move to the next friend, and repeat the above step.
-Find the number of candies which will remain with you after visiting all your friends.
+You are given a binary string
+S of length
+2⋅N.
+A partition of string
+S into strings
+P and
+Q is said to be valid if:
+Both
+P and
+Q are subsequences of
+S of length
+N;
+Each character of string
+S belongs to exactly one subsequence out of
+P and
+Q;
+Strings
+P and
+Q are NOT equal.
+Let
+A denote the set of indices of
+S that belong to the subsequence
+P.
+Find whether it is possible to make a valid partition of
+S.
+If it is possible, print the elements of array
+A, in increasing order. Otherwise, print
+−1.
 Input Format
-The first line of input will contain a single integer
-T, the number of test cases. Then the test cases follow.
-Each test case consists of a single line of input, containing three space-separated integers
-N,M,L — representing the number of friends, number of candies that you have, and the number of buckets with the
-1
-st
-friend respectively.
+Each test contains multiple test cases. The first line contains the number of test cases
+T. Description of the test cases follows.
+The first line of each test case contains a single integer
+N, where
+2⋅N is the length of the binary string.
+The second line of each test case contains the binary string
+S of length
+2⋅N.
 Output Format
-For each test case, output a single integer representing the total number of candies left with you after distributing candies to all your friends.
+For each test case, if a valid partition exists, print
+N distinct indices
+A
+1
+,A
+2
+,…,A
+N
+(in increasing order).
+If no valid partition exists, print
+−1.
+If there are multiple solutions, print any.
 Constraints
 1≤T≤10
 5
-0≤N,M≤10
-18
-1≤L≤10
-18
+1≤N≤10
+5
+S consists of
+0 and
+1 only.
+It is guaranteed that the sum of
+N over all test cases does not exceed
+10
+5
+.
 Sample 1:
 Input
 Output
 4
-2 8 2
-3 9 2
-3 10 2
-4 100 10
-0
 1
-0
-9
+11
+1
+10
+3
+100000
+3
+100100
+-1
+1
+1 2 3
+1 4 6
 Explanation:
 Test case
-1: There are two friends. The
-1
-st
-friend has
-2 buckets and the
-2
-nd
-friend has
-3 buckets. You will give
-6 candies to
-2
-nd
-friend (
-2 in each bucket). Now you are left with
-2 candies, which you will give to the
-1
-st
-friend (
-1 in each bucket). You will be left with
-0 candies at the end.
+1: It can be proven that no valid partition exists.
 Test case
-2: There are
-3 friends and
-9 candies. The
-1
-st
-friend has
-2 buckets,
-2
-nd
-friend has
-3 buckets, and
-3
-rd
-friend has
-4 buckets. You will give
-8 candies to the
-3
-rd
-friend (
-2 in each bucket). Now the
-2
-nd
-friend and
-1
-st
-friend will get
-0 candies. You will be left with
-1 candy at the end.
+2: A valid partition is
+P=1 and
+Q=0. Here,
+A=[1].
 Test case
-3: There are
-3 friends and
-10 candies. You will give
-8 candies to the
-3
-rd
-friend (
-2 in each bucket). Next, the
-2
-nd
-friend will get
-0 candies. Finally, the
-1
-st
-friend will get
-2 candies (
-1 in each bucket). You will be left with
-0 candies at the end.
+3: A valid partition is
+P=100 and
+Q=000. Here,
+A=[1,2,3].
+Test case
+4: A valid partition is
+P=110 and
+Q=000. Here,
+A=[1,4,6].

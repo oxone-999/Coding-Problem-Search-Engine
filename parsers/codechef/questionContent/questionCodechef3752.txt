@@ -1,109 +1,64 @@
-Magic Permutations
+Shortest path queries
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-Saeed bought two magic permutations of integers
-1 through
-N and gave them to his grandsons Rami and Ghoda to encourage them to train in problem solving.
-Rami found out that he can only cyclically shift his permutation, i.e. choose any number of elements from the beginning and move them to the end without changing their order. On the other hand, Ghoda found out that he can only swap elements of his permutation.
-The distance between two permutations
-P
-1
-,P
-2
-,…,P
-N
-and
-R
-1
-,R
-2
-,…,R
-N
-is the sum of
-∣i−j∣ over all pairs of valid indices
-i,j such that
-P
-i
-=R
-j
-.
-You should process
-Q queries. In each query, one of Saeed's grandsons plays with his permutation (performs an operation described above), and afterwards, you should tell Saeed the distance between his grandsons' current permutations. Note that the queries are cumulative — the changes made in one query remain in subsequent queries.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+With the impressive achievement in competitive programming Jem was offered an internship at IBER - a tech company that provides an alternative to tradditional taxi service.
+Jem first task was help IBER quickly calculate the distance between two arbitrary locations in Jem's city. As an experienced competitive programmer Jem understand that this is not a trivial problem with general graph. Fortunately after investigate the city map Jem found out that the roads system is have a special form which may make Jem's problem easier to deal with.
+There are N locations in the city and M bidirectional road connecting them. Each road i have the length of Ci and no two road connect the same pair of locations. The roads system is designed in a way that from a specific location one can travel to any other locations. The most important point is that there is no location belong to more than one cycle in the graph corresponding to road network.
+So Jem already got his solution. If you want to secure an internship at IBER maybe you can try to solve this problem too!
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-Q.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-, denoting Rami's initial permutation.
-The third line contains
-N space-separated integers
-B
-1
-,B
-2
-,…,B
-N
-, denoting Ghoda's initial permutation.
-Each of the next
-Q lines describes a query in one of the following formats:
-1 z: Rami moves
-z elements from the beginning of his permutation to the end.
-2 x y: Ghoda swaps the
-x-th and
-y-th element of his permutation.
+The first line of the input contains two number N and M
+In the next M line each line contains three numbers u, v and c represent a road of length c connects location u and v.
+Next line contains a single number Q represents the number of queries.
+In the next Q lines each line contains two numbers u and v corresponding to a query of the length of the shortest path between location u and v.
 Output
-For each query, print a single line containing one integer — the current distance between the permutations.
-Constraints
-1≤T≤100
-2≤N,Q≤10
-5
-1≤x,y≤N
-x
-
-=y
-1≤z≤N−1
-1≤A
-i
-,B
-i
-≤N for each valid
-i
-A and
-B are permutations
-the sum of
-N over all test cases does not exceed
-10
-5
-the sum of
-Q over all test cases does not exceed
-10
-5
-Sample 1:
-Input
-Output
-1
+For each query print out the corresponding result in one line.
+Constraint
+2 ≤ N ≤ 105
+<li>
+  1 ≤ <b>M</b> ≤ 2 × 10<sup>5</sup>
+</li>
+
+<li>
+  1 ≤ <b>Q</b> ≤ 10<sup>5</sup>
+</li>
+
+<li>
+  1 ≤ <b>c</b> ≤ 10<sup>4</sup>
+</li>
+
+Example
+Input 1:
 4 3
-1 3 2 4
-4 3 2 1
-1 1
+1 2 2
+2 3 3
+2 4 4
+2
+1 4
+4 3
+Output 1:
+6
+7
+Input 2:
+7 8
+1 2 2
+1 3 4
 2 3 1
-1 2
+3 4 1
+4 5 1
+4 7 1
+5 6 2
+6 7 1
+3
+1 4
+5 7
+1 6
+Output 2:
 4
 2
-8
-Explanation:
-Example case 1:
-Rami's permutation is
-(1,3,2,4)→(3,2,4,1)→(3,2,4,1)→(4,1,3,2).
-Ghoda's permutation is
-(4,3,2,1)→(4,3,2,1)→(2,3,4,1)→(2,3,4,1).
+6
+Explaination
+Test 2: the graph is shown in the picture below.
+The shortest path for each query are:
+From 1 to 4: 1 -> 2 -> 3 -> 4
+From 5 to 7: 5 -> 4 -> 7
+From 1 to 6: 1 -> 2 -> 3 -> 4 -> 7 -> 6

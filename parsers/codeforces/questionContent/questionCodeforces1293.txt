@@ -1,159 +1,81 @@
-E. AmShZ and G.O.A.T.
+G. AmShZ Wins a Bet
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let's call an array of
-k
-integers
-c
-1
-,
-c
-2
-,…,
-c
-k
-terrible, if the following condition holds:
-Let
-AVG
-be the
-c
-1
-+
-c
-2
-+…+
-c
-k
-k
-(the average of all the elements of the array, it doesn't have to be integer). Then the number of elements of the array which are bigger than
-AVG
-should be strictly larger than the number of elements of the array which are smaller than
-AVG
-. Note that elements equal to
-AVG
-don't count.
-For example
-c={1,4,4,5,6}
-is terrible because
-AVG=4.0
+Right before the UEFA Euro 2020, AmShZ and Safar placed bets on who'd be the champion, AmShZ betting on Italy, and Safar betting on France.
+Of course, AmShZ won. Hence, Safar gave him a bracket sequence
+S
+. Note that a bracket sequence is a string made of '(' and ')' characters.
+AmShZ can perform the following operation any number of times:
+First, he cuts his string
+S
+into three (possibly empty) contiguous substrings
+A,B
 and
-5
--th and
-4
--th elements are greater than
-AVG
-and
-1
--st element is smaller than
-AVG
+C
+. Then, he glues them back by using a '(' and a ')' characters, resulting in a new string
+S
+=
+A
++ "(" +
+B
++ ")" +
+C
 .
-Let's call an array of
-m
-integers
-b
-1
-,
-b
-2
-,…,
-b
-m
-bad, if at least one of its non-empty subsequences is terrible, and good otherwise.
-You are given an array of
-n
-integers
+For example, if
+S
+= "))((" and AmShZ cuts it into
+A
+= "",
+B
+= "))", and
+C
+= "((", He will obtain
+S
+= "()))((" as a new string.
+After performing some (possibly none) operations, AmShZ gives his string to Keshi and asks him to find the initial string. Of course, Keshi might be able to come up with more than one possible initial string. Keshi is interested in finding the lexicographically smallest possible initial string.
+Your task is to help Keshi in achieving his goal.
+A string
 a
-1
-,
+is lexicographically smaller than a string
+b
+if and only if one of the following holds:
 a
-2
-,…,
+is a prefix of
+b
+, but
+a≠b
+;
+in the first position where
 a
-n
-. Find the minimum number of elements that you have to delete from it to obtain a good array.
-An array is a subsequence of another array if it can be obtained from it by deletion of several (possibly, zero or all) elements.
+and
+b
+differ, the string
+a
+has a letter that appears earlier in the alphabet than the corresponding letter in
+b
+.
 Input
-The first line contains an integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases. The description of test cases follows.
-The first line of each test case contains a single integer
-n
-(
-2≤n≤2⋅
+The only line of input contains a single string
+S
+ — the string after the operations
+(1≤|S|≤3⋅
 10
 5
-) — the size of
-a
+)
 .
-The second line of each testcase contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-9
-) — elements of array
-a
-.
-In each testcase for any
-1≤i<n
-it is guaranteed that
-a
-i
-≤
-a
-i+1
-.
-It is guaranteed that the sum of
-n
-over all testcases doesn't exceed
-2⋅
-10
-5
-.
+It is guaranteed that the first character of
+S
+is ')'.
 Output
-For each testcase, print the minimum number of elements that you have to delete from it to obtain a good array.
+Print the lexicographically smallest possible initial string before operations.
 Example
 input
 Copy
-4
-3
-1 2 3
-5
-1 4 4 5 6
-6
-7 8 197860736 212611869 360417095 837913434
-8
-6 10 56026534 405137099 550504063 784959015 802926648 967281024
+)(()(())))
 output
 Copy
-0
-1
-2
-3
+)((())))
 Note
-In the first sample, the array
-a
-is already good.
-In the second sample, it's enough to delete
-1
-, obtaining array
-[4,4,5,6]
-, which is good.
+In the first sample, you can transform ")((())))" into ")(()(())))" by splitting it into ")(", empty string, and "(())))". It can be shown that this is the lexicographically smallest possible initial string

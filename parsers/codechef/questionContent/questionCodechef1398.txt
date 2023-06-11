@@ -1,72 +1,86 @@
-K-Foldable String
+Same Parity Swaps in Binary Strings
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well
 You are given a binary string
-S with length
-N and an integer
-K, which is a divisor of
-N. A string is said to be
-K-foldable if it can be changed to a string with length
-K by repeating the following process without any collisions (defined below):
-Select the prefix of the current string
-S with length
-2K. (Note that as long as the length of
-S is greater than
-K, this prefix always exists.)
-For each
-i (
-1≤i≤K), check if the
-2K−i+1-th character of
-S is equal to the
-i-th character of
-S ― if they are not equal, there is a collision and the process is invalid.
-Erase the prefix of
-S with length
-K.
-Your goal is to reorder the characters of
-S (possibly leaving this string unchanged) in such a way that the resulting string
-S is a
-K-foldable string. Find a way to do that or determine that it is impossible. If there are multiple solutions, find the lexicographically smallest rearranged string which is
-K-foldable.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-K.
-The second line contains a single string
-S with length
-N.
-Output
-For each test case, print a single line containing the smallest rearranged string or the string "IMPOSSIBLE" if it is impossible to rearrange
+S of length
+N (i.e. every character of
+S is either
+0 or
+1).
+You can perform the following operation on
+S:
+select any two indices
+i,j of the same parity, i.e. either both
+i,j are odd or both
+i,j are even
+swap
+S
+i
+and
+S
+j
+For example, in the string
+1110, we can swap the second and the fourth characters to get
+1011. However, we can never obtain
+1101 from
+1110 by performing such swaps.
+Find the maximum possible number of occurrences of the string
+01 as a substring of
+S after performing the above operation any number of times (it is also allowed to not perform any operation).
+For example, the string
+1110 has no occurrence of the string
+01 as a substring, whereas we can swap the second and fourth characters to obtain
+1011 which has exactly one occurrence of
+01 (colored red).
+Input Format
+The first line of input contains an integer
+T, denoting the number of testcases. The description of the
+T testcases follow.
+Each testcase consists of two lines.
+The first line contains a single integer
+N, the length of the string
 S.
+The second line contains a binary string of length
+N.
+Output Format
+For each testcase, print in a single line, an integer — the answer as per the problem statement.
 Constraints
-1≤T≤100
-1≤K≤N≤10
-3
-N is divisible by
-K
-S contains only characters '0' and '1'
+1≤T≤4000
+1≤∣S∣≤10
+5
+The sum of
+∣S∣ over all testcases doesn't exceed
+10
+5
+Subtasks
+Subtask #1 (100 points): Original constraints
 Sample 1:
 Input
 Output
+3
+5
+00100
+5
+01010
+5
+10001
+1
 2
-8 2
-00011101
-6 2
-100111
-01100110
-IMPOSSIBLE
+2
 Explanation:
-Example case 1: If the given string "00011101" is rearranged to "01100110", it becomes
-2-foldable:
-Initially,
-S is "01100110".
-After the first folding, it becomes "100110".
-After the second folding, it becomes "0110".
-After the third folding, it becomes "10". This string has length
-2, so we are done.
-Example case 2: It is impossible to rearrange
-S into a
-2-foldable string.
+Test case
+1: The only strings that can be obtained by performing the given operations are
+{10000,00100,00001}. Of these the two strings
+00100 and
+00001 contain exactly one occurrence of
+01.
+Test case
+2: The given string
+S cannot be changed by performing the given operation and contains
+2 occurrences of the string
+01, i.e.
+01010.
+Test case
+3: The only strings that can be obtained by performing the given operations are
+{00101,10001,10100}. The string
+00101 contains two occurrences of
+01.

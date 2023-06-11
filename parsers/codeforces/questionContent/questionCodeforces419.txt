@@ -1,198 +1,149 @@
-G3. Doremy's Perfect DS Class (Hard Version)
-time limit per test1 second
+H. Doremy's Paint 2
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The only difference between this problem and the other two versions is the maximum number of queries. In this version, you are allowed to ask at most
-20
-queries. You can make hacks only if all versions of the problem are solved.
-This is an interactive problem.
-"Everybody! Doremy's Perfect Data Structure Class is about to start! Come and do your best if you want to have as much IQ as me!" In today's Data Structure class, Doremy is teaching everyone a powerful data structure — Doremy tree! Now she gives you a quiz to prove that you are paying attention in class.
-Given an array
+Doremy has
+n
+buckets of paint which is represented by an array
 a
 of length
+n
+. Bucket
+i
+contains paint with color
+a
+i
+. Initially,
+a
+i
+=i
+.
+Doremy has
 m
-, Doremy tree supports the query
-Q(l,r,k)
-, where
-1≤l≤r≤m
-and
-1≤k≤m
-, which returns the number of distinct integers in the array
-[⌊
-al
-k
-⌋,⌊
-al+1
-k
-⌋,…,⌊
-ar
-k
-⌋]
+segments
+[
+l
+i
+,
+r
+i
+]
+(
+1≤
+l
+i
+≤
+r
+i
+≤n
+). Each segment describes an operation. Operation
+i
+is performed as follows:
+For each
+j
+such that
+l
+i
+<j≤
+r
+i
+, set
+a
+j
+:=
+a
+l
+i
 .
-Doremy has a secret permutation
-p
-of integers from
-1
-to
-n
-. You can make queries, in one query, you give
-3
-integers
-l,r,k
-(
-1≤l≤r≤n
-,
-1≤k≤n
-) and receive the value of
-Q(l,r,k)
-for the array
-p
-. Can you find the index
-y
-(
-1≤y≤n
-) such that
-py=1
-in at most
-20
-queries?
-Note that the permutation
-p
-is fixed before any queries are made.
-Interaction
-You begin the interaction by reading an integer
-n
-(
-3≤n≤1024
-) in the first line — the length of the permutation.
-To make a query, you should output
-"?
-l r k
-" (
-1≤l≤r≤n
-,
-1≤k≤n
-)
-in a separate line. After each query, you should read an integer
+Doremy also selects an integer
+k
+. She wants to know for each integer
 x
- — the value of
-Q(l,r,k)
-for
-p
-. In this version of the problem, you can make at most
-20
-such queries.
-To give the answer, you should output
-"!
-y
-" (
-1≤y≤n
-)
-in a separate line, where
-py=1
+from
+0
+to
+m−1
+, the number of distinct colors in the array after performing operations
+xmodm+1,(x+1)modm+1,…,(x+k−1)modm+1
+. Can you help her calculate these values? Note that for each
+x
+individually we start from the initial array and perform only the given
+k
+operations in the given order.
+Input
+The first line of input contains three integers
+n
+,
+m
+, and
+k
+(
+1≤n,m≤2⋅
+10
+5
+,
+1≤k≤m
+) — the length of the array
+a
+, the total number of operations, and the integer that Doremy selects.
+The
+i
+-th line of the following
+m
+lines contains two integers
+l
+i
+,
+r
+i
+(
+1≤
+l
+i
+≤
+r
+i
+≤n
+) — the bounds of the
+i
+-th segment.
+Output
+Output
+m
+integers. The
+(x+1)
+-th integer should be the number of distinct colors in the array if we start from the initial array and perform operations
+xmodm+1,(x+1)modm+1,…,(x+k−1)modm+1
 .
-After printing a query or the answer, do not forget to output the end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-Hacks Format
-The first line of the hack contains an integer
-n
-(
-3≤n≤1024
-) — the length of the permutation.
-The second line of the hack contains
-n
-distinct integers
-p1,p2,…,pn
-(
-1≤pi≤n
-) — the permutation.
-Example
+Examples
 input
 Copy
-5
-
-2
-
-2
-
-1
-
-3
+7 5 5
+3 5
+2 3
+4 6
+5 7
+1 2
 output
 Copy
-? 1 3 4
-
-? 3 5 3
-
-? 3 4 5
-
-? 3 5 2
-
-! 4
+3 3 3 3 2 
+input
+Copy
+10 9 4
+1 1
+2 3
+3 4
+7 9
+6 8
+5 7
+2 4
+9 10
+1 3
+output
+Copy
+6 6 7 6 5 5 7 7 7 
 Note
-The permutation in the example is
-[3,5,2,1,4]
-.
-The input and output for example illustrate possible interaction on that test (empty lines are inserted only for clarity).
-In this interaction process:
-For the first query,
-⌊
-3
-4
-⌋=0,⌊
-5
-4
-⌋=1,⌊
-2
-4
-⌋=0
-, so the answer is
-2
-.
-For the second query,
-⌊
-2
-3
-⌋=0,⌊
-1
-3
-⌋=0,⌊
-4
-3
-⌋=1
-, so the answer is still
-2
-.
-For the third query,
-⌊
-2
-5
-⌋=0,⌊
-1
-5
-⌋=0
-, so the answer is
-1
-.
-For the fourth query,
-⌊
-2
-2
-⌋=1,⌊
-1
-2
-⌋=0,⌊
-4
-2
-⌋=2
-, so the answer is
-3
-.
-The correct answer is got after
-4
-queries, so this process will be judged correct.
+In the first test case, the picture below shows the resulting array for the values of
+x=0,1,2
+respectively.

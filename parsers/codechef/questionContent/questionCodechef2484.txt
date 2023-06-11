@@ -1,118 +1,48 @@
-Ball Sequence
+Earthquake
 Problem
-There is an infinite line of people, with person numbered
-(i+1) standing on the right of person numbered
-i. Chef can do
-2 types of operations to this line of people:
-Type
-1: Give a ball to the person number
-1.
-If there exists a person with two balls, they drop one ball and give the other ball to the person on their right, and this repeats until everyone has at most
-1 ball.
-Type
-2: Everyone gives their ball to the person on their left simultaneously. Since there is no one to the left of person
-1, they would drop their original ball if they have one.
-Chef gives a total of
-N instructions, out of which
-K instructions are of type
-2.
-Each instruction is numbered from
-1 to
-N. The indices of instructions of type
-2 are given by the array
-A
-1
-,A
-2
-,…,A
-K
-. The rest operations are of type
-1.
-Find the number of balls that have been dropped by the end of all the instructions.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains two space-separated integers
-N and
-K — the total number of operations and number of operations of type
-2.
-The next line contains the array
-K space-separated integers
-A
-1
-,A
-2
-,…,A
-K
-- the indices of instructions of type
-2.
-Output Format
-For each test case, output on a new line the number of balls that have been dropped by the end of all the instructions.
-Constraints
-1≤T≤100
-1≤N≤10
-9
-1≤K≤10
-5
-1≤A
-i
-≤N for each
-1≤i≤M
-A
-1
-<A
-2
-<⋯<A
-K
-The sum of
-K over all test cases won't exceed
-10
-5
-.
-Sample 1:
+Read problems statements in Mandarin Chinese and Russian.
+Earthquake in Bytetown! Situation is getting out of control!
+All buildings in Bytetown stand on straight line. The buildings are numbered 0, 1, ..., N−1 from left to right.
+Every hour one shake occurs. Each shake has 3 parameters: the leftmost building that was damaged during this shake, the corresponding rightmost building, and the force of the shake. Each time all the buildings in the disaster area are damaged equally. Let's consider this process in details.
+At any moment every building has the number that indicates its height (may have leading zeroes). This number corresponds to some string consisting of digits. When some shake affects to the building its string circularly rotates to the left by the value of the force of the shake and its height corresponds to the value of new string. Pay attention that after rotation string may have leading zeroes. For instance: a building with height 950 got in disaster area with force 2, Then its string become 095, so height in reality is 95. If it was one more shake with force 1, then its height would become 950 again.
+Major of Bytetown got some ideas how to protect residents, so sometimes he needs such kind of stats: find height of the highest building on some interval. You are given information about all the heights before the very first shake and then you get queries of two types:
+Type 0, described by 0 Li Ri Fi: Shake occurred on interval [Li, Ri] with force Fi.
+Type 1, described by 1 Li Ri: The major wants to know the biggest height on interval [Li, Ri].
+Here, of course, the interval [L, R] contains all the building k such that L ≤ k ≤ R.
+You want to get a promotion and promised to complete this task. Now it's time to do it!
 Input
+Each test file contains only one test case.
+The first line of input contains an integer N denoting the number of buildings in Bytetown. The second line contains N space-separated integers A0, A1, ..., AN−1 denoting the initial height of the buildings. The third line contains an integer M denoting the number of queries. Each of next M lines starts with 0 or 1, where 0 denotes a query Type 0 and 1 denotes a Type 1 query. If it's a Type 0 query then 3 integers follows Li, Ri, Fi, denoting number of the leftmost building, number of the rightmost building and force of this shake. If it's a Type 1 query then 2 integers follows Li, Ri, denoting numbers of the leftmost building and the rightmost building of necessary segment.
 Output
+For each Type 1 query, output an integer denoting the answer for the query without leading zeroes.
+Constraints
+1 ≤ N ≤ 800000 = 8 × 105
+1 ≤ M ≤ 200000 = 2 × 105
+0 ≤ Ai < 10000 = 104
+0 ≤ Li ≤ Ri < N
+0 ≤ Fi ≤ 60
+Ai does not have leading zeroes
+Example
+Input:
 3
-5 2
-3 4
-1 1
-1
-1000000000 5
-271832455 357062697 396505195 580082912 736850926
-2
-0
-999999980
-Explanation:
-Test case
-1: The operations are performed as follows:
-Type
-1: Only person
-1 has a ball. Till now,
-0 balls dropped.
-Type
-1: Person
-1 has
-2 balls. So he drops
-1 ball and passes
-1 to its right. Now, only person
-2 has a ball. Till now,
-1 ball dropped.
-Type
-2: Person
-2 passes the ball to its left. Now, only person
-1 has a ball. Till now,
-1 ball dropped.
-Type
-2: Person
-1 drops the ball. Till now,
-2 balls dropped.
-Type
-1: Only person
-1 has a ball. Till now,
-2 balls dropped.
-In total,
-2 balls are dropped.
-Test case
-2: Only one operation occurs which is of type
-2, so no balls are dropped.
+17 3140 832
+8
+1 0 2
+0 0 2 1
+1 1 2
+1 0 0
+0 0 2 2
+1 0 2
+0 1 1 1
+1 0 2
+Output:
+3140
+1403
+71
+832
+3140
+Explanation
+The initial array: [17, 3140, 832].
+The first query is a Type 1 query with numbers of buildings 0 and 2, so the answer is the maximum of the array: 3140.
+The second query is a Type 0 query with numbers of buildings 0 and 2, and force 1, so the array turns to: [71, 1403, 328].
+The third query is a Type 1 query again with numbers of buildings 1 and 2, so the answer is the maximum of 1403 and 328: 1403

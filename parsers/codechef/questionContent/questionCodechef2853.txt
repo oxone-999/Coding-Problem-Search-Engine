@@ -1,148 +1,106 @@
-Minimize the Bits
+Binary Land
 Problem
-You are given a binary string
-A of length
-N. The decimal representation of this string could be huge.
-Your task is to find out two binary strings
-B and
-C, each of length
-N, such that:
-(A)
-10
-=(B)
-10
-−(C)
-10
-;
-The total count of
-1s in
-B and
-C is minimum.
-If multiple such strings
-B and
-C exist, you can print any.
-It can be proven that at least one solution always exists.
-Note:
-(X)
-10
-represents the decimal representation of binary string
-X.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains one integer
-N — the length of the binary string
-A.
-The following line has the binary string
-A of length
-N.
-Output Format
-For each test case, output binary strings
-B and
-C, each of length
-N, on separate lines.
-Constraints
-1≤T≤4⋅10
-4
-1≤N≤10
-5
-A
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chefland is a city that always changes. It can be viewed as a grid with a fixed width
+N (with
+N columns numbered
+1 through
+N) and changing height. The rows of the grid are numbered with positive integers. Each cell in Chefland has a colour, which is either '0' or '1'.
+From a cell
+(x,y), it is possible to move to one of the cells
+(x+1,y−1),
+(x+1,y) and
+(x+1,y+1), but only if the destination cell exists and has the same colour as the origin cell.
+In Chefland, rows sometimes appear or disappear. However, a row may only appear at the bottom of the grid or disappear if it was at the top of the grid; whenever that happens, rows are renumbered with positive integers from top to bottom in such a way that the topmost row has number
+1.
+Now, Chef received a difficult task ― keeping track of the number of ways to move from the topmost row to the bottommost row. He is asking you to help him answer
+Q queries. Initially, the grid is empty ― it has
+0 rows. There are three types of queries:
+add L: You are given a string
+L with length
+N. A new row appears; for each valid
+i, the colour of the cell in this row and the
+i-th column is
+L
 i
-∈{0,1}
-The sum of
-N over all test cases won't exceed
-5⋅10
-5
 .
+remove: The topmost row disappears.
+path c d: Find the number of paths starting in the cell in the topmost row and
+c-th column and ending in the cell in the bottommost row and
+d-th column. Two paths are considered different if there is a cell which is visited in one path, but not in the other. Since this number can be very big, compute it modulo
+1,000,000,007.
+Input
+The first line of the input contains two space-separated integers
+N and
+Q.
+Each of the following
+Q lines describes a query in the format described above.
+Output
+For each path query, print a single line containing one integer ― the number of paths modulo
+1,000,000,007.
+Constraints
+1≤N≤20
+1≤Q≤300,000
+∣L∣=N
+L contains only characters '0' and '1'
+1≤c,d≤N
+for each path or remove query, the grid is not empty
+Subtasks
+Subtask #1 (10 points):
+N≤10
+Q≤300
+Subtask #2 (30 points):
+N≤10
+Q≤30,000
+Subtask #3 (60 points): original constraints
 Sample 1:
 Input
 Output
-2
-5
-00111
-2
-10
-01000
-00001
-10
-00
-Explanation:
-Test case
-1:
-(A)
-10
-=1⋅2
+5 9
+add 11101
+path 1 2
+add 01110
+path 3 2
+add 00100
+path 3 3
+add 10110
+remove
+path 1 2
 0
-+1⋅2
 1
-+1⋅2
-2
-+0⋅2
 3
-+0⋅2
-4
-=7.
-Consider
-B=(01000)
 2
-≡(8)
-10
-and
-C=(00001)
-2
-≡(1)
-10
-. Here,
-(A)
-10
-=(B)
-10
-−(C)
-10
-;
-The total count of
-1s in
-B and
-C is
+Explanation:
+After the first query, the city is:
+11101
+There is no way to move from column
+1 to column
 2.
-It can be shown that there exist no other values of
-B and
-C which satisfy the condition and have a smaller total count of
-2.
-Test case
-2:
-(A)
-10
-=0⋅2
-0
-+1⋅2
-1
-=2.
-Consider
-B=(10)
-2
-≡(2)
-10
-and
-C=(00)
-2
-≡(0)
-10
-. Here,
-(A)
-10
-=(B)
-10
-−(C)
-10
-;
-The total count of
-1s in
-B and
-C is
-1.
-It can be shown that there exist no other values of
-B and
-C which satisfy the condition and have a smaller total count of
-1.
+After the third query, the city is:
+11101
+01110
+There is only one way to move from the cell
+(1,3) to the cell
+(2,2):
+(1,3)→(2,2).
+After the fifth query, the city is:
+11101
+01110
+00100
+There are
+3 ways to move from the cell
+(1,3) to the cell
+(3,3):
+(1,3)→(2,2)→(3,3)
+(1,3)→(2,3)→(3,3)
+(1,3)→(2,4)→(3,3)
+After the eighth query, the city is:
+01110
+00100
+10110
+There are
+2 ways to move from the cell
+(1,1) to the cell
+(3,2):
+(1,1)→(2,1)→(3,2)
+(1,1)→(2,2)→(3,2)

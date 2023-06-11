@@ -1,49 +1,39 @@
-Sequence Transmission
+Another Deli-ceilous problem!
 Problem
-WARNING: This problem has large input / output files. Use of faster I/O methods is recommended.
-Chef has encrypted the super secret recipe for his bitsoup into a sequence of N unsigned integers A1, A2, ... AN. Each of these are M bit integers - meaning, their binary representation will only have at most M bits.
-Chef is now transmitting this recipe to the Sous Chef. He partitions the sequence into several disjoint, contiguous groups and sends them one by one. Each partition may contain one or more integers which are contiguous in the sequence. Chef can partition a sequence of N integers in many ways, but the receiving program of the Sous Chef has a constraint.
-For each group of integers it receives, let S represent the sum of the integers in the group. The receiver program only accepts the group of integers if the Mth least significant bit of S is 0. See the explanation section for clarity.
-Chef wants to know how many ways exist to partition the recipe such that the Sous Chef can receive it completely.
-Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. The first line of each test case contains two integers N and M denoting the length of Chef's sequence and the number of bits that are adequate to represent each number in the sequence. The second line contains N space-separated integers A1, A2, ... AN denoting the sequence.
-Output
-For each test case, output a single integer denoting the number ways you can partition Chef's sequence such that the Sous Chef's receiving program will accept each partition. Since this number can be very large output this number modulo 1000000009.
-Constraints
-1 ≤ T ≤ 10
-1 ≤ N ≤ 200000
-1 ≤ M ≤ 18
-1 ≤ Ai < 2M
-Sample
-Input:
-4
-6 10
-4 4 4 4 4 4
-6 3
-4 4 4 4 4 4
-5 8
-1 1 1 1 128
-7 4
-4 5 6 7 8 9 10
-Output:
-32
-4
-0
-3
-Explanation
-Test Case 1. You can partition the sequence in 32 ways. Note that the sum of all the numbers in the sequence is 24. The 10th bit in 24 is already 0. Any partition's sum will be less than or equal to 24 anyway, thus each partitioning way is valid. Thus the answer is 32.
-If you don't see why the answer is 32, consider the following
-There is only 1 partition of { 4 }
-There are 2 partitions of { 4, 4 } => { {4}, {4} } and { {4,4} }
-There are 4 partitions of { 4, 4, 4 } => { {4}, {4}, {4} }, { {4}, {4,4} }, { {4,4}, {4} } and { {4,4,4} }
-There are 8 partitions of { 4, 4, 4, 4 } and so on..
-Test Case 2.The following 4 ways are the only ways to partition the sequence so that the Sous Chef's program accepts all the partitions.
-{ {4,4}, {4,4}, {4,4} } => The 3rd bit is 0 in 8, which is the sum of values in each of the partitions.
-{ {4,4}, {4,4,4,4} } => The 3rd bit is 0 in 8 as well as 16, which is the sum of values in the two partitions respectively.
-{ {4,4,4,4}, {4,4} }
-{ {4,4,4,4,4,4} }
-Test Case 3. There is no way you can put 128 in any partition with the given sequence such that the Sous Chef's receiver would accept the partition.
-Test Case 4. The following 3 partitions are valid.
-{ {4}, {5}, {6}, {7,8,9,10} }
-{ {4}, {5}, {6,7,8}, {9,10} }
-{ {4,5,6,7,8,9,10} }
+Chef Avi is stuck on a not-so-trivial problem. His teacher gave him an array
+A of size
+N and
+Q queries,each query containing 3 integers
+X,L,R.
+For each query help him find the value of
+∑
+i=L
+R
+ceil(X/A
+i
+), where
+ceil(x) is the smallest integer greater than or equal to
+x. Note that it is a 1-indexed array.
+###Input:
+First line will contain two integers
+N and
+Q.
+The next line contains
+N integers representing the array
+A.
+Then
+Q lines follow.
+Each query consists of a single line with three integers:
+X,L,R.
+###Output: For each query, print the output in a new line.
+###Constraints
+1≤N≤5,00,000
+1≤A
+i
+≤1,00,000
+1≤Q≤1,000
+1≤X≤1,00,000
+1≤L≤R≤N
+###Sample Input: 5 2 7 4 2 9 3 7 2 4 8 1 5
+###Sample Output: 7 12 ###Explanation: For the first query: ceil(7/4)+ceil(7/2)+ceil(7/9) = ceil(1.75)+ceil(3.5)+ceil(0.77) = 2 + 4 + 1 = 7.
+For the second query: ceil(8/7) + ceil(8/4)+ceil(8/2)+ceil(8/9) + ceil(8/3) = 2 + 2 + 4 + 1 + 3 = 12.

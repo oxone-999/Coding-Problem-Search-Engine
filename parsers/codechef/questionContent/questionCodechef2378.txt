@@ -1,59 +1,22 @@
-Haunted Maze
+Billboards
 Problem
-Chef is trapped in a haunted maze. There are ghosts that patrol the maze by following fixed paths. Chef is trying to escape the maze, but must avoid the ghosts or he will become frightened and faint. Additionally, Chef needs to escape within a certain amount of time, or he will faint from hunger. Your task is to determine if Chef can escape the maze without fainting, and if so the minimum time it will take.
-You will be given the layout of the maze, including Chef's starting position, the position of the exit, and the patrol paths of the ghosts. There is a timer that keeps track of how long Chef has been in the maze. The timer starts at 0. Each second, the following happens (in order):
-If the timer is equal to the maximum time Chef is allowed to spend in the maze, he will faint from hunger.
-Chef may move to one of the adjacent cells of the maze (north, east, south, or west of his current position), provided that cell is neither a wall nor occupied by a ghost. Chef also has the option of standing still.
-All of the ghosts move to the next cell in their repsective patrol paths. If any ghost moves into the cell now occupied by Chef, Chef will faint.
-The timer is incremented by 1.
-If Chef is now standing at the location of the exit, Chef successfully escapes the maze.
-Ghost patrol paths will be given as a list of waypoints. Each waypoint will be in-line either horizontally or vertically with the next waypoint in the list, and the final waypoint will similarly be in-line with the first waypoint. Ghosts will move from waypoint to waypoint, one square at a time, using the shortest possible path. Once a ghost reaches its final waypoint, it will travel back to the first waypoint and repeat the cycle. For example, if a patrol path were given as the waypoints:
-(2,3) (1,3) (1,0) (0,0) (0,1) (2,1)
-Then the ghost's complete path would be:
-(2,3) (1,3) (1,2) (1,1) (1,0) (0,0) (0,1) (1,1) (2,1) (2,2)
-After which the sequence would repeat.
+There is a long long highway leading to Chef's new restaurant. But the problem is that almost no one stops in it, hence it's even unprofitable to hold it now. The only idea Chef has is that the restaurant has not been very well advertised, so it has no clients just because nobody knows about it! In order to change the situation Chef has decided to use some billboards along the highway for advertising.
+
+There are exactly N billboards along the highway. Chef may place advertisements at any subset of billboards. To prevent casual drivers from forgetting about how good the restaurant is, there should be at least K restaurant's advertisement among every M consecutive billboards. But still each billboard's time costs some money, and Chef would like to pay the least amount possible (after all, he has already spent a lot of money for the restaurant at no profit). Now you are to help Chef count the number of different ways to place the minimal number of advertisements still meeting the condition above.
+Input
+The first line of the input contains a single integer T -- the number of test cases (no more than 25). Each of the next T lines describes one test case and contains three integers N, M and K (1 <= K <= M <= 50, M <= N <= 10^9).
+Output
+For each test case output a single line containing the requested number of ways modulo 1 000 000 007.
+Example
 Input:
-Input will begin with T, the number of test cases. Each test case begins with 4 integers: M, N, C, and K, where M is the height of the maze, N is the width of the maze, C is the number of ghosts, and K is the number of seconds before Chef will faint from hunger. C lines follow, each describing the patrol path of a ghost. Each patrol path begins with an integer L, the number of waypoints in the path, followed by L pairs of integers giving the (x,y) coordinates of a waypoint on the path, where (0,0) is the top-left corner and (N-1, M-1) is the bottom-right corner. Finally, M lines of N characters each describe the maze itself. A '.' character indicates a passable square, and a '#' character indicates an impassable wall (although the ghosts may pass through walls). A '@' character indicates the starting position of Chef (it is guaranteed that no ghost will begin here), and a '\$' character indicates the exit of the maze (there will be exactly one '@' character and one '\$' character in each test case).
+3
+3 2 1
+4 2 1
+6 3 2
+
 Output:
-For each test case, if Chef can escape without fainting, print the minimum number of seconds it will take him to escape. Otherwise, print -1.
-Constraints:
-T≤10
-1≤M,N≤30
-0≤C≤30
-0≤K≤100000
-2≤L≤10
-Sample Input:
-4
-10 10 0 200
-##.\$......
-@#.######.
-.#...#..#.
-.###....#.
-....###.#.
-#.#.....#.
-....#.###.
-.####.#.#.
-.#....#...
-..........
-3 10 1 18
-2 1 1 7 1
-###.######
-@........\$
-######.###
-5 5 2 13
-2 2 4 2 1
-3 4 2 3 2 2 2
-##@##
-##.##
-\$..##
-#####
-#####
-2 2 1 1000
-2 1 1 1 0
-@\$
-..
-Sample Output:
-22
-18
--1
--1
+1
+3
+6
+Explanation:
+In the second test case there are 3 ways to place the advertisements: using the 1st and the 3rd, the 2nd and the 3rd, or the 2nd and the 4th billboards.

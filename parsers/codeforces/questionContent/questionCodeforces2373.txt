@@ -1,117 +1,132 @@
-E. Two Types of Spells
-time limit per test3.5 seconds
+A. Remove Smallest
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp plays a computer game (yet again). In this game, he fights monsters using magic spells.
-There are two types of spells: fire spell of power
-x
-deals
-x
-damage to the monster, and lightning spell of power
-y
-deals
-y
-damage to the monster and doubles the damage of the next spell Polycarp casts. Each spell can be cast only once per battle, but Polycarp can cast them in any order.
-For example, suppose that Polycarp knows three spells: a fire spell of power
-5
-, a lightning spell of power
-1
-, and a lightning spell of power
-8
-. There are
-6
-ways to choose the order in which he casts the spells:
-first, second, third. This order deals
-5+1+2⋅8=22
-damage;
-first, third, second. This order deals
-5+8+2⋅1=15
-damage;
-second, first, third. This order deals
-1+2⋅5+8=19
-damage;
-second, third, first. This order deals
-1+2⋅8+2⋅5=27
-damage;
-third, first, second. This order deals
-8+2⋅5+1=19
-damage;
-third, second, first. This order deals
-8+2⋅1+2⋅5=20
-damage.
-Initially, Polycarp knows
-0
-spells. His spell set changes
+You are given the array
+a
+consisting of
 n
-times, each time he either learns a new spell or forgets an already known one. After each change, calculate the maximum possible damage Polycarp may deal using the spells he knows.
-Input
-The first line contains one integer
-n
-(
-1≤n≤2⋅
-10
-5
-) — the number of changes to the spell set.
-Each of the next
-n
-lines contains two integers
-tp
+positive (greater than zero) integers.
+In one move, you can choose two indices
+i
 and
-d
+j
 (
-0≤t
-p
+i≠j
+) such that the absolute difference between
+a
 i
-≤1
-;
+and
+a
+j
+is no more than one (
+|
+a
+i
 −
-10
-9
-≤d≤
-10
-9
-;
-d
-i
-≠0
-) — the description of the change. If
+a
+j
+|≤1
+) and remove the smallest of these two elements. If two elements are equal, you can remove any of them (but exactly one).
+Your task is to find if it is possible to obtain the array consisting of only one element using several (possibly, zero) such moves or not.
+You have to answer
 t
-p
+independent test cases.
+Input
+The first line of the input contains one integer
+t
+(
+1≤t≤1000
+) — the number of test cases. Then
+t
+test cases follow.
+The first line of the test case contains one integer
+n
+(
+1≤n≤50
+) — the length of
+a
+. The second line of the test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
 i
-if equal to
-0
-, then Polycarp learns (or forgets) a fire spell, otherwise he learns (or forgets) a lightning spell.
-If
-d
+≤100
+), where
+a
 i
->0
-, then Polycarp learns a spell of power
-d
+is the
 i
-. Otherwise, Polycarp forgets a spell with power
-−
-d
-i
-, and it is guaranteed that he knew that spell before the change.
-It is guaranteed that the powers of all spells Polycarp knows after each change are different (Polycarp never knows two spells with the same power).
+-th element of
+a
+.
 Output
-After each change, print the maximum damage Polycarp can deal with his current set of spells.
+For each test case, print the answer: "YES" if it is possible to obtain the array consisting of only one element using several (possibly, zero) moves described in the problem statement, or "NO" otherwise.
 Example
 input
 Copy
-6
-1 5
-0 10
-1 -5
-0 5
-1 11
-0 -10
+5
+3
+1 2 2
+4
+5 5 5 5
+3
+1 2 4
+4
+1 3 4 4
+1
+100
 output
 Copy
-5
-25
-10
-15
-36
-21
+YES
+YES
+NO
+NO
+YES
+Note
+In the first test case of the example, we can perform the following sequence of moves:
+choose
+i=1
+and
+j=3
+and remove
+a
+i
+(so
+a
+becomes
+[2;2]
+);
+choose
+i=1
+and
+j=2
+and remove
+a
+j
+(so
+a
+becomes
+[2]
+).
+In the second test case of the example, we can choose any possible
+i
+and
+j
+any move and it doesn't matter which element we remove.
+In the third test case of the example, there is no way to get rid of
+2
+and
+4
+.

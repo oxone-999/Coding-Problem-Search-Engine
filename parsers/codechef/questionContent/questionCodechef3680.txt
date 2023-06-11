@@ -1,35 +1,104 @@
-Tom And Jerry
+H - Solve It Ashi
 Problem
-Note: The test data for this problem is not final yet. More tests may be uploaded later!
-Here comes the famous story of Tom and Jerry again!
-One day, Jerry is on his way back home. His home has lots of doors scattered at different cells in a rectangular board of size M x N. Entering any door leads Jerry to his home. There are obstacles in some cells of the board and Jerry cannot step on these cells. In each step Jerry will move to one of the four neighboring cells. Of course, Jerry is really clever, so he always goes home along a shortest path. If there are multiple choices, Jerry will prioritize his actions in the following order: moving upward, moving rightward, moving leftward and moving downward.
-Needless to say that Tom does not want Jerry to get back home. And Tom is very clever too. In each step Tom will put an obstacle in an empty cell, and of course this empty cell cannot have Jerry standing in it. He cannot put an obstacle on top of an entrance to Jerry's house. Also, in each step Tom places exactly one obstacle. Tom wants to put obstacles so that there's no way for Jerry to come back home!
-Write a program to help Tom put as few obstacles as possible to achieve his (cruel) objective! Given that, in the beginning of each step Tom will put an obstacle first and then Jerry makes a move. You may sympathize with poor Jerry, but nonetheless it is your job to write this program!
-Input
-The first line contains two space separated positive integers M and N, the sizes of the board.
-Each of the next M lines contains N characters, representing the rectangular board. Each character can be '.' - an empty cell, '0' (zero) - a door to Jerry's home, '#' - an obstacle or '*' - the initial position of Jerry. The input is guaranteed to have a single '*' on the board. There will be at least one door to Jerry's home. There may or may not be any obstacles in the beginning.
-You may assume that in each test case Jerry has a way to escape in the beginning; and there is a way for Tom to put obstacles such that Tom achieves his objective within 100 steps.
-Output
-The first line should contains a non-negative integer K, the number of obstacles that Tom will put. If K is more than 200, the judge will return Wrong Answer.
-Each of the next K lines should contain two space separated positive integers x and y (1 ≤ x ≤ M, 1 ≤ y ≤ N), the coordinates of the obstacles that Tom will put in the current step. The rows of the board are numbered by numbers from 1 to M from top to bottom. The columns of the board are numbered by numbers from 1 to N from left to right. If at some move Tom will put obstacle outside the board or at already occupied cell (by Jerry or by door or by another obstacle), the judge will return Wrong Answer.
-Scoring
-Your score for each test case is K*K if Jerry does not have any route to escape after placing the obstacles. If in the end Jerry can still find his way back home, you will get 2000000 (2e6) score for the corresponding test case. The total score is the sum of score for all test cases (or files).
-Your objective, of course, is to minimize the total score.
-Constraints
-1 ≤ M, N ≤ 50
-Example
-Input
-
-3 3
-..0
-...
-*..
-
-Output
-
+Ashi had been given an array
+A having
+N element and you are asked
+Q queries of
+3 types.
+1
+X :- If the array element at index
+X is even, then move it to the beginning of the array, otherwise move it to the end of the array (if the element is moved to the beginning then all numbers behind the index
+X will be shifted one position right to their initial positions and if it is moved to the end then all elements after the index
+X will move one position left to their initial positions.)
+For example, if the array is
+A=[1,2,3,4,5] and after moving of
+4
+th
+element to the beginning, the changed array will be
+A=[4,1,2,3,5].
+2
+X
+P :- Change element of the array at index
+X to
+P
 3
-2 2
-1 1
-3 2
-
-This sample output would score 3*3=9. Note that better scores may be possible.
+L
+R
+K :- Find the count of numbers of the array
+A from index
+L to
+R (including both
+L and
+R) having
+K set bits.
+###Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains two space-separated integers
+N and
+Q, the number of elements in the array
+A, and the number of queries.
+The second line contains
+N space-separated integers of the array
+A.
+Next
+Q lines contain two, there, or four space-separated integers according to the type of query, the first integer will represent the type of query.
+Output
+For each query of type
+3 print the required number in a new line.
+Constraints
+1≤T≤5
+1≤N,Q≤10
+5
+0≤A[i]≤10
+9
+, for
+1≤i≤N
+1≤X,L,R≤N
+L≤R
+0≤K≤32
+0≤P≤10
+9
+Example Input
+1
+7 3
+1 2 3 4 5 6 7
+2 3 10
+1 6 
+3 1 4 2
+Example Output
+2
+Explanation:
+After
+1
+st
+query:
+1
+2
+10
+4
+5
+6
+7
+After
+2
+nd
+query:
+6
+1
+2
+10
+4
+5
+7
+For
+3
+rd
+query : there are
+2 numbers(
+6 and
+10) in the range
+1 to
+4 which have
+2 set bits.

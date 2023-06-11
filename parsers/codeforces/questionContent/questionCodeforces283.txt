@@ -1,118 +1,132 @@
-A. Make it Beautiful
-time limit per test3 seconds
+H2. Window Signals (hard version)
+time limit per test7 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-An array
-a
-is called ugly if it contains at least one element which is equal to the sum of all elements before it. If the array is not ugly, it is beautiful.
-For example:
-the array
-[6,3,9,6]
-is ugly: the element
-9
-is equal to
-6+3
-;
-the array
-[5,5,7]
-is ugly: the element
-5
-(the second one) is equal to
-5
-;
-the array
-[8,4,10,14]
-is beautiful:
-8≠0
-,
-4≠8
-,
-10≠8+4
-,
-14≠8+4+10
-, so there is no element which is equal to the sum of all elements before it.
-You are given an array
-a
-such that
-1≤
-a
-1
-≤
-a
+This is the hard version of the problem. In this version, the constraints on
+h
+and
+w
+are higher.
+A house at the sea has
+h
+floors, all of the same height. The side of the house facing the sea has
+w
+windows at equal distances from each other on every floor. Thus, the windows are positioned in cells of a rectangular grid of size
+h×w
+.
+In every window, the light can be turned either on or off, except for the given
+k
+(at most
 2
-≤⋯≤
-a
-n
-≤100
-. You have to reorder the elements of
-a
-in such a way that the resulting array is beautiful. Note that you are not allowed to insert new elements or erase existing ones, you can only change the order of elements of
-a
-. You are allowed to keep the array
-a
-unchanged, if it is beautiful.
+) windows. In these
+k
+windows the light can not be turned on, because it is broken.
+In the dark, we can send a signal to a ship at sea using a configuration of lights turned on and off. However, the ship can not see the position of the lights with respect to the house. Thus, if one configuration of windows with lights on can be transformed into another using parallel translation, these configurations are considered equal. Note that only parallel translation is allowed, but neither rotations nor flips are. Moreover, a configuration without any light at all is not considered valid.
+Find how many different signals the ship can receive and print this number modulo
+998244353
+.
 Input
-The first line contains one integer
+Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤2000
-) — the number of test cases.
-Each test case consists of two lines. The first line contains one integer
-n
-(
-2≤n≤50
-). The second line contains
-n
-integers
-a
-1
+1≤t≤100
+). The description of the test cases follows.
+The first line of each test case contains three integers
+h
 ,
-a
-2
-,…,
-a
-n
-(
+w
+, and
+k
+ (
+1≤h,w≤200
+;
+0≤k≤min(h⋅w,2)
+) — the height of the house, the number of windows on each floor, and the number of windows with broken lights.
+If
+k>0
+, each of the next
+k
+lines contains two integers
+r
+i
+and
+c
+i
+ (
 1≤
-a
+r
+i
+≤h
+;
+1≤
+c
+i
+≤w
+) — the floor number and the window number with the broken light. The floors are numbered
 1
-≤
-a
+to
+h
+from bottom to top, and the windows are numbered
+1
+to
+w
+from left to right. If
+k=2
+, then either
+r
+1
+≠
+r
 2
-≤⋯≤
-a
-n
-≤100
-).
+or
+c
+1
+≠
+c
+2
+.
+It is guaranteed that the sum of
+h⋅w
+over all test cases does not exceed
+40000
+.
 Output
-For each test case, print the answer as follows:
-if it is impossible to reorder the elements of
-a
-in such a way that it becomes beautiful, print NO;
-otherwise, in the first line, print YES. In the second line, print
-n
-integers — any beautiful array which can be obtained from
-a
-by reordering its elements. If there are multiple such arrays, print any of them.
+For each test case, print a single integer — the number of signals the ship can receive, modulo
+998244353
+.
 Example
 input
 Copy
-4
-4
-3 3 6 6
-2
-10 10
-5
-1 2 3 4 5
-3
-1 4 4
+10
+1 3 0
+2 2 0
+3 2 0
+4 5 0
+12 7 0
+1 1 1
+1 1
+1 3 1
+1 2
+3 4 1
+3 4
+2 3 2
+1 1
+2 1
+4 5 2
+2 3
+4 2
 output
 Copy
-YES
-3 6 3 6
-NO
-YES
-2 4 1 5 3
-YES
-1 4 4
+4
+10
+44
+954368
+34903934
+0
+2
+1696
+10
+253144
+Note
+In the first test case, the ship can receive four different signals: all lights on; lights on in two neighboring windows; lights on in the leftmost and the rightmost windows; or light on in any single window.

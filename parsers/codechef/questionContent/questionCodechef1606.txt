@@ -1,30 +1,105 @@
-Lyra and the Alethiometer
+PerMEXuation 
 Problem
-Lyra Belacqua is a very gifted girl. She is one of a very small set of people capable of reading an alethiometer, more commonly known as The Golden Compass. It has one specific use: to tell the truth. The name in fact, is derived from "Aletheia" meaning truth, and "-ometer", meaning "measuring device".
-The alethiometer had four needles, out of which the user would direct three of them to lie over symbols on the face of the device to ask a question. The fourth needle then swung into action and pointed to various symbols one after another, thus telling the answer.
-For this problem, consider the alethiometer consisting of symbols : digits '0'-'9' and letters 'A'-'Z'. Learned scholars were debating the age of the Universe, and they requested Lyra to find out the age from the alethiometer. Having asked the question, the fourth needle started spouting out symbols, which Lyra quickly recorded. In that long string of characters, she knows that some substring corresponds to the age of the Universe. She also knows that the alethiometer could have wrongly pointed out atmost one digit (0-9) as a letter (A-Z). She then wonders what is the maximum possible age of the Universe.
-Given the set of symbols the alethiometer pointed out, help her find the maximum age of the Universe, which could correspond to a substring of the original string with atmost one letter changed.
-Note: We consider a substring to be a contiguous part of the string S
-
-Also, the alethiometer wrongly reports only a letter. All the digits remain as they are.
-Input
-Each input consists of a single string S which is what Lyra recorded from the fourth needle's pointing.
-Output
-Output one number, the maximum possible answer.
+You are given an integer
+N and a (
+0-indexed) binary string
+A having length
+N+1.
+Find any permutation
+P of
+0,1,2,...,N−1 (or determine that it does not exist) that satisfies the following conditions for all
+i (
+0≤i≤N):
+if
+A
+i
+=0: No contiguous segment of
+P has
+mex equal to
+i
+if
+A
+i
+=1: There exists at least one contiguous segment of
+P that has
+mex equal to
+i
+If multiple permutations exist that satisfy the given conditions, print any.
+Note:
+mex of a segment is the smallest non-negative number that does not occur in that segment.
+Input Format
+The first line contains the number of test cases
+T. Description of the test cases follows.
+The first line of each test case contains a single integer
+N.
+The second line of each test case contains the binary string
+A of length
+N+1.
+Output Format
+For each test case print :
+Yes if there exists a permutation
+P that satisfies the conditions described in the statement, followed by the permutation
+P in the next line (If multiple permutations exist that satisfy the given conditions, print any).
+No otherwise.
+You may print each character of
+Yes and
+No in uppercase or lowercase (for example,
+yes,
+yEs,
+YES will be considered identical).
 Constraints
-1 ≤ |S| ≤ 1,000
-S will only contain digits 0-9 and uppercase Latin letters.
+1≤T≤10
+4
+2≤N≤3⋅10
+5
+∣A∣=N+1
+It is guaranteed that the sum of
+N over all test cases does not exceed
+3⋅10
+5
+.
 Sample 1:
 Input
 Output
-06454
-6454
+4
+2
+111
+5
+110100
+5
+110101
+7
+11100111
+Yes
+0 1
+No
+Yes
+0 2 1 4 3
+Yes
+0 1 3 4 2 5 6
 Explanation:
-In the first example, there is no choice as to what the number can be. It has to be 6,454.
-Sample 2:
-Input
-Output
-C0D3C43F
-3943
-Explanation:
-In the second example, there are a total of 41 possible strings (one for the original, and 10 for changing each letter). You can verify that the maximum number as a substring is got by making the string "C0D3943F".
+Test case-1: One of the possible permutations satisfying the given conditions is [
+0,1] because:
+mex([1])=0. Therefore the condition is satisfied for
+i=0.
+mex([0])=1. Therefore the condition is satisfied for
+i=1.
+mex([0,1])=2. Therefore the condition is satisfied for
+i=2.
+Test case-2: It can be proven that no permutation exists that satisfies the given conditions.
+Test case-3: One of the possible permutations satisfying the given conditions is [
+0,2,1,4,3] because:
+mex([2])=0. Therefore the condition is satisfied for
+i=0.
+mex([0,2])=1. Therefore the condition is satisfied for
+i=1.
+There does not exist any segment with
+mex=2. Therefore the condition is satisfied for
+i=2.
+mex([0,2,1])=3. Therefore the condition is satisfied for
+i=3.
+There does not exist any segment with
+mex=4. Therefore the condition is satisfied for
+i=4.
+mex([0,2,1,4,3])=5. Therefore the condition is satisfied for
+i=5.

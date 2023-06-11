@@ -1,105 +1,164 @@
-Coordinate Points
+MAX-SEG
 Problem
-Jagdish Bhagat bolta hai... Gav se gav jod diya hai...
-The government is very upset with Mr. Bhagat's feedback and decided to directly connect every single pair of villages. Help the government solve this in minimum number of days.
-Aryan has
-N pairwise distinct points lying on the coordinate axes, i.e, every point is of the form
-(x,0) or
-(0,y). Aryan wants to draw line segments connecting every pair of the given points.
-In one second, Aryan can draw line segments between as many pairs of points as he likes, as long as all the segments drawn in this second do not intersect or overlap non-trivially with each other; however, it is allowed for the endpoint of one segment to touch another segment.
-That is, if two segments share a point, then that point must be the endpoint of at least one of the two segments. See the sample cases below for an example.
-For example, Aryan cannot draw a segment joining
-(1,0) to
-(0,2) and a segment joining
-(2,0) and
-(0,1) in the same second, since they intersect. However, he can draw segments
-(0,1)−(2,0),(0,0)−(0,2) and
-(0,1)−(1,0) in the same second, since they only touch at an endpoint.
-Find the minimum number of seconds Aryan needs to draw all the
-(
+Read problem statements in Mandarin, Russian, and Vietnamese as well.
+You are given two arrays
+A and
+B of length
+N. The array
+B contains only zeros and ones.
+You are given
+Q queries, each of which consists of two integers
+L and
+R,
+L≤R. Consider a partition of the interval
+[L,R] into some
+k≥1 subintervals
+[l
+1
+,r
+1
+],[l
 2
-N
-) line segments.
-Note that every possible line segment must be drawn. That is, if you had the points
-{(−1,0),(0,0),(1,0)}, then all three pairs of line segments must be drawn — it is not enough to draw the segment
-(−1,0)−(1,0).
+,r
+2
+],…,[l
+k
+,r
+k
+] satisfying the following conditions:
+l
+1
+=L and
+r
+k
+=R
+l
+i
+≤r
+i
+for every
+1≤i≤k
+r
+i
++1=l
+i+1
+for every
+1≤i<k
+B
+l
+i
++B
+l
+i
++1
++⋯+B
+r
+i
+=1 for every
+1≤i≤k
+Note that you are free to choose any
+k≥1.
+Define the sum of a subinterval
+[l
+i
+,r
+i
+] to be
+sum(l
+i
+,r
+i
+)=A
+l
+i
++A
+l
+i
++1
++⋯+A
+r
+i
+. Given a partition of
+[L,R] into subintervals, define its goodness to be the number of subintervals in the partition with non-negative sum. Find and print the maximum goodness over all partitions satisfying the given conditions.
 Input Format
-The first line of input will contain a single integer
-T, denoting the number of testcases.
-Each testcase consists of multiple lines of input.
-The first line of each testcase contains a single integer
-N — the number of points on the coordinate axes.
-Each of the next
-N lines contains two space-separated integers
-x and
-y, denoting the point
-(x,y). It is guaranteed that at least one of
-x and
-y will be
-0.
+The first line contains an integer
+T, denoting the number of test cases. The
+T test cases then follow:
+The first line of each test case contains two space-separated integers
+N,Q.
+The second line contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
+The third line contains
+N space-separated integers
+B
+1
+,B
+2
+,…,B
+N
+.
+Q lines follow, each containing two space-separated integers
+L,R.
 Output Format
-For each testcase, output on a single line the minimum number of seconds Aryan needs to draw line segment between every pair of points.
+For each query, output in a single line the maximum goodness of a partition of
+[L,R]. If there is no possible partition, print
+0.
 Constraints
 1≤T≤10
+1≤N,Q≤5⋅10
 5
-2≤N≤10
-6
-−10
+∣A
+i
+∣≤10
 9
-≤x,y≤10
-9
-Every input point will lie on the coordinate axes.
-The input points are pairwise distinct.
-The sum of
-N across all the testcases won't exceed
+0≤B
+i
+≤1
+1≤L≤R≤N
+Sum of
+N over all test cases does not exceed
+5⋅10
+5
+Sum of
+Q over all test cases does not exceed
+5⋅10
+5
+Subtasks
+Subtask #1 (5 points)
+1≤N≤1000
+Q=1
+Sum of
+N over all test cases does not exceed
 10
-6
-.
+3
+Subtask #2 (30 points)
+1≤N≤5⋅10
+5
+Q=1
+Sum of
+N over all test cases does not exceed
+5⋅10
+5
+Subtask #3 (65 points)
+Original constraints
 Sample 1:
 Input
 Output
-3
-5
-0 0
-0 1
-0 2
-2 0
-1 0
-5
--1 0
-0 0
-1 0
-0 5
-0 4
-6
-0 -1
-1 0
--1 0
-0 1
-2 0
--2 0
-2
-2
-5
-Explanation:
-Test case
-1: Let's denote the points as:
-P
 1
-→(1,0) ,
-P
-2
-→(2,0) ,
-P
+5 1
+1 1 1 1 2
+1 1 0 1 1
+2 5
 3
-→(0,1) ,
-P
-4
-→(0,2) ,
-P
-5
-→(0,0)).
-There are a total of
-10 line segments amongst these points.
-These
-10 segments can be drawn in two steps of five each, as follows:
+Explanation:
+Test Case
+1: We can divide the subarray
+[2,5] into
+[2,3],[4,4],[5,5].

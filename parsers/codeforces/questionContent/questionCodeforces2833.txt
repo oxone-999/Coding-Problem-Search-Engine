@@ -1,47 +1,26 @@
-A. Add Odd or Subtract Even
+D. Three Integers
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given two positive integers
-a
-and
-b
+You are given three integers
+a≤b≤c
 .
-In one move, you can change
-a
-in the following way:
-Choose any positive odd integer
-x
-(
-x>0
-) and replace
-a
-with
-a+x
-;
-choose any positive even integer
-y
-(
-y>0
-) and replace
-a
-with
-a−y
-.
-You can perform as many such operations as you want. You can choose the same numbers
-x
+In one move, you can add
++1
+or
+−1
+to any of these integers (i.e. increase or decrease any number by one). You can perform such operation any (possibly, zero) number of times, you can even perform this operation several times with one number. Note that you cannot make non-positive numbers using such operations.
+You have to perform the minimum number of such operations in order to obtain three integers
+A≤B≤C
+such that
+B
+is divisible by
+A
 and
-y
-in different moves.
-Your task is to find the minimum number of moves required to obtain
-b
-from
-a
-. It is guaranteed that you can always obtain
-b
-from
-a
+C
+is divisible by
+B
 .
 You have to answer
 t
@@ -50,60 +29,64 @@ Input
 The first line of the input contains one integer
 t
 (
-1≤t≤
+1≤t≤100
+) — the number of test cases.
+The next
+t
+lines describe test cases. Each test case is given on a separate line as three space-separated integers
+a,b
+and
+c
+(
+1≤a≤b≤c≤
 10
 4
-) — the number of test cases.
-Then
-t
-test cases follow. Each test case is given as two space-separated integers
-a
-and
-b
-(
-1≤a,b≤
-10
-9
 ).
 Output
-For each test case, print the answer — the minimum number of moves required to obtain
-b
-from
-a
-if you can perform any number of moves described in the problem statement. It is guaranteed that you can always obtain
-b
-from
-a
+For each test case, print the answer. In the first line print
+res
+— the minimum number of operations you have to perform to obtain three integers
+A≤B≤C
+such that
+B
+is divisible by
+A
+and
+C
+is divisible by
+B
+. On the second line print any suitable triple
+A,B
+and
+C
 .
 Example
 input
 Copy
-5
-2 3
-10 10
-2 4
-7 4
-9 3
+8
+1 2 3
+123 321 456
+5 10 15
+15 18 21
+100 100 101
+1 22 29
+3 19 38
+6 30 46
 output
 Copy
 1
-0
-2
-2
-1
-Note
-In the first test case, you can just add
-1
-.
-In the second test case, you don't need to do anything.
-In the third test case, you can add
-1
-two times.
-In the fourth test case, you can subtract
+1 1 3
+102
+114 228 456
 4
-and add
-1
-.
-In the fifth test case, you can just subtract
+4 8 16
 6
-.
+18 18 18
+1
+100 100 100
+7
+1 22 22
+2
+1 19 38
+8
+6 24 48

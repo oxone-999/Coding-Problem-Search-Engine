@@ -1,9 +1,11 @@
-D1. Permutation Weight (Easy Version)
-time limit per test1 second
+E. The Ultimate LIS Problem
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an easy version of the problem. The difference between the easy and hard versions is that in this version, you can output any permutation with the smallest weight.
+It turns out that this is exactly the
+100
+-th problem of mine that appears in some programming competition. So it has to be special! And what can be more special than another problem about LIS...
 You are given a permutation
 p
 1
@@ -12,79 +14,49 @@ p
 2
 ,…,
 p
-n
+2n+1
 of integers from
 1
 to
-n
-.
-Let's define the weight of the permutation
+2n+1
+. You will have to process
 q
-1
+updates, where the
+i
+-th update consists in swapping
+p
+u
+i
 ,
-q
-2
-,…,
-q
-n
-of integers from
-1
-to
-n
-as
-|
-q
-1
-−
 p
-q
-2
-|+|
-q
-2
-−
+v
+i
+.
+After each update, find any cyclic shift of
 p
-q
-3
-|+…+|
-q
-n−1
-−
-p
-q
-n
-|+|
-q
-n
-−
-p
-q
-1
-|
-|
-|
-|
-|
-|
-|
-|
-|
-You want your permutation to be as lightweight as possible. Find any permutation
-q
-with the smallest possible weight.
+with
+LIS≤n
+, or determine that there is no such shift. (Refer to the output section for details).
+Here
+LIS(a)
+denotes the length of longest strictly increasing subsequence of
+a
+.
+Hacks are disabled in this problem. Don't ask why.
 Input
-The first line of the input contains a single integer
-t
+The first line of the input contains two integers
+n,q
 (
-1≤t≤100
-)  — the number of test cases. The description of the test cases follows.
-The first line of each test case contains a single integer
-n
-(
-2≤n≤200
-)  — the size of the permutation.
-The second line of each test case contains
-n
+2≤n≤
+10
+5
+,
+1≤q≤
+10
+5
+).
+The second line of the input contains
+2n+1
 integers
 p
 1
@@ -93,119 +65,140 @@ p
 2
 ,…,
 p
-n
+2n+1
 (
 1≤
 p
 i
-≤n
+≤2n+1
 , all
 p
 i
-are distinct)  — the elements of the permutation.
-The sum of
-n
-over all test cases doesn't exceed
-400
+are distinct)  — the elements of
+p
 .
-Output
-For each test case, output
-n
-integers
+The
+i
+-th of the next
 q
-1
+lines contains two integers
+u
+i
 ,
-q
-2
-,…,
-q
-n
+v
+i
 (
 1≤
-q
+u
 i
-≤n
-, all
-q
+,
+v
 i
-are distinct)  — one of the permutations with the smallest weight.
+≤2n+1
+,
+u
+i
+≠
+v
+i
+)  — indicating that you have to swap elements
+p
+u
+i
+,
+p
+v
+i
+in the
+i
+-th update.
+Output
+After each update, output any
+k
+(0≤k≤2n)
+, such that the length of the longest increasing subsequence of
+(
+p
+k+1
+,
+p
+k+2
+,…,
+p
+2n+1
+,
+p
+1
+,…,
+p
+k
+)
+doesn't exceed
+n
+, or
+−1
+, if there is no such
+k
+.
 Example
 input
 Copy
-3
-2
-2 1
-4
-2 3 1 4
-5
-5 4 3 2 1
+2 6
+1 2 3 4 5
+1 5
+1 5
+4 5
+5 4
+1 4
+2 5
 output
 Copy
-1 2 
-1 3 4 2 
-1 4 2 3 5 
+-1
+-1
+2
+-1
+4
+0
 Note
-In the first test case, there are two permutations of length
+After the first update, our permutation becomes
+(5,2,3,4,1)
+. We can show that all its cyclic shifts have
+LIS≥3
+.
+After the second update, our permutation becomes
+(1,2,3,4,5)
+. We can show that all its cyclic shifts have
+LIS≥3
+.
+After the third update, our permutation becomes
+(1,2,3,5,4)
+. Its shift by
 2
-:
-(1,2)
-and
-(2,1)
-. Permutation
-(1,2)
-has weight
-|1−
-p
-2
-|+|2−
-p
-1
-|=0
-, and permutation
-(2,1)
-has the same weight:
-|2−
-p
-1
-|+|1−
-p
-2
-|=0
-. You can output any of these permutations in this version.
-In the second test case, the weight of the permutation
-(1,3,4,2)
 is
-|1−
-p
-3
-|+|3−
-p
+(3,5,4,1,2)
+, and its
+LIS=2
+.
+After the fourth update, our permutation becomes
+(1,2,3,4,5)
+. We can show that all its cyclic shifts have
+LIS≥3
+.
+After the fifth update, our permutation becomes
+(4,2,3,1,5)
+. Its shift by
 4
-|+|4−
-p
-2
-|+|2−
-p
-1
-|=|1−1|+|3−4|+|4−3|+|2−2|=2
-. There are no permutations with smaller weights.
-In the third test case, the weight of the permutation
-(1,4,2,3,5)
 is
-|1−
-p
-4
-|+|4−
-p
-2
-|+|2−
-p
-3
-|+|3−
-p
-5
-|+|5−
-p
-1
-|=|1−2|+|4−4|+|2−3|+|3−1|+|5−5|=4
-. There are no permutations with smaller weights.
+(5,4,2,3,1)
+, and its
+LIS=2
+.
+After the fifth update, our permutation becomes
+(4,5,3,1,2)
+. Its shift by
+0
+is
+(4,5,3,1,2)
+, and its
+LIS=2
+.

@@ -1,96 +1,47 @@
-ABCD
+Best Triangle
 Problem
-Read problem statements in Mandarin, Russian, and Vietnamese as well.
-This is an interactive problem.
-There are four hidden integers
-A,B,C,D (
-1≤A,B,C,D≤10
-9
-). Your goal is to find out if
-A⋅B is greater, equal to or smaller than
-C⋅D.
-To do that, you are allowed to ask up to
-Q queries. In each query:
-You should choose integers
-a,b,c,d between
-−10
-9
-and
-10
-9
-inclusive.
-Let
-X=a⋅A+b⋅B+c⋅C+d⋅D.
-You are told whether
-X>0,
-X=0 or
-X<0.
-Note that the scoring for subtask 2 is linear. Please read the scoring function in the section Subtasks.
-Input Format
-The first line of the input contains two space-separated integers
-T and
-Q. You should solve
-T test cases.
-Output Format
-For each test case:
-First, you should ask up to
-Q queries.
-To ask a query, print a line in the format "? a b c d" (without quotes), where
-a,b,c,d should be integers satisfying
-−10
-9
-≤a,b,c,d≤10
-9
-.
-Then, you should read a single line containing one character '>', '=' or '<', denoting whether
-X >
-0,
-X =
-0 or
-X <
-0.
-Once you have found the answer, print a line containing the character '!' followed by a space and one of the characters '>', '=' or '<' denoting your answer (e.g. '>' denotes
-A⋅B>C⋅D).
-Don't forget to flush the output after printing each line!
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Given N points on a 2D plane and an integer K, choose 3 distinct points so that the area of the triangle whose vertices are the chosen points does not exceed K/2. If there are multiple such triangles, among all possible triangles choose the one which has maximum area.
+Input
+First line contains two integers N and K.
+Each of the next N lines contains two integers Xi and Yi, denoting the coordinates of the i-th point.
+Output
+Output a single integer, the maximum area of a triangle which does not exceed K/2, multiplied by 2. If there's no valid triangle output -1 instead.
 Constraints
-1≤T≤100
-1≤A,B,C,D≤10
-9
-Subtasks
-Subtask #1 (20 points):
-1≤A,B,C,D≤100
-Q=200
-Subtask #2 (80 points):
-Q=4,000
-Scoring:
-If you did not find the correct answer or asked more than
-Q queries in at least one test case, your score is
-0.
-Otherwise, let
-q be the maximum number of questions you asked in a single test case.
-If
-q<200, you gain 80 points.
-Otherwise, you gain
-(4200−q)/50 points.
-Note - In interactive problems, a TLE submission might sometimes get a WA verdict, with execution time displayed as -1.
-Explanation:
-Example case 1:
-(A,B,C,D)=(10,5,3,4)
-First, we ask a query with
-(a,b,c,d)=(1,0,−2,0). Since
-A−2C>0, the response is '>'.
-Then, we ask a query with
-(a,b,c,d)=(0,1,0,−1). Since
-B−D>0, the response is '>' again.
-Finally, we guess '>', which is correct because
-10⋅5>3⋅4.
-Example case 2:
-(A,B,C,D)=(7,7,7,7)
-First, we ask a query with
-(a,b,c,d)=(2,0,−2,0). Since
-2A−2C=0, the response is '='.
-Then, we ask a query with
-(a,b,c,d)=(5,−3,−5,3). Since
-5A−3B−5C+3D=0, the response is '='.
-Finally, we guess '=', which is correct because
-7⋅7=7⋅7.
+3 ≤ N ≤ 3000
+1 ≤ K ≤ 1018
+1 ≤ Xi,Yi ≤ 109
+No two points will have same coordinates
+No three points will be collinear
+  Example 1
+Input:
+4 7
+1 1
+5 1
+3 3
+3 2
+Output:
+4
+Example 2
+Input:
+3 7
+1 1
+4 1
+1 4
+Output:
+-1
+Example 3
+Input:
+7 1234567890123
+1234567 7654321
+1111111 2222222
+1212121 2323232
+3333333 1122334
+9292929 2929292
+1234456 5654645
+5435733 2342134
+Output:
+755024295480
+  Explanation
+Example case 1. There are 4 triangles in total, and their areas are: 1, 1, 2 and 4. The ones which does not exceed 7/2 are 1, 1 and 2 so the biggest area is 2, and since we are required to multiply the area by 2 before outputting it, it becomes 4.
+Example case 2. The only triangle has an area equal to 9/2, which is more than 7/2. So the answer is -1.

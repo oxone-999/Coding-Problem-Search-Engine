@@ -1,28 +1,28 @@
-Mega mu - 1
+Tandem
 Problem
-Read problem statements in Mandarin, Vietnamese, and Russian as well.
-A positive integer
-N≥1 is given. An
-N-uple
-(x
-1
-,x
-2
-,…,x
-N
-) of nonnegative integers is special if, after we remove all entries which are zero, its entries are nondecreasing. For example
-(0,2,0,0,4,0,4,5,0,0) is special, but
-(3,2,0) and
-(0,1,3,0,0,1,0) are not.
-One can show that there is a unique function
-μ defined on the
-N-uples of nonnegative integers such that, for any
-N-uple
-x=(x
-1
-,x
-2
-,…,x
-N
-)
-\begin{cases} 1 &\text{if $x$ is special} \\ 0 &\text{otherwise} \end{cases},$$ where the sum ranges over all $N$-uples $y=(y_1, y_2,\dots, y_N)$ of nonnegative integers such that $y_i\le x_i$ for all $1\le i\le N$. You are given $x=(x_1,x_2,\dots, x_N)$, determine whether $\mu(x)$ is $0$ or not. ### Input Format - The first line will contain $T$, the number of test cases. Then the test cases follow. - The first line of each test case contains one integer $N$, the size of the tuple considered. - The second line of each test case contains $N$ integers $x_1, x_2, \dots, x_N$, the entries of the given $N$-uple. ### Output Format For each test case, print the string <tt>yes</tt> if $\mu(x)=0$ and the string <tt>no</tt> otherwise. You can print each letter in any case (upper or lower). ### Constraints <div class="_html_code__block_15v7d_178"> - $1 \leq T \leq 20\,000$ - $1 \le N \le 100\,000$ - $0\le x_i\le 10^9$ - Sum of $N$ over all test cases won't exceed $100\,000$ </div> ### Sample 1: <div data-reactroot="" class="_input_output__table_15v7d_184"><div class="_text_copy__container_15v7d_188"><div class="_text_copy_15v7d_188 _input_top__box_15v7d_201"><span>Input</span><copytoclipboard cliptext="12%0A1%0A0%0A1%0A1%0A1%0A10%0A2%0A0%201%0A2%0A1%200%0A2%0A3%202%0A2%0A3%203%0A2%0A3%204%0A2%0A10%2043%0A5%0A2%201%201%204%203%0A5%0A1%202%202%202%202%0A5%0A8%206%205%201%208"></copytoclipboard></div><div class="_text_copy_15v7d_188 _ouput_top__box_15v7d_204"><span>Output</span><copytoclipboard cliptext="no%0Ayes%0Ayes%0Ayes%0Ayes%0Ano%0Ano%0Ayes%0Ayes%0Ano%0Ayes%0Ayes"></copytoclipboard></div></div><div class="_values__container_15v7d_207"><div class="_values_15v7d_207"><pre>12 1 0 1 1 1 10 2 0 1 2 1 0 2 3 2 2 3 3 2 3 4 2 10 43 5 2 1 1 4 3 5 1 2 2 2 2 5 8 6 5 1 8</pre></div><div class="_values_15v7d_207"><pre>no yes yes yes yes no no yes yes no yes yes</pre></div></div></div> ### Explanation: <p> <b>Explanation of the test cases 1, 2, 3:</b> For $N=1$, one can prove that $\mu((0)) = 1$ and $\mu((k))=0$ for all $k\ge 1$. </p> <ul> <li> It holds $\mu((0)) = 1\not=0$, so the answer to testcase 1 is <tt>no</tt>. </li> <li> It holds $\mu((1)) = 0$, so the answer to testcase 2 is <tt>yes</tt>. </li> <li> It holds $\mu((10)) = 0$, so the answer to testcase 3 is <tt>yes</tt>. </li> </ul> <p> <b>Explanation of testcases 4, 5, 6, 7, 8, 9:</b> For $N=2$, one can prove that $\mu((0,0))=1$, $\mu((k, k)) = 1$ and $\mu((k, k-1))=-1$ for all $k\ge 2$, and all other values of $\mu$ are $0$. Let us check that the defining property of $\mu$ holds for $x=(2, 2)$ (notice that $x$ is special in this case): $$ 1 = \sum_{y\le x} \mu(y) = \mu(0, 0) + \mu(0, 1) + \mu(0, 2) + \mu(1, 0) + \mu(1, 1) + \mu(1, 2) + \mu(2, 0) + \mu(2, 1) + \mu(2, 2) $$ $$ = 1 + 0 + 0 + 0 + 0 + 0 + 0 - 1 + 1 = 1 .\hspace{13em}$$ </p> <ul> <li> It holds $\mu((0, 1)) = 0$, so the answer to testcase 4 is <tt>yes</tt>. </li> <li> It holds $\mu((1, 0)) = 0$, so the answer to testcase 5 is <tt>yes</tt>. </li> <li> It holds $\mu((3, 2)) = -1$, so the answer to testcase 6 is <tt>no</tt>. </li> <li> It holds $\mu((3, 3)) = 1$, so the answer to testcase 7 is <tt>no</tt>. </li> <li> It holds $\mu((3, 4)) = 0$, so the answer to testcase 8 is <tt>yes</tt>. </li> <li> It holds $\mu((10, 43)) = 0$, so the answer to testcase 9 is <tt>yes</tt>. </li> </ul>
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+The chef was recently studying about repeated occurrences of substrings in the strings. In particular, he was studying about a string s.
+He calls a string to be in tandem if it can be represented as concatenation of three equal strings, i.e. it can be represented as AAA where A is a non-empty string. For brevity, he calls such strings tandem strings. For example, "ababab" is a tandem string whereas "abab" is not.
+Now, Chef is studying tandem substrings of string s. He calls a tandem substring an interesting tandem if the character following the substring in string s (if it exists) is different than the first character of the substring. If the character following the tandem substring does not exist (i.e. the substring appears as a suffix of string s), it's also called interesting tandem.
+Chef calls all the tandem substrings which are not interesting tandem as boring tandems.
+Now, chef wants your help in counting number of interesting and boring tandem substrings in string s. Please help him!!
+For example, let s be "abaaabaaabaaabbbb".
+The substring s[3..14] = "aaabaaabaaab" is an interesting tandem, as the substring is a tandem and the character following the substring (i.e. s[15] = 'b') is different than the first character of the substring (i.e. 'a').
+The substring s[1..12] = "abaaabaaabaa" is a boring tandem, as the character following the tandem substring (i.e. s[13] = 'a') is same as the first character of the substring (i.e. 'a').
+The substring s[15..17] = "bbb" is also an interesting tandem as the character following the tandem does not exist (i.e. this tandem substring appears as a suffix of string s).
+In summary, s[1..12], s[2..13], s[3..14], s[3..5], s[7..9], s[11..13], s[14..16], s[15..17] are all tandem substrings. Out of which, s[3..14], s[3..5], s[7..9], s[11..13], s[15..17] are all interesting tandems. Rest tandem substrings, s[1..12], s[2..13], s[14..16] are all boring tandems.
+Input
+There is only a single test case.
+The first line of the input contains a string s.
+Output
+The only line of the output should contain two space separated integers denoting the number of interesting and boring tandems in string, respectively.
+Constraints
+1 ≤ |s| ≤ 200000
+s consists of lower case English alphabets ('a' to 'z')
+Sample 1:
+Input
+Output
+abaaabaaabaaabbbb
+5 3
+Explanation:
+Example case 1. It is already explained in the problem statement.

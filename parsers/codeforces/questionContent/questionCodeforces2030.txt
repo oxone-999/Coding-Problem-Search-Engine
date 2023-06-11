@@ -1,186 +1,125 @@
-N. Waste Sorting
+C. Building a Fence
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The progress is not standing still in Berland. Recently all garbage containers in Bertown, the capital of Berland, were replaced by differentiated recycling bins, each accepting some category of waste. While this will definitely improve the ecological situation, for some citizens it's difficult to get used to the habit of sorting waste.
-Monocarp is one of those citizens who tries to get used to waste sorting. Today he has to take out the trash from his house. There are three containers near the Monocarp's house, the first one accepts paper waste, the second one accepts plastic waste, and the third one — all other types of waste. It is possible to fit
-c
+You want to build a fence that will consist of
+n
+equal sections. All sections have a width equal to
 1
-items into the first container,
-c
-2
-items into the second container and
-c
-3
-items into the third container.
-Monocarp has a lot of items to throw into containers. Some are made of paper, so Monocarp has to put them into the first container (he has
-a
+and height equal to
+k
+. You will place all sections in one line side by side.
+Unfortunately, the ground beneath the fence is not flat. For simplicity, you can think that the ground level under the
+i
+-th section is equal to
+h
+i
+.
+You should follow several rules to build the fence:
+the consecutive sections should have a common side of length at least
 1
-such items), some are made of plastic, so he has to put them into the second container (he has
-a
-2
-such items), and some are neither paper nor plastic — so Monocarp has to put them into the third container (he has
-a
-3
-such items).
-Unfortunately, there are also two categories of items that Monocarp is unsure of: he has
-a
-4
-items which are partially made of paper, so he will put each of these items either into the first container or into the third container. Similarly, he has
-a
-5
-items partially made of plastic, so he has to put each of them either into the second container or into the third container. Obviously, this choice is made separately for each item — for example, Monocarp can throw several partially-plastic items into the second container, and all other partially-plastic items — into the third one.
-Now Monocarp wonders: is it possible to put each item into some container so that the first container will hold no more than
-c
-1
-items, the second one — no more than
-c
-2
-items, and the third one — no more than
-c
-3
-items?
+;
+the first and the last sections should stand on the corresponding ground levels;
+the sections between may be either on the ground level or higher, but not higher than
+k−1
+from the ground level
+h
+i
+(the height should be an integer);
+One of possible fences (blue color) for the first test case
+Is it possible to build a fence that meets all rules?
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤3⋅
+1≤t≤
 10
 4
 ) — the number of test cases.
-Each test case consists of two lines. The first line of each test case contains three integers
-c
-1
-,
-c
-2
-,
-c
-3
+The first line of each test case contains two integers
+n
+and
+k
 (
-0≤
-c
-1
-,
-c
-2
-,
-c
-3
-≤
+2≤n≤2⋅
+10
+5
+;
+2≤k≤
 10
 8
-) — the capacities of the containers.
-The second line of each test case contains five integers
-a
+) — the number of sections in the fence and the height of each section.
+The second line of each test case contains
+n
+integers
+h
 1
 ,
-a
+h
 2
-,
-a
-3
-,
-a
-4
-,
-a
-5
+,…,
+h
+n
 (
 0≤
-a
+h
 i
 ≤
 10
 8
 ), where
-a
+h
 i
-is the number of items of the
+is the ground level beneath the
 i
--th category Monocarp has to throw out (
-i=1
-is paper waste,
-i=2
-is plastic waste,
-i=3
-is general waste,
-i=4
-is partially-paper waste,
-i=5
-is partially-plastic waste).
+-th section.
+It's guaranteed that the sum of
+n
+over test cases doesn't exceed
+2⋅
+10
+5
+.
 Output
-For each test case, print either YES if it is possible to fit all items into containers, or NO otherwise. You may print each letter in any case (for example, YES, Yes, yes, yEs will all be recognized as positive answer).
+For each test case print YES if it's possible to build the fence that meets all rules. Otherwise, print NO.
+You may print each letter in any case (for example, YES, Yes, yes, yEs will all be recognized as positive answer).
 Example
 input
 Copy
-7
-1 2 3
-1 2 3 0 0
-2 2 3
-1 2 3 1 0
-2 2 3
-1 2 3 0 1
-1 2 5
-1 2 3 1 1
-0 0 0
-0 0 0 0 0
-0 0 4
-1 0 0 0 0
-13 37 42
-0 0 0 40 47
+3
+6 3
+0 0 2 5 1 1
+2 3
+0 2
+3 2
+3 0 2
 output
 Copy
 YES
 YES
 NO
-YES
-YES
-NO
-YES
 Note
-Explanations for the example test cases:
-Monocarp can put
+In the first test case, one of the possible fences is shown in the picture.
+In the second test case, according to the second rule, you should build both sections on the corresponding ground levels, and since
+k=3
+,
+h
 1
-item of paper waste into the first container,
+=0
+, and
+h
 2
-items of plastic waste into the second container, and
+=2
+the first rule is also fulfilled.
+In the third test case, according to the second rule, you should build the first section on height
 3
-items of general waste into the third container;
-Monocarp can put
-1
-item of paper waste and
-1
-item of partially-paper waste into the first container,
+and the third section on height
 2
-items of plastic waste into the second container, and
-3
-items of general waste into the third container;
-there is no answer since either the second container should contain
-3
-items, or the third container should contain
-4
-items;
-Monocarp can put
-1
-item of paper waste into the first container,
+. According to the first rule, the second section should be on the height of at least
 2
-items of plastic waste into the second container, and
-3
-items of general waste,
-1
-item of partially-paper waste and
-1
-item of partially-plastic waste into the third container;
-there is no waste at all, so all containers can be left empty;
-there's no answer since it's impossible to put a paper item into the third container;
-Monocarp can put
-10
-items of partially-paper waste into the first container,
-37
-items of partially-plastic waste into the second container, and
-30
-items of partially-paper waste and
-10
-items of partially-plastic waste into the third container.
+(to have a common side with the first section), but according to the third rule, the second section can be built on the height of at most
+h
+2
++k−1=1
+.

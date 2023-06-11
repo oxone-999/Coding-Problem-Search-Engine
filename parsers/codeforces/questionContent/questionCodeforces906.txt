@@ -1,106 +1,157 @@
-H2. Maximum Crossings (Hard Version)
+B. Tokitsukaze and Meeting
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The only difference between the two versions is that in this version
-n≤2⋅
-10
-5
-and the sum of
+Tokitsukaze is arranging a meeting. There are
 n
-over all test cases does not exceed
-2⋅
-10
-5
-.
-A terminal is a row of
-n
-equal segments numbered
+rows and
+m
+columns of seats in the meeting hall.
+There are exactly
+n⋅m
+students attending the meeting, including several naughty students and several serious students. The students are numerated from
 1
 to
-n
-in order. There are two terminals, one above the other.
-You are given an array
-a
-of length
-n
-. For all
-i=1,2,…,n
-, there should be a straight wire from some point on segment
+n⋅m
+. The students will enter the meeting hall in order. When the
 i
-of the top terminal to some point on segment
-a
+-th student enters the meeting hall, he will sit in the
+1
+-st column of the
+1
+-st row, and the students who are already seated will move back one seat. Specifically, the student sitting in the
+j
+-th (
+1≤j≤m−1
+) column of the
 i
-of the bottom terminal. You can't select the endpoints of a segment. For example, the following pictures show two possible wirings if
-n=7
-and
-a=[4,1,4,6,7,7,5]
+-th row will move to the
+(j+1)
+-th column of the
+i
+-th row, and the student sitting in
+m
+-th column of the
+i
+-th row will move to the
+1
+-st column of the
+(i+1)
+-th row.
+For example, there is a meeting hall with
+2
+rows and
+2
+columns of seats shown as below:
+There will be
+4
+students entering the meeting hall in order, represented as a binary string "1100", of which '0' represents naughty students and '1' represents serious students. The changes of seats in the meeting hall are as follows:
+Denote a row or a column good if and only if there is at least one serious student in this row or column. Please predict the number of good rows and columns just after the
+i
+-th student enters the meeting hall, for all
+i
 .
-A crossing occurs when two wires share a point in common. In the picture above, crossings are circled in red.
-What is the maximum number of crossings there can be if you place the wires optimally?
 Input
-The first line contains an integer
+The first contains a single positive integer
 t
 (
-1≤t≤1000
+1≤t≤10000
 ) — the number of test cases.
-The first line of each test case contains an integer
+For each test case, the first line contains two integers
 n
-(
-1≤n≤2⋅
-10
-5
-) — the length of the array.
-The second line of each test case contains
-n
-integers
-a
-1
 ,
-a
-2
-,…,
-a
-n
+m
 (
-1≤
-a
-i
-≤n
-) — the elements of the array.
-The sum of
-n
-across all test cases does not exceed
-2⋅
+1≤n,m≤
 10
-5
+6
+;
+1≤n⋅m≤
+10
+6
+), denoting there are
+n
+rows and
+m
+columns of seats in the meeting hall.
+The second line contains a binary string
+s
+of length
+n⋅m
+, consisting only of zeros and ones. If
+s
+i
+equal to '0' represents the
+i
+-th student is a naughty student, and
+s
+i
+equal to '1' represents the
+i
+-th student is a serious student.
+It is guaranteed that the sum of
+n⋅m
+over all test cases does not exceed
+10
+6
 .
 Output
-For each test case, output a single integer — the maximum number of crossings there can be if you place the wires optimally.
+For each test case, print a single line with
+n⋅m
+integers — the number of good rows and columns just after the
+i
+-th student enters the meeting hall.
 Example
 input
 Copy
-4
-7
-4 1 4 6 7 7 5
-2
-2 1
-1
-1
 3
-2 2 2
+2 2
+1100
+4 2
+11001101
+2 4
+11001101
 output
 Copy
-6
-1
-0
-3
+2 3 4 3
+2 3 4 3 5 4 6 5
+2 3 3 3 4 4 4 5
 Note
-The first test case is shown in the second picture in the statement.
-In the second test case, the only wiring possible has the two wires cross, so the answer is
+The first test case is shown in the statement.
+After the
 1
-.
-In the third test case, the only wiring possible has one wire, so the answer is
-0
-.
+-st student enters the meeting hall, there are
+2
+good rows and columns: the
+1
+-st row and the
+1
+-st column.
+After the
+2
+-nd student enters the meeting hall, there are
+3
+good rows and columns: the
+1
+-st row, the
+1
+-st column and the
+2
+-nd column.
+After the
+3
+-rd student enters the meeting hall, the
+4
+rows and columns are all good.
+After the
+4
+-th student enters the meeting hall, there are
+3
+good rows and columns: the
+2
+-nd row, the
+1
+-st column and the
+2
+-nd column.

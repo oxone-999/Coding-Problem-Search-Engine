@@ -1,51 +1,65 @@
-Password
+Order by XOR
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-Chef is planning to setup a secure password for his Codechef account. For a password to be secure the following conditions should be satisfied:
-Password must contain at least one lower case letter
-[a−z];
-Password must contain at least one upper case letter
-[A−Z] strictly inside, i.e. not as the first or the last character;
-Password must contain at least one digit
-[0−9] strictly inside;
-Password must contain at least one special character from the set
-{ '@', '#', '%', '&', '?'
-} strictly inside;
-Password must be at least
-10 characters in length, but it can be longer.
-Chef has generated several strings and now wants you to check whether the passwords are secure based on the above criteria. Please help Chef in doing so.
-Input
-First line will contain
-T, number of testcases. Then the testcases follow.
-Each testcase contains of a single line of input, string
-S.
-Output
-For each testcase, output in a single line "YES" if the password is secure and "NO" if it is not.
+You are given three distinct integers
+A,B, and
+C.
+Find any integer
+X (0≤X<2
+30
+) such that:
+(A⊕X)<(B⊕X)<(C⊕X), where
+⊕ denotes the Bitwise XOR operation.
+If no such
+X exists, print
+−1 instead.
+Input Format
+The first line of the input contains a single integer
+T, the number of test cases.
+The first and only line of each test case contains three space-separated integers
+A,B, and
+C.
+Output Format
+For each test case, output a single integer on a new line, the value of
+X that satisfies the above conditions or
+−1 if no such
+X exists.
+If multiple such
+X satisfy the condition, you may print any.
 Constraints
-1≤∣S∣≤20
-All the characters in
-S are one of the following: lower case letters
-[a−z], upper case letters
-[A−Z], digits
-[0−9], special characters from the set
-{ '@', '#', '%', '&', '?'
-}
-Sum of length of strings over all tests is atmost
-10
-6
+1≤T≤10
+5
+1≤A,B,C<2
+30
+A,B,C are distinct.
 Sample 1:
 Input
 Output
 3
-#cookOff#P1
-U@code4CHEFINA
-gR3@tPWD
-NO
-YES
-NO
+1 2 3
+3 1 2
+3 2 1
+4
+-1
+3
 Explanation:
-Example case 1: Condition
-3 is not satisfied, because the only digit is not strictly inside.
-Example case 2: All conditions are satisfied.
-Example case 3: Condition
-5 is not satisfied, because the length of this string is 8.
+Test case
+1: For
+X=4,
+A⊕X=1⊕4 =5
+B⊕X=2⊕4 =6
+C⊕X=3⊕4 =7
+Thus,
+(A⊕X)<(B⊕X)<(C⊕X).
+Test case
+2: No
+X (0≤X<2
+30
+) exists that satisfies the above conditions.
+Test case
+3: For
+X=3,
+A⊕X=3⊕3 =0
+B⊕X=2⊕3 =1
+C⊕X=1⊕3 =2
+Thus,
+(A⊕X)<(B⊕X)<(C⊕X).

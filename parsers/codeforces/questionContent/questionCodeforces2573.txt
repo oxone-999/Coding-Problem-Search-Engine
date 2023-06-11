@@ -1,107 +1,134 @@
-C. Similar Pairs
+G. A/B Matrix
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-We call two numbers
-x
-and
-y
-similar if they have the same parity (the same remainder when divided by
-2
-), or if
-|x−y|=1
-. For example, in each of the pairs
-(2,6)
+You are given four positive integers
+n
 ,
-(4,3)
+m
 ,
-(11,7)
-, the numbers are similar to each other, and in the pairs
-(1,4)
-,
-(3,12)
-, they are not.
-You are given an array
 a
-of
-n
+,
+b
 (
-n
-is even) positive integers. Check if there is such a partition of the array into pairs that each element of the array belongs to exactly one pair and the numbers in each pair are similar to each other.
-For example, for the array
-a=[11,14,16,12]
-, there is a partition into pairs
-(11,12)
-and
-(14,16)
-. The numbers in the first pair are similar because they differ by one, and in the second pair because they are both even.
+1≤b≤n≤50
+;
+1≤a≤m≤50
+). Find any such rectangular matrix of size
+n×m
+that satisfies all of the following conditions:
+each row of the matrix contains exactly
+a
+ones;
+each column of the matrix contains exactly
+b
+ones;
+all other elements are zeros.
+If the desired matrix does not exist, indicate this.
+For example, for
+n=3
+,
+m=6
+,
+a=2
+,
+b=1
+, there exists a matrix satisfying the conditions above:
+∣
+∣
+∣
+∣
+0
+1
+0
+1
+0
+0
+0
+0
+1
+0
+1
+0
+0
+0
+1
+1
+0
+0
+∣
+∣
+∣
+∣
 Input
-The first line contains a single integer
+The first line contains an integer
 t
 (
 1≤t≤1000
 ) — the number of test cases. Then
 t
 test cases follow.
-Each test case consists of two lines.
-The first line contains an even positive integer
+Each test case is described by four positive integers
 n
-(
-2≤n≤50
-) — length of array
-a
-.
-The second line contains
-n
-positive integers
-a
-1
+,
+m
 ,
 a
-2
-,…,
-a
-n
+,
+b
 (
-1≤
+1≤b≤n≤50
+;
+1≤a≤m≤50
+), where
+n
+and
+m
+are the sizes of the matrix, and
 a
-i
-≤100
-).
+and
+b
+are the number of ones for rows and columns, respectively.
 Output
 For each test case print:
-YES if the such a partition exists,
-NO otherwise.
-The letters in the words YES and NO can be displayed in any case.
+"YES" (without quotes) and the required matrix (if there are several answers, print any) if it exists, or
+"NO" (without quotes) if it does not exist.
+To print the matrix
+n×m
+, print
+n
+rows, each of which consists of
+m
+numbers
+0
+or
+1
+describing a row of the matrix. Numbers must be printed without spaces.
 Example
 input
 Copy
-7
-4
-11 14 16 12
-2
-1 8
-4
-1 1 1 1
-4
-1 2 5 6
-2
-12 13
-6
-1 6 3 10 5 8
-6
-1 12 3 10 5 8
+5
+3 6 2 1
+2 2 2 1
+2 2 2 2
+4 4 2 2
+2 1 1 2
 output
 Copy
 YES
+010001
+100100
+001010
 NO
 YES
+11
+11
 YES
+1100
+1100
+0011
+0011
 YES
-YES
-NO
-Note
-The first test case was explained in the statement.
-In the second test case, the two given numbers are not similar.
-In the third test case, any partition is suitable.
+1
+1

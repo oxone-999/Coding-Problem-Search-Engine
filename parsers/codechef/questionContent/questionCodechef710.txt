@@ -1,126 +1,80 @@
-Nahaane Jaa
+Chef and Pal
 Problem
-"Bapuji - Ae Jethiya Nahaane Jaa Nahaane Jaa".
-Bapuji is furious with Jethiya because he did not bathe before eating. Jethiya does not want to bathe right now, but in order to do so, he must first establish his innocence to Bapuji.
-Bapuji gives Jethiya a problem, and if Jethiya solves it, Bapuji will allow him to eat his food before taking a bath. Jethiya asks for your help to solve the problem.
-You are given an array
-A of size
-N and an integer
-K. You can perform the following operation on the given array any number of times (possibly zero):
-Choose two integers
-L and
-R (
-1≤L≤R≤N)
-Then, for each
-i such that
-L≤i≤R, set
-A
+Chef just had a big argument with his best friend. He is quite upset and doesn't want anything to remind him of his pal.
+Chef has to construct a binary string
+S of length
+N. He would like it to be as far from a palindrome as possible, and so he would like
+S to satisfy the following condition:
+Let
+T be the reverse of
+S. Then,
+S
 i
-to
-A
-⌊
-2
-L+R
-⌋
-. Here,
-⌊ ⌋ denotes the floor function.
-That is, apply the following to the subarray
-[L,R]:
-If this subarray has odd length, set all its elements to be equal to the middle element.
-If it has even length, set all its elements to be equal to the left one among the two middle elements.
-For example, if
-A=[1,3,2,3] then:
-If we choose
-L=1 and
-R=4, the array will change as follows:
-[
-1,3,2,3
-]→[3,3,3,3]
-If we choose
-L=2 and
-R=4, the array will change as follows:
-[1,
-3,2,3
-]→[1,2,2,2]
-Is it possible to make all the array elements equal to
-K after performing some number of operations?
+
+=T
+i
+for every
+1≤i≤N.
+Can you help Chef construct
+S? If there are multiple possible strings that satisfy Chef's condition, you may print any of them.
+Note 1: A string
+S is said to be a binary string if every character of
+S is either '0' or '1'.
+Note 2: Let
+S be a string of length
+N. String
+T is said to be its reverse if
+T
+i
+=S
+N+1−i
+for every
+1≤i≤N. For example, the reverse of
+10010 is
+01001 and the reverse of
+0110 is
+0110.
 Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of two lines of input.
-The first line of each test case contains two space-separated integers
-N and
-K — the number of elements in the array and the value
-K respectively.
-The second line of each test case contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-— the elements of the array.
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+Each test case consists of a single line containing one integer
+N — the length of the binary string Chef wants to construct.
 Output Format
-For each test case, output on a new line the answer: Yes if all the elements can be made equal to
-K, and No otherwise.
-Each letter of the output may be printed in either uppercase or lowercase, i.e, Yes, YES, and yEs will all be treated as equivalent.
+For each test case, output a single line containing a binary string
+S of length
+N as described in the problem statement. If no such string exists, output
+−1 instead.
+If multiple answers exist, you may print any of them.
 Constraints
 1≤T≤10
-5
+3
 1≤N≤10
 5
-−10
-9
-≤K≤10
-9
-−10
-9
-≤A
-i
-≤10
-9
 The sum of
-N across all test cases won't exceed
-5⋅10
+N across all test cases does not exceed
+10
 5
-.
 Sample 1:
 Input
 Output
-4
-4 10
-1 2 3 4
-3 1
-1 2 3
-5 5
-7 -5 5 -2 5
-4 9
--9 -9 8 0
-No
-Yes
-Yes
-No
+2
+9
+8
+-1
+10010110
 Explanation:
-Test case
-1: There is no way to make all the elements of the array equal
-10.
-Test case
-2: One way of performing operations is as follows:
-First, choose
-L=1 and
-R=2. This makes the array
-[1,1,3].
-Then, choose
-L=1 and
-R=3. This makes the array
-[1,1,1], and we are done.
-Test case
-3: Choose
-L=1 and
-R=5. The middle element is
-5 so everything becomes
-5, as required.
-Test case
-4: There is no way to make everything equal to
-9.
+Test Case
+1: It can be proven that there is no possible valid string
+S.
+Test Case
+2:
+S=10010110 and
+T=01101001. It is easy to see that for all
+1≤i≤8,
+S
+i
+
+=T
+i
+.

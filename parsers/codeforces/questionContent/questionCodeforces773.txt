@@ -1,123 +1,114 @@
-C. Schedule Management
+E. Text Editor
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-workers and
-m
-tasks. The workers are numbered from
-1
-to
-n
-. Each task
-i
-has a value
-a
-i
- — the index of worker who is proficient in this task.
-Every task should have a worker assigned to it. If a worker is proficient in the task, they complete it in
-1
-hour. Otherwise, it takes them
-2
-hours.
-The workers work in parallel, independently of each other. Each worker can only work on one task at once.
-Assign the workers to all tasks in such a way that the tasks are completed as early as possible. The work starts at time
-0
-. What's the minimum time all tasks can be completed by?
-Input
-The first line contains a single integer
+You wanted to write a text
 t
+consisting of
+m
+lowercase Latin letters. But instead, you have written a text
+s
+consisting of
+n
+lowercase Latin letters, and now you want to fix it by obtaining the text
+t
+from the text
+s
+.
+Initially, the cursor of your text editor is at the end of the text
+s
+(after its last character). In one move, you can do one of the following actions:
+press the "left" button, so the cursor is moved to the left by one position (or does nothing if it is pointing at the beginning of the text, i. e. before its first character);
+press the "right" button, so the cursor is moved to the right by one position (or does nothing if it is pointing at the end of the text, i. e. after its last character);
+press the "home" button, so the cursor is moved to the beginning of the text (before the first character of the text);
+press the "end" button, so the cursor is moved to the end of the text (after the last character of the text);
+press the "backspace" button, so the character before the cursor is removed from the text (if there is no such character, nothing happens).
+Your task is to calculate the minimum number of moves required to obtain the text
+t
+from the text
+s
+using the given set of actions, or determine it is impossible to obtain the text
+t
+from the text
+s
+.
+You have to answer
+T
+independent test cases.
+Input
+The first line of the input contains one integer
+T
 (
-1≤t≤
-10
-4
-) — the number of testcases.
-The first line of each testcase contains two integers
+1≤T≤5000
+) — the number of test cases. Then
+T
+test cases follow.
+The first line of the test case contains two integers
 n
 and
 m
 (
-1≤n≤m≤2⋅
-10
-5
-) — the number of workers and the number of tasks.
-The second line contains
+1≤m≤n≤5000
+) — the length of
+s
+and the length of
+t
+, respectively.
+The second line of the test case contains the string
+s
+consisting of
+n
+lowercase Latin letters.
+The third line of the test case contains the string
+t
+consisting of
 m
-integers
-a
-1
-,
-a
-2
-,…,
-a
-m
+lowercase Latin letters.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+5000
 (
-1≤
-a
-i
-≤n
-) — the index of the worker proficient in the
-i
--th task.
-The sum of
-m
-over all testcases doesn't exceed
-2⋅
-10
-5
-.
+∑n≤5000
+).
 Output
-For each testcase, print a single integer — the minimum time all tasks can be completed by.
+For each test case, print one integer — the minimum number of moves required to obtain the text
+t
+from the text
+s
+using the given set of actions, or -1 if it is impossible to obtain the text
+t
+from the text
+s
+in the given test case.
 Example
 input
 Copy
-4
-2 4
-1 2 1 2
-2 4
-1 1 1 1
-5 5
-5 1 3 2 4
-1 1
-1
+6
+9 4
+aaaaaaaaa
+aaaa
+7 3
+abacaba
+aaa
+5 4
+aabcd
+abcd
+4 2
+abba
+bb
+6 4
+baraka
+baka
+8 7
+question
+problem
 output
 Copy
-2
+5
+6
 3
-1
-1
-Note
-In the first testcase, the first worker works on tasks
-1
-and
-3
-, and the second worker works on tasks
-2
-and
 4
-. Since they both are proficient in the corresponding tasks, they take
-1
-hour on each. Both of them complete
-2
-tasks in
-2
-hours. Thus, all tasks are completed by
-2
-hours.
-In the second testcase, it's optimal to assign the first worker to tasks
-1,2
-and
-3
-and the second worker to task
 4
-. The first worker spends
-3
-hours, the second worker spends
-2
-hours (since they are not proficient in the taken task).
-In the third example, each worker can be assigned to the task they are proficient at. Thus, each of them complete their task in
-1
-hour.
+-1

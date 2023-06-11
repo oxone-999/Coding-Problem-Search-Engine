@@ -1,61 +1,151 @@
-G. Shifting Dominoes
+B. AccurateLee
 time limit per test2 seconds
-memory limit per test512 megabytes
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Bill likes to play with dominoes. He took an
-n×m
-board divided into equal square cells, and covered it with dominoes. Each domino covers two adjacent cells of the board either horizontally or vertically, and each cell is covered exactly once with a half of one domino (that is, there are no uncovered cells, and no two dominoes cover the same cell twice).
-After that Bill decided to play with the covered board and share some photos of it on social media. First, he removes exactly one domino from the board, freeing two of the cells. Next, he moves dominoes around. A domino can only be moved along the line parallel to its longer side. A move in the chosen direction is possible if the next cell in this direction is currently free. Bill doesn't want to lose track of what the original tiling looks like, so he makes sure that at any point each domino shares at least one cell with its original position.
-After removing a domino and making several (possibly, zero) moves Bill takes a photo of the board and posts it. However, with the amount of filters Bill is using, domino borders are not visible, so only the two free cells of the board can be identified. When the photo is posted, Bill reverts the board to its original state and starts the process again.
-Bill wants to post as many photos as possible, but he will not post any photo twice. How many distinct photos can he take? Recall that photos are different if the pairs of free cells in the photos are different.
-Input
-The first line contains two positive integers
+Lee was cleaning his house for the party when he found a messy string under the carpets. Now he'd like to make it clean accurately and in a stylish way...
+The string
+s
+he found is a binary string of length
 n
+(i. e. string consists only of 0-s and 1-s).
+In one move he can choose two consecutive characters
+s
+i
 and
-m
+s
+i+1
+, and if
+s
+i
+is 1 and
+s
+i+1
+is 0, he can erase exactly one of them (he can choose which one to erase but he can't erase both characters simultaneously). The string shrinks after erasing.
+Lee can make an arbitrary number of moves (possibly zero) and he'd like to make the string
+s
+as clean as possible. He thinks for two different strings
+x
+and
+y
+, the shorter string is cleaner, and if they are the same length, then the lexicographically smaller string is cleaner.
+Now you should answer
+t
+test cases: for the
+i
+-th test case, print the cleanest possible string that Lee can get by doing some number of moves.
+Small reminder: if we have two strings
+x
+and
+y
+of the same length then
+x
+is lexicographically smaller than
+y
+if there is a position
+i
+such that
+x
+1
+=
+y
+1
+,
+x
+2
+=
+y
+2
+,...,
+x
+i−1
+=
+y
+i−1
+and
+x
+i
+<
+y
+i
+.
+Input
+The first line contains the integer
+t
 (
-nm≤2⋅
+1≤t≤
+10
+4
+) — the number of test cases.
+Next
+2t
+lines contain test cases — one per two lines.
+The first line of each test case contains the integer
+n
+(
+1≤n≤
 10
 5
-) — height and width of the board respectively.
-The next
+) — the length of the string
+s
+.
+The second line contains the binary string
+s
+. The string
+s
+is a string of length
 n
-lines describe the tiling of the board, row by row from top to bottom. Each of these lines contains
-m
-characters, describing the cells in the corresponding row left to right. Each character is one of U, D, L, or R, meaning that the cell is covered with a top, bottom, left, or right half of a domino respectively.
-It is guaranteed that the described tiling is valid, that is, each half-domino has a counterpart in the relevant location. In particular, since tiling is possible, the number of cells in the board is even.
+which consists only of zeroes and ones.
+It's guaranteed that sum of
+n
+over test cases doesn't exceed
+10
+5
+.
 Output
-Print a single integer — the number of distinct photos Bill can take.
-Examples
+Print
+t
+answers — one per test case.
+The answer to the
+i
+-th test case is the cleanest string Lee can get after doing some number of moves (possibly zero).
+Example
 input
 Copy
-2 4
-UUUU
-DDDD
-output
-Copy
+5
+10
+0001111111
 4
-input
-Copy
-2 3
-ULR
-DLR
+0101
+8
+11001101
+10
+1110000000
+1
+1
 output
 Copy
-6
-input
-Copy
-6 6
-ULRUUU
-DUUDDD
-UDDLRU
-DLRLRD
-ULRULR
-DLRDLR
-output
-Copy
-133
+0001111111
+001
+01
+0
+1
 Note
-In the first sample case, no moves are possible after removing any domino, thus there are four distinct photos.
-In the second sample case, four photos are possible after removing the leftmost domino by independently moving/not moving the remaining two dominoes. Two more different photos are obtained by removing one of the dominoes on the right.
+In the first test case, Lee can't perform any moves.
+In the second test case, Lee should erase
+s
+2
+.
+In the third test case, Lee can make moves, for example, in the following order: 11001101 
+→
+1100101 
+→
+110101 
+→
+10101 
+→
+1101 
+→
+101 
+→
+01.

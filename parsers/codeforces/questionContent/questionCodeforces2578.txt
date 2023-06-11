@@ -1,129 +1,123 @@
-D. Yet Another Yet Another Task
-time limit per test1.5 seconds
-memory limit per test512 megabytes
+B. Honest Coach
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Alice and Bob are playing yet another card game. This time the rules are the following. There are
+There are
 n
-cards lying in a row in front of them. The
+athletes in front of you. Athletes are numbered from
+1
+to
+n
+from left to right. You know the strength of each athlete — the athlete number
 i
--th card has value
-a
+has the strength
+s
 i
 .
-First, Alice chooses a non-empty consecutive segment of cards
-[l;r]
-(
-l≤r
-). After that Bob removes a single card
-j
-from that segment
-(l≤j≤r)
-. The score of the game is the total value of the remaining cards on the segment
-(
-a
-l
-+
-a
-l+1
-+⋯+
-a
-j−1
-+
-a
-j+1
-+⋯+
-a
-r−1
-+
-a
-r
-)
-. In particular, if Alice chooses a segment with just one element, then the score after Bob removes the only card is
-0
+You want to split all athletes into two teams. Each team must have at least one athlete, and each athlete must be exactly in one team.
+You want the strongest athlete from the first team to differ as little as possible from the weakest athlete from the second team. Formally, you want to split the athletes into two teams
+A
+and
+B
+so that the value
+|max(A)−min(B)|
+is as small as possible, where
+max(A)
+is the maximum strength of an athlete from team
+A
+, and
+min(B)
+is the minimum strength of an athlete from team
+B
 .
-Alice wants to make the score as big as possible. Bob takes such a card that the score is as small as possible.
-What segment should Alice choose so that the score is maximum possible? Output the maximum score.
+For example, if
+n=5
+and the strength of the athletes is
+s=[3,1,2,6,4]
+, then one of the possible split into teams is:
+first team:
+A=[1,2,4]
+,
+second team:
+B=[3,6]
+.
+In this case, the value
+|max(A)−min(B)|
+will be equal to
+|4−3|=1
+. This example illustrates one of the ways of optimal split into two teams.
+Print the minimum value
+|max(A)−min(B)|
+.
 Input
-The first line contains a single integer
+The first line contains an integer
+t
+(
+1≤t≤1000
+) — the number of test cases in the input. Then
+t
+test cases follow.
+Each test case consists of two lines.
+The first line contains positive integer
 n
 (
-1≤n≤
-10
-5
-) — the number of cards.
+2≤n≤50
+) — number of athletes.
 The second line contains
 n
-integers
-a
+positive integers
+s
 1
 ,
-a
+s
 2
 ,…,
-a
+s
 n
 (
-−30≤
-a
+1≤
+s
 i
-≤30
-) — the values on the cards.
+≤1000
+), where
+s
+i
+ — is the strength of the
+i
+-th athlete. Please note that
+s
+values may not be distinct.
 Output
-Print a single integer — the final score of the game.
-Examples
+For each test case print one integer — the minimum value of
+|max(A)−min(B)|
+with the optimal split of all athletes into two teams. Each of the athletes must be a member of exactly one of the two teams.
+Example
 input
 Copy
 5
-5 -2 10 -1 4
-output
-Copy
+5
+3 1 2 6 4
 6
-input
-Copy
-8
-5 2 5 3 -30 -30 6 9
-output
-Copy
-10
-input
-Copy
+2 1 3 2 4 3
+4
+7 9 3 1
+2
+1 1000
 3
--10 6 -15
+100 150 200
 output
 Copy
+1
 0
+2
+999
+50
 Note
-In the first example Alice chooses a segment
-[1;5]
-— the entire row of cards. Bob removes card
-3
-with the value
-10
-from the segment. Thus, the final score is
-5+(−2)+(−1)+4=6
-.
-In the second example Alice chooses a segment
-[1;4]
-, so that Bob removes either card
-1
-or
-3
-with the value
-5
-, making the answer
-5+2+3=10
-.
-In the third example Alice can choose any of the segments of length
-1
-:
-[1;1]
+The first test case was explained in the statement. In the second test case, one of the optimal splits is
+A=[2,1]
 ,
-[2;2]
-or
-[3;3]
-. Bob removes the only card, so the score is
-0
-. If Alice chooses some other segment then the answer will be less than
-0
+B=[3,2,4,3]
+, so the answer is
+|2−2|=0
 .

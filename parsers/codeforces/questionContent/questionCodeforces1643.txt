@@ -1,102 +1,157 @@
-B. Love Song
-time limit per test2 seconds
+E. Game with Cards
+time limit per test2.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Petya once wrote a sad love song and shared it to Vasya. The song is a string consisting of lowercase English letters. Vasya made up
-q
-questions about this song. Each question is about a subsegment of the song starting from the
-l
--th letter to the
-r
--th letter. Vasya considers a substring made up from characters on this segment and repeats each letter in the subsegment
+The Alice's computer is broken, so she can't play her favorite card game now. To help Alice, Bob wants to answer
+n
+her questions.
+Initially, Bob holds one card with number
+0
+in the left hand and one in the right hand. In the
+i
+-th question, Alice asks Bob to replace a card in the left or right hand with a card with number
 k
-times, where
-k
-is the index of the corresponding letter in the alphabet. For example, if the question is about the substring "abbcb", then Vasya repeats letter 'a' once, each of the letters 'b' twice, letter 'c" three times, so that the resulting string is "abbbbcccbb", its length is
-10
-. Vasya is interested about the length of the resulting string.
-Help Petya find the length of each string obtained by Vasya.
+i
+(Bob chooses which of two cards he changes, Bob must replace exactly one card).
+After this action, Alice wants the numbers on the left and right cards to belong to given segments (segments for left and right cards can be different). Formally, let the number on the left card be
+x
+, and on the right card be
+y
+. Then after the
+i
+-th swap the following conditions must be satisfied:
+a
+l,i
+≤x≤
+b
+l,i
+, and
+a
+r,i
+≤y≤
+b
+r,i
+.
+Please determine if Bob can answer all requests. If it is possible, find a way to do it.
 Input
 The first line contains two integers
 n
 and
-q
+m
 (
-1≤n≤100000
+2≤n≤100000
 ,
-1≤q≤100000
-) — the length of the song and the number of questions.
-The second line contains one string
-s
- — the song, consisting of
+2≤m≤
+10
+9
+) — the number of questions and the maximum possible value on the card.
+Then
 n
-lowercase letters of English letters.
-Vasya's questions are contained in the next
-q
-lines. Each line contains two integers
-l
-and
-r
+queries are described. Every description contains 3 lines.
+The first line of the description of the
+i
+-th query contains a single integer
+k
+i
 (
-1≤l≤r≤n
-) — the bounds of the question.
+0≤
+k
+i
+≤m
+) — the number on a new card.
+The second line of the description of the
+i
+-th query contains two integers
+a
+l,i
+and
+b
+l,i
+(
+0≤
+a
+l,i
+≤
+b
+l,i
+≤m
+) — the minimum and maximum values of the card at the left hand after the replacement.
+The third line of the description of the
+i
+-th query contains two integers
+a
+r,i
+and
+b
+r,i
+(
+0≤
+a
+r,i
+≤
+b
+r,i
+≤m
+) — the minimum and maximum values of the card at the right hand after the replacement.
 Output
-Print
-q
-lines: for each question print the length of the string obtained by Vasya.
+At the first line, print "Yes", if Bob can answer all queries, and "No" otherwise.
+If Bob can answer all
+n
+queries, then at the second line print
+n
+numbers: a way to satisfy all requirements. If in
+i
+-th query Bob needs to replace the card in the left hand, print
+0
+, otherwise print
+1
+. If there are multiple answers, print any.
 Examples
 input
 Copy
-7 3
-abacaba
-1 3
-2 5
-1 7
-output
-Copy
-4
-7
-11
-input
-Copy
-7 4
-abbabaa
-1 3
-5 7
-6 6
-2 4
-output
-Copy
-5
-4
-1
-5
-input
-Copy
-13 7
-sonoshikumiwo
-1 5
 2 10
-7 7
-1 13
-4 8
-2 5
-3 9
+3
+0 3
+0 2
+2
+0 4
+0 2
 output
 Copy
-82
-125
-9
-191
-62
-63
-97
-Note
-In the first example Vasya is interested in three questions. In the first question Vasya considers the substring "aba", that transforms to "abba", so the answer is equal to
-4
-. In the second question Vasya considers "baca", that transforms to "bbaccca", so the answer is
+Yes
+0 1 
+input
+Copy
+2 10
+3
+0 3
+0 2
+2
+3 4
+0 1
+output
+Copy
+No
+input
+Copy
+5 10
+3
+0 3
+0 3
 7
-. In the third question Vasya considers the string "abacaba",that transforms to "abbacccabba" of length
-11
-.
+4 7
+1 3
+2
+2 3
+3 7
+8
+1 8
+1 8
+6
+1 6
+7 10
+output
+Copy
+Yes
+1 0 0 1 0 

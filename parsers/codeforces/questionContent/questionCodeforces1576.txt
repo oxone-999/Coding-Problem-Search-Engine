@@ -1,191 +1,220 @@
-E. Colors and Intervals
+H. Guess the Perimeter
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The numbers
-1,2,…,n⋅k
-are colored with
-n
-colors. These colors are indexed by
-1,2,…,n
-. For each
-1≤i≤n
-, there are exactly
-k
-numbers colored with color
-i
+Let us call a point of the plane admissible if its coordinates are positive integers less than or equal to
+200
 .
-Let
-[a,b]
-denote the interval of integers between
-a
-and
-b
-inclusive, that is, the set
-{a,a+1,…,b}
-. You must choose
-n
-intervals
-[
-a
-1
-,
-b
-1
-],[
-a
-2
-,
-b
-2
-],…,[
-a
-n
-,
-b
-n
-]
-such that:
-for each
-1≤i≤n
-, it holds
-1≤
-a
-i
-<
-b
-i
-≤n⋅k
-;
-for each
-1≤i≤n
-, the numbers
-a
-i
-and
-b
-i
-are colored with color
-i
-;
-each number
-1≤x≤n⋅k
-belongs to at most
-⌈
-n
-k−1
-⌉
-intervals.
-One can show that such a family of intervals always exists under the given constraints.
-Input
-The first line contains two integers
-n
-and
+There is an invisible rectangle such that:
+its vertices are all admissible;
+its sides are parallel to the coordinate axes;
+its area is strictly positive.
+Your task is to guess the perimeter of this rectangle.
+In order to guess it, you may ask at most
+4
+queries.
+In each query, you choose a nonempty subset of the admissible points and you are told how many of the chosen points are inside or on the boundary of the invisible rectangle.
+Interaction
+To ask a query (of the kind described in the statement), you shall print two lines:
+In the first line print "?
+k
+" (without the quotes) where
 k
 (
-1≤n≤100
-,
-2≤k≤100
-) — the number of colors and the number of occurrences of each color.
-The second line contains
-n⋅k
+k≥1
+) is the number of chosen points.
+In the second line print
+2k
 integers
-c
+x
 1
 ,
-c
+y
+1
+,
+x
+2
+,
+y
 2
 ,…,
-c
-nk
+x
+k
+,
+y
+k
 (
 1≤
-c
-j
-≤n
-), where
-c
-j
-is the color of number
-j
-. It is guaranteed that, for each
-1≤i≤n
-, it holds
-c
-j
-=i
-for exactly
+x
+i
+,
+y
+i
+≤200
+for
+i=1,2,…,k
+) where
+(
+x
+1
+,
+y
+1
+),(
+x
+2
+,
+y
+2
+),(
+x
+3
+,
+y
+3
+),…,(
+x
 k
-distinct indices
-j
-.
-Output
-Output
-n
-lines. The
-i
--th line should contain the two integers
-a
-i
-and
-b
-i
-.
-If there are multiple valid choices of the intervals, output any.
+,
+y
+k
+)
+are the
+k
+distinct admissible chosen points (the order of the points is not important).
+After this, you should read an integer — the number of chosen points that are inside or on the boundary of the invisible rectangle.
+When you have identified the perimeter
+p
+of the invisible rectangle, you must print "!
+p
+" (without quotes) and terminate your program.
+If you ask more than
+4
+queries or if one of the queries is malformed, the interactor terminates immediately and your program receives verdict Wrong Answer.
+The interactor may be adaptive (i.e., the hidden rectangle may not be chosen before the beginning of the interaction).
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+Hacks
+To hack a solution, use the following format.
+The input has only one line, containing the
+4
+integers
+x
+0
+,
+y
+0
+,
+x
+1
+,
+y
+1
+(
+1≤
+x
+0
+<
+x
+1
+≤200
+,
+1≤
+y
+0
+<
+y
+1
+≤200
+) —
+(
+x
+0
+,
+y
+0
+)
+is the bottom-left vertex of the hidden rectangle and
+(
+x
+1
+,
+y
+1
+)
+is the top-right vertex of the hidden rectangle.
+Note that for hacks the interaction won't be adaptive.
 Examples
 input
 Copy
-4 3
-2 4 3 1 1 4 2 3 2 1 3 4
+13 5 123 80
 output
 Copy
-4 5
-1 7
-8 11
-6 12
 input
 Copy
-1 2
-1 1
+2 2 4 4
 output
 Copy
-1 2
 input
 Copy
-3 3
-3 1 2 3 2 1 2 1 3
+1 1 200 200
 output
 Copy
-6 8
-3 7
-1 4
-input
-Copy
-2 3
-2 1 1 1 2 2
-output
-Copy
-2 3
-5 6
 Note
-In the first sample, each number can be contained in at most
-⌈
+The following is an example of interaction for the first sample intended to show the format of the queries.
+Query (contestant program)
+? 4
+13 5 13 80 123 5 123 80
+? 5
+100 4 100 81 12 40 124 40 50 50
+? 2
+200 200 1 1
+! 370
+Answer (interactor)
 4
-3−1
-⌉=2
-intervals. The output is described by the following picture:
-In the second sample, the only interval to be chosen is forced to be
-[1,2]
-, and each number is indeed contained in at most
-⌈
 1
-2−1
-⌉=1
-interval.
-In the third sample, each number can be contained in at most
-⌈
-3
-3−1
-⌉=2
-intervals. The output is described by the following picture:
+0
+Explanation
+We choose the 4 vertices of
+the hidden rectangle.
+We choose 4 points just outside the hidden
+rectangle and also the point (50,50).
+We choose the points (1,1)
+and (200,200).
+This is the correct perimeter.
+For the second sample, a possible interaction is the following.
+Query (contestant program)
+? 4
+3 2 4 1 5 2 4 3
+? 7
+1 4 2 4 1 5 2 5 5 5 5 6 6 5
+! 8
+Answer (interactor)
+2
+1
+Explanation
+We choose the points (3,2), (4,1),
+(5,2) and (4,3).
+We choose the points (1,4), (2,4),
+(1,5), (2,5), (5,5), (5,6) and (6,5).
+This is the correct perimeter.
+The situation is shown in the following picture:
+The green points are the ones belonging to the first query, while the orange points are the ones belonging to the second query. One can see that there are exactly two rectangles consistent with the interactor's answers:
+the rectangle of vertices
+(2,2)
+and
+(4,4)
+, shown in red;
+the rectangle of vertices
+(4,2)
+and
+(5,5)
+, shown in blue.
+Since both of these rectangles have perimeter
+8
+, this is the final answer.

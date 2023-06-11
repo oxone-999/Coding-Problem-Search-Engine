@@ -1,205 +1,216 @@
-D. Bit Guessing Game
+B. GCD Partition
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem.
-Kira has a hidden positive integer
+While at Kira's house, Josuke saw a piece of paper on the table with a task written on it.
+The task sounded as follows. There is an array
+a
+of length
 n
-, and Hayato needs to guess it.
-Initially, Kira gives Hayato the value
-cnt
-— the number of unit bits in the binary notation of
-n
-. To guess
-n
-, Hayato can only do operations of one kind: choose an integer
-x
-and subtract it from
-n
-. Note that after each operation, the number
-n
-changes. Kira doesn't like bad requests, so if Hayato tries to subtract a number
-x
-greater than
-n
-, he will lose to Kira. After each operation, Kira gives Hayato the updated value
-cnt
-— the number of unit bits in the binary notation of the updated value of
-n
+. On this array, do the following:
+select an integer
+k>1
+;
+split the array into
+k
+subsegments
+†
+†
+;
+calculate the sum in each of
+k
+subsegments and write these sums to another array
+b
+(where the sum of the subsegment
+(l,r)
+is
+∑
+r
+j=l
+a
+j
+);
+the final score of such a split will be
+gcd(
+b
+1
+,
+b
+2
+,…,
+b
+k
+)
+‡
 .
-Kira doesn't have much patience, so Hayato must guess the original value of
-n
-after no more than
-30
-operations.
-Since Hayato is in elementary school, he asks for your help. Write a program that guesses the number
-n
-. Kira is an honest person, so he chooses the initial number
-n
-before all operations and does not change it afterward.
+The task is to find such a partition that the score is maximum possible. Josuke is interested in this task but is not strong in computer science. Help him to find the maximum possible score.
+†
+†
+A division of an array into
+k
+subsegments is
+k
+pairs of numbers
+(
+l
+1
+,
+r
+1
+),(
+l
+2
+,
+r
+2
+),…,(
+l
+k
+,
+r
+k
+)
+such that
+l
+i
+≤
+r
+i
+and for every
+1≤j≤k−1
+l
+j+1
+=
+r
+j
++1
+, also
+l
+1
+=1
+and
+r
+k
+=n
+. These pairs represent the subsegments.
+‡
+‡
+gcd(
+b
+1
+,
+b
+2
+,…,
+b
+k
+)
+stands for the greatest common divisor (GCD) of the array
+b
+.
 Input
-The input data contains several test cases. The first line contains one integer
+The first line contains a single number
 t
 (
-1≤t≤500
-) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains the number
-cnt
-— the initial number of unit bits in the binary notation
-n
-.
-The hidden integer
-n
-satisfies the following constraint:
-1≤n≤
+1≤t≤
 10
-9
-.
-Interaction
-To guess
-n
-, you can perform the operation at most
-30
-times. To do that, print a line with the following format: "- x" (
-1≤x≤
-10
-9
-).
-After this operation, the number
-x
-is subtracted from
-n
-, and therefore
-n
-is changed. If the number
-x
-is greater than the current value of
-n
-, then the request is considered invalid.
-After the operation read a line containing a single non-negative integer
-cnt
-— the number of unit bits in the binary notation of the current
-n
-after the operation.
-When you know the initial value of
-n
-, print one line in the following format: "! n" (
-1≤n≤
-10
-9
-).
-After that, move on to the next test case, or terminate the program if there are none.
-If your program performs more than
-30
-operations for one test case, subtracts a number
-x
-greater than
-n
-, or makes an incorrect request, then response to the request will be -1, after receiving such response, your program must exit immediately to receive the Wrong Answer verdict. Otherwise, you can get any other verdict.
-After printing a query or the answer, do not forget to output the end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-Hacks
-To make a hack, use the following format.
-The first line should contain a single integer
-t
-(
-1≤t≤500
-).
-Each test case should contain one integer
+4
+) — the number of test cases.
+For each test case, the first line contains one integer
 n
 (
-1≤n≤
+2≤n≤2⋅
+10
+5
+) — the length of the array
+a
+.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,
+a
+3
+,…,
+a
+n
+(
+1≤
+a
+i
+≤
 10
 9
-) on a separate line.
+) — the array
+a
+itself.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+.
+Output
+For each test case print a single integer — the maximum score for the optimal partition.
 Example
 input
 Copy
-3
-
-1
-
-0
-
-1
-
-1
-
-0
-
+6
+4
+2 2 1 3
 2
-
-1
-
-0
+1 2
+3
+1 4 5
+6
+1 2 1 1 1 3
+10
+12 30 37 88 12 78 89 17 2 12
+6
+7 7 7 7 7 7
 output
 Copy
-- 1
-
-! 1
-
-- 1
-
-- 1
-
-! 2
-
-- 2
-
-- 1
-
-! 3
-Note
-For example, the number of unit bits in number
-6
-is
-2
-, because binary notation of
-6
-is
-110
-. For
-13
-the number of unit bits is
-3
-, because
-13
-10
-=
-1101
-2
-.
-In the first test case,
-n=1
-, so the input is the number
+4
 1
-. After subtracting one from
-n
-, it becomes zero, so the number of unit bits in it is
-0
-.
-In the third test case,
-n=3
-, which in binary representation looks like
+5
 3
-10
-=
-11
-2
-, so the input is the number of ones, that is
-2
-. After subtracting
+1
+21
+Note
+In the first test case, you can choose
+k=2
+and split the array into subsegments
+(1,2)
+and
+(3,4)
+.
+Then the score of such a partition will be equal to
+gcd(
+a
+1
++
+a
 2
 ,
-n=1
-, so the number of unit bits is now
-1
-. After subtracting one from
-n
-, it becomes equal to zero.
-Note that the blank lines in the input and output examples are shown for clarity and are not present in the actual interaction.
+a
+3
++
+a
+4
+)=gcd(2+2,1+3)=gcd(4,4)=4
+.
+In the fourth test case, you can choose
+k=3
+and split the array into subsegments
+(1,2),(3,5),(6,6)
+.
+The split score is
+gcd(1+2,1+1+1,3)=3
+.

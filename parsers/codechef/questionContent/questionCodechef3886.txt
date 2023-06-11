@@ -1,113 +1,113 @@
-The Frictionless Bisected 2-Dimensional World
+On Graphs, Probability Theory and Cakes
 Problem
-###Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-Colonel and Erfan were walking in the Frictionless Bisected Two-Dimensional World, talking about this contest’s hardest problem. As the name implies, this world is a plane (with a Cartesian coordinate system with axes
-x,
-y) divided by an impassable infinite straight wall. The wall is infinitely thin, immovable and all collisions with it are perfectly elastic collisions.
-Colonel and Erfan are holding two-dimensional tennis balls (tennis discs). They decided to throw the discs, wondering if they will collide at some point. After being thrown, each disc is moving in the two-dimensional world with a constant velocity. A disc with radius
-r collides with the wall if the distance of its centre from the wall is
-r. In an elastic collision with the wall, the component of velocity of the disc perpendicular to the wall flips its sign and the disc continues moving with a constant velocity afterwards.
-Since just finding out whether the discs will collide is boring, let's define the maximum overlap between the thrown discs in the following way: Assume that the discs can freely pass through each other without affecting each other's trajectory. At each (not necessarily integer) moment in time after the discs are thrown, calculate the area of their intersection; the maximum overlap is the maximum value of this area. (Clearly, if the discs would never collide or only touch each other, the maximum overlap is zero.) We are asking you to tell Colonel and Erfan the maximum overlap between the discs.
+Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
+Chef is viewing a simulation of creating a tree with
+N vertices (numbered
+1 through
+N) which calculates mysterious coefficients for all the edges. Initially, there is a graph without edges, but there is a set
+S containing
+N−1 edges (numbered
+1 through
+N−1) which should get added to the graph one by one.
+In this process,
+N−1 times, the following steps are performed:
+An edge
+e is chosen uniformly randomly from the current set
+S.
+This edge is added to the graph and removed from
+S.
+The coefficient of
+e is set to the number of vertices in the connected component created by adding this edge.
+Chef is wondering about the expected values of coefficients of the edges. Unfortunately, he does not have much time for such matters since he needs to prepare a superb cake for Chefina's birthday tomorrow.
+Help Chef and for each edge, calculate the expected value of its coefficient modulo
+998,244,353. We can prove that each coefficient is a rational number; for a coefficient in the form
+P/Q, where
+P and
+Q are positive integers and
+Q is coprime with
+998,244,353, you should compute
+P⋅Q
+−1
+modulo
+998,244,353, where
+Q
+−1
+is the multiplicative inverse of
+Q modulo
+998,244,353.
 Input
 The first line of the input contains a single integer
 T denoting the number of test cases. The description of
 T test cases follows.
-The first line of each test case contains two space-separated integers
-s
-1,x
-and
-s
-1,y
-denoting the initial coordinates of the centre of the first disc.
-The second line contains two space-separated integers
-v
-1,x
-and
-v
-1,y
-denoting the
-x- and
-y-components of the initial velocity of the first disc.
-The third line contains a single integer
-r
-1
-denoting the radius of the first disc.
-The following three lines describe the second disc in the same format ― the first of these lines contains two space-separated integers
-s
-2,x
-and
-s
-2,y
-, the second line contains two space-separated integers
-v
-2,x
-and
-v
-2,y
-, and the third line contains a single integer
-r
-2
-.
-The last two lines describe the wall as a line passing through two points. Each of these lines contains two space-separated integers
-w
-x
-and
-w
-y
-denoting the coordinates of a point on the wall.
-Constraints
-1≤T≤100
-∣s
-i,x
-∣,∣s
-i,y
-∣,∣v
-i,x
-∣,∣v
-i,y
-∣≤10
-4
-for each valid
-i
-∣w
-x
-∣,∣w
-y
-∣≤10
-4
-1≤r
-i
-≤10
-4
-for each valid
-i
-the velocity of each disc is non-zero
-initially, the discs do not intersect or touch the wall or each other
-initially, the discs are located at the same side of the wall
-the two given points on the wall are distinct
+The first line of each test case contains a single integer
+N.
+The following
+N−1 lines describe the edges in
+S. For each valid
+i, the
+i-th of these lines contains two space-separated integers
+u and
+v denoting that the
+i-th edge connects vertices
+u and
+v.
 Output
-For each test case, print a single line containing one real number ― the maximum overlap between the discs. Your answer will be considered correct if its absolute or relative error does not exceed
-10
-−6
-.
+For each test case, print a single line containing
+N−1 integers. For each valid
+i, the
+i-th of these integers should be
+R⋅Q
+−1
+modulo
+998,244,353 for the coefficient of the
+i-th edge.
+Constraints
+2≤T≤10,000
+2≤N≤50,000
+1≤u,v≤N
+the edges in
+S form a tree
+the sum of
+N over all test cases does not exceed
+200,000
 Example Input
-2
-0 -100
-0 1
-10
-180 -100
--1 0
-5
-1 0
-0 0
-0 -100
-0 1
-10
-180 -100
-1 0
-10
-1 0
-0 0
+3
+3
+1 2
+2 3
+4
+1 2
+2 3
+3 4
+7
+1 2
+2 3
+3 4
+4 5
+6 2
+7 3
 Example Output
-78.539816339745
-0.000000000000
+499122179 499122179
+831870297 3 831870297
+415935151 332748122 166374063 665496239 415935151 4
+Explanation
+Example case 1:
+With probability
+1/2, the edge
+(1,2) is added to the graph first and its coefficient is set to
+2 (vertices
+1 and
+2 are in the connected component). Then, with probability
+1, the edge
+(2,3) is added and its coefficient is set to
+3.
+With probability
+1/2, the edge
+(2,3) is chosen first instead and its coefficient is set to
+2. In this case, the coefficient of
+(1,2) is then set to
+3.
+The expected value of the coefficient of the first edge is
+2⋅1/2+3⋅1/2=5/2. For the second edge, it is the same.
+Example case 2: The expected values of the coefficients are
+17/6,3,17/6.

@@ -1,64 +1,32 @@
-Best Cake Ever
+Blocked websites
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-Chef is baking a large cake! The cake consists of
-N different ingredients numbered
-1 through
-N. Chef can choose how much of each ingredient to use in his cake recipe; let's denote the amount of the
-i-th ingredient used in the cake by
-g
-i
-. Chef can only measure ingredients in fixed whole units, so the amounts of all ingredients must be integers.
-In order to keep the cake inexpensive (and, of course, use each ingredient from the recipe), the chosen amounts of ingredients have to satisfy the condition
-1≤g
-i
-≤K (for each
-1≤i≤N). The taste of the resulting cake is computed as the bitwise XOR of the amounts of all ingredients, i.e.
-g
-1
-⊕g
-2
-⊕⋯⊕g
-N
-. For example, if
-N=3 and
-g=[1,2,5], the taste of the cake is equal to
-1⊕2⊕5=6.
-Please help Chef and find one way to choose the amounts of all ingredients such that the taste of the cake is maximum possible.
+Read problems statements in mandarin chinese, russian and vietnamese as well.
+Mike is a network administrator in a university. One of his primary responsibilities in the job is to create an effective firewall so that the students are not able to visit the blocked sites in the network.
+The network have access to exactly N sites. Some of these can be blocked. The names of the sites will be given in lowercase English letters.
+The firewall will consist of several filters. A filter is a string that should be a prefix of some blocked site, and it should not be a prefix of any unblocked site. You want to minimize the sum of length of filters in the firewall so that for each of the blocked site, there should be a filter that contains the name of blocked site(filter is a prefix of blocked site).
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains two space-separated integers
-N and
-K.
+The first line of the input contains an integer N denoting the number of sites in the network.
+Then N lines follow, each of them describes the site. Each line starts from the char С. If the site is unblocked, С is equal to '+', otherwise С is equal to '-'., followed by a string denoting the name of the site.
 Output
-For each test case, print a single line containing
-N space-separated integers
-g
-1
-,g
-2
-,…,g
-N
-— the amounts of ingredients
-1,2,…,N.
+If it is not possible to choose set of filters and satisfy all constraints, output a single line containing an integer -1.
+Otherwise, in the first line print the number of filters K in the firewall. Then print K lines, in each line print the chosen filter. Please dislpay them in lexicographical order. You can prove that answer will be unique.
 Constraints
-1≤T≤40
-1≤N≤10
-4
-1≤K≤10
-9
+1 ≤ N ≤ 2 * 105
+The sum of lengths of names of sites does not exceed 2*105
+No two sites have same name.
+Subtasks
+Subtask #1 (30 points) 1 ≤ N, the sum of lengths of names of sites ≤ 3 * 103
+Subtask #2 (70 points) Original constraints
 Sample 1:
 Input
 Output
+4
+- codeforces
++ codechef
+- youtube
++ google
 2
-3 5
-4 3
-5 1 3
-1 2 3 3
+codef
+y
 Explanation:
-Example case 1: The maximum possible taste of the cake is
-5⊕1⊕3=7.
-Example case 2: The maximum possible taste is
-1⊕2⊕3⊕3=3.
+You can see that the filter "codef" is a prefix of the blocked site "codeforces", but not a prefix of approved sites "codechef" and "google". Similarly, filter "y" is also a prefix of blocked site "youtube", but not a prefix of the approved sites. You can also see that there exists at least one filter for both the blocked sites "codeforces" and "youtube".

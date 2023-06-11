@@ -1,37 +1,30 @@
-One-XOR Deletions
+Compress the List
 Problem
-Chef has with him an array
-A of length
-N. In one move, he can delete any element from
-A.
-Find the minimum number of deletions Chef must make so that the following condition holds:
-Let
-B denote the resulting array, and
-M be the length of
-B.
-Then,
-B
-i
-⊕B
-j
-≤1 for every
-1≤i,j≤M.
-Here,
-⊕ denotes the bitwise XOR operation.
-For example,
-[3,3,3] and
-[6,7,6,7] are valid final arrays, while
-[1,2] and
-[6,7,8] are not (because
-1⊕2=3 and
-7⊕8=15, respectively).
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of two lines of input.
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given a strictly increasing sequence of integers
+A
+1
+,A
+2
+,…,A
+N
+. Your task is to compress this sequence.
+The compressed form of this sequence is a sequence of ranges separated by commas (characters ','). A range is either an integer or a pair of integers separated by three dots (the string "..."). When each range a...b in the compressed form is decompressed into the subsequence
+(a,a+1,…,b), we should obtain the (comma-separated) sequence
+A again.
+For each maximal contiguous subsequence
+(a,a+1,…,b) of
+A such that
+b≥a+2, the compressed form of
+A must contain the range a...b; if
+b≤a+1, such a sequence should not be compressed into a range. A contiguous subsequence is maximal if it cannot be extended by at least one element of
+A next to it. It can be proved that the compressed form of any sequence is unique (i.e. well-defined).
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
 The first line of each test case contains a single integer
-N, denoting the length of array
-A.
+N.
 The second line contains
 N space-separated integers
 A
@@ -40,59 +33,45 @@ A
 2
 ,…,A
 N
-— the elements of array
-A.
-Output Format
-For each test case, output on a new line the answer: the minimum number of deletions required so that the given condition is satisfied.
-Constraints
-1≤T≤10
-5
-1≤N≤3⋅10
-5
-0≤A
-i
-≤N
-The sum of
-N over all test cases won't exceed
-3⋅10
-5
 .
+Output
+For each test case, print a single line containing one string ― the compressed form of the given sequence.
+Constraints
+1≤T≤100
+1≤N≤100
+1≤A
+i
+≤1,000 for each valid
+i
+A
+1
+<A
+2
+<…<A
+N
+Subtasks
+Subtask #1 (100 points): original constraints
 Sample 1:
 Input
 Output
-4
-4
-2 2 2 2
-5
-3 4 3 4 4
-5
-1 2 3 4 0
-6
-5 5 5 6 6 6
-0
-2
 3
-3
+12
+1 2 3 5 6 8 9 10 11 12 15 17
+4
+4 5 7 8
+1
+4
+1...3,5,6,8...12,15,17
+4,5,7,8
+4
 Explanation:
-Test case
-1: The given array already satisfies the condition, no deletions need to be done.
-Test case
-2: Chef can delete both the
-3's to make the array
-[4,4,4], which satisfies the condition.
-Test case
-3: Chef can use three moves as follows:
-Delete the
-1, the array is now
-[2,3,4,0].
-Delete the
-4, the array is now
-[2,3,0].
-Delete the
-0, the array is now
-[2,3] which satisfies the condition.
-It can be verified that using two or less deletions cannot give an array that satisfies the condition.
-Test case
-4: Chef must either delete all the
-5's or all the
-6's.
+Example case 1:
+(1,2,3) is a contiguous subsequence with length
+3, so it is replaced by the string "1...3"
+(5,6) is a contiguous subsequence, but only with length
+2, so it is not compressed into a range
+(8,9,10,11,12) is a contiguous subsequence with length
+5, so it is replaced by "8...12"
+the elements
+15,
+17 are unaffected

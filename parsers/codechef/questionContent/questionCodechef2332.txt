@@ -1,164 +1,40 @@
-Exact Walks
+Selection for Training Camps
 Problem
-Maui had an undirected connected graph
-G=(V,E), where
-V = {
-v
-1
-,v
+Cricket is almost like a religion in India and many young kids attend coaching camps every year. This year there are total N kids at the camp and the coach is forming teams so that kids within a team can practice and compete with each other. As we know that kids are afraid of tall and heavy persons, they are afraid to get in to a team having such player. More formally, kid A is afraid of another kid B if weight(A) ≤ weight(B) and height(A) ≤ height(B). You can assume that no two kids have both height and weight equal to each other. Here is how the teams are formed by the coach.
+All the N students are lined up. For R = 1,2,3,... in order, in the Rth round the coach calls all the students who are not afraid of any one in the line. They all come forward, form a team number R and leave for practice. This process is repeated as long as there are kids still in the line, yet to form a team. Given the height and weight of each of the N students, find the number of teams formed and the number of kids in each of them.
+Input
+First line contains T, number of test cases ( 1 ≤ T ≤ 3 ). T cases follow. Each case starts with an integer N ( number of students, 1 ≤ N ≤ 100,000 ), each of the following N lines contains integers Hi Wi ( height and weight of the ith kid, 1 ≤ Hi, Wi ≤ 109. No two kids have their corresponding Hi and Wi equal to each other ).
+Output
+For each case, output K, the total number of teams formed, in the first line. In the second line, output K integers S1 S2 ... Sk , where Si is the number of kids in the ith team, separated by space.
+Example
+Input:
 2
-,…,v
-N
-} and
-E is the edge set. He also had a list of positive non-zero integers
-a
-1
-,a
-2
-,…,a
-N
-. He was bored of his usual adventures and decided to build a new directed graph
-G
-′
-=(U,F).
-U = {
-u
-1
-,u
-2
-,…,u
-N
-} and
-(u
-i
-,u
-j
-)∈F if and only if there is a walk of length exactly
-a
-i
-from
-v
-i
-to
-v
-j
-in
-G. Note that this walk could repeat edges. He then noticed that the new directed graph
-G
-′
-had two vertices
-u
-i
-and
-u
-j
-, such that there was no path from
-u
-i
-to
-u
-j
-in
-G
-′
-. Note that there could be more such pairs of vertices.
-But now, Maui has lost his list of integers, and has only the graph
-G. Help him by constructing any list which would satisfy the property mentioned, or state that it cannot be done.
-###Input:
-The first line of the input contains two integers:
-N,M, which represent the number of nodes and edges in
-G respectively.
-The i-th of the next
-M lines contains two numbers
-i and
-j, which signify that the undirected edge
-(v
-i
-,v
-j
-) exists in
-G.
-###Output:
-If a list of integers which satisfies the property exists, print "YES" in the first line and the
-N integers in order in the second line. Each of the integers must satisfy
-1≤a
-i
-≤10
-9
-.
-If it does not exist, print "NO".
-###Constraints
-2≤N≤100
-1≤M≤
-2
-N∗(N−1)
-1≤i,j≤N
-The input graph will be connected.
-There will be no multi-edges or self-loops.
-###Subtasks
-19 points :
-2≤N≤15
-5 points : The input graph will be bi-partite.
-76 points : No further constraints.
-###Sample Input: 3 2 1 2 2 3
-###Sample Output: YES 2 1 2
-###Explanation: In our output,
-a
-1
-=2, and so there will be a direct edge from
-u
-1
-to
-u
-2
-if and only if there is a walk of length 2 between
-v
-1
-and
-v
-2
-. But there isn't any such walk. But there is a walk of length 2 between
-v
-1
-and
-v
 3
-, and so there is a direct edge from
-u
-1
-to
-u
-3
-in
-G
-′
-. Similarly you can check that the edge set of
-G
-′
-is {
-(u
-1
-,u
-3
-),(u
-3
-,u
-1
-),(u
+3 4
+5 5
+4 3
+6
+7 7
+4 7
+5 5
+1 2
+3 4
+2 1
+
+Output:
 2
-,u
-1
-),(u
-2
-,u
-3
-)}. Now notice that there is no path from
-u
-1
-to
-u
-2
-in
-G
-′
-. Hence this is a valid output.
+1 2
+4
+1 2 1 2 
+
+Explanation:
+
+Case 1 : There are 3 kids initially in the line, (3,4) (5,5) (4,3)
+In the first round, only (5,5) comes forward and he leaves. (3,4) and (4,3) are both afraid of (5,5).
+In the second round, both (3,4) and (4,3) come forward, as they are not afraid of each other.
+
+Case 2 :
+Round 1 : Only (7,7) comes forward, as all others are afraid of him
+Round 2 : (4,7) and (5,5) form a team
+Round 3 : (3,4) comes forward, as (1,2) and (2,1) are afraid of him
+Round 4 : (1,2) and (2,1) are not afraid of each other and so forms the last team.

@@ -1,41 +1,48 @@
-Chef and Math Test
+Chef has a Spaghetti Garden
 Problem
-Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
-Joud Zouzou is one of the new employed co-chefs in the restaurant.
-Joud is preparing for his 3rd year in Damascus University, and he is also an ACM (AC-Milan) fan. Said On the other hand is a fan of Juventus, and they always fight, especially when Joud says: We're coming, We're back!
-Said can't stand this situation, but Shahhoud decided to give Joud his last chance. Since his dream is to be the Chef that cooks the most delicious dishes, Shahhoud gave him a task, and Joud has to solve it in order to maintain his current job. The task is as follows
-Given a tree of N nodes, each node i has a value Ai attached to it. Joud has to find the number of unordered-pairs (i,j) such that:
-If we created an array of all the numbers Ak, such as k is a node in the simple path from node i to node j, the median of this array will not exceed X and the mean will be at least Y.
-Joud found this task a bit hard, and he wants to spend all of his time studying for the next year, so he asked you to help him solving that problem.
-Note:
-The median of an array is the element positioned at the middle of the array after sorting it in non-decreasing order.
-The mean of an array is the sum of all the elements, divided by array's length.
-You can consider for even-length arrays that the median is the left one of the two centered elements of the array after sorting it.
-  Input
-The first line of the input contains an integer T denoting the number of test cases.
-Each test starts with three space separated integers N, X and Y, denoting the number of nodes, the maximum value for the median and the minimum value for the mean respectively.
-The next line contains N space separated integers A1, A2, ..., AN, denoting the values of the nodes.
-N-1 lines follows. Each line contains two values: u and v, denoting a connection between nodes u and v.
-Output
-For each test case, print a single number, the number of pairs (u, v) that satisfies the above mentioned conditions. It's possible that u = v.
-Constraints
-1 ≤ T ≤ 100.
-1 ≤ N ≤ 105.
--109 ≤ X,Y ≤ 109.
--109 ≤ Ai ≤ 109.
-It's guaranteed that the sum of all N over all test cases doesn't exceed 2*105.
-  Sample 1:
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef is tending a really large spaghetti garden. This garden consists of many spaghetti trees. Specifically, there is a spaghetti tree planted for each lattice point location (x, y) with x, y ≥ 0. (Yes, there are an infinite number of trees in Chef's garden!)
+It's the 1st of April, so it's harvest time for Chef. Chef plans to harvest all spaghetti strands within a certain region today. In case you didn't know, a spaghetti tree bears spaghetti strands as its fruits.
+Specifically, Chef plans to harvest all spaghetti strands hanging from every spaghetti tree whose location (x, y) is within the interior or boundary of a certain polygon with N vertices. Also, the spaghetti tree located at (x, y) currently bears exactly Fx+y fruits, where Fk satisfies the following fourth-order recurrence:
+Fk = a·Fk-1 + b·Fk-2 + c·Fk-3 + d·Fk-4
+How many strands of spaghetti will Chef be able to harvest today? Since this number can be very large, output it modulo 109 + 9. (Note: this is slightly different from the usual mod.)
 Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains nine space separated integers N, a, b, c, d, F0, F1, F2, and F3.
+After that, N lines follow. The ith line contains two integers xi and yi, denoting that (xi, yi) is the ith vertex of the polygon in counterclockwise order.
 Output
-1
-5 4 0
-1 5 4 -6 -100
-4 2
+For each test case, output a single line containing the integer: the answer for that test case.
+Constraints
+0 ≤ a, b, c, d, F0, F1, F2 F3 < 109 + 9
+The polygon is simple and non-degenerate.
+1 ≤ T ≤ 2000
+3 ≤ N ≤ 16
+The sum of the N in a single test file is ≤ 6000
+Subtasks
+Subtask #1 (10 points):
+0 ≤ xi, yi ≤ 100
+Subtask #2 (30 points):
+0 ≤ xi, yi ≤ 104
+Subtask #3 (60 points):
+0 ≤ xi, yi ≤ 109
+Example
+Input:
+2
+4 1 2 3 4 0 1 2 3
+1 1
 2 1
-5 3
+2 2
+1 2
+4 1 2 3 4 0 1 2 3
+1 1
+3 1
+3 3
 1 3
-7
-Explanation:
-Example case 1: All possible pairs are: { (1,1) (1,2) (1,3) (1,4) (1,5) (2,2) (2,3) (2,4) (2,5) (3,3) (3,4) (3,5) (4,4) (4,5) (5,5) }. The valid pairs are: { (1,1) (1,2) (1,3) (1,4) (2,3) (3,3) (3,4) }.
-The pair (1,5) is invalid because if we get all the nodes values in the path from node 1 to node 5, the array will be: {1, 4, -100}, and the mean is: -31,666 which is less than 0.
-The pair (2,2) is invalid because the median of the array {5} is 5 which is greater than 4
+
+Output:
+18
+153
+Explanation
+In both test cases, we have Fk = k for 0 ≤ k ≤ 3 and Fk = Fk-1 + 2·Fk-2 + 3·Fk-3 + 4·Fk-4. So you can check that F4 = 10, F5 = 26 and F6 = 63
+In the first test case, Chef will harvest all spaghetti strands in the locations (1, 1), (1, 2), (2, 1), (2, 2). The total number is F1+1 + F1+2 + F2+1 + F2+2 = F2 + F3 + F3 + F4 = 18
+In the second test case, Chef will harvest all spaghetti strands in the locations (1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3, 3). The total number is F1+1 + F1+2 + F1+3 + F2+1 + F2+2 + F2+3 + F3+1 + F3+2 + F3+3 = F2 + F3 + F4 + F3 + F4 + F5 + F4 + F5 + F6 = 153

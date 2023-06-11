@@ -1,156 +1,231 @@
-E. JYPnation
-time limit per test2 seconds
-memory limit per test1024 megabytes
+A. Nastya and Strange Generator
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Due to the success of TWICE, JYP Entertainment has earned countless money and emerged as the biggest entertainment firm by market capitalization. Therefore, the boss, JYP, has decided to create a new nation and has appointed you to provide a design diagram.
-The new nation consists of
+Denis was very sad after Nastya rejected him. So he decided to walk through the gateways to have some fun. And luck smiled at him! When he entered the first courtyard, he met a strange man who was selling something.
+Denis bought a mysterious item and it was... Random permutation generator! Denis could not believed his luck.
+When he arrived home, he began to study how his generator works and learned the algorithm. The process of generating a permutation consists of
 n
-cities and some roads between them. JYP has given some restrictions:
-To guarantee efficiency while avoiding chaos, for any
-2
-different cities
-A
-and
-B
-, there is exactly one road between them, and it is one-directional. There are no roads connecting a city to itself.
-The logo of rivaling companies should not appear in the plan, that is, there does not exist
+steps. At the
+i
+-th step, a place is chosen for the number
+i
+(1≤i≤n)
+. The position for the number
+i
+is defined as follows:
+For all
+j
+from
+1
+to
+n
+, we calculate
+r
+j
+ — the minimum index such that
+j≤
+r
+j
+≤n
+, and the position
+r
+j
+is not yet occupied in the permutation. If there are no such positions, then we assume that the value of
+r
+j
+is not defined.
+For all
+t
+from
+1
+to
+n
+, we calculate
+coun
+t
+t
+ — the number of positions
+1≤j≤n
+such that
+r
+j
+is defined and
+r
+j
+=t
+.
+Consider the positions that are still not occupied by permutation and among those we consider the positions for which the value in the
+count
+array is maximum.
+The generator selects one of these positions for the number
+i
+. The generator can choose any position.
+Let's have a look at the operation of the algorithm in the following example:
+Let
+n=5
+and the algorithm has already arranged the numbers
+1,2,3
+in the permutation. Consider how the generator will choose a position for the number
 4
-distinct cities
-A
-,
-B
-,
-C
-,
-D
-, such that the following configuration occurs.
-JYP has given criteria for your diagram. For two cities
-A
-,
-B
-, let
-dis(A,B)
-be the smallest number of roads you have to go through to get from
-A
-to
-B
-. If it is not possible to walk from
-A
-to
-B
-,
-dis(A,B)=614n
-. Then, the efficiency value is defined to be the sum of
-dis(A,B)
-for all ordered pairs of distinct cities
-(A,B)
+:
+The values of
+r
+will be
+r=[3,3,3,4,×]
+, where
+×
+means an indefinite value.
+Then the
+count
+values will be
+count=[0,0,3,1,0]
 .
-Note that
-dis(A,B)
-doesn't have to be equal to
-dis(B,A)
+There are only two unoccupied positions in the permutation:
+3
+and
+4
+. The value in the
+count
+array for position
+3
+is
+3
+, for position
+4
+it is
+1
 .
-You have drawn a design diagram that satisfies JYP's restrictions. Find the sum of
-dis(A,B)
-over all ordered pairs of cities
-(A,B)
-with
-A≠B
+The maximum value is reached only for position
+3
+, so the algorithm will uniquely select this position for number
+4
 .
-Note that the input is given in compressed form. But even though it is compressed, you'd better use fast input.
+Satisfied with his purchase, Denis went home. For several days without a break, he generated permutations. He believes that he can come up with random permutations no worse than a generator. After that, he wrote out the first permutation that came to mind
+p
+1
+,
+p
+2
+,…,
+p
+n
+and decided to find out if it could be obtained as a result of the generator.
+Unfortunately, this task was too difficult for him, and he asked you for help. It is necessary to define whether the written permutation could be obtained using the described algorithm if the generator always selects the position Denis needs.
 Input
 The first line contains a single integer
+t
+(1≤t≤
+10
+5
+)
+ — the number of test cases. Then the descriptions of the test cases follow.
+The first line of the test case contains a single integer
+n
+(1≤n≤
+10
+5
+)
+ — the size of the permutation.
+The second line of the test case contains
+n
+different integers
+p
+1
+,
+p
+2
+,…,
+p
 n
 (
-4≤n≤8000
-,
-n≡0(mod4)
-) — the number of cities.
-A binary matrix is encrypted in the following format. Each of
+1≤
+p
+i
+≤n
+)  — the permutation written by Denis.
+It is guaranteed that the sum of
 n
-next lines contains
-n
-4
-one-digit hexadecimal numbers (that is, these numbers can be represented either as digits from
-0
-to
-9
-or as uppercase Latin letters from
-A
-to
-F
-). Binary representation of each of these numbers denotes next
-4
-elements of the matrix in the corresponding row. For example, if the number
-B
-is given, then the corresponding elements are
-1011
-, and if the number is
+over all test cases doesn't exceed
+10
 5
-, then the corresponding elements are
-0101
 .
-After you obtain the decrypted binary matrix, the
-j
--th character of the
-i
--th row is
-1
-if the one-directional road between cities
-i
-and
-j
-is directed from
-i
-to
-j
-, and
-0
-otherwise. It is guaranteed that the graph satisfies the restrictions mentioned above.
 Output
-Output one integer, representing the sum of
-dis(A,B)
-over all ordered pairs of cities
-(A,B)
-with
-A≠B
-.
-Examples
+Print "Yes" if this permutation could be obtained as a result of the generator. Otherwise, print "No".
+All letters can be displayed in any case.
+Example
 input
 Copy
-4
-7
-2
+5
+5
+2 3 4 5 1
 1
+1
+3
+1 3 2
 4
+4 2 3 1
+5
+1 5 2 4 3
 output
 Copy
-7380
-input
-Copy
-8
-7F
-3F
-1F
-0C
-06
-03
-11
-18
-output
-Copy
-88464
+Yes
+Yes
+No
+Yes
+No
 Note
-The first example corresponds to the matrix:
-0111
-0010
-0001
-0100
-Which corresponds to this graph:
-dis(1,2)=dis(1,3)=dis(1,4)=dis(2,3)=dis(3,4)=dis(4,2)=1
-dis(2,4)=dis(4,3)=dis(3,2)=2
-dis(2,1)=dis(3,1)=dis(4,1)=2456
-Therefore the answer for the diagram is
-7380
+Let's simulate the operation of the generator in the first test.
+At the
+1
+step,
+r=[1,2,3,4,5],count=[1,1,1,1,1]
+. The maximum value is reached in any free position, so the generator can choose a random position from
+1
+to
+5
+. In our example, it chose
+5
 .
+At the
+2
+step,
+r=[1,2,3,4,×],count=[1,1,1,1,0]
+. The maximum value is reached in positions from
+1
+to
+4
+, so the generator can choose a random position among them. In our example, it chose
+1
+.
+At the
+3
+step,
+r=[2,2,3,4,×],count=[0,2,1,1,0]
+. The maximum value is
+2
+and is reached only at the
+2
+position, so the generator will choose this position.
+At the
+4
+step,
+r=[3,3,3,4,×],count=[0,0,3,1,0]
+. The maximum value is
+3
+and is reached only at the
+3
+position, so the generator will choose this position.
+At the
+5
+step,
+r=[4,4,4,4,×],count=[0,0,0,4,0]
+. The maximum value is
+4
+and is reached only at the
+4
+position, so the generator will choose this position.
+In total, we got a permutation of
+2,3,4,5,1
+, that is, a generator could generate it.

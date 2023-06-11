@@ -1,65 +1,159 @@
-A. Maxim and Biology
+B. Dima and a Bad XOR
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Today in the scientific lyceum of the Kingdom of Kremland, there was a biology lesson. The topic of the lesson was the genomes. Let's call the genome the string "ACTG".
-Maxim was very boring to sit in class, so the teacher came up with a task for him: on a given string
-s
-consisting of uppercase letters and length of at least
-4
-, you need to find the minimum number of operations that you need to apply, so that the genome appears in it as a substring. For one operation, you can replace any letter in the string
-s
-with the next or previous in the alphabet. For example, for the letter "D" the previous one will be "C", and the next — "E". In this problem, we assume that for the letter "A", the previous one will be the letter "Z", and the next one will be "B", and for the letter "Z", the previous one is the letter "Y", and the next one is the letter "A".
-Help Maxim solve the problem that the teacher gave him.
-A string
+Student Dima from Kremland has a matrix
 a
-is a substring of a string
-b
-if
-a
-can be obtained from
-b
-by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
-Input
-The first line contains a single integer
+of size
+n×m
+filled with non-negative integers.
+He wants to select exactly one integer from each row of the matrix so that the bitwise exclusive OR of the selected integers is strictly greater than zero. Help him!
+Formally, he wants to choose an integers sequence
+c
+1
+,
+c
+2
+,…,
+c
 n
 (
-4≤n≤50
-) — the length of the string
-s
-.
-The second line contains the string
-s
-, consisting of exactly
+1≤
+c
+j
+≤m
+) so that the inequality
+a
+1,
+c
+1
+⊕
+a
+2,
+c
+2
+⊕…⊕
+a
+n,
+c
 n
-uppercase letters of the Latin alphabet.
+>0
+holds, where
+a
+i,j
+is the matrix element from the
+i
+-th row and the
+j
+-th column.
+Here
+x⊕y
+denotes the bitwise XOR operation of integers
+x
+and
+y
+.
+Input
+The first line contains two integers
+n
+and
+m
+(
+1≤n,m≤500
+) — the number of rows and the number of columns in the matrix
+a
+.
+Each of the next
+n
+lines contains
+m
+integers: the
+j
+-th integer in the
+i
+-th line is the
+j
+-th element of the
+i
+-th row of the matrix
+a
+, i.e.
+a
+i,j
+(
+0≤
+a
+i,j
+≤1023
+).
 Output
-Output the minimum number of operations that need to be applied to the string
-s
-so that the genome appears as a substring in it.
+If there is no way to choose one integer from each row so that their bitwise exclusive OR is strictly greater than zero, print "NIE".
+Otherwise print "TAK" in the first line, in the next line print
+n
+integers
+c
+1
+,
+c
+2
+,…
+c
+n
+(
+1≤
+c
+j
+≤m
+), so that the inequality
+a
+1,
+c
+1
+⊕
+a
+2,
+c
+2
+⊕…⊕
+a
+n,
+c
+n
+>0
+holds.
+If there is more than one possible answer, you may output any.
 Examples
 input
 Copy
-4
-ZCTH
+3 2
+0 0
+0 0
+0 0
 output
 Copy
-2
+NIE
 input
 Copy
-5
-ZDATG
+2 3
+7 7 7
+7 7 10
 output
 Copy
-5
-input
-Copy
-6
-AFBAKC
-output
-Copy
-16
+TAK
+1 3 
 Note
-In the first example, you should replace the letter "Z" with "A" for one operation, the letter "H" — with the letter "G" for one operation. You will get the string "ACTG", in which the genome is present as a substring.
-In the second example, we replace the letter "A" with "C" for two operations, the letter "D" — with the letter "A" for three operations. You will get the string "ZACTG", in which there is a genome.
+In the first example, all the numbers in the matrix are
+0
+, so it is impossible to select one number in each row of the table so that their bitwise exclusive OR is strictly greater than zero.
+In the second example, the selected numbers are
+7
+(the first number in the first line) and
+10
+(the third number in the second line),
+7⊕10=13
+,
+13
+is more than
+0
+, so the answer is found.

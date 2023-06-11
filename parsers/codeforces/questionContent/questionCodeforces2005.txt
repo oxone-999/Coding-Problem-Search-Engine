@@ -1,159 +1,148 @@
-E. Minimum Path
-time limit per test3 seconds
+G. Tiles
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a weighted undirected connected graph consisting of
-n
-vertices and
-m
-edges. It is guaranteed that there are no self-loops or multiple edges in the given graph.
-Let's define the weight of the path consisting of
-k
-edges with indices
-e
+Consider a road consisting of several rows. Each row is divided into several rectangular tiles, and all tiles in the same row are equal. The first row contains exactly one rectangular tile. Look at the picture below which shows how the tiles are arranged.
+The road is constructed as follows:
+the first row consists of
 1
-,
-e
+tile;
+then
+a
+1
+rows follow; each of these rows contains
+1
+tile greater than the previous row;
+then
+b
+1
+rows follow; each of these rows contains
+1
+tile less than the previous row;
+then
+a
 2
-,…,
-e
-k
-as
-∑
-i=1
-k
-w
-e
-i
-−
-max
-i=1
-k
-w
-e
-i
-+
-min
-i=1
-k
-w
-e
-i
-, where
-w
-i
-— weight of the
-i
--th edge in the graph.
-Your task is to find the minimum weight of the path from the
+rows follow; each of these rows contains
 1
--st vertex to the
-i
--th vertex for each
-i
-(
-2≤i≤n
-).
-Input
-The first line contains two integers
+tile greater than the previous row;
+then
+b
+2
+rows follow; each of these rows contains
+1
+tile less than the previous row;
+...
+then
+a
 n
+rows follow; each of these rows contains
+1
+tile greater than the previous row;
+then
+b
+n
+rows follow; each of these rows contains
+1
+tile less than the previous row.
+An example of the road with
+n=2
+,
+a
+1
+=4
+,
+b
+1
+=2
+,
+a
+2
+=2
+,
+b
+2
+=3
+. Rows are arranged from left to right.
+You start from the only tile in the first row and want to reach the last row (any tile of it). From your current tile, you can move to any tile in the next row which touches your current tile.
+Calculate the number of different paths from the first row to the last row. Since it can be large, print it modulo
+998244353
+.
+Input
+The first line contains one integer
+n
+(
+1≤n≤1000
+).
+Then
+n
+lines follow. The
+i
+-th of them contains two integers
+a
+i
 and
-m
-(
-2≤n≤2⋅
-10
-5
-;
-1≤m≤2⋅
-10
-5
-) — the number of vertices and the number of edges in the graph.
-Following
-m
-lines contains three integers
-v
-i
-,
-u
-i
-,
-w
+b
 i
 (
 1≤
-v
+a
 i
 ,
-u
-i
-≤n
-;
-1≤
-w
+b
 i
 ≤
 10
-9
+5
 ;
-v
+|
+a
 i
-≠
-u
+−
+b
 i
-) — endpoints of the
-i
--th edge and its weight respectively.
-Output
-Print
-n−1
-integers — the minimum weight of the path from
-1
--st vertex to the
-i
--th vertex for each
-i
-(
-2≤i≤n
+|≤5
 ).
+Additional constraint on the input: the sequence of
+a
+i
+and
+b
+i
+never results in a row with non-positive number of tiles.
+Output
+Print one integer — the number of paths from the first row to the last row, taken modulo
+998244353
+.
 Examples
 input
 Copy
-5 4
-5 3 4
-2 1 1
-3 2 2
-2 4 2
+2
+4 2
+2 3
 output
 Copy
-1 2 2 4 
+850
 input
 Copy
-6 8
-3 1 1
-3 6 2
-5 4 2
-4 2 2
-6 1 1
-5 2 1
-3 2 3
-1 5 4
+3
+4 1
+2 3
+3 1
 output
 Copy
-2 1 4 3 1 
+10150
 input
 Copy
-7 10
-7 5 5
-2 3 3
-4 7 1
-5 3 6
-2 7 6
-6 2 6
-3 7 6
-4 2 1
-3 1 4
-1 7 4
+8
+328 323
+867 868
+715 718
+721 722
+439 435
+868 870
+834 834
+797 796
 output
 Copy
-3 4 2 7 7 3 
+759099319

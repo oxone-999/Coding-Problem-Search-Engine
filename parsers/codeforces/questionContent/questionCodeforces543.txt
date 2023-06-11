@@ -1,290 +1,192 @@
-E. Hanging Hearts
-time limit per test1 second
-memory limit per test256 megabytes
+F. Conditional Mix
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Pak Chanek has
-n
-blank heart-shaped cards. Card
-1
-is attached directly to the wall while each of the other cards is hanging onto exactly one other card by a piece of string. Specifically, card
-i
-(
-i>1
-) is hanging onto card
-p
-i
-(
-p
-i
-<i
-).
-In the very beginning, Pak Chanek must write one integer number on each card. He does this by choosing any permutation
+Pak Chanek is given an array
 a
 of
-[1,2,…,n]
-. Then, the number written on card
+n
+integers. For each
 i
-is
+(
+1≤i≤n
+), Pak Chanek will write the one-element set
+{
 a
 i
-.
-After that, Pak Chanek must do the following operation
-n
-times while maintaining a sequence
-s
-(which is initially empty):
-Choose a card
-x
-such that no other cards are hanging onto it.
-Append the number written on card
-x
-to the end of
-s
-.
-If
-x≠1
-and the number on card
-p
-x
-is larger than the number on card
-x
-, replace the number on card
-p
-x
-with the number on card
-x
-.
-Remove card
-x
-.
-After that, Pak Chanek will have a sequence
-s
-with
-n
-elements. What is the maximum length of the longest non-decreasing subsequence
-†
-†
-of
-s
-at the end if Pak Chanek does all the steps optimally?
-†
-†
-A sequence
-b
-is a subsequence of a sequence
-c
-if
-b
-can be obtained from
-c
-by deletion of several (possibly, zero or all) elements. For example,
-[3,1]
-is a subsequence of
-[3,2,1]
-,
-[4,3,1]
+}
+on a whiteboard.
+After that, in one operation, Pak Chanek may do the following:
+Choose two different sets
+S
 and
-[3,1]
-, but not
-[1,3,3,7]
+T
+on the whiteboard such that
+S∩T=∅
+(
+S
 and
-[3,10,4]
+T
+do not have any common elements).
+Erase
+S
+and
+T
+from the whiteboard and write
+S∪T
+(the union of
+S
+and
+T
+) onto the whiteboard.
+After performing zero or more operations, Pak Chanek will construct a multiset
+M
+containing the sizes of all sets written on the whiteboard. In other words, each element in
+M
+corresponds to the size of a set after the operations.
+How many distinct
+†
+†
+multisets
+M
+can be created by this process? Since the answer may be large, output it modulo
+998244353
+.
+†
+†
+Multisets
+B
+and
+C
+are different if and only if there exists a value
+k
+such that the number of elements with value
+k
+in
+B
+is different than the number of elements with value
+k
+in
+C
 .
 Input
 The first line contains a single integer
 n
 (
-2≤n≤
-10
-5
-) — the number of heart-shaped cards.
+1≤n≤2000
+).
 The second line contains
-n−1
+n
 integers
-p
-2
+a
+1
 ,
-p
-3
+a
+2
 ,…,
-p
+a
 n
 (
 1≤
-p
+a
 i
-<i
-) describing which card that each card hangs onto.
+≤n
+).
 Output
-Print a single integer — the maximum length of the longest non-decreasing subsequence of
-s
-at the end if Pak Chanek does all the steps optimally.
+Output the number of distinct multisets
+M
+modulo
+998244353
+.
 Examples
 input
 Copy
 6
-1 2 1 4 2
+1 1 2 1 4 3
 output
 Copy
-4
+7
 input
 Copy
-2
-1
+7
+3 5 4 3 7 4 5
 output
 Copy
-2
+11
 Note
-The following is the structure of the cards in the first example.
-Pak Chanek can choose the permutation
-a=[1,5,4,3,2,6]
+In the first example, the possible multisets
+M
+are
+{1,1,1,1,1,1}
+,
+{1,1,1,1,2}
+,
+{1,1,1,3}
+,
+{1,1,2,2}
+,
+{1,1,4}
+,
+{1,2,3}
+, and
+{2,2,2}
 .
-Let
-w
-i
-be the number written on card
-i
-. Initially,
-w
-i
-=
-a
-i
-. Pak Chanek can do the following operations in order:
-Select card
-5
-. Append
-w
-5
-=2
-to the end of
-s
-. As
-w
-4
->
-w
-5
-, the value of
-w
-4
-becomes
-2
-. Remove card
-5
-. After this operation,
-s=[2]
+As an example, let's consider a possible sequence of operations.
+In the beginning, the sets are
+{1}
+,
+{1}
+,
+{2}
+,
+{1}
+,
+{4}
+, and
+{3}
 .
-Select card
-6
-. Append
-w
-6
-=6
-to the end of
-s
-. As
-w
-2
-≤
-w
-6
-, the value of
-w
-2
-is left unchanged. Remove card
-6
-. After this operation,
-s=[2,6]
+Do an operation on sets
+{1}
+and
+{3}
+. Now, the sets are
+{1}
+,
+{1}
+,
+{2}
+,
+{4}
+, and
+{1,3}
 .
-Select card
-4
-. Append
-w
-4
-=2
-to the end of
-s
-. As
-w
-1
-≤
-w
-4
-, the value of
-w
-1
-is left unchanged. Remove card
-4
-. After this operation,
-s=[2,6,2]
+Do an operation on sets
+{2}
+and
+{4}
+. Now, the sets are
+{1}
+,
+{1}
+,
+{1,3}
+, and
+{2,4}
 .
-Select card
-3
-. Append
-w
-3
-=4
-to the end of
-s
-. As
-w
-2
->
-w
-3
-, the value of
-w
-2
-becomes
-4
-. Remove card
-3
-. After this operation,
-s=[2,6,2,4]
+Do an operation on sets
+{1,3}
+and
+{2,4}
+. Now, the sets are
+{1}
+,
+{1}
+, and
+{1,2,3,4}
 .
-Select card
-2
-. Append
-w
-2
-=4
-to the end of
-s
-. As
-w
-1
-≤
-w
-2
-, the value of
-w
-1
-is left unchanged. Remove card
-2
-. After this operation,
-s=[2,6,2,4,4]
+The multiset
+M
+that is constructed is
+{1,1,4}
 .
-Select card
-1
-. Append
-w
-1
-=1
-to the end of
-s
-. Remove card
-1
-. After this operation,
-s=[2,6,2,4,4,1]
-.
-One of the longest non-decreasing subsequences of
-s=[2,6,2,4,4,1]
-is
-[2,2,4,4]
-. Thus, the length of the longest non-decreasing subsequence of
-s
-is
-4
-. It can be proven that this is indeed the maximum possible length.

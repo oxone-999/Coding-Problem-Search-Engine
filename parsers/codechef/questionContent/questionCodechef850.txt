@@ -1,68 +1,78 @@
-Mean and Median
+Interesting Subarray
 Problem
-Chef has two numbers
-X and
-Y. Chef wants to find three integers
-A,B, and
-C such that:
-−1000≤A,B,C≤1000
-mean([A,B,C])=X
-median([A,B,C])=Y
-Can you help Chef find such three integers?
-As a reminder,
-mean([P,Q,R])=
-3
-P+Q+R
-and
-median([P,Q,R]) is the element at the
-2
-nd
-(middle) position after we sort
-[P,Q,R] in non-decreasing order.
+You are given an array
+A of length
+N.
+The interesting value of a subarray is defined as the product of the maximum and minimum elements of the subarray.
+Find the minimum and maximum interesting value over all subarrays for the given array.
+Note: A subarray is obtained by deletion of several (possibly zero) elements from the beginning of the array and several (possibly zero) elements from the end of the array.
 Input Format
-The first line contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first and only line of each test case contains two space-separated integers
-X and
-Y — the required mean and median of the three integers.
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+The first line of each test case contains an integer
+N - the length of the array
+A.
+The second line of each test case contains
+N space-separated integers
+A
+1
+,A
+2
+,…,A
+N
+.
 Output Format
-For each test case, output three integers
-A,B,C which satisfy the given conditions.
-It is guaranteed that an answer always exists under the given constraints.
-If multiple answers exist, output any.
+For each test case, output two space-separated integers on a new line the minimum and maximum interesting value over all subarrays for the given array.
 Constraints
-1≤T≤10
+1≤T≤100
+1≤N≤10
 5
-−100≤X,Y≤100
+−10
+9
+≤A
+i
+≤10
+9
+The sum of
+N over all test cases won't exceed
+3⋅10
+5
+.
 Sample 1:
 Input
 Output
+2
+2
+2 2
 3
-5 5
-67 100
-4 5
-5 5 5
-0 100 101
-0 5 7
+5 0 9
+4 4
+0 81
 Explanation:
-Test Case 1:
-mean([5,5,5])=
-3
-5+5+5
-=5,
-median([5,5,5])=5.
-Test Case 2:
-mean([0,100,101])=
-3
-0+100+101
-=
-3
-201
-=67,
-median([0,100,101])=100.
-Test Case 3:
-mean([0,5,7])=
-3
-0+5+7
-=4,
-median([0,5,7])=5.
+Test case
+1: The minimum interesting value possible is
+4. A subarray with interesting value equal to
+4 is
+[2,2]. Here, both minimum and maximum elements of the subarray are
+2. It can be proven that no subarray of the array has interesting value less than
+4.
+The maximum interesting value possible is
+4. A subarray with interesting value equal to
+4 is
+[2,2]. Here, both minimum and maximum elements of the subarray are
+2. It can be proven that no subarray of the array has interesting value greater than
+4.
+Test case
+2: The minimum interesting value possible is
+0. A subarray with interesting value equal to
+0 is
+[5,0,9]. Here, minimum element is
+0 and maximum element is
+9. It can be proven that no subarray of the array has interesting value less than
+0.
+The maximum interesting value possible is
+81. A subarray with interesting value equal to
+81 is
+[9]. Here, both minimum and maximum elements of the subarray are
+9. It can be proven that no subarray of the array has interesting value more than
+81.

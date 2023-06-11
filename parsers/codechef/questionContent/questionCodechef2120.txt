@@ -1,80 +1,53 @@
-The Magical Stone
+Wildcard Matching
 Problem
-Initially, there is a magical stone of mass
-2
-N
-lying at the origin of the number line. For the next
-N seconds, the following event happens:
-Let us define the decomposition of a magical stone as follows: If there is a magical stone of mass
-M>1 lying at coordinate
-X, then it decomposes into two magical stones, each of mass
-2
-M
-lying at the coordinates
-X−1 and
-X+1 respectively. The original stone of mass
-M gets destroyed in the process.
-Each second, all the magical stones undergo decomposition simultaneously.
-Note that there can be more than one stone at any coordinate
-X.
-Given a range
-[L,R], find out the number of stones present at each of the coordinates in the range
-[L,R]. As the number of stones can be very large, output them modulo
-(10
-9
-+7).
-Input Format
-The first line contains a single integer
-T - the number of test cases. Then the test cases follow.
-The first and only line of each test case contains three integers
-N,
-L and
-R, as described in the problem statement.
-Output Format
-For each testcase, output in a single line a total of
-(R−L+1) space-separated integers. The
-i
-th
-integer will denote the number of stones present at
-X=(L+i−1) coordinate. As the number of stones can be very large, output them modulo
-(10
-9
-+7).
-Constraints
-1≤T≤100
-1≤N≤10
-6
-−N≤L≤R≤N
-Sum of
-(R−L+1) over all the test cases doesn't exceed
-10
-5
-.
+Johnny is the author of the famous open source software ByteDict (Bytelandian electronic dictionary).
+Being a fan of the word game Scrabble, Johnny would like to make ByteDict useful for Scrabble training. Therefore, he has decided to implement the "Wildcard Matching" feature.
+Wildcard matching allows ByteDict's users to search for words matching a given wildcard pattern. A wildcard pattern may include the characters '*' or '?' in addition to the characters of the alphabet. A '*' matches any sequence of characters (including the empty sequence) and a '?' matches any single character.
+To be more precise, a wildcard pattern is matched with a word if we can replace each '?' with an alphabet character and each '*' with a sequence of alphabet characters so that after replacement, the pattern becomes identical to the word.
+Now, as usual, please help Johnny implement the feature!
+Input
+The first line contains a number t (about 2) which is the number of test cases. Then t test cases follow. Each test case has the following form.
+The first line contains two integers N and Q (1 ≤ N ≤ 55000, 1 ≤ Q ≤ 300) which are the number of words in the dictionary and the number of wildcard queries.
+Each line in the next N lines contains a word from the dictionary. The alphabet consists of lower and uppercase characters as well as digits.
+Each line in the next Q lines contains a wildcard pattern.
+The length of each word does not exceed 25 and the length of each wildcard pattern does not exceed 5.
+Each test case is separated by a blank line.
+Output
+For each wildcard query print a line containing the query itself and the number of words in the dictionary that match the query.
+Print a blank line after each test case's output.
 Sample 1:
 Input
 Output
-3
-2 -2 2
-2 0 2
-150000 48 48
-1 0 2 0 1
-2 0 1
-122830846
-Explanation:
-Test case 1: Let us look at the number of stones for
-x=−2 to
-x=2 as the time progresses:
-t=0:
-{0,0,1,0,0}
-t=1:
-{0,1,0,1,0}
-t=2:
-{1,0,2,0,1}
-We have to output the number of stones at
-x=−2 to
-x=2, which is
-{1,0,2,0,1}.
-Test case 2: Similar to first test case, We have to output the number of stones at
-x=0 to
-x=2, which is
-{2,0,1}.
+2
+1 7
+abc
+abc
+cba
+a??
+??a
+*?a
+***
+**a
+7 4
+spoj
+codechef
+uva
+tju
+onlinejudge
+Acmicpc
+Worldcup2010
+a
+sp?*
+c
+uvc
+abc 1
+cba 0
+a?? 1
+??a 0
+*?a 0
+*** 1
+**a 0
+a 1
+sp?* 1
+c 3
+uvc 0

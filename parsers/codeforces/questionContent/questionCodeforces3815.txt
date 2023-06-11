@@ -1,173 +1,125 @@
-E. Arithmetic Progression
-time limit per test2 seconds
+F. Please, another Queries on Array?
+time limit per test5.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is an interactive problem!
-An arithmetic progression or arithmetic sequence is a sequence of integers such that the subtraction of element with its previous element (
-xi−xi−1
-, where
-i≥2
-) is constant — such difference is called a common difference of the sequence.
-That is, an arithmetic progression is a sequence of form
-xi=x1+(i−1)d
-, where
-d
-is a common difference of the sequence.
-There is a secret list of
+You are given an array
+a
+1
+,
+a
+2
+,…,
+a
 n
-integers
-a1,a2,…,an
 .
-It is guaranteed that all elements
-a1,a2,…,an
-are between
-0
-and
-109
-, inclusive.
-This list is special: if sorted in increasing order, it will form an arithmetic progression with positive common difference (
-d>0
-). For example, the list
-[14,24,9,19]
-satisfies this requirement, after sorting it makes a list
-[9,14,19,24]
-, which can be produced as
-xn=9+5⋅(n−1)
-.
-Also you are also given a device, which has a quite discharged battery, thus you can only use it to perform at most
-60
-queries of following two types:
-Given a value
+You need to perform
+q
+queries of the following two types:
+"MULTIPLY l r x" — for every
 i
 (
-1≤i≤n
-), the device will show the value of the
-ai
-.
-Given a value
-x
-(
-0≤x≤109
-), the device will return
-1
-if an element with a value strictly greater than
-x
-exists, and it will return
-0
-otherwise.
-Your can use this special device for at most
-60
-queries. Could you please find out the smallest element and the common difference of the sequence? That is, values
-x1
-and
-d
-in the definition of the arithmetic progression. Note that the array
+l≤i≤r
+) multiply
 a
-is not sorted.
-Interaction
-The interaction starts with a single integer
-n
-(
-2≤n≤106
-), the size of the list of integers.
-Then you can make queries of two types:
-"? i" (
-1≤i≤n
-) — to get the value of
-ai
-.
-"> x" (
-0≤x≤109
-) — to check whether there exists an element greater than
+i
+by
 x
-After the query read its result
-r
-as an integer.
-For the first query type, the
-r
-satisfies
-0≤r≤109
 .
-For the second query type, the
+"TOTIENT l r" — print
+φ(
+∏
+i=l
 r
-is either
-0
-or
-1
-.
-In case you make more than
-60
-queries or violated the number range in the queries, you will get a
-r=−1
-.
-If you terminate after receiving the -1, you will get the "Wrong answer" verdict. Otherwise you can get an arbitrary verdict because your solution will continue to read from a closed stream.
-When you find out what the smallest element
-x1
-and common difference
-d
-, print
-"!
-x1
-d
-"
-And quit after that. This query is not counted towards the
-60
-queries limit.
-After printing any query do not forget to output end of line and flush the output. Otherwise you will get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see documentation for other languages.
-Hacks
-For hack, use the following format:
-The first line should contain an integer
+a
+i
+)
+taken modulo
+10
+9
++7
+, where
+φ
+denotes Euler's totient function.
+The Euler's totient function of a positive integer
 n
+(denoted as
+φ(n)
+) is the number of integers
+x
 (
-2≤n≤106
-) — the list's size.
+1≤x≤n
+) such that
+gcd(n,x)=1
+.
+Input
+The first line contains two integers
+n
+and
+q
+(
+1≤n≤4⋅
+10
+5
+,
+1≤q≤2⋅
+10
+5
+) — the number of elements in array
+a
+and the number of queries.
 The second line contains
 n
 integers
-a1,a2,…,an
+a
+1
+,
+a
+2
+,…,
+a
+n
 (
-0≤ai≤109
-) — the elements of the list.
-Also, after the sorting the list must form an arithmetic progression with positive common difference.
+1≤
+a
+i
+≤300
+) — the elements of array
+a
+.
+Then
+q
+lines follow, describing queries in the format given in the statement.
+"MULTIPLY l r x" (
+1≤l≤r≤n
+,
+1≤x≤300
+) — denotes a multiplication query.
+"TOTIENT l r" (
+1≤l≤r≤n
+) — denotes a query on the value of Euler's totient function.
+It is guaranteed that there is at least one "TOTIENT" query.
+Output
+For each "TOTIENT" query, print the answer to it.
 Example
 input
 Copy
-4
-
-0
-
-1
-
-14
-
-24
-
-9
-
-19
+4 4
+5 9 1 2
+TOTIENT 3 3
+TOTIENT 3 4
+MULTIPLY 4 4 3
+TOTIENT 4 4
 output
 Copy
-> 25
-
-> 15
-
-? 1
-
-? 2
-
-? 3
-
-? 4
-
-! 9 5
+1
+1
+2
 Note
-Note that the example interaction contains extra empty lines so that it's easier to read. The real interaction doesn't contain any empty lines and you shouldn't print any extra empty lines as well.
-The list in the example test is
-[14,24,9,19]
-.
+In the first example,
+φ(1)=1
+for the first query,
+φ(2)=1
+for the second query and
+φ(6)=2
+for the third one.

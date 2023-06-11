@@ -1,114 +1,144 @@
-D. Treasure Island
+E. Petya and Construction Set
 time limit per test1 second
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-All of us love treasures, right? That's why young Vasya is heading for a Treasure Island.
-Treasure Island may be represented as a rectangular table
-n×m
-which is surrounded by the ocean. Let us number rows of the field with consecutive integers from
-1
-to
+It's Petya's birthday party and his friends have presented him a brand new "Electrician-
 n
-from top to bottom and columns with consecutive integers from
+" construction set, which they are sure he will enjoy as he always does with weird puzzles they give him.
+Construction set "Electrician-
+n
+" consists of
+2n−1
+wires and
+2n
+light bulbs. Each bulb has its own unique index that is an integer from
 1
 to
-m
-from left to right. Denote the cell in
-r
--th row and
-c
--th column as
-(r,c)
-. Some of the island cells contain impassable forests, and some cells are free and passable. Treasure is hidden in cell
-(n,m)
+2n
+, while all wires look the same and are indistinguishable. In order to complete this construction set one has to use each of the wires to connect two distinct bulbs. We define a chain in a completed construction set as a sequence of distinct bulbs of length at least two, such that every two consecutive bulbs in this sequence are directly connected by a wire. Completed construction set configuration is said to be correct if a resulting network of bulbs and wires has a tree structure, i.e. any two distinct bulbs are the endpoints of some chain.
+Petya was assembling different configurations for several days, and he noticed that sometimes some of the bulbs turn on. After a series of experiments he came up with a conclusion that bulbs indexed
+2i
+and
+2i−1
+turn on if the chain connecting them consists of exactly
+d
+i
+wires. Moreover, the following important condition holds: the value of
+d
+i
+is never greater than
+n
 .
-Vasya got off the ship in cell
-(1,1)
-. Now he wants to reach the treasure. He is hurrying up, so he can move only from cell to the cell in next row (downwards) or next column (rightwards), i.e. from cell
-(x,y)
-he can move only to cells
-(x+1,y)
-and
-(x,y+1)
-. Of course Vasya can't move through cells with impassable forests.
-Evil Witch is aware of Vasya's journey and she is going to prevent him from reaching the treasure. Before Vasya's first move she is able to grow using her evil magic impassable forests in previously free cells. Witch is able to grow a forest in any number of any free cells except cells
-(1,1)
-where Vasya got off his ship and
-(n,m)
-where the treasure is hidden.
-Help Evil Witch by finding out the minimum number of cells she has to turn into impassable forests so that Vasya is no longer able to reach the treasure.
+Petya did his best but was not able to find a configuration that makes all bulbs to turn on, so he seeks your assistance. Please, find out a configuration that makes all bulbs shine. It is guaranteed that such configuration always exists.
 Input
-First line of input contains two positive integers
+The first line of the input contains a single integer
 n
-,
-m
 (
-3≤n⋅m≤1000000
-), sizes of the island.
-Following
+1≤n≤100000
+) — the parameter of a construction set that defines the number of bulbs and the number of wires.
+Next line contains
 n
-lines contains strings
-s
+integers
+d
+1
+,
+d
+2
+,…,
+d
+n
+(
+1≤
+d
 i
-of length
-m
-describing the island,
-j
--th character of string
-s
+≤n
+), where
+d
 i
-equals "#" if cell
-(i,j)
-contains an impassable forest and "." if the cell is free and passable. Let us remind you that Vasya gets of his ship at the cell
-(1,1)
-, i.e. the first cell of the first row, and he wants to reach cell
-(n,m)
-, i.e. the last cell of the last row.
-It's guaranteed, that cells
-(1,1)
+stands for the number of wires the chain between bulbs
+2i
 and
-(n,m)
-are empty.
+2i−1
+should consist of.
 Output
-Print the only integer
-k
-, which is the minimum number of cells Evil Witch has to turn into impassable forest in order to prevent Vasya from reaching the treasure.
+Print
+2n−1
+lines. The
+i
+-th of them should contain two distinct integers
+a
+i
+and
+b
+i
+(
+1≤
+a
+i
+,
+b
+i
+≤2n
+,
+a
+i
+≠
+b
+i
+) — indices of bulbs connected by a wire.
+If there are several possible valid answer you can print any of them.
 Examples
 input
 Copy
-2 2
-..
-..
+3
+2 2 2
 output
+Copy
+1 6
+2 6
+3 5
+3 6
+4 5
+input
+Copy
+4
+2 2 2 1
+output
+Copy
+1 6
+1 7
+2 6
+3 5
+3 6
+4 5
+7 8
+input
+Copy
+6
+2 2 2 2 2 2
+output
+Copy
+1 3
+2 3
+3 5
+4 5
+5 7
+6 7
+7 12
+8 12
+9 11
+9 12
+10 11
+input
 Copy
 2
-input
-Copy
-4 4
-....
-#.#.
-....
-.#..
+1 1
 output
 Copy
-1
-input
-Copy
+1 2
+1 4
 3 4
-....
-.##.
-....
-output
-Copy
-2
 Note
-The following picture illustrates the island in the third example. Blue arrows show possible paths Vasya may use to go from
-(1,1)
-to
-(n,m)
-. Red illustrates one possible set of cells for the Witch to turn into impassable forest to make Vasya's trip from
-(1,1)
-to
-(n,m)
-impossible.
+Answer for the first sample test.
+Answer for the second sample test.

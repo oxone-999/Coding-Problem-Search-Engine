@@ -1,116 +1,175 @@
-Stone Game
+2-D Point Meeting
 Problem
-Initially, Alice and Bob both have a bag of
-N stones each with every stone having a lowercase alphabet written on it. Both players know the stones of the other player.
-Alice and Bob want to create a string
-S of length
-2⋅N using the stones they have. They play a game to create the string. The rules of the game are as follows:
-Initially, all the indices of
-S are empty.
-Alice starts the game. The players take alternating turns. In each turn, the player can choose one of the stones from their bag and place it at any empty index
-i
-(1≤i≤2⋅N) of
-S.
-The game ends when both the players have used all their stones.
-Alice wants
-S to be as lexicographically small as possible while Bob wants
-S to be as lexicographically large as possible.
-Find the final string
-S formed by characters written on stones if both Alice and Bob play optimally!
-Note: A string
-X is lexicographically smaller than a string
-Y if and only if one of the following holds:
-X is a prefix of
-Y and
+Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+You are given
+N distinct points in a
+2-D plane, numbered
+1 through
+N. The X-coordinate of the points are
 X
-
-=Y
-In the first position where
-X and
-Y differ, the string
-X has a letter that appears earlier in the alphabet than the corresponding letter in
-Y.
+1
+,X
+2
+,…,X
+N
+respectively and the Y-coordinates are
+Y
+1
+,Y
+2
+,…,Y
+N
+respectively. Your goal is to make the location of all the
+N points equal to that of each other. To achieve this, you can do some operations.
+In one operation, you choose an index
+i(1≤i≤N) and a real number
+K and change the location of the
+i
+th
+point in one of the following ways:
+Set
+(X
+i
+,Y
+i
+)=(X
+i
++K,Y
+i
+)
+Set
+(X
+i
+,Y
+i
+)=(X
+i
+,Y
+i
++K)
+Set
+(X
+i
+,Y
+i
+)=(X
+i
++K,Y
+i
++K)
+Set
+(X
+i
+,Y
+i
+)=(X
+i
++K,Y
+i
+−K)
+Find the minimum number of operations to achieve the goal.
 Input Format
-The first line contains an integer
-T - the number of test cases. The description of
-T test cases follows:
-The first line of each test case contains an integer
-N - the number of stones each player has.
-The second line of each test case contains a string
-A of length
-N describing the stones in Alice's bag initially.
-The third line of each test case contains a string
-B of length
-N describing the stones in Bob's bag initially.
-Output Format
-For each test case, print the final string
-S formed if Alice and Bob play optimally.
-Constraints
-1≤T≤1000
-1≤N≤10
-5
-It is guaranteed that the sum of
-N over all test cases does not exceed
-2⋅10
-5
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+Each test case contains three lines of input.
+The first line contains a single integer
+N.
+The second line contains
+N space-separated integers
+X
+1
+,X
+2
+,…,X
+N
 .
+The third line contains
+N space-separated integers
+Y
+1
+,Y
+2
+,…,Y
+N
+.
+Output Format
+For each test case, print a single line containing one integer - the minimum number of operations to achieve the goal.
+Constraints
+1≤T≤300
+2≤N≤100
+−10
+9
+≤X
+i
+,Y
+i
+≤10
+9
+(X
+i
+,Y
+i
+)
+
+=(X
+j
+,Y
+j
+) if
+(i
+
+=j)
+Sum of
+N over all test cases does not exceed
+600.
+Subtasks
+Subtask #1 (100 points): original constraints
 Sample 1:
 Input
 Output
 2
 3
-aza
-abz
-4
-cccc
-cccc
-azabza
-cccccccc
+0 1 -4
+0 1 5
+3
+0 1 3
+1 1 -1
+3
+2
 Explanation:
-Test case-1: Initially Alice's stones are aza , while Bob's stones are abz. Initially
-S is _ _ _ _ _ _.
-Alice's turn
-Alice puts stone a at index
-i=1.
-String
-S: a _ _ _ _ _
-Alice's stones: [za]
-Bob's stones: [abz]
-Bob's turn
-Bob puts stone z at index
-i=2.
-String
-S: a z _ _ _ _
-Alice's stones: [za]
-Bob's stones: [ab]
-Alice's turn
-Alice puts stone a at index
-i=3.
-String
-S: a z a _ _ _
-Alice's stones: [z]
-Bob's stones: [ab]
-Bob's turn
-Bob puts stone a at index
-i=6.
-String
-S: a z a _ _ a
-Alice's stones: [z]
-Bob's stones: [b]
-Alice's turn
-Alice puts stone z at index
-i=5.
-String
-S: a z a _ z a
-Alice's stones: []
-Bob's stones: [b]
-Bob's turn
-Bob puts stone b at index
-i=4.
-String
-S: a z a b z a
-Alice's stones: []
-Bob's stones: []
-Since both the players have used all their stones, the game ends.
-So the final string
-S is azabza.
+Test case
+1 :
+In the first operation, you choose
+i=2, and
+K=−1 and apply the third type of operation. So the location of
+2
+nd
+point becomes
+(1−1,1−1)=(0,0).
+In the second operation, you choose
+i=3, and
+K=4 and apply the first type of operation. So the location of
+3
+rd
+point becomes
+(−4+4,5)=(0,5).
+In the third operation, you choose
+i=3, and
+K=−5 and apply the second type of operation. So the location of
+3
+rd
+point becomes
+(0,5−5)=(0,0).
+Hence after the above operations, the location of the given three points becomes equal to each other.
+Test case
+2 :
+In the first operation, you choose
+i=1 and
+K=1 and apply the first type of operation. So the location of 1st point becomes
+(0+1,1)=(1,1).
+In the second operation, you choose
+i=3, and
+K=−2 and apply the fourth type of operation. So the location of 3rd point becomes
+(3−2,−1−(−2))=(1,1).
+Hence after the above operations, the location of the given three points becomes equal to each other.

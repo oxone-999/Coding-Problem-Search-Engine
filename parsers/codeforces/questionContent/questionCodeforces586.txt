@@ -1,95 +1,148 @@
-A. Select Three Sticks
+B. Bright, Nice, Brilliant
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given
+There is a pyramid which consists of
 n
-sticks with positive integral length
-a
-1
-,
-a
+floors. The floors are numbered from top to bottom in increasing order. In the pyramid, the
+i
+-th floor consists of
+i
+rooms.
+Denote the
+j
+-th room on the
+i
+-th floor as
+(i,j)
+. For all positive integers
+i
+and
+j
+such that
+1≤j≤i<n
+, there are
 2
-,…,
-a
-n
+one-way staircases which lead from
+(i,j)
+to
+(i+1,j)
+and from
+(i,j)
+to
+(i+1,j+1)
+respectively.
+In each room you can either put a torch or leave it empty. Define the brightness of a room
+(i,j)
+to be the number of rooms with a torch from which you can reach the room
+(i,j)
+through a non-negative number of staircases.
+For example, when
+n=5
+and torches are placed in the rooms
+(1,1)
+,
+(2,1)
+,
+(3,2)
+,
+(4,1)
+,
+(4,3)
+, and
+(5,3)
+, the pyramid can be illustrated as follows:
+In the above picture, rooms with torches are colored in yellow, and empty rooms are white. The blue numbers in the bottom-right corner indicate the brightness of the rooms.
+The room
+(4,2)
+(the room with a star) has brightness
+3
+. In the picture below, the rooms from where you can reach
+(4,2)
+have red border. The brightness is
+3
+since there are three torches among these rooms.
+The pyramid is called nice if and only if for all floors, all rooms in the floor have the same brightness.
+Define the brilliance of a nice pyramid to be the sum of brightness over the rooms
+(1,1)
+,
+(2,1)
+,
+(3,1)
+, ...,
+(n,1)
 .
-You can perform the following operation any number of times (possibly zero):
-choose one stick, then either increase or decrease its length by
-1
-. After each operation, all sticks should have positive lengths.
-What is the minimum number of operations that you have to perform such that it is possible to select three of the
-n
-sticks and use them without breaking to form an equilateral triangle?
-An equilateral triangle is a triangle where all of its three sides have the same length.
+Find an arrangement of torches in the pyramid, such that the resulting pyramid is nice and its brilliance is maximized.
+We can show that an answer always exists. If there are multiple answers, output any one of them.
 Input
 The first line of the input contains a single integer
 t
 (
 1≤t≤100
 ) — the number of test cases. The description of the test cases follows.
-The first line of each test case contains a single integer
+The only line of each test case contains a single positive integer
 n
 (
-3≤n≤300
-) — the number of sticks.
-The second line of each test case contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-(
-1≤
-a
-i
-≤
-10
-9
-) — the lengths of the sticks.
+1≤n≤500
+) — the number of floors in the pyramid.
 It is guaranteed that the sum of
 n
 over all test cases does not exceed
-300
+500
 .
 Output
-For each test case, print one integer on a single line — the minimum number of operations to be made.
+For each test case, output
+n
+lines, the arrangement of torches in the pyramid.
+The
+i
+-th line should contain
+i
+integers, each separated with a space. The
+j
+-th integer on the
+i
+-th line should be
+1
+if room
+(i,j)
+has a torch, and
+0
+otherwise.
+We can show that an answer always exists. If there are multiple answers, output any one of them.
 Example
 input
 Copy
-4
 3
-1 2 3
-4
-7 3 7 3
-5
-3 4 2 1 1
-8
-3 1 4 1 5 9 2 6
+1
+2
+3
 output
 Copy
-2
-4
-1
-1
+1 
+1 
+1 1 
+1 
+1 1 
+1 0 1 
 Note
-In the first test case, you can increase the length of the first stick by
-1
-, then decrease the length of the third stick by
-1
-. In total, you perform
-2
-operations, such that the three sticks form an equilateral triangle of side length
-2
+In the third test case, torches are placed in
+(1,1)
+,
+(2,1)
+,
+(2,2)
+,
+(3,1)
+, and
+(3,3)
 .
-In the fourth test case, you can decrease the length of the seventh stick by
-1
-. An equilateral triangle of side length
-1
-can be selected and formed by the second, fourth, and seventh sticks.
+The pyramid is nice as rooms on each floor have the same brightness. For example, all rooms on the third floor have brightness
+3
+.
+The brilliance of the pyramid is
+1+2+3=6
+. It can be shown that no arrangements with
+n=3
+will have a greater brilliance.

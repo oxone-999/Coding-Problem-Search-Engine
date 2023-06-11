@@ -1,25 +1,42 @@
-D. Mike and distribution
+C. Mike and gcd problem
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Mike has always been thinking about the harshness of social inequality. He's so obsessed with it that sometimes it even affects him while solving problems. At the moment, Mike has two sequences of positive integers A = [a1, a2, ..., an] and B = [b1, b2, ..., bn] of length n each which he uses to ask people some quite peculiar questions.
-To test you on how good are you at spotting inequality in life, he wants you to find an "unfair" subset of the original sequence. To be more precise, he wants you to select k numbers P = [p1, p2, ..., pk] such that 1 ≤ pi ≤ n for 1 ≤ i ≤ k and elements in P are distinct. Sequence P will represent indices of elements that you'll select from both sequences. He calls such a subset P "unfair" if and only if the following conditions are satisfied: 2·(ap1 + ... + apk) is greater than the sum of all elements from sequence A, and 2·(bp1 + ... + bpk) is greater than the sum of all elements from the sequence B. Also, k should be smaller or equal to because it will be to easy to find sequence P if he allowed you to select too many elements!
-Mike guarantees you that a solution will always exist given the conditions described above, so please help him satisfy his curiosity!
+Mike has a sequence A = [a1, a2, ..., an] of length n. He considers the sequence B = [b1, b2, ..., bn] beautiful if the gcd of all its elements is bigger than 1, i.e. .
+Mike wants to change his sequence in order to make it beautiful. In one move he can choose an index i (1 ≤ i < n), delete numbers ai, ai + 1 and put numbers ai - ai + 1, ai + ai + 1 in their place instead, in this order. He wants perform as few operations as possible. Find the minimal number of operations to make sequence A beautiful if it's possible, or tell him that it is impossible to do so.
+is the biggest non-negative number d such that d divides bi for every i (1 ≤ i ≤ n).
 Input
-The first line contains integer n (1 ≤ n ≤ 105) — the number of elements in the sequences.
-On the second line there are n space-separated integers a1, ..., an (1 ≤ ai ≤ 109) — elements of sequence A.
-On the third line there are also n space-separated integers b1, ..., bn (1 ≤ bi ≤ 109) — elements of sequence B.
+The first line contains a single integer n (2 ≤ n ≤ 100 000) — length of sequence A.
+The second line contains n space-separated integers a1, a2, ..., an (1 ≤ ai ≤ 109) — elements of sequence A.
 Output
-On the first line output an integer k which represents the size of the found subset. k should be less or equal to .
-On the next line print k integers p1, p2, ..., pk (1 ≤ pi ≤ n) — the elements of sequence P. You can print the numbers in any order you want. Elements in sequence P should be distinct.
-Example
+Output on the first line "YES" (without quotes) if it is possible to make sequence A beautiful by performing operations described above, and "NO" (without quotes) otherwise.
+If the answer was "YES", output the minimal number of moves needed to make sequence A beautiful.
+Examples
 input
 Copy
-5
-8 7 4 8 3
-4 2 5 3 7
+2
+1 1
 output
 Copy
+YES
+1
+input
+Copy
 3
-1 4 5
+6 2 4
+output
+Copy
+YES
+0
+input
+Copy
+2
+1 3
+output
+Copy
+YES
+1
+Note
+In the first example you can simply make one move to obtain sequence [0, 2] with .
+In the second example the gcd of the sequence is already greater than 1.

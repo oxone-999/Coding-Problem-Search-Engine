@@ -1,77 +1,80 @@
-C. Sequence Master
+B. Mex Master
 time limit per test1 second
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-For some positive integer
-m
-, YunQian considers an array
-q
-of
-2m
-(possibly negative) integers good, if and only if for every possible subsequence of
-q
-that has length
-m
-, the product of the
-m
-elements in the subsequence is equal to the sum of the
-m
-elements that are not in the subsequence. Formally, let
-U={1,2,…,2m}
-. For all sets
-S⊆U
-such that
-|S|=m
-,
-∏
-i∈S
-q
-i
-=
-∑
-i∈U∖S
-q
-i
-.
-Define the distance between two arrays
+You are given an array
 a
-and
-b
-both of length
-k
-to be
-∑
-i=1
-k
-|
-a
-i
-−
-b
-i
-|
-.
-You are given a positive integer
-n
-and an array
-p
-of
-2n
-integers.
-Find the minimum distance between
-p
-and
-q
-over all good arrays
-q
 of length
-2n
-. It can be shown for all positive integers
 n
-, at least one good array exists. Note that you are not required to construct the array
-q
-that achieves this minimum distance.
+. The score of
+a
+is the MEX
+†
+†
+of
+[
+a
+1
++
+a
+2
+,
+a
+2
++
+a
+3
+,…,
+a
+n−1
++
+a
+n
+]
+. Find the minimum score of
+a
+if you are allowed to rearrange elements of
+a
+in any order. Note that you are not required to construct the array
+a
+that achieves the minimum score.
+†
+†
+The MEX (minimum excluded) of an array is the smallest non-negative integer that does not belong to the array. For instance:
+The MEX of
+[2,2,1]
+is
+0
+, because
+0
+does not belong to the array.
+The MEX of
+[3,1,0,1]
+is
+2
+, because
+0
+and
+1
+belong to the array, but
+2
+does not.
+The MEX of
+[0,3,1,2]
+is
+4
+because
+0
+,
+1
+,
+2
+, and
+3
+belong to the array, but
+4
+does not.
 Input
 The first line contains a single integer
 t
@@ -83,28 +86,28 @@ t
 The first line of each test case contains a single integer
 n
 (
-1≤n≤2⋅
+2≤n≤2⋅
 10
 5
 ).
 The second line of each test case contains
-2n
+n
 integers
-p
+a
 1
 ,
-p
+a
 2
 ,…,
-p
-2n
+a
+n
 (
-|
-p
+0≤
+a
 i
-|≤
+≤2⋅
 10
-9
+5
 ).
 It is guaranteed that the sum of
 n
@@ -114,33 +117,42 @@ over all test cases does not exceed
 5
 .
 Output
-For each test case, output the minimum distance between
-p
-and a good
-q
-.
+For each test case, output the minimum score of
+a
+after rearranging the elements of
+a
+in any order.
 Example
 input
 Copy
-4
-1
-6 9
-2
-1 2 2 1
-2
--2 -2 2 2
-4
--3 -2 -1 0 1 2 3 4
-output
-Copy
 3
 2
-5
-13
+0 0
+3
+0 0 1
+8
+1 0 0 0 2 0 3 0
+output
+Copy
+1
+0
+1
 Note
-In the first test case, it is optimal to let
-q=[6,6]
+In the first test case, it is optimal to rearrange
+a
+as
+[0,0]
+, the score of this array is the MEX of
+[0+0]=[0]
+, which is
+1
 .
-In the second test case, it is optimal to let
-q=[2,2,2,2]
+In the second test case, it is optimal to rearrange
+a
+as
+[0,1,0]
+, the score of this array is the MEX of
+[0+1,1+0]=[1,1]
+, which is
+0
 .

@@ -1,121 +1,136 @@
-Mex On Subtrees
+Collinear Points
 Problem
-You are given a rooted tree with
-N nodes numbered from
-1 to
-N. The root of the tree is node
-1. The
+N points are given on the coordinate system such that the coordinates of the
 i
 th
-node has parent
-P
+point are
+(X
 i
+,Y
+i
+) and
+X
+i
+<X
+i+1
 for all
-2≤i≤N.
-You need to assign a value to each of the nodes such that the MEX of the subtree of node
-i is
-B
+(1≤i<N).
+Maintain two types of queries:
+Type
+1: You are given
+5 integers in the form: 1 L R K B. For all
+L≤i≤R, change the coordinates of the
 i
-. Note that the
-MEX of a subtree is the
-MEX of the values of all nodes that lie in the subtree.
-Find the minimum possible sum of the values of all the nodes in the tree such that the given condition is satisfied. Print
-−1 if a valid assignment of values does not exist for all the nodes.
-Note that, the subtree of a node
-V is the set of all nodes
-U such that
-V lies on the simple path from
-U to the root.
+th
+point to
+(X
+i
+,K⋅X
+i
++B).
+Type
+2: You are given
+3 integers in the form: 2 L R. Find whether the
+L
+th
+,(L+1)
+th
+,…,R
+th
+points are collinear (lie on the same straight line).
 Input Format
-The first line contains a single integer
-T - the number of test cases. Then the test cases follow.
-The first line of each test case contains an integer
-N - number of nodes in a tree.
-The second line of each test case contains
-N space-separated integers
-B
-1
-,
-B
-2
-, \ldots,
-B
-N
-denoting the array
-B.
-The third line of each test case contains
-N−1 space-separated integers
-P
-2
-, \ldots,
-P
-N
-, where
-P
+The first line of input contains two integers
+N and
+M, which represent the number of points and the number of operations.
+The next
+N lines, each line contains two space-separated integers:
+X
 i
-represents parent of node
-i and
-P
+,Y
 i
-<i.
+, the coordinates of the
+i
+th
+point.
+The next
+M lines, each line contains a query in the above discussed format.
 Output Format
-For each test case, output the minimum possible sum of the values of all the nodes in the tree such that the given condition is satisfied. Print
-−1 if a valid assignment of values does not exist for all the nodes.
+For each query of type
+2, if points are collinear, print YES. Otherwise, print NO.
+The output is case-insensitive. Thus, the strings YES, yes, yeS, and Yes are all considered the same.
 Constraints
-1≤T≤10
+1≤N,M≤3⋅10
 5
-2≤N≤2⋅10
-5
-0≤B
+1≤L≤R≤N
+−10
+6
+≤K,B,X
 i
-≤N
-1≤P
+,Y
 i
-<i
-The sum of
-N over all test cases doesn't exceed
-2⋅10
-5
-.
+≤10
+6
+NOTE:
+Y
+i
+may be greater than
+10
+9
+during operations.
 Sample 1:
 Input
 Output
-4
-2
+6 7
 0 0
-1
-2
-0 1
-1
-5
-2 2 1 0 0
-1 2 3 4
-6
-2 2 1 1 1 0
-1 2 2 2 3
-2
--1
-7
-4
+2 2
+3 4
+5 4
+6 6
+7 5
+2 1 1
+2 1 2
+2 1 3
+1 3 4 1 0
+2 1 5
+1 4 4 -1 12
+2 4 6
+YES
+YES
+NO
+YES
+YES
 Explanation:
-Test case
-1: We can assign the value
-1 to nodes
-1 and
-2. Thus,
-MEX for both subtrees will be equal to
-0.
-Test case
-2: It is impossible to assign values to satisfy all the conditions.
-Test case
-3: We can assign the values
-0,1,0,3, and
-3 to nodes
-1,2,3,4, and
-5 respectively.
-Test case
-4: We can assign the values
-0,0,1,0,0, and
-3 to nodes
-1,2,3,4,5, and
-6 respectively.
+Query
+1: A single point is considered collinear.
+Query
+2: Coordinates
+(0,0) and
+(2,2) lie on the same line, i.e.
+y=x.
+Query
+3: The three points do not lie on the same line.
+Query
+4: We change the third point from
+(3,4) to
+(3,1⋅3+0)=(3,3). Similarly fourth point is changed from
+(5,4) to
+(5,5⋅1+0)=(5,5).
+Query
+5: The first five points lie on the same straight line, i.e.
+y=x.
+Query
+6: We change the fourth point from
+(5,5) to
+(5,5⋅(−1)+12)=(5,7).
+Query
+7: The last three points lie on the same straight line, i.e.
+y=−x+12.
+Sample 2:
+Input
+Output
+3 1
+-1000000 0
+0 1
+999999 2
+2 1 3
+NO

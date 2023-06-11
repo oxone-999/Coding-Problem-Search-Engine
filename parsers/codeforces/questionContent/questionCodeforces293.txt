@@ -1,91 +1,128 @@
-G. Delicious Dessert
-time limit per test3 seconds
-memory limit per test512 megabytes
+F. Three Chairs
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Today is an important day for chef Tonio — an auditor has arrived in his hometown of Morioh. He has also arrived at Tonio's restaurant and ordered dessert. Tonio has not been prepared for this turn of events.
-As you know, dessert is a string of lowercase English letters. Tonio remembered the rule of desserts — a string
-s
-of length
+One day Kira found
 n
-. Any dessert
-t
-is delicious if the number of occurrences of
-t
-in
-s
-as a substring is divisible by the length of
-t
+friends from Morioh and decided to gather them around a table to have a peaceful conversation. The height of friend
+i
+is equal to
+a
+i
+. It so happened that the height of each of the friends is unique.
+Unfortunately, there were only
+3
+chairs in Kira's house, and obviously, it will not be possible to seat all friends! So, Kira has to invite only
+3
+of his friends.
+But everything is not so simple! If the heights of the lowest and the tallest of the invited friends are not coprime, then the friends will play tricks on each other, which will greatly anger Kira.
+Kira became interested, how many ways are there to choose
+3
+of his friends so that they don't play tricks? Two ways are considered different if there is a friend invited in one way, but not in the other.
+Formally, if Kira invites friends
+i
+,
+j
+, and
+k
+, then the following should be true:
+gcd(min(
+a
+i
+,
+a
+j
+,
+a
+k
+),max(
+a
+i
+,
+a
+j
+,
+a
+k
+))=1
+, where
+gcd(x,y)
+denotes the greatest common divisor (GCD) of the numbers
+x
+and
+y
 .
-Now Tonio wants to know the number of delicious substrings of
-s
-. If the substring occurs several times in the string
-s
-, then all occurrences must be taken into account.
+Kira is not very strong in computer science, so he asks you to count the number of ways to invide friends.
 Input
-The first line contains an integer
+The first line contains the number
 n
 (
-1≤n≤
+3≤n≤3⋅
 10
-6
-) — the length of the rule
-s
-.
-The second line contains the string
-s
-of length
+5
+) — the number of Kira's friends.
+The next line contains
 n
-— the rule. The rule consists only of lowercase English letters.
+distinct integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤3⋅
+10
+5
+) — heights of Kira's friends.
 Output
-In a single line print the number of delicious substrings of
-s
-.
+In a single line output the number of ways to invite three friends.
 Examples
 input
 Copy
-7
-abacaba
+3
+1 2 3
 output
 Copy
-11
+1
 input
 Copy
-8
-abaababa
+4
+1 6 2 3
 output
 Copy
-11
+3
+input
+Copy
+4
+16 4 8 2
+output
+Copy
+0
 input
 Copy
 10
-deadinside
+10 1 6 7 9 8 4 3 5 2
 output
 Copy
-12
-input
-Copy
-5
-aaaaa
-output
-Copy
-12
+77
 Note
-In the first sample, there are many delicious substrings.
-7
-of them are substrings of length
+In the first example, only one way is suitable: invite friends
 1
-(because any number is divisible by
+,
+2
+, and
+3
+. Here
+1<2<3
+, and the numbers
 1
-). Consider other delicious substrings:
-"ab" occurs in
-s
-2
-times, which is divisible by the length of the substring.
-"ba" also occurs
-2
-times.
-Therefore, the answer is
-7+2+2=11
-.
-Note that the answer includes both occurrences of "ab" and "ba".
+and
+3
+are coprime.

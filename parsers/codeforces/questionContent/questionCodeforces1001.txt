@@ -1,186 +1,128 @@
-J. Training Camp
+L. Il Derby della Madonnina
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are organizing a training camp to teach algorithms to young kids. There are
-n
-2
-kids, organized in an
-n
-by
-n
-grid. Each kid is between
+The derby between Milan and Inter is happening soon, and you have been chosen as the assistant referee for the match, also known as linesman. Your task is to move along the touch-line, namely the side of the field, always looking very carefully at the match to check for offside positions and other offences.
+Football is an extremely serious matter in Italy, and thus it is fundamental that you keep very close track of the ball for as much time as possible. This means that you want to maximise the number of kicks which you monitor closely. You are able to monitor closely a kick if, when it happens, you are in the position along the touch-line with minimum distance from the place where the kick happens.
+Fortunately, expert analysts have been able to accurately predict all the kicks which will occur during the game. That is, you have been given two lists of integers,
+t
 1
+,…,
+t
+n
 and
-n
-years old (inclusive) and any two kids who are in the same row or in the same column have different ages.
-You want to select exactly
-n
-kids for a programming competition, with exactly one kid from each row and one kid from each column. Moreover, kids who are not selected must be either older than both kids selected in their row and column, or younger than both kids selected in their row and column (otherwise they will complain). Notice that it is always possible to select
-n
-kids satisfying these requirements (for example by selecting
-n
-kids who have the same age).
-During the training camp, you observed that some kids are good at programming, and the others are not. What is the maximum number of kids good at programming that you can select while satisfying all the requirements?
-Input
-The first line contains
-n
-(
-1≤n≤128
-) — the size of the grid.
-The following
-n
-lines describe the ages of the kids. Specifically, the
-i
--th line contains
-n
-integers
 a
-i,1
-,
-a
-i,2
+1
 ,…,
 a
-i,n
+n
+, indicating that
+t
+i
+seconds after the beginning of the match the ball will be kicked and you can monitor closely such kick if you are at the position
+a
+i
+along the touch-line.
+At the beginning of the game you start at position
+0
+and the maximum speed at which you can walk along the touch-line is
+v
+units per second (i.e., you can change your position by at most
+v
+each second). What is the maximum number of kicks that you can monitor closely?
+Input
+The first line contains two integers
+n
+and
+v
+(
+1≤n≤2⋅
+10
+5
+,
+1≤v≤
+10
+6
+) — the number of kicks that will take place and your maximum speed.
+The second line contains
+n
+integers
+t
+1
+,…,
+t
+n
 (
 1≤
-a
-i,j
-≤n
-) — where
-a
-i,j
-is the age of the kid in the
+t
 i
--th row and
-j
--th column. It is guaranteed that two kids on the same row or column have different ages, i.e.,
-a
-i,j
-≠
-a
-i,
-j
-′
-for any
-1≤i≤n
-,
-1≤j<
-j
-′
-≤n
-, and
-a
-i,j
-≠
-a
-i
-′
-,j
-for any
-1≤i<
-i
-′
-≤n
-,
-1≤j≤n
-.
-The following
+≤
+10
+9
+) — the times of the kicks in the match. The sequence of times is guaranteed to be strictly increasing, i.e.,
+t
+1
+<
+t
+2
+<⋯<
+t
 n
-lines describe the programming skills of the kids. Specifically, the
-i
--th line contains
+.
+The third line contains
 n
 integers
-c
-i,1
-,
-c
-i,2
+a
+1
 ,…,
-c
-i,n
+a
+n
 (
-c
-i,j
-∈{0,1}
-) — where
-c
-i,j
-=1
-if the kid in the
+−
+10
+9
+≤
+a
 i
--th row and
-j
--th column is good at programming and
-c
-i,j
-=0
-otherwise.
+≤
+10
+9
+) — the positions along the touch-line where you have to be to monitor closely each kick.
 Output
-Print the maximum number of kids good at programming that you can select while satisfying all the requirements.
+Print the maximum number of kicks that you can monitor closely.
 Examples
 input
 Copy
-3
-1 2 3
-3 1 2
-2 3 1
-1 0 0
-0 0 1
-0 0 0
+3 2
+5 10 15
+7 17 29
 output
 Copy
-1
+2
 input
 Copy
-4
-1 2 3 4
-2 1 4 3
-3 4 1 2
-4 3 2 1
-1 1 1 0
-0 0 1 0
-1 1 0 1
-0 0 0 1
+5 1
+5 7 8 11 13
+3 3 -2 -2 4
 output
 Copy
-2
+3
+input
+Copy
+1 2
+3
+7
+output
+Copy
+0
 Note
-In the first sample, it is not possible to select the two kids good at programming (in row
-1
-and column
-1
-, and in row
+In the first sample, it is possible to move to the right at maximum speed for the first
+3.5
+seconds and stay at position
+7
+until the first kick happens, and then immediately move right also at maximum speed to watch the second kick at position
+17
+. There is no way to monitor closely the third kick after the second kick, so at most
 2
-and column
-3
-), because then you would have to select the kid in row
-3
-and column
-2
-, and in that case two kids would complain (the one in row
-1
-and column
-2
-, and the one in row
-3
-and column
-1
-).
-A valid selection which contains
-1
-kid good at programming is achieved by choosing the
-3
-kids who are
-1
-year old.
-In the second sample, there are
-10
-valid choices of the
-n
-kids that satisfy the requirements, and each of them selects exactly
-2
-kids good at programming.
+kicks can be seen.

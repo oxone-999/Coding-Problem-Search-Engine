@@ -1,67 +1,82 @@
-E. Count Seconds
-time limit per test1 second
+G. Mio and Lucky Array
+time limit per test5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Cirno has a DAG (Directed Acyclic Graph) with
+Mio has an array
+a
+consisting of
 n
-nodes and
+integers, and an array
+b
+consisting of
 m
-edges. The graph has exactly one node that has no out edges. The
-i
--th node has an integer
+integers.
+Mio can do the following operation to
 a
+:
+Choose an integer
 i
-on it.
-Every second the following happens:
-Let
-S
-be the set of nodes
-x
-that have
-a
-x
->0
-.
-For all
-x∈S
-,
+(
+1≤i≤n
+) that has not been chosen before, then add
 1
-is subtracted from
-a
-x
-, and then for each node
-y
-, such that there is an edge from
-x
 to
-y
-,
-1
-is added to
-a
-y
-.
-Find the first moment of time when all
 a
 i
-become
-0
-. Since the answer can be very large, output it modulo
-998244353
+, subtract
+2
+from
+a
+i+1
+, add
+3
+to
+a
+i+2
+an so on. Formally, the operation is to add
+(−1
+)
+j−i
+⋅(j−i+1)
+to
+a
+j
+for
+i≤j≤n
 .
+Mio wants to transform
+a
+so that it will contain
+b
+as a subarray. Could you answer her question, and provide a sequence of operations to do so, if it is possible?
+An array
+b
+is a subarray of an array
+a
+if
+b
+can be obtained from
+a
+by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end.
 Input
-The first line contains a single integer
+The input consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤1000
-) — the number of test cases. Description of test cases follows.
-The first line of each test case contains two integers
-n,m
+1≤t≤
+10
+4
+) — the number of test cases. The description of test cases follows.
+The first line of each test case contains one integer
+n
 (
-1≤n,m≤1000
-) — the number of vertices and edges in the graph.
-The second line of each test case contains
+2≤n≤2⋅
+10
+5
+) — the number of elements in
+a
+.
+The second line of the test case contains
 n
 integers
 a
@@ -69,163 +84,258 @@ a
 ,
 a
 2
-,…,
+,⋯,
 a
 n
 (
-0≤
+−
+10
+5
+≤
 a
 i
 ≤
 10
-9
-) — the integer on vertices.
-Each line of the following
-m
-lines contains two integers
-x,y
-(
-1≤x,y≤n
-), represent a directed edge from
-x
-to
-y
-. It is guaranteed that the graph is a DAG with no multi-edges, and there is exactly one node that has no out edges.
-It is guaranteed that both sum of
-n
-and sum of
-m
-over all test cases are less than or equal to
-10000
-.
-Output
-For each test case, print an integer in a separate line — the first moment of time when all
+5
+), where
 a
 i
-become
-0
-, modulo
-998244353
+is the
+i
+-th element of
+a
 .
+The third line of the test case contains one integer
+m
+(
+2≤m≤n
+) — the number of elements in
+b
+.
+The fourth line of the test case contains
+m
+integers
+b
+1
+,
+b
+2
+,⋯,
+b
+m
+(
+−
+10
+12
+≤
+b
+i
+≤
+10
+12
+), where
+b
+i
+is the
+i
+-th element of
+b
+.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+2⋅
+10
+5
+.
+Output
+If it is impossible to transform
+a
+so that it contains
+b
+as a subarray, output
+−1
+.
+Otherwise, the first line of output should contain an integer
+k
+(
+0≤k≤n
+), the number of operations to be done.
+The second line should contain
+k
+distinct integers, representing the operations done in order.
+If there are multiple solutions, you can output any.
+Notice that you do not need to minimize the number of operations.
 Example
 input
 Copy
 5
-3 2
-1 1 1
-1 2
-2 3
-5 5
-1 0 0 0 0
-1 2
-2 3
-3 4
-4 5
-1 5
-10 11
-998244353 0 0 0 998244353 0 0 0 0 0
-1 2
-2 3
-3 4
-4 5
-5 6
-6 7
-7 8
-8 9
-9 10
-1 3
-7 9
-5 6
-1293 1145 9961 9961 1919
-1 2
-2 3
-3 4
-5 4
-1 4
-2 4
-6 9
-10 10 10 10 10 10
-1 2
-1 3
-2 3
-4 3
-6 3
-3 5
-6 5
-6 1
-6 2
+5
+1 2 3 4 5
+5
+2 0 6 0 10
+5
+1 2 3 4 5
+3
+3 5 3
+8
+-3 2 -3 -4 4 0 1 -2
+4
+10 -6 7 -7
+5
+1 2 3 4 5
+4
+1 10 1 1
+5
+0 0 0 0 0
+2
+10 12
 output
 Copy
-3
+1
+1 
+1
+4 
 5
-4
-28010
-110
+1 3 4 6 8 
+-1
+-1
 Note
-In the first test case:
-At time
-0
-, the values of the nodes are
-[1,1,1]
-.
-At time
-1
-, the values of the nodes are
-[0,1,1]
-.
-At time
-2
-, the values of the nodes are
-[0,0,1]
-.
-At time
-3
-, the values of the nodes are
-[0,0,0]
-.
-So the answer is
-3
-.
-In the second test case:
-At time
-0
-, the values of the nodes are
-[1,0,0,0,0]
-.
-At time
-1
-, the values of the nodes are
-[0,1,0,0,1]
-.
-At time
-2
-, the values of the nodes are
-[0,0,1,0,0]
-.
-At time
-3
-, the values of the nodes are
-[0,0,0,1,0]
-.
-At time
-4
-, the values of the nodes are
-[0,0,0,0,1]
-.
-At time
-5
-, the values of the nodes are
-[0,0,0,0,0]
-.
-So the answer is
-5
-.
-In the third test case:
-The first moment of time when all
+In the first test case, the sequence
 a
-i
-become
-0
-is
-6⋅998244353+4
+=
+[1,2,3,4,5]
+. One of the possible solutions is doing one operation at
+i=1
+(add
+1
+to
+a
+1
+, subtract
+2
+from
+a
+2
+, add
+3
+to
+a
+3
+, subtract
+4
+from
+a
+4
+, add
+5
+to
+a
+5
+). Then array
+a
+is transformed to
+a
+=
+[2,0,6,0,10]
+, which contains
+b
+=
+[2,0,6,0,10]
+as a subarray.
+In the second test case, the sequence
+a
+=
+[1,2,3,4,5]
+. One of the possible solutions is doing one operation at
+i=4
+(add
+1
+to
+a
+4
+, subtract
+2
+from
+a
+5
+). Then array
+a
+is transformed to
+a
+=
+[1,2,3,5,3]
+, which contains
+b
+=
+[3,5,3]
+as a subarray.
+In the third test case, the sequence
+a
+=
+[−3,2,−3,−4,4,0,1,−2]
+. One of the possible solutions is the following.
+Choose an integer
+i=8
+to do the operation. Then array
+a
+is transformed to
+a
+=
+[−3,2,−3,−4,4,0,1,−1]
 .
+Choose an integer
+i=6
+to do the operation. Then array
+a
+is transformed to
+a
+=
+[−3,2,−3,−4,4,1,−1,2]
+.
+Choose an integer
+i=4
+to do the operation. Then array
+a
+is transformed to
+a
+=
+[−3,2,−3,−3,2,4,−5,7]
+.
+Choose an integer
+i=3
+to do the operation. Then array
+a
+is transformed to
+a
+=
+[−3,2,−2,−5,5,0,0,1]
+.
+Choose an integer
+i=1
+to do the operation. Then array
+a
+is transformed to
+a
+=
+[−2,0,1,−9,10,−6,7,−7]
+.
+The resulting
+a
+is
+[−2,0,1,−9,10,−6,7,−7]
+, which contains
+b
+=
+[10,−6,7,−7]
+as a subarray.
+In the fourth test case, it is impossible to transform
+a
+so that it contains
+b
+as a subarray.
+In the fifth test case, it is impossible to transform
+a
+so that it contains
+b
+as a subarray.

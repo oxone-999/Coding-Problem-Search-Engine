@@ -1,195 +1,71 @@
-E. Rin and The Unknown Flower
-time limit per test2 seconds
+B. JOE is on TV!
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-MisoilePunch♪ - 彩
-This is an interactive problem!
-On a normal day at the hidden office in A.R.C. Markland-N, Rin received an artifact, given to her by the exploration captain Sagar.
-After much analysis, she now realizes that this artifact contains data about a strange flower, which has existed way before the New Age. However, the information about its chemical structure has been encrypted heavily.
-The chemical structure of this flower can be represented as a string
-p
-. From the unencrypted papers included, Rin already knows the length
+3R2 - Standby for Action
+Our dear Cafe's owner, JOE Miller, will soon take part in a new game TV-show "1 vs.
 n
-of that string, and she can also conclude that the string contains at most three distinct letters: "C" (as in Carbon), "H" (as in Hydrogen), and "O" (as in Oxygen).
-At each moment, Rin can input a string
+"!
+The game goes in rounds, where in each round the host asks JOE and his opponents a common question. All participants failing to answer are eliminated. The show ends when only JOE remains (we assume that JOE never answers a question wrong!).
+For each question JOE answers, if there are
 s
-of an arbitrary length into the artifact's terminal, and it will return every starting position of
+(
+s>0
+) opponents remaining and
+t
+(
+0≤t≤s
+) of them make a mistake on it, JOE receives
+t
 s
-as a substring of
-p
-.
-However, the artifact has limited energy and cannot be recharged in any way, since the technology is way too ancient and is incompatible with any current A.R.C.'s devices. To be specific:
-The artifact only contains
-7
+dollars, and consequently there will be
+s−t
+opponents left for the next question.
+JOE wonders what is the maximum possible reward he can receive in the best possible scenario. Yet he has little time before show starts, so can you help him answering it instead?
+Input
+The first and single line contains a single integer
+n
+(
+1≤n≤
+10
 5
-units of energy.
-For each time Rin inputs a string
-s
-of length
-t
-, the artifact consumes
-1
-t
-2
-units of energy.
-If the amount of energy reaches below zero, the task will be considered failed immediately, as the artifact will go black forever.
-Since the artifact is so precious yet fragile, Rin is very nervous to attempt to crack the final data. Can you give her a helping hand?
-Interaction
-The interaction starts with a single integer
-t
-(
-1≤t≤500
-), the number of test cases. The interaction for each testcase is described below:
-First, read an integer
-n
-(
-4≤n≤50
-), the length of the string
-p
+), denoting the number of JOE's opponents in the show.
+Output
+Print a number denoting the maximum prize (in dollars) JOE could have.
+Your answer will be considered correct if it's absolute or relative error won't exceed
+10
+−4
+. In other words, if your answer is
+a
+and the jury answer is
+b
+, then it must hold that
+|a−b|
+max(1,b)
+≤
+10
+−4
 .
-Then you can make queries of type "? s" (
-1≤|s|≤n
-) to find the occurrences of
-s
-as a substring of
-p
-.
-After the query, you need to read its result as a series of integers in a line:
-The first integer
-k
-denotes the number of occurrences of
-s
-as a substring of
-p
-(
-−1≤k≤n
-). If
-k=−1
-, it means you have exceeded the energy limit or printed an invalid query, and you need to terminate immediately, to guarantee a "Wrong answer" verdict, otherwise you might get an arbitrary verdict because your solution will continue to read from a closed stream.
-The following
-k
-integers
-a
-1
-,
-a
-2
-,…,
-a
-k
-(
-1≤
-a
-1
-<
-a
-2
-<…<
-a
-k
-≤n
-) denote the starting positions of the substrings that match the string
-s
-.
-When you find out the string
-p
-, print "!
-p
-" to finish a test case. This query doesn't consume any energy. The interactor will return an integer
-1
-or
-0
-. If the interactor returns
-1
-, you can proceed to the next test case, or terminate the program if it was the last testcase.
-If the interactor returns
-0
-, it means that your guess is incorrect, and you should to terminate to guarantee a "Wrong answer" verdict.
-Note that in every test case the string
-p
-is fixed beforehand and will not change during the queries, i.e. the interactor is not adaptive.
-After printing any query do not forget to print end of line and flush the output. Otherwise, you might get Idleness limit exceeded. To do this, use:
-fflush(stdout) or cout.flush() in C++;
-System.out.flush() in Java;
-flush(output) in Pascal;
-stdout.flush() in Python;
-see the documentation for other languages.
-Hacks
-For hack, use the following format. Note that you can only hack with one test case:
-The first line should contain a single integer
-t
-(
-t=1
-).
-The second line should contain an integer
-n
-(
-4≤n≤50
-) — the string's size.
-The third line should contain a string of size
-n
-, consisting of characters "C", "H" and "O" only. This is the string contestants will have to find out.
 Examples
 input
 Copy
 1
-4
-
-2 1 2
-
-1 2
-
-0
-
-1
 output
 Copy
-? C
-
-? CH
-
-? CCHO
-
-! CCHH
+1.000000000000
 input
 Copy
 2
-5
-
-0
-
-2 2 3
-
-1
-8
-
-1 5
-
-1 5
-
-1 3
-
-2 1 2
-
-1
 output
 Copy
-? O
-
-? HHH
-
-! CHHHH
-
-
-? COO
-
-? COOH
-
-? HCCOO
-
-? HH
-
-! HHHCCOOH
+1.500000000000
 Note
-Note that the example interaction contains extra empty lines so that it's easier to read. The real interaction doesn't contain any empty lines and you shouldn't print any extra empty lines as well.
+In the second example, the best scenario would be: one contestant fails at the first question, the other fails at the next one. The total reward will be
+1
+2
++
+1
+1
+=1.5
+dollars.

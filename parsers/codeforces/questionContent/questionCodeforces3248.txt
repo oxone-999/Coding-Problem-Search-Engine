@@ -1,148 +1,74 @@
-F. Choose a Square
-time limit per test6 seconds
+A. CME
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Petya recently found a game "Choose a Square". In this game, there are
-n
-points numbered from
-1
-to
-n
-on an infinite field. The
-i
--th point has coordinates
-(
-x
-i
+Let's denote correct match equation (we will denote it as CME) an equation
+a+b=c
+there all integers
+a
 ,
-y
-i
-)
-and cost
+b
+and
 c
-i
-.
-You have to choose a square such that its sides are parallel to coordinate axes, the lower left and upper right corners belong to the line
-y=x
-, and all corners have integer coordinates.
-The score you get is the sum of costs of the points covered by the selected square minus the length of the side of the square. Note that the length of the side can be zero.
-Petya asks you to calculate the maximum possible score in the game that can be achieved by placing exactly one square.
+are greater than zero.
+For example, equations
+2+2=4
+(||+||=||||) and
+1+2=3
+(|+||=|||) are CME but equations
+1+2=4
+(|+||=||||),
+2+2=3
+(||+||=|||), and
+0+1=1
+(+|=|) are not.
+Now, you have
+n
+matches. You want to assemble a CME using all your matches. Unfortunately, it is possible that you can't assemble the CME using all matches. But you can buy some extra matches and then assemble CME!
+For example, if
+n=2
+, you can buy two matches and assemble |+|=||, and if
+n=5
+you can buy one match and assemble ||+|=|||.
+Calculate the minimum number of matches which you have to buy for assembling CME.
+Note, that you have to answer
+q
+independent queries.
 Input
-The first line of the input contains one integer
+The first line contains one integer
+q
+(
+1≤q≤100
+) — the number of queries.
+The only line of each query contains one integer
 n
 (
-1≤n≤5⋅
-10
-5
-) — the number of points on the field.
-Each of the following
-n
-lines contains three integers
-x
-i
-,
-y
-i
-,
-c
-i
-(
-0≤
-x
-i
-,
-y
-i
-≤
+2≤n≤
 10
 9
-,−
-10
-6
-≤
-c
-i
-≤
-10
-6
-) — coordinates of the
-i
--th point and its cost, respectively.
+) — the number of matches.
 Output
-In the first line print the maximum score Petya can achieve.
-In the second line print four integers
-x
-1
-,
-y
-1
-,
-x
-2
-,
-y
-2
-(
-0≤
-x
-1
-,
-y
-1
-,
-x
-2
-,
-y
-2
-≤2⋅
-10
-9
-,
-x
-1
-=
-y
-1
-,
-x
-2
-=
-y
-2
-,
-x
-1
-≤
-x
-2
-) separated by spaces — the coordinates of the lower left and upper right corners of the square which Petya has to select in order to achieve the maximum score.
-Examples
+For each test case print one integer in single line — the minimum number of matches which you have to buy for assembling CME.
+Example
 input
-Copy
-6
-0 0 2
-1 0 -5
-1 1 3
-2 3 4
-1 4 -4
-3 1 -1
-output
 Copy
 4
-1 1 3 3
-input
-Copy
+2
 5
-3 3 0
-3 3 -3
-0 2 -1
-3 1 3
-0 0 -2
+8
+11
 output
 Copy
+2
+1
 0
-1 1 1 1
+1
 Note
-The field corresponding to the first example:
+The first and second queries are explained in the statement.
+In the third query, you can assemble
+1+3=4
+(|+|||=||||) without buying matches.
+In the fourth query, buy one match and assemble
+2+4=6
+(||+||||=||||||).

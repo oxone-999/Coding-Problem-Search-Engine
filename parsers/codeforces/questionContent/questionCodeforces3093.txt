@@ -1,172 +1,156 @@
-B. Minimize the Permutation
-time limit per test1 second
+E. Yet Another Division Into Teams
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a permutation of length
+There are
 n
-. Recall that the permutation is an array consisting of
-n
-distinct integers from
+students at your university. The programming skill of the
+i
+-th student is
+a
+i
+. As a coach, you want to divide them into teams to prepare them for the upcoming ICPC finals. Just imagine how good this university is if it has
+2⋅
+10
+5
+students ready for the finals!
+Each team should consist of at least three students. Each student should belong to exactly one team. The diversity of a team is the difference between the maximum programming skill of some student that belongs to this team and the minimum programming skill of some student that belongs to this team (in other words, if the team consists of
+k
+students with programming skills
+a[
+i
 1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
+],a[
+i
 2
-appears twice in the array) and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
-You can perform at most
-n−1
-operations with the given permutation (it is possible that you don't perform any operations at all). The
+],…,a[
 i
--th operation allows you to swap elements of the given permutation on positions
+k
+]
+, then the diversity of this team is
+max
+j=1
+k
+a[
 i
-and
-i+1
-. Each operation can be performed at most once. The operations can be performed in arbitrary order.
-Your task is to find the lexicographically minimum possible permutation obtained by performing some of the given operations in some order.
-You can see the definition of the lexicographical order in the notes section.
-You have to answer
-q
-independent test cases.
-For example, let's consider the permutation
-[5,4,1,3,2]
-. The minimum possible permutation we can obtain is
-[1,5,2,4,3]
-and we can do it in the following way:
-perform the second operation (swap the second and the third elements) and obtain the permutation
-[5,1,4,3,2]
-;
-perform the fourth operation (swap the fourth and the fifth elements) and obtain the permutation
-[5,1,4,2,3]
-;
-perform the third operation (swap the third and the fourth elements) and obtain the permutation
-[5,1,2,4,3]
-.
-perform the first operation (swap the first and the second elements) and obtain the permutation
-[1,5,2,4,3]
-;
-Another example is
-[1,2,4,3]
-. The minimum possible permutation we can obtain is
-[1,2,3,4]
-by performing the third operation (swap the third and the fourth elements).
+j
+]−
+min
+j=1
+k
+a[
+i
+j
+]
+).
+The total diversity is the sum of diversities of all teams formed.
+Your task is to minimize the total diversity of the division of students and find the optimal way to divide the students.
 Input
 The first line of the input contains one integer
-q
-(
-1≤q≤100
-) — the number of test cases. Then
-q
-test cases follow.
-The first line of the test case contains one integer
 n
 (
-1≤n≤100
-) — the number of elements in the permutation.
-The second line of the test case contains
+3≤n≤2⋅
+10
+5
+) — the number of students.
+The second line of the input contains
 n
-distinct integers from
+integers
+a
 1
-to
+,
+a
+2
+,…,
+a
 n
-— the given permutation.
+(
+1≤
+a
+i
+≤
+10
+9
+), where
+a
+i
+is the programming skill of the
+i
+-th student.
 Output
-For each test case, print the answer on it — the lexicograhically minimum possible permutation obtained by performing some of the given operations in some order.
-Example
+In the first line print two integers
+res
+and
+k
+— the minimum total diversity of the division of students and the number of teams in your division, correspondingly.
+In the second line print
+n
+integers
+t
+1
+,
+t
+2
+,…,
+t
+n
+(
+1≤
+t
+i
+≤k
+), where
+t
+i
+is the number of team to which the
+i
+-th student belong.
+If there are multiple answers, you can print any. Note that you don't need to minimize the number of teams. Each team should consist of at least three students.
+Examples
 input
 Copy
-4
 5
-5 4 1 3 2
-4
-1 2 4 3
-1
-1
-4
-4 3 2 1
+1 1 3 4 2
 output
 Copy
-1 5 2 4 3 
-1 2 3 4 
-1 
-1 4 3 2 
+3 1
+1 1 1 1 1 
+input
+Copy
+6
+1 5 12 13 2 15
+output
+Copy
+7 2
+2 2 1 1 2 1 
+input
+Copy
+10
+1 2 5 129 185 581 1041 1909 1580 8150
+output
+Copy
+7486 3
+3 3 3 2 2 2 2 1 1 1 
 Note
-Recall that the permutation
-p
-of length
-n
-is lexicographically less than the permutation
-q
-of length
-n
-if there is such index
-i≤n
-that for all
-j
-from
-1
-to
-i−1
-the condition
-p
-j
-=
-q
-j
-is satisfied, and
-p
-i
-<
-q
-i
-. For example:
-p=[1,3,5,2,4]
-is less than
-q=[1,3,5,4,2]
-(such
-i=4
-exists, that
-p
-i
-<
-q
-i
-and for each
-j<i
-holds
-p
-j
-=
-q
-j
-),
-p=[1,2]
-is less than
-q=[2,1]
-(such
-i=1
-exists, that
-p
-i
-<
-q
-i
-and for each
-j<i
-holds
-p
-j
-=
-q
-j
-).
+In the first example, there is only one team with skills
+[1,1,2,3,4]
+so the answer is
+3
+. It can be shown that you cannot achieve a better answer.
+In the second example, there are two teams with skills
+[1,2,5]
+and
+[12,13,15]
+so the answer is
+4+3=7
+.
+In the third example, there are three teams with skills
+[1,2,5]
+,
+[129,185,581,1041]
+and
+[1580,1909,8150]
+so the answer is
+4+912+6570=7486
+.

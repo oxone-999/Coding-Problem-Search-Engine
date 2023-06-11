@@ -1,124 +1,34 @@
-Where to Build the Roads
+Little Elephant and Mouses
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef bought a huge (effectively infinite) planar island and built
-N restaurants (numbered
-1 through
-N) on it. For each valid
-i, the Cartesian coordinates of restaurant
-i are
-(X
-i
-,Y
-i
-).
-Now, Chef wants to build
-N−1 straight narrow roads (line segments) on the island. The roads may have arbitrary lengths; restaurants do not have to lie on the roads. The slope of each road must be
-1 or
-−1, i.e. for any two points
-(x
-1
-,y
-1
-) and
-(x
-2
-,y
-2
-) on the same road,
-∣x
-1
-−x
-2
-∣=∣y
-1
-−y
-2
-∣ must hold.
-Let's denote the minimum distance Chef has to walk from restaurant
-i to reach a road by
-D
-i
-. Then, let's denote
-a=max(D
-1
-,D
-2
-,…,D
-N
-); Chef wants this distance to be minimum possible.
-Chef is a busy person, so he decided to give you the job of building the roads. You should find a way to build them that minimises
-a and compute
-a⋅
-2
-.
+It is well-known that the elephants are afraid of mouses. The Little Elephant from the Zoo of Lviv is not an exception.
+The Little Elephant is on a board A of n rows and m columns (0-based numeration). At the beginning he is in cell with coordinates (0; 0) and he wants to go to cell with coordinates (n-1; m-1). From cell (x; y) Little Elephant can go either to (x+1; y) or (x; y+1).
+Each cell of the board contains either 1 or 0. If A[i][j] = 1, then there is a single mouse in cell (i; j). Mouse at cell (i; j) scared Little Elephants if and only if during the path there was at least one such cell (x; y) (which belongs to that path) and |i-x| + |j-y| <= 1.
+Little Elephant wants to find some correct path from (0; 0) to (n-1; m-1) such that the number of mouses that have scared the Little Elephant is minimal possible. Print that number.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-N lines follow. For each valid
-i, the
-i-th of these lines contains two space-separated integers
-X
-i
-and
-Y
-i
-.
+First line contains single integer T - the number of test cases. Then T test cases follow. First line of each test case contain pair of integers n and m - the size of the board. Next n lines contain n strings, each of size m and consisted of digits 0 and 1.
 Output
-For each test case, print a single line containing one real number — the minimum distance
-a multiplied by
-2
-. Your answer will be considered correct if its absolute or relative error does not exceed
-10
-−6
-.
+In T lines print T integer - the answers for the corresponding test.
 Constraints
-1≤T≤100
-2≤N≤10
-4
-∣X
-i
-∣,∣Y
-i
-∣≤10
-9
-for each valid
-i
-Subtasks
-Subtask #1 (10 points):
-1≤T≤10
-2≤N≤5
-∣X
-i
-∣,∣Y
-i
-∣≤10 for each valid
-i
-a⋅
-2
-is an integer
-Subtask #2 (90 points): original constraints
+1 <= T <= 50
+2 <= n, m <= 100
 Sample 1:
 Input
 Output
 2
-3
-0 0
-0 1
-0 -1
-3
-0 1
-1 0
--1 0
-0.5
-0
+3 9
+001000001
+111111010
+100100100
+7 9
+010101110
+110110111
+010011111
+100100000
+000010100
+011011000
+000100101
+9
+10
 Explanation:
-Example case 1: We should build roads described by equations
-y−x+0.5=0 and
-y−x−0.5=0.
-Example case 2: We should build roads described by equations
-y−x−1=0 and
-y+x−1=0.
+Example case 1: The optimized path is: (0, 0) -> (0, 1) -> (0, 2) -> (0, 3) -> (0, 4) -> (0, 5) -> (0, 6) -> (0, 7) -> (0, 8) -> (1, 8) -> (2, 8). The mouses that scared the Little Elephant are at the following cells: (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 7), (0, 2), (0, 8).
+Example case 2: The optimized path is: (0, 0) -> (1, 0) -> (1, 1) -> (2, 1) -> (2, 2) -> (3, 2) -> (3, 3) -> (4, 3) -> (4, 4) -> (5, 4) -> (5, 5) -> (6, 5) -> (6, 6) -> (6, 7) -> (6, 8). The 10 mouses that scared the Little Elephant are at the following cells: (0, 1), (1, 0), (1, 1), (2, 1), (3, 3), (4, 4), (5, 4), (5, 5), (6, 6), (6, 8).

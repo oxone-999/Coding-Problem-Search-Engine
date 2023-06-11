@@ -1,146 +1,290 @@
-F. Red-Blue Graph
-time limit per test1 second
-memory limit per test512 megabytes
+C. Prefix Enlightenment
+time limit per test3 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a bipartite graph: the first part of this graph contains
+There are
 n
+lamps on a line, numbered from
 1
-vertices, the second part contains
+to
 n
-2
-vertices, and there are
-m
-edges. The graph can contain multiple edges.
-Initially, each edge is colorless. For each edge, you may either leave it uncolored (it is free), paint it red (it costs
-r
-coins) or paint it blue (it costs
-b
-coins). No edge can be painted red and blue simultaneously.
-There are three types of vertices in this graph — colorless, red and blue. Colored vertices impose additional constraints on edges' colours:
-for each red vertex, the number of red edges indicent to it should be strictly greater than the number of blue edges incident to it;
-for each blue vertex, the number of blue edges indicent to it should be strictly greater than the number of red edges incident to it.
-Colorless vertices impose no additional constraints.
-Your goal is to paint some (possibly none) edges so that all constraints are met, and among all ways to do so, you should choose the one with minimum total cost.
-Input
-The first line contains five integers
-n
+. Each one has an initial state off (
+0
+) or on (
 1
-,
-n
-2
-,
-m
-,
-r
-and
-b
-(
+).
+You're given
+k
+subsets
+A
+1
+,…,
+A
+k
+of
+{1,2,…,n}
+, such that the intersection of any three subsets is empty. In other words, for all
 1≤
-n
+i
 1
+<
+i
+2
+<
+i
+3
+≤k
 ,
-n
-2
-,m,r,b≤200
-) — the number of vertices in the first part, the number of vertices in the second part, the number of edges, the amount of coins you have to pay to paint an edge red, and the amount of coins you have to pay to paint an edge blue, respectively.
-The second line contains one string consisting of
-n
+A
+i
 1
-characters. Each character is either U, R or B. If the
+∩
+A
 i
--th character is U, then the
-i
--th vertex of the first part is uncolored; R corresponds to a red vertex, and B corresponds to a blue vertex.
-The third line contains one string consisting of
-n
 2
-characters. Each character is either U, R or B. This string represents the colors of vertices of the second part in the same way.
-Then
-m
-lines follow, the
+∩
+A
 i
--th line contains two integers
-u
-i
-and
-v
-i
-(
-1≤
-u
-i
-≤
-n
-1
-,
-1≤
-v
-i
-≤
-n
-2
-) denoting an edge connecting the vertex
-u
-i
-from the first part and the vertex
-v
-i
-from the second part.
-The graph may contain multiple edges.
-Output
-If there is no coloring that meets all the constraints, print one integer
-−1
+3
+=∅
 .
-Otherwise, print an integer
-c
-denoting the total cost of coloring, and a string consisting of
+In one operation, you can choose one of these
+k
+subsets and switch the state of all lamps in it. It is guaranteed that, with the given subsets, it's possible to make all lamps be simultaneously on using this type of operation.
+Let
 m
-characters. The
 i
--th character should be U if the
+be the minimum number of operations you have to do in order to make the
 i
--th edge should be left uncolored, R if the
+first lamps be simultaneously on. Note that there is no condition upon the state of other lamps (between
+i+1
+and
+n
+), they can be either off or on.
+You have to compute
+m
 i
--th edge should be painted red, or B if the
+for all
+1≤i≤n
+.
+Input
+The first line contains two integers
+n
+and
+k
+(
+1≤n,k≤3⋅
+10
+5
+).
+The second line contains a binary string of length
+n
+, representing the initial state of each lamp (the lamp
 i
--th edge should be painted blue. If there are multiple colorings with minimum possible cost, print any of them.
+is off if
+s
+i
+=0
+, on if
+s
+i
+=1
+).
+The description of each one of the
+k
+subsets follows, in the following format:
+The first line of the description contains a single integer
+c
+(
+1≤c≤n
+)  — the number of elements in the subset.
+The second line of the description contains
+c
+distinct integers
+x
+1
+,…,
+x
+c
+(
+1≤
+x
+i
+≤n
+)  — the elements of the subset.
+It is guaranteed that:
+The intersection of any three subsets is empty;
+It's possible to make all lamps be simultaneously on using some operations.
+Output
+You must output
+n
+lines. The
+i
+-th line should contain a single integer
+m
+i
+ — the minimum number of operations required to make the lamps
+1
+to
+i
+be simultaneously on.
 Examples
 input
 Copy
-3 2 6 10 15
-RRB
-UB
-3 2
-2 2
-1 2
-1 1
-2 1
-1 1
+7 3
+0011100
+3
+1 4 6
+3
+3 4 7
+2
+2 3
 output
 Copy
-35
-BUURRU
+1
+2
+3
+3
+3
+3
+3
 input
 Copy
-3 1 3 4 5
-RRR
-B
-2 1
-1 1
-3 1
+8 6
+00110011
+3
+1 3 8
+5
+1 2 5 6 7
+2
+6 8
+2
+3 5
+2
+4 7
+1
+2
 output
 Copy
--1
+1
+1
+1
+1
+1
+1
+4
+4
 input
 Copy
-3 1 3 4 5
-URU
-B
-2 1
-1 1
-3 1
+5 3
+00011
+3
+1 2 3
+1
+4
+3
+3 4 5
 output
 Copy
-14
-RBB
+1
+1
+1
+1
+1
+input
+Copy
+19 5
+1001001001100000110
+2
+2 3
+2
+5 6
+2
+8 9
+5
+12 13 14 15 16
+1
+19
+output
+Copy
+0
+1
+1
+1
+2
+2
+2
+3
+3
+3
+3
+4
+4
+4
+4
+4
+4
+4
+5
+Note
+In the first example:
+For
+i=1
+, we can just apply one operation on
+A
+1
+, the final states will be
+1010110
+;
+For
+i=2
+, we can apply operations on
+A
+1
+and
+A
+3
+, the final states will be
+1100110
+;
+For
+i≥3
+, we can apply operations on
+A
+1
+,
+A
+2
+and
+A
+3
+, the final states will be
+1111111
+.
+In the second example:
+For
+i≤6
+, we can just apply one operation on
+A
+2
+, the final states will be
+11111101
+;
+For
+i≥7
+, we can apply operations on
+A
+1
+,
+A
+3
+,
+A
+4
+,
+A
+6
+, the final states will be
+11111111
+.

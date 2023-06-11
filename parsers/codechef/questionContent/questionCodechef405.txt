@@ -1,71 +1,69 @@
-Chess Match
+Easy Pronunciation
 Problem
-Read problem statements in Mandarin Chinese, Russian, and Vietnamese as well.
-In a Chess match "a + b", each player has a clock which shows
-a minutes at the start and whenever a player makes a move,
-b seconds are added to this player's clock. Time on a player's clock decreases during that player's turns and remains unchanged during the other player's turns. If the time on some player's clock hits zero (but not only in this case), this player loses the game.
-There's a 3 + 2 blitz chess match. After
-N turns (i.e.
-⌊
-2
-N+1
-⌋ moves made by white and
-⌊
-2
-N
-⌋ moves made by black), the game ends and the clocks of the two players stop; they show that the players (white and black) have
-A and
-B seconds left respectively. Note that after the
-N-th turn,
-b=2 seconds are still added to the clock of the player that made the last move and then the game ends.
-Find the total duration of the game, i.e. the number of seconds that have elapsed from the start of the game until the end.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains three space-separated integers
-N,
-A and
-B.
-Output
-For each test case, print a single line containing one integer — the duration of the game.
+Words that contain many consecutive consonants, like "schtschurowskia", are generally considered somewhat hard to pronounce.
+We say that a word is hard to pronounce if it contains
+4 or more consonants in a row; otherwise it is easy to pronounce. For example, "apple" and "polish" are easy to pronounce, but "schtschurowskia" is hard to pronounce.
+You are given a string
+S consisting of
+N lowercase Latin characters. Determine whether it is easy to pronounce or not based on the rule above — print YES if it is easy to pronounce and NO otherwise.
+For the purposes of this problem, the vowels are the characters
+{a,e,i,o,u} and the consonants are the other
+21 characters.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test case contains a single integer
+N, the length of string
+S.
+The second line of each test case contains the string
+S.
+Output Format
+For each test case, output on a new line the answer — YES if
+S is easy to pronounce, and NO otherwise.
+Each character of the output may be printed in either uppercase or lowercase. For example, the strings YES, yeS, yes, and YeS will all be treated as identical.
 Constraints
-1≤T≤10
-5
-10≤N≤100
-0≤A≤180+2⋅⌊
-2
-N+1
-⌋
-0≤B≤180+2⋅⌊
-2
-N
-⌋
-for
-N odd,
-A≥2
-for
-N even,
-B≥2
-there is at least one valid game consistent with the input
+1≤T≤100
+1≤N≤100
+S contains only lowercase Latin characters, i.e, the characters
+{a,b,c,…,z}
 Sample 1:
 Input
 Output
+5
+5
+apple
+15
+schtschurowskia
+6
+polish
+5
+tryst
 3
-10 0 2
-11 2 1
-12 192 192
-378
-379
-0
+cry
+YES
+NO
+YES
+NO
+YES
 Explanation:
-Example case 1: The total time given to both clocks after
-10 turns is
-2⋅(180+10)=380 seconds. The total time left at the end is
-0+2=2 seconds. The duration of the game is
-380−2=378 seconds.
-Example case 3: The total time given to both clocks after
-12 turns is
-2⋅(180+12)=384 seconds. The total time left at the end is
-192+192=384 seconds. The duration of the game is
-384−384=0 seconds.
+Test case
+1: "
+apple" doesn't have
+4 or move consecutive consonants, which makes it easy to pronounce.
+Test case
+2: "
+schtschurowskia" has
+7 consecutive consonants, which makes it hard to pronounce.
+Test case
+3:
+polish doesn't contain
+4 or more consecutive consonants, so it's easy to pronounce.
+Test case
+4:
+tryst contains
+5 consecutive consonants, making it hard to pronounce.
+Test case
+5:
+cry doesn't contain any vowels, but its length is less than
+4 so it's still easy to pronounce.

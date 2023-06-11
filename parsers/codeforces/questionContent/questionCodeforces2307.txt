@@ -1,136 +1,92 @@
-F. The Thorny Path
-time limit per test2 seconds
-memory limit per test256 megabytes
+B. A New Technique
+time limit per test1 second
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-According to a legend the Hanoi Temple holds a permutation of integers from
+All techniques in the ninja world consist of hand seals. At the moment Naruto is learning a new technique, which consists of
+n⋅m
+different seals, denoted by distinct numbers. All of them were written in an
+n×m
+table.
+The table is lost now. Naruto managed to remember elements of each row from left to right, and elements of each column from top to bottom, but he doesn't remember the order of rows and columns. Please restore the table consistent with this data so that Naruto will be able to learn the new technique.
+Input
+The first line of the input contains the only integer
+t
+(
+1≤t≤100000
+) denoting the number of test cases. Their descriptions follow.
+The first line of each test case description consists of two space-separated integers
+n
+and
+m
+(
+1≤n,m≤500
+) standing for the number of rows and columns in the table, respectively. All hand seals are encoded by the positive integers from
 1
 to
-n
-. There are
-n
-stones of distinct colors lying in one line in front of the temple. Monks can perform the following operation on stones: choose a position
-i
-(
-1≤i≤n
-) and cyclically shift stones at positions
-i
-,
-p[i]
-,
-p[p[i]]
-, .... That is, a stone from position
-i
-will move to position
-p[i]
-, a stone from position
-p[i]
-will move to position
-p[p[i]]
-, and so on, a stone from position
-j
-, such that
-p[j]=i
-, will move to position
-i
+n⋅m
 .
-Each day the monks must obtain a new arrangement of stones using an arbitrary number of these operations. When all possible arrangements will have been obtained, the world will end. You are wondering, what if some elements of the permutation could be swapped just before the beginning? How many days would the world last?
-You want to get a permutation that will allow the world to last as long as possible, using the minimum number of exchanges of two elements of the permutation.
-Two arrangements of stones are considered different if there exists a position
-i
-such that the colors of the stones on that position are different in these arrangements.
-Input
-Each test consists of multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤
-10
-3
-). Description of the test cases follows.
-The first line of each test case contains
+The following
 n
-(
-3≤n≤
-10
-6
-). The next line contains
+lines contain
+m
+space separated integers each, denoting elements of an arbitrary row in the table left to right.
+The following
+m
+lines contain
 n
-integers
-p
-1
-,…,
-p
-n
-(
-1≤
-p
-i
-≤n
-). It is guaranteed that
-p
-is a permutation.
-It is guaranteed that the sum of
-n
+space separated integers each, denoting elements of an arbitrary column in the table top to bottom.
+Sum of
+nm
 over all test cases does not exceed
-10
-6
-.
-Output
-For each of the
-t
-test cases, print two integers on a new line: the largest possible number of days the world can last, modulo
-10
-9
-+7
-, and the minimum number of exchanges required for that.
-Examples
-input
-Copy
-3
-3
-2 3 1
-3
-2 1 3
-3
-1 2 3
-output
-Copy
-3 0
-3 1
-3 2
-input
-Copy
-5
-4
-2 3 4 1
-4
-2 3 1 4
-4
-2 1 4 3
-4
-2 1 3 4
-4
-1 2 3 4
-output
-Copy
-4 0
-4 1
-4 0
-4 1
-4 2
-Note
-Let's label the colors of the stones with letters. Explanations for the first two test cases of the first example:
-Using the permutation
-[2,3,1]
-, we can additionally obtain the arrangements CAB and BCA from ABC. This is already the maximum possible result.
-Using the permutation
-[2,1,3]
-, the only BAC can be obtained from ABC. As we saw in the previous case, two arrangements are not the maximum possible number of distinct arrangements for
-n=3
-. To get an optimal permutation, for example, we can swap
+250000
+. It is guaranteed that each row occurs in the input exactly once, as well as each column. It is also guaranteed that each number from
 1
-and
+to
+nm
+occurs exactly once in all rows, as well as in all columns. Finally, it is guaranteed that a table consistent with the input exists.
+Output
+For each test case, output
+n
+lines with
+m
+space-separated integers each, denoting the restored table. One can show that the answer is always unique.
+Example
+input
+Copy
+2
+2 3
+6 5 4
+1 2 3
+1 6
+2 5
+3 4
+3 1
+2
 3
-, so we will get the permutation
-[2,3,1]
+1
+3 1 2
+output
+Copy
+1 2 3 
+6 5 4 
+3 
+1 
+2 
+Note
+Consider the first test case. The matrix is
+2×3
+. You are given the rows and columns in arbitrary order.
+One of the rows is
+[6,5,4]
+. One of the rows is
+[1,2,3]
 .
+One of the columns is
+[1,6]
+. One of the columns is
+[2,5]
+. One of the columns is
+[3,4]
+.
+You are to reconstruct the matrix. The answer is given in the output.

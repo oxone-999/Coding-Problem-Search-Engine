@@ -1,179 +1,188 @@
-H. Laser Beams
-time limit per test2 seconds
-memory limit per test512 megabytes
+J. Two Railroads
+time limit per test5 seconds
+memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Ira is developing a computer game. This game features randomized generation and difficulty of levels. To achieve randomized difficulty, some enemies in each level are randomly replaced with stronger ones.
-To describe how do the levels in the game look, let's introduce a coordinate system in such a way that
-Ox
-axis goes from left to right, and
-Oy
-axis goes from bottom to top. A level is a rectangle with opposite corners in points
-(0,0)
-and
-(a,b)
-. Each enemy's position is a point in this rectangle.
-As for now, Ira has implemented one type of enemy in the game, in two different versions — basic and upgraded. Both versions of enemies Ira has implemented fire laser rays in several directions:
-basic enemies fire four laser rays in four directions: to the right (in the same direction as the vector
-(1,0)
-), to the left (in the same direction as the vector
-(−1,0)
-), up (in the same direction as the vector
-(0,1)
-), and down (in the same direction as the vector
-(0,−1)
-);
-upgraded enemies fire eight laser rays in eight directions: four directions listed for basic enemies, and four directions corresponding to vectors
-(1,1)
-,
-(1,−1)
-,
-(−1,1)
-,
-(−1,−1)
+There are
+n
+cities in Berland, and they are connected by two railroads — the Main railroad and the Auxiliary railroad. Each city has two railway stations, one connected to the Main railroad (called the Main station), and the other connected to the Auxiliary railroad.
+The railroads are identical in their structure. The Main railroad consists of
+n−1
+railroad segments; the
+i
+-th railroad segment connects the Main station of the city
+i
+with the Main station of the city
+i+1
+. Similarly, the Auxiliary railroad consists of
+n−1
+railroad segments; the
+i
+-th railroad segment connects the Auxiliary station of the city
+i
+with the Auxiliary station of the city
+i+1
 .
-Laser rays pass through enemies and are blocked only by the borders of the level (sides of the rectangle that denotes the level). Enemies are unaffected by lasers.
-The level Ira is working on has
-n
-enemies. The
+These railroads are used to transfer different goods and resources from one city to another. In particular, the Ministry of Energetics is interested in using these railroads to transfer coal.
+The Ministry has estimated the following capabilities of the railroads:
+for every
+i∈[1,n−1]
+, at most
+a
 i
--th enemy is in the point
-(
-x
+tons of coal per day can be transferred from the Main station
 i
-,
-y
+to the Main station
+i+1
+(only in this direction);
+for every
+i∈[1,n−1]
+, at most
+b
 i
-)
-, and it has a probability of
-p
+tons of coal per day can be transferred from the Auxiliary station
 i
-to be upgraded (it's either upgraded with probability
-p
+to the Auxiliary station
+i+1
+(only in this direction);
+for every
+i∈[1,n]
+, at most
+c
 i
-, or basic with probability
-1−
-p
+tons of coal per day can be transferred from the Main station
 i
-). All these events are independent.
-Ira wants to estimate the expected difficulty. She considers that a good way to evaluate the difficulty of the level is to count the number of parts in which the level is divided by the laser rays. So, she wants to calculate the expected number of these parts.
-Help her to do the evaluation of the level!
+to the Auxiliary station
+i
+, or in the opposite direction.
+To analyze the capacity of the whole railroad network, the Ministry requires a software that would process and answer queries of the following format:
+calculate the maximum number of tons of coal that can be transferred per day from the Main station
+l
+i
+to the Main station
+r
+i
+.
+Your task is to implement this software.
 Input
-The first line contains three integers
+The first line contains one integer
 n
+(
+2≤n≤3⋅
+10
+5
+) — the number of cities.
+The second line contains
+n−1
+integers
+a
+1
 ,
 a
-and
-b
+2
+,…,
+a
+n−1
 (
-1≤n≤100
-;
-2≤a,b≤100
-) — the number of enemies in the level and the dimensions of the level.
-Then
+1≤
+a
+i
+≤
+10
+9
+).
+The third line contains
+n−1
+integers
+b
+1
+,
+b
+2
+,…,
+b
+n−1
+(
+1≤
+b
+i
+≤
+10
+9
+).
+The fourth line contains
 n
+integers
+c
+1
+,
+c
+2
+,…,
+c
+n
+(
+1≤
+c
+i
+≤
+10
+9
+).
+The fifth line contains one integer
+q
+(
+1≤q≤3⋅
+10
+5
+) — the number of queries.
+Then
+q
 lines follow, the
 i
--th of them contains three integers
-x
-i
-,
-y
+-th line contains two integers
+l
 i
 and
-p
-′
+r
 i
 (
 1≤
-x
+l
 i
-≤a−1
-;
-1≤
-y
+<
+r
 i
-≤b−1
-;
-1≤
-p
-′
+≤n
+) — the parameters of the
 i
-≤999999
-), meaning that the
-i
--th enemy is located at
-(
-x
-i
-,
-y
-i
-)
-and has a probability of
-p
-′
-i
-10
-6
-to be upgraded.
-No two enemies are located in the same point.
+-th query.
 Output
-Print one integer — the expected number of parts in which the lasers divide the level, taken modulo
-998244353
-(i. e. let the expected number of parts be
-x
-y
-as an irreducible fraction; you have to print
-x⋅
-y
-−1
-mod998244353
-, where
-y
-−1
-is a number such that
-y⋅
-y
-−1
-mod998244353=1
-).
-Examples
-input
-Copy
-1 2 2
-1 1 500000
-output
-Copy
-6
-input
-Copy
-2 3 2
-1 1 500000
-2 1 500000
-output
-Copy
-499122187
-Note
-Explanation to the first example:
-With probability
-1
-2
-, the only enemy is not upgraded and the level looks like this (
-4
-parts):
-With probability
-1
-2
-, the only enemy is upgraded and the level looks like this (
-8
-parts):
-So, the expected number of parts is
-4⋅
-1
-2
-+8⋅
-1
-2
-=6
+Print
+q
+integers, where the
+i
+-th integer should be the answer to the
+i
+-th query, i. e. the maximum number of tons of coal that can be transferred per day from the Main station
+l
+i
+to the Main station
+r
+i
 .
+Example
+input
+Copy
+5
+3 4 7 4
+8 5 3 5
+10 5 3 4 10
+4
+1 4
+1 2
+3 4
+2 4
+output
+Copy
+9 8 10 9 

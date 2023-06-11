@@ -1,128 +1,93 @@
-D. Maximum Sum on Even Positions
-time limit per test2 seconds
+G. Pawns
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an array
-a
-consisting of
+You are given a chessboard consisting of
 n
-integers. Indices of the array start from zero (i. e. the first element is
-a
-0
-, the second one is
-a
+rows and
+n
+columns. Rows are numbered from bottom to top from
 1
-, and so on).
-You can reverse at most one subarray (continuous subsegment) of this array. Recall that the subarray of
-a
-with borders
-l
-and
-r
-is
-a[l;r]=
-a
-l
+to
+n
+. Columns are numbered from left to right from
+1
+to
+n
+. The cell at the intersection of the
+x
+-th column and the
+y
+-th row is denoted as
+(x,y)
+. Furthermore, the
+k
+-th column is a special column.
+Initially, the board is empty. There are
+m
+changes to the board. During the
+i
+-th change one pawn is added or removed from the board. The current board is good if we can move all pawns to the special column by the followings rules:
+Pawn in the cell
+(x,y)
+can be moved to the cell
+(x,y+1)
 ,
-a
-l+1
-,…,
-a
-r
+(x−1,y+1)
+or
+(x+1,y+1)
+;
+You can make as many such moves as you like;
+Pawns can not be moved outside the chessboard;
+Each cell can not contain more than one pawn.
+The current board may not always be good. To fix it, you can add new rows to the board. New rows are added at the top, i. e. they will have numbers
+n+1,n+2,n+3,…
 .
-Your task is to reverse such a subarray that the sum of elements on even positions of the resulting array is maximized (i. e. the sum of elements
-a
-0
-,
-a
-2
-,…,
-a
-2k
-for integer
-k=⌊
-n−1
-2
-⌋
-should be maximum possible).
-You have to answer
-t
-independent test cases.
+After each of
+m
+changes, print one integer — the minimum number of rows which you have to add to make the board good.
 Input
-The first line of the input contains one integer
-t
-(
-1≤t≤2⋅
-10
-4
-) — the number of test cases. Then
-t
-test cases follow.
-The first line of the test case contains one integer
+The first line contains three integers
 n
-(
-1≤n≤2⋅
-10
-5
-) — the length of
-a
-. The second line of the test case contains
-n
-integers
-a
-0
 ,
-a
-1
-,…,
-a
-n−1
+k
+and
+m
 (
-1≤
-a
-i
-≤
-10
-9
-), where
-a
-i
-is the
-i
--th element of
-a
-.
-It is guaranteed that the sum of
-n
-does not exceed
-2⋅
+1≤n,m≤2⋅
 10
 5
+;1≤k≤n
+) — the size of the board, the index of the special column and the number of changes respectively.
+Then
+m
+lines follow. The
+i
+-th line contains two integers
+x
+and
+y
 (
-∑n≤2⋅
-10
-5
-).
+1≤x,y≤n
+) — the index of the column and the index of the row respectively. If there is no pawn in the cell
+(x,y)
+, then you add a pawn to this cell, otherwise — you remove the pawn from this cell.
 Output
-For each test case, print the answer on the separate line — the maximum possible sum of elements on even positions after reversing at most one subarray (continuous subsegment) of
-a
-.
+After each change print one integer — the minimum number of rows which you have to add to make the board good.
 Example
 input
 Copy
-4
-8
-1 7 3 4 7 6 2 9
-5
-1 2 1 2 1
-10
-7 8 4 5 7 6 8 9 7 3
-4
-3 1 2 1
+5 3 5
+4 4
+3 5
+2 4
+3 4
+3 5
 output
 Copy
-26
-5
-37
-5
+0
+1
+2
+2
+1

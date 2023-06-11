@@ -1,120 +1,89 @@
-B. Frog Jumping
+D. Teams Forming
 time limit per test2.0 s
 memory limit per test512 MB
 inputstandard input
 outputstandard output
-A frog is currently at the point
-0
-on a coordinate axis
-Ox
-. It jumps by the following algorithm: the first jump is
+There are
+n
+students in a university. The number of students is even. The
+i
+-th student has programming skill equal to
 a
-units to the right, the second jump is
-b
-units to the left, the third jump is
-a
-units to the right, the fourth jump is
-b
-units to the left, and so on.
-Formally:
-if the frog has jumped an even number of times (before the current jump), it jumps from its current position
-x
-to position
-x+a
-;
-otherwise it jumps from its current position
-x
-to position
-x−b
+i
 .
-Your task is to calculate the position of the frog after
-k
-jumps.
-But... One more thing. You are watching
-t
-different frogs so you have to answer
-t
-independent queries.
+The coach wants to form
+n
+2
+teams. Each team should consist of exactly two students, and each student should belong to exactly one team. Two students can form a team only if their skills are equal (otherwise they cannot understand each other and cannot form a team).
+Students can solve problems to increase their skill. One solved problem increases the skill by one.
+The coach wants to know the minimum total number of problems students should solve to form exactly
+n
+2
+teams (i.e. each pair of students should form a team). Your task is to find this number.
 Input
 The first line of the input contains one integer
-t
+n
 (
-1≤t≤1000
-) — the number of queries.
-Each of the next
-t
-lines contain queries (one query per line).
-The query is described as three space-separated integers
-a,b,k
+2≤n≤100
+) — the number of students. It is guaranteed that
+n
+is even.
+The second line of the input contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
 (
-1≤a,b,k≤
-10
-9
-) — the lengths of two types of jumps and the number of jumps, respectively.
+1≤
+a
+i
+≤100
+), where
+a
+i
+is the skill of the
+i
+-th student.
 Output
-Print
-t
-integers. The
-i
--th integer should be the answer for the
-i
--th query.
-Example
+Print one number — the minimum total number of problems students should solve to form exactly
+n
+2
+teams.
+Examples
 input
 Copy
 6
-5 2 3
-100 1 4
-1 10 5
-1000000000 1 6
-1 1 1000000000
-1 1 999999999
+5 10 2 3 14 5
 output
 Copy
-8
-198
--17
-2999999997
-0
-1
-Note
-In the first query frog jumps
 5
-to the right,
+input
+Copy
 2
-to the left and
-5
-to the right so the answer is
-5−2+5=8
-.
-In the second query frog jumps
-100
-to the right,
+1 100
+output
+Copy
+99
+Note
+In the first example the optimal teams will be:
+(3,4)
+,
+(1,6)
+and
+(2,5)
+, where numbers in brackets are indices of students. Then, to form the first team the third student should solve
 1
-to the left,
-100
-to the right and
-1
-to the left so the answer is
-100−1+100−1=198
+problem, to form the second team nobody needs to solve problems and to form the third team the second student should solve
+4
+problems so the answer is
+1+4=5
 .
-In the third query the answer is
-1−10+1−10+1=−17
-.
-In the fourth query the answer is
-10
-9
-−1+
-10
-9
-−1+
-10
-9
-−1=2999999997
-.
-In the fifth query all frog's jumps are neutralized by each other so the answer is
-0
-.
-The sixth query is the same as the fifth but without the last jump so the answer is
-1
-.
+In the second example the first student should solve
+99
+problems to form a team with the second one.

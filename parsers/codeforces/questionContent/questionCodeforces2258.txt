@@ -1,81 +1,140 @@
-C. Bargain
-time limit per test1 second
-memory limit per test256 megabytes
+F. Boring Queries
+time limit per test3 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Sometimes it is not easy to come to an agreement in a bargain. Right now Sasha and Vova can't come to an agreement: Sasha names a price as high as possible, then Vova wants to remove as many digits from the price as possible. In more details, Sasha names some integer price
+Yura owns a quite ordinary and boring array
+a
+of length
 n
-, Vova removes a non-empty substring of (consecutive) digits from the price, the remaining digits close the gap, and the resulting integer is the price.
-For example, is Sasha names
-1213121
-, Vova can remove the substring
-1312
-, and the result is
-121
-.
-It is allowed for result to contain leading zeros. If Vova removes all digits, the price is considered to be
-0
-.
-Sasha wants to come up with some constraints so that Vova can't just remove all digits, but he needs some arguments supporting the constraints. To start with, he wants to compute the sum of all possible resulting prices after Vova's move.
-Help Sasha to compute this sum. Since the answer can be very large, print it modulo
+. You think there is nothing more boring than that, but Vladik doesn't agree!
+In order to make Yura's array even more boring, Vladik makes
+q
+boring queries. Each query consists of two integers
+x
+and
+y
+. Before answering a query, the bounds
+l
+and
+r
+for this query are calculated:
+l=(last+x)modn+1
+,
+r=(last+y)modn+1
+, where
+last
+is the answer on the previous query (zero initially), and
+mod
+is the remainder operation. Whenever
+l>r
+, they are swapped.
+After Vladik computes
+l
+and
+r
+for a query, he is to compute the least common multiple (LCM) on the segment
+[l;r]
+of the initial array
+a
+modulo
 10
 9
 +7
-.
+. LCM of a multiset of integers is the smallest positive integer that is divisible by all the elements of the multiset. The obtained LCM is the answer for this query.
+Help Vladik and compute the answer for each query!
 Input
-The first and only line contains a single integer
+The first line contains a single integer
 n
 (
-1≤n<
-10
+1≤n≤
 10
 5
-).
+) — the length of the array.
+The second line contains
+n
+integers
+a
+i
+(
+1≤
+a
+i
+≤2⋅
+10
+5
+) — the elements of the array.
+The third line contains a single integer
+q
+(
+1≤q≤
+10
+5
+) — the number of queries.
+The next
+q
+lines contain two integers
+x
+and
+y
+each (
+1≤x,y≤n
+) — the description of the corresponding query.
 Output
-In the only line print the required sum modulo
-10
-9
-+7
-.
-Examples
+Print
+q
+integers — the answers for the queries.
+Example
 input
 Copy
-107
+3
+2 3 5
+4
+1 3
+3 3
+2 3
+2 3
 output
 Copy
-42
-input
-Copy
-100500100500
-output
-Copy
-428101984
+6
+2
+15
+30
 Note
-Consider the first example.
-Vova can choose to remove
-1
-,
-0
-,
-7
-,
-10
-,
-07
-, or
-107
-. The results are
-07
-,
-17
-,
-10
-,
-7
-,
-1
-,
-0
-. Their sum is
-42
+Consider the example:
+boundaries for first query are
+(0+1)mod3+1=2
+and
+(0+3)mod3+1=1
+. LCM for segment
+[1,2]
+is equal to
+6
+;
+boundaries for second query are
+(6+3)mod3+1=1
+and
+(6+3)mod3+1=1
+. LCM for segment
+[1,1]
+is equal to
+2
+;
+boundaries for third query are
+(2+2)mod3+1=2
+and
+(2+3)mod3+1=3
+. LCM for segment
+[2,3]
+is equal to
+15
+;
+boundaries for fourth query are
+(15+2)mod3+1=3
+and
+(15+3)mod3+1=1
+. LCM for segment
+[1,3]
+is equal to
+30
 .

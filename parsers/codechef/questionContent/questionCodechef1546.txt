@@ -1,92 +1,40 @@
-Air Blimp
+Chef and Big Soccer
 Problem
-There are
-N cities in a row. The
-i-th city from the left has a sadness of
-A
-i
-.
-In an attempt to reduce the sadness of the cities, you can send blimps from the left of city
-1 that move rightwards (i.e, a blimp crosses cities
-1,2,… in order)
-You are given two integers
-X and
-Y. For each blimp sent, you can make one of the following choices:
-Let the blimp fly over every city, in which case the sadness of every city will decrease by
-Y, or,
-Choose a city
-i
-(1≤i≤N), and shower confetti over city
-i. In this case, the sadness of cities
-1,2,…,i−1 will decrease by
-Y, the sadness of city
-i will decrease by
-X, and cities
-i+1,…,N see no change in sadness.
-Find the minimum number of blimps needed such that, by making the above choice optimally for each blimp, you can ensure that no city is sad (i.e, in the end every city has sadness
-≤0).
-Input Format
-The first line of input contains a single integer
-T — the number of test cases. Then the test cases follow.
-The first line of each test case contains three space-separated integers
-N,X,Y — the size of the array, and the parameters mentioned in the statement.
-The second line of each test case contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-, denoting the sadness of the
-N cities.
-Output Format
-For each test case, output on a new line the minimum number of blimps needed such that no city is sad.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef is a big fan of soccer! He loves soccer so much, that he even invented soccer for his pet dogs! Here are the rules of the game:
+There are N dogs numerated from 1 to N stay in a line, so dogs i and i + 1 are adjacent.
+There is a ball which dogs will pass around. Initially, dog s has the ball.
+A dog with ball can pass it to another dog. If the current pass-strength of dog is x, then it can pass the ball to either dog i - x or dog i + x (provided such dog/s exist).
+To make it even more exciting, Chef created an array A of M positive integers denoting pass strengths. In i-th pass, current pass-strength of the dog making the pass will be given by Ai. Chef asks dogs to execute these M passes one by one. As stated before, dog s will make the first pass, then some other dog and so on till M passes.
+Dogs quickly found out that there can be lot of possible sequences of passes which will end up with a dog having the ball. Now each dog asks your help in finding number of different pass sequences which result in this dog ending up ball. Two pass sequences are considered different if after some number of passes they lead the ball to different dogs. As the answer could be quite large, output it modulo 109 + 7 (1000000007).
+Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains three space separated integers N, M, s denoting the number of dogs, number of pass strengths and number of dog having a ball at the beginning.
+The second line contains M space-separated integers A1, A2, ..., AM denoting the pass strengths.
+Output
+For each test case, output a single line containing N space-separated integers, where i-th integer should be equal to number of different valid pass sequences leading the ball to i-th dog modulo 109 + 7.
 Constraints
-1≤T≤10
-4
-1≤N≤3⋅10
-5
-1≤X,Y≤10
-9
-0≤A
-i
-≤10
-9
-The sum of
-N over all test cases does not exceed
-3⋅10
-5
+1 ≤ T ≤ 10
+1 ≤ N, M ≤ 10^3
+1 ≤ s ≤ N
+1 ≤ Ai ≤ 10^3
+Subtasks
+Subtask #1 (30 points) : N, M ≤ 10
+Subtask #2 (70 points) : Original constraints
 Sample 1:
 Input
 Output
 3
-4 4 4
-1 5 4 4
-5 4 3
-1 4 3 3 5
-4 3 1
-3 1 3 9
-2
-2
+3 2 2
+1 2 
+3 3 3
+1 1 1
+3 1 1
 3
+1 0 1
+0 2 0
+0 0 0
 Explanation:
-Test case
-1: One way of using two blimps is as follows:
-Initially,
-A=[1,5,4,4]
-Shower confetti on city
-2. Now,
-A=[−3,1,4,4].
-Shower confetti on city
-4. Now,
-A=[−7,−3,0,0] and we are done.
-Test case
-2: One way of using two blimps is as follows:
-Initially,
-A=[1,4,3,3,5]
-Let a blimp fly over every city. Now,
-A=[−2,1,0,0,2].
-Shower confetti on city
-5. Now,
-A=[−5,−2,−3,−3,−2], and we are done.
+Example case 1. Possible sequence for dog 1 is 2->3->1. Possible sequence for dog 3 is 2->1->3.
+Example case 2. Possible sequences for dog 2 are 3->2->1->2 and 3->2->3->2.
+Example case 3. There are no valid sequences for such input.

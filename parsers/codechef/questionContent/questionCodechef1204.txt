@@ -1,111 +1,162 @@
-Array Rotation
+Even Subarray XOR
 Problem
-Given an array
-A of length
-N, we can define rotation as follows. If we rotate
-A to the right, all elements move to the right one unit, and the last element moves to the beginning. That is, it becomes
-[A
-N
-,A
-1
-,A
-2
-,…,A
-N−1
-]. Similarly if we rotate
-A to the left, it becomes
-[A
-2
-,A
-3
-,…,A
-N
-,A
-1
-].
-Given an array
-A and an integer
-x, define
-f(A,x) to be the array
-A rotated by the amount
-x. If
-x≥0, this means we rotate it right
-x times. If
-x<0, this means we rotate it left
-∣x∣ times.
-You are given an array
-A of length
-N. Then
-Q queries follow. In each query, an integer
-x is given. To answer the query, you should replace
-A with
-A+f(A,x) where
-+ denotes concatenation. After this operation, you must output the sum of all elements of
-A. Since this number can be large, output it modulo
-10
-9
-+7.
-Note that the queries are cumulative. When you modify
-A to answer one query, it starts that way for the next query.
-###Input
-The first line contains an integer
-N - the size of the initial array.
-The second line contains
-N integers
+Given a positive integer
+N, construct two arrays
+A and
+B, each of size
+N such that:
 A
-1
-,…,A
-N
-- the elements of the initial array.
-The third line contains an integer
-Q - the number of queries.
-The fourth line contains
-Q space-separated integers
-x
-1
-,…,x
-Q
-, where
-x
 i
-is the parameter of the
-i-th query.
-###Output After each query, output in a single line the the sum of all elements of the current array modulo
-10
-9
-+7.
-###Constraints
-1≤N≤10
-5
-1≤Q≤10
-5
-−10
-9
-≤A
+
+=A
+j
+for all
+(1≤i<j≤N);
+B
 i
-≤10
-9
-−10
-5
-≤x
+
+=B
+j
+for all
+(1≤i<j≤N);
+A
 i
-≤10
+
+=B
+j
+for all
+(1≤i,j≤N);
+1≤A
+i
+,B
+i
+≤3⋅10
 5
-###Subtasks
-Subtask #1 (100 points): original constraints
+for all
+(1≤i≤N);
+⊕A[1,i]=⊕B[1,i] for all
+(1≤i≤N) such that
+i is even.
+Here
+⊕A[L,R] corresponds to the bitwise XOR of all elements of the subarray
+[L,R] of array
+A. Similarly,
+⊕B[L,R] corresponds to the bitwise XOR of all elements of the subarray
+[L,R] of array
+B.
+If multiple answers are possible, ouput any.
+Input Format
+First line will contain
+T, the number of test cases. Then the test cases follow.
+Each test case contains of a single line of input, a single integer
+N - as mentioned in statement.
+Output Format
+For each test case, output two lines.
+The first line contains
+N space-separated integers denoting the elements of the array
+A.
+The second line contains
+N space-separated integers denoting the elements of the array
+B.
+If multiple answers are possible, ouput any.
+Constraints
+1≤T≤1000
+1≤N≤2
+17
+1≤A
+i
+,B
+i
+≤3⋅10
+5
+Sum of
+N over all test cases does not exceed
+2
+18
+.
 Sample 1:
 Input
 Output
+3
 2
-1 2
-2
-1 1
-6
-12
+3
+4
+6 3 
+11 14
+100000 98630 300000 
+200000 199334 299999
+4 1 9 5 
+7 2 10 6
 Explanation:
-Initially, the array is
-[1,2]. After the first query, the array becomes
-[1,2]+f([1,2],1)=[1,2]+[2,1]=[1,2,2,1]. The total sum is
-6. After the second query, the array becomes
-[1,2,2,1]+f([1,2,2,1],1)=[1,2,2,1]+[1,1,2,2]=[1,2,2,1,1,1,2,2]. The total sum is
-12.
+Test case
+1: A possible pair of arrays is
+A=[6,3] and
+B=[11,14].
+The only even value of
+i≤2 is
+2. Thus,
+⊕A[1,i]=⊕A[1,2]=A
+1
+⊕A
+2
+=6⊕3=5. Also,
+⊕B[1,i]=⊕B[1,2]=B
+1
+⊕B
+2
+=11⊕14=5.
+Test case
+2: A possible pair of arrays is
+A=[100000,98630,300000] and
+B=[200000,199334,299999].
+The only even value of
+i≤3 is
+2. Thus,
+⊕A[1,i]=⊕A[1,2]=A
+1
+⊕A
+2
+=100000⊕98630=2022. Also,
+⊕B[1,i]=⊕B[1,2]=B
+1
+⊕B
+2
+=200000⊕199334=2022.
+Test case
+3: A possible pair of arrays is
+A=[4,1,9,5] and
+B=[7,2,10,6].
+The even values of
+i≤4 are
+2 and
+4.
+i=2:
+⊕A[1,i]=⊕A[1,2]=A
+1
+⊕A
+2
+=4⊕1=5. Also,
+⊕B[1,i]=⊕B[1,2]=B
+1
+⊕B
+2
+=7⊕2=5.
+i=4:
+⊕A[1,i]=⊕A[1,4]=A
+1
+⊕A
+2
+⊕A
+3
+⊕A
+4
+=4⊕1⊕9⊕5=9. Also,
+⊕B[1,i]=⊕B[1,4]=B
+1
+⊕B
+2
+⊕B
+3
+⊕B
+4
+=7⊕2⊕10⊕6=9.

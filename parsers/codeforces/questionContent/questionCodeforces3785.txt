@@ -1,29 +1,76 @@
-C. Palindromic Matrix
-time limit per test2 seconds
+D1. Coffee and Coursework (Easy version)
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let's call some square matrix with integer values in its cells palindromic if it doesn't change after the order of rows is reversed and it doesn't change after the order of columns is reversed.
-For example, the following matrices are palindromic:
-The following matrices are not palindromic because they change after the order of rows is reversed:
-The following matrices are not palindromic because they change after the order of columns is reversed:
-You are given
+The only difference between easy and hard versions is the constraints.
+Polycarp has to write a coursework. The coursework consists of
+m
+pages.
+Polycarp also has
 n
+cups of coffee. The coffee in the
+i
+-th cup has
+a
+i
+caffeine in it. Polycarp can drink some cups of coffee (each one no more than once). He can drink cups in any order. Polycarp drinks each cup instantly and completely (i.e. he cannot split any cup into several days).
+Surely, courseworks are not usually being written in a single day (in a perfect world of Berland, at least). Some of them require multiple days of hard work.
+Let's consider some day of Polycarp's work. Consider Polycarp drinks
+k
+cups of coffee during this day and caffeine dosages of cups Polycarp drink during this day are
+a
+i
+1
+,
+a
+i
 2
-integers. Put them into a matrix of
-n
-rows and
-n
-columns so that each number is used exactly once, each cell contains exactly one number and the resulting matrix is palindromic. If there are multiple answers, print any. If there is no solution, print "NO".
+,…,
+a
+i
+k
+. Then the first cup he drinks gives him energy to write
+a
+i
+1
+pages of coursework, the second cup gives him energy to write
+max(0,
+a
+i
+2
+−1)
+pages, the third cup gives him energy to write
+max(0,
+a
+i
+3
+−2)
+pages, ..., the
+k
+-th cup gives him energy to write
+max(0,
+a
+i
+k
+−k+1)
+pages.
+If Polycarp doesn't drink coffee during some day, he cannot write coursework at all that day.
+Polycarp has to finish his coursework as soon as possible (spend the minimum number of days to do it). Your task is to find out this number of days or say that it is impossible.
 Input
-The first line contains one integer
+The first line of the input contains two integers
 n
+and
+m
 (
-1≤n≤20
-).
-The second line contains
+1≤n≤100
+,
+1≤m≤
+10
+4
+) — the number of cups of coffee and the number of pages in the coursework.
+The second line of the input contains
 n
-2
 integers
 a
 1
@@ -33,68 +80,80 @@ a
 ,…,
 a
 n
-2
 (
 1≤
 a
 i
-≤1000
-) — the numbers to put into a matrix of
-n
-rows and
-n
-columns.
+≤100
+), where
+a
+i
+is the caffeine dosage of coffee in the
+i
+-th cup.
 Output
-If it is possible to put all of the
-n
-2
-numbers into a matrix of
-n
-rows and
-n
-columns so that each number is used exactly once, each cell contains exactly one number and the resulting matrix is palindromic, then print "YES". Then print
-n
-lines with
-n
-space-separated numbers — the resulting matrix.
-If it's impossible to construct any matrix, then print "NO".
-You can print each letter in any case (upper or lower). For example, "YeS", "no" and "yES" are all acceptable.
+If it is impossible to write the coursework, print -1. Otherwise print the minimum number of days Polycarp needs to do it.
 Examples
 input
 Copy
-4
-1 8 8 1 2 2 2 2 2 2 2 2 1 8 8 1
+5 8
+2 3 1 1 2
 output
-Copy
-YES
-1 2 2 1
-8 2 2 8
-8 2 2 8
-1 2 2 1
-input
-Copy
-3
-1 1 1 1 1 3 3 3 3
-output
-Copy
-YES
-1 3 1
-3 1 3
-1 3 1
-input
 Copy
 4
-1 2 1 9 8 4 3 8 8 3 4 8 9 2 1 1
+input
+Copy
+7 10
+1 3 4 2 1 4 2
 output
 Copy
-NO
+2
 input
+Copy
+5 15
+5 5 5 5 5
+output
 Copy
 1
-10
+input
+Copy
+5 16
+5 5 5 5 5
 output
 Copy
-YES
-10 
+2
+input
+Copy
+5 26
+5 5 5 5 5
+output
+Copy
+-1
 Note
-Note that there exist multiple answers for the first two examples.
+In the first example Polycarp can drink fourth cup during first day (and write
+1
+page), first and second cups during second day (and write
+2+(3−1)=4
+pages), fifth cup during the third day (and write
+2
+pages) and third cup during the fourth day (and write
+1
+page) so the answer is
+4
+. It is obvious that there is no way to write the coursework in three or less days in this test.
+In the second example Polycarp can drink third, fourth and second cups during first day (and write
+4+(2−1)+(3−2)=6
+pages) and sixth cup during second day (and write
+4
+pages) so the answer is
+2
+. It is obvious that Polycarp cannot write the whole coursework in one day in this test.
+In the third example Polycarp can drink all cups of coffee during first day and write
+5+(5−1)+(5−2)+(5−3)+(5−4)=15
+pages of coursework.
+In the fourth example Polycarp cannot drink all cups during first day and should drink one of them during the second day. So during first day he will write
+5+(5−1)+(5−2)+(5−3)=14
+pages of coursework and during second day he will write
+5
+pages of coursework. This is enough to complete it.
+In the fifth example Polycarp cannot write the whole coursework at all, even if he will drink one cup of coffee during each day, so the answer is -1.

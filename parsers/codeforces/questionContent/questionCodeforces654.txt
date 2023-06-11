@@ -1,127 +1,71 @@
-E. Prefix Function Queries
-time limit per test2 seconds
+A. Spell Check
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string
+Timur likes his name. As a spelling of his name, he allows any permutation of the letters of the name. For example, the following strings are valid spellings of his name: Timur, miurT, Trumi, mriTu. Note that the correct spelling must have uppercased T and lowercased other letters.
+Today he wrote string
 s
-, consisting of lowercase Latin letters.
-You are asked
-q
-queries about it: given another string
-t
-, consisting of lowercase Latin letters, perform the following steps:
-concatenate
+of length
+n
+consisting only of uppercase or lowercase Latin letters. He asks you to check if
 s
-and
+is the correct spelling of his name.
+Input
+The first line of the input contains an integer
 t
-;
-calculate the prefix function of the resulting string
-s+t
-;
-print the values of the prefix function on positions
-|s|+1,|s|+2,…,|s|+|t|
 (
-|s|
-and
-|t|
-denote the lengths of strings
-s
-and
-t
-, respectively);
-revert the string back to
+1≤t≤
+10
+3
+) — the number of test cases.
+The first line of each test case contains an integer
+n
+(1≤n≤10)
+ — the length of string
 s
 .
-The prefix function of a string
-a
-is a sequence
-p
-1
-,
-p
-2
-,…,
-p
-|a|
-, where
-p
-i
-is the maximum value of
-k
-such that
-k<i
-and
-a[1..k]=a[i−k+1..i]
-(
-a[l..r]
-denotes a contiguous substring of a string
-a
-from a position
-l
-to a position
-r
-, inclusive). In other words, it's the longest proper prefix of the string
-a[1..i]
-that is equal to its suffix of the same length.
-Input
-The first line contains a non-empty string
+The second line of each test case contains a string
 s
-(
-1≤|s|≤
-10
-6
-), consisting of lowercase Latin letters.
-The second line contains a single integer
-q
-(
-1≤q≤
+consisting of only uppercase or lowercase Latin characters.
+Output
+For each test case, output "YES" (without quotes) if
+s
+satisfies the condition, and "NO" (without quotes) otherwise.
+You can output the answer in any case (for example, the strings "yEs", "yes", "Yes" and "YES" will be recognized as a positive answer).
+Example
+input
+Copy
 10
 5
-) — the number of queries.
-Each of the next
-q
-lines contains a query: a non-empty string
-t
-(
-1≤|t|≤10
-), consisting of lowercase Latin letters.
-Output
-For each query, print the values of the prefix function of a string
-s+t
-on positions
-|s|+1,|s|+2,…,|s|+|t|
-.
-Examples
-input
-Copy
-aba
-6
-caba
-aba
-bababa
-aaaa
-b
-forces
-output
-Copy
-0 1 2 3 
-1 2 3 
-2 3 4 5 6 7 
-1 1 1 1 
-2 
-0 0 0 0 0 0 
-input
-Copy
-aacba
+Timur
+5
+miurT
+5
+Trumi
+5
+mriTu
+5
+timur
 4
-aaca
-cbbb
-aab
-ccaca
+Timr
+6
+Timuur
+10
+codeforces
+10
+TimurTimur
+5
+TIMUR
 output
 Copy
-2 2 3 1 
-0 0 0 0 
-2 2 0 
-0 0 1 0 1 
+YES
+YES
+YES
+YES
+NO
+NO
+NO
+NO
+NO
+NO

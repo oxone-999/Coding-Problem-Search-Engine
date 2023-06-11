@@ -1,27 +1,36 @@
-SuperFunction
+Rotate Point
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Mike likes to invent new functions. The latest one he has invented is called SuperFunction. Let's consider how it can be calculated:
-You are given two integers N and K. SuperFunction of N and K equals to the sum of K'th powers of the positive numbers, which are coprime with N and also not greater than N.
-I.e. SuperFuntion of 6 and 3 equals to 13 + 53 = 126.
-Mike knows how to calculate SuperFunction in case N and K are rather small integers. Now he wants you to write him a solution, which can calculate SuperFuntion for bigger constraints. As far as SuperFunction could be extremely huge, you are asked to do all the calculation under modulo M.
-Help Mike!
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+You are given n points p1, p2, ..., pn in a plane and n integers a1, a2, ..., an.
+For any index i (1 ≤ i ≤ n), it is possible to perform the following operation (let's call it i-rotation) on an arbitrary point P: Rotate P by ai degrees counter-clockwise around the point pi.
+Note that ai will always be a multiple of 90. Also note that such an operation changes the point P.
+You should process q queries. Each query is of one of the following types:
+1 x y l r: Initially, you are given P = (x, y). Perform each i-rotation for i = l, l+1, ..., r (in this order) on the point P. Compute the coordinates of P modulo 109 + 7 after performing all i-rotations.
+2 u x y b: Change the point pu to (x, y) and the angle au to b.
 Input
-The first line contains three integers N, K and M.
+The first line of the input contains a single integer n.
+Then, n lines follow. The i-th of these lines contains three space-separated integers xi, yi and ai. The i-th point is initially pi = (xi, yi).
+The next line contains a single integer q denoting the number of queries.
+Each of the following q lines contains a query in the format described above.
 Output
-The first line of contains the only integer, denoting SuperFuntion of N and K under modulo M.
-Example
-Input:
-5 2 100
-Output:
-30
-Explanation
-In the test case N equals to 5, K equals to 2, M equals to 100. The answer is (12 + 22 + 32 + 42) mod 100 = 30.
-Scoring
-Subtask 1 (12 points): 1 ≤ N ≤ 100, 1 ≤ K ≤ 2, 1 ≤ M ≤ 40000;
-
-Subtask 2 (28 points): 1 ≤ N ≤ 1 000 000, 1 ≤ K ≤ 2, 1 ≤ M ≤ 109;
-
-Subtask 3 (30 points): 1 ≤ N ≤ 1 000 000 000 000, 1 ≤ K ≤ 3, 1 ≤ M ≤ 109;
-
-Subtask 4 (30 points): 1 ≤ N ≤ 1 000 000 000 000, 1 ≤ K ≤ 10, 1 ≤ M ≤ 1018.
+For each query of type 1, print a single line containing two space-separated integers denoting the coordinates of the point P after performing all rotations, modulo 109 + 7.
+Constraints
+1 ≤ n ≤ 105
+0 ≤ xi, yi, x, y ≤ 109
+0 ≤ ai, b < 360
+1 ≤ q ≤ 2 · 105
+1 ≤ l ≤ r ≤ n
+1 ≤ u ≤ n
+Sample 1:
+Input
+Output
+3
+0 0 90
+1 2 180
+3 2 270
+3
+1 5 5 1 3
+2 2 2 2 90
+1 5 5 1 3
+0 1000000005
+1000000003 6

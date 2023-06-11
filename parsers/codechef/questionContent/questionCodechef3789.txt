@@ -1,45 +1,178 @@
-Chefbook
+Too Many LIS 2
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-The Chief Chef has built a new social network call Chefbook. Everyone who is interested in cooking can join Chefbook. Already N chefs joined the chefbook and loved it so much.
-In Chefbook, a chef can be a friend with other chefs (one or more). The friendship is not bidirectional that means if chef A is a friend of chef B, not necessarily chef B is a friend of chef A. Every chef x in Chefbook will give a likeness value Lxy to each of his Chefbook friend y. Likeness indicates how much he like his friend.
-The Chief Chef wants that every chef in Chefbook should have friends with moderate likeness only. He does not like the fact one chef likes another chef too much or one chef does not like another chef at all. As he is the admin of the Chefbook, he decided to change the likeness value of some chef’s such that all the likeness value resides between a lower value and upper value. But changing likeness value for each friendship could be tedious and boring job. So Chief Chef comes up with a new idea. He will choose a chef x of Chefbook and increase likeness Lxy by Px for all of his friends y. Another option is he will choose a chef y and decrease likeness Lxy by Qy for all chef x such that y is a friend of x. The increase operation on x or decrease operation on y can be done only once. During any operation the intermediate value of Lxy can have any value but the final value of Lxy (for all x and y) should be in between Sxy and Txy (inclusive), where Sxy and Txy are the lower limit and upper limit respectively of the new likeness value Wxy of chef x for his friend y.
-Wxy = Lxy + Px - Qy
-Though Chief Chef wants to moderate the likeness value but he does not wants reduce overall likeness in Chefbook. So he decided to make the change such that sum of likeness Wxy should be as maximum as possible.
-Input
-The first line of input contains an integer T, denoting the number of test cases to follow.
-The first line of each test case contains two space separated integers N and M, denoting the number of chefs in the Chefbook and number of friend relationship in Chefbook respectively. Followed by M lines, each containing five space separated integers x, y, Lxy, Sxy and Txy such that y is a friend of x where Lxy is the y’s likeness value given by x and Sxy and Txy are the lower and upper limit respectively of the new likeness Wxy set by Chief chef. Note that x and y can be same (a chef can like himself).
-Output
-First line of each test case will contain a single line with a single word "Unlike" (without the quotes) if it is not possible to change the likeness value according to the constraint described above. Otherwise each test case will consist of three lines. First line will contain a single integer SUM, which is the sum of the new likeness value Wxy. Next line will contain N space separated integers containing Px (for all x = 1 to N). Similarly next line will contain N space separated integers containing Qy (for all y = 1 to N). If there are several P and Q possible output anyone of them.
-Note that, there will be no new friendship within these operation.
-Constraints
-1≤T≤10
-1≤N≤100
-1≤M≤N2
-1≤x, y≤N
--600≤Lxy≤600
--1000≤Sxy≤Txy≤1000
-0≤Px, Qy≤106
-Subtask
-Subtask #1: Point 20
-1≤N≤20
-Subtask #2: Point 80
-1≤N≤100
-Example
-Sample Input
+This problem has two subtasks worth
+50 points each.
+You are given an integer
+N. You also have
+N empty sets
+S
+1
+,S
 2
-2 4
-1 1 2 5 10
-1 2 4 8 10 
-2 1 3 5 10
-2 2 2 7 10
-2 4
-1 1 1 7 7
-1 2 7 7 7
-2 1 7 7 7
-2 2 7 7 7
-Output for Sample Input
-37
-15 17
-10 9
-Unlike
+,…,S
+N
+.
+Consider all the arrays
+A of length
+N such that
+0≤A
+i
+≤1 for each
+1≤i≤N (there are
+2
+N
+such arrays in total).
+For each of these
+2
+N
+arrays, we compute an array
+B of length
+N where
+B
+i
+= length of longest non-decreasing subsequence for the prefix of length
+i of array
+A. (For example: if
+N=5 and
+A=[0,1,0,1,1], then
+B=[1,2,2,3,4].) Next we add the array
+B to the set
+S
+B
+N
+(For example,
+B=[1,2,2,3,4] would be added to
+S
+4
+).
+Output the size of sets
+S
+1
+,S
+2
+,…,S
+N
+as
+N space-separated integers. Since the size of the sets might be large, output the values modulo
+10
+9
++7.
+Note that the
+S
+i
+are sets, and hence do not contain duplicate elements. Please look at the sample cases below for an explained example.
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+The first and only line of each test case contains a single integer
+N.
+Output Format
+For each test case, output on a new line the
+N space separated integers, size of sets
+S
+1
+,S
+2
+,…,S
+N
+, modulo
+10
+9
++7.
+Constraints
+1≤T≤500
+1≤N≤2⋅10
+5
+The sum of
+N over all tests won't exceed
+2⋅10
+5
+.
+Subtasks
+Subtask #1 (50 points):
+1≤T≤100
+1≤N≤5⋅10
+3
+The sum of
+N over all tests won't exceed
+5⋅10
+3
+.
+Subtask #2 (50 points): Original constraints
+Sample 1:
+Input
+Output
+3
+2
+3
+4
+1 1
+0 2 1
+0 2 3 1
+Explanation:
+Test case
+1:
+For
+A=[0,0],
+B=[1,2]
+For
+A=[0,1],
+B=[1,2]
+For
+A=[1,0],
+B=[1,1]
+For
+A=[1,1],
+B=[1,2]
+Therefore,
+S
+1
+={[1,1]},S
+2
+={[1,2]}
+Test case
+2:
+For
+A=[0,0,0],
+B=[1,2,3]
+For
+A=[0,0,1],
+B=[1,2,3]
+For
+A=[0,1,0],
+B=[1,2,2]
+For
+A=[0,1,1],
+B=[1,2,3]
+For
+A=[1,0,0],
+B=[1,1,2]
+For
+A=[1,0,1],
+B=[1,1,2]
+For
+A=[1,1,0],
+B=[1,2,2]
+For
+A=[1,1,1],
+B=[1,2,3]
+Therefore,
+S
+1
+={},S
+2
+={[1,1,2],[1,2,2]},S
+3
+={[1,2,3]}
+Test case
+3:
+S
+1
+={},S
+2
+={[1,1,2,2],[1,2,2,2]},S
+3
+={[1,1,2,3],[1,2,2,3],[1,2,3,3]},S
+4
+={[1,2,3,4]}

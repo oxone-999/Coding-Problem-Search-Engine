@@ -1,80 +1,119 @@
-Tri XOR
+Coin Denominations
 Problem
-There are
-N numbers written on a blackboard.
-In one operation, Chef can:
-Choose any
-3 integers
-A,B, and
-C written on the blackboard.
-Erase them from the blackboard.
-Write
-A⊕B,B⊕C, and
-C⊕A on the blackboard. Here,
-⊕ denotes the bitwise XOR operation.
-Your task is to make all the numbers written on the blackboard equal to
-0 using at most
-11111 operations.
-It is guaranteed that all the numbers on the blackboard can be made
-0 under the given constraints.
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case consists of multiple lines of input.
-The first line of each test case contains a single integer
-N, the number of integers written on the blackboard.
-Next line contains
-N space separated integers
+You are given an integer
+C and an array
+A =
 A
 1
 ,A
 2
-,…A
+,…,A
 N
-, the integers written on the blackboard initially.
-Output Format
-For each test case:
-On the first line, output
-M(0≤M≤11111) - the number of operations you are going to perform.
-Next
-M lines contain
-3 space-separated integers
-A,B, and
-C
-(A,B,C should be present on the blackboard at the time of operation
-) - denoting the integers using which operation is performed.
-Constraints
-1≤T≤10
-6≤N≤1000
-0≤A
+which has distinct positive integers. It is guaranteed that
+A
+i
+≤C for
+1≤i≤N. You have an infinite supply of coins of denomination
+A
+i
+for
+1≤i≤N. You have another array
+W=W
+1
+,W
+2
+,…W
+N
+. This denotes that a single coin of denomination
+A
+i
+has a weight of
+W
+i
+.
+You are given
+M queries:
+Q
+1
+,Q
+2
+,…,Q
+M
+. You need to get a collection of coins, such that their values add up to exactly
+Q
+i
+(ie. sum of denominations), and the sum of their weights is minimized. Output this minimum weight, or say that it is impossible to get exactly a sum of
+Q
+i
+. As the minimum weight could be huge, output it module
+10
+9
++7.
+###Input:
+The first line of the input contains three integers:
+N,
+C and
+M.
+The i-th of the next
+N lines contains two numbers
+A
+i
+and
+W
+i
+, which have been described above.
+The i-th of the next
+M lines contains a single integer:
+Q
+i
+.
+###Output:
+M lines, each of which should contain a single integer. If it is possible to achieve the queried value, then your output should be the remainder when the minimum total weight is divided by
+10
+9
++7.
+If it is not possible to achieve the exact value in the query, print
+−1. Note that we do not take modulo anything here.
+###Constraints
+1≤N≤C≤100
+1≤M≤10
+6
+1≤A
+i
+≤C
+A
+i
+
+=A
+j
+, if
+i
+
+=j
+1≤W
 i
 ≤10
 9
-Sample 1:
-Input
-Output
-1
+1≤Q
+i
+≤10
+18
+###Subtasks
+12 points :
+1≤Q
+i
+≤10
 6
-0 1 2 3 2 0
-2
-2 3 2
-1 1 1
-Explanation:
-Test case
-1: We can make all the numbers
-0 using
-2 operations:
-Operation
-1: Choose the integers
-2,3, and
-2 and replace them with
-2⊕3=1,3⊕2=1, and
-2⊕2=0. Thus, numbers on the blackboard are now
-[0,1,0,1,1,0].
-Operation
-2: Choose the integers
-1,1, and
-1 and replace them with
-1⊕1=0,1⊕1=0, and
-1⊕1=0. Thus all numbers on the blackboard are now
-0.
+88 points : No further constraints.
+###Sample Input: 3 100 2 2 50 8 1 3 40 9 7
+###Sample Output: 120 140
+###Explanation: You can get a total value of
+9 by taking three coins of denomination
+3. Their total weight comes to
+3∗40=120. You can check that you cannot do better than this.
+You can get a total value of
+7 by taking two coins of denomination
+2 and one coin of denomination
+3 (
+(2∗2)+3=7). Their total weight comes to
+(2∗50)+40=140. You can check that you cannot do better than this.

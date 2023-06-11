@@ -1,20 +1,55 @@
-E. Rearrange Brackets
-time limit per test2 seconds
+D. Black Cells
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A regular bracket sequence is a bracket sequence that can be transformed into a correct arithmetic expression by inserting characters "1" and "+" between the original characters of the sequence. For example:
-bracket sequences "()()" and "(())" are regular (the resulting expressions are: "(1)+(1)" and "((1+1)+1)");
-bracket sequences ")(", "(" and ")" are not.
-You are given a regular bracket sequence. In one move, you can remove a pair of adjacent brackets such that the left one is an opening bracket and the right one is a closing bracket. Then concatenate the resulting parts without changing the order. The cost of this move is the number of brackets to the right of the right bracket of this pair.
-The cost of the regular bracket sequence is the smallest total cost of the moves required to make the sequence empty.
-Actually, you are not removing any brackets. Instead, you are given a regular bracket sequence and an integer
+You are playing with a really long strip consisting of
+10
+18
+white cells, numbered from left to right as
+0
+,
+1
+,
+2
+and so on. You are controlling a special pointer that is initially in cell
+0
+. Also, you have a "Shift" button you can press and hold.
+In one move, you can do one of three actions:
+move the pointer to the right (from cell
+x
+to cell
+x+1
+);
+press and hold the "Shift" button;
+release the "Shift" button: the moment you release "Shift", all cells that were visited while "Shift" was pressed are colored in black.
+(Of course, you can't press Shift if you already hold it. Similarly, you can't release Shift if you haven't pressed it.)
+Your goal is to color at least
 k
-. You can perform the following operation at most
+cells, but there is a restriction: you are given
+n
+segments
+[
+l
+i
+,
+r
+i
+]
+ — you can color cells only inside these segments, i. e. you can color the cell
+x
+if and only if
+l
+i
+≤x≤
+r
+i
+for some
+i
+.
+What is the minimum number of moves you need to make in order to color at least
 k
-times:
-extract some bracket from the sequence and insert it back at any position (between any two brackets, at the start or at the end; possibly, at the same place it was before).
-After all operations are performed, the bracket sequence has to be regular. What is the smallest possible cost of the resulting regular bracket sequence?
+cells black?
 Input
 The first line contains a single integer
 t
@@ -22,46 +57,181 @@ t
 1≤t≤
 10
 4
-) — the number of testcases.
-The first line of each testcase contains a single integer
+) — the number of test cases.
+The first line of each test case contains two integers
+n
+and
 k
 (
-0≤k≤5
-) — the maximum number of operations you can perform.
-The second line contains a non-empty regular bracket sequence, it consists only of characters '(' and ')'.
-The total length of the regular bracket sequences over all testcases doesn't exceed
+1≤n≤2⋅
+10
+5
+;
+1≤k≤
+10
+9
+) — the number of segments and the desired number of black cells, respectively.
+The second line contains
+n
+integers
+l
+1
+,
+l
+2
+,…,
+l
+n
+(
+1≤
+l
+1
+<
+l
+2
+<⋯<
+l
+n
+≤
+10
+9
+), where
+l
+i
+is the left border of the
+i
+-th segment.
+The third line contains
+n
+integers
+r
+1
+,
+r
+2
+,…,
+r
+n
+(
+1≤
+r
+i
+≤
+10
+9
+;
+l
+i
+≤
+r
+i
+<
+l
+i+1
+−1
+), where
+r
+i
+is the right border of the
+i
+-th segment.
+Additional constraints on the input:
+every cell belongs to at most one segment;
+the sum of
+n
+doesn't exceed
 2⋅
 10
 5
 .
 Output
-For each testcase, print a single integer — the smallest possible cost of the regular bracket sequence after you perform at most
+For each test case, print the minimum number of moves to color at least
 k
-operations on it.
+cells black, or
+−1
+if it's impossible.
 Example
 input
 Copy
-7
-0
-()
-0
-(())
-1
-(())
-5
-()
-1
-(()()(()))
-2
-((())()(()())((())))
-3
-((())()(()())((())))
+4
+2 3
+1 3
+1 4
+4 20
+10 13 16 19
+11 14 17 20
+2 3
+1 3
+1 10
+2 4
+99 999999999
+100 1000000000
 output
 Copy
-0
+8
+-1
+7
+1000000004
+Note
+In the first test case, one of the optimal sequences of operations is the following:
+Move right: pointer is moving into cell
 1
-0
-0
+;
+Press Shift;
+Release Shift: cell
 1
-4
+is colored black;
+Move right: pointer is moving into cell
 2
+;
+Move right: pointer is moving into cell
+3
+;
+Press Shift;
+Move right: pointer is moving into cell
+4
+;
+Release Shift: cells
+3
+and
+4
+are colored in black.
+We've colored
+3
+cells in
+8
+moves.
+In the second test case, we can color at most
+8
+cells, while we need
+20
+cell to color.
+In the third test case, one of the optimal sequences of operations is the following:
+Move right: pointer is moving into cell
+1
+;
+Move right: pointer is moving into cell
+2
+;
+Move right: pointer is moving into cell
+3
+;
+Press Shift;
+Move right: pointer is moving into cell
+4
+;
+Move right: pointer is moving into cell
+5
+;
+Release Shift: cells
+3
+,
+4
+and
+5
+are colored in black.
+We've colored
+3
+cells in
+7
+moves.

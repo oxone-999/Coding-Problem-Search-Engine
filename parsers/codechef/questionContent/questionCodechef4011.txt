@@ -1,185 +1,47 @@
-Bus Station
+Kali and Devtas
 Problem
-###Read problems statements Mandarin , Bengali , Hindi , Russian and Vietnamese as well.
-Ryan is the president of a planet. There is a large bus station on this planet and
-M buses stop at this station every day. For each valid
-i, the
-i-th bus arrives at the station
-t
-i
-seconds after midnight (on Ryan's planet, each day lasts
-10
-100
-hours, not
-24 hours), waits at the station for some non-negative (not necessarily integer) amount of time and then leaves.
-Ryan knows that
-N people are coming to the station today. For each
-i (
-1≤i≤N), the
-i-th person is described by parameters
-s
-i
-,
-a
-i
-,
-b
-i
-,
-c
-i
-,
-d
-i
-with the following meaning:
-This person arrives at the station
-s
-i
-seconds after midnight with dissatisfaction
-0.
-If there is at least one bus that leaves the station strictly less than
-a
-i
-seconds before this person arrives, their dissatisfaction increases by
-b
-i
-.
-If this person has to wait at the station for at least
-c
-i
-seconds before boarding a bus and leaving (this includes the time they spend waiting for a bus and the time spent waiting for that bus to leave), their dissatisfaction increases by
-d
-i
-.
-Ryan may be the president, but his power is quite limited. He can tell each bus driver when to leave the station and each passenger when to board a bus (these times do not have to be integers). He also has to follow one rule: it is not allowed for two buses to be at the station at the same time.
-As the president, his job is to make the citizens happy. Therefore, he is wondering about the minimum total dissatisfaction (the sum of final dissatisfactions of all
-N passengers) he can achieve by using his power optimally. Of course, as an assistant to the president, you are the one who has to calculate that for him.
-Note that each passenger should board a bus at some point (during the day when they arrive at the station). Ryan does not want to leave someone hanging there for an eternity. Also, a passenger is allowed to board a bus at the moment when that bus is leaving (even if that passenger just arrived at the station at that moment).
+Read problems statements in Mandarin Chinese and Russian.
+The apocalyptic demon Kali is on a rampage. The ground shudders under his feet, trees shrivel and animals and birds scurry away from his path. In order to save the universe from devastation, all the devtas led by devraj Indra decide to meditate to please Lord Vishnu so that he appears in the form of Kalki, his last avatar, and kill the demon.
+Each devta can sit in meditation at a particular place on Swarglok (the heaven). Considering Swarglok as a 2-dimensional plane, the position of each devta is a fixed point with integer coordinates. The positions of all the devtas are distinct from each other.
+While meditating the devtas connect to each other by means of astral projections - metaphysical threads that connect one devta to another. They must do so in such a way to satisfy two criteria:
+Each devta must be able to connect to every other devta by following a path of astral projections.
+No subgroup of devtas may be connected by a cycle of astral projections.
+In simple terms, the astral projections must form a tree connecting all devtas.
+What needs to be optimized ?
+Once the devtas have taken their positions and are connected as a single group to start meditation, a ring of influence is formed around each devta. This ring is centered at the position of the devta, and has a radius equal to the Euclidean distance from this devta to the furthest devta directly connected via an astral projection.
+Since different devtas have their own supernatural powers (Indra is the rain god, Agni is the fire god,Varuna is the water god, Vayu is the air god , etc), the influence ring of each devta has an adverse effect on all other devtas which lie within or on this ring. In other words, the efficiency of a devta to perform meditation decreases as the number of influence rings that include him increases.
+For each devta Di, define Ci as the number of influence rings that include or touch Di (including their own). Now devraj Indra wants the devtas to connect in such a manner so as to minimize the maximum value of Ci over all devtas. So he has sent a message to Bhulok (the earth) and he needs help from the best programmers on the planet.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-M.
-The second line contains
-M space-separated integers
-t
-1
-,t
-2
-,…,t
-M
-.
-The third line contains a single integer
-N.
-The fourth line contains
-N space-separated integers
-s
-1
-,s
-2
-,…,s
-N
-.
-The fifth line contains
-N space-separated integers
-a
-1
-,a
-2
-,…,a
-N
-.
-The sixth line contains
-N space-separated integers
-b
-1
-,b
-2
-,…,b
-N
-.
-The seventh line contains
-N space-separated integers
-c
-1
-,c
-2
-,…,c
-N
-.
-The eighth line contains
-N space-separated integers
-d
-1
-,d
-2
-,…,d
-N
-.
+The first line contains the number of test cases T.
+Each test case starts with an integer N, where N denotes the number of devtas.
+Then N lines follow - the i-th such line consists of two integers xi and yi, specifying the coordinates of the i-th devta.
 Output
-For each test case, print a single line containing one integer — the minimum total dissatisfaction of the passengers.
+For each test case output exactly N-1 lines. Each line should consist of two integers, specifying a pair of devtas between whom an astral projection should be formed.
 Constraints
-1≤T≤1,000
-1≤M,N≤5⋅10
-5
-1≤t
-i
-≤10
-9
-for each valid
-i
-1≤s
-i
-,a
-i
-,b
-i
-,c
-i
-,d
-i
-≤10
-9
-for each valid
-i
-t
+1 ≤ T ≤ 100
+3 ≤ N ≤ 400
+-2000 ≤ x i ≤ 2000
+-2000 ≤ y i ≤ 2000
+Scoring and test data generation
+The score is C, where C = max(Ci) for 1 <= i <= N. The sequence of positions for devtas is generated randomly and the positions are distributed uniformly.
+Example
+Input:
 1
-,t
-2
-,…,t
-M
-,s
-1
-,s
-2
-,…,s
-N
-are pairwise distinct
-the sum of
-M over all test cases does not exceed
-5⋅10
 5
-the sum of
-N over all test cases does not exceed
-5⋅10
-5
-Subtasks
-Subtask #1 (15 points):
-1≤T≤50
-1≤N,M≤10
-3
-Subtask #2 (85 points): original constraints
-Sample 1:
-Input
-Output
-1
-2
-5 10
-3
-4 6 11
-4 4 4
-4 4 4
-2 4 1
-100 2 2
-6
+-3 0
+-1 0
+0 1
+1 0
+2 0
+Example of a valid output:
+1 2
+2 3
+3 4
+4 5
+Explanation
+The second devta is connected to two other devtas: the first devta (a distance of 2 away), and the third devta (a distance of sqrt(2) away). The larger of these distances is 2, so the radius of the second devta's ring of influence is 2. We can calculate the other rings similarly.
+Here is a diagram with the astral projections represented in red, and all of the influence rings represented in blue.
+The second devta lies within three rings of influence - the first devta's, the second devta's himself, and the third devta's. We can calculate the other values similarly:
+C1 = 2; C2 = 3; C3 = 3; C4 = 4; C5 = 2.
+The maximum of these values is 4, so you would get a score of 4.
+Other possible outputs may result in higher or lower scores. Your objective is to minimize your score.

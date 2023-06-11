@@ -1,51 +1,78 @@
-E. Colored Subgraphs
+D. Maximum Subarray
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Monocarp has a tree, consisting of
-n
-vertices.
-He is going to select some vertex
-r
-and perform the following operations on each vertex
-v
-from
+You are given an array
+a
 1
-to
-n
-:
-set
-d
-v
-equal to the distance from
-v
-to
-r
-(the number of edges on the shortest path);
-color
-v
-some color.
-A nice coloring satisfies two conditions:
-for each pair of vertices of the same color
-(v,u)
-, there exists a path from
-v
-to
-u
-that only visits vertices of the same color;
-for each pair of vertices of the same color
-(v,u)
 ,
-d
-v
-≠
-d
-u
+a
+2
+,…,
+a
+n
+, consisting of
+n
+integers. You are also given two integers
+k
+and
+x
 .
-Note that Monocarp can choose any amount of different colors he wants to use.
-For each used color, he then counts the number of vertices of this color. The cost of the tree is the minimum of these numbers.
-What can be the maximum cost of the tree?
+You have to perform the following operation exactly once: add
+x
+to the elements on exactly
+k
+distinct positions, and subtract
+x
+from all the others.
+For example, if
+a=[2,−1,2,3]
+,
+k=1
+,
+x=2
+, and we have picked the first element, then after the operation the array
+a=[4,−3,0,1]
+.
+Let
+f(a)
+be the maximum possible sum of a subarray of
+a
+. The subarray of
+a
+is a contiguous part of the array
+a
+, i. e. the array
+a
+i
+,
+a
+i+1
+,…,
+a
+j
+for some
+1≤i≤j≤n
+. An empty subarray should also be considered, it has sum
+0
+.
+Let the array
+a
+′
+be the array
+a
+after applying the aforementioned operation. Apply the operation in such a way that
+f(
+a
+′
+)
+is the maximum possible, and print the maximum possible value of
+f(
+a
+′
+)
+.
 Input
 The first line contains a single integer
 t
@@ -53,58 +80,78 @@ t
 1≤t≤
 10
 4
-) — the number of testcases.
-The first line of each testcase contains a single integer
+) — the number of test cases.
+The first line of each test case contains three integers
 n
+,
+k
+and
+x
 (
-3≤n≤2⋅
+1≤n≤2⋅
 10
 5
-) — the number of vertices in the tree.
-Each of the next
-n−1
-lines contains two integers
-v
-and
-u
-(
-1≤v,u≤n
-) — the description of an edge.
-The given edges form a tree. The sum of
+;
+0≤k≤min(20,n)
+;
+−
+10
+9
+≤x≤
+10
+9
+).
+The second line contains
 n
-over all testcases doesn't exceed
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+−
+10
+9
+≤
+a
+i
+≤
+10
+9
+).
+The sum of
+n
+over all test cases doesn't exceed
 2⋅
 10
 5
 .
 Output
-For each testcase print a single integer — the maximum possible cost of the tree.
+For each test case, print one integer — the maximum possible value of
+f(
+a
+′
+)
+.
 Example
 input
 Copy
 4
-4
-1 2
-2 3
-3 4
-5
-1 2
-1 3
-1 4
-1 5
-3
-1 3
-3 2
-7
-3 2
-2 5
-7 5
-3 1
-1 6
-1 4
+4 1 2
+2 -1 2 3
+2 2 3
+-1 2
+3 0 5
+3 2 4
+6 2 -8
+4 -1 9 -3 7 -8
 output
 Copy
-4
-1
-3
-3
+5
+7
+0
+44

@@ -1,98 +1,203 @@
-H1. Maximum Crossings (Easy Version)
-time limit per test1 second
+A. Tokitsukaze and Strange Inequality
+time limit per test1.5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The only difference between the two versions is that in this version
-n≤1000
-and the sum of
+Tokitsukaze has a permutation
+p
+of length
 n
-over all test cases does not exceed
-1000
-.
-A terminal is a row of
+. Recall that a permutation
+p
+of length
 n
-equal segments numbered
+is a sequence
+p
+1
+,
+p
+2
+,…,
+p
+n
+consisting of
+n
+distinct integers, each of which from
 1
 to
 n
-in order. There are two terminals, one above the other.
-You are given an array
-a
-of length
-n
-. For all
-i=1,2,…,n
-, there should be a straight wire from some point on segment
+(
+1≤
+p
 i
-of the top terminal to some point on segment
+≤n
+).
+She wants to know how many different indices tuples
+[a,b,c,d]
+(
+1≤a<b<c<d≤n
+) in this permutation satisfy the following two inequalities:
+p
 a
-i
-of the bottom terminal. You can't select the endpoints of a segment. For example, the following pictures show two possible wirings if
-n=7
+<
+p
+c
 and
-a=[4,1,4,6,7,7,5]
+p
+b
+>
+p
+d
 .
-A crossing occurs when two wires share a point in common. In the picture above, crossings are circled in red.
-What is the maximum number of crossings there can be if you place the wires optimally?
-Input
-The first line contains an integer
-t
-(
-1≤t≤1000
-) — the number of test cases.
-The first line of each test case contains an integer
-n
-(
-1≤n≤1000
-) — the length of the array.
-The second line of each test case contains
-n
-integers
+Note that two tuples
+[
 a
 1
 ,
+b
+1
+,
+c
+1
+,
+d
+1
+]
+and
+[
 a
 2
-,…,
+,
+b
+2
+,
+c
+2
+,
+d
+2
+]
+are considered to be different if
 a
+1
+≠
+a
+2
+or
+b
+1
+≠
+b
+2
+or
+c
+1
+≠
+c
+2
+or
+d
+1
+≠
+d
+2
+.
+Input
+The first line contains one integer
+t
+(
+1≤t≤1000
+) — the number of test cases. Each test case consists of two lines.
+The first line contains a single integer
+n
+(
+4≤n≤5000
+) — the length of permutation
+p
+.
+The second line contains
+n
+integers
+p
+1
+,
+p
+2
+,…,
+p
 n
 (
 1≤
-a
+p
 i
 ≤n
-) — the elements of the array.
-The sum of
+) — the permutation
+p
+.
+It is guaranteed that the sum of
 n
-across all test cases does not exceed
-1000
+over all test cases does not exceed
+5000
 .
 Output
-For each test case, output a single integer — the maximum number of crossings there can be if you place the wires optimally.
+For each test case, print a single integer — the number of different
+[a,b,c,d]
+tuples.
 Example
 input
 Copy
-4
-7
-4 1 4 6 7 7 5
-2
-2 1
-1
-1
 3
-2 2 2
+6
+5 3 6 1 4 2
+4
+1 2 3 4
+10
+5 1 6 2 8 3 4 10 9 7
 output
 Copy
-6
-1
-0
 3
-Note
-The first test case is shown in the second picture in the statement.
-In the second test case, the only wiring possible has the two wires cross, so the answer is
-1
-.
-In the third test case, the only wiring possible has one wire, so the answer is
 0
+28
+Note
+In the first test case, there are
+3
+different
+[a,b,c,d]
+tuples.
+p
+1
+=5
+,
+p
+2
+=3
+,
+p
+3
+=6
+,
+p
+4
+=1
+, where
+p
+1
+<
+p
+3
+and
+p
+2
+>
+p
+4
+satisfies the inequality, so one of
+[a,b,c,d]
+tuples is
+[1,2,3,4]
+.
+Similarly, other two tuples are
+[1,2,3,6]
+,
+[2,3,5,6]
 .

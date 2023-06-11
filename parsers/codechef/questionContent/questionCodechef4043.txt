@@ -1,88 +1,83 @@
-Edit Distance Revisited
+Social Cluster
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-Sergey has an uppercase Latin letter string S, which he wants to make equal to another uppercase Latin letter string T.
-However, he is only allowed to do the following kinds of operations on the string S:
-To insert a symbol everywhere in the string S at any position. The operation costs I rubles.
-To delete a symbol from everywhere of the string S. The operation costs for D rubles.
-To replace one symbol in S with another one. This operation costs Ra, b rubles, where x is the old symbol and y is the new one.
-To swap any pair of symbols in the string S. This operation costs W rubles.
-Sergey is a poor student, so he is looking for the cheapest way to obtain his target string T. Please help him! Note that in this problem, your solution doesn't have to be completely precise, but better approach will bring you more points.
+Read problems statements in Mandarin Chinese and Russian.
+This problem deals with the effective formation of a cluster among K individuals living in a society. A society can be represented as a N × N grid. Individuals are located at certain points on the grid. Each individual's social interaction is measured by a positive integer, called interaction power denoted by Ii. The dissimilarity between two individuals is defined as the absolute difference between their interaction powers. Less the absolute difference between interaction powers of two individuals, more the probability that they will interact with each other.
+Now your task is to form a single cluster of individuals by displacing some individuals from their original positions. Formally, a cluster means a connected component. An individual at point (xi, yi) is said to be adjacent to another individual at point (xj, yj) if and only if |xi − xj| ≤ 1 and |yi − yj| ≤ 1.
+What needs to be optimized ?
+The cost of clustering is defined as Score = 1000×A + 10×B , where A and B are two variables. The task is to minimize this cost.
+We define A first. Suppose P be the set of individuals on the grid and |P| = K. In order to create the cluster, we may need to displace some individuals from their original positions on the grid. Let the individual pi be displaced by a Manhattan distance di in order to become a part of the cluster.
+Now di = |xi(final) − xi(initial)| + |yi(final) − yi(initial)|.
+Here (xi(initial), yi(initial)) is the initial position of individual pi and (xi(final), yi(final)) is the position of the same individual after becoming a part of the cluster.
+Now A = Σ (di / Ii) where i = 1 to K.
+Here Ii = Interaction power of individual pi.
+The variable B is defined after the cluster is formed.
+B = Σ ( si / ni ) , where i = 1 to K.
+si = Σ (|Ij − Ii| ), where { pj ∈ P | pj is adjacent to pi }.
+ni = Number of individuals adjacent to pi.
 Input
-The first line of input contains a single integer Tn, denoting the number of test cases. Then, Tn description of test cases follow.
-The first line of every description contains a single uppercase Latin letter string S, denoting the string Sergey initially has.
-The next line contains a single uppercase Latin letter string T, denoting the string Sergey wants to obtain.
-The next line contains three space-separated integers I, D, W, denoting the cost of insertion, deletion and swap respectively.
-Each of the following 26 lines contains 26 integer numbers, denoting the matrix Ra, b. The jth number in the ith line denotes the cost of the replacement of the ith Latin alphabet letter with the jth Latin alphabet letter.
+The first line of input contains an integer T, denoting the number of test cases. Then T test cases follow.
+The first line of each test case contains two space separated integers N and K, denoting the grid size and the number of individuals, respectively. Then N lines follow. The ith of these lines contains N space separated integers, denoting the information regarding the ith row. The jth value of ith row contains the index value of an individual at (i, j) cell. The index value, of course, ranges from 1 to K. Empty cells have zero value.
+Then K lines follow. The ith of these lines contains the value of Ii, the interaction power of ith individual.
 Output
-For each test case, output the sequence of operations in the following form.
-On the first line output an integer Q, denoting the number of operations you're going to make. It shouldn't exceed |S|+|T|.
-On the following Q lines output the operations in the following format:
-I p c: insert the character c right after the pth character (1-indexed). Use p=0, when you want to insert the character before all existing characters.
-D p: delete the character on the pth position (1-indexed) in the string.
-R p c: replace the character on the pth position with a character c.
-S i j: swap the characters at the ith and the jth positions.
+For each test case, print N lines, each line containing N space separated integers. It represents the N × N grid containing the cluster.
 Constraints
-DataSet #1 (5 test files): Tn = 100, 900 ≤ |S|, |T| ≤ 1000
-DataSet #2 (5 test files): Tn = 10, 9000 ≤ |S|, |T| ≤ 10000
-DataSet #3 (5 test files): Tn = 2, 45000 ≤ |S|, |T| ≤ 50000
-DataSet #4 (5 test files): Tn = 1, 99000 ≤ |S|, |T| ≤ 100000
-<li>Each character of <b>S</b> and <b>T</b> is chosen randomly from the set of uppercase Latin letters, independently of other characters.</li>
-<li>In all datasets the values of <b>|S|, |T|</b> are chosen randomly and independently from the allowed ranges.</li>
-<li><b>1000</b> ≤ <b>R<sub>i, j</sub></b> ≤ <b>10000</b>, <b>R<sub>i, i</sub></b> = <b>0</b>. Initially, the weights of <b>R<sub>i, j</sub></b> are picked from the specified range, and then the matrix <b>R</b> was replaced with its' transitive closure.</li>
-<li>The triangle inequality holds on the matrix <b>R</b>.</li>
- 
-<li><b>R<sub>min</sub> × 1.5</b> ≤ <b>I</b>, <b>D</b>, <b>W</b> ≤ <b>R<sub>max</sub></b>. The values of <b>I</b>, <b>D</b>, <b>W</b> are chosen randomly and independently from the specified range.</li>
-Scoring
-For every test case, your score will be equal to the sum of the costs of all the operations, divided by |S| + |T|.
-For every test file, your score will be equal to the average of the scores of all the test cases in this file.
-Please note that during the contest, score of your program will be decided by only 20% of the files, i.e. by 4 files, each from one group. However the verdict of your program will be based on all the test files, i.e. in order to get an AC, your program should work correctly on all the test files.
+1 ≤ T ≤ 60
+2 ≤ N ≤ 60
+2 ≤ K ≤ 2000
+1 ≤ Ii ≤ 25
 Example
 Input:
 1
-JDCJPGROIE
-YFGWDIYAFVMMA
-23 32 4
-0 34 26 11 18 27 14 28 21 22 13 16 14 15 17 25 28 25 24 31 26 39 28 25 25 32
-17 0 18 24 23 21 20 22 24 23 29 11 20 18 13 24 21 21 27 23 27 11 10 13 24 16
-25 30 0 15 38 33 22 26 24 11 34 24 13 21 23 29 16 38 28 21 27 32 34 24 33 37
-26 27 22 0 38 37 28 17 25 11 29 37 20 26 30 25 31 34 13 26 26 30 20 16 25 25
-28 26 22 29 0 34 33 32 28 19 16 27 24 22 34 28 13 15 12 25 31 29 27 16 18 24
-23 22 21 18 22 0 21 25 16 16 26 33 10 26 20 29 22 22 26 26 11 29 20 25 23 29
-24 25 23 24 26 32 0 20 22 23 22 24 11 31 21 11 14 23 28 17 29 25 21 11 11 19
-27 16 24 30 29 24 23 0 13 13 12 23 22 12 29 31 31 22 22 13 25 20 26 25 34 32
-14 24 22 25 26 18 28 22 0 30 10 21 28 29 31 30 18 20 22 10 29 21 20 28 39 29
-15 19 11 26 27 37 29 26 29 0 28 30 24 30 28 18 27 30 18 28 36 30 27 18 29 26
-23 21 25 18 38 25 27 34 12 21 0 11 22 24 32 24 23 26 24 22 36 32 30 33 33 21
-12 36 30 17 30 14 26 31 13 26 23 0 24 23 29 13 30 16 30 23 25 34 19 26 22 27
-13 22 15 24 26 21 20 15 11 26 21 29 0 20 10 31 29 31 19 21 21 32 21 25 31 27
-27 34 29 23 34 12 11 28 25 28 32 34 14 0 24 19 25 24 33 23 13 28 22 13 22 23
-26 33 26 21 16 11 10 23 27 27 32 24 21 29 0 21 19 27 26 25 22 29 11 15 21 29
-16 26 31 14 25 29 26 28 11 22 21 24 30 23 33 0 27 12 27 21 26 32 16 28 11 27
-24 28 26 23 37 32 31 26 22 34 32 21 11 31 21 22 0 34 14 20 28 25 32 10 31 26
-25 23 21 29 33 36 39 20 33 10 32 34 23 32 33 28 27 0 28 26 16 31 33 16 24 36
-31 14 30 34 37 24 30 22 17 23 23 25 27 32 27 27 21 21 0 20 35 17 21 21 17 12
-33 19 31 22 34 21 26 23 28 31 26 30 29 31 32 20 27 21 26 0 30 11 16 32 31 24
-18 25 30 29 33 28 27 15 28 19 19 22 32 27 17 33 32 11 37 28 0 35 21 21 35 39
-33 27 31 28 32 10 28 23 26 20 33 25 20 35 27 28 26 10 24 24 19 0 30 26 33 13
-34 28 15 14 18 19 10 12 25 25 23 29 21 18 31 21 11 18 25 21 28 18 0 21 21 27
-28 23 35 13 31 25 25 30 23 24 33 34 33 35 28 12 34 24 26 10 18 15 26 0 23 28
-25 31 23 24 28 27 20 22 23 32 11 13 30 28 38 26 21 28 17 31 38 22 10 31 0 29
-26 14 22 29 25 13 33 33 26 11 34 25 23 32 27 15 32 16 11 14 24 23 23 27 26 0
+5 5
+0 0 0 1 0
+0 0 0 0 0
+2 0 5 0 4
+0 0 0 0 0
+0 3 0 0 0
+2
+3
+2
+3
+3
 Output:
-13
-R 1 Y
-R 2 F
-R 3 G
-R 4 W
-R 5 D
-R 6 I
-R 7 Y
-R 8 A
-R 9 F
-R 10 V
-I 10 M
-I 11 M
-I 12 A
+0 0 0 0 0
+0 0 1 0 0
+0 2 5 4 0
+0 0 3 0 0
+0 0 0 0 0
 Explanation
-In this test case we have 10 ≤ Ri, j ≤ 100 (i ≠ j). This is made only to fit the test case on the screen. In the actual test cases, the inequality 1000 ≤ Ri, j ≤ 10000 will hold.
+Calculation of value A :
+d1 = 2        I1 = 2
+d2 = 1        I2 = 3
+d3 = 2        I3 = 2
+d4 = 1        I4 = 3
+d5 = 0        I5 = 3
+A  =   d1/ I1 + d2/I2 + d3/I3 + d4/I4 + d5/I5
+    = 1 + 0.333... + 1 + 0.333... + 0
+    = 2.666... 
+   
+Calculation of value B :
+(Number of individuals adjacent to 1) = n1 = 3  ( 2 , 5 , 4 )
+s1 = |I1 − I2| + |I1 − I5| + |I1 − I4|
+    = 1 + 1 + 1
+    = 3
+(Number of individuals adjacent to 2) = n2 = 3  ( 1 , 5 , 3 )
+s2 = |I2 − I1| + |I2 − I5| + |I2 − I3|
+    = 1 + 0 + 1
+    = 2
+In a similar fashion ,
+n3 = 3, n4 = 3, n5 = 4,
+s3 = 3, s4 = 2, s5 = 2,
+B  =   s1/n1 + s2/n2 + s3/n3 + s4/n4 + s5/n5
+     =  1 + 0.666... + 1 + 0.666... + 0.5
+     =  3.833...
+Now Cost = 1000×A + 10×B
+= 2666.66... + 38.33...
+= 2705
+A different configuration of the cluster may result in a different cost. The task is to minimize this clustering cost.
+Test generation method and scoring
+All test file has T = 60. Then each test case is generated as follows.
+An integer x is chosen from [2, 60] uniformly and randomly at first. Then N is chosen from [x, 60] uniformly and randomly. Next, an integer y is chosen from [2, min(2000, N×N)], and K is chosen from [2, y] uniformly and randomly. Starting at empty grid, choose an empty cell uniformly and randomly, then put one individual put the cell one by one. Lastly, Ii are chosen from [1, 25] uniformly and randomly and independently for i=1,2,...,K.
+There are 20 test files in the judge. The score for each test case is calculated as described in the statements. Then the score for each test file is defined by the sum of the score of test cases in the test file. Finally, the final score is defined by the average of the score for each test file. During the contest, only the first 12 test cases in each test case affect the score, and the scores of the rest 48 test cases are treated as 0.
+Note
+You are allowed maximum of 200 submissions in this problem. Also, no memory and time limit information will be provided for the test cases which are meant to be judged after the contest (i.e. 80% of the test cases). Though, you will be told AC/WA for that too.

@@ -1,46 +1,37 @@
-Colored Array
+Remy paints the fence
 Problem
 Read problems statements in Mandarin Chinese and Russian.
-Chef had a hard time arguing with his friend, and after getting a great old kick Chef saw a colored array with N cells, numbered from 1 to N.
-The kick was so strong that Chef suddenly understood the rules of the game.
-Each cell is painted with a color. Here the colors are numbered from 1 to M.
-For any cell i, Chef can repaint it with any color q, and the cost of such operation is Ci,q points.
-However Chef can do at most K repaintings (0 repaintings is possible).
-After performing all repaintings, each cell will have some color. For each cell i, if cell i has color q then Chef will receive Bi,q points.
-Now Chef is wondering how many points can he receive in total when he repaints optimally.
+Our chef Remy ate all the delicious food he made. As a result, he has become really fat :). Chef's assistant Linguini has taken up the herculean task of bringing back chef Remy to shape.
+Linguini has built a fence which has N planks in a straight line. The planks are numbered 1 to N from left to right. In front of M of these N planks, he has put a bucket of paint. The paints may be of different colors. Each color is represented by any uppercase letter (A-Z). Chef Remy needs to paint the fence. He uses his painting brush to paint the fence.
+Chef Remy starts the task by choosing a plank which has a bucket of paint in front of it and dips his brush in the bucket. He starts walking randomly along the straight fence passing the planks. He never moves out of the fence. Note that walking randomly along a fence means that Remy keeps walking all the time along his current direction. He can change his direction any time he wishes. Moving along a straight fence has just two directions, forward and backward.
+Linguini has devised the following recipe for painting the fence.
+Each bucket has an infinite supply of paint.
+The brush can carry paint of a single color at any time.
+When Remy passes a paint bucket, the brush acquires the color in the bucket first.
+Every plank that Remy passes in his random walk must be colored with the color in the brush. A plank will be colored completely.
+A plank can be colored multiple times. A plank's color is the latest color it is painted with.
+A fence coloring is complete when each plank is painted with some color. Linguini is watching Remy dance around with colors. He wonders how many different complete fence colorings will he be able to see. Two fence colorings are different if there is atleast one plank numbered x whose color differs in both the colorings. Find out the number of different complete fence colorings modulo 1000000009.
 Input
-The first line of the input contains an integer T, denoting the number of test cases. The description of T test cases follows.
-The first line of each test case contains three space-separated integers N, M and K, denoting the number of cells and the number of colors, the maximal possible number of repaintings respectively. The next line contains N space-separated integers A1, A2, ..., AN, denoting the initial colors of the cells. Then N lines follow. The ith line of them contains M integers Bi1, Bi2, ..., BiM, where Bij denotes how many points Chef will receive if the cell i will be painted with j-th color after all operations. Then N lines follow. The ith line of them contains M integers Ci1, Ci2, ..., CiM, where Cij denotes how many points Chef will lose if he repaints the cell i with color j.
-Note: Be careful that the size of input files can be large.
-Output
-For each test case, output a single line containing the maximal possible points.
+First line contains T, the number of test cases. T test cases follow. The first line of each case contains N and M separated by a space. Next M lines follow each of the form x and y separated by a space. Here x is the color in the bucket which is placed at plank numbered y.
 Constraints
-1 ≤ T ≤ 5
-0 ≤ K ≤ 1000
-1 ≤ N, M ≤ 1000
-1 ≤ Ai ≤ M
-0 ≤ Bi,j ≤ 1000
-0 ≤ Ci,j ≤ 1000
-If j = Ai, then Ci,j = 0
+1 <= T <= 10
+1 <= N <= 100000
+1 <= M <= N
+x will be an uppercase letter between A to Z
+1 <= y <= N
+Output
+The number of different complete fence colorings modulo 1000000009 for each case on a new line.
 Sample 1:
 Input
 Output
-1
-4 2 1
-1 1 2 2
-1 1
-1 1
-1 1
+3
+2 1
+R 1
 3 1
-0 1
-0 1
-1 0
-1 0
-5
-Explanation:
-For this sample, we can repaint only once, since K = 1. We should repaint 4th cell with color 1. We will pay 1 for this, and receive:
-1 (1st cell - 1st color) +
-1 (2nd cell -1st color) +
-1 (3rd cell - 2nd color) +
-3 (4th cell - 1st color) = 6.
-Hence we get 6 ? 1 = 5 points in total, and it is the optimal answer.
+A 2
+6 2
+A 2
+B 6
+1
+1
+4

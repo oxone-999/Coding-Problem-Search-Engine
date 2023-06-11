@@ -1,132 +1,246 @@
-B. K-th Beautiful String
-time limit per test1 second
+E. Tree Queries
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-For the given integer
+You are given a rooted tree consisting of
 n
-(
-n>2
-) let's write down all the strings of length
+vertices numbered from
+1
+to
 n
-which contain
-n−2
-letters 'a' and two letters 'b' in lexicographical (alphabetical) order.
-Recall that the string
-s
-of length
-n
-is lexicographically less than string
-t
-of length
-n
-, if there exists such
-i
-(
-1≤i≤n
-), that
-s
-i
-<
-t
-i
-, and for any
-j
-(
-1≤j<i
-)
-s
-j
-=
-t
-j
-. The lexicographic comparison of strings is implemented by the operator < in modern programming languages.
-For example, if
-n=5
-the strings are (the order does matter):
-aaabb
-aabab
-aabba
-abaab
-ababa
-abbaa
-baaab
-baaba
-babaa
-bbaaa
-It is easy to show that such a list of strings will contain exactly
-n⋅(n−1)
-2
-strings.
+. The root of the tree is a vertex number
+1
+.
+A tree is a connected undirected graph with
+n−1
+edges.
 You are given
-n
-(
-n>2
-) and
+m
+queries. The
+i
+-th query consists of the set of
 k
-(
-1≤k≤
-n⋅(n−1)
-2
-). Print the
+i
+distinct vertices
+v
+i
+[1],
+v
+i
+[2],…,
+v
+i
+[
 k
--th string from the list.
+i
+]
+. Your task is to say if there is a path from the root to some vertex
+u
+such that each of the given
+k
+vertices is either belongs to this path or has the distance
+1
+to some vertex of this path.
 Input
-The input contains one or more test cases.
-The first line contains one integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases in the test. Then
-t
-test cases follow.
-Each test case is written on the the separate line containing two integers
+The first line of the input contains two integers
 n
 and
-k
+m
 (
-3≤n≤
+2≤n≤2⋅
 10
 5
-,1≤k≤min(2⋅
-10
-9
 ,
-n⋅(n−1)
-2
-)
-.
-The sum of values
-n
-over all test cases in the test doesn't exceed
+1≤m≤2⋅
 10
 5
-.
-Output
-For each test case print the
+) — the number of vertices in the tree and the number of queries.
+Each of the next
+n−1
+lines describes an edge of the tree. Edge
+i
+is denoted by two integers
+u
+i
+and
+v
+i
+, the labels of vertices it connects
+(1≤
+u
+i
+,
+v
+i
+≤n,
+u
+i
+≠
+v
+i
+).
+It is guaranteed that the given edges form a tree.
+The next
+m
+lines describe queries. The
+i
+-th line describes the
+i
+-th query and starts with the integer
 k
--th string from the list of all described above strings of length
-n
-. Strings in the list are sorted lexicographically (alphabetically).
+i
+(
+1≤
+k
+i
+≤n
+) — the number of vertices in the current query. Then
+k
+i
+integers follow:
+v
+i
+[1],
+v
+i
+[2],…,
+v
+i
+[
+k
+i
+]
+(
+1≤
+v
+i
+[j]≤n
+), where
+v
+i
+[j]
+is the
+j
+-th vertex of the
+i
+-th query.
+It is guaranteed that all vertices in a single query are distinct.
+It is guaranteed that the sum of
+k
+i
+does not exceed
+2⋅
+10
+5
+(
+∑
+i=1
+m
+k
+i
+≤2⋅
+10
+5
+).
+Output
+For each query, print the answer — "YES", if there is a path from the root to some vertex
+u
+such that each of the given
+k
+vertices is either belongs to this path or has the distance
+1
+to some vertex of this path and "NO" otherwise.
 Example
 input
 Copy
-7
-5 1
-5 2
-5 8
-5 10
-3 1
-3 2
-20 100
+10 6
+1 2
+1 3
+1 4
+2 5
+2 6
+3 7
+7 8
+7 9
+9 10
+4 3 8 9 10
+3 2 4 6
+3 2 1 5
+3 4 8 2
+2 6 10
+3 5 4 7
 output
 Copy
-aaabb
-aabab
-baaba
-bbaaa
-abb
-bab
-aaaaabaaaaabaaaaaaaa
+YES
+YES
+YES
+YES
+NO
+NO
+Note
+The picture corresponding to the example:
+Consider the queries.
+The first query is
+[3,8,9,10]
+. The answer is "YES" as you can choose the path from the root
+1
+to the vertex
+u=10
+. Then vertices
+[3,9,10]
+belong to the path from
+1
+to
+10
+and the vertex
+8
+has distance
+1
+to the vertex
+7
+which also belongs to this path.
+The second query is
+[2,4,6]
+. The answer is "YES" as you can choose the path to the vertex
+u=2
+. Then the vertex
+4
+has distance
+1
+to the vertex
+1
+which belongs to this path and the vertex
+6
+has distance
+1
+to the vertex
+2
+which belongs to this path.
+The third query is
+[2,1,5]
+. The answer is "YES" as you can choose the path to the vertex
+u=5
+and all vertices of the query belong to this path.
+The fourth query is
+[4,8,2]
+. The answer is "YES" as you can choose the path to the vertex
+u=9
+so vertices
+2
+and
+4
+both have distance
+1
+to the vertex
+1
+which belongs to this path and the vertex
+8
+has distance
+1
+to the vertex
+7
+which belongs to this path.
+The fifth and the sixth queries both have answer "NO" because you cannot choose suitable vertex
+u
+.

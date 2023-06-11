@@ -1,183 +1,84 @@
-C. Cactus Lady and her Cing
-time limit per test5 seconds
+E. Easy Scheduling
+time limit per test2 seconds
 memory limit per test1024 megabytes
 inputstandard input
 outputstandard output
-Cactus lady loves her cactuses very much. Especially she likes a small cactus named Cing. Cing can be seen as a connected undirected graph in which every vertex lies on at most one simple cycle. Intuitively, a cactus is a generalization of a tree where some cycles are allowed. Multiedges (multiple edges between a pair of vertices) and loops (edges that connect a vertex to itself) are not allowed.
-She bought a special grid for her special little cactus Cing. This grid can be represented as a graph consisting of two paths of length
-400000
-,
-u
-(0,−200000)
-−
-u
-(0,−199999)
-−…−
-u
-(0,200000)
-and
-u
-(1,−200000)
-−
-u
-(1,−199999)
-−…−
-u
-(1,200000)
-, connected together by
-400001
-edges
-(
-u
-(0,i)
-,
-u
-(1,i)
-)
-for each
-i
-. In other words, a grid can be seen as a ladder.
-Cactus lady wants to know whether she can embed Cing into this grid, i.e., map each vertex of the cactus onto a separate vertex of the grid while each edge of the cactus will be mapped onto some edge of the grid.
+Eonathan Eostar decided to learn the magic of multiprocessor systems. He has a full binary tree of tasks with height
+h
+. In the beginning, there is only one ready task in the tree — the task in the root. At each moment of time,
+p
+processes choose at most
+p
+ready tasks and perform them. After that, tasks whose parents were performed become ready for the next moment of time. Once the task becomes ready, it stays ready until it is performed.
+You shall calculate the smallest number of time moments the system needs to perform all the tasks.
 Input
-The first line contains an integer
+The first line of the input contains the number of tests
 t
- — the number of test cases.
-Each test case begins with a line containing two integers
-n
-and
-m
- — the number of vertices and the number of edges in a given cactus, respectively (
-1≤n≤200000
-;
-0≤m≤250000
-).
-Each of the following
-m
-lines contains two integers
-v
-and
-u
-, describing the edges of the cactus (
-1≤v,u≤n,u≠v
-).
-The total sum of all
-n
-in the input doesn't exceed
-200000
-.
+(
+1≤t≤5⋅
+10
+5
+). Each of the next
+t
+lines contains the description of a test. A test is described by two integers
+h
+(
+1≤h≤50
+) and
+p
+(
+1≤p≤
+10
+4
+) — the height of the full binary tree and the number of processes. It is guaranteed that all the tests are different.
 Output
-Print an answer for each test case in the same order the cases appear in the input.
-For each test case print "No" in the first line, if no layout exists.
-Otherwise print "Yes" in the first line, and the following
-n
-lines describing the layout. The
-i
--th of these
-n
-lines should contain two integers
-x
-i
-and
-y
-i
-, the location of the
-i
--th vertex (
-0≤
-x
-i
-≤1
-;
-−200000≤
-y
-i
-≤200000
-).
+For each test output one integer on a separate line — the smallest number of time moments the system needs to perform all the tasks.
 Example
 input
 Copy
-5
-4 3
-1 2
-2 3
-3 4
-
-8 7
-1 2
+3
+3 1
 3 2
-2 4
-4 5
-4 6
-6 7
-6 8
-
-5 4
-1 2
-1 3
-1 4
-1 5
-
-8 9
-1 2
-2 3
-3 4
-1 4
-4 5
-5 6
-6 7
-7 8
-5 8
-
-10 10
-1 2
-2 3
-3 4
-4 5
-5 6
-6 1
-3 7
-4 8
-1 9
-6 10
+10 6
 output
 Copy
-Yes
-0 0
-0 1
-1 1
-1 2
-Yes
-0 3
-1 3
-1 4
-1 2
-0 2
-1 1
-0 1
-1 0
-No
-Yes
-0 0
-1 0
-1 1
-0 1
-0 2
-0 3
-1 3
-1 2
-Yes
-1 1
-1 2
-1 3
-0 3
-0 2
-0 1
-1 4
-0 4
-1 0
-0 0
+7
+4
+173
 Note
-Empty lines between test cases are for clarity. In real test cases there are no empty lines.
-In these notes, we consider the embeddings for tests 2 and 4.
-We start with the embedding for test 2.
-Here goes the embedding for test 4.
+Let us consider the second test from the sample input. There is a full binary tree of height
+3
+and there are two processes. At the first moment of time, there is only one ready task,
+1
+, and
+p
+1
+performs it. At the second moment of time, there are two ready tasks,
+2
+and
+3
+, and the processes perform them. At the third moment of time, there are four ready tasks,
+4
+,
+5
+,
+6
+, and
+7
+, and
+p
+1
+performs
+6
+and
+p
+2
+performs
+5
+. At the fourth moment of time, there are two ready tasks,
+4
+and
+7
+, and the processes perform them. Thus, the system spends
+4
+moments of time to perform all the tasks.

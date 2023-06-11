@@ -1,196 +1,178 @@
-B. Permutation Swap
+A. Divisible Array
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an unsorted permutation
-p
+You are given a positive integer
+n
+. Please find an array
+a
 1
 ,
-p
+a
 2
 ,…,
-p
+a
 n
-. To sort the permutation, you choose a constant
-k
-(
-k≥1
-) and do some operations on the permutation. In one operation, you can choose two integers
-i
-,
-j
-(
-1≤j<i≤n
-) such that
-i−j=k
-, then swap
-p
-i
-and
-p
-j
-.
-What is the maximum value of
-k
-that you can choose to sort the given permutation?
-A permutation is an array consisting of
-n
-distinct integers from
+that is perfect.
+A perfect array
+a
 1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
+,
+a
 2
-appears twice in the array) and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
-An unsorted permutation
-p
-is a permutation such that there is at least one position
+,…,
+a
+n
+satisfies the following criteria:
+1≤
+a
 i
-that satisfies
-p
+≤1000
+for all
+1≤i≤n
+.
+a
 i
-≠i
+is divisible by
+i
+for all
+1≤i≤n
+.
+a
+1
++
+a
+2
++…+
+a
+n
+is divisible by
+n
 .
 Input
 Each test contains multiple test cases. The first line contains the number of test cases
 t
 (
-1≤t≤
-10
-4
+1≤t≤200
 ). The description of the test cases follows.
-The first line of each test case contains a single integer
+The only line of each test case contains a single positive integer
 n
 (
-2≤n≤
-10
-5
-) — the length of the permutation
-p
-.
-The second line of each test case contains
-n
-distinct integers
-p
-1
-,
-p
-2
-,…,
-p
-n
-(
-1≤
-p
-i
-≤n
-) — the permutation
-p
-. It is guaranteed that the given numbers form a permutation of length
-n
-and the given permutation is unsorted.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
+1≤n≤200
+) — the length of the array
+a
 .
 Output
-For each test case, output the maximum value of
-k
-that you can choose to sort the given permutation.
-We can show that an answer always exists.
+For each test case, output an array
+a
+1
+,
+a
+2
+,…,
+a
+n
+that is perfect.
+We can show that an answer always exists. If there are multiple solutions, print any.
 Example
 input
 Copy
 7
+1
+2
 3
-3 1 2
 4
-3 4 1 2
-7
-4 2 6 7 5 3 1
-9
-1 6 7 4 9 2 3 8 5
+5
 6
-1 5 3 4 2 6
-10
-3 10 5 2 9 6 7 8 1 4
-11
-1 11 6 4 8 3 7 5 9 10 2
+7
 output
 Copy
 1
-2
-3
-4
-3
-2
-3
+2 4
+1 2 3
+2 8 6 4
+3 4 9 4 5
+1 10 18 8 5 36
+3 6 21 24 10 6 14
 Note
-In the first test case, the maximum value of
-k
-you can choose is
+In the third test case:
+a
 1
-. The operations used to sort the permutation are:
-Swap
-p
-2
-and
-p
+=1
+is divisible by
 1
-(
-2−1=1
-)
-→
-p=[1,3,2]
-Swap
-p
+.
+a
 2
-and
-p
+=2
+is divisible by
+2
+.
+a
 3
-(
-3−2=1
-)
-→
-p=[1,2,3]
-In the second test case, the maximum value of
-k
-you can choose is
-2
-. The operations used to sort the permutation are:
-Swap
-p
+=3
+is divisible by
 3
-and
-p
+.
+a
 1
-(
-3−1=2
-)
-→
-p=[1,4,3,2]
-Swap
-p
++
+a
+2
++
+a
+3
+=1+2+3=6
+is divisible by
+3
+.
+In the fifth test case:
+a
+1
+=3
+is divisible by
+1
+.
+a
+2
+=4
+is divisible by
+2
+.
+a
+3
+=9
+is divisible by
+3
+.
+a
 4
-and
-p
+=4
+is divisible by
+4
+.
+a
+5
+=5
+is divisible by
+5
+.
+a
+1
++
+a
 2
-(
-4−2=2
-)
-→
-p=[1,2,3,4]
++
+a
+3
++
+a
+4
++
+a
+5
+=3+4+9+4+5=25
+is divisible by
+5
+.

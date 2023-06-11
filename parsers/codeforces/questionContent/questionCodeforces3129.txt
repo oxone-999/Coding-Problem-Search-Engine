@@ -1,155 +1,114 @@
-N. Wires
-time limit per test3 seconds
-memory limit per test512 megabytes
+C. Minimize The Integer
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarpus has a complex electronic device. The core of this device is a circuit board. The board has
-10
-9
-contact points which are numbered from
-1
-to
-10
-9
-. Also there are
+You are given a huge integer
+a
+consisting of
 n
-wires numbered from
-1
-to
+digits (
 n
-, each connecting two distinct contact points on the board. An electric signal can pass between wires
-A
+is between
+1
 and
-B
-if:
-either both wires share the same contact point;
-or there is a sequence of wires starting with
-A
-and ending with
-B
-, and each pair of adjacent wires in the sequence share a contact point.
-The picture shows a circuit board with
+3⋅
+10
 5
-wires. Contact points with numbers
-2,5,7,8,10,13
-are used. Here an electrical signal can pass from wire
+, inclusive). It may contain leading zeros.
+You can swap two digits on adjacent (neighboring) positions if the swapping digits are of different parity (that is, they have different remainders when divided by
 2
-to wire
+).
+For example, if
+a=032867235
+you can get the following integers in a single operation:
+302867235
+if you swap the first and the second digits;
+023867235
+if you swap the second and the third digits;
+032876235
+if you swap the fifth and the sixth digits;
+032862735
+if you swap the sixth and the seventh digits;
+032867325
+if you swap the seventh and the eighth digits.
+Note, that you can't swap digits on positions
+2
+and
+4
+because the positions are not adjacent. Also, you can't swap digits on positions
 3
-, but not to wire
-1
-.
-Currently the circuit board is broken. Polycarpus thinks that the board could be fixed if the wires were re-soldered so that a signal could pass between any pair of wires.
-It takes
-1
-minute for Polycarpus to re-solder an end of a wire. I.e. it takes one minute to change one of the two contact points for a wire. Any contact point from range
-[1,
-10
-9
-]
-can be used as a new contact point. A wire's ends must always be soldered to distinct contact points. Both wire's ends can be re-solded, but that will require two actions and will take
-2
-minutes in total.
-Find the minimum amount of time Polycarpus needs to re-solder wires so that a signal can pass between any pair of wires. Also output an optimal sequence of wire re-soldering.
+and
+4
+because the digits have the same parity.
+You can perform any number (possibly, zero) of such operations.
+Find the minimum integer you can obtain.
+Note that the resulting integer also may contain leading zeros.
 Input
-The input contains one or several test cases. The first input line contains a single integer
+The first line contains one integer
 t
-— number of test cases. Then,
-t
-test cases follow.
-The first line of each test case contains a single integer
-n
 (
-1≤n≤
+1≤t≤
+10
+4
+) — the number of test cases in the input.
+The only line of each test case contains the integer
+a
+, its length
+n
+is between
+1
+and
+3⋅
 10
 5
-) — the number of wires. The following
+, inclusive.
+It is guaranteed that the sum of all values
 n
-lines describe wires, each line containing two space-separated integers
-x
-i
-,
-y
-i
-(
-1≤
-x
-i
-,
-y
-i
-≤
-10
-9
-,
-x
-i
-≠
-y
-i
-) — contact points connected by the
-i
--th wire. A couple of contact points can be connected with more than one wire.
-Sum of values of
-n
-across all test cases does not exceed
+does not exceed
+3⋅
 10
 5
 .
 Output
-For each test case first print one line with a single integer
-k
-— the minimum number of minutes needed to re-solder wires so that a signal can pass between any pair of wires. In the following
-k
-lines print the description of re-solderings. Each re-soldering should be described by three integers
-w
-j
-,
-a
-j
-,
-b
-j
-(
-1≤
-w
-j
-≤n
-,
-1≤
-a
-j
-,
-b
-j
-≤
-10
-9
-). Such triple means that during the
-j
--th re-soldering an end of the
-w
-j
--th wire, which was soldered to contact point
-a
-j
-, becomes soldered to contact point
-b
-j
-instead. After each re-soldering of a wire it must connect two distinct contact points. If there are multiple optimal re-solderings, print any of them.
+For each test case print line — the minimum integer you can obtain.
 Example
 input
 Copy
-2
-1
-4 7
-4
-1 2
-2 3
-4 5
-5 6
+3
+0709
+1337
+246432
 output
 Copy
+0079
+1337
+234642
+Note
+In the first test case, you can perform the following sequence of operations (the pair of swapped digits is highlighted):
 0
-1
-2 3 5
+70
+–
+–
+–
+9→0079
+.
+In the second test case, the initial integer is optimal.
+In the third test case you can perform the following sequence of operations:
+246
+43
+–
+–
+–
+2→24
+63
+–
+–
+–
+42→2
+43
+–
+–
+–
+642→234642
+.

@@ -1,100 +1,51 @@
-A. Minimum Integer
-time limit per test1 second
+B. Accordion
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given
-q
-queries in the following form:
-Given three integers
-l
-i
+An accordion is a string (yes, in the real world accordions are musical instruments, but let's forget about it for a while) which can be represented as a concatenation of: an opening bracket (ASCII code
+091
+), a colon (ASCII code
+058
+), some (possibly zero) vertical line characters (ASCII code
+124
+), another colon, and a closing bracket (ASCII code
+093
+). The length of the accordion is the number of characters in it.
+For example, [::], [:||:] and [:|||:] are accordions having length
+4
 ,
-r
-i
+6
 and
-d
-i
-, find minimum positive integer
-x
-i
-such that it is divisible by
-d
-i
-and it does not belong to the segment
-[
-l
-i
-,
-r
-i
-]
-.
-Can you answer all the queries?
-Recall that a number
-x
-belongs to segment
-[l,r]
-if
-l≤x≤r
-.
+7
+. (:|:), {:||:}, [:], ]:||:[ are not accordions.
+You are given a string
+s
+. You want to transform it into an accordion by removing some (possibly zero) characters from it. Note that you may not insert new characters or reorder existing ones. Is it possible to obtain an accordion by removing characters from
+s
+, and if so, what is the maximum possible length of the result?
 Input
-The first line contains one integer
-q
+The only line contains one string
+s
 (
-1≤q≤500
-) — the number of queries.
-Then
-q
-lines follow, each containing a query given in the format
-l
-i
-r
-i
-d
-i
-(
-1≤
-l
-i
-≤
-r
-i
-≤
-10
-9
-,
-1≤
-d
-i
-≤
-10
-9
-).
-l
-i
-,
-r
-i
-and
-d
-i
-are integers.
+1≤|s|≤500000
+). It consists of lowercase Latin letters and characters [, ], : and |.
 Output
-For each query print one integer: the answer to this query.
-Example
+If it is not possible to obtain an accordion by removing some characters from
+s
+, print
+−1
+. Otherwise print maximum possible length of the resulting accordion.
+Examples
 input
 Copy
-5
-2 4 2
-5 10 4
-3 10 1
-1 2 3
-4 6 5
+|[a:b:|]
 output
 Copy
-6
 4
-1
-3
-10
+input
+Copy
+|]:[|:]
+output
+Copy
+-1

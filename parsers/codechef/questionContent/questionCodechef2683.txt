@@ -1,147 +1,60 @@
-Guess the Tiling
+Completing favorite game
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-This is an interactive problem.
-Chef wants to decorate his kitchen with tiles. However, he is running out of money and needs to get the work done at a discount. The Slash Decorators are very proud of their skills and give an offer to Chef.
-The kitchen is a square grid with length
-N units and width
-N units. It is divided into
-N rows and
-N columns. The rows are numbered
-1 through
-N from top to bottom. Similarly, the columns are numbered
-1 through
-N from left to right. Let's denote a cell in the
-i-th row and
-j-th column by
-(i,j). The Slash Decorators want to use
-N
-2
-colourful tiles with dimensions
-1×1 to cover the whole kitchen. The tiles can be placed in two orientations as shown in the figure below.
-Note that each of these two orientations can be converted to the other by rotating it
-90
-∘
-clockwise.
-The Slash Decorators initially filled all the cells of the kitchen with tiles, where each tile is placed in one of the two possible orientations. Chef does not know this initial configuration and his task is to find it by asking up to
-Q queries. In each query:
-Chef chooses a cell in the grid.
-The Slash Decorators rotate the tile in the cell
-90
-∘
-clockwise.
-Then, the Slash Decorators find all squares with area
-2 formed by the blue diagonal lines (shown in the figure below) and tell Chef the number of these squares.
-In addition, the Slash Decorators initially tell Chef the number of squares with area
-2 formed by the blue diagonal lines in the initial configuration. Let's denote this number by
-K.
-For example, in the configuration shown below, there are
-3 squares with area
-2.
-The queries are not independent, i.e. a tile rotated in a query stays rotated in subsequent queries. Chef may choose the same tile in multiple queries; in such a case, this tile is rotated multiple times.
-The offer is that if Chef guesses the initial configuration correctly, the work will be done for free. Please help him. You play as Chef and the grader plays as the Slash Decorators. You should find the configuration the kitchen is in (the orientations of all tiles) when you finish asking queries; note that this is equivalent to finding the initial configuration.
-Interaction
-First, you should read a line containing a single integer
-T ― the number of test cases. The description of interaction for
-T test cases follows.
-For each test case, you should start by reading a line containing three space-separated integers
-N,
-Q and
-K.
-Then, you may ask queries. For each query:
-Print a line containing three space-separated integers
-1,
-X and
-Y.
-The grader rotates the tile in the cell
-(X,Y).
-Then, read a line containing a single integer
-Z. If you ask an invalid query or more than
-Q queries,
-Z=−1. Otherwise,
-Z denotes the number of squares with area
-2 formed by the blue diagonal lines.
-Once you know the current configuration:
-Print a line containing a single integer
-2.
-Then, for each
-i (
-1≤i≤N), print a line containing
-N space-separated integers; for each valid
-j, the
-j-th of these integers should be
-0 or
-1 if the cell
-(i,j) currently contains a tile in the first orientation or the second orientation, respectively, shown in the first figure.
-Finally, you should read a line containing a single integer. If your guess was incorrect, this integer is
-−1. Otherwise, this integer is
-1 and you should continue solving the remaining test cases.
-If you receive
-−1, you should terminate your program immediately to receive the Wrong Answer verdict. Otherwise, you may receive any verdict. Don't forget to flush the output after printing each line!
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Chef has a nice job. Actually he doesn't even remember what he is supposed to do there, because he just plays video-games all the time, exactly h hours every working day!
+Recently he got bored of just randomly playing video-games and decided to complete all the levels of his favorite Game as fast as possible.
+The Game consists of n levels numbered with integers from 1 to n. After completing every level, some small number of new levels is unlocked. The structure of the Game levels is a tree with the root in level 1, i.e. every level (except for 1) has a unique level that unlocks it and level 1 is the only level that is considered unlocked at the very beginning. Chef has completed his favorite Game lots of times, so he knows that he needs exactly ti hours to complete level i. Due to specifics of the Game every level should be completed entirely within one working day, i.e. Chef cannot start a level on Thursday, and finish it Friday morning.
+Overall the game-play proceeds as follows:
+There is a stack S that initially contains only the level 1
+Chef pops the topmost level out of the stack. Let's call this level x
+Chef spends tx hours to complete level x. Note that he doesn't want to stay at work longer than for h hours, so if there is not enough time left today Chef will complete level x the next working day morning.
+After completing level x some mx new levels get unlocked
+Chef places all the mx unlocked levels on the top of the stack S in an arbitrary order, i.e. he is free to choose any order he likes
+If stack S is empty, the Game is considered completed, otherwise Chef goes back to the step 2
+Can you help Chef figure out the minimum number of working days necessary to complete the Game?
+Input
+The first line of the input contains an integer T denoting the number of test cases.
+For each test case, the first line of input contains two integers n and h.
+The next line contains n space-separated integers ― t1, t2, ..., tn.
+The following n lines describe the structure of Game's levels: the x-th of them contains an integer mx followed by mx integers ― the levels that get unlocked after completing level x.
+Output
+For each test case, output a single integer ― the minimum number of working days necessary to complete the Game.
 Constraints
-1≤T≤1,000
-2≤N≤200
-the sum of
-Q over all test cases does not exceed
-3⋅10
-5
+1 ≤ T ≤ 10
+1 ≤ n ≤ 1000
+1 ≤ ti ≤ h ≤ 24
+0 ≤ mx ≤ 10
+It is guaranteed that the structure of the Game levels is a tree, i.e. it is possible to unlock all n levels and every level (except for 1) has exactly one other level that unlocks it.
 Subtasks
-Subtask #1 (1 point):
-N∈{2,4}
-Q=2
-N
-2
-Subtask #2 (11 points):
-N≤100
-Q=12⋅N
-2
-Subtask #3 (22 points):
-Q=5⋅N
-2
-Subtask #4 (66 points):
-Q=4⋅N
-2
+Subtask #1: n ≤ 9 (7 points)
+Subtask #2: mx ≤ 2 (20 points)
+Subtask #3: n ≤ 100; h ≤ 8 (27 points)
+Subtask #4: Original constraints (46 points)
 Example
-You     Grader
-        2
-        2 16 0
-1 2 2
-        0
-1 1 2
-        1
-1 1 1
-        0
+Input:
 2
-1 1
-1 0
-        1
-        4 64 3
-1 2 2
-        1
-1 3 2
-        0
-1 2 1
-        0
-1 3 1
-        1
-1 1 3
-        1
-1 1 4
-        1
-1 2 4
-        2
-1 4 3
-        2
-1 3 4
-        2
-1 4 4
-        3
-2
-0 1 0 1
-0 1 1 0
-1 0 0 1
-1 0 1 0
-        1
+5 24
+13 24 22 12 16
+1 3
+0
+2 2 5
+0
+1 4
+10 8
+1 4 3 1 7 3 2 2 4 4
+3 2 5 10
+2 3 4
+0
+0
+1 6
+3 7 8 9
+0
+0
+0
+0
+Output:
+5
+4
 Explanation
-Example case 1:
-Example case 2: The initial configuration is depicted in the problem statement.
+Example case 1: Chef has to complete every level during separate working days, and so to complete all 5 levels he needs 5 working days.
+Example case 2: Chef will complete the Game if he will always push unlocked levels into stack starting with the largest indexed one and ending with the smallest indexed one. That is, after Chef completes level 1 he first pushes level 10 (S = [10]), then level 5 (S = [10, 5]) and then level 2 (S = [10, 5, 2]). So the second level Chef will play is 2.

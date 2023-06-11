@@ -1,115 +1,74 @@
-MEX Sequences
+Magic Weed
 Problem
-Chef is learning about absolute MEX sequences.
-A sequence
-A of
-N integers is said to be an absolute MEX sequence, if the following property holds for all
-1≤i≤N:
-∣A
-i
-−MEX(A
-1
-,A
-2
-,…,A
-i
-)∣≤1
-Chef has two integers
-N and
-M. Find the total number of absolute MEX sequences
-A, of length
-N, such that
-0≤A
-i
-≤M.
-Since answer can be huge, output the answer modulo
+Faizal and Sultan are having a one-on-one faceoff. Before stepping into the fight, each of them smoked a special kind of weed from Jhalwa. Smoking
+k grams of this weed grants the smoker the ability to resurrect
+k times after dying. Sultan smoked
+M grams of this weed, and Faizal smoked
+N grams.
+However, Faizal was addicted to this kind of weed since his childhood, and so developed a side effect: if Faizal dies and is resurrected, he temporarily loses his ability to resurrect; and only gains it back after killing Sultan at least once (given that he hasn't resurrected
+N times already). Sultan has no such restriction.
+The fight ends whenever one of the two is killed without being able to resurrect. In other words, either Sultan is killed
+M+1 times, or Faizal is killed
+N+1 times, or Faizal is killed twice in a row.
+Any possible fight can be described by the sequence of deaths - for example, with
+N=2 and
+M=2, the string
+FSSFS encodes the fight where:
+First, Sultan kills Faizal. Faizal resurrects, and temporarily loses his ability to resurrect.
+Then, Faizal kills Sultan. Sultan resurrects, and Faizal's resurrection is now active.
+Faizal kills Sultan again. Sultan resurrects.
+Sultan kills Faizal, who resurrects. Now Sultan has no more chances to revive.
+Faizal kills Sultan, who stays dead; and the fight ends.
+Faizal's wife Mohsina is getting anxious about the fight and asks for your help in finding the number of different ways the fight between Faizal and Sultan can end up happening. Because this value can be quite large, compute it modulo
 10
 9
 +7.
-Note:
-∣X∣ denotes the absolute value of
-X. For example,
-∣4∣=4 and
-∣−7∣=7.
-MEX(A
-1
-,A
-2
-,…,A
-N
-) denotes the MEX of the sequence
-[A
-1
-,A
-2
-,…,A
-N
-]. For example,
-MEX(2,2,1)=0, and
-MEX(3,1,0,1)=2.
+Two fights are considered different if and only if the sequence of deaths corresponding to those fights are different. For example, the sequence
+SF is different from the sequence
+FS and hence these represent different fights.
 Input Format
-First line will contain
-T, number of test cases. Then, the test cases follow.
-Each test case contains of a single line of input, containing two space-separated integers
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+Each test case consists of a single line of input, containing two space-separated integers
 N and
-M, as mentioned in statement.
+M.
 Output Format
-For each test case, output in a single line, the total number of absolute MEX sequences satisfying the condition, modulo
+For each test case, output a single line containing the answer - the possible number of fights between Faizal and Sultan, modulo
 10
 9
-+7 .
++7.
 Constraints
-1≤T≤1000
-1≤N≤10
-6
+1≤T≤2000
+0≤N≤10
+5
 0≤M≤10
+5
+Sum of
+N over all test cases will not exceed
+10
 6
-The sum of
-N over all test cases does not exceed
-2⋅10
-6
-The sum of
-M over all test cases does not exceed
-2⋅10
+Sum of
+M over all test cases will not exceed
+10
 6
 Sample 1:
 Input
 Output
-2
-3 2
-3 1
-8
-4
+3
+2 1
+12 6
+6969 8563
+7
+255
+988402422
 Explanation:
-Test case
-1: Possible absolute MEX sequences are
-[0,0,0],[0,0,1],[0,1,2],[0,1,1],[0,2,2],[1,1,1],[0,0,2],[0,2,0].
-Consider the sequence
-[0,1,1]:
-i=1:
-∣A
-1
-−MEX(A
-1
-)∣=∣0−1∣=1≤1
-i=2:
-∣A
-2
-−MEX(A
-1
-,A
-2
-)∣=∣1−2∣=1≤1
-i=3:
-∣A
-3
-−MEX(A
-1
-,A
-2
-,A
-3
-)∣=∣1−2∣=1≤1
-Test case
-2: Possible absolute MEX sequences are
-[0,0,0],[0,0,1],[0,1,1],[1,1,1].
+Test Case 1: The death sequences corresponding to the
+7 possible fights are:
+SS
+SFS
+FSS
+FSFS
+FF
+SFF
+FSFF

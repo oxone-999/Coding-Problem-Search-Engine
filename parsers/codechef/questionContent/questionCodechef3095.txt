@@ -1,71 +1,121 @@
-War in Treeland Again
+Alone Alice!
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-There is a full-scale war taking place in Treeland. Chef needs to travel between cities in Treeland to work, but during the war, it is not safe.
-In Treeland, there are
-N cities (numbered
-1 through
-N) and
-N−1 bidirectional roads connecting them in such a way that Chef can reach each city from any other city using these roads. Each road is occupied by a unique faction that assigned a positive integer code to it.
+Alice, being alone, has thought of punishing you with a string problem.
+Alice has a string
+S of length
+N. From
+S, she forms a new string
+T in the following way:
+Add all distinct subarrays of
+S which are palindromes to a set.
+Sort the set in lexicographically ascending order.
+Initialise
+T as empty string and append each palindrome to string
+T.
+For example: If Alice has
+S=abbab, then all the distinct subarrays of
+S which are palindromes are
+{a,abba,b,bb,bab}. After sorting in lexicographically ascending order, she would get
+{a,abba,b,bab,bb}. Now, after appending each palindrome to an empty string
+T,
+T:=T+a,T=a.
+T:=T+abba,T=aabba.
+T:=T+b,T=aabbab.
+T:=T+bab,T=aabbabbab.
+T:=T+bb,T=aabbabbabbb.
+So, finally she ended up with the string
+T=aabbabbabbb.
+Now, Alice will give you the string
+S and
+Q queries of the form:
+L
+R : You have to print the substring of string
+T starting at index
+L (
+1-based indexing) and ending at index
+R. If no such substring exists, i.e
+L,R> length of
+T, print
+−1 instead.
+Note:
+A substring is obtained by deletion of several (possibly zero) characters from the beginning of the string and several (possibly zero) characters from the end of the string.
+A string
+A is lexicographically smaller than a string
+B if and only if one of the following holds:
+A is a prefix of
+B, but
+A
+
+=B;
 Let
-f(A,B) denote the greatest positive integer which divides the code of each road on the shortest path between cities
+i denote the first position where
 A and
-B (the GCD of these codes). If Chef wants to go from city
-A to city
-B safely, he needs to pay
-f(A,B) units of money.
-Since Chef is not sure between which pairs of cities he is going to travel, he wants to know
-S=
-i=1
-∑
-N
-j=i+1
-∑
-N
-f(i,j).
-Help Chef calculate
+B differ, then
+A
+i
+<B
+i
+.
+Input Format
+First line will contain an integer
+N denoting the length of the string.
+The next line will contain a string
 S.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-Each of the next
-N−1 lines contains three space-separated integers
-X,
-Y and
-Z denoting that cities
-X and
-Y are connected by a road with code
-Z.
-Output
-For each test case, print a single line containing one integer
-S.
+The third line will contain an integer
+Q denoting the number of queries.
+Next
+Q lines, each will contain two space-separated integers
+L and
+R.
+Output Format
+For each query, print the substring
+T[L,R] (
+1-based indexing) in a new line. If no such substring exists, i.e
+L,R> length of
+T, print
+−1 instead.
 Constraints
-1≤T≤10
-1≤N,Z≤10
+1≤N≤2⋅10
 5
-1≤X,Y≤N
+1≤Q≤2⋅10
+5
+1≤L≤R≤10
+10
+The sum of
+(R−L+1) over all queries won't exceed
+5⋅10
+5
+.
+S will contain lowercase english alphabets only.
 Sample 1:
 Input
 Output
-1
 5
-1 2 4
-1 3 3
-2 4 1
-2 5 2
-17
+abbab
+6
+1 1
+2 4
+5 8
+1 8
+9 11
+1 14
+a
+abb
+abba
+aabbabba
+bbb
+-1
 Explanation:
-Example case 1:
-f(1,2)=GCD(4)=4
-f(1,3)=GCD(3)=3
-f(1,4)=GCD(4,1)=1
-f(1,5)=GCD(4,2)=2
-f(2,3)=GCD(4,3)=1
-f(2,4)=GCD(1)=1
-f(2,5)=GCD(2)=2
-f(3,4)=GCD(3,4,1)=1
-f(3,5)=GCD(3,4,2)=1
-f(4,5)=GCD(1,2)=1
+Here
+T=aabbabbabbb. The explanation for deriving
+T has been given in the problem statement.
+Query
+1:
+T[1,1]=a.
+Query
+2:
+T[2,4]=abb.
+Query
+6: Here
+R=14 which is greater than the length of the string. Thus, the answer is
+−1.

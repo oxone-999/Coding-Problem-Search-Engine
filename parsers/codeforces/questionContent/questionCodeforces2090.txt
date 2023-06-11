@@ -1,159 +1,133 @@
-D. Sequence and Swaps
-time limit per test1.5 seconds
-memory limit per test512 megabytes
+G. Forbidden Value
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a sequence
-a
-consisting of
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
-, and an integer
+Polycarp is editing a complicated computer program. First, variable
 x
-. Your task is to make the sequence
-a
-sorted (it is considered sorted if the condition
-a
-1
-≤
-a
-2
-≤
-a
-3
-≤⋯≤
-a
-n
-holds).
-To make the sequence sorted, you may perform the following operation any number of times you want (possibly zero): choose an integer
-i
-such that
-1≤i≤n
-and
-a
-i
->x
-, and swap the values of
-a
-i
-and
+is declared and assigned to
+0
+. Then there are instructions of two types:
+set
+y
+v
+ — assign
 x
-.
-For example, if
-a=[0,2,3,5,4]
-,
-x=1
-, the following sequence of operations is possible:
-choose
-i=2
-(it is possible since
-a
-2
->x
-), then
-a=[0,1,3,5,4]
-,
-x=2
-;
-choose
-i=3
-(it is possible since
-a
-3
->x
-), then
-a=[0,1,2,5,4]
-,
-x=3
-;
-choose
-i=4
-(it is possible since
-a
-4
->x
-), then
-a=[0,1,2,3,4]
-,
-x=5
-.
-Calculate the minimum number of operations you have to perform so that
-a
-becomes sorted, or report that it is impossible.
+a value
+y
+or spend
+v
+burles to remove that instruction (thus, not reassign
+x
+);
+if
+y
+…
+end block — execute instructions inside the if block if the value of
+x
+is
+y
+and ignore the block otherwise.
+if blocks can contain set instructions and other if blocks inside them.
+However, when the value of
+x
+gets assigned to
+s
+, the computer breaks and immediately catches fire. Polycarp wants to prevent that from happening and spend as few burles as possible.
+What is the minimum amount of burles he can spend on removing set instructions to never assign
+x
+to
+s
+?
 Input
-The first line contains one integer
-t
-(
-1≤t≤500
-) — the number of test cases.
-Each test case consists of two lines. The first line contains two integers
+The first line contains two integers
 n
 and
-x
+s
 (
-1≤n≤500
+1≤n≤2⋅
+10
+5
 ,
-0≤x≤500
-) — the number of elements in the sequence and the initial value of
+1≤s≤2⋅
+10
+5
+) — the number of lines in the program and the forbidden value of
 x
 .
-The second line contains
+The following
 n
-integers
-a
-1
-,
-a
-2
-, ...,
-a
-n
-(
-0≤
-a
-i
-≤500
-).
-The sum of values of
-n
-over all test cases in the input does not exceed
-500
-.
+lines describe the program. Each line is one of three types:
+set
+y
+v
+(0≤y≤2⋅
+10
+5
+,1≤v≤
+10
+9
+)
+;
+if
+y
+(0≤y≤2⋅
+10
+5
+)
+;
+end.
+Each if instruction is matched by an end instruction. Each end instruction has an if instruction to match.
 Output
-For each test case, print one integer — the minimum number of operations you have to perform to make
-a
-sorted, or
-−1
-, if it is impossible.
-Example
+Print a single integer — the minimum amount of burles Polycarp can spend on removing set instructions to never assign
+x
+to
+s
+.
+Examples
 input
 Copy
-6
-4 1
-2 3 5 4
-5 6
-1 1 3 4 4
-1 10
-2
-2 10
-11 9
-2 10
-12 11
-5 18
-81 324 218 413 324
+5 1
+set 1 10
+set 2 15
+if 2
+set 1 7
+end
 output
 Copy
-3
-0
-0
--1
+17
+input
+Copy
+7 2
+set 3 4
+if 3
+set 10 4
+set 2 7
+set 10 1
+end
+set 4 2
+output
+Copy
+4
+input
+Copy
+9 200
+if 0
+set 5 5
+if 5
+set 100 13
+end
+if 100
+set 200 1
+end
+end
+output
+Copy
 1
-3
+input
+Copy
+1 10
+set 1 15
+output
+Copy
+0

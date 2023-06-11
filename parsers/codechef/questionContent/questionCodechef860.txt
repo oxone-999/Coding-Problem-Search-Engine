@@ -1,58 +1,52 @@
-Difference Matrix
+Chef and Proxy
 Problem
-You are given an integer
-N. You need to find an
-N×N matrix such that:
-Each element of the matrix is an integer from
-1 to
-N
-2
-;
-All elements of the matrix are unique;
-The absolute difference between elements in neighbouring cells is strictly greater than
-1.
-It can be shown that there is at least one matrix that satisfies the given conditions. If multiple matrices satisfy the given conditions, print any.
-Note that two cells are considered to be neighbours if they have a common side or a common vertex (i.e. a cell can have at most
-8 neighbouring cells).
-Input Format
-The first line of input will contain a single integer
-T, denoting the number of test cases.
-Each test case contains a single line of input, an integer
-N, denoting the number of rows and columns in the required matrix.
-Output Format
-For each test case, output
-N lines, where the
-i
-th
-line contains
-N space-separated integers, denoting the elements of the
-i
-th
-row.
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Chef is a brilliant university student that does not attend lectures because he believes that they are boring and coding is life! However, his university follows certain rules and regulations, and a student may only take an exam for a course if he has attended at least 75% of lectures for this course.
+Since you are Chef's best friend, you want to help him reach the attendance he needs to take exams. Unfortunately, Chef is still focused on his code and refuses to attend more lectures, so the only option is to have some of his friends mark him as present by proxy. This trick is well-known in the university, but only few have the talent to pull it off.
+In a certain course, there is exactly one lesson per day over the course of
+D days (numbered
+1 through
+D). You are given a string
+S with length
+D describing the lessons Chef attended — for each valid
+i, the
+i-th character of this string is either 'A' if Chef was absent on day
+i or 'P' if Chef was actually present on day
+i.
+For each day
+d when Chef is absent, one of Chef's friends can mark him as present by proxy on this day only if he was present (if he was really present, not just marked as present) on at least one of the previous two days, i.e. days
+d−1 and
+d−2, and on at least one of the following two days, i.e. days
+d+1 and
+d+2. However, it is impossible to mark him as present by proxy on the first two days and the last two days.
+Find the minimum number of times Chef has to be marked as present by proxy so that his attendance becomes at least 75% (
+0.75). Chef's attendance is number of days when he was marked as present, either by proxy or by actually being present, divided by
+D.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+D.
+The second line contains a single string
+S with length
+D.
+Output
+For each test case, print a single line containing one integer — the minimum number of times Chef needs to be marked as present by proxy, or
+−1 if it is impossible to make Chef achieve 75% attendance.
 Constraints
-1≤T≤1000
-4≤N≤1000
-The sum of
-N
-2
-over all test cases won't exceed
-10
-6
-.
+1≤T≤200
+1≤D≤1,000
+S contains only characters 'A' and 'P'
+Subtasks
+Subtask #1 (100 points): original constraints
 Sample 1:
 Input
 Output
 1
-4
-12 10 6 14
-3 8 4 1
-5 15 11 9
-2 7 13 16
+9
+PAAPPAPPP
+1
 Explanation:
-Test case
-1: The given matrix satisfies all the conditions.
-Note that all elements are unique and in the range
-[1,N
-2
-]. Also, the absolute difference between any two neighbouring cells is greater than
+Example case 1: With a proxy on the third day, the attendance string is "PAPPPAPPP". Now, Chef's attendance is at least 75%, so the minimum number of times Chef needs to be marked as present by proxy is
 1.

@@ -1,34 +1,164 @@
-Genetics
+Exact Walks
 Problem
-Genetic engineering is fun. The scientists have gathered several DNAs and want to create something new out of those. Each DNAs can be represented as a sequence of bases A, G, T, C. Let DNA[a..b] be the subsequence of DNA starting from index a finishing in b inclusive, and DNA[a..] be the subsequence of DNA starting from index a to the end. Scientist can perform the following operations on the DNAs:
-cross operation – they take DNA1 and DNA2 and numbers k1 and k2. Then two new DNAs are created: DNA3 = DNA1[1..k1]+DNA2[k2+1..] and DNA4 = DNA2[1..k2]+DNA1[k1+1..].
-mutate operation – they take a DNA, number k and one of the bases. Then they replace the base in position k in DNA with that base.
-also they need to know certain characteristics of those DNAs. So they can perform count operation – they take DNA and numbers k1 and k2 (k1 <= k2). This operation should return the number of A, G, T, C bases in DNA[k1..k2].
-
-The initial DNAs are numbered from 1 to n, where n is the amount of those DNAs. The new DNAs created in the cross operations are numbered with consecutive integers. You are to write a program to help scientists perform those operations.
-Input
-The first line of input file contains number n – the amount of initial DNAs. Each of the following n lines contains the description of each DNA. The next line contains number q – the amount of operations to perform. The next q lines contain the description of each operation in the following form:
-CROSS id1 id2 k1 k2
-MUTATE id k m
-COUNT id k1 k2
-Constraints
-1 <= n <= 20
-1 <= q <= 30000
-The length of each initial DNA does not exceed 30000. The length of any DNA formed in cross operation won’t exceed 2000000000. Total amount of different DNAs won’t exceed 10000. It is guaranteed that all operations are correct.
-Output
-For each count operation print four integers: the number of each of the bases in the given subsequence of the given DNA.
-Example
-Input:
+Maui had an undirected connected graph
+G=(V,E), where
+V = {
+v
+1
+,v
 2
-CTCGC
-TGCGG
-5
-MUTATE 1 2 A
-COUNT 2 2 4
-MUTATE 2 1 G
-CROSS 2 1 1 5
-COUNT 4 3 6
-
-Output:
-0 2 0 1
-0 2 0 2
+,…,v
+N
+} and
+E is the edge set. He also had a list of positive non-zero integers
+a
+1
+,a
+2
+,…,a
+N
+. He was bored of his usual adventures and decided to build a new directed graph
+G
+′
+=(U,F).
+U = {
+u
+1
+,u
+2
+,…,u
+N
+} and
+(u
+i
+,u
+j
+)∈F if and only if there is a walk of length exactly
+a
+i
+from
+v
+i
+to
+v
+j
+in
+G. Note that this walk could repeat edges. He then noticed that the new directed graph
+G
+′
+had two vertices
+u
+i
+and
+u
+j
+, such that there was no path from
+u
+i
+to
+u
+j
+in
+G
+′
+. Note that there could be more such pairs of vertices.
+But now, Maui has lost his list of integers, and has only the graph
+G. Help him by constructing any list which would satisfy the property mentioned, or state that it cannot be done.
+###Input:
+The first line of the input contains two integers:
+N,M, which represent the number of nodes and edges in
+G respectively.
+The i-th of the next
+M lines contains two numbers
+i and
+j, which signify that the undirected edge
+(v
+i
+,v
+j
+) exists in
+G.
+###Output:
+If a list of integers which satisfies the property exists, print "YES" in the first line and the
+N integers in order in the second line. Each of the integers must satisfy
+1≤a
+i
+≤10
+9
+.
+If it does not exist, print "NO".
+###Constraints
+2≤N≤100
+1≤M≤
+2
+N∗(N−1)
+1≤i,j≤N
+The input graph will be connected.
+There will be no multi-edges or self-loops.
+###Subtasks
+19 points :
+2≤N≤15
+5 points : The input graph will be bi-partite.
+76 points : No further constraints.
+###Sample Input: 3 2 1 2 2 3
+###Sample Output: YES 2 1 2
+###Explanation: In our output,
+a
+1
+=2, and so there will be a direct edge from
+u
+1
+to
+u
+2
+if and only if there is a walk of length 2 between
+v
+1
+and
+v
+2
+. But there isn't any such walk. But there is a walk of length 2 between
+v
+1
+and
+v
+3
+, and so there is a direct edge from
+u
+1
+to
+u
+3
+in
+G
+′
+. Similarly you can check that the edge set of
+G
+′
+is {
+(u
+1
+,u
+3
+),(u
+3
+,u
+1
+),(u
+2
+,u
+1
+),(u
+2
+,u
+3
+)}. Now notice that there is no path from
+u
+1
+to
+u
+2
+in
+G
+′
+. Hence this is a valid output.

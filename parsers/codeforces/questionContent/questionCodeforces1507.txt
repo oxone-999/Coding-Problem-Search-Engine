@@ -1,210 +1,128 @@
-D1. Seating Arrangements (easy version)
+E. Buds Re-hanging
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-It is the easy version of the problem. The only difference is that in this version
-n=1
-.
-In the cinema seats can be represented as the table with
+A tree is a connected graph without cycles. A rooted tree has a special vertex called the root. The parent of a vertex
+v
+(different from root) is the previous to
+v
+vertex on the shortest path from the root to the vertex
+v
+. Children of the vertex
+v
+are all vertices for which
+v
+is the parent.
+A vertex is a leaf if it has no children. We call a vertex a bud, if the following three conditions are satisfied:
+it is not a root,
+it has at least one child, and
+all its children are leaves.
+You are given a rooted tree with
 n
-rows and
-m
-columns. The rows are numbered with integers from
+vertices. The vertex
 1
-to
-n
-. The seats in each row are numbered with consecutive integers from left to right: in the
-k
--th row from
-m(k−1)+1
-to
-mk
-for all rows
-1≤k≤n
-.
-1
-2
-⋯
-m−1
-m
-m+1
-m+2
-⋯
-2m−1
-2m
-2m+1
-2m+2
-⋯
-3m−1
-3m
-⋮
-⋮
-⋱
-⋮
-⋮
-m(n−1)+1
-m(n−1)+2
-⋯
-nm−1
-nm
-The table with seats indices
-There are
-nm
-people who want to go to the cinema to watch a new film. They are numbered with integers from
-1
-to
-nm
-. You should give exactly one seat to each person.
-It is known, that in this cinema as lower seat index you have as better you can see everything happening on the screen.
-i
--th person has the level of sight
-a
-i
-. Let's define
-s
-i
-as the seat index, that will be given to
-i
--th person. You want to give better places for people with lower sight levels, so for any two people
-i
-,
-j
-such that
-a
-i
-<
-a
-j
-it should be satisfied that
-s
-i
-<
-s
-j
-.
-After you will give seats to all people they will start coming to their seats. In the order from
-1
-to
-nm
-, each person will enter the hall and sit in their seat. To get to their place, the person will go to their seat's row and start moving from the first seat in this row to theirs from left to right. While moving some places will be free, some will be occupied with people already seated. The inconvenience of the person is equal to the number of occupied seats he or she will go through.
-Let's consider an example:
-m=5
-, the person has the seat
-4
-in the first row, the seats
-1
-,
-3
-,
-5
-in the first row are already occupied, the seats
-2
-and
-4
-are free. The inconvenience of this person will be
-2
-, because he will go through occupied seats
-1
-and
-3
-.
-Find the minimal total inconvenience (the sum of inconveniences of all people), that is possible to have by giving places for all people (all conditions should be satisfied).
+is the root. In one operation you can choose any bud with all its children (they are leaves) and re-hang them to any other vertex of the tree. By doing that you delete the edge connecting the bud and its parent and add an edge between the bud and the chosen vertex of the tree. The chosen vertex cannot be the bud itself or any of its children. All children of the bud stay connected to the bud.
+What is the minimum number of leaves it is possible to get if you can make any number of the above-mentioned operations (possibly zero)?
 Input
 The input consists of multiple test cases. The first line contains a single integer
 t
 (
-1≤t≤100
-) — the number of test cases. Description of the test cases follows.
-The first line of each test case contains two integers
-n
-and
-m
-(
-n=1
-,
-1≤m≤300
-) — the number of rows and places in each row respectively.
-The second line of each test case contains
-n⋅m
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n⋅m
-(
-1≤
-a
-i
-≤
+1≤t≤
 10
-9
-), where
-a
-i
-is the sight level of
-i
--th person.
-It's guaranteed that the sum of
-n⋅m
-over all test cases does not exceed
+4
+) — the number of test cases. Description of the test cases follows.
+The first line of each test case contains a single integer
+n
+(
+2≤n≤2⋅
+10
+5
+) — the number of the vertices in the given tree.
+Each of the next
+n−1
+lines contains two integers
+u
+and
+v
+(
+1≤u,v≤n
+,
+u≠v
+) meaning that there is an edge between vertices
+u
+and
+v
+in the tree.
+It is guaranteed that the given graph is a tree.
+It is guaranteed that the sum of
+n
+over all test cases doesn't exceed
+2⋅
 10
 5
 .
 Output
-For each test case print a single integer — the minimal total inconvenience that can be achieved.
+For each test case print a single integer — the minimal number of leaves that is possible to get after some operations.
 Example
 input
 Copy
-4
-1 3
-1 2 3
-1 5
-2 1 5 3 3
+5
+7
 1 2
+1 3
+1 4
+2 5
+2 6
+4 7
+6
+1 2
+1 3
+2 4
+2 5
+3 6
+2
+1 2
+7
+7 3
+1 5
+1 3
+4 6
+4 7
 2 1
-1 6
-2 3 2 1 1 1
+6
+2 1
+2 3
+4 5
+3 4
+3 6
 output
 Copy
-3
-6
-0
+2
+2
+1
+2
 1
 Note
-In the first test case, there is a single way to arrange people, because all sight levels are distinct. The first person will sit on the first seat, the second person will sit on the second place, the third person will sit on the third place. So inconvenience of the first person will be
-0
-, inconvenience of the second person will be
-1
-and inconvenience of the third person will be
-2
-. The total inconvenience is
-0+1+2=3
-.
-In the second test case, people should sit as follows:
-s
-1
-=2
-,
-s
-2
-=1
-,
-s
-3
-=5
-,
-s
+In the first test case the tree looks as follows:
+Firstly you can choose a bud vertex
 4
-=4
-,
-s
+and re-hang it to vertex
+3
+. After that you can choose a bud vertex
+2
+and re-hang it to vertex
+7
+. As a result, you will have the following tree with
+2
+leaves:
+It can be proved that it is the minimal number of leaves possible to get.
+In the second test case the tree looks as follows:
+You can choose a bud vertex
+3
+and re-hang it to vertex
 5
-=3
-. The total inconvenience will be
-6
-.
+. As a result, you will have the following tree with
+2
+leaves:
+It can be proved that it is the minimal number of leaves possible to get.

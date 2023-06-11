@@ -1,13 +1,13 @@
-D. Distinct Characters Queries
+F. Yet Another Substring Reverse
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
 You are given a string
 s
-consisting of lowercase Latin letters and
-q
-queries for this string.
+consisting only of first
+20
+lowercase Latin letters ('a', 'b', ..., 't').
 Recall that the substring
 s[l;r]
 of the string
@@ -21,85 +21,64 @@ l+1
 s
 r
 . For example, the substrings of "codeforces" are "code", "force", "f", "for", but not "coder" and "top".
-There are two types of queries:
-1 pos c
-(
-1≤pos≤|s|
-,
-c
-is lowercase Latin letter): replace
-s
-pos
-with
-c
-(set
-s
-pos
-:=c
-);
-2 l r
-(
-1≤l≤r≤|s|
-): calculate the number of distinct characters in the substring
+You can perform the following operation no more than once: choose some substring
 s[l;r]
-.
+and reverse it (i.e. the string
+s
+l
+s
+l+1
+…
+s
+r
+becomes
+s
+r
+s
+r−1
+…
+s
+l
+).
+Your goal is to maximize the length of the maximum substring of
+s
+consisting of distinct (i.e. unique) characters.
+The string consists of distinct characters if no character in this string appears more than once. For example, strings "abcde", "arctg" and "minecraft" consist of distinct characters but strings "codeforces", "abacaba" do not consist of distinct characters.
 Input
-The first line of the input contains one string
+The only line of the input contains one string
 s
 consisting of no more than
 10
-5
-lowercase Latin letters.
-The second line of the input contains one integer
-q
-(
-1≤q≤
-10
-5
-) — the number of queries.
-The next
-q
-lines contain queries, one per line. Each query is given in the format described in the problem statement. It is guaranteed that there is at least one query of the second type.
+6
+characters 'a', 'b', ..., 't' (first
+20
+lowercase Latin letters).
 Output
-For each query of the second type print the answer for it — the number of distinct characters in the required substring in this query.
+Print one integer — the maximum possible length of the maximum substring of
+s
+consisting of distinct characters after reversing no more than one its substring.
 Examples
 input
 Copy
 abacaba
-5
-2 1 4
-1 4 b
-1 5 b
-2 4 6
-2 1 7
 output
 Copy
 3
-1
-2
 input
 Copy
-dfcbbcfeeedbaea
-15
-1 6 e
-1 4 b
-2 6 14
-1 7 b
-1 12 c
-2 6 8
-2 1 6
-1 7 c
-1 2 f
-1 10 a
-2 7 9
-1 10 a
-1 14 b
-1 1 f
-2 1 11
+abcdecdf
 output
 Copy
-5
-2
-5
-2
+6
+input
+Copy
+aabbcc
+output
+Copy
+3
+input
+Copy
+abcdeefc
+output
+Copy
 6

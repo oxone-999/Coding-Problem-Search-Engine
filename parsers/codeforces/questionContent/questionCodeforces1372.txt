@@ -1,162 +1,119 @@
-D. The Number of Imposters
+E2. Rubik's Cube Coloring (hard version)
 time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Theofanis started playing the new online game called "Among them". However, he always plays with Cypriot players, and they all have the same name: "Andreas" (the most common name in Cyprus).
-In each game, Theofanis plays with
-n
-other players. Since they all have the same name, they are numbered from
+It is the hard version of the problem. The difference is that in this version, there are nodes with already chosen colors.
+Theofanis is starving, and he wants to eat his favorite food, sheftalia. However, he should first finish his homework. Can you help him with this problem?
+You have a perfect binary tree of
+2
+k
+−1
+nodes — a binary tree where all vertices
+i
+from
 1
 to
-n
-.
-The players write
-m
-comments in the chat. A comment has the structure of "
-i
-j
-c
-" where
-i
-and
-j
-are two distinct integers and
-c
-is a string (
-1≤i,j≤n
-;
-i≠j
-;
-c
-is either imposter or crewmate). The comment means that player
-i
-said that player
-j
-has the role
-c
-.
-An imposter always lies, and a crewmate always tells the truth.
-Help Theofanis find the maximum possible number of imposters among all the other Cypriot players, or determine that the comments contradict each other (see the notes for further explanation).
-Note that each player has exactly one role: either imposter or crewmate.
-Input
-The first line contains a single integer
-t
-(
-1≤t≤
-10
-4
-) — the number of test cases. Description of each test case follows.
-The first line of each test case contains two integers
-n
-and
-m
-(
-1≤n≤2⋅
-10
-5
-;
-0≤m≤5⋅
-10
-5
-) — the number of players except Theofanis and the number of comments.
-Each of the next
-m
-lines contains a comment made by the players of the structure "
-i
-j
-c
-" where
-i
-and
-j
-are two distinct integers and
-c
-is a string (
-1≤i,j≤n
-;
-i≠j
-;
-c
-is either imposter or crewmate).
-There can be multiple comments for the same pair of
-(i,j)
-.
-It is guaranteed that the sum of all
-n
-does not exceed
-2⋅
-10
-5
-and the sum of all
-m
-does not exceed
-5⋅
-10
-5
-.
-Output
-For each test case, print one integer — the maximum possible number of imposters. If the comments contradict each other, print
+2
+k−1
 −1
+have exactly two children: vertices
+2i
+and
+2i+1
+. Vertices from
+2
+k−1
+to
+2
+k
+−1
+don't have any children. You want to color its vertices with the
+6
+Rubik's cube colors (White, Green, Red, Blue, Orange and Yellow).
+Let's call a coloring good when all edges connect nodes with colors that are neighboring sides in the Rubik's cube.
+A picture of Rubik's cube and its 2D map.
+More formally:
+a white node can not be neighboring with white and yellow nodes;
+a yellow node can not be neighboring with white and yellow nodes;
+a green node can not be neighboring with green and blue nodes;
+a blue node can not be neighboring with green and blue nodes;
+a red node can not be neighboring with red and orange nodes;
+an orange node can not be neighboring with red and orange nodes;
+However, there are
+n
+special nodes in the tree, colors of which are already chosen.
+You want to calculate the number of the good colorings of the binary tree. Two colorings are considered different if at least one node is colored with a different color.
+The answer may be too large, so output the answer modulo
+10
+9
++7
 .
-Example
+Input
+The first line contains the integers
+k
+(
+1≤k≤60
+) — the number of levels in the perfect binary tree you need to color.
+The second line contains the integer
+n
+(
+1≤n≤min(
+2
+k
+−1,2000)
+) — the number of nodes, colors of which are already chosen.
+The next
+n
+lines contains integer
+v
+(
+1≤v≤
+2
+k
+−1
+) and string
+s
+ — the index of the node and the color of the node (
+s
+is one of the white, yellow, green, blue, red and orange).
+It is guaranteed that each node
+v
+appears in the input at most once.
+Output
+Print one integer — the number of the different colorings modulo
+10
+9
++7
+.
+Examples
 input
 Copy
-5
-3 2
-1 2 imposter
-2 3 crewmate
-5 4
-1 3 crewmate
-2 5 crewmate
-2 4 imposter
-3 4 imposter
-2 2
-1 2 imposter
-2 1 crewmate
-3 5
-1 2 imposter
-1 2 imposter
-3 2 crewmate
-3 2 crewmate
-1 3 imposter
-5 0
+3
+2
+5 orange
+2 white
 output
 Copy
+1024
+input
+Copy
 2
-4
--1
 2
-5
+1 white
+2 white
+output
+Copy
+0
+input
+Copy
+10
+3
+1 blue
+4 red
+5 orange
+output
+Copy
+328925088
 Note
-In the first test case, imposters can be Andreas
-2
-and
-3
-.
-In the second test case, imposters can be Andreas
-1
-,
-2
-,
-3
-and
-5
-.
-In the third test case, comments contradict each other. This is because player
-1
-says that player
-2
-is an imposter, and player
-2
-says that player
-1
-is a crewmate. If player
-1
-is a crewmate, then he must be telling the truth, so player
-2
-must be an imposter. But if player
-2
-is an imposter then he must be lying, so player
-1
-can't be a crewmate. Contradiction.
+In the picture below, you can see one of the correct colorings of the first test example.

@@ -1,133 +1,20 @@
-Consecutive Adding
+Buggy algorithm
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-You are given two matrices
-A and
-B, each with
-R rows (numbered
-1 through
-R) and
-C columns (numbered
-1 through
-C). Let's denote an element of
-A or
-B in row
-i and column
-j by
-A
-i,j
-or
-B
-i,j
-respectively.
-You are also given an integer
-X. You may perform the following operation on
-A any number of times:
-Choose an integer
-v.
-Choose
-X consecutive elements of
-A, either in the same row or in the same column.
-Add
-v to each of the chosen elements of
-A.
-Determine whether it is possible to change
-A to
-B in a finite number of operations.
+Lukas was asked to be solve the following problem: 'given a permutation of numbers 1,..,n, calculate the number of inversions in it, i.e., the number of pairs of numbers i, j from 1..n, such that i
+So, for permutation 4,1,2,3, the algorithm would give the answer 0+1+1+1 = 3, and for the permutation 3,4,5,1,2, the answer 0+0+0+3+3 =6.
+Obviously, this algorithm is wrong (it gives wrong results e.g. for permutation 3,2,1), but... sometimes it gives correct results.
+Lucas would like to calculate what are the chances that this algorithm gives the correct result. Specifically, he wants to know how many different permutations of fixed length, which start with a given prefix (several starting numbers), lead to a correct answer to this problem.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains three space-separated integers
-R,
-C and
-X.
-R lines follow. For each valid
-i, the
-i-th of these lines contains
-C space-separated integers
-A
-i,1
-,A
-i,2
-,…,A
-i,C
-.
-R more lines follow. For each valid
-i, the
-i-th of these lines contains
-C space-separated integers
-B
-i,1
-,B
-i,2
-,…,B
-i,C
-.
+First, an integer t<100, representing the number of test cases. Each test case consists of two integers n and m, where n, 1≤n≤30, is the length of permutation, and m, 0≤m≤n, is the length of the given prefix; then, m distinct integers between 1 and n follow, describing the prefix of the permutation.
 Output
-For each test case, print a single line containing the string "Yes" if there is a sequence of operations that changes the matrix
-A to
-B, or "No" if such a sequence of operations does not exist.
-Constraints
-1≤T≤10
-3
-2≤R,C≤10
-3
-2≤X≤min(R,C)
-∣A
-i,j
-∣,∣B
-i,j
-∣≤10
-9
-for each valid
-i,j
-the sum of
-R over all test cases does not exceed
-10
-3
-the sum of
-C over all test cases does not exceed
-10
-3
-Subtasks
-Subtask #1 (5 points):
-X=2
-Subtask #2 (10 points):
-X=3
-Subtask #3 (85 points): original constraints
+For each test-case, output in how many ways we can augment the prefix to a complete permutation so that the algorithm gives correct results.
 Sample 1:
 Input
 Output
 3
-2 2 2
-1 2
-0 1
-0 0
-0 0
-2 2 2
-1 2
-0 1
-0 0
--1 0
-3 2 2
-1 1
-2 2
-3 3
-1 0
-2 0
 3 0
-Yes
-No
-No
-Explanation:
-Example case 1: We can add
-−1 to both elements in row
-1 and add
-−1 to both elements in column
-2.
-Example case 2: After any operation, the sum of elements of
-A remains even. However, the sum of elements of
-B is odd, so
-A cannot be changed to
-B.
+5 2 1 4
+5 1 3
+5
+3
+9

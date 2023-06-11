@@ -1,139 +1,118 @@
-E. Preorder
-time limit per test2 seconds
-memory limit per test512 megabytes
+A. Log Chopping
+time limit per test1 second
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a rooted tree of
-2
+There are
 n
-−1
-vertices. Every vertex of this tree has either
-0
-children, or
+logs, the
+i
+-th log has a length of
+a
+i
+meters. Since chopping logs is tiring work, errorgorn and maomao90 have decided to play a game.
+errorgorn and maomao90 will take turns chopping the logs with errorgorn chopping first. On his turn, the player will pick a log and chop it into
 2
-children. All leaves of this tree have the same distance from the root, and for every non-leaf vertex, one of its children is the left one, and the other child is the right one. Formally, you are given a perfect binary tree.
-The vertices of the tree are numbered in the following order:
-the root has index
+pieces. If the length of the chosen log is
+x
+, and the lengths of the resulting pieces are
+y
+and
+z
+, then
+y
+and
+z
+have to be positive integers, and
+x=y+z
+must hold. For example, you can chop a log of length
+3
+into logs of lengths
+2
+and
 1
-;
-if a vertex has index
-x
-, then its left child has index
-2x
-, and its right child has index
-2x+1
+, but not into logs of lengths
+3
+and
+0
+,
+2
+and
+2
+, or
+1.5
+and
+1.5
 .
-Every vertex of the tree has a letter written on it, either A or B. Let's define the character on the vertex
-x
-as
-s
-x
-.
-Let the preorder string of some vertex
-x
-be defined in the following way:
-if the vertex
-x
-is a leaf, then the preorder string of
-x
-be consisting of only one character
-s
-x
-;
-otherwise, the preorder string of
-x
-is
-s
-x
-+f(
-l
-x
-)+f(
-r
-x
-)
-, where
-+
-operator defines concatenation of strings,
-f(
-l
-x
-)
-is the preorder string of the left child of
-x
-, and
-f(
-r
-x
-)
-is the preorder string of the right child of
-x
-.
-The preorder string of the tree is the preorder string of its root.
-Now, for the problem itself...
-You have to calculate the number of different strings that can be obtained as the preorder string of the given tree, if you are allowed to perform the following operation any number of times before constructing the preorder string of the tree:
-choose any non-leaf vertex
-x
-, and swap its children (so, the left child becomes the right one, and vice versa).
+The player who is unable to make a chop will be the loser. Assuming that both errorgorn and maomao90 play optimally, who will be the winner?
 Input
-The first line contains one integer
+Each test contains multiple test cases. The first line contains a single integer
+t
+(
+1≤t≤100
+)  — the number of test cases. The description of the test cases follows.
+The first line of each test case contains a single integer
 n
 (
-2≤n≤18
-).
-The second line contains a sequence of
-2
+1≤n≤50
+)  — the number of logs.
+The second line of each test case contains
 n
-−1
-characters
-s
+integers
+a
 1
 ,
-s
+a
 2
 ,…,
-s
-2
+a
 n
-−1
-. Each character is either A or B. The characters are not separated by spaces or anything else.
+(
+1≤
+a
+i
+≤50
+)  — the lengths of the logs.
+Note that there is no bound on the sum of
+n
+over all test cases.
 Output
-Print one integer — the number of different strings that can be obtained as the preorder string of the given tree, if you can apply any number of operations described in the statement. Since it can be very large, print it modulo
-998244353
-.
-Examples
+For each test case, print "errorgorn" if errorgorn wins or "maomao90" if maomao90 wins. (Output without quotes).
+Example
 input
 Copy
+2
 4
-BAAAAAAAABBABAB
-output
-Copy
-16
-input
-Copy
-2
-BAA
-output
-Copy
+2 4 2 1
 1
-input
-Copy
-2
-ABA
-output
-Copy
-2
-input
-Copy
-2
-AAB
-output
-Copy
-2
-input
-Copy
-2
-AAA
-output
-Copy
 1
+output
+Copy
+errorgorn
+maomao90
+Note
+In the first test case, errorgorn will be the winner. An optimal move is to chop the log of length
+4
+into
+2
+logs of length
+2
+. After this there will only be
+4
+logs of length
+2
+and
+1
+log of length
+1
+.
+After this, the only move any player can do is to chop any log of length
+2
+into
+2
+logs of length
+1
+. After
+4
+moves, it will be maomao90's turn and he will not be able to make a move. Therefore errorgorn will be the winner.
+In the second test case, errorgorn will not be able to make a move on his first turn and will immediately lose, making maomao90 the winner.

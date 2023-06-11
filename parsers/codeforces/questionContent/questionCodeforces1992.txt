@@ -1,206 +1,141 @@
-E. Advertising Agency
-time limit per test2 seconds
+G. Strange Beauty
+time limit per test5 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Masha works in an advertising agency. In order to promote the new brand, she wants to conclude contracts with some bloggers. In total, Masha has connections of
+Polycarp found on the street an array
+a
+of
 n
-different bloggers. Blogger numbered
-i
-has
+elements.
+Polycarp invented his criterion for the beauty of an array. He calls an array
+a
+beautiful if at least one of the following conditions must be met for each different pair of indices
+i≠j
+:
 a
 i
-followers.
-Since Masha has a limited budget, she can only sign a contract with
-k
-different bloggers. Of course, Masha wants her ad to be seen by as many people as possible. Therefore, she must hire bloggers with the maximum total number of followers.
-Help her, find the number of ways to select
-k
-bloggers so that the total number of their followers is maximum possible. Two ways are considered different if there is at least one blogger in the first way, which is not in the second way. Masha believes that all bloggers have different followers (that is, there is no follower who would follow two different bloggers).
-For example, if
+is divisible by
+a
+j
+;
+or
+a
+j
+is divisible by
+a
+i
+.
+For example, if:
+n=5
+and
+a=[7,9,3,14,63]
+, then the
+a
+array is not beautiful (for
+i=4
+and
+j=2
+, none of the conditions above is met);
+n=3
+and
+a=[2,14,42]
+, then the
+a
+array is beautiful;
 n=4
-,
-k=3
-,
-a=[1,3,1,2]
-, then Masha has two ways to select
-3
-bloggers with the maximum total number of followers:
-conclude contracts with bloggers with numbers
-1
-,
-2
 and
-4
-. In this case, the number of followers will be equal to
+a=[45,9,3,18]
+, then the
 a
-1
-+
-a
-2
-+
-a
-4
-=6
-.
-conclude contracts with bloggers with numbers
-2
-,
-3
+array is not beautiful (for
+i=1
 and
-4
-. In this case, the number of followers will be equal to
+j=4
+none of the conditions above is met);
+Ugly arrays upset Polycarp, so he wants to remove some elements from the array
 a
-2
-+
+so that it becomes beautiful. Help Polycarp determine the smallest number of elements to remove to make the array
 a
-3
-+
-a
-4
-=6
-.
-Since the answer can be quite large, output it modulo
-10
-9
-+7
-.
+beautiful.
 Input
 The first line contains one integer
 t
 (
-1≤t≤1000
+1≤t≤10
 ) — the number of test cases. Then
 t
 test cases follow.
-The first line of each test case contains two integers
+The first line of each test case contains one integer
 n
-and
-k
 (
-1≤k≤n≤1000
-) — the number of bloggers and how many of them you can sign a contract with.
+1≤n≤2⋅
+10
+5
+) — the length of the array
+a
+.
 The second line of each test case contains
 n
-integers
+numbers
 a
 1
 ,
 a
 2
-,…
+,…,
 a
 n
 (
 1≤
 a
 i
-≤n
-) — the number of followers of each blogger.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-1000
+≤2⋅
+10
+5
+) — elements of the array
+a
 .
 Output
-For each test case, on a separate line output one integer — the number of ways to select
-k
-bloggers so that the total number of their followers is maximum possible.
+For each test case output one integer — the minimum number of elements that must be removed to make the array
+a
+beautiful.
 Example
 input
 Copy
+4
+5
+7 9 3 14 63
 3
-4 3
-1 3 1 2
-4 2
-1 1 1 1
-2 1
-1 2
+2 14 42
+4
+45 9 3 18
+3
+2 2 8
 output
 Copy
 2
-6
+0
 1
+0
 Note
-The test case is explained in the statements.
-In the second test case, the following ways are valid:
-conclude contracts with bloggers with numbers
-1
+In the first test case, removing
+7
 and
-2
-. In this case, the number of followers will be equal to
+14
+will make array
 a
-1
-+
+beautiful.
+In the second test case, the array
 a
-2
-=2
-;
-conclude contracts with bloggers with numbers
-1
-and
-3
-. In this case, the number of followers will be equal to
+is already beautiful.
+In the third test case, removing one of the elements
+45
+or
+18
+will make the array
 a
-1
-+
+beautiful.
+In the fourth test case, the array
 a
-3
-=2
-;
-conclude contracts with bloggers with numbers
-1
-and
-4
-. In this case, the number of followers will be equal to
-a
-1
-+
-a
-4
-=2
-;
-conclude contracts with bloggers with numbers
-2
-and
-3
-. In this case, the number of followers will be equal to
-a
-2
-+
-a
-3
-=2
-;
-conclude contracts with bloggers with numbers
-2
-and
-4
-. In this case, the number of followers will be equal to
-a
-2
-+
-a
-4
-=2
-;
-conclude contracts with bloggers with numbers
-3
-and
-4
-. In this case, the number of followers will be equal to
-a
-3
-+
-a
-4
-=2
-.
-In the third test case, the following ways are valid:
-concludes a contract with a blogger with the number
-2
-. In this case, the number of followers will be equal to
-a
-2
-=2
-.
+is beautiful.

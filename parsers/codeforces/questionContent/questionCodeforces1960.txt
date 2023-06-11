@@ -1,131 +1,152 @@
-F. AB Tree
-time limit per test2 seconds
+B. Restore Modulo
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Kilani and Abd are neighbors for 3000 years, but then the day came and Kilani decided to move to another house. As a farewell gift, Kilani is going to challenge Abd with a problem written by their other neighbor with the same name Abd.
-The problem is:
-You are given a connected tree rooted at node
-1
+For the first place at the competition, Alex won many arrays of integers and was assured that these arrays are very expensive. After the award ceremony Alex decided to sell them. There is a rule in arrays pawnshop: you can sell array only if it can be compressed to a generator.
+This generator takes four non-negative numbers
+n
+,
+m
+,
+c
+,
+s
 .
-You should assign a character a or b to every node in the tree so that the total number of a's is equal to
-x
-and the total number of b's is equal to
-n−x
-.
-Let's define a string for each node
-v
-of the tree as follows:
-if
-v
-is root then the string is just one character assigned to
-v
-:
-otherwise, let's take a string defined for the
-v
-'s parent
-p
-v
-and add to the end of it a character assigned to
-v
-.
-You should assign every node a character in a way that minimizes the number of distinct strings among the strings of all nodes.
-Input
-The first line contains two integers
 n
 and
+m
+must be positive,
+s
+non-negative and for
+c
+it must be true that
+0≤c<m
+. The array
+a
+of length
+n
+is created according to the following rules:
+a
+1
+=smodm
+, here
+xmody
+denotes remainder of the division of
 x
+by
+y
+;
+a
+i
+=(
+a
+i−1
++c)modm
+for all
+i
+such that
+1<i≤n
+.
+For example, if
+n=5
+,
+m=7
+,
+c=4
+, and
+s=10
+, then
+a=[3,0,4,1,5]
+.
+Price of such an array is the value of
+m
+in this generator.
+Alex has a question: how much money he can get for each of the arrays. Please, help him to understand for every array whether there exist four numbers
+n
+,
+m
+,
+c
+,
+s
+that generate this array. If yes, then maximize
+m
+.
+Input
+The first line contains a single integer
+t
+(
+1≤t≤
+10
+5
+) — the number of arrays.
+The first line of array description contains a single integer
+n
 (
 1≤n≤
 10
 5
-;
-0≤x≤n
-) — the number of vertices in the tree the number of a's.
-The second line contains
-n−1
+) — the size of this array.
+The second line of array description contains
+n
 integers
-p
-2
+a
+1
 ,
-p
-3
+a
+2
 ,…,
-p
+a
 n
 (
-1≤
-p
+0≤
+a
 i
-≤n
-;
-p
-i
-≠i
-), where
-p
-i
-is the parent of node
-i
+≤
+10
+9
+) — elements of the array.
+It is guaranteed that the sum of array sizes does not exceed
+10
+5
 .
-It is guaranteed that the input describes a connected tree.
 Output
-In the first line, print the minimum possible total number of distinct strings.
-In the second line, print
-n
-characters, where all characters are either a or b and the
-i
--th character is the character assigned to the
-i
--th node.
-Make sure that the total number of a's is equal to
-x
-and the total number of b's is equal to
-n−x
-.
-If there is more than one answer you can print any of them.
+For every array print:
+−1
+, if there are no such four numbers that generate this array;
+0
+, if
+m
+can be arbitrary large;
+the maximum value
+m
+and any appropriate
+c
+(
+0≤c<m
+) in other cases.
 Example
 input
 Copy
-9 3
-1 2 2 4 4 4 3 1
+6
+6
+1 9 17 6 14 3
+3
+4 2 2
+3
+7 3 4
+3
+2 2 4
+5
+0 1000000000 0 1000000000 0
+2
+1 1
 output
 Copy
-4
-aabbbbbba
-Note
-The tree from the sample is shown below:
-The tree after assigning characters to every node (according to the output) is the following:
-Strings for all nodes are the following:
-string of node
-1
-is: a
-string of node
-2
-is: aa
-string of node
-3
-is: aab
-string of node
-4
-is: aab
-string of node
-5
-is: aabb
-string of node
-6
-is: aabb
-string of node
-7
-is: aabb
-string of node
-8
-is: aabb
-string of node
-9
-is: aa
-The set of unique strings is
-{a,aa,aab,aabb}
-, so the number of distinct strings is
-4
-.
+19 8
+-1
+-1
+-1
+2000000000 1000000000
+0

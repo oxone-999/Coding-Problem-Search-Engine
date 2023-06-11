@@ -1,130 +1,75 @@
-B1. Tokitsukaze and Good 01-String (easy version)
+A. AvtoBus
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is the easy version of the problem. The only difference between the two versions is that the harder version asks additionally for a minimum number of subsegments.
-Tokitsukaze has a binary string
-s
-of length
+Spring has come, and the management of the AvtoBus bus fleet has given the order to replace winter tires with summer tires on all buses.
+You own a small bus service business and you have just received an order to replace
 n
-, consisting only of zeros and ones,
-n
-is even.
-Now Tokitsukaze divides
-s
-into the minimum number of contiguous subsegments, and for each subsegment, all bits in each subsegment are the same. After that,
-s
-is considered good if the lengths of all subsegments are even.
-For example, if
-s
-is "11001111", it will be divided into "11", "00" and "1111". Their lengths are
-2
-,
-2
-,
+tires. You know that the bus fleet owns two types of buses: with two axles (these buses have
 4
-respectively, which are all even numbers, so "11001111" is good. Another example, if
-s
-is "1110011000", it will be divided into "111", "00", "11" and "000", and their lengths are
-3
-,
-2
-,
-2
-,
-3
-. Obviously, "1110011000" is not good.
-Tokitsukaze wants to make
-s
-good by changing the values of some positions in
-s
-. Specifically, she can perform the operation any number of times: change the value of
-s
-i
-to '0' or '1'(
-1≤i≤n
-). Can you tell her the minimum number of operations to make
-s
-good?
+wheels) and with three axles (these buses have
+6
+wheels).
+You don't know how many buses of which type the AvtoBus bus fleet owns, so you wonder how many buses the fleet might have. You have to determine the minimum and the maximum number of buses that can be in the fleet if you know that the total number of wheels for all buses is
+n
+.
 Input
-The first contains a single positive integer
+The first line contains an integer
 t
 (
-1≤t≤10000
-) — the number of test cases.
-For each test case, the first line contains a single integer
+1≤t≤1000
+) — the number of test cases. The following lines contain description of test cases.
+The only line of each test case contains one integer
 n
 (
-2≤n≤2⋅
+1≤n≤
 10
-5
-) — the length of
-s
-, it is guaranteed that
-n
-is even.
-The second line contains a binary string
-s
-of length
-n
-, consisting only of zeros and ones.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-.
+18
+) — the total number of wheels for all buses.
 Output
-For each test case, print a single line with one integer — the minimum number of operations to make
-s
-good.
+For each test case print the answer in a single line using the following format.
+Print two integers
+x
+and
+y
+(
+1≤x≤y
+) — the minimum and the maximum possible number of buses that can be in the bus fleet.
+If there is no suitable number of buses for the given
+n
+, print the number
+−1
+as the answer.
 Example
 input
 Copy
-5
-10
-1110011000
-8
-11001111
-2
-00
-2
-11
-6
-100110
+4
+4
+7
+24
+998244353998244352
 output
 Copy
-3
-0
-0
-0
-3
+1 1
+-1
+4 6
+166374058999707392 249561088499561088
 Note
-In the first test case, one of the ways to make
-s
-good is the following.
-Change
-s
-3
-,
-s
-6
-and
-s
+In the first test case the total number of wheels is
+4
+. It means that there is the only one bus with two axles in the bus fleet.
+In the second test case it's easy to show that there is no suitable number of buses with
 7
-to '0', after that
-s
-becomes "1100000000", it can be divided into "11" and "00000000", which lengths are
-2
-and
-8
-respectively. There are other ways to operate
-3
-times to make
-s
-good, such as "1111110000", "1100001100", "1111001100".
-In the second, third and fourth test cases,
-s
-is good initially, so no operation is required.
+wheels in total.
+In the third test case the total number of wheels is
+24
+. The following options are possible:
+Four buses with three axles.
+Three buses with two axles and two buses with three axles.
+Six buses with two axles.
+So the minimum number of buses is
+4
+and the maximum number of buses is
+6
+.

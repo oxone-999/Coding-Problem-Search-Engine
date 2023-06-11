@@ -1,43 +1,28 @@
-Addition chains
+Mega mu - 1
 Problem
-An addition chain for a positive integer N is a sequence of positive integers C = (A0, A1, ..., AL) such that
-1 = A0 < A1 < ... < AL – 1 < AL = N,
-for each i such that 1 ≤ i ≤ L there exist integers j and k such that 0 ≤ j, k < i and Ai = Aj + Ak.
-The integer L is called the length of the chain C.
-For example, C = (1, 2, 3, 6, 12, 15) is an addition chain of length 5 for N = 15. Indeed,
-A0 = 1,
-A1 = 2 = 1 + 1 = A0 + A0,
-A2 = 3 = 2 + 1 = A1 + A0,
-A3 = 6 = 3 + 3 = A2 + A2,
-A4 = 12 = 6 + 6 = A3 + A3,
-A5 = 15 = 3 + 12 = A2 + A4.
-It is, in fact, the shortest addition chain for N = 15.
-Your task is to find some addition chain for a given positive integer N.
-The shorter chain you will find the better score you will get.
-Input
-The only line of the input file contains an integer N, the number for which you need to find an addition chain.
-Output
-The first line of the output file should contain an integer L ≤ 500, the length of your addition chain for the value of N given in the input file. L lines should follow. ith line should contain two non-negative integers j[i] and k[i] both less than i separated by exactly one space. Their meaning is that for your addition chain, Ai is equal to Aj[i] + Ak[i]. More specifically, your output will be considered as correct if and only if all of the following conditions hold:
-1 ≤ L ≤ 500;
-0 ≤ j[i], k[i] < i for all i such that 1 ≤ i ≤ L;
-for the sequence (A0, A1, ..., AL) defined by the rules A0 = 1 and Ai = Aj[i] + Ak[i] for i = 1, 2, ..., L we have 1 = A0 < A1 < ... < AL – 1 < AL = N.
-Your program will get Accepted if and only if it returns correct output for each test case within a given time limit.
-Scoring
-Your score for a test file is the length of your addition chain, that is, an integer L. The total score for a submission is the average score across all test files. Your goal is to minimize the total score.
-Constraints
-1 < N < 10100
-Example
-Input:
-15
-Output:
-6
-0 0
-1 0
-2 0
-0 3
-4 4
-4 5
-Explanation
-Sample output represents an addition chain (1, 2, 3, 4, 5, 10, 15) for N = 15. Your score for such output will be 6. Note that according to the problem statement shorter chain is possible for this value of N but you don't need to find the shortest chain since this is a challenge problem. Also note that order in which we write numbers j[i] and k[i] for the given i doesn't matter.
-Test Generation
-Values of N are generated using different strategies. There are 50 official test files in all. Among them there are 8 files where N < 100000, 5 files where N is a random decimal string of the length 100 (that is, each digit of N is distributed uniformly in the range [0, 9] except the first digit which is distributed in the range [1, 9]), 8 files where binary representation of N is a random string of the random length from 300 to 332 (that is, at first an integer L is chosen randomly in the range [300, 332] and then L digits d1, d2, ..., dL are chosen so that d1 = 1 and each di, 2 ≤ i ≤ L, is uniformly distributed in the range [0, 1]. After that N is set to d1 ∙ 2L-1 + d2 ∙ 2L-2 + ... + dL-1 ∙ 2 + dL, that is, d1d2...dL is the binary representation of N). Other 29 files generated using some special strategies which we prefer to keep in secret.
+Read problem statements in Mandarin, Vietnamese, and Russian as well.
+A positive integer
+N≥1 is given. An
+N-uple
+(x
+1
+,x
+2
+,…,x
+N
+) of nonnegative integers is special if, after we remove all entries which are zero, its entries are nondecreasing. For example
+(0,2,0,0,4,0,4,5,0,0) is special, but
+(3,2,0) and
+(0,1,3,0,0,1,0) are not.
+One can show that there is a unique function
+μ defined on the
+N-uples of nonnegative integers such that, for any
+N-uple
+x=(x
+1
+,x
+2
+,…,x
+N
+)
+\begin{cases} 1 &\text{if $x$ is special} \\ 0 &\text{otherwise} \end{cases},$$ where the sum ranges over all $N$-uples $y=(y_1, y_2,\dots, y_N)$ of nonnegative integers such that $y_i\le x_i$ for all $1\le i\le N$. You are given $x=(x_1,x_2,\dots, x_N)$, determine whether $\mu(x)$ is $0$ or not. ### Input Format - The first line will contain $T$, the number of test cases. Then the test cases follow. - The first line of each test case contains one integer $N$, the size of the tuple considered. - The second line of each test case contains $N$ integers $x_1, x_2, \dots, x_N$, the entries of the given $N$-uple. ### Output Format For each test case, print the string <tt>yes</tt> if $\mu(x)=0$ and the string <tt>no</tt> otherwise. You can print each letter in any case (upper or lower). ### Constraints <div class="_html_code__block_15v7d_178"> - $1 \leq T \leq 20\,000$ - $1 \le N \le 100\,000$ - $0\le x_i\le 10^9$ - Sum of $N$ over all test cases won't exceed $100\,000$ </div> ### Sample 1: <div data-reactroot="" class="_input_output__table_15v7d_184"><div class="_text_copy__container_15v7d_188"><div class="_text_copy_15v7d_188 _input_top__box_15v7d_201"><span>Input</span><copytoclipboard cliptext="12%0A1%0A0%0A1%0A1%0A1%0A10%0A2%0A0%201%0A2%0A1%200%0A2%0A3%202%0A2%0A3%203%0A2%0A3%204%0A2%0A10%2043%0A5%0A2%201%201%204%203%0A5%0A1%202%202%202%202%0A5%0A8%206%205%201%208"></copytoclipboard></div><div class="_text_copy_15v7d_188 _ouput_top__box_15v7d_204"><span>Output</span><copytoclipboard cliptext="no%0Ayes%0Ayes%0Ayes%0Ayes%0Ano%0Ano%0Ayes%0Ayes%0Ano%0Ayes%0Ayes"></copytoclipboard></div></div><div class="_values__container_15v7d_207"><div class="_values_15v7d_207"><pre>12 1 0 1 1 1 10 2 0 1 2 1 0 2 3 2 2 3 3 2 3 4 2 10 43 5 2 1 1 4 3 5 1 2 2 2 2 5 8 6 5 1 8</pre></div><div class="_values_15v7d_207"><pre>no yes yes yes yes no no yes yes no yes yes</pre></div></div></div> ### Explanation: <p> <b>Explanation of the test cases 1, 2, 3:</b> For $N=1$, one can prove that $\mu((0)) = 1$ and $\mu((k))=0$ for all $k\ge 1$. </p> <ul> <li> It holds $\mu((0)) = 1\not=0$, so the answer to testcase 1 is <tt>no</tt>. </li> <li> It holds $\mu((1)) = 0$, so the answer to testcase 2 is <tt>yes</tt>. </li> <li> It holds $\mu((10)) = 0$, so the answer to testcase 3 is <tt>yes</tt>. </li> </ul> <p> <b>Explanation of testcases 4, 5, 6, 7, 8, 9:</b> For $N=2$, one can prove that $\mu((0,0))=1$, $\mu((k, k)) = 1$ and $\mu((k, k-1))=-1$ for all $k\ge 2$, and all other values of $\mu$ are $0$. Let us check that the defining property of $\mu$ holds for $x=(2, 2)$ (notice that $x$ is special in this case): $$ 1 = \sum_{y\le x} \mu(y) = \mu(0, 0) + \mu(0, 1) + \mu(0, 2) + \mu(1, 0) + \mu(1, 1) + \mu(1, 2) + \mu(2, 0) + \mu(2, 1) + \mu(2, 2) $$ $$ = 1 + 0 + 0 + 0 + 0 + 0 + 0 - 1 + 1 = 1 .\hspace{13em}$$ </p> <ul> <li> It holds $\mu((0, 1)) = 0$, so the answer to testcase 4 is <tt>yes</tt>. </li> <li> It holds $\mu((1, 0)) = 0$, so the answer to testcase 5 is <tt>yes</tt>. </li> <li> It holds $\mu((3, 2)) = -1$, so the answer to testcase 6 is <tt>no</tt>. </li> <li> It holds $\mu((3, 3)) = 1$, so the answer to testcase 7 is <tt>no</tt>. </li> <li> It holds $\mu((3, 4)) = 0$, so the answer to testcase 8 is <tt>yes</tt>. </li> <li> It holds $\mu((10, 43)) = 0$, so the answer to testcase 9 is <tt>yes</tt>. </li> </ul>

@@ -1,413 +1,128 @@
-B. Quality vs Quantity
+D. Weight the Tree
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a sequence of
+You are given a tree of
 n
-non-negative integers
-a
+vertices numbered from
 1
-,
-a
-2
-,…,
-a
+to
 n
-. Initially, all the elements of the sequence are unpainted. You can paint each number
-Red
-–
-–
-–
-–
-–
-or
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-(but not both), or leave it unpainted.
-For a color
-c
-,
-Count(c)
-is the number of elements in the sequence painted with that color and
-Sum(c)
-is the sum of the elements in the sequence painted with that color.
-For example, if the given sequence is
-[2,8,6,3,1]
-and it is painted this way:
-[
-2
-¯
-¯
-¯
-,8,
-6
-–
-–
-,
-3
-¯
-¯
-¯
-,1]
-(where
-6
-is painted red,
-2
-and
-3
-are painted blue,
-1
-and
-8
-are unpainted) then
-Sum(
-Red
-–
-–
-–
-–
-–
-)=6
-,
-Sum(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)=2+3=5
-,
-Count(
-Red
-–
-–
-–
-–
-–
-)=1
-, and
-Count(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)=2
-.
-Determine if it is possible to paint the sequence so that
-Sum(
-Red
-–
-–
-–
-–
-–
-)>Sum(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)
-and
-Count(
-Red
-–
-–
-–
-–
-–
-)<Count(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)
-.
+. A tree is a connected undirected graph without cycles.
+For each
+i=1,2,…,n
+, let
+w
+i
+be the weight of the
+i
+-th vertex. A vertex is called good if its weight is equal to the sum of the weights of all its neighbors.
+Initially, the weights of all nodes are unassigned. Assign positive integer weights to each vertex of the tree, such that the number of good vertices in the tree is maximized. If there are multiple ways to do it, you have to find one that minimizes the sum of weights of all vertices in the tree.
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤1000
-). Description of the test cases follows.
-The first line of each test case contains an integer
+The first line contains one integer
 n
 (
-3≤n≤2⋅
+2≤n≤2⋅
 10
 5
-) — the length of the given sequence.
-The second line of each test case contains
+) — the number of vertices in the tree.
+Then,
+n−1
+lines follow. Each of them contains two integers
+u
+and
+v
+(
+1≤u,v≤n
+) denoting an edge between vertices
+u
+and
+v
+. It is guaranteed that the edges form a tree.
+Output
+In the first line print two integers  — the maximum number of good vertices and the minimum possible sum of weights for that maximum.
+In the second line print
 n
 integers
-a
+w
 1
 ,
-a
+w
 2
 ,…,
-a
+w
 n
 (
-0≤
-a
+1≤
+w
 i
 ≤
 10
 9
-) — the given sequence.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
-.
-Output
-For each test case, print YES if it is possible to paint the given sequence satisfying the above requirements, and NO otherwise.
-You can output YES and NO in any case (for example, strings yEs, yes, Yes and YES will be recognized as a positive response).
-Example
+)  — the corresponding weight assigned to each vertex. It can be proven that there exists an optimal solution satisfying these constraints.
+If there are multiple optimal solutions, you may print any.
+Examples
 input
 Copy
 4
-3
-1 2 3
-5
-2 8 6 3 1
-4
-3 5 4 2
-5
-1000000000 1000000000 1000000000 1000000000 1000000000
+1 2
+2 3
+2 4
 output
 Copy
-NO
-YES
-NO
-NO
+3 4
+1 1 1 1 
+input
+Copy
+3
+1 2
+1 3
+output
+Copy
+2 3
+1 1 1 
+input
+Copy
+2
+1 2
+output
+Copy
+2 2
+1 1
+input
+Copy
+9
+3 4
+7 6
+2 1
+8 3
+5 6
+1 8
+8 6
+9 6
+output
+Copy
+6 11
+1 1 1 1 1 1 1 3 1 
 Note
-In the first test case, there is no possible way to paint the sequence. For example, if you paint the sequence this way:
-[
+This is the tree for the first test case:
+In this case, if you assign a weight of
 1
-¯
-¯
-¯
-,
-2
-¯
-¯
-¯
-,
-3
-–
-–
-]
-(where
-3
-is painted red,
+to each vertex, then the good vertices (which are painted black) are
 1
-and
-2
-are painted blue) then
-Count(
-Red
-–
-–
-–
-–
-–
-)=1<Count(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)=2
-, but
-Sum(
-Red
-–
-–
-–
-–
-–
-)=3≯Sum(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)=3
-. So, this is not a possible way to paint the sequence.
-In the second test case, a possible way to paint the sequence is described in the statement. We can see that
-Sum(
-Red
-–
-–
-–
-–
-–
-)=6>Sum(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)=5
-and
-Count(
-Red
-–
-–
-–
-–
-–
-)=1<Count(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)=2
-.
-In the third test case, there is no possible way to paint the sequence. For example, if you paint the sequence this way:
-[
-3
-–
-–
 ,
-5
-–
-–
-,
-4
-¯
-¯
-¯
-,
-2
-¯
-¯
-¯
-]
-(where
 3
 and
-5
-are painted red,
 4
-and
+. It impossible to assign weights so that all vertices are good vertices. The minimum sum of weights in this case is
+1+1+1+1=4
+, and it is impossible to have a lower sum because the weights have to be positive integers.
+This is the tree for the second test case:
+In this case, if you assign a weight of
+1
+to each vertex, then the good vertices (which are painted black) are
 2
-are painted blue) then
-Sum(
-Red
-–
-–
-–
-–
-–
-)=8>Sum(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)=6
-but
-Count(
-Red
-–
-–
-–
-–
-–
-)=2≮Count(
-Blue
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-¯
-)=2
-. So, this is not a possible way to paint the sequence.
-In the fourth test case, it can be proven that there is no possible way to paint the sequence satisfying sum and count constraints.
+and
+3
+. It can be proven that this is an optimal assignment.

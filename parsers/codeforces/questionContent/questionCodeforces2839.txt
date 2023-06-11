@@ -1,79 +1,95 @@
-A. Recommendations
-time limit per test2 seconds
-memory limit per test512 megabytes
+D. Tourism
+time limit per test3 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-VK news recommendation system daily selects interesting publications of one of
+Masha lives in a country with
 n
-disjoint categories for each user. Each publication belongs to exactly one category. For each category
+cities numbered from
+1
+to
+n
+. She lives in the city number
+1
+.
+There is a direct train route between each pair of distinct cities
 i
-batch algorithm selects
-a
+and
+j
+, where
+i≠j
+. In total there are
+n(n−1)
+distinct routes. Every route has a cost, cost for route from
 i
-publications.
-The latest A/B test suggests that users are reading recommended publications more actively if each category has a different number of publications within daily recommendations. The targeted algorithm can find a single interesting publication of
+to
+j
+may be different from the cost of route from
+j
+to
 i
--th category within
-t
-i
-seconds.
-What is the minimum total time necessary to add publications to the result of batch algorithm execution, so all categories have a different number of publications? You can't remove publications recommended by the batch algorithm.
+.
+Masha wants to start her journey in city
+1
+, take exactly
+k
+routes from one city to another and as a result return to the city
+1
+. Masha is really careful with money, so she wants the journey to be as cheap as possible. To do so Masha doesn't mind visiting a city multiple times or even taking the same route multiple times.
+Masha doesn't want her journey to have odd cycles. Formally, if you can select visited by Masha city
+v
+, take odd number of routes used by Masha in her journey and return to the city
+v
+, such journey is considered unsuccessful.
+Help Masha to find the cheapest (with minimal total cost of all taken routes) successful journey.
 Input
-The first line of input consists of single integer
-n
- — the number of news categories (
-1≤n≤200000
-).
-The second line of input consists of
-n
-integers
-a
-i
- — the number of publications of
-i
--th category selected by the batch algorithm (
-1≤
-a
-i
-≤
-10
-9
-).
-The third line of input consists of
-n
-integers
-t
-i
- — time it takes for targeted algorithm to find one new publication of category
-i
+First line of input had two integer numbers
+n,k
 (
-1≤
-t
+2≤n≤80;2≤k≤10
+): number of cities in the country and number of routes in Masha's journey. It is guaranteed that
+k
+is even.
+Next
+n
+lines hold route descriptions:
+j
+-th number in
 i
-≤
+-th line represents the cost of route from
+i
+to
+j
+if
+i≠j
+, and is 0 otherwise (there are no routes
+i→i
+). All route costs are integers from
+0
+to
 10
-5
-)
+8
 .
 Output
-Print one integer — the minimal required time for the targeted algorithm to get rid of categories with the same size.
+Output a single integer — total cost of the cheapest Masha's successful journey.
 Examples
 input
 Copy
-5
-3 7 9 7 8
-5 2 5 7 5
+5 8
+0 1 2 2 0
+0 0 1 1 2
+0 1 0 0 0
+2 1 1 0 0
+2 0 1 2 0
 output
 Copy
-6
+2
 input
 Copy
-5
-1 2 3 4 5
-1 1 1 1 1
+3 2
+0 1 1
+2 0 1
+2 2 0
 output
 Copy
-0
-Note
-In the first example, it is possible to find three publications of the second type, which will take 6 seconds.
-In the second example, all news categories contain a different number of publications.
+3

@@ -1,35 +1,21 @@
-A. Payment Without Change
+D. Binary String Minimizing
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have
-a
-coins of value
+You are given a binary string of length
 n
-and
-b
-coins of value
-1
-. You always pay in exact change, so you want to know if there exist such
-x
-and
-y
-that if you take
-x
-(
-0≤x≤a
-) coins of value
+(i. e. a string consisting of
 n
+characters '0' and '1').
+In one move you can swap two adjacent characters of the string. What is the lexicographically minimum possible string you can obtain from the given one if you can perform no more than
+k
+moves? It is possible that you do not perform any moves at all.
+Note that you can swap the same pair of adjacent characters with indices
+i
 and
-y
-(
-0≤y≤b
-) coins of value
-1
-, then the total value of taken coins will be
-S
-.
+i+1
+arbitrary (possibly, zero) number of times. Each such swap is considered a separate move.
 You have to answer
 q
 independent test cases.
@@ -40,58 +26,80 @@ q
 1≤q≤
 10
 4
-) — the number of test cases. Then
-q
-test cases follow.
-The only line of the test case contains four integers
-a
-,
-b
-,
+) — the number of test cases.
+The first line of the test case contains two integers
 n
 and
-S
+k
 (
-1≤a,b,n,S≤
+1≤n≤
 10
-9
-) — the number of coins of value
+6
+,1≤k≤
 n
-, the number of coins of value
-1
-, the value
+2
+) — the length of the string and the number of moves you can perform.
+The second line of the test case contains one string consisting of
 n
-and the required total value.
+characters '0' and '1'.
+It is guaranteed that the sum of
+n
+over all test cases does not exceed
+10
+6
+(
+∑n≤
+10
+6
+).
 Output
-For the
-i
--th test case print the answer on it — YES (without quotes) if there exist such
-x
-and
-y
-that if you take
-x
-coins of value
+For each test case, print the answer on it: the lexicographically minimum possible string of length
 n
-and
-y
-coins of value
-1
-, then the total value of taken coins will be
-S
-, and NO otherwise.
-You may print every letter in any case you want (so, for example, the strings yEs, yes, Yes and YES will all be recognized as positive answer).
+you can obtain from the given one if you can perform no more than
+k
+moves.
 Example
 input
 Copy
-4
-1 2 3 4
-1 2 3 6
-5 2 6 27
-3 3 5 18
+3
+8 5
+11011010
+7 9
+1111100
+7 11
+1111100
 output
 Copy
-YES
-NO
-NO
-YES
+01011110
+0101111
+0011111
+Note
+In the first example, you can change the string as follows:
+1
+10
+–
+–
+–
+11010→
+10
+–
+–
+–
+111010→0111
+10
+–
+–
+–
+10→011
+10
+–
+–
+–
+110→01
+10
+–
+–
+–
+1110→01011110
+.
+In the third example, there are enough operations to make the string sorted.

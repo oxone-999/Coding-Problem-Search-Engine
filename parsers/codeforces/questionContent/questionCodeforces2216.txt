@@ -1,154 +1,126 @@
-A. Box is Pull
-time limit per test1 second
+D. Bouncing Boomerangs
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Wabbit is trying to move a box containing food for the rest of the zoo in the coordinate plane from the point
-(
-x
-1
-,
-y
-1
-)
-to the point
-(
-x
+To improve the boomerang throwing skills of the animals, Zookeeper has set up an
+n×n
+grid with some targets, where each row and each column has at most
 2
-,
-y
-2
-)
-.
-He has a rope, which he can use to pull the box. He can only pull the box if he stands exactly
+targets each. The rows are numbered from
 1
-unit away from the box in the direction of one of two coordinate axes. He will pull the box to where he is standing before moving out of the way in the same direction by
-1
-unit.
-For example, if the box is at the point
-(1,2)
-and Wabbit is standing at the point
-(2,2)
-, he can pull the box right by
-1
-unit, with the box ending up at the point
-(2,2)
-and Wabbit ending at the point
-(3,2)
-.
-Also, Wabbit can move
-1
-unit to the right, left, up, or down without pulling the box. In this case, it is not necessary for him to be in exactly
-1
-unit away from the box. If he wants to pull the box again, he must return to a point next to the box. Also, Wabbit can't move to the point where the box is located.
-Wabbit can start at any point. It takes
-1
-second to travel
-1
-unit right, left, up, or down, regardless of whether he pulls the box while moving.
-Determine the minimum amount of time he needs to move the box from
-(
-x
-1
-,
-y
-1
-)
 to
-(
-x
+n
+from top to bottom, and the columns are numbered from
+1
+to
+n
+from left to right.
+For each column, Zookeeper will throw a boomerang from the bottom of the column (below the grid) upwards. When the boomerang hits any target, it will bounce off, make a
+90
+degree turn to the right and fly off in a straight line in its new direction. The boomerang can hit multiple targets and does not stop until it leaves the grid.
+In the above example,
+n=6
+and the black crosses are the targets. The boomerang in column
+1
+(blue arrows) bounces
 2
-,
-y
-2
-)
-. Note that the point where Wabbit ends up at does not matter.
+times while the boomerang in column
+3
+(red arrows) bounces
+3
+times.
+The boomerang in column
+i
+hits exactly
+a
+i
+targets before flying out of the grid. It is known that
+a
+i
+≤3
+.
+However, Zookeeper has lost the original positions of the targets. Thus, he asks you to construct a valid configuration of targets that matches the number of hits for each column, or tell him that no such configuration exists. If multiple valid configurations exist, you may print any of them.
 Input
-Each test contains multiple test cases. The first line contains a single integer
-t
-(1≤t≤1000)
-: the number of test cases. The description of the test cases follows.
-Each of the next
-t
-lines contains four space-separated integers
-x
-1
-,
-y
-1
-,
-x
-2
-,
-y
-2
-(1≤
-x
-1
-,
-y
-1
-,
-x
-2
-,
-y
-2
-≤
+The first line contains a single integer
+n
+(1≤n≤
 10
-9
-)
-, describing the next test case.
-Output
-For each test case, print a single integer: the minimum time in seconds Wabbit needs to bring the box from
-(
-x
-1
-,
-y
-1
-)
-to
-(
-x
-2
-,
-y
-2
+5
 )
 .
-Example
+The next line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(0≤
+a
+i
+≤3)
+.
+Output
+If no configuration of targets exist, print
+−1
+.
+Otherwise, on the first line print a single integer
+t
+(0≤t≤2n)
+: the number of targets in your configuration.
+Then print
+t
+lines with two spaced integers each per line. Each line should contain two integers
+r
+and
+c
+(1≤r,c≤n)
+, where
+r
+is the target's row and
+c
+is the target's column. All targets should be different.
+Every row and every column in your configuration should have at most two targets each.
+Examples
 input
 Copy
-2
-1 2 2 2
-1 1 2 2
+6
+2 0 3 0 1 1
 output
 Copy
+5
+2 1
+2 5
+3 3
+3 6
+5 6
+input
+Copy
 1
-4
+0
+output
+Copy
+0
+input
+Copy
+6
+3 2 2 2 1 1
+output
+Copy
+-1
 Note
-In the first test case, the starting and the ending points of the box are
-(1,2)
-and
-(2,2)
-respectively. This is the same as the picture in the statement. Wabbit needs only
-1
-second to move as shown in the picture in the statement.
-In the second test case, Wabbit can start at the point
-(2,1)
-. He pulls the box to
-(2,1)
-while moving to
-(3,1)
-. He then moves to
-(3,2)
-and then to
-(2,2)
-without pulling the box. Then, he pulls the box to
-(2,2)
-while moving to
-(2,3)
-. It takes
+For the first test, the answer configuration is the same as in the picture from the statement.
+For the second test, the boomerang is not supposed to hit anything, so we can place
+0
+targets.
+For the third test, the following configuration of targets matches the number of hits, but is not allowed as row
+3
+has
 4
-seconds.
+targets.
+It can be shown for this test case that no valid configuration of targets will result in the given number of target hits.

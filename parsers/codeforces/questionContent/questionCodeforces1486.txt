@@ -1,154 +1,139 @@
-D. Sweepstake
+F. Kotlinforces
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Kotlin Heroes competition is nearing completion. This time
+Kotlinforces is a web platfrom that hosts programming competitions.
+The staff of Kotlinforces is asked to schedule
 n
-programmers took part in the competition. Now organizers are thinking how to entertain spectators as well. One of the possibilities is holding sweepstakes. So for now they decided to conduct a survey among spectators.
-In total, organizers asked
+programming competitions on the next
 m
-viewers two questions:
-Who will take the first place?
-Who will take the last place?
-After receiving answers, organizers ranked all spectators based on the number of programmers they guessed right. Suppose, there are
-c
-2
-viewers who guessed right both first and last place,
-c
-1
-viewers who guessed either first or last place right and
-c
-0
-viewers who didn't guess at all. All
-c
-2
-viewers will get rank
-1
-, all viewers with one right answer will get rank
-c
-2
-+1
-and all remaining viewers — rank
-c
-2
-+
-c
-1
-+1
+days. Each competition is held in multiple stages; the regulations of the
+i
+-th competition state that this competition should consist of exactly
+k
+i
+stages, and each stage, starting from the second one, should be scheduled exactly
+t
+i
+days after the previous stage. In other words, if the first stage of the
+i
+-th competition is scheduled on day
+x
+, the second stage should be scheduled on day
+x+
+t
+i
+, the third stage — on day
+x+2
+t
+i
+, ..., the
+k
+i
+-th stage (which is the last one) — on day
+x+(
+k
+i
+−1)
+t
+i
 .
-You were one of the interviewed spectators. Also, as one of the organizers, you have access to survey results, but not to competition results. Calculate, what is the worst rank you can possibly get according to organizers' ranking system?
+All
+n
+competitions should be scheduled in such a way that they start and finish during the next
+m
+days, and on any of these
+m
+days, at most one stage of one competition is held (two stages of different competitions should not be scheduled on the same day).
+Is it possible to schedule all
+n
+competitions to meet these constraints?
 Input
 The first line contains two integers
 n
 and
 m
 (
-2≤n≤1000
-;
-1≤m≤2⋅
-10
-5
-) — the number of programmers participating in the competition and the number of surveyed spectators.
-Next
-m
-lines contain answers of spectators. The
+1≤n,m≤5000
+) — the number of competitions and the number of days, respectively.
+Then
+n
+lines follow, each describing a competition which should be scheduled. The
 i
 -th line contains two integers
-f
+k
 i
 and
-l
+t
 i
 (
-1≤
-f
+2≤
+k
 i
-,
-l
-i
-≤n
+≤5000
 ;
-f
+1≤
+t
 i
-≠
-l
+≤2
+) — the parameters of the
 i
-) — the indices of programmers who will take the first and last places in opinion of the
-i
--th viewer.
-For simplicity, you are the first among spectators, so your answers are
-f
-1
-and
-l
-1
-.
+-th competition.
 Output
-Print the single integer — the worst rank among spectators you can possibly get according to organizers' ranking system (bigger rank — worse, of course).
+If it is impossible to schedule all
+n
+competitions on the next
+m
+days so that there is at most one stage during each day, print -1.
+Otherwise, print
+n
+integers. The
+i
+-th integer should represent the day when the first stage of the
+i
+-th competition is scheduled; days are numbered from
+1
+to
+m
+. If there are multiple answers, print any of them.
 Examples
 input
 Copy
-2 3
-1 2
-2 1
-2 1
+3 7
+3 2
+2 2
+2 2
 output
 Copy
-3
+2 5 1
 input
 Copy
-3 6
-3 1
-3 2
-2 1
-3 2
-3 2
-3 1
+1 7
+4 2
 output
 Copy
-4
-Note
-In the first example, if the second programmer takes first place, while the first programmer takes last place, you'll have
-0
-right answers while the other two spectators —
-2
-right answers. That's why your rank (in the worst case) will be
-c
-2
-+
-c
 1
-+1
-=
-2+0+1=3
-.
-In the second example, for example, if the third programmer takes the first place and the second programmer takes the last place, then you'll have
-1
-right answer. The spectators
-2
-,
-4
-and
-5
-will have
-2
-right answers, spectator
-6
- —
-1
-right answer and spectator
-3
- —
-0
-right answers. As a result, your rank will be equal to
-c
-2
-+1
-=
-3+1=4
-. (Note that spectator
-6
-will have the same rank
-4
-).
+input
+Copy
+1 7
+5 2
+output
+Copy
+-1
+input
+Copy
+2 4
+2 1
+2 2
+output
+Copy
+-1
+input
+Copy
+2 5
+2 1
+2 2
+output
+Copy
+4 1

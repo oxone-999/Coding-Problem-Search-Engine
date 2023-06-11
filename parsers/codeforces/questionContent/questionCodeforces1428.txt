@@ -1,57 +1,82 @@
-C. Train Maintenance
-time limit per test1 second
+E. Railway Construction
+time limit per test2.5 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Kawasiro Nitori is excellent in engineering. Thus she has been appointed to help maintain trains.
+Because the railway system in Gensokyo is often congested, as an enthusiastic engineer, Kawasiro Nitori plans to construct more railway to ease the congestion.
 There are
 n
-models of trains, and Nitori's department will only have at most one train of each model at any moment. In the beginning, there are no trains, at each of the following
+stations numbered from
+1
+to
+n
+and
 m
-days, one train will be added, or one train will be removed. When a train of model
+two-way railways in Gensokyo. Every two-way railway connects two different stations and has a positive integer length
+d
+. No two two-way railways connect the same two stations. Besides, it is possible to travel from any station to any other using those railways. Among these
+n
+stations, station
+1
+is the main station. You can get to any station from any other station using only two-way railways.
+Because of the technological limitation, Nitori can only construct one-way railways, whose length can be arbitrary positive integer. Constructing a one-way railway from station
+u
+will costs
+w
+u
+units of resources, no matter where the railway ends. To ease the congestion, Nitori plans that after construction there are at least two shortest paths from station
+1
+to any other station, and these two shortest paths do not pass the same station except station
+1
+and the terminal. Besides, Nitori also does not want to change the distance of the shortest path from station
+1
+to any other station.
+Due to various reasons, sometimes the cost of building a new railway will increase uncontrollably. There will be a total of
+q
+occurrences of this kind of incident, and the
 i
-is added at day
-t
-, it works for
+-th event will add additional amount of
 x
 i
-days (day
-t
-inclusive), then it is in maintenance for
-y
+to the cost of building a new railway from the station
+k
 i
-days, then in work for
-x
-i
-days again, and so on until it is removed.
-In order to make management easier, Nitori wants you to help her calculate how many trains are in maintenance in each day.
-On a day a train is removed, it is not counted as in maintenance.
+.
+To save resources, before all incidents and after each incident, Nitori wants you to help her calculate the minimal cost of railway construction.
 Input
-The first line contains two integers
+The first line contains three integers
 n
 ,
 m
+, and
+q
 (
-1≤n,m≤2⋅
+1≤n≤2⋅
+10
+5
+,
+1≤m≤3⋅
+10
+5
+,
+0≤q≤2⋅
 10
 5
 ).
-The
-i
--th of the next
+The second line contains
 n
-lines contains two integers
-x
-i
+integers
+w
+1
 ,
-y
-i
+w
+2
+,…,
+w
+n
 (
 1≤
-x
-i
-,
-y
+w
 i
 ≤
 10
@@ -59,87 +84,139 @@ i
 ).
 Each of the next
 m
-lines contains two integers
-op
+lines contains three integers
+u
 ,
-k
+v
+,
+d
 (
-1≤k≤n
+1≤u,v≤n
 ,
-op=1
-or
-op=2
-). If
-op=1
-, it means this day's a train of model
+u≠v
+,
+1≤d≤
+10
+9
+), denoting a two-way railway connecting station
+u
+and station
+v
+, with length
+d
+.
+The
+i
+-th of the next
+q
+lines contains two integers
 k
-is added, otherwise the train of model
+i
+,
+x
+i
+(
+1≤
 k
-is removed. It is guaranteed that when a train of model
+i
+≤n,1≤
 x
-is added, there is no train of the same model in the department, and when a train of model
-x
-is removed, there is such a train in the department.
+i
+≤4×
+10
+8
+).
 Output
 Print
-m
-lines, The
+q+1
+lines, and the
 i
--th of these lines contains one integers, denoting the number of trains in maintenance in the
-i
--th day.
+-th of these lines contains one integer, denoting the minimal cost of railway construction after the
+i−1
+-th incident (especially, the
+0
+-th incident means no incident occurred).
 Examples
 input
 Copy
-3 4
-10 15
-12 10
-1 1
-1 3
-1 1
-2 1
-2 3
+5 5 1
+1 1 1 1 1
+1 2 1
+2 3 1
+2 4 1
+3 5 1
+4 5 1
+1 2
 output
 Copy
-0
-1
-0
-0
+3
+9
 input
 Copy
-5 4
-1 1
-10000000 100000000
-998244353 1
-2 1
-1 2
-1 5
-2 5
-1 5
-1 1
+8 11 0
+14 4 16 15 1 3 1 14
+4 2 1
+1 2 3
+7 5 4
+2 3 1
+8 6 2
+8 5 5
+5 4 5
+7 6 7
+3 5 5
+1 6 6
+8 1 4
 output
 Copy
-0
-0
-0
-1
+46
+input
+Copy
+10 16 8
+29 1 75 73 51 69 24 17 1 97
+1 2 18
+2 3 254
+2 4 546
+2 5 789
+5 6 998
+6 7 233
+7 8 433
+1 9 248
+5 10 488
+2 6 1787
+10 8 1176
+3 8 2199
+4 8 1907
+2 10 1277
+4 10 731
+9 10 1047
+1 11
+1 9
+8 8
+1 3
+2 19
+9 5
+9 4
+7 6
+output
+Copy
+34
+45
+54
+54
+57
+76
+96
+112
+112
 Note
-Consider the first example:
-The first day: Nitori adds a train of model
-3
-. Only a train of model
-3
-is running and no train is in maintenance.
-The second day: Nitori adds a train of model
-1
-. A train of model
-1
-is running and a train of model
-3
-is in maintenance.
-The third day: Nitori removes a train of model
-1
-. The situation is the same as the first day.
-The fourth day: Nitori removes a train of model
-3
-. There are no trains at all.
+In the second example, Nitori can build railways as follows:
+1→2
+,
+1→3
+,
+1→4
+,
+2→8
+, and the cost is
+14+14+14+4=46
+.

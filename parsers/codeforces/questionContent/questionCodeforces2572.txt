@@ -1,90 +1,158 @@
-D. Buying Shovels
+H. Binary Median
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp wants to buy exactly
-n
-shovels. The shop sells packages with shovels. The store has
-k
-types of packages: the package of the
-i
--th type consists of exactly
-i
-shovels (
-1≤i≤k
-). The store has an infinite number of packages of each type.
-Polycarp wants to choose one type of packages and then buy several (one or more) packages of this type. What is the smallest number of packages Polycarp will have to buy to get exactly
-n
-shovels?
-For example, if
-n=8
-and
-k=7
-, then Polycarp will buy
+Consider all binary strings of length
+m
+(
+1≤m≤60
+). A binary string is a string that consists of the characters 0 and 1 only. For example, 0110 is a binary string, and 012aba is not. Obviously, there are exactly
 2
-packages of
-4
-shovels.
-Help Polycarp find the minimum number of packages that he needs to buy, given that he:
-will buy exactly
+m
+such strings in total.
+The string
+s
+is lexicographically smaller than the string
+t
+(both have the same length
+m
+) if in the first position
+i
+from the left in which they differ, we have
+s[i]<t[i]
+. This is exactly the way strings are compared in dictionaries and in most modern programming languages when comparing them in a standard way. For example, the string 01011 is lexicographically smaller than the string 01100, because the first two characters are the same, and the third character in the first string is less than that in the second.
+We remove from this set
 n
-shovels in total;
-the sizes of all packages he will buy are all the same and the number of shovels in each package is an integer from
+(
+1≤n≤min(
+2
+m
+−1,100)
+) distinct binary strings
+a
 1
+,
+a
+2
+,…,
+a
+n
+, each of length
+m
+. Thus, the set will have
+k=
+2
+m
+−n
+strings. Sort all strings of the resulting set in lexicographical ascending order (as in the dictionary).
+We number all the strings after sorting from
+0
 to
-k
-, inclusive.
+k−1
+. Print the string whose index is
+⌊
+k−1
+2
+⌋
+(such an element is called median), where
+⌊x⌋
+is the rounding of the number down to the nearest integer.
+For example, if
+n=3
+,
+m=3
+and
+a=[
+010, 111, 001
+]
+, then after removing the strings
+a
+i
+and sorting, the result will take the form:
+[
+000, 011, 100, 101, 110
+]
+. Thus, the desired median is 100.
 Input
 The first line contains an integer
 t
 (
-1≤t≤100
-) — the number of test cases in the input. Then,
+1≤t≤1000
+) — the number of test cases. Then,
 t
-test cases follow, one per line.
-Each test case consists of two positive integers
+test cases follow.
+The first line of each test case contains integers
 n
 (
-1≤n≤
-10
-9
+1≤n≤min(
+2
+m
+−1,100)
 ) and
-k
+m
 (
-1≤k≤
+1≤m≤60
+), where
+n
+is the number of strings to remove, and
+m
+is the length of binary strings. The next
+n
+lines contain
+a
+1
+,
+a
+2
+,…,
+a
+n
+ — distinct binary strings of length
+m
+.
+The total length of all given binary strings in all test cases in one test does not exceed
 10
-9
-) — the number of shovels and the number of types of packages.
+5
+.
 Output
 Print
 t
-answers to the test cases. Each answer is a positive integer — the minimum number of packages.
+answers to the test cases. For each test case, print a string of length
+m
+ — the median of the sorted sequence of remaining strings in the corresponding test case.
 Example
 input
 Copy
 5
-8 7
-8 1
-6 10
-999999733 999999732
-999999733 999999733
+3 3
+010
+001
+111
+4 3
+000
+111
+100
+011
+1 1
+1
+1 1
+0
+3 2
+00
+01
+10
 output
 Copy
-2
-8
+100
+010
+0
 1
-999999733
-1
+11
 Note
-The answer to the first test case was explained in the statement.
-In the second test case, there is only one way to buy
-8
-shovels —
-8
-packages of one shovel.
-In the third test case, you need to buy a
-1
-package of
-6
-shovels.
+The first test case is explained in the statement.
+In the second test case, the result after removing strings and sorting is
+[
+001, 010, 101, 110
+]
+. Therefore, the desired median is 010.

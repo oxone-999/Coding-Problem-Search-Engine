@@ -1,122 +1,77 @@
-F. Fiber Shape
+I. Is It Rated?
 time limit per test3 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-Imagine a board with
+The popular improv website Interpretation Impetus hosts regular improv contests and maintains a rating of the best performers. However, since improv can often go horribly wrong, the website is notorious for declaring improv contests unrated. It now holds a wager before each improv contest where the participants try to predict whether it will be rated or unrated, and they are now more popular than the improv itself.
+Izzy and
 n
-pins put into it, the
-i
--th pin is located at
-(
-x
-i
-,
-y
-i
-)
-. For simplicity, we will restrict the problem to the case where the pins are placed in vertices of a convex polygon.
-Then, take a non-stretchable string of length
-l
-, and put it around all the pins. Place a pencil inside the string and draw a curve around the pins, trying to pull the string in every possible direction. The picture below shows an example of a string tied around the pins and pulled by a pencil (a point
-P
-).
-Your task is to find an area inside this curve. Formally, for a given convex polygon
-S
-and a length
-l
-let's define a fiber shape
-F(S,l)
-as a set of points
-t
-such that the perimeter of the convex hull of
-S∪{t}
-does not exceed
-l
-. Find an area of
-F(S,l)
-.
-Input
-The first line contains two integers
+other participants take part in each wager. First, they each make their prediction, expressed as 1 ("rated") or 0 ("unrated"). Izzy always goes last, so she knows the predictions of the other participants when making her own. Then, the actual competition takes place and it is declared either rated or unrated.
+You need to write a program that will interactively play as Izzy. There will be
+m
+wagers held in 2021, and Izzy's goal is to have at most
+1.3⋅b+100
+wrong predictions after all those wagers, where
+b
+is the smallest number of wrong predictions that any other wager participant will have after all those wagers.
+The number
+b
+is not known in advance. Izzy also knows nothing about the other participants — they might somehow always guess correctly, or their predictions might be correlated. Izzy's predictions, though, do not affect the predictions of the other participants and the decision on the contest being rated or not — in other words, in each test case, your program always receives the same inputs, no matter what it outputs.
+Interaction
+First, a solution must read two integers
 n
-and
-l
 (
-3≤n≤
-10
-4
-;
-1≤l≤8⋅
-10
-5
-) — the number of vertices of the polygon
-S
-and the length of the string. Next
+1≤n≤1000
+) and
+m
+(
+1≤m≤10000
+). Then, the solution must process
+m
+wagers. For each of them, the solution must first read a string consisting of
 n
-lines contain integers
-x
+0s and 1s, in which the
 i
-and
-y
+-th character denotes the guess of the
 i
-(
-−
-10
-5
-≤
-x
-i
-,
-y
-i
-≤
-10
-5
-) — coordinates of polygon's vertices in counterclockwise order. All internal angles of the polygon are strictly less than
-π
-. The length
-l
-exceeds the perimeter of the polygon by at least
-10
-−3
-.
-Output
-Output a single floating-point number — the area of the fiber shape
-F(S,l)
-. Your answer will be considered correct if its absolute or relative error doesn't exceed
-10
-−6
-.
-Examples
+-th participant. Then, the solution must print Izzy's guess as 0 or 1. Don't forget to flush the output after printing it! Then, the solution must read the actual outcome, also as 0 or 1, and then proceed to the next wager, if this wasn't the last one.
+Your solution will be considered correct if it makes at most
+1.3⋅b+100
+mistakes, where
+b
+is the smallest number of mistakes made by any other participant. Note that if a solution outputs anything except 0 or 1 for a wager, it will be considered incorrect even if it made no other mistakes.
+There are 200 test cases in this problem.
+Example
 input
 Copy
 3 4
-0 0
-1 0
-0 1
+000
+
+1
+100
+
+1
+001
+
+0
+111
+
+1
 output
 Copy
-3.012712585980357
-input
-Copy
-4 5
-0 0
-1 0
-1 1
-0 1
-output
-Copy
-5.682061989789656
-input
-Copy
-5 17
-0 0
-2 -1
-3 0
-4 3
--1 4
-output
-Copy
-37.719371276930820
+0
+
+
+0
+
+
+1
+
+
+1
 Note
-The following pictures illustrate the example tests.
+In the example, the participants made 1, 2, and 3 mistakes respectively, therefore
+b=1
+(the smallest of these numbers). Izzy made 3 mistakes, which were not more than
+1.3⋅b+100=101.3
+, so these outputs are good enough to pass this test case (as are any other valid outputs).

@@ -1,119 +1,111 @@
-G. Diverse Coloring
+F. Bracket Insertion
 time limit per test4 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-In this problem, we will be working with rooted binary trees. A tree is called a rooted binary tree if it has a fixed root and every vertex has at most two children.
-Let's assign a color — white or blue — to each vertex of the tree, and call this assignment a coloring of the tree. Let's call a coloring diverse if every vertex has a neighbor (a parent or a child) colored into an opposite color compared to this vertex. It can be shown that any tree with at least two vertices allows a diverse coloring.
-Let's define the disbalance of a coloring as the absolute value of the difference between the number of white vertices and the number of blue vertices.
-Now to the problem. Initially, the tree consists of a single vertex with the number
-1
-which is its root. Then, for each
-i
-from
-2
-to
+Vika likes playing with bracket sequences. Today she wants to create a new bracket sequence using the following algorithm. Initially, Vika's sequence is an empty string, and then she will repeat the following actions
 n
-, a new vertex
-i
-appears in the tree, and it becomes a child of vertex
+times:
+Choose a place in the current bracket sequence to insert new brackets uniformly at random. If the length of the current sequence is
+k
+, then there are
+k+1
+such places: before the first bracket, between the first and the second brackets,
+…
+, after the
+k
+-th bracket. In particular, there is one such place in an empty bracket sequence.
+Choose string "()" with probability
 p
-i
-. It is guaranteed that after each step the tree will keep being a binary tree rooted at vertex
-1
-, that is, each vertex will have at most two children.
-After every new vertex is added, print the smallest value of disbalance over all possible diverse colorings of the current tree. Moreover, after adding the last vertex with the number
-n
-, also print a diverse coloring with the smallest possible disbalance as well.
+or string ")(" with probability
+1−p
+and insert it into the chosen place. The length of the bracket sequence will increase by
+2
+.
+A bracket sequence is called regular if it is possible to obtain a correct arithmetic expression by inserting characters '+' and '1' into it. For example, sequences "(())()", "()", and "(()(()))" are regular, while ")(", "(()", and "(()))(" are not.
+Vika wants to know the probability that her bracket sequence will be a regular one at the end. Help her and find this probability modulo
+998244353
+(see Output section).
 Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤
+The only line contains two integers
+n
+and
+q
+ (
+1≤n≤500
+;
+0≤q≤
 10
 4
-). The description of the test cases follows.
-The first line of each test case contains a single integer
+). Here
 n
- (
-2≤n≤2⋅
+is equal to the number of bracket insertion operations, and the probability that Vika chooses string "()" on every step of the algorithm is equal to
+p=q⋅
 10
-5
-) — the number of vertices in the final tree.
-The second line contains
-n−1
-integers
-p
-2
-,
-p
-3
-,…,
-p
-n
- (
-1≤
-p
-i
-≤i−1
-) — the numbers of parents of vertices
-2,3,…,n
-. No integer appears more than twice among
-p
-2
-,
-p
-3
-,…,
-p
-n
-.
-It is guaranteed that the sum of
-n
-over all test cases does not exceed
-2⋅
-10
-5
+−4
 .
 Output
-For each test case, print
-n−1
-integers — the smallest value of disbalance over all possible diverse colorings of the tree after adding vertices
-2,3,…,n
+Print the probability that Vika's final bracket sequence will be regular, modulo
+998244353
 .
-Then print a string of
-n
-characters 'w' and 'b', describing a diverse coloring with the smallest possible disbalance for the whole tree after adding vertex
-n
-: the
-i
--th character must be equal to 'w' if vertex
-i
-is colored white, and 'b' if it's colored blue. The absolute value of the difference between the numbers of 'w' and 'b' characters must be equal to the last printed integer. Each vertex must have a parent or a child colored into the color opposite to the vertex's color.
-Example
+Formally, let
+M=998244353
+. It can be shown that the answer can be expressed as an irreducible fraction
+p
+q
+, where
+p
+and
+q
+are integers and
+q≢0(modM)
+. Output the integer equal to
+p⋅
+q
+−1
+modM
+. In other words, output such an integer
+x
+that
+0≤x<M
+and
+x⋅q≡p(modM)
+.
+Examples
 input
 Copy
-2
-7
-1 2 2 1 5 5
-8
-1 2 3 4 5 6 7
+1 7500
 output
 Copy
-0
-1
-2
-1
-0
-1
-wbwwwbb
-0
-1
-0
-1
-0
-1
-0
-wbwbwbwb
+249561089
+input
+Copy
+2 6000
+output
+Copy
+519087064
+input
+Copy
+5 4000
+output
+Copy
+119387743
 Note
-In the first test case, examples of diverse colorings with the smallest possible disbalances for all intermediate trees are illustrated below:
+In the first example, Vika will get a regular bracket sequence () with probability
+p=
+3
+4
+, and she will get an irregular bracket sequence )( with probability
+1−p=
+1
+4
+. The sought probability is
+3
+4
+, and
+249561089⋅4≡3(mod998244353)
+.
+In the second example, the sought probability is
+11
+25
+.

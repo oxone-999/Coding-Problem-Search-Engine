@@ -1,30 +1,133 @@
-Equivalent Suffix Tries
+Max-digit Tree
 Problem
-Suffix trees are very powerful data structures. Using suffix trees it's often easy to solve the hardest computer science problems on strings. In this problem we'll consider a simplified version of suffix trees -- suffix tries (that is, tries formed by all suffixes of a given string).
-Generally, the suffix tree is a tree whose edges are labeled with strings. Instead, we'll only consider suffix tries whose edges are labeled with single characters. This way every edge of a suffix tree may correspond to one or more edges connected in a chain-style fashion of a suffix trie.
-Another trait of suffix trees is that each suffix of the string for which the suffix tree is built corresponds to exactly one path from the tree's root to a leaf. This is usually achieved by terminating each suffix of the string with a special character, say, $. However, in suffix tries we won't do that. In particular, this implies that the number of leaves in a suffix trie can be smaller than the length of the original string.
-In the picture the suffix tries for strings 'aba' and 'abac' are presented:
-If we erase all letters from the edges of a suffix trie, it actually becomes a directed graph. Let's call two suffix tries equivalent if their corresponding directed graphs are isomorphic.
-You're given a single string consisting of lowercase Latin letters. Your task is to find the number of different strings of the same length consisting of lowercase Latin letters as well such that their suffix tries are equivalent to the suffix trie of the given string. As this number can be large enough, output the remainder of its division by 42424242.
-Input
-The first line contains a single number T -- the number of test cases (no more than 10). Each of the next T lines contains a single non-empty string of length no more than 100000 consisting of lowercase Latin letters a..z.
-Output
-For each test case output just one line containing the sought number modulo 42424242.
-Example
-Input:
-5
+###Read problems statements Hindi , Vietnamese , Mandarin Chinese , Russian and Bengali as well.
+You have a tree with
+N vertices (numbered
+1 through
+N) rooted at vertex
+1. Each vertex contains a decimal digit; let's denote the digit in vertex
+i by
+d
+i
+.
+A subtree is a non-empty subgraph satisfying the following condition: for any vertex
+v, if
+v belongs to subtree
+S, then the parent of
+v also belongs to
+S. Note that each subtree contains the root. The vertices in any subtree
+S are sorted in DFS-order, i.e. using the following algorithm:
+let's denote a current vertex by
+c; initially, the current vertex is the root
+when processing vertex
+c:
+c is the next vertex in DFS-order
+consider all sons of
+c which belong to
+S, sorted in increasing order
+for each of these sons, change the current vertex
+c to that son and process it recursively
+For any subtree
+S with
+k vertices, we define the digit string
+D(S) as a string with length
+k; for each valid
+i, the
+i-th character of this string is the digit in the
+i-th vertex of
+S (in DFS-order).
+D(S) may also be considered an integer in decimal representation.
+Let's define
+maxDigit(x) as the largest decimal digit in a positive integer
+x. Consider the following infinite recurrent sequence
+a:
 a
-aa
-abc
-aba
-helloworld
-
-Output:
-26
-26
-15600
-1300
-6221124
-
+1
+=1
+a
+n
+=a
+n−1
++maxDigit(a
+n−1
+) for each
+n>1
+For example, the first few members of this sequence are
+1,2,4,8,16,22.
+Next, let's call a subtree
+S good if
+D(S) occurs in sequence
+a. You should find the number of good subtrees of the given tree. Since this number may be large, compute it modulo
+10
+9
++7.
+Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains a single integer
+N.
+Each of the following
+N−1 lines contains two space-separated integers
+u and
+v denoting an edge between vertices
+u and
+v.
+The last line contains
+N space-separated integers
+d
+1
+,d
+2
+,…,d
+N
+.
+Output
+For each test case, print a single line containing one integer — the number of good subtrees modulo
+10
+9
++7.
+Constraints
+1≤T≤10
+1≤N≤500
+1≤u,v≤N
+the graph described on the input is a tree
+0≤d
+i
+≤9 for each valid
+i
+d
+1
+
+=0
+the sum of
+N over all test cases does not exceed
+500
+Subtasks
+Subtask #1 (20 points):
+d
+i
+=2 for each valid
+i
+Subtask #2 (80 points): original constraints
+Sample 1:
+Input
+Output
+2
+3
+1 2
+2 3
+1 6 4
+5
+1 2
+1 3
+2 4
+3 5
+2 2 2 2 2
+3
+6
 Explanation:
-In the first test case every string of length 1 satisfies the condition. In the second test case every string consisting of two equal letters is fine. In the third test case every string comprising three pairwise distinct letters adds 1 to the answer. In the fourth test case string 'bee' is one of the 1300 good strings.
+Example case 1: All valid subtrees are good (their digit strings are
+1,
+16 and
+164).

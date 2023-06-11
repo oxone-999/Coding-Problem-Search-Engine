@@ -1,119 +1,162 @@
-C. Engineer Artem
-time limit per test1 second
+F. Olha and Igor
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Artem is building a new robot. He has a matrix
-a
+This is an interactive problem.
+Igor wants to find the key to Olha's heart. The problem is, that it's at the root of a binary tree.
+There is a perfect binary tree of height
+h
 consisting of
+n=
+2
+h
+−1
+nodes. The nodes have been assigned distinct labels from
+1
+to
 n
-rows and
-m
-columns. The cell located on the
-i
--th row from the top and the
-j
--th column from the left has a value
-a
-i,j
-written in it.
-If two adjacent cells contain the same value, the robot will break. A matrix is called good if no two adjacent cells contain the same value, where two cells are called adjacent if they share a side.
-Artem wants to increment the values in some cells by one to make
-a
-good.
-More formally, find a good matrix
-b
-that satisfies the following condition —
-For all valid (
-i,j
-), either
-b
-i,j
-=
-a
-i,j
-or
-b
-i,j
-=
-a
-i,j
-+1
-.
-For the constraints of this problem, it can be shown that such a matrix
-b
-always exists. If there are several such tables, you can output any of them. Please note that you do not have to minimize the number of increments.
-Input
-Each test contains multiple test cases. The first line contains the number of test cases
-t
-(
-1≤t≤10
-). Description of the test cases follows.
-The first line of each test case contains two integers
-n,m
-(
-1≤n≤100
+. However, Igor only knows
+h
+and does not know which label corresponds to which node.
+To find key to Olha's heart he needs to find the label assigned to the root by making queries of the following type at most
+n+420
+times:
+Select three distinct labels
+u
 ,
-1≤m≤100
-)  — the number of rows and columns, respectively.
-The following
-n
-lines each contain
-m
-integers. The
-j
--th integer in the
-i
--th line is
-a
-i,j
+v
+and
+w
 (
-1≤
-a
-i,j
-≤
-10
-9
+1≤u,v,w≤n
 ).
-Output
-For each case, output
-n
-lines each containing
-m
-integers. The
-j
--th integer in the
+In response, Olha (the grader) will tell him the label of the lowest common ancestor of nodes labelled
+u
+and
+v
+, if the tree was rooted at the node labelled
+w
+instead.
+Help Igor to find the root!
+Note: the grader is not adaptive: the labels are fixed before any queries are made.
+Input
+The first and only line contains a single integer
+h
+(
+3≤h≤18
+) — the height of the tree.
+Interaction
+You begin the interaction by reading
+h
+.
+To make a query for labels
+u,v,w
+, in a separate line output "? u v w".
+Numbers in the query have to satisfy
+1≤u,v,w≤n
+. Additionally,
+u≠v
+,
+u≠w
+, and
+v≠w
+.
+In response, you will receive
+1≤x≤n
+, the label of the lowest common ancestor of
+u
+and
+v
+, if the tree was rooted at
+w
+.
+In case your query is invalid or you asked more than
+n+420
+queries, program will print
+−1
+and will finish interaction. You will receive Wrong answer verdict. Make sure to exit immediately to avoid getting other verdicts.
+When you determine the label assigned to the root, output "! r", where
+r
+is the label of the root.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+Hack Format
+To hack, use the following format.
+The first line should contain a single integer
+h
+(height of the binary tree).
+On the next line, output a permutation
+p
+of size
+n=
+2
+h
+−1
+. This represents a binary tree where the root is labelled
+p
+1
+and for
+1<i≤n
+, the parent of
+p
 i
--th line is
-b
-i,j
+is
+p
+⌊
+i
+2
+⌋
 .
 Example
 input
 Copy
 3
-3 2
-1 2
-4 5
-7 8
-2 2
-1 1
-3 3
-2 2
-1 3
-2 2
+
+2
+
+7
+
+4
 output
 Copy
-1 2
-5 6
-7 8
-2 1
-4 3
-2 4
-3 2
+? 7 3 5
+
+? 1 6 4
+
+? 1 5 4
+
+! 4
 Note
-In all the cases, you can verify that no two adjacent cells have the same value and that
-b
-is the same as
-a
-with some values incremented by one.
+The labels corresponding to the tree in the example are [
+4
+,
+7
+,
+2
+,
+6
+,
+1
+,
+5
+,
+3
+], meaning the root is labelled
+4
+, and for
+1<i≤n
+, the parent of
+p
+i
+is
+p
+⌊
+i
+2
+⌋
+.

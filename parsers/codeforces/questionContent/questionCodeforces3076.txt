@@ -1,141 +1,99 @@
-F. Colored Tree
-time limit per test2.5 seconds
+B. PIN Codes
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You're given a tree with
-n
-vertices. The color of the
-i
--th vertex is
-h
-i
-.
-The value of the tree is defined as
-∑
-h
-i
-=
-h
-j
-,1≤i<j≤n
-dis(i,j)
-, where
-dis(i,j)
-is the number of edges on the shortest path between
-i
-and
-j
-.
-The color of each vertex is lost, you only remember that
-h
-i
-can be any integer from
-[
-l
-i
-,
-r
-i
-]
-(inclusive). You want to calculate the sum of values of all trees meeting these conditions modulo
-10
-9
-+7
-(the set of edges is fixed, but each color is unknown, so there are
-∏
-i=1
+A PIN code is a string that consists of exactly
+4
+digits. Examples of possible PIN codes: 7013, 0000 and 0990. Please note that the PIN code can begin with any digit, even with 0.
+Polycarp has
 n
 (
-r
+2≤n≤10
+) bank cards, the PIN code of the
 i
-−
-l
+-th card is
+p
 i
-+1)
-different trees).
+.
+Polycarp has recently read a recommendation that it is better to set different PIN codes on different cards. Thus he wants to change the minimal number of digits in the PIN codes of his cards so that all
+n
+codes would become different.
+Formally, in one step, Polycarp picks
+i
+-th card (
+1≤i≤n
+), then in its PIN code
+p
+i
+selects one position (from
+1
+to
+4
+), and changes the digit in this position to any other. He needs to change the minimum number of digits so that all PIN codes become different.
+Polycarp quickly solved this problem. Can you solve it?
 Input
-The first line contains one integer
+The first line contains integer
+t
+(
+1≤t≤100
+) — the number of test cases in the input. Then test cases follow.
+The first line of each of
+t
+test sets contains a single integer
 n
 (
-2≤n≤
-10
-5
-) — the number of vertices.
-Then
+2≤n≤10
+) — the number of Polycarp's bank cards. The next
 n
-lines follow, each line contains two integers
-l
-i
-and
-r
-i
-(
-1≤
-l
-i
-≤
-r
-i
-≤
-10
-5
-) denoting the range of possible colors of vertex
-i
-.
-Then
-n−1
-lines follow, each containing two integers
-u
-and
-v
-(
-1≤u,v≤n
+lines contain the PIN codes
+p
+1
 ,
-u≠v
-) denoting an edge of the tree. It is guaranteed that these edges form a tree.
+p
+2
+,…,
+p
+n
+— one per line. The length of each of them is
+4
+. All PIN codes consist of digits only.
 Output
-Print one integer — the sum of values of all possible trees, taken modulo
-10
-9
-+7
-.
+Print the answers to
+t
+test sets. The answer to each set should consist of a
+n+1
+lines
+In the first line print
+k
+— the least number of changes to make all PIN codes different. In the next
+n
+lines output the changed PIN codes in the order corresponding to their appearance in the input. If there are several optimal answers, print any of them.
 Example
 input
 Copy
+3
+2
+1234
+0600
+2
+1337
+1337
 4
-1 1
-1 2
-1 1
-1 2
-1 2
-1 3
-3 4
+3139
+3139
+3139
+3139
 output
 Copy
-22
-Note
-In the first example there are four different ways to color the tree (so, there are four different trees):
-a tree with vertices colored as follows:
-{1,1,1,1}
-. The value of this tree is
-dis(1,2)+dis(1,3)+dis(1,4)+dis(2,3)+dis(2,4)+dis(3,4)=10
-;
-a tree with vertices colored as follows:
-{1,2,1,1}
-. The value of this tree is
-dis(1,3)+dis(1,4)+dis(3,4)=4
-;
-a tree with vertices colored as follows:
-{1,1,1,2}
-. The value of this tree is
-dis(1,2)+dis(1,3)+dis(2,3)=4
-;
-a tree with vertices colored as follows:
-{1,2,1,2}
-. The value of this tree is
-dis(1,3)+dis(2,4)=4
-.
-Overall the sum of all values is
-10+4+4+4=22
-.
+0
+1234
+0600
+1
+1337
+1237
+3
+3139
+3138
+3939
+6139

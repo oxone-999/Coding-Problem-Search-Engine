@@ -1,36 +1,113 @@
-Large Kitchen
+Interactive Tree
 Problem
-There is a large kitchen in one of the largest Chef's restaurants. Well, to be honest, that's not a real kitchen yet, since there's nothing in it. The first thing to do now is to place cookers, ovens, tables and other stuff. You are to help Chef in this issue.
-
-The kitchen-to-be can be imagined as a rectangular grid with N rows and M columns consisting of N*M equal cells which are currently empty. As unlikely as it may seem, each piece of the aforementioned stuff takes exactly one cell of the grid. Chef would like to use as many cells as possible for the stuff, but there's just one restriction: there should be no "closed" areas at the kitchen -- areas which can't be reached without moving anything, otherwise it would be too hard for chefs to pick up, for example, a fallen knife. In other words, there should exist no sequences of used cells X1, X2, ..., XK, K > 2, such that for every i between 1 and K-1, inclusive, cells Xi and Xi+1 are neighbouring, cells X1 and XK are neighbouring too, and no cell is repeated twice. Two cells are called neighbouring if they share a common side.
-
-Yet there is another strange restriction. The set of used cells must be connected, that is, for every pair of used cells there should exist a sequence of used cells X1, X2, ..., XK such that X1 is one of these cells, XK is another one, and for every i between 1 and K-1, inclusive, cells Xi and Xi+1 are neighbouring.
-
-Your task is to use as many cells as possible under these restrictions. Note that this is a challenge problem: you don't have to find the optimal solution, it's enough to find any of them (but the better is your solution, the more points you receive).
-Input
-Input will begin with an integer T, the number of test cases (no more than 30). Each test case consists of 2 integers N and M (N, M ≤ 100), which denote the dimensions of the kitchen.
-Output
-For each test case output exactly N lines containing exactly M characters each, describing the final state of the kitchen. A '#' character should represent a cell which can be used for placing something, and a '.' character should represent a cell which should remain free. You may separate the answers for consecutive test cases with empty lines.
-Scoring
-Your score for each test case is one hundred times the total number of used cells in your output divided by the total number of cells (in fact, this number indicates the percentage of used cells in your solution). Your score for each file is the average of your scores on the individual test cases. Your overall score is the average of your scores on the individual test files.
-Example
-Input:
+This is an interactive task
+You are given a tree consisting of
+N nodes, numbered from
+1 to
+N. The edges are numbered from
+1 to
+N−1. Chef selected an arbitrary node and marked it, but the marked node is unknown to you.
+Chef gave you an interactor to play with, using which you can ask queries about the given tree.
+In each query, you can print a subset (possibly empty) of edges. Those edges will be deleted from the tree. Now, the interactor will return the maximum distance of the marked node from any other node in the forest to which it belongs currently.
+After each query, the tree will be reset to its original state, i.e, deleted edges will be recovered.
+You have to find the marked node.
+For each test case, you can use at most 11 queries.
+Interaction
+Begin the interaction by reading a single integer
+T denoting the number of test cases. The description of interaction for
+T test cases follows.
+For each test case, first read a single integer
+N, denoting the number of nodes in the tree.
+N−1 lines follow. The
+i
+th
+of these lines contains two space-separated integers
+u
+i
+and
+v
+i
+, denoting an edge between the nodes
+u
+i
+and
+v
+i
+.
+Now you may begin asking queries. To ask a query about a set
+S of
+k edges with indices
+x
+1
+,x
 2
-4 4
-5 8
-
-Output:
-
-.###
-##.#
-#.##
-##.#
-
-#.#.#.#.
-###.####
-.#.#.#.#
-##.###..
-.###.###
-The score for the first test case is 10012/16 = 75. The score for the second test case is 10026/40 = 65. The overall score is thus (75+65)/2 = 70. Note that the solution to the first test case is optimal (there is no correct output with a larger number of used cells), but in the second test case there exist several solutions with more than 26 used cells.
-Test Case Generation
-Every official input file contains exactly 30 test cases. In every test case M and N are chosen randomly and uniformly between 10 and 100, inclusive.
+,…,x
+k
+(
+0≤k≤N−1,1≤x
+i
+≤N−1, all
+x
+i
+are distinct), output:
+? k x
+1
+ x
+2
+ … x
+k
+You will then receive an integer
+d.
+d is the maximum distance of the marked node from any other node in forest to which it belongs currently.
+When you have found the marked node (say
+v), print the answer in the following format:
+! v
+Outputting the answer doesn't count towards the limit of
+11 queries.
+Do not output extra space and newline, or it may cause Wrong Answer verdict.
+If at any time you make an invalid query or exceed the query limit, the interaction is terminated and you will receive a Wrong Answer verdict.
+If you receive a Judge Error verdict, that means your program actually has one of many possible errors: an Idleness Limit Exceeded error (it is waiting for input that does not exist), a Runtime error, you asked an invalid query, or possibly some other error.
+Don't forget to flush the output after printing each line!
+Constraints
+1≤T≤10
+3
+3≤N≤10
+3
+The input graph is a tree
+The sum of
+N across all test cases does not exceed
+2⋅10
+4
+.
+At most
+11 queries can be made for each test case.
+Sample Interaction
+Grader                You
+1
+3
+1 2
+2 3
+                      ? 1 1
+1
+                      ? 1 2
+1
+                      ! 2
+Explanation
+Test case
+1: The marked node is
+2. The interaction proceeds as follows:
+The first query deletes the edge with index
+1, i.e, edge
+(1,2). The interactor returns
+1 since
+dist(2,3)=1 is the maximum distance from
+2 in this forest.
+The second query deletes the edge with index
+2, i.e, edge
+(2,3). The interactor returns
+1 since
+dist(2,1)=1 is the maximum distance from
+2 in this forest.
+Finally, we answer with
+2, after which interaction ends.
+Note: The above queries are just to demonstrate the interaction. They may or may not be sufficient to deduce the final answer.

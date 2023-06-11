@@ -1,59 +1,52 @@
-C. Set or Decrease
+E. Math Test
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given an integer array
-a
-1
-,
-a
-2
-,…,
-a
+Petya is a math teacher.
 n
-and integer
-k
+of his students has written a test consisting of
+m
+questions. For each student, it is known which questions he has answered correctly and which he has not.
+If the student answers the
+j
+-th question correctly, he gets
+p
+j
+points (otherwise, he gets
+0
+points). Moreover, the points for the questions are distributed in such a way that the array
+p
+is a permutation of numbers from
+1
+to
+m
 .
-In one step you can
-either choose some index
+For the
 i
-and decrease
-a
+-th student, Petya knows that he expects to get
+x
 i
-by one (make
-a
-i
-=
-a
-i
-−1
-);
-or choose two indices
-i
-and
-j
-and set
-a
-i
-equal to
-a
-j
-(make
-a
-i
-=
-a
-j
-).
-What is the minimum number of steps you need to make the sum of array
+points for the test. Petya wonders how unexpected the results could be. Petya believes that the surprise value of the results for students is equal to
 ∑
 i=1
 n
-a
+|
+x
 i
-≤k
-? (You are allowed to make values of array negative).
+−
+r
+i
+|
+, where
+r
+i
+is the number of points that the
+i
+-th student has got for the test.
+Your task is to help Petya find such a permutation
+p
+for which the surprise value of the results is maximum possible. If there are multiple answers, print any of them.
 Input
 The first line contains a single integer
 t
@@ -65,142 +58,100 @@ t
 The first line of each test case contains two integers
 n
 and
-k
+m
 (
-1≤n≤2⋅
-10
-5
+1≤n≤10
 ;
-1≤k≤
+1≤m≤
 10
-15
-) — the size of array
-a
-and upper bound on its sum.
-The second line of each test case contains
+4
+) — the number of students and the number of questions, respectively.
+The second line contains
 n
 integers
-a
+x
 1
 ,
-a
+x
 2
 ,…,
-a
+x
 n
 (
-1≤
-a
+0≤
+x
 i
 ≤
-10
-9
-) — the array itself.
-It's guaranteed that the sum of
+m(m+1)
+2
+), where
+x
+i
+is the number of points that the
+i
+-th student expects to get.
+This is followed by
 n
-over all test cases doesn't exceed
-2⋅
+lines, the
+i
+-th line contains the string
+s
+i
+(
+|
+s
+i
+|=m;
+s
+i,j
+∈{0,1}
+), where
+s
+i,j
+is
+1
+if the
+i
+-th student has answered the
+j
+-th question correctly, and
+0
+otherwise.
+The sum of
+m
+for all test cases does not exceed
 10
-5
+4
 .
 Output
-For each test case, print one integer — the minimum number of steps to make
-∑
-i=1
-n
-a
-i
-≤k
-.
+For each test case, print
+m
+integers — a permutation
+p
+for which the surprise value of the results is maximum possible. If there are multiple answers, print any of them.
 Example
 input
 Copy
-4
-1 10
-20
-2 69
-6 9
-7 8
-1 2 1 3 1 2 1
-10 1
-1 2 3 1 2 6 1 6 8 10
+3
+4 3
+5 1 2 2
+110
+100
+101
+100
+4 4
+6 2 0 10
+1001
+0010
+0110
+0101
+3 6
+20 3 15
+010110
+000101
+111111
 output
 Copy
-10
-0
-2
-7
-Note
-In the first test case, you should decrease
-a
-1
-10
-times to get the sum lower or equal to
-k=10
-.
-In the second test case, the sum of array
-a
-is already less or equal to
-69
-, so you don't need to change it.
-In the third test case, you can, for example:
-set
-a
-4
-=
-a
-3
-=1
-;
-decrease
-a
-4
-by one, and get
-a
-4
-=0
-.
-As a result, you'll get array
-[1,2,1,0,1,2,1]
-with sum less or equal to
-8
-in
-1+1=2
-steps.
-In the fourth test case, you can, for example:
-choose
-a
-7
-and decrease in by one
-3
-times; you'll get
-a
-7
-=−2
-;
-choose
-4
-elements
-a
-6
-,
-a
-8
-,
-a
-9
-and
-a
-10
-and them equal to
-a
-7
-=−2
-.
-As a result, you'll get array
-[1,2,3,1,2,−2,−2,−2,−2,−2]
-with sum less or equal to
-1
-in
-3+4=7
-steps.
+3 1 2 
+2 3 4 1 
+3 1 4 5 2 6 

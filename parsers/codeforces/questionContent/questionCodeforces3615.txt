@@ -1,62 +1,105 @@
-B. Ugly Pairs
-time limit per test1 second
+C. Match Points
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a string, consisting of lowercase Latin letters.
-A pair of neighbouring letters in a string is considered ugly if these letters are also neighbouring in a alphabet. For example, string "abaca" contains ugly pairs at positions
-(1,2)
-— "ab" and
-(2,3)
-— "ba". Letters 'a' and 'z' aren't considered neighbouring in a alphabet.
-Can you rearrange the letters of a given string so that there are no ugly pairs? You can choose any order of the letters of the given string but you can't add any new letters or remove the existing ones. You can also leave the order the same.
-If there are multiple answers, print any of them.
-You also have to answer
-T
-separate queries.
-Input
-The first line contains a single integer
-T
-(
-1≤T≤100
-) — the number of queries.
-Each of the next
-T
-lines contains string
-s
-(1≤|s|≤100)
-— the string for the next query. It is guaranteed that it contains only lowercase Latin letters.
-Note that in hacks you have to set
-T=1
+You are given a set of points
+x
+1
+,
+x
+2
+, ...,
+x
+n
+on the number line.
+Two points
+i
+and
+j
+can be matched with each other if the following conditions hold:
+neither
+i
+nor
+j
+is matched with any other point;
+|
+x
+i
+−
+x
+j
+|≥z
 .
+What is the maximum number of pairs of points you can match with each other?
+Input
+The first line contains two integers
+n
+and
+z
+(
+2≤n≤2⋅
+10
+5
+,
+1≤z≤
+10
+9
+) — the number of points and the constraint on the distance between matched points, respectively.
+The second line contains
+n
+integers
+x
+1
+,
+x
+2
+, ...,
+x
+n
+(
+1≤
+x
+i
+≤
+10
+9
+).
 Output
-Print
-T
-lines. The
-i
--th line should contain the answer to the
-i
--th query.
-If the answer for the
-i
--th query exists, then print such a rearrangment of letters of the given string that it contains no ugly pairs. You can choose any order of the letters of the given string but you can't add any new letters or remove the existing ones. You can also leave the order the same.
-If there are multiple answers, print any of them.
-Otherwise print "No answer" for that query.
-Example
+Print one integer — the maximum number of pairs of points you can match with each other.
+Examples
 input
 Copy
-4
-abcd
-gg
-codeforces
-abaca
+4 2
+1 3 3 7
 output
 Copy
-cadb
-gg
-codfoerces
-No answer
+2
+input
+Copy
+5 5
+10 9 5 8 7
+output
+Copy
+1
 Note
-In the first example answer "bdac" is also correct.
-The second example showcases the fact that only neighbouring in alphabet letters are not allowed. The same letter is ok.
-There are lots of valid answers for the third example.
+In the first example, you may match point
+1
+with point
+2
+(
+|3−1|≥2
+), and point
+3
+with point
+4
+(
+|7−3|≥2
+).
+In the second example, you may match point
+1
+with point
+3
+(
+|5−10|≥5
+).

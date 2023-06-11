@@ -1,214 +1,146 @@
-G. Remove Directed Edges
+B. Make It Increasing
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a directed acyclic graph, consisting of
+Given
 n
-vertices and
-m
-edges. The vertices are numbered from
+integers
+a
 1
-to
+,
+a
+2
+,…,
+a
 n
-. There are no multiple edges and self-loops.
-Let
-in
-v
-be the number of incoming edges (indegree) and
-out
-v
-be the number of outgoing edges (outdegree) of vertex
-v
-.
-You are asked to remove some edges from the graph. Let the new degrees be
+. You can perform the following operation on them:
+select any element
+a
 i
-n
-′
-v
-and
-ou
-t
-′
-v
-.
-You are only allowed to remove the edges if the following conditions hold for every vertex
-v
-:
-i
-n
-′
-v
-<
-in
-v
-or
-i
-n
-′
-v
-=
-in
-v
-=0
-;
-ou
-t
-′
-v
-<
-out
-v
-or
-ou
-t
-′
-v
-=
-out
-v
-=0
-.
-Let's call a set of vertices
-S
-cute if for each pair of vertices
-v
-and
-u
 (
-v≠u
-) such that
-v∈S
-and
-u∈S
-, there exists a path either from
-v
-to
-u
-or from
-u
-to
-v
-over the non-removed edges.
-What is the maximum possible size of a cute set
-S
-after you remove some edges from the graph and both indegrees and outdegrees of all vertices either decrease or remain equal to
-0
-?
+1≤i≤n
+) and divide it by
+2
+(round down). In other words, you can replace any selected element
+a
+i
+with the value
+⌊
+a
+i
+2
+⌋
+(where
+⌊x⌋
+is – round down the real number
+x
+).
+Output the minimum number of operations that must be done for a sequence of integers to become strictly increasing (that is, for the condition
+a
+1
+<
+a
+2
+<⋯<
+a
+n
+to be satisfied). Or determine that it is impossible to obtain such a sequence. Note that elements cannot be swapped. The only possible operation is described above.
+For example, let
+n=3
+and a sequence of numbers
+[3,6,5]
+be given. Then it is enough to perform two operations on it:
+Write the number
+⌊
+6
+2
+⌋=3
+instead of the number
+a
+2
+=6
+and get the sequence
+[3,3,5]
+;
+Then replace
+a
+1
+=3
+with
+⌊
+3
+2
+⌋=1
+and get the sequence
+[1,3,5]
+.
+The resulting sequence is strictly increasing because
+1<3<5
+.
 Input
-The first line contains two integers
+The first line of the input contains an integer
+t
+(
+1≤t≤
+10
+4
+) — the number of test cases in the input.
+The descriptions of the test cases follow.
+The first line of each test case contains a single integer
 n
-and
-m
 (
-1≤n≤2⋅
-10
-5
-;
-0≤m≤2⋅
-10
-5
-) — the number of vertices and the number of edges of the graph.
-Each of the next
-m
-lines contains two integers
-v
-and
-u
+1≤n≤30
+).
+The second line of each test case contains exactly
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
 (
-1≤v,u≤n
-;
-v≠u
-) — the description of an edge.
-The given edges form a valid directed acyclic graph. There are no multiple edges.
+0≤
+a
+i
+≤2⋅
+10
+9
+).
 Output
-Print a single integer — the maximum possible size of a cute set
-S
-after you remove some edges from the graph and both indegrees and outdegrees of all vertices either decrease or remain equal to
-0
-.
-Examples
+For each test case, print a single number on a separate line — the minimum number of operations to perform on the sequence to make it strictly increasing. If a strictly increasing sequence cannot be obtained, print "-1".
+Example
 input
 Copy
-3 3
-1 2
-2 3
-1 3
+7
+3
+3 6 5
+4
+5 3 2 1
+5
+1 2 3 4 5
+1
+1000000000
+4
+2 8 7 5
+5
+8 26 5 21 10
+2
+5 14
 output
 Copy
 2
-input
-Copy
-5 0
-output
-Copy
-1
-input
-Copy
-7 8
-7 1
-1 3
-6 2
-2 3
-7 2
-2 4
-7 3
-6 3
-output
-Copy
-3
-Note
-In the first example, you can remove edges
-(1,2)
-and
-(2,3)
-.
-in=[0,1,2]
-,
-out=[2,1,0]
-.
-i
-n
-′
-=[0,0,1]
-,
-ou
-t
-′
-=[1,0,0]
-. You can see that for all
-v
-the conditions hold. The maximum cute set
-S
-is formed by vertices
-1
-and
-3
-. They are still connected directly by an edge, so there is a path between them.
-In the second example, there are no edges. Since all
-in
-v
-and
-out
-v
-are equal to
+-1
 0
-, leaving a graph with zero edges is allowed. There are
-5
-cute sets, each contains a single vertex. Thus, the maximum size is
-1
-.
-In the third example, you can remove edges
-(7,1)
-,
-(2,4)
-,
-(1,3)
-and
-(6,2)
-. The maximum cute set will be
-S={7,3,2}
-. You can remove edge
-(7,3)
-as well, and the answer won't change.
-Here is the picture of the graph from the third example:
+0
+4
+11
+0
+Note
+The first test case is analyzed in the statement.
+In the second test case, it is impossible to obtain a strictly increasing sequence.
+In the third test case, the sequence is already strictly increasing.

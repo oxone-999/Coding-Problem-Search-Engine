@@ -1,107 +1,64 @@
-Locked Safe
+Sereja and BOX
 Problem
-Read problem statements in Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef has met up with his old friend Jack recently. Jack told Chef that he found a recipe for an ancient dish, but unfortunately, it is locked in a safe and to open the safe, it is necessary to enter the solution to the following problem.
-There is a sequence of non-negative integers
-A
-1
-,A
-2
-,…,A
-N
-on the safe. Find the number of pairs
-(l,r) (
-1≤l≤r≤N) which satisfy the condition
-(A
-l
-∨A
-l+1
-∨…∨A
-r
-)⊕(A
-l
-∧A
-l+1
-∧…∧A
-r
-)≥max(A
-l
-,A
-l+1
-,…,A
-r
-).
-Here,
-⊕ denotes bitwise XOR,
-∨ denotes bitwise OR and
-∧ denotes bitwise AND.
-Jack and Chef cannot think of anything except the recipe, so you are asked to open the safe.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+Sereja has a box A with size N*N*N, where N=2Q for some integer Q. Each cell A(i, j, k) contains some binary value (zero or one). Sereja now has C++ function F(A) (where the box A is parameter of the function F):
+int F(box A, int dx = 0, int dy = 0, int dz = 0, int size = N) {
+   vector B = {};
+   for (int i = dx; i < dx + size; i++) {
+      for (int j = dy; j < dy + size; j++) {
+         for (int k = dz; k < dz + size; k++) {
+           B.push_back(A[i][j][k]);
+         }
+      }
+   }
+   sort(B.begin(), B.end());
+   if (B[0] == B[size * size * size - 1]) {
+      return 1;
+   }
+   int result = 0;
+   for (int i = 0; i < 2; i++) {
+      for (int j = 0; j < 2; j++) {
+        for (int k = 0; k < 2; k++) {
+           result += f(A, 
+                          dx + i * size / 2, 
+                          dy + j * size / 2, 
+                          dz + k * size / 2,
+                          size / 2);
+        }
+      }
+   }
+   return result;
+}
+This function computes compression level of the box. Sereja now wants to know minimal and maximal value of F(D) among all boxes D which has same dimensions as A and differ in no more than K cells with A.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains a single integer
-N.
-The second line contains
-N space-separated integers
-A
-1
-,A
-2
-,…,A
-N
-.
+First line contains integers N and K.
+Each of N next blocks contains N lines, each line contains N numbers, k-th number in j-th line of i-th block means value of A(i,j,k).
 Output
-For each test case, print a single line containing one integer ― the number of pairs
-(l,r) that satisfy the given condition.
+Output two numbers in a single line - minimal and maximal value of F(D).
 Constraints
-1≤N≤10
-6
-0≤A
-i
-<2
-60
-for each valid
-i
-the sum of
-N over all test cases does not exceed
-10
-6
+1 ≤ N ≤ 32
+1 ≤ K ≤ N3
 Subtasks
-Subtask #1 (10 points): for each valid
-i,
-A
-i
-is a power of
-2
-Subtask #2 (30 points):
-A
-i
-≤3⋅10
-5
-for each valid
-i
-the sum of
-N over all test cases does not exceed
-3⋅10
-5
-Subtask #3 (60 points): original constraints
-Sample 1:
-Input
-Output
-2
-4
-0 1 2 3
-6
-1 3 5 6 4 2
-6
-11
-Explanation:
-Example case 1: The pairs
-(l,r) satisfying the condition are
-(1,1),
-(1,2),
-(1,3),
-(1,4),
-(2,3) and
-(2,4).
+Subtask #1: 1 ≤ N ≤ 2 (5 points)
+Subtask #2: 1 ≤ N ≤ 4 (15 points)
+Subtask #3: 1 ≤ N ≤ 8 (20 points)
+Subtask #4: 1 ≤ N ≤ 16 (25 points)
+Subtask #5: original constraints (35 points)
+Example 1
+Input:
+2 0
+0 0
+0 0
+0 0
+0 0
+Output:
+1 1
+Example 2
+Input:
+2 1
+0 0
+0 0
+0 0
+0 0
+Output:
+1 8

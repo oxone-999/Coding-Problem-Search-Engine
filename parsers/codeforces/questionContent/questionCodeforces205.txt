@@ -1,105 +1,134 @@
-B. Asterisk-Minor Template
+A. Typical Interview Problem
 time limit per test2 seconds
-memory limit per test256 megabytes
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given two strings
-a
+The FB-string is formed as follows. Initially, it is empty. We go through all positive integers, starting from
+1
+, in ascending order, and do the following for each integer:
+if the current integer is divisible by
+3
+, append F to the end of the FB-string;
+if the current integer is divisible by
+5
+, append B to the end of the FB-string.
+Note that if an integer is divisible by both
+3
 and
-b
-, consisting of lowercase Latin letters.
-A template
-t
-is string, consisting of lowercase Latin letters and asterisks (character '*'). A template is called asterisk-minor if the number of asterisks in it is less than or equal to the number of letters in it.
-A string
+5
+, we append F, and then B, not in the opposite order.
+The first
+10
+characters of the FB-string are FBFFBFFBFB: the first F comes from the integer
+3
+, the next character (B) comes from
+5
+, the next F comes from the integer
+6
+, and so on. It's easy to see that this string is infinitely long. Let
+f
+i
+be the
+i
+-th character of FB-string; so,
+f
+1
+is F,
+f
+2
+is B,
+f
+3
+is F,
+f
+4
+is F, and so on.
+You are given a string
 s
-is said to be matching a template
-t
-if you can replace each asterisk in
-t
-with a string of lowercase Latin letters (possibly, an empty string) so that it becomes equal to
+, consisting of characters F and/or B. You have to determine whether it is a substring (contiguous subsequence) of the FB-string. In other words, determine if it is possible to choose two integers
+l
+and
+r
+(
+1≤l≤r
+) so that the string
+f
+l
+f
+l+1
+f
+l+2
+…
+f
+r
+is exactly
 s
 .
-Find an asterisk-minor template such that both
-a
+For example:
+FFB is a substring of the FB-string: if we pick
+l=3
 and
-b
-match it, or report that such a template doesn't exist. If there are multiple answers, print any of them.
+r=5
+, the string
+f
+3
+f
+4
+f
+5
+is exactly FFB;
+BFFBFFBF is a substring of the FB-string: if we pick
+l=2
+and
+r=9
+, the string
+f
+2
+f
+3
+f
+4
+…
+f
+9
+is exactly BFFBFFBF;
+BBB is not a substring of the FB-string.
 Input
-The first line contains a single integer
+The first line contains one integer
 t
 (
-1≤t≤
-10
-4
-) — the number of testcases.
-The first line of each testcase contains a string
-a
+1≤t≤2046
+) — the number of test cases.
+Each test case consists of two lines. The first line contains one integer
+k
 (
-1≤|a|≤50
-, where
-|a|
-is the length of
-a
-), consisting of lowercase Latin letters.
-The second line contains a string
-b
-(
-1≤|b|≤50
-), consisting of lowercase Latin letters.
+1≤k≤10
+) — the number of characters in
+s
+. The second line contains
+s
+, which is a string of exactly
+k
+characters. Each character of
+s
+is either F or B.
 Output
-For each testcase, output "NO", if there doesn't exist an asterisk-minor template that both
-a
-and
-b
-match. Otherwise, print "YES" in the first line and the template in the second line. If there are multiple answers, print any of them.
-A template should consist only of lowercase Latin letters and asterisks (character '*'). The number of asterisks should be less than or equal to the number of letters.
+For each test case, print YES if
+s
+is a substring of the FB-string, or NO otherwise.
+You may print each letter in any case (YES, yes, Yes will all be recognized as positive answer, NO, no and nO will all be recognized as negative answer).
 Example
 input
 Copy
-6
-aaab
-zzzb
-codeforces
-atcoder
-codeforces
-tokitlx
-aaaa
-aaaaaa
-abcd
-abcd
-c
-f
+3
+3
+FFB
+8
+BFFBFFBF
+3
+BBB
 output
 Copy
 YES
-*b
 YES
-*co*
 NO
-YES
-a*a*a*a
-YES
-abcd
-NO
-Note
-In the first testcase, for a template "*b", you can replace the only asterisk with "aaa" to get "aaab" (which is equal to
-a
-) or with "zzz" to get "zzzb" (which is equal to
-b
-).
-In the third testcase, a template "*o*" is not asterisk-minor, as it contains more asterisks than letters. There are no asterisk-minor templates that both
-a
-and
-b
-match.
-In the fourth testcase, for a template "a*a*a*a", you can replace all asterisks with empty strings to get "aaaa" (which is equal to
-a
-) or two of them with "a" and two of them with an empty string to get "aaaaaa" (which is equal to
-b
-).
-In the fifth testcase, there are no asterisks in a template "abcd", so only "abcd" can match it (which is coincidentally both
-a
-and
-b
-).

@@ -1,25 +1,32 @@
-The LCS Problem Revisited
+XOR with Subset
 Problem
-The Longest Common Subsequence (LCS) problem is a well known problem in Computer Science. Every computer science students in Byteland knows this problem. Johnny does, too.
-Recall that a subsequence of a string S is obtained by deleting some characters from S. Given two strings S and T, the LCS problem is the find the longest sequence that is a subsequence of both S and T.
-Johnny has the habit of deriving harder problems from a familiar problem. This time, based on the LCS problem, he has thought up the following problem:
-Given two strings S and T, how many distinct LCS of S and T are there?
-Write a program to help Johnny solve this problem. Since the result may be very large, you only need to print the remainder of the result when dividing by 23102009.
+Read problems statements in Mandarin Chinese and Russian.
+You have an array of integers A1, A2, ..., AN. The function F(P), where P is a subset of A, is defined as the XOR (represented by the symbol ⊕) of all the integers present in the subset. If P is empty, then F(P)=0.
+Given an integer K, what is the maximum value of K ⊕ F(P), over all possible subsets P of A?
 Input
-The first line contains t, the number of test cases (about 10). Then t test cases follow.
-Each test case consists of two lines, the first line is the string S and the second line is the string T. You may assume that the strings consists of only lowercase characters and the length of the each string is at most 1000 characters.
-Successive test cases at input are separated by a single blank line.
+The first line contains T, the number of test cases. Each test case consists of N and K in one line, followed by the array A in the next line.
 Output
-For each test case, print a single line containing two numbers which are the length of the LCS and the remainder of the number of distinct LCS of S and T when dividing by 23102009.
+For each test case, print the required answer in one line.
+Constraints
+1 ≤ T ≤ 10
+1 ≤ K, Ai ≤ 1000
+Subtask 1 (30 points):1 ≤ N ≤ 20
+Subtask 2 (70 points):1 ≤ N ≤ 1000
 Sample 1:
 Input
 Output
-2
-acbd
-acbd
-vnvn
-vn
-4 1
-2 1
+1
+3 4
+1 2 3
+7
 Explanation:
-The only LCS in the first case is "acbd" and in the second case is "vn".
+Considering all subsets:
+F({}) = 0 ? 4 ? 0 = 4
+F({1}) = 1 ? 4 ? 1 = 5
+F({1,2}) = 3 ? 4 ? 3 = 7
+F({1,3}) = 2 ? 4 ? 2 = 6
+F({1,2,3}) = 0 ? 4 ? 0 = 4
+F({2}) = 2 ? 4 ? 2 = 6
+F({2,3}) = 1 ? 4 ? 1 = 5
+F({3}) = 3 ? 4 ? 3 = 7
+Therefore, the answer is 7.

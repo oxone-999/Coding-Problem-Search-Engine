@@ -1,162 +1,95 @@
-E. Permutation Separation
-time limit per test2 seconds
+B. Food Buying
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a permutation
-p
-1
-,
-p
-2
-,…,
-p
-n
-(an array where each integer from
-1
-to
-n
-appears exactly once). The weight of the
-i
--th element of this permutation is
-a
-i
-.
-At first, you separate your permutation into two non-empty sets — prefix and suffix. More formally, the first set contains elements
-p
-1
-,
-p
-2
-,…,
-p
-k
-, the second —
-p
-k+1
-,
-p
-k+2
-,…,
-p
-n
-, where
-1≤k<n
-.
-After that, you may move elements between sets. The operation you are allowed to do is to choose some element of the first set and move it to the second set, or vice versa (move from the second set to the first). You have to pay
-a
-i
-dollars to move the element
-p
-i
-.
-Your goal is to make it so that each element of the first set is less than each element of the second set. Note that if one of the sets is empty, this condition is met.
-For example, if
-p=[3,1,2]
-and
-a=[7,1,4]
-, then the optimal strategy is: separate
-p
-into two parts
-[3,1]
-and
-[2]
-and then move the
-2
--element into first set (it costs
-4
-). And if
-p=[3,5,1,6,2,4]
-,
-a=[9,1,9,9,1,9]
-, then the optimal strategy is: separate
-p
-into two parts
-[3,5,1]
-and
-[6,2,4]
-, and then move the
-2
--element into first set (it costs
-1
-), and
-5
--element into second set (it also costs
-1
-).
-Calculate the minimum number of dollars you have to spend.
-Input
-The first line contains one integer
-n
-(
-2≤n≤2⋅
+Mishka wants to buy some food in the nearby shop. Initially, he has
+s
+burles on his card.
+Mishka can perform the following operation any number of times (possibly, zero): choose some positive integer number
+1≤x≤s
+, buy food that costs exactly
+x
+burles and obtain
+⌊
+x
 10
-5
-) — the length of permutation.
-The second line contains
-n
-integers
-p
+⌋
+burles as a cashback (in other words, Mishka spends
+x
+burles and obtains
+⌊
+x
+10
+⌋
+back). The operation
+⌊
+a
+b
+⌋
+means
+a
+divided by
+b
+rounded down.
+It is guaranteed that you can always buy some food that costs
+x
+for any possible value of
+x
+.
+Your task is to say the maximum number of burles Mishka can spend if he buys food optimally.
+For example, if Mishka has
+s=19
+burles then the maximum number of burles he can spend is
+21
+. Firstly, he can spend
+x=10
+burles, obtain
 1
-,
-p
-2
-,…,
-p
-n
+burle as a cashback. Now he has
+s=10
+burles, so can spend
+x=10
+burles, obtain
+1
+burle as a cashback and spend it too.
+You have to answer
+t
+independent test cases.
+Input
+The first line of the input contains one integer
+t
 (
-1≤
-p
-i
-≤n
-). It's guaranteed that this sequence contains each element from
-1
-to
-n
-exactly once.
-The third line contains
-n
-integers
-a
-1
-,
-a
-2
-,…,
-a
-n
+1≤t≤
+10
+4
+) — the number of test cases.
+The next
+t
+lines describe test cases. Each test case is given on a separate line and consists of one integer
+s
 (
-1≤
-a
-i
-≤
+1≤s≤
 10
 9
-).
+) — the number of burles Mishka initially has.
 Output
-Print one integer — the minimum number of dollars you have to spend.
-Examples
-input
-Copy
-3
-3 1 2
-7 1 4
-output
-Copy
-4
-input
-Copy
-4
-2 4 1 3
-5 9 8 3
-output
-Copy
-3
+For each test case print the answer on it — the maximum number of burles Mishka can spend if he buys food optimally.
+Example
 input
 Copy
 6
-3 5 1 6 2 4
-9 1 9 9 1 9
+1
+10
+19
+9876
+12345
+1000000000
 output
 Copy
-2
+1
+11
+21
+10973
+13716
+1111111111

@@ -1,234 +1,160 @@
-E. Treeland and Viruses
-time limit per test3 seconds
-memory limit per test512 megabytes
+C. Remove Adjacent
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There are
-n
-cities in Treeland connected with
-n−1
-bidirectional roads in such that a way that any city is reachable from any other; in other words, the graph of cities and roads is a tree. Treeland is preparing for a seasonal virus epidemic, and currently, they are trying to evaluate different infection scenarios.
-In each scenario, several cities are initially infected with different virus species. Suppose that there are
-k
-i
-virus species in the
-i
--th scenario. Let us denote
-v
-j
-the initial city for the virus
-j
-, and
+You are given a string
 s
-j
-the propagation speed of the virus
-j
-. The spread of the viruses happens in turns: first virus
+consisting of lowercase Latin letters. Let the length of
+s
+be
+|s|
+. You may perform several operations on this string.
+In one operation, you can choose some index
+i
+and remove the
+i
+-th character of
+s
+(
+s
+i
+) if at least one of its adjacent characters is the previous letter in the Latin alphabet for
+s
+i
+. For example, the previous letter for b is a, the previous letter for s is r, the letter a has no previous letters. Note that after each removal the length of the string decreases by one. So, the index
+i
+should satisfy the condition
+1≤i≤|s|
+during each operation.
+For the character
+s
+i
+adjacent characters are
+s
+i−1
+and
+s
+i+1
+. The first and the last characters of
+s
+both have only one adjacent character (unless
+|s|=1
+).
+Consider the following example. Let
+s=
+bacabcab.
+During the first move, you can remove the first character
+s
 1
-spreads, followed by virus
+=
+b because
+s
 2
-, and so on. After virus
-k
-i
-spreads, the process starts again from virus
-1
-.
-A spread turn of virus
-j
-proceeds as follows. For each city
-x
-not infected with any virus at the start of the turn, at the end of the turn it becomes infected with virus
-j
-if and only if there is such a city
-y
-that:
-city
-y
-was infected with virus
-j
-at the start of the turn;
-the path between cities
-x
-and
-y
-contains at most
+=
+a. Then the string becomes
+s=
+acabcab.
+During the second move, you can remove the fifth character
 s
-j
-edges;
-all cities on the path between cities
-x
-and
-y
-(excluding
-y
-) were uninfected with any virus at the start of the turn.
-Once a city is infected with a virus, it stays infected indefinitely and can not be infected with any other virus. The spread stops once all cities are infected.
-You need to process
-q
-independent scenarios. Each scenario is described by
-k
-i
-virus species and
-m
-i
-important cities. For each important city determine which the virus it will be infected by in the end.
-Input
-The first line contains a single integer
-n
-(
-1≤n≤2⋅
-10
 5
-) — the number of cities in Treeland.
-The following
-n−1
-lines describe the roads. The
-i
--th of these lines contains two integers
-x
-i
-and
-y
-i
-(
-1≤
-x
-i
-,
-y
-i
-≤n
-) — indices of cities connecting by the
-i
--th road. It is guaranteed that the given graph of cities and roads is a tree.
-The next line contains a single integer
-q
-(
-1≤q≤2⋅
-10
-5
-) — the number of infection scenarios.
-q
-scenario descriptions follow.
-The description of the
-i
--th scenario starts with a line containing two integers
-k
-i
-and
-m
-i
-(
-1≤
-k
-i
-,
-m
-i
-≤n
-) — the number of virus species and the number of important cities in this scenario respectively. It is guaranteed that
-∑
-q
-i=1
-k
-i
-and
-∑
-q
-i=1
-m
-i
-do not exceed
-2⋅
-10
-5
-.
-The following
-k
-i
-lines describe the virus species. The
-j
--th of these lines contains two integers
-v
-j
-and
+=
+c because
 s
-j
-(
-1≤
-v
-j
-≤n
-,
-1≤
+4
+=
+b. Then the string becomes
+s=
+acabab.
+During the third move, you can remove the sixth character
 s
-j
-≤
-10
 6
-) – the initial city and the propagation speed of the virus species
-j
-. It is guaranteed that the initial cities of all virus species within a scenario are distinct.
-The following line contains
-m
-i
-distinct integers
-u
-1
-,…,
-u
-m
-i
+=
+'b' because
+s
+5
+=
+a. Then the string becomes
+s=
+acaba.
+During the fourth move, the only character you can remove is
+s
+4
+=
+b, because
+s
+3
+=
+a (or
+s
+5
+=
+a). The string becomes
+s=
+acaa and you cannot do anything with it.
+Your task is to find the maximum possible number of characters you can remove if you choose the sequence of operations optimally.
+Input
+The first line of the input contains one integer
+|s|
 (
-1≤
-u
-j
-≤n
-) — indices of important cities.
+1≤|s|≤100
+) — the length of
+s
+.
+The second line of the input contains one string
+s
+consisting of
+|s|
+lowercase Latin letters.
 Output
-Print
-q
-lines. The
-i
--th line should contain
-m
-i
-integers — indices of virus species that cities
-u
-1
-,…,
-u
-m
-i
-are infected with at the end of the
-i
--th scenario.
-Example
+Print one integer — the maximum possible number of characters you can remove if you choose the sequence of moves optimally.
+Examples
 input
 Copy
-7
-1 2
-1 3
-2 4
-2 5
-3 6
-3 7
-3
-2 2
-4 1
-7 1
-1 3
-2 2
-4 3
-7 1
-1 3
-3 3
-1 1
-4 100
-7 100
-1 2 3
+8
+bacabcab
 output
 Copy
-1 2
-1 1
-1 1 1
+4
+input
+Copy
+4
+bcda
+output
+Copy
+3
+input
+Copy
+6
+abbbbb
+output
+Copy
+5
+Note
+The first example is described in the problem statement. Note that the sequence of moves provided in the statement is not the only, but it can be shown that the maximum possible answer to this test is
+4
+.
+In the second example, you can remove all but one character of
+s
+. The only possible answer follows.
+During the first move, remove the third character
+s
+3
+=
+d,
+s
+becomes bca.
+During the second move, remove the second character
+s
+2
+=
+c,
+s
+becomes ba.
+And during the third move, remove the first character
+s
+1
+=
+b,
+s
+becomes a.

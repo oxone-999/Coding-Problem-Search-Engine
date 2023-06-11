@@ -1,159 +1,58 @@
-Battle Royale
+Period on tree
 Problem
-Read problems statements in Mandarin Chinese, Russian, Vietnamese and Bengali as well.
-Chef invented a new game named Quick Battle Royale.
-N people play the game. One or more rounds are played until all players except one are eliminated. In each round:
-Let there be
-x non-eliminated players at the start of the round. Let's number them
-1 through
-x.
-First, each of these players chooses an integer between
-1 and
-x inclusive. For each valid
-i, let's denote the integer chosen by the
-i-th player by
-p
-i
-. In addition, each player is not allowed to choose
-p
-i
-=i. Under these conditions, all players choose uniformly randomly and independently.
-Then, the elimination process starts. For each
-i from
-1 to
-x, in this order:
-if the player
-i is currently still in the game, the player
-p
-i
-is eliminated from the game immediately
-if the player
-i was already eliminated from the game in this round, nothing happens
-Note that it is impossible for all players to be eliminated and in each round, at least one player is eliminated.
-For example, a game for
-N=4 could look like this:
-Round 1: The players choose
-p
-1
-=3,
-p
-2
-=4,
-p
-3
-=2,
-p
-4
-=2. For
-i=1, since player
-1 is still in the game, player
-p
-i
-=3 is eliminated. For
-i=2, since player
-2 is also in the game, player
-p
-i
-=4 is eliminated. Since the players
-3 and
-4 are eliminated, nothing more happens.
-Round 2: Two players remain. The only choice they have is
-p
-1
-=2 and
-p
-2
-=1. For
-i=1, since player
-1 is still in the game, player
-p
-i
-=2 gets eliminated. For
-i=2, player
-2 is eliminated, so nothing happens.
-Now there is one player left, so the game ends. It lasted
-2 rounds.
-You have to find the expected value of the number of rounds the game will last. It can be shown that the expected number of rounds can be written as a fraction
-q
-p
-, where
-p and
-q are positive integers and
-q is coprime with
-10
-9
-+7. You have to compute
-p⋅q
-−1
-modulo
-10
-9
-+7, where
-q
-−1
-is the multiplicative inverse of
-q modulo
-10
-9
-+7.
+Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
+You are given an undirected tree of N vertices, each of which edges is marked with some lowercase Latin letter between a and z.
+It's easy to notice that, if you select some distinct vertices u and v and write down a sequence of characters on the shortest path from u to v, you will get a lowercase string corresponding to this path.
+Let's call any string t a period of some string s if s can be obtained by concatenating the string t to itself one or more times.
+Your task is to process, on a given tree, the following two types of queries:
+1 u v - output the length of the shortest period of the string corresponding to the path from u to v.
+2 u v c - replace the character marked on the edge between u and v with the character c.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first and only line of each test case contains a single integer
-N denoting the number of players at the start of the game.
+The first line of each test case contains a single integer T denoting the number of tests in input. The description of T test cases follows.
+The first line of a test case contains an integer N — the number of vertices in the tree.
+The next N - 1 lines contains 2 space-separated entities: integer ui, integer vi and a character ci denoting the edge between ui and vi marked with character ci on it.
+The next line contains one integer M denoting the number of queries.
+Each of the next M lines contains three space-separated integers typei, vi, ui.
+If typei=2, then character ci follows these integers.
 Output
-For each test case, print a single line containing one integer
-p⋅q
-−1
-modulo
-10
-9
-+7.
+For each query of type 1 you should output minimal period of string corresponding to this query.
 Constraints
-1≤T≤100
-2≤N≤100
-Example Input
-5
-1
+1 ≤ T ≤ 10
+2 ≤ N, M ≤ 105
+ui ≠ vi, 1 ≤ vi, ui,≤ N
+For each query of second type, it is guaranteed that ui is adjacent to vi
+Sum of N over all test cases in a single file will not be greater then 5*105
+Sum of M over all test cases in a single file will not be greater then 5*105
+Subtasks
+Subtask 1 (15 points): N, M ≤ 1*104, sum of N ≤ 5*104, sum of M ≤ 5*104 in a single file.
+Subtask 2 (25 points): N, M ≤ 5*104, sum of N ≤ 105, sum of M ≤ 105 in a single file. All the queries in this subtask have the first type
+Subtask 3 (60 points): Original constraints
+Sample 1:
+Input
+Output
 2
 3
+1 2 a
+1 3 b
 4
-5
-Example Output
-0
-1
-500000005
-944444453
-616319451
-Explanation
-Example case 3: The answer is
-2
+1 1 2
+1 2 3
+2 1 3 a
+1 2 3
+4
+1 2 a
+2 3 b
+3 4 a
 3
-modulo
-(10
-9
-+7). The following cases can happen in the first round (with equal probabilities): -
-p=[2,1,1], game lasts
-1 round -
-p=[2,1,2], game lasts
-2 rounds -
-p=[2,3,1], game lasts
-1 round -
-p=[2,3,2], game lasts
-2 rounds -
-p=[3,1,1], game lasts
-1 round -
-p=[3,1,2], game lasts
-1 round -
-p=[3,3,1], game lasts
-2 rounds -
-p=[3,3,2], game lasts
-2 rounds
-Example case 4: The answer is
-18
-35
-modulo
-(10
-9
-+7).
+1 1 4
+2 2 3 a
+1 1 4
+1
+2
+1
+3
+1
+Explanation:
+In first test case, period of strings "a", "aa" is "a", and period of "ab" is "ab".
+In second test case, the only period of string "aba" is "aba" itself. Note that not "ab" is not a period, as "aba" is a prefix of "abab", but is not the same.
+Since input file can be fairly large (about 15 MB), it's recommended to use fast I/O (for example, in C++, use scanf/printf instead of cin/cout).

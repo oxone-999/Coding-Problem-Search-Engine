@@ -1,59 +1,99 @@
-A. Plus One on the Subset
-time limit per test2 seconds
+C. Division by Two and Permutation
+time limit per test3 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Polycarp got an array of integers
-a[1…n]
-as a gift. Now he wants to perform a certain number of operations (possibly zero) so that all elements of the array become the same (that is, to become
+You are given an array
 a
-1
-=
-a
-2
-=⋯=
-a
+consisting of
 n
-).
-In one operation, he can take some indices in the array and increase the elements of the array at those indices by
-1
-.
-For example, let
-a=[4,2,1,6,2]
-. He can perform the following operation: select indices 1, 2, and 4 and increase elements of the array in those indices by
-1
-. As a result, in one operation, he can get a new state of the array
-a=[5,3,1,7,2]
-.
-What is the minimum number of operations it can take so that all elements of the array become equal to each other (that is, to become
+positive integers. You can perform operations on it.
+In one operation you can replace any element of the array
 a
-1
-=
+i
+with
+⌊
 a
+i
 2
-=⋯=
+⌋
+, that is, by an integer part of dividing
 a
+i
+by
+2
+(rounding down).
+See if you can apply the operation some number of times (possible
+0
+) to make the array
+a
+become a permutation of numbers from
+1
+to
 n
-)?
+ —that is, so that it contains all numbers from
+1
+to
+n
+, each exactly once.
+For example, if
+a=[1,8,25,2]
+,
+n=4
+, then the answer is yes. You could do the following:
+Replace
+8
+with
+⌊
+8
+2
+⌋=4
+, then
+a=[1,4,25,2]
+.
+Replace
+25
+with
+⌊
+25
+2
+⌋=12
+, then
+a=[1,4,12,2]
+.
+Replace
+12
+with
+⌊
+12
+2
+⌋=6
+, then
+a=[1,4,6,2]
+.
+Replace
+6
+with
+⌊
+6
+2
+⌋=3
+, then
+a=[1,4,3,2]
+.
 Input
-The first line of the input contains a single integer
+The first line of input data contains an integer
 t
 (
 1≤t≤
 10
 4
-)  — the number of test cases in the test.
-The following are descriptions of the input test cases.
-The first line of the description of each test case contains one integer
+) —the number of test cases.
+Each test case contains exactly two lines. The first one contains an integer
 n
 (
 1≤n≤50
-)  — the array
-a
-.
-The second line of the description of each test case contains
-n
-integers
+), the second one contains integers
 a
 1
 ,
@@ -69,92 +109,42 @@ i
 ≤
 10
 9
-)  — elements of the array
-a
-.
+).
 Output
-For each test case, print one integer  — the minimum number of operations to make all elements of the array
+For each test case, output on a separate line:
+YES if you can make the array
 a
-equal.
+become a permutation of numbers from
+1
+to
+n
+,
+NO otherwise.
+You can output YES and NO in any case (for example, strings yEs, yes, Yes and YES will be recognized as a positive response).
 Example
 input
 Copy
-3
 6
-3 4 2 4 1 2
-3
-1000 1002 998
+4
+1 8 25 2
 2
-12 11
+1 1
+9
+9 8 3 4 2 7 1 5 6
+3
+8 2 1
+4
+24 7 16 7
+5
+22 6 22 4 22
 output
 Copy
-3
-4
-1
+YES
+NO
+YES
+NO
+NO
+YES
 Note
-First test case:
-a=[3,4,2,4,1,2]
-take
-a
-3
-,
-a
-5
-and perform an operation plus one on them, as a result we get
-a=[3,4,3,4,2,2]
-.
-a=[3,4,3,4,2,2]
-we take
-a
-1
-,
-a
-5
-,
-a
-6
-and perform an operation on them plus one, as a result we get
-a=[4,4,3,4,3,3]
-.
-a=[4,4,3,4,3,3]
-we take
-a
-3
-,
-a
-5
-,
-a
-6
-and perform an operation on them plus one, as a result we get
-a=[4,4,4,4,4,4]
-.
-There are other sequences of
-3
-operations, after the application of which all elements become equal.
-Second test case:
-a=[1000,1002,998]
-2 times we take
-a
-1
-,
-a
-3
-and perform an operation plus one on them, as a result we get
-a=[1002,1002,1000]
-.
-a=[1002,1002,1000]
-also take
-a
-3
-2 times and perform an operation plus one on it, as a result we get
-a=[1002,1002,1002]
-.
-Third test case:
-a=[12,11]
-take
-a
-2
-and perform an operation plus one on it, as a result we get
-a=[12,12]
-.
+The first test case is explained in the text of the problem statement.
+In the second test case, it is not possible to get a permutation.

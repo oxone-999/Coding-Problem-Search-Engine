@@ -1,88 +1,116 @@
-D2. Domino (hard version)
+A. Subsequence Permutation
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-The only difference between this problem and D1 is that you don't have to provide the way to construct the answer in D1, but you have to do it in this problem.
-There's a table of
-n×m
-cells (
+A string
+s
+of length
 n
-rows and
-m
-columns). The value of
-n⋅m
-is even.
-A domino is a figure that consists of two cells having a common side. It may be horizontal (one of the cells is to the right of the other) or vertical (one of the cells is above the other).
-You need to place
-nm
-2
-dominoes on the table so that exactly
+, consisting of lowercase letters of the English alphabet, is given.
+You must choose some number
 k
-of them are horizontal and all the other dominoes are vertical. The dominoes cannot overlap and must fill the whole table.
+between
+0
+and
+n
+. Then, you select
+k
+characters of
+s
+and permute them however you want. In this process, the positions of the other
+n−k
+characters remain unchanged. You have to perform this operation exactly once.
+For example, if
+s="andrea"
+, you can choose the
+k=4
+characters
+"a_d_ea"
+and permute them into
+"d_e_aa"
+so that after the operation the string becomes
+"dneraa"
+.
+Determine the minimum
+k
+so that it is possible to sort
+s
+alphabetically (that is, after the operation its characters appear in alphabetical order).
 Input
-The first line contains one integer
+The first line contains a single integer
 t
 (
-1≤t≤10
+1≤t≤1000
 ) — the number of test cases. Then
 t
 test cases follow.
-Each test case consists of a single line. The line contains three integers
+The first line of each test case contains one integer
 n
-,
-m
-,
-k
 (
-1≤n,m≤100
-,
-0≤k≤
-nm
-2
-,
-n⋅m
-is even) — the count of rows, columns and horizontal dominoes, respectively.
+1≤n≤40
+) — the length of the string.
+The second line of each test case contains the string
+s
+. It is guaranteed that
+s
+contains only lowercase letters of the English alphabet.
 Output
-For each test case:
-print "NO" if it's not possible to place the dominoes on the table in the described way;
-otherwise, print "YES" on a separate line, then print
-n
-lines so that each of them contains
-m
-lowercase letters of the Latin alphabet — the layout of the dominoes on the table. Each cell of the table must be marked by the letter so that for every two cells having a common side, they are marked by the same letters if and only if they are occupied by the same domino. I.e. both cells of the same domino must be marked with the same letter, but two dominoes that share a side must be marked with different letters. If there are multiple solutions, print any of them.
+For each test case, output the minimum
+k
+that allows you to obtain a string sorted alphabetically, through the operation described above.
 Example
 input
 Copy
-8
-4 4 2
-2 3 0
-3 2 3
-1 2 0
-2 4 2
-5 2 2
-2 17 16
-2 1 1
+4
+3
+lol
+10
+codeforces
+5
+aaaaa
+4
+dcba
 output
 Copy
-YES
-accx
-aegx
-bega
-bdda
-YES
-aha
-aha
-YES
-zz
-aa
-zz
-NO
-YES
-aaza
-bbza
-NO
-YES
-bbaabbaabbaabbaay
-ddccddccddccddccy
-NO
+2
+6
+0
+4
+Note
+In the first test case, we can choose the
+k=2
+characters
+"_ol"
+and rearrange them as
+"_lo"
+(so the resulting string is
+"llo"
+). It is not possible to sort the string choosing strictly less than
+2
+characters.
+In the second test case, one possible way to sort
+s
+is to consider the
+k=6
+characters
+"_o__force_"
+and rearrange them as
+"_c__efoor_"
+(so the resulting string is
+"ccdeefoors"
+). One can show that it is not possible to sort the string choosing strictly less than
+6
+characters.
+In the third test case, string
+s
+is already sorted (so we can choose
+k=0
+characters).
+In the fourth test case, we can choose all
+k=4
+characters
+"dcba"
+and reverse the whole string (so the resulting string is
+"abcd"
+).

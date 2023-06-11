@@ -1,280 +1,165 @@
-D. Bananas in a Microwave
-time limit per test3 seconds
+F. Christmas Game
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have a malfunctioning microwave in which you want to put some bananas. You have
+Alice and Bob are going to celebrate Christmas by playing a game with a tree of presents. The tree has
 n
-time-steps before the microwave stops working completely. At each time-step, it displays a new operation.
-Let
+nodes (numbered
+1
+to
+n
+, with some node
+r
+as its root). There are
+a
+i
+presents are hanging from the
+i
+-th node.
+Before beginning the game, a special integer
 k
-be the number of bananas in the microwave currently. Initially,
-k=0
-. In the
+is chosen. The game proceeds as follows:
+Alice begins the game, with moves alternating each turn;
+in any move, the current player may choose some node (for example,
 i
--th operation, you are given three parameters
-t
-i
-,
-x
-i
-,
-y
-i
-in the input. Based on the value of
-t
-i
-, you must do one of the following:
-Type 1: (
-t
-i
-=1
-,
-x
-i
-,
-y
-i
-) — pick an
+) which has depth at least
+k
+. Then, the player picks some positive number of presents hanging from that node, let's call it
+m
+(1≤m≤
 a
 i
-, such that
-0≤
-a
+)
+;
+the player then places these
+m
+presents on the
+k
+-th ancestor (let's call it
+j
+) of the
 i
-≤
-y
+-th node (the
+k
+-th ancestor of vertex
 i
-, and perform the following update
-a
-i
-times:
-k:=⌈(k+
-x
-i
-)⌉
-.
-Type 2: (
-t
-i
-=2
-,
-x
-i
-,
-y
-i
-) — pick an
-a
-i
-, such that
-0≤
-a
-i
-≤
-y
-i
-, and perform the following update
-a
-i
-times:
-k:=⌈(k⋅
-x
-i
-)⌉
-.
-Note that
-x
-i
-can be a fractional value. See input format for more details. Also,
-⌈x⌉
-is the smallest integer
-≥x
-.
-At the
-i
--th time-step, you must apply the
-i
--th operation exactly once.
-For each
+is a vertex
 j
 such that
-1≤j≤m
-, output the earliest time-step at which you can create exactly
+i
+is a descendant of
 j
-bananas. If you cannot create exactly
+, and the difference between the depth of
 j
-bananas, output
-−1
-.
+and the depth of
+i
+is exactly
+k
+). Now, the number of presents of the
+i
+-th node
+(
+a
+i
+)
+is decreased by
+m
+, and, correspondingly,
+a
+j
+is increased by
+m
+;
+Alice and Bob both play optimally. The player unable to make a move loses the game.
+For each possible root of the tree, find who among Alice or Bob wins the game.
+Note: The depth of a node
+i
+in a tree with root
+r
+is defined as the number of edges on the simple path from node
+r
+to node
+i
+. The depth of root
+r
+itself is zero.
 Input
 The first line contains two space-separated integers
 n
-(1≤n≤200)
 and
-m
-(2≤m≤
+k
+(3≤n≤
 10
 5
+,1≤k≤20)
+.
+The next
+n−1
+lines each contain two integers
+x
+and
+y
+(1≤x,y≤n,x≠y)
+, denoting an undirected edge between the two nodes
+x
+and
+y
+. These edges form a tree of
+n
+nodes.
+The next line contains
+n
+space-separated integers denoting the array
+a
+(0≤
+a
+i
+≤
+10
+9
 )
 .
-Then,
-n
-lines follow, where the
-i
--th line denotes the operation for the
-i
--th timestep. Each such line contains three space-separated integers
-t
-i
-,
-x
-′
-i
-and
-y
-i
-(
-1≤
-t
-i
-≤2
-,
-1≤
-y
-i
-≤m
-).
-Note that you are given
-x
-′
-i
-, which is
-10
-5
-⋅
-x
-i
-. Thus, to obtain
-x
-i
-, use the formula
-x
-i
-=
-x
-′
-i
-10
-5
-.
-For type 1 operations,
-1≤
-x
-′
-i
-≤
-10
-5
-⋅m
-, and for type 2 operations,
-10
-5
-<
-x
-′
-i
-≤
-10
-5
-⋅m
-.
 Output
-Print
-m
+Output
+n
 integers, where the
 i
--th integer is the earliest time-step when you can obtain exactly
+-th integer is
+1
+if Alice wins the game when the tree is rooted at node
 i
-bananas (or
-−1
-if it is impossible).
-Examples
+, or
+0
+otherwise.
+Example
 input
 Copy
-3 20
-1 300000 2
-2 400000 2
-1 1000000 3
+5 1
+1 2
+1 3
+5 2
+4 3
+0 3 2 4 4
 output
 Copy
--1 -1 1 -1 -1 1 -1 -1 -1 3 -1 2 3 -1 -1 3 -1 -1 -1 3 
-input
-Copy
-3 20
-1 399999 2
-2 412345 2
-1 1000001 3
-output
-Copy
--1 -1 -1 1 -1 -1 -1 1 -1 -1 3 -1 -1 -1 3 -1 2 -1 3 -1 
+1 0 0 1 1 
 Note
-In the first sample input, let us see how to create
-16
-number of bananas in three timesteps. Initially,
-k=0
-.
-In timestep 1, we choose
-a
-1
-=2
-, so we apply the type 1 update —
-k:=⌈(k+3)⌉
-— two times. Hence,
-k
-is now 6.
-In timestep 2, we choose
-a
-2
-=0
-, hence value of
-k
-remains unchanged.
-In timestep 3, we choose
-a
-3
-=1
-, so we are applying the type 1 update
-k:=⌈(k+10)⌉
-once. Hence,
-k
-is now 16.
-It can be shown that
-k=16
-cannot be reached in fewer than three timesteps with the given operations.
-In the second sample input, let us see how to create
-17
-number of bananas in two timesteps. Initially,
-k=0
-.
-In timestep 1, we choose
-a
-1
-=1
-, so we apply the type 1 update —
-k:=⌈(k+3.99999)⌉
-— once. Hence,
-k
-is now 4.
-In timestep 2, we choose
-a
-2
-=1
-, so we apply the type 2 update —
-k:=⌈(k⋅4.12345)⌉
-— once. Hence,
-k
-is now 17.
-It can be shown that
-k=17
-cannot be reached in fewer than two timesteps with the given operations.
+Let us calculate the answer for sample input with root node as 1 and as 2.
+Root node 1
+Alice always wins in this case. One possible gameplay between Alice and Bob is:
+Alice moves one present from node 4 to node 3.
+Bob moves four presents from node 5 to node 2.
+Alice moves four presents from node 2 to node 1.
+Bob moves three presents from node 2 to node 1.
+Alice moves three presents from node 3 to node 1.
+Bob moves three presents from node 4 to node 3.
+Alice moves three presents from node 3 to node 1.
+Bob is now unable to make a move and hence loses.
+Root node 2
+Bob always wins in this case. One such gameplay is:
+Alice moves four presents from node 4 to node 3.
+Bob moves four presents from node 5 to node 2.
+Alice moves six presents from node 3 to node 1.
+Bob moves six presents from node 1 to node 2.
+Alice is now unable to make a move and hence loses.

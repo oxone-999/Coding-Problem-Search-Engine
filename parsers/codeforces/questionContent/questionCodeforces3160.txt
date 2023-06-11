@@ -1,116 +1,120 @@
-B. Restricted RPS
+E. Hyakugoku and Ladders
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let
-n
-be a positive integer. Let
-a,b,c
-be nonnegative integers such that
-a+b+c=n
-.
-Alice and Bob are gonna play rock-paper-scissors
-n
-times. Alice knows the sequences of hands that Bob will play. However, Alice has to play rock
-a
-times, paper
-b
-times, and scissors
-c
-times.
-Alice wins if she beats Bob in at least
-⌈
-n
-2
-⌉
-(
-n
-2
-rounded up to the nearest integer) hands, otherwise Alice loses.
-Note that in rock-paper-scissors:
-rock beats scissors;
-paper beats rock;
-scissors beat paper.
-The task is, given the sequence of hands that Bob will play, and the numbers
-a,b,c
-, determine whether or not Alice can win. And if so, find any possible sequence of hands that Alice can use to win.
-If there are multiple answers, print any of them.
+Hyakugoku has just retired from being the resident deity of the South Black Snail Temple in order to pursue her dream of becoming a cartoonist. She spent six months in that temple just playing "Cat's Cradle" so now she wants to try a different game — "Snakes and Ladders". Unfortunately, she already killed all the snakes, so there are only ladders left now.
+The game is played on a
+10×10
+board as follows:
+At the beginning of the game, the player is at the bottom left square.
+The objective of the game is for the player to reach the Goal (the top left square) by following the path and climbing vertical ladders. Once the player reaches the Goal, the game ends.
+The path is as follows: if a square is not the end of its row, it leads to the square next to it along the direction of its row; if a square is the end of its row, it leads to the square above it. The direction of a row is determined as follows: the direction of the bottom row is to the right; the direction of any other row is opposite the direction of the row below it. See Notes section for visualization of path.
+During each turn, the player rolls a standard six-sided dice. Suppose that the number shown on the dice is
+r
+. If the Goal is less than
+r
+squares away on the path, the player doesn't move (but the turn is performed). Otherwise, the player advances exactly
+r
+squares along the path and then stops. If the player stops on a square with the bottom of a ladder, the player chooses whether or not to climb up that ladder. If she chooses not to climb, then she stays in that square for the beginning of the next turn.
+Some squares have a ladder in them. Ladders are only placed vertically — each one leads to the same square of some of the upper rows. In order for the player to climb up a ladder, after rolling the dice, she must stop at the square containing the bottom of the ladder. After using the ladder, the player will end up in the square containing the top of the ladder. She cannot leave the ladder in the middle of climbing. And if the square containing the top of the ladder also contains the bottom of another ladder, she is not allowed to use that second ladder.
+The numbers on the faces of the dice are 1, 2, 3, 4, 5, and 6, with each number having the same probability of being shown.
+Please note that:
+it is possible for ladders to overlap, but the player cannot switch to the other ladder while in the middle of climbing the first one;
+it is possible for ladders to go straight to the top row, but not any higher;
+it is possible for two ladders to lead to the same tile;
+it is possible for a ladder to lead to a tile that also has a ladder, but the player will not be able to use that second ladder if she uses the first one;
+the player can only climb up ladders, not climb down.
+Hyakugoku wants to finish the game as soon as possible. Thus, on each turn she chooses whether to climb the ladder or not optimally. Help her to determine the minimum expected number of turns the game will take.
 Input
-The first line contains a single integer
-t
-(
-1≤t≤100
-) — the number of test cases.
-Then,
-t
-testcases follow, each consisting of three lines:
-The first line contains a single integer
-n
-(
-1≤n≤100
-).
-The second line contains three integers,
-a,b,c
-(
-0≤a,b,c≤n
-). It is guaranteed that
-a+b+c=n
-.
-The third line contains a string
-s
-of length
-n
-.
-s
-is made up of only 'R', 'P', and 'S'. The
+Input will consist of ten lines. The
 i
--th character is 'R' if for his
+-th line will contain 10 non-negative integers
+h
+i1
+,
+h
+i2
+,…,
+h
+i10
+. If
+h
+ij
+is
+0
+, then the tile at the
 i
--th Bob plays rock, 'P' if paper, and 'S' if scissors.
+-th row and
+j
+-th column has no ladder. Otherwise, the ladder at that tile will have a height of
+h
+ij
+, i.e. climbing it will lead to the tile
+h
+ij
+rows directly above. It is guaranteed that
+0≤
+h
+ij
+<i
+. Also, the first number of the first line and the first number of the last line always contain
+0
+, i.e. the Goal and the starting tile never have ladders.
 Output
-For each testcase:
-If Alice cannot win, print "NO" (without the quotes).
-Otherwise, print "YES" (without the quotes). Also, print a string
-t
-of length
-n
-made up of only 'R', 'P', and 'S' — a sequence of hands that Alice can use to win.
-t
-must contain exactly
-a
-'R's,
-b
-'P's, and
-c
-'S's.
-If there are multiple answers, print any of them.
-The "YES" / "NO" part of the output is case-insensitive (i.e. "yEs", "no" or "YEs" are all valid answers). Note that 'R', 'P' and 'S' are case-sensitive.
-Example
+Print only one line containing a single floating-point number — the minimum expected number of turns Hyakugoku can take to finish the game. Your answer will be considered correct if its absolute or relative error does not exceed
+10
+−6
+.
+Examples
 input
 Copy
-2
-3
-1 1 1
-RPS
-3
-3 0 0
-RPS
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
 output
 Copy
-YES
-PSR
-NO
+33.0476190476
+input
+Copy
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 3 0 0 0 4 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 4 0 0 0
+0 0 3 0 0 0 0 0 0 0
+0 0 4 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 9
+output
+Copy
+20.2591405923
+input
+Copy
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 6 6 6 6 6 6 0 0 0
+1 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+output
+Copy
+15.9047592939
 Note
-In the first testcase, in the first hand, Alice plays paper and Bob plays rock, so Alice beats Bob. In the second hand, Alice plays scissors and Bob plays paper, so Alice beats Bob. In the third hand, Alice plays rock and Bob plays scissors, so Alice beats Bob. Alice beat Bob 3 times, and
-3≥⌈
-3
-2
-⌉=2
-, so Alice wins.
-In the second testcase, the only sequence of hands that Alice can play is "RRR". Alice beats Bob only in the last hand, so Alice can't win.
-1<⌈
-3
-2
-⌉=2
-.
+A visualization of the path and the board from example 2 is as follows:
+The tile with an 'S' is the starting tile and the tile with an 'E' is the Goal.
+For the first example, there are no ladders.
+For the second example, the board looks like the one in the right part of the image (the ladders have been colored for clarity).
+It is possible for ladders to overlap, as is the case with the red and yellow ladders and green and blue ladders. It is also possible for ladders to go straight to the top, as is the case with the black and blue ladders. However, it is not possible for ladders to go any higher (outside of the board). It is also possible that two ladders lead to the same tile, as is the case with the red and yellow ladders. Also, notice that the red and yellow ladders lead to the tile with the orange ladder. So if the player chooses to climb either of the red and yellow ladders, they will not be able to climb the orange ladder. Finally, notice that the green ladder passes through the starting tile of the blue ladder. The player cannot transfer from the green ladder to the blue ladder while in the middle of climbing the green ladder.

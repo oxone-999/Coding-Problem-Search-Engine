@@ -1,77 +1,38 @@
-Binary Mismatch
+Bytelandian Robots
 Problem
-You have a binary string
-S of length
-N.
-You must perform the following operation on the binary string
-S exactly once:
-Choose two integers
-L and
-R
-(1≤L≤R≤N) and invert the substring
-S
-L…R
-(i.e change
-1 to
-0 and change
-0 to
-1).
-Determine whether you can make the number of zeroes in
-S equal to number of ones in
-S by performing the above operation exactly once. If there exists a way, also output the bounds of the chosen substring.
-Input Format
-The first line contains a single integer
-T — the number of test cases.
-The first line of each test case contains a single integer
-N — the length of string
-S.
-The second line of each test case contains a binary string
-S of length
-N.
-Output Format
-For each test case, output NO if there is no way to make the number of zeroes equal to number of ones.
-Otherwise, output YES. In the next line, output two integers
-L and
-R
-(1≤L≤R≤N) — bounds of the chosen substring. If there are multiple answers, print any.
-You may print each character of YES and NO in uppercase or lowercase (for example, yes, yEs, Yes will be considered identical).
-Constraints
-1≤T≤10000
-1≤N≤10
-5
-S is a binary string, i.e, contains only characters
-0 and
-1
-Sum of
-N over all test cases does not exceed
-2⋅10
-5
-.
+The Bytelandian Robotic Deparment has just succesfully made a robot that can be programmed to move. Our robot can perform two type of movements: moving one step to the left or one step to the right.
+Our robot moves according to the instruction from its control sequence. A control sequence of the robot is a string consisting of only two type of characters: '+' and '-' symbols, in which '+' means a rightward step and '-' means a leftward step. For example, '+--' is a control sequence that instruct the robot to go one step to the right followed by two steps to the left.
+Our robot also has a master control sequence (MCQ), which is a string of N characters '+' and '-'. Any valid control sequence of the robot must be a subsequence of the MCQ. Recall that a subsequence is a sequence obtained by removing some characters of the initial sequence. An empty sequence is also a subsequence of the MCQ.
+Our robot is currently placed on a runway of length L, in which the leftmost point has coordinate 0 and the rightmost point has coordinate L. Intially our robot stands at the point at coordinate A. It needs to move to the point at coordinate B. Of course, it cannot go outside the runway.
+How many different control sequences are there that make the robot go from A to B?
+Input
+The first line contains t, the number of test cases (about 50). Then t test cases follow. Each test case has the following form:
+The first line contains four integers N, L, A, B (1 ≤ N ≤ 500, 1 ≤ L ≤ 109, 0 ≤ A, B ≤ L).
+The second line contains the MCQ which is a string of exactly N characters. The MCQ contains only symbols '+' and '-'.
+Output
+For each test case, print a single number that is the number of different control sequences that could make the robot to go from A to B. Since the result may be a very large number, you only need to print the remainder of the result when dividing by 7051954.
 Sample 1:
 Input
 Output
-3
-2
-01
-3
-010
+5
+6 6 0 0
++-+-+-
+6 6 3 3
++-+-+-
+6 1 0 0 
++-+-+-
+6 6 1 4
++-+-+-
+6 6 2 6
++-+-+-
+5 
+9
 4
-1000
-YES
-1 2
-NO
-YES
-4 4
-Explanation:
-Test case 1: We can pick
-L=1 and
-R=2 to obtain:
-01
-→10, which contains equal number of zeroes and ones.
-Test case 2: It can be proven that there is no way to make the number of zeroes equal to number of ones.
-Test case 3: We can pick
-L=4 and
-R=4 to obtain:
-100
+1
 0
-→1001, which contains equal number of zeroes and ones.
+Explanation:
+Case 1: the different control sequences are +-, +-+-, ++--, +-+-+- and the empty sequence.
+Case 2: same as case 1 together with 4 additional sequences: -+, -+-+, -++-, +--+. These additional sequences no longer make the robot go outside the runway as in case 1.
+Case 3: same as case 1 but without the sequence ++-- since it will make the robot go outside the runway
+Case 4: there is only one possible control sequence: +++
+Case 5: there is no way for the robot to go to coordinate 6

@@ -1,205 +1,193 @@
-B. Unmerge
-time limit per test1 second
+E. Origami
+time limit per test4 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Let
-a
-and
-b
-be two arrays of lengths
+After being discouraged by 13 time-limit-exceeded verdicts on an ugly geometry problem, you decided to take a relaxing break for arts and crafts.
+There is a piece of paper in the shape of a simple polygon with
 n
-and
-m
-, respectively, with no elements in common. We can define a new array
-merge(a,b)
-of length
-n+m
-recursively as follows:
-If one of the arrays is empty, the result is the other array. That is,
-merge(∅,b)=b
-and
-merge(a,∅)=a
-. In particular,
-merge(∅,∅)=∅
-.
-If both arrays are non-empty, and
-a
+vertices. The polygon may be non-convex, but we all know that proper origami paper has the property that any horizontal line intersects the boundary of the polygon in at most two points.
+If you fold the paper along the vertical line
+x=f
+, what will be the area of the resulting shape? When you fold, the part of the paper to the left of the line is symmetrically reflected on the right side.
+Your task is to answer
+q
+independent queries for values
+f
 1
-<
-b
-1
-, then
-merge(a,b)=[
-a
-1
-]+merge([
-a
-2
 ,…,
-a
-n
-],b)
-. That is, we delete the first element
-a
-1
-of
-a
-, merge the remaining arrays, then add
-a
-1
-to the beginning of the result.
-If both arrays are non-empty, and
-a
-1
->
-b
-1
-, then
-merge(a,b)=[
-b
-1
-]+merge(a,[
-b
-2
-,…,
-b
-m
-])
-. That is, we delete the first element
-b
-1
-of
-b
-, merge the remaining arrays, then add
-b
-1
-to the beginning of the result.
-This algorithm has the nice property that if
-a
-and
-b
-are sorted, then
-merge(a,b)
-will also be sorted. For example, it is used as a subroutine in merge-sort. For this problem, however, we will consider the same procedure acting on non-sorted arrays as well. For example, if
-a=[3,1]
-and
-b=[2,4]
-, then
-merge(a,b)=[2,3,1,4]
-.
-A permutation is an array consisting of
-n
-distinct integers from
-1
-to
-n
-in arbitrary order. For example,
-[2,3,1,5,4]
-is a permutation, but
-[1,2,2]
-is not a permutation (
-2
-appears twice in the array) and
-[1,3,4]
-is also not a permutation (
-n=3
-but there is
-4
-in the array).
-There is a permutation
-p
-of length
-2n
-. Determine if there exist two arrays
-a
-and
-b
-, each of length
-n
-and with no elements in common, so that
-p=merge(a,b)
+f
+q
 .
 Input
-The first line contains a single integer
-t
-(
-1≤t≤1000
-)  — the number of test cases. Next
-2t
-lines contain descriptions of test cases.
-The first line of each test case contains a single integer
+The first line contains two integers
 n
-(
-1≤n≤2000
-).
-The second line of each test case contains
-2n
-integers
-p
-1
-,…,
-p
-2n
-(
-1≤
-p
-i
-≤2n
-). It is guaranteed that
-p
-is a permutation.
-It is guaranteed that the sum of
-n
-across all test cases does not exceed
-2000
-.
-Output
-For each test case, output "YES" if there exist arrays
-a
 ,
-b
-, each of length
+q
+(
+3≤n≤
+10
+5
+,1≤q≤
+10
+5
+)  — the number of polygon vertices and queries, respectively.
+Each of the next
 n
-and with no common elements, so that
-p=merge(a,b)
-. Otherwise, output "NO".
-Example
+lines contains two integers
+x
+i
+,
+y
+i
+(
+|
+x
+i
+|,|
+y
+i
+|≤
+10
+5
+)  — the coordinates of the
+i
+-th point of the polygon. The polygon has an edge connecting each pair of adjacent points in the input, and also an edge between
+(
+x
+1
+,
+y
+1
+)
+and
+(
+x
+n
+,
+y
+n
+)
+. It is guaranteed that the polygon is non-degenerate and that any horizontal line intersects the boundary of the polygon in at most two points. In particular, no boundary edge is strictly horizontal. Two adjacent sides may be collinear.
+Each of the next
+q
+lines contains a single integer
+f
+i
+(
+min
+j=1
+n
+(
+x
+j
+)<
+f
+i
+<
+max
+j=1
+n
+(
+x
+j
+)
+)  — the
+x
+-coordinate of the
+i
+-th fold query. It is guaranteed that all
+f
+i
+are distinct.
+Output
+For each query, output the area
+A
+i
+of the paper if you fold it along the line
+x=
+f
+i
+.
+Your answer is considered correct if its absolute or relative error does not exceed
+10
+−4
+.
+Formally, let your answer be
+a
+, and the jury's answer be
+b
+. Your answer is accepted if and only if
+|a−b|
+max(1,|b|)
+≤
+10
+−4
+.
+Examples
 input
 Copy
-6
-2
-2 3 1 4
-2
-3 1 2 4
-4
-3 2 6 1 5 7 8 4
-3
-1 2 3 4 5 6
-4
-6 1 3 7 4 5 8 2
-6
-4 3 2 5 1 11 9 12 8 6 10 7
+4 7
+0 10
+10 0
+0 -10
+-10 0
+-9
+-5
+-1
+0
+1
+5
+9
 output
 Copy
-YES
-NO
-YES
-YES
-NO
-NO
+199.0000000000
+175.0000000000
+119.0000000000
+100.0000000000
+119.0000000000
+175.0000000000
+199.0000000000
+input
+Copy
+4 1
+0 0
+0 2
+2 4
+2 2
+1
+output
+Copy
+3.0000000000
+input
+Copy
+9 4
+0 -3
+2 -2
+-1 -1
+0 4
+2 5
+1 6
+-2 3
+-1 1
+-3 0
+0
+-2
+-1
+1
+output
+Copy
+11.1250000000
+11.7500000000
+10.3446969697
+11.3333333333
 Note
-In the first test case,
-[2,3,1,4]=merge([3,1],[2,4])
-.
-In the second test case, we can show that
-[3,1,2,4]
-is not the merge of two arrays of length
-2
-.
-In the third test case,
-[3,2,6,1,5,7,8,4]=merge([3,2,8,4],[6,1,5,7])
-.
-In the fourth test case,
-[1,2,3,4,5,6]=merge([1,3,6],[2,4,5])
-, for example.
+The first test, with the fold
+f=−5
+:
+The second test, with the fold
+f=1
+:
+The third test, with the fold
+f=−1
+:

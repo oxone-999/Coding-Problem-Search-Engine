@@ -1,144 +1,141 @@
-A. Li Hua and Maze
-time limit per test1 second
+F. Strange Triples
+time limit per test10 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-There is a rectangular maze of size
-n×m
-. Denote
-(r,c)
-as the cell on the
-r
--th row from the top and the
-c
--th column from the left. Two cells are adjacent if they share an edge. A path is a sequence of adjacent empty cells.
-Each cell is initially empty. Li Hua can choose some cells (except
-(
-x
-1
-,
-y
-1
-)
+Let's call a triple of positive integers (
+a,b,n
+) strange if the equality
+an
+nb
+=
+a
+b
+holds, where
+an
+is the concatenation of
+a
 and
-(
-x
-2
+n
+and
+nb
+is the concatenation of
+n
+and
+b
+. For the purpose of concatenation, the integers are considered without leading zeroes.
+For example, if
+a=1
 ,
-y
-2
-)
-) and place an obstacle in each of them. He wants to know the minimum number of obstacles needed to be placed so that there isn't a path from
-(
-x
+b=5
+and
+n=9
+, then the triple is strange, because
+19
+95
+=
 1
+5
+. But
+a=7
 ,
-y
-1
-)
-to
-(
-x
-2
-,
-y
-2
-)
+b=3
+and
+n=11
+is not strange, because
+711
+113
+≠
+7
+3
 .
-Suppose you were Li Hua, please solve this problem.
+You are given three integers
+A
+,
+B
+and
+N
+. Calculate the number of strange triples
+(a,b,n
+), such that
+1≤a<A
+,
+1≤b<B
+and
+1≤n<N
+.
 Input
-The first line contains the single integer
-t
+The only line contains three integers
+A
+,
+B
+and
+N
 (
-1≤t≤500
-) — the number of test cases.
-The first line of each test case contains two integers
-n,m
-(
-4≤n,m≤
+1≤A,B≤
+10
+5
+;
+1≤N≤
 10
 9
-) — the size of the maze.
-The second line of each test case contains four integers
-x
-1
-,
-y
-1
-,
-x
-2
-,
-y
-2
-(
-1≤
-x
-1
-,
-x
-2
-≤n,1≤
-y
-1
-,
-y
-2
-≤m
-) — the coordinates of the start and the end.
-It is guaranteed that
-|
-x
-1
-−
-x
-2
-|+|
-y
-1
-−
-y
-2
-|≥2
-.
+).
 Output
-For each test case print the minimum number of obstacles you need to put on the field so that there is no path from
-(
-x
-1
+Print one integer — the number of strange triples
+(a,b,n
+) such that
+1≤a<A
 ,
-y
-1
-)
-to
-(
-x
-2
-,
-y
-2
-)
+1≤b<B
+and
+1≤n<N
 .
-Example
+Examples
 input
 Copy
-3
-4 4
-2 2 3 3
-6 7
-1 1 2 3
-9 9
-5 1 3 6
+5 6 10
 output
 Copy
-4
-2
-3
+7
+input
+Copy
+10 10 100
+output
+Copy
+29
+input
+Copy
+1 10 25
+output
+Copy
+0
+input
+Copy
+4242 6969 133333337
+output
+Copy
+19536
+input
+Copy
+94841 47471 581818184
+output
+Copy
+98715
 Note
-In test case 1, you can put obstacles on
-(1,3),(2,3),(3,2),(4,2)
-. Then the path from
-(2,2)
-to
-(3,3)
-will not exist.
+In the first example, there are
+7
+strange triples:
+(1,1,1
+), (
+1,4,6
+), (
+1,5,9
+), (
+2,2,2
+), (
+2,5,6
+), (
+3,3,3
+) and (
+4,4,4
+).

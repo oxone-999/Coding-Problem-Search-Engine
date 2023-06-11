@@ -1,99 +1,95 @@
-B. PIN Codes
+E. Editor
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-A PIN code is a string that consists of exactly
-4
-digits. Examples of possible PIN codes: 7013, 0000 and 0990. Please note that the PIN code can begin with any digit, even with 0.
-Polycarp has
-n
-(
-2≤n≤10
-) bank cards, the PIN code of the
-i
--th card is
-p
-i
-.
-Polycarp has recently read a recommendation that it is better to set different PIN codes on different cards. Thus he wants to change the minimal number of digits in the PIN codes of his cards so that all
-n
-codes would become different.
-Formally, in one step, Polycarp picks
-i
--th card (
-1≤i≤n
-), then in its PIN code
-p
-i
-selects one position (from
-1
-to
-4
-), and changes the digit in this position to any other. He needs to change the minimum number of digits so that all PIN codes become different.
-Polycarp quickly solved this problem. Can you solve it?
-Input
-The first line contains integer
-t
-(
-1≤t≤100
-) — the number of test cases in the input. Then test cases follow.
-The first line of each of
-t
-test sets contains a single integer
-n
-(
-2≤n≤10
-) — the number of Polycarp's bank cards. The next
-n
-lines contain the PIN codes
-p
-1
-,
-p
+The development of a text editor is a hard problem. You need to implement an extra module for brackets coloring in text.
+Your editor consists of a line with infinite length and cursor, which points to the current character. Please note that it points to only one of the characters (and not between a pair of characters). Thus, it points to an index character. The user can move the cursor left or right one position. If the cursor is already at the first (leftmost) position, then it does not move left.
+Initially, the cursor is in the first (leftmost) character.
+Also, the user can write a letter or brackets (either (, or )) to the position that the cursor is currently pointing at. A new character always overwrites the old value at that position.
+Your editor must check, whether the current line is the correct text. Text is correct if the brackets in them form the correct bracket sequence.
+Formally, correct text (CT) must satisfy the following rules:
+any line without brackets is CT (the line can contain whitespaces);
+If the first character of the string — is (, the last — is ), and all the rest form a CT, then the whole line is a CT;
+two consecutively written CT is also CT.
+Examples of correct texts: hello(codeforces), round, ((i)(write))edi(tor)s, ( me). Examples of incorrect texts: hello)oops(, round), ((me).
+The user uses special commands to work with your editor. Each command has its symbol, which must be written to execute this command.
+The correspondence of commands and characters is as follows:
+L — move the cursor one character to the left (remains in place if it already points to the first character);
+R — move the cursor one character to the right;
+any lowercase Latin letter or bracket (( or )) — write the entered character to the position where the cursor is now.
+For a complete understanding, take a look at the first example and its illustrations in the note below.
+You are given a string containing the characters that the user entered. For the brackets coloring module's work, after each command you need to:
+check if the current text in the editor is a correct text;
+if it is, print the least number of colors that required, to color all brackets.
+If two pairs of brackets are nested (the first in the second or vice versa), then these pairs of brackets should be painted in different colors. If two pairs of brackets are not nested, then they can be painted in different or the same colors. For example, for the bracket sequence ()(())()() the least number of colors is
 2
-,…,
-p
+, and for the bracket sequence (()(()())())(()) — is
+3
+.
+Write a program that prints the minimal number of colors after processing each command.
+Input
+The first line contains an integer
 n
-— one per line. The length of each of them is
-4
-. All PIN codes consist of digits only.
+(
+1≤n≤
+10
+6
+) — the number of commands.
+The second line contains
+s
+— a sequence of commands. The string
+s
+consists of
+n
+characters. It is guaranteed that all characters in a string are valid commands.
 Output
-Print the answers to
-t
-test sets. The answer to each set should consist of a
-n+1
-lines
-In the first line print
-k
-— the least number of changes to make all PIN codes different. In the next
+In a single line print
 n
-lines output the changed PIN codes in the order corresponding to their appearance in the input. If there are several optimal answers, print any of them.
-Example
+integers, where the
+i
+-th number is:
+−1
+if the line received after processing the first
+i
+commands is not valid text,
+the minimal number of colors in the case of the correct text.
+Examples
 input
 Copy
-3
-2
-1234
-0600
-2
-1337
-1337
-4
-3139
-3139
-3139
-3139
+11
+(RaRbR)L)L(
 output
 Copy
-0
-1234
-0600
-1
-1337
-1237
-3
-3139
-3138
-3939
-6139
+-1 -1 -1 -1 -1 -1 1 1 -1 -1 2 
+input
+Copy
+11
+(R)R(R)Ra)c
+output
+Copy
+-1 -1 1 1 -1 -1 1 1 1 -1 1 
+Note
+In the first example, the text in the editor will take the following form:
+(
+^
+(
+ ^
+(a
+ ^
+(a
+  ^
+(ab
+  ^
+(ab
+   ^
+(ab)
+   ^
+(ab)
+  ^
+(a))
+  ^
+(a))
+ ^
+(())
+ ^

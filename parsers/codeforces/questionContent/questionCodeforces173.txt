@@ -1,10 +1,12 @@
-E2. Unforgivable Curse (hard version)
+E1. Unforgivable Curse (easy version)
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-This is a complex version of the problem. This version has no additional restrictions on the number
+This is an easy version of the problem. In this version,
 k
+is always
+3
 .
 The chief wizard of the Wizengamot once caught the evil wizard Drahyrt, but the evil wizard has returned and wants revenge on the chief wizard. So he stole spell
 s
@@ -15,23 +17,27 @@ n
 Drahyrt wants to replace spell with an unforgivable curse — string
 t
 .
-Dragirt, using ancient magic, can swap letters at a distance
+Drahyrt, using ancient magic, can swap letters at a distance
 k
 or
 k+1
-in spell as many times as he wants. In other words, Drahyrt can change letters in positions
+in spell as many times as he wants. In this version of the problem, you can swap letters at a distance of
+3
+or
+4
+. In other words, Drahyrt can change letters in positions
 i
 and
 j
 in spell
 s
 if
-|i−j|=k
+|i−j|=3
 or
-|i−j|=k+1
+|i−j|=4
 .
 For example, if
-k=3,s=
+s=
 "talant" and
 t=
 "atltna", Drahyrt can act as follows:
@@ -70,9 +76,7 @@ n,k
 10
 5
 ,
-1≤k≤2⋅
-10
-5
+k=3
 ) — the length spells and the number
 k
 such that Drahyrt can change letters in a spell at a distance
@@ -113,16 +117,16 @@ Copy
 6 3
 talant
 atltna
-7 1
+7 3
 abacaba
 aaaabbc
-12 6
+12 3
 abracadabraa
 avadakedavra
 5 3
 accio
 cicao
-5 4
+5 3
 lumos
 molus
 4 3
@@ -141,18 +145,32 @@ NO
 YES
 NO
 Note
-The first case is explained in the condition.
-In the second case, we can swap adjacent letters, so we can sort the string using bubble sorting, for example.
-In the third case, we can show that from the string
-s
-we cannot get the string
-t
-by swapping letters at a distance of
-6
-or
+The first example is explained in the condition.
+In the second example we can proceed as follows:
+Swap the letters at positions
+2
+and
+5
+(distance
+3
+), then we get the spell "aaacbba".
+Swap the letters at positions
+4
+and
 7
+(distance
+3
+), then you get the spell "aaaabbc".
+In the third example, we can show that it is impossible to get the string
+t
+from the string
+s
+by swapping the letters at a distance of
+3
+or
+4
 .
-In the fourth case, for example, the following sequence of transformations is appropriate:
+In the fourth example, for example, the following sequence of transformations is appropriate:
 "accio"
 →
 "aocic"
@@ -166,7 +184,7 @@ In the fourth case, for example, the following sequence of transformations is ap
 "aicco"
 →
 "cicao"
-In the fifth case, we can show that it is impossible to get the string
+In the fifth example, you can show that it is impossible to get the string
 s
 from the string
 t

@@ -1,102 +1,182 @@
-B. Young Explorers
+F. Guess Divisors Count
 time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Young wilderness explorers set off to their first expedition led by senior explorer Russell. Explorers went into a forest, set up a camp and decided to split into groups to explore as much interesting locations as possible. Russell was trying to form groups, but ran into some difficulties...
-Most of the young explorers are inexperienced, and sending them alone would be a mistake. Even Russell himself became senior explorer not long ago. Each of young explorers has a positive integer parameter
-e
-i
- — his inexperience. Russell decided that an explorer with inexperience
-e
-can only join the group of
-e
-or more people.
-Now Russell needs to figure out how many groups he can organize. It's not necessary to include every explorer in one of the groups: some can stay in the camp. Russell is worried about this expedition, so he asked you to help him.
-Input
-The first line contains the number of independent test cases
-T
-(
-1≤T≤2⋅
+This is an interactive problem.
+We have hidden an integer
+1≤X≤
 10
-5
-). Next
-2T
-lines contain description of test cases.
-The first line of description of each test case contains the number of young explorers
-N
-(
-1≤N≤2⋅
-10
-5
-).
-The second line contains
-N
-integers
-e
+9
+. You don't have to guess this number. You have to find the number of divisors of this number, and you don't even have to find the exact number: your answer will be considered correct if its absolute error is not greater than 7 or its relative error is not greater than
+0.5
+. More formally, let your answer be
+ans
+and the number of divisors of
+X
+be
+d
+, then your answer will be considered correct if at least one of the two following conditions is true:
+|ans−d|≤7
+;
 1
-,
-e
 2
-,…,
-e
-N
-(
-1≤
-e
-i
-≤N
-), where
-e
-i
-is the inexperience of the
-i
--th explorer.
-It's guaranteed that sum of all
-N
-doesn't exceed
-3⋅
-10
-5
+≤
+ans
+d
+≤2
 .
-Output
-Print
+You can make at most
+22
+queries. One query consists of one integer
+1≤Q≤
+10
+18
+. In response, you will get
+gcd(X,Q)
+ — the greatest common divisor of
+X
+and
+Q
+.
+The number
+X
+is fixed before all queries. In other words, interactor is not adaptive.
+Let's call the process of guessing the number of divisors of number
+X
+a game. In one test you will have to play
 T
-numbers, each number on a separate line.
-In
-i
--th line print the maximum number of groups Russell can form in
-i
--th test case.
+independent games, that is, guess the number of divisors
+T
+times for
+T
+independent values of
+X
+.
+Input
+The first line of input contains one integer
+T
+(
+1≤T≤100
+) — the number of games.
+Interaction
+To make a query print a line "? Q" (
+1≤Q≤
+10
+18
+). After that read one integer
+gcd(X,Q)
+. You can make no more than
+22
+such queries during one game.
+If you are confident that you have figured out the number of divisors of
+X
+with enough precision, you can print your answer in "! ans" format.
+ans
+have to be an integer. If this was the last game, you have to terminate the program, otherwise you have to start the next game immediately. Note that the interactor doesn't print anything in response to you printing answer.
+After printing a query do not forget to output end of line and flush the output. To do this, use:
+fflush(stdout) or cout.flush() in C++;
+System.out.flush() in Java;
+flush(output) in Pascal;
+stdout.flush() in Python;
+see documentation for other languages.
+Hacks
+To hack, use the following format:
+The first line contains one integer
+T
+(
+1≤T≤100
+) — the number of games.
+Each of the next
+T
+lines contains one integer
+X
+(
+1≤X≤
+10
+9
+) — the hidden number.
+So the example has the form
+
+2
+998244353
+4194304
 Example
 input
 Copy
 2
-3
-1 1 1
-5
-2 3 1 2 2
+
+1
+
+1
+
+1
+
+
+1024
+
+1048576
+
+4194304
 output
 Copy
-3
-2
+? 982306799268821872
+
+? 230856864650023977
+
+? 134690134760714371
+
+! 5
+? 1024
+
+? 1048576
+
+? 1073741824
+
+! 42
 Note
-In the first example we can organize three groups. There will be only one explorer in each group. It's correct because inexperience of each explorer equals to
-1
-, so it's not less than the size of his group.
-In the second example we can organize two groups. Explorers with inexperience
-1
+Why the limitation for number of queries is 22 exactly? Maybe the problem author is a Taylor Swift fan.
+Let's look at the example.
+In the first game
+X=998244353
+is hidden. Would be hard to guess this, right? This number is prime, so the number of its divisors is 2. The solution has made several random queries, and all the responses turned out to be 1 (strange things, not even one of three random numbers is divisible by
+998244353
+). It's fare to assume that the hidden number doesn't have many divisors, so the solution has answered 5. Why not. This answer will be considered correct since
+|5−2|=3≤7
+.
+In the second game
+X=4194304=
+2
+22
+is hidden, it has 23 divisors. The solution has made queries
+1024=
+2
+10
 ,
+1048576=
 2
-and
-3
-will form the first group, and the other two explorers with inexperience equal to
+20
+,
+1073741824=
 2
-will form the second group.
-This solution is not unique. For example, we can form the first group using the three explorers with inexperience equal to
+30
+and got responses
+1024=
 2
-, and the second group using only one explorer with inexperience equal to
+10
+,
+1048576=
+2
+20
+,
+4194304=
+2
+22
+, respectively. Then the solution got completely confused and answered the answer to The Ultimate Question of Life, the Universe, and Everything. This answer will be considered correct since
 1
-. In this case the young explorer with inexperience equal to
-3
-will not be included in any group.
+2
+≤
+42
+23
+≤2
+.

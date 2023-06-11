@@ -1,131 +1,133 @@
-C. Three Bags
-time limit per test1 second
-memory limit per test256 megabytes
+A. LaIS
+time limit per test3 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given three bags. Each bag contains a non-empty multiset of numbers. You can perform a number of operations on these bags. In one operation, you can choose any two non-empty bags, and choose one number from each of the bags. Let's say that you choose number
-a
-from the first bag and number
+Let's call a sequence
 b
-from the second bag. Then, you remove
+1
+,
 b
-from the second bag and replace
+2
+,
+b
+3
+…,
+b
+k−1
+,
+b
+k
+almost increasing if
+min(
+b
+1
+,
+b
+2
+)≤min(
+b
+2
+,
+b
+3
+)≤⋯≤min(
+b
+k−1
+,
+b
+k
+).
+min
+(
+b
+b
+)
+min
+(
+b
+b
+)
+min
+(
+b
+b
+)
+In particular, any sequence with no more than two elements is almost increasing.
+You are given a sequence of integers
 a
-with
-a−b
-in the first bag. Note that if there are multiple occurrences of these numbers, then you shall only remove/replace exactly one occurrence.
-You have to perform these operations in such a way that you have exactly one number remaining in exactly one of the bags (the other two bags being empty). It can be shown that you can always apply these operations to receive such a configuration in the end. Among all these configurations, find the one which has the maximum number left in the end.
+1
+,
+a
+2
+,…,
+a
+n
+. Calculate the length of its longest almost increasing subsequence.
+You'll be given
+t
+test cases. Solve each test case independently.
+Reminder: a subsequence is a sequence that can be derived from another sequence by deleting some elements without changing the order of the remaining elements.
 Input
-The first line of the input contains three space-separated integers
-n
-1
-,
-n
-2
-and
-n
-3
+The first line contains a single integer
+t
 (
-1≤
+1≤t≤1000
+) — the number of independent test cases.
+The first line of each test case contains a single integer
 n
-1
-,
-n
-2
-,
-n
-3
-≤3⋅
-10
-5
-,
-1≤
-n
-1
-+
-n
-2
-+
-n
-3
-≤3⋅
-10
-5
-) — the number of numbers in the three bags.
-The
-i
--th of the next three lines contain
-n
-i
-space-separated integers
-a
-i,1
-,
-a
-i,2
-, ...,
-a
-i,
-n
-i
 (
-1≤
-a
-i,j
-≤
+2≤n≤5⋅
 10
-9
-) — the numbers in the
-i
--th bag.
-Output
-Print a single integer — the maximum number which you can achieve in the end.
-Examples
-input
-Copy
-2 4 1
-1 2
-6 3 4 5
 5
-output
-Copy
-20
-input
-Copy
-3 2 2
-7 5 4
-2 9
-7 1
-output
-Copy
-29
-Note
-In the first example input, let us perform the following operations:
-[1,2],[6,3,4,5],[5]
-[−5,2],[3,4,5],[5]
-(Applying an operation to
-(1,6)
-)
-[−10,2],[3,4],[5]
-(Applying an operation to
-(−5,5)
-)
-[2],[3,4],[15]
-(Applying an operation to
-(5,−10)
-)
-[−1],[4],[15]
-(Applying an operation to
-(2,3)
-)
-[−5],[],[15]
-(Applying an operation to
-(−1,4)
-)
-[],[],[20]
-(Applying an operation to
-(15,−5)
-)
-You can verify that you cannot achieve a bigger number. Hence, the answer is
-20
+) — the length of the sequence
+a
 .
+The second line of each test case contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+1≤
+a
+i
+≤n
+) — the sequence itself.
+It's guaranteed that the total sum of
+n
+over all test cases doesn't exceed
+5⋅
+10
+5
+.
+Output
+For each test case, print one integer — the length of the longest almost increasing subsequence.
+Example
+input
+Copy
+3
+8
+1 2 7 3 2 1 2 3
+2
+2 1
+7
+4 1 5 2 6 3 7
+output
+Copy
+6
+2
+7
+Note
+In the first test case, one of the optimal answers is subsequence
+1,2,7,2,2,3
+.
+In the second and third test cases, the whole sequence
+a
+is already almost increasing.

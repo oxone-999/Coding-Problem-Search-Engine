@@ -1,30 +1,57 @@
-Chef attic window
+E - Minimum Operation
 Problem
-Chef lives in a big house. Almost all is perfect in it except for one thing. Chef has an attic, but there is no window in it. Now, he wants to build a window there.
-
-The attic wall has the form of a right triangle. We can imagine it as a triangle on a coordinate plane with vertices (0; 0), (N; 0), (N; N * A / B), where N, A, B are some positive integers.
-
-As a modern guy Chef want to build a modern (L, K)-window on the attic wall. A modern (L, K)-window is made up of L+1 vertical lines and K+1 horizontal lines such that all their intersections lie on the attic wall. Here L, K are positive integers.
-
-Formally he can choose L+1 integers 0 <= x[0] < x[1] < ... < x[L] <= N and K+1 integers 0 <= y[0] < y[1] < ... < y[K] <= N*A/B such that all points (x[i], y[j]) lie on the wall. Then, rectangular grid with all these points as nodes is required window.
-
-Chef is interested in knowing how many ways he can choose the window. But since this number can be very large he wants to find it modulo 900000011. Help him.
-Input
-The first line contains a single positive integer T <= 50, the number of test cases. T test cases follow. The only line of each test case contains five positive integers N, A, B, K, L, where N, A, B <= 10^18 and K, L <= 10.
+Given
+K arrays of length
+N where the elements are bounded in the range
+[L,R].
+The Function value of an array is defined as the sum of all elements present in it.
+In one move you can change at most
+1 element from all the arrays and the changed value must lie within the range
+[L,R].
+What is the minimum number of operations required to make the function value of all arrays equal?
+###Input
+The first line of the input contains a single integer
+T denoting the number of test cases. The description of
+T test cases follows.
+The first line of each test case contains four space-separated integers
+K,
+N,
+L,
+R.
+Next
+K lines contains an array of length
+N.
 Output
-For each test case, output a single line containing the number of ways to choose a window modulo 900000011.
-Example
-Input:
-3
-4 2 3 1 1
-4 3 2 2 2
-1001 101 97 3 2
-
-Output:
+For each test case, print the minimum number of operations needed to make the function value of all arrays equal in a new line.
+Constraints
+1≤T≤5
+1≤K≤10
 5
-4
-579415965
+1≤N≤10
+5
+1≤N∗K≤10
+5
+1≤L≤R≤10
+9
+Example Input
+1
+4 3 1 9
+1 1 2
+1 2 3
+1 2 4
+1 2 2
+Example Output
+1
 Explanation
-In the first case we need calculate the number of rectangles which lie in triangle with vertices (0; 0), (4; 0), (4; 8/3). There exist 5 such rectangles. Among them 3 have size 1 x 1. One has size 2 x 1 and one have size 1 x 2.
-
-In the second case we have two rectangles 2 x 2 and one rectangle 2 x 3 where we can choose middle horizontal segment in two ways. So we have in total 4 possible choices.
+Change array
+1 to
+[1,3,2]
+No change in array
+2
+Change array
+3 to
+[1,2,3]
+Change array
+4 to
+[1,2,3]
+Sum of all arrays is equal.

@@ -1,139 +1,57 @@
-Communication Channel
+Course Selection
 Problem
-Read problems statements in Hindi, Mandarin Chinese, Russian, Vietnamese, and Bengali as well.
-There is a communication channel with
-N+1 stations (numbered
-0 through
-N). Station
-0 wants to send a message to station
-N. You may install memory disks at up to
-K of the stations
-1,2,…,N−1. Let's denote the increasing sequence of stations at which memory disks are installed by
-(v
-1
-,v
-2
-,…,v
-k
-), where
-k≤K is the number of such stations, and let
-v
-0
-=0 and
-v
-k+1
-=N. In stations other than
-v
-0
-,v
-1
-,…,v
-k+1
-, it is only possible to send the message forward without storing it for later.
-For each
-i (
-0≤i<N), if the message is currently at the station
-i, this station can send the message to the station
-i+1. This transfer takes one second regardless of its success or failure. With probability
-p
-i
-, the transfer succeeds and the message reaches the station
-i+1. Otherwise, the transfer fails and the message instantly goes back to the station
-v
-j
-, where
-j is the unique index such that
-v
-j
-≤i<v
-j+1
-(if
-i=v
-j
-, the message simply stays in the station
-v
-j
-), and this station has to send it forward again.
-Your task is to choose stations where memory disks should be installed, in such a way that the expected value of time needed for the message to reach station
-N is the smallest possible. Find this smallest expected time.
-You are not given the probabilities directly. Instead, you are given a non-increasing integer sequence
-F
-0
-,F
-1
-,…,F
-N
-. For each valid
-i,
-p
-i
-=F
-i+1
-/F
-i
-.
+Read problems statements in Mandarin Chinese and Russian.
+Rin is attending a university.
+She has M semesters to finish her program, and that program has N required courses. Each course must be taken in exactly one of the semesters.
+Some courses have prerequisites: for each i from 1 to K, she must take course A[i] before course B[i].
+The same course may be taught by different professors in different semesters, and how well she does will depend on which professor teaches her. Additionally, some courses may not be taught every semester.
+We are given an array X representing this information. For each course i and each semester j, X[i][j] = -1 if course i is not taught in semester j. Otherwise, X[i][j] will be an integer between 0 and 100: the expected score Rin will get if she takes course i in semester j.
+Rin may take any number of courses per semester, including none, as long as they are taught that semester and she has already taken any required prerequisite courses.
+Help Rin to find the maximal average score she can get over her whole program.
 Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
-The first line of each test case contains two space-separated integers
-N and
-K.
-The second line contains
-N+1 space-separated integers
-F
-0
-,F
-1
-,…,F
-N
-.
+The first line contain 3 integers: N, M and K.
+This is followed by N lines, each containing M integers. The jth integer on the ith line represents the value of X[i][j].
+This is followed by K lines, each containing two integers: A[i] and B[i].
 Output
-For each test case, print a single line containing one real number — the smallest possible expected time needed for the message to reach station
-N. Your answer will be considered correct if its absolute or relative error does not exceed
-10
-−6
-.
+Output one real number: the maximal average score, rounded to 2 digits after the decimal point.
 Constraints
-1≤T≤10
-5
-1≤N≤10
-5
-0≤K≤min(50,N−1)
-10
-12
-≥F
-0
-≥F
-1
-≥…≥F
-N
-≥1
-the sum of
-N over all test cases does not exceed
-10
-5
-Example Input
-1
-2 1
-4 2 1
-Example Output
-4.0000000000
+1 ≤ M, N ≤ 100
+0 ≤ K ≤ 100
+-1 ≤ X[i][j] ≤ 100
+1 ≤ A[i], B[i] ≤ N
+For each i, A[i] ≠ B[i].
+For different i and j, (A[i], B[i]) ≠ (A[j], B[j]).
+We guarantee there exists a way to take these N courses in M semesters.
+Subtasks
+Subtask 1: (20 Points) A course can have at most 1 pre request course.
+Subtask 2: (80 Points) Refer to constraints above
+Example
+Input 1:
+3 2 2
+70 100
+100 80
+100 90
+1 2
+1 3
+
+Output 1:
+80.00
+
+Input 2:
+4 5 4
+20 -1 100 -1 -1
+100 30 -1 -1 -1
+100 -1 30 20 40
+100 30 40 50 20
+1 2
+1 3
+2 4
+3 4
+
+Output 2:
+32.50
 Explanation
-Example case 1: The probabilities of success are
-p
-0
-=p
-1
-=1/2. If no memory disks are installed, the expected amount of time the message needs to reach station
-2 is
-6 seconds.
-If a memory disk is installed at station
-1, the expected time is
-4 seconds (
-2 seconds to transfer from station
-0 to station
-1 and further
-2 seconds to transfer from station
-1 to station
-2).
+Example case 1
+The only way she can finish these 3 courses is: take course 1 in the first semester, then take courses 2 and 3 in the second semester. The average score is (70 + 80 + 90) / 3 = 80.00.
+Example case 2
+The optimal solution is: take course 1 in semester 1, course 2 in semester 2, course 3 in semester 3 and course 4 in semester 4.

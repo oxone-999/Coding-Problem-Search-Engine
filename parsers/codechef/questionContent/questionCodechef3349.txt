@@ -1,43 +1,45 @@
-Chef and Tree Game
+Chef, Leonardo And Queries
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-  Chef has a rooted tree G, consisting of N vertices. Each edge of the tree has a color black or white.
-Once Chef's friend Ksen offered Chef to play a game on the tree G. The game has very simple rule:
-The players make moves in the game alternately.
-On his move Chef deletes a single undeleted black edge. On her move Ksen deletes a single undeleted white edge.
-When some edge has been deleted, all the edges that now aren't connected (directly or indirectly) to the root will be deleted too.
-One who cannot move lose the game.
-Chef really likes the game. The only problem is that Ksen knows the game very well. So she always plays optimally. That's why Chef has decided to choose the order of moves. Help Chef: tell him who will win the game if he moves first, and also who will win the game if Ksen moves first. Consider that Chef plays optimally too.
+Read problems statements in Mandarin chinese, Russian and Vietnamese as well.
+Chef has a tree with N nodes numbered 1 through N. Initially, each node has value 0.
+Chef's best friend Leonardo loves queries on trees. He asked Chef to perform Q queries. Each query is of one of the following two types:
+1 v k a b: Consider f(0) = a, f(1) = b, f(i) = f(i - 1) + f(i - 2) for i ≥ 2. For each node u of the tree, let d be the distance (in edges) from v to u. Then, if d ≤ k, Chef must add f(d) to the value of node u.
+2 v: Print the value of node v modulo 10^9 + 7.
+Help Chef perform Leonardo's queries!
 Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
-The first line of each testcase contains a single integer N. Then N - 1 lines follows. Each contains three integers Ui, Vi, Ci. These integers denotes the current edge of the tree: the first two numbers means the numbers of vertices connected by the edge, the last number denotes the color of the edge (zero means black, one means white). Consider all vertices of the tree G are numbered from 1 to N. The root has number 1.
+The first line of the input contains one integer T denoting the number of test cases.
+The first line of each test case contains two space-separated integers N and Q.
+Each of the next N-1 lines contains two space-separated integers x and y denoting an edge between nodes x and y.
+Q lines follow. Each of these lines describes one query in the format above.
 Output
-For each test case, output a single line containing two strings: the name of the winner if Chef moves first, and the name of the winner if Chef moves second.
+For each query of type 2, print the answer to it on a separate line.
 Constraints
-1 ≤ T ≤ 1000
-1 ≤ N ≤ 100000
-1 ≤ Ui, Vi ≤ N
-0 ≤ Ci ≤ 1
-It's guaranteed that the sum of N values for all tests doesn't exceed 100000.
-
-Example
-Input:
-5
+1 ≤ T ≤ 150
+1 ≤ N, Q ≤ 300,000
+1 ≤ sum of N over all testcases ≤ 300,000
+1 ≤ sum of Q over all testcases ≤ 300,000
+1 ≤ v ≤ N
+0 ≤ k ≤ N
+0 ≤ a, b ≤ 1,000,000,000
+Subtasks
+Subtask #1 (15 points):
+sum of all N ≤ 3000
+sum of all Q ≤ 3000
+Subtask #2 (85 points): original constraints
+Sample 1:
+Input
+Output
 1
-2
-1 2 0
-2
-1 2 1
+6 5
+4 5
+1 5
+5 2
+3 4
+6 1
+1 2 0 3 3
+2 2
+1 4 2 1 5
+1 1 2 5 4
+2 4
 3
-1 2 0
-1 3 1
-3
-1 2 0
-2 3 1
-Output:
-Ksen Chef
-Chef Chef
-Ksen Ksen
-Ksen Chef
-Chef Chef
- 
+10

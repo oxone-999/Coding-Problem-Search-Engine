@@ -1,205 +1,62 @@
-C. Boboniu and String
-time limit per test3 seconds
+A. Boboniu Likes to Color Balls
+time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Boboniu defines BN-string as a string
-s
-of characters 'B' and 'N'.
-You can perform the following operations on the BN-string
-s
-:
-Remove a character of
-s
-.
-Remove a substring "BN" or "NB" of
-s
-.
-Add a character 'B' or 'N' to the end of
-s
-.
-Add a string "BN" or "NB" to the end of
-s
-.
-Note that a string
-a
-is a substring of a string
+Boboniu gives you
+r
+red balls,
+g
+green balls,
 b
-if
-a
-can be obtained from
-b
-by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.
-Boboniu thinks that BN-strings
-s
-and
-t
-are similar if and only if:
-|s|=|t|
-.
-There exists a permutation
-p
-1
-,
-p
-2
-,…,
-p
-|s|
-such that for all
-i
-(
-1≤i≤|s|
-),
-s
-p
-i
-=
-t
-i
-.
-Boboniu also defines
-dist(s,t)
-, the distance between
-s
-and
-t
-, as the minimum number of operations that makes
-s
-similar to
-t
-.
-Now Boboniu gives you
-n
-non-empty BN-strings
-s
-1
-,
-s
-2
-,…,
-s
-n
-and asks you to find a non-empty BN-string
-t
-such that the maximum distance to string
-s
-is minimized, i.e. you need to minimize
-max
-n
-i=1
-dist(
-s
-i
-,t)
-.
+blue balls,
+w
+white balls.
+He allows you to do the following operation as many times as you want:
+Pick a red ball, a green ball, and a blue ball and then change their color to white.
+You should answer if it's possible to arrange all the balls into a palindrome after several (possibly zero) number of described operations.
 Input
-The first line contains a single integer
-n
+The first line contains one integer
+T
 (
-1≤n≤3⋅
-10
-5
-).
-Each of the next
-n
-lines contains a string
-s
-i
-(
-1≤|
-s
-i
-|≤5⋅
-10
-5
-). It is guaranteed that
-s
-i
-only contains 'B' and 'N'. The sum of
-|
-s
-i
-|
-does not exceed
-5⋅
-10
-5
-.
-Output
-In the first line, print the minimum
-max
-n
-i=1
-dist(
-s
-i
-,t)
-.
-In the second line, print the suitable
-t
-.
-If there are several possible
-t
-'s, you can print any.
-Examples
-input
-Copy
-3
-B
-N
-BN
-output
-Copy
-1
-BN
-input
-Copy
-10
-N
-BBBBBB
-BNNNBBNBB
-NNNNBNBNNBNNNBBN
-NBNBN
-NNNNNN
-BNBNBNBBBBNNNNBBBBNNBBNBNBBNBBBBBBBB
-NNNNBN
-NBBBBBBBB
-NNNNNN
-output
-Copy
-12
-BBBBBBBBBBBBNNNNNNNNNNNN
-input
-Copy
-8
-NNN
-NNN
-BBNNBBBN
-NNNBNN
-B
-NNN
-NNNNBNN
-NNNNNNNNNNNNNNNBNNNNNNNBNB
-output
-Copy
-12
-BBBBNNNNNNNNNNNN
-input
-Copy
-3
-BNNNBNNNNBNBBNNNBBNNNNBBBBNNBBBBBBNBBBBBNBBBNNBBBNBNBBBN
-BBBNBBBBNNNNNBBNBBBNNNBB
-BBBBBBBBBBBBBBNBBBBBNBBBBBNBBBBNB
-output
-Copy
-12
-BBBBBBBBBBBBBBBBBBBBBBBBBBNNNNNNNNNNNN
-Note
-In the first example
-dist(B,BN)=dist(N,BN)=1
+1≤T≤100
+) denoting the number of test cases.
+For each of the next
+T
+cases, the first line contains four integers
+r
 ,
-dist(BN,BN)=0
-. So the maximum distance is
-1
-.
+g
+,
+b
+and
+w
+(
+0≤r,g,b,w≤
+10
+9
+).
+Output
+For each test case, print "Yes" if it's possible to arrange all the balls into a palindrome after doing several (possibly zero) number of described operations. Otherwise, print "No".
+Example
+input
+Copy
+4
+0 1 1 1
+8 1 9 3
+0 0 0 0
+1000000000 1000000000 1000000000 1000000000
+output
+Copy
+No
+Yes
+Yes
+Yes
+Note
+In the first test case, you're not able to do any operation and you can never arrange three balls of distinct colors into a palindrome.
+In the second test case, after doing one operation, changing
+(8,1,9,3)
+to
+(7,0,8,6)
+, one of those possible palindromes may be "rrrwwwbbbbrbbbbwwwrrr".
+A palindrome is a word, phrase, or sequence that reads the same backwards as forwards. For example, "rggbwbggr", "b", "gg" are palindromes while "rgbb", "gbbgr" are not. Notice that an empty word, phrase, or sequence is palindrome.

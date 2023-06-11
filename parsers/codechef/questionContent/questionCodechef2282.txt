@@ -1,25 +1,26 @@
-Counting Strings
+Packing the Boxes
 Problem
-Read problems statements in Mandarin Chinese, Russian and Vietnamese as well.
-You are given a string s consisting of upper case Latin alphabets, i.e. from 'A' to 'Z'. Your task is to find how many strings t with length equal to that of S, also consisting of upper case Latin alphabet are there satisfying the following conditions:
-String t is lexicographical larger than s
-When you write both s and t in the reverse order, t is still lexicographical larger than s.
-Find out number of such strings t. As the answer could be very large, output it modulo 109 + 7
+This problem was part of the CodeChef April Challenge. All user submissions for this contest problem are publicly available here.
+Shaheen has bought some gifts for a friend, which are wrapped up in several boxes of different sizes (all of which are full). She will need to carry the gifts a long way to her friend's house, so she would prefer to add some extra packing, and accommodate everything in one extra box. Moreover, to avoid damaging the contents, she does not wish to place more than two boxes directly within any box; however, boxes can be placed within boxes which contain other boxes, etc. A box which is used for holding two boxes of sizes a and b will have size a+b, and will cost Shaheen a+b coins at the local store. Please help Shaheen determine the minimum cost required to achieve the complete packing, and the number of different possible packings (arrangements of boxes within each other) having such a minimal cost.
 Input
-The only line of input contains string s.
+The first line of input is n <=2000, the number of boxes with Shaheen's gifts. The next n lines of input contain one positive integer each, not greater than 106, representing the sizes of the successive boxes.
 Output
-Output a single line containing an integer corresponding to the result in modulo 109 + 7.
-Constraints
-1 ≤ |S| ≤ 105
+Print to output exactly 2 numbers separated by spaces: the cost of the optimal solution, and the number of distinct ways of achieving this solution (modulo 109).
 Example
-Input 1:
-ZAZ
-Output 1:
-25
-Input 2:
-XYZ
-Output 2:
+Input:
 5
-Explanation
-Test #1: To make a valid string t, you can just replace the letter A in S by any other letter, e.g. by replacing 'A' by 'B', we get t = ZBZ. Note that ZBZ is lexicographically larger than ZAZ. Reverse of t (i.e. ZBZ) is also lexicographically larger than reverse of s (i.e. ZAZ).
-Test #2: there are 5 valid strings: YYZ, ZYZ, XZZ, YZZ, ZZZ
+3
+2
+3
+5
+1
+
+Output:
+31 3
+
+Explanation: The three solutions leading to cost 31 are as follows:
+1) pack the 2nd and the 5th box together, pack the resulting box together with the 1st box, and pack the result together with an additional box used for packing the 3rd and 4th boxes,
+or
+2) pack the 2nd and the 5th box together, pack the resulting box together with the 3rd box, and pack the result together with an additional box used for packing the 1st and 4th boxes,
+or
+3) pack the 2nd and the 5th box together, pack the resulting box together with the 4th box, and pack the result together with an additional box used for packing the 1st and 3rd boxes.

@@ -1,35 +1,15 @@
-A. Remove Smallest
-time limit per test1 second
+D. Binary String To Subsequences
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given the array
-a
+You are given a binary string
+s
 consisting of
 n
-positive (greater than zero) integers.
-In one move, you can choose two indices
-i
-and
-j
-(
-i≠j
-) such that the absolute difference between
-a
-i
-and
-a
-j
-is no more than one (
-|
-a
-i
-−
-a
-j
-|≤1
-) and remove the smallest of these two elements. If two elements are equal, you can remove any of them (but exactly one).
-Your task is to find if it is possible to obtain the array consisting of only one element using several (possibly, zero) such moves or not.
+zeros and ones.
+Your task is to divide the given string into the minimum number of subsequences in such a way that each character of the string belongs to exactly one subsequence and each subsequence looks like "010101 ..." or "101010 ..." (i.e. the subsequence should not contain two adjacent zeros or ones).
+Recall that a subsequence is a sequence that can be derived from the given sequence by deleting zero or more elements without changing the order of the remaining elements. For example, subsequences of "1011101" are "0", "1", "11111", "0111", "101", "1001", but not "000", "101010" and "11100".
 You have to answer
 t
 independent test cases.
@@ -37,17 +17,44 @@ Input
 The first line of the input contains one integer
 t
 (
-1≤t≤1000
+1≤t≤2⋅
+10
+4
 ) — the number of test cases. Then
 t
 test cases follow.
 The first line of the test case contains one integer
 n
 (
-1≤n≤50
+1≤n≤2⋅
+10
+5
 ) — the length of
-a
+s
 . The second line of the test case contains
+n
+characters '0' and '1' — the string
+s
+.
+It is guaranteed that the sum of
+n
+does not exceed
+2⋅
+10
+5
+(
+∑n≤2⋅
+10
+5
+).
+Output
+For each test case, print the answer: in the first line print one integer
+k
+(
+1≤k≤n
+) — the minimum number of subsequences you can divide the string
+s
+to. In the second line print
 n
 integers
 a
@@ -62,71 +69,35 @@ n
 1≤
 a
 i
-≤100
+≤k
 ), where
 a
 i
-is the
+is the number of subsequence the
 i
--th element of
-a
-.
-Output
-For each test case, print the answer: "YES" if it is possible to obtain the array consisting of only one element using several (possibly, zero) moves described in the problem statement, or "NO" otherwise.
+-th character of
+s
+belongs to.
+If there are several answers, you can print any.
 Example
 input
 Copy
+4
+4
+0011
+6
+111111
 5
-3
-1 2 2
-4
-5 5 5 5
-3
-1 2 4
-4
-1 3 4 4
-1
-100
+10101
+8
+01010000
 output
 Copy
-YES
-YES
-NO
-NO
-YES
-Note
-In the first test case of the example, we can perform the following sequence of moves:
-choose
-i=1
-and
-j=3
-and remove
-a
-i
-(so
-a
-becomes
-[2;2]
-);
-choose
-i=1
-and
-j=2
-and remove
-a
-j
-(so
-a
-becomes
-[2]
-).
-In the second test case of the example, we can choose any possible
-i
-and
-j
-any move and it doesn't matter which element we remove.
-In the third test case of the example, there is no way to get rid of
 2
-and
+1 2 2 1 
+6
+1 2 3 4 5 6 
+1
+1 1 1 1 1 
 4
-.
+1 1 1 1 1 2 3 4 

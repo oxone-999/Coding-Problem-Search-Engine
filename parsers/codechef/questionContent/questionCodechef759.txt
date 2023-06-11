@@ -1,32 +1,80 @@
-Chef and new recipe
+Akash and Grid
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Rupsa recently started to intern under Chef. He gave her N type of ingredients of varying quantity A1, A2, ..., AN respectively to store it. But as she is lazy to arrange them she puts them all in a storage box.
-Chef comes up with a new recipe and decides to prepare it. He asks Rupsa to get two units of each type ingredient for the dish. But when she went to retrieve the ingredients, she realizes that she can only pick one item at a time from the box and can know its type only after she has picked it out. The picked item is not put back in the bag.
-She, being lazy, wants to know the maximum number of times she would need to pick items from the box in the worst case so that it is guaranteed that she gets at least two units of each type of ingredient. If it is impossible to pick items in such a way, print -1.
-Input
-The first line of the input contains an integer T denoting the number of test cases.
-The first line of each test case contains a single integer N denoting the number of different type of ingredients.
-The second line contains N space-separated integers A1, A2, ..., AN denoting the quantity of each ingredient.
-Output
-For each test case, output a single line containing an integer denoting the answer corresponding to that test case.
+Akash is stuck in a
+N×N grid, where
+N is odd. The rows of the grid are numbered
+1 to
+N from top to bottom, and the columns are numbered
+1 to
+N from left to right. The cell at the intersection of the
+i-th row and
+j-th column will be denoted
+(i,j).
+The grid has a unique center cell —
+((N+1)/2,(N+1)/2). For example, when
+N=5 the center is cell
+(3,3).
+Akash is currently at cell
+(x
+s
+,y
+s
+). He would like to reach the exit of the grid, which is located at the center. It is guaranteed that
+(x
+s
+,y
+s
+) is not the center.
+Suppose Akash is at cell
+(x,y). He can make the following movements:
+He can freely move along diagonals, i.e, to cells
+(x−1,y−1),(x−1,y+1),(x+1,y−1),(x+1,y+1)
+He can move one step horizontally or vertically with the cost of
+1 gold coin, i.e, to cells
+(x,y−1),(x,y+1),(x−1,y),(x+1,y)
+Note that Akash is not allowed to make a move that will take him out of bounds of the grid.
+Akash would like to minimize the number of coins required to reach the center. Please help him find this number.
+Input Format
+The first line of input contains a single integer
+T, denoting the number of test cases. The description of
+T test cases follows.
+Each test case consists of a single line of input, containing three space-separated integers
+N,x
+s
+,y
+s
+— the size of the grid and the coordinates of Akash's starting cell.
+Output Format
+For each test case, output in a single line the minimum number of gold coins Akash needs to reach the center.
 Constraints
-1 ≤ T ≤ 10
-1 ≤ N ≤ 105
-1 ≤ Ai ≤ 104
-Sub tasks
-Subtask #1: 1 ≤ N ≤ 1000 (30 points)
-Subtask #2: original constraints (70 points)
+1≤T≤10
+4
+3≤N<2⋅10
+4
+N is always odd.
+1≤x
+s
+,y
+s
+≤N
 Sample 1:
 Input
 Output
 2
-2
-2 2
+3 2 1
+5 3 1
 1
-6
-4
-2
+0
 Explanation:
-In Example 1, she need to pick up all items.
-In Example 2, since there is only one type of ingredient, picking two items is enough.
+Test case 1: For a
+3×3 grid, the center is at
+(2,2). It is not possible to reach
+(2,2) from
+(2,1) using only diagonal moves. So, Akash will directly go to the center using 1 gold coin.
+Test case 2:
+N=5, so the center is
+(3,3). Akash can go from
+(3,1) to
+(2,2) with a diagonal move, then from
+(2,2) to
+(3,3) with another diagonal move. So, he needs zero coins.

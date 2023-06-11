@@ -1,117 +1,98 @@
-G. Alpha planetary system
-time limit per test1 second
-memory limit per test128 megabytes
+I. The Light Square
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Three planets
-X
-,
-Y
-and
-Z
-within the Alpha planetary system are inhabited with an advanced civilization. The spaceports of these planets are connected by interplanetary space shuttles. The flight scheduler should decide between
-1
-,
-2
-and
-3
-return flights for every existing space shuttle connection. Since the residents of Alpha are strong opponents of the symmetry, there is a strict rule that any two of the spaceports connected by a shuttle must have a different number of flights.
-For every pair of connected spaceports, your goal is to propose a number
-1
-,
-2
-or
-3
-for each shuttle flight, so that for every two connected spaceports the overall number of flights differs.
-You may assume that:
-1) Every planet has at least one spaceport
-2) There exist only shuttle flights between spaceports of different planets
-3) For every two spaceports there is a series of shuttle flights enabling traveling between them
-4) Spaceports are not connected by more than one shuttle
+For her birthday Alice received an interesting gift from her friends – The Light Square. The Light Square game is played on an
+N×N
+lightbulbs square board with a magical lightbulb bar of size
+N×1
+that has magical properties. At the start of the game some lights on the square board and magical bar are turned on. The goal of the game is to transform the starting light square board pattern into some other pattern using the magical bar without rotating the square board. The magical bar works as follows:
+It can be placed on any row or column
+The orientation of the magical lightbulb must be left to right or top to bottom for it to keep its magical properties
+The entire bar needs to be fully placed on a board
+The lights of the magical bar never change
+If the light on the magical bar is the same as the light of the square it is placed on it will switch the light on the square board off, otherwise it will switch the light on
+The magical bar can be used an infinite number of times
+Alice has a hard time transforming her square board into the pattern Bob gave her. Can you help her transform the board or let her know it is impossible? If there are multiple solutions print any.
 Input
-The first row of the input is the integer number
+The first line contains one positive integer number
+N (1≤N≤2000)
+representing the size of the square board.
+The next
 N
-(3≤N≤100000)
-, representing overall number of spaceports. The second row is the integer number
-M
-(2≤M≤100000)
-representing number of shuttle flight connections.
-Third row contains
+lines are strings of length
 N
-characters from the set
-{X,Y,Z}
-. Letter on
-I
-th
-position indicates on which planet is situated spaceport
-I
-. For example, "XYYXZZ" indicates that the spaceports
-0
-and
-3
-are located at planet
-X
-, spaceports
-1
-and
-2
-are located at
-Y
-, and spaceports
-4
-and
-5
-are at
-Z
-.
-Starting from the fourth row, every row contains two integer numbers separated by a whitespace. These numbers are natural numbers smaller than
+consisting of 1's and 0's representing the initial state of the square board starting from the top row. If the character in a string is 1 it means the light is turned on, otherwise it is off.
+The next
 N
-and indicate the numbers of the spaceports that are connected. For example, "
-12 15
-" indicates that there is a shuttle flight between spaceports
-12
-and
-15
-.
+lines are strings of length
+N
+consisting of 1's and 0's representing the desired state of the square board starting from the top row that was given to Alice by Bob.
+The last line is one string of length
+N
+consisting of 1's and 0's representing the pattern of the magical bar in a left to right order.
 Output
-The same representation of shuttle flights in separate rows as in the input, but also containing a third number from the set
-{1,2,3}
-standing for the number of shuttle flights between these spaceports.
-Example
+Transform the instructions for Alice in order to transform the square board into the pattern Bob gave her. The first line of the output contains an integer number
+M (0≤M≤
+10
+5
+) representing the number of times Alice will need to apply the magical bar.
+The next
+M
+lines are of the form "col
+X
+" or "row
+X
+", where
+X
+is
+0
+-based index of the matrix, meaning the magical bar should be applied to either row
+X
+or column
+X
+. If there is no solution, print only -1. In case of multiple solutions print any correct one.
+Examples
 input
 Copy
-10
-15
-XXXXYYYZZZ
-0 4
-0 5
-0 6
-4 1
-4 8
-1 7
-1 9
-7 2
-7 5
-5 3
-6 2
-6 9
-8 2
-8 3
-9 3
+2
+11
+11
+00
+01
+11
 output
 Copy
-0 4 2
-0 5 2
-0 6 2
-4 1 1
-4 8 1
-1 7 2
-1 9 3
-7 2 2
-7 5 1
-5 3 1
-6 2 1
-6 9 1
-8 2 3
-8 3 1
-9 3 1
+-1
+input
+Copy
+2
+10
+00
+00
+00
+10
+output
+Copy
+1
+row 0
+input
+Copy
+3
+110
+011
+100
+100
+011
+100
+100
+output
+Copy
+3
+row 0
+col 0
+col 1
+Note
+Example 1: It is impossible to transform square board from one format to another
+Example 2: Magic bar can be applied on first row or column.

@@ -1,170 +1,123 @@
-F. Tower Defense
-time limit per test4 seconds
-memory limit per test512 megabytes
+B. Prefix Removals
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-Monocarp is playing a tower defense game. A level in the game can be represented as an OX axis, where each lattice point from
-1
-to
-n
-contains a tower in it.
-The tower in the
-i
--th point has
-c
-i
-mana capacity and
-r
-i
-mana regeneration rate. In the beginning, before the
-0
--th second, each tower has full mana. If, at the end of some second, the
-i
--th tower has
+You are given a string
+s
+consisting of lowercase letters of the English alphabet. You must perform the following algorithm on
+s
+:
+Let
 x
-mana, then it becomes
-min(x+
-r
-i
-,
-c
-i
-)
-mana for the next second.
-There are
-q
-monsters spawning on a level. The
-j
--th monster spawns at point
+be the length of the longest prefix of
+s
+which occurs somewhere else in
+s
+as a contiguous substring (the other occurrence may also intersect the prefix). If
+x=0
+, break. Otherwise, remove the first
+x
+characters of
+s
+, and repeat.
+A prefix is a string consisting of several first letters of a given string, without any reorders. An empty prefix is also a valid prefix. For example, the string "abcd" has 5 prefixes: empty string, "a", "ab", "abc" and "abcd".
+For instance, if we perform the algorithm on
+s=
+"abcabdc",
+Initially, "ab" is the longest prefix that also appears somewhere else as a substring in
+s
+, so
+s=
+"cabdc" after
 1
-at the beginning of
-t
-j
--th second, and it has
-h
-j
-health. Every monster is moving
-1
-point per second in the direction of increasing coordinate.
-When a monster passes the tower, the tower deals
-min(H,M)
-damage to it, where
-H
-is the current health of the monster and
-M
-is the current mana amount of the tower. This amount gets subtracted from both monster's health and tower's mana.
-Unfortunately, sometimes some monsters can pass all
-n
-towers and remain alive. Monocarp wants to know what will be the total health of the monsters after they pass all towers.
+operation.
+Then, "c" is the longest prefix that also appears somewhere else as a substring in
+s
+, so
+s=
+"abdc" after
+2
+operations.
+Now
+x=0
+(because there are no non-empty prefixes of "abdc" that also appear somewhere else as a substring in
+s
+), so the algorithm terminates.
+Find the final state of the string after performing the algorithm.
 Input
 The first line contains a single integer
-n
+t
 (
-1≤n≤2⋅
+1≤t≤
 10
-5
-) — the number of towers.
-The
-i
--th of the next
-n
-lines contains two integers
-c
-i
+4
+) — the number of test cases.
+This is followed by
+t
+lines, each containing a description of one test case. Each line contains a string
+s
+. The given strings consist only of lowercase letters of the English alphabet and have lengths between
+1
 and
-r
-i
-(
-1≤
-r
-i
-≤
-c
-i
-≤
-10
-9
-) — the mana capacity and the mana regeneration rate of the
-i
--th tower.
-The next line contains a single integer
-q
-(
-1≤q≤2⋅
+2⋅
 10
 5
-) — the number of monsters.
-The
-j
--th of the next
-q
-lines contains two integers
-t
-j
-and
-h
-j
-(
-0≤
-t
-j
-≤2⋅
+inclusive.
+It is guaranteed that the sum of the lengths of
+s
+over all test cases does not exceed
+2⋅
 10
 5
-;
-1≤
-h
-j
-≤
-10
-12
-) — the time the
-j
--th monster spawns and its health.
-The monsters are listed in the increasing order of their spawn time, so
-t
-j
-<
-t
-j+1
-for all
-1≤j≤q−1
 .
 Output
-Print a single integer — the total health of all monsters after they pass all towers.
-Examples
+For each test case, print a single line containing the string
+s
+after executing the algorithm. It can be shown that such string is non-empty.
+Example
 input
 Copy
-3
-5 1
-7 4
-4 2
-4
-0 14
-1 10
-3 16
-10 16
+6
+abcabdc
+a
+bbbbbbbbbb
+codeforces
+cffcfccffccfcffcfccfcffccffcfccf
+zyzyzwxxyyxxyyzzyzzxxwzxwywxwzxxyzzw
 output
 Copy
-4
-input
-Copy
-5
-2 1
-4 1
-5 4
-7 5
-8 3
-9
-1 21
-2 18
-3 14
-4 24
-5 8
-6 25
-7 19
-8 24
-9 24
-output
-Copy
-40
+abdc
+a
+b
+deforces
+cf
+xyzzw
+Note
+The first test case is explained in the statement.
+In the second test case, no operations can be performed on
+s
+.
+In the third test case,
+Initially,
+s=
+"bbbbbbbbbb".
+After
+1
+operation,
+s=
+"b".
+In the fourth test case,
+Initially,
+s=
+"codeforces".
+After
+1
+operation,
+s=
+"odeforces".
+After
+2
+operations,
+s=
+"deforces".

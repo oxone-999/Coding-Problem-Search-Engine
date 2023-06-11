@@ -1,250 +1,185 @@
-G. Weighed Tree Radius
-time limit per test6 seconds
+F. Double Sort II
+time limit per test2 seconds
 memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given a tree of
+You are given two permutations
+a
+and
+b
+, both of size
 n
-vertices and
-n−1
-edges. The
-i
--th vertex has an initial weight
-a
-i
-.
-Let the distance
-d
-v
-(u)
-from vertex
-v
-to vertex
-u
-be the number of edges on the path from
-v
+. A permutation of size
+n
+is an array of
+n
+elements, where each integer from
+1
 to
-u
-. Note that
-d
-v
-(u)=
-d
-u
-(v)
-and
-d
-v
-(v)=0
+n
+appears exactly once. The elements in each permutation are indexed from
+1
+to
+n
 .
-Let the weighted distance
-w
-v
-(u)
+You can perform the following operation any number of times:
+choose an integer
+i
 from
-v
+1
 to
-u
-be
-w
-v
-(u)=
-d
-v
-(u)+
+n
+;
+let
+x
+be the integer such that
 a
-u
-. Note that
-w
-v
-(v)=
+x
+=i
+. Swap
 a
-v
+i
+with
+a
+x
+;
+let
+y
+be the integer such that
+b
+y
+=i
+. Swap
+b
+i
+with
+b
+y
+.
+Your goal is to make both permutations sorted in ascending order (i. e. the conditions
+a
+1
+<
+a
+2
+<⋯<
+a
+n
 and
-w
-v
-(u)≠
-w
-u
-(v)
-if
-a
-u
-≠
-a
-v
-.
-Analogically to usual distance, let's define the eccentricity
-e(v)
-of vertex
-v
-as the greatest weighted distance from
-v
-to any other vertex (including
-v
-itself), or
-e(v)=
-max
-1≤u≤n
-w
-v
-(u)
-.
-Finally, let's define the radius
-r
-of the tree as the minimum eccentricity of any vertex, or
-r=
-min
-1≤v≤n
-e(v)
-.
-You need to perform
-m
-queries of the following form:
-v
-j
-x
-j
- — assign
-a
-v
-j
-=
-x
-j
-.
-After performing each query, print the radius
-r
-of the current tree.
+b
+1
+<
+b
+2
+<⋯<
+b
+n
+must be satisfied) using minimum number of operations. Note that both permutations must be sorted after you perform the sequence of operations you have chosen.
 Input
-The first line contains the single integer
+The first line contains one integer
 n
 (
-2≤n≤2⋅
-10
-5
-) — the number of vertices in the tree.
+2≤n≤3000
+).
 The second line contains
 n
 integers
 a
 1
+,
+a
+2
 ,…,
 a
 n
 (
-0≤
+1≤
 a
 i
-≤
-10
-6
-) — the initial weights of vertices.
-Next
-n−1
-lines contain edges of tree. The
+≤n
+; all
+a
 i
--th line contains two integers
-u
-i
-and
-v
-i
-(
-1≤
-u
-i
+are distinct).
+The third line contains
+n
+integers
+b
+1
 ,
-v
-i
-≤n
-;
-u
-i
-≠
-v
-i
-) — the corresponding edge. The given edges form a tree.
-The next line contains the single integer
-m
-(
-1≤m≤
-10
-5
-) — the number of queries.
-Next
-m
-lines contain queries — one query per line. The
-j
--th query contains two integers
-v
-j
-and
-x
-j
+b
+2
+,…,
+b
+n
 (
 1≤
-v
+b
+i
+≤n
+; all
+b
+i
+are distinct).
+Output
+First, print one integer
+k
+(
+0≤k≤2n
+) — the minimum number of operations required to sort both permutations. Note that it can be shown that
+2n
+operations are always enough.
+Then, print
+k
+integers
+o
+p
+1
+,o
+p
+2
+,…,o
+p
+k
+(
+1≤o
+p
 j
 ≤n
-;
-0≤
-x
+), where
+o
+p
 j
-≤
-10
-6
-) — a vertex and it's new weight.
-Output
-Print
-m
-integers — the radius
-r
-of the tree after performing each query.
-Example
+is the value of
+i
+you choose during the
+j
+-th operation.
+If there are multiple answers, print any of them.
+Examples
 input
 Copy
-6
-1 3 3 7 0 1
-2 1
-1 3
-1 4
-5 4
-4 6
 5
-4 7
-4 0
-2 5
-5 10
-5 5
+1 3 2 4 5
+2 1 3 4 5
 output
 Copy
-7
+1
+2 
+input
+Copy
+2
+1 2
+1 2
+output
+Copy
+0
+input
+Copy
 4
-5
-10
-7
-Note
-After the first query, you have the following tree:
-The marked vertex in the picture is the vertex with minimum
-e(v)
-, or
-r=e(4)=7
-. The eccentricities of the other vertices are the following:
-e(1)=8
-,
-e(2)=9
-,
-e(3)=9
-,
-e(5)=8
-,
-e(6)=8
-.
-The tree after the second query:
-The radius
-r=e(1)=4
-.
-After the third query, the radius
-r=e(2)=5
-:
+1 3 4 2
+4 3 2 1
+output
+Copy
+2
+3 4 

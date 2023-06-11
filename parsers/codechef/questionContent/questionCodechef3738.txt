@@ -1,204 +1,37 @@
-Lucky Ali
+Devu, his sister and Rangoli
 Problem
-Abhishek is working in one of the best telecommunication companies of the world. He joined this company recently. To test his skills, his boss assigned him to help two of their customers: Aryan and Ali.
-Initially both of their phone numbers are empty (fantasy world you see). During each day , one of the following things can take place:
-Last digit of numbers of either Aryan or Ali can be erased.
-A new digit can be appended at the end of the numbers of either Aryan or Ali.
-The company also has a magical number
-M of length
-N, where each digit is between
-0 and
-9 (both inclusive). The positions of digits are numbered from
-1 to
-N, from left to right. Aryan and Ali will be happy if both of their numbers appear as non-overlapping subsequences of
-M.
-More formally, suppose that Aryan chooses some positions from
-M such that the digits at those positions form his current number (in the same order).Let the positions be
-a
-1
-,a
-2
-,a
-3
-,...,a
-p
-. Now , Ali chooses some positions, not already chosen by Aryan such that the digits at those positions form his current number (in the same order).Let the positions be
-b
-1
-,b
-2
-,b
-3
-,...,b
-q
-. Then the following conditions should hold true :
-a
-i
-as well as
-b
-i
-are strictly increasing sequences.
-For all pairs
-(a
-i
-,b
-j
-)
-1≤i≤p,
-1≤j≤q,
-a
-i
-
-=b
-j
-.
-Values of
-a
-i
-are pairwise distinct.
-1≤i≤p.
-Values of
-b
-i
-are pairwise distinct.
-1≤i≤q.
-M
-a
-1
-M
-a
-2
-M
-a
-3
-....M
-a
-p
-forms Aryan's number.
-M
-b
-1
-M
-b
-2
-M
-b
-3
-....M
-b
-q
-forms Ali's number.
-Over a period of
-D days, Abhishek has to follow one of the following instructions each day:
-append
-x
-y : You have to append digit
-y to the end of
-x's number.
-erase
-x : Erase the last digit from
-x's number.
-Abhishek has to help these customers over a period of
-D days. As he is a new employee, he asks for your help. For each of the
-D days, you have to tell whether the phone numbers of Aryan and Ali appear as non-overlapping subsequences of
-M.
-NOTE : Prefer using fast I/O methods, as the input is large.
-Input Format
-First line will contain two spaced integers
-N ,
-D
-The next line will contain the magical number
-M of length
-N
-D lines follow. Each of these lines will contain either of the following:
-append
-x
-y : You have to append digit
-y to the end of
-x's number.
-erase
-x : Erase the last digit from
-x's number.
-Output Format
-Print
-D lines. On the
-i
-th
-line, print "YES" (without quotes) if both Aryan and Ali will be happy after the
-i
-th
-day otherwise print "NO" (without quotes). You can print any character of the answer in any case, ie "yes", "YeS", "nO","No" etc will be considered valid response.
+Read problems statements in Mandarin Chinese and Russian as well.
+As you know already, it is Devu's birthday today. He wants to make a Rangoli to decorate his house. He created n points having integer coordinates on the front door of his house. He also made sure no three points are collinear in it because collinear points break beauty of it. For each point, there is parameter beauty which is a positive integer.
+Now, when Devu's little sister saw the points drawn, she thought of creating patterns by drawing a convex polygon by choosing some of the n point as vertices of it. Also, as she is very naughty, instead of creating most beautiful pattern, she wants to create least beautiful pattern. Beauty of a polygon is sum of beauties of all the points lying inside or on the boundary of it.
+You have to help Devu's sister in finding out the least beauty of convex polygon of k vertices. If it is impossible to find such a convex polygon, print -1. Otherwise print the minimum weight of the convex polygon you can have. Please solve the problem for all k's from 3 to n.
+Input
+There is a single test case.
+First line contains a single integer n as defined in the problem.
+Then in the next n lines, each line contains three space separated integers x, y, b denoting that there is a point with coordinates (x, y) with beauty equal to b.
+Output
+Print n - 2 space separated integers corresponding to the answer for k = 3 to n as asked in the problem.
 Constraints
-1≤N≤5⋅10
-5
-1≤D≤5⋅10
-4
-The length of numbers of Aryan and Ali does not exceed
-10
+3 ≤ n ≤ 50
+- 105 ≤ x, y ≤ 105
+1 ≤ b ≤ 105
+No three or more points are collinear.
+All the points in the input are distinct.
+Example
+Input:
 3
-M consists of digits from
-0 to
-9.
-x is either Aryan or Ali.
-y can be any digit from
-0 to
-9.
-During the erase operation, the corresponding person's number is non empty.
-The numbers of Aryan, Ali and even the magical number
-M can contain leading zeroes.
-Sample 1:
-Input
-Output
-4 4
-0013
-append Aryan 1
-append Ali 0
-append Ali 3
-append Aryan 9
-YES
-YES
-YES
-NO
-Explanation:
-At the end of first day, Aryan's number is
-1 , while Ali's number is empty. Since
-1 can be obtained as a subsequence of
-M, Aryan is happy. Ali is also happy(as his number is empty).
-At the end of second day, numbers of Aryan and Ali are
-1 and
-0 respectively. Aryan can choose the subsequence formed by the digit at position
-3 while Ali can choose the digit at position
-1 . Since these are distinct positions , both will be happy.
-At the end of third day, numbers of Aryan and Ali are
-1 and
-03 respectively. Aryan can choose the same position as before, while Ali can choose positions
-1 and
-4. As these are distinct positions, both will be happy.
-At the end of forth day, numbers of Aryan and Ali are
-19 and
-03 respectively. Since Aryan cannot choose any subsequence , he will be unhappy (Ali still being happy).
-Sample 2:
-Input
-Output
-7 10
-9784831
-append Aryan 9
-append Ali 7
-append Aryan 8
-append Aryan 1
-append Ali 8
-append Ali 4
-append Ali 4
-append Ali 0
-erase Ali
-erase Ali
-YES
-YES
-YES
-YES
-YES
-YES
-NO
-NO
-NO
-YES
+0 0 1
+1 0 2
+0 1 3
+Output:
+6
+Input:
+4
+0 0 1
+1 0 2
+0 1 3
+1 1 2
+Output:
+5 8
+Explanation
+Example case 1. The triangle given in the input has beauty equal to 6.
+Example case 2. One of the triangles has a beauty of 5 whereas there is only one rectangle which has beauty equal to 8.

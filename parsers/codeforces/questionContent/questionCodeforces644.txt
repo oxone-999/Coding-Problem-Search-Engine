@@ -1,92 +1,240 @@
-B. Basketball Together
-time limit per test1 second
-memory limit per test256 megabytes
+D. Deducing Sortability
+time limit per test2 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-A basketball competition is held where the number of players in a team does not have a maximum or minimum limit (not necessarily
-5
-players in one team for each match). There are
+Let's say Pak Chanek has an array
+A
+consisting of
 N
-candidate players in the competition that will be trained by Pak Chanek, the best basketball coach on earth. The
+positive integers. Pak Chanek will do a number of operations. In each operation, Pak Chanek will do the following:
+Choose an index
+p
+(
+1≤p≤N
+).
+Let
+c
+be the number of operations that have been done on index
+p
+before this operation.
+Decrease the value of
+A
+p
+by
+2
+c
+.
+Multiply the value of
+A
+p
+by
+2
+.
+After each operation, all elements of
+A
+must be positive integers.
+An array
+A
+is said to be sortable if and only if Pak Chanek can do zero or more operations so that
+A
+1
+<
+A
+2
+<
+A
+3
+<
+A
+4
+<…<
+A
+N
+.
+Pak Chanek must find an array
+A
+that is sortable with length
+N
+such that
+A
+1
++
+A
+2
++
+A
+3
++
+A
+4
++…+
+A
+N
+is the minimum possible. If there are more than one possibilities, Pak Chanek must choose the array that is lexicographically minimum among them.
+Pak Chanek must solve the following things:
+Pak Chanek must print the value of
+A
+1
++
+A
+2
++
+A
+3
++
+A
+4
++…+
+A
+N
+for that array.
+Q
+questions will be given. For the
 i
--th candidate player has a power of
+-th question, an integer
+P
+i
+is given. Pak Chanek must print the value of
+A
 P
 i
 .
-Pak Chanek will form zero or more teams from the
+Help Pak Chanek solve the problem.
+Note: an array
+B
+of size
 N
-candidate players on the condition that each candidate player may only join in at most one team. Each of Pak Chanek's teams will be sent to compete once with an enemy team that has a power of
-D
-. In each match, the team sent is said to defeat the enemy team if the sum of powers from the formed players is strictly greater than
-D
+is said to be lexicographically smaller than an array
+C
+that is also of size
+N
+if and only if there exists an index
+i
+such that
+B
+i
+<
+C
+i
+and for each
+j<i
+,
+B
+j
+=
+C
+j
 .
-One of Pak Chanek's skills is that when a team that has been formed plays in a match, he can change the power of each player in the team to be equal to the biggest player power from the team.
-Determine the maximum number of wins that can be achieved by Pak Chanek.
 Input
 The first line contains two integers
 N
 and
-D
+Q
 (
 1≤N≤
 10
-5
-,
-1≤D≤
-10
 9
-) — the number of candidate players and the power of the enemy team.
-The second line contains
-N
-integers
-P
-1
 ,
+0≤Q≤min(N,
+10
+5
+)
+) — the required length of array
+A
+and the number of questions.
+The
+i
+-th of the next
+Q
+lines contains a single integer
 P
-2
-,…,
-P
-N
+i
 (
 1≤
 P
+1
+<
+P
+2
+<…<
+P
+Q
+≤N
+) — the index asked in the
 i
-≤
-10
-9
-) — the powers of all candidate players.
+-th question.
 Output
-A line containing an integer representing the maximum number of wins that can be achieved by Pak Chanek.
-Example
+Print
+Q+1
+lines. The
+1
+-st line contains an integer representing
+A
+1
++
+A
+2
++
+A
+3
++
+A
+4
++…+
+A
+N
+. For each
+1≤i≤Q
+, the
+(i+1)
+-th line contains an integer representing
+A
+P
+i
+.
+Examples
 input
 Copy
-6 180
-90 80 70 60 50 100
+6 3
+1
+4
+5
 output
 Copy
-2
-Note
-The
+17
 1
--st team formed is a team containing players
+3
 4
-and
-6
-. The power of each player in the team becomes
-100
-. So the total power of the team is
-100+100=200>180
-.
-The
-2
--nd team formed is a team containing players
+input
+Copy
+1 0
+output
+Copy
 1
-,
-2
-, and
+Note
+In the first example, the array
+A
+obtained is
+[1,2,3,3,4,4]
+. We can see that the array is sortable by doing the following operations:
+Choose index
 5
-. The power of each player in the team becomes
-90
-. So the total power of the team is
-90+90+90=270>180
+, then
+A=[1,2,3,3,6,4]
+.
+Choose index
+6
+, then
+A=[1,2,3,3,6,6]
+.
+Choose index
+4
+, then
+A=[1,2,3,4,6,6]
+.
+Choose index
+6
+, then
+A=[1,2,3,4,6,8]
 .

@@ -1,194 +1,107 @@
-F. Raging Thunder
-time limit per test3 seconds
-memory limit per test512 megabytes
+D. Omkar and Circle
+time limit per test2 seconds
+memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are a warrior fighting against the machine god Thor.
-Thor challenge you to solve the following problem:
-There are
+Danny, the local Math Maniac, is fascinated by circles, Omkar's most recent creation. Help him solve this circle problem!
+You are given
 n
-conveyors arranged in a line numbered with integers from
+nonnegative integers
+a
 1
-to
+,
+a
+2
+,…,
+a
 n
-from left to right. Each conveyor has a symbol "<" or ">". The initial state of the conveyor
-i
-is equal to the
-i
--th character of the string
-s
-. There are
-n+1
-holes numbered with integers from
-0
-to
+arranged in a circle, where
 n
-. The hole
-0
-is on the left side of the conveyor
+must be odd (ie.
+n−1
+is divisible by
+2
+). Formally, for all
+i
+such that
+2≤i≤n
+, the elements
+a
+i−1
+and
+a
+i
+are considered to be adjacent, and
+a
+n
+and
+a
 1
-, and for all
-i≥1
-the hole
-i
-is on the right side of the conveyor
-i
-.
-When a ball is on the conveyor
-i
-, the ball moves by the next rules:
-If the symbol "<" is on the conveyor
-i
-, then:
-If
-i=1
-, the ball falls into the hole
-0
-.
-If the symbol "<" is on the conveyor
-i−1
-, the ball moves to the conveyor
-i−1
-.
-If the symbol ">" is on the conveyor
-i−1
-, the ball falls into the hole
-i−1
-.
-If the symbol ">" is on the conveyor
-i
-, then:
-If
-i=n
-, the ball falls into the hole
-n
-.
-If the symbol ">" is on the conveyor
-i+1
-, the ball moves to the conveyor
-i+1
-.
-If the symbol "<" is on the conveyor
-i+1
-, the ball falls into the hole
-i
-.
-You should answer next
-q
-queries, each query is defined by the pair of integers
-l,r
-(
-1≤l≤r≤n
-):
-First, for all conveyors
-l,l+1,...,r
-, the symbol "<" changes to ">" and vice versa. These changes remain for the next queries.
-After that, put one ball on each conveyor
-l,l+1,...,r
-. Then, each ball falls into some hole. Find the maximum number of balls in one hole. After the query all balls disappear and don't considered in the next queries.
+are also considered to be adjacent. In one operation, you pick a number on the circle, replace it with the sum of the two elements adjacent to it, and then delete the two adjacent elements from the circle. This is repeated until only one number remains in the circle, which we call the circular value.
+Help Danny find the maximum possible circular value after some sequences of operations.
 Input
-The first line contains two integers
+The first line contains one odd integer
 n
-,
-q
 (
-1≤n≤5×
+1≤n<2⋅
 10
 5
-,1≤q≤
-10
-5
-).
-The second line contains a string
-s
-of length
-n
-. It consists of characters "<" and ">".
-Next
-q
-lines contain the descriptions of the queries,
-i
--th of them contains two integers
-l
 ,
-r
-(1≤l≤r≤n)
-, describing the
+n
+is odd)  — the initial size of the circle.
+The second line contains
+n
+integers
+a
+1
+,
+a
+2
+,…,
+a
+n
+(
+0≤
+a
 i
--th query.
+≤
+10
+9
+)  — the initial numbers in the circle.
 Output
-Print
-q
-lines, in the
-i
--th of them print the answer to the
-i
--th query.
-Example
+Output the maximum possible circular value after applying some sequence of operations to the given circle.
+Examples
 input
 Copy
-5 6
-><>><
-2 4
-3 5
-1 5
-1 3
-2 4
-1 5
+3
+7 10 2
 output
 Copy
-3
-3
-5
-3
-2
-3
-Note
-In the first query, the conveyors change to ">><<<". After that, put a ball on each conveyor
-{2,3,4}
-. All three balls fall into the hole
-2
-. So the answer is
-3
-.
-In the second query, the conveyors change to ">>>>>". After that, put a ball on each conveyor
-{3,4,5}
-. All three balls fall into the hole
-5
-. So the answer is
-3
-.
-In the third query, the conveyors change to "<<<<<". After that, put a ball on each conveyor
-{1,2,3,4,5}
-. All five balls fall into the hole
-0
-. So the answer is
-5
-.
-In the fourth query, the conveyors change to ">>><<". After that, put a ball on each conveyor
-{1,2,3}
-. All three balls fall into the hole
-3
-. So the answer is
-3
-.
-In the fifth query, the conveyors change to "><<><". After that, put a ball on each conveyor
-{2,3,4}
-. Two balls fall into the hole
+17
+input
+Copy
 1
-, and one ball falls into the hole
 4
-. So, the answer is
+output
+Copy
+4
+Note
+For the first test case, here's how a circular value of
+17
+is obtained:
+Pick the number at index
+3
+. The sum of adjacent elements equals
+17
+. Delete
+7
+and
+10
+from the circle and replace
 2
+with
+17
 .
-In the sixth query, the conveyors change to "<>><>". After that, put a ball on each conveyor
-{1,2,3,4,5}
-. Three balls fall into the hole
-3
-, one ball falls into the hole
-0
-and one ball falls into the hole
-5
-. So, the answer is
-3
-.
+Note that the answer may not fit in a
+32
+-bit integer.

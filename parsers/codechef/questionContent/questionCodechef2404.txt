@@ -1,105 +1,116 @@
-Encoding
+Greedy Grid Moves
 Problem
-Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
-Chef is trying to open the oven in his kitchen to cook some cookies. However, the oven is special ― you need a password to open it.
-Let's define a function
-f(x) for a positive integer
-x as follows:
-Consider the decimal representation of
-x (without leading zeros). Split it into the minimum number of contiguous subsequences of digits such that in each subsequence, all digits are identical.
-For each subsequence, look at its position in the original decimal representation of
-x. Let's say that the most significant digit it contained was the
-e-th digit, where
-e=0 corresponds to the least significant digit of
-x. For example,
-388,822,442 can be split into subsequences "3", "888", "22", "44", "2", where
-e=7 for the sequence "888" and
-e=4 for the sequence "22".
-The value of a subsequence which contains a digit
-d repeated one or more times is
-d⋅10
-e
+Anya and Becky found an
+N×M grid that contains distinct integers, and decided to play a game on it. The integer present at the intersection of the
+i-th row and
+j-th column is denoted
+A
+i,j
 .
-f(x) is the sum of values of these subsequences. For example,
-f(388,822,442)=3⋅10
-8
-+8⋅10
-7
-+2⋅10
-4
-+4⋅10
-2
-+2⋅10
-0
-.
-The oven has a screen which displays two long integers
-L and
-R (with
-N
-L
-and
-N
-R
-digits respectively, without leading zeros). The password is the sum of
-f(x) for each
-x between
-L and
-R inclusive.
-Chef does not have a lot of time, so he asks for your help. Please find the password for the oven so that he can start cooking as fast as possible. Since this number could be very large, compute it modulo
-10
-9
-+7.
-Input
-The first line of the input contains a single integer
-T denoting the number of test cases. The description of
-T test cases follows.
+They place a token at the top-left corner (cell
+(1,1)), and then take turns moving the token towards the bottom-right corner (cell
+(N,M)), each time moving the token one step right or down. Becky moves first.
+Suppose the token is at position
+(i,j). Then,
+Becky can choose to move the token to either
+(i+1,j) or
+(i,j+1).
+Anya, in her infinite greed wisdom, will always move the token to whichever cell has the larger value. That is,
+She will move the token to cell
+(i+1,j) if
+A
+i+1,j
+>A
+i,j+1
+She will move the token to cell
+(i,j+1) if
+A
+i+1,j
+<A
+i,j+1
+Of course, the token must remain inside the grid at all times, so if
+i=N they cannot move it down and if
+j=M they cannot move it right.
+Let
+K be the maximum value the two encounter on their path from
+(1,1) to
+(N,M). Becky would like to rein in Anya a bit, so please help her: if she makes her moves optimally, what is the minimum possible value of
+K?
+Input Format
+The first line of input will contain a single integer
+T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
 The first line of each test case contains two space-separated integers
-N
-L
-and
-L.
-The second line contains two space-separated integers
-N
-R
-and
-R.
-Output
-For each test case, print a single line containing one integer ― the password.
+N and
+M — the number of rows and columns of the grid.
+The next
+N lines describe the grid. The
+i-th of these
+N lines contains
+M space-separated integers
+A
+i,1
+,A
+i,2
+,…,A
+i,M
+.
+Output Format
+For each test case, output on a new line the minimum possible value of
+K, if Becky chooses her moves optimally.
 Constraints
-1≤T≤10
-1≤N
-L
-,N
-R
-≤10
+1≤T≤3⋅10
+4
+1≤N,M≤5⋅10
 5
-1≤L≤R<10
-100,000
-L and
-R do not contain leading zeros
-Subtasks
-Subtask #1 (10 points):
-R−L≤10
+1≤N×M≤5⋅10
 5
-R<10
-18
-Subtask #2 (20 points):
-R<10
-18
-Subtask #3 (70 points): original constraints
+1≤A
+i,j
+≤N⋅M
+All the
+A
+i,j
+within a single testcase will be distinct.
+The sum of
+N×M across all test cases won't exceed
+5⋅10
+5
+.
 Sample 1:
 Input
 Output
 3
-1 9
-2 97
-1 8
-2 12
-1 1
-1 8
-4681
-49
-36
+2 2
+4 1
+2 3
+2 2
+1 4
+2 3
+3 4
+4 2 11 10
+6 7 1 9
+5 12 3 8
+4
+3
+9
 Explanation:
-Example case 2:
-f(8)=8,f(9)=9,f(10)=10,f(11)=10,f(12)=12
+Test case
+1: Since
+A
+1,1
+=4 is the largest value in the grid, no matter what path is taken the maximum value is going to be
+4.
+Test case
+2: Becky can move the token down in the first move, which forces Anya to move right on hers. This gives the path
+1→2→3 with a maximum of
+3, which is the best possible.
+Test case
+3: The optimal path is
+4→6→7→1→9→8, with a maximum of
+9.
+Note that if Anya had chosen to move down to
+5 when at
+6, she could have forced the maximum to be
+12. However,
+5<7 so she will never choose to do this.

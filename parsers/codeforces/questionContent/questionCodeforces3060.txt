@@ -1,250 +1,79 @@
-B. Beautiful Numbers
+B. Dice Tower
 time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You are given a permutation
-p=[
-p
+Bob is playing with
+6
+-sided dice. A net of such standard cube is shown below.
+He has an unlimited supply of these dice and wants to build a tower by stacking multiple dice on top of each other, while choosing the orientation of each dice. Then he counts the number of visible pips on the faces of the dice.
+For example, the number of visible pips on the tower below is
+29
+— the number visible on the top is
 1
-,
-p
+, from the south
+5
+and
+3
+, from the west
+4
+and
 2
-,…,
-p
-n
-]
-of integers from
-1
-to
-n
-. Let's call the number
-m
-(
-1≤m≤n
-) beautiful, if there exists two indices
-l,r
-(
-1≤l≤r≤n
-), such that the numbers
-[
-p
-l
-,
-p
-l+1
-,…,
-p
-r
-]
-is a permutation of numbers
-1,2,…,m
-.
-For example, let
-p=[4,5,1,3,2,6]
-. In this case, the numbers
-1,3,5,6
-are beautiful and
-2,4
-are not. It is because:
-if
-l=3
-and
-r=3
-we will have a permutation
-[1]
-for
-m=1
-;
-if
-l=3
-and
-r=5
-we will have a permutation
-[1,3,2]
-for
-m=3
-;
-if
-l=1
-and
-r=5
-we will have a permutation
-[4,5,1,3,2]
-for
-m=5
-;
-if
-l=1
-and
-r=6
-we will have a permutation
-[4,5,1,3,2,6]
-for
-m=6
-;
-it is impossible to take some
-l
-and
-r
-, such that
-[
-p
-l
-,
-p
-l+1
-,…,
-p
-r
-]
-is a permutation of numbers
-1,2,…,m
-for
-m=2
-and for
-m=4
-.
-You are given a permutation
-p=[
-p
-1
-,
-p
+, from the north
 2
-,…,
-p
-n
-]
-. For all
-m
-(
-1≤m≤n
-) determine if it is a beautiful number or not.
+and
+4
+and from the east
+3
+and
+5
+.
+The one at the bottom and the two sixes by which the dice are touching are not visible, so they are not counted towards total.
+Bob also has
+t
+favourite integers
+x
+i
+, and for every such integer his goal is to build such a tower that the number of visible pips is exactly
+x
+i
+. For each of Bob's favourite integers determine whether it is possible to build a tower that has exactly that many visible pips.
 Input
-The first line contains the only integer
+The first line contains a single integer
 t
 (
 1≤t≤1000
-)  — the number of test cases in the input. The next lines contain the description of test cases.
-The first line of a test case contains a number
-n
-(
-1≤n≤2⋅
-10
-5
-) — the length of the given permutation
-p
-. The next line contains
-n
-integers
-p
-1
-,
-p
-2
-,…,
-p
-n
+) — the number of favourite integers of Bob.
+The second line contains
+t
+space-separated integers
+x
+i
 (
 1≤
-p
+x
 i
-≤n
-, all
-p
-i
-are different) — the given permutation
-p
-.
-It is guaranteed, that the sum of
-n
-from all test cases in the input doesn't exceed
-2⋅
+≤
 10
-5
-.
+18
+) — Bob's favourite integers.
 Output
-Print
-t
-lines — the answers to test cases in the order they are given in the input.
-The answer to a test case is the string of length
-n
-, there the
-i
--th character is equal to
-1
-if
-i
-is a beautiful number and is equal to
-0
-if
-i
-is not a beautiful number.
+For each of Bob's favourite integers, output "YES" if it is possible to build the tower, or "NO" otherwise (quotes for clarity).
 Example
 input
 Copy
-3
-6
-4 5 1 3 2 6
-5
-5 3 1 2 4
 4
-1 4 3 2
+29 34 19 38
 output
 Copy
-101011
-11111
-1001
+YES
+YES
+YES
+NO
 Note
-The first test case is described in the problem statement.
-In the second test case all numbers from
-1
-to
+The first example is mentioned in the problem statement.
+In the second example, one can build the tower by flipping the top dice from the previous tower.
+In the third example, one can use a single die that has
 5
-are beautiful:
-if
-l=3
-and
-r=3
-we will have a permutation
-[1]
-for
-m=1
-;
-if
-l=3
-and
-r=4
-we will have a permutation
-[1,2]
-for
-m=2
-;
-if
-l=2
-and
-r=4
-we will have a permutation
-[3,1,2]
-for
-m=3
-;
-if
-l=2
-and
-r=5
-we will have a permutation
-[3,1,2,4]
-for
-m=4
-;
-if
-l=1
-and
-r=5
-we will have a permutation
-[5,3,1,2,4]
-for
-m=5
-.
+on top.
+The fourth example is impossible.

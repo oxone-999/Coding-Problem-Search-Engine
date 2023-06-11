@@ -1,161 +1,284 @@
-D. Find String in a Grid
-time limit per test5 seconds
+G. Performance Review
+time limit per test2 seconds
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
-You have a grid
-G
-containing
-R
-rows (numbered from
+Randall is a software engineer at a company with
+N
+employees. Every year, the company re-evaluates its employees. At the end of every year, the company replaces its several worst-performing employees and replaces with the same number of new employees, so that the company keeps having
+N
+employees. Each person has a constant performance and can be represented by an integer (higher integer means better performance), and no two people have the same performance.
+The performance of the initial employees are represented by an array of integers
+A=[
+A
 1
-to
-R
-, top to bottom) and
-C
-columns (numbered from
+,
+A
+2
+,…,
+A
+N
+]
+where
+A
+i
+is the performance of the
+i
+th
+employee. Randall is employee
 1
-to
-C
-, left to right) of uppercase characters. The character in the
-r
+, so his performance is
+A
+1
+. We will consider the first
+M
+years. At the end of the
+i
 th
-row and the
-c
+year, the company replaces its
+R
+i
+worst-performing employees and replaces with
+R
+i
+new employees. The performance of these new employees are represented by an array of integers
+B
+i
+=[(
+B
+i
+)
+1
+,(
+B
+i
+)
+2
+,…,(
+B
+i
+)
+R
+i
+]
+where
+(
+B
+i
+)
+j
+is the performance of the
+j
 th
-column is denoted by
-G
-r,c
-. You also have
+new employee.
+He will consider
 Q
-strings containing uppercase characters. For each of the string, you want to find the number of occurrences of the string in the grid.
-An occurrence of string
-S
-in the grid is counted if
-S
-can be constructed by starting at one of the cells in the grid, going right
-0
-or more times, and then going down
-0
-or more times. Two occurrences are different if the set of cells used to construct the string is different. Formally, for each string
-S
-, you would like to count the number of tuples
-⟨r,c,Δr,Δc⟩
-such that:
-1≤r≤R
-and
-r≤r+Δr≤R
-1≤c≤C
-and
-c≤c+Δc≤C
-S=
-G
-r,c
-G
-r,c+1
-…
-G
-r,c+Δc
-G
-r+1,c+Δc
-…
-G
-r+Δr,c+Δc
+scenarios. On the
+i
+th
+scenario, he will change the value of
+(
+B
+X
+i
+)
+Y
+i
+to
+Z
+i
+. For each scenario, Randall is wondering whether he will still be in the company after
+M
+years. Note that the changes in each scenario are kept for the subsequent scenarios.
 Input
 Input begins with a line containing three integers:
-R
-C
+N
+M
 Q
 (
-1≤R,C≤500
+2≤N≤100000
 ;
-1≤Q≤200000
-) representing the size of the grid and the number of strings, respectively. The next
+1≤M,Q≤100000
+) representing the number of employees, the number of years to be considered, and the number of scenarios, respectively. The next line contains
+N
+integers:
+A
+i
+(
+0≤
+A
+i
+≤
+10
+9
+) representing the performance of the initial employees. The next
+M
+lines each contains several integers:
 R
-lines each contains
-C
-uppercase characters representing the grid. The
-c
-th
-character on the
-r
-th
-line is
-G
-r,c
+i
+(
+B
+i
+)
+1
+,
+(
+B
+i
+)
+2
+,
+⋯
+,
+(
+B
+i
+)
+R
+i
+(
+1≤
+R
+i
+<N
+;
+0≤(
+B
+i
+)
+j
+≤
+10
+9
+) representing the number of employees replaced and the performance of the new employees, respectively. It is guaranteed that the sum of
+R
+i
+does not exceed
+10
+6
 . The next
 Q
-lines each contains a string
-S
-containing uppercase characters. The length of this string is a positive integer not more than
-200000
-. The sum of the length of all
-Q
-strings combined is not more than
-200000
-.
+lines each contains three integers:
+X
+i
+Y
+i
+Z
+i
+(
+1≤
+X
+i
+≤M
+;
+1≤
+Y
+i
+≤
+R
+(
+X
+i
+)
+;
+0≤
+Z
+i
+≤
+10
+9
+) representing a scenario. It is guaranteed that all integers in all
+A
+i
+,
+(
+B
+i
+)
+j
+, and
+Z
+i
+(combined together) are distinct.
 Output
-For each query in the same order as input, output in a line an integer representing the number of occurrences of the string in the grid.
-Examples
+For each scenario in the same order as input, output in a line an integer
+0
+if Randall will not be in the company after
+M
+years, or
+1
+if Randall will still be in the company after
+M
+years.
+Example
 input
 Copy
-3 3 5
-ABC
-BCD
-DAB
-ABC
-BC
-BD
-AC
-A
+5 3 3
+50 40 30 20 10
+4 1 2 3 100
+1 4
+2 6 7
+1 3 300
+2 1 400
+2 1 5
 output
 Copy
-2
-3
 1
 0
-2
-input
-Copy
-2 3 3
-AAA
-AAA
-A
-AAA
-AAAAA
-output
-Copy
-6
-4
-0
+1
 Note
 Explanation for the sample input/output #1
-There are
-2
-occurrences of "ABC", represented by the tuples
-⟨1,1,1,1⟩
-and
-⟨1,1,0,2⟩
-.
-There are
-3
-occurrences of "BC", represented by the tuples
-⟨1,2,0,1⟩
-,
-⟨1,2,1,0⟩
-, and
-⟨2,1,0,1⟩
-.
-There is
+Randall performance is represented by
+50
+. For the first scenario, the value of
+(
+B
 1
-occurrence of "BD", represented by the tuple
-⟨2,1,1,0⟩
+)
+3
+is updated to
+300
+, causes the following:
+Initially, the performance of the employees is
+[50,40,30,20,10]
 .
-There is no occurrence of "AC".
-There are
+At the end of the first year,
+4
+worst-performing employees are replaced by employees with performance
+[300,100,2,1]
+. Therefore, the performance of the employees is
+[300,100,50,2,1]
+.
+At the end of the second year, the performance of the employees is
+[300,100,50,4,2]
+.
+At the end of the third year, the performance of the employees is
+[300,100,50,7,6]
+.
+Therefore, Randall will still be in the company after
+3
+years.
+For the second scenario, the value of
+(
+B
 2
-occurrences of "A", represented by the tuples
-⟨1,1,0,0⟩
-and
-⟨3,2,0,0⟩
+)
+1
+is updated to
+400
+, causes the following:
+Initially, the performance of the employees is
+[50,40,30,20,10]
 .
+At the end of the first year, the performance of the employees is
+[300,100,50,2,1]
+. Recall that the change in the first scenario is kept for this scenario as well.
+At the end of the second year, the performance of the employees is
+[400,300,100,50,2]
+.
+At the end of the third year, the performance of the employees is
+[400,300,100,7,6]
+.
+Therefore, Randall will not be in the company after
+3
+years.

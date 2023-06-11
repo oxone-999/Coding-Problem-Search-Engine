@@ -1,160 +1,185 @@
-C. Matrix Sorting
-time limit per test2 seconds
-memory limit per test256 megabytes
+E. Subset Trick
+time limit per test3 seconds
+memory limit per test512 megabytes
 inputstandard input
 outputstandard output
-You are given two tables
-A
-and
-B
-of size
-n×m
+Vanya invented an interesting trick with a set of integers.
+Let an illusionist have a set of positive integers
+S
+. He names a positive integer
+x
+. Then an audience volunteer must choose some subset (possibly, empty) of
+S
+without disclosing it to the illusionist. The volunteer tells the illusionist the size of the chosen subset. And here comes the trick: the illusionist guesses whether the sum of the subset elements does not exceed
+x
+. The sum of elements of an empty subset is considered to be
+0
 .
-We define a sorting by column as the following: we choose a column and reorder the rows of the table by the value in this column, from the rows with the smallest value to the rows with the largest. In case there are two or more rows with equal value in this column, their relative order does not change (such sorting algorithms are called stable).
-You can find this behavior of sorting by column in many office software for managing spreadsheets. Petya works in one, and he has a table
-A
-opened right now. He wants to perform zero of more sortings by column to transform this table to table
-B
+Vanya wants to prepare the trick for a public performance. He prepared some set of distinct positive integers
+S
+. Vasya wants the trick to be successful. He calls a positive number
+x
+unsuitable, if he can't be sure that the trick would be successful for every subset a viewer can choose.
+Vanya wants to count the number of unsuitable integers for the chosen set
+S
 .
-Determine if it is possible to do so, and if yes, find a sequence of columns to sort by. Note that you do not need to minimize the number of sortings.
+Vanya plans to try different sets
+S
+. He wants you to write a program that finds the number of unsuitable integers for the initial set
+S
+, and after each change to the set
+S
+. Vanya will make
+q
+changes to the set, and each change is one of the following two types:
+add a new integer
+a
+to the set
+S
+, or
+remove some integer
+a
+from the set
+S
+.
 Input
 The first line contains two integers
 n
-and
-m
+,
+q
 (
-1≤n,m≤1500
-) — the sizes of the tables.
-Each of the next
+1≤n,q≤200000
+) — the size of the initial set
+S
+and the number of changes.
+The next line contains
 n
-lines contains
-m
-integers
-a
-i,j
-(
-1≤
-a
-i,j
-≤n
-), denoting the elements of the table
-A
-.
-Each of the next
-n
-lines contains
-m
-integers
-b
-i,j
-(
-1≤
-b
-i,j
-≤n
-), denoting the elements of the table
-B
-.
-Output
-If it is not possible to transform
-A
-into
-B
-, print
-−1
-.
-Otherwise, first print an integer
-k
-(
-0≤k≤5000
-) — the number of sortings in your solution.
-Then print
-k
-integers
-c
+distinct integers
+s
 1
+,
+s
+2
 ,…,
-c
-k
+s
+n
 (
 1≤
-c
+s
 i
-≤m
-) — the columns, by which Petya needs to perform a sorting.
-We can show that if a solution exists, there is one in no more than
-5000
-sortings.
-Examples
+≤
+10
+13
+) — the initial elements of
+S
+.
+Each of the following
+q
+lines contain two integers
+t
+i
+,
+a
+i
+(
+1≤
+t
+i
+≤2
+,
+1≤
+a
+i
+≤
+10
+13
+), describing a change:
+If
+t
+i
+=1
+, then an integer
+a
+i
+is added to the set
+S
+. It is guaranteed that this integer is not present in
+S
+before this operation.
+If
+t
+i
+=2
+, then an integer
+a
+i
+is removed from the set
+S
+. In is guaranteed that this integer is present in
+S
+before this operation.
+Output
+Print
+q+1
+lines.
+In the first line print the number of unsuitable integers for the initial set
+S
+. In the next
+q
+lines print the number of unsuitable integers for
+S
+after each change.
+Example
 input
 Copy
-2 2
-2 2
-1 2
-1 2
-2 2
-output
-Copy
-1
-1
-input
-Copy
-3 3
-2 3 2
-1 3 3
-1 1 2
-1 1 2
-1 3 3
-2 3 2
-output
-Copy
-2
-1 2
-input
-Copy
-2 2
-1 1
+3 11
+1 2 3
 2 1
-2 1
-1 1
+1 5
+1 6
+1 7
+2 6
+2 2
+2 3
+1 10
+2 5
+2 7
+2 10
 output
 Copy
--1
-input
-Copy
-4 1
-2
-2
-2
+4
 1
-1
+6
+12
+19
+13
+8
 2
-2
-2
-output
-Copy
-1
-1 
+10
+3
+0
+0
 Note
-Consider the second example. After the sorting by the first column the table becomes
-1
-1
+In the first example the initial set is
+S={1,2,3}
+. For this set the trick can be unsuccessful for
+x∈{1,2,3,4}
+. For example, if
+x=4
+, the volunteer can choose the subset
+{1,2}
+with sum
+3≤x
+, and can choose the subset
+{2,3}
+with sum
+5>x
+. However, in both cases the illusionist only know the same size of the subset (
 2
+), so he can't be sure answering making a guess. Since there is only one subset of size
 3
-1
-3
-3
-2
-2.
-After the sorting by the second column the table becomes
-1
-1
-2
-1
-3
-3
-2
-3
-2,
-and this is what we need.
-In the third test any sorting does not change anything, because the columns are already sorted.
+, and the sum of each subset of smaller size does not exceed
+5
+, all
+x≥5
+are suitable.

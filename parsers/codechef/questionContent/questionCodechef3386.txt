@@ -1,37 +1,28 @@
-Petya and Sequence
+How to Choose a Subset
 Problem
-Read problems statements in Mandarin Chinese and Russian.
-Little Petya likes integer numbers a lot. Recently he has received a sequence of integers as a gift from his mother. Petya calls a sequence of N integers Ai beautiful if there exist a sequence of N integer numbers Bi for which the following conditions hold:
-At least one number Bi differs from 0.
-For every j from 0 to N-1 the following holds:
-A0* Bj + A1* B(j + 1) mod N + ... + AN-1* B(j + N - 1) mod N = 0.
-
-Please, help Petya to check if his sequence Ai is beautiful.
-  Input
-The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. The first line of each test case contains a single integer N denoting the number of elements in Petya's sequence. The second line contains N space-separated integers A0, A1, ..., AN-1 denoting the sequence.
+Read problems statements in Mandarin Chinese and Russian as well.
+Given a set S of first N non-negative integers i.e. S = {0, 1, 2, ..., N}. Find number of ways of choosing a K size subset of S with the property that the XOR-sum of all chosen integers has exactly B set bits in its binary representation (i.e. the bits that are equal to 1). Since the answer can be large, output it modulo (109 + 7). Please refer to notes section for formal definition of XOR-sum.
+Input
+The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+The only line of each test case contains three space-separated integers N, K and B.
 Output
-For each test case, output a single line containing the word "YES"(without quotes) if Petya's sequence is beautiful and "NO", otherwise.
+For each test case, output a single line containing the answer to the corresponding test case.
 Constraints
-1 ≤ T ≤ 100
-1 ≤ N ≤ 3 * 104
--1000 ≤ Ai ≤ 1000
-Sum of N for all test cases in a single input file will not exceed 150 000.
-Example
-Input:
-4
+1 ≤ T ≤ 5
+1 ≤ N ≤ 109
+1 ≤ K ≤ 7
+0 ≤ B ≤ 30
+Sample 1:
+Input
+Output
 3
-1 0 0
-3
-1 1 1
-4
-2 -4 1 1
-5
-1 3 2 1 5
-Output:
-NO
-YES
-YES
-NO
-  Explanation
-Example case 2. One of the possible sequences B is (1, -1, 0).
-Example case 3. One of the possible sequences B is (1, 1, 1, 1).
+2 2 0
+2 2 1
+2 2 2
+0
+2
+1
+Explanation:
+Example case 1. There is no way to choose a subset of 2 integers from {0, 1, 2} such that the XOR-sum contains 0 set bits.
+Example case 2. The two possible subsets in this case are {0, 1} and {0, 2}. In both cases the XOR-sum (1 and 2 respectively) contains exactly one set bit.
+Example case 3. The only possible subset is {1, 2}.
