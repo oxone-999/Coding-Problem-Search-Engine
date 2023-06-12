@@ -13,23 +13,26 @@ function App() {
   const handleSearch = async () => {
     setIsLoading(true);
 
-    try{
-      const data = await fetch("https://coding-search-service.onrender.com/api/search", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ query }),
-      });
-      try{
+    try {
+      const data = await fetch(
+        "https://coding-search-service.onrender.com/api/search",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ query }),
+        }
+      );
+      try {
         const outputList = await data.json();
         setResponse(outputList);
         console.log(outputList);
         setIsLoading(false);
-      }catch(err){
+      } catch (err) {
         console.log(err);
       }
-    }catch(err){
+    } catch (err) {
       setIsLoading(false);
     }
   };
@@ -55,7 +58,17 @@ function App() {
         </button>
       </div>
       <div className="content">
-        {isLoading && <div className="loading">Loading...</div>}
+        {isLoading && (
+          <div class="cube-loader">
+            <div class="cube-top"></div>
+            <div class="cube-wrapper">
+              <span style={{ "--i": 0 }} className="cube-span"></span>
+              <span style={{ "--i": 1 }} className="cube-span"></span>
+              <span style={{ "--i": 2 }} className="cube-span"></span>
+              <span style={{ "--i": 3 }} className="cube-span"></span>
+            </div>
+          </div>
+        )}
         {response && response !== undefined && response !== null && (
           <ul>
             {response.results.map((value, index) => (
@@ -64,7 +77,9 @@ function App() {
                   href={value.split("*")[0]}
                   target="_blank"
                   rel="noopener noreferrer"
-                >{value.split("*")[1]}</a>
+                >
+                  {value.split("*")[1]}
+                </a>
               </li>
             ))}
           </ul>
