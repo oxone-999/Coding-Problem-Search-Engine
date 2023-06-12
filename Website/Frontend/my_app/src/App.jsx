@@ -11,6 +11,7 @@ function App() {
   };
 
   const handleSearch = async () => {
+    setResponse(null);
     setIsLoading(true);
 
     try {
@@ -59,13 +60,14 @@ function App() {
       </div>
       <div className="content">
         {isLoading && (
-          <div class="cube-loader">
-            <div class="cube-top"></div>
-            <div class="cube-wrapper">
-              <span style={{ "--i": 0 }} className="cube-span"></span>
-              <span style={{ "--i": 1 }} className="cube-span"></span>
-              <span style={{ "--i": 2 }} className="cube-span"></span>
-              <span style={{ "--i": 3 }} className="cube-span"></span>
+          <div className="loader">
+            <div class="spinner">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
           </div>
         )}
