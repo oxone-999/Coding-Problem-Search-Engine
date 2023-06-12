@@ -4,22 +4,30 @@ import "./App.css";
 function App() {
   const [query, setQuery] = useState("");
   const [response, setResponse] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
 
   const handleSearch = async () => {
-    const data = await fetch("https://coding-search-service.onrender.com/api/search", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query }),
-    });
-    const outputList = await data.json();
-    setResponse(outputList);
-    console.log(outputList);
+    setIsLoading(true);
+
+    try{
+      const data = await fetch("https://coding-search-service.onrender.com/api/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query }),
+      });
+      const outputList = await data.json();
+      setIsLoading(false);
+      setResponse(outputList);
+      console.log(outputList);
+    }catch(err){
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -43,6 +51,7 @@ function App() {
         </button>
       </div>
       <div className="content">
+        {isLoading && <div className="loading">Loading...</div>}
         {response && response !== undefined && response !== null && (
           <ul>
             {response.results.map((value, index) => (
