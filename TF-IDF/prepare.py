@@ -124,7 +124,7 @@ def main():
     length = len(os.listdir(targetDirectory))
 
     for i in range(1,length+1):
-        with open(targetDirectory + f'questionsLink_{i}.txt') as f:
+        with open(targetDirectory + f'questionsLink_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             document_links.append(data)
             f.close()
@@ -133,7 +133,7 @@ def main():
     length = len(os.listdir(targetDirectory))
 
     for i in range(1,length+1):
-        with open(targetDirectory + f'questionsLink_{i}.txt') as f:
+        with open(targetDirectory + f'questionsLink_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             document_links.append(data)
             f.close()
@@ -142,7 +142,7 @@ def main():
     length = len(os.listdir(targetDirectory))
 
     for i in range(1,length+1):
-        with open(targetDirectory + f'questionsLink_{i}.txt') as f:
+        with open(targetDirectory + f'questionsLink_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             document_links.append(data)
             f.close()
@@ -151,7 +151,7 @@ def main():
     length = len(os.listdir(targetDirectory))         
             
     for i in range(1,length+1):
-        with open(targetDirectory + f'questionsName_{i}.txt') as f:
+        with open(targetDirectory + f'questionsName_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             data = preprocess_name(data)
             document_names.append(data)
@@ -161,7 +161,7 @@ def main():
     length = len(os.listdir(targetDirectory))         
             
     for i in range(1,length+1):
-        with open(targetDirectory + f'questionsName_{i}.txt') as f:
+        with open(targetDirectory + f'questionsName_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             data = preprocess_name(data)
             document_names.append(data)
@@ -171,7 +171,7 @@ def main():
     length = len(os.listdir(targetDirectory))         
             
     for i in range(1,length+1):
-        with open(targetDirectory + f'questionsName_{i}.txt') as f:
+        with open(targetDirectory + f'questionsName_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             data = preprocess_name(data)
             document_names.append(data)

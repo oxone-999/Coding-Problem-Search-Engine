@@ -25,12 +25,13 @@ def main(TF_IDF_map, document_links, document_names, document):
                         
         potential_documents = sorted(potential_documents.items(), key=lambda x: x[1], reverse=True)
 
-
         for index , score in potential_documents:
             index = int(index)
             results.append(str(document_links[index]) + "*" + str(document_names[index]))
     except:
         exit()
+        
+    results = list(set(results))
         
     output_data = {
         'results': results
