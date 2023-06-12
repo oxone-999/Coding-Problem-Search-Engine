@@ -21,10 +21,14 @@ function App() {
         },
         body: JSON.stringify({ query }),
       });
-      const outputList = await data.json();
-      setIsLoading(false);
-      setResponse(outputList);
-      console.log(outputList);
+      try{
+        const outputList = await data.json();
+        setResponse(outputList);
+        console.log(outputList);
+        setIsLoading(false);
+      }catch(err){
+        console.log(err);
+      }
     }catch(err){
       setIsLoading(false);
     }
