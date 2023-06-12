@@ -77,6 +77,28 @@ def main():
                 f.close()
         except:
             print(filename)
+            
+    folder_path = f'../parsers/codeforces/questionContent/'
+    for filename in range(1,2044):
+        try:    
+            with open(folder_path + '/questionCodeforces' + str(filename) + ".txt", 'r', encoding="utf-8") as f:
+                data = f.read()
+                data = cleaningData(data)
+                document.append(data)
+                f.close()
+        except:
+            print(filename)
+            
+    folder_path = f'../parsers/codechef/questionContent/'
+    for filename in range(1,2044):
+        try:    
+            with open(folder_path + '/questionCodechef' + str(filename) + ".txt", 'r', encoding="utf-8") as f:
+                data = f.read()
+                data = cleaningData(data)
+                document.append(data)
+                f.close()
+        except:
+            print(filename)
                 
     var = IDF(document)
     inverse_vocab_map = var[0]
@@ -107,7 +129,45 @@ def main():
             document_links.append(data)
             f.close()
             
+    targetDirectory = "../parsers/codeforces/questionLinks/"
+    length = len(os.listdir(targetDirectory))
+
+    for i in range(1,length+1):
+        with open(targetDirectory + f'questionsLink_{i}.txt') as f:
+            data = f.read()
+            document_links.append(data)
+            f.close()
+            
+    targetDirectory = "../parsers/codechef/questionLinks/"
+    length = len(os.listdir(targetDirectory))
+
+    for i in range(1,length+1):
+        with open(targetDirectory + f'questionsLink_{i}.txt') as f:
+            data = f.read()
+            document_links.append(data)
+            f.close()
+            
     targetDirectory = "../parsers/leetcode/questionHeadings/"
+    length = len(os.listdir(targetDirectory))         
+            
+    for i in range(1,length+1):
+        with open(targetDirectory + f'questionsName_{i}.txt') as f:
+            data = f.read()
+            data = preprocess_name(data)
+            document_names.append(data)
+            f.close()
+            
+    targetDirectory = "../parsers/codeforces/questionHeadings/"
+    length = len(os.listdir(targetDirectory))         
+            
+    for i in range(1,length+1):
+        with open(targetDirectory + f'questionsName_{i}.txt') as f:
+            data = f.read()
+            data = preprocess_name(data)
+            document_names.append(data)
+            f.close()
+            
+    targetDirectory = "../parsers/codechef/questionHeadings/"
     length = len(os.listdir(targetDirectory))         
             
     for i in range(1,length+1):
