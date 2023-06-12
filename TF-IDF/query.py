@@ -28,15 +28,10 @@ def main(TF_IDF_map, document_links, document_names, document):
 
         for index , score in potential_documents:
             index = int(index)
-            results.append(document_names[index])
-            # print(document_names[index])
-            # print("question link : " + document_links[index])
+            results.append(str(document_links[index]) + "*" + str(document_names[index]))
     except:
         exit()
         
-    #convert the results elements unique
-    results = list(set(results))
-
     output_data = {
         'results': results
     }
