@@ -40,6 +40,7 @@ function App() {
 
   return (
     <div className="App">
+      <h3>Website is under maintanance</h3>
       <button data-text="Awesome" className="button1">
         <span className="actual-text">&nbsp;CodeSearch&nbsp;</span>
         <span className="hover-text" aria-hidden="true">
