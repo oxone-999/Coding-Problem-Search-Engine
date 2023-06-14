@@ -53,7 +53,7 @@ function App() {
           type="text"
           value={query}
           onChange={handleInputChange}
-        ></input>
+          ></input>
         <button className="button" onClick={handleSearch}>
           Search
         </button>

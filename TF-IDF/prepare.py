@@ -8,10 +8,10 @@ def preprocess_name(name):
     #remove number. from the name
     #removing the digits
     pattern = r'\d+'
-    name = re.sub(pattern, '', name)
+    name = re.sub(pattern, ' ', name)
     
     #remove dots and starting and ending spaces
-    name = name.replace('.', '')
+    name = name.replace('.', ' ')
     name = name.strip()
     
     return name
@@ -36,7 +36,7 @@ def cleaningData(data):
     
     #removing the digits
     pattern = r'\d+'
-    data = re.sub(pattern, '', data)
+    data = re.sub(pattern, ' ', data)
     
     #removing punctuations
     translator = str.maketrans('', '', string.punctuation)
@@ -66,9 +66,12 @@ def cleaningData(data):
 
 def main():
     document = []
+    leetLength = 2000
+    codeforcesLength = 6300
+    codechefLength = 4000
     
     folder_path = f'../parsers/leetcode/questionContent/'
-    for filename in range(1,2044):
+    for filename in range(1,leetLength):
         try:    
             with open(folder_path + '/questionContentLeetcode' + str(filename) + ".txt", 'r', encoding="utf-8") as f:
                 data = f.read()
@@ -79,7 +82,7 @@ def main():
             print(filename)
             
     folder_path = f'../parsers/codeforces/questionContent/'
-    for filename in range(1,2044):
+    for filename in range(1,codeforcesLength):
         try:    
             with open(folder_path + '/questionCodeforces' + str(filename) + ".txt", 'r', encoding="utf-8") as f:
                 data = f.read()
@@ -90,7 +93,7 @@ def main():
             print(filename)
             
     folder_path = f'../parsers/codechef/questionContent/'
-    for filename in range(1,2044):
+    for filename in range(1,codechefLength):
         try:    
             with open(folder_path + '/questionCodechef' + str(filename) + ".txt", 'r', encoding="utf-8") as f:
                 data = f.read()
@@ -123,7 +126,7 @@ def main():
     targetDirectory = "../parsers/leetcode/questionLinks/"
     length = len(os.listdir(targetDirectory))
 
-    for i in range(1,length+1):
+    for i in range(1,leetLength):
         with open(targetDirectory + f'questionsLink_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             document_links.append(data)
@@ -132,7 +135,7 @@ def main():
     targetDirectory = "../parsers/codeforces/questionLinks/"
     length = len(os.listdir(targetDirectory))
 
-    for i in range(1,length+1):
+    for i in range(1,codeforcesLength):
         with open(targetDirectory + f'questionsLink_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             document_links.append(data)
@@ -141,7 +144,7 @@ def main():
     targetDirectory = "../parsers/codechef/questionLinks/"
     length = len(os.listdir(targetDirectory))
 
-    for i in range(1,length+1):
+    for i in range(1,codechefLength):
         with open(targetDirectory + f'questionsLink_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             document_links.append(data)
@@ -150,7 +153,7 @@ def main():
     targetDirectory = "../parsers/leetcode/questionHeadings/"
     length = len(os.listdir(targetDirectory))         
             
-    for i in range(1,length+1):
+    for i in range(1,leetLength):
         with open(targetDirectory + f'questionsName_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             data = preprocess_name(data)
@@ -160,7 +163,7 @@ def main():
     targetDirectory = "../parsers/codeforces/questionHeadings/"
     length = len(os.listdir(targetDirectory))         
             
-    for i in range(1,length+1):
+    for i in range(1,codeforcesLength):
         with open(targetDirectory + f'questionsName_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             data = preprocess_name(data)
@@ -170,7 +173,7 @@ def main():
     targetDirectory = "../parsers/codechef/questionHeadings/"
     length = len(os.listdir(targetDirectory))         
             
-    for i in range(1,length+1):
+    for i in range(1,codechefLength):
         with open(targetDirectory + f'questionsName_{i}.txt', encoding='utf-8') as f:
             data = f.read()
             data = preprocess_name(data)
