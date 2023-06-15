@@ -5,6 +5,9 @@ function App() {
   const [query, setQuery] = useState("");
   const [response, setResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLeetCodeSelected, setIsLeetCodeSelected] = useState(false);
+  const [isCodeForcesSelected, setIsCodeForcesSelected] = useState(false);
+  const [isCodeChefSelected, setIsCodeChefSelected] = useState(false);
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -38,6 +41,24 @@ function App() {
     }
   };
 
+  const filterSearchResults = () => {
+    if (!response || !response.results) return [];
+
+    return response.results.filter((value) => {
+      const [link, platform] = value.split("*");
+      if (
+        (isLeetCodeSelected && link.includes("leetcode")) ||
+        (isCodeForcesSelected && link.includes("codeforces")) ||
+        (isCodeChefSelected && link.includes("codechef"))
+      ) {
+        return true;
+      }
+      return false;
+    });
+  };
+
+  const searchResults = filterSearchResults();
+
   return (
     <>
       <div className="App">
@@ -47,6 +68,7 @@ function App() {
             &nbsp;CodeSearch&nbsp;
           </span>
         </button>
+        {/* <h4>by Anuj Verma</h4> */}
         <div className="wow">
           <div>Search for your favourite coding problems from </div>
           <img
@@ -80,8 +102,41 @@ function App() {
             Search
           </button>
         </div>
+        <div className="sliders">
+          <div className="platform-slider">
+            <label class="container">
+
+              <input
+                type="checkbox"
+                checked={isLeetCodeSelected}
+                onChange={() => setIsLeetCodeSelected(!isLeetCodeSelected)}
+              />
+              <div class="checkmark"></div>
+              <div>LeetCode</div>
+            </label>
+            <label class="container">
+              <input
+                type="checkbox"
+                checked={isCodeForcesSelected}
+                onChange={() => setIsCodeForcesSelected(!isCodeForcesSelected)}
+              />
+              <div class="checkmark"></div>
+              <div>CodeForces</div>
+            </label>
+            <label class="container">
+              <input
+                type="checkbox"
+                checked={isCodeChefSelected}
+                onChange={() => setIsCodeChefSelected(!isCodeChefSelected)}
+              />
+              <div class="checkmark"></div>
+              <div>CodeChef</div>
+            </label>
+          </div>
+          <div className="tab">Total Questions: {searchResults.length}</div>
+        </div>
         <div className="content">
-          {isLoading && (
+          {isLoading ? (
             <>
               <h3>
                 The Dataset is very big so it may take some time, please be
@@ -98,21 +153,26 @@ function App() {
                 </div>
               </div>
             </>
-          )}
-          {response && response !== undefined && response !== null && (
-            <ul>
-              {response.results.map((value, index) => (
-                <li key={index}>
-                  <a
-                    href={value.split("*")[0]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {value.split("*")[1]}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          ) : (
+            response &&
+            response !== undefined &&
+            response !== null && (
+              <>
+                <ul>
+                  {searchResults.map((value, index) => (
+                    <li key={index}>
+                      <a
+                        href={value.split("*")[0]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {value.split("*")[1]}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )
           )}
         </div>
       </div>
