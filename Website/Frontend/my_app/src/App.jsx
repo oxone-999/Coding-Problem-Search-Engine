@@ -5,7 +5,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [response, setResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLeetCodeSelected, setIsLeetCodeSelected] = useState(false);
+  const [isLeetCodeSelected, setIsLeetCodeSelected] = useState(true);
   const [isCodeForcesSelected, setIsCodeForcesSelected] = useState(false);
   const [isCodeChefSelected, setIsCodeChefSelected] = useState(false);
 
