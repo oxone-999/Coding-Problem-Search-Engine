@@ -46,6 +46,7 @@ function App() {
 
     return response.results.filter((value) => {
       const [link, platform] = value.split("*");
+      platform.toLowerCase();
       if (
         (isLeetCodeSelected && link.includes("leetcode")) ||
         (isCodeForcesSelected && link.includes("codeforces")) ||
@@ -105,7 +106,6 @@ function App() {
         <div className="sliders">
           <div className="platform-slider">
             <label class="container">
-
               <input
                 type="checkbox"
                 checked={isLeetCodeSelected}
