@@ -1,7 +1,7 @@
 # Coding-Problem-Search-Engine
-this website gives you coding problem which matches you search. 
+forgot the question name of a particular website. No worries, go to our website and search for your questions by putting relevant keywords and hit search; you can also set the platform you wanna stick to.
 
-## WEbsite Link - https://codesearch-by-oxone.netlify.app/
+#### Website Link - https://codesearch-by-oxone.netlify.app/
 
 ## Developer: Anuj Verma
 ## Institution : IIT Kharagpur
@@ -29,31 +29,46 @@ A search engine that allows users to search for questions based on their query. 
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/your-username/search-engine.git
+   git clone https://github.com/oxone-999/Coding-Problem-Search-Engine.git
 
 2. Install dependencies:
 
-- Python dependencies for web scraping: (provide instructions to install Python dependencies)
-- Node.js dependencies for the web application: (provide instructions to install Node.js dependencies)
+- Make sure you have beautiful soup and selenium installed in your workspace
 
-3. Additional setup steps:
+  ```shell
+  pip install bsoup
 
-- Specify the websites to scrape and configure the scraping process.
-- Configure the TF-IDF algorithm parameters and any additional settings.
+  ```shell
+  pip install selenium
+
+- if getting error after installing the libraries
+
+ ```shell
+pip install -user bsoup selenium
+
+\for intalling it globally
+
+- For hosting the backend locally go to Website/Backend
+
+  ```shell
+  npm install
+
+  ```shell
+  node server.js
+
+- For hosting the frontend locally go to Website/Frontend/my_app/
+
+  ```shell
+  npm install
+
+  ```shell
+  npm start
+
+- Now you are good to go, now the website will be hosted on http://localhost:3000
 
 ## Usage
 
-1. Start the web scraping process:
-
-- Run the Python script(s) responsible for scraping the websites.
-- Ensure that the scraped data is stored in the appropriate format or database.
-
-2. Start the web application:
-
-- Run the Node.js server to serve the web application.
-- Access the web application in a browser and interact with the search functionality.
-
-3. Perform a search:
+1. Perform a search:
 
 - Enter a query in the search box.
 -  Select the website you want to search
