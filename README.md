@@ -16,7 +16,6 @@ A search engine that allows users to search for questions based on their query. 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -37,33 +36,34 @@ A search engine that allows users to search for questions based on their query. 
 
   ```shell
   pip install bsoup
-
+  ```
   ```shell
   pip install selenium
 
 - if getting error after installing the libraries
 
- ```shell
-pip install -user bsoup selenium
-
-\for intalling it globally
+  ```shell
+  pip install -user bsoup selenium
+  ```
+for intalling it globally
 
 - For hosting the backend locally go to Website/Backend
 
   ```shell
   npm install
+  ```
 
   ```shell
   node server.js
-
+  ```
 - For hosting the frontend locally go to Website/Frontend/my_app/
 
   ```shell
   npm install
-
+  ```
   ```shell
   npm start
-
+  ```
 - Now you are good to go, now the website will be hosted on http://localhost:3000
 
 ## Usage
