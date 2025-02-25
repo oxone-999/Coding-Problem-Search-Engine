@@ -86,7 +86,7 @@ function App() {
           />
           <img
             className="image3"
-            src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/zruiknbedz8yqafxbazb"
+            src="https://s3.amazonaws.com/discourseproduction/original/1X/ba28115bd3d5badf6cce0eb175d5875dadee3b12.png"
             alt="codechef"
             border="0"
           />
